@@ -1118,6 +1118,8 @@ Ryu_CheckForPartnerReward::
 	goto ryu_return
 
 Ryu_GiveShellyMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_SHARPEDONITE, ryu_return
+	setflag FLAG_RYU_GIFTED_SHARPEDONITE
 	msgbox ShellyMegaReward
 	closemessage
 	giveitem ITEM_SHARPEDONITE
@@ -1125,6 +1127,8 @@ Ryu_GiveShellyMegaAndReturn::
 	goto ryu_return
 
 Ryu_GiveDawnMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_ALTARIANITE, ryu_return
+	setflag FLAG_RYU_GIFTED_ALTARIANITE
 	msgbox DawnMegaReward
 	closemessage
 	giveitem ITEM_ALTARIANITE
@@ -1132,6 +1136,8 @@ Ryu_GiveDawnMegaAndReturn::
 	goto ryu_return
 
 Ryu_GiveBrendanMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_LUCARIONITE, ryu_return
+	setflag FLAG_RYU_GIFTED_LUCARIONITE
 	msgbox BrendanMegaReward
 	closemessage
 	giveitem ITEM_LUCARIONITE
@@ -1139,6 +1145,8 @@ Ryu_GiveBrendanMegaAndReturn::
 	goto ryu_return
 
 Ryu_GiveLeafMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_VENUSAURITE, ryu_return
+	setflag FLAG_RYU_GIFTED_VENUSAURITE
 	msgbox LeafMegaReward
 	closemessage
 	giveitem ITEM_VENUSAURITE
@@ -1146,6 +1154,8 @@ Ryu_GiveLeafMegaAndReturn::
 	goto ryu_return
 
 Ryu_GiveCourtneyMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_CAMERUPTITE, ryu_return
+	setflag FLAG_RYU_GIFTED_CAMERUPTITE
 	msgbox CourtneyMegaReward
 	closemessage
 	giveitem ITEM_CAMERUPTITE
