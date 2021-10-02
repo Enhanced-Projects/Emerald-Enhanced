@@ -760,7 +760,7 @@ retutor:
 RyuSetEvDebugMenu::
 	msgbox RyuEv_ChooseSlot
 	call RyuBufferPartyMonNames
-	multichoice 1, 1, MULTI_SELECT_PARTY_SLOT, 0
+	multichoice 1, 1, MULTI_DYNAMIC_6, 0
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuSetEvDebugMenu

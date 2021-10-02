@@ -816,7 +816,37 @@ static const struct MenuAction MultichoiceList_117[] =
     {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_118[] =//party slot selection menu, contains only buffers, game will crash if drawn without filing first 6 buffers.
+static const struct MenuAction MultichoiceList_2BufferedOptions[] =
+{
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+};
+
+static const struct MenuAction MultichoiceList_3BufferedOptions[] =
+{
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+    {gText_RyuBufferedString3},
+};
+
+static const struct MenuAction MultichoiceList_4BufferedOptions[] =
+{
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+    {gText_RyuBufferedString3},
+    {gText_RyuBufferedString4},
+};
+
+static const struct MenuAction MultichoiceList_5BufferedOptions[] =
+{
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+    {gText_RyuBufferedString3},
+    {gText_RyuBufferedString4},
+    {gText_RyuBufferedString5},
+};
+
+static const struct MenuAction MultichoiceList_6BufferedOptions[] =
 {
     {gText_RyuBufferedString1},
     {gText_RyuBufferedString2},
@@ -825,6 +855,7 @@ static const struct MenuAction MultichoiceList_118[] =//party slot selection men
     {gText_RyuBufferedString5},
     {gText_RyuBufferedString6}
 };
+
 
 static const struct MenuAction MultichoiceList_119[] =
 {
@@ -1452,7 +1483,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_DEV_MENU_MAIN]              = MULTICHOICE(MultichoiceList_RyuDebugMulti),
     [MULTI_DEV_EV_MENU]                = MULTICHOICE(MultichoiceList_116),
     [MULTI_UNUSED_REL_MENU]            = MULTICHOICE(MultichoiceList_117),
-    [MULTI_SELECT_PARTY_SLOT]          = MULTICHOICE(MultichoiceList_118),
+    [MULTI_DYNAMIC_6]          = MULTICHOICE(MultichoiceList_6BufferedOptions),
     [MULTI_SELECT_MOVE_SLOT]           = MULTICHOICE(MultichoiceList_119),
     [MULTI_LTC_MOVE_TUTOR_MOVES]       = MULTICHOICE(MultichoiceList_120),
     [MULTI_UNUSED_JUKEBOX]             = MULTICHOICE(MultichoiceList_121),
@@ -1501,6 +1532,10 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FBAMOUNTMENU]               = MULTICHOICE(MultiChoiceList_FrontierBankAmountsMenu),
     [MULTI_REALESTATE_MENU]            = MULTICHOICE(MultiChoiceList_RealEstatePropertyOptions),
     [MULTI_BALL_CHANGER_INTROMENU]     = MULTICHOICE(MultiChoiceList_BallChangerOrMarket),
+    [MULTI_DYNAMIC_5]                  = MULTICHOICE(MultichoiceList_5BufferedOptions),
+    [MULTI_DYNAMIC_4]                  = MULTICHOICE(MultichoiceList_4BufferedOptions),
+    [MULTI_DYNAMIC_3]                  = MULTICHOICE(MultichoiceList_3BufferedOptions),
+    [MULTI_DYNAMIC_2]                  = MULTICHOICE(MultichoiceList_2BufferedOptions),
 };
 
 const u8 *const gStdStrings[] =

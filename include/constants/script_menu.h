@@ -126,7 +126,7 @@
 #define MULTI_DEV_MENU_MAIN                115
 #define MULTI_DEV_EV_MENU                  116
 #define MULTI_UNUSED_REL_MENU              117
-#define MULTI_SELECT_PARTY_SLOT            118
+#define MULTI_DYNAMIC_6            118
 #define MULTI_SELECT_MOVE_SLOT             119
 #define MULTI_LTC_MOVE_TUTOR_MOVES         120
 #define MULTI_UNUSED_JUKEBOX               121
@@ -175,6 +175,10 @@
 #define MULTI_FBAMOUNTMENU                 164
 #define MULTI_REALESTATE_MENU              165
 #define MULTI_BALL_CHANGER_INTROMENU       166
+#define MULTI_DYNAMIC_2                    167
+#define MULTI_DYNAMIC_3                    168
+#define MULTI_DYNAMIC_4                    169
+#define MULTI_DYNAMIC_5                    170
 
 
 // Lilycove SS Tidal Multichoice Selections

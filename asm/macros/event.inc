@@ -1632,9 +1632,17 @@
 	specialvar VAR_RESULT, GetPlayerFacingDirection
 	.endm
 
-	@ unused script command, previously headshot
-	.macro unusedscrcmd
+	@ buffer up to 6 supplied strings for use with MULTI_DYNAMIC_X
+	@ This lets you create custom menus at runtime using only stuff you can edit within the same script.
+	@ Prevents having to create whole new const menu stuffs in other files.
+	.macro bufferdynamicmulti, ptr1=NULL, ptr2=NULL, ptr3=NULL, ptr4=NULL, ptr5=NULL, ptr6=NULL
 	.byte 0xe5
+	.4byte \ptr1
+	.4byte \ptr2
+	.4byte \ptr3
+	.4byte \ptr4
+	.4byte \ptr5
+	.4byte \ptr6
 	.endm
 
 	@draws the user specified sprite. If mode is 1, Then supply a facility class id. (FACILITY_CLASS_RICH_GIRL)

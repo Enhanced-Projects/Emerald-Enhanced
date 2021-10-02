@@ -2043,6 +2043,18 @@ void RyuGiveDevMon(void)
 
 bool32 ScrCmd_unusedscrcmd(struct ScriptContext *ctx)
 {
+    const u8 *ptr1 = (const u8 *)ScriptReadWord(ctx);
+    const u8 *ptr2 = (const u8 *)ScriptReadWord(ctx);
+    const u8 *ptr3 = (const u8 *)ScriptReadWord(ctx);
+    const u8 *ptr4 = (const u8 *)ScriptReadWord(ctx);
+    const u8 *ptr5 = (const u8 *)ScriptReadWord(ctx);
+    const u8 *ptr6 = (const u8 *)ScriptReadWord(ctx);
+    StringCopy(gStringVar1, ptr1);
+    StringCopy(gStringVar2, ptr2);
+    StringCopy(gStringVar3, ptr3);
+    StringCopy(gRyuStringVar1, ptr4);
+    StringCopy(gRyuStringVar2, ptr5);
+    StringCopy(gRyuStringVar3, ptr6);
     return FALSE;
 }
 
