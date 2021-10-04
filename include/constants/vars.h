@@ -447,6 +447,6 @@
 #define PROPERTY_MOSSDEEP    11
 //there are an additional 20 properties
 
-#define EE_GAME_VERSION 7911
+#define EE_GAME_VERSION 8000
 
 #endif // GUARD_CONSTANTS_VARS_H
