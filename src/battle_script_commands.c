@@ -8884,6 +8884,9 @@ bool8 UproarWakeUpCheck(u8 battlerId)
 bool8 RyuAffectionStatusHealCheck(u8 battlerId)
 {
     u8 random = Random() % 99;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+        return FALSE;
     
     if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) ||
         ((GetBattlerPosition(battlerId) == B_POSITION_PLAYER_RIGHT) && ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == TRUE)) ||
