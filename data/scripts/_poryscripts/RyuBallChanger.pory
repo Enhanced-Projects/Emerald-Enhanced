@@ -20,6 +20,7 @@ script RyuScript_BallChanger {
     if(var(VAR_RESULT) == YES){
         callnative(RyuChangeUsedPokeball)
         removemoney(10000)
+        removeitem(VAR_ITEM_ID)
         msgbox("The ball of {STR_VAR_2} has been\nchanged to {STR_VAR_1} successfully!\pPlease come again!")
         goto(ryu_end)
     }

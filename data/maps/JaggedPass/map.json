@@ -249,6 +249,15 @@
       "var": "VAR_JAGGED_PASS_STATE",
       "var_value": "1",
       "script": "JaggedPass_EventScript_OpenMagmaHideout"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_TEMP_7",
+      "var_value": "0",
+      "script": "JP_CheckMagmaClearCivilians"
     }
   ],
   "bg_events": [
