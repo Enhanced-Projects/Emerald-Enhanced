@@ -546,3 +546,25 @@ R103_DeclinedMsg:
 
 
 `
+
+script r103_CheckTutorial103 {
+	if (var(VAR_LITTLEROOT_INTRO_STATE) < 10) {
+		lockall
+		checkplayergender
+		if (var(VAR_RESULT) == MALE) {
+			msgbox("{RIVAL} is waiting for you to\nmeet her!")
+		}
+		else {
+			msgbox("{RIVAL} is waiting for you to\nmeet him!")
+		}
+		closemessage
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft)
+		applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		waitmovement(OBJ_EVENT_ID_FOLLOWER)
+		releaseall
+		end
+	}
+	setvar(VAR_TEMP_D, 100)
+	end
+}

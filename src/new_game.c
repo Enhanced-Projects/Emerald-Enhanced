@@ -98,7 +98,6 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
     FlagClear(FLAG_RYU_VANILLA_CAP);
-    FlagClear(FLAG_RYU_AUTORUN);
 }
 
 void ClearAllContestWinnerPics(void)
@@ -294,6 +293,7 @@ void NewGameInitData(void)
     FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
     FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);// can't delete all kecleon overworlds because scripts, so this will do.
     FlagSet(FLAG_SYS_NATIONAL_DEX);
+    FlagSet(FLAG_RYU_AUTORUN);
 
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);

@@ -293,6 +293,7 @@ OldaleTown_EventScript_RivalFinish:: @ 81E911A
 	removeobject 4
 	setvar VAR_OLDALE_RIVAL_STATE, 2
 	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	setvar VAR_LITTLEROOT_INTRO_STATE, 95
 	releaseall
 	end
 

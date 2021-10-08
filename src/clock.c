@@ -15,6 +15,7 @@
 #include "RyuRealEstate.h"
 
 static void UpdatePerDay(struct Time *localTime);
+void UpdatePerHour(struct Time *localTime);
 static void UpdatePerMinute(struct Time *localTime);
 
 static void InitTimeBasedEvents(void)
@@ -31,6 +32,7 @@ void DoTimeBasedEvents(void)
     {
         RtcCalcLocalTime();
         UpdatePerDay(&gLocalTime);
+        UpdatePerHour(&gLocalTime);
         UpdatePerMinute(&gLocalTime);
     }
 }
@@ -42,6 +44,53 @@ void RotateDailyUBGroup(void)
             VarSet(VAR_RYU_UB_EVENT_TIMER, 0);
 }
 
+void UpdatePerHour(struct Time *localTime)
+{
+    if ((FlagGet(FLAG_RYU_DS_BRENDAN_PARTNERS)) || (FlagGet(FLAG_RYU_DS_DAWN_PARTNERS)))//only need to check if player has finished companion line for rival to check this event 
+    {
+        if ((gLocalTime.hours >= 14) && (gLocalTime.hours <= 20)) //betwen 2pm and 8pm rival hangs out at lab. Different dialogue.
+        {
+            if (gSaveBlock2Ptr->playerGender == MALE)
+            {                                     //OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
+               if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 105))// 3a. don't bother if they are currently following player.|No constant here because it's undefined in this context
+                   {
+                       FlagSet(FLAG_HIDE_DAWNS_HOUSE_DAWN);
+                       FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
+                   }
+            }
+            else
+            {                                     //OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+               if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 100))//see 3a
+                   {
+                       FlagSet(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
+                       FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
+                   }
+            }
+
+        }
+        else //Rival is at home. Remove them from lab.
+        {
+           if (gSaveBlock2Ptr->playerGender == FEMALE)
+           {
+               if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 100))//see 3a
+                   {
+                       FlagClear(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
+                       FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
+                   }
+           }
+           else
+           {
+               if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 105)) //see 3a
+                   {
+                       FlagClear(FLAG_HIDE_DAWNS_HOUSE_DAWN);
+                       FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
+                   }
+           }
+
+        }
+    }
+     
+}
 
 static void UpdatePerDay(struct Time *localTime)
 {

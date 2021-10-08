@@ -215,7 +215,7 @@
 #define FLAG_RYU_VIEWED_MIRAGE_ISLAND_NEWS_BULLETIN      0xC3 //
 #define FLAG_RYU_NOTIFY_LV100_SWITCH                     0xC4 //
 #define FLAG_RYU_COURTNEY_FOLLOWER_EVENT_1               0xC5 //
-#define FLAG_UNUSED_0xC6                     0xC6 //
+#define FLAG_RYU_BRENDAN_LAB_AFTERROMANCEEVENT                     0xC6 //
 #define FLAG_RUSTURF_TUNNEL_OPENED           0xC7
 #define FLAG_RECEIVED_RED_SCARF              0xC8
 #define FLAG_RECEIVED_BLUE_SCARF             0xC9
@@ -235,10 +235,10 @@
 #define FLAG_ITEM_IGLOO2_GOLD_ORE_2          0xD7
 #define FLAG_ITEM_IGLOO2_GOLD_ORE_3          0xD8
 #define FLAG_MET_DIVING_TREASURE_HUNTER      0xD9
-#define FLAG_UNUSED_0xDA                     0xDA
+#define FLAG_RYU_DAWN_LAB_AFTERROMANCEEVENT  0xDA
 #define FLAG_EVIL_LEADER_PLEASE_STOP         0xDB
 #define FLAG_RYU_TITLE_DEFENSE               0xDC
-#define FLAG_UNUSED_0xDD                     0xDD
+#define FLAG_RYU_DAWN_BAD_END                0xDD
 #define FLAG_WINGULL_SENT_ON_ERRAND          0xDE
 #define FLAG_RECEIVED_MENTAL_HERB            0xDF
 #define FLAG_WINGULL_DELIVERED_MAIL          0xE0
@@ -307,7 +307,7 @@
 #define FLAG_MET_DEVON_EMPLOYEE              0x11F
 #define FLAG_MET_RIVAL_RUSTBORO              0x120
 #define FLAG_RECEIVED_SILK_SCARF             0x121
-#define FLAG_UNUSED_0x122                    0x122
+#define FLAG_RYU_BRENDAN_BAD_END             0x122
 #define FLAG_RECEIVED_SS_TICKET              0x123
 #define FLAG_MET_RIVAL_LILYCOVE              0x124
 #define FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE 0x125
