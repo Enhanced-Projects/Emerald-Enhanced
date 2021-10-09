@@ -205,6 +205,7 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
 }
 
 extern int CountBadges(void);
+extern void RyuCheckForFactionAchievements(void);
 
 void RyuDoNotifyTasks(void)
 {
@@ -217,6 +218,8 @@ void RyuDoNotifyTasks(void)
                 ScriptContext1_SetupScript(RyuScript_GoToLimbo);
         }
     }
+
+    RyuCheckForFactionAchievements();
 
     if ((CheckAchievement(ACH_LEAVE_NO_STONE_UNTURNED) == FALSE) && (VarGet(VAR_TEMP_E) == 0))
     {

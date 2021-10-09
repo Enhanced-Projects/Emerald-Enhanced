@@ -172,8 +172,6 @@ bool8 ScrCmd_checkfactionstanding(struct ScriptContext *ctx)
     u8 factionId = ScriptReadByte(ctx);
     u8 amount = ScriptReadByte(ctx); //no longer doing negatives, script logic doesn't like it.
 
-    RyuCheckForFactionAchievements();
-
     if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= amount)//just see if factionid's standing is at or above amount
         gSpecialVar_Result = TRUE;
     else
