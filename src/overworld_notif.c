@@ -83,6 +83,11 @@ void QueueNotification(u8 *message, u32 type, u32 time)
     }
 }
 
+void AddNewNotification(void)
+{
+    QueueNotification(gRyuStringVar4, VarGet(VAR_TEMP_F), VarGet(VAR_TEMP_E));
+}
+
 void ShowNotificationWindow(void);
 void Task_DisplayNotification(u8);
 
