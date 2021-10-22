@@ -48,6 +48,7 @@
 #include "menu_helpers.h"
 #include "window.h"
 #include "battle_pike.h"
+#include "overworld_notif.h"
 #include "constants/rgb.h"
 
 enum
@@ -2014,6 +2015,7 @@ bool8 UseRegisteredKeyItemOnField(void)
 
     if (InUnionRoom() == TRUE || InBattlePyramid() || InBattlePike() || InMultiPartnerRoom() == TRUE)
         return FALSE;
+    HideNotificationWindow();
     HideMapNamePopUpWindow();
     ChangeBgY_ScreenOff(0, 0, 0);
     if (gSaveBlock1Ptr->registeredItem != ITEM_NONE)

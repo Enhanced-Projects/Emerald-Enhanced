@@ -50,12 +50,13 @@ struct Menu
 
 static EWRAM_DATA u8 sStartMenuWindowId = 0;
 static EWRAM_DATA u8 sMapNamePopupWindowId = 0;
+static EWRAM_DATA u8 sNotificationWindowId = 0;
 static EWRAM_DATA struct Menu sMenu = {0};
 static EWRAM_DATA u16 sTileNum = 0;
 static EWRAM_DATA u8 sPaletteNum = 0;
 static EWRAM_DATA u8 sYesNoWindowId = 0;
 static EWRAM_DATA u8 sWindowId = 0;
-static EWRAM_DATA u16 sFiller = 0;  // needed to align
+static EWRAM_DATA u16 sFiller = 0; // needed to align
 static EWRAM_DATA bool8 sScheduledBgCopiesToVram[4] = {FALSE};
 static EWRAM_DATA u16 sTempTileDataBufferIdx = 0;
 static EWRAM_DATA void *sTempTileDataBuffer[0x20] = {NULL};
@@ -63,72 +64,68 @@ static EWRAM_DATA void *sTempTileDataBuffer[0x20] = {NULL};
 const u16 gUnknown_0860F074[] = INCBIN_U16("graphics/interface/860F074.gbapal");
 
 static const u8 sTextSpeedFrameDelays[] =
-{
-    [OPTIONS_TEXT_SPEED_SLOW] = 8,
-    [OPTIONS_TEXT_SPEED_MID]  = 4,
-    [OPTIONS_TEXT_SPEED_FAST] = 1,
-    [OPTIONS_TEXT_SPEED_INSTANT] = 0 | 0x40,
+    {
+        [OPTIONS_TEXT_SPEED_SLOW] = 8,
+        [OPTIONS_TEXT_SPEED_MID] = 4,
+        [OPTIONS_TEXT_SPEED_FAST] = 1,
+        [OPTIONS_TEXT_SPEED_INSTANT] = 0 | 0x40,
 };
 
 static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
-{
     {
-        .bg = 0,
-        .tilemapLeft = 2,
-        .tilemapTop = 15,
-        .width = 27,
-        .height = 4,
-        .paletteNum = 15,
-        .baseBlock = 0x194
-    },
-    DUMMY_WIN_TEMPLATE
-};
+        {.bg = 0,
+         .tilemapLeft = 2,
+         .tilemapTop = 15,
+         .width = 27,
+         .height = 4,
+         .paletteNum = 15,
+         .baseBlock = 0x194},
+        DUMMY_WIN_TEMPLATE};
 
 static const struct WindowTemplate sYesNo_WindowTemplates =
-{
-    .bg = 0,
-    .tilemapLeft = 21,
-    .tilemapTop = 9,
-    .width = 5,
-    .height = 4,
-    .paletteNum = 15,
-    .baseBlock = 0x125
-};
+    {
+        .bg = 0,
+        .tilemapLeft = 21,
+        .tilemapTop = 9,
+        .width = 5,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 0x125};
 
 const u16 gUnknown_0860F0B0[] = INCBIN_U16("graphics/interface/860F0B0.gbapal");
-const u8 sTextColors[] = { TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GREY };
+const u8 sTextColors[] = {TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GREY};
 
 // Table of move info icon offsets in graphics/interface_fr/menu.png
 static const struct MenuInfoIcon sMenuInfoIcons[] =
-{   // { width, height, offset }
-    { 12, 12, 0x00 },  // Unused
-    [TYPE_NORMAL + 1]   = { 32, 12, 0x20 },
-    [TYPE_FIGHTING + 1] = { 32, 12, 0x64 },
-    [TYPE_FLYING + 1]   = { 32, 12, 0x60 },
-    [TYPE_POISON + 1]   = { 32, 12, 0x80 },
-    [TYPE_GROUND + 1]   = { 32, 12, 0x48 },
-    [TYPE_ROCK + 1]     = { 32, 12, 0x44 },
-    [TYPE_BUG + 1]      = { 32, 12, 0x6C },
-    [TYPE_GHOST + 1]    = { 32, 12, 0x68 },
-    [TYPE_STEEL + 1]    = { 32, 12, 0x88 },
-    [TYPE_MYSTERY + 1]  = { 32, 12, 0xA4 },
-    [TYPE_FIRE + 1]     = { 32, 12, 0x24 },
-    [TYPE_WATER + 1]    = { 32, 12, 0x28 },
-    [TYPE_GRASS + 1]    = { 32, 12, 0x2C },
-    [TYPE_ELECTRIC + 1] = { 32, 12, 0x40 },
-    [TYPE_PSYCHIC + 1]  = { 32, 12, 0x84 },
-    [TYPE_ICE + 1]      = { 32, 12, 0x4C },
-    [TYPE_DRAGON + 1]   = { 32, 12, 0xA0 },
-    [TYPE_DARK + 1]     = { 32, 12, 0x8C },
-    [MENU_INFO_ICON_TYPE]      = { 42, 12, 0xA8 },
-    [MENU_INFO_ICON_POWER]     = { 42, 12, 0xC0 },
-    [MENU_INFO_ICON_ACCURACY]  = { 42, 12, 0xC8 },
-    [MENU_INFO_ICON_PP]        = { 42, 12, 0xE0 },
-    [MENU_INFO_ICON_EFFECT]    = { 42, 12, 0xE8 }, // Unused
-    [MENU_INFO_ICON_BALL_RED]  = {  8,  8, 0xAE }, // For placed decorations in Secret Base
-    [MENU_INFO_ICON_BALL_BLUE] = {  8,  8, 0xAF }, // For placed decorations in player's room
+    {
+        // { width, height, offset }
+        {12, 12, 0x00}, // Unused
+        [TYPE_NORMAL + 1] = {32, 12, 0x20},
+        [TYPE_FIGHTING + 1] = {32, 12, 0x64},
+        [TYPE_FLYING + 1] = {32, 12, 0x60},
+        [TYPE_POISON + 1] = {32, 12, 0x80},
+        [TYPE_GROUND + 1] = {32, 12, 0x48},
+        [TYPE_ROCK + 1] = {32, 12, 0x44},
+        [TYPE_BUG + 1] = {32, 12, 0x6C},
+        [TYPE_GHOST + 1] = {32, 12, 0x68},
+        [TYPE_STEEL + 1] = {32, 12, 0x88},
+        [TYPE_MYSTERY + 1] = {32, 12, 0xA4},
+        [TYPE_FIRE + 1] = {32, 12, 0x24},
+        [TYPE_WATER + 1] = {32, 12, 0x28},
+        [TYPE_GRASS + 1] = {32, 12, 0x2C},
+        [TYPE_ELECTRIC + 1] = {32, 12, 0x40},
+        [TYPE_PSYCHIC + 1] = {32, 12, 0x84},
+        [TYPE_ICE + 1] = {32, 12, 0x4C},
+        [TYPE_DRAGON + 1] = {32, 12, 0xA0},
+        [TYPE_DARK + 1] = {32, 12, 0x8C},
+        [MENU_INFO_ICON_TYPE] = {42, 12, 0xA8},
+        [MENU_INFO_ICON_POWER] = {42, 12, 0xC0},
+        [MENU_INFO_ICON_ACCURACY] = {42, 12, 0xC8},
+        [MENU_INFO_ICON_PP] = {42, 12, 0xE0},
+        [MENU_INFO_ICON_EFFECT] = {42, 12, 0xE8},  // Unused
+        [MENU_INFO_ICON_BALL_RED] = {8, 8, 0xAE},  // For placed decorations in Secret Base
+        [MENU_INFO_ICON_BALL_BLUE] = {8, 8, 0xAF}, // For placed decorations in player's room
 };
-
 
 // Forward declarations
 void WindowFunc_DrawStandardFrame(u8, u8, u8, u8, u8, u8);
@@ -147,6 +144,7 @@ void InitStandardTextBoxWindows(void)
     InitWindows(sStandardTextBox_WindowTemplates);
     sStartMenuWindowId = 0xFF;
     sMapNamePopupWindowId = 0xFF;
+    sNotificationWindowId = 0xFF;
 }
 
 void FreeAllOverworldWindowBuffers(void)
@@ -527,6 +525,18 @@ u8 AddMapNamePopUpWindow(void)
     return sMapNamePopupWindowId;
 }
 
+u8 AddNotificationWindow(void)
+{
+    if (sNotificationWindowId == 0xFF)
+        sNotificationWindowId = sub_8198AA4(0, 1, 1, 28, 4, 14, 0x80);
+    return sNotificationWindowId;
+}
+
+u8 GetNotificationWindowId(void)
+{
+    return sNotificationWindowId;
+}
+
 u8 GetMapNamePopUpWindowId(void)
 {
     return sMapNamePopupWindowId;
@@ -538,6 +548,15 @@ void RemoveMapNamePopUpWindow(void)
     {
         RemoveWindow(sMapNamePopupWindowId);
         sMapNamePopupWindowId = 0xFF;
+    }
+}
+
+void RemoveNotificationWindow(void)
+{
+    if (sNotificationWindowId != 0xFF)
+    {
+        RemoveWindow(sNotificationWindowId);
+        sNotificationWindowId = 0xFF;
     }
 }
 
@@ -822,12 +841,12 @@ void sub_8198180(const u8 *string, u8 a2, bool8 copyToVram)
         FillWindowPixelBuffer(sWindowId, PIXEL_FILL(15));
         width = GetStringWidth(0, string, 0);
         AddTextPrinterParameterized3(sWindowId,
-                  0,
-                  0xEC - (GetWindowAttribute(sWindowId, WINDOW_TILEMAP_LEFT) * 8) - a2 - width,
-                  1,
-                  sTextColors,
-                  0,
-                  string);
+                                     0,
+                                     0xEC - (GetWindowAttribute(sWindowId, WINDOW_TILEMAP_LEFT) * 8) - a2 - width,
+                                     1,
+                                     sTextColors,
+                                     0,
+                                     string);
         if (copyToVram)
             CopyWindowToVram(sWindowId, 3);
     }
@@ -858,12 +877,12 @@ void sub_8198204(const u8 *string, const u8 *string2, u8 a3, u8 a4, bool8 copyTo
         {
             width = GetStringWidth(0, string2, 0);
             AddTextPrinterParameterized3(sWindowId,
-                      0,
-                      0xEC - (GetWindowAttribute(sWindowId, WINDOW_TILEMAP_LEFT) * 8) - a4 - width,
-                      1,
-                      color,
-                      0,
-                      string2);
+                                         0,
+                                         0xEC - (GetWindowAttribute(sWindowId, WINDOW_TILEMAP_LEFT) * 8) - a4 - width,
+                                         1,
+                                         color,
+                                         0,
+                                         string2);
         }
         AddTextPrinterParameterized4(sWindowId, 1, 4, 1, 0, 0, color, 0, string);
         if (copyToVram)
@@ -1328,12 +1347,12 @@ void sub_8199060(u8 oldCursorPos, u8 newCursorPos)
     xPos = (newCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
     yPos = (newCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
     AddTextPrinterParameterized(sMenu.windowId,
-                      sMenu.fontId,
-                      gText_SelectorArrow3,
-                      xPos,
-                      yPos,
-                      0,
-                      0);
+                                sMenu.fontId,
+                                gText_SelectorArrow3,
+                                xPos,
+                                yPos,
+                                0,
+                                0);
 }
 
 u8 ChangeListMenuCursorPosition(s8 deltaX, s8 deltaY)
@@ -1379,7 +1398,7 @@ u8 ChangeGridMenuCursorPosition(s8 deltaX, s8 deltaY)
     if (deltaX != 0)
     {
         if (((sMenu.cursorPos % sMenu.columns) + deltaX >= 0) &&
-        ((sMenu.cursorPos % sMenu.columns) + deltaX < sMenu.columns))
+            ((sMenu.cursorPos % sMenu.columns) + deltaX < sMenu.columns))
         {
             sMenu.cursorPos += deltaX;
         }
@@ -1388,7 +1407,7 @@ u8 ChangeGridMenuCursorPosition(s8 deltaX, s8 deltaY)
     if (deltaY != 0)
     {
         if (((sMenu.cursorPos / sMenu.columns) + deltaY >= 0) &&
-        ((sMenu.cursorPos / sMenu.columns) + deltaY < sMenu.rows))
+            ((sMenu.cursorPos / sMenu.columns) + deltaY < sMenu.rows))
         {
             sMenu.cursorPos += (sMenu.columns * deltaY);
         }
@@ -1865,12 +1884,12 @@ u16 copy_decompressed_tile_data_to_vram(u8 bgId, const void *src, u16 size, u16 
 {
     switch (mode)
     {
-        case 0:
-            return LoadBgTiles(bgId, src, size, offset);
-        case 1:
-            return LoadBgTilemap(bgId, src, size, offset);
-        default:
-            return -1;
+    case 0:
+        return LoadBgTiles(bgId, src, size, offset);
+    case 1:
+        return LoadBgTilemap(bgId, src, size, offset);
+    default:
+        return -1;
     }
 }
 
@@ -2046,11 +2065,11 @@ void sub_819A080(const struct Bitmap *src, struct Bitmap *dst, u16 srcX, u16 src
         for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++)
         {
             pixelsSrc = src->pixels + ((loopSrcX >> 1) & 3) + ((loopSrcX >> 3) << 5) + (((loopSrcY >> 3) * multiplierSrcY) << 5) + ((u32)(loopSrcY << 0x1d) >> 0x1B);
-            pixelsDst = (void*) dst->pixels + ((loopDstX >> 1) & 3) + ((loopDstX >> 3) << 5) + ((( loopDstY >> 3) * multiplierDstY) << 5) + ((u32)( loopDstY << 0x1d) >> 0x1B);
+            pixelsDst = (void *)dst->pixels + ((loopDstX >> 1) & 3) + ((loopDstX >> 3) << 5) + (((loopDstY >> 3) * multiplierDstY) << 5) + ((u32)(loopDstY << 0x1d) >> 0x1B);
 
-            if ((uintptr_t )pixelsDst & 0x1)
+            if ((uintptr_t)pixelsDst & 0x1)
             {
-                pixelsDst = (void*)(pixelsDst) - 1;
+                pixelsDst = (void *)(pixelsDst)-1;
                 if (loopDstX & 0x1)
                 {
                     toOrr = *pixelsDst & 0x0fff;
@@ -2088,11 +2107,13 @@ void sub_819A080(const struct Bitmap *src, struct Bitmap *dst, u16 srcX, u16 src
                 }
             }
 
-            // Needed to match, urgh.
-            #ifndef NONMATCHING
-            asm("":::"r4");
-            pixelsDst++;pixelsDst--;
-            #endif // NONMATCHING
+// Needed to match, urgh.
+#ifndef NONMATCHING
+            asm("" ::
+                    : "r4");
+            pixelsDst++;
+            pixelsDst--;
+#endif // NONMATCHING
         }
     }
 }
@@ -2113,16 +2134,16 @@ void ListMenuLoadStdPalAt(u8 palOffset, u8 palId)
 
     switch (palId)
     {
-        case 0:
-        default:
-            palette = gFireRedMenuElements1_Pal;
-            break;
-        case 1:
-            palette = gFireRedMenuElements2_Pal;
-            break;
-        case 2:
-            palette = gFireRedMenuElements3_Pal;
-            break;
+    case 0:
+    default:
+        palette = gFireRedMenuElements1_Pal;
+        break;
+    case 1:
+        palette = gFireRedMenuElements2_Pal;
+        break;
+    case 2:
+        palette = gFireRedMenuElements3_Pal;
+        break;
     }
 
     LoadPalette(palette, palOffset, 0x20);
@@ -2149,29 +2170,29 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
 
     switch (textId)
     {
-        case SAVE_MENU_NAME:
-            StringCopy(string, gSaveBlock2Ptr->playerName);
-            break;
-        case SAVE_MENU_CAUGHT:
-            string = ConvertIntToDecimalStringN(string, GetNationalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
-            *string = EOS;
-            break;
-        case SAVE_MENU_PLAY_TIME:
-            string = ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
-            *(string++) = CHAR_COLON;
-            ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-            break;
-        case SAVE_MENU_LOCATION:
-            GetMapNameGeneric(string, gMapHeader.regionMapSectionId);
-            break;
-        case SAVE_MENU_BADGES:
-            for (curFlag = FLAG_BADGE01_GET, flagCount = 0, endOfString = string + 1; curFlag < FLAG_BADGE01_GET + NUM_BADGES; curFlag++)
-            {
-                if (FlagGet(curFlag))
-                    flagCount++;
-            }
-            *string = flagCount + CHAR_0;
-            *endOfString = EOS;
-            break;
+    case SAVE_MENU_NAME:
+        StringCopy(string, gSaveBlock2Ptr->playerName);
+        break;
+    case SAVE_MENU_CAUGHT:
+        string = ConvertIntToDecimalStringN(string, GetNationalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
+        *string = EOS;
+        break;
+    case SAVE_MENU_PLAY_TIME:
+        string = ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
+        *(string++) = CHAR_COLON;
+        ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+        break;
+    case SAVE_MENU_LOCATION:
+        GetMapNameGeneric(string, gMapHeader.regionMapSectionId);
+        break;
+    case SAVE_MENU_BADGES:
+        for (curFlag = FLAG_BADGE01_GET, flagCount = 0, endOfString = string + 1; curFlag < FLAG_BADGE01_GET + NUM_BADGES; curFlag++)
+        {
+            if (FlagGet(curFlag))
+                flagCount++;
+        }
+        *string = flagCount + CHAR_0;
+        *endOfString = EOS;
+        break;
     }
 }
