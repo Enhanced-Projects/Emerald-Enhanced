@@ -1,0 +1,118 @@
+mapscripts MauvilleCity_AdrastiWarehouse_MapScripts {}
+
+script AW_Foreman { //@TOBY put AW_Foreman as the script for the foreman, whenever you complete the warehouse map.
+    if (flag(FLAG_RYU_FAILED_PROF_SPECIAL_QUEST) == TRUE) {
+        msgbox("I don't have any more\ndeliveries for you today.\pCome back tomorrow to try\nthe introductory job again.")
+        release
+        end
+    }
+    if (flag(FLAG_RYU_PROF_SPECIAL_IN_PROGRESS) == TRUE) {
+        goto(AW_SpecialQuestInProgress)
+    }
+    if (flag(FLAG_RYU_PROFESSIONALS_FINAL_QUEST) == TRUE) {
+        goto(AW_StandardWarehouseJob)
+    }
+    if (flag(FLAG_RYU_PROFESSIONALS_SPECIAL_QUEST) == TRUE) {
+        goto(AW_GiveProfessionalsFinalQuest)
+    }
+    //player hasn't completed either of the big professionals quests
+    checkfactionstanding(FACTION_PROFESSIONALS, 175)
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox("What do you want?!\nHow did you get in here?!\pLeave now!")
+        closemessage
+        release
+        end
+    }
+    msgbox(AW_ProfessionalsSpecialQuestIntro)
+    closemessage
+    setflag(FLAG_RYU_PROF_SPECIAL_IN_PROGRESS)
+    setflag(FLAG_RYU_START_DELIVERY_TIMER)
+    clearflag(FLAG_RYU_HIDE_PROFESSIONALS_OBJECTS)
+    drawinfobox(INFOBOX_PROF_SPECIAL_DELIVERY_MANIFEST)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}Delivery Manifest")
+    closemessage
+    removeinfobox
+    goto(AW_SpecialQuestInProgress)
+}
+
+script AW_StandardWarehouseJob {
+    //random(4)
+    //addvar(VAR_RESULT, 2)
+    setvar(VAR_RESULT, 5)
+    buffernumberstring(0, VAR_RESULT)
+    msgbox("Okay... Here's the manifest\nfor your new delivery route.\pDeliver all {STR_VAR_1} of these packages\nwithin 5 minutes.")
+    closemessage
+	copyvar(VAR_TEMP_4, VAR_RESULT)
+	callnative(DoDeliveryRouteSetup)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+    waitmovement(0xff)
+    callnative(RyuBufferJobIntoStringVar)
+    call(AW_FillEmptyBuffers)
+    drawinfobox(INFOBOX_DYNAMIC)
+    end
+}
+
+script AW_FillEmptyBuffers {
+    callnative(RyuFillTextBuffers)
+    return
+}
+
+script AW_GiveProfessionalsFinalQuest {
+    end
+}
+
+script AW_SpecialQuestInProgress {
+    if(flag(FLAG_RYU_DELIVERED_PROF_SPECIAL_GOODS) == TRUE) {
+        goto(AW_CompleteSpecialQuest)
+    } 
+    msgbox("Well, what are you waiting for?\pThat stuff isn't going to deliver\n itself!\p What?\pDid you forget already?\pDeliver the packages to Fallarbor,\nLilycove, Mossdeep, and EverGrande\lcities.\pThere will be people waiting\nto receive the packages.")
+    closemessage
+    release
+    end
+}
+
+script AW_CheckDeliveredSpecialQuestPackages {
+    goto_if_unset(FLAG_RYU_PROF_FALLARBOR_PACKAGE, AW_PackagesUndelivered)
+    goto_if_unset(FLAG_RYU_PROF_LILYCOVE_PACKAGE, AW_PackagesUndelivered)
+    goto_if_unset(FLAG_RYU_PROF_MOSSDEEP_PACKAGE, AW_PackagesUndelivered)
+    goto_if_unset(FLAG_RYU_PROF_EVERGRANDE_PACKAGE, AW_PackagesUndelivered)
+    msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}That's the last of the packages.\nI should return to the Foreman.")
+    if (flag(FLAG_RYU_PROF_DELIVERY_LATE) == TRUE) {
+        msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Darn!\pI'm late delivering the packages!\pThe Foreman won't be happy!")
+    }
+    closemessage
+    setflag(FLAG_RYU_DELIVERED_PROF_SPECIAL_GOODS)
+    release
+    end
+}
+
+script AW_PackagesUndelivered {
+    end
+}
+
+script AW_CompleteSpecialQuest {
+    msgbox("Ah, I see that you delivered\nthe packages as asked.\pThanks!")
+    if (flag(FLAG_RYU_PROF_DELIVERY_LATE) == TRUE) {
+        msgbox("Oh... but you were late.\pThis isn't how this job works.\nYou deliver the packages given\non time!\pI'll give you one more\ntry. Come see me tomorrow.")
+        setflag(FLAG_RYU_FAILED_PROF_SPECIAL_QUEST)
+        release
+        end
+    }
+}
+
+text AW_ProfessionalsSpecialQuestIntro {
+    "Ah, yes. {PLAYER}. You come highly\n"
+    "recommended from my colleagues as\l"
+    "someone who can be relied on\p"
+    "What do you say to a little\n"
+    "test to see if you are the\l"
+    "right fit for the company?\p"
+    "All you have to do is deliver\n"
+    "four packages within 5 minutes.\p"
+    "Do this, and you will be paid\n"
+    "well and have a permanent spot\p"
+    "with the company as a delivery\n"
+    "associate.\p"
+    "Current pay is ¥50,000 per package.\p"
+    "here's the delivery manifest."
+}

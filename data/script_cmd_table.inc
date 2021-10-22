@@ -233,7 +233,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_drawcustompic             @ 0xe6
 	.4byte ScrCmd_addmonhappiness           @ 0xe7
 	.4byte ScrCmd_scriptdebug               @ 0xe8
-	.4byte ScrCmd_givebp                    @ 0xe9
+	.4byte ScrCmd_buffersingledynamicline   @ 0xe9
 	.4byte ScrCmd_checkbp                   @ 0xea
 	.4byte ScrCmd_gfec                      @ 0xeb
 	.4byte ScrCmd_multvar                   @ 0xec

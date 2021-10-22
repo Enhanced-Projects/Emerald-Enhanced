@@ -5530,6 +5530,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/MossdeepCity_Home/border.bin",
       "blockdata_filepath": "data/layouts/MossdeepCity_Home/map.bin"
+    },
+    {
+      "id": "LAYOUT_MAUVILLE_CITY_ADRASTI_WAREHOUSE",
+      "name": "MauvilleCity_AdrastiWarehouse_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/MauvilleCity_AdrastiWarehouse/border.bin",
+      "blockdata_filepath": "data/layouts/MauvilleCity_AdrastiWarehouse/map.bin"
     }
   ]
 }

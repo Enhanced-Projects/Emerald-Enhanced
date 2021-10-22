@@ -322,13 +322,13 @@
 #define FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES    0x12E // Hides the devon enforcers in the shipyard during the aqua quest shelly line
 #define FLAG_RYU_RECEIVED_MEGA_BRACELET      0x12F
 #define FLAG_RYU_AQUA_4_NOTIFY               0x130 // Player received the pokenav call from the stage 4(romance) aqua quest.
-#define FLAG_UNUSED_0x131                    0x131
-#define FLAG_UNUSED_0x132                    0x132
-#define FLAG_UNUSED_0x133                    0x133
-#define FLAG_UNUSED_0x134                    0x134
-#define FLAG_UNUSED_0x135                    0x135
-#define FLAG_UNUSED_0x136                    0x136
-#define FLAG_UNUSED_0x137                    0x137
+#define FLAG_RYU_START_DELIVERY_TIMER            0x131
+#define FLAG_RYU_PROFESSIONALS_FINAL_QUEST       0x132
+#define FLAG_RYU_PROFESSIONALS_SPECIAL_QUEST     0x133
+#define FLAG_RYU_PROF_SPECIAL_IN_PROGRESS        0x134
+#define FLAG_RYU_DELIVERED_PROF_SPECIAL_GOODS    0x135
+#define FLAG_RYU_HIDE_PROFESSIONALS_OBJECTS      0x136
+#define FLAG_RYU_PROF_DELIVERY_LATE              0x137 //player was late delivering packages, pay is reduced.
 #define FLAG_RECEIVED_TM57                   0x138
 #define FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS    0x139
 #define FLAG_RECEIVED_AURORA_TICKET          0x13A
@@ -364,7 +364,7 @@
 #define FLAG_ENTERED_CONTEST                 0x155
 #define FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN  0x156
 #define FLAG_MET_BATTLE_FRONTIER_GAMBLER     0x157
-#define FLAG_UNUSED_0x158                    0x158
+#define FLAG_RYU_FAILED_PROF_SPECIAL_QUEST   0x158
 #define FLAG_NURSE_MENTIONS_GOLD_CARD        0x159
 #define FLAG_MET_FRONTIER_BEAUTY_MOVE_TUTOR  0x15A
 #define FLAG_MET_FRONTIER_SWIMMER_MOVE_TUTOR 0x15B
@@ -410,16 +410,16 @@
 #define FLAG_RYU_CAUGHT_KELDEO               0x181 
 #define FLAG_ITEM_MIRAGE_CAVE_GOLD_ORE       0x182
 #define FLAG_ITEM_MIRAGE_CAVE_EVIOLITE       0x183
-#define FLAG_UNUSED_0x184                    0x184
-#define FLAG_UNUSED_0x185                    0x185
-#define FLAG_UNUSED_0x186                    0x186
-#define FLAG_UNUSED_0x187                    0x187
-#define FLAG_UNUSED_0x188                    0x188
-#define FLAG_UNUSED_0x189                    0x189
-#define FLAG_UNUSED_0x18A                    0x18A
-#define FLAG_UNUSED_0x18B                    0x18B
-#define FLAG_UNUSED_0x18C                    0x18C
-#define FLAG_UNUSED_0x18D                    0x18D
+#define FLAG_RYU_PROF_FALLARBOR_PACKAGE      0x184
+#define FLAG_RYU_PROF_LILYCOVE_PACKAGE       0x185
+#define FLAG_RYU_PROF_MOSSDEEP_PACKAGE       0x186
+#define FLAG_RYU_PROF_EVERGRANDE_PACKAGE     0x187
+#define FLAG_RYU_HIDE_DELIVERY_NPC_1         0x188
+#define FLAG_RYU_HIDE_DELIVERY_NPC_2         0x189
+#define FLAG_RYU_HIDE_DELIVERY_NPC_3         0x18A
+#define FLAG_RYU_HIDE_DELIVERY_NPC_4         0x18B
+#define FLAG_RYU_HIDE_DELIVERY_NPC_5         0x18C
+#define FLAG_RYU_HIDE_DELIVERY_NPC_6         0x18D
 #define FLAG_UNUSED_0x18E                    0x18E
 #define FLAG_UNUSED_0x18F                    0x18F
 #define FLAG_UNUSED_0x190                    0x190

@@ -2340,10 +2340,35 @@ bool8 ScrCmd_scriptdebug(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_givebp(struct ScriptContext *ctx)
+bool8 ScrCmd_buffersingledynamicline(struct ScriptContext *ctx)
 {
-    u16 value = (VarGet(ScriptReadHalfword(ctx)));
-    gSaveBlock2Ptr->frontier.battlePoints = (gSaveBlock2Ptr->frontier.battlePoints + value);
+    u16 whichStringVar = (VarGet(ScriptReadHalfword(ctx)));
+    const u8 *stringToBuffer = (const u8 *)ScriptReadWord(ctx);
+
+    if (stringToBuffer == NULL)
+        stringToBuffer = (const u8 *)ctx->data[0];
+
+    switch (whichStringVar) {
+        case 1:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gStringVar1, gStringVar4);
+        case 2:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gStringVar2, gStringVar4);
+        case 3:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gStringVar3, gStringVar4);
+        case 4:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gRyuStringVar1, gStringVar4);
+        case 5:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gRyuStringVar2, gStringVar4);
+        case 6:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gRyuStringVar3, gStringVar4);
+    }
+    mgba_printf(LOGINFO, "Buffered a single dynamic line from %d with contents %s", whichStringVar, ConvertToAscii(gStringVar4));        
     return FALSE;
 }
 

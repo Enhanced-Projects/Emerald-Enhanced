@@ -1667,10 +1667,11 @@
 	.4byte \address
 	.endm
 
-	@gives value battle points to player
-	.macro givebp value:req
+	@Allows you to load a formatted string from script into a string variable.
+	.macro buffersingledynamicline id:req, ptr:req
 	.byte 0xe9
-	.2byte \value
+	.2byte \id
+	.4byte \ptr
 	.endm
 
 	@puts player's current bp in VAR_RESULT
