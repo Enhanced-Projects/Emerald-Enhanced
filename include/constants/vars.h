@@ -272,6 +272,13 @@
 #define VAR_RYU_WEATHER                      0x40FD
 #define VAR_RYU_QUEST_LANA                   0x40FE
 #define VAR_RYU_QUEST_MAGMA                  0x40FF // Magma quest var
+#define VAR_RYU_DELIVERY_1_GFX_ID            0x4100
+#define VAR_RYU_DELIVERY_2_GFX_ID            0x4101
+#define VAR_RYU_DELIVERY_3_GFX_ID            0x4102
+#define VAR_RYU_DELIVERY_4_GFX_ID            0x4103
+#define VAR_RYU_DELIVERY_5_GFX_ID            0x4104
+#define VAR_RYU_DELIVERY_6_GFX_ID            0x4105
+
 
 //vars 4100 thru 417f are unused; total of 128.
 #define VARS_END                             0x417F
@@ -372,6 +379,8 @@
 #define INFOBOXGCMS2 20
 #define INFOBOXGCMS3 21
 #define INFOBOXAPCNBALLMENU 22
+#define INFOBOX_PROF_SPECIAL_DELIVERY_MANIFEST 23
+#define INFOBOX_DYNAMIC 24
 
 //Times
 #define RTC_TIME_DAY 0

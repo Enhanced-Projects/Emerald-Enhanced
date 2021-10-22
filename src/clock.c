@@ -35,6 +35,16 @@ void DoTimeBasedEvents(void)
         UpdatePerHour(&gLocalTime);
         UpdatePerMinute(&gLocalTime);
     }
+
+    if (FlagGet(FLAG_RYU_START_DELIVERY_TIMER) == TRUE)
+        gSpecialVar_ProfessionalsDeliveryTimer += 1;
+    if (gSpecialVar_ProfessionalsDeliveryTimer > 5)
+        {
+            //QueueNotification(NOTIFICATION_CATEGORY_MISSION, "You're late delivering packages. Your pay will be deducted.")
+            FlagClear(FLAG_RYU_START_DELIVERY_TIMER);
+            FlagSet(FLAG_RYU_PROF_DELIVERY_LATE);
+            gSpecialVar_ProfessionalsDeliveryTimer = 0;
+        }
 }
 
 void RotateDailyUBGroup(void)
@@ -114,6 +124,7 @@ static void UpdatePerDay(struct Time *localTime)
         UpdateFrontierGambler(daysSince);
         SetShoalItemFlag(daysSince);
         SetRandomLotteryNumber(daysSince);
+        FlagClear(FLAG_RYU_FAILED_PROF_SPECIAL_QUEST);
         *days = localTime->days;
     }
 }
