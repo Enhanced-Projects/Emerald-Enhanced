@@ -1431,12 +1431,11 @@
 	.2byte \box
 	.endm
 
-	@ Sets the color of the text in standard message boxes. 0x00 produces blue (male) text, 0x01 produces red (female) text, 
-	@ 0xFF resets the color to the default for the current OW's gender, and all other values produce black text.
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro textcolor color:req
+	.macro notification string:req type:req time:req
 	.byte 0xc7
-	.byte \color
+	.4byte \string
+	.byte \type
+	.byte \time
 	.endm
 
 	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom 
