@@ -352,7 +352,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	notification RDB_String1 0 0xFF
 	release
 	end
 

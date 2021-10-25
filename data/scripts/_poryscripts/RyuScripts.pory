@@ -2192,15 +2192,6 @@ script(global) RyuDebug_FinishTimeSlide {
 	end
 }
 
-//new pickup
-
-script RyuScript_NotifyPickedUpItem {
-	callnative(RyuNotifyPickupItemBufferValues)
-	msgbox(format("Your {STR_VAR_1} scavenged {STR_VAR_3}{STR_VAR_2} after the battle!"))
-	clearflag(FLAG_RYU_NOTIFY_PICKUP_ITEM)
-	release
-	end
-}
 //Mirage Island TV program
 
 script RyuScript_NotifyMirageIsland {

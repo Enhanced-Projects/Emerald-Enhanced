@@ -43,6 +43,7 @@
 #include "factions.h"
 #include "RyuRealEstate.h"
 #include "ach_atlas.h"
+#include "overworld_notif.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -207,6 +208,8 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
 extern int CountBadges(void);
 extern void RyuCheckForFactionAchievements(void);
 
+const u8 gRyuReachedDailyTargetLocationString[] = _("Reached target area for the {STR_VAR_1}.");
+
 void RyuDoNotifyTasks(void)
 {
 
@@ -235,16 +238,6 @@ void RyuDoNotifyTasks(void)
 
     if (FlagGet(FLAG_RYU_NOTIFY_LV100_SWITCH) == TRUE)//Player switched to 100cap, warn about side effects.
         ScriptContext1_SetupScript(RyuScrupt_Lv100SwitchMsg);
-    
-    if (FlagGet(FLAG_RYU_NOTIFY_PICKUP_ITEM) == TRUE) //notify picked up item(s).
-        ScriptContext1_SetupScript(RyuScript_NotifyPickedUpItem);
-
-    if (FlagGet(FLAG_RYU_INTEREST_ACCRUED) == 1)//Interest was given, notify player.
-        ScriptContext1_SetupScript(RyuScript_PlayerReceivedInterest);
-
-    if (VarGet(VAR_RYU_LAST_ACH) < 256) //Global achievement notification
-        if (FlagGet(FLAG_RYU_PREVENT_ACH_POPUP) == FALSE)
-            ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
 
     if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) //check travel daily and notify when completed @PIDGEY: this lags when it happens, needs to be sped up.
         && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) 
@@ -260,21 +253,13 @@ void RyuDoNotifyTasks(void)
                 {
                     u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
                     if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
-                        ScriptContext1_SetupScript(RyuScript_CompleteTravelDailyQuestType);
+                    {
+                        u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
+                        StringCopy(gStringVar1, gFactionNames[factionId]);
+                        QueueNotification(gRyuReachedDailyTargetLocationString, NOTIFY_QUEST, 180);
+                    }
                 }
         }
-
-    if (FlagGet(FLAG_RYU_NOTIFY_RENT) == TRUE) //Notify player of rent earned
-    {
-        ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_RENT_COLLECTED), STR_CONV_MODE_LEFT_ALIGN, 6);
-        ScriptContext1_SetupScript(RyuScript_NotifyRent);
-    }
-
-    if (FlagGet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE) == TRUE) //notify player that a property was damaged
-    {
-        RyuBufferPropertyDamageData();
-        ScriptContext1_SetupScript(RyuScript_NotifyPropertyDamage);
-    }
 
     if (!(FlagGet(FLAG_SYS_DEXNAV_GET)) && (!(FlagGet(FLAG_TEMP_F)))) //notify and give Dexnav
         if (CountBadges() >= 6)

@@ -53,6 +53,7 @@
 #include "lifeskill.h"
 #include "constants/items.h"
 #include "item.h"
+#include "overworld_notif.h"
 
 enum
 {
@@ -541,9 +542,10 @@ void StartRegiBattle(void)
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
     IncrementDailyWildBattles();
 }
-
+const u8 gRyuPickupNotify[] = _("{STR_VAR_1} picked up a {STR_VAR_2}!");
 void RyuDoPickupLootRoll(u8 level, u8 slot)
 {
+    u32 species = 0;
     (level /= 10);
     level = (Random() % level + 1);//should let higher levels loot from any of the lower tables as well
     
@@ -567,10 +569,14 @@ void RyuDoPickupLootRoll(u8 level, u8 slot)
         SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &gRyuMaxPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
         VarSet(VAR_RYU_LAST_PICKUP_RARITY, 3);
     }
+
+    species = GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES, NULL);
     
     VarSet(VAR_RYU_LAST_PICKUP_ITEM, GetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM));
     VarSet(VAR_RYU_LAST_PICKUP_SLOT, slot);
-    FlagSet(FLAG_RYU_NOTIFY_PICKUP_ITEM);
+    CopyItemName((VarGet(VAR_RYU_LAST_PICKUP_ITEM)), gStringVar2);
+    StringCopy(gStringVar1, gSpeciesNames[species]);
+    QueueNotification(gRyuPickupNotify, NOTIFY_PICKUP, 180);
 }
 
 static void CB2_EndWildBattle(void)

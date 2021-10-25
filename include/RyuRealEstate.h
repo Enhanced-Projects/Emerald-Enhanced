@@ -28,6 +28,7 @@ void DecrementPropertyRepairTime(void);
 void RyuResetRealEstateData(void);
 void RyuBufferPropertyDamageData(void);
 int RyuGetNumberOwnedProperties(void);
+void DoHourlyRealEstateNotification(void);
 
 extern const u16 gRyuPropertyData[NUM_PROPERTIES][7];
 

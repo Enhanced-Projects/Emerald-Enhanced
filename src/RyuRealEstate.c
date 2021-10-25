@@ -9,47 +9,10 @@
 #include "random.h"
 #include "main.h"
 #include "ach_atlas.h"
+#include "overworld_notif.h"
 
-//DAILY TASKS
-void DoDailyRealEstateTasks(void)
-{
-    if (FlagGet(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT))
-    {
-        u32 balance = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
-        if (!(balance <= 999)) //no reason to give interest if balance is under $1000
-        {
-            u32 interest = balance / 98; // 1% interest rate
-            if (interest + balance < balance) // happens if balance is close to the integer limit and the interest causes it to overflow and wrap to 0
-                return;
-            SetGameStat(GAME_STAT_INTEREST_RECEIVED, interest); // saves the last earned interest amount, potentially could be more than 65k, so use 32bit number.
-            SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, balance + interest);
-            VarSet(VAR_RYU_DAYS_INTEREST_GAINED, (VarGet(VAR_RYU_DAYS_INTEREST_GAINED) + 1));
-            FlagSet(FLAG_RYU_INTEREST_ACCRUED);
-            
-        }
-    }
 
-    if (gSaveBlock2Ptr->playerIsRealtor == TRUE)
-    {
-        if (FlagGet(FLAG_RYU_PROPERTY_DAMAGED) == FALSE)
-            TryDamageproperties();
 
-        CollectRent();
-    }
-
-    if (FlagGet(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE) == TRUE)
-        DecrementPropertyRepairTime();
-}
-
-void RyuResetRealEstateData(void)
-{
-    u8 i;
-    gSaveBlock2Ptr->playerIsRealtor = 0;
-    VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, NUM_DAMAGE_TYPES);
-    VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, 0);
-    for (i = 0; i < NUM_PROPERTIES; i++)
-        RemoveProperty(i);
-}
 
 //PROPERTY RELATED
 
@@ -111,6 +74,66 @@ const u8 gRyuDamageTypeNamesTable[NUM_DAMAGE_TYPES][26] = { //will be buffered w
     [DAMAGE_MAJOR]               = _("serious issue"),
 };
 
+u8 const gRyuInterestNotifyString[] = _("You earned ¥{STR_VAR_1} in interest.");
+
+//DAILY TASKS
+void DoDailyRealEstateTasks(void)
+{
+    if (FlagGet(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT))
+    {
+        u32 balance = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
+        if (!(balance <= 999)) //no reason to give interest if balance is under $1000
+        {
+            u32 interest = balance / 98; // 1% interest rate
+            if (interest + balance < balance) // happens if balance is close to the integer limit and the interest causes it to overflow and wrap to 0
+                return;
+            SetGameStat(GAME_STAT_INTEREST_RECEIVED, interest); // saves the last earned interest amount, potentially could be more than 65k, so use 32bit number.
+            SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, balance + interest);
+            VarSet(VAR_RYU_DAYS_INTEREST_GAINED, (VarGet(VAR_RYU_DAYS_INTEREST_GAINED) + 1));
+            FlagSet(FLAG_RYU_INTEREST_ACCRUED);
+            ConvertUIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_INTEREST_RECEIVED), STR_CONV_MODE_LEFT_ALIGN, 10);
+            QueueNotification(gRyuInterestNotifyString, NOTIFY_INTEREST, 120);
+        }
+    }
+
+    if (gSaveBlock2Ptr->playerIsRealtor == TRUE)
+    {
+        if (FlagGet(FLAG_RYU_PROPERTY_DAMAGED) == FALSE)
+            TryDamageproperties();
+
+        CollectRent();
+    }
+
+    if (FlagGet(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE) == TRUE)
+        DecrementPropertyRepairTime();
+}
+
+const u8 gRyuPropertyDamageNotifyString[] = _("{STR_VAR_1} has a {STR_VAR_2}.");
+
+void DoHourlyRealEstateNotification(void)
+{
+    if ((FlagGet(FLAG_RYU_PROPERTY_DAMAGED) == TRUE) && (FlagGet(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE) == FALSE))
+    {
+        u8 damagedPropertyId = (VarGet(VAR_RYU_DAMAGED_HOUSE_ID));
+        u8 propertyDamageType = (VarGet(VAR_RYU_PROPERTY_DAMAGE_TYPE));
+        StringCopy(gStringVar1, gRyuPropertyNames[damagedPropertyId]);
+        StringCopy(gStringVar2, gRyuDamageTypeNamesTable[propertyDamageType]);
+        QueueNotification(gRyuPropertyDamageNotifyString, NOTIFY_REAL_ESTATE, 180);
+    }
+}
+
+void RyuResetRealEstateData(void)
+{
+    u8 i;
+    gSaveBlock2Ptr->playerIsRealtor = 0;
+    VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, NUM_DAMAGE_TYPES);
+    VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, 0);
+    for (i = 0; i < NUM_PROPERTIES; i++)
+        RemoveProperty(i);
+}
+
+const u8 gRyuDamagedPropertyInitialNotify[] = _("{STR_VAR_1} has a {STR_VAR_2}.");
+
 void TryDamageproperties(void)
 {
     u8 val = (Random() % 99);
@@ -131,9 +154,11 @@ void TryDamageproperties(void)
             VarSet(VAR_RYU_DAMAGED_HOUSE_ID, id);
             VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, damageType);
             VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, gRyuPropertyDamageTable[damageType][1]);
-            FlagSet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE);
             VarSet(VAR_TEMP_D, id);
             FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
+            StringCopy(gStringVar1, gRyuPropertyNames[id]);
+            StringCopy(gStringVar2, gRyuDamageTypeNamesTable[id]);
+            QueueNotification(gRyuDamagedPropertyInitialNotify, NOTIFY_REAL_ESTATE, 180);
         }
     else
         return;
@@ -255,6 +280,8 @@ void ScriptLeaseProperty(void)
     LeaseProperty(id);
 }
 
+const u8 gRyuRentNotfy[] = _("You earned ¥{STR_VAR_1} in rent today.");
+
 void CollectRent(void)
 {
     u32 rent = 0;
@@ -269,7 +296,8 @@ void CollectRent(void)
     SetGameStat(GAME_STAT_RENT_COLLECTED, rent); 
     SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (balance + rent));
 
-    FlagSet(FLAG_RYU_NOTIFY_RENT);
+    ConvertUIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_RENT_COLLECTED), STR_CONV_MODE_LEFT_ALIGN, 6);
+    QueueNotification(gRyuRentNotfy, NOTIFY_REAL_ESTATE, 120);
 }
 
 int RyuCheckPropertyStatus(void)
@@ -340,8 +368,11 @@ void SetPlayerRealtorStatus(void)
     VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
 }
 
+const u8 gRyuPropertyRepairedString[] = _("{STR_VAR_1} repairs finished.");
+const u8 gRyuPropertyStillRepairingString[] = _("{STR_VAR_1} repairs: {STR_VAR_2} days left.");
 void DecrementPropertyRepairTime(void)
 {
+    u8 damagedId = (VarGet(VAR_RYU_DAMAGED_HOUSE_ID));
     u16 days = VarGet(VAR_RYU_PROPERTY_DAMAGE_DAYS);
     bool8 maintenance = FlagGet(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE);
 
@@ -350,9 +381,16 @@ void DecrementPropertyRepairTime(void)
         FlagClear(FLAG_RYU_PROPERTY_DAMAGED);
         FlagClear(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE);
         VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, NUM_DAMAGE_TYPES);
+        StringCopy(gStringVar1, gRyuPropertyNames[damagedId]);
+        QueueNotification(gRyuPropertyRepairedString, NOTIFY_REAL_ESTATE, 120);
     }
     else
+    {   
+        StringCopy(gStringVar1, gRyuPropertyNames[damagedId]);
+        ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PROPERTY_DAMAGE_DAYS)), STR_CONV_MODE_LEFT_ALIGN, 2);
         VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, (VarGet(VAR_RYU_PROPERTY_DAMAGE_DAYS) - 1));
+        QueueNotification(gRyuPropertyStillRepairingString, NOTIFY_REAL_ESTATE, 120);
+    }
 }
 
 void RyuBufferPropertyDamageData(void)

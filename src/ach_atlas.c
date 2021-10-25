@@ -23,6 +23,7 @@
 #include "constants/flags.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "overworld_notif.h"
 
 static const u8 sAPMenuBackgroundTileset[] = INCBIN_U8("graphics/achievement_atlas/apscreen.8bpp");
 static const u16 sAPMenuBackgroundTilemap[] = INCBIN_U16("graphics/achievement_atlas/apscreen.bin");
@@ -1597,15 +1598,32 @@ void GiveAchievementDebug(u32 id)
     gSaveBlock2Ptr->achFlags[id / 8] |= 1 << (id % 8);
 }
 
+const u8 gAchievementNotifyString[] = _("Achievement Get! {COLOR 6}{SHADOW 4} {STR_VAR_1}");
+const u8 gGoldAchievementNotifyString[] = _("Golden Achievement Get! {COLOR 12}{SHADOW 7} {STR_VAR_1}");
+
 void GiveAchievement(u32 id)
 {
     if(id > ACH_FLAGS_COUNT)
         return;
 
     if (CheckAchievement(id) == FALSE)
+    {
+        if(sAchAtlasData[id].category & CATEGORY_FLAG_GOLD)
+        {
+            StringCopy(gStringVar1, sAchAtlasData[id].nameString);
+            QueueNotification(gGoldAchievementNotifyString, NOTIFY_ACHIEVEMENT, 120);
+        }
+        else
+        {
+            StringCopy(gStringVar1, sAchAtlasData[id].nameString);
+            QueueNotification(gAchievementNotifyString, NOTIFY_ACHIEVEMENT, 120);
+        }
         VarSet(VAR_RYU_LAST_ACH, id);//let the global script know that player received an achievement recently.
+    }
     else
+    {
         VarSet(VAR_RYU_LAST_ACH, 300);//the achievment that was given was already owned by player.
+    }
 
     gSaveBlock2Ptr->achFlags[id / 8] |= 1 << (id % 8);
     

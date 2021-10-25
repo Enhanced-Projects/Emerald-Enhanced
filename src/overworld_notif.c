@@ -63,8 +63,10 @@ static const u8 * sNotificationTypeNames[] =
     (u8[])_("Pickup"),
     (u8[])_("Mission"),
     (u8[])_("Quest"),
+    (u8[])_("General"),
 }; 
-void QueueNotification(u8 *message, u32 type, u32 time)
+
+void QueueNotification(const u8 *message, u32 type, u32 time)
 {
     int i;
     if (sNotification.lastQueuePos >= MAX_NOTIFICATION_IN_QUEUE)

@@ -10,6 +10,7 @@
 #include "constants/flags.h"
 #include "constants/vars.h"
 #include "constants/species.h"
+#include "constants/general.h"
 
 //remove special case defines for when NOT using Item Expansion
 #define ITEM_EXPANSION 1

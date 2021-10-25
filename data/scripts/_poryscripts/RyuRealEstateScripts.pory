@@ -251,27 +251,6 @@ script RT_Home{
 
 //property was damaged
 
-script RyuScript_NotifyPropertyDamage {
-    setflag(FLAG_HIDE_MAP_NAME_POPUP)
-    callnative(RyuBufferPropertyDamageData)
-    msgbox(RyuText_PropertyDamaged)
-    closemessage
-    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-    clearflag(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE)
-    release
-    end
-}
-
-script RyuScript_NotifyRent {
-    setflag(FLAG_HIDE_MAP_NAME_POPUP)
-    clearflag(FLAG_RYU_NOTIFY_RENT)
-    msgbox("You have collected rent in the\namount of ¥{STR_VAR_1} from\lyour tenants.")
-    closemessage
-    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-    release
-    end
-}
-
 text AskRepairPropertyText {
     "{STR_VAR_2} has a \n{STR_VAR_1}.\p"
     "It will cost ¥{STR_VAR_3} to repair it.\n"

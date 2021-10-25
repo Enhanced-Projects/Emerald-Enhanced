@@ -528,7 +528,7 @@ u8 AddMapNamePopUpWindow(void)
 u8 AddNotificationWindow(void)
 {
     if (sNotificationWindowId == 0xFF)
-        sNotificationWindowId = sub_8198AA4(0, 1, 1, 28, 4, 14, 0x80);
+        sNotificationWindowId = sub_8198AA4(0, 1, 1, 28, 3, 14, 0x80);
     return sNotificationWindowId;
 }
 
