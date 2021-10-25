@@ -56,6 +56,7 @@
 #include "ach_atlas.h"
 #include "pokedex.h"
 #include "factions.h"
+#include "overworld_notif.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -2500,5 +2501,15 @@ bool8 ScrCmd_buffermapname(struct ScriptContext *ctx)
 
     mapSecId = Overworld_GetMapHeaderByGroupAndId(targetMapGroup, targetMapNum)->regionMapSectionId;
     GetMapName(sScriptStringVars[bufferIndex], mapSecId, 0);
+    return FALSE;
+}
+
+bool8 ScrCmd_notification(struct ScriptContext *ctx)
+{
+    u8 *message = (void *)ScriptReadWord(ctx);
+    u32 type = ScriptReadByte(ctx);
+    u32 time = ScriptReadByte(ctx);
+    time = time == 0xFF ? 120 : time;
+    QueueNotification(message, type, time);
     return FALSE;
 }

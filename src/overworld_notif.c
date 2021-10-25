@@ -77,7 +77,8 @@ void QueueNotification(u8 *message, u32 type, u32 time)
             sNotification.queue[i].dispTime = time;
             sNotification.queue[i].type = type;
             sNotification.queue[i].flags |= NOTIF_ALLOCATED;
-            StringCopy(sNotification.queue[i].notifText, message);
+            StringExpandPlaceholders(sNotification.queue[i].notifText, message);
+            //StringCopy(sNotification.queue[i].notifText, message);
             break;
         }
     }
@@ -102,7 +103,7 @@ void Task_NotificationWindow(u8 taskId)
     switch (sNotification.state)
     {
     case NOTIF_STATE_IDLE:
-        if (sNotification.lastQueuePos > 0)
+        if (sNotification.lastQueuePos > 0 && !ScriptContext2_IsEnabled())
             sNotification.state = NOTIF_STATE_FIND_IN_QUEUE;
         break;
     case NOTIF_STATE_FIND_IN_QUEUE:
@@ -288,7 +289,6 @@ void WindowFunc_DrawNotifyFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, 
 void ShowNotificationWindow(void)
 {
     u32 windowId;
-    const u8 color[] = {1, 6, 2};
     struct NotificationQueueEntry *notifData = &sNotification.queue[sNotification.currentNotif];
     windowId = AddNotificationWindow();
     LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gNotifyFrame, 9*0x20, 0x21D);
@@ -298,8 +298,8 @@ void ShowNotificationWindow(void)
     PutWindowTilemap(windowId);
     CallWindowFunction(windowId, WindowFunc_DrawNotifyFrame);
     //AddTextPrinterParameterized(windowId, 0, sNotificationTypeNames[notifData->type], 2, 0, 0xFF, NULL);
-    AddTextPrinterParameterized3(windowId, 1, 1, 5, color, 0xFF, notifData->notifText);
-    AddTextPrinterParameterized3(windowId, 1, 1, 5+12, color, 0xFF, notifData->notifText);
+    AddTextPrinterParameterized3(windowId, 1, 1, 5, (u8[]){1, 6, 2}, 0xFF, notifData->notifText);
+    //AddTextPrinterParameterized3(windowId, 1, 1, 5+12, color, 0xFF, notifData->notifText);
     CopyWindowToVram(windowId, 3);
 }
 

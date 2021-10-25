@@ -352,23 +352,12 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto AW_StandardWarehouseJob
-	release
-	end
-
-RDB_TestInterestNotification::
-	setvar VAR_TEMP_D, 65535
-	buffernumberstring 0, VAR_TEMP_D
-	buffersingledynamicline 6, RDB_String1
-	scriptdebug RDB_String1
-	setvar VAR_TEMP_F, 1
-	setvar VAR_TEMP_E, 120
-	callnative AddNewNotification
+	notification RDB_String1 0 0xFF
 	release
 	end
 
 RDB_String1:
-	.string "You earned {STR_VAR_1} in interest.$"
+	.string "Your name is {PLAYER}.\nYour rival is {RIVAL}.$"
 
 RDB_DoLittlerootLatiCheck::
 	buffernumberstring 0, VAR_ROAMER_POKEMON
