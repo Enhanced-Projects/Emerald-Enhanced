@@ -463,7 +463,7 @@ static const struct InfoBox sInfobox_DynamicContents[] =
     {gText_IBBufferedString3},
     {gText_IBBufferedString4},
     {gText_IBBufferedString5},
-    {gText_IBBufferedString6},
+    {gText_IBBufferedString6}
 };
 
 //You also need to add INFOBOX(name) to the bottom of vars.h so that these can be accessed from script.
@@ -494,6 +494,7 @@ static const struct InfoBoxListStruct sInfoBoxes[] =
     BOXLIST(sInfoBoxGCMS2), //gcms tutorial
     BOXLIST(sInfoBoxGCMS3), //gcms tutorial
     BOXLIST(sInfoBoxBotanyBallMenu), //Kurt's information about balls you can create with apricorns
+    BOXLIST(sInfoBox_ProfessionalsSpecialDeliveryManifest), //Special infobox for professionals intro quest
     BOXLIST(sInfobox_DynamicContents) //Dynamically filled infobox at script-run-time
 };
 
