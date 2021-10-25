@@ -36,41 +36,38 @@ u8 * const sStringVars[] =
     gRyuStringVar3
 };
 
-void RyuCopyDeliveryTargetNameToString2(void)
+void RyuCopyDeliveryTargetNameToString2(u32 index)
 {
-    u8 jobId = VarGet(VAR_TEMP_4);
-    u16 deliveryTargetId = gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[jobId].targetGfxId;
-
-    switch (deliveryTargetId) {
+    switch (index) {
         case OBJ_EVENT_GFX_CONTEST_JUDGE:
-            StringCopy(gRyuStringVar4, sName_Reginald);
+            StringAppend(sStringVars[index], sName_Reginald);
             break;
         case OBJ_EVENT_GFX_POKEFAN_F:
-            StringCopy(gRyuStringVar4, sName_Miia);
+            StringAppend(sStringVars[index], sName_Miia);
             break;
         case OBJ_EVENT_GFX_MAN_4:
-            StringCopy(gRyuStringVar4, sName_Jason);
+            StringAppend(sStringVars[index], sName_Jason);
             break;
         case OBJ_EVENT_GFX_AQUA_MEMBER_F:
-            StringCopy(gRyuStringVar4, sName_Sandra);
+            StringAppend(sStringVars[index], sName_Sandra);
             break;
         case OBJ_EVENT_GFX_MAGMA_MEMBER_M:
-            StringCopy(gRyuStringVar4, sName_Michael);
+            StringAppend(sStringVars[index], sName_Michael);
             break;
         case OBJ_EVENT_GFX_EXPERT_F:
-            StringCopy(gRyuStringVar4, sName_Linda);
+            StringAppend(sStringVars[index], sName_Linda);
             break;
         case OBJ_EVENT_GFX_MAN_1:
-            StringCopy(gRyuStringVar4, sName_Gerald);
+            StringAppend(sStringVars[index], sName_Gerald);
             break;
         case OBJ_EVENT_GFX_WOMAN_5:
-            StringCopy(gRyuStringVar4, sName_Miranda);
+            StringAppend(sStringVars[index], sName_Miranda);
             break;
         case OBJ_EVENT_GFX_SCIENTIST_1:
-            StringCopy(gRyuStringVar4, sName_Donovan);
+            StringAppend(sStringVars[index], sName_Donovan);
             break;
         case OBJ_EVENT_GFX_WOMAN_4:
-            StringCopy(gRyuStringVar4, sName_Eleanor);
+            StringAppend(sStringVars[index], sName_Eleanor);
             break;
     }
 }
@@ -148,22 +145,22 @@ bool32 CheckDuplicateDeliveryTargets(u8 NumToCheck)
 void RyuBufferJobIntoStringVar(void)
 {
     u32 i;
-    u8 buffer1[10] = ("");
-    u8 buffer2[10] = ("");
+    u8 buffer1[] = ("");
+    u8 buffer2[] = ("");
     for (i = 0; i < gSaveBlock2Ptr->totalCurrentDeliveryTargets; i++)
     {
         u16 mapSec = gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].targetMapSec;
         StringCopy(buffer1, gRegionMapEntries[mapSec].name); //Location string
-        RyuCopyDeliveryTargetNameToString2(); //puts target name in gRyuStringVar4
-        StringCopy(gStringVar4, sTargetString);//puts the "No. " in the buffer
+        mgba_printf(LOGINFO, "Buffered %s into %d", ConvertToAscii(buffer1), i);
+        StringCopy(sStringVars[i], sTargetString);
         ConvertIntToDecimalStringN(buffer2, i, STR_CONV_MODE_LEFT_ALIGN, 1); //which iteration/job we're on
-        StringAppend(gStringVar4, buffer2);
-        StringAppend(gStringVar4, sColonString);
-        StringAppend(gStringVar4, gStringVar4);
-        StringAppend(gStringVar4, sSpaceText);
-        StringAppend(gStringVar4, buffer1);
-        StringAppend(gStringVar4, sEndBracketString);
-        StringCopy(sStringVars[i], gStringVar4);
+        StringAppend(sStringVars[i], buffer2);
+        StringAppend(sStringVars[i], sColonString);
+        RyuCopyDeliveryTargetNameToString2(i); //puts target name in gRyuStringVar4
+        StringAppend(sStringVars[i], gStringVar4);
+        StringAppend(sStringVars[i], sSpaceText);
+        StringAppend(sStringVars[i], buffer1);
+        StringAppend(sStringVars[i], sEndBracketString);
         mgba_printf(LOGINFO, "Filled buffer %d with '%s'", i, (ConvertToAscii(sStringVars[i])));
     }
 }

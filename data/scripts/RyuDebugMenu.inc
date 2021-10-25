@@ -352,6 +352,11 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	goto AW_StandardWarehouseJob
+	release
+	end
+
+RDB_TestInterestNotification::
 	setvar VAR_TEMP_D, 65535
 	buffernumberstring 0, VAR_TEMP_D
 	buffersingledynamicline 6, RDB_String1
@@ -541,20 +546,50 @@ RyuDebugGiveTMsDone::
 RyuDebug_GiveAlchemyKit::
 	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 5
 	setvar VAR_RYU_ALCHEMY_EXP, 5000
-	additem ITEM_FRESH_WATER, 100
-	additem ITEM_TONIC_WATER, 100
-	additem ITEM_MINERAL_WATER, 100
-	additem ITEM_MUSCLE_POWDER, 100
-	additem ITEM_SMART_POWDER, 100
-	additem ITEM_STARDUST, 100
-	additem ITEM_TOUGH_POWDER, 100
-	additem ITEM_RAWST_BERRY, 100
-	additem ITEM_BRIGHT_POWDER, 100
-	additem ITEM_ORAN_BERRY, 100
-	additem ITEM_CHARCOAL 100
-	additem ITEM_FIRE_STONE 100
-	additem ITEM_SOFT_SAND 100
-	additem ITEM_SNOWBALL 100
+	additem ITEM_FRESH_WATER, 200
+	additem ITEM_TONIC_WATER, 200
+	additem ITEM_MINERAL_WATER, 200
+	additem ITEM_MUSCLE_POWDER, 200
+	additem ITEM_SMART_POWDER, 200
+	additem ITEM_STARDUST, 200
+	additem ITEM_TOUGH_POWDER, 200
+	additem ITEM_RAWST_BERRY, 200
+	additem ITEM_BRIGHT_POWDER, 200
+	additem ITEM_ORAN_BERRY, 200
+	additem ITEM_CHARCOAL 200
+	additem ITEM_FIRE_STONE 200
+	additem ITEM_SOFT_SAND 200
+	additem ITEM_SNOWBALL 200
+	additem ITEM_GEM_POWDER 100
+	additem ITEM_FRESH_WATER, 200
+	additem ITEM_TONIC_WATER, 200
+	additem ITEM_MINERAL_WATER, 200
+	additem ITEM_MUSCLE_POWDER, 200
+	additem ITEM_SMART_POWDER, 200
+	additem ITEM_STARDUST, 200
+	additem ITEM_TOUGH_POWDER, 200
+	additem ITEM_RAWST_BERRY, 200
+	additem ITEM_BRIGHT_POWDER, 200
+	additem ITEM_ORAN_BERRY, 200
+	additem ITEM_CHARCOAL 200
+	additem ITEM_FIRE_STONE 200
+	additem ITEM_SOFT_SAND 200
+	additem ITEM_SNOWBALL 200
+	additem ITEM_GEM_POWDER 100
+	additem ITEM_FRESH_WATER, 200
+	additem ITEM_TONIC_WATER, 200
+	additem ITEM_MINERAL_WATER, 200
+	additem ITEM_MUSCLE_POWDER, 200
+	additem ITEM_SMART_POWDER, 200
+	additem ITEM_STARDUST, 200
+	additem ITEM_TOUGH_POWDER, 200
+	additem ITEM_RAWST_BERRY, 200
+	additem ITEM_BRIGHT_POWDER, 200
+	additem ITEM_ORAN_BERRY, 200
+	additem ITEM_CHARCOAL 200
+	additem ITEM_FIRE_STONE 200
+	additem ITEM_SOFT_SAND 200
+	additem ITEM_SNOWBALL 200
 	additem ITEM_GEM_POWDER 100
 	setvar VAR_RYU_ALCHEMY_COPPER, 65500
 	setvar VAR_RYU_ALCHEMY_SILVER, 65500
