@@ -51,7 +51,7 @@ void DoTimeBasedEvents(void)
 void RotateDailyUBGroup(void)
 {
     VarSet(VAR_RYU_UB_EVENT_TIMER, (VarGet(VAR_RYU_UB_EVENT_TIMER) + 1));
-        if (VarGet(VAR_RYU_UB_EVENT_TIMER) == 5)
+        if (VarGet(VAR_RYU_UB_EVENT_TIMER) == 4)
             VarSet(VAR_RYU_UB_EVENT_TIMER, 0);
 }
 

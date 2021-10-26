@@ -115,6 +115,7 @@ LRT_BH_DeskBookMsg:
 @==================================================================================================@After Lilycove
 	
 LRT_BrendanWONT_HAPPEN::
+	clearfullscreenimage
 	setflag FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED @Makes it impossible to get the snorunt after this event.
 	setflag FLAG_RYU_BRENDAN_BAD_END
     msgbox LRT_BrendanSORRY, MSGBOX_DEFAULT
