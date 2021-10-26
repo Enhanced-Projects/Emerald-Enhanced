@@ -70,6 +70,8 @@ TrainerHill_Entrance_EventScript_ExitElevator:: @ 8268160
 
 TrainerHill_Entrance_EventScript_ExitChallenge:: @ 8268182
 	setvar VAR_TEMP_0, 1
+	compare VAR_TRAINER_HILL_IS_ACTIVE, 1
+	goto_if_ne ryu_end
 	trainerhill_getstatus
 	switch VAR_RESULT
 	case TRAINER_HILL_PLAYER_STATUS_LOST, TrainerHill_Entrance_EventScript_ExitChallengeLost
