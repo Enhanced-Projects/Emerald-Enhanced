@@ -24,6 +24,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "overworld_notif.h"
+#include "constants/items.h"
+#include "item.h"
 
 static const u8 sAPMenuBackgroundTileset[] = INCBIN_U8("graphics/achievement_atlas/apscreen.8bpp");
 static const u16 sAPMenuBackgroundTilemap[] = INCBIN_U16("graphics/achievement_atlas/apscreen.bin");
@@ -1564,6 +1566,23 @@ void Ryu_GiveOrTakeAllAchievments(void)
     }
 }
 
+u8 gGoldAchNotif[] = _("Awarded Master Ball for Gold Achievement.");
+void CheckFormasterBallGift(u8 id)
+{
+    if (((id == ACH_POKEMON_MASTER) ||
+        (id == ACH_THE_UNIVERSALIST) ||
+        (id == ACH_LOREMASTER) ||
+        (id == ACH_TOURIST) ||
+        (id == ACH_MILLIONAIRE) ||
+        (id == ACH_MONEYBAGS) ||
+        (id == ACH_ULTRA_BEASTLY)) && (
+        (CheckAchievement(id) == FALSE)))
+        {
+            AddBagItem(ITEM_MASTER_BALL, 1);
+            QueueNotification(gGoldAchNotif, NOTIFY_GENERAL, 120);
+        }
+}
+
 bool8 ScrCmd_ach(struct ScriptContext *ctx)// sorry for hacky solution, but we are nearly out of script commands.
 {
     u8 mode = ScriptReadByte(ctx);
@@ -1572,6 +1591,7 @@ bool8 ScrCmd_ach(struct ScriptContext *ctx)// sorry for hacky solution, but we a
     switch (mode)
     {
     case 0:
+            CheckFormasterBallGift(id);
             GiveAchievement(id);
             return FALSE;
     case 1:
