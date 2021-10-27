@@ -279,6 +279,10 @@
 #define VAR_RYU_DELIVERY_5_GFX_ID            0x4104
 #define VAR_RYU_DELIVERY_6_GFX_ID            0x4105
 #define VAR_HOURS                            0x4106
+//prize money
+#define VAR_RYU_MONEY_BASE_RANDOM_COMPONENT  0x4107
+#define VAR_RYU_MONEY_BASE_VALUE             0x4108
+#define VAR_RYU_MONEY_BASE_COEFFICIENT       0x4109
 
 
 //vars 4100 thru 417f are unused; total of 128.

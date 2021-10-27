@@ -352,7 +352,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	ach give, ACH_TOURIST
+	setvar VAR_RYU_MONEY_BASE_RANDOM_COMPONENT, 0
 	release
 	end
 

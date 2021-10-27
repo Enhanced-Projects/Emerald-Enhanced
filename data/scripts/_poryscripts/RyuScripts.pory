@@ -1958,6 +1958,11 @@ RyuCheckForLNSUAch::
 
 `
 
+//prevent oob writes with bufferdynamicmulti
+text(global) RyuEmptyTextPtr {
+	" $"
+}
+
 script RyuCheckSetupBoss {
 	callnative(RyuLegendaryDoBossRoll)
 	return
@@ -2434,4 +2439,60 @@ script RyuScrupt_Lv100SwitchMsg {
 	closemessage
 	release
 	end
+}
+
+script gRyuFixMoneyMultScript {
+	setvar(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT, 400)
+	setvar(VAR_RYU_MONEY_BASE_VALUE, 200 )
+	setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 100)
+	msgbox(format("You have loaded a file that was made before this version of the game. The prize money formula has been corrected and set to 'Normal' mode. Thanks for playing EE!"))
+	closemessage
+	release
+	end
+}
+
+script RyuSetUpMoneyMode {
+	msgbox("Please choose a money mode.")
+	bufferdynamicmulti(NGMO1, NGMO2, NGMO3)
+	multichoicedefault(0, 0, MULTI_DYNAMIC_3, 0, 1)
+	switch(var(VAR_RESULT)) {
+		case 0: 
+			setvar(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT, 400)
+			setvar(VAR_RYU_MONEY_BASE_VALUE, 200 )
+			setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 100)
+			msgbox("You will gain money using the standard\nEE formula.")
+		case 1: 
+			setvar(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT, 1000)
+			setvar(VAR_RYU_MONEY_BASE_VALUE, 100 )
+			setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 50)
+			msgbox("Battles have the potential to reward up\nto double the standard reward\por as low as half the average of\nthe standard reward.")
+		case 2:
+			setvar(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT, 100)
+			setvar(VAR_RYU_MONEY_BASE_VALUE, 200 )
+			setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 275)
+			msgbox("You will gain a more consistent\namount of prize money, but\pthe average will be lower than\nthe standard reward.")
+	}
+	goto(RyuConfirmMoneyMode)
+}
+
+script RyuConfirmMoneyMode {
+	msgbox("Are you happy with this selection?", MSGBOX_YESNO)
+	switch(var(VAR_RESULT)) {
+		case YES:
+			goto(ryu_return)
+		case NO:
+			goto(RyuSetUpMoneyMode)
+	}
+}
+
+text NGMO1 {
+	"Normal: Use classic EE prize money."
+}
+
+text NGMO2 {
+	"Gambler: High risk, more potential."
+}
+
+text NGMO3 {
+	"Safe: More consistent, less potential."
 }

@@ -6412,21 +6412,25 @@ static void Cmd_hitanimation(void)
 
 static void Cmd_getmoneyreward(void)
 {
-    u32 moneyReward = 200;
+    u32 moneyReward = (VarGet(VAR_RYU_MONEY_BASE_VALUE));
     u32 MultMoney = VarGet(VAR_RYU_EXP_MULTIPLIER);
     u32 badges = (CountBadges());
-    u32 randomComponent = ((Random() % 400) + 100);
-
+    u32 coefficient = (VarGet(VAR_RYU_MONEY_BASE_COEFFICIENT));
+    u32 randomBase = (VarGet(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT));
+    u32 randomComponent = ((Random() % randomBase) + (coefficient));
+    u32 numPrestige = (VarGet(VAR_RYU_NGPLUS_COUNT));
+    
     if (badges == 0)
         badges = 1;
 
     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
         moneyReward += 200;
-
+    
     if (MultMoney == 1)
         MultMoney = 1000;
-
+    
     moneyReward = ((moneyReward * MultMoney) / 1000);
+    moneyReward += (numPrestige * 100);
     moneyReward += randomComponent;
     moneyReward *= badges;
 

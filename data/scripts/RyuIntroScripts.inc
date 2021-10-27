@@ -275,6 +275,7 @@ IT_NuzlockeOutro:
 	
 
 SetMaleStartingVariables:: @ 823BF20
+	call RyuSetUpMoneyMode
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F
 	setvar VAR_LITTLEROOT_INTRO_STATE, 1
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM
@@ -295,6 +296,7 @@ SetMaleStartingVariables:: @ 823BF20
 	end
 
 SetFemaleStartingVariables:: @ 823BF46
+	call RyuSetUpMoneyMode
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F
 	setvar VAR_LITTLEROOT_INTRO_STATE, 2
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM

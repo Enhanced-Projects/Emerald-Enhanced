@@ -1634,7 +1634,7 @@
 	@ buffer up to 6 supplied strings for use with MULTI_DYNAMIC_X
 	@ This lets you create custom menus at runtime using only stuff you can edit within the same script.
 	@ Prevents having to create whole new const menu stuffs in other files.
-	.macro bufferdynamicmulti, ptr1=NULL, ptr2=NULL, ptr3=NULL, ptr4=NULL, ptr5=NULL, ptr6=NULL
+	.macro bufferdynamicmulti, ptr1=RyuEmptyTextPtr, ptr2=RyuEmptyTextPtr, ptr3=RyuEmptyTextPtr, ptr4=RyuEmptyTextPtr, ptr5=RyuEmptyTextPtr, ptr6=RyuEmptyTextPtr
 	.byte 0xe5
 	.4byte \ptr1
 	.4byte \ptr2

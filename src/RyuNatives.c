@@ -1681,7 +1681,7 @@ void TryGiveFitnessGuruAch(void)
     {
         for (i = 0; i < 6; i++)
         {
-            if (GetMonData(&gPlayerParty[k], MON_DATA_HP_EV + i) == 252)
+            if (GetMonData(&gPlayerParty[k], MON_DATA_HP_EV + i) >= 252)
                 maxEvStat++;
         }
     }
@@ -2041,7 +2041,7 @@ void RyuGiveDevMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon); //make it a boss because why not
 }
 
-bool32 ScrCmd_unusedscrcmd(struct ScriptContext *ctx)
+bool32 ScrCmd_bufferdynamicmulti(struct ScriptContext *ctx)
 {
     const u8 *ptr1 = (const u8 *)ScriptReadWord(ctx);
     const u8 *ptr2 = (const u8 *)ScriptReadWord(ctx);
@@ -2211,3 +2211,4 @@ bool32 CheckIfSelectedSlotIsValid(void)
 
     return TRUE;
 }
+
