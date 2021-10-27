@@ -157,16 +157,23 @@ LRT_BrendanNIGHT::
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	@fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
-	waitmovement 0
+	applymovement 2, LRT_ReturnBrendantoPC
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
+
+LRT_ReturnBrendantoPC:
+	walk_left
+	walk_up
+	walk_up
+	step_end
 
 LRT_BrendanNight2::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
     msgbox LRT_BrendanSTAY2, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	drawfullscreenimage SCENEBGBRENDANNIGHT
+	compare VAR_RESULT, YES
 	goto_if_ne LRT_BrendanCANCEL
+	drawfullscreenimage SCENEBGBRENDANNIGHT
 	msgbox LRT_BrendanROM2Pre MSGBOX_DEFAULT
 	closemessage
 	clearfullscreenimage
@@ -196,7 +203,8 @@ LRT_BrendanNight2::
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
-	waitmovement 0
+	applymovement 2, LRT_ReturnBrendantoPC
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 
