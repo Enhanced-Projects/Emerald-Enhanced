@@ -30,7 +30,7 @@ THH_ME_NotHere::
 	
 THH_ME_NotHereEnd::
 	setvar VAR_RYU_QUEST_MAGMA, 597@Player looked for maxie in treasure house, but didn't find him there. End of Magma alternate default line.
-	addvar VAR_RYU_QUESTS_FINISHED, 1
+	call RyuScript_IncrementQuestsFinished
 	ach give ACH_HUNTING_TRIP
 	msgbox THH_ME_ThatsTheEnd
 	closemessage

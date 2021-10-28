@@ -124,7 +124,7 @@ LNH_Outro::
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	ach give ACH_NERD_LOVE
-	addvar VAR_RYU_QUESTS_FINISHED, 1
+	call RyuScript_IncrementQuestsFinished
 	msgbox LNH_TakeMeToBattleSometime
 	goto LNH_PartnerStayTheNight
 	release

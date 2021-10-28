@@ -1646,31 +1646,12 @@ Ryu_ShowStarterInfo::
 	return
 
 @==================================================================================================Achievement RELATED
-
-RyuScript_CheckGivenAchievement::
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	compare VAR_RYU_LAST_ACH, ACH_THE_UNIVERSALIST
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_LOREMASTER
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_TOURIST
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_MILLIONAIRE
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_MONEYBAGS
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_ULTRA_BEASTLY
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
-	callnative BufferGivenAchievement
-	playse SE_EXPMAX
-	msgbox RS_ACH_RECEIVED
-	closemessage
+RyuScript_IncrementQuestsFinished::
+	addvar VAR_RYU_QUESTS_FINISHED, 1
+RyuScript_CheckQuestAchievements::  @REMOVE AFTER v8.004
 	callnative RyuCheckForDejavuAch
 	compare VAR_RESULT, TRUE
 	call_if_eq RyuScript_GiveDejaVu
-	setvar VAR_RYU_LAST_ACH, 300
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, RyuScript_CheckFollowerFactionChanges
 	release
 	end
 
@@ -1693,7 +1674,6 @@ RS_GoldAchMsg:
 
 RyuScript_GiveDejaVu::
 	ach give ACH_DEJA_VU
-	msgbox RS_ACH_RECEIVED
 	return
 
 RS_ACH_RECEIVED:
@@ -2447,6 +2427,7 @@ script gRyuFixMoneyMultScript {
 	setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 100)
 	msgbox(format("You have loaded a file that was made before this version of the game. The prize money formula has been corrected and set to 'Normal' mode. Thanks for playing EE!"))
 	closemessage
+	goto(RyuScript_CheckQuestAchievements)
 	release
 	end
 }

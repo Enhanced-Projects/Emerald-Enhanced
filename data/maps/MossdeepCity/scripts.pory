@@ -357,7 +357,7 @@ MDC_FinalScene:
 	setflag FLAG_RYU_AQUA_LINE_DONE
 	setflag FLAG_RYU_HIDE_MOSSDEEP_MATT
 	ach give ACH_WATER_LOGGED
-	addvar VAR_RYU_QUESTS_FINISHED, 1
+	call RyuScript_IncrementQuestsFinished
 	warpsilent MAP_LILYCOVE_CITY, 255, 48, 9 
 	waitstate
 
