@@ -552,6 +552,11 @@ u8 * GetPlayerContestsEntered(u8 * buffer)
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_ENTERED_CONTEST), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
+u8 * GetPlayerBounty(u8 * buffer)
+{
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_PLAYER_BOUNTY), STR_CONV_MODE_LEFT_ALIGN, 10);
+}
+
 extern int RyuGetPartnerCount();
 u8 * GetPartnerCount(u8 * buffer)
 {
@@ -664,6 +669,7 @@ static const struct JournalStatData sJournalGeneralStatsPage[] =
     JOURNAL_STAT("Legendaries Caught", NULL, VAR_RYU_LEGENDARIES_CAUGHT, 2, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Steps Taken Alone", NULL, GAME_STAT_STEPS, 6, JOURNALSTAT_GAME_STAT),
     JOURNAL_STAT("Healed Party", NULL, GAME_STAT_USED_POKECENTER, 4, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Bounty", NULL, GAME_STAT_PLAYER_BOUNTY, 4, JOURNALSTAT_GAME_STAT),
     JOURNAL_STAT_END
 };
 

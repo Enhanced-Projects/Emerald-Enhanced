@@ -1324,6 +1324,8 @@ void BattleSetup_StartTrainerBattle(void)
     ScriptContext1_Stop();
 }
 
+const u8 gText_BountyAdded[] = _("¥{RYU_STR_4} bounty added.");
+
 static void CB2_EndTrainerBattle(void)
 {
     u16 species = 0;
@@ -1370,6 +1372,17 @@ static void CB2_EndTrainerBattle(void)
                 GiveAchievement(ACH_MENTOR);
                 VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
             }
+    }
+
+    if (FlagGet(FLAG_USED_THIEF) == TRUE)
+    {
+        u16 random2 = ((Random() % 2500) + 500);
+        SetGameStat(GAME_STAT_PLAYER_BOUNTY, (GetGameStat(GAME_STAT_PLAYER_BOUNTY) + random2));
+        if (GetGameStat(GAME_STAT_PLAYER_BOUNTY) > 100000)
+            GiveAchievement(ACH_WANTED);
+        ConvertIntToDecimalStringN(gRyuStringVar4, random2, STR_CONV_MODE_LEFT_ALIGN, 5);
+        QueueNotification(gText_BountyAdded, NOTIFY_GENERAL, 120);
+        FlagClear(FLAG_USED_THIEF);
     }
 
     if (gSaveBlock2Ptr->alchemyEffect > 0 && gSaveBlock2Ptr->alchemyEffect < 10 && gSaveBlock2Ptr->alchemyCharges > 0)

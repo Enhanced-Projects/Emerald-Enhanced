@@ -174,8 +174,8 @@
 #define FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED  0x9A
 #define FLAG_FORTREE_NPC_TRADE_COMPLETED     0x9B
 #define FLAG_BATTLE_FRONTIER_TRADE_DONE      0x9C
-#define FLAG_UNUSED_0x9D          0x9D 
-#define FLAG_RYU_AUTORUN              0x9E
+#define FLAG_USED_THIEF                      0x9D 
+#define FLAG_RYU_AUTORUN                     0x9E
 #define FLAG_INTERACTED_WITH_DEVON_EMPLOYEE_GOODS_STOLEN 0x9F
 #define FLAG_COOL_PAINTING_MADE              0xA0
 #define FLAG_BEAUTY_PAINTING_MADE            0xA1
@@ -1339,7 +1339,7 @@
 #define FLAG_DEFEATED_FORTREE_GYM                                   0x4F5
 #define FLAG_DEFEATED_MOSSDEEP_GYM                                  0x4F6
 #define FLAG_DEFEATED_SOOTOPOLIS_GYM                                0x4F7
-#define FLAG_UNUSED_0x4F8                                           0x4F8
+#define FLAG_RYU_PLAYER_IS_CRIMINAL                                 0x4F8 //player can use thief in trainer battles.
 
 #define FLAG_RYU_CHOOSING_FRONTIER_STARTER                          0x4F9 // Tells the code for frontier mon giver that you're picking a starter
 #define FLAG_RYU_PLAYER_HELPING_MAGMA                               0x4FA

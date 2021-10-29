@@ -76,6 +76,7 @@ ACO_ShellyNMsg:
 
 ACO_NonRomanceShelly::
 	lockall
+	setflag FLAG_RYU_PLAYER_IS_CRIMINAL
 	msgbox ACO_SoHowDid
 	closemessage
 	delay 20

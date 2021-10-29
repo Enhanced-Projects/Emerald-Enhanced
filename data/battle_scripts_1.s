@@ -6661,8 +6661,14 @@ BattleScript_EffectWithChance::
 	return
 
 BattleScript_ItemSteal::
+	jumpifbyteequal gUnusedBattleGlobal2, 250, BattleScript_CantSteal
 	playanimation BS_TARGET, B_ANIM_ITEM_STEAL, NULL
 	printstring STRINGID_PKMNSTOLEITEM
+	waitmessage 0x40
+	return
+
+BattleScript_CantSteal::
+	printstring STRINGID_RYUCANTSTEAL
 	waitmessage 0x40
 	return
 

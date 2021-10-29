@@ -41,7 +41,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 59
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 60
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -105,7 +105,7 @@
 #define ACH_MONEYBAGS  56 //100m+ net worth
 #define ACH_SLUM_LORD  57 ///own all properties
 #define ACH_ULTRA_BEASTLY  58 //capture all ubs
-#define ACH_UNUSED_60  59
+#define ACH_WANTED  59
 #define ACH_UNUSED_61  60
 #define ACH_UNUSED_62  61
 #define ACH_UNUSED_63  62

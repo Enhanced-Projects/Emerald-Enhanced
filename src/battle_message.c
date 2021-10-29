@@ -712,6 +712,7 @@ static const u8 sText_RyuAffectionDefrosted[] = _("{B_ATK_NAME_WITH_PREFIX}'s fi
 static const u8 sText_RyuAffectionUnparalyzed[] = _("{B_ATK_NAME_WITH_PREFIX} shook off its paralysis\nto make you happy!");
 static const u8 sText_RyuAffectionEndured[] = _("{B_DEF_NAME_WITH_PREFIX} hung on because it wanted\nto please you!");
 static const u8 sText_RyuAffectionEvaded[] = _("{B_DEF_NAME_WITH_PREFIX} evaded the attack\nlike a boss!");
+static const u8 sText_RyuCantSteal[] = _("{B_ATK_NAME_WITH_PREFIX} doesn't want to be\na criminal.");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1286,6 +1287,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_RYUAFFECTIONCUREDPARALYZE - 12] = sText_RyuAffectionUnparalyzed,
     [STRINGID_RYUAFFECTIONENDURED - 12] = sText_RyuAffectionEndured,
     [STRINGID_RYUAFFECTIONEVADED - 12] = sText_RyuAffectionEvaded,
+    [STRINGID_RYUCANTSTEAL - 12] = sText_RyuCantSteal,
 };
 
 const u16 gTerrainStringIds[] =
