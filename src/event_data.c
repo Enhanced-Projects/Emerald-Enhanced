@@ -31,6 +31,7 @@ EWRAM_DATA u16 gSpecialVar_MonBoxId = 0;
 EWRAM_DATA u16 gSpecialVar_MonBoxPos = 0;
 EWRAM_DATA u16 gSpecialVar_Unused_0x8014 = 0;
 EWRAM_DATA u16 gSpecialVar_ProfessionalsDeliveryTimer = 0;
+EWRAM_DATA u32 gSpecialVar_32bit = 0;
 EWRAM_DATA static u8 gSpecialFlags[SPECIAL_FLAGS_SIZE] = {0};
 
 extern u16 *const gSpecialVars[];

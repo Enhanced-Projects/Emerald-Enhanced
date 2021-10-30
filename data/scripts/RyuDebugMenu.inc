@@ -353,7 +353,7 @@ RDB_TempVarsViewMsg:
 
 RyuDebug_Utility1::
 	msgbox RDB_Finished
-	numberentry 5 5
+	numberentry 5 5 9
 	buffernumberstring 0, VAR_RESULT
 	msgbox RDBResult
 	closemessage
