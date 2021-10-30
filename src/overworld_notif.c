@@ -19,6 +19,13 @@
 #include "constants/region_map_sections.h"
 #include "constants/weather.h"
 
+/*
+    TODO List:
+    add option for overriding diplay time
+    make a minimum time required for avoiding redisplay  
+    add option for font
+*/
+
 #define MAX_NOTIFICATION_IN_QUEUE 4
 
 #define NOTIF_ALLOCATED 0x1

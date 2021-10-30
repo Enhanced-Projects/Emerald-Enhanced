@@ -352,6 +352,11 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	msgbox RDB_Finished
+	numberentry 5 5
+	buffernumberstring 0, VAR_RESULT
+	msgbox RDBResult
+	closemessage
 	setflag FLAG_RYU_PLAYER_IS_CRIMINAL
 	release
 	end
@@ -369,6 +374,9 @@ RDB_DoLittlerootLatiCheck::
 
 RDBTeleport:
 	.string "Teleport?$"
+
+RDBResult:
+	.string "Result: {STR_VAR_1}$"
 
 RDBLRT2:
 	.string "Your roamer is {STR_VAR_1}\nYour Tutorial state is {STR_VAR_2}$"
