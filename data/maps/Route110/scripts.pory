@@ -1063,7 +1063,7 @@ r110_PokefanRemembersPlayer:
 	.string "Oh! It's you!\pPikachu's been doing great, thank\nyou so much for your kindness!$"
 
 r110_TakeThisGift:
-	.string "Take this gift from me!"
+	.string "Take this gift from me!$"
 
 r110_NothingSeemsToWork:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Nothing seems to work...\n Best I leave it alone, don't want to\l make it worse...)$"
