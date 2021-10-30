@@ -200,7 +200,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_waitmoncry                @ 0xc5
 	.4byte ScrCmd_bufferboxname             @ 0xc6
 	.4byte ScrCmd_notification              @ 0xc7
-	.4byte ScrCmd_nop1                      @ 0xc8
+	.4byte ScrCmd_numberentry               @ 0xc8
 	.4byte ScrCmd_nop1                      @ 0xc9
 	.4byte ScrCmd_nop1                      @ 0xca
 	.4byte ScrCmd_nop1                      @ 0xcb

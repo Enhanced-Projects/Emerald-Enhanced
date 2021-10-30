@@ -1438,12 +1438,10 @@
 	.byte \time
 	.endm
 
-	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom 
-	@ of the screen when the Main Menu is opened.
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro loadhelp pointer:req
+	.macro numberentry top:req left:req
 	.byte 0xc8
-	.4byte \pointer
+	.byte \top
+	.byte \left
 	.endm
 
 	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of
