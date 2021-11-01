@@ -1198,7 +1198,7 @@
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
 #define FLAG_RYU_NUZLOCKEFAILED                                     0x470
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
-#define FLAG_RYU_DEVELOPER_ITEM_MENU                                0x472
+#define FLAG_UNUSED_0x472                                           0x472
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
 #define FLAG_ITEM_ROUTE_109_POTION                                  0x474
 #define FLAG_ITEM_ROUTE_110_ELIXIR                                  0x475
@@ -1235,7 +1235,7 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_RYU_PASSCODE_MASTERBALL                                0x493
-#define FLAG_RYU_PASSCODE_TUTORVOUCHER                              0x494
+#define FLAG_UNUSED_0x494                                           0x494
 #define FLAG_RYU_PASSCODE_KOUTA                                     0x495
 #define FLAG_RYU_PASSCODE_GCMS_GIFT                                 0x496
 #define FLAG_RYU_DEV_DISENC                                         0x497

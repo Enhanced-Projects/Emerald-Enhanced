@@ -2992,7 +2992,7 @@ extern const u8 gText_Date2[];
 extern const u8 gText_Date3[];
 extern const u8 gText_DateCancel[];
 
-extern const u8 gText_PasscodeMenu[];
+extern const u8 gText_SpawnMenu[];
 extern const u8 gText_PokeEdit[];
 extern const u8 gText_TownFlags[];
 extern const u8 gText_Utilities[];

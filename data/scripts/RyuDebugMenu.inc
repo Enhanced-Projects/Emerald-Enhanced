@@ -22,7 +22,7 @@ RyuDebugMenuScript::
 	switch VAR_RESULT
 	case 0, RyuDebug_UtilitiesMenu
 	case 1, RyuDebug_Utility1
-	case 2, RyuDebug_PasscodeMenu
+	case 2, RyuDebug_SpawningMenu
 	case 3, RyuDebug_DevMonQuickStart
 	case 4, RyuDebug_pokeedit
 	case 5, RyuDebug_enableWaystone
@@ -37,7 +37,7 @@ RyuDebug_menu_nodevcheck::
 	switch VAR_RESULT
 	case 0, RyuDebug_UtilitiesMenu
 	case 1, RyuDebug_Utility1
-	case 2, RyuDebug_PasscodeMenu
+	case 2, RyuDebug_SpawningMenu
 	case 3, RyuDebug_DevMonQuickStart
 	case 4, RyuDebug_pokeedit
 	case 5, RyuDebug_enableWaystone
@@ -74,9 +74,8 @@ RyuDebug_UtilitiesMenu:
 	case 13, RDB_AlchemyInfo
 	case 14, RDB_ToggleLevelCap
 	case 15, RDB_EnableRealEstate
-	case 16, RDB_SpawnFollowerMultiMenu
-	case 17, RyuDebug_InitTimeSlide
-	case 18, RyuDebug_menu_nodevcheck
+	case 16, RyuDebug_InitTimeSlide
+	case 17, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -179,7 +178,12 @@ RDB_ExplainSpawnMsg:
 	.string "You have spawned in a follower.\nNote that this skips all quest\pchecks and just directly applies\ntheir base script.\lBugs may appear when talked to.$"
 	
 RDB_RETURNTOMAIN::
-	goto RyuDebug_UtilitiesMenu
+	msgbox RDB_RTM1
+	closemessage
+	goto RyuDebug_menu_nodevcheck
+
+RDB_RTM1::
+	.string "Returning to main menu.$"
 
 RDB_EnableRealEstate::
 	callnative SetPlayerRealtorStatus
@@ -1068,11 +1072,107 @@ RyuSetExpMult8::@@exp is multiplied by 8
 ExpMult8:
 	.string "Exp Multiplier is now 8.0x.$"
 	
-RyuDebug_PasscodeMenu::
-	playse SE_EXPMAX
-	waitse
-	setvar VAR_TEMP_0, 0
-	goto MC_GC_MENU
+RyuDebug_SpawningMenu::
+	bufferdynamicmulti RDBSP_1, RDBSP_2, RDBSP_3, RDBSP_4, RDBSP_5, RDBSP_6
+	multichoice 6, 4, MULTI_DYNAMIC_6, 1
+	switch VAR_RESULT
+	case 0, FrontierMonDev
+	case 1, DevModeMonGive
+	case 2, DevModeItemGive
+	case 3, RDB_SpawnFollowerMultiMenu
+	case 4, RDB_GiveMoneyMenu
+	case 5, RyuDebug_menu_nodevcheck
+	goto RyuDebug_menu_nodevcheck
+
+RDBSP_1:
+	.string "Spawn Frontier Mon...$"
+
+RDBSP_2:
+	.string "Spawn Species ID...$"
+
+RDBSP_3:
+	.string "Spawn Item ID...$"
+
+RDBSP_4:
+	.string "Spawn Follower...$"
+
+RDBSP_5:
+	.string "Give Money...$"
+
+RDBSP_6:
+	.string "Return$"
+
+FrontierMonDev::
+	msgbox DMFMG
+	numberentry 0, 9, 3
+	compare VAR_RESULT, FRONTIER_MON_BLANK1_BLANK3
+	goto_if_ge RDB_CancelSpawn
+	special RyuGiveFrontierMon
+	buffernumberstring 0, VAR_TEMP_6
+	msgbox SpawnMenuSuccess
+	clearflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
+	closemessage
+	release
+	end
+
+DevModeMonGive::
+	msgbox DMMG
+	numberentry 0, 9, 3
+	compare VAR_RESULT, 0
+	goto_if_eq RDB_CancelSpawn
+	compare VAR_RESULT, NUM_SPECIES
+	goto_if_gt RDB_CancelSpawn
+	copyvar VAR_TEMP_4, VAR_RESULT
+	bufferspeciesname 0, VAR_TEMP_4
+	getpartysize
+	copyvar VAR_TEMP_8, VAR_RESULT
+	setflag FLAG_RYU_DEVELOPER_POKEMON_MENU
+	call GCMS_NatureMenu
+	clearflag FLAG_RYU_DEVELOPER_POKEMON_MENU
+	msgbox SpawnMenuSuccess
+	release
+	end
+
+DevModeItemGive::
+	msgbox DMIG
+	numberentry 0, 9, 3
+	compare VAR_RESULT, 0
+	goto_if_eq RDB_CancelSpawn
+	compare VAR_RESULT, ITEMS_COUNT
+	goto_if_ge RDB_CancelSpawn
+	additem VAR_RESULT, 200
+	msgbox SpawnMenuSuccess
+	release
+	end
+
+RDB_GiveMoneyMenu::
+	numberentry 0, 9, 9
+	callnative RDB_DevModeGiveMoney
+	msgbox RDB_GMM_Msg
+	goto RyuDebug_menu_nodevcheck
+
+RDB_CancelSpawn::
+	msgbox RDB_SpawnCancelled
+	closemessage
+	goto RyuDebug_menu_nodevcheck
+
+RDB_GMM_Msg:
+	.string "Gave {PLAYER} ¥{STR_VAR_1}.$"
+
+DMIG:
+	.string "Enter Item ID.$"
+
+DMMG:
+	.string "Enter Species ID$"
+
+DMFMG:
+	.string "Enter Frontier Mon ID.$"
+
+RDB_SpawnCancelled:
+	.string "Invalid Entry.\nReturning to main menu$"
+
+SpawnMenuSuccess:
+	.string "Operation Finished.$"
 	
 RyuSetIvDebugMenu::
 	special RyuIvSetter

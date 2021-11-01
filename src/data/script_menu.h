@@ -782,7 +782,7 @@ static const struct MenuAction MultichoiceList_RyuDebugMulti[] =
 {
     {gText_Utilities},
     {sText_DebugMainUtilityItem1},
-    {gText_PasscodeMenu},
+    {gText_SpawnMenu},
     {gText_QuickStart},
     {gText_PokeEdit},
     {gText_TownFlags},

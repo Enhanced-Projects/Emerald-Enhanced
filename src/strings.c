@@ -1862,7 +1862,7 @@ const u8 gText_Date2[] = _("CoveLily Motel");
 const u8 gText_Date3[] = _("Mossdeep Quays");
 const u8 gText_DateCancel[] = _("Cancel Date");
 
-const u8 gText_PasscodeMenu[] = _("Passcode Menu...");
+const u8 gText_SpawnMenu[] = _("Spawning Menu");
 const u8 gText_Utilities[] = _("Utilities...");
 const u8 gText_QuickStart[] = _("QuickStart");
 const u8 gText_PokeEdit[] = _("Open Pokeedit");

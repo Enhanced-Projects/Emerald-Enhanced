@@ -2212,3 +2212,9 @@ bool32 CheckIfSelectedSlotIsValid(void)
     return TRUE;
 }
 
+void RDB_DevModeGiveMoney(void)
+{
+    u32 Amt = gSpecialVar_32bit;
+    AddMoney(&gSaveBlock1Ptr->money, Amt);
+    ConvertIntToDecimalStringN(gStringVar1, Amt, STR_CONV_MODE_LEFT_ALIGN, 9);
+}
