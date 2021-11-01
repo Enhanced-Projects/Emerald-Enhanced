@@ -220,9 +220,9 @@ static void Task_HandleNumberEntryInput(u8 taskId)
     struct WindowTemplate numberEntryWindow =
     {
         .bg = 0,
-        .tilemapLeft = gTasks[taskId].data[8]+1,
-        .tilemapTop = gTasks[taskId].data[9]+1,
-        .width = 8,
+        .tilemapLeft = gTasks[taskId].data[3]+1,
+        .tilemapTop = gTasks[taskId].data[4]+1,
+        .width = (gTasks[taskId].data[5]*12 + 4)/ 8,
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 0x125
@@ -234,12 +234,12 @@ static void Task_HandleNumberEntryInput(u8 taskId)
     {
         gTasks[taskId].data[1] = AddWindow(&numberEntryWindow);
         DrawStdWindowFrame(gTasks[taskId].data[1], TRUE);
-        for(i = 0; i < 5; i++)
+        for(i = 0; i < gTasks[taskId].data[5]; i++)
         {
             AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+i*12, 2, 0xFF, NULL);
         }
         numBuf[0] = CHAR_LESS_THAN;
-        AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+54, 1, 0xFF, NULL);
+        AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+gTasks[taskId].data[5]*12-6, 1, 0xFF, NULL);
         CopyWindowToVram(gTasks[taskId].data[1], 2);
         gTasks[taskId].data[0]++;
         return;
@@ -248,14 +248,16 @@ static void Task_HandleNumberEntryInput(u8 taskId)
     if(JOY_NEW(A_BUTTON))
     {
         int pow = 1, sum = 0;
-        for(i = 0; i < 5; i++)
+        for(i = 0; i < gTasks[taskId].data[5]; i++)
         {
             int j;
             pow = 1;
             for(j = 0; j < i; j++) pow *= 10;
-            sum += gTasks[taskId].data[7 - i] * pow;
+            sum += gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - i] * pow;
         }
-        gSpecialVar_Result = sum;
+        gSpecialVar_32bit = sum;
+        //mgba_open();
+        //mgba_printf(LOGINFO, "%d", gSpecialVar_32bit);
         ClearStdWindowAndFrameToTransparent(gTasks[taskId].data[1], TRUE);
         RemoveWindow(gTasks[taskId].data[1]);
         DestroyTask(taskId);
@@ -273,42 +275,42 @@ static void Task_HandleNumberEntryInput(u8 taskId)
     }
     else if(JOY_NEW(DPAD_UP))
     {
-        gTasks[taskId].data[7 - gTasks[taskId].data[2]]++;
-        if(gTasks[taskId].data[7 - gTasks[taskId].data[2]] > 9)
-            gTasks[taskId].data[7 - gTasks[taskId].data[2]] = 0;
+        gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]]++;
+        if(gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]] > 9)
+            gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]] = 0;
     }
     else if(JOY_NEW(DPAD_DOWN))
     {
-        gTasks[taskId].data[7 - gTasks[taskId].data[2]]--;
-        if(gTasks[taskId].data[7 - gTasks[taskId].data[2]] < 0)
-            gTasks[taskId].data[7 - gTasks[taskId].data[2]] = 9;
+        gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]]--;
+        if(gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]] < 0)
+            gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]] = 9;
     }
     else if(JOY_NEW(DPAD_RIGHT))
     {
         gTasks[taskId].data[2]--;
         if(gTasks[taskId].data[2] < 0)
-            gTasks[taskId].data[2] = 4;
+            gTasks[taskId].data[2] = gTasks[taskId].data[5]-1;
     }
     else if(JOY_NEW(DPAD_LEFT))
     {
         gTasks[taskId].data[2]++;
-        if(gTasks[taskId].data[2] > 4)
+        if(gTasks[taskId].data[2] > gTasks[taskId].data[5]-1)
             gTasks[taskId].data[2] = 0;
     }
     else
         return;
     FillWindowPixelBuffer(gTasks[taskId].data[1], PIXEL_FILL(1));
-    for(i = 0; i < 5; i++)
+    for(i = 0; i < gTasks[taskId].data[5]; i++)
     {
-        numBuf[0] = CHAR_0 + gTasks[taskId].data[3 + i];
+        numBuf[0] = CHAR_0 + gTasks[taskId].data[6 + i];
         AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+i*12, 2, 0xFF, NULL);
     }
     numBuf[0] = CHAR_LESS_THAN;
-    AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+54-gTasks[taskId].data[2]*12, 1, 0xFF, NULL);
+    AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+gTasks[taskId].data[5]*12-6-gTasks[taskId].data[2]*12, 1, 0xFF, NULL);
     CopyWindowToVram(gTasks[taskId].data[1], 2);
 }
 
-bool8 ScriptMenu_NumberEntry(u8 left, u8 top)
+bool8 ScriptMenu_NumberEntry(u8 left, u8 top, u8 digits)
 {
     u8 taskId;
 
@@ -318,10 +320,10 @@ bool8 ScriptMenu_NumberEntry(u8 left, u8 top)
     }
     else
     {
-        gSpecialVar_Result = 0xFF;
         taskId = CreateTask(Task_HandleNumberEntryInput, 0x50);
-        gTasks[taskId].data[8] = left;
-        gTasks[taskId].data[9] = top;
+        gTasks[taskId].data[3] = left;
+        gTasks[taskId].data[4] = top;
+        gTasks[taskId].data[5] = digits > 9 ? 9 : digits;
         return TRUE;
     }
 }

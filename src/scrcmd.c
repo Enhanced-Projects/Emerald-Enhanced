@@ -1368,14 +1368,15 @@ bool8 ScrCmd_yesnobox(struct ScriptContext *ctx)
     }
 }
 
-bool8 ScriptMenu_NumberEntry(u8 left, u8 top);
+bool8 ScriptMenu_NumberEntry(u8 left, u8 top, u8 digits);
 
 bool8 ScrCmd_numberentry(struct ScriptContext *ctx)
 {
     u8 left = ScriptReadByte(ctx);
     u8 top = ScriptReadByte(ctx);
+    u8 digits = ScriptReadByte(ctx);
 
-    if (ScriptMenu_NumberEntry(left, top) == TRUE)
+    if (ScriptMenu_NumberEntry(left, top, digits) == TRUE)
     {
         ScriptContext1_Stop();
         return TRUE;

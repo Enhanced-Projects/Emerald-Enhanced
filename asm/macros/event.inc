@@ -1438,10 +1438,11 @@
 	.byte \time
 	.endm
 
-	.macro numberentry top:req left:req
+	.macro numberentry top:req left:req digits:req
 	.byte 0xc8
 	.byte \top
 	.byte \left
+	.byte \digits
 	.endm
 
 	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of

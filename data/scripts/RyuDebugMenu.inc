@@ -352,12 +352,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setvar VAR_RYU_DAILY_QUEST_TYPE, 3
-    setvar VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE103
-    setvar VAR_RYU_DAILY_QUEST_DATA, 15
-    msgbox RDB_DQT
-	setflag FLAG_DAILY_QUEST_ACTIVE
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS
 	release
 	end
 
