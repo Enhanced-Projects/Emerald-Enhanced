@@ -55,7 +55,7 @@ script(global) RyuNoblesDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if(var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                if(var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
                     msgbox(format("So that's what they're up to. All right, you are dismissed."))
                     goto(CommonNobleRewardScript)
                 }
@@ -105,7 +105,7 @@ script(global) RyuNoblesDailyQuest  {
         case 2:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_RUSTBORO_CITY_DEVON_CORP_2F)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             msgbox(format("The board needs you to go see what Devon Corp is up to. Head there to the second floor and see what their latest project is. Stocks are on the line here!"))
         case 3:
             random(4)

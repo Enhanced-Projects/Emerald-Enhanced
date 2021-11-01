@@ -352,14 +352,17 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	msgbox RDB_Finished
-	numberentry 5 5
-	buffernumberstring 0, VAR_RESULT
-	msgbox RDBResult
-	closemessage
-	setflag FLAG_RYU_PLAYER_IS_CRIMINAL
+	setvar VAR_RYU_DAILY_QUEST_TYPE, 3
+    setvar VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE103
+    setvar VAR_RYU_DAILY_QUEST_DATA, 15
+    msgbox RDB_DQT
+	setflag FLAG_DAILY_QUEST_ACTIVE
+	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS
 	release
 	end
+
+RDB_DQT::
+	.string "{PLAYER}, can you go check out\nRoute 103?\pI want to know specifically if\nthere's a good place to camp\lthere or not.$"
 
 RDB_String1:
 	.string "Your name is {PLAYER}.\nYour rival is {RIVAL}.$"

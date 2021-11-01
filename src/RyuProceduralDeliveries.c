@@ -151,7 +151,6 @@ void RyuBufferJobIntoStringVar(void)
     {
         u16 mapSec = gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].targetMapSec;
         StringCopy(buffer1, gRegionMapEntries[mapSec].name); //Location string
-        mgba_printf(LOGINFO, "Buffered %s into %d", ConvertToAscii(buffer1), i);
         StringCopy(sStringVars[i], sTargetString);
         ConvertIntToDecimalStringN(buffer2, i, STR_CONV_MODE_LEFT_ALIGN, 1); //which iteration/job we're on
         StringAppend(sStringVars[i], buffer2);
@@ -161,7 +160,6 @@ void RyuBufferJobIntoStringVar(void)
         StringAppend(sStringVars[i], sSpaceText);
         StringAppend(sStringVars[i], buffer1);
         StringAppend(sStringVars[i], sEndBracketString);
-        mgba_printf(LOGINFO, "Filled buffer %d with '%s'", i, (ConvertToAscii(sStringVars[i])));
     }
 }
 
@@ -181,7 +179,6 @@ void RyuSetUpDynamicDeliveryRoute(u8 NumTargets)
         gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].completed = FALSE;
         gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].targetVisibilityFlag = (FLAG_RYU_HIDE_DELIVERY_NPC_1 + i);
         gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].jobId = gDeliveryTargets[rnd].jobId;
-        mgba_printf(LOGINFO, "created delivery %d: (Gfx Id:%d, Location:%d, flagid:%d, done:%d)", i, gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].targetGfxId, gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].targetMapSec, gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].targetVisibilityFlag, gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].completed);
     }
     gSaveBlock2Ptr->totalCurrentDeliveryTargets = NumTargets;
 }
@@ -203,24 +200,17 @@ void RyuClearDynamicDeliveryRoute(void)
 void DoDeliveryRouteSetup(void)
 {
     u16 numJobs = (VarGet(VAR_TEMP_4));
-    mgba_printf(LOGINFO, "Setting up delivery route with %d jobs", numJobs);
     RyuSetUpDynamicDeliveryRoute(numJobs);
 }
 
 
 void RyuDebug_CheckDeliveryStatus(void)
 {
-    u32 i;
-    for (i = 0; i < gSaveBlock2Ptr->totalCurrentDeliveryTargets; i++)
-        {
-            mgba_printf(LOGINFO, "delivery %d: (Gfx Id:%d, Location:%d, done:%d)", i, gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].targetGfxId, gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].targetMapSec, gSaveBlock2Ptr->PlayerCurrentDeliveryManifest[i].completed);
-        }
 }
 
 const u8 sText_emptyBuffer[] = _(" ");
 void RyuFillTextBuffers(void)
 {
-    mgba_printf(LOGINFO, "filling buffers");
     if (gRyuStringVar3 == NULL) {
         StringCopy(gRyuStringVar3, sText_emptyBuffer);
     }

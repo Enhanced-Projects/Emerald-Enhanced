@@ -43,7 +43,7 @@ script(global) RyuPokefansDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
                         msgbox(format("So there weren't any pokémon playing there. That's so unfortunate. THank you for your time, anyways!"))
                         goto(CommonPokefansRewardScript)
                 }

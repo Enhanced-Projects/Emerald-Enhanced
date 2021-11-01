@@ -3114,6 +3114,11 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     {
                         gBattlescriptCurrInstr++;
                     }
+                    else if ((GetMonData(gBattleMons[gBattlerTarget], MON_DATA_HELD_ITEM) > 396) && //prevent mega stones from being stolen
+                             (GetMonData(gBattleMons[gBattlerTarget], MON_DATA_HELD_ITEM) < 444))
+                             {
+                                gBattlescriptCurrInstr++;
+                             }
                     else if (gBattleMons[gBattlerTarget].item
                         && gBattleMons[gBattlerTarget].ability == ABILITY_STICKY_HOLD)
                     {
@@ -3175,9 +3180,6 @@ void SetMoveEffect(bool32 primary, u32 certain)
                             BattleScriptPush(gBattlescriptCurrInstr + 1);
                             gBattlescriptCurrInstr = BattleScript_ItemSteal;
                         }
-                        
-                        mgba_printf(LOGINFO, "gubg = %d", gUnusedBattleGlobal2);
-
                         gBattleStruct->choicedMove[gBattlerTarget] = 0;
                     }
 

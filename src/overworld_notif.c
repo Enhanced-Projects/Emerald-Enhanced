@@ -107,8 +107,6 @@ void Task_NotificationWindow(u8 taskId)
     int i;
     u32 queuePos = 0xFF;
     int highest;
-    //mgba_open();
-    //mgba_printf(LOGINFO, "Notification state = %d ", sNotification.state);
     switch (sNotification.state)
     {
     case NOTIF_STATE_IDLE:
@@ -139,7 +137,6 @@ void Task_NotificationWindow(u8 taskId)
     case NOTIF_STATE_DISPLAYING:
         if (ScriptContext2_IsEnabled())
         {
-            //mgba_printf(LOGINFO, "Notification %d interrupted", sNotification.currentNotif);
             sNotification.state = NOTIF_STATE_INTERRUPTED;
             HideNotificationWindow();
             break;
@@ -196,7 +193,6 @@ void Task_NotificationWindow(u8 taskId)
     case NOTIF_STATE_INTERRUPTED:
         if (!ScriptContext2_IsEnabled())
         {
-            //mgba_printf(LOGINFO, "Notification interrupt finished");
             sNotification.state = NOTIF_STATE_DISPLAYING;
             sNotification.dispTimer = 0;
             if (task->data[0] < 4)

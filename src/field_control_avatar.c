@@ -248,28 +248,6 @@ void RyuDoNotifyTasks(void)
     if (FlagGet(FLAG_RYU_NOTIFY_LV100_SWITCH) == TRUE)//Player switched to 100cap, warn about side effects.
         ScriptContext1_SetupScript(RyuScrupt_Lv100SwitchMsg);
 
-    if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) //check travel daily and notify when completed @PIDGEY: this lags when it happens, needs to be sped up.
-        && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) 
-        && (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 0))
-        {
-            if (VarGet(VAR_TEMP_E) == 0)
-            {
-                FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-                FlagSet(FLAG_TEMP_E);
-                VarSet(VAR_TEMP_E, 12);
-            }
-            else if (VarGet(VAR_TEMP_E) == 1)
-                {
-                    u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
-                    if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
-                    {
-                        u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
-                        StringCopy(gStringVar1, gFactionNames[factionId]);
-                        QueueNotification(gRyuReachedDailyTargetLocationString, NOTIFY_QUEST, 180);
-                    }
-                }
-        }
-
     if (!(FlagGet(FLAG_SYS_DEXNAV_GET)) && (!(FlagGet(FLAG_TEMP_F)))) //notify and give Dexnav
         if (CountBadges() >= 6)
             ScriptContext1_SetupScript(RyuGlobal_EnableNormalDexnav);
@@ -468,6 +446,35 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
     }
 }
 
+void RyuDoDailyTravelQuestThings(void)
+{
+    if ((VarGet(VAR_RYU_DAILY_QUEST_DATA) > 0) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) < 15) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3))
+            {
+                VarSet(VAR_RYU_DAILY_QUEST_DATA, (VarGet(VAR_RYU_DAILY_QUEST_DATA) - 1));
+            }
+
+    if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 15))
+        {
+            u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
+            if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
+            {
+                if (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 15)
+                {
+                    VarSet(VAR_RYU_DAILY_QUEST_DATA, 14);
+                }
+            }
+        }
+
+    if (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 0)
+        {
+            u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
+            VarSet(VAR_RYU_DAILY_QUEST_DATA, 4000);
+            StringCopy(gStringVar1, gFactionNames[factionId]);
+            QueueNotification(gRyuReachedDailyTargetLocationString, NOTIFY_QUEST, 180);
+        }
+
+}
+
 int ProcessPlayerFieldInput(struct FieldInput *input)
 {
     struct MapPosition position;
@@ -502,7 +509,11 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
             return TRUE;
 
         RyuDoSpecialEncounterChecks(input);
+
+        if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3))
+            RyuDoDailyTravelQuestThings();
     }
+
     if (input->checkStandardWildEncounter && CheckStandardWildEncounter(metatileBehavior) == TRUE)
         return TRUE;
     if (input->heldDirection && input->dpadDirection == playerDirection)

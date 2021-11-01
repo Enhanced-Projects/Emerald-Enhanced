@@ -2386,8 +2386,7 @@ bool8 ScrCmd_buffersingledynamicline(struct ScriptContext *ctx)
         case 6:
             StringExpandPlaceholders(gStringVar4, stringToBuffer);
             StringCopy(gRyuStringVar3, gStringVar4);
-    }
-    mgba_printf(LOGINFO, "Buffered a single dynamic line from %d with contents %s", whichStringVar, ConvertToAscii(gStringVar4));        
+    }     
     return FALSE;
 }
 
