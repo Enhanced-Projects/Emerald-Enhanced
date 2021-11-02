@@ -2147,7 +2147,7 @@ script(global) RyuDebug_InitTimeSlide {//ngl, this may be the lewdest script i h
 }
 
 script(global) RyuDoTImeSlide {
-	delay(5)//delay in frames (game runs at 60frames per second) between each step. Not recommended to use this AND msgbox below.
+	delay(2)//delay in frames (game runs at 60frames per second) between each step. Not recommended to use this AND msgbox below.
 	addvar(VAR_TEMP_2, 1)//how much to advance the minute value per step
 	if (var(VAR_TEMP_2) == 60) {//if reached new hour, rollover
 		setvar(VAR_TEMP_2, 0)

@@ -1591,8 +1591,8 @@ bool8 ScrCmd_ach(struct ScriptContext *ctx)// sorry for hacky solution, but we a
     switch (mode)
     {
     case 0:
-            CheckFormasterBallGift(id);
             GiveAchievement(id);
+            CheckFormasterBallGift(id);
             return FALSE;
     case 1:
             TakeAchievement(id);
@@ -1620,6 +1620,8 @@ void GiveAchievementDebug(u32 id)
 
 const u8 gAchievementNotifyString[] = _("Achievement Get! {COLOR 6}{SHADOW 4} {STR_VAR_1}");
 const u8 gGoldAchievementNotifyString[] = _("Golden Achievement Get! {COLOR 12}{SHADOW 7} {STR_VAR_1}");
+
+
 
 void GiveAchievement(u32 id)
 {

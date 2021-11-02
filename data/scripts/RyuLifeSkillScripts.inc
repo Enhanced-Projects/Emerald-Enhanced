@@ -70,6 +70,10 @@ Ryu_RefineCommonOre::
     checkitem ITEM_COMMON_GEM_ORE, 1
     compare VAR_RESULT, 0
     goto_if_eq Ryu_NoItem
+    bufferdynamicmulti RLS_GD2, RLS_GD1
+    multichoice 0, 8, MULTI_DYNAMIC_2, 1 
+    compare VAR_RESULT, YES
+    goto_if_eq Ryu_PowderizeOreCommon
     removeitem ITEM_COMMON_GEM_ORE, 1
     setvar VAR_TEMP_A, 1
     special RyuChooseFromGemList
@@ -80,13 +84,77 @@ Ryu_RefineCommonOre::
     release
     end
 
+Ryu_PowderizeOreCommon::
+    numberentry 0, 10, 3
+    copyvar VAR_TEMP_2, VAR_RESULT
+    checkitem ITEM_COMMON_GEM_ORE, VAR_TEMP_2
+    compare VAR_RESULT, TRUE
+    goto_if_ne Ryu_NotEnoughOresMsg
+    removeitem ITEM_COMMON_GEM_ORE, VAR_TEMP_2
+    additem ITEM_GEM_POWDER, VAR_TEMP_2
+    bufferitemname 0, ITEM_COMMON_GEM_ORE
+    buffernumberstring 1, VAR_TEMP_2
+    msgbox grindSuccess
+    closemessage
+    release
+    end
+
+Ryu_PowderizeOreUncommon::
+    numberentry 0, 10, 3
+    copyvar VAR_TEMP_2, VAR_RESULT
+    checkitem ITEM_UNCOMMON_GEM_ORE, VAR_TEMP_2
+    compare VAR_RESULT, TRUE
+    goto_if_ne Ryu_NotEnoughOresMsg
+    removeitem ITEM_UNCOMMON_GEM_ORE, VAR_TEMP_2
+    buffernumberstring 1, VAR_TEMP_2
+    multvar VAR_TEMP_2, 2
+    additem ITEM_GEM_POWDER, VAR_TEMP_2
+    bufferitemname 0, ITEM_UNCOMMON_GEM_ORE
+    msgbox grindSuccess
+    closemessage
+    release
+    end
+
+Ryu_PowderizeOreRare::
+    numberentry 0, 10, 3
+    copyvar VAR_TEMP_2, VAR_RESULT
+    checkitem ITEM_RARE_GEM_ORE, VAR_TEMP_2
+    compare VAR_RESULT, TRUE
+    goto_if_ne Ryu_NotEnoughOresMsg
+    removeitem ITEM_RARE_GEM_ORE, VAR_TEMP_2
+    buffernumberstring 1, VAR_TEMP_2
+    multvar VAR_TEMP_2, 3
+    additem ITEM_GEM_POWDER, VAR_TEMP_2
+    bufferitemname 0, ITEM_RARE_GEM_ORE
+    msgbox grindSuccess
+    closemessage
+    release
+    end
+
+RLS_GD1:
+    .string "Grind down Gems for Powder$"
+
+RLS_GD2:
+    .string "Refine Gems$"
+
+grindSuccess:
+    .string "Successfully powderized {STR_VAR_2}\n{STR_VAR_1}(s)$"
+
+Ryu_NotEnoughOresMsg:
+    .string "You don't have enough ore.$"
+
+
 Ryu_RefineUncommonOre::
-    checkitemspace ITEM_RARE_CANDY, 1  @@arbitrarily checks if there's space in the item pocket.
+    checkitemspace ITEM_BUG_GEM, 1
     compare VAR_RESULT, FALSE
     goto_if_eq Ryu_NotEnoughSpace
     checkitem ITEM_UNCOMMON_GEM_ORE, 1
     compare VAR_RESULT, 0
     goto_if_eq Ryu_NoItem
+    bufferdynamicmulti RLS_GD2, RLS_GD1
+    multichoice 0, 8, MULTI_DYNAMIC_2, 1 
+    compare VAR_RESULT, YES
+    goto_if_eq Ryu_PowderizeOreUncommon
     removeitem ITEM_UNCOMMON_GEM_ORE, 1
     setvar VAR_TEMP_A, 2
     special RyuChooseFromGemList
@@ -104,6 +172,10 @@ Ryu_RefineRareOre::
     checkitem ITEM_RARE_GEM_ORE, 1
     compare VAR_RESULT, 0
     goto_if_eq Ryu_NoItem
+    bufferdynamicmulti RLS_GD2, RLS_GD1
+    multichoice 0, 8, MULTI_DYNAMIC_2, 1 
+    compare VAR_RESULT, YES
+    goto_if_eq Ryu_PowderizeOreRare
     removeitem ITEM_RARE_GEM_ORE, 1
     setvar VAR_TEMP_A, 3
     special RyuChooseFromGemList
