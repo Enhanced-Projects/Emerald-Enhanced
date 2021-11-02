@@ -3134,72 +3134,40 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     {
                         gBattlescriptCurrInstr++;
                     }
-                    else
+                    else if ((GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER
+                        && (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER)))
+                        && !FlagGet(FLAG_RYU_PLAYER_IS_CRIMINAL))
                     {
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_CantSteal;
+                    }
+                    else 
+                    {
+                        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+                        {
+                            if ((FlagGet(FLAG_USED_THIEF) == FALSE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER))
+                                FlagSet(FLAG_USED_THIEF);
+                        }
+
                         gLastUsedItem = gBattleStruct->changedItems[gBattlerAttacker] = gBattleMons[gBattlerTarget].item;
                         gBattleMons[gBattlerTarget].item = 0;
 
                         CheckSetUnburden(gBattlerTarget);
                         gBattleResources->flags->flags[gBattlerAttacker] &= ~(RESOURCE_FLAG_UNBURDEN);
-                        
-                        if ((!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER))) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER))
-                        {
-                            gLastUsedItem = gBattleStruct->changedItems[gBattlerAttacker] = gBattleMons[gBattlerTarget].item;
-                            gBattleMons[gBattlerTarget].item = 0;
 
-                            CheckSetUnburden(gBattlerTarget);
-                            gBattleResources->flags->flags[gBattlerAttacker] &= ~(RESOURCE_FLAG_UNBURDEN);
+                        gActiveBattler = gBattlerAttacker;
+                        BtlController_EmitSetMonData(0, REQUEST_HELDITEM_BATTLE, 0, 2, &gLastUsedItem);
+                        MarkBattlerForControllerExec(gBattlerAttacker);
 
-                            gActiveBattler = gBattlerAttacker;
-                            BtlController_EmitSetMonData(0, REQUEST_HELDITEM_BATTLE, 0, 2, &gLastUsedItem);
-                            MarkBattlerForControllerExec(gBattlerAttacker);
+                        gActiveBattler = gBattlerTarget;
+                        BtlController_EmitSetMonData(0, REQUEST_HELDITEM_BATTLE, 0, 2, &gBattleMons[gBattlerTarget].item);
+                        MarkBattlerForControllerExec(gBattlerTarget);
 
-                            gActiveBattler = gBattlerTarget;
-                            BtlController_EmitSetMonData(0, REQUEST_HELDITEM_BATTLE, 0, 2, &gBattleMons[gBattlerTarget].item);
-                            MarkBattlerForControllerExec(gBattlerTarget);
+                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlescriptCurrInstr = BattleScript_ItemSteal;
 
-                            BattleScriptPush(gBattlescriptCurrInstr + 1);
-                            gBattlescriptCurrInstr = BattleScript_ItemSteal;
-
-                            gBattleStruct->choicedMove[gBattlerTarget] = 0;
-                        } 
-                        else
-                        {
-                            if (FlagGet(FLAG_RYU_PLAYER_IS_CRIMINAL) == TRUE)
-                            {
-                                if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-                                {
-                                    if ((FlagGet(FLAG_USED_THIEF) == FALSE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER))
-                                        FlagSet(FLAG_USED_THIEF);
-                                }
-
-                                gLastUsedItem = gBattleStruct->changedItems[gBattlerAttacker] = gBattleMons[gBattlerTarget].item;
-                                gBattleMons[gBattlerTarget].item = 0;
-        
-                                CheckSetUnburden(gBattlerTarget);
-                                gBattleResources->flags->flags[gBattlerAttacker] &= ~(RESOURCE_FLAG_UNBURDEN);
-        
-                                gActiveBattler = gBattlerAttacker;
-                                BtlController_EmitSetMonData(0, REQUEST_HELDITEM_BATTLE, 0, 2, &gLastUsedItem);
-                                MarkBattlerForControllerExec(gBattlerAttacker);
-        
-                                gActiveBattler = gBattlerTarget;
-                                BtlController_EmitSetMonData(0, REQUEST_HELDITEM_BATTLE, 0, 2, &gBattleMons[gBattlerTarget].item);
-                                MarkBattlerForControllerExec(gBattlerTarget);
-        
-                                BattleScriptPush(gBattlescriptCurrInstr + 1);
-                                gBattlescriptCurrInstr = BattleScript_ItemSteal;
-        
-                                gBattleStruct->choicedMove[gBattlerTarget] = 0;
-                            }
-                            else
-                            {
-                                BattleScriptPush(gBattlescriptCurrInstr + 1);
-                                gBattlescriptCurrInstr = BattleScript_CantSteal;
-                            }
-                        }
+                        gBattleStruct->choicedMove[gBattlerTarget] = 0;
                     }
-
                 }
                 break;
             case MOVE_EFFECT_PREVENT_ESCAPE:
