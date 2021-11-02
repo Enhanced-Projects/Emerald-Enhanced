@@ -205,7 +205,7 @@ RG_AltGymBattle::
 	msgbox RG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq LG_ChooseValidMons
+	goto_if_eq RG_ChooseValidMons
 	multi_2_vs_1 TRAINER_ROXANNE_4, RG_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
