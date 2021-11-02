@@ -1334,6 +1334,14 @@ bool8 MetatileBehavior_IsSeaweed(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsSnowgrass(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SNOWY_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsRunningDisallowed(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_NO_RUNNING
@@ -1352,7 +1360,8 @@ bool8 MetatileBehavior_IsCuttableGrass(u8 metatileBehavior)
      || metatileBehavior == MB_ASHGRASS
      || metatileBehavior == MB_LONG_GRASS_SOUTH_EDGE
      || metatileBehavior == MB_SEAWEED
-     || metatileBehavior == MB_SEAWEED_NO_SURFACING)
+     || metatileBehavior == MB_SEAWEED_NO_SURFACING
+     || metatileBehavior == MB_SNOWY_GRASS)
         return TRUE;
     else
         return FALSE;

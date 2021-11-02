@@ -190,7 +190,8 @@ bool8 SetUpFieldMove_Cut(void)
                     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
                     if (MetatileBehavior_IsPokeGrass(tileBehavior) == TRUE
                     || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE
-                    || MetatileBehavior_IsSeaweed(tileBehavior) == TRUE)
+                    || MetatileBehavior_IsSeaweed(tileBehavior) == TRUE
+                    || MetatileBehavior_IsSnowgrass(tileBehavior) == TRUE)
                     {
                         // Standing in front of grass.
                         sHyperCutTiles[6 + (i * 5) + j] = TRUE;
