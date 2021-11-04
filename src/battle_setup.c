@@ -1381,7 +1381,7 @@ static void CB2_EndTrainerBattle(void)
         if (GetGameStat(GAME_STAT_PLAYER_BOUNTY) > 100000)
             GiveAchievement(ACH_WANTED);
         ConvertIntToDecimalStringN(gRyuStringVar4, random2, STR_CONV_MODE_LEFT_ALIGN, 5);
-        QueueNotification(gText_BountyAdded, NOTIFY_GENERAL, 120);
+        QueueNotification(gText_BountyAdded, NOTIFY_GENERAL, 60);
         FlagClear(FLAG_USED_THIEF);
     }
 

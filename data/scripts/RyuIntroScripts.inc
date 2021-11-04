@@ -10,6 +10,11 @@ GameModeSelect:: @ 823BF04
 	call GameModeSelectLati
 	closemessage
 	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
+	msgbox RI_CheckPreviousExp, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	closemessage
+	msgbox RI_ConfirmDifficulty
+	goto_if_eq IT_EasyMode
 	msgbox Ryu_PleaseSelectDifficulty
 	multichoicedefault 1, 2, MULTI_SELECT_FRESH_NEW_GAME_MODE, 0, 0
 	switch VAR_RESULT
@@ -19,6 +24,9 @@ GameModeSelect:: @ 823BF04
 	case 3, IT_FrontierMode
 	goto IT_NormalMode
 	end
+
+RI_ConfirmDifficulty:
+	.string "You have been set to the\nrecommended mode.$"
 
 GameModeSelectLati::
 	msgbox GMS_WhichColor
@@ -75,6 +83,9 @@ Ryu_NewGamePlus::
 	case 1, IT_NuzlockeMode
     case 2, IT_HardcoreMode
 	goto IT_NormalMode
+
+RI_CheckPreviousExp:
+	.string "Have you played Emerald Enhanced\nbefore?$"
 
 Ryu_NGP_Waystone:
 	additem ITEM_WAYSTONE, 1
