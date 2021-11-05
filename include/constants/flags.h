@@ -374,7 +374,7 @@
 #define FLAG_RYU_HIDE_BRINEY_GUARD           0x15D
 #define FLAG_FRIGUS_QUEST_COMPLETED          0x15E
 #define FLAG_ITEM_ROUTE_111_PP_MAX           0x15F
-#define FLAG_UNUSED_0x160                    0x160
+#define FLAG_RYU_STARTED_LANETTE_QUEST       0x160
 #define FLAG_RYU_COURTNEY_MEGA_REWARD        0x161 // Courtney mega stone reward.
 #define FLAG_RYU_DS_JOY_ACQ                  0x162
 #define FLAG_RYU_DS_JOY_FRIENDS              0x163
