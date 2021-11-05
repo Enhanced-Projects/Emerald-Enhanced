@@ -78,37 +78,37 @@ VerdanturfTown_FriendshipRatersHouse_Text_SeeHowMuchPokemonLikesYou: @ 82030ED
 VerdanturfTown_FriendshipRatersHouse_Text_AdoresYou: @ 8203141
 	.string "It adores you.\n"
 	.string "It can't possibly love you any more.\l"
-	.string "I even feel happy seeing it.$"
+	.string "I even feel happy seeing it.\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Value: {STR_VAR_3})$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_VeryHappy: @ 8203192
 	.string "It seems to be very happy.\n"
-	.string "It obviously likes you a whole lot.$"
+	.string "It obviously likes you a whole lot.\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Value: {STR_VAR_3})$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_ExtremelyHappy:
 	.string "It is extremely happy. It's almost\n"
-	.string "like it might explode with joy!$"
+	.string "like it might explode with joy!\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Value: {STR_VAR_3})$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_LikesYouQuiteALot: @ 82031D1
 	.string "It likes you quite a lot.\n"
-	.string "It seems to want to be babied a little.$"
+	.string "It seems to want to be babied a little.\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Value: {STR_VAR_3})$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_GettingUsedToYou: @ 8203213
 	.string "It's getting used to you.\n"
-	.string "It seems to believe in you.$"
+	.string "It seems to believe in you.\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Value: {STR_VAR_3})$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_NotUsedToYou: @ 8203249
 	.string "It's not very used to you yet.\n"
-	.string "It neither loves nor hates you.$"
+	.string "It neither loves nor hates you.\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Value: {STR_VAR_3})$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_VeryWary: @ 8203288
 	.string "It's very wary.\n"
 	.string "It has scary viciousness in its eyes.\l"
-	.string "It doesn't like you much at all.$"
+	.string "It doesn't like you much at all.\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Value: {STR_VAR_3})$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_DetestsYou: @ 82032DF
 	.string "This is a little hard for me to say…\p"
 	.string "Your Pokémon simply detests you.\n"
-	.string "Doesn't that make you uncomfortable?$"
+	.string "Doesn't that make you uncomfortable?\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Value: {STR_VAR_3})$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_Pikachu: @ 820334A
 	.string "Pikachu: Pika pika!$"
