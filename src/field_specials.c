@@ -720,11 +720,11 @@ u8 GetLeadMonFriendshipScore(void)
     {
         return 7;
     }
-    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 220)
+    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 200)
     {
         return 6;
     }
-    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 200)
+    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 175)
     {
         return 5;
     }
