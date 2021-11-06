@@ -600,16 +600,6 @@ RyuCantUsePCCHARGING:
 
 @========================================================================Random "Stepped On" encounter
 
-SB_CheckMeloettaEncounter::
-	goto_if_set FLAG_RYU_CAPTURED_MELOETTA, ryu_end
-	readgamestat GAME_STAT_USED_SOUND_MOVE
-	switch VAR_RESULT
-	case 255, Ryu_DoMeloettaRoll
-    case 200, Ryu_MeloettaWatchingMsg
-	case 100, Ryu_BeingWatched
-	release
-	end
-
 Ryu_MeloettaWatchingMsg::
 	goto_if_set FLAG_RYU_SECOND_MELOETTA_MSG, ryu_end
 	playmoncry SPECIES_MELOETTA, 0
@@ -2476,4 +2466,23 @@ text NGMO2 {
 
 text NGMO3 {
 	"Safe: More consistent, less potential."
+}
+
+script SB_CheckMeloettaEncounter {
+	goto_if_set(FLAG_RYU_CAPTURED_MELOETTA, ryu_end)
+	readgamestat(GAME_STAT_USED_SOUND_MOVE)
+	if (var(VAR_RESULT) >= 255) {
+		goto(Ryu_DoMeloettaRoll)
+	}
+	elif((var(VAR_RESULT) > 199) && (var(VAR_RESULT) < 256)) {
+		goto(Ryu_MeloettaWatchingMsg)
+	}
+	elif(var(VAR_RESULT) >= 100){
+		goto(Ryu_BeingWatched)
+	}
+	else {
+		goto(ryu_end)
+	}
+	release
+	end
 }
