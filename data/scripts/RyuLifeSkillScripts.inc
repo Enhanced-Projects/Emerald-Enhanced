@@ -89,7 +89,7 @@ Ryu_PowderizeOreCommon::
     copyvar VAR_TEMP_2, VAR_RESULT
     checkitem ITEM_COMMON_GEM_ORE, VAR_TEMP_2
     compare VAR_RESULT, TRUE
-    goto_if_ne Ryu_NotEnoughOresMsg
+    goto_if_ne Ryu_NotEnoughOres
     removeitem ITEM_COMMON_GEM_ORE, VAR_TEMP_2
     additem ITEM_GEM_POWDER, VAR_TEMP_2
     bufferitemname 0, ITEM_COMMON_GEM_ORE
@@ -104,7 +104,7 @@ Ryu_PowderizeOreUncommon::
     copyvar VAR_TEMP_2, VAR_RESULT
     checkitem ITEM_UNCOMMON_GEM_ORE, VAR_TEMP_2
     compare VAR_RESULT, TRUE
-    goto_if_ne Ryu_NotEnoughOresMsg
+    goto_if_ne Ryu_NotEnoughOres
     removeitem ITEM_UNCOMMON_GEM_ORE, VAR_TEMP_2
     buffernumberstring 1, VAR_TEMP_2
     multvar VAR_TEMP_2, 2
@@ -120,7 +120,7 @@ Ryu_PowderizeOreRare::
     copyvar VAR_TEMP_2, VAR_RESULT
     checkitem ITEM_RARE_GEM_ORE, VAR_TEMP_2
     compare VAR_RESULT, TRUE
-    goto_if_ne Ryu_NotEnoughOresMsg
+    goto_if_ne Ryu_NotEnoughOres
     removeitem ITEM_RARE_GEM_ORE, VAR_TEMP_2
     buffernumberstring 1, VAR_TEMP_2
     multvar VAR_TEMP_2, 3
@@ -139,6 +139,11 @@ RLS_GD2:
 
 grindSuccess:
     .string "Successfully powderized {STR_VAR_2}\n{STR_VAR_1}(s)$"
+
+Ryu_NotEnoughOres::
+    msgbox Ryu_NotEnoughOresMsg
+    closemessage
+    goto Ryu_MiningGemstoneOreRefiner
 
 Ryu_NotEnoughOresMsg:
     .string "You don't have enough ore.$"
