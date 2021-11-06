@@ -4253,17 +4253,12 @@ u16 GetKantoPokedexCount(u8 caseID)
     return count;
 }
 
+extern int RyuGetTotalCaughtMons(void);
 bool16 HasAllHoennMons(void)
 {
-    u16 i;
-
-    // -2 excludes Jirachi and Deoxys
-    for (i = 0; i < HOENN_DEX_COUNT - 2; i++)
-    {
-        if (!GetSetPokedexFlag(HoennToNationalOrder(i + 1), FLAG_GET_CAUGHT))
-            return FALSE;
-    }
-    return TRUE;
+    if (RyuGetTotalCaughtMons() >= 600)
+        return TRUE;
+    return FALSE;
 }
 
 bool8 HasAllKantoMons(void)

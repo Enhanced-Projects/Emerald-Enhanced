@@ -203,7 +203,7 @@ static void InitDiplomaWindow(void)
 
 static void PrintDiplomaText(u8 *text, u8 var1, u8 var2)
 {
-    u8 color[3] = {0, 2, 3};
+    u8 color[3] = {0, 1, 2};
 
     AddTextPrinterParameterized4(0, 1, var1, var2, 0, 0, color, -1, text);
 }
