@@ -209,7 +209,7 @@ AT_SV_Battle::
 	waitstate
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
-	goto_if_ne, AT_SV_GAMEOVER
+	goto_if_ne AT_SV_GAMEOVER
 	special LoadPlayerParty
 	goto AT_SV_ReturnFromBattle
 
