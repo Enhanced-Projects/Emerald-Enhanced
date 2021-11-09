@@ -1298,6 +1298,9 @@ MH4_CourtneyGivesMasterBall::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	special BattleSetup_StartLegendaryBattle
 	waitstate
+	goto MH4_CourtneyEnd1
+
+MH4_CourtneyEnd1::
 	removeobject 1
 	removeobject 7
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
@@ -1345,6 +1348,9 @@ MH4_CourtneyGivesMasterBall::
 	playse SE_W052
 	waitse
 	removeobject 22
+	goto MH4_CourtneyEnd2
+
+MH4_CourtneyEnd2::
 	playse SE_PIN
 	applymovement 21, Common_Movement_HeartEmote
 	waitmovement 21
@@ -1374,17 +1380,20 @@ MH4_CourtneyGivesMasterBall::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox MH4_WhatTroubleCanWe
 	closemessage
+	goto MH4_CourtneyEnd3
+
+MH4_CourtneyEnd3::
 	setflag FLAG_RYU_MAGMA_LINE_DONE
 	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	setvar VAR_RYU_QUEST_MAGMA, 599@Player finished the magma main line with the romance courtney ending.
 	call RyuScript_IncrementQuestsFinished
 	ach give ACH_THROUGH_THE_FIRE
+	removeobject 21
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
-	removeobject 21
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
 	release
 	end
 	

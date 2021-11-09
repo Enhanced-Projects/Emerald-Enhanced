@@ -763,10 +763,11 @@ R111_BlaiseWaitingForAsh::
 	faceplayer
 	compare VAR_RYU_QUEST_MAGMA, 160
 	goto_if_ne ryu_end
-	compare VAR_ASH_GATHER_COUNT, 8000
+	compare VAR_ASH_GATHER_COUNT, 2000
 	goto_if_lt R111_Blaise_NotEnough
 	msgbox R111_NiceWork
 	setvar VAR_RYU_QUEST_MAGMA, 165@player gathered the required ash.
+	setvar VAR_ASH_GATHER_COUNT, 8000
 	clearflag FLAG_RYU_MAGMA_LILYCOVE
 	setflag FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE
 	applymovement 46, R111_BlaiseExit

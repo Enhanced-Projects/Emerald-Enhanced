@@ -478,7 +478,7 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_Rival {
 	}
 	else {
 		if (flag(FLAG_RYU_DS_BRENDAN_PARTNERS) == TRUE){
-			goto(LRT_BL_FemaleRivalAfterRomanceStory)
+			goto(LRT_BL_MaleRivalAfterRomanceStory)
 		}
 		msgbox(LittlerootTown_ProfessorBirchsLab_Text_BrendanWhereShouldIGoNext)
 		release
