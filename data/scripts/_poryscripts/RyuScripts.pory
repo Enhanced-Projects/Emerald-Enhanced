@@ -2474,3 +2474,13 @@ script SB_CheckMeloettaEncounter {
 	release
 	end
 }
+
+script gRyuWarpFemaleHomeScript {
+	warpsilent(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F, 255, 1, 4)
+	waitstate
+}
+
+script gRyuWarpMaleHomeScript {
+	warpsilent(MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_2F, 255, 1, 4)
+	waitstate
+}

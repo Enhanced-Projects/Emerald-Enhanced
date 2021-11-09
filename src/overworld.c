@@ -91,6 +91,8 @@
 #define FACING_FORCED_RIGHT 10
 
 extern const u8 RyuFailedNuzlocke[];
+extern const u8 gRyuWarpMaleHomeScript[];
+extern const u8 gRyuWarpFemaleHomeScript[];
 
 extern const struct MapLayout *const gMapLayouts[];
 extern const struct MapHeader *const *const gMapGroups[];
@@ -426,16 +428,22 @@ void DoWhiteOut(void)
         GiveAchievement(ACH_YOU_DIED);
 
     FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
-    ScriptContext2_RunNewScript(EventScript_WhiteOut);
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
+    IncrementGameStat(GAME_STAT_BATTLES_LOST);
     Overworld_ResetStateAfterWhiteOut();
-    SetWarpDestinationToHome();//had to force blackout location here because it does screwy things otherwise.
-    WarpIntoMap();
+	FlagClear(FLAG_RYU_TC_ENTERED);
+	FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
+	FlagClear(FLAG_DEFEATED_ELITE_4_SIDNEY);
+	FlagClear(FLAG_DEFEATED_ELITE_4_PHOEBE);
+	FlagClear(FLAG_DEFEATED_ELITE_4_GLACIA);
+	FlagClear(FLAG_DEFEATED_ELITE_4_DRAKE);
+	VarSet(VAR_ELITE_4_STATE, 0);
+    if (&gSaveBlock2Ptr->playerGender == MALE)
+        ScriptContext1_SetupScript(gRyuWarpMaleHomeScript);
+    else
+        ScriptContext1_SetupScript(gRyuWarpFemaleHomeScript);
 }
-
-extern void RyuWarp();
-extern void RyuWarp2();
 
 void DoPartnerWhiteOut(void)
 {
@@ -451,15 +459,25 @@ void DoPartnerWhiteOut(void)
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuWipeParty();
 
+    if (CheckAchievement(ACH_YOU_DIED) == FALSE)
+        GiveAchievement(ACH_YOU_DIED);
+
     FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
-    ScriptContext2_RunNewScript(EventScript_WhiteOut);
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
     IncrementGameStat(GAME_STAT_BATTLES_LOST);
     Overworld_ResetStateAfterWhiteOut();
-    if (&gSaveBlock2Ptr->playerGender == 0)
-        RyuWarp();
-    RyuWarp2();
+	FlagClear(FLAG_RYU_TC_ENTERED);
+	FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
+	FlagClear(FLAG_DEFEATED_ELITE_4_SIDNEY);
+	FlagClear(FLAG_DEFEATED_ELITE_4_PHOEBE);
+	FlagClear(FLAG_DEFEATED_ELITE_4_GLACIA);
+	FlagClear(FLAG_DEFEATED_ELITE_4_DRAKE);
+	VarSet(VAR_ELITE_4_STATE, 0);
+    if (&gSaveBlock2Ptr->playerGender == MALE)
+        ScriptContext1_SetupScript(gRyuWarpMaleHomeScript);
+    else
+        ScriptContext1_SetupScript(gRyuWarpFemaleHomeScript);
 }
 
 void Overworld_ResetStateAfterFly(void)
