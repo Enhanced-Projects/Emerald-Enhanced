@@ -841,7 +841,7 @@ bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
 }
 
 bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)//this lewd function checks if player has mon, and if so,
-{                                                   //sets flag FLAG_TEMP_C, and slot number to VAR_TEMP_F
+{                                                   //sets VAR_RESULT to TRUE, and slot number to VAR_TEMP_F
     u16 speciesId = VarGet(ScriptReadHalfword(ctx));//see the relevant script command in asm/macros/event.inc
     u8 i;
 
@@ -851,7 +851,7 @@ bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)//this lewd function checks 
         {
             if (GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) == FALSE)
             {
-                FlagSet(FLAG_TEMP_C);
+                gSpecialVar_Result = TRUE;
                 VarSet(VAR_TEMP_F, i);
                 return TRUE;
             }
@@ -1315,9 +1315,7 @@ bool8 RyuFillStatsBuffers(void)
     u8 gTextBuffer2[64];
     u8 gTextBuffer3[64];
     u8 gTextBuffer4[64];
-    u8 slot = gSpecialVar_Result;
-    if (FlagGet(FLAG_TEMP_F) == FALSE)
-        slot = 0;
+    u16 slot = gSpecialVar_0x8001;
 
     StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey);
     StringAppend(gTextBuffer1, gText_RyuStatsHP);
@@ -2217,4 +2215,16 @@ void RDB_DevModeGiveMoney(void)
     u32 Amt = gSpecialVar_32bit;
     AddMoney(&gSaveBlock1Ptr->money, Amt);
     ConvertIntToDecimalStringN(gStringVar1, Amt, STR_CONV_MODE_LEFT_ALIGN, 9);
+}
+
+bool16 CheckOwnedRayquaza(void)
+{
+    if (!GetSetPokedexFlag((SpeciesToNationalPokedexNum(SPECIES_RAYQUAZA)), FLAG_GET_CAUGHT))
+    {
+        gSpecialVar_Result = FALSE;
+    }
+    else
+    {
+        gSpecialVar_Result = TRUE;
+    }
 }

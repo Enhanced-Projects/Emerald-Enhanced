@@ -420,9 +420,9 @@
 #define FLAG_RYU_HIDE_DELIVERY_NPC_4         0x18B
 #define FLAG_RYU_HIDE_DELIVERY_NPC_5         0x18C
 #define FLAG_RYU_HIDE_DELIVERY_NPC_6         0x18D
-#define FLAG_UNUSED_0x18E                    0x18E
-#define FLAG_UNUSED_0x18F                    0x18F
-#define FLAG_UNUSED_0x190                    0x190
+#define FLAG_RYU_RAYQUAZA_TRANSFORMED        0x18E
+#define FLAG_RYU_SPECIAL_RAYQUAZA_GIFT_AVAILABLE   0x18F
+#define FLAG_SHINY_CREATION                  0x190
 #define FLAG_UNUSED_0x191                    0x191
 #define FLAG_UNUSED_0x192                    0x192
 #define FLAG_UNUSED_0x193                    0x193
