@@ -15,6 +15,7 @@ RyuRCTS:
 RyuAP_StatAssist::
     lock
     call RyuBufferPartyMonNames
+    lock
     multichoice 1, 1, MULTI_DYNAMIC_6, 0
     copyvar VAR_0x8001, VAR_RESULT
     specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid

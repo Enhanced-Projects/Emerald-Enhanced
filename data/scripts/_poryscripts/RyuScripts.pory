@@ -1170,6 +1170,7 @@ CourtneyMegaReward:
 @==================================================================================================Ability Capsule
 
 Ryu_AbilityCapsule::
+	lock
 	call RyuBufferPartyMonNames
 	multichoice 1, 1, MULTI_DYNAMIC_6, 0
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
@@ -1182,6 +1183,7 @@ Ryu_AbilityCapsule::
 	case 3, RyuAC_Slot4
 	case 4, RyuAC_Slot5
 	case 5, RyuAC_Slot6
+	case 127, RyuAC_Cancel
 	goto RyuAC_Cancel
 
 RyuAC_Slot1::
