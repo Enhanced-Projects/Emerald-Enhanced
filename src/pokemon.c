@@ -6579,6 +6579,8 @@ void SetWildMonHeldItem(void)
         return;
 
     if (GetMonAbility(&gPlayerParty[0]) == ABILITY_COMPOUND_EYES || GetMonAbility(&gPlayerParty[0]) == ABILITY_SUPER_LUCK)
+    if (!(gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE))
+      && !gDexnavBattle)
     {
         isItemBoostedByAbility = TRUE;
     }

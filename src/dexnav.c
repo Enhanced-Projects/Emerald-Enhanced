@@ -141,7 +141,7 @@ static u8 DexNavGetAbilityNum(u16 species, u8 searchLevel);
 static u8 DexNavGeneratePotential(u8 searchLevel);
 static u8 DexNavTryGenerateMonLevel(u16 species, u8 environment);
 static u8 GetEncounterLevelFromMapData(u16 species, u8 environment);
-static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16* moves);
+static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16 item, u16* moves);
 static u8 GetPlayerDistance(s16 x, s16 y);
 static u8 DexNavPickTile(u8 environment, u8 xSize, u8 ySize, bool8 smallScan);
 static void DexNavProximityUpdate(void);
@@ -1124,7 +1124,7 @@ static void Task_DexNavSearch(u8 taskId)
     if (sDexNavSearchDataPtr->proximity < 1)
     {
         CreateDexNavWildMon(sDexNavSearchDataPtr->species, sDexNavSearchDataPtr->potential, sDexNavSearchDataPtr->monLevel, 
-          sDexNavSearchDataPtr->abilityNum, sDexNavSearchDataPtr->moves);
+          sDexNavSearchDataPtr->abilityNum, sDexNavSearchDataPtr->heldItem, sDexNavSearchDataPtr->moves);
         
         FlagClear(FLAG_SYS_DEXNAV_SEARCH);
         gDexnavBattle = TRUE;        
@@ -1233,7 +1233,7 @@ static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel)
 //////////////////////////////
 //// DEXNAV MON GENERATOR ////
 //////////////////////////////
-static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16* moves)
+static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16 item, u16* moves)
 {
     struct Pokemon* mon = &gEnemyParty[0];
     u8 iv[3];
@@ -1261,6 +1261,10 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
 
     //Set ability
     SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+    
+    // Set Held Item
+    if (item)
+        SetMonData(mon, MON_DATA_HELD_ITEM, &item);
 
     //Set moves
     for (i = 0; i < MAX_MON_MOVES; i++)
