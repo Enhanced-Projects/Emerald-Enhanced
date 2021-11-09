@@ -258,8 +258,6 @@ static void Task_HandleNumberEntryInput(u8 taskId)
         gSpecialVar_32bit = sum;
         if (gSpecialVar_32bit < 65536)
             gSpecialVar_Result = gSpecialVar_32bit;
-        //mgba_open();
-        //mgba_printf(LOGINFO, "%d", gSpecialVar_32bit);
         ClearStdWindowAndFrameToTransparent(gTasks[taskId].data[1], TRUE);
         RemoveWindow(gTasks[taskId].data[1]);
         DestroyTask(taskId);

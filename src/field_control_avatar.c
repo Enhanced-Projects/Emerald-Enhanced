@@ -79,7 +79,6 @@ extern const u8 Ryu_FFTextSpeedWarning[];
 extern const u8 RyuScript_Lv100FailMsg[];
 extern const u8 RyuScrupt_Lv100SwitchMsg[];
 extern const u8 RyuCheckForLNSUAch[];
-extern const u8 gRyuFixMoneyMultScript[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -213,15 +212,6 @@ const u8 gRyuReachedDailyTargetLocationString[] = _("Reached target area for the
 
 void RyuDoNotifyTasks(void)
 {
-    if (FlagGet(FLAG_RYU_ONE_TIME_SAVE_FIX) == FALSE) //REMOVE IN VERSIONS AFTER 8.004!
-    {
-        if (VarGet(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT) < 100)
-        {
-            FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
-            ScriptContext1_SetupScript(gRyuFixMoneyMultScript);
-        }
-    }
-
     if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for nuzlocke/hardcore
     {
         if (!(FlagGet(FLAG_RYU_LIMBO) == 1))

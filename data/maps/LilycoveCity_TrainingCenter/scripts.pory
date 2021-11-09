@@ -3,6 +3,7 @@ LilycoveCity_TrainingCenter_MapScripts::
 	.byte 0
 	
 TC_EvIvCheckerScript::
+	setvar VAR_0x8001, 0
     special RyuFillStatsBuffers
 	delay 30
     drawinfobox INFOBOXPOKEMONDATA
@@ -18,6 +19,7 @@ TC_EvIvCheckerScript::
 	end
 
 TC_EvIvCheckerNoHealScript::
+	setvar VAR_0x8001, 0
     special RyuFillStatsBuffers
 	delay 30
     drawinfobox INFOBOXPOKEMONDATA

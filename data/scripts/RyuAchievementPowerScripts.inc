@@ -13,13 +13,14 @@ RyuRCTS:
     .string "Now connecting to a shop...$"
 
 RyuAP_StatAssist::
-    setflag FLAG_TEMP_F
+    lock
     call RyuBufferPartyMonNames
     multichoice 1, 1, MULTI_DYNAMIC_6, 0
+    copyvar VAR_0x8001, VAR_RESULT
     specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
-	goto_if_eq ryu_end
-	special RyuFillStatsBuffers
+	goto_if_eq RyuAP_StatsFailed
+    special RyuFillStatsBuffers
 	delay 30
     drawinfobox INFOBOXPOKEMONDATA
     bufferpartymonnick 6, VAR_RESULT

@@ -1628,7 +1628,8 @@ RyuPlayerLostTheGameSoloFemale::
 
 @===================================================================================================
 Ryu_ShowStarterInfo::
-	special RyuFillStatsBuffers
+	setvar VAR_0x8001, 0
+    special RyuFillStatsBuffers
     drawinfobox INFOBOXPOKEMONDATA
 	bufferpartymonnick 1, 0
 	msgbox Ryu_Stats
@@ -1638,12 +1639,10 @@ Ryu_ShowStarterInfo::
 @==================================================================================================Achievement RELATED
 RyuScript_IncrementQuestsFinished::
 	addvar VAR_RYU_QUESTS_FINISHED, 1
-RyuScript_CheckQuestAchievements::  @REMOVE AFTER v8.004
 	callnative RyuCheckForDejavuAch
 	compare VAR_RESULT, TRUE
 	call_if_eq RyuScript_GiveDejaVu
-	release
-	end
+	return
 
 RyuScript_CheckGivenGoldAch::
 	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
@@ -2407,17 +2406,6 @@ script RyuScrupt_Lv100SwitchMsg {
 	msgbox(format("You have enabled the lv100 vanilla cap. If you have pokemon in your pc that are higher than level 100, \p{COLOR LIGHT_RED}{SHADOW RED}They will be adjusted down to 100. \p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Keep this in mind when using the vanilla cap.\pIf this is not what you want, disable the cap before withdrawing mons from the PC."))
 	clearflag(FLAG_RYU_NOTIFY_LV100_SWITCH)
 	closemessage
-	release
-	end
-}
-
-script gRyuFixMoneyMultScript {
-	setvar(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT, 400)
-	setvar(VAR_RYU_MONEY_BASE_VALUE, 200 )
-	setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 100)
-	msgbox(format("You have loaded a file that was made before this version of the game. The prize money formula has been corrected and set to 'Normal' mode. Thanks for playing EE!"))
-	closemessage
-	goto(RyuScript_CheckQuestAchievements)
 	release
 	end
 }
