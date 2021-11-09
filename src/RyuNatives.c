@@ -2228,3 +2228,10 @@ bool16 CheckOwnedRayquaza(void)
         gSpecialVar_Result = TRUE;
     }
 }
+
+void RyuTransformRayquaza(void)
+{
+    u16 id = SPECIES_MEGA_RAYQUAZA;
+    SetMonData(&gPlayerParty[(VarGet(VAR_TEMP_F))], MON_DATA_SPECIES, &id);
+    SetMonData(&gPlayerParty[(VarGet(VAR_TEMP_F))], MON_DATA_SPECIES2, &id);
+}

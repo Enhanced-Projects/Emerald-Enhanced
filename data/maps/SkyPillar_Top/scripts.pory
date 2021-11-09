@@ -215,18 +215,15 @@ script SP_TransformRayquaza {
 	setvar(VAR_TEMP_4, 100)
 	checkspecies(SPECIES_RAYQUAZA)
 	if (var(VAR_RESULT) == TRUE) {
-		playmoncry(SPECIES_RAYQUAZA, 2)
+		playmoncry(SPECIES_RAYQUAZA, 0)
 		msgbox("Rayquaza is reacting strangely to being\nhere.\pLet it out?", MSGBOX_YESNO)
-		waitmoncry
 		closemessage
+		waitmoncry
 		if (var(VAR_RESULT) == YES) {
-			showmonpic(SPECIES_RAYQUAZA, 98, 32)
-			playmoncry(SPECIES_RAYQUAZA, 1)
-			hidemonpic
 			fadescreen(FADE_TO_BLACK)
 			delay(20)
 			fadescreen(FADE_FROM_BLACK)
-			showmonpic(SPECIES_MEGA_RAYQUAZA, 98, 32)
+			showmonpic(SPECIES_MEGA_RAYQUAZA, 10, 3)
 			playmoncry(SPECIES_MEGA_RAYQUAZA, 0)
 			waitmoncry
 			hidemonpic
@@ -239,6 +236,7 @@ script SP_TransformRayquaza {
 			msgbox("It emits an aura of obscene\npower!")
 			setflag(FLAG_RYU_RAYQUAZA_TRANSFORMED)
 			closemessage
+			callnative(RyuTransformRayquaza)
 			release
 			end
 		}
