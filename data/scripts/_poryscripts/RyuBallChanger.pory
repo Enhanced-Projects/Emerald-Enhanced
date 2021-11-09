@@ -42,9 +42,8 @@ script RyuScript_BallChangerItemSelect {
 
 script RyuScript_BallChangerPartySlotSelect {
     msgbox(RyuText_BallChangerWhichSlot)
-    closemessage
 	call(RyuBufferPartyMonNames)
-	multichoice(1, 1, MULTI_DYNAMIC_6, 0)
+	multichoice(10, 0, MULTI_DYNAMIC_6, 0)
     specialvar(VAR_TEMP_A, CheckIfSelectedSlotIsValid)
     if (var(VAR_TEMP_A) == FALSE){
         call(RyuScript_SelectedNoMon)

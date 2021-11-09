@@ -41,7 +41,8 @@ RyuExpBatteryDevMode::
 	goto RyuExpBatteryContd
 
 RS_SelectSlot::
-	multichoice 1, 1, MULTI_DYNAMIC_6, 0
+	msgbox RA_SA_Choosemon
+	multichoice 10, 0, MULTI_DYNAMIC_6, 0
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RS_CancelPartySlot
@@ -269,8 +270,9 @@ RyuUserModeEVMenu::
 	compare VAR_RESULT, 6
 	goto_if_ge ryu_end
 	copyvar VAR_TEMP_3, VAR_RESULT
+	msgbox RA_SA_Choosemon
 	call RyuBufferPartyMonNames
-	multichoice 1, 1, MULTI_DYNAMIC_6, 0
+	multichoice 10, 0, MULTI_DYNAMIC_6, 0
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuUserModeEVMenu
@@ -1171,11 +1173,12 @@ CourtneyMegaReward:
 
 Ryu_AbilityCapsule::
 	lock
+	msgbox RA_SA_Choosemon
 	call RyuBufferPartyMonNames
-	multichoice 1, 1, MULTI_DYNAMIC_6, 0
+	multichoice 10, 0, MULTI_DYNAMIC_6, 0
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
-	goto_if_eq Ryu_AbilityCapsule
+	goto_if_eq Ryu_AbilityCapsuleEnd
 	switch VAR_RESULT
 	case 0, RyuAC_Slot1
 	case 1, RyuAC_Slot2
@@ -1247,6 +1250,11 @@ RyuAC_Slot6::
 	end
 
 RyuAC_Cancel::
+	msgbox RyuAC_CancelMsg
+	release
+	end
+
+Ryu_AbilityCapsuleEnd:
 	msgbox RyuAC_CancelMsg
 	release
 	end
