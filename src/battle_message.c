@@ -713,6 +713,18 @@ static const u8 sText_RyuAffectionUnparalyzed[] = _("{B_ATK_NAME_WITH_PREFIX} sh
 static const u8 sText_RyuAffectionEndured[] = _("{B_DEF_NAME_WITH_PREFIX} hung on because it wanted\nto please you!");
 static const u8 sText_RyuAffectionEvaded[] = _("{B_DEF_NAME_WITH_PREFIX} evaded the attack\nlike a boss!");
 static const u8 sText_RyuCantSteal[] = _("{B_ATK_NAME_WITH_PREFIX} doesn't want to be\na criminal.");
+static const u8 sText_ExtremelyHarshSunlight[] = _("The sunlight turned\nextremely harsh!");
+static const u8 sText_ExtremeSunlightFaded[] = _("The extreme sunlight faded.{PAUSE 64}");
+static const u8 sText_MoveEvaporatedInTheHarshSunlight[] = _("The Water-type attack evaporated\nin the harsh sunlight!");
+static const u8 sText_ExtremelyHarshSunlightWasNotLessened[] = _("The extremely harsh sunlight\nwas not lessened at all!");
+static const u8 sText_HeavyRain[] = _("A heavy rain began to fall!");
+static const u8 sText_HeavyRainLifted[] = _("The heavy rain has lifted!{PAUSE 64}");
+static const u8 sText_MoveFizzledOutInTheHeavyRain[] = _("The Fire-type attack fizzled out\nin the heavy rain!");
+static const u8 sText_NoReliefFromHeavyRain[] = _("There is no relief from\nthis heavy rain!");
+static const u8 sText_MysteriousAirCurrent[] = _("A mysterious air current is\nprotecting Flying-type Pokémon!");
+static const u8 sText_StrongWindsDissipated[] = _("The mysterious strong winds\nhave dissipated!{PAUSE 64}");
+static const u8 sText_MysteriousAirCurrentBlowsOn[] = _("The mysterious air current\nblows on regardless!");
+static const u8 sText_AttackWeakenedByStrongWinds[] = _("The mysterious strong winds\nweakened the attack!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1288,6 +1300,18 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_RYUAFFECTIONENDURED - 12] = sText_RyuAffectionEndured,
     [STRINGID_RYUAFFECTIONEVADED - 12] = sText_RyuAffectionEvaded,
     [STRINGID_RYUCANTSTEAL - 12] = sText_RyuCantSteal,
+    [STRINGID_ATTACKWEAKENEDBSTRONGWINDS - 12] = sText_AttackWeakenedByStrongWinds,
+    [STRINGID_MYSTERIOUSAIRCURRENTBLOWSON - 12] = sText_MysteriousAirCurrentBlowsOn,
+    [STRINGID_STRONGWINDSDISSIPATED - 12] = sText_StrongWindsDissipated,
+    [STRINGID_MYSTERIOUSAIRCURRENT - 12] = sText_MysteriousAirCurrent,
+    [STRINGID_NORELIEFROMHEAVYRAIN - 12] = sText_NoReliefFromHeavyRain,
+    [STRINGID_MOVEFIZZLEDOUTINTHEHEAVYRAIN - 12] = sText_MoveFizzledOutInTheHeavyRain,
+    [STRINGID_HEAVYRAINLIFTED - 12] = sText_HeavyRainLifted,
+    [STRINGID_HEAVYRAIN - 12] = sText_HeavyRain,
+    [STRINGID_EXTREMELYHARSHSUNLIGHTWASNOTLESSENED - 12] = sText_ExtremelyHarshSunlightWasNotLessened,
+    [STRINGID_MOVEEVAPORATEDINTHEHARSHSUNLIGHT - 12] = sText_MoveEvaporatedInTheHarshSunlight,
+    [STRINGID_EXTREMESUNLIGHTFADED - 12] = sText_ExtremeSunlightFaded,
+    [STRINGID_EXTREMELYHARSHSUNLIGHT - 12] = sText_ExtremelyHarshSunlight,
 };
 
 const u16 gTerrainStringIds[] =

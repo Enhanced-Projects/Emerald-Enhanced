@@ -368,5 +368,14 @@ extern const u8 BattleScript_RyuAffectionGeneralAnim[];
 extern const u8 BattleScript_RyuAffectionHealedConfuse[];
 extern const u8 BattleScript_RyuAffectionHealedParalyze[];
 extern const u8 BattleScript_RyuAffectionGeneralAnim3[];
+extern const u8 BattleScript_DesolateLandActivates[];
+extern const u8 BattleScript_DesolateLandEvaporatesWaterTypeMoves[];
+extern const u8 BattleScript_PrimordialSeaActivates[];
+extern const u8 BattleScript_PrimordialSeaFizzlesOutFireTypeMoves[];
+extern const u8 BattleScript_DeltaStreamActivates[];
+extern const u8 BattleScript_MysteriousAirCurrentBlowsOn[];
+extern const u8 BattleScript_AttackWeakenedByStrongWinds[];
+extern const u8 BattleScript_BlockedByPrimalWeatherEnd3[];
+extern const u8 BattleScript_BlockedByPrimalWeatherRet[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

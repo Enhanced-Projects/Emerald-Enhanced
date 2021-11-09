@@ -785,6 +785,7 @@ gBattleAnims_General::
 	.4byte General_FormChange
 	.4byte General_SlideOffScreen
 	.4byte General_RyuAffectionBoostHeartAnim
+	.4byte General_StrongWinds              @ B_ANIM_STRONG_WINDS
 
 	.align 2
 gBattleAnims_Special::
@@ -24396,6 +24397,28 @@ General_TerrainElectric:
 	
 General_TerrainPsychic:
 	end
+
+General_StrongWinds::
+	loadspritegfx ANIM_TAG_FLYING_DIRT
+	playsewithpan SE_M_GUST, 0
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_FLYING_DIRT, 0, 12, 12, RGB(20, 20, 20)
+	waitforvisualfinish
+	createvisualtask AnimTask_LoadWindstormBackground, 5, FALSE
+	delay 32
+	waitforvisualfinish
+	stopsound
+	end
+
+RainbowEndureEffect:
+	launchtemplate gEndureEnergySpriteTemplate 0x2 0x4 0x0 0xffe8 0x1a 0x2
+	delay 0x3
+	launchtemplate gEndureEnergySpriteTemplate 0x2 0x4 0x0 0xe 0x1c 0x1 @Red Buff
+	delay 0x3
+	launchtemplate gEndureEnergySpriteTemplate 0x2 0x4 0x0 0xfffb 0xa 0x2
+	delay 0x3
+	launchtemplate gEndureEnergySpriteTemplate 0x2 0x4 0x0 0x1c 0x1a 0x3
+	delay 0x3
+	return
 
 SnatchMoveTrySwapFromSubstitute:
 	createvisualtask AnimTask_IsAttackerBehindSubstitute, 2
