@@ -520,6 +520,9 @@ RyuDebug_GiveItems::
 	msgbox KeyItemsKitQuery MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	call_if_eq RyuDebug_GiveKeyItemsKit
+	msgbox MegaStonesQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_GiveMegaStones
 	goto RyuDebug_menu_nodevcheck
 
 RyuDebug_Init_GiveAllTMs::
@@ -594,6 +597,56 @@ RyuDebug_GiveAlchemyKit::
 	setvar VAR_RYU_ALCHEMY_GOLD, 65500
 	return
 
+RyuDebug_GiveMegaStones::
+	additem ITEM_ABOMASITE 1
+	additem ITEM_ABSOLITE 1
+	additem ITEM_AERODACTYLITE 1
+	additem ITEM_AGGRONITE 1
+	additem ITEM_ALAKAZITE 1
+	additem ITEM_ALTARIANITE 1
+	additem ITEM_AMPHAROSITE 1
+	additem ITEM_AUDINITE 1
+	additem ITEM_BANETTITE 1
+	additem ITEM_BEEDRILLITE 1
+	additem ITEM_BLASTOISINITE 1
+	additem ITEM_BLAZIKENITE 1
+	additem ITEM_CAMERUPTITE 1
+	additem ITEM_CHARIZARDITE_X 1
+	additem ITEM_CHARIZARDITE_Y 1
+	additem ITEM_DIANCITE 1
+	additem ITEM_GALLADITE 1
+	additem ITEM_GARCHOMPITE 1
+	additem ITEM_GARDEVOIRITE 1
+	additem ITEM_GENGARITE 1
+	additem ITEM_GLALITITE 1
+	additem ITEM_GYARADOSITE 1
+	additem ITEM_HERACRONITE 1
+	additem ITEM_HOUNDOOMINITE 1
+	additem ITEM_KANGASKHANITE 1
+	additem ITEM_LATIASITE 1
+	additem ITEM_LATIOSITE 1
+	additem ITEM_LOPUNNITE 1
+	additem ITEM_LUCARIONITE 1
+	additem ITEM_MANECTITE 1
+	additem ITEM_MAWILITE 1
+	additem ITEM_MEDICHAMITE 1
+	additem ITEM_METAGROSSITE 1
+	additem ITEM_MEWTWONITE_X 1
+	additem ITEM_MEWTWONITE_Y 1
+	additem ITEM_PIDGEOTITE 1
+	additem ITEM_PINSIRITE 1
+	additem ITEM_SABLENITE 1
+	additem ITEM_SALAMENCITE 1
+	additem ITEM_SCEPTILITE 1
+	additem ITEM_SCIZORITE 1
+	additem ITEM_SHARPEDONITE 1
+	additem ITEM_SLOWBRONITE 1
+	additem ITEM_STEELIXITE 1
+	additem ITEM_SWAMPERTITE 1
+	additem ITEM_TYRANITARITE 1
+	additem ITEM_VENUSAURITE 1
+	return
+
 RyuDebug_GiveItemsKit:
 	additem ITEM_FULL_RESTORE, 100
 	additem ITEM_MAX_ELIXIR, 100
@@ -617,6 +670,9 @@ RyuDebug_GiveKeyItemsKit::
 	additem ITEM_RECIPE_BOOK, 1
 	additem ITEM_REAGENT_POUCH, 1
 	return
+
+MegaStonesQuery:
+	.string "Would you like all Mega Stones?$"
 
 RyuDebug_MoneyMsg:
 	.string "Give Dev Mode money payout?$"

@@ -32,8 +32,8 @@
 // structures
 struct Struct203BCC4
 {
-    struct ListMenuItem unk0[51];
-    u8 unk198[51][0x18];
+    struct ListMenuItem unk0[PC_ITEMS_COUNT + 1];
+    u8 unk198[PC_ITEMS_COUNT + 1][0x18];
     u8 windowIds[6];
     u8 unk666;
     u8 spriteId;
@@ -700,7 +700,7 @@ static void sub_816C0C8(void)
 static void sub_816C110(void)
 {
     CompactPCItems();
-    sub_812220C(gSaveBlock1Ptr->pcItems, 50, &(playerPCItemPageInfo.pageItems), &(playerPCItemPageInfo.count), 0x8);
+    sub_812220C(gSaveBlock1Ptr->pcItems, PC_ITEMS_COUNT, &(playerPCItemPageInfo.pageItems), &(playerPCItemPageInfo.count), 0x8);
 }
 
 static void sub_816C140(void)
