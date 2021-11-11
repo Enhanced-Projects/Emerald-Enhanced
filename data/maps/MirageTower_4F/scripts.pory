@@ -47,9 +47,11 @@ MT_Shanti::
 MT_ShantiFormChangeQuery::
 	msgbox MT_DarmanitanDeclined
 	checkspecies SPECIES_DARMANITAN
-	goto_if_set FLAG_TEMP_C, MT_PlayerhasDarmanitan
+	compare VAR_RESULT, TRUE
+	goto_if_eq MT_PlayerhasDarmanitan
 	checkspecies SPECIES_DARMANITAN_ZEN
-	goto_if_set FLAG_TEMP_C, MT_PlayerhasDarmanitan
+	compare VAR_RESULT, TRUE
+	goto_if_eq MT_PlayerhasDarmanitan
 	msgbox MT_DontHaveDarmanitan
 	closemessage
 	release
