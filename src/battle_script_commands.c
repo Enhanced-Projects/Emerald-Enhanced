@@ -6465,6 +6465,12 @@ static void Cmd_getmoneyreward(void)
     if (CheckAPFlag(AP_WINNINGS_BOOST) == TRUE)
         moneyReward = ((moneyReward * 110) / 100);
 
+    if (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE)
+    {
+        moneyReward /= 20;
+        moneyReward *= 3;
+    }
+
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
 
     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);
