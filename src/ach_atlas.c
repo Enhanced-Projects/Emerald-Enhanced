@@ -1575,8 +1575,7 @@ void CheckFormasterBallGift(u8 id)
         (id == ACH_TOURIST) ||
         (id == ACH_MILLIONAIRE) ||
         (id == ACH_MONEYBAGS) ||
-        (id == ACH_ULTRA_BEASTLY)) && (
-        (CheckAchievement(id) == FALSE)))
+        (id == ACH_ULTRA_BEASTLY)))
         {
             AddBagItem(ITEM_MASTER_BALL, 1);
             QueueNotification(gGoldAchNotif, NOTIFY_GENERAL, 120);
@@ -1592,7 +1591,6 @@ bool8 ScrCmd_ach(struct ScriptContext *ctx)// sorry for hacky solution, but we a
     {
     case 0:
             GiveAchievement(id);
-            CheckFormasterBallGift(id);
             return FALSE;
     case 1:
             TakeAchievement(id);
@@ -1634,6 +1632,7 @@ void GiveAchievement(u32 id)
         {
             StringCopy(gStringVar1, sAchAtlasData[id].nameString);
             QueueNotification(gGoldAchievementNotifyString, NOTIFY_ACHIEVEMENT, 120);
+            CheckFormasterBallGift(id);
         }
         else
         {

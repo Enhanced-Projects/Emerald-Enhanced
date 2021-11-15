@@ -356,6 +356,13 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	@ach give ACH_POKEMON_MASTER
+	@ach give ACH_THE_UNIVERSALIST
+	@ach give ACH_LOREMASTER
+	@ach give ACH_TOURIST
+	@ach give ACH_MILLIONAIRE
+	ach give ACH_MONEYBAGS
+	ach give ACH_ULTRA_BEASTLY
 	release
 	end
 
