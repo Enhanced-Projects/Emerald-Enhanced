@@ -377,14 +377,32 @@ static const u16 RyuValToEv[] = {
     MON_DATA_SPEED_EV
 };
 
-void RyuSetSlotStatEV(void)//This is super lewd, you don't even know
+static const u16 RyuValToIv[] = {
+    MON_DATA_HP_IV,
+    MON_DATA_ATK_IV,
+    MON_DATA_DEF_IV,
+    MON_DATA_SPEED_IV,
+    MON_DATA_SPATK_IV,
+    MON_DATA_SPDEF_IV
+};
+
+void RyuSetSlotStatIVEV(void)//This is super lewd, you don't even know
 {
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     u8 stat = VarGet(VAR_TEMP_3);
+    u8 mode = VarGet(VAR_TEMP_E);
 
-    SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
-    CalculateMonStats(&gPlayerParty[slot]);
+    if (mode == 0)
+    {
+        SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
+        CalculateMonStats(&gPlayerParty[slot]);
+    }
+    else
+    {
+       SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);
+       CalculateMonStats(&gPlayerParty[slot]);
+    }
 }
 
 void RyuSetMonMove(void)

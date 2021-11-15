@@ -503,7 +503,7 @@ gSpecials:: @ 81DBA64
 	def_special CloseDeptStoreElevatorWindow
 	def_special TrySetBattleTowerLinkType
 	def_special checkbadgecount
-	def_special RyuSetSlotStatEV
+	def_special RyuSetSlotStatIVEV
 	def_special RyuDevCheck
 	def_special RyuDawnGiftPoke
 	def_special RyuBrendanGiftPoke

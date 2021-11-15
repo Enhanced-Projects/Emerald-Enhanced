@@ -925,7 +925,7 @@ RyuEvMenuHP::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_3, 0 
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -934,7 +934,7 @@ RyuEvMenuHP126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
 	setvar VAR_TEMP_3, 0
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -943,7 +943,7 @@ RyuEvMenuAtk::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_3, 1
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -952,7 +952,7 @@ RyuEvMenuAtk126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
 	setvar VAR_TEMP_3, 1
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -961,7 +961,7 @@ RyuEvMenuDef::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_3, 2
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -970,7 +970,7 @@ RyuEvMenuDef126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
 	setvar VAR_TEMP_3, 2
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -979,7 +979,7 @@ RyuEvMenuSpAtk::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_3, 3
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -988,7 +988,7 @@ RyuEvMenuSpAtk126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
 	setvar VAR_TEMP_3, 3
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -997,7 +997,7 @@ RyuEvMenuSpDef::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_3, 4
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -1006,7 +1006,7 @@ RyuEvMenuSpDef126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
 	setvar VAR_TEMP_3, 4
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -1015,7 +1015,7 @@ RyuEvMenuSpe::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_3, 5
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end
@@ -1024,7 +1024,7 @@ RyuEvMenuSpe126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
 	setvar VAR_TEMP_3, 5
-	special RyuSetSlotStatEV
+	special RyuSetSlotStatIVEV
 	call RyuEvMenuExit
 	release
 	end

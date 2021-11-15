@@ -1910,10 +1910,10 @@ const struct Item gItems[] =
         .secondaryId = 4,
     },
 
-    [ITEM_IMPRINT] =
+    [ITEM_EVPRINT] =
     {
-        .name = _("Gene Imprint"),
-        .itemId = ITEM_IMPRINT,
+        .name = _("Skill Imprint"),
+        .itemId = ITEM_EVPRINT,
         .price = 1000,
         .description = sWaveMailDesc,
         .pocket = POCKET_ITEMS,
@@ -1922,11 +1922,11 @@ const struct Item gItems[] =
         .secondaryId = 5,
     },
 
-    [ITEM_BEAD_MAIL] =  //EE-unused
+    [ITEM_IVPRINT] =  //EE-unused
     {
-        .name = _("Atk Imprint"),
-        .itemId = ITEM_BEAD_MAIL,
-        .price = 50,
+        .name = _("Gene Imprint"),
+        .itemId = ITEM_IVPRINT,
+        .price = 1000,
         .description = sBeadMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,

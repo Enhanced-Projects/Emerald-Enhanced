@@ -265,6 +265,13 @@ RyuGivePokenav::
 @==================================================================================================RYU EV USER MODE MENU
 
 RyuUserModeEVMenu::
+	lock
+	bufferdynamicmulti EVMENU_1, EVMENU_2, EVMENU_3
+	msgbox RyuUserEvSelectIVEV
+	multichoicedefault 0, 4, MULTI_DYNAMIC_3, 2, 1
+	copyvar VAR_TEMP_E, VAR_RESULT
+	compare VAR_RESULT, 2
+	goto_if_ge ryu_end
 	msgbox RyuUserEVInfo MSGBOX_DEFAULT
 	multichoicegrid 0, 4, MULTI_GENETIC_IMPRINTER_MENU, 2, 0
 	compare VAR_RESULT, 6
@@ -278,15 +285,24 @@ RyuUserModeEVMenu::
 	goto_if_eq RyuUserModeEVMenu
 	setvar VAR_TEMP_1, 0
 	copyvar VAR_TEMP_2, VAR_RESULT
-	checkitem ITEM_IMPRINT, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetSlotStatEV
+	call checkforimprint
+	compare VAR_RESULT, FALSE
+	goto_if_eq RyuUserEvNoImprint
+	special RyuSetSlotStatIVEV
 	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_IMPRINT, 1
+	call TakeIvEvItem
 	msgbox RyuEvSuccessMsg MSGBOX_DEFAULT
 	release
 	end
+
+EVMENU_1:
+	.string "Reduce EV$"
+
+EVMENU_2:
+	.string "Reduce IV$"
+
+EVMENU_3:
+	.string "Cancel$"
 	
 RyuUserEvExit::
 	closemessage
@@ -298,16 +314,19 @@ RyuUserEvNoImprint::
 	closemessage
 	release
 	end
+
+RyuUserEvSelectIVEV:
+	.string "Reduce Skill level(EV) or genetic\npredisposition(IV)?$"
 	
 RyuUserEVInfo:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
-	.string "{SHADOW LIGHT_GREY}Select an EV stat to reduce to 0.$"
+	.string "{SHADOW LIGHT_GREY}Select a stat to reduce to 0.$"
 
 RyuEvSuccessMsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}EV's for the selected slot\nhave been reduced to 0.$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}iv or ev for the selected slot\nhave been reduced to 0.$"
 
 EvNoImprints:
-	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough imprints.\pObtain more at Lilycove\nTraining Center.$"
+	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough prints.\pObtain more at Lilycove\nTraining Center.$"
 
 @@======================================================================================================================================= NUZLOCKE CHALLENGE RELATED
 
@@ -2493,4 +2512,42 @@ script gRyuWarpFemaleHomeScript {
 script gRyuWarpMaleHomeScript {
 	warpsilent(MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_2F, 255, 1, 4)
 	waitstate
+}
+
+script checkforimprint {
+	if (var(VAR_TEMP_E) == 0) {
+		checkitem(ITEM_EVPRINT, 1)
+		if (var(VAR_RESULT) == TRUE) {
+			return
+		}
+		else{
+			setvar(VAR_RESULT, FALSE)
+			return
+		}
+	}
+	elif (var(VAR_TEMP_E) == 1) {
+		checkitem(ITEM_IVPRINT, 1)
+		if (var(VAR_RESULT) == TRUE) {
+			return
+		}
+		else {
+			setvar(VAR_RESULT, FALSE)
+			return
+		}
+	}
+	else {
+		setvar(VAR_RESULT, FALSE)
+		return
+	}
+}
+
+script TakeIvEvItem {
+	if (var(VAR_TEMP_E) == 0) {
+		removeitem(ITEM_EVPRINT, 1)
+		return
+	}
+	else{
+		removeitem(ITEM_IVPRINT, 1)
+		return
+	}
 }

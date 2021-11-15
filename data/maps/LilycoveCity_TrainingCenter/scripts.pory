@@ -433,7 +433,8 @@ TC_BoughtImprinter:
 	
 	@.align 2
 TC_Imprint_Mart:
-	.2byte ITEM_IMPRINT
+	.2byte ITEM_EVPRINT
+	.2byte ITEM_IVPRINT
 	.2byte ITEM_NONE
 	
 TC_Imprint_Txt:
