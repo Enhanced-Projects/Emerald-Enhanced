@@ -7,7 +7,7 @@ LRT_IntroMsg1:
 
 GameModeSelect:: @ 823BF04
 	lockall
-	call GameModeSelectLati
+	@call GameModeSelectLati //doesn't work.
 	closemessage
 	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
 	msgbox RI_CheckPreviousExp, MSGBOX_YESNO
