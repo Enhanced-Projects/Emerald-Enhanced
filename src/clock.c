@@ -13,6 +13,7 @@
 #include "wallclock.h"
 #include "factions.h"
 #include "RyuRealEstate.h"
+#include "overworld_notif.h"
 
 static void UpdatePerDay(struct Time *localTime);
 void UpdatePerHour(struct Time *localTime);
@@ -37,15 +38,6 @@ void DoTimeBasedEvents(void)
         UpdatePerMinute(&gLocalTime);
     }
 
-    if (FlagGet(FLAG_RYU_START_DELIVERY_TIMER) == TRUE)
-        gSpecialVar_ProfessionalsDeliveryTimer += 1;
-    if (gSpecialVar_ProfessionalsDeliveryTimer > 5)
-        {
-            //QueueNotification(NOTIFICATION_CATEGORY_MISSION, "You're late delivering packages. Your pay will be deducted.")
-            FlagClear(FLAG_RYU_START_DELIVERY_TIMER);
-            FlagSet(FLAG_RYU_PROF_DELIVERY_LATE);
-            gSpecialVar_ProfessionalsDeliveryTimer = 0;
-        }
 }
 
 void RotateDailyUBGroup(void)
@@ -108,6 +100,8 @@ void UpdatePerHour(struct Time *localTime)
     VarSet(VAR_HOURS, gLocalTime.hours);
 }
 
+const u8 gRyuText_DailyQuestsReset[] = _("Daily quests have been reset.");
+
 static void UpdatePerDay(struct Time *localTime)
 {
     u16 *days = GetVarPointer(VAR_DAYS);
@@ -132,6 +126,7 @@ static void UpdatePerDay(struct Time *localTime)
         SetRandomLotteryNumber(daysSince);
         FlagClear(FLAG_RYU_FAILED_PROF_SPECIAL_QUEST);
         *days = localTime->days;
+        QueueNotification(gRyuText_DailyQuestsReset, NOTIFY_GENERAL, 60);
     }
 }
 
