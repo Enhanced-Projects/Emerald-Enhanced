@@ -381,15 +381,6 @@ struct RankingHall2P
     u8 language;
 };
 
-struct DeliveryManifest
-{
-    bool8 completed;
-    u8  jobId;
-    u16 targetVisibilityFlag;
-    u16 targetGfxId;
-    u16 targetMapSec;
-};
-
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -428,8 +419,6 @@ struct SaveBlock2
               u16 unusedSB2Flags:12; //remainer of unused sb2 flags
              u8 propertyFlags[NUM_PROPERTY_BYTES];
              u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
-             u8 totalCurrentDeliveryTargets;
-             struct DeliveryManifest PlayerCurrentDeliveryManifest[6];
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
