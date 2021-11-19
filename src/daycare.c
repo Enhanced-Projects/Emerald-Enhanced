@@ -708,30 +708,18 @@ static void AlterEggSpeciesWithIncenseItem(u16 *species, struct DayCare *daycare
         *species = SPECIES_WOBBUFFET;
     else if (*species == SPECIES_AZURILL && motherItem != ITEM_SEA_INCENSE && fatherItem != ITEM_SEA_INCENSE)
         *species = SPECIES_MARILL;
-    #ifdef SPECIES_MUNCHLAX
         else if (*species == SPECIES_MUNCHLAX && motherItem != ITEM_FULL_INCENSE && fatherItem != ITEM_FULL_INCENSE)
             *species = SPECIES_SNORLAX;
-    #endif
-    #ifdef SPECIES_HAPPINY
         else if (*species == SPECIES_HAPPINY && motherItem != ITEM_LUCK_INCENSE && fatherItem != ITEM_LUCK_INCENSE)
             *species = SPECIES_CHANSEY;
-    #endif
-    #ifdef SPECIES_MIMEJR
         else if (*species == SPECIES_MIMEJR && motherItem != ITEM_ODD_INCENSE && fatherItem != ITEM_ODD_INCENSE)
             *species = SPECIES_MR_MIME;
-    #endif
-    #ifdef SPECIES_BONSLY
         else if (*species == SPECIES_BONSLY && motherItem != ITEM_ROCK_INCENSE && fatherItem != ITEM_ROCK_INCENSE)
             *species = SPECIES_SUDOWOODO;
-    #endif
-    #ifdef SPECIES_BUDEW
         else if (*species == SPECIES_BUDEW && motherItem != ITEM_ROSE_INCENSE && fatherItem != ITEM_ROSE_INCENSE)
             *species = SPECIES_ROSELIA;
-    #endif
-    #ifdef SPECIES_MANTYKE
         else if (*species == SPECIES_MANTYKE && motherItem != ITEM_WAVE_INCENSE && fatherItem != ITEM_WAVE_INCENSE)
             *species = SPECIES_MANTINE;
-    #endif
 }
 
 static void GiveVoltTackleIfLightBall(struct Pokemon *mon, struct DayCare *daycare)
