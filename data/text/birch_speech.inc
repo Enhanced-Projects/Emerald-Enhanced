@@ -4,7 +4,6 @@ gText_Birch_Welcome:: @ 82C897B
 gText_Birch_Pokemon:: @ 82C89FB
 	.string " $"
 
-
 @         I don't know why, but the game is not clearing out the textbox after each line, so i filled in the extra space with... whitespace.
 
 
@@ -18,14 +17,14 @@ gText_Birch_MainSpeech:: @ 82C8A1F
 	.string "Note, if you downloaded this\n"
 	.string "game as a ROM, you are very likely\p"
 	.string "playing an outdated version.\n"
-	.string "You should check the discord for\l"
-	.string "versions."
-	.string "As for the game itself, expect \n"
+	.string "You should check the discord for \p"
+	.string "new versions.\p"
+	.string "As for the game itself, expect\n"
 	.string "it to be much harder than vanilla,\p"
 	.string "and don't try to follow the normal\n"
 	.string "storyline.\p"
-	.string "  We have replaced the vanilla \n"
-	.string "  storyline entirely.          $"
+	.string "  We have {COLOR LIGHT_BLUE}{SHADOW BLUE}replaced{COLOR DARK_GREY}{SHADOW LIGHT_GREY} the vanilla \n"
+	.string "  storyline {COLOR LIGHT_RED}{SHADOW RED}entirely.          $"
 
 gText_Birch_AndYouAre:: @ 82C8BD0
 	.string "$"
