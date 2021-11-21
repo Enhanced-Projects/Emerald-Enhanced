@@ -1942,7 +1942,7 @@ const u8 gText_RyuExitExpMultMenuOption[] =_("No Change");
 const u8 gText_RyuNewGameMenuEasyMode[] = _("Easy Mode(4.0x Exp)");
 const u8 gText_RyuNewGameMenuNormalMode[] = _("Normal Mode(Exp scales with badges)");
 const u8 gText_RyuNewGameMenuHardMode[] = _("Hard Mode(1.0x Exp)");
-const u8 gText_RyuNewGameChallengeMode[] = _("Challenge Mode(Rules Enforced)");
+const u8 gText_RyuNewGameChallengeMode[] = _("Challenge Mode");
 const u8 gText_RyuNewGameHardcoreMode[] = _("{COLOR RED}{SHADOW LIGHT_RED}HARDCORE");
 const u8 gText_RyuNewGameFrontierMode[] = _("{COLOR LIGHT_GREEN}{SHADOW LIGHT_GREY}Frontier Mode");
 
