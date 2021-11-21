@@ -38,7 +38,7 @@ RG_Reset::
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle
 	closemessage
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
-	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
+	call_if_set FLAG_RYU_CHALLENGEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM1HANDOUT, RyuGymItemReward1
 	call Ryu_CheckForPartnerReward
 	release

@@ -217,7 +217,7 @@ void RyuKillMon(void)
 
     CompactPartySlots();
     if ((CalculatePlayerPartyCount) == 0)
-        FlagSet(FLAG_RYU_NUZLOCKEFAILED);
+        FlagSet(FLAG_RYU_CHALLENGEFAILED);
 }
 
 extern const u16 gFrontierBannedSpecies[27];
@@ -1956,7 +1956,7 @@ int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game
     if (VarGet(VAR_RYU_QUEST_NURSE) == 2 || VarGet(VAR_RYU_QUEST_NURSE) == 4 || VarGet(VAR_RYU_QUEST_NURSE) == 6)//player is escorting nurse
         return 110;
     
-    if (FlagGet(FLAG_RYU_LIMBO) == 1)//Player is in Limbo after failing nuzlocke or hardcore.
+    if (FlagGet(FLAG_RYU_LIMBO) == 1)//Player is in Limbo after failing challenge or hardcore.
         return 120;
 
     return 0;

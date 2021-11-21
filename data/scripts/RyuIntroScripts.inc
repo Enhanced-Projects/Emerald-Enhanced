@@ -20,7 +20,7 @@ GameModeSelect:: @ 823BF04
 	switch VAR_RESULT
 	case 0, IT_EasyMode
 	case 1, IT_NormalMode
-	case 2, IT_NuzlockeMode
+	case 2, IT_ChallengeMode
 	case 3, IT_FrontierMode
 	goto IT_NormalMode
 	end
@@ -80,7 +80,7 @@ Ryu_NewGamePlus::
 	multichoicedefault 1, 2, MULTI_SELECT_NEW_GAME_PLUS_MODE, 3, 0
 	switch VAR_RESULT
 	case 0, IT_NormalMode	
-	case 1, IT_NuzlockeMode
+	case 1, IT_ChallengeMode
     case 2, IT_HardcoreMode
 	goto IT_NormalMode
 
@@ -171,20 +171,20 @@ Normalmode_NGP::
 	setvar VAR_RYU_EXP_MULTIPLIER, 10 @arbitrary value to tell getExp to use the ngp scaling
 	return
 	
-IT_NuzlockeMode::
-	msgbox IT_NuzlockeIntro MSGBOX_SIGN
-	call_if_set FLAG_RYU_ISNGPLUS, Nuzlockemode_NGP
+IT_ChallengeMode::
+	msgbox IT_ChallengeIntro MSGBOX_SIGN
+	call_if_set FLAG_RYU_ISNGPLUS, Challengemode_NGP
 	setvar VAR_RYU_EXP_MULTIPLIER, 2000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1500
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
 	setvar VAR_RYU_PC_USES, 3
 	additem ITEM_POKE_BALL, 10
 	additem ITEM_POTION, 5
 	additem ITEM_SUPER_POTION, 2
 	additem ITEM_ELIXIR, 2
 	removemoney 3000
-	msgbox IT_NuzlockeOutro MSGBOX_SIGN
-	setflag FLAG_RYU_NUZLOCKEMODE
+	msgbox IT_ChallengeOutro MSGBOX_SIGN
+	setflag FLAG_RYU_CHALLENGEMODE
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -193,7 +193,7 @@ IT_NuzlockeMode::
 	goto_if_eq SetFemaleStartingVariables
 	end
 
-Nuzlockemode_NGP::
+Challengemode_NGP::
 	setvar VAR_RYU_AUTOLEVEL_MODIFIER, -2
 	return
 
@@ -222,7 +222,7 @@ IT_HardcoreMode::
 	setvar VAR_RYU_EXP_MULTIPLIER, 2000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 2000
 	setflag FLAG_RYU_HARDCORE_MODE
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 1
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 1
 	removemoney 2750
 	msgbox IT_HardcoreOutro
 	setflag FLAG_HIDE_MAP_NAME_POPUP
@@ -253,7 +253,7 @@ IT_HardcoreIntro:
     .string "Hello, and welcome to Hardcore\n"
     .string "mode.\p"
     .string "In this mode, you are restricted\n"
-    .string "even further than Nuzlocke mode.\p"
+    .string "even further than Challenge mode.\p"
     .string "You make 15% the money you normally\n"
     .string "you normally would.\p"
     .string "You can't use pokecenters, and you\n"
@@ -263,8 +263,8 @@ IT_HardcoreIntro:
 IT_HardcoreOutro:
 	.string "Welcome to the nightmare.$"
 
-IT_NuzlockeIntro:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have opted to do Nuzlocke mode.\n"
+IT_ChallengeIntro:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have opted to do Challenge mode.\n"
 	.string "Emerald Enhanced uses a special set\p"
 	.string "of rules, and enforces them. They are:\p"
 	.string "1: No marts.\p"
@@ -280,8 +280,8 @@ IT_NuzlockeIntro:
 	.string "Enjoy your challenge!\n"
 	.string "--Ryu, Creator of Emerald Enhanced$"
 	
-IT_NuzlockeOutro:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Nuzlocke rules are now active!\n"
+IT_ChallengeOutro:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Challenge rules are now active!\n"
 	.string "Starter Kit has been given!$"
 	
 
@@ -517,7 +517,7 @@ LRT_Mom_8badges::
 	goto LRT_Mom_base
 
 LRT_Mom_base::
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, LRT_MOM_Restricted
+	goto_if_set FLAG_RYU_CHALLENGEMODE, LRT_MOM_Restricted
 	goto_if_set FLAG_RYU_HARDCORE_MODE, LRT_MOM_Restricted
 	msgbox Momwouldyouliketoheal, MSGBOX_YESNO
 	compare VAR_RESULT, YES

@@ -2928,9 +2928,9 @@ extern const u8 gText_MainMenuNewGamePlus[];
 extern const u8 gText_RyuNewGameMenuEasyMode[];
 extern const u8 gText_RyuNewGameMenuNormalMode[];
 extern const u8 gText_RyuNewGameMenuHardMode[];
-extern const u8 gText_RyuNewGameNuzlockeMode[];
+extern const u8 gText_RyuNewGameChallengeMode[];
 extern const u8 gText_RyuNewGameHardcoreMode[];
-extern const u8 gText_NuzlockeName[];
+extern const u8 gText_ChallengeName[];
 extern const u8 gText_RyuNewGameFrontierMode[];
 
 extern const u8 gText_RyuTeleportHome[];

@@ -1,5 +1,5 @@
 mapscripts Limbo_MapScripts {
     ON_FRAME[
-        VAR_TEMP_B, 0: RyuScript_EndNuzlockeMode
+        VAR_TEMP_B, 0: RyuScript_EndChallengeMode
     ]
 }

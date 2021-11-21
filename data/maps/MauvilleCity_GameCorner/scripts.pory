@@ -798,7 +798,7 @@ MauvilleCity_GameCorner_Text_CantPlayWithNoCoinCase: @ 8210C2E
 	.string "a coin case.$"
 @==================================================================================================
 RyuDiceGame::
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, RDG_BallBlackMarket
+	goto_if_set FLAG_RYU_CHALLENGEMODE, RDG_BallBlackMarket
 	msgbox gambler
 	release
 	end
@@ -807,13 +807,13 @@ RDG_BallBlackMarket::
 	lock
 	faceplayer
 	setvar VAR_RYU_PRICE_MULTIPLIER, 8000
-	clearflag FLAG_RYU_NUZLOCKEMODE
+	clearflag FLAG_RYU_CHALLENGEMODE
 	msgbox BBM_intro, MSGBOX_DEFAULT
 	message gBallBlackMarket
 	waitmessage
 	pokemart RyuDiceGame_BallBlackMarket
 	msgbox BBM_Outro
-	setflag FLAG_RYU_NUZLOCKEMODE
+	setflag FLAG_RYU_CHALLENGEMODE
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1500
 	release
 	end

@@ -118,7 +118,7 @@ SG_Reset::
 	clearflag FLAG_RYU_BOSS_SCALE
 	msgbox SootopolisCity_Gym_1F_Text_JuanPostBattle, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
-	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
+	call_if_set FLAG_RYU_CHALLENGEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM8HANDOUT, RyuGymItemReward8
 	call Ryu_CheckForPartnerReward
 	release

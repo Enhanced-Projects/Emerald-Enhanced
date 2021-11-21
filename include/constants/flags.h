@@ -1186,7 +1186,7 @@
 
 #define FLAG_RYU_MET_RIVAL_LITTLEROOT                               0x465
 #define FLAG_RYU_FRONTIER_MODE                                      0x466
-#define FLAG_RYU_NUZLOCKEMODE                                       0x467
+#define FLAG_RYU_CHALLENGEMODE                                       0x467
 #define FLAG_RYU_HARDCORE_MODE                                      0x468
 
 #define FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL                             0x469
@@ -1196,7 +1196,7 @@
 #define FLAG_RYU_EXP_DRIVE_DISABLE_EARNING                          0x46D
 #define FLAG_ITEM_ROUTE_119_NUGGET                                  0x46E
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
-#define FLAG_RYU_NUZLOCKEFAILED                                     0x470
+#define FLAG_RYU_CHALLENGEFAILED                                     0x470
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
 #define FLAG_UNUSED_0x472                                           0x472
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473

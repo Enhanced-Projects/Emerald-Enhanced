@@ -10,7 +10,7 @@ TC_EvIvCheckerScript::
 	bufferpartymonnick 1, 0
 	msgbox Ryu_Stats
 	removeinfobox
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, TC_IVEV_NOHEAL
+	goto_if_set FLAG_RYU_CHALLENGEMODE, TC_IVEV_NOHEAL
 	goto_if_set FLAG_RYU_HARDCORE_MODE, TC_IVEV_NOHEAL
 	delay 10
 	special HealPlayerParty
@@ -70,8 +70,8 @@ TC_HCNZ_CANTHEAL:
 	
 TC_Entry::
 	lockall
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, TC_ENTRY_NUZLOCKE
-	goto_if_set FLAG_RYU_HARDCORE_MODE, TC_ENTRY_NUZLOCKE
+	goto_if_set FLAG_RYU_CHALLENGEMODE, TC_ENTRY_CHALLENGE
+	goto_if_set FLAG_RYU_HARDCORE_MODE, TC_ENTRY_CHALLENGE
 	goto_if_set FLAG_RYU_TC_ENTERED, TC_Exiting
 	applymovement 2, TC_FacePlayer
 	goto_if_set FLAG_RYU_DEV_MODE, TC_DevEntry
@@ -82,14 +82,14 @@ TC_Entry::
 	goto_if_eq TC_Entering
 	goto TC_Exiting
 
-TC_ENTRY_NUZLOCKE::
-	msgbox TC_CantEnterNuzlockeHardcore
+TC_ENTRY_CHALLENGE::
+	msgbox TC_CantEnterChallengeHardcore
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown
 	release
 	end
 
-TC_CantEnterNuzlockeHardcore:
+TC_CantEnterChallengeHardcore:
 	.string "You're in a restricted game mode.\nYou can't use this service.$"
 
 TC_DevEntry::
@@ -233,7 +233,7 @@ TC_Exiting::
 
 TC_InvalidExitCheck::
 	goto_if_set FLAG_RYU_TC_ENTERED, TC_WelcomeBack
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, RyuTCDisabledNuzlocke
+	goto_if_set FLAG_RYU_CHALLENGEMODE, RyuTCDisabledChallenge
 	releaseall
 	end
 
@@ -445,7 +445,7 @@ TC_Imprint_Txt:
 TC_Tutor::
 	lockall
 	faceplayer
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, RyuTCDisabledNuzlocke
+	goto_if_set FLAG_RYU_CHALLENGEMODE, RyuTCDisabledChallenge
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuTCDisabledHardcore
 	msgbox TC_TutorWelcome MSGBOX_DEFAULT
 	msgbox TC_TutorQuery MSGBOX_YESNO

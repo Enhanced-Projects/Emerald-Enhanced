@@ -328,7 +328,7 @@ RyuEvSuccessMsg:
 EvNoImprints:
 	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough prints.\pObtain more at Lilycove\nTraining Center.$"
 
-@@======================================================================================================================================= NUZLOCKE CHALLENGE RELATED
+@@======================================================================================================================================= CHALLENGE CHALLENGE RELATED
 
 Ryu_CheckSetNuzlockPCUseVar::
 	compare VAR_RYU_PC_USES, 0
@@ -358,13 +358,13 @@ Ryu_SorryCantHeal:
 Ryu_SorryHardcore:
 	.string "This service is restricted by\ngame rules. Sorry!$"
 
-RyuMartsDisabledNuzlocke::
-	msgbox RyuMartsDisabledNuzlockeMsg MSGBOX_DEFAULT
+RyuMartsDisabledChallenge::
+	msgbox RyuMartsDisabledChallengeMsg MSGBOX_DEFAULT
 	release
 	end
 
-RyuTCDisabledNuzlocke::
-	msgbox RyuTCDisabledNuzlockeMsg MSGBOX_DEFAULT
+RyuTCDisabledChallenge::
+	msgbox RyuTCDisabledChallengeMsg MSGBOX_DEFAULT
 	release
 	end
 
@@ -376,14 +376,14 @@ Ryu_YouHaveNoMons::
 CantHealNoMons:
 	.string "You don't have any pokemon to heal.\nPlease return another time!$"
 
-RyuMartsDisabledNuzlockeMsg:
+RyuMartsDisabledChallengeMsg:
 	.string "{COLOR DARK_GREY}{SHADOW RED}Sorry, but you can't use this while\n"
-	.string "playing in nuzlocke mode. Fight more\p"
+	.string "playing in challenge mode. Fight more\p"
 	.string "Gyms!$"
 
-RyuTCDisabledNuzlockeMsg:
+RyuTCDisabledChallengeMsg:
 	.string "{COLOR DARK_GREY}{SHADOW RED}Sorry, but the Training Center is\n"
-	.string "disabled while playing in nuzlocke\p"
+	.string "disabled while playing in challenge\p"
 	.string "mode. Grind in grass!$"
 	
 RyuHealed:
@@ -401,7 +401,7 @@ RyuHealedGym::
 	return
 	
 RyuScripts_HardcoreGymReward::
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 1
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 1
 	release
 	end
 
@@ -409,12 +409,12 @@ RyuGymItemReward1::
 	giveitem ITEM_TM39
 	closemessage
 	setflag FLAG_RYU_GYM1HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 1
 	additem ITEM_GREAT_BALL, 1
 	closemessage
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 Ryu_ResetPcUses::
@@ -424,71 +424,71 @@ Ryu_ResetPcUses::
 RyuGymItemReward2::
 	giveitem ITEM_TM60
 	setflag FLAG_RYU_GYM2HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 2
 	additem ITEM_GREAT_BALL, 2
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward3::
 	giveitem ITEM_TM34
 	setflag FLAG_RYU_GYM3HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 3
 	additem ITEM_GREAT_BALL, 3
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward4::
 	giveitem ITEM_TM50
 	setflag FLAG_RYU_GYM4HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 4
 	additem ITEM_GREAT_BALL, 4
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward5::
 	giveitem ITEM_TM42
 	setflag FLAG_RYU_GYM5HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 5
 	additem ITEM_GREAT_BALL, 5
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward6::
 	giveitem ITEM_TM40
 	setflag FLAG_RYU_GYM6HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 6
 	additem ITEM_GREAT_BALL, 6
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward7::
 	giveitem ITEM_TM04
 	setflag FLAG_RYU_GYM7HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 7
 	additem ITEM_GREAT_BALL, 7
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward8::
 	giveitem ITEM_TM03
 	setflag FLAG_RYU_GYM8HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 8
 	additem ITEM_GREAT_BALL, 8
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuHealedGymMsg:
@@ -497,28 +497,28 @@ RyuHealedGymMsg:
 
 RyuGameClearedMsg:
 	.string "{COLOR GREEN} {SHADOW LIGHT_GREY}Congratulations on clearing the game\n"
-	.string "in nuzlocke mode! It's a momentous\p"
+	.string "in challenge mode! It's a momentous\p"
 	.string "achievment, considering how hard\n"
 	.string "the base game is. Add Ryuhouji/2180\p"
 	.string "on discord and let me know you\n"
 	.string "reached this point!\p"
-	.string "Nuzlocke restrictions have been\p"
+	.string "Challenge restrictions have been\p"
 	.string "lifted, enjoy the battle frontier!$"
 	
 RyuEmptySpace:
 	.string "$"
 	
-RyuFailedNuzlocke::
-	msgbox NuzlockeFail MSGBOX_DEFAULT
+RyuFailedChallenge::
+	msgbox ChallengeFail MSGBOX_DEFAULT
 	closemessage
-	clearflag FLAG_RYU_NUZLOCKEMODE
+	clearflag FLAG_RYU_CHALLENGEMODE
 	setvar VAR_RYU_EXP_MULTIPLIER, 1000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	release
 	end
 	
-NuzlockeFail:
-	.string "You have failed this nuzlocke\n"
+ChallengeFail:
+	.string "You have failed this challenge\n"
 	.string "challenge. Game will now go to\l."
 	.string "Normal mode.$"
 
@@ -993,14 +993,14 @@ RL_ResetKyogre::
 	clearflag FLAG_RYU_KYOGRE_RAN
 	return
 
-@==================================================================================================Failed Nuzlocke/Hardcore
+@==================================================================================================Failed Challenge/Hardcore
 
-Ryu_PlayerFailedNuzlockeHardcore::
+Ryu_PlayerFailedChallengeHardcore::
 	msgbox Ryu_failedNZHC
 	waitstate
 
 Ryu_failedNZHC:
-	.string "You have failed Nuzlocke or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
+	.string "You have failed Challenge or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
 
 @==================================================================================================Start Menu Config Info
 
@@ -1973,7 +1973,7 @@ script RyuScript_GoToLimbo{
     waitstate
 }
 
-script RyuScript_EndNuzlockeMode{
+script RyuScript_EndChallengeMode{
     if(flag(FLAG_RYU_LIMBO)){
         setvar(VAR_TEMP_B, 100)
         releaseall
@@ -1984,7 +1984,7 @@ script RyuScript_EndNuzlockeMode{
     setflag(FLAG_RYU_LIMBO)
     lockall
     setflag(FLAG_RYU_WAYSTONE_DISABLED)
-    msgbox(format("Welcome to Limbo. You have failed your Nuzlocke or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game +."))
+    msgbox(format("Welcome to Limbo. You have failed your Challenge or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game +."))
     closemessage
     msgbox(format("Please wait while we check some things, this might take a few seconds."))
 	setflag(FLAG_SYS_GAME_CLEAR)

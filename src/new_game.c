@@ -155,7 +155,7 @@ void NewGameInitData(void)
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
     u16 originalSaveFileVersion = VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION);
 
-    //I don't want people being able to newgame plus unless they have defeated the champion. Nuzlocke/Hardcore failure circumvents this.
+    //I don't want people being able to newgame plus unless they have defeated the champion. Challenge/Hardcore failure circumvents this.
     //It also allows people to start over if they want a fresh start without having to physically delete their save file.
     if (!FlagGet(FLAG_SYS_GAME_CLEAR))
     {

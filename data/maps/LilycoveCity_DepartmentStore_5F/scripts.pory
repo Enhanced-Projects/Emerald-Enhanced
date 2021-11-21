@@ -248,7 +248,7 @@ script LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarLeft {
 		goto(RyuScript_BallChanger)
 	}
 	else {
-		goto_if_set(FLAG_RYU_NUZLOCKEMODE, RyuMartsDisabledNuzlocke)
+		goto_if_set(FLAG_RYU_CHALLENGEMODE, RyuMartsDisabledChallenge)
 		message(LCC_BALL_STORE_MSG)
 		waitmessage
 		pokemart(LCC_BallItemMart)

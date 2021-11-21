@@ -1942,7 +1942,7 @@ const u8 gText_RyuExitExpMultMenuOption[] =_("No Change");
 const u8 gText_RyuNewGameMenuEasyMode[] = _("Easy Mode(4.0x Exp)");
 const u8 gText_RyuNewGameMenuNormalMode[] = _("Normal Mode(Exp scales with badges)");
 const u8 gText_RyuNewGameMenuHardMode[] = _("Hard Mode(1.0x Exp)");
-const u8 gText_RyuNewGameNuzlockeMode[] = _("Nuzlocke Mode(Rules Enforced)");
+const u8 gText_RyuNewGameChallengeMode[] = _("Challenge Mode(Rules Enforced)");
 const u8 gText_RyuNewGameHardcoreMode[] = _("{COLOR RED}{SHADOW LIGHT_RED}HARDCORE");
 const u8 gText_RyuNewGameFrontierMode[] = _("{COLOR LIGHT_GREEN}{SHADOW LIGHT_GREY}Frontier Mode");
 
@@ -1980,9 +1980,9 @@ const u8 gText_RyuTeleportBattleFrontierArena[] = _(" Battle Arena");
 const u8 gText_RyuTeleportBattleFrontierDome[] = _(" Battle Dome");
 const u8 gText_RyuTeleportBattleFrontierCallback[] = _(" Return");
 
-const u8 gText_NuzlockeName[] = _("Failure");
+const u8 gText_ChallengeName[] = _("Failure");
 const u8 gText_RyuMonDied[] = _("A pokemon died...");
-const u8 gText_RyuNuzlockeFailed[] = _("You have failed the Nuzlocke challenge.");
+const u8 gText_RyuChallengeFailed[] = _("You have failed the Challenge challenge.");
 
 const u8 gText_RyuPasscodeMenu1[] = _("1");
 const u8 gText_RyuPasscodeMenu2[] = _("2");
@@ -2126,7 +2126,7 @@ const u8 gText_ColorLightRedShadowRed[] = _("{COLOR LIGHT_RED}{SHADOW RED}");
 const u8 gText_ColorLightRedShadowDarkGrey[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}");
 const u8 gText_ColorLightBlueShadowDarkGrey[] = _("{COLOR LIGHT_BLUE}{SHADOW LIGHT_GREY}");
 
-const u8 gText_MartDisabledNuzlocke[] = _("You are in Nuzlocke mode.\nMarts are disabled.");
+const u8 gText_MartDisabledChallenge[] = _("You are in Challenge mode.\nMarts are disabled.");
 
 const u8 gText_ItemRepel[] = _("Repel (100 steps)");
 const u8 gText_ItemSuperRepel[] = _("Super Repel (200 steps)");

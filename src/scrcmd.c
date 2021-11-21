@@ -75,7 +75,7 @@ extern const SpecialFunc gSpecials[];
 extern const u8 *gStdScripts[];
 extern const u8 *gStdScripts_End[];
 extern const u8 RyuResetFollowerPosition[];
-extern const u8 gText_MartDisabledNuzlocke[];
+extern const u8 gText_MartDisabledChallenge[];
 
 static void CloseBrailleWindow(void);
 
@@ -1905,10 +1905,10 @@ bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
     {
         PlaySE(SE_HAZURE);
-        ShowFieldMessage(gText_MartDisabledNuzlocke);
+        ShowFieldMessage(gText_MartDisabledChallenge);
         return TRUE;
     }
 

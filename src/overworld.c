@@ -90,7 +90,7 @@
 #define FACING_FORCED_LEFT 9
 #define FACING_FORCED_RIGHT 10
 
-extern const u8 RyuFailedNuzlocke[];
+extern const u8 RyuFailedChallenge[];
 extern const u8 gRyuWarpMaleHomeScript[];
 extern const u8 gRyuWarpFemaleHomeScript[];
 
@@ -199,7 +199,7 @@ u8 gLocalLinkPlayerId; // This is our player id in a multiplayer mode.
 u8 gFieldLinkPlayerCount;
 extern u8 RyuFollowerSelectNPCScript[];
 extern u8 Ryu_StartRandomBattle[];
-extern u8 Ryu_PlayerFailedNuzlockeHardcore[];
+extern u8 Ryu_PlayerFailedChallengeHardcore[];
 
 // EWRAM vars
 EWRAM_DATA static u8 sObjectEventLoadFlag = 0;
@@ -404,7 +404,7 @@ void DoWhiteOut(void)
         DoSoftReset();
     }
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
         RyuWipeParty();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
@@ -412,13 +412,13 @@ void DoWhiteOut(void)
 
     FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
 
-    if (CalculatePlayerPartyCount() == 0 && (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1))
+    if (CalculatePlayerPartyCount() == 0 && (FlagGet(FLAG_RYU_CHALLENGEFAILED) == 1))
     {
         if (VarGet(VAR_RYU_NGPLUS_COUNT) > 1)
         {
             FlagSet(FLAG_SYS_GAME_CLEAR);
             VarSet(VAR_RYU_NGPLUS_COUNT, ((VarGet(VAR_RYU_NGPLUS_COUNT) - 1)));
-            if ((CheckAchievement(ACH_WASTED) == FALSE) && (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1))
+            if ((CheckAchievement(ACH_WASTED) == FALSE) && (FlagGet(FLAG_RYU_CHALLENGEFAILED) == 1))
                 GiveAchievement(ACH_WASTED);
         }
         HandleSavingData(SAVE_OVERWRITE_DIFFERENT_FILE);
@@ -453,7 +453,7 @@ void DoPartnerWhiteOut(void)
         DoSoftReset();
     }
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
         RyuWipeParty();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
@@ -1842,7 +1842,7 @@ void CB2_ReturnToFieldLocal(void)
         SetMainCallback2(CB2_Overworld);
     }
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
         RyuKillMon();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
@@ -1951,11 +1951,11 @@ void CB2_ContinueSavedGame(void)
         ScriptContext1_SetupScript(Ryu_StartRandomBattle);
     }
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEFAILED) == 1)
     {
         FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
         ScriptContext2_Enable();
-        ScriptContext1_SetupScript(Ryu_PlayerFailedNuzlockeHardcore);
+        ScriptContext1_SetupScript(Ryu_PlayerFailedChallengeHardcore);
     }
 
     if (UseContinueGameWarp() == TRUE)
@@ -2182,7 +2182,7 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
 
 static bool32 ReturnToFieldLocal(u8 *state)
 {
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
         RyuKillMon();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)

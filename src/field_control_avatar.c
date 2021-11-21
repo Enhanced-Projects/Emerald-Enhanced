@@ -212,11 +212,11 @@ const u8 gRyuReachedDailyTargetLocationString[] = _("Reached target area for the
 
 void RyuDoNotifyTasks(void)
 {
-    if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for nuzlocke/hardcore
+    if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for challenge/hardcore
     {
         if (!(FlagGet(FLAG_RYU_LIMBO) == 1))
         {
-            if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
+            if ((FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
                 ScriptContext1_SetupScript(RyuScript_GoToLimbo);
         }
     }

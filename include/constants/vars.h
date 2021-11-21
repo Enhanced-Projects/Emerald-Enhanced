@@ -267,7 +267,7 @@
 #define VAR_RYU_GCMS_VALUE                   0x40F8
 #define VAR_RYU_FOLLOWER_BATTLES             0x40F9//battles fought with partners
 #define VAR_UNUSED_0x40FA                    0x40FA//previously exp drive, now unused.
-#define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB
+#define VAR_RYU_CHALLENGE_WAYSTONE_USES       0x40FB
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC
 #define VAR_RYU_WEATHER                      0x40FD
 #define VAR_RYU_QUEST_LANA                   0x40FE
