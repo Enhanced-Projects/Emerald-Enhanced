@@ -259,8 +259,6 @@ IslandCave_EventScript_CaveEntranceMiddle:: @ 8238EEF
 	lockall
 	call_if_set FLAG_TEMP_3, IslandCave_EventScript_ClearSteps
 	goto_if_set FLAG_SYS_BRAILLE_REGICE_COMPLETED, IslandCave_EventScript_BigHoleInWall
-	braillemessage IslandCave_Braille_RunLapAroundWall
-	closebraillemessage
 	compare VAR_RYU_QUEST_LANA, 40
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall

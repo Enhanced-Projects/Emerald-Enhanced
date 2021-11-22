@@ -41,9 +41,6 @@ DesertRuins_EventScript_ShowRegirock:: @ 822D9D7
 DesertRuins_EventScript_CaveEntranceMiddle:: @ 822D9DB
 	lockall
 	goto_if_set FLAG_SYS_REGIROCK_PUZZLE_COMPLETED, DesertRuins_EventScript_BigHoleInWall
-	braillemessage DesertRuins_Braille_UseRockSmash
-	waitbuttonpress
-	closebraillemessage
 	compare VAR_RYU_QUEST_LANA, 40
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall
