@@ -190,7 +190,7 @@ bool8 CheckForTrainersWantingBattle(void)
 {
     u8 i;
     
-    if (CheckCanIgnoreTrainers() == TRUE)
+    if ((CheckCanIgnoreTrainers() == TRUE) && (!(VarGet(VAR_TRAINER_HILL_IS_ACTIVE) == 1)))
         return FALSE;
     
     gNoOfApproachingTrainers = 0;
