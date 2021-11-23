@@ -787,6 +787,7 @@ gBattleAnims_General::
 	.4byte General_SlideOffScreen
 	.4byte General_RyuAffectionBoostHeartAnim
 	.4byte General_Eclipse
+	.4byte General_StrongWinds
 
 	.align 2
 gBattleAnims_Special::
@@ -24366,6 +24367,17 @@ General_Eclipse:
 	waitforvisualfinish
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff
+	end
+
+General_StrongWinds::
+	loadspritegfx ANIM_TAG_FLYING_DIRT
+	playsewithpan SE_M_GUST, 0
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_FLYING_DIRT, 0, 12, 12, RGB(20, 20, 20)
+	waitforvisualfinish
+	createvisualtask AnimTask_LoadWindstormBackground, 5, FALSE
+	delay 32
+	waitforvisualfinish
+	stopsound
 	end
 
 General_MegaEvolution:

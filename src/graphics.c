@@ -1319,6 +1319,10 @@ const u32 gBattleAnimBgImage_Sandstorm[] = INCBIN_U32("graphics/battle_anims/bac
 
 const u32 gBattleAnimSpritePal_FlyingDirt[] = INCBIN_U32("graphics/battle_anims/sprites/flying_dirt.gbapal.lz");
 
+const u32 gBattleAnimBgTilemap_Windstorm[] = INCBIN_U32("graphics/battle_anims/backgrounds/sandstorm_brew.bin.lz");
+const u32 gBattleAnimBgImage_Windstorm[] = INCBIN_U32("graphics/battle_anims/backgrounds/windstorm_brew.4bpp.lz");
+const u32 gBattleAnimSpritePal_Windstorm[] = INCBIN_U32("graphics/battle_anims/backgrounds/windstorm_brew.gbapal.lz");
+
 const u32 gBattleAnimSpriteGfx_MetalSoundWaves[] = INCBIN_U32("graphics/battle_anims/sprites/metal_sound_waves.4bpp.lz");
 const u32 gBattleAnimSpritePal_MetalSoundWaves[] = INCBIN_U32("graphics/battle_anims/sprites/metal_sound_waves.gbapal.lz");
 
