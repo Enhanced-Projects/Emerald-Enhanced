@@ -439,10 +439,12 @@ void DoWhiteOut(void)
 	FlagClear(FLAG_DEFEATED_ELITE_4_GLACIA);
 	FlagClear(FLAG_DEFEATED_ELITE_4_DRAKE);
 	VarSet(VAR_ELITE_4_STATE, 0);
-    if (&gSaveBlock2Ptr->playerGender == MALE)
-        ScriptContext1_SetupScript(gRyuWarpMaleHomeScript);
+    /*if (&gSaveBlock2Ptr->playerGender == MALE)
+        ScriptContext2_RunNewScript(gRyuWarpMaleHomeScript);
     else
-        ScriptContext1_SetupScript(gRyuWarpFemaleHomeScript);
+        ScriptContext2_RunNewScript(gRyuWarpFemaleHomeScript);*/
+    SetWarpDestinationToLastHealLocation();
+    WarpIntoMap();
 }
 
 void DoPartnerWhiteOut(void)
