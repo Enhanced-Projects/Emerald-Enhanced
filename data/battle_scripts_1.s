@@ -366,6 +366,14 @@ gBattleScriptsForMoveEffects:: @ 82D86A8
 	.4byte BattleScript_EffectFairyLock
 	.4byte BattleScript_EffectAllySwitch
 	.4byte BattleScript_EffectSleepHit
+	.4byte BattleScript_EffectOmen
+
+BattleScript_EffectOmen:
+	attackcanceler
+	attackstring
+	ppreduce
+	seteclipse
+	goto BattleScript_MoveWeatherChange
 
 BattleScript_EffectSleepHit:
 	setmoveeffect MOVE_EFFECT_SLEEP
@@ -6255,6 +6263,15 @@ BattleScript_AttackerFormChange::
 	
 BattleScript_AttackerFormChangeEnd3::
 	call BattleScript_AttackerFormChange
+	end3
+
+BattleScript_HarbingerActivates::
+	pause 0x20
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_ECLIPSESTARTS
+	waitmessage 0x40
+	playanimation BS_BATTLER_0, B_ANIM_ECLIPSE, NULL
+	call BattleScript_WeatherFormChanges
 	end3
 
 BattleScript_TargetFormChange::

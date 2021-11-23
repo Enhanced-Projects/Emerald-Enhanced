@@ -4105,6 +4105,13 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 effect++;
             }
             break;
+        case ABILITY_HARBINGER:
+            if (TryChangeBattleWeather(battler, ENUM_WEATHER_ECLIPSE, TRUE))
+            {
+                BattleScriptPushCursorAndCallback(BattleScript_HarbingerActivates);
+                effect++;
+            }
+            break;
         }
         break;
     case ABILITYEFFECT_ENDTURN: // 1
