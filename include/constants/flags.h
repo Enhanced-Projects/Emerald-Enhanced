@@ -423,7 +423,7 @@
 #define FLAG_RYU_RAYQUAZA_TRANSFORMED        0x18E
 #define FLAG_RYU_SPECIAL_RAYQUAZA_GIFT_AVAILABLE   0x18F
 #define FLAG_SHINY_CREATION                  0x190
-#define FLAG_UNUSED_0x191                    0x191
+#define FLAG_RYU_TM63                        0x191
 #define FLAG_UNUSED_0x192                    0x192
 #define FLAG_UNUSED_0x193                    0x193
 #define FLAG_UNUSED_0x194                    0x194
