@@ -368,5 +368,7 @@ extern const u8 BattleScript_RyuAffectionGeneralAnim[];
 extern const u8 BattleScript_RyuAffectionHealedConfuse[];
 extern const u8 BattleScript_RyuAffectionHealedParalyze[];
 extern const u8 BattleScript_RyuAffectionGeneralAnim3[];
+extern const u8 BattleScript_EclipseContinues[];
+extern const u8 BattleScript_EclipseEnds[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

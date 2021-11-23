@@ -526,6 +526,7 @@
 #define B_ANIM_FORM_CHANGE              0x1D
 #define B_ANIM_SLIDE_OFFSCREEN          0x1E // for Emergency Exit
 #define B_ANIM_RYU_AFFECTION_ANIM       0x1F
+#define B_ANIM_ECLIPSE                  0x20
 
 // special animations table
 #define B_ANIM_LVL_UP                   0x0
@@ -566,6 +567,7 @@
 #define ANIM_WEATHER_RAIN 2
 #define ANIM_WEATHER_SANDSTORM 3
 #define ANIM_WEATHER_HAIL 4
+#define ANIM_WEATHER_ECLIPSE 5
 
 // Battle mon back animations.
 #define BACK_ANIM_NONE                         0x00

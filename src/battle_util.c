@@ -1632,6 +1632,7 @@ enum
     ENDTURN_PSYCHIC_TERRAIN,
     ENDTURN_ION_DELUGE,
     ENDTURN_FAIRY_LOCK,
+    ENDTURN_ECLIPSE,
     ENDTURN_FIELD_COUNT,
 };
 
@@ -2063,6 +2064,27 @@ u8 DoFieldEndTurnEffects(void)
             if (gFieldStatuses & STATUS_FIELD_FAIRY_LOCK && --gFieldTimers.fairyLockTimer == 0)
             {
                 gFieldStatuses &= ~(STATUS_FIELD_FAIRY_LOCK);
+            }
+            gBattleStruct->turnCountersTracker++;
+            break;
+        case ENDTURN_ECLIPSE:
+            if (gBattleWeather & WEATHER_ECLIPSE_ANY)
+            {
+                if (!(gBattleWeather & WEATHER_ECLIPSE_PERMANENT) && --gWishFutureKnock.weatherDuration == 0)
+                {
+                    gBattleWeather &= ~WEATHER_ECLIPSE_TEMPORARY;
+                    gBattlescriptCurrInstr = BattleScript_EclipseEnds;
+                }
+                else
+                {
+                    gBattlescriptCurrInstr = BattleScript_EclipseContinues;
+                }
+                VarSet(VAR_RYU_WEATHER, WEATHER_SHADE);
+                FlagSet(FLAG_RYU_PERSISTENT_WEATHER);
+                gBattleScripting.animArg1 = B_ANIM_ECLIPSE;
+                gBattleCommunication[MULTISTRING_CHOOSER] = 1;
+                BattleScriptExecute(gBattlescriptCurrInstr);
+                effect++;
             }
             gBattleStruct->turnCountersTracker++;
             break;
@@ -3548,6 +3570,7 @@ static const u16 sWeatherFlagsInfo[][3] =
     [ENUM_WEATHER_SUN] = {WEATHER_SUN_TEMPORARY, WEATHER_SUN_PERMANENT, HOLD_EFFECT_HEAT_ROCK},
     [ENUM_WEATHER_SANDSTORM] = {WEATHER_SANDSTORM_TEMPORARY, WEATHER_SANDSTORM_PERMANENT, HOLD_EFFECT_SMOOTH_ROCK},
     [ENUM_WEATHER_HAIL] = {WEATHER_HAIL_TEMPORARY, WEATHER_HAIL_PERMANENT, HOLD_EFFECT_ICY_ROCK},
+    [ENUM_WEATHER_ECLIPSE] = {WEATHER_ECLIPSE_TEMPORARY, WEATHER_ECLIPSE_PERMANENT, HOLD_EFFECT_NONE},
 };
 
 bool32 TryChangeBattleWeather(u8 battler, u32 weatherEnumId, bool32 viaAbility)
@@ -3811,8 +3834,16 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                         gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
                         gBattleScripting.battler = battler;
                         effect++;
-                        break;
                     }
+                    break;
+                case WEATHER_SHADE:
+                    if (!(gBattleWeather & WEATHER_ECLIPSE_ANY))
+                    {
+                        gBattleWeather = (WEATHER_ECLIPSE_PERMANENT | WEATHER_ECLIPSE_TEMPORARY);
+                        gBattleScripting.animArg1 = B_ANIM_ECLIPSE;
+                        effect++;
+                    }
+                    break;
                 }
             }
             if (effect)
@@ -7364,6 +7395,17 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(0.9), dmg);
         else if (moveType == TYPE_DRAGON)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
+    }   
+
+    // Eclipse boosts Dark type moves by 25%, Ghost type moves by 15% and Psychic type moves by 10%
+    if (gBattleWeather && WEATHER_ECLIPSE_ANY)
+    {
+        if (moveType == TYPE_DARK)
+            dmg = ApplyModifier(UQ_4_12(1.25), dmg);
+        else if (moveType == TYPE_GHOST)
+            dmg = ApplyModifier(UQ_4_12(1.15), dmg);
+        else if (moveType == TYPE_PSYCHIC)
+            dmg = ApplyModifier(UQ_4_12(1.10), dmg);
     }   
 
     // check stab

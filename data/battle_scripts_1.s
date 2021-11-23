@@ -6305,6 +6305,17 @@ BattleScript_RyuAffectionHealedParalyze::
 	updatestatusicon BS_ATTACKER
 	end2
 
+BattleScript_EclipseEnds::
+	printstring STRINGID_ECLIPSEENDS
+	waitmessage 0x40
+	end2
+
+BattleScript_EclipseContinues::
+	printstring STRINGID_ECLIPSECONTINUES
+	waitmessage 0x40
+	playanimation2 BS_ATTACKER, sB_ANIM_ARG1, NULL
+	end2
+
 BattleScript_MoveUsedIsAsleep::
 	printstring STRINGID_PKMNFASTASLEEP
 	waitmessage 0x40
