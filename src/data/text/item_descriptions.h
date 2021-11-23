@@ -1878,7 +1878,9 @@ static const u8 sTM62Desc[] = _(
     "or lays a curse.");
 
 static const u8 sTM63Desc[] = _(
-    "contains nothing");
+    "Summons a celestial\n"
+    "object to block the\n"
+    "sun.");
 
 static const u8 sTM64Desc[] = _(
     "contains nothing");

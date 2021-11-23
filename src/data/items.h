@@ -5098,10 +5098,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_TM63_EMPTY] =
+    [ITEM_TM63_OMEN] =
     {
         .name = _("TM63"),
-        .itemId = ITEM_TM63_EMPTY,
+        .itemId = ITEM_TM63_OMEN,
         .price = 3000,
         .description = sTM63Desc,
                 .importance = 1,

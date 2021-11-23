@@ -705,8 +705,9 @@
 
 #define MOVE_SNUGGLE 681
 #define MOVE_CLING 682
+#define MOVE_OMEN 683
 
-#define MOVES_COUNT_GEN7 683
+#define MOVES_COUNT_GEN7 684
 
 
 // Gen 8 moves.

@@ -1244,6 +1244,6 @@ static const u16 sTMHMMoves[] = //TM MOVE TABLE
     MOVE_SUPERPOWER,
     MOVE_GRAVEL_STORM,
     MOVE_CURSE,
-    MOVE_NONE,
+    MOVE_OMEN,
     MOVE_NONE,
 };

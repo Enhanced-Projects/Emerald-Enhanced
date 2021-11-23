@@ -2811,6 +2811,10 @@ static const u8 sCLINGDescription[] = _(
     "User clings on to the foe.\n"
     "Prevents Escape.");
 
+static const u8 sOMENDescription[] = _(
+    "Summons darkness of an\n"
+    "eclipse for 5 turns.");
+
 static const u8 sNotDoneYetDescription[] = _(
     "Not done yet.");
 
@@ -3499,6 +3503,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_DOUBLE_IRON_BASH - 1] = sDOUBLE_IRON_BASHDescription,
     [MOVE_SNUGGLE - 1] = sSNUGGLEDescription,
     [MOVE_CLING - 1] = sCLINGDescription,
+    [MOVE_OMEN - 1] = sOMENDescription,
     //GEN 8
     [MOVE_DYNAMAX_CANNON - 1] = sDYNAMAX_CANNONDescription,
     [MOVE_SNIPE_SHOT - 1] = sSNIPE_SHOTDescription,

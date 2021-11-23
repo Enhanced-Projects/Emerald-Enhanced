@@ -700,6 +700,7 @@ gBattleAnims_Moves::
     .4byte Move_DOUBLE_IRON_BASH
 	.4byte Move_SNUGGLE
 	.4byte Move_CLING
+	.4byte Move_OMEN
 @@@@@@@@@@@@ GEN 8 @@@@@@@@@@@@
 	.4byte Move_DYNAMAX_CANNON
 	.4byte Move_SNIPE_SHOT
@@ -20337,7 +20338,9 @@ SubmissionHit:
 	delay 8
 	return
 
-@ Also used by Sunny weather
+Move_OMEN:
+	goto General_Eclipse
+
 Move_SUNNY_DAY:
 	loadspritegfx ANIM_TAG_SUNLIGHT
 	monbg ANIM_ATK_PARTNER
@@ -20356,6 +20359,7 @@ Move_SUNNY_DAY:
 	blendoff
 	end
 
+OmenDarkRay:
 SunnyDayLightRay:
 	createsprite gSunlightRaySpriteTemplate, ANIM_ATTACKER, 40
 	delay 6

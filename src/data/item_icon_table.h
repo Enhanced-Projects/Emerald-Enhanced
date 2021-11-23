@@ -332,7 +332,7 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_TM60] = {gItemIcon_TM, gItemIconPalette_FightingTMHM},
     [ITEM_TM61] = {gItemIcon_TM, gItemIconPalette_RockTMHM},
     [ITEM_TM62] = {gItemIcon_TM, gItemIconPalette_GhostTMHM},
-    [ITEM_TM63] = {gItemIcon_TM, gItemIconPalette_NormalTMHM},
+    [ITEM_TM63] = {gItemIcon_TM, gItemIconPalette_DarkTMHM},
     [ITEM_TM64] = {gItemIcon_TM, gItemIconPalette_NormalTMHM},
     // FireRed/LeafGreen key items
     [ITEM_OAKS_PARCEL] = {gItemIcon_OaksParcel, gItemIconPalette_OaksParcel},
