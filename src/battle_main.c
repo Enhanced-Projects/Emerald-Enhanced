@@ -5183,6 +5183,8 @@ void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
                 gBattleStruct->dynamicMoveType = TYPE_FIRE | 0x80;
             else if (gBattleWeather & WEATHER_HAIL_ANY)
                 gBattleStruct->dynamicMoveType = TYPE_ICE | 0x80;
+            else if (gBattleWeather & WEATHER_ECLIPSE_ANY)
+                gBattleStruct->dynamicMoveType = TYPE_DARK | 0x80;
             else
                 gBattleStruct->dynamicMoveType = TYPE_NORMAL | 0x80;
         }

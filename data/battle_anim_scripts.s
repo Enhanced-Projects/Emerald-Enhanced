@@ -785,6 +785,7 @@ gBattleAnims_General::
 	.4byte General_FormChange
 	.4byte General_SlideOffScreen
 	.4byte General_RyuAffectionBoostHeartAnim
+	.4byte General_Eclipse
 
 	.align 2
 gBattleAnims_Special::
@@ -23480,6 +23481,7 @@ Move_WEATHER_BALL:
 	jumpreteq ANIM_WEATHER_RAIN, WeatherBallWater
 	jumpreteq ANIM_WEATHER_SANDSTORM, WeatherBallSandstorm
 	jumpreteq ANIM_WEATHER_HAIL, WeatherBallIce
+	jumpreteq ANIM_WEATHER_ECLIPSE, WeatherBallEclipse
 WeatherBallNormal:
 	loadspritegfx ANIM_TAG_IMPACT
 	createsprite gWeatherBallNormalDownSpriteTemplate, ANIM_TARGET, 2, -30, -100, 25, 1, 0, 0
@@ -23555,6 +23557,8 @@ WeatherBallIce:
 	call IceCrystalEffectShort
 	waitforvisualfinish
 	end
+WeatherBallEclipse:
+	goto Move_SHADOW_BALL
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT
@@ -24339,6 +24343,26 @@ General_RyuAffectionBoostHeartAnim:
 	createsprite gRedHeartProjectileSpriteTemplate, ANIM_ATTACKER, 3, 20, -8
 	waitforvisualfinish
 	delay 5
+	end
+
+General_Eclipse:
+	@ Shameless edit of MOVE_SUNNY_DAY, feel free to edit lol
+	loadspritegfx ANIM_TAG_SUNLIGHT
+	monbg ANIM_ATK_PARTNER
+	setalpha 13, 3
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, 0x781, 1, 0, 6, RGB_RYU_DARK
+	waitforvisualfinish
+	delay 60
+@	panse_26 SE_M_PETAL_DANCE, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +1, 0
+@	call SunnyDayLightRay
+@	call SunnyDayLightRay
+@	call SunnyDayLightRay
+@	call SunnyDayLightRay
+@	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, 0x781, 1, 6, 0, RGB_RYU_DARK
+	waitforvisualfinish
+	clearmonbg ANIM_ATK_PARTNER
+	blendoff
 	end
 
 General_MegaEvolution:

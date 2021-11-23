@@ -713,9 +713,15 @@ static const u8 sText_RyuAffectionUnparalyzed[] = _("{B_ATK_NAME_WITH_PREFIX} sh
 static const u8 sText_RyuAffectionEndured[] = _("{B_DEF_NAME_WITH_PREFIX} hung on because it wanted\nto please you!");
 static const u8 sText_RyuAffectionEvaded[] = _("{B_DEF_NAME_WITH_PREFIX} evaded the attack\nlike a boss!");
 static const u8 sText_RyuCantSteal[] = _("{B_ATK_NAME_WITH_PREFIX} doesn't want to be\na criminal.");
+static const u8 sText_EclipseStarts[] = _("A shadow engulfs the battlefield!");
+static const u8 sText_EclipseEnds[] = _("The eclipse has come to an end!");
+static const u8 sText_EclipseContinues[] = _("The battlefield remains darkened\nby the ongoing eclipse...");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_ECLIPSECONTINUES - 12] = sText_EclipseContinues,
+    [STRINGID_ECLIPSEENDS - 12] = sText_EclipseEnds,
+    [STRINGID_ECLIPSESTARTS - 12] = sText_EclipseStarts,
     [STRINGID_STATWASNOTLOWERED - 12] = sText_StatWasNotLowered,
     [STRINGID_CLOAKEDINAFREEZINGLIGHT - 12] = sText_CloakedInAFreezingLight,
     [STRINGID_DESTINYKNOTACTIVATES - 12] = sText_DestinyKnotActivates,
@@ -1549,7 +1555,7 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_SANDSTORM]          = STRINGID_SANDSTORMISRAGING,
     [WEATHER_FOG_DIAGONAL]       = STRINGID_ITISRAINING,
     [WEATHER_UNDERWATER]         = STRINGID_ITISRAINING,
-    [WEATHER_SHADE]              = STRINGID_ITISRAINING,
+    [WEATHER_SHADE]              = STRINGID_ECLIPSESTARTS,
     [WEATHER_DROUGHT]            = STRINGID_SUNLIGHTSTRONG,
     [WEATHER_DOWNPOUR]           = STRINGID_ITISRAINING,
     [WEATHER_UNDERWATER_BUBBLES] = STRINGID_ITISRAINING,

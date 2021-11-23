@@ -4676,7 +4676,8 @@ static void Cmd_playanimation(void)
     else if (gBattlescriptCurrInstr[2] == B_ANIM_RAIN_CONTINUES
              || gBattlescriptCurrInstr[2] == B_ANIM_SUN_CONTINUES
              || gBattlescriptCurrInstr[2] == B_ANIM_SANDSTORM_CONTINUES
-             || gBattlescriptCurrInstr[2] == B_ANIM_HAIL_CONTINUES)
+             || gBattlescriptCurrInstr[2] == B_ANIM_HAIL_CONTINUES
+             || gBattlescriptCurrInstr[2] == B_ANIM_ECLIPSE)
     {
         BtlController_EmitBattleAnimation(0, gBattlescriptCurrInstr[2], *argumentPtr);
         MarkBattlerForControllerExec(gActiveBattler);
@@ -4721,7 +4722,8 @@ static void Cmd_playanimation2(void) // animation Id is stored in the first poin
     else if (*animationIdPtr == B_ANIM_RAIN_CONTINUES
              || *animationIdPtr == B_ANIM_SUN_CONTINUES
              || *animationIdPtr == B_ANIM_SANDSTORM_CONTINUES
-             || *animationIdPtr == B_ANIM_HAIL_CONTINUES)
+             || *animationIdPtr == B_ANIM_HAIL_CONTINUES
+             || *animationIdPtr == B_ANIM_ECLIPSE)
     {
         BtlController_EmitBattleAnimation(0, *animationIdPtr, *argumentPtr);
         MarkBattlerForControllerExec(gActiveBattler);
