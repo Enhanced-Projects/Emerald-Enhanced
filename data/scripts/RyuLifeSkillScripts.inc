@@ -768,6 +768,7 @@ RA_LevelFive::
 
 RA_LevelUp::
     msgbox RA_LevelIncreased
+    addvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 1
     closemessage
     return
 
