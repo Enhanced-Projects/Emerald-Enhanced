@@ -3584,7 +3584,8 @@ bool32 TryChangeBattleWeather(u8 battler, u32 weatherEnumId, bool32 viaAbility)
     else if (!(gBattleWeather & (sWeatherFlagsInfo[weatherEnumId][0] | sWeatherFlagsInfo[weatherEnumId][1])))
     {
         gBattleWeather = (sWeatherFlagsInfo[weatherEnumId][0]);
-        if (GetBattlerHoldEffect(battler, TRUE) == sWeatherFlagsInfo[weatherEnumId][2])
+        if (GetBattlerHoldEffect(battler, TRUE) == sWeatherFlagsInfo[weatherEnumId][2]
+         && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_NONE)
             gWishFutureKnock.weatherDuration = 8;
         else
             gWishFutureKnock.weatherDuration = 5;
@@ -4102,6 +4103,13 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             if (ShouldChangeFormHpBased(battler))
             {
                 BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
+                effect++;
+            }
+            break;
+        case ABILITY_HARBINGER:
+            if (TryChangeBattleWeather(battler, ENUM_WEATHER_ECLIPSE, TRUE))
+            {
+                BattleScriptPushCursorAndCallback(BattleScript_HarbingerActivates);
                 effect++;
             }
             break;

@@ -24350,20 +24350,19 @@ General_RyuAffectionBoostHeartAnim:
 	end
 
 General_Eclipse:
-	@ Shameless edit of MOVE_SUNNY_DAY, feel free to edit lol
 	loadspritegfx ANIM_TAG_SUNLIGHT
 	monbg ANIM_ATK_PARTNER
 	setalpha 13, 3
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, 0x781, 1, 0, 6, RGB_RYU_DARK
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, 0x781, 1, 0, 6, RGB_DEEP_PURPLE
 	waitforvisualfinish
-	delay 60
-@	panse_26 SE_M_PETAL_DANCE, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +1, 0
-@	call SunnyDayLightRay
-@	call SunnyDayLightRay
-@	call SunnyDayLightRay
-@	call SunnyDayLightRay
-@	waitforvisualfinish
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, 0x781, 1, 6, 0, RGB_RYU_DARK
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_SUNLIGHT, 0, 12, 12, RGB_DEEP_PURPLE
+	panse_26 SE_M_PETAL_DANCE, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +1, 0
+	call SunnyDayLightRay
+	call SunnyDayLightRay
+	call SunnyDayLightRay
+	call SunnyDayLightRay
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, 0x781, 1, 6, 0, RGB_DEEP_PURPLE
 	waitforvisualfinish
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff

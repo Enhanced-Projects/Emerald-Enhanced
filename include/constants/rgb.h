@@ -20,5 +20,6 @@
 #define RGB_CYAN RGB(0, 31, 31)
 #define RGB_RYU_DARK RGB(3, 3, 3)
 #define RGB_WHITEALPHA (RGB_WHITE | 0x8000)
+#define RGB_DEEP_PURPLE RGB(12, 2, 12)
 
 #endif // GUARD_RGB_H

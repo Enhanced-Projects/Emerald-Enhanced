@@ -8521,6 +8521,17 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr += 7;
         }
         return;
+    case VARIOUS_SET_ECLIPSE:
+        if (!TryChangeBattleWeather(gBattlerAttacker, ENUM_WEATHER_ECLIPSE, FALSE))
+        {
+            gMoveResultFlags |= MOVE_RESULT_MISSED;
+            gBattleCommunication[MULTISTRING_CHOOSER] = 2;
+        }
+        else
+        {
+            gBattleCommunication[MULTISTRING_CHOOSER] = 6; // 6th string in gMoveWeatherChangeStringIds
+        }
+        break;
     }
 
     gBattlescriptCurrInstr += 3;
