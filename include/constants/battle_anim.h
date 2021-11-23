@@ -527,6 +527,7 @@
 #define B_ANIM_SLIDE_OFFSCREEN          0x1E // for Emergency Exit
 #define B_ANIM_RYU_AFFECTION_ANIM       0x1F
 #define B_ANIM_ECLIPSE                  0x20
+#define B_ANIM_STRONG_WINDS             0x21
 
 // special animations table
 #define B_ANIM_LVL_UP                   0x0
