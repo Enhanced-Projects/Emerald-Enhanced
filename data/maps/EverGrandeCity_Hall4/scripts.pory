@@ -13,8 +13,24 @@ EverGrandeCity_Hall4_EventScript_TurnPlayerNorth:: @ 82295B8
 
 H4_GoToPartnerChampionRoom::
 	lockall
+	compare VAR_RYU_TITLE_DEFENSE_WINS, 6
+	call_if_ge H4_CheckVictini
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
 	setflag FLAG_RYU_TITLE_DEFENSE
 	warpteleport MAP_EVER_GRANDE_CITY_THRONE_ROOM, 255, 9, 17
 	waitstate
 `
+script H4_CheckVictini {
+	if (flag(FLAG_RYU_VICTINI) == TRUE) {
+		return
+	}
+	if (flag(FLAG_RYU_VICTINI_RAN) == TRUE) {
+		return
+	}
+	drawfullscreenimage(SCENEBGWARP)
+	msgbox("A strange Pokemon intercepts your\nwarp...")
+	playmoncry(SPECIES_VICTINI, 0)
+	clearfullscreenimage
+	warpteleport(MAP_VICTINI, 255, 4, 4)
+	waitstate
+}

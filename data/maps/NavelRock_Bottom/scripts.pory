@@ -58,6 +58,7 @@ NavelRock_Bottom_EventScript_Lugia:: @ 82692A2
 	setvar VAR_0x8006, ITEM_WAVE_INCENSE
 	special CreateObedientEnemyMon
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE

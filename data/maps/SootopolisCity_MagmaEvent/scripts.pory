@@ -101,6 +101,7 @@ SC_GroudonFight::
 	specialvar VAR_RESULT, CountBadges
 	multvar VAR_RESULT, 10
 	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_NONE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	specialvar VAR_RESULT, GetBattleOutcome

@@ -2210,10 +2210,20 @@ bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at
 void RyuLegendaryDoBossRoll(void)
 {
     u32 randomvalue = (Random() % 99);
-    if (randomvalue == 0)
-        FlagSet(FLAG_RYU_BOSS_WILD);
-    else
-        FlagClear(FLAG_RYU_BOSS_WILD);
+    if (CheckAPFlag(AP_ALPHA_AURA) == TRUE)
+    {
+        if (randomvalue < 11)
+            FlagSet(FLAG_RYU_BOSS_WILD);
+        else
+            FlagClear(FLAG_RYU_BOSS_WILD);
+    }
+    else 
+    {
+        if (randomvalue == 0)
+            FlagSet(FLAG_RYU_BOSS_WILD);
+        else
+            FlagClear(FLAG_RYU_BOSS_WILD);
+    }
 }
 
 bool32 CheckIfSelectedSlotIsValid(void)

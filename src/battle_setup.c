@@ -462,6 +462,7 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_DEOXYS:
     case SPECIES_HOOPA:
     case SPECIES_POIPOLE:
+    case SPECIES_VICTINI:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
         break;
     case SPECIES_ZAPDOS:

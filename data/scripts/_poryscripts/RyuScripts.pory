@@ -673,6 +673,7 @@ Ryu_DoMeloettaEncounter::
 	setwildbattle SPECIES_MELOETTA, VAR_RESULT, ITEM_STAR_PIECE
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	special GetBattleOutcome

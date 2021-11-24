@@ -40,6 +40,7 @@ MarineCave_End_EventScript_Kyogre:: @ 823B01B
 	setvar VAR_LAST_TALKED, 1
 	setwildbattle SPECIES_KYOGRE, VAR_RESULT, ITEM_DAMP_ROCK
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE

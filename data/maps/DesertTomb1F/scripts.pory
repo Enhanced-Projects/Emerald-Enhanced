@@ -106,6 +106,7 @@ NM10_CrystalOnix::
 	setwildbattle SPECIES_CRYSTAL_ONIX, 90, ITEM_LAGGING_TAIL
 	setflag FLAG_RYU_HIDE_CRYSTALONIX_OW
 	removeobject 1
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	releaseall

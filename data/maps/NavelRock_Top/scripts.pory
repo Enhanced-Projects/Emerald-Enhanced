@@ -62,6 +62,7 @@ NavelRock_Top_EventScript_HoOh:: @ 826916F
 	setvar VAR_0x8006, ITEM_SACRED_ASH
 	special CreateObedientEnemyMon
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE

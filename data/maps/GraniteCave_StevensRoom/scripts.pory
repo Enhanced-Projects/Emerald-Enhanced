@@ -132,6 +132,7 @@ GC_JIRACHI_ENC::
 	waitmoncry
 	setwildbattle SPECIES_JIRACHI, 40, ITEM_SACHET
 	setflag FLAG_RYU_JIRACHI
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	releaseall

@@ -155,6 +155,7 @@ LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy: @ 8218C33
 
 script LCC_DoRayquazaStuff {
 	setvar(VAR_TEMP_C, 10)
+	goto(ryu_end)
 	goto_if_set(FLAG_RYU_SPECIAL_RAYQUAZA_GIFT_AVAILABLE, ryu_end)
 	specialvar(VAR_RESULT, CheckOwnedRayquaza)
 	if (var(VAR_RESULT) == TRUE) {

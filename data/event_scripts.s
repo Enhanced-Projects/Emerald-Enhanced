@@ -1227,3 +1227,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/MossdeepCity_Home/scripts.inc"
 
 	.include "data/maps/MauvilleCity_AdrastiWarehouse/scripts.inc"
+
+	.include "data/maps/Victini/scripts.inc"

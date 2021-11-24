@@ -28,6 +28,7 @@ SP_RyuRayEnc::
 	setwildbattle SPECIES_RAYQUAZA, VAR_RESULT, ITEM_DRAGON_FANG
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_2
 	removeobject 1
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
@@ -74,6 +75,7 @@ SkyPillar_Top_EventScript_Rayquaza:: @ 8239722
 	waitmoncry
 	setwildbattle SPECIES_RAYQUAZA, VAR_RESULT, ITEM_NONE
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
@@ -213,6 +215,7 @@ SkyPillar_Top_Text_RayquazaFlewOff: @ 8239860
 
 script SP_TransformRayquaza {
 	setvar(VAR_TEMP_4, 100)
+	end
 	checkspecies(SPECIES_RAYQUAZA)
 	if (var(VAR_RESULT) == TRUE) {
 		playmoncry(SPECIES_RAYQUAZA, 0)

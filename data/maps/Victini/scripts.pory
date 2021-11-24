@@ -1,0 +1,25 @@
+mapscripts Victini_MapScripts {}
+
+script RyuLegendary_Victini {
+    goto_if_set(FLAG_RYU_VICTINI, ryu_end)
+	goto_if_set(FLAG_RYU_VICTINI_RAN, ryu_end)
+	msgbox("The rock is warm to the touch.\nYou feel like you're being watched.")
+	setvar(VAR_TEMP_5, SPECIES_VICTINI)
+	setvar(VAR_TEMP_9, ITEM_FOCUS_BAND)
+	call(RyuLegendary_GeneralLegendEncounter)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+        goto(RyuLegendary_CaughtVictini)
+    }
+	setflag(FLAG_RYU_VICTINI_RAN)
+	removeobject(1)
+	release
+	end
+}
+
+script RyuLegendary_CaughtVictini {
+    addvar(VAR_RYU_LEGENDARIES_CAUGHT, 1)
+	setflag(FLAG_RYU_VICTINI)
+	removeobject(1)
+	release
+	end
+}

@@ -413,6 +413,7 @@ MH_Groudon_Enc::
 	call_if_lt TC_NoBadge
 	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_HARD_STONE
 	msgbox MH_GroudonMsg MSGBOX_AUTOCLOSE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	removeobject 7
 	special DrawWholeMapView
@@ -1185,6 +1186,7 @@ MH4_GroudonEvent::
 	msgbox MH4_GroudonLooksAtYou
 	closemessage
 	goto_if_set FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, MH4_CourtneyGivesMasterBall
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	removeobject 1
@@ -1296,6 +1298,7 @@ MH4_CourtneyGivesMasterBall::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	goto MH4_CourtneyEnd1

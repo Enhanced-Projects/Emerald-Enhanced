@@ -40,6 +40,7 @@ TerraCave_End_EventScript_Groudon:: @ 823B0EC
 	setvar VAR_LAST_TALKED, 1
 	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_HEAT_ROCK
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
