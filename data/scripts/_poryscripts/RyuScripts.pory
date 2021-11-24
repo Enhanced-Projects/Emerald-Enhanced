@@ -938,6 +938,8 @@ RyuLegendary_GameClearResetLegends::
 	call_if_set FLAG_RYU_MANAPHY_RAN, RL_ResetManaphy
 	call_if_set FLAG_RYU_NECROZMA_RAN, RL_ResetNecrozma
 	call_if_set FLAG_RYU_KYOGRE_RAN, RL_ResetKyogre
+	call_if_set FLAG_RYU_VICTINI_RAN, RL_ResetVictini
+	return
 
 RL_ResetZapdos::
 	clearflag FLAG_RYU_ZAPDOS
@@ -992,6 +994,11 @@ RL_ResetNecrozma::
 RL_ResetKyogre::
 	clearflag FLAG_RYU_KYOGRE
 	clearflag FLAG_RYU_KYOGRE_RAN
+	return
+
+RL_ResetVictini::
+	clearflag FLAG_RYU_VICTINI
+	clearflag FLAG_RYU_VICTINI_RAN
 	return
 
 @==================================================================================================Failed Challenge/Hardcore
