@@ -297,20 +297,20 @@ Ryu_HaremEvent::
 	setflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN
 	setflag FLAG_RYU_HIDE_HAREM_EVENT_DAWN
 	removeobject 4
-	removeobject 6
+	removeobject 5
+	removeobject 7
 	removeobject 8
-	removeobject 9
-	removeobject 12
+	removeobject 11
 	@clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	msgbox LRT_HAREM_END_RIVALMSG
 	closemessage
-	applymovement 7, RivalToLab
-	applymovement 10, RivalToLab
-	waitmovement 7
-	waitmovement 10
-	removeobject 7
-	removeobject 10
+	applymovement 6, RivalToLab
+	applymovement 9, RivalToLab
+	waitmovement 6
+	waitmovement 9
+	removeobject 6
+	removeobject 9
 	setvar VAR_RYU_PARTNER_COUNT, 10 @Finished harem event.
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	special RemoveCameraObject
@@ -390,13 +390,13 @@ LRT_Harem_AlsoMinnie::
 	applymovement 4, MinnieDiagFromPlayer
 	waitmovement 4
 	playse SE_PIN
-	applymovement 6, Common_Movement_ExclamationMark
+	applymovement 5, Common_Movement_ExclamationMark
+	applymovement 7, Common_Movement_ExclamationMark
 	applymovement 8, Common_Movement_ExclamationMark
 	applymovement 9, Common_Movement_ExclamationMark
-	applymovement 10, Common_Movement_ExclamationMark
-	applymovement 12, Common_Movement_ExclamationMark
-	applymovement 7, Common_Movement_ExclamationMark
-	waitmovement 7
+	applymovement 11, Common_Movement_ExclamationMark
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 6
 	msgbox AlsoChampionMinnieMsg
 	closemessage
 	return
@@ -529,27 +529,27 @@ Ryu_HaremEventMale::
 	setflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN
 	msgbox LRT_HAREM_INTRO
 	closemessage
-	applymovement 6, LanetteToBrendan
-	waitmovement 6
+	applymovement 5, LanetteToBrendan
+	waitmovement 5
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LRT_HAREM_INTRO_Lanette
 	closemessage
-	applymovement 12, NurseToBrendan
-	waitmovement 12
-	applymovement 10, Common_Movement_FaceLeft
+	applymovement 11, NurseToBrendan
+	waitmovement 11
+	applymovement 9, Common_Movement_FaceLeft
 	msgbox LRT_HAREM_INTRO_Nurse
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement 8, LanaToBrendan
-	waitmovement 8
+	applymovement 7, LanaToBrendan
+	waitmovement 7
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LRT_HAREM_INTRO_Lana
 	closemessage
-	applymovement 9, ShellyToBrendan
-	waitmovement 9
+	applymovement 8, ShellyToBrendan
+	waitmovement 8
 	applymovement OBJ_EVENT_ID_CAMERA, LRT_Cam2
 	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
@@ -560,8 +560,8 @@ Ryu_HaremEventMale::
 	call_if_set FLAG_RYU_RECRUITED_MINNIE, LRT_Harem_AlsoMinnie
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	applymovement 7, Common_Movement_FaceLeft
-	waitmovement 7
+	applymovement 6, Common_Movement_FaceLeft
+	waitmovement 6
 	msgbox LRT_HAREM_INTRO_Rival
 	return
 	

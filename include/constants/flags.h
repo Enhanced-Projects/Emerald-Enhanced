@@ -426,7 +426,7 @@
 #define FLAG_RYU_TM63                        0x191
 #define FLAG_RYU_VICTINI                     0x192
 #define FLAG_RYU_VICTINI_RAN                 0x193
-#define FLAG_UNUSED_0x194                    0x194
+#define FLAG_RYU_LANETTE_IEVENT              0x194
 #define FLAG_UNUSED_0x195                    0x195
 #define FLAG_UNUSED_0x196                    0x196
 #define FLAG_UNUSED_0x197                    0x197
