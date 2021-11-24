@@ -1164,13 +1164,16 @@ FrontierMonDev::
 	numberentry 0, 9, 3
 	compare VAR_RESULT, FRONTIER_MON_BLANK1_BLANK3
 	goto_if_ge RDB_CancelSpawn
+	copyvar VAR_TEMP_6, VAR_RESULT
+	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
 	special RyuGiveFrontierMon
-	buffernumberstring 0, VAR_TEMP_6
-	msgbox SpawnMenuSuccess
+	msgbox FMSpawnMenuSuccess
 	clearflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
 	closemessage
-	release
-	end
+	goto RyuDebug_SpawningMenu
+
+FMSpawnMenuSuccess:
+	.string "Succesfully spawned FID {RYU_STR_3}.$"
 
 DevModeMonGive::
 	msgbox DMMG
@@ -1187,8 +1190,7 @@ DevModeMonGive::
 	call GCMS_NatureMenu
 	clearflag FLAG_RYU_DEVELOPER_POKEMON_MENU
 	msgbox SpawnMenuSuccess
-	release
-	end
+	goto RyuDebug_SpawningMenu
 
 DevModeItemGive::
 	msgbox DMIG
@@ -1199,8 +1201,7 @@ DevModeItemGive::
 	goto_if_ge RDB_CancelSpawn
 	additem VAR_RESULT, 200
 	msgbox SpawnMenuSuccess
-	release
-	end
+	goto RyuDebug_SpawningMenu
 
 RDB_GiveMoneyMenu::
 	numberentry 0, 9, 9

@@ -3132,6 +3132,7 @@ void RyuGiveFrontierMon(void)
         if (FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) && FlagGet(FLAG_RYU_DEV_MODE))
         {
             mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_6))];
+            StringCopy(gRyuStringVar3, gSpeciesNames[mon->species]);
             level = MAX_LEVEL;
         }
     } 
