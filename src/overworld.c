@@ -24,6 +24,7 @@
 #include "fldeff.h"
 #include "gpu_regs.h"
 #include "heal_location.h"
+#include "constants/heal_locations.h"
 #include "io_reg.h"
 #include "link.h"
 #include "link_rfu.h"
@@ -439,11 +440,10 @@ void DoWhiteOut(void)
 	FlagClear(FLAG_DEFEATED_ELITE_4_GLACIA);
 	FlagClear(FLAG_DEFEATED_ELITE_4_DRAKE);
 	VarSet(VAR_ELITE_4_STATE, 0);
-    /*if (&gSaveBlock2Ptr->playerGender == MALE)
-        ScriptContext2_RunNewScript(gRyuWarpMaleHomeScript);
+    if (&gSaveBlock2Ptr->playerGender == MALE)
+        SetLastHealLocationWarp(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F);
     else
-        ScriptContext2_RunNewScript(gRyuWarpFemaleHomeScript);*/
-    SetWarpDestinationToLastHealLocation();
+        SetLastHealLocationWarp(HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F);
     WarpIntoMap();
 }
 
