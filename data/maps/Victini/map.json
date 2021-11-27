@@ -29,13 +29,7 @@
     }
   ],
   "warp_events": [
-    {
-      "x": 6,
-      "y": 6,
-      "elevation": 0,
-      "dest_map": "MAP_EVER_GRANDE_CITY",
-      "dest_warp_id": 2
-    }
+
   ],
   "coord_events": [
 
