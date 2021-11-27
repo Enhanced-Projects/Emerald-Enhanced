@@ -179,16 +179,22 @@ u8 *GetFlagPointer(u16 id)
 u8 FlagSet(u16 id)
 {
     u8 *ptr = GetFlagPointer(id);
+    asm("NOP");
     if (ptr)
         *ptr |= 1 << (id & 7);
+
+    asm("NOP");
     return 0;
 }
 
 u8 FlagClear(u16 id)
 {
     u8 *ptr = GetFlagPointer(id);
+    asm("NOP");
     if (ptr)
         *ptr &= ~(1 << (id & 7));
+
+    asm("NOP");
     return 0;
 }
 
@@ -196,11 +202,17 @@ bool8 FlagGet(u16 id)
 {
     u8 *ptr = GetFlagPointer(id);
 
+    asm("NOP");
+
     if (!ptr)
         return FALSE;
 
+    asm("NOP");
+
     if (!(((*ptr) >> (id & 7)) & 1))
         return FALSE;
+        
+    asm("NOP");
 
     return TRUE;
 }
