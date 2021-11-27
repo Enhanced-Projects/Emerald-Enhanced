@@ -5239,7 +5239,7 @@ const struct Item gItems[] =
     {
         .name = _("Armor Fossil"),
         .itemId = ITEM_ARMOR_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sArmorFossilDesc,
         .importance = 0,
         .pocket = POCKET_ITEMS,
@@ -5252,7 +5252,7 @@ const struct Item gItems[] =
     {
         .name = _("Skull Fossil"),
         .itemId = ITEM_SKULL_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sSkullFossilDesc,
         .importance = 0,
         .pocket = POCKET_ITEMS,
@@ -5265,7 +5265,7 @@ const struct Item gItems[] =
     {
         .name = _("Helix Fossil"),
         .itemId = ITEM_HELIX_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sHelixFossilDesc,
         #if I_KEY_FOSSILS >= GEN_4
             .importance = 0,
@@ -5283,7 +5283,7 @@ const struct Item gItems[] =
     {
         .name = _("Dome Fossil"),
         .itemId = ITEM_DOME_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sDomeFossilDesc,
         #if I_KEY_FOSSILS >= GEN_4
             .importance = 0,
@@ -5301,7 +5301,7 @@ const struct Item gItems[] =
     {
         .name = _("Root Fossil"),
         .itemId = ITEM_ROOT_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sRootFossilDesc,
         #if I_KEY_FOSSILS >= GEN_4
             .importance = 0,
@@ -5319,7 +5319,7 @@ const struct Item gItems[] =
     {
         .name = _("Claw Fossil"),
         .itemId = ITEM_CLAW_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sClawFossilDesc,
         #if I_KEY_FOSSILS >= GEN_4
             .importance = 0,
@@ -5337,7 +5337,7 @@ const struct Item gItems[] =
     {
         .name = _("Cover Fossil"),
         .itemId = ITEM_COVER_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sCoverFossilDesc,
         .importance = 0,
         .pocket = POCKET_ITEMS,
@@ -5350,7 +5350,7 @@ const struct Item gItems[] =
     {
         .name = _("Plume Fossil"),
         .itemId = ITEM_PLUME_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sPlumeFossilDesc,
         .importance = 0,
         .pocket = POCKET_ITEMS,
@@ -5363,7 +5363,7 @@ const struct Item gItems[] =
     {
         .name = _("Jaw Fossil"),
         .itemId = ITEM_JAW_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sJawFossilDesc,
         .importance = 0,
         .pocket = POCKET_ITEMS,
@@ -5376,7 +5376,7 @@ const struct Item gItems[] =
     {
         .name = _("Sail Fossil"),
         .itemId = ITEM_SAIL_FOSSIL,
-        .price = 0,
+        .price = 500,
         .description = sSailFossilDesc,
         .importance = 0,
         .pocket = POCKET_ITEMS,
