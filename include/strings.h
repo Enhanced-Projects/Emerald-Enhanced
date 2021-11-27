@@ -3043,6 +3043,7 @@ extern const u8 gText_MoveSlotCancel[];
 
 
 extern const  u8 gText_RyuViewMonDataOption[];
+extern const  u8 gText_RyuResetIVEVMenuOption[];
 extern const  u8 gText_RyuSetLevelMenuOption[];
 extern const  u8 gText_RyuSetExpMultMenuOption[];
 extern const  u8 gText_RyuSetEvMenuOption[];

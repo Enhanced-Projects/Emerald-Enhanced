@@ -793,22 +793,7 @@ static const struct MenuAction MultichoiceList_RyuDebugMulti[] =
 
 static const struct MenuAction MultichoiceList_116[] =
 {
-    {gText_HpEvMenu252},
-    {gText_HpEvMenu126},
-    {gText_AtkEvMenu252},
-    {gText_AtkEvMenu126},
-    {gText_DefEvMenu252},
-    {gText_DefEvMenu126},
-    {gText_SpAtkEvMenu252},
-    {gText_SpAtkEvMenu126},
-    {gText_SpDefEvMenu252},
-    {gText_SpDefEvMenu126},
-    {gText_SpeEvMenu252},
-    {gText_SpeEvMenu126},
-    {gText_ResetEvMenu},
-    {gText_ExitEvMenu},
-    {gText_ExitEvMenu2},
-    {gText_ExitEvMenu2},
+    {gText_DebugCancel},
 };
 
 static const struct MenuAction MultichoiceList_117[] =
@@ -879,12 +864,12 @@ static const struct MenuAction MultichoiceList_121[] =
 static const struct MenuAction MultichoiceList_122[]=
 {
     {gText_RyuViewMonDataOption},
-    {gText_RyuBetaMenuBlank},
-    {gText_RyuBetaMenuBlank},
-    {gText_RyuAccessMoveRelearner},  
+    {gText_RyuResetIVEVMenuOption},
     {gText_RyuSetEvMenuOption},
     {gText_RyuMaxIvMenuOption},
     {gText_RyuSetFriendshipMenuOption},
+    {gText_RyuAccessMoveRelearner},  
+    {gText_RyuBetaMenuBlank},
     {gText_RyuExitPokeEditMenuOption},
 };
 

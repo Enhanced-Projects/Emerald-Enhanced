@@ -386,23 +386,98 @@ static const u16 RyuValToIv[] = {
     MON_DATA_SPDEF_IV
 };
 
-void RyuSetSlotStatIVEV(void)//This is super lewd, you don't even know
+void RyuSetSlotStatIVEV(void)//Now with extra lewd
 {
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    u8 stat = VarGet(VAR_TEMP_3);
-    u8 mode = VarGet(VAR_TEMP_E);
+    u16 value = (VarGet(VAR_TEMP_1));
+    u16 slot = (VarGet(VAR_TEMP_2));
+    u16 stat = (VarGet(VAR_TEMP_3));
+    u16 negative = (VarGet(VAR_TEMP_4));
+    u16 mode = (VarGet(VAR_TEMP_E));
+    u16 empty = 0;//i don't understand why i can't pass get/setmondata absolute values, they have to be pointers for some reason.
+    u16 evmax = 252;
+    u16 ivmax = 31;
 
     if (mode == 0)
     {
-        SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
-        CalculateMonStats(&gPlayerParty[slot]);
+        if (value >= evmax)
+            value = 252;
+
+        if (negative == TRUE)
+        {
+            if ((value >= (GetMonData(&gPlayerParty[slot], RyuValToEv[stat]))) || 
+                (GetMonData(&gPlayerParty[slot], RyuValToEv[stat]) - value) >= evmax)  //if value player is subtracting would make evs go negative, set to zero instead.
+            {
+                SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &empty);
+                CalculateMonStats(&gPlayerParty[slot]);
+            }
+            else
+            {
+                value = (GetMonData(&gPlayerParty[slot], RyuValToEv[stat]) - value);
+                SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);//subtract value from ev
+                CalculateMonStats(&gPlayerParty[slot]);
+            }
+        }
+        else
+        {
+            if ((value >= (GetMonData(&gPlayerParty[slot], RyuValToEv[stat]))) || 
+                (GetMonData(&gPlayerParty[slot], RyuValToEv[stat]) - value) >= evmax)//if value would exceed ev max, set to max.
+            {
+                SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &evmax);
+                CalculateMonStats(&gPlayerParty[slot]);
+            }
+            else
+            {
+                value = (GetMonData(&gPlayerParty[slot], RyuValToEv[stat]) + value);
+                SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);//add value to ev
+                CalculateMonStats(&gPlayerParty[slot]);
+            }
+        }
+        
     }
-    else
+    
+    if (mode == 1)
     {
-       SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);
-       CalculateMonStats(&gPlayerParty[slot]);
+        if (value >= ivmax)
+            value = ivmax;
+            
+        if (negative == TRUE)
+        {
+            if ((value >= (GetMonData(&gPlayerParty[slot], RyuValToIv[stat]))) || 
+                (GetMonData(&gPlayerParty[slot], RyuValToIv[stat]) - value) >= ivmax) //prevent iv overflow
+            {
+                SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &empty);
+                CalculateMonStats(&gPlayerParty[slot]);
+            }
+            else
+            {
+                value = (GetMonData(&gPlayerParty[slot], RyuValToIv[stat]) - value);
+                SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);//subtract value from iv
+                CalculateMonStats(&gPlayerParty[slot]);
+            }
+        
+        }
+        else
+        {
+            if ((value >= (GetMonData(&gPlayerParty[slot], RyuValToIv[stat]))) || 
+                (GetMonData(&gPlayerParty[slot], RyuValToEv[stat]) - value) >= ivmax) //if value would exceed iv max, set to max.
+            {
+                SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &ivmax);
+                CalculateMonStats(&gPlayerParty[slot]);
+            }
+            else
+            {
+                value = (GetMonData(&gPlayerParty[slot], RyuValToIv[stat]) + value);
+                SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);//add value to iv
+                CalculateMonStats(&gPlayerParty[slot]);
+            }
+        }
     }
+    //clear vars after use
+    VarSet(VAR_TEMP_1, 0);
+    VarSet(VAR_TEMP_2, 0);
+    VarSet(VAR_TEMP_3, 0);
+    VarSet(VAR_TEMP_E, 0);
+    VarSet(VAR_TEMP_4, 0);
 }
 
 void RyuSetMonMove(void)
@@ -448,6 +523,33 @@ void RyuResetEvs(void)
     SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV, &ev);
     SetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, &ev);
     CalculateMonStats(&gPlayerParty[0]);
+}
+
+void RyuResetIVEvs(void)
+{
+    u8 ev = 0;
+    u16 slot = (VarGet(VAR_TEMP_2));
+    u16 mode = (VarGet(VAR_TEMP_0));
+    PlaySE(SE_EXPMAX);
+    if (mode == 0)
+    {
+        SetMonData(&gPlayerParty[0], MON_DATA_HP_IV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_ATK_IV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_DEF_IV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV, &ev);
+    }
+    else
+    {
+        SetMonData(&gPlayerParty[0], MON_DATA_HP_EV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_ATK_EV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_DEF_EV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_SPATK_EV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV, &ev);
+        SetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, &ev);
+    }
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuGenerateReward(void)//combines the return values from the passcode menu into one integer, 
@@ -2032,7 +2134,7 @@ void RyuGiveDevMon(void)
     u16 move4 = VarGet(VAR_TEMP_4);
     u8 slot = (CalculatePlayerPartyCount());
     u16 i = 0;
-    u8 ev = 255;
+    u8 ev = 252;
     u8 iv = 31;
     u8 lv = TRUE_MAX_LEVEL;
     u8 what = 0;
@@ -2042,6 +2144,8 @@ void RyuGiveDevMon(void)
     CreateMonWithGenderNatureLetter(&gPlayerParty[slot], species, lv, iv, gender, nature, what); 
     for (i = 0; i < 6; i++)
         SetMonData(&gPlayerParty[slot], (MON_DATA_HP_EV + i), &ev); // set ev's loop
+    
+    CalculateMonStats(&gPlayerParty[slot]);
 
     SetMonData(&gPlayerParty[slot], MON_DATA_PP_BONUSES, &ev); //sets all pp to max bonus
 
@@ -2053,6 +2157,7 @@ void RyuGiveDevMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
     SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon); //make it a boss because why not
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 bool32 ScrCmd_bufferdynamicmulti(struct ScriptContext *ctx)

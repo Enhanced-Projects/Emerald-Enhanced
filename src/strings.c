@@ -1915,12 +1915,13 @@ const u8 gText_MoveSlot4[] = _("Bottom Right");
 const u8 gText_MoveSlotCancel[] = _("Cancel Tutoring");
 
 const u8 gText_RyuViewMonDataOption[] = _("View Mon Data");
+const u8 gText_RyuResetIVEVMenuOption[] = _("Reset EV/IV");
 const u8 gText_RyuSetLevelMenuOption[] = _("Utility 3");
 const u8 gText_RyuSetExpMultMenuOption[] = _("Set Exp Mult...");
 const u8 gText_RyuSetEvMenuOption[] = _("Set EV's");
-const u8 gText_RyuMaxIvMenuOption[] = _("Max Out IV's");
-const u8 gText_RyuAccessMoveRelearner[] = _("Move Relearner...");
-const u8 gText_RyuSetFriendshipMenuOption[] = _("Set Friendliness");
+const u8 gText_RyuMaxIvMenuOption[] = _("Set IV's");
+const u8 gText_RyuAccessMoveRelearner[] = _("Relearner");
+const u8 gText_RyuSetFriendshipMenuOption[] = _("Set Friendship");
 const u8 gText_RyuExitPokeEditMenuOption[] = _("Exit");
 const u8 sText_DebugMainUtilityItem1[] = _("Utility 1");
 
