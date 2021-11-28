@@ -275,6 +275,7 @@ IT_ChallengeIntro:
 	.string "5: Gym Leaders heal and give items\p"
 	.string "6: Exp is doubled, to make up for the\n"
 	.string "difficulty of the game.\p"
+	.string "7: You can't deposit mons in the PC.\p"
 	.string "Finally: Any mon that faints is\n"
 	.string "deleted from your party.\p"
 	.string "Enjoy your challenge!\n"

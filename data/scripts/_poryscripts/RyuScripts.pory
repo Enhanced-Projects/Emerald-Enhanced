@@ -288,6 +288,7 @@ RyuUserModeEVMenu::
 	call checkforimprint
 	compare VAR_RESULT, FALSE
 	goto_if_eq RyuUserEvNoImprint
+	setvar VAR_TEMP_4, TRUE
 	special RyuSetSlotStatIVEV
 	addmonhappiness VAR_TEMP_2, 25
 	call TakeIvEvItem

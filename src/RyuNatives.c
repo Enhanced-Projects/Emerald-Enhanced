@@ -409,12 +409,14 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
             {
                 SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &empty);
                 CalculateMonStats(&gPlayerParty[slot]);
+                //mgba_printf(LOGINFO, "setting slot %d's stat %d(%d) to %d with mode %d. (A)", slot, stat, negative, value, mode);
             }
             else
             {
                 value = (GetMonData(&gPlayerParty[slot], RyuValToEv[stat]) - value);
                 SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);//subtract value from ev
                 CalculateMonStats(&gPlayerParty[slot]);
+                //mgba_printf(LOGINFO, "setting slot %d's stat %d(%d) to %d with mode %d. (B)", slot, stat, negative, value, mode);
             }
         }
         else
@@ -424,12 +426,14 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
             {
                 SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &evmax);
                 CalculateMonStats(&gPlayerParty[slot]);
+                //mgba_printf(LOGINFO, "setting slot %d's stat %d(%d) to %d with mode %d. (C)", slot, stat, negative, value, mode);
             }
             else
             {
                 value = (GetMonData(&gPlayerParty[slot], RyuValToEv[stat]) + value);
                 SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);//add value to ev
                 CalculateMonStats(&gPlayerParty[slot]);
+                //mgba_printf(LOGINFO, "setting slot %d's stat %d(%d) to %d with mode %d. (D)", slot, stat, negative, value, mode);
             }
         }
         
@@ -447,12 +451,14 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
             {
                 SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &empty);
                 CalculateMonStats(&gPlayerParty[slot]);
+                //mgba_printf(LOGINFO, "setting slot %d's stat %d(%d) to %d with mode %d. (E)", slot, stat, negative, value, mode);
             }
             else
             {
                 value = (GetMonData(&gPlayerParty[slot], RyuValToIv[stat]) - value);
                 SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);//subtract value from iv
                 CalculateMonStats(&gPlayerParty[slot]);
+                //mgba_printf(LOGINFO, "setting slot %d's stat %d(%d) to %d with mode %d. (F)", slot, stat, negative, value, mode);
             }
         
         }
@@ -463,12 +469,14 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
             {
                 SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &ivmax);
                 CalculateMonStats(&gPlayerParty[slot]);
+                //mgba_printf(LOGINFO, "setting slot %d's stat %d(%d) to %d with mode %d. (G)", slot, stat, negative, value, mode);
             }
             else
             {
                 value = (GetMonData(&gPlayerParty[slot], RyuValToIv[stat]) + value);
                 SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);//add value to iv
                 CalculateMonStats(&gPlayerParty[slot]);
+                //mgba_printf(LOGINFO, "setting slot %d's stat %d(%d) to %d with mode %d. (H)", slot, stat, negative, value, mode);
             }
         }
     }

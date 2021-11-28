@@ -207,6 +207,7 @@ AT_SV_Battle::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_ne AT_SV_GAMEOVER
+	clearflag FLAG_RYU_GAME_OVER
 	special LoadPlayerParty
 	goto AT_SV_ReturnFromBattle
 
