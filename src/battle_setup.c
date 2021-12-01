@@ -543,7 +543,11 @@ void StartRegiBattle(void)
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
     IncrementDailyWildBattles();
 }
-const u8 gRyuPickupNotify[] = _("{STR_VAR_1} picked up a {STR_VAR_2}!");
+const u8 gRyuPickupSuffixCommon[] = _("(C) {COLOR 9}{SHADOW 10}");
+const u8 gRyuPickupSuffixUncommon[] = _("(U) {COLOR 4}{SHADOW 3}");
+const u8 gRyuPickupSuffixRare[] = _("(R) {COLOR 14}{SHADOW 15}");
+const u8 gRyuPickupSuffixVeryRare[] = _("(VR) {COLOR 12}{SHADOW 11}");
+const u8 gRyuPickupNotify[] = _("{STR_VAR_1} picked up a {RYU_STR_3}{STR_VAR_2}!");
 void RyuDoPickupLootRoll(u8 level, u8 slot)
 {
     u32 species = 0;
@@ -554,21 +558,25 @@ void RyuDoPickupLootRoll(u8 level, u8 slot)
     {
         SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &gRyuLowPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
         VarSet(VAR_RYU_LAST_PICKUP_RARITY, 0);
+        StringCopy(gRyuStringVar3, gRyuPickupSuffixCommon);
     }
     else if ((level >= 5) && (level < 10)) //level 50 thru 99
     {
         SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &gRyuMedPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
         VarSet(VAR_RYU_LAST_PICKUP_RARITY, 1);
+        StringCopy(gRyuStringVar3, gRyuPickupSuffixUncommon);
     }
     else if ((level >= 10) && (level < 13)) //levl 100 thru 129
     {  
         SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &gRyuHighPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
         VarSet(VAR_RYU_LAST_PICKUP_RARITY, 2);
+        StringCopy(gRyuStringVar3, gRyuPickupSuffixRare);
     }
     else //level 130 and above
     {
         SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &gRyuMaxPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
         VarSet(VAR_RYU_LAST_PICKUP_RARITY, 3);
+        StringCopy(gRyuStringVar3, gRyuPickupSuffixVeryRare);
     }
 
     species = GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES, NULL);
@@ -578,6 +586,14 @@ void RyuDoPickupLootRoll(u8 level, u8 slot)
     CopyItemName((VarGet(VAR_RYU_LAST_PICKUP_ITEM)), gStringVar2);
     StringCopy(gStringVar1, gSpeciesNames[species]);
     QueueNotification(gRyuPickupNotify, NOTIFY_PICKUP, 180);
+}
+
+void RyuDebugDoPickupTestRoll(void)
+{
+    RyuDoPickupLootRoll(200, 2);
+    RyuDoPickupLootRoll(200, 2);
+    RyuDoPickupLootRoll(200, 2);
+    RyuDoPickupLootRoll(200, 2);
 }
 
 static void CB2_EndWildBattle(void)

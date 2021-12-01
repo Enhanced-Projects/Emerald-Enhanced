@@ -396,6 +396,12 @@ void SetWarpDestinationToHome(void)
     
 }
 
+void SetWarpDestinationToLimbo(void) //challenge over
+{
+        SetWarpDestination(33, 3, 255, 2, 1);
+}
+
+
 // code
 void DoWhiteOut(void)
 {
@@ -413,7 +419,7 @@ void DoWhiteOut(void)
 
     FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
 
-    if (CalculatePlayerPartyCount() == 0 && (FlagGet(FLAG_RYU_CHALLENGEFAILED) == 1))
+    if ((CalculatePlayerPartyCount() == 0) && (FlagGet(FLAG_RYU_CHALLENGEFAILED) == 1))
     {
         if (VarGet(VAR_RYU_NGPLUS_COUNT) > 1)
         {
@@ -440,10 +446,7 @@ void DoWhiteOut(void)
 	FlagClear(FLAG_DEFEATED_ELITE_4_GLACIA);
 	FlagClear(FLAG_DEFEATED_ELITE_4_DRAKE);
 	VarSet(VAR_ELITE_4_STATE, 0);
-    if (&gSaveBlock2Ptr->playerGender == MALE)
-        SetLastHealLocationWarp(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F);
-    else
-        SetLastHealLocationWarp(HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F);
+    SetWarpDestinationToHome();
     WarpIntoMap();
 }
 
@@ -476,10 +479,8 @@ void DoPartnerWhiteOut(void)
 	FlagClear(FLAG_DEFEATED_ELITE_4_GLACIA);
 	FlagClear(FLAG_DEFEATED_ELITE_4_DRAKE);
 	VarSet(VAR_ELITE_4_STATE, 0);
-    if (&gSaveBlock2Ptr->playerGender == MALE)
-        ScriptContext1_SetupScript(gRyuWarpMaleHomeScript);
-    else
-        ScriptContext1_SetupScript(gRyuWarpFemaleHomeScript);
+    SetWarpDestinationToHome();
+    WarpIntoMap();
 }
 
 void Overworld_ResetStateAfterFly(void)
