@@ -2503,9 +2503,9 @@ RS_HolidayOutro::
 	callnative RyuHolidayGiftMonSetData
 	msgbox RS_HolidayOutroMsg
 	setflag FLAG_RYU_HIDE_HOLIDAY_NPC
-	applymovement 13, LucyExit
-	waitmovement 13
-	removeobject 13
+	applymovement 12, LucyExit
+	waitmovement 12
+	removeobject 12
 	release
 	end
 
@@ -2548,6 +2548,7 @@ script RS_HGM01 {
 	else {
 		setvar(VAR_TEMP_C, NATURE_MODEST)
 	}
+	callnative(RyuGiveHolidayModdedMon)
 	bufferspeciesname(0, SPECIES_XERNEAS)
 	goto(RS_HolidayOutro)
 }
@@ -2571,6 +2572,7 @@ script RS_HGM02{
 	else {
 		setvar(VAR_TEMP_C, NATURE_MODEST)
 	}
+	callnative(RyuGiveHolidayModdedMon)
 	bufferspeciesname(0, SPECIES_YVELTAL)
 	goto(RS_HolidayOutro)
 }
@@ -2580,6 +2582,7 @@ script RS_HGM03{
 	copyvar(VAR_TEMP_E, VAR_RESULT)
 	setvar(VAR_TEMP_D,  SPECIES_MAGEARNA)
 	setvar(VAR_TEMP_C, NATURE_MODEST)
+	callnative(RyuGiveHolidayModdedMon)
 	bufferspeciesname(0, SPECIES_MAGEARNA)
 	goto(RS_HolidayOutro)
 }
@@ -2589,6 +2592,7 @@ script RS_HGM04{
 	copyvar(VAR_TEMP_E, VAR_RESULT)
 	setvar(VAR_TEMP_D, SPECIES_SOLGALEO)
 	setvar(VAR_TEMP_C, NATURE_ADAMANT)
+	callnative(RyuGiveHolidayModdedMon)
 	bufferspeciesname(0, SPECIES_SOLGALEO)
 	goto(RS_HolidayOutro)
 }
@@ -2598,6 +2602,7 @@ script RS_HGM05{
 	copyvar(VAR_TEMP_E, VAR_RESULT)
 	setvar(VAR_TEMP_D,  SPECIES_MARSHADOW)
 	setvar(VAR_TEMP_C,  NATURE_JOLLY)
+	callnative(RyuGiveHolidayModdedMon)
 	bufferspeciesname(0, SPECIES_MARSHADOW)
 	goto(RS_HolidayOutro)
 }
@@ -2607,6 +2612,7 @@ script RS_HGM06{
 	copyvar(VAR_TEMP_E, VAR_RESULT)
 	setvar(VAR_TEMP_D,  SPECIES_LUNALA)
 	setvar(VAR_TEMP_C, NATURE_MODEST)
+	callnative(RyuGiveHolidayModdedMon)
 	bufferspeciesname(0, SPECIES_LUNALA)
 	goto(RS_HolidayOutro)
 }
