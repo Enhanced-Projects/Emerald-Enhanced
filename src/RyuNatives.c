@@ -2374,3 +2374,15 @@ void RyuTransformRayquaza(void)
     SetMonData(&gPlayerParty[(VarGet(VAR_TEMP_F))], MON_DATA_SPECIES, &id);
     SetMonData(&gPlayerParty[(VarGet(VAR_TEMP_F))], MON_DATA_SPECIES2, &id);
 }
+
+void RyuGiveHolidayModdedMon(void)
+{   u16 slot = (VarGet(VAR_TEMP_E));
+    u16 species = (VarGet(VAR_TEMP_D));
+    u16 level = 50;
+    u16 fixedIv = 31;
+    u16 nature = (VarGet(VAR_TEMP_C));
+    bool16 isBoss = TRUE;
+    CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
+    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &isBoss);
+    SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
+}
