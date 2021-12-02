@@ -2542,7 +2542,7 @@ script RS_HGM01 {
 	setvar(VAR_TEMP_D,  SPECIES_XERNEAS)
 	bufferdynamicmulti(HGM01_Nature1, HGM01_Nature2)
 	multichoice(0, 5, MULTI_DYNAMIC_2, 1)
-	if (var(VAR_RESULT) == 1) {
+	if (var(VAR_RESULT) == 0) {
 		setvar(VAR_TEMP_C, NATURE_ADAMANT)
 	}
 	else {
@@ -2553,10 +2553,10 @@ script RS_HGM01 {
 	goto(RS_HolidayOutro)
 }
 
-text HGM01_Nature2 {
+text HGM01_Nature1 {
 	"Specially Offensive"
 }
-text HGM01_Nature1 {
+text HGM01_Nature2 {
 	"Physically Offensive"
 }
 
@@ -2566,7 +2566,7 @@ script RS_HGM02{
 	setvar(VAR_TEMP_D,  SPECIES_YVELTAL)
 	bufferdynamicmulti(HGM01_Nature1, HGM01_Nature2)
 	multichoice(0, 5, MULTI_DYNAMIC_2, 1)
-	if (var(VAR_RESULT) == 1) {
+	if (var(VAR_RESULT) == 0) {
 		setvar(VAR_TEMP_C, NATURE_ADAMANT)
 	}
 	else {

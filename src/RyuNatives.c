@@ -2385,4 +2385,6 @@ void RyuGiveHolidayModdedMon(void)
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &isBoss);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
+    GetSetPokedexFlag(species, FLAG_SET_CAUGHT);
+    GetSetPokedexFlag(species, FLAG_SET_SEEN);
 }
