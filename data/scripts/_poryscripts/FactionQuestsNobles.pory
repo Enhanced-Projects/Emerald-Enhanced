@@ -183,6 +183,7 @@ script NoblesQuestAfterBattleScript {
     applymovement(28, LCC_BadTenantLeave)
     waitmovement(28)
     removeobject(28)
+    changefactionstanding(FACTION_NOBLES, 45, FALSE)
     clearflag(NOBLES_SPECIAL_MISSION_IN_PROGRESS)
     closemessage
     release
