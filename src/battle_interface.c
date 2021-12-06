@@ -610,6 +610,50 @@ static const struct SpritePalette sSpritePalette_MegaTrigger =
     sMegaTriggerPal, TAG_MEGA_TRIGGER_PAL
 };
 
+static const u8 sOmegaTriggerGfx[] = INCBIN_U8("graphics/battle_interface/omega_trigger.4bpp");
+static const u16 sOmegaTriggerPal[] = INCBIN_U16("graphics/battle_interface/omega_trigger.gbapal");
+static const u8 sAlphaTriggerGfx[] = INCBIN_U8("graphics/battle_interface/alpha_trigger.4bpp");
+static const u16 sAlphaTriggerPal[] = INCBIN_U16("graphics/battle_interface/alpha_trigger.gbapal");
+
+static const struct SpriteSheet sSpriteSheet_OmegaTrigger =
+{
+    sOmegaTriggerGfx, sizeof(sOmegaTriggerGfx), TAG_OMEGA_TRIGGER_TILE
+};
+static const struct SpritePalette sSpritePalette_OmegaTrigger =
+{
+    sOmegaTriggerPal, TAG_OMEGA_TRIGGER_PAL
+};
+static const struct SpriteSheet sSpriteSheet_AlphaTrigger =
+{
+    sAlphaTriggerGfx, sizeof(sAlphaTriggerGfx), TAG_ALPHA_TRIGGER_TILE
+};
+static const struct SpritePalette sSpritePalette_AlphaTrigger =
+{
+    sAlphaTriggerPal, TAG_ALPHA_TRIGGER_PAL
+};
+
+static const u8 sAlphaIndicatorGfx[] = INCBIN_U8("graphics/battle_interface/alpha_indicator.4bpp");
+static const u16 sAlphaIndicatorPal[] = INCBIN_U16("graphics/battle_interface/alpha_indicator.gbapal");
+static const u8 sOmegaIndicatorGfx[] = INCBIN_U8("graphics/battle_interface/omega_indicator.4bpp");
+static const u16 sOmegaIndicatorPal[] = INCBIN_U16("graphics/battle_interface/omega_indicator.gbapal");
+
+static const struct SpriteSheet sSpriteSheet_AlphaIndicator =
+{
+    sAlphaIndicatorGfx, sizeof(sAlphaIndicatorGfx), TAG_ALPHA_INDICATOR_TILE
+};
+static const struct SpritePalette sSpritePalette_AlphaIndicator =
+{
+    sAlphaIndicatorPal, TAG_ALPHA_INDICATOR_PAL
+};
+static const struct SpriteSheet sSpriteSheet_OmegaIndicator =
+{
+    sOmegaIndicatorGfx, sizeof(sOmegaIndicatorGfx), TAG_OMEGA_INDICATOR_TILE
+};
+static const struct SpritePalette sSpritePalette_OmegaIndicator =
+{
+    sOmegaIndicatorPal, TAG_OMEGA_INDICATOR_PAL
+};
+
 static const struct OamData sOamData_MegaTrigger =
 {
     .y = 0,
@@ -656,6 +700,28 @@ static const struct SpriteTemplate sSpriteTemplate_MegaTrigger =
     .callback = SpriteCb_MegaTrigger
 };
 
+static const struct SpriteTemplate sSpriteTemplate_AlphaTrigger =
+{
+    .tileTag = TAG_ALPHA_TRIGGER_TILE,
+    .paletteTag = TAG_ALPHA_TRIGGER_PAL,
+    .oam = &sOamData_MegaTrigger,
+    .anims = sSpriteAnimTable_MegaTrigger,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCb_MegaTrigger
+};
+
+static const struct SpriteTemplate sSpriteTemplate_OmegaTrigger =
+{
+    .tileTag = TAG_OMEGA_TRIGGER_TILE,
+    .paletteTag = TAG_OMEGA_TRIGGER_PAL,
+    .oam = &sOamData_MegaTrigger,
+    .anims = sSpriteAnimTable_MegaTrigger,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCb_MegaTrigger
+};
+
 static const u8 sMegaIndicatorGfx[] = INCBIN_U8("graphics/battle_interface/mega_indicator.4bpp");
 static const u16 sMegaIndicatorPal[] = INCBIN_U16("graphics/battle_interface/mega_indicator.gbapal");
 
@@ -689,6 +755,28 @@ static const struct SpriteTemplate sSpriteTemplate_MegaIndicator =
 {
     .tileTag = TAG_MEGA_INDICATOR_TILE,
     .paletteTag = TAG_MEGA_INDICATOR_PAL,
+    .oam = &sOamData_MegaIndicator,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCb_MegaIndicator,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_AlphaIndicator =
+{
+    .tileTag = TAG_ALPHA_INDICATOR_TILE,
+    .paletteTag = TAG_ALPHA_INDICATOR_PAL,
+    .oam = &sOamData_MegaIndicator,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCb_MegaIndicator,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_OmegaIndicator =
+{
+    .tileTag = TAG_OMEGA_INDICATOR_TILE,
+    .paletteTag = TAG_OMEGA_INDICATOR_PAL,
     .oam = &sOamData_MegaIndicator,
     .anims = gDummySpriteAnimTable,
     .images = NULL,
@@ -1467,19 +1555,73 @@ void ChangeMegaTriggerSprite(u8 spriteId, u8 animId)
 
 void CreateMegaTriggerSprite(u8 battlerId, u8 palId)
 {
-    LoadSpritePalette(&sSpritePalette_MegaTrigger);
+    u32 side = GetBattlerSide(battlerId);
+    struct Pokemon *party = (side == B_SIDE_PLAYER) ? gPlayerParty : gEnemyParty;
+    u16 monId = gBattlerPartyIndexes[battlerId];
+    u16 currSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
+
     if (GetSpriteTileStartByTag(TAG_MEGA_TRIGGER_TILE) == 0xFFFF)
-        LoadSpriteSheet(&sSpriteSheet_MegaTrigger);
+    {
+        if (currSpecies == SPECIES_GROUDON)
+        {
+            LoadSpriteSheet(&sSpriteSheet_OmegaTrigger);
+            LoadSpritePalette(&sSpritePalette_OmegaTrigger);
+        }
+        else if (currSpecies == SPECIES_KYOGRE)
+        {
+            LoadSpriteSheet(&sSpriteSheet_AlphaTrigger);
+            LoadSpritePalette(&sSpritePalette_AlphaTrigger);
+        }
+        else
+        {
+            LoadSpriteSheet(&sSpriteSheet_MegaTrigger);
+            LoadSpritePalette(&sSpritePalette_MegaTrigger);
+        }
+    }
     if (gBattleStruct->mega.triggerSpriteId == 0xFF)
     {
         if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-            gBattleStruct->mega.triggerSpriteId = CreateSprite(&sSpriteTemplate_MegaTrigger,
-                                                             gSprites[gHealthboxSpriteIds[battlerId]].pos1.x - DOUBLES_MEGA_TRIGGER_POS_X_SLIDE,
-                                                             gSprites[gHealthboxSpriteIds[battlerId]].pos1.y - DOUBLES_MEGA_TRIGGER_POS_Y_DIFF, 0);
+        {
+            if (currSpecies == SPECIES_GROUDON)
+            {
+                gBattleStruct->mega.triggerSpriteId = CreateSprite(&sSpriteTemplate_OmegaTrigger,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.x - DOUBLES_MEGA_TRIGGER_POS_X_SLIDE,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.y - DOUBLES_MEGA_TRIGGER_POS_Y_DIFF, 0);
+            }
+            else if (currSpecies == SPECIES_KYOGRE)
+            {
+                gBattleStruct->mega.triggerSpriteId = CreateSprite(&sSpriteTemplate_AlphaTrigger,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.x - DOUBLES_MEGA_TRIGGER_POS_X_SLIDE,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.y - DOUBLES_MEGA_TRIGGER_POS_Y_DIFF, 0);
+            }
+            else
+            {
+                gBattleStruct->mega.triggerSpriteId = CreateSprite(&sSpriteTemplate_MegaTrigger,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.x - DOUBLES_MEGA_TRIGGER_POS_X_SLIDE,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.y - DOUBLES_MEGA_TRIGGER_POS_Y_DIFF, 0);
+            }
+        }
         else
-            gBattleStruct->mega.triggerSpriteId = CreateSprite(&sSpriteTemplate_MegaTrigger,
-                                                             gSprites[gHealthboxSpriteIds[battlerId]].pos1.x - SINGLES_MEGA_TRIGGER_POS_X_SLIDE,
-                                                             gSprites[gHealthboxSpriteIds[battlerId]].pos1.y - SINGLES_MEGA_TRIGGER_POS_Y_DIFF, 0);
+        {
+            if (currSpecies == SPECIES_GROUDON)
+            {
+                gBattleStruct->mega.triggerSpriteId = CreateSprite(&sSpriteTemplate_OmegaTrigger,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.x - SINGLES_MEGA_TRIGGER_POS_X_SLIDE,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.y - SINGLES_MEGA_TRIGGER_POS_Y_DIFF, 0);
+            }
+            else if (currSpecies == SPECIES_KYOGRE)
+            {
+                gBattleStruct->mega.triggerSpriteId = CreateSprite(&sSpriteTemplate_AlphaTrigger,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.x - SINGLES_MEGA_TRIGGER_POS_X_SLIDE,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.y - SINGLES_MEGA_TRIGGER_POS_Y_DIFF, 0);
+            }
+            else
+            {
+                gBattleStruct->mega.triggerSpriteId = CreateSprite(&sSpriteTemplate_MegaTrigger,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.x - SINGLES_MEGA_TRIGGER_POS_X_SLIDE,
+                                                                gSprites[gHealthboxSpriteIds[battlerId]].pos1.y - SINGLES_MEGA_TRIGGER_POS_Y_DIFF, 0);
+            }
+        }
     }
     gSprites[gBattleStruct->mega.triggerSpriteId].tBattler = battlerId;
     gSprites[gBattleStruct->mega.triggerSpriteId].tHide = FALSE;
@@ -1580,9 +1722,26 @@ u32 CreateMegaIndicatorSprite(u32 battlerId, u32 which)
 {
     u32 spriteId, position;
     s16 x, y;
+    u32 side = GetBattlerSide(battlerId);
+    struct Pokemon *party = (side == B_SIDE_PLAYER) ? gPlayerParty : gEnemyParty;
+    u16 monId = gBattlerPartyIndexes[battlerId];
+    u16 currSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
 
-    LoadSpritePalette(&sSpritePalette_MegaIndicator);
-    LoadSpriteSheet(&sSpriteSheet_MegaIndicator);
+    if (currSpecies == SPECIES_PRIMAL_GROUDON)
+    {
+        LoadSpritePalette(&sSpritePalette_OmegaIndicator);
+        LoadSpriteSheet(&sSpriteSheet_OmegaIndicator);
+    }
+    else if (currSpecies == SPECIES_PRIMAL_KYOGRE)
+    {
+        LoadSpritePalette(&sSpritePalette_AlphaIndicator);
+        LoadSpriteSheet(&sSpriteSheet_AlphaIndicator);
+    }
+    else
+    {
+        LoadSpritePalette(&sSpritePalette_MegaIndicator);
+        LoadSpriteSheet(&sSpriteSheet_MegaIndicator);
+    }
 
     position = GetBattlerPosition(battlerId);
     GetBattlerHealthboxCoords(battlerId, &x, &y);
@@ -1596,7 +1755,13 @@ u32 CreateMegaIndicatorSprite(u32 battlerId, u32 which)
         x += sIndicatorPosSingles[position][0];
         y += sIndicatorPosSingles[position][1];
     }
-    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_MegaIndicator, x, y, 0);
+
+    if (currSpecies == SPECIES_PRIMAL_GROUDON)
+        spriteId = CreateSpriteAtEnd(&sSpriteTemplate_OmegaIndicator, x, y, 0);
+    else if (currSpecies == SPECIES_PRIMAL_KYOGRE)
+        spriteId = CreateSpriteAtEnd(&sSpriteTemplate_AlphaIndicator, x, y, 0);
+    else
+        spriteId = CreateSpriteAtEnd(&sSpriteTemplate_MegaIndicator, x, y, 0);
     gSprites[gSprites[gHealthboxSpriteIds[battlerId]].oam.affineParam].hOther_IndicatorSpriteId = spriteId;
 
     gSprites[spriteId].tBattler = battlerId;

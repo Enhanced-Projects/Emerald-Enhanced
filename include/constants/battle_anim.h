@@ -391,6 +391,8 @@
 #define ANIM_TAG_DREEPY                     (ANIM_SPRITES_START + 379)
 #define ANIM_TAG_ICE_ROCK_SINGLE            (ANIM_SPRITES_START + 380)
 #define ANIM_TAG_STONE_PILLAR_MULTI         (ANIM_SPRITES_START + 381)
+#define ANIM_TAG_ALPHA_SYMBOL               (ANIM_SPRITES_START + 382)
+#define ANIM_TAG_OMEGA_SYMBOL               (ANIM_SPRITES_START + 383)
 
 // battlers
 #define ANIM_ATTACKER    0

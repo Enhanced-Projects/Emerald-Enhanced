@@ -41,6 +41,10 @@ enum
 
 #define TAG_MEGA_TRIGGER_TILE			0xD777
 #define TAG_MEGA_INDICATOR_TILE         0xD778
+#define TAG_ALPHA_TRIGGER_TILE          0xD779
+#define TAG_ALPHA_INDICATOR_TILE        0xD77A
+#define TAG_OMEGA_TRIGGER_TILE          0xD77B
+#define TAG_OMEGA_INDICATOR_TILE        0xD77C
 
 #define TAG_HEALTHBOX_PAL               0xD6FF
 #define TAG_HEALTHBAR_PAL               0xD704
@@ -48,7 +52,11 @@ enum
 #define TAG_STATUS_SUMMARY_BALLS_PAL    0xD712
 
 #define TAG_MEGA_TRIGGER_PAL			0xD777
-#define TAG_MEGA_INDICATOR_PAL			0xD778
+#define TAG_MEGA_INDICATOR_PAL          0xD778
+#define TAG_ALPHA_TRIGGER_PAL           0xD779
+#define TAG_ALPHA_INDICATOR_PAL         0xD77A
+#define TAG_OMEGA_TRIGGER_PAL           0xD77B
+#define TAG_OMEGA_INDICATOR_PAL         0xD77C
 
 enum
 {
