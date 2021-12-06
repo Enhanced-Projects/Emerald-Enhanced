@@ -356,7 +356,10 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative RyuDebugDoPickupTestRoll
+	removeitem ITEM_RED_ORB, 1
+	givepokedexflag SPECIES_KYOGRE, TRUE
+	givepokedexflag SPECIES_GROUDON, TRUE
+	clearflag FLAG_RYU_ONE_TIME_SAVE_FIX
 	release
 	end
 

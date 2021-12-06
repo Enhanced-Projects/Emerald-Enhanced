@@ -107,6 +107,7 @@ SC_GroudonFight::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_CAUGHT
 	call_if_ne SC_Groudon_Defeated
+	call MH4_RedOrb
 	compare VAR_RESULT, B_OUTCOME_CAUGHT
 	goto_if_eq SC_HideGroudon
 	goto SC_Groudon_PostEvent

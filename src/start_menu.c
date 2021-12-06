@@ -51,6 +51,7 @@
 #include "ach_atlas.h"
 #include "gba/m4a_internal.h"
 #include "RyuRealEstate.h"
+#include "overworld_notif.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
 static EWRAM_DATA u8 MenuSpriteId2 = 0;
@@ -989,7 +990,27 @@ static void StartMenuTask(u8 taskId)
         SwitchTaskToFollowupFunc(taskId);
 }
 
-void RyuDoOneTImeSaveFixes(void) {}
+const u8 gOneTimeMsg[] = _("Given Red and/or Blue orb.");
+
+void RyuDoOneTImeSaveFixes(void) {
+    bool32 activated = FALSE;
+
+    if ((GetSetPokedexFlag(SPECIES_GROUDON, FLAG_GET_CAUGHT) == TRUE) && (CheckBagHasItem(471, 1) == FALSE))
+    {
+        activated = TRUE;
+        AddBagItem(471, 1);
+    }
+
+    if ((GetSetPokedexFlag(SPECIES_KYOGRE, FLAG_GET_CAUGHT) == TRUE) && (CheckBagHasItem(472, 1) == FALSE))
+    {
+        AddBagItem(472, 1);
+        activated = TRUE;
+    }
+    if (activated == TRUE)
+        QueueNotification(gOneTimeMsg, NOTIFY_GENERAL, 60);
+
+    FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
+}
 
 bool32 RyuCheckFactionAchievements(void)
 {
@@ -1107,6 +1128,8 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
         VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, EE_GAME_VERSION);
     VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
     FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
+    if (FlagGet(FLAG_RYU_ONE_TIME_SAVE_FIX) == FALSE)
+        RyuDoOneTImeSaveFixes();
     RyuDoOneTImeSaveFixes(); //this should let me put in one time use fixes for various quest things
     if (CheckAchievement(ACH_POKEMON_MASTER) == FALSE)
         if (RyuGetTotalCaughtMons() >= 386)

@@ -6431,6 +6431,12 @@ static const u32 sMegaWeights[NUMBER_OF_MEGAS] = {
 
 inline bool8 IsMega(u16 species)
 {
+    if (species == SPECIES_GROUDON)
+        return TRUE;
+    
+    if (species == SPECIES_KYOGRE)
+        return TRUE;
+
     return species >= SPECIES_MEGA_START && species <= SPECIES_MEGA_END;
 }
 
