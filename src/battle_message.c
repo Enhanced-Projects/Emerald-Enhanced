@@ -729,8 +729,8 @@ static const u8 sText_MysteriousAirCurrent[] = _("A mysterious air current is\np
 static const u8 sText_StrongWindsDissipated[] = _("The mysterious strong winds\nhave dissipated!{PAUSE 64}");
 static const u8 sText_MysteriousAirCurrentBlowsOn[] = _("The mysterious air current\nblows on regardless!");
 static const u8 sText_AttackWeakenedByStrongWinds[] = _("The mysterious strong winds\nweakened the attack!");
-static const u8 sText_PkmnAuraIsGrowingExplosively[] = _("{B_ATK_NAME_WITH_PREFIX}'s aura is\ngrowing explosively!");
-static const u8 sText_PkmnRevertedToPrimal[] = _("{B_ATK_NAME_WITH_PREFIX} reverted to\nits Primal form!");
+static const u8 sText_PkmnAuraIsGrowingExplosively[] = _("{B_ATK_NAME_WITH_PREFIX}'s aura is growing\nexplosively!");
+static const u8 sText_PkmnRevertedToPrimal[] = _("{B_ATK_NAME_WITH_PREFIX} reverted to its\nPrimal form!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
