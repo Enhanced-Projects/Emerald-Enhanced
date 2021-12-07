@@ -9,6 +9,7 @@
 #include "constants/songs.h"
 #include "constants/game_stat.h"
 #include "constants/battle_config.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/battle_script.inc"
 	.include "constants/constants.inc"
@@ -6360,6 +6361,8 @@ BattleScript_FocusPunchSetUp::
 	end2
 
 BattleScript_MegaEvolution::
+	jumpifspecies BS_ATTACKER, SPECIES_KYOGRE, BattleScript_PrimalMegaEvolution
+	jumpifspecies BS_ATTACKER, SPECIES_GROUDON, BattleScript_PrimalMegaEvolution
 	printstring STRINGID_MEGAEVOREACTING
 	waitmessage 0x40
 	setbyte gIsCriticalHit, 0
@@ -6369,6 +6372,20 @@ BattleScript_MegaEvolution::
 	waitanimation
 	handlemegaevo BS_ATTACKER, 2
 	printstring STRINGID_MEGAEVOEVOLVED
+	waitmessage 0x40
+	switchinabilities BS_ATTACKER
+	end2
+
+BattleScript_PrimalMegaEvolution::
+	printstring STRINGID_PKMNAURAISGROWINGEXPLOSIVELY
+	waitmessage 0x40
+	setbyte gIsCriticalHit, 0
+	handlemegaevo BS_ATTACKER, 0
+	handlemegaevo BS_ATTACKER, 1
+	playanimation BS_ATTACKER, B_ANIM_MEGA_EVOLUTION, NULL
+	waitanimation
+	handlemegaevo BS_ATTACKER, 2
+	printstring STRINGID_PKMNREVERTEDTOPRIMAL
 	waitmessage 0x40
 	switchinabilities BS_ATTACKER
 	end2

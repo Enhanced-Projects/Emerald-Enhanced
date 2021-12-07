@@ -4992,3 +4992,9 @@ void AnimTask_TechnoBlast(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
+void AnimTask_MegaPrimal(u8 taskId)
+{
+    gBattleAnimArgs[0] = gBattleMons[gBattleAnimAttacker].species;
+    DestroyAnimVisualTask(taskId);
+}
+
