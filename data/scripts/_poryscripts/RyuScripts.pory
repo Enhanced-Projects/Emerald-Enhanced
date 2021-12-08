@@ -266,41 +266,14 @@ RyuGivePokenav::
 
 RyuUserModeEVMenu::
 	lock
-	bufferdynamicmulti EVMENU_1, EVMENU_2, EVMENU_3
-	msgbox RyuUserEvSelectIVEV
-	multichoicedefault 0, 4, MULTI_DYNAMIC_3, 2, 1
-	copyvar VAR_TEMP_E, VAR_RESULT
-	compare VAR_RESULT, 2
-	goto_if_ge ryu_end
-	msgbox RyuUserEVInfo MSGBOX_DEFAULT
-	multichoicegrid 0, 4, MULTI_GENETIC_IMPRINTER_MENU, 2, 0
-	compare VAR_RESULT, 6
-	goto_if_ge ryu_end
-	copyvar VAR_TEMP_3, VAR_RESULT
-	msgbox RA_SA_Choosemon
-	call RyuBufferPartyMonNames
-	multichoice 10, 0, MULTI_DYNAMIC_6, 0
-	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
-	compare VAR_TEMP_A, FALSE
-	goto_if_eq RyuUserModeEVMenu
-	setvar VAR_TEMP_1, 0
-	copyvar VAR_TEMP_2, VAR_RESULT
-	call checkforimprint
-	compare VAR_RESULT, FALSE
-	goto_if_eq RyuUserEvNoImprint
-	setvar VAR_TEMP_4, TRUE
-	special RyuSetSlotStatIVEV
-	addmonhappiness VAR_TEMP_2, 25
-	call TakeIvEvItem
-	msgbox RyuEvSuccessMsg MSGBOX_DEFAULT
 	release
 	end
 
 EVMENU_1:
-	.string "Reduce EV$"
+	.string "Set EV to 0$"
 
 EVMENU_2:
-	.string "Reduce IV$"
+	.string "Set IV to 0$"
 
 EVMENU_3:
 	.string "Cancel$"
@@ -2428,44 +2401,6 @@ script gRyuWarpFemaleHomeScript {
 script gRyuWarpMaleHomeScript {
 	warpsilent(MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_2F, 255, 1, 4)
 	waitstate
-}
-
-script checkforimprint {
-	if (var(VAR_TEMP_E) == 0) {
-		checkitem(ITEM_EVPRINT, 1)
-		if (var(VAR_RESULT) == TRUE) {
-			return
-		}
-		else{
-			setvar(VAR_RESULT, FALSE)
-			return
-		}
-	}
-	elif (var(VAR_TEMP_E) == 1) {
-		checkitem(ITEM_IVPRINT, 1)
-		if (var(VAR_RESULT) == TRUE) {
-			return
-		}
-		else {
-			setvar(VAR_RESULT, FALSE)
-			return
-		}
-	}
-	else {
-		setvar(VAR_RESULT, FALSE)
-		return
-	}
-}
-
-script TakeIvEvItem {
-	if (var(VAR_TEMP_E) == 0) {
-		removeitem(ITEM_EVPRINT, 1)
-		return
-	}
-	else{
-		removeitem(ITEM_IVPRINT, 1)
-		return
-	}
 }
 
 raw `

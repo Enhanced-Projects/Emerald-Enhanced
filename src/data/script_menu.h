@@ -865,11 +865,9 @@ static const struct MenuAction MultichoiceList_122[]=
 {
     {gText_RyuViewMonDataOption},
     {gText_RyuResetIVEVMenuOption},
-    {gText_RyuSetEvMenuOption},
-    {gText_RyuMaxIvMenuOption},
+    {gText_RyuSetIvEvMenuOption},
     {gText_RyuSetFriendshipMenuOption},
     {gText_RyuAccessMoveRelearner},  
-    {gText_RyuBetaMenuBlank},
     {gText_RyuExitPokeEditMenuOption},
 };
 

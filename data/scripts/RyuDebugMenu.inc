@@ -24,7 +24,7 @@ RyuDebugMenuScript::
 	case 1, RyuDebug_Utility1
 	case 2, RyuDebug_SpawningMenu
 	case 3, RyuDebug_DevMonQuickStart
-	case 4, RyuDebug_pokeedit
+	case 4, RyuPokeEditMenu
 	case 5, RyuDebug_enableWaystone
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
@@ -39,7 +39,7 @@ RyuDebug_menu_nodevcheck::
 	case 1, RyuDebug_Utility1
 	case 2, RyuDebug_SpawningMenu
 	case 3, RyuDebug_DevMonQuickStart
-	case 4, RyuDebug_pokeedit
+	case 4, RyuPokeEditMenu
 	case 5, RyuDebug_enableWaystone
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
@@ -225,15 +225,6 @@ RyuDebug_HealParty::
 	special HealPlayerParty
 	playse SE_EXPMAX
 	goto RyuDebug_UtilitiesMenu
-	
-RyuDebug_pokeedit::
-	msgbox OpeningPokeEdit
-	goto RyuPokeEditMenu
-	release
-	end
-
-OpeningPokeEdit:
-	.string "Opening Poke Edit...$"
 
 RyuDebug_money::
 	addmoney 1000000000
@@ -796,12 +787,10 @@ RyuPokeEditMenu::
 	switch VAR_RESULT
 	case 0, RD_MonDataView
 	case 1, Ryu_ResetEVIV
-	case 2, RyuSetEvDebugMenu
-	case 3, RyuSetIvDebugMenu
-	case 4, RyuSetFriendshipDebugMenu
-	case 5, RyuAccessDevMoveRelearner
-	case 6, RyuExitPokeEditMenu
-	case 7, RyuExitPokeEditMenu
+	case 2, RyuSetIvEvDebugMenu
+	case 3, RyuSetFriendshipDebugMenu
+	case 4, RyuAccessDevMoveRelearner
+	case 5, RyuExitPokeEditMenu
 	goto RyuExitPokeEditMenu
 
 RD_MonDataView::
@@ -822,20 +811,20 @@ RyuExitPokeEditMenu::
 Ryu_ResetEVIV::
 	bufferdynamicmulti RIVEV1, RIVEV2, RIVEV3
 	multichoice 0, 6, MULTI_DYNAMIC_3, 0
+	copyvar VAR_TEMP_0, VAR_RESULT
 	compare VAR_RESULT, 127
 	goto_if_eq RyuPokeEditMenu
-	copyvar VAR_TEMP_0, VAR_RESULT
-	msgbox RyuEv_ChooseSlot
+	msgbox RyuIvEv_ChooseSlot
 	call RyuBufferPartyMonNames
 	multichoice 0, 0, MULTI_DYNAMIC_6, 1
-	copyvar VAR_TEMP_2, VAR_RESULT
+	copyvar VAR_TEMP_1, VAR_RESULT
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuPokeEditMenu
 	msgbox ResetEVIVQuery, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq RyuPokeEditMenu
-	callnative RyuResetIVEvs
+	callnative RyuResetIvEvs
 	addvar VAR_TEMP_2, 1
 	buffernumberstring 0, VAR_TEMP_2
 	msgbox ResetDone
@@ -878,212 +867,71 @@ RyuActivateRelearner:
 retutor:
 	.string "Relearn another move?$"
 
-RyuSetIvDebugMenu::
-	msgbox RyuEv_ChooseSlot
+RyuSetIvEvDebugMenu::
+	msgbox RyuIvEv_SelectOP
+	bufferdynamicmulti IVEVMENU_1, IVEVMENU_2, EVMENU_3
+	multichoice 0, 3, MULTI_DYNAMIC_3, 1
+	copyvar VAR_TEMP_4, VAR_RESULT @set EV or IV mode
+	compare VAR_RESULT, 2
+	goto_if_ge RyuPokeEditMenu
+	msgbox RyuIvEv_ChooseSlot
 	call RyuBufferPartyMonNames
 	multichoice 0, 0, MULTI_DYNAMIC_6, 1
 	copyvar VAR_TEMP_2, VAR_RESULT @put slot number in early
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
-	goto_if_eq RyuSetIvDebugMenu
-	bufferdynamicmulti REV4, REV5, REV3
-	multichoice 0, 6, MULTI_DYNAMIC_3, 0
-	switch VAR_RESULT
-	case 0, RyuIVMenuAdd
-	case 1, RyuIVMenuSubtract
-	case 2, RyuIvMenuExit
-	case 127, RyuIvMenuExit
-	release
-	end
-
-RyuIVMenuAdd::
-	setvar VAR_TEMP_E, 1 //IV mode
-	setvar VAR_TEMP_4, FALSE //Is IV amount going to be subtracted
-	msgbox AddHowManyIV
-	numberentry 0, 9, 2
-	compare VAR_RESULT, 31
-	call_if_ge RyuIV_SetToMax
-	copyvar VAR_TEMP_1, VAR_RESULT @@put amount to change in TEMP 1
-	msgbox RyuEV_SetWhichStat
+	goto_if_eq RyuIvEv_ExitQuery
+	msgbox RyuIvEv_SetWhichStat
 	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed
 	multichoice 0, 0, MULTI_DYNAMIC_6, 0
+	copyvar VAR_TEMP_3, VAR_RESULT
+	closemessage
 	compare VAR_RESULT, 127
-	goto_if_eq RyuIvMenuExit
-	copyvar VAR_TEMP_3, VAR_RESULT //put stat number into TEMP 3
-	special RyuSetSlotStatIVEV
+	goto_if_eq RyuIvEv_ExitQuery
+	msgbox RyuIvEv_ChooseValue
+	numberentry 5, 10, 3
+	copyvar VAR_TEMP_1, VAR_RESULT 
+	callnative RyuSetSlotStatIVEV
 	msgbox IvMenuDone
-	goto RyuIvMenuExit
-	release
-	end
+	closemessage
+	copyvar VAR_0x8001, VAR_TEMP_2
+	call ShowMonDataInfoBox
+	goto RyuIvEv_ExitQuery
 
-RyuIVMenuSubtract::
-	setvar VAR_TEMP_E, 1 //IV mode
-	setvar VAR_TEMP_4, TRUE //Is IV amount going to be subtracted
-	msgbox SubHowManyIV
-	numberentry 0, 9, 2
-	compare VAR_RESULT, 31
-	call_if_ge RyuEV_SetToMin
-	copyvar VAR_TEMP_1, VAR_RESULT @@put amount to change in TEMP 1
-	msgbox RyuEV_SetWhichStat
-	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed
-	multichoice 0, 0, MULTI_DYNAMIC_6, 0
-	compare VAR_RESULT, 127
-	goto_if_eq RyuEvMenuExit
-	copyvar VAR_TEMP_3, VAR_RESULT //put stat number into TEMP 3
-	special RyuSetSlotStatIVEV
-	msgbox IvMenuDone
-	goto RyuIvMenuExit
-	release
-	end
+RyuIvEv_ExitQuery::
+	msgbox RyuIvEv_Cancel, MSGBOX_YESNO
+	closemessage
+	compare VAR_RESULT, YES
+	goto_if_eq RyuDebug_menu_nodevcheck
+	goto RyuPokeEditMenu
+
+RyuIvEv_Cancel:
+	.string "Cancel operation?$"
+
+IVEVMENU_2:
+	.string "Set IVs$"
+
+IVEVMENU_1:
+	.string "Set EVs$"
 
 IvMenuDone:
-	.string "IV's Changed.$"
+	.string "Stats Changed.$"
 
-RyuSetEvDebugMenu::
-	msgbox RyuEv_ChooseSlot
-	call RyuBufferPartyMonNames
-	multichoice 0, 0, MULTI_DYNAMIC_6, 1
-	copyvar VAR_TEMP_2, VAR_RESULT @put slot number in early
-	closemessage
-	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
-	compare VAR_TEMP_A, FALSE
-	goto_if_eq RyuSetEvDebugMenu
-	msgbox RIEV_SelectOP
-	bufferdynamicmulti REV1, REV2, REV3
-	multichoice 0, 6, MULTI_DYNAMIC_3, 0
-	switch VAR_RESULT
-	case 0, RyuEVMenuAdd
-	case 1, RyuEVMenuSubtract
-	case 2, RyuEvMenuExit
-	case 127, RyuEvMenuExit
-	release
-	end
+RyuIvEv_ChooseValue:
+	.string "Enter the new stat value.$"
 
-RIEV_SelectOP:
+RyuIvEv_SelectOP:
 	.string "Select Operation.$"
 
-RyuIV_SetToMax::
-	setvar VAR_RESULT, 31
-	return
-
-REV1:
-	.string "Add EV's$"
-
-REV2:
-	.string "Remove EV's$"
-
-REV4:
-	.string "Add IV's$"
-
-REV5:
-	.string "Remove IV's$"
-
-REV3:
-	.string "Exit$"
-
-RyuEv_ChooseSlot:
+RyuIvEv_ChooseSlot:
 	.string "Choose a party slot.$"
 
-RyuEV_SetWhichStat:
+RyuIvEv_SetWhichStat:
 	.string "Modify which stat?$"
-
-RyuEvMenuQuery:
-	.string "Modify more EV's?$"
-
-RyuIvMenuQuery:
-	.string "Modify more IV's?$"
-
-RyuEvIntro:
-	.string "Choose which value to set.$"
 
 EvResetQuery:
 	.string "Set all EV's to 0?$"
 	
-RyuEvMenuResetQuery::
-	msgbox EvResetQuery, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq ryu_return
-	special RyuResetEvs
-	msgbox RyuResetEvMessage
-	goto RyuSetEvDebugMenu
-	
-RyuResetEvMessage:
-	.string "Lead mon Evs have been reset.\n"
-	.string "You can now choose new ones.$"
-
-RyuEvMenuExit::
-	msgbox RyuEvMenuQuery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RyuSetEvDebugMenu
-	goto RyuPokeEditMenu
-	release
-	end
-
-RyuIvMenuExit::
-	msgbox RyuIvMenuQuery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RyuSetIvDebugMenu
-	goto RyuPokeEditMenu
-	release
-	end
-
-RyuEVMenuAdd::
-	setvar VAR_TEMP_E, 0 //EV mode
-	setvar VAR_TEMP_4, FALSE //Is EV amount going to be subtracted
-	msgbox AddHowManyEV
-	numberentry 0, 9, 3
-	compare VAR_RESULT, 255
-	call_if_ge RyuEV_SetToMax
-	copyvar VAR_TEMP_1, VAR_RESULT @@put amount to change in TEMP 1
-	msgbox RyuEV_SetWhichStat
-	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed
-	multichoice 0, 0, MULTI_DYNAMIC_6, 0
-	compare VAR_RESULT, 127
-	goto_if_eq RyuEvMenuExit
-	setvar VAR_TEMP_E, 0
-	copyvar VAR_TEMP_3, VAR_RESULT //put stat number into TEMP 3
-	special RyuSetSlotStatIVEV
-	msgbox EvMenuDone
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEVMenuSubtract::
-	setvar VAR_TEMP_E, 0 //EV mode
-	setvar VAR_TEMP_4, TRUE //Is EV amount going to be subtracted
-	msgbox SubHowManyEV
-	numberentry 0, 9, 3
-	compare VAR_RESULT, 252
-	call_if_ge RyuEV_SetToMin
-	copyvar VAR_TEMP_1, VAR_RESULT @@put amount to change in TEMP 1
-	msgbox RyuEV_SetWhichStat
-	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed
-	multichoice 0, 0, MULTI_DYNAMIC_6, 0
-	compare VAR_RESULT, 127
-	goto_if_eq RyuEvMenuExit
-	setvar VAR_TEMP_E, 0
-	copyvar VAR_TEMP_3, VAR_RESULT //put stat number into TEMP 3
-	special RyuSetSlotStatIVEV
-	msgbox EvMenuDone
-	call RyuEvMenuExit
-	release
-	end
-
-SubHowManyEV:
-	.string "Remove how many EV's?$"
-
-SubHowManyIV:
-	.string "Remove how many IV's?$"
-
-EvMenuDone:
-	.string "Finished.$"
-
-AddHowManyEV:
-	.string "Add how many EV's?$"
-
-AddHowManyIV:
-	.string "Add how many IV's?$"
-
 RyuEVHP:
 	.string "HP$"
 
@@ -1101,17 +949,6 @@ RyuEVSpDef:
 
 RyuEVSpeed:
 	.string "Speed$"
-
-RyuEV_SetToMax:
-	setvar VAR_RESULT, 255
-	return
-
-RyuEV_SetToMin:
-	setvar VAR_RESULT, 0
-	return
-
-RyuEvMenuMsg:
-	.string "Would you like to modify EV's?"
 	
 RyuSetFriendshipDebugMenu::
 	addmonhappiness 0, 255
@@ -1218,7 +1055,7 @@ ExpMult8:
 	
 RyuDebug_SpawningMenu::
 	bufferdynamicmulti RDBSP_1, RDBSP_2, RDBSP_3, RDBSP_4, RDBSP_5, RDBSP_6
-	multichoice 6, 4, MULTI_DYNAMIC_6, 1
+	multichoice 0, 0, MULTI_DYNAMIC_6, 1
 	switch VAR_RESULT
 	case 0, FrontierMonDev
 	case 1, DevModeMonGive

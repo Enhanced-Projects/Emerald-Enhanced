@@ -35,6 +35,15 @@ TC_EvIvCheckerNoHealScript::
 	release
 	end
 
+ShowMonDataInfoBox::
+    special RyuFillStatsBuffers
+	delay 30
+    drawinfobox INFOBOXPOKEMONDATA
+	bufferpartymonnick 1, 0
+	msgbox Ryu_Stats
+	removeinfobox
+	return
+
 TC_ToggleExpGain::
 	setflag FLAG_RYU_TC_EXP_DISABLED
 	setflag FLAG_TEMP_9

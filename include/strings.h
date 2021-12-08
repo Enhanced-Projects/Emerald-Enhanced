@@ -3046,7 +3046,7 @@ extern const  u8 gText_RyuViewMonDataOption[];
 extern const  u8 gText_RyuResetIVEVMenuOption[];
 extern const  u8 gText_RyuSetLevelMenuOption[];
 extern const  u8 gText_RyuSetExpMultMenuOption[];
-extern const  u8 gText_RyuSetEvMenuOption[];
+extern const  u8 gText_RyuSetIvEvMenuOption[];
 extern const  u8 gText_RyuMaxIvMenuOption[];
 extern const  u8 gText_RyuAccessMoveRelearner[];
 extern const  u8 gText_RyuSetFriendshipMenuOption[];
