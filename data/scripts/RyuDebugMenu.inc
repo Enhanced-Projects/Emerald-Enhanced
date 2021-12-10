@@ -22,9 +22,9 @@ RyuDebugMenuScript::
 	switch VAR_RESULT
 	case 0, RyuDebug_UtilitiesMenu
 	case 1, RyuDebug_Utility1
-	case 2, RyuDebug_PasscodeMenu
+	case 2, RyuDebug_SpawningMenu
 	case 3, RyuDebug_DevMonQuickStart
-	case 4, RyuDebug_pokeedit
+	case 4, RyuPokeEditMenu
 	case 5, RyuDebug_enableWaystone
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
@@ -37,9 +37,9 @@ RyuDebug_menu_nodevcheck::
 	switch VAR_RESULT
 	case 0, RyuDebug_UtilitiesMenu
 	case 1, RyuDebug_Utility1
-	case 2, RyuDebug_PasscodeMenu
+	case 2, RyuDebug_SpawningMenu
 	case 3, RyuDebug_DevMonQuickStart
-	case 4, RyuDebug_pokeedit
+	case 4, RyuPokeEditMenu
 	case 5, RyuDebug_enableWaystone
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
@@ -74,9 +74,8 @@ RyuDebug_UtilitiesMenu:
 	case 13, RDB_AlchemyInfo
 	case 14, RDB_ToggleLevelCap
 	case 15, RDB_EnableRealEstate
-	case 16, RDB_SpawnFollowerMultiMenu
-	case 17, RyuDebug_InitTimeSlide
-	case 18, RyuDebug_menu_nodevcheck
+	case 16, RyuDebug_InitTimeSlide
+	case 17, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -179,7 +178,12 @@ RDB_ExplainSpawnMsg:
 	.string "You have spawned in a follower.\nNote that this skips all quest\pchecks and just directly applies\ntheir base script.\lBugs may appear when talked to.$"
 	
 RDB_RETURNTOMAIN::
-	goto RyuDebug_UtilitiesMenu
+	msgbox RDB_RTM1
+	closemessage
+	goto RyuDebug_menu_nodevcheck
+
+RDB_RTM1::
+	.string "Returning to main menu.$"
 
 RDB_EnableRealEstate::
 	callnative SetPlayerRealtorStatus
@@ -221,18 +225,9 @@ RyuDebug_HealParty::
 	special HealPlayerParty
 	playse SE_EXPMAX
 	goto RyuDebug_UtilitiesMenu
-	
-RyuDebug_pokeedit::
-	msgbox OpeningPokeEdit
-	goto RyuPokeEditMenu
-	release
-	end
-
-OpeningPokeEdit:
-	.string "Opening Poke Edit...$"
 
 RyuDebug_money::
-	addmoney 250000
+	addmoney 1000000000
 	msgbox RyuDebug_money_text MSGBOX_DEFAULT
 	return
 
@@ -254,7 +249,7 @@ RyuEncEnabled:
 	.string "Dev Repel off$"
 
 RyuDebug_money_text:
-	.string "Given ¥250,000.$"
+	.string "Given ¥1b.$"
 
 RyuDebug_DisableDebug::
 	clearflag FLAG_RYU_DEV_MODE
@@ -352,8 +347,18 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	removeitem ITEM_RED_ORB, 1
+	givepokedexflag SPECIES_KYOGRE, TRUE
+	givepokedexflag SPECIES_GROUDON, TRUE
+	clearflag FLAG_RYU_ONE_TIME_SAVE_FIX
 	release
 	end
+
+RDB_DQT::
+	.string "{PLAYER}, can you go check out\nRoute 103?\pI want to know specifically if\nthere's a good place to camp\lthere or not.$"
+
+RDB_String1:
+	.string "Your name is {PLAYER}.\nYour rival is {RIVAL}.$"
 
 RDB_DoLittlerootLatiCheck::
 	buffernumberstring 0, VAR_ROAMER_POKEMON
@@ -365,6 +370,9 @@ RDB_DoLittlerootLatiCheck::
 
 RDBTeleport:
 	.string "Teleport?$"
+
+RDBResult:
+	.string "Result: {STR_VAR_1}$"
 
 RDBLRT2:
 	.string "Your roamer is {STR_VAR_1}\nYour Tutorial state is {STR_VAR_2}$"
@@ -507,6 +515,9 @@ RyuDebug_GiveItems::
 	msgbox KeyItemsKitQuery MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	call_if_eq RyuDebug_GiveKeyItemsKit
+	msgbox MegaStonesQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_GiveMegaStones
 	goto RyuDebug_menu_nodevcheck
 
 RyuDebug_Init_GiveAllTMs::
@@ -531,19 +542,75 @@ RyuDebugGiveTMsDone::
 RyuDebug_GiveAlchemyKit::
 	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 5
 	setvar VAR_RYU_ALCHEMY_EXP, 5000
-	additem ITEM_FRESH_WATER, 100
-	additem ITEM_TONIC_WATER, 100
-	additem ITEM_MINERAL_WATER, 100
-	additem ITEM_MUSCLE_POWDER, 100
-	additem ITEM_SMART_POWDER, 100
-	additem ITEM_STARDUST, 100
-	additem ITEM_TOUGH_POWDER, 100
-	additem ITEM_RAWST_BERRY, 100
-	additem ITEM_BRIGHT_POWDER, 100
-	additem ITEM_ORAN_BERRY, 100
-	setvar VAR_RYU_ALCHEMY_COPPER, 50000
-	setvar VAR_RYU_ALCHEMY_SILVER, 50000
-	setvar VAR_RYU_ALCHEMY_GOLD, 50000
+	additem ITEM_FRESH_WATER, 200
+	additem ITEM_TONIC_WATER, 200
+	additem ITEM_MINERAL_WATER, 200
+	additem ITEM_MUSCLE_POWDER, 200
+	additem ITEM_SMART_POWDER, 200
+	additem ITEM_STARDUST, 200
+	additem ITEM_TOUGH_POWDER, 200
+	additem ITEM_RAWST_BERRY, 200
+	additem ITEM_BRIGHT_POWDER, 200
+	additem ITEM_ORAN_BERRY, 200
+	additem ITEM_CHARCOAL 200
+	additem ITEM_FIRE_STONE 200
+	additem ITEM_SOFT_SAND 200
+	additem ITEM_SNOWBALL 200
+	additem ITEM_GEM_POWDER 200
+	setvar VAR_RYU_ALCHEMY_COPPER, 65500
+	setvar VAR_RYU_ALCHEMY_SILVER, 65500
+	setvar VAR_RYU_ALCHEMY_GOLD, 65500
+	return
+
+RyuDebug_GiveMegaStones::
+	additem ITEM_ABOMASITE 1
+	additem ITEM_ABSOLITE 1
+	additem ITEM_AERODACTYLITE 1
+	additem ITEM_AGGRONITE 1
+	additem ITEM_ALAKAZITE 1
+	additem ITEM_ALTARIANITE 1
+	additem ITEM_AMPHAROSITE 1
+	additem ITEM_AUDINITE 1
+	additem ITEM_BANETTITE 1
+	additem ITEM_BEEDRILLITE 1
+	additem ITEM_BLASTOISINITE 1
+	additem ITEM_BLAZIKENITE 1
+	additem ITEM_CAMERUPTITE 1
+	additem ITEM_CHARIZARDITE_X 1
+	additem ITEM_CHARIZARDITE_Y 1
+	additem ITEM_DIANCITE 1
+	additem ITEM_GALLADITE 1
+	additem ITEM_GARCHOMPITE 1
+	additem ITEM_GARDEVOIRITE 1
+	additem ITEM_GENGARITE 1
+	additem ITEM_GLALITITE 1
+	additem ITEM_GYARADOSITE 1
+	additem ITEM_HERACRONITE 1
+	additem ITEM_HOUNDOOMINITE 1
+	additem ITEM_KANGASKHANITE 1
+	additem ITEM_LATIASITE 1
+	additem ITEM_LATIOSITE 1
+	additem ITEM_LOPUNNITE 1
+	additem ITEM_LUCARIONITE 1
+	additem ITEM_MANECTITE 1
+	additem ITEM_MAWILITE 1
+	additem ITEM_MEDICHAMITE 1
+	additem ITEM_METAGROSSITE 1
+	additem ITEM_MEWTWONITE_X 1
+	additem ITEM_MEWTWONITE_Y 1
+	additem ITEM_PIDGEOTITE 1
+	additem ITEM_PINSIRITE 1
+	additem ITEM_SABLENITE 1
+	additem ITEM_SALAMENCITE 1
+	additem ITEM_SCEPTILITE 1
+	additem ITEM_SCIZORITE 1
+	additem ITEM_SHARPEDONITE 1
+	additem ITEM_SLOWBRONITE 1
+	additem ITEM_STEELIXITE 1
+	additem ITEM_SWAMPERTITE 1
+	additem ITEM_TYRANITARITE 1
+	additem ITEM_VENUSAURITE 1
+	return
 
 RyuDebug_GiveItemsKit:
 	additem ITEM_FULL_RESTORE, 100
@@ -568,6 +635,9 @@ RyuDebug_GiveKeyItemsKit::
 	additem ITEM_RECIPE_BOOK, 1
 	additem ITEM_REAGENT_POUCH, 1
 	return
+
+MegaStonesQuery:
+	.string "Would you like all Mega Stones?$"
 
 RyuDebug_MoneyMsg:
 	.string "Give Dev Mode money payout?$"
@@ -715,19 +785,65 @@ RyuNewGameQuery:
 RyuPokeEditMenu::
 	multichoicedefault 1, 0, 122, 0, 0
 	switch VAR_RESULT
-	case 0, TC_EvIvCheckerScript@
-	case 1, ryu_end@
-	case 2, ryu_end@
-	case 3, RyuAccessDevMoveRelearner@
-	case 4, RyuSetEvDebugMenu@
-	case 5, RyuSetIvDebugMenu@
-	case 6, RyuSetFriendshipDebugMenu@
-	case 7, RyuExitPokeEditMenu@
+	case 0, RD_MonDataView
+	case 1, Ryu_ResetEVIV
+	case 2, RyuSetIvEvDebugMenu
+	case 3, RyuSetFriendshipDebugMenu
+	case 4, RyuAccessDevMoveRelearner
+	case 5, RyuExitPokeEditMenu
 	goto RyuExitPokeEditMenu
+
+RD_MonDataView::
+	setvar VAR_0x8001, 0
+    special RyuFillStatsBuffers
+	delay 30
+    drawinfobox INFOBOXPOKEMONDATA
+	bufferpartymonnick 1, 0
+	msgbox Ryu_Stats
+	removeinfobox
+	special HealPlayerParty
+	goto RyuPokeEditMenu
 	
 RyuExitPokeEditMenu::
 	release
 	end
+
+Ryu_ResetEVIV::
+	bufferdynamicmulti RIVEV1, RIVEV2, RIVEV3
+	multichoice 0, 6, MULTI_DYNAMIC_3, 0
+	copyvar VAR_TEMP_0, VAR_RESULT
+	compare VAR_RESULT, 127
+	goto_if_eq RyuPokeEditMenu
+	msgbox RyuIvEv_ChooseSlot
+	call RyuBufferPartyMonNames
+	multichoice 0, 0, MULTI_DYNAMIC_6, 1
+	copyvar VAR_TEMP_1, VAR_RESULT
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RyuPokeEditMenu
+	msgbox ResetEVIVQuery, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RyuPokeEditMenu
+	callnative RyuResetIvEvs
+	addvar VAR_TEMP_2, 1
+	buffernumberstring 0, VAR_TEMP_2
+	msgbox ResetDone
+	goto RyuPokeEditMenu
+
+RIVEV1:
+	.string "Reset IV's$"
+
+RIVEV2:
+	.string "Reset EV's$"
+
+RIVEV3:
+	.string "Return$"
+
+ResetEVIVQuery:
+	.string "Perform reset operation?$"
+
+ResetDone:
+	.string "Reset Iv's or Ev's for slot {STR_VAR_1}.$"
 
 RyuAccessDevMoveRelearner::
 	msgbox RyuActivateRelearner MSGBOX_YESNO
@@ -751,173 +867,88 @@ RyuActivateRelearner:
 retutor:
 	.string "Relearn another move?$"
 
-RyuSetEvDebugMenu::
-	msgbox RyuEv_ChooseSlot
+RyuSetIvEvDebugMenu::
+	msgbox RyuIvEv_SelectOP
+	bufferdynamicmulti IVEVMENU_1, IVEVMENU_2, EVMENU_3
+	multichoice 0, 3, MULTI_DYNAMIC_3, 1
+	copyvar VAR_TEMP_4, VAR_RESULT @set EV or IV mode
+	compare VAR_RESULT, 2
+	goto_if_ge RyuPokeEditMenu
+	msgbox RyuIvEv_ChooseSlot
 	call RyuBufferPartyMonNames
-	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
-	compare VAR_RESULT, 6
-	goto_if_eq RyuPokeEditMenu
-	copyvar VAR_TEMP_2, VAR_RESULT
-	msgbox RyuEvIntro MSGBOX_SIGN
-	multichoicegrid 1, 0, 116, 4, 0
-	switch VAR_RESULT
-	case 0, RyuEvMenuHP
-	case 1, RyuEvMenuHP126
-	case 2, RyuEvMenuAtk
-	case 3, RyuEvMenuAtk126
-	case 4, RyuEvMenuDef
-	case 5, RyuEvMenuDef126
-	case 6, RyuEvMenuSpAtk
-	case 7, RyuEvMenuSpAtk126
-	case 8, RyuEvMenuSpDef
-	case 9, RyuEvMenuSpDef126
-	case 10, RyuEvMenuSpe
-	case 11, RyuEvMenuSpe126
-	case 12, RyuEvMenuReset
-	case 13, RyuEvMenuExit
-	case 14, RyuEvMenuExit
-	case 15, RyuEvMenuExit
-	goto RyuEvMenuExit
-	release
-	end
+	multichoice 0, 0, MULTI_DYNAMIC_6, 1
+	copyvar VAR_TEMP_2, VAR_RESULT @put slot number in early
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RyuIvEv_ExitQuery
+	msgbox RyuIvEv_SetWhichStat
+	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed
+	multichoice 0, 0, MULTI_DYNAMIC_6, 0
+	copyvar VAR_TEMP_3, VAR_RESULT
+	closemessage
+	compare VAR_RESULT, 127
+	goto_if_eq RyuIvEv_ExitQuery
+	msgbox RyuIvEv_ChooseValue
+	numberentry 5, 10, 3
+	copyvar VAR_TEMP_1, VAR_RESULT 
+	callnative RyuSetSlotStatIVEV
+	msgbox IvMenuDone
+	closemessage
+	copyvar VAR_0x8001, VAR_TEMP_2
+	call ShowMonDataInfoBox
+	goto RyuIvEv_ExitQuery
 
-RyuEv_ChooseSlot:
+RyuIvEv_ExitQuery::
+	msgbox RyuIvEv_Cancel, MSGBOX_YESNO
+	closemessage
+	compare VAR_RESULT, YES
+	goto_if_eq RyuDebug_menu_nodevcheck
+	goto RyuPokeEditMenu
+
+RyuIvEv_Cancel:
+	.string "Cancel operation?$"
+
+IVEVMENU_2:
+	.string "Set IVs$"
+
+IVEVMENU_1:
+	.string "Set EVs$"
+
+IvMenuDone:
+	.string "Stats Changed.$"
+
+RyuIvEv_ChooseValue:
+	.string "Enter the new stat value.$"
+
+RyuIvEv_SelectOP:
+	.string "Select Operation.$"
+
+RyuIvEv_ChooseSlot:
 	.string "Choose a party slot.$"
 
-RyuEvMenuQuery:
-	.string "Modify more EV's?$"
+RyuIvEv_SetWhichStat:
+	.string "Modify which stat?$"
 
-RyuEvIntro:
-	.string "Choose which value to set.\n"
-	.string "Insert/Extract from pc to apply.$"
+EvResetQuery:
+	.string "Set all EV's to 0?$"
 	
-RyuEvMenuReset::
-	special RyuResetEvs
-	msgbox RyuResetEvMessage MSGBOX_DEFAULT
-	goto RyuSetEvDebugMenu
-	
-RyuResetEvMessage:
-	.string "Lead mon Evs have been reset.\n"
-	.string "You can now choose new ones.$"
+RyuEVHP:
+	.string "HP$"
 
-RyuEvMenuExit::
-	msgbox RyuEvMenuQuery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RyuSetEvDebugMenu
-	goto RyuPokeEditMenu
-	release
-	end
+RyuEVAtk:
+	.string "Attack$"
 
-RyuEvMenuHP::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 252
-	setvar VAR_TEMP_3, 0 
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
+RyuEVDef:
+	.string "Defense$"
 
-RyuEvMenuHP126::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 126
-	setvar VAR_TEMP_3, 0
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
+RyuEVSpAtk:
+	.string "SpcAtk$"
 
-RyuEvMenuAtk::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 252
-	setvar VAR_TEMP_3, 1
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
+RyuEVSpDef:
+	.string "SpcDef$"
 
-RyuEvMenuAtk126::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 126
-	setvar VAR_TEMP_3, 1
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEvMenuDef::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 252
-	setvar VAR_TEMP_3, 2
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEvMenuDef126::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 126
-	setvar VAR_TEMP_3, 2
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEvMenuSpAtk::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 252
-	setvar VAR_TEMP_3, 3
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEvMenuSpAtk126::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 126
-	setvar VAR_TEMP_3, 3
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEvMenuSpDef::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 252
-	setvar VAR_TEMP_3, 4
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEvMenuSpDef126::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 126
-	setvar VAR_TEMP_3, 4
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEvMenuSpe::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 252
-	setvar VAR_TEMP_3, 5
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEvMenuSpe126::
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_1, 126
-	setvar VAR_TEMP_3, 5
-	special RyuSetSlotStatEV
-	call RyuEvMenuExit
-	release
-	end
-
-RyuEvMenuMsg:
-	.string "Would you like to modify EV's?"
+RyuEVSpeed:
+	.string "Speed$"
 	
 RyuSetFriendshipDebugMenu::
 	addmonhappiness 0, 255
@@ -1022,15 +1053,108 @@ RyuSetExpMult8::@@exp is multiplied by 8
 ExpMult8:
 	.string "Exp Multiplier is now 8.0x.$"
 	
-RyuDebug_PasscodeMenu::
-	playse SE_EXPMAX
-	waitse
-	setvar VAR_TEMP_0, 0
-	goto MC_GC_MENU
-	
-RyuSetIvDebugMenu::
-	special RyuIvSetter
-	goto RyuPokeEditMenu
+RyuDebug_SpawningMenu::
+	bufferdynamicmulti RDBSP_1, RDBSP_2, RDBSP_3, RDBSP_4, RDBSP_5, RDBSP_6
+	multichoice 0, 0, MULTI_DYNAMIC_6, 1
+	switch VAR_RESULT
+	case 0, FrontierMonDev
+	case 1, DevModeMonGive
+	case 2, DevModeItemGive
+	case 3, RDB_SpawnFollowerMultiMenu
+	case 4, RDB_GiveMoneyMenu
+	case 5, RyuDebug_menu_nodevcheck
+	goto RyuDebug_menu_nodevcheck
+
+RDBSP_1:
+	.string "Spawn Frontier Mon...$"
+
+RDBSP_2:
+	.string "Spawn Species ID...$"
+
+RDBSP_3:
+	.string "Spawn Item ID...$"
+
+RDBSP_4:
+	.string "Spawn Follower...$"
+
+RDBSP_5:
+	.string "Give Money...$"
+
+RDBSP_6:
+	.string "Return$"
+
+FrontierMonDev::
+	msgbox DMFMG
+	numberentry 0, 9, 3
+	compare VAR_RESULT, FRONTIER_MON_BLANK1_BLANK3
+	goto_if_ge RDB_CancelSpawn
+	copyvar VAR_TEMP_6, VAR_RESULT
+	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
+	special RyuGiveFrontierMon
+	msgbox FMSpawnMenuSuccess
+	clearflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
+	closemessage
+	goto RyuDebug_SpawningMenu
+
+FMSpawnMenuSuccess:
+	.string "Succesfully spawned FID {RYU_STR_3}.$"
+
+DevModeMonGive::
+	msgbox DMMG
+	numberentry 0, 9, 3
+	compare VAR_RESULT, 0
+	goto_if_eq RDB_CancelSpawn
+	compare VAR_RESULT, NUM_SPECIES
+	goto_if_gt RDB_CancelSpawn
+	copyvar VAR_TEMP_4, VAR_RESULT
+	bufferspeciesname 0, VAR_TEMP_4
+	getpartysize
+	copyvar VAR_TEMP_8, VAR_RESULT
+	setflag FLAG_RYU_DEVELOPER_POKEMON_MENU
+	call GCMS_NatureMenu
+	clearflag FLAG_RYU_DEVELOPER_POKEMON_MENU
+	msgbox SpawnMenuSuccess
+	goto RyuDebug_SpawningMenu
+
+DevModeItemGive::
+	msgbox DMIG
+	numberentry 0, 9, 3
+	compare VAR_RESULT, 0
+	goto_if_eq RDB_CancelSpawn
+	compare VAR_RESULT, ITEMS_COUNT
+	goto_if_ge RDB_CancelSpawn
+	additem VAR_RESULT, 200
+	msgbox SpawnMenuSuccess
+	goto RyuDebug_SpawningMenu
+
+RDB_GiveMoneyMenu::
+	numberentry 0, 9, 9
+	callnative RDB_DevModeGiveMoney
+	msgbox RDB_GMM_Msg
+	goto RyuDebug_menu_nodevcheck
+
+RDB_CancelSpawn::
+	msgbox RDB_SpawnCancelled
+	closemessage
+	goto RyuDebug_menu_nodevcheck
+
+RDB_GMM_Msg:
+	.string "Gave {PLAYER} ¥{STR_VAR_1}.$"
+
+DMIG:
+	.string "Enter Item ID.$"
+
+DMMG:
+	.string "Enter Species ID$"
+
+DMFMG:
+	.string "Enter Frontier Mon ID.$"
+
+RDB_SpawnCancelled:
+	.string "Invalid Entry.\nReturning to main menu$"
+
+SpawnMenuSuccess:
+	.string "Operation Finished.$"
 
 RyuDebug_BattleSim::
 	checkplayergender

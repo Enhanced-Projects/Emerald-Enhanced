@@ -16,6 +16,7 @@
 #include "secret_base.h"
 #include "sound.h"
 #include "task.h"
+#include "overworld_notif.h"
 #include "constants/field_tasks.h"
 #include "constants/items.h"
 #include "constants/songs.h"
@@ -169,6 +170,9 @@ void SetUpFieldTasks(void)
 
     if (!FuncIsActiveTask(Task_RunTimeBasedEvents))
         CreateTask(Task_RunTimeBasedEvents, 0x50);
+
+    if (!FuncIsActiveTask(Task_NotificationWindow))
+        CreateTask(Task_NotificationWindow, 0x50);
 }
 
 void ActivatePerStepCallback(u8 callbackId)

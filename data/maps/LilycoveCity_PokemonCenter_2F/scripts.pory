@@ -133,6 +133,7 @@ LCPC_NurseNight::
 	
 LCPC_NurseNight2::
 	goto_if_set FLAG_TEMP_8, LCPC_NurseAfterNight2
+	drawfullscreenimage SCENEBGNURSENIGHT
 	msgbox LCPC_NurseStayNight2Query, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	clearfullscreenimage
@@ -182,7 +183,7 @@ LCPC_ContinueNightScene1::
 	setflag FLAG_TEMP_9
 	setflag FLAG_RYU_DS_JOY_PARTNERS
 	ach give ACH_FWB
-	addvar VAR_RYU_QUESTS_FINISHED, 1
+	call RyuScript_IncrementQuestsFinished
 	addvar VAR_RYU_PARTNER_COUNT, 1
 	release
 	end

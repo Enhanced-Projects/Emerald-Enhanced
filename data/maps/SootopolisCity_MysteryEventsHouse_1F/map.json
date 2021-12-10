@@ -13,21 +13,7 @@
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_RUNECITY",
     "name": "SootopolisCity_MysteryEventsHouse_1F",
-    "object_events": [
-        {
-            "elevation": 0,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "SootopolisCity_MysteryEventsHouse_1F_EventScript_OldMan",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 6,
-            "y": 4
-        }
-    ],
+    "object_events": [],
     "region_map_section": "MAPSEC_SOOTOPOLIS_CITY",
     "requires_flash": false,
     "show_map_name": false,

@@ -437,6 +437,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 50,
+      "elevation": 0,
+      "var": "VAR_TEMP_9",
+      "var_value": "0",
+      "script": "RyuDevSwitch"
     }
   ],
   "bg_events": [

@@ -236,7 +236,6 @@ gSpecials:: @ 81DBA64
 	def_special CallBattleTowerFunc
 	def_special CallBattleDomeFunction
 	def_special CallBattlePalaceFunction
-	def_special CopyEReaderTrainerGreeting
 	def_special DoSpecialTrainerBattle
 	def_special CallBattleArenaFunction
 	def_special CallBattleFactoryFunction
@@ -247,7 +246,6 @@ gSpecials:: @ 81DBA64
 	def_special CallFallarborTentFunction
 	def_special CallSlateportTentFunction
 	def_special ChoosePartyForBattleFrontier
-	def_special ValidateEReaderTrainer
 	def_special GetBestBattleTowerStreak
 	def_special ReducePlayerPartyToSelectedMons
 	def_special BedroomPC
@@ -285,7 +283,6 @@ gSpecials:: @ 81DBA64
 	def_special DoOrbEffect
 	def_special FadeOutOrbEffect
 	def_special WaitWeather
-	def_special BufferEReaderTrainerName
 	def_special GetSlotMachineId
 	def_special GetPlayerFacingDirection
 	def_special FoundAbandonedShipRoom1Key
@@ -322,7 +319,6 @@ gSpecials:: @ 81DBA64
 	def_special DoFallWarp
 	def_special ShowContestEntryMonPic
 	def_special HideContestEntryMonPic
-	def_special SetEReaderTrainerGfxId
 	def_special BattleSetup_StartLatiBattle
 	def_special SetRoute119Weather
 	def_special SetRoute123Weather
@@ -390,7 +386,6 @@ gSpecials:: @ 81DBA64
 	def_special ClearQuizLadyQuestionAndAnswer
 	def_special QuizLadySetCustomQuestion
 	def_special QuizLadyTakePrizeForCustomQuiz
-	def_special GetMysteryEventCardVal
 	def_special QuizLadyRecordCustomQuizData
 	def_special QuizLadySetWaitingForChallenger
 	def_special BufferQuizCorrectAnswer
@@ -405,7 +400,6 @@ gSpecials:: @ 81DBA64
 	def_special GetContestLadyCategory
 	def_special PutLilycoveContestLadyShowOnTheAir
 	def_special CloseBattlePikeCurtain
-	def_special CallApprenticeFunction
 	def_special ShouldTryGetTrainerScript
 	def_special ShowMapNamePopup
 	def_special ShowMapNamePopup
@@ -420,15 +414,9 @@ gSpecials:: @ 81DBA64
 	def_special ShowWirelessCommunicationScreen
 	def_special InitUnionRoom
 	def_special BufferUnionRoomPlayerName
-	def_special sub_801DC20
 	def_special ChooseMonForWirelessMinigame
 	def_special Script_ResetUnionRoomTrade
-	def_special ValidateReceivedWonderCard
 	def_special HasAtLeastOneBerry
-	def_special IsPokemonJumpSpeciesInParty
-	def_special ShowPokemonJumpRecords
-	def_special IsDodrioInParty
-	def_special ShowDodrioBerryPickingRecords
 	def_special OffsetCameraForBattle
 	def_special GetDeptStoreDefaultFloorChoice
 	def_special BufferVarsForIVRater
@@ -460,11 +448,6 @@ gSpecials:: @ 81DBA64
 	def_special GetFrontierBattlePoints
 	def_special ShowFrontierExchangeCornerItemIconWindow
 	def_special CloseFrontierExchangeCornerItemIconWindow
-	def_special DisplayBerryPowderVendorMenu
-	def_special RemoveBerryPowderVendorMenu
-	def_special HasEnoughBerryPowder
-	def_special TakeBerryPowder
-	def_special PrintPlayerBerryPowderAmount
 	def_special ShowFrontierGamblerLookingMessage
 	def_special ShowFrontierGamblerGoMessage
 	def_special Script_DoRayquazaScene
@@ -504,7 +487,6 @@ gSpecials:: @ 81DBA64
 	def_special Script_DoRayquazaScene @ Listed twice
 	def_special LoopWingFlapSE
 	def_special DestroyMewEmergingGrassSprite
-	def_special ShowBerryCrushRankings
 	def_special TryBufferWaldaPhrase
 	def_special DoWaldaNamingScreen
 	def_special TryGetWallpaperWithWaldaPhrase
@@ -521,14 +503,13 @@ gSpecials:: @ 81DBA64
 	def_special CloseDeptStoreElevatorWindow
 	def_special TrySetBattleTowerLinkType
 	def_special checkbadgecount
-	def_special RyuSetSlotStatEV
+	def_special RyuSetSlotStatIVEV
 	def_special RyuDevCheck
 	def_special RyuDawnGiftPoke
 	def_special RyuBrendanGiftPoke
 	def_special RyuSetMonMove
 	def_special RyuIvSetter
 	def_special RyuSetFriendship
-	def_special RyuResetEvs
 	def_special RyuCalculateCurrentExpCoefficient
 	def_special RyuGenerateReward
 	def_special RyuGiveKoutaMawile
@@ -565,7 +546,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuFossilReward
 	def_special RyuShardReward
 	def_special Ryu_GiveRevivedFossilEgg
-	def_special RyuCheckRelMegaReward
 	def_special CountBadges
 	def_special RyuFillStatsBuffers
 	def_special RyuSetUpSaveBlockStuff
@@ -575,7 +555,6 @@ gSpecials:: @ 81DBA64
 	def_special CheckRivalGiftMonStatus
 	def_special RyuGetTimeOfDay
 	def_special BotanyCheck
-	def_special RyuGetMaxBossChance
 	def_special RyuGetCurrentMapsec
 	def_special Bag_ChooseMedicine
 	def_special RyuAlchemy_TryCraftingItem
@@ -589,3 +568,5 @@ gSpecials:: @ 81DBA64
 	def_special CheckIfPlayerIsRealtor
 	def_special RyuCheckMoney
 	def_special RyuGetContestRewards
+	def_special CheckIfSelectedSlotIsValid
+	def_special CheckOwnedRayquaza

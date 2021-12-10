@@ -112,7 +112,7 @@ static const u8 sYouDiedDesc[] = _("Your team fainted, and you blacked out.\nThi
 
 static const u8 sWastedLabel[] = _("Wasted");
 static const u8 sWastedHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Difficult death.");
-static const u8 sWastedDesc[] = _("You and your team died in a previous life.\nDo better this time!\n(Lost a nuzlocke or hardcore run)");
+static const u8 sWastedDesc[] = _("You and your team died in a previous life.\nDo better this time!\n(Lost a challenge or hardcore run)");
 
 static const u8 sFitnessGuruLabel[] = _("Fitness Guru");
 static const u8 sFitnessGuruHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Stat Master.");
@@ -234,6 +234,10 @@ static const u8 sUltraBeastlyLabel[] = _("Ultra Beastly");
 static const u8 sUltraBeastlyHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Catch all Roaming UB's.");
 static const u8 sUltraBeastlyDesc[] = _("You are a BEAST!\n(Captured all roaming Ultra Beasts.)");
 
+static const u8 sWantedLabel[] = _("Wanted");
+static const u8 sWantedHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Be a Thief.");
+static const u8 sWantedDesc[] = _("Your face is up on wanted posters.\n(Bounty over 100,000)");
+
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
     [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, sWholeNewWorldAchHint}, //started exploring enhanced hoenn
@@ -264,7 +268,7 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_EVIL_INCARNATE] = {26, 33, CATEGORY_BATTLE, ACH_EVIL_INCARNATE, sEvilIncarnateLabel, sEvilIncarnateDesc, sEvilIncarnateHint}, //KO 666 pokemon or more
     [ACH_1337] = {12, 37, CATEGORY_EXPLORATION, ACH_1337, s1337Label, s1337Desc, s1337Hint}, //Game clear in 13:37 or less
     [ACH_YOU_DIED] = {12, 35, CATEGORY_EXPLORATION, ACH_YOU_DIED, sYouDiedLabel, sYouDiedDesc, sYouDiedHint}, //Blacked Out in normal modes.
-    [ACH_WASTED] = {12, 33, CATEGORY_EXPLORATION, ACH_WASTED, sWastedLabel, sWastedDesc, sWastedHint}, //Blacked Out in nuzlocke modes.
+    [ACH_WASTED] = {12, 33, CATEGORY_EXPLORATION, ACH_WASTED, sWastedLabel, sWastedDesc, sWastedHint}, //Blacked Out in challenge modes.
     [ACH_FITNESS_GURU] = {28, 35, CATEGORY_BATTLE, ACH_FITNESS_GURU, sFitnessGuruLabel, sFitnessGuruDesc, sFitnessGuruHint}, //Fully trained EV's in a stat.
     [ACH_GREEN_THUMB] = {14, 37, CATEGORY_EXPLORATION, ACH_GREEN_THUMB, sGreenThumbLabel, sGreenThumbDesc, sGreenThumbHint}, //planted 50 or more berries
     [ACH_HOENN_CHAMPION] = {28, 37, CATEGORY_BATTLE, ACH_HOENN_CHAMPION, sHoennChampionLabel, sHoennChampionDesc, sHoennChampionHint}, //duh
@@ -295,4 +299,5 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_MONEYBAGS] = {16, 45, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_MILLIONAIRE, sBillionaireLabel, sBillionaireDesc, sBillionaireHint},// 1 birion dorars
     [ACH_SLUM_LORD] = {16, 35, CATEGORY_QUESTING, ACH_SLUM_LORD, sSlumLordLabel, sSlumLordDesc, sSlumLordHint},// Own all NUM_PROPERTIES properties
     [ACH_ULTRA_BEASTLY] = {28, 31, CATEGORY_BATTLE | CATEGORY_FLAG_GOLD, ACH_ULTRA_BEASTLY, sUltraBeastlyLabel, sUltraBeastlyDesc, sUltraBeastlyHint}, //Capture all roaming Ultra Beasts
+    [ACH_WANTED] = {12, 47, CATEGORY_EXPLORATION, ACH_WANTED, sWantedLabel, sWantedDesc, sWantedHint}, //bounty of greater than 100000
 };

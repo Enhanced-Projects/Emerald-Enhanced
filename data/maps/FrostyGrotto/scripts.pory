@@ -2,3 +2,14 @@ raw `
 FrostyGrotto_MapScripts::
 	.byte 0
 `
+script FG_TM63ItemBall {
+	if (flag(FLAG_RYU_TM63) == TRUE) {
+		goto(ryu_end)
+	}
+		finditem(ITEM_TM63)
+		setflag(FLAG_RYU_TM63)
+		removeobject(6)
+		closemessage
+		release
+		end
+}

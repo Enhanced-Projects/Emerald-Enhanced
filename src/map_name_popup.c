@@ -12,6 +12,7 @@
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
+#include "overworld_notif.h"
 #include "constants/layouts.h"
 #include "constants/region_map_sections.h"
 #include "constants/weather.h"
@@ -222,7 +223,7 @@ bool8 sub_80D47D4(void)
 
 void ShowMapNamePopup(void)
 {
-    if (FlagGet(FLAG_HIDE_MAP_NAME_POPUP) != TRUE)
+    if (FlagGet(FLAG_HIDE_MAP_NAME_POPUP) != TRUE && !IsNotificationBusy())
     {
         if (!FuncIsActiveTask(Task_MapNamePopUpWindow))
         {

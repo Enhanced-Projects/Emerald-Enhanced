@@ -115,6 +115,8 @@ MH_ExitPrevention::
 	goto_if_set FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, ryu_end
 	goto_if_set FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, ryu_end
 	lock
+	compare VAR_RYU_QUEST_MAGMA, 405
+	goto_if_ge ryu_end
 	msgbox MH_Cantleavenotdone
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp

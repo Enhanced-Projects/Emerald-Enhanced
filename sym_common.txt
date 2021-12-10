@@ -65,7 +65,6 @@ gReservedSpritePaletteCount:
 	.include "intro.o"
 	.include "battle_anim_throw.o"
 	.include "battle_factory_screen.o"
-	.include "apprentice.o"
 	
 	.space 0x8
 	
@@ -74,7 +73,6 @@ gReservedSpritePaletteCount:
 	
 	.space 0x44
 
-	.include "ereader_screen.o"
 	.include "m4a.o"
 	.include "agb_flash.o"
 	.include "librfu_stwi.o"

@@ -158,7 +158,7 @@
 #define MON_DATA_SPEED             61
 #define MON_DATA_SPATK             62
 #define MON_DATA_SPDEF             63
-#define MON_DATA_MAIL              64
+#define MON_DATA_UNUSED            64
 #define MON_DATA_SPECIES2          65
 #define MON_DATA_IVS               66
 #define MON_DATA_CHAMPION_RIBBON   67
@@ -185,6 +185,7 @@
 #define MON_DATA_SPDEF2            88
 
 #define MIN_LEVEL 1
+#define VANILLA_MAX_LEVEL 100
 #define MAX_LEVEL GetCurrentMaxLevel()
 #define BASE_MAX_LEVEL 125
 // up to 5 for a max of level 250
@@ -301,6 +302,7 @@
 
 // Evolution types
 #define EVO_MEGA_EVOLUTION                0xffff // Not an actual evolution, used to temporarily mega evolve in battle.
+#define EVO_MOVE_MEGA_EVOLUTION           0xfffe // Mega Evolution that checks for a move instead of held item.
 #define EVO_FRIENDSHIP                    1      // Pokémon levels up with friendship ≥ 220
 #define EVO_FRIENDSHIP_DAY                2      // Pokémon levels up during the day with friendship ≥ 220
 #define EVO_FRIENDSHIP_NIGHT              3      // Pokémon levels up at night with friendship ≥ 220

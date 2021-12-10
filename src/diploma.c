@@ -73,7 +73,7 @@ void CB2_ShowDiploma(void)
     ResetPaletteFade();
     FreeAllSpritePalettes();
     LoadPalette(sDiplomaPalettes, 0, 64);
-    sDiplomaTilemapPtr = malloc(0x1000);
+    sDiplomaTilemapPtr = malloc(0x800);
     InitDiplomaBg();
     InitDiplomaWindow();
     ResetTempTileDataBuffers();
@@ -127,16 +127,16 @@ static void Task_DiplomaFadeOut(u8 taskId)
 
 static void DisplayDiplomaText(void)
 {
-    if (HasAllMons())
-    {
-        SetGpuReg(REG_OFFSET_BG1HOFS, DISPCNT_BG0_ON);
-        StringCopy(gStringVar1, gText_DexNational);
-    }
-    else
-    {
-        SetGpuReg(REG_OFFSET_BG1HOFS, DISPCNT_MODE_0);
-        StringCopy(gStringVar1, gText_DexHoenn);
-    }
+    //if (HasAllMons())
+    //{
+    //    SetGpuReg(REG_OFFSET_BG1HOFS, DISPCNT_BG0_ON);
+        //StringCopy(gStringVar1, gText_DexNational);
+    //}
+    //else
+    //{
+    //    SetGpuReg(REG_OFFSET_BG1HOFS, DISPCNT_MODE_0);
+        //StringCopy(gStringVar1, gText_DexHoenn);
+    //}
     StringExpandPlaceholders(gStringVar4, gText_PokedexDiploma);
     PrintDiplomaText(gStringVar4, 0, 1);
     PutWindowTilemap(0);
@@ -157,8 +157,8 @@ static const struct BgTemplate sDiplomaBgTemplates[2] =
     {
         .bg = 1,
         .charBaseIndex = 0,
-        .mapBaseIndex = 6,
-        .screenSize = 1,
+        .mapBaseIndex = 30,
+        .screenSize = 0,
         .paletteMode = 0,
         .priority = 1,
         .baseTile = 0,
@@ -203,7 +203,7 @@ static void InitDiplomaWindow(void)
 
 static void PrintDiplomaText(u8 *text, u8 var1, u8 var2)
 {
-    u8 color[3] = {0, 2, 3};
+    u8 color[3] = {0, 1, 2};
 
     AddTextPrinterParameterized4(0, 1, var1, var2, 0, 0, color, -1, text);
 }

@@ -15,7 +15,6 @@
 #include "graphics.h"
 #include "international_string_util.h"
 #include "main.h"
-#include "mevent.h"
 #include "menu.h"
 #include "overworld.h"
 #include "palette.h"
@@ -1257,7 +1256,6 @@ void ShowEasyChatScreen(void)
         words = gSaveBlock1Ptr->easyChatBattleLost;
         break;
     case EASY_CHAT_TYPE_MAIL:
-        words = gSaveBlock1Ptr->mail[gSpecialVar_0x8005].words;
         break;
     case EASY_CHAT_TYPE_BARD_SONG:
         bard = &gSaveBlock1Ptr->oldMan.bard;
@@ -1317,10 +1315,7 @@ void ShowEasyChatScreen(void)
         words = &gSaveBlock1Ptr->lilycoveLady.quiz.correctAnswer;
         break;
     case EASY_CHAT_TYPE_APPRENTICE:
-        words = gSaveBlock2Ptr->apprentices[0].speechWon;
-        break;
-    case EASY_CHAT_TYPE_QUESTIONNAIRE:
-        words = sub_801B058();
+        words = 0;
         break;
     default:
         return;
@@ -5258,12 +5253,6 @@ void InitEasyChatPhrases(void)
     
     for (i = 0; i < 6; i++)
         gSaveBlock1Ptr->easyChatBattleLost[i] = sUnknown_0859E64C[i];
-    
-    for (i = 0; i < MAIL_COUNT; i++)
-    {
-        for (j = 0; j < MAIL_WORDS_COUNT; j++)
-            gSaveBlock1Ptr->mail[i].words[j] = 0xFFFF;
-    }
 
 #ifndef UBFIX
     // BUG: This is supposed to clear 64 bits, but this loop is clearing 64 bytes.
@@ -5538,7 +5527,7 @@ void InitializeEasyChatWordArray(u16 *words, u16 length)
 void sub_811F8BC(void)
 {
     int i;
-    u16 *words = sub_801B058();
+    u16 *words = {0};
     for (i = 0; i < 4; i++)
         words[i] = 0xFFFF;
 }

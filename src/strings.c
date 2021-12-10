@@ -653,7 +653,7 @@ const u8 gText_BerryJuiceAndPrice[] = _("Berry Juice{CLEAR_TO 0x48}¥1000");
 const u8 gText_MoomooMilkAndPrice[] = _("Moomoo Milk{CLEAR_TO 0x48}¥750");
 const u8 gText_OldGateauAndPrice[] = _("Old Gateau{CLEAR_TO 0x48}¥4000");
 const u8 gText_BigMalasadaAndPrice[] = _("Big Malasada{CLEAR_TO 0x48}¥2000");
-const u8 gText_BlackTeaAndPrice[] = _("Black Tea{CLEAR_TO 0x48}¥1000");
+const u8 gText_BlackTeaAndPrice[] = _("Black Tea{CLEAR_TO 0x48}¥2000");
 const u8 gText_LavaCookieAndPrice[] = _("Lava Cookie{CLEAR_TO 0x48}¥500");
 const u8 gText_FreshWaterAndPrice[] = _("Fresh Water{CLEAR_TO 0x48}¥200");
 const u8 gText_SodaPopAndPrice[] = _("Soda Pop{CLEAR_TO 0x48}¥300");
@@ -1439,17 +1439,13 @@ const u8 gText_Friend[] = _("Friend");
 const u8 gText_Pokemon3[] = _("POKeMON"); // Unused
 const u8 gJPText_MysteryGift[] = _("ふしぎなもらいもの");
 const u8 gJPText_DecideStop[] = _("{A_BUTTON}けってい {B_BUTTON}やめる");
-const u8 gJPText_ReceiveMysteryGiftWithEReader[] = _("カードeリーダー{PLUS}　で\nふしぎなもらいものを　よみこみます");
-const u8 gJPText_SelectConnectFromEReaderMenu[] = _("カードeリーダー{PLUS}の　メニューから\n‘つうしん'を　えらび");
 const u8 gJPText_SelectConnectWithGBA[] = _("‘ゲームボーイアドバンスとつうしん'\nを　せんたく　してください");
 const u8 gJPText_SelectConnectAndPressA[] = _("カードeリーダー{PLUS}の　‘つうしん'を\nえらんで　Aボタンを　おしてください"); // Unused
 const u8 gJPText_LinkIsIncorrect[] = _("せつぞくが　まちがっています");
 const u8 gJPText_CardReadingHasBeenHalted[] = _("カードの　よみこみを\nちゅうし　しました");
-const u8 gJPText_UnableConnectWithEReader[] = _("カードeリーダー{PLUS}と\nつうしん　できません"); // Unused
 const u8 gJPText_Connecting[] = _("つうしん　ちゅう　です");
 const u8 gJPText_ConnectionErrorCheckLink[] = _("つうしん　エラーです\nせつぞくを　たしかめて　ください");
 const u8 gJPText_ConnectionErrorTryAgain[] = _("つうしん　エラーです\nはじめから　やりなおして　ください"); // Link error
-const u8 gJPText_AllowEReaderToLoadCard[] = _("カードeリーダー{PLUS}　に\nカードを　よみこませて　ください");
 const u8 gJPText_ConnectionComplete[] = _("つうしん　しゅうりょう！");
 const u8 gJPText_NewTrainerHasComeToHoenn[] = _("あらたな　トレーナーが\nホウエンに　やってきた！");
 const u8 gJPText_PleaseWaitAMoment[] = _("しばらく　おまちください");
@@ -1575,7 +1571,7 @@ const u8 gJPText_Player[] = _("プレイヤー"); // Unused
 const u8 gJPText_Sama[] = _("さま"); // Unused
 const u8 gText_DexHoenn[] = _("Hoenn");
 const u8 gText_DexNational[] = _("National");
-const u8 gText_PokedexDiploma[] = _("PLAYER: {CLEAR 0x10}{COLOR RED}{SHADOW LIGHT_RED}{PLAYER}{COLOR DARK_GREY}{SHADOW LIGHT_GREY}\n\nThis document certifies\nthat you have successfully\ncompleted your\n{STR_VAR_1} Pokédex.\n\n{CLEAR_TO 0x42}{COLOR RED}{SHADOW LIGHT_RED}GAME FREAK");
+const u8 gText_PokedexDiploma[] = _("PLAYER: {CLEAR 0x10}{COLOR RED}{SHADOW LIGHT_RED}{PLAYER}{COLOR LIGHT_GREY}{SHADOW DARK_GREY}\n\nThis document certifies\nthat you have filled more than\n85% of the National Dex.\n\n{CLEAR_TO 0x42}{COLOR GREEN}{SHADOW LIGHT_GREEN}EE STAFF");
 const u8 gJPText_GameFreak[] = _("{COLOR RED}{SHADOW LIGHT_RED}ゲ-ムフリ-ク"); // Unused
 const u8 gText_DiplomaEmpty[] = _("{COLOR RED}{SHADOW LIGHT_RED}"); // Unused
 const u8 gText_Hoenn[] = _("Hoenn");
@@ -1866,7 +1862,7 @@ const u8 gText_Date2[] = _("CoveLily Motel");
 const u8 gText_Date3[] = _("Mossdeep Quays");
 const u8 gText_DateCancel[] = _("Cancel Date");
 
-const u8 gText_PasscodeMenu[] = _("Passcode Menu...");
+const u8 gText_SpawnMenu[] = _("Spawning Menu");
 const u8 gText_Utilities[] = _("Utilities...");
 const u8 gText_QuickStart[] = _("QuickStart");
 const u8 gText_PokeEdit[] = _("Open Pokeedit");
@@ -1919,12 +1915,13 @@ const u8 gText_MoveSlot4[] = _("Bottom Right");
 const u8 gText_MoveSlotCancel[] = _("Cancel Tutoring");
 
 const u8 gText_RyuViewMonDataOption[] = _("View Mon Data");
+const u8 gText_RyuResetIVEVMenuOption[] = _("Reset EV/IV");
 const u8 gText_RyuSetLevelMenuOption[] = _("Utility 3");
 const u8 gText_RyuSetExpMultMenuOption[] = _("Set Exp Mult...");
-const u8 gText_RyuSetEvMenuOption[] = _("Set EV's");
-const u8 gText_RyuMaxIvMenuOption[] = _("Max Out IV's");
-const u8 gText_RyuAccessMoveRelearner[] = _("Move Relearner...");
-const u8 gText_RyuSetFriendshipMenuOption[] = _("Set Friendliness");
+const u8 gText_RyuSetIvEvMenuOption[] = _("Set IVs or EVs");
+const u8 gText_RyuMaxIvMenuOption[] = _("");
+const u8 gText_RyuAccessMoveRelearner[] = _("Relearner");
+const u8 gText_RyuSetFriendshipMenuOption[] = _("Set Friendship");
 const u8 gText_RyuExitPokeEditMenuOption[] = _("Exit");
 const u8 sText_DebugMainUtilityItem1[] = _("Utility 1");
 
@@ -1946,7 +1943,7 @@ const u8 gText_RyuExitExpMultMenuOption[] =_("No Change");
 const u8 gText_RyuNewGameMenuEasyMode[] = _("Easy Mode(4.0x Exp)");
 const u8 gText_RyuNewGameMenuNormalMode[] = _("Normal Mode(Exp scales with badges)");
 const u8 gText_RyuNewGameMenuHardMode[] = _("Hard Mode(1.0x Exp)");
-const u8 gText_RyuNewGameNuzlockeMode[] = _("Nuzlocke Mode(Rules Enforced)");
+const u8 gText_RyuNewGameChallengeMode[] = _("Challenge Mode");
 const u8 gText_RyuNewGameHardcoreMode[] = _("{COLOR RED}{SHADOW LIGHT_RED}HARDCORE");
 const u8 gText_RyuNewGameFrontierMode[] = _("{COLOR LIGHT_GREEN}{SHADOW LIGHT_GREY}Frontier Mode");
 
@@ -1984,9 +1981,9 @@ const u8 gText_RyuTeleportBattleFrontierArena[] = _(" Battle Arena");
 const u8 gText_RyuTeleportBattleFrontierDome[] = _(" Battle Dome");
 const u8 gText_RyuTeleportBattleFrontierCallback[] = _(" Return");
 
-const u8 gText_NuzlockeName[] = _("Failure");
+const u8 gText_ChallengeName[] = _("Failure");
 const u8 gText_RyuMonDied[] = _("A pokemon died...");
-const u8 gText_RyuNuzlockeFailed[] = _("You have failed the Nuzlocke challenge.");
+const u8 gText_RyuChallengeFailed[] = _("You have failed the Challenge challenge.");
 
 const u8 gText_RyuPasscodeMenu1[] = _("1");
 const u8 gText_RyuPasscodeMenu2[] = _("2");
@@ -2130,7 +2127,7 @@ const u8 gText_ColorLightRedShadowRed[] = _("{COLOR LIGHT_RED}{SHADOW RED}");
 const u8 gText_ColorLightRedShadowDarkGrey[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}");
 const u8 gText_ColorLightBlueShadowDarkGrey[] = _("{COLOR LIGHT_BLUE}{SHADOW LIGHT_GREY}");
 
-const u8 gText_MartDisabledNuzlocke[] = _("You are in Nuzlocke mode.\nMarts are disabled.");
+const u8 gText_MartDisabledChallenge[] = _("You are in Challenge mode.\nMarts are disabled.");
 
 const u8 gText_ItemRepel[] = _("Repel (100 steps)");
 const u8 gText_ItemSuperRepel[] = _("Super Repel (200 steps)");
@@ -2179,11 +2176,11 @@ const u8 gText_RyuMHM_Kits[] = _("Magma Kits Shop");
 const u8 gText_RyuMHM_Kits_1[] = _("Basic Healing (¥1500)");
 const u8 gText_RyuMHM_Kits_2[] = _("Better Healing (¥3500)");
 const u8 gText_RyuMHM_Kits_3[] = _("Premium Healing (¥6250)");
-const u8 gText_RyuMHM_Kits_4[] = _("Deluxe Healing (¥10000)");
+const u8 gText_RyuMHM_Kits_4[] = _("Deluxe Healing (¥12000)");
 const u8 gText_RyuMHM_Kits_5[] = _("Basic Capture (¥500)");
 const u8 gText_RyuMHM_Kits_6[] = _("Advanced Capture (¥2500)");
 const u8 gText_RyuMHM_Kits_7[] = _("Performance Boost (¥25000)");
-const u8 gText_RyuMHM_Kits_8[] = _("Master Kit (¥20000)");
+const u8 gText_RyuMHM_Kits_8[] = _("Master Kit (¥30000)");
 
 const u8 gText_RyuBotanyConsumableChapter[] = _("Consumables");
 const u8 gText_RyuBotanyMedicinesChapter[] = _("Medicines");
@@ -2235,3 +2232,7 @@ const u8 gText_RyuREMoveIn[] = _("Move In");
 const u8 gText_RyuRELeaseProperty[] = _("Lease Out");
 const u8 gText_RyuRECheckDetails[] = _("Check Details");
 const u8 gText_RyuRESellProperty[] = _("Sell Property");
+
+const u8 gText_RyuBallChangerLabel[] = _("Ball Changer");
+const u8 gText_RyuBallMarketLabel[] = _("Ball Market");
+

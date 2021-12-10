@@ -37,6 +37,7 @@ MPS_SpiritombFinish::
 	waitmoncry
 	setflag FLAG_TEMP_D
 	setwildbattle SPECIES_SPIRITOMB, VAR_RESULT, ITEM_NONE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	setflag FLAG_RYU_FINISHED_SPIRITOMB_SIDEQUEST

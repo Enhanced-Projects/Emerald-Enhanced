@@ -1,6 +1,5 @@
 #include "global.h"
 #include "malloc.h"
-#include "apprentice.h"
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_controllers.h"
@@ -2349,7 +2348,7 @@ void ZeroMonData(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_SPATK, &arg);
     SetMonData(mon, MON_DATA_SPDEF, &arg);
     arg = 255;
-    SetMonData(mon, MON_DATA_MAIL, &arg);
+    SetMonData(mon, MON_DATA_UNUSED, &arg);
 }
 
 void ZeroPlayerPartyMons(void)
@@ -2373,7 +2372,7 @@ void CreateMon(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 hasFix
     CreateBoxMon(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
     SetMonData(mon, MON_DATA_LEVEL, &level);
     arg = 255;
-    SetMonData(mon, MON_DATA_MAIL, &arg);
+    SetMonData(mon, MON_DATA_UNUSED, &arg);
     CalculateMonStats(mon);
 }
 
@@ -2723,36 +2722,8 @@ void CreateBattleTowerMon2(struct Pokemon *mon, struct BattleTowerPokemon *src, 
     CalculateMonStats(mon);
 }
 
-void CreateApprenticeMon(struct Pokemon *mon, const struct Apprentice *src, u8 monId)
+void CreateApprenticeMon(void)
 {
-    s32 i;
-    u16 evAmount;
-    u8 language;
-    u32 otId = gApprentices[src->id].otId;
-    u32 personality = ((gApprentices[src->id].otId >> 8) | ((gApprentices[src->id].otId & 0xFF) << 8))
-                    + src->party[monId].species + src->number;
-
-    CreateMon(mon,
-              src->party[monId].species,
-              GetFrontierEnemyMonLevel(src->lvlMode - 1),
-              0x1F,
-              TRUE,
-              personality,
-              OT_ID_PRESET,
-              otId);
-
-    SetMonData(mon, MON_DATA_HELD_ITEM, &src->party[monId].item);
-    for (i = 0; i < MAX_MON_MOVES; i++)
-        SetMonMoveSlot(mon, src->party[monId].moves[i], i);
-
-    evAmount = MAX_TOTAL_EVS / NUM_STATS;
-    for (i = 0; i < NUM_STATS; i++)
-        SetMonData(mon, MON_DATA_HP_EV + i, &evAmount);
-
-    language = src->language;
-    SetMonData(mon, MON_DATA_LANGUAGE, &language);
-    SetMonData(mon, MON_DATA_OT_NAME, GetApprenticeNameInLanguage(src->id, language));
-    CalculateMonStats(mon);
 }
 
 void CreateMonWithEVSpreadNatureOTID(struct Pokemon *mon, u16 species, u8 level, u8 nature, u8 fixedIV, u8 evSpread, u32 otId)
@@ -3050,15 +3021,17 @@ void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
     SetMonData(dest, MON_DATA_HP, &value);
     SetMonData(dest, MON_DATA_MAX_HP, &value);
     value = 255;
-    SetMonData(dest, MON_DATA_MAIL, &value);
+    SetMonData(dest, MON_DATA_UNUSED, &value);
     CalculateMonStats(dest);
 }
 
 inline u8 GetCurrentMaxLevel()
 {
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
+    if (FlagGet(FLAG_RYU_VANILLA_CAP) == TRUE)
+        return VANILLA_MAX_LEVEL;
     if ((FlagGet(FLAG_RYU_DEV_MODE) == 1) && (FlagGet(FLAG_RYU_IGNORE_CAP) == 1))
-        return 250;
+        return TRUE_MAX_LEVEL;
     return BASE_MAX_LEVEL + min(ngPlusCount, MAX_NGPLUS_COUNT) * LEVELS_PER_NGPLUS;
 }
 
@@ -3550,8 +3523,7 @@ u32 GetMonData(struct Pokemon *mon, s32 field, u8* data)
     case MON_DATA_SPDEF2:
         ret = mon->spDefense;
         break;
-    case MON_DATA_MAIL:
-        ret = mon->mail;
+    case MON_DATA_UNUSED:
         break;
     default:
         ret = GetBoxMonData(&mon->box, field, data);
@@ -3901,6 +3873,7 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 | (substruct3->giftRibbon7 << 26);
         }
         break;
+    case MON_DATA_UNUSED:
     default:
         break;
     }
@@ -3947,9 +3920,6 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
         break;
     case MON_DATA_SPDEF:
         SET16(mon->spDefense);
-        break;
-    case MON_DATA_MAIL:
-        SET8(mon->mail);
         break;
     case MON_DATA_SPECIES2:
         break;
@@ -5372,7 +5342,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem, u
             switch (gEvolutionTable[species][i].method)
             {
             case EVO_FRIENDSHIP:
-                if (friendship >= 220)
+                if (friendship >= 200)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_FRIENDSHIP_DAY:
@@ -6605,10 +6575,12 @@ void SetWildMonHeldItem(void)
     u16 rnd, species, var1, var2, i, count;
     bool32 isItemBoostedByAbility = FALSE;
 
-    if (gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE))
+    if (gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE) || gDexnavBattle)
         return;
 
     if (GetMonAbility(&gPlayerParty[0]) == ABILITY_COMPOUND_EYES || GetMonAbility(&gPlayerParty[0]) == ABILITY_SUPER_LUCK)
+    if (!(gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE))
+      && !gDexnavBattle)
     {
         isItemBoostedByAbility = TRUE;
     }

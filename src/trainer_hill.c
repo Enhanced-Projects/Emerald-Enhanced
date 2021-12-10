@@ -3,7 +3,6 @@
 #include "battle.h"
 #include "battle_tower.h"
 #include "battle_setup.h"
-#include "ereader_helpers.h"
 #include "event_data.h"
 #include "event_scripts.h"
 #include "fieldmap.h"
@@ -64,7 +63,6 @@ static void TrainerHillSetPlayerLost(void);
 static void TrainerHillGetChallengeStatus(void);
 static void BufferChallengeTime(void);
 static void GetAllFloorsUsed(void);
-static void GetInEReaderMode(void);
 static void IsTrainerHillChallengeActive(void);
 static void ShowTrainerHillPostBattleText(void);
 static void SetAllTrainerFlags(void);
@@ -202,7 +200,6 @@ static const u16 *const *const sPrizeListSets[] =
     sPrizeLists2
 };
 
-static const u16 sEReader_Pal[] = INCBIN_U16("graphics/misc/trainer_hill_ereader.gbapal");
 static const u8 sRecordWinColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY};
 
 static const struct TrHillTag *const sDataPerTag[] =
@@ -233,7 +230,6 @@ static void (* const sHillFunctions[])(void) =
     [TRAINER_HILL_FUNC_GET_CHALLENGE_STATUS]  = TrainerHillGetChallengeStatus,
     [TRAINER_HILL_FUNC_GET_CHALLENGE_TIME]    = BufferChallengeTime,
     [TRAINER_HILL_FUNC_GET_ALL_FLOORS_USED]   = GetAllFloorsUsed,
-    [TRAINER_HILL_FUNC_GET_IN_EREADER_MODE]   = GetInEReaderMode,
     [TRAINER_HILL_FUNC_IN_CHALLENGE]          = IsTrainerHillChallengeActive,
     [TRAINER_HILL_FUNC_POST_BATTLE_TEXT]      = ShowTrainerHillPostBattleText,
     [TRAINER_HILL_FUNC_SET_ALL_TRAINER_FLAGS] = SetAllTrainerFlags,
@@ -399,10 +395,7 @@ void CopyTrainerHillTrainerText(u8 which, u16 trainerId)
 static void TrainerHillStartChallenge(void)
 {
     nullsub_2();
-    if (!ReadTrainerHillAndValidate())
-        gSaveBlock1Ptr->trainerHill.field_3D6E_0f = 1;
-    else
-        gSaveBlock1Ptr->trainerHill.field_3D6E_0f = 0;
+    gSaveBlock1Ptr->trainerHill.field_3D6E_0f = 1;
 
     gSaveBlock1Ptr->trainerHill.unk_3D6C = 0;
     SetTrainerHillVBlankCounter(&gSaveBlock1Ptr->trainerHill.timer);
@@ -495,12 +488,6 @@ static void TrainerHillGetChallengeStatus(void)
         gSaveBlock1Ptr->trainerHill.hasLost = FALSE;
         gSpecialVar_Result = TRAINER_HILL_PLAYER_STATUS_LOST;
     }
-    else if (gSaveBlock1Ptr->trainerHill.maybeECardScanDuringChallenge)
-    {
-        // Unreachable code. Something relating to eCards?
-        gSaveBlock1Ptr->trainerHill.maybeECardScanDuringChallenge = 0;
-        gSpecialVar_Result = TRAINER_HILL_PLAYER_STATUS_ECARD_SCANNED;
-    }
     else
     {
         // Continue playing.
@@ -543,15 +530,6 @@ static void GetAllFloorsUsed(void)
         gSpecialVar_Result = TRUE;
     }
 
-    FreeDataStruct();
-}
-
-// May have been dummied. Every time this is called a conditional for var result occurs afterwards
-// Relation to E-Reader is an assumption, most dummied Trainer Hill code seems to be JP E-Reader mode related
-static void GetInEReaderMode(void)
-{
-    SetUpDataStruct();
-    gSpecialVar_Result = FALSE;
     FreeDataStruct();
 }
 
@@ -947,13 +925,6 @@ static void SetAllTrainerFlags(void)
     gSaveBlock2Ptr->frontier.trainerFlags = 0xFF;
 }
 
-// Palette never loaded, OnTrainerHillEReaderChallengeFloor always FALSE
-void TryLoadTrainerHillEReaderPalette(void)
-{
-    if (OnTrainerHillEReaderChallengeFloor() == TRUE)
-        LoadPalette(sEReader_Pal, 0x70, 0x20);
-}
-
 static void GetGameSaved(void)
 {
     gSpecialVar_Result = gSaveBlock2Ptr->frontier.savedGame;
@@ -967,19 +938,6 @@ static void SetGameSaved(void)
 static void ClearGameSaved(void)
 {
     gSaveBlock2Ptr->frontier.savedGame = FALSE;
-}
-
-// Always FALSE
-bool32 OnTrainerHillEReaderChallengeFloor(void)
-{
-    if (!InTrainerHillChallenge() || GetCurrentTrainerHillMapId() == TRAINER_HILL_ENTRANCE)
-        return FALSE;
-
-    GetInEReaderMode();
-    if (gSpecialVar_Result == FALSE)
-        return FALSE;
-    else
-        return TRUE;
 }
 
 static void GetChallengeWon(void)

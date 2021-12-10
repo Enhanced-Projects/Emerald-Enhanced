@@ -4,6 +4,7 @@
 //called from each map to see if player owns the current property. 
 //The property ID must be loaded into VAR_TEMP_D prior to calling this.
 script RyuScript_HouseDoorLocks{
+    lock
     specialvar(VAR_RESULT, CheckIfPlayerOwnsCurrentProperty)
     switch (var(VAR_RESULT)) {
         case 0:// player does not own property
@@ -60,6 +61,7 @@ script RyuScript_HouseDoorLocks{
 }
 
 script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must be set to the id of the house it is next to.
+    lock
     callnative(RyuBufferRealEstateDetails) //puts the name of the property in STR_VAR_2 and the value in STR_VAR_1, as well as sell price (66%) in STR_VAR_3
     specialvar(VAR_RESULT, RyuCheckPropertyStatus)//returns a value based on status of the property.
     switch(var(VAR_RESULT)) {
@@ -82,11 +84,14 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must
                         end
                     }
                 }
+                closemessage
+                release
+                end
             }
             else {
                 msgbox("This property is for sale.\nSee Frontier Bank for details.")
                 release
-            end
+                end
             }
         case 1: //owned, not rented.
             callnative(RyuBufferRealEstateDetails)
@@ -113,6 +118,10 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must
                         if (var(VAR_RESULT) == YES) {
                             callnative(ScriptLeaseProperty)
                             msgbox("You have posted this property\nfor rent.\pTenants will now rent this property\nfrom you.")
+                            release
+                            end
+                        }
+                        else{
                             release
                             end
                         }
@@ -250,27 +259,6 @@ script RT_Home{
 }
 
 //property was damaged
-
-script RyuScript_NotifyPropertyDamage {
-    setflag(FLAG_HIDE_MAP_NAME_POPUP)
-    callnative(RyuBufferPropertyDamageData)
-    msgbox(RyuText_PropertyDamaged)
-    closemessage
-    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-    clearflag(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE)
-    release
-    end
-}
-
-script RyuScript_NotifyRent {
-    setflag(FLAG_HIDE_MAP_NAME_POPUP)
-    clearflag(FLAG_RYU_NOTIFY_RENT)
-    msgbox("You have collected rent in the\namount of ¥{STR_VAR_1} from\lyour tenants.")
-    closemessage
-    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-    release
-    end
-}
 
 text AskRepairPropertyText {
     "{STR_VAR_2} has a \n{STR_VAR_1}.\p"

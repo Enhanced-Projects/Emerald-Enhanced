@@ -5,14 +5,13 @@ Route111_OldLadysRestStop_MapScripts:: @ 822A916
 
 Route111_OldLadysRestStop_OnTransition: @ 822A91C
 	setflag FLAG_LANDMARK_OLD_LADY_REST_SHOP
-	call RyuCheckForLNSUAch
 	end
 
 Route111_OldLadysRestStop_EventScript_OldLady:: @ 822A920
 	lock
 	faceplayer
 	goto_if_set FLAG_RYU_HARDCORE_MODE, OLRS_Hardcore
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, OLRS_Nuzlocke
+	goto_if_set FLAG_RYU_CHALLENGEMODE, OLRS_Challenge
 	msgbox Route111_OldLadysRestStop_Text_RestUpHere, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq Route111_OldLadysRestStop_EventScript_Rest
@@ -25,7 +24,7 @@ OLRS_Hardcore::
 	release
 	end
 	
-OLRS_Nuzlocke::
+OLRS_Challenge::
 	msgbox NZM_OLRS
 	release
 	end

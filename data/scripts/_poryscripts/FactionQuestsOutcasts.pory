@@ -46,7 +46,7 @@ script(global) RyuOutcastsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
                     msgbox(format("I see... The leylines are not yet aligned. Thank you for checking."))
                     goto(CommonOutcastRewardScript)
                 }
@@ -95,7 +95,7 @@ script(global) RyuOutcastsDailyQuest  {
         case 2:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_MT_PYRE_SUMMIT)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             msgbox(format("Please travel to Mt. Pyre's summit and check the leylines. We're waiting for the right ones to perform a ritual."))
         case 3:
             random(4)

@@ -1,6 +1,5 @@
 #include "global.h"
 #include "graphics.h"
-#include "mail.h"
 #include "palette.h"
 #include "pokemon_icon.h"
 #include "sprite.h"
@@ -1755,7 +1754,7 @@ const u8 gMonIconPaletteIndices[] =
     [SPECIES_PYUKUMUKU] = 0,
     [SPECIES_TYPE_NULL] = 0,
     [SPECIES_SILVALLY] = 0,
-    [SPECIES_MINIOR] = 0,
+    [SPECIES_MINIOR] = 2,
     [SPECIES_KOMALA] = 2,
     [SPECIES_TURTONATOR] = 0,
     [SPECIES_TOGEDEMARU] = 2,
@@ -2076,18 +2075,10 @@ u16 sub_80D2E84(u16 species)
 {
     u16 value;
 
-    if (MailSpeciesToSpecies(species, &value) == SPECIES_UNOWN)
-    {
-        value += SPECIES_UNOWN_A;
-        return value;
-    }
-    else
-    {
         if (species > NUM_SPECIES)
             species = 0;
 
         return GetIconSpecies(species, 0);
-    }
 }
 
 const u8 *GetMonIconPtr(u16 species, u32 personality)

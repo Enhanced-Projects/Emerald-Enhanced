@@ -107,7 +107,7 @@
 #define VAR_SLATEPORT_CITY_STATE             0x4058
 #define VAR_RYU_SPIRITOMB_FAINTS             0x4059 // Tracks up to 107 KO's for spiritomb diversion
 #define VAR_RUSTBORO_CITY_STATE              0x405A
-#define VAR_RYU_NUM_OWNED_PROPERTIES         0x405B // how many properties the player owns.
+#define VAR_UNUSED_0x405B                    0x405B
 #define VAR_RYU_LAST_ACH                     0x405C // stores the most recently given achievement if the player didn't have it previously.
 #define VAR_MOSSDEEP_CITY_STATE              0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E
@@ -267,13 +267,26 @@
 #define VAR_RYU_GCMS_VALUE                   0x40F8
 #define VAR_RYU_FOLLOWER_BATTLES             0x40F9//battles fought with partners
 #define VAR_UNUSED_0x40FA                    0x40FA//previously exp drive, now unused.
-#define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB
+#define VAR_RYU_CHALLENGE_WAYSTONE_USES       0x40FB
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC
 #define VAR_RYU_WEATHER                      0x40FD
 #define VAR_RYU_QUEST_LANA                   0x40FE
 #define VAR_RYU_QUEST_MAGMA                  0x40FF // Magma quest var
+#define VAR_RYU_DELIVERY_1_GFX_ID            0x4100
+#define VAR_RYU_DELIVERY_2_GFX_ID            0x4101
+#define VAR_RYU_DELIVERY_3_GFX_ID            0x4102
+#define VAR_RYU_DELIVERY_4_GFX_ID            0x4103
+#define VAR_RYU_DELIVERY_5_GFX_ID            0x4104
+#define VAR_RYU_DELIVERY_6_GFX_ID            0x4105
+#define VAR_HOURS                            0x4106
+//prize money
+#define VAR_RYU_MONEY_BASE_RANDOM_COMPONENT  0x4107
+#define VAR_RYU_MONEY_BASE_VALUE             0x4108
+#define VAR_RYU_MONEY_BASE_COEFFICIENT       0x4109
 
-#define VARS_END                             0x40FF
+
+//vars 4100 thru 417f are unused; total of 128.
+#define VARS_END                             0x417F
 #define VARS_COUNT                           (VARS_END - VARS_START + 1)
 
 #define SPECIAL_VARS_START            0x8000
@@ -304,148 +317,5 @@
 
 #define SPECIAL_VARS_END              0x8015
 
-#define TRAINER_HILL_REWARDS_PER_TABLE 20
-
-#define EXP_DRIVE_MAX 15000000 //exp drive new max is 15 million
-
-#define EXP_DRIVE_MODE_RESET 0
-#define EXP_DRIVE_MODE_ADD 1
-#define EXP_DRIVE_MODE_SUBTRACT 2
-#define EXP_DRIVE_MODE_BUFFER 3
-#define EXP_DRIVE_MODE_USE_ON_MON 4
-#define EXP_DRIVE_MODE_SET_DEV_AMOUNT 5
-
-//Contest type defines for code usage
-#define COOL 0
-#define BEAUTY 1
-#define CUTE 2
-#define SMART 3
-#define TOUGH 4
-
-
-//battle style defines
-#define BS_SHIFT 0
-#define BS_SET 1
-
-//drawFullscreenImage defines
-#define SCENEBGDAWN 0
-#define SCENEBGNIGHTDAWN 1
-#define SCENEBGMINNIE 2
-#define SCENEBGMELOETTA 3
-#define SCENEBGBRENDAN 4
-#define SCENEBGBRENDANNIGHT 5
-#define SCENEBGCOURTNEY 6
-#define SCENEBGHEATRAN 7
-#define SCENEBGNURSE 8
-#define SCENEBGNURSENIGHT 9
-#define SCENEBGPIDGEYSCREENSHOT 10
-#define SCENEBGGAMEOVER 11
-#define SCENEBGWARP 12
-
-//InfoBox Defines
-#define INFOBOXPOKEMONDATA 0
-//Classic
-#define INFOBOX_F_STARTER_HYPER_OFFENSE 1
-#define INFOBOX_F_STARTER_OFFENSE 2
-#define INFOBOX_F_STARTER_BALANCE 3
-#define INFOBOX_F_STARTER_BULKY_OFFENSE 4
-#define INFOBOX_F_STARTER_STALL 5
-//Field Effects
-#define INFOBOX_F_STARTER_HAIL 6
-#define INFOBOX_F_STARTER_RAIN 7
-#define INFOBOX_F_STARTER_SUN 8
-#define INFOBOX_F_STARTER_SANDSTORM 9
-#define INFOBOX_F_STARTER_GRASSY_TERRAIN 10
-#define INFOBOX_F_STARTER_PSYCHIC_TERRAIN 11
-#define INFOBOX_F_STARTER_TRICK_ROOM 12
-//Special
-#define INFOBOX_F_STARTER_BATON_PASS 13
-#define INFOBOX_F_STARTER_GIMMICK 14
-#define INFOBOX_F_STARTER_EGGTACTICAL 15
-#define INFOBOX_F_STARTER_MASOCHIST 16
-#define INFOBOX_F_STARTER_FEAR 17
-
-//other infoboxes
-#define INFOGRID_TESTDEXNAV 18
-#define INFOBOXGCMS1 19
-#define INFOBOXGCMS2 20
-#define INFOBOXGCMS3 21
-#define INFOBOXAPCNBALLMENU 22
-
-//Times
-#define RTC_TIME_DAY 0
-#define RTC_TIME_EVENING 1
-#define RTC_TIME_NIGHT 2
-#define RTC_TIME_MORNING 3
-
-
-//Botany Defines
-#define NUM_MAPS_PER_BOTANY_CATEGORY 5
-
-#define BOTANY_MAP_CATEGORY_JUNGLE 0
-#define BOTANY_MAP_CATEGORY_COLD 1
-#define BOTANY_MAP_CATEGORY_VOLCANIC 2
-#define BOTANY_MAP_CATEGORY_SEASIDE 3
-#define BOTANY_MAP_CATEGORY_AQUATIC 4
-#define BOTANY_MAP_CATEGORY_SAVANNA 5
-#define BOTANY_MAP_CATEGORY_GENERAL 6
-#define NUM_BOTANY_MAP_CATEGORIES 7
-
-#define NUM_CONSUMABLE_RECIPES 12
-#define NUM_MEDICINE_RECIPES 8
-#define NUM_RECIPES (BR_ICE_STONE + 1)
-
-//Hack to make it so I only need one script command to perform all functions. Yes, i know, constants should be capsed, but this is for my sanity since i'll be the
-//one scripting in all the achievements.
-#define give 0
-#define take 1
-#define query 2
-
-//factions related
-#define FACTION_NATURALISTS 0 //Trainers who like to be in nature, surrounded by nature, simple existence. Campers, picknickers, rangers.          Opposed: Richkids(x1) "Pokemon are fine as they are!"
-#define FACTION_STUDENTS 1 //Trainers still in school and learning, aka the gossip girls. Lass, Youngster, Twins, Jr+Sr.                         Opposed: Nerds(x1) "The best pokemon are the easiest to train!"
-#define FACTION_NOBLES 2 //The rich assholes that no one likes except the other rich people. Rich boy, Lady, Expert, Parasol Lady.               Opposed: Naturalists(x1) "Pokemon are status symbols!"
-#define FACTION_POKEFANS 3 //The people who just like having their pokemon around. Love pokemon for what they are, companions or pets.             Opposed: Athletes(x1) "Pokemon aren't tools of war, they're friends!"
-#define FACTION_OUTCASTS 4 //The intense people that are eccentric, shunned, or generally out of it. Hex maniacs, bug maniacs, pokemaniacs, etc.      Opposed: Schoolkids(x1) "The wierd pokemons are the coolest!"
-#define FACTION_PROFESSIONALS 5 //people who chose a pokemon related career with specific paths, like kindlers, or guitarists.                     Opposed: Pokefans(x1) "Pokemon should be used to their strengths"
-#define FACTION_ATHLETES 6 //bodybuilders, meatheads, jocks, those whose entire existence is self improvement. Martial artists, fighters, etc.     Opposed: Pokefans(x0.5) Richkids(x0.5)  "Pokemon are best when trained 
-#define FACTION_OTHERS 7 //everything else unclassified like aqua, magma, leaders, etc.                                                                     to their potential, not left to rot and spoil!"
-
-#define FACTION_STAND_INVALID 0
-#define FACTION_STAND_WORST 1
-#define FACTION_STAND_REALLYBAD 2
-#define FACTION_STAND_BAD 3
-#define FACTION_STAND_NEUTRAL 4
-#define FACTION_STAND_GOOD 5
-#define FACTION_STAND_HIGH 6
-#define FACTION_STAND_BEST 7
-
-//The questlines that have their own discrete quest stage tracking variable
-#define QUEST_ID_DEVON_SCIENTIST 0
-#define QUEST_ID_DEVON_CORPORATE 1
-#define QUEST_ID_AQUA 2
-#define QUEST_ID_MAGMA 3
-#define QUEST_ID_LANA 4
-#define QUEST_ID_NURSE 5
-
-//Real Estate defines that need to be visible to scripts
-
-#define NUM_PROPERTIES 12
-
-#define PROPERTY_DEWFORD     0
-#define PROPERTY_FALLARBOR   1
-#define PROPERTY_LILYCOVE    2
-#define PROPERTY_MAUVILLE    3
-#define PROPERTY_OLDALE      4
-#define PROPERTY_ROUTE119    5
-#define PROPERTY_RUSTBURO    6
-#define PROPERTY_SLATEPORT   7
-#define PROPERTY_SNOWYSHORE  8
-#define PROPERTY_SOOTOPOLIS  9
-#define PROPERTY_VERDANTURF  10
-#define PROPERTY_MOSSDEEP    11
-//there are an additional 20 properties
-
-#define EE_GAME_VERSION 7900
 
 #endif // GUARD_CONSTANTS_VARS_H

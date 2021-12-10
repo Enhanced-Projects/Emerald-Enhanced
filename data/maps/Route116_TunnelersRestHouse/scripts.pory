@@ -5,7 +5,6 @@ Route116_TunnelersRestHouse_MapScripts:: @ 822B850
 
 Route116_TunnelersRestHouse_OnTransition: @ 822B856
 	setflag FLAG_LANDMARK_TUNNELERS_REST_HOUSE
-	call RyuCheckForLNSUAch
 	end
 
 Route116_TunnelersRestHouse_EventScript_Tunneler1:: @ 822B85A

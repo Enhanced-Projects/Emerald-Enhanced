@@ -1,5 +1,4 @@
 #include "constants/global.h"
-#include "constants/apprentice.h"
 #include "constants/battle.h"
 #include "constants/battle_arena.h"
 #include "constants/battle_dome.h"
@@ -53,6 +52,7 @@
 #include "constants/union_room.h"
 #include "constants/vars.h"
 #include "constants/weather.h"
+#include "constants/general.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"
@@ -603,6 +603,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/FactionQuestsStudents.inc"
 	.include "data/scripts/_poryscripts/RyuRealEstateScripts.inc"
 	.include "data/scripts/_poryscripts/RyuBotany.inc"
+	.include "data/scripts/_poryscripts/RyuBallChanger.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -948,7 +949,6 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	end
 
 	.include "data/scripts/pc_transfer.inc"
-	.include "data/scripts/mevent.inc"
 	.include "data/scripts/abnormal_weather.inc"
 	.include "data/scripts/trainer_script.inc"
 	.include "data/scripts/berry_tree.inc"
@@ -987,8 +987,6 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/scripts/cave_hole.inc"
 	.include "data/scripts/lilycove_lady.inc"
 	.include "data/text/match_call.inc"
-	.include "data/scripts/apprentice.inc"
-	.include "data/text/apprentice.inc"
 	.include "data/text/battle_dome.inc"
 	.include "data/scripts/battle_pike.inc"
 	.include "data/text/blend_master.inc"
@@ -1227,3 +1225,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/VerdanturfTown_Home/scripts.inc"
 
 	.include "data/maps/MossdeepCity_Home/scripts.inc"
+
+	.include "data/maps/MauvilleCity_AdrastiWarehouse/scripts.inc"
+
+	.include "data/maps/Victini/scripts.inc"

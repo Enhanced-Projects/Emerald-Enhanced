@@ -33,7 +33,6 @@
 #include "string_util.h"
 #include "pokemon_icon.h"
 #include "m4a.h"
-#include "mail.h"
 #include "event_data.h"
 #include "pokemon_storage_system.h"
 #include "task.h"
@@ -1175,8 +1174,28 @@ static const u8 sBattlePalaceNatureToFlavorTextId[NUM_NATURES] =
     [NATURE_QUIRKY]  = 3,
 };
 
+bool32 RyuCheckAffectionEvasion(void)
+{
+    if (gBattleMons[gBattlerTarget].friendship > 245 &&
+        (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)) &&
+        GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER &&
+        (Random() % 99) < 15)
+        {
+            gActiveBattler = gBattlerTarget;
+            gBattleMons[gBattlerTarget].friendship -= 5;
+            BtlController_EmitSetMonData(0, REQUEST_FRIENDSHIP_BATTLE, 0, 1, &gBattleMons[gBattlerTarget].friendship);
+            MarkBattlerForControllerExec(gBattlerTarget);
+            gUnusedBattleGlobal = 101;
+            return TRUE;
+        }
+
+    return FALSE;
+}
+
 bool32 IsBattlerProtected(u8 battlerId, u16 move)
 {
+    if (RyuCheckAffectionEvasion())
+        return TRUE;
     if (!(gBattleMoves[move].flags & FLAG_PROTECT_AFFECTED))
         return FALSE;
     else if (gBattleMoves[move].effect == MOVE_EFFECT_FEINT)
@@ -1263,6 +1282,28 @@ static void Cmd_attackcanceler(void)
 {
     s32 i, moveType;
 
+    GET_MOVE_TYPE(gCurrentMove, moveType);
+
+    if (moveType == TYPE_FIRE
+     && (gBattleWeather & WEATHER_RAIN_PRIMAL)
+     && WEATHER_HAS_EFFECT
+     && gBattleMoves[gCurrentMove].power)
+    {
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_PrimordialSeaFizzlesOutFireTypeMoves;
+        return;
+    }
+
+    if (moveType == TYPE_WATER
+     && (gBattleWeather & WEATHER_SUN_PRIMAL)
+     && WEATHER_HAS_EFFECT
+     && gBattleMoves[gCurrentMove].power)
+    {
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_DesolateLandEvaporatesWaterTypeMoves;
+        return;
+    }
+
     if (gBattleOutcome != 0)
     {
         gCurrentActionFuncId = B_ACTION_FINISHED;
@@ -1282,7 +1323,6 @@ static void Cmd_attackcanceler(void)
         return;
 
     // Check Protean activation.
-    GET_MOVE_TYPE(gCurrentMove, moveType);
     if (GetBattlerAbility(gBattlerAttacker) == ABILITY_PROTEAN
         && (gBattleMons[gBattlerAttacker].type1 != moveType || gBattleMons[gBattlerAttacker].type2 != moveType ||
             (gBattleMons[gBattlerAttacker].type3 != moveType && gBattleMons[gBattlerAttacker].type3 != TYPE_MYSTERY))
@@ -1782,6 +1822,17 @@ static void Cmd_critcalc(void)
         gIsCriticalHit = TRUE;
     else if (Random() % sCriticalHitChance[critChance] == 0)
         gIsCriticalHit = TRUE;
+    else if ((Random() % sCriticalHitChance[critChance] == 0) && //roll another crit check if mon is max happiness
+            (gBattleMons[gBattlerAttacker].friendship == 255) &&
+            (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER) &&
+            (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
+            {
+                if (((GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))) || (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT))
+                {
+                    gBattleMons[gBattlerAttacker].friendship -= 5;
+                    gIsCriticalHit = 2;
+                }
+            }
     else
         gIsCriticalHit = FALSE;
 
@@ -1809,9 +1860,29 @@ static void Cmd_typecalc(void)
     gBattlescriptCurrInstr++;
 }
 
+bool32 RyuCheckAffectionFocusEffect(void)
+{
+    if ((Random() % 99) < 15 &&
+        (gBattleMons[gBattlerTarget].friendship >= 245) &&
+         GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER &&
+         (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)) &&
+         gBattleMons[gBattlerTarget].hp > 2)
+        {
+            gBattleMons[gBattlerTarget].friendship -= 5;
+            gActiveBattler = gBattlerTarget;
+            BtlController_EmitSetMonData(0, REQUEST_FRIENDSHIP_BATTLE, 0, 1, &gBattleMons[gBattlerTarget].friendship);
+            MarkBattlerForControllerExec(gBattlerTarget);
+            return TRUE;
+        }
+    return FALSE;
+}
+
 static void Cmd_adjustdamage(void)
 {
     u8 holdEffect, param;
+    u32 moveType;
+
+    GET_MOVE_TYPE(gCurrentMove, moveType);
 
     if (DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove))
         goto END;
@@ -1825,7 +1896,12 @@ static void Cmd_adjustdamage(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if (holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
+    if (RyuCheckAffectionFocusEffect())
+    {
+        gSpecialStatuses[gBattlerTarget].sturdied = 1;
+        gUnusedBattleGlobal = 102;
+    }
+    else if (holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
     {
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
         gSpecialStatuses[gBattlerTarget].focusBanded = 1;
@@ -1888,6 +1964,23 @@ END:
         BattleScriptPushCursor();
         gBattlescriptCurrInstr = BattleScript_GemActivates;
         gLastUsedItem = gBattleMons[gBattlerAttacker].item;
+    }
+
+    // WEATHER_STRONG_WINDS prints a string when it's about to reduce the power
+    // of a move that is Super Effective against a Flying-type Pokémon.
+    if (gBattleWeather & WEATHER_STRONG_WINDS)
+    {
+        if ((gBattleMons[gBattlerTarget].type1 == TYPE_FLYING
+         && GetTypeModifier(moveType, gBattleMons[gBattlerTarget].type1) >= UQ_4_12(2.0))
+         || (gBattleMons[gBattlerTarget].type2 == TYPE_FLYING
+         && GetTypeModifier(moveType, gBattleMons[gBattlerTarget].type2) >= UQ_4_12(2.0))
+         || (gBattleMons[gBattlerTarget].type3 == TYPE_FLYING
+         && GetTypeModifier(moveType, gBattleMons[gBattlerTarget].type3) >= UQ_4_12(2.0)))
+        {
+            gBattlerAbility = gBattlerTarget;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_AttackWeakenedByStrongWinds;
+        }
     }
 }
 
@@ -2173,7 +2266,7 @@ static void Cmd_critmessage(void)
 {
     if (gBattleControllerExecFlags == 0)
     {
-        if (gIsCriticalHit == TRUE && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+        if (gIsCriticalHit && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
         {
             if (gBattleMoveDamage > gHpDealt)
             {
@@ -2249,7 +2342,15 @@ static void Cmd_resultmessage(void)
     {
         if (gBattleCommunication[6] > 2) // Wonder Guard or Levitate - show the ability pop-up
             CreateAbilityPopUp(gBattlerTarget, gBattleMons[gBattlerTarget].ability, (gBattleTypeFlags & BATTLE_TYPE_DOUBLE) != 0);
-        stringId = gMissStringIds[gBattleCommunication[6]];
+        if (gUnusedBattleGlobal == 101)//if the Affection Evasion check succeeded, display the affection miss message instead.
+        {
+            gUnusedBattleGlobal = 0;
+            stringId = gMissStringIds[5];
+        }
+        else
+        {
+            stringId = gMissStringIds[gBattleCommunication[6]];
+        }
         gBattleCommunication[MSG_DISPLAY] = 1;
     }
     else
@@ -3038,8 +3139,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     side = GetBattlerSide(gBattlerAttacker);
                     if (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT
                         && !(gBattleTypeFlags &
-                             (BATTLE_TYPE_EREADER_TRAINER
-                              | BATTLE_TYPE_FRONTIER
+                             (  BATTLE_TYPE_FRONTIER
                               | BATTLE_TYPE_LINK
                               | BATTLE_TYPE_x2000000
                               | BATTLE_TYPE_SECRET_BASE)))
@@ -3047,8 +3147,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                         gBattlescriptCurrInstr++;
                     }
                     else if (!(gBattleTypeFlags &
-                          (BATTLE_TYPE_EREADER_TRAINER
-                           | BATTLE_TYPE_FRONTIER
+                          (  BATTLE_TYPE_FRONTIER
                            | BATTLE_TYPE_LINK
                            | BATTLE_TYPE_x2000000
                            | BATTLE_TYPE_SECRET_BASE))
@@ -3056,6 +3155,11 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     {
                         gBattlescriptCurrInstr++;
                     }
+                    else if ((GetMonData(gBattleMons[gBattlerTarget], MON_DATA_HELD_ITEM) > 396) && //prevent mega stones from being stolen
+                             (GetMonData(gBattleMons[gBattlerTarget], MON_DATA_HELD_ITEM) < 444))
+                             {
+                                gBattlescriptCurrInstr++;
+                             }
                     else if (gBattleMons[gBattlerTarget].item
                         && gBattleMons[gBattlerTarget].ability == ABILITY_STICKY_HOLD)
                     {
@@ -3067,13 +3171,25 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     }
                     else if (gBattleMons[gBattlerAttacker].item != 0
                         || gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY
-                        || IS_ITEM_MAIL(gBattleMons[gBattlerTarget].item)
                         || gBattleMons[gBattlerTarget].item == 0)
                     {
                         gBattlescriptCurrInstr++;
                     }
-                    else
+                    else if ((GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER
+                        && (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER)))
+                        && !FlagGet(FLAG_RYU_PLAYER_IS_CRIMINAL))
                     {
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_CantSteal;
+                    }
+                    else 
+                    {
+                        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+                        {
+                            if ((FlagGet(FLAG_USED_THIEF) == FALSE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER))
+                                FlagSet(FLAG_USED_THIEF);
+                        }
+
                         gLastUsedItem = gBattleStruct->changedItems[gBattlerAttacker] = gBattleMons[gBattlerTarget].item;
                         gBattleMons[gBattlerTarget].item = 0;
 
@@ -3093,7 +3209,6 @@ void SetMoveEffect(bool32 primary, u32 certain)
 
                         gBattleStruct->choicedMove[gBattlerTarget] = 0;
                     }
-
                 }
                 break;
             case MOVE_EFFECT_PREVENT_ESCAPE:
@@ -3803,8 +3918,7 @@ static void Cmd_getexp(void)
               | BATTLE_TYPE_TRAINER_HILL
               | BATTLE_TYPE_FRONTIER
               | BATTLE_TYPE_SAFARI
-              | BATTLE_TYPE_BATTLE_TOWER
-              | BATTLE_TYPE_EREADER_TRAINER)))
+              | BATTLE_TYPE_BATTLE_TOWER)))
         {
             gBattleScripting.getexpState = 6; // goto last case
         }
@@ -3842,6 +3956,9 @@ static void Cmd_getexp(void)
 
             RyuExpBatteryTemp = ((calculatedExp * 5) / 100);
             RyuExpDriveInternalOperation(EXP_DRIVE_MODE_ADD, RyuExpBatteryTemp);
+
+            if (gBattleMons[gBattlerAttacker].friendship > 50)// If mon has affection boost, gain 20% more exp
+                calculatedExp = ((calculatedExp * 120) /100);
 
             if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
             {
@@ -4600,7 +4717,8 @@ static void Cmd_playanimation(void)
     else if (gBattlescriptCurrInstr[2] == B_ANIM_RAIN_CONTINUES
              || gBattlescriptCurrInstr[2] == B_ANIM_SUN_CONTINUES
              || gBattlescriptCurrInstr[2] == B_ANIM_SANDSTORM_CONTINUES
-             || gBattlescriptCurrInstr[2] == B_ANIM_HAIL_CONTINUES)
+             || gBattlescriptCurrInstr[2] == B_ANIM_HAIL_CONTINUES
+             || gBattlescriptCurrInstr[2] == B_ANIM_ECLIPSE)
     {
         BtlController_EmitBattleAnimation(0, gBattlescriptCurrInstr[2], *argumentPtr);
         MarkBattlerForControllerExec(gActiveBattler);
@@ -4645,7 +4763,8 @@ static void Cmd_playanimation2(void) // animation Id is stored in the first poin
     else if (*animationIdPtr == B_ANIM_RAIN_CONTINUES
              || *animationIdPtr == B_ANIM_SUN_CONTINUES
              || *animationIdPtr == B_ANIM_SANDSTORM_CONTINUES
-             || *animationIdPtr == B_ANIM_HAIL_CONTINUES)
+             || *animationIdPtr == B_ANIM_HAIL_CONTINUES
+             || *animationIdPtr == B_ANIM_ECLIPSE)
     {
         BtlController_EmitBattleAnimation(0, *animationIdPtr, *argumentPtr);
         MarkBattlerForControllerExec(gActiveBattler);
@@ -5391,7 +5510,6 @@ static void Cmd_switchinanim(void)
 
     if (GetBattlerSide(gActiveBattler) == B_SIDE_OPPONENT
         && !(gBattleTypeFlags & (BATTLE_TYPE_LINK
-                                 | BATTLE_TYPE_EREADER_TRAINER
                                  | BATTLE_TYPE_x2000000
                                  | BATTLE_TYPE_TRAINER_HILL
                                  | BATTLE_TYPE_FRONTIER)))
@@ -6354,21 +6472,25 @@ static void Cmd_hitanimation(void)
 
 static void Cmd_getmoneyreward(void)
 {
-    u32 moneyReward = 200;
+    u32 moneyReward = (VarGet(VAR_RYU_MONEY_BASE_VALUE));
     u32 MultMoney = VarGet(VAR_RYU_EXP_MULTIPLIER);
     u32 badges = (CountBadges());
-    u32 randomComponent = ((Random() % 400) + 100);
-
+    u32 coefficient = (VarGet(VAR_RYU_MONEY_BASE_COEFFICIENT));
+    u32 randomBase = (VarGet(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT));
+    u32 randomComponent = ((Random() % randomBase) + (coefficient));
+    u32 numPrestige = (VarGet(VAR_RYU_NGPLUS_COUNT));
+    
     if (badges == 0)
         badges = 1;
 
     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
         moneyReward += 200;
-
+    
     if (MultMoney == 1)
         MultMoney = 1000;
-
+    
     moneyReward = ((moneyReward * MultMoney) / 1000);
+    moneyReward += (numPrestige * 100);
     moneyReward += randomComponent;
     moneyReward *= badges;
 
@@ -6385,6 +6507,12 @@ static void Cmd_getmoneyreward(void)
     //if player has the winnings boost AP active, they get 10% more money
     if (CheckAPFlag(AP_WINNINGS_BOOST) == TRUE)
         moneyReward = ((moneyReward * 110) / 100);
+
+    if (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE)
+    {
+        moneyReward /= 20;
+        moneyReward *= 3;
+    }
 
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
 
@@ -7996,14 +8124,22 @@ static void Cmd_various(void)
         // Change species.
         if (gBattlescriptCurrInstr[3] == 0)
         {
+            u16 megaSpecies;
             gBattleStruct->mega.evolvedSpecies[gActiveBattler] = gBattleMons[gActiveBattler].species;
             if (GetBattlerPosition(gActiveBattler) == B_POSITION_PLAYER_LEFT
                 || (GetBattlerPosition(gActiveBattler) == B_POSITION_PLAYER_RIGHT && !(gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER))))
             {
                 gBattleStruct->mega.playerEvolvedSpecies = gBattleStruct->mega.evolvedSpecies[gActiveBattler];
             }
+            //Checks regular Mega Evolution
+            megaSpecies = GetMegaEvolutionSpecies(gBattleStruct->mega.evolvedSpecies[gActiveBattler], gBattleMons[gActiveBattler].item);
+            //Checks Wish Mega Evolution
+            if (megaSpecies == SPECIES_NONE)
+            {
+                megaSpecies = GetWishMegaEvolutionSpecies(gBattleStruct->mega.evolvedSpecies[gActiveBattler], gBattleMons[gActiveBattler].moves[0], gBattleMons[gActiveBattler].moves[1], gBattleMons[gActiveBattler].moves[2], gBattleMons[gActiveBattler].moves[3]);
+            }
 
-            gBattleMons[gActiveBattler].species = GetMegaEvolutionSpecies(gBattleStruct->mega.evolvedSpecies[gActiveBattler], gBattleMons[gActiveBattler].item);
+            gBattleMons[gActiveBattler].species = megaSpecies;
             PREPARE_SPECIES_BUFFER(gBattleTextBuff1, gBattleMons[gActiveBattler].species);
 
             BtlController_EmitSetMonData(0, REQUEST_SPECIES_BATTLE, gBitTable[gBattlerPartyIndexes[gActiveBattler]], 2, &gBattleMons[gActiveBattler].species);
@@ -8434,6 +8570,56 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr += 7;
         }
         return;
+    case VARIOUS_SET_ECLIPSE:
+        if (!TryChangeBattleWeather(gBattlerAttacker, ENUM_WEATHER_ECLIPSE, FALSE))
+        {
+            gMoveResultFlags |= MOVE_RESULT_MISSED;
+            gBattleCommunication[MULTISTRING_CHOOSER] = 2;
+        }
+        else
+        {
+            gBattleCommunication[MULTISTRING_CHOOSER] = 6; // 6th string in gMoveWeatherChangeStringIds
+        }
+        break;
+    case VARIOUS_TRY_TO_CLEAR_PRIMAL_WEATHER:
+        {
+            bool8 shouldNotClear = FALSE;
+
+            for (i = 0; i < gBattlersCount; i++)
+            {
+                if (((GetBattlerAbility(i) == ABILITY_DESOLATE_LAND && gBattleWeather & WEATHER_SUN_PRIMAL)
+                || (GetBattlerAbility(i) == ABILITY_PRIMORDIAL_SEA && gBattleWeather & WEATHER_RAIN_PRIMAL)
+                || (GetBattlerAbility(i) == ABILITY_DELTA_STREAM && gBattleWeather & WEATHER_STRONG_WINDS))
+                && IsBattlerAlive(i)
+                && !(gStatuses3[i] & STATUS3_GASTRO_ACID))
+                    shouldNotClear = TRUE;
+            }
+            if (gBattleWeather & WEATHER_SUN_PRIMAL && !shouldNotClear)
+            {
+                gBattleWeather &= ~WEATHER_SUN_PRIMAL;
+                PrepareStringBattle(STRINGID_EXTREMESUNLIGHTFADED, gActiveBattler);
+                gBattleCommunication[MSG_DISPLAY] = 1;
+            }
+            else if (gBattleWeather & WEATHER_RAIN_PRIMAL && !shouldNotClear)
+            {
+                gBattleWeather &= ~WEATHER_RAIN_PRIMAL;
+                PrepareStringBattle(STRINGID_HEAVYRAINLIFTED, gActiveBattler);
+                gBattleCommunication[MSG_DISPLAY] = 1;
+            }
+            else if (gBattleWeather & WEATHER_STRONG_WINDS && !shouldNotClear)
+            {
+                gBattleWeather &= ~WEATHER_STRONG_WINDS;
+                PrepareStringBattle(STRINGID_STRONGWINDSDISSIPATED, gActiveBattler);
+                gBattleCommunication[MSG_DISPLAY] = 1;
+            }
+            break;
+        }
+    case VARIOUS_JUMP_IF_SPECIES:
+        if (gBattleMons[gActiveBattler].species == T1_READ_16(gBattlescriptCurrInstr + 3))
+            gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 5);
+        else
+            gBattlescriptCurrInstr += 9;
+        return;
     }
 
     gBattlescriptCurrInstr += 3;
@@ -8820,6 +9006,28 @@ bool8 UproarWakeUpCheck(u8 battlerId)
         return FALSE;
     else
         return TRUE;
+}
+
+
+bool8 RyuAffectionStatusHealCheck(u8 battlerId)
+{
+    u8 random = Random() % 99;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+        return FALSE;
+    
+    if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) ||
+        ((GetBattlerPosition(battlerId) == B_POSITION_PLAYER_RIGHT) && ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == TRUE)) ||
+        (gBattleMons[battlerId].friendship < 240) ||
+        (random > 24))
+            return FALSE;
+
+    gBattleMons[battlerId].friendship -= 5;
+    gUnusedBattleGlobal = 69;
+    gActiveBattler = gBattlerAttacker;
+    BtlController_EmitSetMonData(0, REQUEST_FRIENDSHIP_BATTLE, 0, 1, &gBattleMons[gBattlerAttacker].friendship);
+    MarkBattlerForControllerExec(gBattlerAttacker);
+    return TRUE;
 }
 
 static void Cmd_jumpifcantmakeasleep(void)
@@ -11157,7 +11365,6 @@ static void Cmd_tryswapitems(void) // trick
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL
         || (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT
             && !(gBattleTypeFlags & (BATTLE_TYPE_LINK
-                                  | BATTLE_TYPE_EREADER_TRAINER
                                   | BATTLE_TYPE_FRONTIER
                                   | BATTLE_TYPE_SECRET_BASE
                                   | BATTLE_TYPE_x2000000))))
@@ -11171,7 +11378,6 @@ static void Cmd_tryswapitems(void) // trick
 
         // you can't swap items if they were knocked off in regular battles
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK
-                             | BATTLE_TYPE_EREADER_TRAINER
                              | BATTLE_TYPE_FRONTIER
                              | BATTLE_TYPE_SECRET_BASE
                              | BATTLE_TYPE_x2000000))

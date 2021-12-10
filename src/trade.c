@@ -17,10 +17,7 @@
 #include "link.h"
 #include "link_rfu.h"
 #include "load_save.h"
-#include "mail.h"
 #include "main.h"
-#include "mevent2.h"
-#include "mystery_gift.h"
 #include "overworld.h"
 #include "palette.h"
 #include "party_menu.h"
@@ -1028,7 +1025,7 @@ static bool8 BufferTradeParties(void)
         }
         break;
     case 13:
-        Trade_Memcpy(gBlockSendBuffer, gSaveBlock1Ptr->mail, 220);
+        Trade_Memcpy(gBlockSendBuffer, &gUnusedBattleGlobal, 220);
         sTradeMenuData->bufferPartyState++;
         break;
     case 15:
@@ -2994,13 +2991,8 @@ static void TradeMons(u8 playerPartyIdx, u8 partnerPartyIdx)
     u8 friendship;
 
     struct Pokemon *playerMon = &gPlayerParty[playerPartyIdx];
-    u16 playerMail = GetMonData(playerMon, MON_DATA_MAIL);
 
     struct Pokemon *partnerMon = &gEnemyParty[partnerPartyIdx];
-    u16 partnerMail = GetMonData(partnerMon, MON_DATA_MAIL);
-
-    if (playerMail != 0xFF)
-        ClearMailStruct(&gSaveBlock1Ptr->mail[playerMail]);
 
     sTradeData->mon = *playerMon;
     *playerMon = *partnerMon;
@@ -3009,9 +3001,6 @@ static void TradeMons(u8 playerPartyIdx, u8 partnerPartyIdx)
     friendship = 70;
     if (!GetMonData(playerMon, MON_DATA_IS_EGG))
         SetMonData(playerMon, MON_DATA_FRIENDSHIP, &friendship);
-
-    if (partnerMail != 0xFF)
-        GiveMailToMon2(playerMon, &gTradeMail[partnerMail]);
 
     UpdatePokedexForReceivedMon(playerPartyIdx);
 }
@@ -4432,17 +4421,7 @@ static void _CreateInGameTradePokemon(u8 whichPlayerMon, u8 whichInGameTrade)
     isMail = FALSE;
     if (inGameTrade->heldItem != ITEM_NONE)
     {
-        if (ItemIsMail(inGameTrade->heldItem))
-        {
-            SetInGameTradeMail(&mail, inGameTrade);
-            gTradeMail[0] = mail;
-            SetMonData(pokemon, MON_DATA_MAIL, &isMail);
-            SetMonData(pokemon, MON_DATA_HELD_ITEM, &inGameTrade->heldItem);
-        }
-        else
-        {
-            SetMonData(pokemon, MON_DATA_HELD_ITEM, &inGameTrade->heldItem);
-        }
+        SetMonData(pokemon, MON_DATA_HELD_ITEM, &inGameTrade->heldItem);
     }
     CalculateMonStats(&gEnemyParty[0]);
 }
@@ -4566,10 +4545,6 @@ static void CB2_SaveAndEndTrade(void)
     case 50:
         if (!InUnionRoom())
             IncrementGameStat(GAME_STAT_POKEMON_TRADES);
-        if (gWirelessCommType)
-        {
-            RecordIdOfWonderCardSenderByEventType(2, gLinkPlayers[GetMultiplayerId() ^ 1].trainerId);
-        }
         SetContinueGameWarpStatusToDynamicWarp();
         sub_8153380();
         gMain.state++;

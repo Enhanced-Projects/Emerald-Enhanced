@@ -391,6 +391,8 @@
 #define ANIM_TAG_DREEPY                     (ANIM_SPRITES_START + 379)
 #define ANIM_TAG_ICE_ROCK_SINGLE            (ANIM_SPRITES_START + 380)
 #define ANIM_TAG_STONE_PILLAR_MULTI         (ANIM_SPRITES_START + 381)
+#define ANIM_TAG_ALPHA_SYMBOL               (ANIM_SPRITES_START + 382)
+#define ANIM_TAG_OMEGA_SYMBOL               (ANIM_SPRITES_START + 383)
 
 // battlers
 #define ANIM_ATTACKER    0
@@ -525,6 +527,9 @@
 #define B_ANIM_ILLUSION_OFF             0x1C
 #define B_ANIM_FORM_CHANGE              0x1D
 #define B_ANIM_SLIDE_OFFSCREEN          0x1E // for Emergency Exit
+#define B_ANIM_RYU_AFFECTION_ANIM       0x1F
+#define B_ANIM_ECLIPSE                  0x20
+#define B_ANIM_STRONG_WINDS             0x21
 
 // special animations table
 #define B_ANIM_LVL_UP                   0x0
@@ -565,6 +570,7 @@
 #define ANIM_WEATHER_RAIN 2
 #define ANIM_WEATHER_SANDSTORM 3
 #define ANIM_WEATHER_HAIL 4
+#define ANIM_WEATHER_ECLIPSE 5
 
 // Battle mon back animations.
 #define BACK_ANIM_NONE                         0x00

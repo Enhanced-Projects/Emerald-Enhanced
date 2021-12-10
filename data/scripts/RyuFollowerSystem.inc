@@ -237,8 +237,7 @@ RF_FollowerLeave::
 Ryu_RestoreLanetteAtHouse::
 	destroyfollower
 	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
-	release
-	end
+	return
 
 Ryu_RestoreMinnie::
 	destroyfollower

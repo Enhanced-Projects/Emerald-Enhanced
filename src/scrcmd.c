@@ -28,7 +28,6 @@
 #include "main.h"
 #include "menu.h"
 #include "money.h"
-#include "mystery_event_script.h"
 #include "palette.h"
 #include "party_menu.h"
 #include "pokemon_storage_system.h"
@@ -57,6 +56,7 @@
 #include "ach_atlas.h"
 #include "pokedex.h"
 #include "factions.h"
+#include "overworld_notif.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -75,7 +75,7 @@ extern const SpecialFunc gSpecials[];
 extern const u8 *gStdScripts[];
 extern const u8 *gStdScripts_End[];
 extern const u8 RyuResetFollowerPosition[];
-extern const u8 gText_MartDisabledNuzlocke[];
+extern const u8 gText_MartDisabledChallenge[];
 
 static void CloseBrailleWindow(void);
 
@@ -309,9 +309,6 @@ bool8 ScrCmd_killscript(struct ScriptContext *ctx)
 
 bool8 ScrCmd_setmysteryeventstatus(struct ScriptContext *ctx)
 {
-    u8 value = ScriptReadByte(ctx);
-
-    SetMysteryEventScriptStatus(value);
     return FALSE;
 }
 
@@ -1371,6 +1368,25 @@ bool8 ScrCmd_yesnobox(struct ScriptContext *ctx)
     }
 }
 
+bool8 ScriptMenu_NumberEntry(u8 left, u8 top, u8 digits);
+
+bool8 ScrCmd_numberentry(struct ScriptContext *ctx)
+{
+    u8 left = ScriptReadByte(ctx);
+    u8 top = ScriptReadByte(ctx);
+    u8 digits = ScriptReadByte(ctx);
+
+    if (ScriptMenu_NumberEntry(left, top, digits) == TRUE)
+    {
+        ScriptContext1_Stop();
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+
 bool8 ScrCmd_multichoice(struct ScriptContext *ctx)
 {
     u8 left = ScriptReadByte(ctx);
@@ -1889,10 +1905,10 @@ bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
     {
         PlaySE(SE_HAZURE);
-        ShowFieldMessage(gText_MartDisabledNuzlocke);
+        ShowFieldMessage(gText_MartDisabledChallenge);
         return TRUE;
     }
 
@@ -2344,10 +2360,34 @@ bool8 ScrCmd_scriptdebug(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_givebp(struct ScriptContext *ctx)
+bool8 ScrCmd_buffersingledynamicline(struct ScriptContext *ctx)
 {
-    u16 value = (VarGet(ScriptReadHalfword(ctx)));
-    gSaveBlock2Ptr->frontier.battlePoints = (gSaveBlock2Ptr->frontier.battlePoints + value);
+    u16 whichStringVar = (VarGet(ScriptReadHalfword(ctx)));
+    const u8 *stringToBuffer = (const u8 *)ScriptReadWord(ctx);
+
+    if (stringToBuffer == NULL)
+        stringToBuffer = (const u8 *)ctx->data[0];
+
+    switch (whichStringVar) {
+        case 1:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gStringVar1, gStringVar4);
+        case 2:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gStringVar2, gStringVar4);
+        case 3:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gStringVar3, gStringVar4);
+        case 4:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gRyuStringVar1, gStringVar4);
+        case 5:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gRyuStringVar2, gStringVar4);
+        case 6:
+            StringExpandPlaceholders(gStringVar4, stringToBuffer);
+            StringCopy(gRyuStringVar3, gStringVar4);
+    }     
     return FALSE;
 }
 
@@ -2479,5 +2519,15 @@ bool8 ScrCmd_buffermapname(struct ScriptContext *ctx)
 
     mapSecId = Overworld_GetMapHeaderByGroupAndId(targetMapGroup, targetMapNum)->regionMapSectionId;
     GetMapName(sScriptStringVars[bufferIndex], mapSecId, 0);
+    return FALSE;
+}
+
+bool8 ScrCmd_notification(struct ScriptContext *ctx)
+{
+    u8 *message = (void *)ScriptReadWord(ctx);
+    u32 type = ScriptReadByte(ctx);
+    u32 time = ScriptReadByte(ctx);
+    time = time == 0xFF ? 120 : time;
+    QueueNotification(message, type, time);
     return FALSE;
 }

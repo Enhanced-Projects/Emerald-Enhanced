@@ -1,0 +1,85 @@
+//ball changer menu
+
+
+script RyuScript_BallChanger {
+    msgbox("Would you like to change a Pokémon's\nball?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        msgbox(RyuText_OkayLetMeKnow)
+        goto(LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarLeft)
+    }
+    checkmoney(10000)
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox(RyuText_BallChangerCantAfford)
+        goto(ryu_end)
+    }
+    call(RyuScript_BallChangerPartySlotSelect)
+    call(RyuScript_BallChangerItemSelect)
+    bufferitemname(0, VAR_ITEM_ID)
+    bufferpartymonnick(1, VAR_TEMP_C)
+    msgbox("So you'd like to change {STR_VAR_2}'s\nball to {STR_VAR_1}?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        callnative(RyuChangeUsedPokeball)
+        removemoney(10000)
+        removeitem(VAR_ITEM_ID)
+        msgbox("The ball of {STR_VAR_2} has been\nchanged to {STR_VAR_1} successfully!\pPlease come again!")
+        goto(ryu_end)
+    }
+    else {
+        msgbox(RyuText_OkayLetMeKnow)
+        goto(ryu_end)
+    }
+}
+
+script RyuScript_BallChangerItemSelect {
+    msgbox("Now give me the Ball you would\nlike to use.")
+    callnative(Bag_ChooseBall)
+    waitstate
+    if ((var(VAR_ITEM_ID) == ITEM_NONE) || (var(VAR_ITEM_ID) > ITEM_PREMIER_BALL)) {
+        call(RyuScript_SelectedInvalidItem)
+    }
+    return
+}
+
+script RyuScript_BallChangerPartySlotSelect {
+    msgbox(RyuText_BallChangerWhichSlot)
+	call(RyuBufferPartyMonNames)
+	multichoice(10, 0, MULTI_DYNAMIC_6, 0)
+    specialvar(VAR_TEMP_A, CheckIfSelectedSlotIsValid)
+    if (var(VAR_TEMP_A) == FALSE){
+        call(RyuScript_SelectedNoMon)
+    }
+    copyvar(VAR_TEMP_C, VAR_RESULT)
+    return
+}
+
+script RyuScript_SelectedNoMon {
+    msgbox("Would you like to try selecting\nanother pokemon?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){
+        goto(RyuScript_BallChangerPartySlotSelect)
+    }
+    else{
+        goto(ryu_end)
+    }
+}
+
+script RyuScript_SelectedInvalidItem {
+    msgbox("Would you like to try selecting\nanother ball?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        goto(RyuScript_BallChangerItemSelect)
+    }
+    else {
+        goto(ryu_end)
+    }
+}
+
+text RyuText_OkayLetMeKnow {
+    "Okay, chat again if you change\nyour mind!"
+}
+
+text RyuText_BallChangerCantAfford {
+    "You do not have enough money\nto use this service.\pYou need at least ¥10,000"
+}
+
+text RyuText_BallChangerWhichSlot {
+    "Which Pokémon's ball should I change?"
+}

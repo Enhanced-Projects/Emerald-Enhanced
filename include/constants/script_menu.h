@@ -126,7 +126,7 @@
 #define MULTI_DEV_MENU_MAIN                115
 #define MULTI_DEV_EV_MENU                  116
 #define MULTI_UNUSED_REL_MENU              117
-#define MULTI_SELECT_PARTY_SLOT            118
+#define MULTI_DYNAMIC_6            118
 #define MULTI_SELECT_MOVE_SLOT             119
 #define MULTI_LTC_MOVE_TUTOR_MOVES         120
 #define MULTI_UNUSED_JUKEBOX               121
@@ -168,12 +168,16 @@
 #define MULTI_BOTANY_CHAPTER_SELECT        157
 #define MULTI_PBG_TRICK_QUESTION           158
 #define MULTI_BOTANY_APRICORN_MENU         159
-#define MULTI_HOLIDAY_2020                 160
-#define MULTI_BOTANY_OR_ALCHEMY            161
-#define MULTI_RANDOM_BATTLE_TYPE           162
-#define MULTI_FRONTIERBANK                 163
-#define MULTI_FBAMOUNTMENU                 164
-#define MULTI_REALESTATE_MENU              165
+#define MULTI_BOTANY_OR_ALCHEMY            160
+#define MULTI_RANDOM_BATTLE_TYPE           161
+#define MULTI_FRONTIERBANK                 162
+#define MULTI_FBAMOUNTMENU                 163
+#define MULTI_REALESTATE_MENU              164
+#define MULTI_BALL_CHANGER_INTROMENU       165
+#define MULTI_DYNAMIC_2                    166
+#define MULTI_DYNAMIC_3                    167
+#define MULTI_DYNAMIC_4                    168
+#define MULTI_DYNAMIC_5                    169
 
 
 // Lilycove SS Tidal Multichoice Selections

@@ -807,7 +807,7 @@ Route110_TrickHousePuzzle2_EventScript_ItemHarborMail:: @ 829141B
 	end
 
 Route110_TrickHousePuzzle2_EventScript_ItemWaveMail:: @ 8291428
-	finditem ITEM_IMPRINT
+	finditem ITEM_EVPRINT
 	end
 
 Route110_TrickHousePuzzle3_EventScript_ItemShadowMail:: @ 8291435
@@ -831,7 +831,7 @@ Route110_TrickHousePuzzle7_EventScript_ItemTropicMail:: @ 8291469
 	end
 
 Route110_TrickHousePuzzle8_EventScript_ItemBeadMail:: @ 8291476
-	finditem ITEM_BEAD_MAIL
+	finditem ITEM_IVPRINT
 	end
 
 VictoryRoad_1F_EventScript_ItemMaxElixir:: @ 8291483

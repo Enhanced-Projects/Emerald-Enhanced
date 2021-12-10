@@ -364,7 +364,10 @@ GCMS_Consignment::
 	buffernumberstring 1, VAR_RYU_GCMS_VALUE
 	msgbox GCMS_PickSlot
 	call RyuBufferPartyMonNames
-	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 6, 0
+	multichoice 10, 0, MULTI_DYNAMIC_6, 0
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq GCMS_CancelPartySlot
 	switch VAR_RESULT
 	case 0, GCMS_Slot1Selected
 	case 1, GCMS_Slot2Selected
@@ -372,7 +375,6 @@ GCMS_Consignment::
 	case 3, GCMS_Slot4Selected
 	case 4, GCMS_Slot5Selected
 	case 5, GCMS_Slot6Selected
-	case 6, GCMS_CancelPartySlot
 	goto GCMS_CancelPartySlot
 	releaseall
 	end
@@ -383,9 +385,11 @@ GCMS_ChooseInitialSpecies:
 	goto_if_eq GCMS_NotEnoughPartyMons
 	setflag FLAG_TEMP_5
 	msgbox GCMS_PickInitialSpecies
-	closemessage
 	call RyuBufferPartyMonNames
-	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 6, 0
+	multichoice 10, 0, MULTI_DYNAMIC_6, 0
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq GCMS_CancelPartySlot
 	switch VAR_RESULT
 	case 0, GCMS_Slot1Selected
 	case 1, GCMS_Slot2Selected
@@ -393,7 +397,6 @@ GCMS_ChooseInitialSpecies:
 	case 3, GCMS_Slot4Selected
 	case 4, GCMS_Slot5Selected
 	case 5, GCMS_Slot6Selected
-	case 6, GCMS_CancelPartySlot
 	goto GCMS_CancelPartySlot
 	
 	

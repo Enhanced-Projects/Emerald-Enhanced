@@ -26,17 +26,9 @@ ProfBirch_EventScript_MoveToLab:: @ 827211A
 	return
 
 ProfBirch_EventScript_MoveToRoute101:: @ 8272127
-	clearflag FLAG_HIDE_ROUTE_101_BIRCH
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_UNKNOWN_0x380
-	setflag FLAG_HIDE_ROUTE_103_BIRCH
 	return
 
 ProfBirch_EventScript_MoveToRoute103:: @ 8272134
-	clearflag FLAG_HIDE_ROUTE_103_BIRCH
-	setflag FLAG_HIDE_ROUTE_101_BIRCH
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_UNKNOWN_0x380
 	return
 
 ProfBirch_EventScript_RatePokedexOrRegister:: @ 8272141

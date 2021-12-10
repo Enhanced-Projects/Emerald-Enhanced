@@ -115,14 +115,14 @@ static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, bool8 ignoreB
     InitMultichoiceCheckWrap(ignoreBPress, count, windowId, multichoiceId);
 }
 
-#define tLeft           data[0]
-#define tTop            data[1]
-#define tRight          data[2]
-#define tBottom         data[3]
-#define tIgnoreBPress   data[4]
-#define tDoWrap         data[5]
-#define tWindowId       data[6]
-#define tMultichoiceId  data[7]
+#define tLeft data[0]
+#define tTop data[1]
+#define tRight data[2]
+#define tBottom data[3]
+#define tIgnoreBPress data[4]
+#define tDoWrap data[5]
+#define tWindowId data[6]
+#define tMultichoiceId data[7]
 
 static void InitMultichoiceCheckWrap(bool8 ignoreBPress, u8 count, u8 windowId, u8 multichoiceId)
 {
@@ -210,6 +210,120 @@ bool8 ScriptMenu_YesNo(u8 left, u8 top)
         gSpecialVar_Result = 0xFF;
         DisplayYesNoMenuDefaultYes();
         taskId = CreateTask(Task_HandleYesNoInput, 0x50);
+        return TRUE;
+    }
+}
+
+
+static void Task_HandleNumberEntryInput(u8 taskId)
+{
+    struct WindowTemplate numberEntryWindow =
+    {
+        .bg = 0,
+        .tilemapLeft = gTasks[taskId].data[3]+1,
+        .tilemapTop = gTasks[taskId].data[4]+1,
+        .width = (gTasks[taskId].data[5]*12 + 4)/ 8,
+        .height = 2,
+        .paletteNum = 15,
+        .baseBlock = 0x125
+    };
+    int i;
+    u8 numBuf[2] = {CHAR_0, EOS};
+
+    if (gTasks[taskId].data[0] < 1)
+    {
+        gTasks[taskId].data[1] = AddWindow(&numberEntryWindow);
+        DrawStdWindowFrame(gTasks[taskId].data[1], TRUE);
+        for(i = 0; i < gTasks[taskId].data[5]; i++)
+        {
+            AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+i*12, 2, 0xFF, NULL);
+        }
+        numBuf[0] = CHAR_LESS_THAN;
+        AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+gTasks[taskId].data[5]*12-6, 1, 0xFF, NULL);
+        CopyWindowToVram(gTasks[taskId].data[1], 2);
+        gTasks[taskId].data[0]++;
+        return;
+    }
+
+    if(JOY_NEW(A_BUTTON))
+    {
+        int pow = 1, sum = 0;
+        for(i = 0; i < gTasks[taskId].data[5]; i++)
+        {
+            int j;
+            pow = 1;
+            for(j = 0; j < i; j++) pow *= 10;
+            sum += gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - i] * pow;
+        }
+        gSpecialVar_32bit = sum;
+        if (gSpecialVar_32bit < 65536)
+            gSpecialVar_Result = gSpecialVar_32bit;
+        ClearStdWindowAndFrameToTransparent(gTasks[taskId].data[1], TRUE);
+        RemoveWindow(gTasks[taskId].data[1]);
+        DestroyTask(taskId);
+        EnableBothScriptContexts();
+        return;
+    }
+    else if(JOY_NEW(B_BUTTON))
+    {
+        gSpecialVar_Result = 0;
+        ClearStdWindowAndFrameToTransparent(gTasks[taskId].data[1], TRUE);
+        RemoveWindow(gTasks[taskId].data[1]);
+        DestroyTask(taskId);
+        EnableBothScriptContexts();
+        return;
+    }
+    else if(JOY_NEW(DPAD_UP))
+    {
+        gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]]++;
+        if(gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]] > 9)
+            gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]] = 0;
+    }
+    else if(JOY_NEW(DPAD_DOWN))
+    {
+        gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]]--;
+        if(gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]] < 0)
+            gTasks[taskId].data[6 + gTasks[taskId].data[5]-1 - gTasks[taskId].data[2]] = 9;
+    }
+    else if(JOY_NEW(DPAD_RIGHT))
+    {
+        gTasks[taskId].data[2]--;
+        if(gTasks[taskId].data[2] < 0)
+            gTasks[taskId].data[2] = gTasks[taskId].data[5]-1;
+    }
+    else if(JOY_NEW(DPAD_LEFT))
+    {
+        gTasks[taskId].data[2]++;
+        if(gTasks[taskId].data[2] > gTasks[taskId].data[5]-1)
+            gTasks[taskId].data[2] = 0;
+    }
+    else
+        return;
+    FillWindowPixelBuffer(gTasks[taskId].data[1], PIXEL_FILL(1));
+    for(i = 0; i < gTasks[taskId].data[5]; i++)
+    {
+        numBuf[0] = CHAR_0 + gTasks[taskId].data[6 + i];
+        AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+i*12, 2, 0xFF, NULL);
+    }
+    numBuf[0] = CHAR_LESS_THAN;
+    AddTextPrinterParameterized(gTasks[taskId].data[1], 1, numBuf, 1+gTasks[taskId].data[5]*12-6-gTasks[taskId].data[2]*12, 1, 0xFF, NULL);
+    CopyWindowToVram(gTasks[taskId].data[1], 2);
+}
+
+bool8 ScriptMenu_NumberEntry(u8 left, u8 top, u8 digits)
+{
+    u8 taskId;
+
+    if (FuncIsActiveTask(Task_HandleNumberEntryInput) == TRUE)
+    {
+        return FALSE;
+    }
+    else
+    {
+        taskId = CreateTask(Task_HandleNumberEntryInput, 0x50);
+        gTasks[taskId].data[3] = left;
+        gTasks[taskId].data[4] = top;
+        gTasks[taskId].data[5] = digits > 9 ? 9 : digits;
         return TRUE;
     }
 }
@@ -547,12 +661,12 @@ void GetLilycoveSSTidalSelection(void)
     }
 }
 
-#define tState       data[0]
-#define tMonSpecies  data[1]
+#define tState data[0]
+#define tMonSpecies data[1]
 #define tMonSpriteId data[2]
-#define tWindowX     data[3]
-#define tWindowY     data[4]
-#define tWindowId    data[5]
+#define tWindowX data[3]
+#define tWindowY data[4]
+#define tWindowId data[5]
 
 static void Task_PokemonPicWindow(u8 taskId)
 {
@@ -702,7 +816,7 @@ static void CreateStartMenuForPokenavTutorial(void)
     CopyWindowToVram(windowId, 3);
 }
 
-#define tWindowId       data[6]
+#define tWindowId data[6]
 
 static void InitMultichoiceNoWrap(bool8 ignoreBPress, u8 unusedCount, u8 windowId, u8 multichoiceId)
 {
@@ -780,9 +894,8 @@ static const u8 sText_DebugUtilityItem12[] = _("Enable Dexnav");
 static const u8 sText_DebugUtilityItem13[] = _("Alchemy Info");
 static const u8 sText_DebugUtilityItem14[] = _("Toggle Level Cap");
 static const u8 sText_DebugUtilityItem15[] = _("Enable Real Estate");
-static const u8 sText_DebugUtilityItem16[] = _("Spawn a Follower");
-static const u8 sText_DebugUtilityItem17[] = _("Test DNS");
-static const u8 sText_DebugUtilityItem18[] = _("Exit");
+static const u8 sText_DebugUtilityItem16[] = _("Test DNS");
+static const u8 sText_DebugUtilityItem17[] = _("Exit");
 
 // strings to display as items.
 static const u8 sText_BotanyConsumableItem1[] = _("Muscle Powder");
@@ -855,110 +968,109 @@ static const u8 sFollowerHexer[] = _("Spawn Hexer");
 static const u8 sReturnPrevious[] = _("Return");
 
 static const struct ListMenuItem sBotanyConsumablesSet[] =
-{
-    {sText_BotanyConsumableItem1, 0},
-    {sText_BotanyConsumableItem2, 1},
-    {sText_BotanyConsumableItem3, 2},
-    {sText_BotanyConsumableItem4, 3},
-    {sText_BotanyConsumableItem5, 4},
-    {sText_BotanyConsumableItem6, 5},
-    {sText_BotanyConsumableItem7, 6},
-    {sText_BotanyConsumableItem8, 7},
-    {sText_BotanyConsumableItem9, 8},
-    {sText_BotanyConsumableItem10, 9},
-    {sText_BotanyConsumableItem11, 10},
-    {sText_BotanyConsumableItem12, 11}
+    {
+        {sText_BotanyConsumableItem1, 0},
+        {sText_BotanyConsumableItem2, 1},
+        {sText_BotanyConsumableItem3, 2},
+        {sText_BotanyConsumableItem4, 3},
+        {sText_BotanyConsumableItem5, 4},
+        {sText_BotanyConsumableItem6, 5},
+        {sText_BotanyConsumableItem7, 6},
+        {sText_BotanyConsumableItem8, 7},
+        {sText_BotanyConsumableItem9, 8},
+        {sText_BotanyConsumableItem10, 9},
+        {sText_BotanyConsumableItem11, 10},
+        {sText_BotanyConsumableItem12, 11}
 };
 
 static const struct ListMenuItem sBotanyMedicineSet[] =
-{
-    {sText_BotanyMedicineItem1, 0},
-    {sText_BotanyMedicineItem2, 1},
-    {sText_BotanyMedicineItem3, 2},
-    {sText_BotanyMedicineItem4, 3},
-    {sText_BotanyMedicineItem5, 4},
-    {sText_BotanyMedicineItem6, 5},
-    {sText_BotanyMedicineItem7, 6},
-    {sText_BotanyMedicineItem8, 7}
+    {
+        {sText_BotanyMedicineItem1, 0},
+        {sText_BotanyMedicineItem2, 1},
+        {sText_BotanyMedicineItem3, 2},
+        {sText_BotanyMedicineItem4, 3},
+        {sText_BotanyMedicineItem5, 4},
+        {sText_BotanyMedicineItem6, 5},
+        {sText_BotanyMedicineItem7, 6},
+        {sText_BotanyMedicineItem8, 7}
 };
 
 static const struct ListMenuItem sBotanyEvolutionSet[] =
-{
-    {sText_BotanyEvolutionItem1, 0},
-    {sText_BotanyEvolutionItem2, 1},
-    {sText_BotanyEvolutionItem3, 2},
-    {sText_BotanyEvolutionItem4, 3},
-    {sText_BotanyEvolutionItem5, 4},
-    {sText_BotanyEvolutionItem6, 5},
-    {sText_BotanyEvolutionItem7, 6},
-    {sText_BotanyEvolutionItem8, 7},
-    {sText_BotanyEvolutionItem9, 8},
-    {sText_BotanyEvolutionItem10, 9}
+    {
+        {sText_BotanyEvolutionItem1, 0},
+        {sText_BotanyEvolutionItem2, 1},
+        {sText_BotanyEvolutionItem3, 2},
+        {sText_BotanyEvolutionItem4, 3},
+        {sText_BotanyEvolutionItem5, 4},
+        {sText_BotanyEvolutionItem6, 5},
+        {sText_BotanyEvolutionItem7, 6},
+        {sText_BotanyEvolutionItem8, 7},
+        {sText_BotanyEvolutionItem9, 8},
+        {sText_BotanyEvolutionItem10, 9}
 };
 
 static const struct ListMenuItem sDebugUtilitySet[] =
-{
-    {sText_DebugUtilityItem0, 0},
-    {sText_DebugUtilityItem1, 1},
-    {sText_DebugUtilityItem2, 2},
-    {sText_DebugUtilityItem3, 3},
-    {sText_DebugUtilityItem4, 4},
-    {sText_DebugUtilityItem5, 5},
-    {sText_DebugUtilityItem6, 6},
-    {sText_DebugUtilityItem7, 7},
-    {sText_DebugUtilityItem8, 8},
-    {sText_DebugUtilityItem9, 9},
-    {sText_DebugUtilityItem10, 10},
-    {sText_DebugUtilityItem11, 11},
-    {sText_DebugUtilityItem12, 12},
-    {sText_DebugUtilityItem13, 13},
-    {sText_DebugUtilityItem14, 14},
-    {sText_DebugUtilityItem15, 15},
-    {sText_DebugUtilityItem16, 16},
-    {sText_DebugUtilityItem17, 17},
-    {sText_DebugUtilityItem18, 18},
+    {
+        {sText_DebugUtilityItem0, 0},
+        {sText_DebugUtilityItem1, 1},
+        {sText_DebugUtilityItem2, 2},
+        {sText_DebugUtilityItem3, 3},
+        {sText_DebugUtilityItem4, 4},
+        {sText_DebugUtilityItem5, 5},
+        {sText_DebugUtilityItem6, 6},
+        {sText_DebugUtilityItem7, 7},
+        {sText_DebugUtilityItem8, 8},
+        {sText_DebugUtilityItem9, 9},
+        {sText_DebugUtilityItem10, 10},
+        {sText_DebugUtilityItem11, 11},
+        {sText_DebugUtilityItem12, 12},
+        {sText_DebugUtilityItem13, 13},
+        {sText_DebugUtilityItem14, 14},
+        {sText_DebugUtilityItem15, 15},
+        {sText_DebugUtilityItem16, 16},
+        {sText_DebugUtilityItem17, 17},
 };
 
 static const struct ListMenuItem sAlchemyMenu[] =
-{
-    {sRAEffectDamage1, 0},
-    {sRAEffectDamage2, 1},
-    {sRAEffectDamage3, 2},
-    {sRAEffectDefense1, 3},
-    {sRAEffectDefense2, 4},
-    {sRAEffectDefense3, 5},
-    {sRAEffectEXPBoost1, 6},
-    {sRAEffectEXPBoost2, 7},
-    {sRAEffectEXPBoost3, 8},
-    {sRAEffectRepelT1, 9},
-    {sRAEffectRepelT2, 10},
-    {sRAEffectSuperCapture1, 11},
-    {sRAEffectSuperCapture2, 12},
-    {sRAEffectSuperCapture3, 13},
-    {sRAEffectHealingFactor, 14},
-    {sRAItemStardust, 15},
-    {sRAItemFreshWater, 16},
-    {sRAItemTonicWater, 17},
-    {sRAItemMineralWater, 18},
-    {sRAItemRareCandy, 19},
-    {sRAItemGoldNugget, 20},
+    {
+        {sRAEffectDamage1, 0},
+        {sRAEffectDamage2, 1},
+        {sRAEffectDamage3, 2},
+        {sRAEffectDefense1, 3},
+        {sRAEffectDefense2, 4},
+        {sRAEffectDefense3, 5},
+        {sRAEffectEXPBoost1, 6},
+        {sRAEffectEXPBoost2, 7},
+        {sRAEffectEXPBoost3, 8},
+        {sRAEffectRepelT1, 9},
+        {sRAEffectRepelT2, 10},
+        {sRAEffectSuperCapture1, 11},
+        {sRAEffectSuperCapture2, 12},
+        {sRAEffectSuperCapture3, 13},
+        {sRAEffectHealingFactor, 14},
+        {sRAItemStardust, 15},
+        {sRAItemFreshWater, 16},
+        {sRAItemTonicWater, 17},
+        {sRAItemMineralWater, 18},
+        {sRAItemRareCandy, 19},
+        {sRAItemGoldNugget, 20},
 };
 
 static const struct ListMenuItem sRyuFollowerDebugSet[] =
-{
-    {sFollowerMinnie, 0},
-    {sFollowerShelly, 1},
-    {sFollowerLanette, 2},
-    {sFollowerDawn, 3},
-    {sFollowerBrendan, 4},
-    {sFollowerLeaf, 5},
-    {sFollowerCourtney, 6},
-    {sFollowerJoy, 7},
-    {sFollowerNonCombat, 8},
-    {sFollowerBlaise, 9},
-    {sFollowerTiana, 10},
-    {sFollowerHexer, 11},
-    {sReturnPrevious, 12},
+    {
+        {sFollowerMinnie, 0},
+        {sFollowerShelly, 1},
+        {sFollowerLanette, 2},
+        {sFollowerDawn, 3},
+        {sFollowerBrendan, 4},
+        {sFollowerLeaf, 5},
+        {sFollowerCourtney, 6},
+        {sFollowerJoy, 7},
+        {sFollowerNonCombat, 8},
+        {sFollowerBlaise, 9},
+        {sFollowerTiana, 10},
+        {sFollowerHexer, 11},
+        {sReturnPrevious, 12},
 };
 
 
@@ -967,31 +1079,31 @@ struct
     const struct ListMenuItem *set;
     int count;
 } static const sScrollingSets[] =
-{
-    {sDebugUtilitySet, ARRAY_COUNT(sDebugUtilitySet)},
-    {sBotanyConsumablesSet, ARRAY_COUNT(sBotanyConsumablesSet)},
-    {sBotanyMedicineSet, ARRAY_COUNT(sBotanyMedicineSet)},
-    {sBotanyEvolutionSet, ARRAY_COUNT(sBotanyEvolutionSet)},
-    {sAlchemyMenu, ARRAY_COUNT(sAlchemyMenu)},
-    {sRyuFollowerDebugSet, ARRAY_COUNT(sRyuFollowerDebugSet)},
+    {
+        {sDebugUtilitySet, ARRAY_COUNT(sDebugUtilitySet)},
+        {sBotanyConsumablesSet, ARRAY_COUNT(sBotanyConsumablesSet)},
+        {sBotanyMedicineSet, ARRAY_COUNT(sBotanyMedicineSet)},
+        {sBotanyEvolutionSet, ARRAY_COUNT(sBotanyEvolutionSet)},
+        {sAlchemyMenu, ARRAY_COUNT(sAlchemyMenu)},
+        {sRyuFollowerDebugSet, ARRAY_COUNT(sRyuFollowerDebugSet)},
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);
 
 static const struct ListMenuTemplate sMultichoiceListTemplate =
-{
-    .header_X = 0,
-    .item_X = 8,
-    .cursor_X = 0,
-    .upText_Y = 1,
-    .cursorPal = 2,
-    .fillValue = 1,
-    .cursorShadowPal = 3,
-    .lettersSpacing = 1,
-    .itemVerticalPadding = 0,
-    .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
-    .fontId = 1,
-    .cursorKind = 0
+    {
+        .header_X = 0,
+        .item_X = 8,
+        .cursor_X = 0,
+        .upText_Y = 1,
+        .cursorPal = 2,
+        .fillValue = 1,
+        .cursorShadowPal = 3,
+        .lettersSpacing = 1,
+        .itemVerticalPadding = 0,
+        .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
+        .fontId = 1,
+        .cursorKind = 0
 };
 
 // 0x8004 = set id

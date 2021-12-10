@@ -42,7 +42,7 @@ script(global) RyuStudentsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
                     msgbox(format("I see, competition is pretty fierce out there, huh?"))
                     goto(CommonStudentRewardScript)
                 }
@@ -90,7 +90,7 @@ script(global) RyuStudentsDailyQuest  {
         case 2:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE114)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             msgbox(format("{PLAYER}! I need you to go to Route 114 and check out our competition there."))
         case 3:
             random(4)

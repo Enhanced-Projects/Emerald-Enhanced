@@ -24,7 +24,6 @@
 #include "lilycove_lady.h"
 #include "list_menu.h"
 #include "link.h"
-#include "mail.h"
 #include "main.h"
 #include "malloc.h"
 #include "map_name_popup.h"
@@ -48,8 +47,8 @@
 #include "text_window.h"
 #include "menu_helpers.h"
 #include "window.h"
-#include "apprentice.h"
 #include "battle_pike.h"
+#include "overworld_notif.h"
 #include "constants/rgb.h"
 
 enum
@@ -563,7 +562,7 @@ void CB2_GoToSellMenu(void)
 
 void CB2_GoToItemDepositMenu(void)
 {
-    GoToBagMenu(ITEMMENULOCATION_ITEMPC, POCKETS_COUNT, sub_816B31C);
+    GoToBagMenu(ITEMMENULOCATION_ITEMPC, POCKETS_COUNT, CB2_ReturnToField);
 }
 
 void ApprenticeOpenBagMenu(void)
@@ -596,6 +595,16 @@ void CB2_ChooseMedicine(void)
 void Bag_ChooseMedicine(void)
 {
     SetMainCallback2(CB2_ChooseMedicine);
+}
+
+void CB2_ChooseBall(void)
+{
+    GoToBagMenu(ITEMMENULOCATION_QUIZ_LADY, BALLS_POCKET, CB2_ReturnToFieldContinueScript);
+}
+
+void Bag_ChooseBall(void)
+{
+    SetMainCallback2(CB2_ChooseBall);
 }
 
 void GoToBagMenu(u8 location, u8 pocket, void ( *postExitMenuMainCallback2)())
@@ -1578,8 +1587,6 @@ void OpenContextMenu(u8 unused)
                         gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
                         gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
                         memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_ItemsPocket, sizeof(sContextMenuItems_ItemsPocket));
-                        if (ItemIsMail(gSpecialVar_ItemId) == TRUE)
-                            gBagMenu->contextMenuItemsBuffer[0] = ITEMMENUACTION_CHECK;
                         break;
                     case MEDICINE_POCKET:
                         gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
@@ -1994,9 +2001,7 @@ void Task_ItemContext_FieldGive(u8 taskId)
 
 void Task_ItemContext_ItemPC_2(u8 taskId)
 {
-    if (ItemIsMail(gSpecialVar_ItemId) == TRUE)
-        DisplayItemMessage(taskId, 1, gText_CantWriteMail, sub_81AD350);
-    else if (gBagPositionStruct.pocket != KEYITEMS_POCKET && !ItemId_GetImportance(gSpecialVar_ItemId))
+    if (gBagPositionStruct.pocket != KEYITEMS_POCKET && !ItemId_GetImportance(gSpecialVar_ItemId))
         gTasks[taskId].func = Task_FadeAndCloseBagMenu;
     else
         BagMenu_PrintItemCantBeHeld(taskId);
@@ -2010,6 +2015,7 @@ bool8 UseRegisteredKeyItemOnField(void)
 
     if (InUnionRoom() == TRUE || InBattlePyramid() || InBattlePike() || InMultiPartnerRoom() == TRUE)
         return FALSE;
+    HideNotificationWindow();
     HideMapNamePopUpWindow();
     ChangeBgY_ScreenOff(0, 0, 0);
     if (gSaveBlock1Ptr->registeredItem != ITEM_NONE)
@@ -2337,7 +2343,6 @@ void unknown_ItemMenu_Show(u8 taskId)
 
 void CB2_ApprenticeExitBagMenu(void)
 {
-    gFieldCallback = Apprentice_EnableBothScriptContexts;
     SetMainCallback2(CB2_ReturnToField);
 }
 

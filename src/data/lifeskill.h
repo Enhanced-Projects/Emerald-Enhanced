@@ -674,7 +674,7 @@ const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
     },
 };
 
-const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
+const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_RECIPES] = {
     [ALCHEMY_EFFECT_NONE] = {
           .expGiven = 0,
           .ingredients = {
@@ -888,7 +888,7 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
           .ingredients = {
             {ITEM_SNOWBALL, 2},
             {ITEM_FIRE_STONE, 1},
-            {ITEM_NONE, 1},
+            {ITEM_NONE, 0},
         },
         .metal = 2,
         .metalDustAmt = 100,
@@ -901,7 +901,7 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
           .ingredients = {
             {ITEM_FRESH_WATER, 2},
             {ITEM_CHARCOAL, 1},
-            {ITEM_NONE, 1},
+            {ITEM_NONE, 0},
         },
         .metal = 2,
         .metalDustAmt = 200,
@@ -914,7 +914,7 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
           .ingredients = {
             {ITEM_TONIC_WATER, 2},
             {ITEM_SOFT_SAND, 1},
-          {ITEM_SHOAL_SALT, 1},
+            {ITEM_SHOAL_SALT, 1},
         },
         .metal = 2,
         .metalDustAmt = 300,

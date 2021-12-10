@@ -42,6 +42,8 @@
 #include "constants/species.h"
 #include "factions.h"
 #include "RyuRealEstate.h"
+#include "ach_atlas.h"
+#include "overworld_notif.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -73,7 +75,10 @@ extern const u8 RyuScript_EncounterGuzzlord[];
 extern const u8 RyuScript_EncounterStakataka[];
 extern const u8 RyuScript_EncounterCelesteela[];
 extern const u8 RyuScript_EncounterKeldeo[];
-
+extern const u8 Ryu_FFTextSpeedWarning[];
+extern const u8 RyuScript_Lv100FailMsg[];
+extern const u8 RyuScrupt_Lv100SwitchMsg[];
+extern const u8 RyuCheckForLNSUAch[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -201,74 +206,57 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
 }
 
 extern int CountBadges(void);
+extern void RyuCheckForFactionAchievements(void);
+
+const u8 gRyuReachedDailyTargetLocationString[] = _("Reached target area for the {STR_VAR_1}.");
 
 void RyuDoNotifyTasks(void)
 {
-
-    if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for nuzlocke/hardcore
+    if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for challenge/hardcore
     {
         if (!(FlagGet(FLAG_RYU_LIMBO) == 1))
         {
-            if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
+            if ((FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
                 ScriptContext1_SetupScript(RyuScript_GoToLimbo);
         }
     }
-    
-    if (FlagGet(FLAG_RYU_NOTIFY_PICKUP_ITEM) == TRUE) //notify picked up item(s).
-        ScriptContext1_SetupScript(RyuScript_NotifyPickedUpItem);
 
-    if (FlagGet(FLAG_RYU_INTEREST_ACCRUED) == 1)//Interest was given, notify player.
-        ScriptContext1_SetupScript(RyuScript_PlayerReceivedInterest);
+    RyuCheckForFactionAchievements();
 
-    if (VarGet(VAR_RYU_LAST_ACH) < 256) //Global achievement notification
-        if (FlagGet(FLAG_RYU_PREVENT_ACH_POPUP) == FALSE)
-            ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
-
-    if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) //check travel daily and notify when completed @PIDGEY: this lags when it happens, needs to be sped up.
-        && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) 
-        && (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 0))
-        {
-            if (VarGet(VAR_TEMP_E) == 0)
-            {
-                FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-                FlagSet(FLAG_TEMP_E);
-                VarSet(VAR_TEMP_E, 12);
-            }
-            else if (VarGet(VAR_TEMP_E) == 1)
-                {
-                    u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
-                    if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
-                        ScriptContext1_SetupScript(RyuScript_CompleteTravelDailyQuestType);
-                }
-        }
-
-    if (FlagGet(FLAG_RYU_NOTIFY_RENT) == TRUE) //Notify player of rent earned
+    if ((CheckAchievement(ACH_LEAVE_NO_STONE_UNTURNED) == FALSE) && (VarGet(VAR_TEMP_E) == 0))
     {
-        ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_RENT_COLLECTED), STR_CONV_MODE_LEFT_ALIGN, 6);
-        ScriptContext1_SetupScript(RyuScript_NotifyRent);
+        VarSet(VAR_TEMP_E, 100);
+        ScriptContext1_SetupScript(RyuCheckForLNSUAch);
     }
 
-    if (FlagGet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE) == TRUE) //notify player that a property was damaged
-    {
-        RyuBufferPropertyDamageData();
-        ScriptContext1_SetupScript(RyuScript_NotifyPropertyDamage);
-    }
+    if (FlagGet(FLAG_SELECTED_FF_TEXT_OPTION) == TRUE) //warn player about instant text
+        ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
+
+    if (FlagGet(FLAG_RYU_FAILED_100_CAP_SWITCH) == TRUE)//Player attempted to switch to 100cap and failed.
+        ScriptContext1_SetupScript(RyuScript_Lv100FailMsg);
+
+    if (FlagGet(FLAG_RYU_NOTIFY_LV100_SWITCH) == TRUE)//Player switched to 100cap, warn about side effects.
+        ScriptContext1_SetupScript(RyuScrupt_Lv100SwitchMsg);
 
     if (!(FlagGet(FLAG_SYS_DEXNAV_GET)) && (!(FlagGet(FLAG_TEMP_F)))) //notify and give Dexnav
         if (CountBadges() >= 6)
             ScriptContext1_SetupScript(RyuGlobal_EnableNormalDexnav);
 
     if ((FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA)) //Mission notifications from Magma
-        && (VarGet(VAR_RYU_QUEST_MAGMA) > 129) 
-        && (VarGet(VAR_RYU_QUEST_MAGMA) < 351)
+        && ((VarGet(VAR_RYU_QUEST_MAGMA) == 130) 
+        || (VarGet(VAR_RYU_QUEST_MAGMA) == 210)
+        || (VarGet(VAR_RYU_QUEST_MAGMA) == 350))
         && (!(FlagGet(FLAG_TEMP_F))))//prevents the notification from showing up as soon as the player is assigned the task.
     {
         ScriptContext1_SetupScript(RyuGlobal_CheckMagmaStatus);
     }
 
     if ((FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA)) //Mission notifications from Aqua
-        && (VarGet(VAR_RYU_QUEST_AQUA) > 9) 
-        && (VarGet(VAR_RYU_QUEST_AQUA) < 124)
+        && ((VarGet(VAR_RYU_QUEST_AQUA) == 10) 
+        || (VarGet(VAR_RYU_QUEST_AQUA) == 55) 
+        || (VarGet(VAR_RYU_QUEST_AQUA) == 80) 
+        || (VarGet(VAR_RYU_QUEST_AQUA) == 91) 
+        || (VarGet(VAR_RYU_QUEST_AQUA) == 123))
         && (!(FlagGet(FLAG_TEMP_F))))
     {
         ScriptContext1_SetupScript(RyuGlobal_CheckAquaStatus);
@@ -448,6 +436,35 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
     }
 }
 
+void RyuDoDailyTravelQuestThings(void)
+{
+    if ((VarGet(VAR_RYU_DAILY_QUEST_DATA) > 0) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) < 15) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3))
+            {
+                VarSet(VAR_RYU_DAILY_QUEST_DATA, (VarGet(VAR_RYU_DAILY_QUEST_DATA) - 1));
+            }
+
+    if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 15))
+        {
+            u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
+            if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
+            {
+                if (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 15)
+                {
+                    VarSet(VAR_RYU_DAILY_QUEST_DATA, 14);
+                }
+            }
+        }
+
+    if (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 0)
+        {
+            u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
+            VarSet(VAR_RYU_DAILY_QUEST_DATA, 4000);
+            StringCopy(gStringVar1, gFactionNames[factionId]);
+            QueueNotification(gRyuReachedDailyTargetLocationString, NOTIFY_QUEST, 180);
+        }
+
+}
+
 int ProcessPlayerFieldInput(struct FieldInput *input)
 {
     struct MapPosition position;
@@ -482,7 +499,11 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
             return TRUE;
 
         RyuDoSpecialEncounterChecks(input);
+
+        if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3))
+            RyuDoDailyTravelQuestThings();
     }
+
     if (input->checkStandardWildEncounter && CheckStandardWildEncounter(metatileBehavior) == TRUE)
         return TRUE;
     if (input->heldDirection && input->dpadDirection == playerDirection)
@@ -770,7 +791,7 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
     if (MetatileBehavior_IsCableBoxResults2(metatileBehavior, direction) == TRUE)
         return EventScript_CableBoxResults;
     if (MetatileBehavior_IsQuestionnaire(metatileBehavior) == TRUE)
-        return EventScript_Questionnaire;
+        return ryu_end;
     if (MetatileBehavior_IsTrainerHillTimer(metatileBehavior) == TRUE)
         return EventScript_TrainerHillTimer;
 

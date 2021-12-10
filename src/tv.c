@@ -820,10 +820,7 @@ u8 FindAnyTVShowOnTheAir(void)
     {
         return 0xFF;
     }
-    if (gSaveBlock1Ptr->outbreakPokemonSpecies != SPECIES_NONE && gSaveBlock1Ptr->tvShows[show].common.kind == TVSHOW_MASS_OUTBREAK)
-    {
-        return FindFirstActiveTVShowThatIsNotAMassOutbreak();
-    }
+
     return show;
 }
 
@@ -904,11 +901,8 @@ u8 GetNextActiveShowIfMassOutbreak(void)
     TVShow *tvShow;
 
     tvShow = &gSaveBlock1Ptr->tvShows[gSpecialVar_0x8004];
-    if (tvShow->common.kind == TVSHOW_MASS_OUTBREAK && gSaveBlock1Ptr->outbreakPokemonSpecies != SPECIES_NONE)
-    {
-        return FindFirstActiveTVShowThatIsNotAMassOutbreak();
-    }
-    return gSpecialVar_0x8004;
+
+    return FindFirstActiveTVShowThatIsNotAMassOutbreak();
 }
 
 // IN SEARCH OF TRAINERS
@@ -1641,19 +1635,6 @@ void StartMassOutbreak(void)
     TVShow *show;
 
     show = &gSaveBlock1Ptr->tvShows[gSpecialVar_0x8004];
-    gSaveBlock1Ptr->outbreakPokemonSpecies = show->massOutbreak.species;
-    gSaveBlock1Ptr->outbreakLocationMapNum = show->massOutbreak.locationMapNum;
-    gSaveBlock1Ptr->outbreakLocationMapGroup = show->massOutbreak.locationMapGroup;
-    gSaveBlock1Ptr->outbreakPokemonLevel = show->massOutbreak.level;
-    gSaveBlock1Ptr->outbreakUnk1 = show->massOutbreak.var02;
-    gSaveBlock1Ptr->outbreakUnk2 = show->massOutbreak.var0E;
-    gSaveBlock1Ptr->outbreakPokemonMoves[0] = show->massOutbreak.moves[0];
-    gSaveBlock1Ptr->outbreakPokemonMoves[1] = show->massOutbreak.moves[1];
-    gSaveBlock1Ptr->outbreakPokemonMoves[2] = show->massOutbreak.moves[2];
-    gSaveBlock1Ptr->outbreakPokemonMoves[3] = show->massOutbreak.moves[3];
-    gSaveBlock1Ptr->outbreakUnk4 = show->massOutbreak.var03;
-    gSaveBlock1Ptr->outbreakPokemonProbability = show->massOutbreak.probability;
-    gSaveBlock1Ptr->outbreakDaysLeft = 2;
 }
 
 void PutLilycoveContestLadyShowOnTheAir(void)
@@ -1735,71 +1716,14 @@ static void InterviewAfter_DummyShow4(void)
 
 static void sub_80ED718(void)
 {
-    u8 i;
-    u16 outbreakIdx;
-    TVShow *show;
-
-    if (FlagGet(FLAG_SYS_GAME_CLEAR))
-    {
-        for (i = 0; i < LAST_TVSHOW_IDX; i ++)
-        {
-            if (gSaveBlock1Ptr->tvShows[i].common.kind == TVSHOW_MASS_OUTBREAK)
-            {
-                return;
-            }
-        }
-        if (!rbernoulli(1, 200))
-        {
-            sCurTVShowSlot = FindEmptyTVSlotWithinFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
-            if (sCurTVShowSlot != -1)
-            {
-                outbreakIdx = Random() % ARRAY_COUNT(sPokeOutbreakSpeciesList);
-                show = &gSaveBlock1Ptr->tvShows[sCurTVShowSlot];
-                show->massOutbreak.kind = TVSHOW_MASS_OUTBREAK;
-                show->massOutbreak.active = TRUE;
-                show->massOutbreak.level = sPokeOutbreakSpeciesList[outbreakIdx].level;
-                show->massOutbreak.var02 = 0;
-                show->massOutbreak.var03 = 0;
-                show->massOutbreak.species = sPokeOutbreakSpeciesList[outbreakIdx].species;
-                show->massOutbreak.var0E = 0;
-                show->massOutbreak.moves[0] = sPokeOutbreakSpeciesList[outbreakIdx].moves[0];
-                show->massOutbreak.moves[1] = sPokeOutbreakSpeciesList[outbreakIdx].moves[1];
-                show->massOutbreak.moves[2] = sPokeOutbreakSpeciesList[outbreakIdx].moves[2];
-                show->massOutbreak.moves[3] = sPokeOutbreakSpeciesList[outbreakIdx].moves[3];
-                show->massOutbreak.locationMapNum = sPokeOutbreakSpeciesList[outbreakIdx].location;
-                show->massOutbreak.locationMapGroup = 0;
-                show->massOutbreak.var12 = 0;
-                show->massOutbreak.probability = 50;
-                show->massOutbreak.var15 = 0;
-                show->massOutbreak.daysLeft = 1;
-                tv_store_id_2x(show);
-                show->massOutbreak.language = gGameLanguage;
-            }
-        }
-    }
 }
 
 void EndMassOutbreak(void)
 {
-    gSaveBlock1Ptr->outbreakPokemonSpecies = SPECIES_NONE;
-    gSaveBlock1Ptr->outbreakLocationMapNum = 0;
-    gSaveBlock1Ptr->outbreakLocationMapGroup = 0;
-    gSaveBlock1Ptr->outbreakPokemonLevel = 0;
-    gSaveBlock1Ptr->outbreakUnk1 = 0;
-    gSaveBlock1Ptr->outbreakUnk2 = 0;
-    gSaveBlock1Ptr->outbreakPokemonMoves[0] = MOVE_NONE;
-    gSaveBlock1Ptr->outbreakPokemonMoves[1] = MOVE_NONE;
-    gSaveBlock1Ptr->outbreakPokemonMoves[2] = MOVE_NONE;
-    gSaveBlock1Ptr->outbreakPokemonMoves[3] = MOVE_NONE;
-    gSaveBlock1Ptr->outbreakUnk4 = 0;
-    gSaveBlock1Ptr->outbreakPokemonProbability = 0;
-    gSaveBlock1Ptr->outbreakDaysLeft = 0;
 }
 
 void UpdateTVShowsPerDay(u16 days)
 {
-    UpdateMassOutbreakTimeLeft(days);
-    TryEndMassOutbreak(days);
     sub_80EF120(days);
     sub_80EDA48(days);
     sub_80EEB98(days);
@@ -1807,33 +1731,11 @@ void UpdateTVShowsPerDay(u16 days)
 
 static void UpdateMassOutbreakTimeLeft(u16 days)
 {
-    u8 i;
-    TVShow *show;
-
-    if (gSaveBlock1Ptr->outbreakPokemonSpecies == SPECIES_NONE)
-    {
-        for (i = 0; i < LAST_TVSHOW_IDX; i ++)
-        {
-            if (gSaveBlock1Ptr->tvShows[i].massOutbreak.kind == TVSHOW_MASS_OUTBREAK && gSaveBlock1Ptr->tvShows[i].massOutbreak.active == TRUE)
-            {
-                show = &gSaveBlock1Ptr->tvShows[i];
-                if (show->massOutbreak.daysLeft < days)
-                    show->massOutbreak.daysLeft = 0;
-                else
-                    show->massOutbreak.daysLeft -= days;
-
-                break;
-            }
-        }
-    }
 }
 
 static void TryEndMassOutbreak(u16 days)
 {
-    if (gSaveBlock1Ptr->outbreakDaysLeft <= days)
-        EndMassOutbreak();
-    else
-        gSaveBlock1Ptr->outbreakDaysLeft -= days;
+    EndMassOutbreak();
 }
 
 void RecordFishingAttemptForTV(bool8 caughtFish)
@@ -4411,9 +4313,6 @@ void DoTVShow(void)
                 break;
             case TVSHOW_UNKN_SHOWTYPE_04:
                 DoTVShowDummiedOut();
-                break;
-            case TVSHOW_MASS_OUTBREAK:
-                DoTVShowPokemonNewsMassOutbreak();
                 break;
             case TVSHOW_BRAVO_TRAINER_POKEMON_PROFILE:
                 DoTVShowBravoTrainerPokemonProfile();

@@ -19,7 +19,6 @@ AncientTomb_EventScript_TryRemoveRegisteel:: @ 8238FCD
 
 AncientTomb_OnTransition: @ 8238FE1
 	setflag FLAG_LANDMARK_ANCIENT_TOMB
-	call RyuCheckForLNSUAch
 	call_if_unset FLAG_DEFEATED_REGISTEEL, AncientTomb_EventScript_ShowRegisteel
 	end
 
@@ -43,9 +42,6 @@ AncientTomb_EventScript_HideRegiEntrance:: @ 8238FFC
 AncientTomb_EventScript_CaveEntranceMiddle:: @ 8239033
 	lockall
 	goto_if_set FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED, AncientTomb_EventScript_BigHoleInWall
-	braillemessage AncientTomb_Braille_ShineInTheMiddle
-	waitbuttonpress
-	closebraillemessage
 	compare VAR_RYU_QUEST_LANA, 40
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall
@@ -199,6 +195,7 @@ AT_SV_Battle::
 	savebgm MUS_RG_NANADUNGEON
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
+	setflag FLAG_RYU_GAME_OVER
 	special SavePlayerParty
 	trainerbattle 10 TRAINER_RED, 0, NULL, AT_SV_GaryBattleDefeat
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
@@ -207,8 +204,16 @@ AT_SV_Battle::
 	setvar VAR_0x8007, TRAINER_BACK_PIC_LEAF
 	special DoSpecialTrainerBattle
 	waitstate
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_ne AT_SV_GAMEOVER
+	clearflag FLAG_RYU_GAME_OVER
 	special LoadPlayerParty
 	goto AT_SV_ReturnFromBattle
+
+AT_SV_GAMEOVER::
+	setflag FLAG_RYU_GAME_OVER
+	goto Ryu_PlayerLostTheGame
 	
 AT_SV_ReturnFromBattle::
 	fadenewbgm MUS_RG_NANADUNGEON

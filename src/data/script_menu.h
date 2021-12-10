@@ -782,7 +782,7 @@ static const struct MenuAction MultichoiceList_RyuDebugMulti[] =
 {
     {gText_Utilities},
     {sText_DebugMainUtilityItem1},
-    {gText_PasscodeMenu},
+    {gText_SpawnMenu},
     {gText_QuickStart},
     {gText_PokeEdit},
     {gText_TownFlags},
@@ -793,22 +793,7 @@ static const struct MenuAction MultichoiceList_RyuDebugMulti[] =
 
 static const struct MenuAction MultichoiceList_116[] =
 {
-    {gText_HpEvMenu252},
-    {gText_HpEvMenu126},
-    {gText_AtkEvMenu252},
-    {gText_AtkEvMenu126},
-    {gText_DefEvMenu252},
-    {gText_DefEvMenu126},
-    {gText_SpAtkEvMenu252},
-    {gText_SpAtkEvMenu126},
-    {gText_SpDefEvMenu252},
-    {gText_SpDefEvMenu126},
-    {gText_SpeEvMenu252},
-    {gText_SpeEvMenu126},
-    {gText_ResetEvMenu},
-    {gText_ExitEvMenu},
-    {gText_ExitEvMenu2},
-    {gText_ExitEvMenu2},
+    {gText_DebugCancel},
 };
 
 static const struct MenuAction MultichoiceList_117[] =
@@ -816,16 +801,46 @@ static const struct MenuAction MultichoiceList_117[] =
     {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_118[] =//party slot selection menu, contains only buffers, game will crash if drawn without filing first 6 buffers.
+static const struct MenuAction MultichoiceList_2BufferedOptions[] =
+{
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+};
+
+static const struct MenuAction MultichoiceList_3BufferedOptions[] =
+{
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+    {gText_RyuBufferedString3},
+};
+
+static const struct MenuAction MultichoiceList_4BufferedOptions[] =
+{
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+    {gText_RyuBufferedString3},
+    {gText_RyuBufferedString4},
+};
+
+static const struct MenuAction MultichoiceList_5BufferedOptions[] =
 {
     {gText_RyuBufferedString1},
     {gText_RyuBufferedString2},
     {gText_RyuBufferedString3},
     {gText_RyuBufferedString4},
     {gText_RyuBufferedString5},
-    {gText_RyuBufferedString6},
-    {gText_PartySlotCancel},
 };
+
+static const struct MenuAction MultichoiceList_6BufferedOptions[] =
+{
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+    {gText_RyuBufferedString3},
+    {gText_RyuBufferedString4},
+    {gText_RyuBufferedString5},
+    {gText_RyuBufferedString6}
+};
+
 
 static const struct MenuAction MultichoiceList_119[] =
 {
@@ -849,12 +864,10 @@ static const struct MenuAction MultichoiceList_121[] =
 static const struct MenuAction MultichoiceList_122[]=
 {
     {gText_RyuViewMonDataOption},
-    {gText_RyuBetaMenuBlank},
-    {gText_RyuBetaMenuBlank},
-    {gText_RyuAccessMoveRelearner},  
-    {gText_RyuSetEvMenuOption},
-    {gText_RyuMaxIvMenuOption},
+    {gText_RyuResetIVEVMenuOption},
+    {gText_RyuSetIvEvMenuOption},
     {gText_RyuSetFriendshipMenuOption},
+    {gText_RyuAccessMoveRelearner},  
     {gText_RyuExitPokeEditMenuOption},
 };
 
@@ -877,7 +890,7 @@ static const struct MenuAction MultichoiceList_125[]=
 {
     {gText_RyuNewGameMenuEasyMode},
     {gText_RyuNewGameMenuNormalMode},
-    {gText_RyuNewGameNuzlockeMode},
+    {gText_RyuNewGameChallengeMode},
     {gText_RyuNewGameFrontierMode},
 };
 
@@ -1078,7 +1091,7 @@ static const struct MenuAction MultichoiceList_141[]=
 static const struct MenuAction MultichoiceList_142[]=
 {
     {gText_RyuNewGameMenuNormalMode},
-    {gText_RyuNewGameNuzlockeMode},
+    {gText_RyuNewGameChallengeMode},
     {gText_RyuNewGameHardcoreMode},
 };
 
@@ -1260,21 +1273,17 @@ static const struct MenuAction MultiChoiceList_BotanyRefineApricornMenu[]=
     {gText_Exit},
 };
 
-static const struct MenuAction MultiChoiceList_Holiday2020[]=
-{
-    {gText_RyuHolidayKyuremWhite},
-    {gText_RyuHolidayKyuremBlack},
-    {gText_RyuHolidayMagearna},
-    {gText_RyuHolidayVictini},
-    {gText_RyuHolidayMarshadow},
-    {gText_RyuHolidayShaymin},
-};
-
 static const struct MenuAction MultiChoiceList_RyuBotanyOrAlchemy[]=
 {
     {gText_RyuBotanyLabel},
     {gText_RyuAlchemyLabel},
     {gText_Exit},
+};
+
+static const struct MenuAction MultiChoiceList_BallChangerOrMarket[]=
+{
+    {gText_RyuBallChangerLabel},
+    {gText_RyuBallMarketLabel}
 };
 
 static const struct MenuAction MultiChoiceList_ChooseRandomBattleType[]=
@@ -1447,7 +1456,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_DEV_MENU_MAIN]              = MULTICHOICE(MultichoiceList_RyuDebugMulti),
     [MULTI_DEV_EV_MENU]                = MULTICHOICE(MultichoiceList_116),
     [MULTI_UNUSED_REL_MENU]            = MULTICHOICE(MultichoiceList_117),
-    [MULTI_SELECT_PARTY_SLOT]          = MULTICHOICE(MultichoiceList_118),
+    [MULTI_DYNAMIC_6]          = MULTICHOICE(MultichoiceList_6BufferedOptions),
     [MULTI_SELECT_MOVE_SLOT]           = MULTICHOICE(MultichoiceList_119),
     [MULTI_LTC_MOVE_TUTOR_MOVES]       = MULTICHOICE(MultichoiceList_120),
     [MULTI_UNUSED_JUKEBOX]             = MULTICHOICE(MultichoiceList_121),
@@ -1489,12 +1498,16 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BOTANY_CHAPTER_SELECT]      = MULTICHOICE(MultiChoiceList_BotanyBookChapterSelect),
     [MULTI_PBG_TRICK_QUESTION]         = MULTICHOICE(MultiChoiceList_PetalburgGymTrickQuestion),
     [MULTI_BOTANY_APRICORN_MENU]       = MULTICHOICE(MultiChoiceList_BotanyRefineApricornMenu),
-    [MULTI_HOLIDAY_2020]               = MULTICHOICE(MultiChoiceList_Holiday2020),
     [MULTI_BOTANY_OR_ALCHEMY]          = MULTICHOICE(MultiChoiceList_RyuBotanyOrAlchemy),
     [MULTI_RANDOM_BATTLE_TYPE]         = MULTICHOICE(MultiChoiceList_ChooseRandomBattleType),
     [MULTI_FRONTIERBANK]               = MULTICHOICE(MultiChoiceList_FrontierBank),
     [MULTI_FBAMOUNTMENU]               = MULTICHOICE(MultiChoiceList_FrontierBankAmountsMenu),
     [MULTI_REALESTATE_MENU]            = MULTICHOICE(MultiChoiceList_RealEstatePropertyOptions),
+    [MULTI_BALL_CHANGER_INTROMENU]     = MULTICHOICE(MultiChoiceList_BallChangerOrMarket),
+    [MULTI_DYNAMIC_5]                  = MULTICHOICE(MultichoiceList_5BufferedOptions),
+    [MULTI_DYNAMIC_4]                  = MULTICHOICE(MultichoiceList_4BufferedOptions),
+    [MULTI_DYNAMIC_3]                  = MULTICHOICE(MultichoiceList_3BufferedOptions),
+    [MULTI_DYNAMIC_2]                  = MULTICHOICE(MultichoiceList_2BufferedOptions),
 };
 
 const u8 *const gStdStrings[] =

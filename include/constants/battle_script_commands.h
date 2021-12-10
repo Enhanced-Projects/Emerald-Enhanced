@@ -165,6 +165,9 @@
 #define VARIOUS_SET_LAST_USED_ITEM              99
 #define VARIOUS_PARALYZE_TYPE_IMMUNITY          100
 #define VARIOUS_JUMP_IF_ABSENT                  101
+#define VARIOUS_SET_ECLIPSE                     102
+#define VARIOUS_TRY_TO_CLEAR_PRIMAL_WEATHER     103
+#define VARIOUS_JUMP_IF_SPECIES                 104
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

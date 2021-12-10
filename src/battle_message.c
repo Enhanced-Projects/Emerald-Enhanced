@@ -639,6 +639,7 @@ static const u8 sText_AssaultVestDoesntAllow[] = _("The effects of the {B_LAST_I
 static const u8 sText_GravityPreventsUsage[] = _("{B_ATK_NAME_WITH_PREFIX} can't use {B_CURRENT_MOVE}\nbecause of gravity!\p");
 static const u8 sText_HealBlockPreventsUsage[] = _("{B_ATK_NAME_WITH_PREFIX} was\nprevented from healing!\p");
 static const u8 sText_MegaEvoReacting[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_LAST_ITEM} is \nreacting to {B_ATK_TRAINER_NAME}'s Mega Ring!");
+static const u8 sText_FerventWishReached[] = _("{B_ATK_NAME_WITH_PREFIX} is emitting\nan aura of obscene power!");
 static const u8 sText_MegaEvoEvolved[] = _("{B_ATK_NAME_WITH_PREFIX} has Mega\nEvolved into Mega {B_BUFF1}!");
 static const u8 sText_drastically[] = _("drastically ");
 static const u8 sText_severely[] = _("severely ");
@@ -705,9 +706,51 @@ static const u8 sText_StatWasNotLowered[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUF
 static const u8 sText_AlchemyHealedPlayerMon[] = _("{B_ATK_NAME_WITH_PREFIX} was healed by your\nAlchemy Effect.");
 static const u8 sText_FactionBossHealedMon[] = _("{B_TRAINER1_NAME}'s presence healed their Pokemon.");
 static const u8 sText_VampiricHealAbsorbed[] = _("{B_ATK_NAME_WITH_PREFIX}'s Vampiric caused it to heal\nsome HP!");
+static const u8 sText_RyuAffectionCritMsg[] = _("{B_ATK_NAME_WITH_PREFIX} landed a critical hit,\nwishing to be praised!");
+static const u8 sText_RyuAffectionWokeupMsg[] = _("{B_ATK_NAME_WITH_PREFIX} snapped to attention,\nhoping you wouldn't worry!");
+static const u8 sText_RyuAffectionConfuseHealedMsg[] = _("{B_ATK_NAME_WITH_PREFIX} cleared its mind\nby thinking about you!");
+static const u8 sText_RyuAffectionDefrosted[] = _("{B_ATK_NAME_WITH_PREFIX}'s fiery passion for\nyou defrosted it!");
+static const u8 sText_RyuAffectionUnparalyzed[] = _("{B_ATK_NAME_WITH_PREFIX} shook off its paralysis\nto make you happy!");
+static const u8 sText_RyuAffectionEndured[] = _("{B_DEF_NAME_WITH_PREFIX} hung on because it wanted\nto please you!");
+static const u8 sText_RyuAffectionEvaded[] = _("{B_DEF_NAME_WITH_PREFIX} evaded the attack\nlike a boss!");
+static const u8 sText_RyuCantSteal[] = _("{B_ATK_NAME_WITH_PREFIX} doesn't want to be\na criminal.");
+static const u8 sText_EclipseStarts[] = _("A shadow engulfs the battlefield!");
+static const u8 sText_EclipseEnds[] = _("The eclipse has come to an end!");
+static const u8 sText_EclipseContinues[] = _("The battlefield remains darkened\nby the ongoing eclipse...");
+static const u8 sText_ExtremelyHarshSunlight[] = _("The sunlight turned\nextremely harsh!");
+static const u8 sText_ExtremeSunlightFaded[] = _("The extreme sunlight faded.{PAUSE 64}");
+static const u8 sText_MoveEvaporatedInTheHarshSunlight[] = _("The Water-type attack evaporated\nin the harsh sunlight!");
+static const u8 sText_ExtremelyHarshSunlightWasNotLessened[] = _("The extremely harsh sunlight\nwas not lessened at all!");
+static const u8 sText_HeavyRain[] = _("A heavy rain began to fall!");
+static const u8 sText_HeavyRainLifted[] = _("The heavy rain has lifted!{PAUSE 64}");
+static const u8 sText_MoveFizzledOutInTheHeavyRain[] = _("The Fire-type attack fizzled out\nin the heavy rain!");
+static const u8 sText_NoReliefFromHeavyRain[] = _("There is no relief from\nthis heavy rain!");
+static const u8 sText_MysteriousAirCurrent[] = _("A mysterious air current is\nprotecting Flying-type Pokémon!");
+static const u8 sText_StrongWindsDissipated[] = _("The mysterious strong winds\nhave dissipated!{PAUSE 64}");
+static const u8 sText_MysteriousAirCurrentBlowsOn[] = _("The mysterious air current\nblows on regardless!");
+static const u8 sText_AttackWeakenedByStrongWinds[] = _("The mysterious strong winds\nweakened the attack!");
+static const u8 sText_PkmnAuraIsGrowingExplosively[] = _("{B_ATK_NAME_WITH_PREFIX}'s aura is growing\nexplosively!");
+static const u8 sText_PkmnRevertedToPrimal[] = _("{B_ATK_NAME_WITH_PREFIX} reverted to its\nPrimal form!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_PKMNREVERTEDTOPRIMAL - 12] = sText_PkmnRevertedToPrimal,
+    [STRINGID_PKMNAURAISGROWINGEXPLOSIVELY - 12] = sText_PkmnAuraIsGrowingExplosively,
+    [STRINGID_ATTACKWEAKENEDBSTRONGWINDS - 12] = sText_AttackWeakenedByStrongWinds,
+    [STRINGID_MYSTERIOUSAIRCURRENTBLOWSON - 12] = sText_MysteriousAirCurrentBlowsOn,
+    [STRINGID_STRONGWINDSDISSIPATED - 12] = sText_StrongWindsDissipated,
+    [STRINGID_MYSTERIOUSAIRCURRENT - 12] = sText_MysteriousAirCurrent,
+    [STRINGID_NORELIEFROMHEAVYRAIN - 12] = sText_NoReliefFromHeavyRain,
+    [STRINGID_MOVEFIZZLEDOUTINTHEHEAVYRAIN - 12] = sText_MoveFizzledOutInTheHeavyRain,
+    [STRINGID_HEAVYRAINLIFTED - 12] = sText_HeavyRainLifted,
+    [STRINGID_HEAVYRAIN - 12] = sText_HeavyRain,
+    [STRINGID_EXTREMELYHARSHSUNLIGHTWASNOTLESSENED - 12] = sText_ExtremelyHarshSunlightWasNotLessened,
+    [STRINGID_MOVEEVAPORATEDINTHEHARSHSUNLIGHT - 12] = sText_MoveEvaporatedInTheHarshSunlight,
+    [STRINGID_EXTREMESUNLIGHTFADED - 12] = sText_ExtremeSunlightFaded,
+    [STRINGID_EXTREMELYHARSHSUNLIGHT - 12] = sText_ExtremelyHarshSunlight,
+    [STRINGID_ECLIPSECONTINUES - 12] = sText_EclipseContinues,
+    [STRINGID_ECLIPSEENDS - 12] = sText_EclipseEnds,
+    [STRINGID_ECLIPSESTARTS - 12] = sText_EclipseStarts,
     [STRINGID_STATWASNOTLOWERED - 12] = sText_StatWasNotLowered,
     [STRINGID_CLOAKEDINAFREEZINGLIGHT - 12] = sText_CloakedInAFreezingLight,
     [STRINGID_DESTINYKNOTACTIVATES - 12] = sText_DestinyKnotActivates,
@@ -1232,6 +1275,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TERRAINBECOMESPSYCHIC - 12] = sText_TerrainBecomesPsychic,
     [STRINGID_TARGETELECTRIFIED - 12] = sText_TargetElectrified,
     [STRINGID_MEGAEVOREACTING - 12] = sText_MegaEvoReacting,
+    [STRINGID_FERVENTWISHREACHED - 12] = sText_FerventWishReached,
     [STRINGID_MEGAEVOEVOLVED - 12] = sText_MegaEvoEvolved,
     [STRINGID_DRASTICALLY - 12] = sText_drastically,
     [STRINGID_SEVERELY - 12] = sText_severely,
@@ -1272,6 +1316,14 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ALCHEMYHEAL - 12] = sText_AlchemyHealedPlayerMon,
     [STRINGID_FACTIONBOSSHEAL - 12] = sText_FactionBossHealedMon,
     [STRINGID_VAMPIRIC_HEAL - 12] = sText_VampiricHealAbsorbed,
+    [STRINGID_RYUAFFECTIONCRIT - 12] = sText_RyuAffectionCritMsg,
+    [STRINGID_RYUAFFECTIONWOKEUP - 12] = sText_RyuAffectionWokeupMsg,
+    [STRINGID_RYUAFFECTIONCONFUSEHEALED - 12] = sText_RyuAffectionConfuseHealedMsg,
+    [STRINGID_RYUAFFECTIONUNFROZE - 12] = sText_RyuAffectionDefrosted,
+    [STRINGID_RYUAFFECTIONCUREDPARALYZE - 12] = sText_RyuAffectionUnparalyzed,
+    [STRINGID_RYUAFFECTIONENDURED - 12] = sText_RyuAffectionEndured,
+    [STRINGID_RYUAFFECTIONEVADED - 12] = sText_RyuAffectionEvaded,
+    [STRINGID_RYUCANTSTEAL - 12] = sText_RyuCantSteal,
 };
 
 const u16 gTerrainStringIds[] =
@@ -1310,7 +1362,7 @@ const u16 gMissStringIds[] =
 {
     STRINGID_ATTACKMISSED, STRINGID_PKMNPROTECTEDITSELF,
     STRINGID_PKMNAVOIDEDATTACK, STRINGID_AVOIDEDDAMAGE,
-    STRINGID_PKMNMAKESGROUNDMISS
+    STRINGID_PKMNMAKESGROUNDMISS, STRINGID_RYUAFFECTIONEVADED
 };
 
 const u16 gNoEscapeStringIds[] =
@@ -1322,7 +1374,8 @@ const u16 gNoEscapeStringIds[] =
 const u16 gMoveWeatherChangeStringIds[] =
 {
     STRINGID_STARTEDTORAIN, STRINGID_DOWNPOURSTARTED, STRINGID_BUTITFAILED,
-    STRINGID_SANDSTORMBREWED, STRINGID_SUNLIGHTGOTBRIGHT, STRINGID_STARTEDHAIL
+    STRINGID_SANDSTORMBREWED, STRINGID_SUNLIGHTGOTBRIGHT, STRINGID_STARTEDHAIL,
+    STRINGID_ECLIPSESTARTS
 };
 
 const u16 gSandStormHailContinuesStringIds[] =
@@ -1379,7 +1432,7 @@ const u16 gStockpileUsedStringIds[] =
 
 const u16 gWokeUpStringIds[] =
 {
-    STRINGID_PKMNWOKEUP, STRINGID_PKMNWOKEUPINUPROAR
+    STRINGID_PKMNWOKEUP, STRINGID_PKMNWOKEUPINUPROAR, STRINGID_RYUAFFECTIONWOKEUP,
 };
 
 const u16 gSwallowFailStringIds[] =
@@ -1479,7 +1532,7 @@ const u16 gGotFrozenStringIds[] =
 
 const u16 gGotDefrostedStringIds[] =
 {
-    STRINGID_PKMNWASDEFROSTED2, STRINGID_PKMNWASDEFROSTEDBY
+    STRINGID_PKMNWASDEFROSTED2, STRINGID_PKMNWASDEFROSTEDBY, STRINGID_RYUAFFECTIONUNFROZE,
 };
 
 const u16 gKOFailedStringIds[] =
@@ -1533,7 +1586,7 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_SANDSTORM]          = STRINGID_SANDSTORMISRAGING,
     [WEATHER_FOG_DIAGONAL]       = STRINGID_ITISRAINING,
     [WEATHER_UNDERWATER]         = STRINGID_ITISRAINING,
-    [WEATHER_SHADE]              = STRINGID_ITISRAINING,
+    [WEATHER_SHADE]              = STRINGID_ECLIPSESTARTS,
     [WEATHER_DROUGHT]            = STRINGID_SUNLIGHTSTRONG,
     [WEATHER_DOWNPOUR]           = STRINGID_ITISRAINING,
     [WEATHER_UNDERWATER_BUBBLES] = STRINGID_ITISRAINING,
@@ -2828,11 +2881,6 @@ static const u8 *BattleStringGetOpponentNameByTrainerId(u16 trainerId, u8 *text,
         GetTrainerHillTrainerName(text, trainerId);
         toCpy = text;
     }
-    else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
-    {
-        GetEreaderTrainerName(text);
-        toCpy = text;
-    }
     else
     {
         toCpy = gTrainers[trainerId].trainerName;
@@ -2915,8 +2963,6 @@ static const u8 *BattleStringGetOpponentClassByTrainerId(u16 trainerId)
         toCpy = gTrainerClassNames[GetFrontierOpponentClass(trainerId)];
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
         toCpy = gTrainerClassNames[GetTrainerHillOpponentClass(trainerId)];
-    else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
-        toCpy = gTrainerClassNames[GetEreaderTrainerClassId()];
     else
         toCpy = gTrainerClassNames[gTrainers[trainerId].trainerClass];
 

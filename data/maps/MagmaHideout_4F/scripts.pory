@@ -413,12 +413,24 @@ MH_Groudon_Enc::
 	call_if_lt TC_NoBadge
 	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_HARD_STONE
 	msgbox MH_GroudonMsg MSGBOX_AUTOCLOSE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	removeobject 7
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	call_if_eq MH4_RedOrb
 	special DrawWholeMapView
 	setflag FLAG_RYU_GROUDON_ENCOUNTERED
 	releaseall
 	end
+
+MH4_RedOrb::
+	checkitem ITEM_RED_ORB, 1
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_return
+	msgbox MH4_GotOrb
+	additem ITEM_RED_ORB
+	return
 	
 MH4_CheckMagmaLineGroudonCaptured::
 	goto_if_unset FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON, ryu_end
@@ -1177,7 +1189,6 @@ MH4_GroudonEvent::
 	special ShakeCamera
 	waitstate
 	msgbox MH4_WhatIsHappening
-	removeitem ITEM_BLUE_ORB, 1
 	specialvar VAR_TEMP_A, CountBadges
 	multvar VAR_TEMP_A, 10
 	setwildbattle SPECIES_GROUDON, VAR_TEMP_A, ITEM_NONE
@@ -1185,6 +1196,7 @@ MH4_GroudonEvent::
 	msgbox MH4_GroudonLooksAtYou
 	closemessage
 	goto_if_set FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, MH4_CourtneyGivesMasterBall
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	removeobject 1
@@ -1194,6 +1206,7 @@ MH4_GroudonEvent::
 	specialvar VAR_TEMP_A, GetBattleOutcome
 	compare VAR_TEMP_A, B_OUTCOME_CAUGHT
 	call_if_ne MH4_PlayerFailedCapturingGroudon
+	call MH4_RedOrb
 	goto MH4_NormalMagmaGroudonEndEvent
 	end
 	
@@ -1225,7 +1238,7 @@ MH4_NormalMagmaGroudonEndEvent::
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
 	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	setvar VAR_RYU_QUEST_MAGMA, 598@Player finished the main magma line with the normal ending and caught Groudon.
-	addvar VAR_RYU_QUESTS_FINISHED, 1
+	call RyuScript_IncrementQuestsFinished
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	fadescreen FADE_TO_BLACK
 	removeobject 20
@@ -1233,10 +1246,15 @@ MH4_NormalMagmaGroudonEndEvent::
 	removeobject 22
 	removeobject 23
 	fadescreen FADE_FROM_BLACK
+	call MH4_RedOrb
+	closemessage
 	setflag FLAG_RYU_MAGMA_INTENSE_SUN_ENABLED
 	msgbox MH4_SeemsLikeIm
 	release
 	end
+
+MH4_GotOrb:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} picked up the Red Orb that\nrolled over.)$"
 	
 MH4_SeemsLikeIm:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Seems like I'm going to get\na tan now...$"
@@ -1266,7 +1284,7 @@ MH4_NormalMagmaEnding2::
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
 	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	setvar VAR_RYU_QUEST_MAGMA, 598@Player finished the main magma line with the non-romance ending and failed to capture Groudon.
-	addvar VAR_RYU_QUESTS_FINISHED, 1
+	call RyuScript_IncrementQuestsFinished
 	ach give ACH_HEATED_ARGUMENT
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	fadescreen FADE_TO_BLACK
@@ -1296,8 +1314,12 @@ MH4_CourtneyGivesMasterBall::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
+	goto MH4_CourtneyEnd1
+
+MH4_CourtneyEnd1::
 	removeobject 1
 	removeobject 7
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
@@ -1345,6 +1367,9 @@ MH4_CourtneyGivesMasterBall::
 	playse SE_W052
 	waitse
 	removeobject 22
+	goto MH4_CourtneyEnd2
+
+MH4_CourtneyEnd2::
 	playse SE_PIN
 	applymovement 21, Common_Movement_HeartEmote
 	waitmovement 21
@@ -1374,17 +1399,20 @@ MH4_CourtneyGivesMasterBall::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox MH4_WhatTroubleCanWe
 	closemessage
+	goto MH4_CourtneyEnd3
+
+MH4_CourtneyEnd3::
 	setflag FLAG_RYU_MAGMA_LINE_DONE
 	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	setvar VAR_RYU_QUEST_MAGMA, 599@Player finished the magma main line with the romance courtney ending.
-	addvar VAR_RYU_QUESTS_FINISHED, 1
+	call RyuScript_IncrementQuestsFinished
 	ach give ACH_THROUGH_THE_FIRE
+	removeobject 21
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
-	removeobject 21
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
 	release
 	end
 	

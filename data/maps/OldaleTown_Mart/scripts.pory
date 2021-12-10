@@ -2,17 +2,6 @@ raw `
 OldaleTown_Mart_MapScripts:: @ 81FC23F
 	.byte 0
 
-OldaleTown_Mart_EventScript_Clerk:: @ 81FC240
-	lock
-	faceplayer
-	message gText_HowMayIServeYou
-	waitmessage
-	goto_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_Mart_Pokemart_Basic
-	pokemart 0
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
 OldaleTown_Mart_Pokemart_Basic: @ 81FC260
 	.2byte ITEM_POTION
 	.2byte ITEM_ANTIDOTE
@@ -71,3 +60,20 @@ OldaleTown_Mart_Text_RestoreHPWithPotion: @ 81FC338
 	.string "restore its HP with a Potion.$"
 
 `
+
+script OldaleTown_Mart_EventScript_Clerk {
+	lock
+	faceplayer
+	if (var(VAR_LITTLEROOT_INTRO_STATE) < 10) {
+		msgbox("I'm very sorry, but we're currently\nsetting up merchandise.\pCan you come back later?")
+		release
+		end
+	}
+	message(gText_HowMayIServeYou)
+	waitmessage
+	pokemart(0)
+	msgbox(gText_PleaseComeAgain)
+	release
+	end
+}
+

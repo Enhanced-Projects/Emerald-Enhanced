@@ -1,6 +1,10 @@
 #ifndef GUARD_CONSTANTS_MAP_GROUPS_H
 #define GUARD_CONSTANTS_MAP_GROUPS_H
 
+//
+// DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/map_groups.json
+//
+
 // Map Group 0
 #define MAP_LITTLEROOT_TOWN       (0 | (0 << 8))
 #define MAP_OLDALE_TOWN           (1 | (0 << 8))
@@ -158,6 +162,7 @@
 #define MAP_MAUVILLE_CITY_POKEMON_CENTER_1F (8 | (7 << 8))
 #define MAP_MAUVILLE_CITY_POKEMON_CENTER_2F (9 | (7 << 8))
 #define MAP_MAUVILLE_CITY_HOME              (10 | (7 << 8))
+#define MAP_MAUVILLE_CITY_ADRASTI_WAREHOUSE (11 | (7 << 8))
 
 // Map Group 8
 #define MAP_VERDANTURF_TOWN_WANDAS_HOUSE            (0 | (8 << 8))
@@ -302,6 +307,7 @@
 #define MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F (13 | (16 << 8))
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F (14 | (16 << 8))
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F (15 | (16 << 8))
+#define MAP_VICTINI                            (16 | (16 << 8))
 
 // Map Group 17
 #define MAP_ROUTE104_MR_BRINEYS_HOUSE         (0 | (17 << 8))

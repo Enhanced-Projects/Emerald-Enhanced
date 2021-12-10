@@ -33,6 +33,8 @@ enum
     MENUITEM_BAR_SPEED,
     MENUITEM_TRANSITION,
     MENUITEM_FRAMETYPE,
+    MENUITEM_VANILLACAP,
+    MENUITEM_AUTORUN,
     MENUITEM_SAVE,
     MENUITEM_COUNT,
 };
@@ -59,6 +61,8 @@ static void Task_OptionMenuFadeOut(u8 taskId);
 static void HighlightOptionMenuItem(int cursor);
 static void TextSpeed_DrawChoices(int selection, int y, u8 textSpeed);
 static void BattleScene_DrawChoices(int selection, int y, u8 textSpeed);
+static void VanillaCap_DrawChoices(int selection, int y, u8 textSpeed);
+static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed);
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed);
 static void HpBar_DrawChoices(int selection, int y, u8 textSpeed);
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed);
@@ -93,6 +97,8 @@ static const sItemFunctions[MENUITEM_COUNT] =
     [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
     [MENUITEM_BAR_SPEED] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
     [MENUITEM_TRANSITION] = {Transition_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_VANILLACAP] = {VanillaCap_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_AUTORUN] = {ToggleAutoRun_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_SAVE] = {NULL, NULL},
 };
 
@@ -109,6 +115,9 @@ static const u8 sText_Transition[] = _("B. Transition");
 static const u8 sText_ForceSetBattleMode[] = _("Battle Style");
 static const u8 sText_Dynamic[] = _("Dynamic");
 static const u8 sText_Set[] = _("Set");
+static const u8 sText_VanillaLevelCap[] = _("Lv cap 100");
+static const u8 sText_ToggleAutoRun[] = _("Auto Run");
+
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
@@ -121,6 +130,8 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_FRAMETYPE]   = gText_Frame,
     [MENUITEM_BAR_SPEED]   = sTextBarSpeed,
     [MENUITEM_TRANSITION]  = sText_Transition,
+    [MENUITEM_VANILLACAP]  = sText_VanillaLevelCap,
+    [MENUITEM_AUTORUN]  = sText_ToggleAutoRun,
     [MENUITEM_SAVE]        = gText_OptionMenuSave,
 };
 
@@ -278,6 +289,9 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
         sOptions->sel[MENUITEM_BAR_SPEED] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
         sOptions->sel[MENUITEM_TRANSITION] = FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION);
+        sOptions->sel[MENUITEM_VANILLACAP] = FlagGet(FLAG_RYU_VANILLA_CAP);
+        sOptions->sel[MENUITEM_AUTORUN] = FlagGet(FLAG_RYU_AUTORUN);
+
 
         for (i = 0; i < 8; i++)
             DrawChoices(i, i * Y_DIFF, 0xFF);
@@ -427,13 +441,16 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     }
 }
 
+extern bool32 RyuCheckFor100Lv(void);
+
 static void Task_OptionMenuSave(u8 taskId)
 {
     gSaveBlock2Ptr->optionsTextSpeed = sOptions->sel[MENUITEM_TEXTSPEED];
     if (sOptions->sel[MENUITEM_TEXTSPEED] == 3)
-        FlagClear(FLAG_NOTIFIED_FF_TEXT);
+        FlagSet(FLAG_SELECTED_FF_TEXT_OPTION);
     else
-        FlagSet(FLAG_NOTIFIED_FF_TEXT);
+        FlagClear(FLAG_SELECTED_FF_TEXT_OPTION);
+
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptions->sel[MENUITEM_BATTLESCENE];
     gSaveBlock2Ptr->optionsThemeNumber = sOptions->sel[MENUITEM_THEME];
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
@@ -451,6 +468,29 @@ static void Task_OptionMenuSave(u8 taskId)
     else
         FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
 
+    if (sOptions->sel[MENUITEM_AUTORUN])
+        FlagSet(FLAG_RYU_AUTORUN);
+    else
+        FlagClear(FLAG_RYU_AUTORUN);
+
+    if (sOptions->sel[MENUITEM_VANILLACAP])
+    {
+        bool32 check = RyuCheckFor100Lv();
+        if (check == TRUE)
+        {
+            FlagSet(FLAG_RYU_VANILLA_CAP);
+            FlagSet(FLAG_RYU_NOTIFY_LV100_SWITCH);
+        }
+        else
+        {
+            FlagSet(FLAG_RYU_FAILED_100_CAP_SWITCH);
+        }
+    }
+    else
+        {
+            FlagClear(FLAG_RYU_VANILLA_CAP);
+        }
+        
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
 }
@@ -593,6 +633,24 @@ static void BattleScene_DrawChoices(int selection, int y, u8 textSpeed)
     styles[selection] = 1;
     DrawOptionMenuChoice(gText_BattleSceneOn, 104, y, styles[0], textSpeed);
     DrawOptionMenuChoice(gText_BattleSceneOff, GetStringRightAlignXOffset(1, gText_BattleSceneOff, 198), y, styles[1], textSpeed);
+}
+
+static void VanillaCap_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[2] = {0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_BattleSceneOff, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOff, 198), y, styles[1], textSpeed);
+}
+
+static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[2] = {0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_BattleSceneOff, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOff, 198), y, styles[1], textSpeed);
 }
 
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed)

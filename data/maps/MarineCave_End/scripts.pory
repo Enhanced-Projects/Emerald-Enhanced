@@ -24,6 +24,18 @@ MarineCave_End_EventScript_ShowKyogre:: @ 823B012
 	setvar VAR_TEMP_1, 1
 	return
 
+MC_BlueOrb::
+	checkitem ITEM_BLUE_ORB, 1
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_return
+	msgbox MC_OrbMsg
+	closemessage
+	additem ITEM_BLUE_ORB, 1
+	return
+
+MC_OrbMsg::	
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} picked up the Blue Orb\nthat rolled over.)$"
+
 MarineCave_End_EventScript_Kyogre:: @ 823B01B
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
@@ -40,6 +52,7 @@ MarineCave_End_EventScript_Kyogre:: @ 823B01B
 	setvar VAR_LAST_TALKED, 1
 	setwildbattle SPECIES_KYOGRE, VAR_RESULT, ITEM_DAMP_ROCK
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
@@ -51,6 +64,7 @@ MarineCave_End_EventScript_Kyogre:: @ 823B01B
 	goto_if_eq MarineCave_End_EventScript_RanFromKyogre
 	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
 	goto_if_eq MarineCave_End_EventScript_RanFromKyogre
+	call MC_BlueOrb
 	setflag FLAG_DEFEATED_KYOGRE
 	releaseall
 	end

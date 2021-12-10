@@ -3,7 +3,6 @@
 #include "battle.h"
 #include "daycare.h"
 #include "string_util.h"
-#include "mail.h"
 #include "pokemon_storage_system.h"
 #include "event_data.h"
 #include "random.h"
@@ -165,20 +164,6 @@ static s8 Daycare_FindEmptySpot(struct DayCare *daycare)
 
 static void StorePokemonInDaycare(struct Pokemon *mon, struct DaycareMon *daycareMon)
 {
-    if (MonHasMail(mon))
-    {
-        u8 mailId;
-
-        StringCopy(daycareMon->mail.OT_name, gSaveBlock2Ptr->playerName);
-        GetMonNickname2(mon, daycareMon->mail.monName);
-        StripExtCtrlCodes(daycareMon->mail.monName);
-        daycareMon->mail.gameLanguage = LANGUAGE_ENGLISH;
-        daycareMon->mail.monLanguage = GetMonData(mon, MON_DATA_LANGUAGE);
-        mailId = GetMonData(mon, MON_DATA_MAIL);
-        daycareMon->mail.message = gSaveBlock1Ptr->mail[mailId];
-        TakeMailFromMon(mon);
-    }
-
     daycareMon->mon = mon->box;
     BoxMonRestorePP(&daycareMon->mon);
     daycareMon->steps = 0;
@@ -264,11 +249,6 @@ static u16 TakeSelectedPokemonFromDaycare(struct DaycareMon *daycareMon)
     }
 
     gPlayerParty[PARTY_SIZE - 1] = pokemon;
-    if (daycareMon->mail.message.itemId)
-    {
-        GiveMailToMon2(&gPlayerParty[PARTY_SIZE - 1], &daycareMon->mail.message);
-        ClearDaycareMonMail(&daycareMon->mail);
-    }
 
     ZeroBoxMonData(&daycareMon->mon);
     daycareMon->steps = 0;
@@ -353,21 +333,12 @@ u8 GetNumLevelsGainedFromDaycare(void)
 
 static void ClearDaycareMonMail(struct DayCareMail *mail)
 {
-    s32 i;
-
-    for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++)
-        mail->OT_name[i] = 0;
-    for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++)
-        mail->monName[i] = 0;
-
-    ClearMailStruct(&mail->message);
 }
 
 static void ClearDaycareMon(struct DaycareMon *daycareMon)
 {
     ZeroBoxMonData(&daycareMon->mon);
     daycareMon->steps = 0;
-    ClearDaycareMonMail(&daycareMon->mail);
 }
 
 static void ClearAllDaycareData(struct DayCare *daycare)
@@ -737,30 +708,18 @@ static void AlterEggSpeciesWithIncenseItem(u16 *species, struct DayCare *daycare
         *species = SPECIES_WOBBUFFET;
     else if (*species == SPECIES_AZURILL && motherItem != ITEM_SEA_INCENSE && fatherItem != ITEM_SEA_INCENSE)
         *species = SPECIES_MARILL;
-    #ifdef SPECIES_MUNCHLAX
         else if (*species == SPECIES_MUNCHLAX && motherItem != ITEM_FULL_INCENSE && fatherItem != ITEM_FULL_INCENSE)
             *species = SPECIES_SNORLAX;
-    #endif
-    #ifdef SPECIES_HAPPINY
         else if (*species == SPECIES_HAPPINY && motherItem != ITEM_LUCK_INCENSE && fatherItem != ITEM_LUCK_INCENSE)
             *species = SPECIES_CHANSEY;
-    #endif
-    #ifdef SPECIES_MIMEJR
         else if (*species == SPECIES_MIMEJR && motherItem != ITEM_ODD_INCENSE && fatherItem != ITEM_ODD_INCENSE)
             *species = SPECIES_MR_MIME;
-    #endif
-    #ifdef SPECIES_BONSLY
         else if (*species == SPECIES_BONSLY && motherItem != ITEM_ROCK_INCENSE && fatherItem != ITEM_ROCK_INCENSE)
             *species = SPECIES_SUDOWOODO;
-    #endif
-    #ifdef SPECIES_BUDEW
         else if (*species == SPECIES_BUDEW && motherItem != ITEM_ROSE_INCENSE && fatherItem != ITEM_ROSE_INCENSE)
             *species = SPECIES_ROSELIA;
-    #endif
-    #ifdef SPECIES_MANTYKE
         else if (*species == SPECIES_MANTYKE && motherItem != ITEM_WAVE_INCENSE && fatherItem != ITEM_WAVE_INCENSE)
             *species = SPECIES_MANTINE;
-    #endif
 }
 
 static void GiveVoltTackleIfLightBall(struct Pokemon *mon, struct DayCare *daycare)

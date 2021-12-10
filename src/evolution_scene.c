@@ -564,7 +564,7 @@ static void CreateShedinja(u16 preEvoSpecies, struct Pokemon* mon)
 
         SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_STATUS, (&data));
         data = 0xFF;
-        SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_MAIL, (&data));
+        SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_UNUSED, (&data));
 
         CalculateMonStats(&gPlayerParty[gPlayerPartyCount]);
         CalculatePlayerPartyCount();

@@ -59,8 +59,9 @@
 #define GAME_STAT_INTEREST_RECEIVED         55
 #define GAME_STAT_RENT_COLLECTED            56
 #define GAME_STAT_STEPS_FOLLOWER            57
+#define GAME_STAT_PLAYER_BOUNTY             58
 
-#define NUM_USED_GAME_STATS                 58
-#define NUM_GAME_STATS                      64
+#define NUM_USED_GAME_STATS                 59
+#define NUM_GAME_STATS                      80
 
 #endif // GUARD_CONSTANTS_GAME_STAT_H

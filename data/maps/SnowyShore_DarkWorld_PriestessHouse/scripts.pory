@@ -24,6 +24,7 @@ script SS_DW_PriestessMerril{
 		msgbox(format(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(The strange woman touches your\n head, and you feel an odd probe\l into your consciousness.)\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}"
 		              "As she finishes, you realize that you now understand how baser elements react with one another.\p {COLOR LIGHT_GREEN}{SHADOW GREEN} (You have learned Alchemy.)"))
 		closemessage
+		fadescreen(FADE_FROM_BLACK)
 		setvar(VAR_RYU_PLAYER_ALCHEMY_SKILL, 1)
 		msgbox(format("You have a grimoire, don't you, child? Take a look at it. You should now understand things you did not before."))
 		closemessage

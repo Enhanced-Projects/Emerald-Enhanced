@@ -42,7 +42,7 @@ script(global) RyuAthletesDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
                     msgbox(format("Don't you feel good after all that exercise?"))
                     goto(CommonAthletesRewardScript)
                 }
@@ -85,13 +85,13 @@ script(global) RyuAthletesDailyQuest  {
             msgbox("We're almost out of protein powder.\pCan you bring us 2 bottles of Protein?\nIt's needed for all of us who are\nactively working out!")
         case 1:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_IMPRINT)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_EVPRINT)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 10)
             msgbox("We need to do some imprinting at\nthe Training Center.\pCan you bring us ten imprints?\nThis will save us a lot of time.")
         case 2:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE111)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             msgbox(format("{PLAYER}, are you up for a challenge? Of course you are! I want you to run to Route 111 and back. Enjoy the exercise!"))
         case 3:
             random(4)

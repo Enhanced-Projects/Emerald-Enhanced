@@ -51,6 +51,7 @@
 #include "ach_atlas.h"
 #include "gba/m4a_internal.h"
 #include "RyuRealEstate.h"
+#include "overworld_notif.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
 static EWRAM_DATA u8 MenuSpriteId2 = 0;
@@ -59,7 +60,7 @@ extern u8 RyuDebugMenuScript[];
 extern u8 RyuStartMenuConfigInfoScript[];
 extern const u8 gText_RyuVersion[];
 extern const u8 Ryu_FFTextSpeedWarning[];
-extern const u8 ryu_end[];
+extern const u8 RyuScript_Lv100FailMsg[];
 
 // Menu actions
 enum
@@ -72,11 +73,11 @@ enum
     MENU_ACTION_PLAYER,
     MENU_ACTION_SAVE,
     MENU_ACTION_OPTION,
+    MENU_ACTION_EXIT,
     MENU_ACTION_PLAYER_LINK,
     MENU_ACTION_REST_FRONTIER,
     MENU_ACTION_RETIRE_FRONTIER,
     MENU_ACTION_PYRAMID_BAG,
-    MENU_ACTION_EXIT
 };
 
 // Save status
@@ -525,7 +526,7 @@ void RemoveInfoBoxWindow(void)
         RemoveWindow(sPrintNumberWindow2Id);
     }
 /*
-    if (FlagGet(FLAG_NOTIFIED_FF_TEXT) == 0)
+    if (FlagGet(FLAG_SELECTED_FF_TEXT_OPTION) == 0)
         ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
     else
         ScriptContext1_SetupScript(ryu_end);//For some reason, this fixes the start menu info window border from sticking around, i call it a win.
@@ -989,7 +990,27 @@ static void StartMenuTask(u8 taskId)
         SwitchTaskToFollowupFunc(taskId);
 }
 
-void RyuDoOneTImeSaveFixes(void) {}
+const u8 gOneTimeMsg[] = _("Given Red and/or Blue orb.");
+
+void RyuDoOneTImeSaveFixes(void) {
+    bool32 activated = FALSE;
+
+    if ((GetSetPokedexFlag(SPECIES_GROUDON, FLAG_GET_CAUGHT) == TRUE) && (CheckBagHasItem(471, 1) == FALSE))
+    {
+        activated = TRUE;
+        AddBagItem(471, 1);
+    }
+
+    if ((GetSetPokedexFlag(SPECIES_KYOGRE, FLAG_GET_CAUGHT) == TRUE) && (CheckBagHasItem(472, 1) == FALSE))
+    {
+        AddBagItem(472, 1);
+        activated = TRUE;
+    }
+    if (activated == TRUE)
+        QueueNotification(gOneTimeMsg, NOTIFY_GENERAL, 60);
+
+    FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
+}
 
 bool32 RyuCheckFactionAchievements(void)
 {
@@ -1107,6 +1128,8 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
         VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, EE_GAME_VERSION);
     VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
     FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
+    if (FlagGet(FLAG_RYU_ONE_TIME_SAVE_FIX) == FALSE)
+        RyuDoOneTImeSaveFixes();
     RyuDoOneTImeSaveFixes(); //this should let me put in one time use fixes for various quest things
     if (CheckAchievement(ACH_POKEMON_MASTER) == FALSE)
         if (RyuGetTotalCaughtMons() >= 386)
@@ -1505,13 +1528,8 @@ static bool8 StartMenuOptionCallback(void)
 static bool8 StartMenuExitCallback(void)
 {
     RemoveExtraStartMenuWindows();
-    HideStartMenu(); // Hide start menu
-    //RemoveExtraStartMenuWindows();
+    HideStartMenu();
     HideFieldMessageBox();
-    if (FlagGet(FLAG_NOTIFIED_FF_TEXT) == 0)
-        ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
-    //else
-        //ScriptContext1_SetupScript(ryu_end);
     return TRUE;
 }
 

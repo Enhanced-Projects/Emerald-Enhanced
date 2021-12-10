@@ -192,7 +192,8 @@
     "MauvilleCity_Mart",
     "MauvilleCity_PokemonCenter_1F",
     "MauvilleCity_PokemonCenter_2F",
-    "MauvilleCity_Home"
+    "MauvilleCity_Home",
+    "MauvilleCity_AdrastiWarehouse"
   ],
   "gMapGroup8": [
     "VerdanturfTown_WandasHouse",
@@ -336,7 +337,8 @@
     "EverGrandeCity_PokemonLeague_1F",
     "EverGrandeCity_PokemonLeague_2F",
     "EverGrandeCity_PokemonCenter_1F",
-    "EverGrandeCity_PokemonCenter_2F"
+    "EverGrandeCity_PokemonCenter_2F",
+    "Victini"
   ],
   "gMapGroup17": [
     "Route104_MrBrineysHouse",

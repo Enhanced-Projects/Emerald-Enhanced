@@ -41,7 +41,11 @@ RyuExpBatteryDevMode::
 	goto RyuExpBatteryContd
 
 RS_SelectSlot::
-	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 0, 0
+	msgbox RA_SA_Choosemon
+	multichoice 10, 0, MULTI_DYNAMIC_6, 0
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RS_CancelPartySlot
 	switch VAR_RESULT
 	case 0, RS_Slot1Selected
 	case 1, RS_Slot2Selected
@@ -49,7 +53,7 @@ RS_SelectSlot::
 	case 3, RS_Slot4Selected
 	case 4, RS_Slot5Selected
 	case 5, RS_Slot6Selected
-	case 127, RS_CancelPartySlot
+	goto RS_CancelPartySlot
 	releaseall
 	end
 
@@ -261,26 +265,18 @@ RyuGivePokenav::
 @==================================================================================================RYU EV USER MODE MENU
 
 RyuUserModeEVMenu::
-	msgbox RyuUserEVInfo MSGBOX_DEFAULT
-	multichoicegrid 0, 4, MULTI_GENETIC_IMPRINTER_MENU, 2, 0
-	compare VAR_RESULT, 6
-	goto_if_ge ryu_end
-	copyvar VAR_TEMP_3, VAR_RESULT
-	call RyuBufferPartyMonNames
-	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
-	compare VAR_RESULT, 6
-	goto_if_eq ryu_end
-	setvar VAR_TEMP_1, 0
-	copyvar VAR_TEMP_2, VAR_RESULT
-	checkitem ITEM_IMPRINT, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetSlotStatEV
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_IMPRINT, 1
-	msgbox RyuEvSuccessMsg MSGBOX_DEFAULT
+	lock
 	release
 	end
+
+EVMENU_1:
+	.string "Set EV to 0$"
+
+EVMENU_2:
+	.string "Set IV to 0$"
+
+EVMENU_3:
+	.string "Cancel$"
 	
 RyuUserEvExit::
 	closemessage
@@ -292,18 +288,21 @@ RyuUserEvNoImprint::
 	closemessage
 	release
 	end
+
+RyuUserEvSelectIVEV:
+	.string "Reduce Skill level(EV) or genetic\npredisposition(IV)?$"
 	
 RyuUserEVInfo:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
-	.string "{SHADOW LIGHT_GREY}Select an EV stat to reduce to 0.$"
+	.string "{SHADOW LIGHT_GREY}Select a stat to reduce to 0.$"
 
 RyuEvSuccessMsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}EV's for the selected slot\nhave been reduced to 0.$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}iv or ev for the selected slot\nhave been reduced to 0.$"
 
 EvNoImprints:
-	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough imprints.\pObtain more at Lilycove\nTraining Center.$"
+	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough prints.\pObtain more at Lilycove\nTraining Center.$"
 
-@@======================================================================================================================================= NUZLOCKE CHALLENGE RELATED
+@@======================================================================================================================================= CHALLENGE CHALLENGE RELATED
 
 Ryu_CheckSetNuzlockPCUseVar::
 	compare VAR_RYU_PC_USES, 0
@@ -333,13 +332,13 @@ Ryu_SorryCantHeal:
 Ryu_SorryHardcore:
 	.string "This service is restricted by\ngame rules. Sorry!$"
 
-RyuMartsDisabledNuzlocke::
-	msgbox RyuMartsDisabledNuzlockeMsg MSGBOX_DEFAULT
+RyuMartsDisabledChallenge::
+	msgbox RyuMartsDisabledChallengeMsg MSGBOX_DEFAULT
 	release
 	end
 
-RyuTCDisabledNuzlocke::
-	msgbox RyuTCDisabledNuzlockeMsg MSGBOX_DEFAULT
+RyuTCDisabledChallenge::
+	msgbox RyuTCDisabledChallengeMsg MSGBOX_DEFAULT
 	release
 	end
 
@@ -351,14 +350,14 @@ Ryu_YouHaveNoMons::
 CantHealNoMons:
 	.string "You don't have any pokemon to heal.\nPlease return another time!$"
 
-RyuMartsDisabledNuzlockeMsg:
+RyuMartsDisabledChallengeMsg:
 	.string "{COLOR DARK_GREY}{SHADOW RED}Sorry, but you can't use this while\n"
-	.string "playing in nuzlocke mode. Fight more\p"
+	.string "playing in challenge mode. Fight more\p"
 	.string "Gyms!$"
 
-RyuTCDisabledNuzlockeMsg:
+RyuTCDisabledChallengeMsg:
 	.string "{COLOR DARK_GREY}{SHADOW RED}Sorry, but the Training Center is\n"
-	.string "disabled while playing in nuzlocke\p"
+	.string "disabled while playing in challenge\p"
 	.string "mode. Grind in grass!$"
 	
 RyuHealed:
@@ -376,7 +375,7 @@ RyuHealedGym::
 	return
 	
 RyuScripts_HardcoreGymReward::
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 1
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 1
 	release
 	end
 
@@ -384,12 +383,12 @@ RyuGymItemReward1::
 	giveitem ITEM_TM39
 	closemessage
 	setflag FLAG_RYU_GYM1HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 1
 	additem ITEM_GREAT_BALL, 1
 	closemessage
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 Ryu_ResetPcUses::
@@ -399,71 +398,71 @@ Ryu_ResetPcUses::
 RyuGymItemReward2::
 	giveitem ITEM_TM60
 	setflag FLAG_RYU_GYM2HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 2
 	additem ITEM_GREAT_BALL, 2
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward3::
 	giveitem ITEM_TM34
 	setflag FLAG_RYU_GYM3HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 3
 	additem ITEM_GREAT_BALL, 3
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward4::
 	giveitem ITEM_TM50
 	setflag FLAG_RYU_GYM4HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 4
 	additem ITEM_GREAT_BALL, 4
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward5::
 	giveitem ITEM_TM42
 	setflag FLAG_RYU_GYM5HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 5
 	additem ITEM_GREAT_BALL, 5
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward6::
 	giveitem ITEM_TM40
 	setflag FLAG_RYU_GYM6HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 6
 	additem ITEM_GREAT_BALL, 6
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward7::
 	giveitem ITEM_TM04
 	setflag FLAG_RYU_GYM7HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 7
 	additem ITEM_GREAT_BALL, 7
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward8::
 	giveitem ITEM_TM03
 	setflag FLAG_RYU_GYM8HANDOUT
-	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
+	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 8
 	additem ITEM_GREAT_BALL, 8
-	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
+	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuHealedGymMsg:
@@ -472,28 +471,28 @@ RyuHealedGymMsg:
 
 RyuGameClearedMsg:
 	.string "{COLOR GREEN} {SHADOW LIGHT_GREY}Congratulations on clearing the game\n"
-	.string "in nuzlocke mode! It's a momentous\p"
+	.string "in challenge mode! It's a momentous\p"
 	.string "achievment, considering how hard\n"
 	.string "the base game is. Add Ryuhouji/2180\p"
 	.string "on discord and let me know you\n"
 	.string "reached this point!\p"
-	.string "Nuzlocke restrictions have been\p"
+	.string "Challenge restrictions have been\p"
 	.string "lifted, enjoy the battle frontier!$"
 	
 RyuEmptySpace:
 	.string "$"
 	
-RyuFailedNuzlocke::
-	msgbox NuzlockeFail MSGBOX_DEFAULT
+RyuFailedChallenge::
+	msgbox ChallengeFail MSGBOX_DEFAULT
 	closemessage
-	clearflag FLAG_RYU_NUZLOCKEMODE
+	clearflag FLAG_RYU_CHALLENGEMODE
 	setvar VAR_RYU_EXP_MULTIPLIER, 1000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	release
 	end
 	
-NuzlockeFail:
-	.string "You have failed this nuzlocke\n"
+ChallengeFail:
+	.string "You have failed this challenge\n"
 	.string "challenge. Game will now go to\l."
 	.string "Normal mode.$"
 
@@ -593,239 +592,8 @@ Ryu_CantUsePcCharging::
 
 RyuCantUsePCCHARGING:
 	.string "The Wireless PC needs to recharge.\nPlease try again later.$"
-	
-
-@=================================================Ball changer
-
-
-RyuBallChanger::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
-	msgbox BCIntro
-	multichoicegrid 2, 0, 141, 3, 1
-	switch VAR_RESULT
-	case 0, BCPokeball
-	case 1, BCGreatball
-	case 2, BCUltraball
-	case 3, BCLuxuryball
-	case 4, BCPremierball
-	case 5, BCRepeatball
-	case 6, BCTimerball
-	case 7, BCNestball
-	case 8, BCNetball
-	case 9, BCSafariball
-	case 10, BCDiveball
-	case 11, BCCancel
-	end
-
-BCPokeball::
-	checkitem ITEM_POKE_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 4
-	removeitem ITEM_POKE_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCGreatball::
-	checkitem ITEM_GREAT_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 3
-	removeitem ITEM_GREAT_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCUltraball::
-	checkitem ITEM_ULTRA_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 2
-	removeitem ITEM_ULTRA_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCLuxuryball::
-	checkitem ITEM_LUXURY_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 11
-	removeitem ITEM_LUXURY_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCPremierball::
-	checkitem ITEM_PREMIER_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 11
-	removeitem ITEM_PREMIER_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCRepeatball::
-	checkitem ITEM_REPEAT_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 9
-	removeitem ITEM_REPEAT_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCTimerball::
-	checkitem ITEM_TIMER_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 10
-	removeitem ITEM_TIMER_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCNestball::
-	checkitem ITEM_NEST_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 8
-	removeitem ITEM_NEST_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCNetball::
-	checkitem ITEM_NET_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 6
-	removeitem ITEM_NET_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCSafariball::
-	checkitem ITEM_SAFARI_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 5
-	removeitem ITEM_SAFARI_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCDiveball::
-	checkitem ITEM_DIVE_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 7
-	removeitem ITEM_DIVE_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCremovemoney::
-	removemoney 10000
-	return
-
-BCIntro:
-	.string "Welcome to the ball changer menu.\pOnce you make your selection,\nyou will be charged ¥10000\land the chosen ball will be consumed.$"
-
-BCCancel::
-	msgbox BC_Cancelled
-	closemessage
-	release
-	end
-
-BC_NoBall::
-	msgbox BC_NeedBall
-	release
-	end
-
-BC_NotEnoughMoney:
-	msgbox BC_NeedMoney
-	release
-	end
-
-BC_Cancelled:
-	.string "Okay. We can try again later.$"
-
-BC_Success:
-	.string "Success!\nThe ball has been changed.\pYou were charged ¥10000, and\nthe ball you changed to was consumed.$"
-
-BC_NeedBall:
-	.string "Sorry, but you must have at least\none of the ball you want to change to.$"
-
-BC_NeedMoney:
-	.string "Sorry, but you do not have enough\nmoney to do this.\pIt costs ¥10000.$"
-
-@==================================================================================================Theme changer
-
-Ryu_SwitchTheme::
-	compare VAR_RYU_THEME_NUMBER, 0
-	goto_if_eq Ryu_SwitchToDarkTheme
-	compare VAR_RYU_THEME_NUMBER, 1
-	goto_if_eq Ryu_SwitchToDefaultTheme
-	end
-
-Ryu_SwitchToDarkTheme::
-	setvar VAR_RYU_THEME_NUMBER, 1
-	msgbox RyuNowUsingDarkTheme
-	release
-	end
-
-Ryu_SwitchToDefaultTheme::
-	setvar VAR_RYU_THEME_NUMBER, 0
-	msgbox RyuNowUsingDefaultTheme
-	release
-	end
-
-RyuNowUsingDarkTheme:
-	.string "You're now using the dark theme.$"
-
-RyuNowUsingDefaultTheme:
-	.string "Switched to default theme.$"
 
 @========================================================================Random "Stepped On" encounter
-
-SB_CheckMeloettaEncounter::
-	goto_if_set FLAG_RYU_CAPTURED_MELOETTA, ryu_end
-	readgamestat GAME_STAT_USED_SOUND_MOVE
-	switch VAR_RESULT
-	case 255, Ryu_DoMeloettaRoll
-    case 200, Ryu_MeloettaWatchingMsg
-	case 100, Ryu_BeingWatched
-	compare VAR_RESULT, 255
-	goto_if_ge Ryu_DoMeloettaRoll
-	release
-	end
 
 Ryu_MeloettaWatchingMsg::
 	goto_if_set FLAG_RYU_SECOND_MELOETTA_MSG, ryu_end
@@ -879,6 +647,7 @@ Ryu_DoMeloettaEncounter::
 	setwildbattle SPECIES_MELOETTA, VAR_RESULT, ITEM_STAR_PIECE
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	special GetBattleOutcome
@@ -1143,6 +912,8 @@ RyuLegendary_GameClearResetLegends::
 	call_if_set FLAG_RYU_MANAPHY_RAN, RL_ResetManaphy
 	call_if_set FLAG_RYU_NECROZMA_RAN, RL_ResetNecrozma
 	call_if_set FLAG_RYU_KYOGRE_RAN, RL_ResetKyogre
+	call_if_set FLAG_RYU_VICTINI_RAN, RL_ResetVictini
+	return
 
 RL_ResetZapdos::
 	clearflag FLAG_RYU_ZAPDOS
@@ -1199,14 +970,19 @@ RL_ResetKyogre::
 	clearflag FLAG_RYU_KYOGRE_RAN
 	return
 
-@==================================================================================================Failed Nuzlocke/Hardcore
+RL_ResetVictini::
+	clearflag FLAG_RYU_VICTINI
+	clearflag FLAG_RYU_VICTINI_RAN
+	return
 
-Ryu_PlayerFailedNuzlockeHardcore::
+@==================================================================================================Failed Challenge/Hardcore
+
+Ryu_PlayerFailedChallengeHardcore::
 	msgbox Ryu_failedNZHC
 	waitstate
 
 Ryu_failedNZHC:
-	.string "You have failed Nuzlocke or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
+	.string "You have failed Challenge or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
 
 @==================================================================================================Start Menu Config Info
 
@@ -1326,9 +1102,6 @@ Ryu_CheckForPartnerReward::
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_return
-	specialvar VAR_RESULT, RyuCheckRelMegaReward
-	compare VAR_RESULT, 0
-	goto_if_eq ryu_return
 	switch VAR_RYU_FOLLOWER_ID
 	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_GiveShellyMegaAndReturn
 	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_GiveDawnMegaAndReturn
@@ -1338,6 +1111,8 @@ Ryu_CheckForPartnerReward::
 	goto ryu_return
 
 Ryu_GiveShellyMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_SHARPEDONITE, ryu_return
+	setflag FLAG_RYU_GIFTED_SHARPEDONITE
 	msgbox ShellyMegaReward
 	closemessage
 	giveitem ITEM_SHARPEDONITE
@@ -1345,6 +1120,8 @@ Ryu_GiveShellyMegaAndReturn::
 	goto ryu_return
 
 Ryu_GiveDawnMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_ALTARIANITE, ryu_return
+	setflag FLAG_RYU_GIFTED_ALTARIANITE
 	msgbox DawnMegaReward
 	closemessage
 	giveitem ITEM_ALTARIANITE
@@ -1352,6 +1129,8 @@ Ryu_GiveDawnMegaAndReturn::
 	goto ryu_return
 
 Ryu_GiveBrendanMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_LUCARIONITE, ryu_return
+	setflag FLAG_RYU_GIFTED_LUCARIONITE
 	msgbox BrendanMegaReward
 	closemessage
 	giveitem ITEM_LUCARIONITE
@@ -1359,6 +1138,8 @@ Ryu_GiveBrendanMegaAndReturn::
 	goto ryu_return
 
 Ryu_GiveLeafMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_VENUSAURITE, ryu_return
+	setflag FLAG_RYU_GIFTED_VENUSAURITE
 	msgbox LeafMegaReward
 	closemessage
 	giveitem ITEM_VENUSAURITE
@@ -1366,6 +1147,8 @@ Ryu_GiveLeafMegaAndReturn::
 	goto ryu_return
 
 Ryu_GiveCourtneyMegaAndReturn::
+	goto_if_set FLAG_RYU_GIFTED_CAMERUPTITE, ryu_return
+	setflag FLAG_RYU_GIFTED_CAMERUPTITE
 	msgbox CourtneyMegaReward
 	closemessage
 	giveitem ITEM_CAMERUPTITE
@@ -1390,8 +1173,13 @@ CourtneyMegaReward:
 @==================================================================================================Ability Capsule
 
 Ryu_AbilityCapsule::
+	lock
+	msgbox RA_SA_Choosemon
 	call RyuBufferPartyMonNames
-	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 0, 6
+	multichoice 10, 0, MULTI_DYNAMIC_6, 0
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq Ryu_AbilityCapsuleEnd
 	switch VAR_RESULT
 	case 0, RyuAC_Slot1
 	case 1, RyuAC_Slot2
@@ -1399,7 +1187,8 @@ Ryu_AbilityCapsule::
 	case 3, RyuAC_Slot4
 	case 4, RyuAC_Slot5
 	case 5, RyuAC_Slot6
-	case 6, RyuAC_Cancel
+	case 127, RyuAC_Cancel
+	goto RyuAC_Cancel
 
 RyuAC_Slot1::
 	setvar VAR_TEMP_8, 0
@@ -1466,6 +1255,11 @@ RyuAC_Cancel::
 	release
 	end
 
+Ryu_AbilityCapsuleEnd:
+	msgbox RyuAC_CancelMsg
+	release
+	end
+
 RyuAC_SuccessMsg::
 	.string "The mon's ability was successfully\nchanged.$"
 
@@ -1493,7 +1287,7 @@ RyuGlobal_CheckMissionCallStatus::
 
 Ryu_FFTextSpeedWarning::
 	msgbox FFTextMsg
-	setflag FLAG_NOTIFIED_FF_TEXT
+	clearflag FLAG_SELECTED_FF_TEXT_OPTION
 	release
 	end	
 
@@ -1531,6 +1325,7 @@ RyuGlobal_CheckAquaStatus::
 	goto ryu_end
 
 Ryu_initializeAquaStage1::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 3
 	goto_if_lt ryu_end
@@ -1554,6 +1349,7 @@ Ryu_initializeAquaStage1::
 	end
 
 Ryu_InitializeAquaStage2::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 5
 	goto_if_lt ryu_end
@@ -1575,6 +1371,7 @@ Ryu_InitializeAquaStage2::
 	end
 
 Ryu_InitializeAquaStage3NR::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
@@ -1597,6 +1394,7 @@ Ryu_InitializeAquaStage3NR::
 	end
 
 Ryu_InitializeAquaStage3R::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
@@ -1619,6 +1417,7 @@ Ryu_InitializeAquaStage3R::
 	end
 
 Ryu_InitializeAquaStage4R::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_end
@@ -1697,6 +1496,7 @@ Ryu_AquaStep1OutroMessage:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Time to get to work.$"
 
 Ryu_InitializeMagmaPart4::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 3
 	goto_if_lt ryu_end
@@ -1720,6 +1520,7 @@ Ryu_InitializeMagmaPart4::
 	end
 
 Ryu_InitializeMagmaPart6::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
@@ -1742,6 +1543,7 @@ Ryu_InitializeMagmaPart6::
 
 
 Ryu_InitializeMagmaPart8::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_end
@@ -1837,7 +1639,8 @@ RyuPlayerLostTheGameSoloFemale::
 
 @===================================================================================================
 Ryu_ShowStarterInfo::
-	special RyuFillStatsBuffers
+	setvar VAR_0x8001, 0
+    special RyuFillStatsBuffers
     drawinfobox INFOBOXPOKEMONDATA
 	bufferpartymonnick 1, 0
 	msgbox Ryu_Stats
@@ -1845,33 +1648,12 @@ Ryu_ShowStarterInfo::
 	return
 
 @==================================================================================================Achievement RELATED
-
-RyuScript_CheckGivenAchievement::
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	compare VAR_RYU_LAST_ACH, ACH_THE_UNIVERSALIST
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_LOREMASTER
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_TOURIST
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_MILLIONAIRE
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_MONEYBAGS
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	compare VAR_RYU_LAST_ACH, ACH_ULTRA_BEASTLY
-	goto_if_eq RyuScript_CheckGivenGoldAch
-	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
-	callnative BufferGivenAchievement
-	playse SE_EXPMAX
-	msgbox RS_ACH_RECEIVED
-	closemessage
+RyuScript_IncrementQuestsFinished::
+	addvar VAR_RYU_QUESTS_FINISHED, 1
 	callnative RyuCheckForDejavuAch
 	compare VAR_RESULT, TRUE
 	call_if_eq RyuScript_GiveDejaVu
-	setvar VAR_RYU_LAST_ACH, 300
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, RyuScript_CheckFollowerFactionChanges
-	release
-	end
+	return
 
 RyuScript_CheckGivenGoldAch::
 	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
@@ -1892,7 +1674,6 @@ RS_GoldAchMsg:
 
 RyuScript_GiveDejaVu::
 	ach give ACH_DEJA_VU
-	msgbox RS_ACH_RECEIVED
 	return
 
 RS_ACH_RECEIVED:
@@ -1910,99 +1691,6 @@ RyuScript_CheckFollowerFactionChanges::
 	changefactionstanding FACTION_STUDENTS, 1, FALSE
 	release
 	end
-
-@===================================================================================================Holiday 2020
-
-RyuScript_GiveHolidayGiftMon::
-	msgbox RS_LucyIntro
-	getpartysize
-	compare VAR_RESULT, 6
-	goto_if_ge RyuScript_NoRoomForHolidayMon
-	multichoice  0, 0, MULTI_HOLIDAY_2020, 1
-	switch VAR_RESULT
-	case 0, RS_HGM01
-	case 1, RS_HGM02
-	case 2, RS_HGM03
-	case 3, RS_HGM04
-	case 4, RS_HGM05
-	case 5, RS_HGM06
-
-RS_HGM01::
-	getpartysize
-	copyvar VAR_TEMP_E, VAR_RESULT
-	givemon SPECIES_KYUREM_WHITE, 30, ITEM_NONE
-	bufferspeciesname 0, SPECIES_KYUREM_WHITE
-	goto RS_HolidayOutro
-
-RS_HGM02::
-	getpartysize
-	copyvar VAR_TEMP_E, VAR_RESULT
-	givemon SPECIES_KYUREM_BLACK 30, ITEM_NONE
-	bufferspeciesname 0, SPECIES_KYUREM_BLACK
-	goto RS_HolidayOutro
-
-RS_HGM03::
-	getpartysize
-	copyvar VAR_TEMP_E, VAR_RESULT
-	givemon SPECIES_MAGEARNA, 30, ITEM_NONE
-	bufferspeciesname 0, SPECIES_MAGEARNA
-	goto RS_HolidayOutro
-
-RS_HGM04::
-	getpartysize
-	copyvar VAR_TEMP_E, VAR_RESULT
-	givemon SPECIES_VICTINI, 30, ITEM_NONE
-	bufferspeciesname 0, SPECIES_VICTINI
-	goto RS_HolidayOutro
-
-RS_HGM05::
-	getpartysize
-	copyvar VAR_TEMP_E, VAR_RESULT
-	givemon SPECIES_MARSHADOW, 30, ITEM_NONE
-	bufferspeciesname 0, SPECIES_MARSHADOW
-	goto RS_HolidayOutro
-
-RS_HGM06::
-	getpartysize
-	copyvar VAR_TEMP_E, VAR_RESULT
-	givemon SPECIES_SHAYMIN_SKY, 30, ITEM_NONE
-	bufferspeciesname 0, SPECIES_SHAYMIN_SKY
-	goto RS_HolidayOutro
-
-RS_HolidayOutro::
-	callnative RyuHolidayGiftMonSetData
-	msgbox RS_HolidayOutroMsg
-	setflag FLAG_RYU_HIDE_HOLIDAY_NPC
-	applymovement 13, LucyExit
-	waitmovement 13
-	removeobject 13
-	release
-	end
-
-LucyExit:
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-	
-
-RyuScript_NoRoomForHolidayMon::
-	msgbox RS_HolidayNoSpace
-	release
-	end
-
-RS_HolidayOutroMsg::
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Our lord Ryu thanks you for\nplaying {COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced.\p{COLOR LIGHT_RED}{SHADOW RED}Please enjoy your {STR_VAR_1}.$"
-
-RS_HolidayNoSpace::
-	.string "{COLOR LIGHT_RED}{SHADOW RED}You don't have space for\nthe gift. Please make space in\lyour party and return.$"
-
-RS_LucyIntro::
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Greetings, {PLAYER}.\pI have travelled far to\ngive you season's tidings.\pPlease Choose a gift Pokémon\nfrom the list.$"
 
 @@GAME OVER========================================================================================
 
@@ -2122,47 +1810,48 @@ RyuCheckForWellTravelledAch::
 RyuCheckForLNSUAch::
 	ach query ACH_LEAVE_NO_STONE_UNTURNED @@Don't bother checking these flags if achievement is already owned.
 	compare VAR_RESULT, TRUE
-	goto_if_eq ryu_return
-	goto_if_unset FLAG_LANDMARK_FLOWER_SHOP, ryu_return
-	goto_if_unset FLAG_LANDMARK_ABANDONED_SHIP, ryu_return
-	goto_if_unset FLAG_LANDMARK_SEASHORE_HOUSE, ryu_return
-	goto_if_unset FLAG_LANDMARK_NEW_MAUVILLE, ryu_return
-	goto_if_unset FLAG_LANDMARK_OLD_LADY_REST_SHOP, ryu_return
-	goto_if_unset FLAG_LANDMARK_TRICK_HOUSE, ryu_return
-	goto_if_unset FLAG_LANDMARK_WINSTRATE_FAMILY, ryu_return
-	goto_if_unset FLAG_LANDMARK_GLASS_WORKSHOP, ryu_return
-	goto_if_unset FLAG_LANDMARK_LANETTES_HOUSE, ryu_return
-	goto_if_unset FLAG_LANDMARK_POKEMON_DAYCARE, ryu_return
-	goto_if_unset FLAG_LANDMARK_SEAFLOOR_CAVERN, ryu_return
-	goto_if_unset FLAG_LANDMARK_BATTLE_FRONTIER, ryu_return
-	goto_if_unset FLAG_LANDMARK_FIERY_PATH, ryu_return
-	goto_if_unset FLAG_LANDMARK_POKEMON_LEAGUE, ryu_return
-	goto_if_unset FLAG_LANDMARK_ISLAND_CAVE, ryu_return
-	goto_if_unset FLAG_LANDMARK_DESERT_RUINS, ryu_return
-	goto_if_unset FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE, ryu_return
-	goto_if_unset FLAG_LANDMARK_SCORCHED_SLAB, ryu_return
-	goto_if_unset FLAG_LANDMARK_ANCIENT_TOMB, ryu_return
-	goto_if_unset FLAG_LANDMARK_TUNNELERS_REST_HOUSE, ryu_return
-	goto_if_unset FLAG_LANDMARK_HUNTERS_HOUSE, ryu_return
-	goto_if_unset FLAG_LANDMARK_SEALED_CHAMBER, ryu_return
-	goto_if_unset FLAG_LANDMARK_BERRY_MASTERS_HOUSE, ryu_return
-	goto_if_unset FLAG_LANDMARK_ALTERING_CAVE, ryu_return
-	goto_if_unset FLAG_LANDMARK_DESERT_UNDERPASS, ryu_return
-	goto_if_unset FLAG_LANDMARK_ARTISAN_CAVE, ryu_return
-	goto_if_unset FLAG_LANDMARK_TRAINER_HILL, ryu_return
-	goto_if_unset FLAG_LANDMARK_MIRAGE_TOWER, ryu_return
-	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, ryu_return
+	goto_if_eq ryu_end
+	goto_if_unset FLAG_LANDMARK_FLOWER_SHOP, ryu_end
+	goto_if_unset FLAG_LANDMARK_ABANDONED_SHIP, ryu_end
+	goto_if_unset FLAG_LANDMARK_SEASHORE_HOUSE, ryu_end
+	goto_if_unset FLAG_LANDMARK_NEW_MAUVILLE, ryu_end
+	goto_if_unset FLAG_LANDMARK_OLD_LADY_REST_SHOP, ryu_end
+	goto_if_unset FLAG_LANDMARK_TRICK_HOUSE, ryu_end
+	goto_if_unset FLAG_LANDMARK_WINSTRATE_FAMILY, ryu_end
+	goto_if_unset FLAG_LANDMARK_GLASS_WORKSHOP, ryu_end
+	goto_if_unset FLAG_LANDMARK_LANETTES_HOUSE, ryu_end
+	goto_if_unset FLAG_LANDMARK_POKEMON_DAYCARE, ryu_end
+	goto_if_unset FLAG_LANDMARK_SEAFLOOR_CAVERN, ryu_end
+	goto_if_unset FLAG_LANDMARK_BATTLE_FRONTIER, ryu_end
+	goto_if_unset FLAG_LANDMARK_FIERY_PATH, ryu_end
+	goto_if_unset FLAG_LANDMARK_POKEMON_LEAGUE, ryu_end
+	goto_if_unset FLAG_LANDMARK_ISLAND_CAVE, ryu_end
+	goto_if_unset FLAG_LANDMARK_DESERT_RUINS, ryu_end
+	goto_if_unset FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE, ryu_end
+	goto_if_unset FLAG_LANDMARK_SCORCHED_SLAB, ryu_end
+	goto_if_unset FLAG_LANDMARK_ANCIENT_TOMB, ryu_end
+	goto_if_unset FLAG_LANDMARK_TUNNELERS_REST_HOUSE, ryu_end
+	goto_if_unset FLAG_LANDMARK_HUNTERS_HOUSE, ryu_end
+	goto_if_unset FLAG_LANDMARK_SEALED_CHAMBER, ryu_end
+	goto_if_unset FLAG_LANDMARK_BERRY_MASTERS_HOUSE, ryu_end
+	goto_if_unset FLAG_LANDMARK_ALTERING_CAVE, ryu_end
+	goto_if_unset FLAG_LANDMARK_DESERT_UNDERPASS, ryu_end
+	goto_if_unset FLAG_LANDMARK_ARTISAN_CAVE, ryu_end
+	goto_if_unset FLAG_LANDMARK_TRAINER_HILL, ryu_end
+	goto_if_unset FLAG_LANDMARK_MIRAGE_TOWER, ryu_end
+	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, ryu_end
 	ach give ACH_LEAVE_NO_STONE_UNTURNED
 	return	
 
 `
 
+//prevent oob writes with bufferdynamicmulti
+text(global) RyuEmptyTextPtr {
+	" $"
+}
+
 script RyuCheckSetupBoss {
-	random(99)
-	if (var(VAR_RESULT) == 0){
-		call(RyuLegendary_SetBossFlag)
-		return
-	}
+	callnative(RyuLegendaryDoBossRoll)
 	return
 }
 
@@ -2173,7 +1862,7 @@ script RyuScript_GoToLimbo{
     waitstate
 }
 
-script RyuScript_EndNuzlockeMode{
+script RyuScript_EndChallengeMode{
     if(flag(FLAG_RYU_LIMBO)){
         setvar(VAR_TEMP_B, 100)
         releaseall
@@ -2184,7 +1873,7 @@ script RyuScript_EndNuzlockeMode{
     setflag(FLAG_RYU_LIMBO)
     lockall
     setflag(FLAG_RYU_WAYSTONE_DISABLED)
-    msgbox(format("Welcome to Limbo. You have failed your Nuzlocke or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game +."))
+    msgbox(format("Welcome to Limbo. You have failed your Challenge or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game +."))
     closemessage
     msgbox(format("Please wait while we check some things, this might take a few seconds."))
 	setflag(FLAG_SYS_GAME_CLEAR)
@@ -2196,12 +1885,19 @@ script RyuScript_EndNuzlockeMode{
 }
 
 script RS_Limbo_Sign{
+	ach(query, ACH_WASTED)
+		if (var(VAR_RESULT) == FALSE) {
+			ach(give, ACH_WASTED)
+		}
     msgbox(format("Oh, dear. You seem to have died.\pWhat am I?\nOh, don't worry about that, I'm just a spirit of another trainer who died. I'm actually here to guide trainers to the afterlife. Would you like to access your PC?"), MSGBOX_YESNO)
     if (var(VAR_RESULT) ==  YES) {
         goto(EventScript_PC)
     }
     else{
-        msgbox(format("Okay, well I'll be here if you change your mind. If you'd like to start a new life, Now would be a good time!(You must start a new game to keep playing.)"))
+        msgbox(format("Okay, well I'll be here if you change your mind. If you'd like to start a new life, Now would be a good time!\p(You must start a new game to keep playing.)"))
+		closemessage
+		release
+		end
     }
 
 }
@@ -2358,7 +2054,7 @@ script(global) RyuDebug_InitTimeSlide {//ngl, this may be the lewdest script i h
 }
 
 script(global) RyuDoTImeSlide {
-	delay(5)//delay in frames (game runs at 60frames per second) between each step. Not recommended to use this AND msgbox below.
+	delay(2)//delay in frames (game runs at 60frames per second) between each step. Not recommended to use this AND msgbox below.
 	addvar(VAR_TEMP_2, 1)//how much to advance the minute value per step
 	if (var(VAR_TEMP_2) == 60) {//if reached new hour, rollover
 		setvar(VAR_TEMP_2, 0)
@@ -2388,15 +2084,6 @@ script(global) RyuDebug_FinishTimeSlide {
 	end
 }
 
-//new pickup
-
-script RyuScript_NotifyPickedUpItem {
-	callnative(RyuNotifyPickupItemBufferValues)
-	msgbox(format("Your {STR_VAR_1} scavenged {STR_VAR_3}{STR_VAR_2} after the battle!"))
-	clearflag(FLAG_RYU_NOTIFY_PICKUP_ITEM)
-	release
-	end
-}
 //Mirage Island TV program
 
 script RyuScript_NotifyMirageIsland {
@@ -2623,4 +2310,244 @@ script RyuScript_EncounterKeldeo {
 	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
 	release
 	end
+}
+
+script RyuScript_Lv100FailMsg {
+	msgbox(format("You attempted to switch to the lv100 vanilla cap, but your party is not at or below level 100. Get only lv100 mons in your party to use this option."))
+	clearflag(FLAG_RYU_FAILED_100_CAP_SWITCH)
+	closemessage
+	release
+	end
+}
+
+script RyuScrupt_Lv100SwitchMsg {
+	msgbox(format("You have enabled the lv100 vanilla cap. If you have pokemon in your pc that are higher than level 100, \p{COLOR LIGHT_RED}{SHADOW RED}They will be adjusted down to 100. \p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Keep this in mind when using the vanilla cap.\pIf this is not what you want, disable the cap before withdrawing mons from the PC."))
+	clearflag(FLAG_RYU_NOTIFY_LV100_SWITCH)
+	closemessage
+	release
+	end
+}
+
+script RyuSetUpMoneyMode {
+	msgbox("Please choose a money mode.")
+	bufferdynamicmulti(NGMO1, NGMO2, NGMO3)
+	multichoicedefault(0, 0, MULTI_DYNAMIC_3, 0, 1)
+	switch(var(VAR_RESULT)) {
+		case 0: 
+			setvar(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT, 400)
+			setvar(VAR_RYU_MONEY_BASE_VALUE, 200 )
+			setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 100)
+			msgbox("You will gain money using the standard\nEE formula.")
+		case 1: 
+			setvar(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT, 1000)
+			setvar(VAR_RYU_MONEY_BASE_VALUE, 100 )
+			setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 50)
+			msgbox("Battles have the potential to reward up\nto double the standard reward\por as low as half the average of\nthe standard reward.")
+		case 2:
+			setvar(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT, 100)
+			setvar(VAR_RYU_MONEY_BASE_VALUE, 200 )
+			setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 275)
+			msgbox("You will gain a more consistent\namount of prize money, but\pthe average will be lower than\nthe standard reward.")
+	}
+	goto(RyuConfirmMoneyMode)
+}
+
+script RyuConfirmMoneyMode {
+	msgbox("Are you happy with this selection?", MSGBOX_YESNO)
+	switch(var(VAR_RESULT)) {
+		case YES:
+			goto(ryu_return)
+		case NO:
+			goto(RyuSetUpMoneyMode)
+	}
+}
+
+text NGMO1 {
+	"Normal: Use classic EE prize money."
+}
+
+text NGMO2 {
+	"Gambler: High risk, more potential."
+}
+
+text NGMO3 {
+	"Safe: More consistent, less potential."
+}
+
+script SB_CheckMeloettaEncounter {
+	goto_if_set(FLAG_RYU_CAPTURED_MELOETTA, ryu_end)
+	readgamestat(GAME_STAT_USED_SOUND_MOVE)
+	if (var(VAR_RESULT) >= 255) {
+		goto(Ryu_DoMeloettaRoll)
+	}
+	elif((var(VAR_RESULT) > 199) && (var(VAR_RESULT) < 256)) {
+		goto(Ryu_MeloettaWatchingMsg)
+	}
+	elif(var(VAR_RESULT) >= 100){
+		goto(Ryu_BeingWatched)
+	}
+	else {
+		goto(ryu_end)
+	}
+	release
+	end
+}
+
+script gRyuWarpFemaleHomeScript {
+	warpsilent(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F, 255, 1, 4)
+	waitstate
+}
+
+script gRyuWarpMaleHomeScript {
+	warpsilent(MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_2F, 255, 1, 4)
+	waitstate
+}
+
+raw `
+@===================================================================================================Holiday 2020
+
+RyuScript_GiveHolidayGiftMon::
+	msgbox RS_LucyIntro
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_ge RyuScript_NoRoomForHolidayMon
+	bufferdynamicmulti HGM01Msg, HGM02Msg, HGM03Msg, HGM04Msg, HGM05Msg, HGM06Msg, 
+	multichoice  0, 0, MULTI_DYNAMIC_6, 1
+	switch VAR_RESULT
+	case 0, RS_HGM01
+	case 1, RS_HGM02
+	case 2, RS_HGM03
+	case 3, RS_HGM04
+	case 4, RS_HGM05
+	case 5, RS_HGM06
+
+HGM01Msg:
+    .string "Xerneas$"
+HGM02Msg:
+    .string "Yveltal$"
+HGM03Msg:
+    .string "Magearna$"
+HGM04Msg:
+    .string "Solgaleo$"
+HGM05Msg:
+    .string "Marshadow$"
+HGM06Msg:
+    .string "Lunala$"
+
+RS_HolidayOutro::
+	callnative RyuHolidayGiftMonSetData
+	msgbox RS_HolidayOutroMsg
+	setflag FLAG_RYU_HIDE_HOLIDAY_NPC
+	applymovement 12, LucyExit
+	waitmovement 12
+	removeobject 12
+	release
+	end
+
+LucyExit:
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+
+RyuScript_NoRoomForHolidayMon::
+	msgbox RS_HolidayNoSpace
+	release
+	end
+
+RS_HolidayOutroMsg::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Our lord Ryu thanks you for\nplaying {COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced.\p{COLOR LIGHT_RED}{SHADOW RED}Please enjoy your {STR_VAR_1}.$"
+
+RS_HolidayNoSpace::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You don't have space for\nthe gift. Please make space in\lyour party and return.$"
+
+RS_LucyIntro::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Greetings, {PLAYER}.\pI have travelled far to\ngive you season's tidings.\pPlease Choose a gift Pokémon\nfrom the list.$"
+
+`
+
+script RS_HGM01 {
+	getpartysize
+	copyvar(VAR_TEMP_E, VAR_RESULT)
+	setvar(VAR_TEMP_D,  SPECIES_XERNEAS)
+	bufferdynamicmulti(HGM01_Nature1, HGM01_Nature2)
+	multichoice(0, 5, MULTI_DYNAMIC_2, 1)
+	if (var(VAR_RESULT) == 0) {
+		setvar(VAR_TEMP_C, NATURE_ADAMANT)
+	}
+	else {
+		setvar(VAR_TEMP_C, NATURE_MODEST)
+	}
+	callnative(RyuGiveHolidayModdedMon)
+	bufferspeciesname(0, SPECIES_XERNEAS)
+	goto(RS_HolidayOutro)
+}
+
+text HGM01_Nature1 {
+	"Specially Offensive"
+}
+text HGM01_Nature2 {
+	"Physically Offensive"
+}
+
+script RS_HGM02{
+	getpartysize
+	copyvar(VAR_TEMP_E, VAR_RESULT)
+	setvar(VAR_TEMP_D,  SPECIES_YVELTAL)
+	bufferdynamicmulti(HGM01_Nature1, HGM01_Nature2)
+	multichoice(0, 5, MULTI_DYNAMIC_2, 1)
+	if (var(VAR_RESULT) == 0) {
+		setvar(VAR_TEMP_C, NATURE_ADAMANT)
+	}
+	else {
+		setvar(VAR_TEMP_C, NATURE_MODEST)
+	}
+	callnative(RyuGiveHolidayModdedMon)
+	bufferspeciesname(0, SPECIES_YVELTAL)
+	goto(RS_HolidayOutro)
+}
+
+script RS_HGM03{
+	getpartysize
+	copyvar(VAR_TEMP_E, VAR_RESULT)
+	setvar(VAR_TEMP_D,  SPECIES_MAGEARNA)
+	setvar(VAR_TEMP_C, NATURE_MODEST)
+	callnative(RyuGiveHolidayModdedMon)
+	bufferspeciesname(0, SPECIES_MAGEARNA)
+	goto(RS_HolidayOutro)
+}
+
+script RS_HGM04{
+	getpartysize
+	copyvar(VAR_TEMP_E, VAR_RESULT)
+	setvar(VAR_TEMP_D, SPECIES_SOLGALEO)
+	setvar(VAR_TEMP_C, NATURE_ADAMANT)
+	callnative(RyuGiveHolidayModdedMon)
+	bufferspeciesname(0, SPECIES_SOLGALEO)
+	goto(RS_HolidayOutro)
+}
+
+script RS_HGM05{
+	getpartysize
+	copyvar(VAR_TEMP_E, VAR_RESULT)
+	setvar(VAR_TEMP_D,  SPECIES_MARSHADOW)
+	setvar(VAR_TEMP_C,  NATURE_JOLLY)
+	callnative(RyuGiveHolidayModdedMon)
+	bufferspeciesname(0, SPECIES_MARSHADOW)
+	goto(RS_HolidayOutro)
+}
+
+script RS_HGM06{
+	getpartysize
+	copyvar(VAR_TEMP_E, VAR_RESULT)
+	setvar(VAR_TEMP_D,  SPECIES_LUNALA)
+	setvar(VAR_TEMP_C, NATURE_MODEST)
+	callnative(RyuGiveHolidayModdedMon)
+	bufferspeciesname(0, SPECIES_LUNALA)
+	goto(RS_HolidayOutro)
 }

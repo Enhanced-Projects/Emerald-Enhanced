@@ -32,7 +32,7 @@ MauvilleCity_House1_Text_ImRockSmashDudeTakeThis: @ 820F9AF
 	.string "Here, take this TM!$"
 
 MauvilleCity_House1_Text_ExplainRockSmash: @ 820FAA9
-	.string "That HM contains Earth Power.\p"
+	.string "That TM contains Earth Power.\p"
 	.string "It lets your brainy Pokémon\n"
 	.string "learn and use a Ground type move.$"
 

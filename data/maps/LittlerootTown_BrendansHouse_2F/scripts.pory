@@ -65,7 +65,7 @@ LRT_BrendanIntroductionScene::
 	setflag FLAG_RIVAL_LEFT_FOR_ROUTE103
 	setvar VAR_OLDALE_RIVAL_STATE, 2
 	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
-	setvar VAR_LITTLEROOT_INTRO_STATE, 8
+	setvar VAR_LITTLEROOT_INTRO_STATE, 7@@ met rival
 	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
 	release
 	end
@@ -115,7 +115,9 @@ LRT_BH_DeskBookMsg:
 @==================================================================================================@After Lilycove
 	
 LRT_BrendanWONT_HAPPEN::
+	clearfullscreenimage
 	setflag FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED @Makes it impossible to get the snorunt after this event.
+	setflag FLAG_RYU_BRENDAN_BAD_END
     msgbox LRT_BrendanSORRY, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_BRENDAN_ACQ @0x4A3
 	clearflag FLAG_RYU_DS_BRENDAN_FRIENDS
@@ -155,16 +157,23 @@ LRT_BrendanNIGHT::
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	@fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
-	waitmovement 0
+	applymovement 2, LRT_ReturnBrendantoPC
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
+
+LRT_ReturnBrendantoPC:
+	walk_left
+	walk_up
+	walk_up
+	step_end
 
 LRT_BrendanNight2::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
     msgbox LRT_BrendanSTAY2, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	drawfullscreenimage SCENEBGBRENDANNIGHT
+	compare VAR_RESULT, YES
 	goto_if_ne LRT_BrendanCANCEL
+	drawfullscreenimage SCENEBGBRENDANNIGHT
 	msgbox LRT_BrendanROM2Pre MSGBOX_DEFAULT
 	closemessage
 	clearfullscreenimage
@@ -194,7 +203,8 @@ LRT_BrendanNight2::
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
-	waitmovement 0
+	applymovement 2, LRT_ReturnBrendantoPC
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 
@@ -207,10 +217,19 @@ LRT_BrendanCANCEL::
 	end
 
 LRT_BrendanFZ::
+	goto_if_set FLAG_RYU_BRENDAN_BAD_END, LRT_Brendan_BadEnd
 	call LRT_BH_CheckBrendanSnorunt
     msgbox LRT_DS_FZ_Brendan MSGBOX_DEFAULT
 	release
 	end
+
+LRT_Brendan_BadEnd::
+	msgbox LRT_BrendanBadEndText
+	release
+	end
+
+LRT_BrendanBadEndText:
+	.string "Can you leave?\nI'm busy right now.$"
 
 Brendan_FollowerQuery:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I know we should have done\n"

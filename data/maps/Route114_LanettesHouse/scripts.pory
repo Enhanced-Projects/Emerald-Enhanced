@@ -6,7 +6,6 @@ Route114_LanettesHouse_MapScripts:: @ 822B2C8
 
 Route114_LanettesHouse_OnTransition: @ 822B2CE
 	setflag FLAG_LANDMARK_LANETTES_HOUSE
-	call RyuCheckForLNSUAch
 	goto_if_unset FLAG_RYU_DAYCARE_LEAFEVENTPC, LNH_HideLeaf
 	end
 
@@ -47,6 +46,7 @@ LNH_PreventEnterBasement::
 	
 Ryu_LNH_RomQuest::
 	setvar VAR_TEMP_3, 100
+	goto_if_unset FLAG_RYU_STARTED_LANETTE_QUEST, ryu_end
 	goto_if_set FLAG_RYU_LANETTE_EVENT_0, ryu_end
 	goto_if_set FLAG_RYU_LANETTE_INTRO, LNH_CheckHasMons
 	lock
@@ -125,7 +125,7 @@ LNH_Outro::
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	ach give ACH_NERD_LOVE
-	addvar VAR_RYU_QUESTS_FINISHED, 1
+	call RyuScript_IncrementQuestsFinished
 	msgbox LNH_TakeMeToBattleSometime
 	goto LNH_PartnerStayTheNight
 	release

@@ -28,6 +28,7 @@ SP_RyuRayEnc::
 	setwildbattle SPECIES_RAYQUAZA, VAR_RESULT, ITEM_DRAGON_FANG
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_2
 	removeobject 1
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
@@ -74,6 +75,7 @@ SkyPillar_Top_EventScript_Rayquaza:: @ 8239722
 	waitmoncry
 	setwildbattle SPECIES_RAYQUAZA, VAR_RESULT, ITEM_NONE
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
@@ -210,3 +212,44 @@ SkyPillar_Top_Text_RayquazaFlewOff: @ 8239860
 	.string "The awakened Rayquaza flew off…$"
 
 `
+
+script SP_TransformRayquaza {
+	setvar(VAR_TEMP_4, 100)
+	end
+	checkspecies(SPECIES_RAYQUAZA)
+	if (var(VAR_RESULT) == TRUE) {
+		playmoncry(SPECIES_RAYQUAZA, 0)
+		msgbox("Rayquaza is reacting strangely to being\nhere.\pLet it out?", MSGBOX_YESNO)
+		closemessage
+		waitmoncry
+		if (var(VAR_RESULT) == YES) {
+			fadescreen(FADE_TO_BLACK)
+			delay(20)
+			fadescreen(FADE_FROM_BLACK)
+			showmonpic(SPECIES_MEGA_RAYQUAZA, 10, 3)
+			playmoncry(SPECIES_MEGA_RAYQUAZA, 0)
+			waitmoncry
+			hidemonpic
+			copyvar(VAR_0x8004, VAR_TEMP_F)
+			special(BufferMonNickname)
+			msgbox("{STR_VAR_1} transformed into\nMega Rayquaza!")
+			playfanfare(MUS_FANFA5)
+			waitfanfare
+			closemessage
+			msgbox("It emits an aura of obscene\npower!")
+			setflag(FLAG_RYU_RAYQUAZA_TRANSFORMED)
+			closemessage
+			callnative(RyuTransformRayquaza)
+			release
+			end
+		}
+		else {
+			goto(ryu_end)
+		}
+	}
+	else {
+		msgbox("There's a strange power manifesting\nhere...")
+		release
+		end
+	}
+}

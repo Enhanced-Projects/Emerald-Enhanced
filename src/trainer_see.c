@@ -174,12 +174,23 @@ static const struct SpriteTemplate sSpriteTemplate_HeartIcon =
     .callback = SpriteCB_TrainerIcons
 };
 
+bool8 RyuCheckIfShouldBlackout(void)
+{
+    u8 i;
+    for (i = 0; i < CalculatePlayerPartyCount(); i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_HP) > 0)
+            return FALSE;
+    }
+    return TRUE;
+}
+
 // code
 bool8 CheckForTrainersWantingBattle(void)
 {
     u8 i;
     
-    if (CheckCanIgnoreTrainers() == TRUE)
+    if ((CheckCanIgnoreTrainers() == TRUE) && (!(VarGet(VAR_TRAINER_HILL_IS_ACTIVE) == 1)))
         return FALSE;
     
     gNoOfApproachingTrainers = 0;
@@ -207,7 +218,7 @@ bool8 CheckForTrainersWantingBattle(void)
             break;
     }
 
-    if (gNoOfApproachingTrainers == 1)
+    if (gNoOfApproachingTrainers == 1 && (RyuCheckIfShouldBlackout() == FALSE))
     {
         ResetTrainerOpponentIds();
         ConfigureAndSetUpOneTrainerBattle(gApproachingTrainers[gNoOfApproachingTrainers - 1].objectEventId,
@@ -215,7 +226,7 @@ bool8 CheckForTrainersWantingBattle(void)
         gTrainerApproachedPlayer = TRUE;
         return TRUE;
     }
-    else if (gNoOfApproachingTrainers == 2)
+    else if (gNoOfApproachingTrainers == 2 && (RyuCheckIfShouldBlackout() == FALSE))
     {
         ResetTrainerOpponentIds();
         for (i = 0; i < gNoOfApproachingTrainers; i++, gApproachingTrainerId++)

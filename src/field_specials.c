@@ -21,7 +21,6 @@
 #include "link.h"
 #include "list_menu.h"
 #include "main.h"
-#include "mevent.h"
 #include "match_call.h"
 #include "menu.h"
 #include "overworld.h"
@@ -717,15 +716,16 @@ u16 GetWeekCount(void)
 u8 GetLeadMonFriendshipScore(void)
 {
     struct Pokemon *pokemon = &gPlayerParty[GetLeadMonIndex()];
+    ConvertIntToDecimalStringN(gStringVar3, (GetMonData(pokemon, MON_DATA_FRIENDSHIP)), STR_CONV_MODE_LEFT_ALIGN, 3);
     if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) == MAX_FRIENDSHIP)
     {
         return 7;
     }
-    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 220)
+    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 200)
     {
         return 6;
     }
-    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 200)
+    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 175)
     {
         return 5;
     }
@@ -1024,11 +1024,6 @@ void GetSecretBaseNearbyMapName(void)
 u16 GetBestBattleTowerStreak(void)
 {
     return GetGameStat(GAME_STAT_BATTLE_TOWER_BEST_STREAK);
-}
-
-void BufferEReaderTrainerName(void)
-{
-    GetEreaderTrainerName(gStringVar1);
 }
 
 u16 GetSlotMachineId(void)
@@ -1353,24 +1348,6 @@ void BufferLottoTicketNumber(void)
     }
 }
 
-u16 GetMysteryEventCardVal(void)
-{
-    switch (gSpecialVar_Result)
-    {
-        case GET_NUM_STAMPS:
-            return mevent_081445C0(GET_NUM_STAMPS_INTERNAL);
-        case GET_MAX_STAMPS:
-            return mevent_081445C0(GET_MAX_STAMPS_INTERNAL);
-        case GET_CARD_BATTLES_WON:
-            return mevent_081445C0(GET_CARD_BATTLES_WON_INTERNAL);
-        case 3: // Never occurs
-            return mevent_081445C0(1);
-        case 4: // Never occurs
-            return mevent_081445C0(2);
-        default:
-            return 0;
-    }
-}
 
 bool8 BufferTMHMMoveName(void)
 {

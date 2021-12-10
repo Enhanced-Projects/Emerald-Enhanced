@@ -31,7 +31,7 @@ MirageCave_LakeCave_EventScript_GraveStone::
 	end
 
 MirageCave_LakeCave_Text_GraveStone:
-	.string "It appear to be a gravestone.\n"
+	.string "It appears to be a gravestone.\n"
 	.string "The text is mostly faded away.$"
 
 `

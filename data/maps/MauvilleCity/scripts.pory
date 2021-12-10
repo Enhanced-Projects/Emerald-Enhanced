@@ -20,6 +20,7 @@ MauvilleCity_OnFrame::
 
 CheckFollowerLanette::
 	setvar VAR_TEMP_5, 100
+	goto_if_set FLAG_RYU_LANETTE_IEVENT, ryu_end
 	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_end
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
 	goto_if_eq MC_LanetteInteraction
@@ -213,6 +214,7 @@ MauvilleCity_Text_BeenCheckingOutTV: @ 81E0699
 
 MC_LanetteInteraction::
 	lock
+	setflag FLAG_RYU_LANETTE_IEVENT
 	switch VAR_FACING
 	case DIR_NORTH, MC_LI_North
 	case DIR_SOUTH, MC_LI_South

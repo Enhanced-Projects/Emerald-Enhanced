@@ -406,19 +406,18 @@ JP_BlaiseEnters:
 	step_end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 `
+script JP_CheckMagmaClearCivilians {
+	if (var(VAR_RYU_QUEST_MAGMA) == 300){
+		lock
+		msgbox("You can't enter this area yet.\pFinish clearing the civilians first.")
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown)
+		applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown)
+		waitmovement(0xff)
+		goto(ryu_end)
+	}
+	else{
+		setvar(VAR_TEMP_7, 100)
+		goto(ryu_end)
+	}
+}

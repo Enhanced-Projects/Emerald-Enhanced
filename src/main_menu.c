@@ -14,7 +14,6 @@
 #include "main.h"
 #include "menu.h"
 #include "list_menu.h"
-#include "mystery_event_menu.h"
 #include "naming_screen.h"
 #include "option_menu.h"
 #include "overworld.h"
@@ -36,7 +35,6 @@
 #include "text_window.h"
 #include "title_screen.h"
 #include "window.h"
-#include "mystery_gift.h"
 
 /*
  * Main menu state machine
@@ -593,7 +591,6 @@ enum
     ACTION_OPTION,
     ACTION_MYSTERY_GIFT,
     ACTION_MYSTERY_EVENTS,
-    ACTION_EREADER,
     ACTION_INVALID
 };
 
@@ -1101,14 +1098,6 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 FlagSet(FLAG_RYU_RANDOMBATTLE);
                 FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
                 SetMainCallback2(CB2_ContinueSavedGame);
-                DestroyTask(taskId);
-                break;
-            case ACTION_MYSTERY_EVENTS:
-                SetMainCallback2(CB2_InitMysteryEventMenu);
-                DestroyTask(taskId);
-                break;
-            case ACTION_EREADER:
-                SetMainCallback2(c2_ereader);
                 DestroyTask(taskId);
                 break;
             case ACTION_INVALID:

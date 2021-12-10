@@ -41,7 +41,7 @@ script(global) RyuProfessionalsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
                     msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}. . .\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see. Thanks for the effort!"))
                     goto(CommonProfessionalsRewardScript)
                 }
@@ -90,7 +90,7 @@ script(global) RyuProfessionalsDailyQuest  {
         case 2:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE110)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             msgbox(format("Can you go see what the population of Cycling Road looks like? I want to travel through there soon, so I want to know how busy it is. Thanks!"))
         case 3:
             random(4)
@@ -109,7 +109,7 @@ script(global) RyuProfessionalsDailyQuest  {
         case 5:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_CRAGGY_COAST)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             msgbox(format("Hey there! We got word of some water-type Pokémon at Craggy Coast that would be useful transporting items north. Could you check out Craggy Coast and find which Pokémon can be found there?!"))
 
     }

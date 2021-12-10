@@ -678,8 +678,8 @@ static const u8 sWaveMailDesc[] = _(
 
 static const u8 sBeadMailDesc[] = _(
     "An imprint used to\n"
-    "minimize the Attack\n"
-    "EV's of a Pokémon.");
+    "minimize the IV's\n"
+    "of a Pokémon.");
 
 static const u8 sShadowMailDesc[] = _(
     "An imprint used to\n"
@@ -1878,7 +1878,9 @@ static const u8 sTM62Desc[] = _(
     "or lays a curse.");
 
 static const u8 sTM63Desc[] = _(
-    "contains nothing");
+    "Summons a celestial\n"
+    "object to block the\n"
+    "sun.");
 
 static const u8 sTM64Desc[] = _(
     "contains nothing");

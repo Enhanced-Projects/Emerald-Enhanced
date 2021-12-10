@@ -85,6 +85,7 @@ RyuLegendary_CaughtKyogreRoute130::
 	removeobject 4 
 	pokenavcall R130_Kyogre_ReturnToMossdeep
 	waitmessage
+	call MC_BlueOrb
 	setvar VAR_RYU_QUEST_AQUA, 150 @Player captured Kyogre.
 	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
 	waitstate

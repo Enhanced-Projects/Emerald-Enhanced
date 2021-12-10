@@ -13,10 +13,17 @@ RyuRCTS:
     .string "Now connecting to a shop...$"
 
 RyuAP_StatAssist::
-    setflag FLAG_TEMP_F
+    lock
+    msgbox RA_SA_Choosemon
     call RyuBufferPartyMonNames
-    multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 0, 1
-	special RyuFillStatsBuffers
+    multichoice 10, 0, MULTI_DYNAMIC_6, 0
+    compare VAR_RESULT, 127
+    goto_if_eq RyuAP_StatAssistExit
+    copyvar VAR_0x8001, VAR_RESULT
+    specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RyuAP_StatsFailed
+    special RyuFillStatsBuffers
 	delay 30
     drawinfobox INFOBOXPOKEMONDATA
     bufferpartymonnick 6, VAR_RESULT
@@ -24,6 +31,18 @@ RyuAP_StatAssist::
 	removeinfobox
     release
     end
+
+RyuAP_StatAssistExit::
+    msgbox RyuAP_Exiting
+    closemessage
+    release
+    end
+
+RA_SA_Choosemon:
+    .string "Please choose a party slot.\n{B_BUTTON}: Cancel.$"
+
+RyuAP_Exiting:
+    .string "No selection was made.\nExiting.$"
 
 RyuAP_StatsFailed::
     msgbox RyuAP_ErrorMsg

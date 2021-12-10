@@ -78,6 +78,7 @@ FT_LanetteRelChoice:: @ 8200C48
 FT_LanetteRomanceBegin::
 	msgbox FT_PlayerStartsFollowing
 	closemessage
+	setflag FLAG_RYU_STARTED_LANETTE_QUEST
 	applymovement OBJ_EVENT_ID_PLAYER, FT_FollowLanette
 	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_JIDO_DOA

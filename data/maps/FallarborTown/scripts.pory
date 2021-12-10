@@ -105,3 +105,20 @@ script FallarborTown_RealEstatePropertySign {
 	setvar(VAR_TEMP_D, PROPERTY_FALLARBOR)
 	goto(RyuRealEstateHouseSign)
 }
+
+script FT_ProfessionalsSpecialDeliveryTarget {
+	goto_if_set(FLAG_RYU_PROF_FALLARBOR_PACKAGE, FT_AlreadyDeliveredSpecialPackage)
+	goto_if_unset(FLAG_RYU_PROF_SPECIAL_IN_PROGRESS, ryu_end)
+	msgbox("Ah yes!\pIt's the new archaeology tools\nI ordered!\pThanks for delivering them!")
+	setflag(FLAG_RYU_PROF_FALLARBOR_PACKAGE)
+	closemessage
+	release
+	end
+}
+
+script FT_AlreadyDeliveredSpecialPackage { 
+	msgbox("Yes? Do I have another package?\nNo?\pThen why are you here?")
+	closemessage
+	release
+	end
+}

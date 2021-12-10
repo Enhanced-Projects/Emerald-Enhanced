@@ -406,14 +406,14 @@ MHM_DeluxeHealing::
 	msgbox DeluxeHealingKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	checkmoney 10000
+	checkmoney 12000
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_FULL_RESTORE, 12
 	additem ITEM_MAX_ELIXIR, 10
 	additem ITEM_MAX_REVIVE, 3
 	msgbox MHM_Success
-	removemoney 10000
+	removemoney 12000
 	closemessage
 	release
 	end
@@ -472,7 +472,7 @@ MHM_MasterKit::
 	msgbox MasterKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	checkmoney 20000
+	checkmoney 30000
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_FULL_RESTORE, 5
@@ -481,7 +481,7 @@ MHM_MasterKit::
 	additem ITEM_LUXURY_BALL, 10
 	additem ITEM_MAX_REVIVE, 10
 	additem ITEM_HYPER_POTION, 4
-	removemoney 20000
+	removemoney 30000
 	msgbox MHM_Success
 	closemessage
 	release
@@ -494,6 +494,12 @@ MHM_Exit::
 	
 MH2_NoAccessToMachine::
 	msgbox MHM_AccessDenied
+	release
+	end
+
+MHM_CantAfford::
+	msgbox MHM_CantAffordMsg
+	closemessage
 	release
 	end
 	
@@ -563,7 +569,7 @@ MHM_Success:
 	.string "The purchase was successful.\n"
 	.string "Exiting...$"
 	
-MHM_CantAfford:
+MHM_CantAffordMsg:
 	.string "The user does not have enough\n"
 	.string "currency to purchase the chosen\l"
 	.string "kit. Exiting...$"

@@ -113,7 +113,8 @@ SCH_LanaEvent::
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
 	checkspecies SPECIES_WAILORD
-	goto_if_unset FLAG_TEMP_C, SCH_LanaDispt
+	compare VAR_RESULT, TRUE
+	goto_if_ne SCH_LanaDispt
 	applymovement 1, Common_Movement_ExclamationMark
 	playse SE_PIN
 	waitmovement 1

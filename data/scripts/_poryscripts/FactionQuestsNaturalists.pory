@@ -41,7 +41,7 @@ script(global) RyuNaturalistsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
                     msgbox(format("That sounds like a great place to camp, thanks for scouting it out for me!"))
                     goto(CommonNaturalistRewardScript)
                 }
@@ -92,7 +92,7 @@ script(global) RyuNaturalistsDailyQuest  {
         case 2:
             random(4)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             callnative(RyuSetupEggHatchQuest)
             giveegg(VAR_RYU_DAILY_QUEST_TARGET)
             msgbox(format("Hey, I found this egg just laying around in the woods. Could you hatch it, so we know what it is? Thanks."))

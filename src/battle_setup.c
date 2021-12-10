@@ -53,6 +53,7 @@
 #include "lifeskill.h"
 #include "constants/items.h"
 #include "item.h"
+#include "overworld_notif.h"
 
 enum
 {
@@ -461,6 +462,7 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_DEOXYS:
     case SPECIES_HOOPA:
     case SPECIES_POIPOLE:
+    case SPECIES_VICTINI:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
         break;
     case SPECIES_ZAPDOS:
@@ -541,9 +543,14 @@ void StartRegiBattle(void)
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
     IncrementDailyWildBattles();
 }
-
+const u8 gRyuPickupSuffixCommon[] = _("(C) {COLOR 9}{SHADOW 10}");
+const u8 gRyuPickupSuffixUncommon[] = _("(U) {COLOR 4}{SHADOW 3}");
+const u8 gRyuPickupSuffixRare[] = _("(R) {COLOR 14}{SHADOW 15}");
+const u8 gRyuPickupSuffixVeryRare[] = _("(VR) {COLOR 12}{SHADOW 11}");
+const u8 gRyuPickupNotify[] = _("{STR_VAR_1} picked up a {RYU_STR_3}{STR_VAR_2}!");
 void RyuDoPickupLootRoll(u8 level, u8 slot)
 {
+    u32 species = 0;
     (level /= 10);
     level = (Random() % level + 1);//should let higher levels loot from any of the lower tables as well
     
@@ -551,31 +558,47 @@ void RyuDoPickupLootRoll(u8 level, u8 slot)
     {
         SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &gRyuLowPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
         VarSet(VAR_RYU_LAST_PICKUP_RARITY, 0);
+        StringCopy(gRyuStringVar3, gRyuPickupSuffixCommon);
     }
     else if ((level >= 5) && (level < 10)) //level 50 thru 99
     {
         SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &gRyuMedPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
         VarSet(VAR_RYU_LAST_PICKUP_RARITY, 1);
+        StringCopy(gRyuStringVar3, gRyuPickupSuffixUncommon);
     }
     else if ((level >= 10) && (level < 13)) //levl 100 thru 129
     {  
         SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &gRyuHighPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
         VarSet(VAR_RYU_LAST_PICKUP_RARITY, 2);
+        StringCopy(gRyuStringVar3, gRyuPickupSuffixRare);
     }
     else //level 130 and above
     {
         SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &gRyuMaxPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
         VarSet(VAR_RYU_LAST_PICKUP_RARITY, 3);
+        StringCopy(gRyuStringVar3, gRyuPickupSuffixVeryRare);
     }
+
+    species = GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES, NULL);
     
     VarSet(VAR_RYU_LAST_PICKUP_ITEM, GetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM));
     VarSet(VAR_RYU_LAST_PICKUP_SLOT, slot);
-    FlagSet(FLAG_RYU_NOTIFY_PICKUP_ITEM);
+    CopyItemName((VarGet(VAR_RYU_LAST_PICKUP_ITEM)), gStringVar2);
+    StringCopy(gStringVar1, gSpeciesNames[species]);
+    QueueNotification(gRyuPickupNotify, NOTIFY_PICKUP, 180);
+}
+
+void RyuDebugDoPickupTestRoll(void)
+{
+    RyuDoPickupLootRoll(200, 2);
+    RyuDoPickupLootRoll(200, 2);
+    RyuDoPickupLootRoll(200, 2);
+    RyuDoPickupLootRoll(200, 2);
 }
 
 static void CB2_EndWildBattle(void)
 {
-    u8 i;
+    u32 i;
     CpuFill16(0, (void*)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 
@@ -587,23 +610,25 @@ static void CB2_EndWildBattle(void)
     {
         if (!(gBattleOutcome == B_OUTCOME_RAN))
         {
-        for (i = 0; i < PARTY_SIZE; i++)
-        {   
-            u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
-            u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
-            u16 heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+            for (i = 0; i < PARTY_SIZE; i++)
+            {   
+                u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+                u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
+                u16 heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+                u32 rnd = (Random() % 99);
 
-            if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) 
-                || (gBaseStats[species].abilities[0] == ABILITY_PICKUP)
-                || (gBaseStats[species].abilityHidden == ABILITY_PICKUP))//forgot to consider the possibility that pickup can be a hidden ability.
-                && species != 0
-                && species != SPECIES_EGG
-                && heldItem == ITEM_NONE
-                && (Random() % 99) >= 92)//7% chance to loot
-                {
-                    RyuDoPickupLootRoll(level, i);
-                }
-        }
+                if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) 
+                    || (gBaseStats[species].abilities[0] == ABILITY_PICKUP)
+                    || (gBaseStats[species].abilityHidden == ABILITY_PICKUP))//forgot to consider the possibility that pickup can be a hidden ability.
+                    && species != 0
+                    && species != SPECIES_EGG
+                    && heldItem == ITEM_NONE
+                    && (rnd >= 92))//7% chance to loot
+                    {
+                        
+                        RyuDoPickupLootRoll(level, i);
+                    }
+            }
         }
         SetMainCallback2(CB2_ReturnToField);
         gFieldCallback = sub_80AF6F0;
@@ -1316,12 +1341,14 @@ void BattleSetup_StartTrainerBattle(void)
     ScriptContext1_Stop();
 }
 
+const u8 gText_BountyAdded[] = _("¥{RYU_STR_4} bounty added.");
+
 static void CB2_EndTrainerBattle(void)
 {
     u16 species = 0;
     u16 heldItem = 0;
     u16 ability = 0;
-    u8 i = 0;
+    u32 i = 0;
     
     IncrementGameStat(GAME_STAT_BATTLES_WON);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
@@ -1364,6 +1391,17 @@ static void CB2_EndTrainerBattle(void)
             }
     }
 
+    if (FlagGet(FLAG_USED_THIEF) == TRUE)
+    {
+        u16 random2 = ((Random() % 2500) + 500);
+        SetGameStat(GAME_STAT_PLAYER_BOUNTY, (GetGameStat(GAME_STAT_PLAYER_BOUNTY) + random2));
+        if (GetGameStat(GAME_STAT_PLAYER_BOUNTY) > 100000)
+            GiveAchievement(ACH_WANTED);
+        ConvertIntToDecimalStringN(gRyuStringVar4, random2, STR_CONV_MODE_LEFT_ALIGN, 5);
+        QueueNotification(gText_BountyAdded, NOTIFY_GENERAL, 60);
+        FlagClear(FLAG_USED_THIEF);
+    }
+
     if (gSaveBlock2Ptr->alchemyEffect > 0 && gSaveBlock2Ptr->alchemyEffect < 10 && gSaveBlock2Ptr->alchemyCharges > 0)
         gSaveBlock2Ptr->alchemyCharges--;
 
@@ -1373,14 +1411,15 @@ static void CB2_EndTrainerBattle(void)
     for (i = 0; i < PARTY_SIZE; i++)
         {   
             u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+            u32 rnd = (Random() % 99);
             species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
             heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
 
-            if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) || (gBaseStats[species].abilities[0] == ABILITY_PICKUP))
+            if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) || (gBaseStats[species].abilities[0] == ABILITY_PICKUP) || gBaseStats[species].abilityHidden == ABILITY_PICKUP)
                 && species != 0
                 && species != SPECIES_EGG
                 && heldItem == ITEM_NONE
-                && (Random() % 99) > 84)//15% chance to loot
+                && rnd > 84)//15% chance to loot
                 {
                     RyuDoPickupLootRoll(level, i);
                 }

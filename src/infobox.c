@@ -195,6 +195,19 @@ const u8 gText_RyuBallMenu4[] = _("White: Fast Ball, Black: Heavy Ball");
 const u8 gText_RyuBallMenu5[] = _("Yellow: Moon Ball.");
 const u8 gText_RyuBallMenu6[] = _("The service costs ¥1000.");
 
+const u8 gText_IBProf_Line1[] = _("No.:: Contents, Name, Location");
+const u8 gText_IBProf_Line2[] = _(" 1:: Metal Tools, Reginald, Fallarbor.");
+const u8 gText_IBProf_Line3[] = _(" 2:: Personal misc, Lia, Lilycove.");
+const u8 gText_IBProf_Line4[] = _(" 3:: Misc Medicine, James, Lilycove.");
+const u8 gText_IBProf_Line5[] = _(" 4:: Misc Medicine, James, Lilycove.");
+
+const u8 gText_IBBufferedString1[] = _("{STR_VAR_1}");
+const u8 gText_IBBufferedString2[] = _("{STR_VAR_2}");
+const u8 gText_IBBufferedString3[] = _("{STR_VAR_3}");
+const u8 gText_IBBufferedString4[] = _("{RYU_STR_1}");
+const u8 gText_IBBufferedString5[] = _("{RYU_STR_2}");
+const u8 gText_IBBufferedString6[] = _("{RYU_STR_3}");
+
 //String list groups for individual infoboxes
 
 static const struct InfoBox sInfoBoxPokemonData[] = 
@@ -433,6 +446,26 @@ static const struct InfoBox sInfoBoxGridTest[] =
     {gText_HastyNature}
 };
 
+static const struct InfoBox sInfoBox_ProfessionalsSpecialDeliveryManifest[] =
+{
+    {gText_IBProf_Line1},
+    {gText_IBProf_Line2},
+    {gText_IBProf_Line3},
+    {gText_IBProf_Line4},
+    {gText_IBProf_Line5}
+};
+
+
+static const struct InfoBox sInfobox_DynamicContents[] = 
+{
+    {gText_IBBufferedString1},
+    {gText_IBBufferedString2},
+    {gText_IBBufferedString3},
+    {gText_IBBufferedString4},
+    {gText_IBBufferedString5},
+    {gText_IBBufferedString6}
+};
+
 //You also need to add INFOBOX(name) to the bottom of vars.h so that these can be accessed from script.
 
 //List of infobox groups used when calling them
@@ -460,7 +493,9 @@ static const struct InfoBoxListStruct sInfoBoxes[] =
     BOXLIST(sInfoBoxGCMS1), //gcms tutorial
     BOXLIST(sInfoBoxGCMS2), //gcms tutorial
     BOXLIST(sInfoBoxGCMS3), //gcms tutorial
-    BOXLIST(sInfoBoxBotanyBallMenu) //Kurt's information about balls you can create with apricorns
+    BOXLIST(sInfoBoxBotanyBallMenu), //Kurt's information about balls you can create with apricorns
+    BOXLIST(sInfoBox_ProfessionalsSpecialDeliveryManifest), //Special infobox for professionals intro quest
+    BOXLIST(sInfobox_DynamicContents) //Dynamically filled infobox at script-run-time
 };
 
 void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)
@@ -540,7 +575,7 @@ void PrintInfoBox(u8 mode, u16 number)
     u8 count = sInfoBoxes[number].count;
     struct WindowTemplate template;
     const struct InfoBox *list = sInfoBoxes[number].list;
-
+    
     if (mode == 2)
     {
         u8 left = (VarGet(VAR_TEMP_A));

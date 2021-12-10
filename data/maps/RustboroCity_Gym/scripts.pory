@@ -38,7 +38,7 @@ RG_Reset::
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle
 	closemessage
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
-	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
+	call_if_set FLAG_RYU_CHALLENGEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM1HANDOUT, RyuGymItemReward1
 	call Ryu_CheckForPartnerReward
 	release
@@ -205,7 +205,7 @@ RG_AltGymBattle::
 	msgbox RG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq LG_ChooseValidMons
+	goto_if_eq RG_ChooseValidMons
 	multi_2_vs_1 TRAINER_ROXANNE_4, RG_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST

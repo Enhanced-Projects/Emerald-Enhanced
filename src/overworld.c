@@ -24,6 +24,7 @@
 #include "fldeff.h"
 #include "gpu_regs.h"
 #include "heal_location.h"
+#include "constants/heal_locations.h"
 #include "io_reg.h"
 #include "link.h"
 #include "link_rfu.h"
@@ -90,7 +91,9 @@
 #define FACING_FORCED_LEFT 9
 #define FACING_FORCED_RIGHT 10
 
-extern const u8 RyuFailedNuzlocke[];
+extern const u8 RyuFailedChallenge[];
+extern const u8 gRyuWarpMaleHomeScript[];
+extern const u8 gRyuWarpFemaleHomeScript[];
 
 extern const struct MapLayout *const gMapLayouts[];
 extern const struct MapHeader *const *const gMapGroups[];
@@ -197,7 +200,7 @@ u8 gLocalLinkPlayerId; // This is our player id in a multiplayer mode.
 u8 gFieldLinkPlayerCount;
 extern u8 RyuFollowerSelectNPCScript[];
 extern u8 Ryu_StartRandomBattle[];
-extern u8 Ryu_PlayerFailedNuzlockeHardcore[];
+extern u8 Ryu_PlayerFailedChallengeHardcore[];
 
 // EWRAM vars
 EWRAM_DATA static u8 sObjectEventLoadFlag = 0;
@@ -393,6 +396,12 @@ void SetWarpDestinationToHome(void)
     
 }
 
+void SetWarpDestinationToLimbo(void) //challenge over
+{
+        SetWarpDestination(33, 3, 255, 2, 1);
+}
+
+
 // code
 void DoWhiteOut(void)
 {
@@ -402,7 +411,7 @@ void DoWhiteOut(void)
         DoSoftReset();
     }
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
         RyuWipeParty();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
@@ -410,13 +419,13 @@ void DoWhiteOut(void)
 
     FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
 
-    if (CalculatePlayerPartyCount() == 0 && (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1))
+    if ((CalculatePlayerPartyCount() == 0) && (FlagGet(FLAG_RYU_CHALLENGEFAILED) == 1))
     {
         if (VarGet(VAR_RYU_NGPLUS_COUNT) > 1)
         {
             FlagSet(FLAG_SYS_GAME_CLEAR);
             VarSet(VAR_RYU_NGPLUS_COUNT, ((VarGet(VAR_RYU_NGPLUS_COUNT) - 1)));
-            if ((CheckAchievement(ACH_WASTED) == FALSE) && (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1))
+            if ((CheckAchievement(ACH_WASTED) == FALSE) && (FlagGet(FLAG_RYU_CHALLENGEFAILED) == 1))
                 GiveAchievement(ACH_WASTED);
         }
         HandleSavingData(SAVE_OVERWRITE_DIFFERENT_FILE);
@@ -426,16 +435,20 @@ void DoWhiteOut(void)
         GiveAchievement(ACH_YOU_DIED);
 
     FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
-    ScriptContext2_RunNewScript(EventScript_WhiteOut);
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
+    IncrementGameStat(GAME_STAT_BATTLES_LOST);
     Overworld_ResetStateAfterWhiteOut();
-    SetWarpDestinationToHome();//had to force blackout location here because it does screwy things otherwise.
+	FlagClear(FLAG_RYU_TC_ENTERED);
+	FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
+	FlagClear(FLAG_DEFEATED_ELITE_4_SIDNEY);
+	FlagClear(FLAG_DEFEATED_ELITE_4_PHOEBE);
+	FlagClear(FLAG_DEFEATED_ELITE_4_GLACIA);
+	FlagClear(FLAG_DEFEATED_ELITE_4_DRAKE);
+	VarSet(VAR_ELITE_4_STATE, 0);
+    SetWarpDestinationToHome();
     WarpIntoMap();
 }
-
-extern void RyuWarp();
-extern void RyuWarp2();
 
 void DoPartnerWhiteOut(void)
 {
@@ -445,21 +458,29 @@ void DoPartnerWhiteOut(void)
         DoSoftReset();
     }
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
         RyuWipeParty();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuWipeParty();
 
+    if (CheckAchievement(ACH_YOU_DIED) == FALSE)
+        GiveAchievement(ACH_YOU_DIED);
+
     FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
-    ScriptContext2_RunNewScript(EventScript_WhiteOut);
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
     IncrementGameStat(GAME_STAT_BATTLES_LOST);
     Overworld_ResetStateAfterWhiteOut();
-    if (&gSaveBlock2Ptr->playerGender == 0)
-        RyuWarp();
-    RyuWarp2();
+	FlagClear(FLAG_RYU_TC_ENTERED);
+	FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
+	FlagClear(FLAG_DEFEATED_ELITE_4_SIDNEY);
+	FlagClear(FLAG_DEFEATED_ELITE_4_PHOEBE);
+	FlagClear(FLAG_DEFEATED_ELITE_4_GLACIA);
+	FlagClear(FLAG_DEFEATED_ELITE_4_DRAKE);
+	VarSet(VAR_ELITE_4_STATE, 0);
+    SetWarpDestinationToHome();
+    WarpIntoMap();
 }
 
 void Overworld_ResetStateAfterFly(void)
@@ -1523,7 +1544,6 @@ void CB1_Overworld(void)
 
 static void OverworldBasic(void)
 {
-    DnsApplyFilters();
     ScriptContext2_RunScript();
     RunTasks();
     AnimateSprites();
@@ -1533,6 +1553,7 @@ static void OverworldBasic(void)
     UpdatePaletteFade();
     UpdateTilesetAnimations();
     DoScheduledBgTilemapCopiesToVram();
+    DnsApplyFilters();
 }
 
 // This CB2 is used when starting
@@ -1824,7 +1845,7 @@ void CB2_ReturnToFieldLocal(void)
         SetMainCallback2(CB2_Overworld);
     }
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
         RyuKillMon();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
@@ -1933,11 +1954,11 @@ void CB2_ContinueSavedGame(void)
         ScriptContext1_SetupScript(Ryu_StartRandomBattle);
     }
 
-    if (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEFAILED) == 1)
     {
         FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
         ScriptContext2_Enable();
-        ScriptContext1_SetupScript(Ryu_PlayerFailedNuzlockeHardcore);
+        ScriptContext1_SetupScript(Ryu_PlayerFailedChallengeHardcore);
     }
 
     if (UseContinueGameWarp() == TRUE)
@@ -2164,7 +2185,7 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
 
 static bool32 ReturnToFieldLocal(u8 *state)
 {
-    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
         RyuKillMon();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
@@ -2182,7 +2203,6 @@ static bool32 ReturnToFieldLocal(u8 *state)
         break;
     case 1:
         InitViewGraphics();
-        TryLoadTrainerHillEReaderPalette();
         (*state)++;
         break;
     case 2:

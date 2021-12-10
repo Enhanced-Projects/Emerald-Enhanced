@@ -199,8 +199,8 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_setescapewarp             @ 0xc4
 	.4byte ScrCmd_waitmoncry                @ 0xc5
 	.4byte ScrCmd_bufferboxname             @ 0xc6
-	.4byte ScrCmd_nop1                      @ 0xc7
-	.4byte ScrCmd_nop1                      @ 0xc8
+	.4byte ScrCmd_notification              @ 0xc7
+	.4byte ScrCmd_numberentry               @ 0xc8
 	.4byte ScrCmd_nop1                      @ 0xc9
 	.4byte ScrCmd_nop1                      @ 0xca
 	.4byte ScrCmd_nop1                      @ 0xcb
@@ -229,11 +229,11 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_bufferitemnameplural      @ 0xe2	
 	.4byte ScrCmd_createfollower            @ 0xe3
 	.4byte ScrCmd_destroyfollower           @ 0xe4
-	.4byte ScrCmd_unusedscrcmd              @ 0xe5
+	.4byte ScrCmd_bufferdynamicmulti        @ 0xe5
 	.4byte ScrCmd_drawcustompic             @ 0xe6
 	.4byte ScrCmd_addmonhappiness           @ 0xe7
 	.4byte ScrCmd_scriptdebug               @ 0xe8
-	.4byte ScrCmd_givebp                    @ 0xe9
+	.4byte ScrCmd_buffersingledynamicline   @ 0xe9
 	.4byte ScrCmd_checkbp                   @ 0xea
 	.4byte ScrCmd_gfec                      @ 0xeb
 	.4byte ScrCmd_multvar                   @ 0xec

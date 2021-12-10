@@ -9,7 +9,6 @@ TrainerHill_Entrance_MapScripts:: @ 82680AC
 
 TrainerHill_Entrance_OnTransition: @ 82680C6
 	setflag FLAG_LANDMARK_TRAINER_HILL
-	call RyuCheckForLNSUAch
 	getplayerxy VAR_TEMP_D, VAR_RESULT
 	end
 
@@ -20,11 +19,8 @@ TrainerHill_Entrance_OnWarp: @ 82680CF
 TrainerHill_Entrance_OnResume: @ 82680D0
 	trainerhill_resumetimer
 	setvar VAR_TEMP_0, 0
-	trainerhill_getusingereader
-	compare VAR_RESULT, FALSE  @ VAR_RESULT always FALSE here
-	goto_if_eq TrainerHill_Entrance_EventScript_TryFaceAttendant
-	setobjectxy OBJ_EVENT_ID_PLAYER, 9, 6
-	applymovement OBJ_EVENT_ID_PLAYER, TrainerHill_Entrance_Movement_PlayerFaceAttendant
+	@setobjectxy OBJ_EVENT_ID_PLAYER, 9, 6
+	@applymovement OBJ_EVENT_ID_PLAYER, TrainerHill_Entrance_Movement_PlayerFaceAttendant
 	end
 
 TrainerHill_Entrance_EventScript_TryFaceAttendant:: @ 82680FF
@@ -74,10 +70,11 @@ TrainerHill_Entrance_EventScript_ExitElevator:: @ 8268160
 
 TrainerHill_Entrance_EventScript_ExitChallenge:: @ 8268182
 	setvar VAR_TEMP_0, 1
+	compare VAR_TRAINER_HILL_IS_ACTIVE, 1
+	goto_if_ne ryu_end
 	trainerhill_getstatus
 	switch VAR_RESULT
 	case TRAINER_HILL_PLAYER_STATUS_LOST, TrainerHill_Entrance_EventScript_ExitChallengeLost
-	case TRAINER_HILL_PLAYER_STATUS_ECARD_SCANNED, TrainerHill_Entrance_EventScript_ExitChallengeECard
 	case TRAINER_HILL_PLAYER_STATUS_NORMAL, TrainerHill_Entrance_EventScript_EndExitChallenge
 
 TrainerHill_Entrance_EventScript_ExitChallengeLost:: @ 82681B5
@@ -86,18 +83,14 @@ TrainerHill_Entrance_EventScript_ExitChallengeLost:: @ 82681B5
 	msgbox TrainerHill_Entrance_Text_TooBadTremendousEffort, MSGBOX_DEFAULT
 	goto TrainerHill_Entrance_EventScript_PlayerExitChallenge
 
-TrainerHill_Entrance_EventScript_ExitChallengeECard:: @ 82681CA
-	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, TrainerHill_Entrance_Movement_PlayerFaceAttendant
-	msgbox TrainerHill_Entrance_Text_MovedReceptionHereForSwitch, MSGBOX_DEFAULT
 TrainerHill_Entrance_EventScript_PlayerExitChallenge:: @ 82681DA
 	closemessage
+TrainerHill_Entrance_EventScript_EndExitChallenge:: @ 82681EE
 	applymovement OBJ_EVENT_ID_PLAYER, TrainerHill_Entrance_Movement_PushPlayerBackFromCounter
 	waitmovement 0
 	setvar VAR_TRAINER_HILL_IS_ACTIVE, 0
 	special HealPlayerParty
 	releaseall
-TrainerHill_Entrance_EventScript_EndExitChallenge:: @ 82681EE
 	end
 
 TrainerHill_Entrance_EventScript_Nurse:: @ 82681EF

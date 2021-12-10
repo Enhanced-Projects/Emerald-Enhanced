@@ -527,6 +527,11 @@ u8 * GetEvolvedPokemonStat(u8 * buffer)
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_EVOLVED_POKEMON), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
+u8 * GetTimesHealedStat(u8 * buffer)
+{
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_USED_POKECENTER), STR_CONV_MODE_LEFT_ALIGN, 4);
+}
+
 u8 * GetBattlesWon(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_BATTLES_WON), STR_CONV_MODE_LEFT_ALIGN, 4);
@@ -545,6 +550,11 @@ u8 * GetPlayerContestsWon(u8 * buffer)
 u8 * GetPlayerContestsEntered(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_ENTERED_CONTEST), STR_CONV_MODE_LEFT_ALIGN, 4);
+}
+
+u8 * GetPlayerBounty(u8 * buffer)
+{
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_PLAYER_BOUNTY), STR_CONV_MODE_LEFT_ALIGN, 10);
 }
 
 extern int RyuGetPartnerCount();
@@ -603,6 +613,12 @@ u8 * GetBankBalance(u8 * buffer)
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10);
 }
 
+extern int RyuGetNumberOwnedProperties(void);
+u8 * GetOwnedProperties(u8 * buffer)
+{
+    return ConvertIntToDecimalStringN(buffer, RyuGetNumberOwnedProperties(), STR_CONV_MODE_LEFT_ALIGN, 2);
+}
+
 u8 * GetNetWorth(u8 * buffer)
 {
     u32 balance = (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE));
@@ -619,7 +635,7 @@ u8 * GetNetWorth(u8 * buffer)
     if (totalPropertyValue + balance + money >= 1000000)
         GiveAchievement(ACH_MILLIONAIRE);
 
-    if (totalPropertyValue + balance + money >= 1000000000)
+    if (totalPropertyValue + balance + money >= 100000000)
         GiveAchievement(ACH_MONEYBAGS);
 
     return ConvertUIntToDecimalStringN(buffer, balance + money + totalPropertyValue, STR_CONV_MODE_LEFT_ALIGN, 10);
@@ -627,10 +643,7 @@ u8 * GetNetWorth(u8 * buffer)
 
 u8 * GetPropertiesOwned(u8 * buffer)
 {
-    u8 propertiesOwned = (VarGet(VAR_RYU_NUM_OWNED_PROPERTIES));
-
-    if (propertiesOwned == NUM_PROPERTIES)
-        GiveAchievement(ACH_SLUM_LORD);
+    u8 propertiesOwned = (RyuGetNumberOwnedProperties());
     return ConvertIntToDecimalStringN(buffer, propertiesOwned, STR_CONV_MODE_LEFT_ALIGN, 2);
 }
 
@@ -655,6 +668,8 @@ static const struct JournalStatData sJournalGeneralStatsPage[] =
     JOURNAL_STAT("Dex Caught", BufferPokedexCaughtCountStr, 0, 3, JOURNALSTAT_CUSTOM),
     JOURNAL_STAT("Legendaries Caught", NULL, VAR_RYU_LEGENDARIES_CAUGHT, 2, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Steps Taken Alone", NULL, GAME_STAT_STEPS, 6, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Healed Party", NULL, GAME_STAT_USED_POKECENTER, 4, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Bounty", NULL, GAME_STAT_PLAYER_BOUNTY, 6, JOURNALSTAT_GAME_STAT),
     JOURNAL_STAT_END
 };
 
@@ -698,7 +713,7 @@ static const struct JournalStatData sJournalTrainingStatsPage[] =
 static const struct JournalStatData sJournalFinancialStatsPage[] =
 {
     JOURNAL_STAT("Bank Balance", NULL, GAME_STAT_FRONTIERBANK_BALANCE, 10, JOURNALSTAT_GAME_STAT),
-    JOURNAL_STAT("Properties Owned", NULL, VAR_RYU_NUM_OWNED_PROPERTIES, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Properties Owned",  GetOwnedProperties, 0, 2, JOURNALSTAT_CUSTOM),
     JOURNAL_STAT("Net Worth", GetNetWorth, 0, 10, JOURNALSTAT_CUSTOM), //why was this 5 digits? it can be up to 10!
     JOURNAL_STAT("Days Interest gained", NULL, VAR_RYU_DAYS_INTEREST_GAINED, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Property Repairs", NULL, VAR_RYU_PROPERTIES_REPAIRED, 5, JOURNALSTAT_VARIABLE),

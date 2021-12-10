@@ -529,6 +529,7 @@ RCR_CheckStevenGift::
 	return
 	
 RCR_FinishChallenge::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RCR_CheckMinnieEvent
 	msgbox RCR_PlayerRecordingInfo
 	call_if_set FLAG_TEMP_B, RCR_CheckStevenGift
 	addvar VAR_RYU_TITLE_DEFENSE_WINS, 1
@@ -544,6 +545,12 @@ RCR_FinishChallenge::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	warp MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 255, 7, 16
 	end
+
+RCR_CheckMinnieEvent::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
+	goto_if_ne ryu_return
+	call EGC_FollowerMinnieFlagSet
+	return
 
 EGC_RYU_PLAYER_LOST::
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN

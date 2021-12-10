@@ -58,7 +58,6 @@
 #include "constants/rgb.h"
 #include "constants/region_map_sections.h"
 #include "gba/m4a_internal.h"
-#include "autoscale_tables.h"
 
 // Defines
 enum WindowIds
@@ -142,7 +141,7 @@ static u8 DexNavGetAbilityNum(u16 species, u8 searchLevel);
 static u8 DexNavGeneratePotential(u8 searchLevel);
 static u8 DexNavTryGenerateMonLevel(u16 species, u8 environment);
 static u8 GetEncounterLevelFromMapData(u16 species, u8 environment);
-static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16* moves);
+static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16 item, u16* moves);
 static u8 GetPlayerDistance(s16 x, s16 y);
 static u8 DexNavPickTile(u8 environment, u8 xSize, u8 ySize, bool8 smallScan);
 static void DexNavProximityUpdate(void);
@@ -157,13 +156,12 @@ static void DrawHiddenSearchWindow(u8 width);
 
 //// Const Data
 // gui image data
-static const u32 sDexNavGuiTiles[] = INCBIN_U32("graphics/dexnav/gui_tiles.4bpp.lz");
-static const u32 sDexNavGuiTilemap[] = INCBIN_U32("graphics/dexnav/gui_tilemap.bin.lz");
-static const u32 sDexNavGuiPal[] = INCBIN_U32("graphics/dexnav/gui.gbapal");
-// gui image data
 static const u32 sDexNavGuiTilesDark[] = INCBIN_U32("graphics/dexnav/gui_tiles_dark.4bpp.lz");
 static const u32 sDexNavGuiTilemapDark[] = INCBIN_U32("graphics/dexnav/gui_tilemap_dark.bin.lz");
 static const u32 sDexNavGuiPalDark[] = INCBIN_U32("graphics/dexnav/gui_dark.gbapal");
+static const u32 sDexNavGuiTiles[] = INCBIN_U32("graphics/dexnav/gui_tiles.4bpp.lz");
+static const u32 sDexNavGuiTilemap[] = INCBIN_U32("graphics/dexnav/gui_tilemap.bin.lz");
+static const u32 sDexNavGuiPal[] = INCBIN_U32("graphics/dexnav/gui.gbapal");
 
 static const u32 sSelectionCursorGfx[] = INCBIN_U32("graphics/dexnav/cursor.4bpp.lz");
 static const u16 sSelectionCursorPal[] = INCBIN_U16("graphics/dexnav/cursor.gbapal");
@@ -441,9 +439,6 @@ static const struct CompressedSpriteSheet sPotentialStarSpriteSheet = {sPotentia
 //static const struct CompressedSpriteSheet sSightSpriteSheet = {sEyeGfx, (16 * 8 * 3) / 2, SIGHT_TAG};
 static const struct CompressedSpriteSheet sOwnedIconSpriteSheet = {sOwnedIconGfx, (8 * 8) / 2, OWNED_ICON_TAG};
 static const struct CompressedSpriteSheet sHiddenMonIconSpriteSheet = {sHiddenMonIconGfx, (8 * 8) / 2, HIDDEN_MON_ICON_TAG};
-
-
-//theme selection
 
 const u8* RyuReturnThemeColors(u8 isDark)
 {
@@ -927,7 +922,7 @@ static void DexNavDrawPotentialStars(u8 potential, u8* dst)
     }
 }
 
-/*static void DexNavDrawSight(u8 sightLevel, u8* dst) //i dont know what this is or does.
+/*static void DexNavDrawSight(u8 sightLevel, u8* dst)
 {
     //LoadSpritePalette(&sHeldItemSpritePalette);
     *dst = CreateSprite(&sSightTemplate, 176 + (16 / 2), GetSearchWindowY() + 18, 0);
@@ -1001,6 +996,7 @@ bool8 TryStartDexnavSearch(void)
         return FALSE;
     
     HideMapNamePopUpWindow();
+    ChangeBgY_ScreenOff(0, 0, 0);
     taskId = CreateTask(Task_InitDexNavSearch, 0);
     gTasks[taskId].tSpecies = val & MASK_SPECIES;
     gTasks[taskId].tEnvironment = val >> 14;
@@ -1128,7 +1124,7 @@ static void Task_DexNavSearch(u8 taskId)
     if (sDexNavSearchDataPtr->proximity < 1)
     {
         CreateDexNavWildMon(sDexNavSearchDataPtr->species, sDexNavSearchDataPtr->potential, sDexNavSearchDataPtr->monLevel, 
-          sDexNavSearchDataPtr->abilityNum, sDexNavSearchDataPtr->moves);
+          sDexNavSearchDataPtr->abilityNum, sDexNavSearchDataPtr->heldItem, sDexNavSearchDataPtr->moves);
         
         FlagClear(FLAG_SYS_DEXNAV_SEARCH);
         gDexnavBattle = TRUE;        
@@ -1234,83 +1230,68 @@ static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel)
     }
 }
 
-int RyuGetMaxBossChance()
-{
-    // Design is to target 1/64 "max" while granting ~ .5% increase per chain. Odds starts at 1 against 114 and linearly decreases to 1/64 at chain >= 100
-    // It actually takes 2 levels for 1% increase (round down). Neglectible statistical impact < stronger architecture.
-    u8 rarityAtMaxChain = 64;
-    u8 currentChain = gSaveBlock1Ptr->dexNavChain;
-    u8 penaltyFromLowChainCount = currentChain >= 100 
-        ? 0 
-        : (100 - currentChain) / 2;
-
-    return rarityAtMaxChain + penaltyFromLowChainCount;
-}
-
 //////////////////////////////
 //// DEXNAV MON GENERATOR ////
 //////////////////////////////
-static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16* moves)
+static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16 item, u16* moves)
 {
     struct Pokemon* mon = &gEnemyParty[0];
-    u8 iv[3];
+    u8 iv[3] = {NUM_STATS};
     u8 i;
     u8 perfectIv = 31;
-    u16 heldItem = (sDexNavSearchDataPtr->heldItem);
-    u8 ability = 2;
     
-    if (GenerateWildMonWithBossProbability(species, level, RyuGetMaxBossChance())) {
-        FlagSet(FLAG_RYU_BOSS_WILD);
-    }
-
-    if (FlagGet(FLAG_RYU_BOSS_WILD) == 1)
-        SetMonData(mon, MON_DATA_ABILITY_NUM, &ability);
-    else
-        SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
-
-    SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem); //give the item generated earlier to the mon.
+    if (DexNavTryMakeShinyMon())
+        FlagSet(FLAG_SHINY_CREATION); // just easier this way
     
-    //Pick potential ivs to set to 31
-    iv[0] = Random() % 6;
-    iv[1] = Random() % 6;
-    iv[2] = Random() % 6;
-    if (FlagGet(FLAG_RYU_BOSS_WILD) == 0)//if boss mon, don't change iv's, they are already max
-    {
-        if ((iv[0] != iv[1]) && (iv[0] != iv[2]) && (iv[1] != iv[2]))
-        {
-            if (potential > 2)
-                SetMonData(mon, MON_DATA_HP_IV + iv[2], &perfectIv);
-            else if (potential > 1)
-                SetMonData(mon, MON_DATA_HP_IV + iv[1], &perfectIv);
-            else if (potential)
-                SetMonData(mon, MON_DATA_HP_IV + iv[0], &perfectIv);
-            //Set ability
-            SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
-        }
-    }
-        //Set moves
+    CreateWildMon(species, level);  // shiny rate bonus handled in CreateBoxMon
+    
+    // Pick random, unique IVs to set to 31. The number of perfect IVs that are assigned is equal to the potential
+    iv[0] = Random() % NUM_STATS;               // choose 1st perfect stat
+    do {
+        iv[1] = Random() % NUM_STATS;
+        iv[2] = Random() % NUM_STATS;
+    } while ((iv[1] == iv[0])                   // unique 2nd perfect stat
+      || (iv[2] == iv[0] || iv[2] == iv[1]));   // unique 3rd perfect stat
+    
+    if (potential > 2 && iv[2] != NUM_STATS)
+        SetMonData(mon, MON_DATA_HP_IV + iv[2], &perfectIv);
+    if (potential > 1 && iv[1] != NUM_STATS)
+        SetMonData(mon, MON_DATA_HP_IV + iv[1], &perfectIv);
+    if (potential > 0 && iv[0] != NUM_STATS)
+        SetMonData(mon, MON_DATA_HP_IV + iv[0], &perfectIv);
+    
+    //Set ability
+    SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+    
+    // Set Held Item
+    if (item)
+        SetMonData(mon, MON_DATA_HELD_ITEM, &item);
+
+    //Set moves
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, moves[i], i);
 
-    CalculateMonStats(mon); //All of these things appear to me like they're working in order, really don't get why the mon shown in dexnav dsisplay is not the same mon you get in battle.
-    //the held item, abilities, potential, and bonus IV/lvls are all randomly acting up.
+    CalculateMonStats(mon);
+    FlagClear(FLAG_SHINY_CREATION);
 }
 
-extern int CountBadges();
 // gets a random level of the species based on map data.
 //if it was a hidden encounter, updates the environment it is to be found from the wildheader encounterRate
 static u8 DexNavTryGenerateMonLevel(u16 species, u8 environment)
 {
-    u8 levelBase = RyuChooseLevel(CountBadges(), FALSE, SCALING_TYPE_WILD, CalculatePlayerPartyStrength()); //this is probably why there are mons showing as available in places that don't have encounter data.
-    u8 levelBonus = gSaveBlock1Ptr->dexNavChain / 5; //dexnav appears to use wild mon levels to determin availability... for whatever reason.
+    u8 levelBase = GetEncounterLevelFromMapData(species, environment);
+    u8 levelBonus = gSaveBlock1Ptr->dexNavChain / 5;
 
-    //if (levelBase == MON_LEVEL_NONEXISTENT) Unnecessary since RyuChooseLevel will ALWAYS return a level.
-        //return MON_LEVEL_NONEXISTENT;   //species not found in the area
+    if (levelBase == MON_LEVEL_NONEXISTENT)
+        return MON_LEVEL_NONEXISTENT;   //species not found in the area
     
     if (Random() % 100 < 4)
         levelBonus += 10; //4% chance of having a +10 level
 
-    return min(levelBase + levelBonus, MAX_LEVEL);
+    if (levelBase + levelBonus > MAX_LEVEL)
+        return MAX_LEVEL;
+    else
+        return levelBase + levelBonus;
 }
 
 static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel, u16* moveDst)
@@ -1320,7 +1301,7 @@ static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel
     u16 i;
     u16 eggMoveBuffer[EGG_MOVES_ARRAY_COUNT];
 
-    //Evaluate if Pokemon should get an egg move in first slot
+    // see if first move slot should be an egg move
     if (searchLevel < 5)
     {
         #if (SEARCHLEVEL0_MOVECHANCE != 0)
@@ -1364,22 +1345,19 @@ static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel
         #endif
     }
 
-    //Generate a wild mon just to get the initial moveset (later overwritten by CreateDexNavWildMon)
+    // Generate a wild mon just to get the initial moveset (later overwritten by CreateDexNavWildMon)
     CreateWildMon(species, encounterLevel);
 
-    //Store generated mon moves into Dex Nav Struct
+    // Store generated mon moves into Dex Nav Struct
     for (i = 0; i < MAX_MON_MOVES; i++)
         moveDst[i] = GetMonData(&gEnemyParty[0], MON_DATA_MOVE1 + i, NULL);
 
     // set first move slot to a random egg move if search level is good enough    
-    if (genMove == TRUE)
+    if (genMove)
     {
         u8 numEggMoves = GetEggMoves(&gEnemyParty[0], eggMoveBuffer);
         if (numEggMoves != 0)
-        {
-            u8 index = RandRange(0, numEggMoves);
-            moveDst[0] = eggMoveBuffer[index];
-        }
+            moveDst[0] = eggMoveBuffer[Random() % numEggMoves];
     }
 }
 
@@ -1460,7 +1438,11 @@ static u8 DexNavGetAbilityNum(u16 species, u8 searchLevel)
         #endif
     }
     
+    #ifdef BATTLE_ENGINE    // if using RHH, the base stats abilities field is expanded
+    if (genAbility && gBaseStats[species].abilities[2] != ABILITY_NONE && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
+    #else
     if (genAbility && gBaseStats[species].abilityHidden != ABILITY_NONE && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
+    #endif
     {
         //Only give hidden ability if Pokemon has been caught before
         abilityNum = 2;
@@ -1570,7 +1552,7 @@ static u8 DexNavGeneratePotential(u8 searchLevel)
     return 0;   // No potential
 }
 
-/*static u8 GetEncounterLevelFromMapData(u16 species, u8 environment) //unecessary because autoscale
+static u8 GetEncounterLevelFromMapData(u16 species, u8 environment)
 {
     u16 headerId = GetCurrentMapWildMonHeaderId();
     const struct WildPokemonInfo *landMonsInfo = gWildMonHeaders[headerId].landMonsInfo;
@@ -1635,7 +1617,7 @@ static u8 DexNavGeneratePotential(u8 searchLevel)
         return MON_LEVEL_NONEXISTENT;
 
     return RandRange(min, max);
-}*/
+}
 
 
 ///////////
@@ -1793,7 +1775,7 @@ static void CreateNoDataIcon(s16 x, s16 y)
     CreateSprite(&sNoDataIconTemplate, x, y, 0);
 }
 
-static bool8 CapturedAllLandMons(u8 headerId)
+static bool8 CapturedAllLandMons(u16 headerId)
 {
     u16 i, species;
     int count = 0;
@@ -1825,7 +1807,7 @@ static bool8 CapturedAllLandMons(u8 headerId)
 }
 
 //Checks if all Pokemon that can be encountered while surfing have been capture
-static bool8 CapturedAllWaterMons(u8 headerId)
+static bool8 CapturedAllWaterMons(u16 headerId)
 {
     u32 i;
     u16 species;
@@ -1856,7 +1838,7 @@ static bool8 CapturedAllWaterMons(u8 headerId)
     return FALSE;
 }
 
-static bool8 CapturedAllHiddenMons(u8 headerId)
+static bool8 CapturedAllHiddenMons(u16 headerId)
 {
     u32 i;
     u16 species;
@@ -1889,7 +1871,7 @@ static bool8 CapturedAllHiddenMons(u8 headerId)
 
 static void DexNavLoadCapturedAllSymbols(void)
 {
-    u8 headerId = GetCurrentMapWildMonHeaderId();
+    u16 headerId = GetCurrentMapWildMonHeaderId();
     
     LoadCompressedSpriteSheetUsingHeap(&sCapturedAllPokemonSpriteSheet);
 
@@ -2016,7 +1998,7 @@ static void DexNavLoadEncounterData(void)
     memset(sDexNavUiDataPtr->hiddenSpecies, 0, sizeof(sDexNavUiDataPtr->hiddenSpecies));
     
     // land mons
-    if (landMonsInfo != NULL)
+    if (landMonsInfo != NULL && landMonsInfo->encounterRate != 0)
     {
         for (i = 0; i < LAND_WILD_COUNT; i++)
         {
@@ -2027,7 +2009,7 @@ static void DexNavLoadEncounterData(void)
     }
 
     // water mons
-    if (waterMonsInfo != NULL)
+    if (waterMonsInfo != NULL && waterMonsInfo->encounterRate != 0)
     {
         for (i = 0; i < WATER_WILD_COUNT; i++)
         {
@@ -2038,7 +2020,7 @@ static void DexNavLoadEncounterData(void)
     }
     
     // hidden mons
-    if (hiddenMonsInfo != NULL)
+    if (hiddenMonsInfo != NULL) // no encounter rate check since 0 means land, 1 means water encounters
     {
         for (i = 0; i < HIDDEN_WILD_COUNT; i++)
         {
@@ -2220,18 +2202,6 @@ static void PrintCurrentSpeciesInfo(void)
         AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SEARCH_LEVEL_Y, RyuReturnThemeColors(TRUE), 0, gStringVar4);
     }
     
-    // search bonus
-    if ((gSaveBlock1Ptr->dexNavSearchLevels[dexNum] >> 2) > 20)
-        searchLevelBonus = 20;
-    else
-        searchLevelBonus = (gSaveBlock1Ptr->dexNavSearchLevels[dexNum] >> 2);
-    
-    ConvertIntToDecimalStringN(gStringVar4, searchLevelBonus, 0, 4);
-    if (species == SPECIES_NONE)
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, LEVEL_BONUS_Y, RyuReturnThemeColors(TRUE), 0, sText_DexNav_NoInfo);
-    else
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, LEVEL_BONUS_Y, RyuReturnThemeColors(TRUE), 0, gStringVar4);
-    
     //hidden ability
     if (species == SPECIES_NONE)
     {
@@ -2248,6 +2218,10 @@ static void PrintCurrentSpeciesInfo(void)
     {
         AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, RyuReturnThemeColors(TRUE), 0, sText_DexNav_CaptureToSee);
     }
+    
+    //current chain
+    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock1Ptr->dexNavChain, STR_CONV_MODE_LEFT_ALIGN, 3);
+    AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, CHAIN_BONUS_Y, sFontColor_Black, 0, gStringVar1);
     
     CopyWindowToVram(WINDOW_INFO, 3);
     PutWindowTilemap(WINDOW_INFO);
@@ -2588,7 +2562,7 @@ bool8 TryFindHiddenPokemon(void)
     if ((*stepPtr) == 0 && (Random() % 100 < HIDDEN_MON_SEARCH_RATE))
     {
         // hidden pokemon
-        u8 headerId = GetCurrentMapWildMonHeaderId();
+        u16 headerId = GetCurrentMapWildMonHeaderId();
         u8 index;
         u16 species;
         u8 environment;
@@ -2690,6 +2664,7 @@ bool8 TryFindHiddenPokemon(void)
         gTasks[taskId].tEnvironment = sDexNavSearchDataPtr->environment;
         gTasks[taskId].tRevealed = FALSE;
         HideMapNamePopUpWindow();
+        ChangeBgY_ScreenOff(0, 0, 0);
         return FALSE;   //we dont actually want to enable the script context or the game will freeze
     }
     
@@ -2792,6 +2767,10 @@ void ResetDexNavSearch(void)
     VarSet(VAR_DEXNAV_STEP_COUNTER, 0); //reset hidden pokemon step counter
     if (FlagGet(FLAG_SYS_DEXNAV_SEARCH))
         EndDexNavSearch(FindTaskIdByFunc(Task_DexNavSearch));   //moving to new map ends dexnav search
-    VarSet(VAR_DEXNAV_SPECIES, 0);
 }
 
+void IncrementDexNavChain(void)
+{
+    if (gSaveBlock1Ptr->dexNavChain < DEXNAV_CHAIN_MAX)
+        gSaveBlock1Ptr->dexNavChain++;
+}

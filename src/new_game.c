@@ -23,11 +23,9 @@
 #include "coins.h"
 #include "text.h"
 #include "overworld.h"
-#include "mail.h"
 #include "battle_records.h"
 #include "item.h"
 #include "pokedex.h"
-#include "apprentice.h"
 #include "frontier_util.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
@@ -38,13 +36,10 @@
 #include "contest.h"
 #include "item_menu.h"
 #include "pokemon_storage_system.h"
-#include "pokemon_jump.h"
 #include "decoration_inventory.h"
 #include "secret_base.h"
 #include "player_pc.h"
 #include "field_specials.h"
-#include "berry_powder.h"
-#include "mevent.h"
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
 #include "factions.h"
@@ -55,7 +50,6 @@ extern const u8 EventScript_ResetAllMapFlags[];
 // this file's functions
 static void ClearFrontierRecord(void);
 static void WarpToTruck(void);
-static void ResetMiniGamesResults(void);
 
 // EWRAM vars
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
@@ -103,6 +97,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsThemeNumber = OPTIONS_THEME_DARK;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
+    FlagClear(FLAG_RYU_VANILLA_CAP);
 }
 
 void ClearAllContestWinnerPics(void)
@@ -160,7 +155,7 @@ void NewGameInitData(void)
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
     u16 originalSaveFileVersion = VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION);
 
-    //I don't want people being able to newgame plus unless they have defeated the champion. Nuzlocke/Hardcore failure circumvents this.
+    //I don't want people being able to newgame plus unless they have defeated the champion. Challenge/Hardcore failure circumvents this.
     //It also allows people to start over if they want a fresh start without having to physically delete their save file.
     if (!FlagGet(FLAG_SYS_GAME_CLEAR))
     {
@@ -182,7 +177,6 @@ void NewGameInitData(void)
     ZeroPlayerPartyMons();
     ZeroEnemyPartyMons();
     ClearFrontierRecord();
-    ClearMailData();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
     gSaveBlock2Ptr->gcnLinkFlags = 0;
     InitPlayerTrainerId();
@@ -217,12 +211,9 @@ void NewGameInitData(void)
     ResetLotteryCorner();
     WarpToTruck();
     ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
-    ResetMiniGamesResults();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
-    ResetAllApprenticeData();
     ClearRankingHallRecords();
-    sub_801AFD8();
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();
@@ -300,9 +291,9 @@ void NewGameInitData(void)
     FlagClear(FLAG_RYU_TEMPTP);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);
     FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
-    FlagSet(FLAG_NOTIFIED_FF_TEXT);
     FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);// can't delete all kecleon overworlds because scripts, so this will do.
     FlagSet(FLAG_SYS_NATIONAL_DEX);
+    FlagSet(FLAG_RYU_AUTORUN);
 
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
@@ -334,10 +325,3 @@ void NewGameInitData(void)
     RyuResetRealEstateData();
 }
 
-static void ResetMiniGamesResults(void)
-{
-    CpuFill16(0, &gSaveBlock2Ptr->berryCrush, sizeof(struct BerryCrush));
-    SetBerryPowder(&gSaveBlock2Ptr->berryCrush.berryPowderAmount, 0);
-    ResetPokeJumpResults();
-    CpuFill16(0, &gSaveBlock2Ptr->berryPick, sizeof(struct BerryPickingResults));
-}

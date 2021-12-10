@@ -1431,20 +1431,18 @@
 	.2byte \box
 	.endm
 
-	@ Sets the color of the text in standard message boxes. 0x00 produces blue (male) text, 0x01 produces red (female) text, 
-	@ 0xFF resets the color to the default for the current OW's gender, and all other values produce black text.
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro textcolor color:req
+	.macro notification string:req type:req time:req
 	.byte 0xc7
-	.byte \color
+	.4byte \string
+	.byte \type
+	.byte \time
 	.endm
 
-	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom 
-	@ of the screen when the Main Menu is opened.
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro loadhelp pointer:req
+	.macro numberentry top:req left:req digits:req
 	.byte 0xc8
-	.4byte \pointer
+	.byte \top
+	.byte \left
+	.byte \digits
 	.endm
 
 	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of
@@ -1632,9 +1630,17 @@
 	specialvar VAR_RESULT, GetPlayerFacingDirection
 	.endm
 
-	@ unused script command, previously headshot
-	.macro unusedscrcmd
+	@ buffer up to 6 supplied strings for use with MULTI_DYNAMIC_X
+	@ This lets you create custom menus at runtime using only stuff you can edit within the same script.
+	@ Prevents having to create whole new const menu stuffs in other files.
+	.macro bufferdynamicmulti, ptr1=RyuEmptyTextPtr, ptr2=RyuEmptyTextPtr, ptr3=RyuEmptyTextPtr, ptr4=RyuEmptyTextPtr, ptr5=RyuEmptyTextPtr, ptr6=RyuEmptyTextPtr
 	.byte 0xe5
+	.4byte \ptr1
+	.4byte \ptr2
+	.4byte \ptr3
+	.4byte \ptr4
+	.4byte \ptr5
+	.4byte \ptr6
 	.endm
 
 	@draws the user specified sprite. If mode is 1, Then supply a facility class id. (FACILITY_CLASS_RICH_GIRL)
@@ -1659,10 +1665,11 @@
 	.4byte \address
 	.endm
 
-	@gives value battle points to player
-	.macro givebp value:req
+	@Allows you to load a formatted string from script into a string variable.
+	.macro buffersingledynamicline id:req, ptr:req
 	.byte 0xe9
-	.2byte \value
+	.2byte \id
+	.4byte \ptr
 	.endm
 
 	@puts player's current bp in VAR_RESULT
