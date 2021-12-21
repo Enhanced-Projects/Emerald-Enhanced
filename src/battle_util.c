@@ -7638,6 +7638,11 @@ int RyuCalculateAlchemyModifiers(s32 damage)
                 break;
         }
     }
+    gSaveBlock2Ptr->alchemyCharges -= 1;
+    if (gSaveBlock2Ptr->alchemyCharges == 0)
+    {
+        RyuClearAlchemyEffect();
+    }
     return damage;
 
 }
