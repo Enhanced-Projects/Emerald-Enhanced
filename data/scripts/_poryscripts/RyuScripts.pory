@@ -2366,6 +2366,9 @@ raw `
 @===================================================================================================Holiday 2020
 
 RyuScript_GiveHolidayGiftMon::
+	msgbox RS_EventOver
+	release
+	end
 	msgbox RS_LucyIntro
 	getpartysize
 	compare VAR_RESULT, 6
@@ -2392,6 +2395,9 @@ HGM05Msg:
     .string "Marshadow$"
 HGM06Msg:
     .string "Lunala$"
+
+RS_EventOver:
+	.string "Event is over.\nWhat are you doing here?$"
 
 RS_HolidayOutro::
 	callnative RyuHolidayGiftMonSetData
