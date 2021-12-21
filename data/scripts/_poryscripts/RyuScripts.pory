@@ -261,47 +261,6 @@ RyuGivePokenav::
 	clearflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	return
 
-
-@==================================================================================================RYU EV USER MODE MENU
-
-RyuUserModeEVMenu::
-	lock
-	release
-	end
-
-EVMENU_1:
-	.string "Set EV to 0$"
-
-EVMENU_2:
-	.string "Set IV to 0$"
-
-EVMENU_3:
-	.string "Cancel$"
-	
-RyuUserEvExit::
-	closemessage
-	release
-	end
-	
-RyuUserEvNoImprint::
-	msgbox EvNoImprints MSGBOX_DEFAULT
-	closemessage
-	release
-	end
-
-RyuUserEvSelectIVEV:
-	.string "Reduce Skill level(EV) or genetic\npredisposition(IV)?$"
-	
-RyuUserEVInfo:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
-	.string "{SHADOW LIGHT_GREY}Select a stat to reduce to 0.$"
-
-RyuEvSuccessMsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}iv or ev for the selected slot\nhave been reduced to 0.$"
-
-EvNoImprints:
-	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough prints.\pObtain more at Lilycove\nTraining Center.$"
-
 @@======================================================================================================================================= CHALLENGE CHALLENGE RELATED
 
 Ryu_CheckSetNuzlockPCUseVar::
@@ -2550,4 +2509,118 @@ script RS_HGM06{
 	callnative(RyuGiveHolidayModdedMon)
 	bufferspeciesname(0, SPECIES_LUNALA)
 	goto(RS_HolidayOutro)
+}
+
+//==================================================================================================RYU EV USER MODE MENU
+
+script RyuUserModeEVMenu {
+	lock
+	msgbox(RyuUserEvSelectIVEV)
+	bufferdynamicmulti(EVMENU_1, EVMENU_2, EVMENU_3)
+	multichoice(0, 3, MULTI_DYNAMIC_3, 0)
+	if (var(VAR_RESULT) >= 2) {
+		goto(RyuUserEvExit)
+	}
+	switch(var(VAR_RESULT)) {
+		case 1:
+			checkitem(ITEM_EVPRINT, 1)
+			if (var(VAR_RESULT) == 0) {
+				goto(RyuUserEvNoImprint)
+			}
+			removeitem(ITEM_EVPRINT, 1)
+			setvar(VAR_0x8003, 1) //mode
+		case 0:
+			checkitem(ITEM_IVPRINT, 1)
+			if (var(VAR_RESULT) == 0) {
+				goto(RyuUserEvNoImprint)
+			}
+			removeitem(ITEM_IVPRINT, 1)
+			setvar(VAR_0x8003, 0) // mode
+	}
+	msgbox(RyuUserIVEV_SelectSlot)
+	call(RyuBufferPartyMonNames)
+	multichoice(0, 0, MULTI_DYNAMIC_6, 1)
+	copyvar(VAR_0x8001, VAR_RESULT) //slot
+	if (var(VAR_RESULT) == 127) {
+		goto(RyuUserEvInvalidSlot)
+	}
+	specialvar(VAR_TEMP_A, CheckIfSelectedSlotIsValid)
+	if (var(VAR_TEMP_A) == FALSE) {
+		goto(RyuUserEvInvalidSlot)
+	}
+	msgbox(RyuUserIVEV_SelectStat)
+	bufferdynamicmulti(RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed)
+	multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+	copyvar(VAR_0x8002, VAR_RESULT) //stat
+	if (var(VAR_RESULT) == 127) {
+		goto(RyuUserEvInvalidStat)
+	}
+	setvar(VAR_0x8000, 0) //value
+	callnative(RyuSetSlotStatIVEV)
+	call(ShowMonDataInfoBox) //0x8001 should already have correct slot in it.
+	release
+	end
+}
+
+text EVMENU_1{
+	"Set EV to 0"
+}
+
+text EVMENU_2{
+	"Set IV to 0"
+}
+
+text EVMENU_3{
+	"Cancel"
+}
+	
+script RyuUserEvExit{
+	closemessage
+	release
+	end
+}
+
+script RyuUserEvInvalidSlot{
+	msgbox("Selected an invalid slot.")
+	closemessage
+	release
+	end
+}
+
+script RyuUserEvInvalidStat{
+	msgbox("You didn't select a stat.")
+	closemessage
+	release
+	end
+}
+	
+	
+script RyuUserEvNoImprint{
+	msgbox(EvNoImprints)
+	closemessage
+	release
+	end
+}
+	
+
+text RyuUserEvSelectIVEV {
+	"Reduce Skill level(EV) or genetic\npredisposition(IV)?"
+}
+	
+text RyuUserIVEV_SelectStat{
+	"{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
+	"{SHADOW LIGHT_GREY}Select a stat to reduce to 0."
+}
+	
+text RyuUserIVEV_SelectSlot{
+	"{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
+	"{SHADOW LIGHT_GREY}Select a pokemon from your party."
+}
+
+text RyuEvSuccessMsg{
+	"{COLOR LIGHT_GREEN}{SHADOW GREEN}iv or ev for the selected slot\nhave been reduced to 0."
+}
+
+text EvNoImprints{
+	"{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough prints.\pObtain more at Lilycove\nTraining Center."
 }

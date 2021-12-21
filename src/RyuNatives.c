@@ -388,13 +388,12 @@ static const u16 RyuValToIv[] = {
 
 void RyuSetSlotStatIVEV(void)//Now with extra lewd
 {
-    u16 value = (VarGet(VAR_TEMP_1)); //set stat to this value
-    u16 slot = (VarGet(VAR_TEMP_2)); //which mon slot
-    u16 stat = (VarGet(VAR_TEMP_3)); //which mon stat
-    u16 mode = (VarGet(VAR_TEMP_4));//0 = ev, 1 = iv
+    u16 value = gSpecialVar_0x8000; //set stat to this value
+    u16 slot = gSpecialVar_0x8001; //which mon slot
+    u16 stat = gSpecialVar_0x8002; //which mon stat
+    u16 mode = gSpecialVar_0x8003;//0 = ev, 1 = iv
     u16 evmax = 252;
     u16 ivmax = 31;
-    mgba_printf(LOGINFO, "value:%d, slot:%d, stat:%d, mode:%d", value, slot, stat, mode);
 
     if (mode == 0)
     {
@@ -402,7 +401,13 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
         {
             value = evmax;
             SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
-            mgba_printf(LOGINFO, "EV mode: Setting slot%d's %d stat to %d.", slot, stat, value);
+            CalculateMonStats(&gPlayerParty[slot]);
+            return;
+        }
+        else
+        {
+            SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
+            CalculateMonStats(&gPlayerParty[slot]);
             return;
         }
     }
@@ -413,17 +418,23 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
         {
             value = ivmax;
             SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);
-            mgba_printf(LOGINFO, "IV mode: Setting slot%d's %d stat to %d.", slot, stat, value);
+            CalculateMonStats(&gPlayerParty[slot]);
             return;
         }
+        else
+        {
+            SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);
+            CalculateMonStats(&gPlayerParty[slot]);
+        }
+        
     } 
 }
 
 void RyuResetIvEvs(void)
 {
     u8 ev = 0;
-    u16 slot = (VarGet(VAR_TEMP_1));
-    u16 mode = (VarGet(VAR_TEMP_0));
+    u16 slot = gSpecialVar_0x8001;
+    u16 mode = gSpecialVar_0x8003;
     PlaySE(SE_EXPMAX);
     if (mode == 0)
     {
@@ -444,6 +455,7 @@ void RyuResetIvEvs(void)
         SetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, &ev);
     }
     CalculateMonStats(&gPlayerParty[slot]);
+    return;
 }
 
 void RyuSetMonMove(void)

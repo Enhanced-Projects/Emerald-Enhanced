@@ -811,13 +811,13 @@ RyuExitPokeEditMenu::
 Ryu_ResetEVIV::
 	bufferdynamicmulti RIVEV1, RIVEV2, RIVEV3
 	multichoice 0, 6, MULTI_DYNAMIC_3, 0
-	copyvar VAR_TEMP_0, VAR_RESULT
+	copyvar VAR_0x8003, VAR_RESULT
 	compare VAR_RESULT, 127
 	goto_if_eq RyuPokeEditMenu
 	msgbox RyuIvEv_ChooseSlot
 	call RyuBufferPartyMonNames
 	multichoice 0, 0, MULTI_DYNAMIC_6, 1
-	copyvar VAR_TEMP_1, VAR_RESULT
+	copyvar VAR_0x8001, VAR_RESULT
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuPokeEditMenu
@@ -871,31 +871,30 @@ RyuSetIvEvDebugMenu::
 	msgbox RyuIvEv_SelectOP
 	bufferdynamicmulti IVEVMENU_1, IVEVMENU_2, EVMENU_3
 	multichoice 0, 3, MULTI_DYNAMIC_3, 1
-	copyvar VAR_TEMP_4, VAR_RESULT @set EV or IV mode
+	copyvar VAR_0x8003, VAR_RESULT @..................Which Mode
 	compare VAR_RESULT, 2
 	goto_if_ge RyuPokeEditMenu
 	msgbox RyuIvEv_ChooseSlot
 	call RyuBufferPartyMonNames
 	multichoice 0, 0, MULTI_DYNAMIC_6, 1
-	copyvar VAR_TEMP_2, VAR_RESULT @put slot number in early
+	copyvar VAR_0x8001, VAR_RESULT @...................Which Slot
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuIvEv_ExitQuery
 	msgbox RyuIvEv_SetWhichStat
 	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed
 	multichoice 0, 0, MULTI_DYNAMIC_6, 0
-	copyvar VAR_TEMP_3, VAR_RESULT
+	copyvar VAR_0x8002, VAR_RESULT @...................Which stat
 	closemessage
 	compare VAR_RESULT, 127
 	goto_if_eq RyuIvEv_ExitQuery
 	msgbox RyuIvEv_ChooseValue
 	numberentry 5, 10, 3
-	copyvar VAR_TEMP_1, VAR_RESULT 
+	copyvar VAR_0x8000, VAR_RESULT @...................The value to set
 	callnative RyuSetSlotStatIVEV
 	msgbox IvMenuDone
 	closemessage
-	copyvar VAR_0x8001, VAR_TEMP_2
-	call ShowMonDataInfoBox
+	call ShowMonDataInfoBox @..........................Should use gSpecialVar_0x8001 by default
 	goto RyuIvEv_ExitQuery
 
 RyuIvEv_ExitQuery::
@@ -906,7 +905,7 @@ RyuIvEv_ExitQuery::
 	goto RyuPokeEditMenu
 
 RyuIvEv_Cancel:
-	.string "Cancel operation?$"
+	.string "Return to previous menu?$"
 
 IVEVMENU_2:
 	.string "Set IVs$"
