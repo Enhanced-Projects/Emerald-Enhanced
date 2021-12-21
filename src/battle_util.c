@@ -7600,6 +7600,8 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     return dmg;
 }
 
+extern void RyuClearAlchemyEffect();
+
 int RyuCalculateAlchemyModifiers(s32 damage)
 {
     if ((gSaveBlock2Ptr->hasAlchemyEffectActive == FALSE) || ( gSaveBlock2Ptr->alchemyCharges < 1))

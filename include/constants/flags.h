@@ -427,10 +427,10 @@
 #define FLAG_RYU_VICTINI                     0x192
 #define FLAG_RYU_VICTINI_RAN                 0x193
 #define FLAG_RYU_LANETTE_IEVENT              0x194
-#define FLAG_UNUSED_0x195                    0x195
-#define FLAG_UNUSED_0x196                    0x196
-#define FLAG_UNUSED_0x197                    0x197
-#define FLAG_UNUSED_0x198                    0x198
+#define FLAG_RYU_LATIOS                      0x195
+#define FLAG_RYU_LATIOS_RAN                  0x196
+#define FLAG_RYU_LATIAS                      0x197
+#define FLAG_RYU_LATIAS_RAN                  0x198
 #define FLAG_UNUSED_0x199                    0x199
 #define FLAG_UNUSED_0x19A                    0x19A
 #define FLAG_UNUSED_0x19B                    0x19B

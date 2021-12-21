@@ -485,7 +485,12 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_MELOETTA:
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
         break;
-
+    case SPECIES_LATIAS:
+        CreateBattleStartTask(B_TRANSITION_WHITEFADE, MUS_VS_RAYQUAZA);
+        break;
+    case SPECIES_LATIOS:
+        CreateBattleStartTask(B_TRANSITION_RECTANGULAR_SPIRAL, MUS_VS_RAYQUAZA);
+        break;
     }
 
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
@@ -1342,6 +1347,8 @@ void BattleSetup_StartTrainerBattle(void)
 }
 
 const u8 gText_BountyAdded[] = _("¥{RYU_STR_4} bounty added.");
+
+extern void RyuClearAlchemyEffect();
 
 static void CB2_EndTrainerBattle(void)
 {

@@ -514,8 +514,8 @@ static void Overworld_ResetStateAfterWhiteOut(void)
 static void sub_8084788(void)
 {
     ChooseAmbientCrySpecies();
-    UpdateLocationHistoryForRoamer();
-    RoamerMoveToOtherLocationSet();
+    //UpdateLocationHistoryForRoamer();
+    //RoamerMoveToOtherLocationSet();
 }
 
 void ResetGameStats(void)
@@ -904,8 +904,8 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
         ApplyWeatherGammaShiftToPal(paletteIndex);
 
     InitSecondaryTilesetAnimation();
-    UpdateLocationHistoryForRoamer();
-    RoamerMove();
+    //UpdateLocationHistoryForRoamer();
+    //RoamerMove();
     DoCurrentWeather();
     ResetFieldTasksArgs();
     RunOnResumeMapScript();
@@ -949,8 +949,8 @@ static void LoadMapFromWarp(bool32 a1)
 
     SetDefaultFlashLevel();
     RunOnTransitionMapScript();
-    UpdateLocationHistoryForRoamer();
-    RoamerMoveToOtherLocationSet();
+    //UpdateLocationHistoryForRoamer();
+    //RoamerMoveToOtherLocationSet();
     if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
         InitBattlePyramidMap(FALSE);
     else if (InTrainerHill())

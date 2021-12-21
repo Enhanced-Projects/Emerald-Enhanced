@@ -629,8 +629,9 @@ Ryu_ItsSingingBeautifully::
 	.string "It finishes its tune and attacks!$"
 
 SB_SetupRandomSteppedOnEncounter::
-	compare VAR_REPEL_STEP_COUNT, 0
-	goto_if_ne ryu_end
+	specialvar VAR_RESULT, AreMonsRepelled
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_end
 	random 5
 	switch VAR_RESULT
 	case 0, SB_Random0
@@ -872,6 +873,18 @@ RyuLegendary_GameClearResetLegends::
 	call_if_set FLAG_RYU_NECROZMA_RAN, RL_ResetNecrozma
 	call_if_set FLAG_RYU_KYOGRE_RAN, RL_ResetKyogre
 	call_if_set FLAG_RYU_VICTINI_RAN, RL_ResetVictini
+	call_if_set FLAG_RYU_LATIOS_RAN, RL_ResetLatios
+	call_if_set FLAG_RYU_LATIAS_RAN, RL_ResetLatias
+	return
+
+RL_ResetLatias::
+	clearflag FLAG_RYU_LATIOS
+	clearflag FLAG_RYU_LATIOS_RAN
+	return
+
+RL_ResetLatios::
+	clearflag FLAG_RYU_LATIAS
+	clearflag FLAG_RYU_LATIAS_RAN
 	return
 
 RL_ResetZapdos::

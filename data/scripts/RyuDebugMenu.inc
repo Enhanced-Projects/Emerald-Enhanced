@@ -347,10 +347,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	removeitem ITEM_RED_ORB, 1
-	givepokedexflag SPECIES_KYOGRE, TRUE
-	givepokedexflag SPECIES_GROUDON, TRUE
-	clearflag FLAG_RYU_ONE_TIME_SAVE_FIX
+	warpsilent MAP_SOUTHERN_ISLAND_INTERIOR, 255, 8, 8
 	release
 	end
 

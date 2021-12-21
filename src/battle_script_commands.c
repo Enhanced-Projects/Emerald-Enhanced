@@ -3872,6 +3872,8 @@ bool8 RyuCheckIfPlayerDisabledTCExp(void)
     return FALSE;
 }
 
+extern void RyuClearAlchemyEffect();
+
 int RyuCalculateAlchemyExpModifier(s32 exp)
 {
     if (gSaveBlock2Ptr->hasAlchemyEffectActive == FALSE || gSaveBlock2Ptr->alchemyCharges < 1)
