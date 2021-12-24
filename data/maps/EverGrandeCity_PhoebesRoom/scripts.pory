@@ -43,10 +43,10 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe:: @ 82281CB
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
-	msgbox EverGrandeCity_PhoebesRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 86
 	setflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltPhoebe
+	msgbox EverGrandeCity_PhoebesRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebe
 	trainerbattle_no_intro TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -76,36 +76,13 @@ RyuPhoebeMegaReward::
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 
 PhoebeMegaRewardMsg::
-	.string "My ghosts didn't give you a\nhard time at all!\pYou should be able to use this.$"
-	
-EGC_FollowerPhoebeRematch::
-	setflag FLAG_TEMP_B
-	call RyuFollowerAllySelector
-	choose_mons
-	compare VAR_RESULT, FALSE
-	goto_if_eq EGC_PR_ChooseValidMons
-	multi_2_vs_1 TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
-	end
+	.string "My pokemon didn't give you a\nhard time at all!\pYou should be able to use this.$"
 	
 EGC_PR_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
 	goto_if_set FLAG_TEMP_B, EGC_FollowerPhoebeRematch
 	goto EGC_FollowerPhoebe
-
-EGC_AltPhoebe::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebeRematch
-	trainerbattle_no_intro TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	goto RyuPhoebeMegaReward
-	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
-	end
 
 EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech:: @ 82281F2
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
@@ -131,6 +108,12 @@ EverGrandeCity_PhoebesRoom_Text_PreBattleSpeech: @ 822820E
 	.string "So, come on, just try and see if you can\n"
 	.string "even inflict damage on my Pokémon!$"
 
+EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech:
+	.string "Kekekek\p"
+	.string "You've activated my trap card!\p"
+	.string "Don't expect my typical team,\n"
+	.string "You're gonna have a bad time!$"
+
 EverGrandeCity_PhoebesRoom_Text_Defeat: @ 8228325
 	.string "Oh, darn.\n"
 	.string "I've gone and lost.$"
@@ -145,3 +128,45 @@ EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech: @ 8228343
 	.string "Go ahead, move on to the next room.$"
 
 `
+
+script EGC_AltPhoebe{
+	goto_if_set(FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebeRematch)
+	if (var(VAR_RYU_E42) == 0) {
+		msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleSpeech)
+		trainerbattle_no_intro(TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat)
+	}
+	else {
+		msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech)
+		trainerbattle_no_intro(TRAINER_PHOEBE_REMATCH_2, EverGrandeCity_PhoebesRoom_Text_Defeat)
+	} 
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	goto(RyuPhoebeMegaReward)
+	end
+}
+
+script EGC_FollowerPhoebeRematch {
+	setflag(FLAG_TEMP_B)
+	call(RyuFollowerAllySelector)
+	choose_mons
+	if (var(VAR_RESULT) == FALSE) {
+		goto(EGC_PR_ChooseValidMons)
+	}
+	if (var(VAR_RYU_E42) == 0) {
+		msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleSpeech)
+		multi_2_vs_1(TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+	}
+	else {
+		msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech)
+		multi_2_vs_1(TRAINER_PHOEBE_REMATCH_2, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+	}
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	goto(RyuPhoebeMegaReward)
+	goto(EverGrandeCity_PhoebesRoom_EventScript_Defeated)
+	end
+}

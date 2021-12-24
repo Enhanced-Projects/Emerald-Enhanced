@@ -44,26 +44,15 @@ EverGrandeCity_DrakesRoom_EventScript_Drake:: @ 82286F3
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
-	msgbox EverGrandeCity_DrakesRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 94
 	setflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltDrake
+	msgbox EverGrandeCity_DrakesRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrake
 	trainerbattle_no_intro TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
-	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
-	end
-
-EGC_AltDrake::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrakeRematch
-	trainerbattle_no_intro TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
-	goto Ryu_DrakeMegaReward
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 
@@ -90,18 +79,6 @@ EGC_FollowerDrake::
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 
-EGC_FollowerDrakeRematch::
-	setflag VAR_TEMP_B
-	call RyuFollowerAllySelector
-	choose_mons
-	compare VAR_RESULT, FALSE
-	goto_if_eq EGC_DR_ChooseValidMons
-	multi_2_vs_1 TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
-	end
 	
 EGC_DR_ChooseValidMons::
 	msgbox EGC_NeedToChoose
@@ -137,6 +114,12 @@ EverGrandeCity_DrakesRoom_Text_PreBattleSpeech: @ 822873E
 	.string "If you don't, then you will never\n"
 	.string "prevail over me!$"
 
+EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech:
+	.string "While I normally specialize in\n"
+	.string "Dragon types, I'm trying something\l"
+	.string "new this time.\p"
+	.string "I hope you're prepared!$"
+
 EverGrandeCity_DrakesRoom_Text_Defeat: @ 8228895
 	.string "Superb, it should be said.$"
 
@@ -153,4 +136,46 @@ EverGrandeCity_DrakesRoom_Text_PostBattleSpeech: @ 82288B0
 	.string "Go! Go onwards!\n"
 	.string "The Champion is waiting!$"
 
-`
+` 
+
+script EGC_AltDrake{
+	goto_if_set(FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrakeRematch)
+	if (var(VAR_RYU_E44) == 0) {
+		msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleSpeech)
+		trainerbattle_no_intro(TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat)
+	}
+	else {
+		msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech)
+		trainerbattle_no_intro(TRAINER_DRAKE_REMATCH_2, EverGrandeCity_DrakesRoom_Text_Defeat)
+	} 
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	goto(Ryu_DrakeMegaReward)
+	end
+}
+
+script EGC_FollowerDrakeRematch {
+	setflag(FLAG_TEMP_B)
+	call(RyuFollowerAllySelector)
+	choose_mons
+	if (var(VAR_RESULT) == FALSE) {
+		goto(EGC_PR_ChooseValidMons)
+	}
+	if (var(VAR_RYU_E42) == 0) {
+		msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleSpeech)
+		multi_2_vs_1(TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+	}
+	else {
+		msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech)
+		multi_2_vs_1(TRAINER_DRAKE_REMATCH_2, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+	}
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	goto(Ryu_DrakeMegaReward)
+	goto(EverGrandeCity_DrakesRoom_EventScript_Defeated)
+	end
+}

@@ -8271,36 +8271,36 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Edwin3},
     },
 
-    [TRAINER_EMPTY_195] =
+    [TRAINER_DRAKE_REMATCH_2] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_COLLECTOR,
-        .trainerFaction = FACTION_OUTCASTS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-        .trainerPic = TRAINER_PIC_COLLECTOR,
-        .trainerName = _("Edwin"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_ELITE_FOUR,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
+        .trainerPic = TRAINER_PIC_ELITE_FOUR_DRAKE,
+        .trainerName = _("Drake"),
+        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Edwin4),
-        .party = {.NoItemDefaultMoves = sParty_Edwin4},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .partySize = ARRAY_COUNT(sParty_DrakeRematch2),
+        .party = {.ItemCustomMoves = sParty_DrakeRematch2},
     },
 
-    [TRAINER_EMPTY_196] =
+    [TRAINER_GLACIA_REMATCH_2] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_COLLECTOR,
-        .trainerFaction = FACTION_OUTCASTS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-        .trainerPic = TRAINER_PIC_COLLECTOR,
-        .trainerName = _("Edwin"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_ELITE_FOUR,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
+        .trainerPic = TRAINER_PIC_ELITE_FOUR_GLACIA,
+        .trainerName = _("Glacia"),
+        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Edwin5),
-        .party = {.NoItemDefaultMoves = sParty_Edwin5},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_SETUP_FIRST_TURN | AI_SCRIPT_HP_AWARE,
+        .partySize = ARRAY_COUNT(sParty_GlaciaRematch2),
+        .party = {.ItemCustomMoves = sParty_GlaciaRematch2},
     },
 
     [TRAINER_WALLY_VR_1] =
@@ -8768,20 +8768,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Garrison},
     },
 
-    [TRAINER_EMPTY_197] =
+    [TRAINER_PHOEBE_REMATCH_2] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
-        .trainerFaction = FACTION_POKEFANS,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_POKEMON_BREEDER_F,
-        .trainerName = _("Lydia"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_ELITE_FOUR,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
+        .trainerPic = TRAINER_PIC_ELITE_FOUR_PHOEBE,
+        .trainerName = _("Phoebe"),
+        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Lydia2),
-        .party = {.NoItemDefaultMoves = sParty_Lydia2},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_HP_AWARE,
+        .partySize = ARRAY_COUNT(sParty_PhoebeRematch2),
+        .party = {.ItemCustomMoves = sParty_PhoebeRematch2},
     },
 
     [TRAINER_CHALLENGER_DANNY] =
@@ -10960,20 +10960,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemCustomMoves = sParty_JohnAndJay4},
     },
 
-    [TRAINER_EMPTY_78] =
+    [TRAINER_SIDNEY_REMATCH_2] =
     {
-        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
-        .trainerClass = TRAINER_CLASS_OLD_COUPLE,
-        .trainerFaction = FACTION_POKEFANS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
-        .trainerPic = TRAINER_PIC_OLD_COUPLE,
-        .trainerName = _("John & Jay"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
-        .doubleBattle = TRUE,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_ELITE_FOUR,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
+        .trainerPic = TRAINER_PIC_ELITE_FOUR_SIDNEY,
+        .trainerName = _("Sidney"),
+        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE},
+        .battleStyle = BS_SET,
+        .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_JohnAndJay5),
-        .party = {.NoItemCustomMoves = sParty_JohnAndJay5},
+        .partySize = ARRAY_COUNT(sParty_Sidney),
+        .party = {.ItemCustomMoves = sParty_SidneyRematch2},
     },
 
     [TRAINER_RELI_AND_IAN] =

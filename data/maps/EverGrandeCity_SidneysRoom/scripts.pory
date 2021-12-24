@@ -55,11 +55,11 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 	call_if_set FLAG_RYU_HAS_FOLLOWER, EGC_CheckForceDismissFollower
 	goto_if_set FLAG_DEFEATED_ELITE_4_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
-	msgbox EverGrandeCity_SidneysRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 82
 	setflag FLAG_RYU_BOSS_SCALE
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltSidney
+	msgbox EverGrandeCity_SidneysRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidney
 	trainerbattle_no_intro TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -102,29 +102,6 @@ EGC_ChooseValidMons::
 	
 EGC_NeedToChoose:
 	.string "You must make a valid selection.$"
-	
-EGC_FollowerSidneyRematch::
-	setflag FLAG_TEMP_B
-	call RyuFollowerAllySelector
-	choose_mons
-	compare VAR_RESULT, FALSE
-	goto_if_eq EGC_ChooseValidMons
-	multi_2_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	goto Ryu_CheckForMega
-	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
-	end
-
-EGC_AltSidney::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidneyRematch
-	trainerbattle_no_intro TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	goto Ryu_CheckForMega
-	end
 
 Ryu_CheckForMega::
 	goto_if_set FLAG_RYU_SIDNEY_MEGA EverGrandeCity_SidneysRoom_EventScript_Defeated
@@ -163,6 +140,12 @@ EverGrandeCity_SidneysRoom_Text_PreBattleSpeech: @ 8227FA7
 	.string "a battle that can only be staged\l"
 	.string "here in the Pokémon League!$"
 
+EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech:
+	.string "Greetings, Champion.\p"
+	.string "Here to defend your title, eh?\p"
+	.string "Well I don't plan on making it\n"
+	.string "easy for you!"
+
 EverGrandeCity_SidneysRoom_Text_Defeat: @ 82280A2
 	.string "Well, how do you like that? I lost!\n"
 	.string "Eh, it was fun, so it doesn't matter.$"
@@ -175,3 +158,43 @@ EverGrandeCity_SidneysRoom_Text_PostBattleSpeech: @ 82280EC
 	.string "your next battle!$"
 
 `
+script EGC_AltSidney{
+	goto_if_set(FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidneyRematch)
+	if (var(VAR_RYU_E41) == 0) {
+		msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleSpeech)
+		trainerbattle_no_intro(TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat)
+	}
+	else {
+		msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech)
+		trainerbattle_no_intro(TRAINER_SIDNEY_REMATCH_2, EverGrandeCity_SidneysRoom_Text_Defeat)
+	} 
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	goto(Ryu_CheckForMega)
+	end
+}
+
+script EGC_FollowerSidneyRematch {
+	setflag(FLAG_TEMP_B)
+	call(RyuFollowerAllySelector)
+	choose_mons
+	if (var(VAR_RESULT) == FALSE) {
+		goto(EGC_ChooseValidMons)
+	}
+	if (var(VAR_RYU_E41) == 0) {
+		multi_2_vs_1(TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+	}
+	else {
+		msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech)
+		multi_2_vs_1(TRAINER_SIDNEY_REMATCH_2, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+	}
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	goto(Ryu_CheckForMega)
+	goto(EverGrandeCity_SidneysRoom_EventScript_Defeated)
+	end
+}
