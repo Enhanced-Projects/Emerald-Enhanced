@@ -2330,5 +2330,5 @@ void RyuSetupRandomForE4(void)
     VarSet(VAR_RYU_E42, r2);
     VarSet(VAR_RYU_E43, r3);
     VarSet(VAR_RYU_E44, r4);
-    mgba_printf(LOGINFO, "%d, %d, %d, %d", r1, r2, r3, r4);
+    //mgba_printf(LOGINFO, "%d, %d, %d, %d", r1, r2, r3, r4);
 }
