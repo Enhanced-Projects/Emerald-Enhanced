@@ -1239,6 +1239,7 @@ MH4_NormalMagmaGroudonEndEvent::
 	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	setvar VAR_RYU_QUEST_MAGMA, 598@Player finished the main magma line with the normal ending and caught Groudon.
 	call RyuScript_IncrementQuestsFinished
+	ach give ACH_HEATED_ARGUMENT
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	fadescreen FADE_TO_BLACK
 	removeobject 20
