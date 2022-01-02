@@ -14974,6 +14974,8 @@ static const struct LevelUpMove sLatiasLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sLatiosLevelUpLearnset[] = {
+    //Self-destructing moves that shouldn't be learned in the wild
+    LEVEL_UP_MOVE(1, MOVE_MEMENTO),
     // Gen 7 TM's
     LEVEL_UP_MOVE( 1, MOVE_DRAGON_CLAW),
     LEVEL_UP_MOVE( 1, MOVE_PSYSHOCK),
@@ -15041,7 +15043,6 @@ static const struct LevelUpMove sLatiosLevelUpLearnset[] = {
     LEVEL_UP_MOVE(46, MOVE_POWER_SPLIT),
     LEVEL_UP_MOVE(51, MOVE_PSYCHIC),
     LEVEL_UP_MOVE(56, MOVE_DRAGON_PULSE),
-    LEVEL_UP_MOVE(61, MOVE_MEMENTO),
     LEVEL_UP_END
 };
 
@@ -24413,6 +24414,8 @@ static const struct LevelUpMove sKeldeoLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sMeloettaLevelUpLearnset[] = {
+    //Self-destructing moves that shouldn't be learned in the wild
+    LEVEL_UP_MOVE(1, MOVE_PERISH_SONG),
     // Gen 7 TM's
     LEVEL_UP_MOVE( 1, MOVE_WORK_UP),
     LEVEL_UP_MOVE( 1, MOVE_CALM_MIND),
@@ -24477,7 +24480,6 @@ static const struct LevelUpMove sMeloettaLevelUpLearnset[] = {
     LEVEL_UP_MOVE(64, MOVE_HYPER_VOICE),
     LEVEL_UP_MOVE(71, MOVE_ROLE_PLAY),
     LEVEL_UP_MOVE(78, MOVE_CLOSE_COMBAT),
-    LEVEL_UP_MOVE(85, MOVE_PERISH_SONG),
     LEVEL_UP_END
 };
 
@@ -26953,6 +26955,8 @@ static const struct LevelUpMove sHoopaLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sVolcanionLevelUpLearnset[] = {
+    //Self-destructing moves that shouldn't be learned in the wild
+    LEVEL_UP_MOVE(1, MOVE_EXPLOSION),
     // Gen 7 TM's
     LEVEL_UP_MOVE( 1, MOVE_ROAR),
     LEVEL_UP_MOVE( 1, MOVE_TOXIC),
@@ -27007,7 +27011,6 @@ static const struct LevelUpMove sVolcanionLevelUpLearnset[] = {
     LEVEL_UP_MOVE(50, MOVE_HYDRO_PUMP),
     LEVEL_UP_MOVE(58, MOVE_FLARE_BLITZ),
     LEVEL_UP_MOVE(65, MOVE_OVERHEAT),
-    LEVEL_UP_MOVE(73, MOVE_EXPLOSION),
     LEVEL_UP_MOVE(81, MOVE_ERUPTION),
     LEVEL_UP_MOVE(81, MOVE_WATER_SPOUT),
     LEVEL_UP_MOVE(89, MOVE_STEAM_ERUPTION),
