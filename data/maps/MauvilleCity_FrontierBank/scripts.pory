@@ -13,13 +13,12 @@ script SCFB_Teller{
             msgbox("Do you wish to make a deposit?", MSGBOX_YESNO)
                 if (var(VAR_RESULT) == YES) {
                     msgbox(format("How much would you like to deposit?"))
-                    multichoicegrid(5, 2, MULTI_FBAMOUNTMENU, 2, 1)
+                    numberentry(0, 10, 9)
                     closemessage
                     specialvar(VAR_TEMP_2, RyuFBDoDeposit)
                     switch (var(VAR_TEMP_2)) {
                     case 0:
                         msgbox("One moment please...")
-                        delay(20)
                         closemessage
                         msgbox("You do not have enough money on\nyour person to deposit that amount.")
                         closemessage
@@ -27,16 +26,14 @@ script SCFB_Teller{
                     case 1:
                         msgbox(OkayWeDeposit)
                         closemessage
-                        delay(20)
                         msgbox("We've deposited ¥{STR_VAR_1}\n into your account.\pYour account now has a balance\nof ¥{STR_VAR_2}.\lHave a nice day!")
                         release
                         end
                     case 2:
                         msgbox("One moment please...")
-                        delay(20)
                         msgbox(format("That deposit would put you past the limit of ¥2,000,000,000 per account. We cannot process this transaction. Sorry."))
                         goto(SCFB_Teller)
-                    case 3:
+                    case 127:
                         msgbox("Okay.") 
                         goto(SCFB_Teller)
                     }
@@ -49,7 +46,7 @@ script SCFB_Teller{
             msgbox(format("So, you would like to make a withdrawal?"), MSGBOX_YESNO)
                 if (var(VAR_RESULT) == YES){
                     msgbox(format("So, how much would you like to withdraw?"))
-                    multichoicegrid(5, 2, MULTI_FBAMOUNTMENU, 2, 1)
+                    numberentry(0, 10, 9)
                     closemessage
                     msgbox("One moment please...")
                     specialvar(VAR_TEMP_2, RyuFBDoWithdraw)
@@ -69,10 +66,14 @@ script SCFB_Teller{
                             release
                             end
                         case 3:
-                            msgbox(SpecialWithdrawText)
+                            msgbox(format("You didn't choose an amount!"))
+                            goto(SCFB_Teller)
+                        case 4:
+                            msgbox("Okay!\pHere's ¥{STR_VAR_1},\nthe amount required to fill your\lpersonal wallet.\pYou have a remaining balance of\n¥{STR_VAR_2}.\pHave a nice day!")
+                            closemessage
                             release
                             end
-                        case 4:
+                        case 127:
                             msgbox("Okay.")
                             goto(SCFB_Teller)
                     }
@@ -94,15 +95,6 @@ text OkayWeDeposit {
     "Okay, we'll deposit that money\n"
     "for you.\p"
     "One moment please."
-}
-
-text SpecialWithdrawText {
-    "You are trying to withdraw\n"
-    "more money than you can carry.\p"
-    "We are withdrawing ¥{STR_VAR_1}\n"
-    "instead.\p"
-    "Your remaining account balance is\n"
-    "¥{STR_VAR_2}."
 }
 
 script SCFB_MakeAccount {

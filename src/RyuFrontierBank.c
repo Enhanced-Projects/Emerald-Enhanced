@@ -27,69 +27,55 @@ int RyuFBDoDeposit(void)
 {
     u32 money = GetMoney(&gSaveBlock1Ptr->money);
     u32 balance = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
-    u32 tempValue = 0;
-    u8 selection = gSpecialVar_Result;
+    u32 selection = gSpecialVar_32bit;
 
-    if (selection == 0) { //deposit all
-        tempValue = money;
-        if (tempValue + balance >= 2000000000)
-        {
-            return 2; //Would exceed bank hard limit, abort.
-        }
-    }
-    else if (selection >= 9) //exit
-    {
+    if (selection == 0) //player did not make a selection
         return 3;
-    }
-    else { // deposit amount by selection
-        tempValue = sDepositAmounts[selection];
-        if ((tempValue + balance) > 2000000000) //selected deposit amount would exceed bank hard limit. Abort.
-            return 2;
 
-        if (money < tempValue) //Player cant afford this deposit. Abort.
+    if (selection > 899999999) //player entered "9" as the first (hundreds of millions) digit. Select all money (shortcut).
+        selection = money;
+
+        if (selection + balance >= 2000000000)
+        {
+            return 2; //Would exceed bank hard limit. Abort.
+        }
+    
+        if (money < selection) //Player cant afford this deposit. Abort.
             return 0;
-    }
 
     //if it got this far, the it passed the above checks. Apply changes to balance and player's money
-    ConvertIntToDecimalStringN(gStringVar1, tempValue, STR_CONV_MODE_LEFT_ALIGN, 10); //buffer the deposit amount
-    SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (balance + tempValue));; 
-    RemoveMoney(&gSaveBlock1Ptr->money, tempValue);
+    ConvertIntToDecimalStringN(gStringVar1, selection, STR_CONV_MODE_LEFT_ALIGN, 10); //buffer the deposit amount
+    SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (balance + selection));; 
+    RemoveMoney(&gSaveBlock1Ptr->money, selection);
     ConvertIntToDecimalStringN(gStringVar2, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10); //buffer new bank balance total
     return 1;// Deposit Successful.
 }
 
 int RyuFBDoWithdraw(void)
 {
-    s64 tempValue = 0;
     s64 balance = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
     s64 money = GetMoney(&gSaveBlock1Ptr->money);
-    u8 selection = gSpecialVar_Result;
+    u32 selection = gSpecialVar_32bit;
+    //@PIDGEY there needs to be a function here that finds out how much money is required to
+    //get the player to max balance. If selected number(from script) is greater than 899m,
+    //it should just withdraw whatever is required to get player to 1 billion. return 4. (Script for return 4 is already done.)
 
-    if (selection == 0)
-        tempValue = balance;
-    else if (selection >= 9)
-        return 4;//exit
-    else 
-        tempValue = sDepositAmounts[selection];
+    //also note: For some reason, when you enter a withdrawal amount, it gives the player the money, but does NOT take
+    //it out of the player's account. Could you look into this, please?
 
-    if (tempValue > balance)
-        return 0;  //not enough money in account.
 
-    if ((tempValue + money) > 1000000000)
-        return 2; //Withdraw would exceed player MAX_MONEY
+    if (selection == 0) //player did not make a selection or pressed B
+        return 3;
 
-    //@kageru can you make the following modification, please? I can't wrap my head around the math required to do this.
-    
-    /*if Player selected withdraw ALL, but the withdraw would exceed MAX_MONEY, give the player the amount)
-      requred to reach MAX_MONEY from the bank account instead.
-      (do the balance and player money change as well as buffer the withdrawal amount in gStringVar1
-      and buffer bank balance in gStringVar2 in this subroutine)
+    if (selection > balance)
+        return 0;  //not enough money in account. Abort.
 
-    return 3;*/
+    if ((selection + money) > 1000000000)
+        return 2; //Withdraw would exceed player MAX_MONEY. Abort.
 
-    SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (balance - tempValue));
-    AddMoney(&gSaveBlock1Ptr->money, tempValue);
-    ConvertIntToDecimalStringN(gStringVar1, tempValue, STR_CONV_MODE_LEFT_ALIGN, 10);
+    SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (balance - selection));
+    AddMoney(&gSaveBlock1Ptr->money, selection);
+    ConvertIntToDecimalStringN(gStringVar1, selection, STR_CONV_MODE_LEFT_ALIGN, 10);
     ConvertIntToDecimalStringN(gStringVar2, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10);
     return 1; //Withdrawal successful
 }
