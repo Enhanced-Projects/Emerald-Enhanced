@@ -585,7 +585,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/RyuLifeSkillScripts.inc"
 	.include "data/scripts/RyuFossilReviver.inc"
-	.include "data/scripts/RyuFollowerSystem.inc"
 	.include "data/scripts/frontiermode.inc"
 	.include "data/scripts/fertilizer.inc"
 	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
@@ -604,6 +603,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/RyuRealEstateScripts.inc"
 	.include "data/scripts/_poryscripts/RyuBotany.inc"
 	.include "data/scripts/_poryscripts/RyuBallChanger.inc"
+	.include "data/scripts/_poryscripts/RyuFollowerSystem.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED

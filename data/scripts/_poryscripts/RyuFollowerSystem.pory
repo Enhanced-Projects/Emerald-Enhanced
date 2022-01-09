@@ -1,5 +1,5 @@
-@@+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Follower System
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Follower System
+raw `
 RyuCancelFollowerForQuest::  @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	msgbox RyuCantHaveFollower MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -633,4 +633,4 @@ RF_NurseQuestCancelledText:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}I see... well... I'm sure another\n"
 	.string "strong trainer will come along...\p"
 	.string "Sorry for taking up your time.$"
-
+`
