@@ -73,7 +73,9 @@ int RyuFBDoWithdraw(void)
     if ((selection + money) > 1000000000)
         return 2; //Withdraw would exceed player MAX_MONEY. Abort.
 
-    SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (balance - selection));
+    balance -= selection;
+
+    SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, balance);
     AddMoney(&gSaveBlock1Ptr->money, selection);
     ConvertIntToDecimalStringN(gStringVar1, selection, STR_CONV_MODE_LEFT_ALIGN, 10);
     ConvertIntToDecimalStringN(gStringVar2, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10);
