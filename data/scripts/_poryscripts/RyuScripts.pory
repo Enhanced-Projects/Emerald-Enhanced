@@ -644,7 +644,13 @@ SB_SetupRandomSteppedOnEncounter::
 SB_SetupRandomMimikyuEncounter::
 	lock
 	clearflag FLAG_TEMP_A
-	setwildbattle SPECIES_MIMIKYU, 33, ITEM_NONE
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_MIMIKYU, VAR_TEMP_7, ITEM_NONE
 	playmoncry SPECIES_MIMIKYU, 0
 	waitmoncry
 	playse SE_PIN
@@ -662,10 +668,16 @@ StumbledOnMimikyu:
 
 
 SB_Random0::
-	setwildbattle SPECIES_PYUKUMUKU, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_PYUKUMUKU, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_PYUKUMUKU, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_PYUKUMUKU
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -674,10 +686,16 @@ SB_Random0::
 	end
 
 SB_Random1::
-	setwildbattle SPECIES_SANDYGAST, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_SANDYGAST, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_SANDYGAST, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_SANDYGAST
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -686,10 +704,16 @@ SB_Random1::
 	end
 
 SB_Random2::
-	setwildbattle SPECIES_SHELLDER, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_SHELLDER, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_SHELLDER, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_SHELLDER
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -698,10 +722,16 @@ SB_Random2::
 	end
 
 SB_Random3::
-	setwildbattle SPECIES_MAREANIE, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_MAREANIE, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_MAREANIE, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_MAREANIE
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -710,10 +740,16 @@ SB_Random3::
 	end
 
 SB_Random4::
-	setwildbattle SPECIES_SKRELP, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_SKRELP, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_SKRELP, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_SKRELP
 	msgbox Ryu_YouSteppedOn
 	closemessage

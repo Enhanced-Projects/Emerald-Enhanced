@@ -2252,7 +2252,7 @@ bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at
 
 void RyuLegendaryDoBossRoll(void)
 {
-    u32 randomvalue = (Random() % 99);
+    u32 randomvalue = 0;//(Random() % 99);
     if (CheckAPFlag(AP_ALPHA_AURA) == TRUE)
     {
         if (randomvalue < 11)
