@@ -35,6 +35,7 @@ RyuFollowerSelectNPCScript::
 
 RyuFollower_ShellyScript::
 	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, MH_FollowerShellyScript
+    call RyuFollower_ShellyChatterSelector
 	msgbox RyuFollower_ShellyLeaveMsg MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq RF_FollowerLeave
@@ -289,19 +290,19 @@ RyuFollowerAllySelector::
 	return
 
 LeafOkLetsGo:
-	.string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Okay, {PLAYER}!\nI'm as ready as I can be!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay, {PLAYER}!\nI'm as ready as I can be!$"
 
 DawnOkLetsGo:
-	.string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}Okay! I'm ready to go!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay! I'm ready to go!$"
 
 BrendanOkLetsGo:
-	.string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}Okay! Let's hit the road!$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Okay! Let's hit the road!$"
 	
 RyuFollower_ShellyLeaveMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Should I go?$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I go?$"
 	
 RyuFollowerLanetteLeaveMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: Should I return to my lab??$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I return to my lab??$"
 
 RyuFollowerLeavesService:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Your follower\nleaves your service...$"
@@ -314,20 +315,20 @@ RyuCantHaveFollower:
 	.string "to dismiss your follower?$"
 
 FollowerDawnChatter:
-	.string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}It's been really nice, hanging\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It's been really nice, hanging\n"
 	.string "out with you. I wish we did this\p"
 	.string "from the beginning.\p"
 	.string "Would you like me to leave?$"
 
 FollowerBrendanChatter:
-	.string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}You should have tagged\n"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}You should have tagged\n"
 	.string "along with me from the start. This\p"
 	.string "has been some of the most enjoyable\n"
 	.string "time in my life!\p"
 	.string "Do you need to be alone?$"
 
 FollowerLeafChatter:
-	.string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Boy, this sure brings back\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Boy, this sure brings back\n"
 	.string "memories... with Him...\p"
 	.string "I'm glad we found each other, really.\n"
 	.string "I was in a real dark, place.\p"
@@ -634,3 +635,18 @@ RF_NurseQuestCancelledText:
 	.string "strong trainer will come along...\p"
 	.string "Sorry for taking up your time.$"
 `
+
+script RyuFollower_ShellyChatterSelector {
+    random(4)
+    switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}It's nice to get out and work on my tan. I've been cooped up for too long!"))
+        case 1:
+            msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I wonder... What would the world actually be like if Archie was successful? Would everyone be travelling in boats instead of cars?"))
+        case 2:
+            msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Hmm... it's a bit hot today. Wonder if I should have brought sunscreen?"))
+        case 3:
+            msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I wish we ran around together like this more often."))
+    }
+    return
+}
