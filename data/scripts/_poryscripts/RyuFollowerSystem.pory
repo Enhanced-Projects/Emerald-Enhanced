@@ -43,6 +43,7 @@ RyuFollower_ShellyScript::
 	end
 	
 RyuFollower_LanetteScript::
+	call RyuFollower_LanetteChatterSelector
 	msgbox RyuFollowerLanetteLeaveMsg MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq RF_FollowerLeave
@@ -50,36 +51,34 @@ RyuFollower_LanetteScript::
 	end
 
 RyuFollower_DawnScript::
-	msgbox FollowerDawnChatter, MSGBOX_YESNO
+	call RyuFollower_DawnChatterSelector
+	msgbox RF_FollowerDawnExit, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq RF_FollowerLeave
 	release
 	end
 
 RyuFollower_BrendanScript::
-	msgbox FollowerBrendanChatter, MSGBOX_YESNO
+	call RyuFollower_BrendanChatterSelector
+	msgbox FollowerBrendanExit, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq RF_FollowerLeave
 	release
 	end
 
 RyuFollower_LeafScript::
-	msgbox FollowerLeafChatter, MSGBOX_YESNO
+	call RyuFollower_LanaChatterSelector
+	msgbox FollowerLeafExit, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq RF_FollowerLeave
 	release
 	end
 
 RyuFollower_CourtneyScript::
-	msgbox RF_CourtneyMsg
+	call RyuFollower_CourtneyChatterSelector
 	closemessage
 	release
 	end
-
-RF_CourtneyMsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}I will follow you anywhere...\n"
-	.string "Do... anything for you.\l"
-	.string "Can we go hurt people?$"
 
 RyuFollower_NurseJoy::
 	fadescreen FADE_TO_BLACK
@@ -113,12 +112,14 @@ RF_NurseHeal::
 	end
 
 RyuFollower_NurseAlreadyHealed::
-	msgbox RF_NurseChatter
-	closemessage
+	call RyuFollower_NurseChatterSelector
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	release
 	end
+
+RF_FollowerDawnExit:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Would you like me to leave?$"
 
 RF_ShouldIHeal:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I heal your team?$"
@@ -314,24 +315,10 @@ RyuCantHaveFollower:
 	.string "for this quest. Would you like\l"
 	.string "to dismiss your follower?$"
 
-FollowerDawnChatter:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}It's been really nice, hanging\n"
-	.string "out with you. I wish we did this\p"
-	.string "from the beginning.\p"
-	.string "Would you like me to leave?$"
-
-FollowerBrendanChatter:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}You should have tagged\n"
-	.string "along with me from the start. This\p"
-	.string "has been some of the most enjoyable\n"
-	.string "time in my life!\p"
+FollowerBrendanExit:
 	.string "Do you need to be alone?$"
 
-FollowerLeafChatter:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Boy, this sure brings back\n"
-	.string "memories... with Him...\p"
-	.string "I'm glad we found each other, really.\n"
-	.string "I was in a real dark, place.\p"
+FollowerLeafExit:
 	.string "Do you need some space?$"
 
 
@@ -637,7 +624,7 @@ RF_NurseQuestCancelledText:
 `
 
 script RyuFollower_ShellyChatterSelector {
-    random(4)
+    random(6)
     switch (var(VAR_RESULT)) {
         case 0:
             msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}It's nice to get out and work on my tan. I've been cooped up for too long!"))
@@ -647,6 +634,123 @@ script RyuFollower_ShellyChatterSelector {
             msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Hmm... it's a bit hot today. Wonder if I should have brought sunscreen?"))
         case 3:
             msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I wish we ran around together like this more often."))
+        case 4:
+            msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Don't forget to stay hydrated!"))
+        case 5:
+            msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Lets take a trip to the beach before our next battle!"))
     }
+	closemessage
     return
+}
+
+script RyuFollower_CourtneyChatterSelector {
+	random(4)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format("{COLOR LIGHT_GREEN}{SHADOW GREEN}I will follow you anywhere...\nDo... anything for you.\lCan we go hurt people?"))
+		case 1:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Do you want to share body heat?"))
+		case 2:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Is it hot here or is it me?"))
+		case 3:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Don't worry, I will never leave your side!"))
+	}
+	closemessage
+	return
+}
+
+script RyuFollower_MinnieChatterSelector {
+	random(4)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Don't worry, I'm your personal bodyguard now."))
+		case 1:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Leave it all to Minnie!"))
+		case 2:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Hey... that guy has a creepy stare. Go fix it for him!"))
+		case 3:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}One day, I hope I can stay with you like the others."))
+	}
+	closemessage
+	return
+}
+
+script RyuFollower_LanetteChatterSelector {
+	random(4)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}...\n...\pOh! Sorry!, you caught me daydreaming!")
+		case 1:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I'm tired from all this... exercise. Can we go take a nap?"))
+		case 2:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Should we stop by a theater and see what's playing?"))
+		case 3:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I sure hope I don't miss any important tech support calls..."))
+	}
+	closemessage
+	return
+}
+
+script RyuFollower_DawnChatterSelector {
+	random(4)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}It's been really nice, hanging\nout with you. I wish we did this\nfrom the beginning."))
+		case 1:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You know how to make me smile."))
+		case 2:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I like challenging Gyms with you, It's really fun!"))
+		case 3:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Don't you ever get tired of being so strong? Isn't it boring to win all the time?"))
+	}
+	closemessage
+	return
+}
+
+script RyuFollower_BrendanChatterSelector {
+	random(4)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Here you are, still making me look bad. I don't mind though. I love your strength."))
+		case 1:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Would you like to put a leash on me? That sounds like fun."))
+		case 2:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}If you want, I'll carry you..."))
+		case 3:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I could really go for an energy drink right now..."))
+	}
+	closemessage
+	return
+}
+
+script RyuFollower_LanaChatterSelector {
+	random(4)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Can we go hit up the Elite Four again?"))
+		case 1:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}It's a little sad, to be honest. Hoenn trainers seem weak compared to Kanto."))
+		case 2:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}In Kanto, the Champion stays for terms. In Hoenn, it seems like whoever wins, stays. Interesting."))
+		case 3:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Why are you looking at me? Is my hat crooked or something?\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lana looks embarassed...)"))
+	}
+	closemessage
+	return
+}
+
+script RyuFollower_NurseChatterSelector {
+	random(4)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Are you taking good care of your Pokémon? If you put your faith in them, they will do their best for you!"))
+		case 1:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Do you have enough medicine?"))
+		case 2:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I hope there aren't many trainers looking for heals at the Pokémon Center..."))
+		case 3:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Did you know that humans and Pokémon used to be equals? Some people even married some Pokémon. But that was a very long time ago. Some people even evolved from Pokémon.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Joy winks at you...)"))
+	}
+	closemessage
+	return
 }
