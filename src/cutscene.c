@@ -34,7 +34,7 @@ static const u8 sBrendanNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutsce
 
 static const u8 sCourtneyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_tiles.8bpp");
 static const u8 sCourtneyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_map.bin");
-static const u8 sCourtneyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney.gbapal");
+static const u8 sCourtneyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_palette.gbapal");
 
 static const u8 sHeatranBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_tiles.8bpp");
 static const u8 sHeatranBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_map.bin");
