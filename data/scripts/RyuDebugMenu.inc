@@ -347,7 +347,17 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto RyuUserInterfaceTextboxMenu
+	drawfullscreenimage SCENEBGCOURTNEYNEUTRAL
+	waitbuttonpress
+	clearfullscreenimage
+	delay 20
+	drawfullscreenimage SCENEBGCOURTNEY
+	waitbuttonpress
+	clearfullscreenimage
+	delay 20
+	drawfullscreenimage SCENEBGCOURTNEYNIGHT
+	waitbuttonpress
+	clearfullscreenimage
 	release
 	end
 

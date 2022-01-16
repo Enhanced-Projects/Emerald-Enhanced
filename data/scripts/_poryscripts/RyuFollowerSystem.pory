@@ -75,7 +75,11 @@ RyuFollower_LeafScript::
 	end
 
 RyuFollower_CourtneyScript::
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGCOURTNEY
 	call RyuFollower_CourtneyChatterSelector
+	fadescreen FADE_FROM_BLACK
+	clearfullscreenimage
 	closemessage
 	release
 	end

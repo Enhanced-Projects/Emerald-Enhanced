@@ -36,6 +36,14 @@ static const u8 sCourtneyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/cou
 static const u8 sCourtneyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_map.bin");
 static const u8 sCourtneyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_palette.gbapal");
 
+static const u8 sCourtneyNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_night_tiles.8bpp");
+static const u8 sCourtneyNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_night_map.bin");
+static const u8 sCourtneyNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_night_palette.gbapal");
+
+static const u8 sCourtneyNeutralBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_neutral_tiles.8bpp");
+static const u8 sCourtneyNeutralBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_neutral_map.bin");
+static const u8 sCourtneyNeutralBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_neutral_palette.gbapal");
+
 static const u8 sHeatranBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_tiles.8bpp");
 static const u8 sHeatranBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_map.bin");
 static const u8 sHeatranBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran.gbapal");
@@ -205,6 +213,28 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sWarpBgMap),
         .palette = sWarpBgPalette,
 		.palIdxCnt = 16
+	},
+	[SCENEBGCOURTNEYNIGHT] = 
+    {
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sCourtneyNightBgTiles,
+		.tileSize = sizeof(sCourtneyNightBgTiles),
+        .map = sCourtneyNightBgMap,
+		.mapSize = sizeof(sCourtneyNightBgMap),
+        .palette = sCourtneyNightBgPalette,
+		.palIdxCnt = 240
+	},
+	[SCENEBGCOURTNEYNEUTRAL] = 
+    {
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sCourtneyNeutralBgTiles,
+		.tileSize = sizeof(sCourtneyNeutralBgTiles),
+        .map = sCourtneyNeutralBgMap,
+		.mapSize = sizeof(sCourtneyNeutralBgMap),
+        .palette = sCourtneyNeutralBgPalette,
+		.palIdxCnt = 240
 	},
 };
 
