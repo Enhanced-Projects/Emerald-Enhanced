@@ -347,7 +347,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	warpsilent MAP_SOUTHERN_ISLAND_INTERIOR, 255, 8, 8
+	goto RyuUserInterfaceTextboxMenu
 	release
 	end
 

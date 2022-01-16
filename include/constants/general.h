@@ -478,6 +478,13 @@
 #define PROPERTY_MOSSDEEP    11
 //there are an additional 20 properties
 
+//Modes for the User RGB setter function
+
+#define USER_COLOR_STANDARD_TEXT 0
+#define USER_COLOR_STANDARD_TEXT_SHADOW 1
+#define USER_COLOR_WINDOW_HIGHLIGHT 2
+#define USER_COLOR_WINDOW_BORDER 3
+#define USER_COLOR_WINDOW_BACKGROUND 4
 
 //notification types
 

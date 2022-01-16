@@ -694,7 +694,7 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     
     if (!IsDoubleBattle())
     {
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[2]);
             LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[3]);
@@ -713,7 +713,7 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     }
     else
     {
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LoadSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[0]);
             LoadSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[1]);
@@ -742,7 +742,7 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
     {
         if (state == 1)
         {
-            if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+            if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
             {
                 LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[2]);
                 LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[3]);
@@ -761,7 +761,7 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
                 {
                     LoadCompressedSpriteSheet(&sSpriteSheet_SafariHealthbox);
                 }
-                else if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                else if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
                 {
                     LoadSpriteSheet(&sSpriteSheet_SinglesPlayerHealthboxDark);
                 }
@@ -772,7 +772,7 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
                 
             }
             else if (state == 3)
-                if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
                 {
                     LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthboxDark);
                 }
@@ -789,7 +789,7 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
         }
         else
         {
-                if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
                 {
                     if (state == 2)
                         LoadSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[0]);

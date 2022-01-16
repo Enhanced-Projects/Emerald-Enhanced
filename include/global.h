@@ -419,6 +419,7 @@ struct SaveBlock2
               u16 unusedSB2Flags:12; //remainer of unused sb2 flags
              u8 propertyFlags[NUM_PROPERTY_BYTES];
              u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
+             u16 userInterfaceTextboxPalette[16];
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

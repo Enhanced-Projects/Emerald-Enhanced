@@ -1408,7 +1408,7 @@ static bool8 DecompressGraphics(void)
         sMonSummaryScreen->switchCounter++;
         break;
     case 6:
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LoadCompressedPalette(gStatusScreenDarkPalette, 0, 0x100);
         }

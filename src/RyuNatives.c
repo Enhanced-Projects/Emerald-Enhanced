@@ -2332,3 +2332,29 @@ void RyuSetupRandomForE4(void)
     VarSet(VAR_RYU_E44, r4);
     //mgba_printf(LOGINFO, "%d, %d, %d, %d", r1, r2, r3, r4);
 }
+
+const u16 CustomInterfacePaletteSlots[] = {
+    2, //standard text color
+    3, //standard text shadow
+    14, //textbox decorative highlight
+    13, //textbox decorative frame
+    1, //textbox and text background color
+};
+
+void SetUserRGBValue(void)
+{
+    u8 mode = CustomInterfacePaletteSlots[gSpecialVar_0x8004];
+    u8 redValue = gSpecialVar_0x8001;
+    u8 greenValue = gSpecialVar_0x8002;
+    u8 blueValue = gSpecialVar_0x8003;
+
+    gSaveBlock2Ptr->userInterfaceTextboxPalette[mode] = RGB(redValue, greenValue, blueValue);
+
+    if (mode == USER_COLOR_WINDOW_BACKGROUND) //have to also set the text highlight color to match.
+    {
+        gSaveBlock2Ptr->userInterfaceTextboxPalette[11] = RGB(redValue, greenValue, blueValue);
+        gSaveBlock2Ptr->userInterfaceTextboxPalette[12] = RGB(redValue, greenValue, blueValue);
+        gSaveBlock2Ptr->userInterfaceTextboxPalette[1] = RGB(redValue, greenValue, blueValue);
+    }
+
+}

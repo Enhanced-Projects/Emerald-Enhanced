@@ -759,14 +759,15 @@ void InitBattleBgsVideo(void)
 
 void LoadBattleMenuWindowGfx(void)
 {
-    LoadUserWindowBorderGfx(2, 0x12, 0x10);
-    LoadUserWindowBorderGfx(2, 0x22, 0x10);
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
-    {
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
+    {   
+        LoadUserWindowBorderGfx(2, 0x12, 0x10);
+        LoadUserWindowBorderGfx(2, 0x22, 0x10);
         LoadCompressedPalette(gBattleWindowTextDarkPalette, 0x50, 0x20);
     }
     else
-    {
+    {   LoadUserDarkWindowBorderGfx(2, 0x12, 0x10);
+        LoadUserDarkWindowBorderGfx(2, 0x22, 0x10);
         LoadCompressedPalette(gBattleWindowTextPalette, 0x50, 0x20);
     }
     
@@ -892,7 +893,7 @@ void LoadBattleTextboxAndBackground(void)
     CopyToBgTilemapBuffer(0, gBattleTextboxTilemap, 0, 0);
     CopyBgTilemapBufferToVram(0);
 
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
     {
         LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x40);
     }
@@ -1250,7 +1251,7 @@ bool8 LoadChosenBattleElement(u8 caseId)
     switch (caseId)
     {
     case 0:
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LZDecompressVram(gBattleDarkTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
         }
@@ -1264,7 +1265,7 @@ bool8 LoadChosenBattleElement(u8 caseId)
         CopyBgTilemapBufferToVram(0);
         break;
     case 2:
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x40);
         }

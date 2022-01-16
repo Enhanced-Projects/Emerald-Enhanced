@@ -32,7 +32,7 @@ enum
     MENUITEM_BUTTONMODE,
     MENUITEM_BAR_SPEED,
     MENUITEM_TRANSITION,
-    MENUITEM_FRAMETYPE,
+    //MENUITEM_FRAMETYPE,
     MENUITEM_VANILLACAP,
     MENUITEM_AUTORUN,
     MENUITEM_SAVE,
@@ -91,10 +91,10 @@ static const sItemFunctions[MENUITEM_COUNT] =
     [MENUITEM_TEXTSPEED] = {TextSpeed_DrawChoices, FourOptions_ProcessInput},
     [MENUITEM_BATTLESCENE] = {BattleScene_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_FORCESETBATTLE] = {ForceBattleSet_DrawChoices, TwoOptions_ProcessInput},
-    [MENUITEM_THEME] = {ThemeSelection_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_THEME] = {ThemeSelection_DrawChoices, ThreeOptions_ProcessInput},
     [MENUITEM_RDM_MUSIC] = {RandomMusic_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_BUTTONMODE] = {ButtonMode_DrawChoices, ThreeOptions_ProcessInput},
-    [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
+    //[MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
     [MENUITEM_BAR_SPEED] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
     [MENUITEM_TRANSITION] = {Transition_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_VANILLACAP] = {VanillaCap_DrawChoices, TwoOptions_ProcessInput},
@@ -127,7 +127,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_THEME]       = gText_ThemeSelector,
     [MENUITEM_RDM_MUSIC]   = gText_RandomRouteMusic,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
-    [MENUITEM_FRAMETYPE]   = gText_Frame,
+    //[MENUITEM_FRAMETYPE]   = gText_Frame,
     [MENUITEM_BAR_SPEED]   = sTextBarSpeed,
     [MENUITEM_TRANSITION]  = sText_Transition,
     [MENUITEM_VANILLACAP]  = sText_VanillaLevelCap,
@@ -286,7 +286,7 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_THEME] = VarGet(VAR_RYU_THEME_NUMBER);
         sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
         sOptions->sel[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
-        sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
+        //sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
         sOptions->sel[MENUITEM_BAR_SPEED] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
         sOptions->sel[MENUITEM_TRANSITION] = FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION);
         sOptions->sel[MENUITEM_VANILLACAP] = FlagGet(FLAG_RYU_VANILLA_CAP);
@@ -454,6 +454,11 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptions->sel[MENUITEM_BATTLESCENE];
     gSaveBlock2Ptr->optionsThemeNumber = sOptions->sel[MENUITEM_THEME];
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 2)
+        gSaveBlock2Ptr->optionsWindowFrameType = 0;
+    else
+        gSaveBlock2Ptr->optionsWindowFrameType = 12;
+    
     gSaveBlock2Ptr->forceSetBattleType = sOptions->sel[MENUITEM_FORCESETBATTLE];
     if (sOptions->sel[MENUITEM_RDM_MUSIC])
         FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
@@ -461,7 +466,7 @@ static void Task_OptionMenuSave(u8 taskId)
         FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
 
     gSaveBlock2Ptr->optionsButtonMode = sOptions->sel[MENUITEM_BUTTONMODE];
-    gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
+    //gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
     VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_BAR_SPEED]);
     if (sOptions->sel[MENUITEM_TRANSITION])
         FlagSet(FLAG_OPTIONS_INSTANT_TRANSITION);
@@ -655,11 +660,13 @@ static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed)
 
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed)
 {
-    u8 styles[2] = {0, 0};
+    u8 styles[3] = {0};
+    int xMid = GetMiddleX(gText_ButtonTypeNormal, gText_ButtonTypeLR, gText_ButtonTypeLEqualsA);
 
     styles[selection] = 1;
     DrawOptionMenuChoice(gText_UiThemeLight, 104, y, styles[0], textSpeed);
-    DrawOptionMenuChoice(gText_UiThemeDark, GetStringRightAlignXOffset(1, gText_UiThemeDark, 198), y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeDark, xMid, y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeUser, GetStringRightAlignXOffset(1, gText_UiThemeUser, 198), y, styles[2], textSpeed);
 }
 
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed)

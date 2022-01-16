@@ -1158,7 +1158,7 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     u8 battler = gSprites[healthboxSpriteId].hMain_Battler;
     u8 bgThemeColor = 2;
 
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         bgThemeColor = 0;
 
     // Don't print Lv char if mon is mega evolved.
@@ -1204,7 +1204,7 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
     u8 bgThemeColor = 2;
     void *objVram;
 
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         bgThemeColor = 2;
 
     if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) == B_SIDE_PLAYER && !IsDoubleBattle())
@@ -2268,7 +2268,7 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     if (illusionMon != NULL)
         mon = illusionMon;
 
-    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1))
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         bgThemeColor = 0;
 
     if (GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_OPPONENT)
@@ -2518,7 +2518,7 @@ static void UpdateSafariBallsTextOnHealthbox(u8 healthboxSpriteId)
     u8 *windowTileData;
     u8 bgThemeColor = 2;
 
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         bgThemeColor = 1;
 
     windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gText_SafariBalls, 0, 3, bgThemeColor, &windowId);
@@ -2536,7 +2536,7 @@ static void UpdateLeftNoOfBallsTextOnHealthbox(u8 healthboxSpriteId)
     u8 *windowTileData;
     u8 bgThemeColor = 2;
 
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         bgThemeColor = 1;
 
     txtPtr = StringCopy(text, gText_SafariBallLeft);

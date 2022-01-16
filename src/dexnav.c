@@ -444,14 +444,14 @@ const u8* RyuReturnThemeColors(u8 isDark)
 {
     if (isDark == TRUE)
     {
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
             return sFontColor_BlackDark;
          else
             return sFontColor_Black;
     }
     else
     {
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
             return sFontColor_WhiteDark;
         else
             return sFontColor_White;
@@ -1681,7 +1681,7 @@ static bool8 DexNav_LoadGraphics(void)
     {
     case 0:
         ResetTempTileDataBuffers();
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
             DecompressAndCopyTileDataToVram(1, sDexNavGuiTilesDark, 0, 0, 0);
         else
             DecompressAndCopyTileDataToVram(1, sDexNavGuiTiles, 0, 0, 0);
@@ -1691,7 +1691,7 @@ static bool8 DexNav_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+            if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
                 LZDecompressWram(sDexNavGuiTilemapDark, sBg1TilemapBuffer);
             else
                 LZDecompressWram(sDexNavGuiTilemap, sBg1TilemapBuffer);
@@ -1700,7 +1700,7 @@ static bool8 DexNav_LoadGraphics(void)
         }
         break;
     case 2:
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
             LoadPalette(sDexNavGuiPalDark, 0, 32);
         else
             LoadPalette(sDexNavGuiPal, 0, 32);

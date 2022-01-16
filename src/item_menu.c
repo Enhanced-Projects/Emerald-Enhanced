@@ -804,7 +804,7 @@ bool8 LoadBagMenu_Graphics(void)
             break;
         case 2:
             if (!IsWallysBag() && gSaveBlock2Ptr->playerGender != MALE)
-                if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
                     {
                         LoadCompressedPalette(gBagScreenDarkTheme, 0, 0x40);
                     }
@@ -814,7 +814,7 @@ bool8 LoadBagMenu_Graphics(void)
                     }
             else
             {
-                if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
                     {
                         LoadCompressedPalette(gBagScreenDarkTheme, 0, 0x40);
                     }

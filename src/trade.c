@@ -2878,7 +2878,7 @@ static void InitTradeBgInternal(void)
     DecompressAndLoadBgGfxUsingHeap(0, gBattleTextboxTiles, 0, 0, 0);
     LZDecompressWram(gBattleTextboxTilemap, gDecompressionBuffer);
     CopyToBgTilemapBuffer(0, gDecompressionBuffer, 0x800, 0);  
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x20);
         }

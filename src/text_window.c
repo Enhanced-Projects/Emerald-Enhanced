@@ -199,17 +199,33 @@ void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
         LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFramesDark[frameId].tiles, 0x120, destOffset);
         LoadPalette(sWindowFramesDark[frameId].pal, palOffset, 0x20);
     }
-    else
+    else if (VarGet(VAR_RYU_THEME_NUMBER) == 0)
     {
         LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFrames[frameId].tiles, 0x120, destOffset);
         LoadPalette(sWindowFrames[frameId].pal, palOffset, 0x20);
     }
+    else
+    {
+        LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFramesDark[0].tiles, 0x120, destOffset);
+        LoadPalette(gSaveBlock2Ptr->userInterfaceTextboxPalette, palOffset, 0x20);
+    }
     
+}
+
+void LoadDarkWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
+{
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFramesDark[frameId].tiles, 0x120, destOffset);
+    LoadPalette(sWindowFramesDark[frameId].pal, palOffset, 0x20);
 }
 
 void LoadUserWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
     LoadWindowGfx(windowId, gSaveBlock2Ptr->optionsWindowFrameType, destOffset, palOffset);
+}
+
+void LoadUserDarkWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
+{
+    LoadDarkWindowGfx(windowId, gSaveBlock2Ptr->optionsWindowFrameType, destOffset, palOffset);
 }
 
 void DrawTextBorderOuter(u8 windowId, u16 tileNum, u8 palNum)
@@ -294,6 +310,8 @@ const u16 *GetOverworldTextboxPalettePtr(void)
             return gMessageBox_Pal;
         case 1:
             return gRyuDarkTheme_Pal;
+        case 2:
+            return gSaveBlock2Ptr->userInterfaceTextboxPalette;
         default:
             return gMessageBox_Pal;
     }

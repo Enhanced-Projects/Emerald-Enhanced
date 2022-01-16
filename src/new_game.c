@@ -147,6 +147,15 @@ void ResetMenuAndMonGlobals(void)
     ResetBagScrollPositions();
     ResetPokeblockScrollPositions();
 }
+extern const u16 gRyuDarkTheme_Pal[];
+void RyuResetUserPaletteData(void)
+{
+    u32 i;
+    for (i = 0; i < 16; i++)
+    {
+        gSaveBlock2Ptr->userInterfaceTextboxPalette[i] = gRyuDarkTheme_Pal[i];
+    }
+}
 
 extern void RyuClearAlchemyEffect();
 
@@ -323,5 +332,6 @@ void NewGameInitData(void)
     gSaveBlock1Ptr->dexNavChain = 0;
     RyuClearAlchemyEffect();
     RyuResetRealEstateData();
+    RyuResetUserPaletteData();
 }
 

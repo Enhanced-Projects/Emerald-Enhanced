@@ -604,6 +604,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/RyuBotany.inc"
 	.include "data/scripts/_poryscripts/RyuBallChanger.inc"
 	.include "data/scripts/_poryscripts/RyuFollowerSystem.inc"
+	.include "data/scripts/_poryscripts/UserInterfaceCustomization.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
