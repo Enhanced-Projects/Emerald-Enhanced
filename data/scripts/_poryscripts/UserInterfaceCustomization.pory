@@ -1,23 +1,5 @@
 //This lets the player choose a custom set of colors for the interface.
 
-script RyuUserInterfaceMainMenu {
-    msgbox("Choose which part of the\ninterface to edit.")
-    bufferdynamicmulti(UIMM1, UIMM2, UIMM3)
-    multichoice(0, 0, MULTI_DYNAMIC_3, 0)
-    closemessage
-    switch (var(VAR_RESULT)) {
-    case 0:
-        goto(RyuUserInterfaceTextboxMenu)
-    case 1:
-        goto(RyuUserInterfaceWindowMenu)
-    case 2:
-    case 127:
-        msgbox("Exiting UI Customization.")
-        release
-        end
-    }
-}
-
 text UIMM1 {
     "Edit Textbox"
 }
@@ -30,6 +12,20 @@ text UIMM3 {
     "Exit"
 }
 
+script RyuUserInterfaceMainMenu {
+    bufferdynamicmulti(UI_SM1, UI_SM2)
+    msgbox("Use preset or custom theme?")
+    multichoice(0, 0, MULTI_DYNAMIC_2, 0)
+    if (var(VAR_RESULT) == 1){
+        goto(RyuUserInterfacePresetsMenu)
+    }
+    elif (var(VAR_RESULT) == 0) {
+        goto(RyuUserInterfaceTextboxMenu)
+    }
+    else {
+        goto(RDB_BetaMenuStandalone)
+    }
+}
 //TEXT WINDOW
 
 script RyuUserInterfaceTextboxMenu {
@@ -255,6 +251,14 @@ script RyuUserInterfaceTextboxMenu {
     }
 }
 
+text UI_SM1 {
+    "Custom"
+}
+
+text UI_SM2 {
+    "Preset"
+}
+
 text UISM1 {
     "Reset to Default"
 }
@@ -294,3 +298,51 @@ script RyuUserInterfaceWindowMenu {
             goto(RyuUserInterfaceMainMenu)
     }
 }
+
+script RyuUserInterfacePresetsMenu {
+    msgbox("Choose a preset theme.")
+    bufferdynamicmulti(UIPM_1, UIPM_2, UIPM_3, UIPM_4, UIPM_5, UIPM_6)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    if (var(VAR_RESULT) == 127) {
+        msgbox("No selection made. Returning.")
+        goto(RyuUserInterfaceTextboxMenu)
+    }
+    copyvar(VAR_0x8001, VAR_RESULT)
+    callnative(ApplyPresetRGBUserTheme)
+    closemessage
+    msgbox("Is this selection acceptable?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        release
+        end
+    }
+    else {
+        goto(RyuUserInterfacePresetsMenu)
+    }
+    release
+    end
+}
+
+text UIPM_1 {
+    "Blue Steel"
+}
+
+text UIPM_2 {
+    "Royal Purple"
+}
+
+text UIPM_3 {
+    "Empty"
+}
+
+text UIPM_4 {
+    "Empty"
+}
+
+text UIPM_5 {
+    "Empty"
+}
+
+text UIPM_6 {
+    "Empty"
+}
+

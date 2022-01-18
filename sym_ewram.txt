@@ -145,3 +145,4 @@
 	.include "src/journal.o"
 	.include "src/pidgey_ui_sys.o"
 	.include "src/overworld_notif.o"
+	.include "src/custom_interface.o"

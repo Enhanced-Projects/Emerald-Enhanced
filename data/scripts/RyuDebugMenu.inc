@@ -347,17 +347,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	drawfullscreenimage SCENEBGCOURTNEYNEUTRAL
-	waitbuttonpress
-	clearfullscreenimage
-	delay 20
-	drawfullscreenimage SCENEBGCOURTNEY
-	waitbuttonpress
-	clearfullscreenimage
-	delay 20
-	drawfullscreenimage SCENEBGCOURTNEYNIGHT
-	waitbuttonpress
-	clearfullscreenimage
+	callnative printThemeColors
 	release
 	end
 
