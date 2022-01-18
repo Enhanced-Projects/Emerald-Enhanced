@@ -1386,7 +1386,6 @@ static void CB2_EndTrainerBattle(void)
     FlagClear(FLAG_RYU_BOSS_SCALE);
     FlagClear(FLAG_RYU_MAX_SCALE);
     FlagClear(FLAG_RYU_FACING_FACTION_BOSS);
-    FlagClear(FLAG_RYU_IN_BATTLE);
     
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
     {

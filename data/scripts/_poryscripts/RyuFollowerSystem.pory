@@ -78,8 +78,8 @@ RyuFollower_CourtneyScript::
 	fadescreen FADE_TO_BLACK
 	drawfullscreenimage SCENEBGCOURTNEY
 	call RyuFollower_CourtneyChatterSelector
-	fadescreen FADE_FROM_BLACK
 	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	closemessage
 	release
 	end
@@ -651,7 +651,7 @@ script RyuFollower_CourtneyChatterSelector {
 	random(4)
 	switch (var(VAR_RESULT)) {
 		case 0:
-			msgbox(format("{COLOR LIGHT_GREEN}{SHADOW GREEN}I will follow you anywhere...\nDo... anything for you.\lCan we go hurt people?"))
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I will follow you anywhere...\nDo... anything for you.\lCan we go hurt people?"))
 		case 1:
 			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Do you want to share body heat?"))
 		case 2:
