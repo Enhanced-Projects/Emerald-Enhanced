@@ -1769,6 +1769,12 @@
 	.2byte \species
 	.4byte \ptr
 	.endm
+
+	.macro jumpifweatheraffected battler:req, weather:req, ptr:req
+	various \battler, VARIOUS_JUMP_IF_WEATHER_AFFECTED
+	.4byte \weather
+	.4byte \ptr
+	.endm
 	
 @ helpful macros
 	.macro setstatchanger stat:req, stages:req, down:req

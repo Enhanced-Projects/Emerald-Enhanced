@@ -168,6 +168,7 @@
 #define VARIOUS_SET_ECLIPSE                     102
 #define VARIOUS_TRY_TO_CLEAR_PRIMAL_WEATHER     103
 #define VARIOUS_JUMP_IF_SPECIES                 104
+#define VARIOUS_JUMP_IF_WEATHER_AFFECTED        105
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

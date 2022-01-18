@@ -1557,8 +1557,7 @@ static bool32 AccuracyCalcHelper(u16 move)
     }
 
     if ((WEATHER_HAS_EFFECT &&
-            (((gBattleWeather & WEATHER_RAIN_ANY) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
-         || (((gBattleWeather & WEATHER_HAIL_ANY) && move == MOVE_BLIZZARD))))
+            ((IsBattlerWeatherAffected(gBattlerTarget, WEATHER_RAIN_ANY) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))))
      || (gBattleMoves[move].effect == EFFECT_VITAL_THROW)
      || (gBattleMoves[move].accuracy == 0)
      || ((B_MINIMIZE_DMG_ACC >= GEN_6) && (gStatuses3[gBattlerTarget] & STATUS3_MINIMIZED) && (gBattleMoves[move].flags & FLAG_DMG_MINIMIZE)))
@@ -1605,8 +1604,8 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move)
 
     moveAcc = gBattleMoves[move].accuracy;
     // Check Thunder and Hurricane on sunny weather.
-    if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY
-        && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
+    if (IsBattlerWeatherAffected(battlerDef, WEATHER_SUN_ANY)
+      && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
         moveAcc = 50;
     // Check Wonder Skin.
     if (defAbility == ABILITY_WONDER_SKIN && gBattleMoves[move].power == 0)
@@ -7320,7 +7319,7 @@ u32 IsFlowerVeilProtected(u32 battler)
 
 u32 IsLeafGuardProtected(u32 battler)
 {
-    if (WEATHER_HAS_EFFECT && (gBattleWeather & WEATHER_SUN_ANY))
+    if (IsBattlerWeatherAffected(battler, WEATHER_SUN_ANY))
         return GetBattlerAbility(battler) == ABILITY_LEAF_GUARD;
     else
         return 0;
@@ -8626,6 +8625,15 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 5);
         else
             gBattlescriptCurrInstr += 9;
+        return;
+    case VARIOUS_JUMP_IF_WEATHER_AFFECTED:
+        {
+            u32 weatherFlags = T1_READ_32(gBattlescriptCurrInstr + 3);
+            if (IsBattlerWeatherAffected(gActiveBattler, weatherFlags))
+                gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 7);
+            else
+                gBattlescriptCurrInstr += 11;
+        }
         return;
     }
 
