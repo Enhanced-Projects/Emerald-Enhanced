@@ -1685,7 +1685,6 @@
 #define FLAG_UNUSED_SPECIAL_0xc                 (SPECIAL_FLAGS_START + 0xC)
 #define FLAG_UNUSED_SPECIAL_0xd                 (SPECIAL_FLAGS_START + 0xD)
 #define FLAG_RYU_USED_COMPANION_E4              (SPECIAL_FLAGS_START + 0xE) //Used a companion for championship match
-#define FLAG_RYU_IN_BATTLE                      (SPECIAL_FLAGS_START + 0xF) //used by user customization to prevent bad palettes in battle.
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 

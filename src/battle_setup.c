@@ -262,8 +262,6 @@ static void Task_BattleStart(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    FlagSet(FLAG_RYU_IN_BATTLE);
-
     switch (tState)
     {
     case 0:
