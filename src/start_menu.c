@@ -990,26 +990,8 @@ static void StartMenuTask(u8 taskId)
         SwitchTaskToFollowupFunc(taskId);
 }
 
-const u8 gOneTimeMsg[] = _("Given Red and/or Blue orb.");
-
 void RyuDoOneTImeSaveFixes(void) {
-    bool32 activated = FALSE;
 
-    if ((GetSetPokedexFlag(SPECIES_GROUDON, FLAG_GET_CAUGHT) == TRUE) && (CheckBagHasItem(471, 1) == FALSE))
-    {
-        activated = TRUE;
-        AddBagItem(471, 1);
-    }
-
-    if ((GetSetPokedexFlag(SPECIES_KYOGRE, FLAG_GET_CAUGHT) == TRUE) && (CheckBagHasItem(472, 1) == FALSE))
-    {
-        AddBagItem(472, 1);
-        activated = TRUE;
-    }
-    if (activated == TRUE)
-        QueueNotification(gOneTimeMsg, NOTIFY_GENERAL, 60);
-
-    FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
 }
 
 bool32 RyuCheckFactionAchievements(void)

@@ -59,7 +59,8 @@ LRT_CancelFollower::
 	end
 	
 LRT_MinnieScript::
-	msgbox LRT_FollowerHeal MSGBOX_YESNO
+	call RyuFollower_MinnieChatterSelector
+	msgbox LRT_MinnieLeaveQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq LRT_RemoveMinnie
 	closemessage
@@ -79,7 +80,7 @@ LRT_RemoveMinnie:
 	end
 
 LRT_MinnieLeave:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: Okay! Have fun!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay! Have fun!$"
 	
 LRT_FollowerMinnie:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hi! I'm Minnie!\nMy sister guards the exit.\pI'm a bodyguard. Can I come with you?$"
@@ -87,8 +88,8 @@ LRT_FollowerMinnie:
 LRT_NoFollower::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay!\nLet me know if you change your mind!$"
 	
-LRT_FollowerHeal:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: Do you want me to leave?$"
+LRT_MinnieLeaveQuery:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Do you want me to leave?$"
 	
 LRT_BirchLabSignNormal::
 	msgbox BirchsLabSign MSGBOX_SIGN
