@@ -5,42 +5,42 @@
 
 //PRESET THEMES
 
-const u16 BlueSteelRGBTheme[16][3] = {
-    {14, 25, 20},
-    {3, 3, 2},
-    {0, 20, 31},
-    {0, 0, 0},
-    {15, 2, 9},
-    {31, 22, 28},
-    {4, 19, 1},
-    {18, 30, 18},
-    {5, 9, 23},
-    {25, 27, 30},
-    {31, 31, 31},
-    {3, 3, 3},
-    {3, 3, 3},
-    {22, 22, 22},
-    {10, 10, 10},
-    {9, 14, 20},
+const u16 BlueSteelRGBTheme[16] = {
+    RGB(14, 25, 20),
+    RGB(3, 3, 2),
+    RGB(0, 20, 31),
+    RGB(0, 0, 0),
+    RGB(15, 2, 9),
+    RGB(31, 22, 28),
+    RGB(4, 19, 1),
+    RGB(18, 30, 18),
+    RGB(5, 9, 23),
+    RGB(25, 27, 30),
+    RGB(31, 31, 31),
+    RGB(3, 3, 3),
+    RGB(3, 3, 3),
+    RGB(22, 22, 22),
+    RGB(10, 10, 10),
+    RGB(9, 14, 20),
 };
 
-const u16 RoyalPurpleRGBTheme[16][3] = {
-    {14, 25, 20},
-    {3, 3, 2},
-    {18, 0, 20},
-    {9, 0, 12},
-    {15, 2, 9},
-    {31, 22, 28},
-    {4, 19, 1},
-    {18, 30, 18},
-    {5, 9, 23},
-    {25, 27, 30},
-    {31, 31, 31},
-    {3, 3, 3},
-    {3, 3, 3},
-    {15, 0, 20},
-    {10, 0, 10},
-    {9, 14, 20}
+const u16 RoyalPurpleRGBTheme[16] = {
+    RGB(14, 25, 20),
+    RGB(3, 3, 2),
+    RGB(18, 0, 20),
+    RGB(9, 0, 12),
+    RGB(15, 2, 9),
+    RGB(31, 22, 28),
+    RGB(4, 19, 1),
+    RGB(18, 30, 18),
+    RGB(5, 9, 23),
+    RGB(25, 27, 30),
+    RGB(31, 31, 31),
+    RGB(3, 3, 3),
+    RGB(3, 3, 3),
+    RGB(15, 0, 20),
+    RGB(10, 0, 10),
+    RGB(9, 14, 20)
 };
 
 const u16 CustomInterfacePaletteSlots[] = {
@@ -49,6 +49,11 @@ const u16 CustomInterfacePaletteSlots[] = {
     14, //textbox decorative highlight
     13, //textbox decorative frame
     1, //textbox and text background color
+};
+
+const u16 *UserPresetThemes[] = {
+    BlueSteelRGBTheme,
+    RoyalPurpleRGBTheme,
 };
 
 void SetUserRGBValue(void)
@@ -88,19 +93,6 @@ void ApplyPresetRGBUserTheme (void)
 {
     u32 index = gSpecialVar_0x8001;
     u32 i;
-    switch (index)
-    {
-        case 0:
-            for(i = 0;i < ARRAY_COUNT(gSaveBlock2Ptr->userInterfaceTextboxPalette); i++)
-                {
-                    gSaveBlock2Ptr->userInterfaceTextboxPalette[i] = RGB((BlueSteelRGBTheme[i][0]), (BlueSteelRGBTheme[i][1]), (BlueSteelRGBTheme[i][2]));
-                    break;
-                }
-        case 1:
-            for(i = 0;i < ARRAY_COUNT(gSaveBlock2Ptr->userInterfaceTextboxPalette); i++)
-                {
-                    gSaveBlock2Ptr->userInterfaceTextboxPalette[i] = RGB((RoyalPurpleRGBTheme[i][0]), (RoyalPurpleRGBTheme[i][1]), (RoyalPurpleRGBTheme[i][2]));
-                    break;
-                }
-    }
+    for(i = 0;i < ARRAY_COUNT(gSaveBlock2Ptr->userInterfaceTextboxPalette); i++)
+        gSaveBlock2Ptr->userInterfaceTextboxPalette[i] = UserPresetThemes[index][i];
 }
