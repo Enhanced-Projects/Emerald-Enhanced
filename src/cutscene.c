@@ -68,6 +68,10 @@ static const u8 sWarpBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/wa
 static const u8 sWarpBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_map.bin");
 static const u8 sWarpBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_palette.gbapal");
 
+static const u8 sShellyBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_tiles.8bpp");
+static const u8 sShellyBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_map.bin");
+static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_palette.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -236,6 +240,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .palette = sCourtneyNeutralBgPalette,
 		.palIdxCnt = 240
 	},
+	[SCENEBGSHELLY] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sShellyBgTiles,
+		.tileSize = sizeof(sShellyBgTiles),
+        .map = sShellyBgMap,
+		.mapSize = sizeof(sShellyBgMap),
+        .palette = sShellyBgPalette,
+		.palIdxCnt = 240
+	}
 };
 
 static const struct BgTemplate sCutsceneBackground8bpp = {

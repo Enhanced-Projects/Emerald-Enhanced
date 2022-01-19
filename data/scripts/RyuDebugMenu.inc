@@ -347,7 +347,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto RyuFollower_CourtneyScript
+	drawfullscreenimage SCENEBGSHELLY
 	release
 	end
 
