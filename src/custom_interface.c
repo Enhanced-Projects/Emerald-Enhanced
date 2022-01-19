@@ -60,7 +60,7 @@ void SetUserRGBValue(void)
 
     gSaveBlock2Ptr->userInterfaceTextboxPalette[mode] = RGB(redValue, greenValue, blueValue);
 
-    if (mode == USER_COLOR_WINDOW_BACKGROUND) //have to also set the text highlight color to match.
+    if (gSpecialVar_0x8004 == USER_COLOR_WINDOW_BACKGROUND) //have to also set the text highlight color to match.
     {
         gSaveBlock2Ptr->userInterfaceTextboxPalette[11] = RGB(redValue, greenValue, blueValue);
         gSaveBlock2Ptr->userInterfaceTextboxPalette[12] = RGB(redValue, greenValue, blueValue);
@@ -94,11 +94,13 @@ void ApplyPresetRGBUserTheme (void)
             for(i = 0;i < ARRAY_COUNT(gSaveBlock2Ptr->userInterfaceTextboxPalette); i++)
                 {
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[i] = RGB((BlueSteelRGBTheme[i][0]), (BlueSteelRGBTheme[i][1]), (BlueSteelRGBTheme[i][2]));
+                    break;
                 }
         case 1:
             for(i = 0;i < ARRAY_COUNT(gSaveBlock2Ptr->userInterfaceTextboxPalette); i++)
                 {
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[i] = RGB((RoyalPurpleRGBTheme[i][0]), (RoyalPurpleRGBTheme[i][1]), (RoyalPurpleRGBTheme[i][2]));
+                    break;
                 }
     }
 }
