@@ -70,7 +70,7 @@ static const u8 sWarpBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/
 
 static const u8 sShellyBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_tiles.8bpp");
 static const u8 sShellyBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_map.bin");
-static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_palette.gbapal");
+static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_tiles.gbapal");
 
 
 static const struct CutsceneBG gCutsceneBgTable[] =
