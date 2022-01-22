@@ -801,3 +801,13 @@ PC_DadToPlayer:
 	walk_left
 	step_end
 `
+
+
+script R109_ShinyStone {
+	goto_if_set(FLAG_RYU_ITEM_SHINY_STONE, ryu_end)
+	finditem(ITEM_SHINY_STONE)
+	setflag(FLAG_RYU_ITEM_SHINY_STONE)
+	removeobject(26)
+	release
+	end
+}

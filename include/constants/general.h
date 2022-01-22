@@ -499,7 +499,7 @@
 #define NOTIFY_QUEST       5
 #define NOTIFY_GENERAL     6
 
-#define EE_GAME_VERSION 8203
+#define EE_GAME_VERSION 8204
 
 
 #endif

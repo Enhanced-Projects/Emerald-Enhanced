@@ -431,7 +431,7 @@
 #define FLAG_RYU_LATIOS_RAN                  0x196
 #define FLAG_RYU_LATIAS                      0x197
 #define FLAG_RYU_LATIAS_RAN                  0x198
-#define FLAG_UNUSED_0x199                    0x199
+#define FLAG_RYU_ITEM_SHINY_STONE            0x199
 #define FLAG_UNUSED_0x19A                    0x19A
 #define FLAG_UNUSED_0x19B                    0x19B
 #define FLAG_UNUSED_0x19C                    0x19C
