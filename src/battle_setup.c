@@ -887,7 +887,7 @@ u8 GetTrainerBattleTransition(void)
             return B_TRANSITION_PHOEBE;
         if (gTrainerBattleOpponent_A == TRAINER_GLACIA || gTrainerBattleOpponent_A == TRAINER_GLACIA_REMATCH || gTrainerBattleOpponent_A == TRAINER_GLACIA_REMATCH_2)
             return B_TRANSITION_GLACIA;
-        if (gTrainerBattleOpponent_A == TRAINER_DRAKE || gTrainerBattleOpponent_A == TRAINER_DRAKE_REMATCH)
+        if (gTrainerBattleOpponent_A == TRAINER_DRAKE || gTrainerBattleOpponent_A == TRAINER_DRAKE_REMATCH || gTrainerBattleOpponent_A == TRAINER_DRAKE_REMATCH_2)
             return B_TRANSITION_DRAKE;
         return B_TRANSITION_CHAMPION;
     }
