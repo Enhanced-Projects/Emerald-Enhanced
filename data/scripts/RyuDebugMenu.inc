@@ -75,7 +75,8 @@ RyuDebug_UtilitiesMenu:
 	case 14, RDB_ToggleLevelCap
 	case 15, RDB_EnableRealEstate
 	case 16, RyuDebug_InitTimeSlide
-	case 17, RyuDebug_menu_nodevcheck
+	case 17, RyuDebug_ReadoutRGBTheme
+	case 18, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -1172,4 +1173,14 @@ BS_Defeat:
 
 BS_Intro:
 	.string "Starting Simulation.$"
+
+
+RyuDebug_ReadoutRGBTheme:
+	callnative printThemeColors
+	msgbox rdbrr
+	release
+	end
+
+rdbrr:
+	.string "Refer to mGBA debug to see values.$"
 
