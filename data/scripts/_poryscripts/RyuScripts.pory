@@ -2578,18 +2578,18 @@ script RyuUserModeEVMenu {
 	}
 	switch(var(VAR_RESULT)) {
 		case 1:
-			checkitem(ITEM_EVPRINT, 1)
+			checkitem(ITEM_IVPRINT, 1)
 			if (var(VAR_RESULT) == 0) {
-				goto(RyuUserEvNoImprint)
+				goto(RyuUserNoImprint)
 			}
 			removeitem(ITEM_EVPRINT, 1)
 			setvar(VAR_0x8003, 1) //mode
 		case 0:
-			checkitem(ITEM_IVPRINT, 1)
+			checkitem(ITEM_EVPRINT, 1)
 			if (var(VAR_RESULT) == 0) {
-				goto(RyuUserEvNoImprint)
+				goto(RyuUserNoImprint)
 			}
-			removeitem(ITEM_IVPRINT, 1)
+			removeitem(ITEM_EVPRINT, 1)
 			setvar(VAR_0x8003, 0) // mode
 	}
 	msgbox(RyuUserIVEV_SelectSlot)
@@ -2650,7 +2650,7 @@ script RyuUserEvInvalidStat{
 }
 	
 	
-script RyuUserEvNoImprint{
+script RyuUserNoImprint{
 	msgbox(EvNoImprints)
 	closemessage
 	release

@@ -372,9 +372,9 @@ static const u16 RyuValToEv[] = {
     MON_DATA_HP_EV,
     MON_DATA_ATK_EV,
     MON_DATA_DEF_EV,
+    MON_DATA_SPEED_EV,
     MON_DATA_SPATK_EV,
-    MON_DATA_SPDEF_EV,
-    MON_DATA_SPEED_EV
+    MON_DATA_SPDEF_EV
 };
 
 static const u16 RyuValToIv[] = {
