@@ -144,7 +144,7 @@ EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech:
 	.string "Greetings, Champion.\p"
 	.string "Here to defend your title, eh?\p"
 	.string "Well I don't plan on making it\n"
-	.string "easy for you!"
+	.string "easy for you!$"
 
 EverGrandeCity_SidneysRoom_Text_Defeat: @ 82280A2
 	.string "Well, how do you like that? I lost!\n"
