@@ -348,7 +348,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	drawfullscreenimage SCENEBGSHELLY
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 108
 	release
 	end
 
