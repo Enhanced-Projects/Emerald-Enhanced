@@ -174,6 +174,8 @@ void NewGameInitData(void)
         ClearSav1();
         memset(gSaveBlock2Ptr->achFlags, 0, 32);//initialize achievements on raw new game.
         memset(gSaveBlock2Ptr->achievementPowerFlags, 0, (sizeof(gSaveBlock2Ptr->achievementPowerFlags)));//disable all AP's on raw new game.
+        RyuResetRealEstateData(); //only initialize real estate data if there's not a previous file.
+        RyuResetUserPaletteData(); //same as above
     }
     else //hacky, I know but it's the only way I could get it to work :shrug:
     {
@@ -331,7 +333,5 @@ void NewGameInitData(void)
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
     RyuClearAlchemyEffect();
-    RyuResetRealEstateData();
-    RyuResetUserPaletteData();
 }
 
