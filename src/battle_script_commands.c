@@ -12213,7 +12213,7 @@ static void Cmd_handleballthrow(void)
         if (IS_ULTRA_BEAST(gBattleMons[gBattlerTarget].species))
         {
             if (gLastUsedItem == ITEM_BEAST_BALL)
-                ballMultiplier = 50;
+                ballMultiplier = 65;
             else
                 ballMultiplier = 1;
         }
