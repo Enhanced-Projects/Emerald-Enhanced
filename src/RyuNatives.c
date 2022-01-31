@@ -2073,8 +2073,9 @@ void RyuGiveDevMon(void)
     u8 slot = (CalculatePlayerPartyCount());
     u16 i = 0;
     u8 ev = 252;
+    u8 ppmax = 255;
     u8 iv = 31;
-    u8 lv = TRUE_MAX_LEVEL;
+    u8 lv = 40;//TRUE_MAX_LEVEL;
     u8 what = 0;
     u8 ribbon = TRUE;
 
@@ -2085,7 +2086,7 @@ void RyuGiveDevMon(void)
     
     CalculateMonStats(&gPlayerParty[slot]);
 
-    SetMonData(&gPlayerParty[slot], MON_DATA_PP_BONUSES, &ev); //sets all pp to max bonus
+    SetMonData(&gPlayerParty[slot], MON_DATA_PP_BONUSES, &ppmax); //sets all pp to max bonus
 
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &move1);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &move2);

@@ -722,6 +722,8 @@ RyuDebug_DevMonQuickStart::
 	setvar VAR_TEMP_4, MOVE_CRABHAMMER
 	callnative RyuGiveDevMon
 	@@ finished, go to next stage.
+	release
+	end
 	special HealPlayerParty
 	goto RyuDebug_QuickItemFlagStart
 

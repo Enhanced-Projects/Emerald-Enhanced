@@ -2328,7 +2328,7 @@ script RyuScript_Lv100FailMsg {
 	end
 }
 
-script RyuScrupt_Lv100SwitchMsg {
+script RyuScript_Lv100SwitchMsg {
 	msgbox(format("You have enabled the lv100 vanilla cap. If you have pokemon in your pc that are higher than level 100, \p{COLOR LIGHT_RED}{SHADOW RED}They will be adjusted down to 100. \p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Keep this in mind when using the vanilla cap.\pIf this is not what you want, disable the cap before withdrawing mons from the PC."))
 	clearflag(FLAG_RYU_NOTIFY_LV100_SWITCH)
 	closemessage
@@ -2678,4 +2678,9 @@ text RyuEvSuccessMsg{
 
 text EvNoImprints{
 	"{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough prints.\pObtain more at Lilycove\nTraining Center."
+}
+
+script gScript_InvalidSaveDetected {
+	msgbox("You are attempting to load an\ninvalid save.\pPlease replace the correct save\nfile and try again.")
+	special(DoSoftReset)
 }
