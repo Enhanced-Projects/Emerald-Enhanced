@@ -2595,7 +2595,7 @@ void CreateFrontierBrainPokemon(void)
             sFrontierBrainsMons[facility][symbol][i].fixedIV,
             TRUE,
             j, // force personality value so the nature matches
-            OT_ID_PRESET, FRONTIER_BRAIN_OTID
+            OT_ID_PRESET, FRONTIER_BRAIN_OTID, FALSE
         );
         SetMonData(&gEnemyParty[monPartyId], MON_DATA_HELD_ITEM, &sFrontierBrainsMons[facility][symbol][i].heldItem);
         for (j = 0; j < NUM_STATS; j++)

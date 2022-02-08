@@ -2439,7 +2439,7 @@ static void FillPartnerParty(u16 trainerId)
                 sStevenMons[i].fixedIV,
                 TRUE,
                 j,
-                OT_ID_PRESET, STEVEN_OTID
+                OT_ID_PRESET, STEVEN_OTID, FALSE
             );
             for (j = 0; j < PARTY_SIZE; j++)
                 SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_HP_EV + j, &sStevenMons[i].evs[j]);
@@ -2476,14 +2476,14 @@ static void FillPartnerParty(u16 trainerId)
             {
                 const struct TrainerMonNoItemDefaultMoves *partyData = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].party.NoItemDefaultMoves;
 
-                CreateMon(&gPlayerParty[i + 3], partyData[i].species, level, partyData[i].iv * 31 / 255, TRUE, j, TRUE, otID);
+                CreateMon(&gPlayerParty[i + 3], partyData[i].species, level, partyData[i].iv * 31 / 255, TRUE, j, TRUE, otID, FALSE);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET:
             {
                 const struct TrainerMonNoItemCustomMoves *partyData = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].party.NoItemCustomMoves;
 
-                CreateMon(&gPlayerParty[i + 3], partyData[i].species, level, partyData[i].iv * 31 / 255, TRUE, j, TRUE, otID);
+                CreateMon(&gPlayerParty[i + 3], partyData[i].species, level, partyData[i].iv * 31 / 255, TRUE, j, TRUE, otID, FALSE);
 
                 for (j = 0; j < MAX_MON_MOVES; j++)
                 {
@@ -2496,7 +2496,7 @@ static void FillPartnerParty(u16 trainerId)
             {
                 const struct TrainerMonItemDefaultMoves *partyData = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].party.ItemDefaultMoves;
 
-                CreateMon(&gPlayerParty[i + 3], partyData[i].species, level, partyData[i].iv * 31 / 255, TRUE, j, TRUE, otID);
+                CreateMon(&gPlayerParty[i + 3], partyData[i].species, level, partyData[i].iv * 31 / 255, TRUE, j, TRUE, otID, FALSE);
 
                 SetMonData(&gPlayerParty[i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
                 break;
@@ -2505,7 +2505,7 @@ static void FillPartnerParty(u16 trainerId)
             {
                 const struct TrainerMonItemCustomMoves *partyData = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].party.ItemCustomMoves;
 
-                CreateMon(&gPlayerParty[i + 3], partyData[i].species, level, partyData[i].iv * 31 / 255, TRUE, j, TRUE, otID);
+                CreateMon(&gPlayerParty[i + 3], partyData[i].species, level, partyData[i].iv * 31 / 255, TRUE, j, TRUE, otID, FALSE);
 
                 SetMonData(&gPlayerParty[i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
 
@@ -3051,7 +3051,7 @@ void RyuSetPartyFrontierMon(bool32 opponent, u16 id, u8 slot)
 
     if (opponent == FALSE)
     {
-        CreateMonWithNature(&gPlayerParty[slot], mon->species, level, mon->ivs, mon->nature);
+        CreateMonWithNature(&gPlayerParty[slot], mon->species, level, mon->ivs, mon->nature, FALSE);
 
         SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &mon->moves[0]);
         SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &mon->moves[1]);
@@ -3069,7 +3069,7 @@ void RyuSetPartyFrontierMon(bool32 opponent, u16 id, u8 slot)
     }
     else if (opponent == TRUE)
     {
-        CreateMonWithNature(&gEnemyParty[slot], mon->species, level, mon->ivs, mon->nature);
+        CreateMonWithNature(&gEnemyParty[slot], mon->species, level, mon->ivs, mon->nature, FALSE);
 
         SetMonData(&gEnemyParty[slot], MON_DATA_MOVE1, &mon->moves[0]);
         SetMonData(&gEnemyParty[slot], MON_DATA_MOVE2, &mon->moves[1]);
@@ -3157,9 +3157,9 @@ void RyuGiveFrontierMon(void)
         // Flag is set to tell the game to create a level 1 pokemon for the purposes of FEAR.
         // This can only be set while giving the starting team in frontier mode.
         if (isPickingFrontierStarter && FlagGet(FLAG_TEMP_D))
-            CreateMonWithNature(&gPlayerParty[party_id], mon->species, 1, mon->ivs, mon->nature);
+            CreateMonWithNature(&gPlayerParty[party_id], mon->species, 1, mon->ivs, mon->nature, FALSE);
         else
-            CreateMonWithNature(&gPlayerParty[party_id], mon->species, level, mon->ivs, mon->nature);
+            CreateMonWithNature(&gPlayerParty[party_id], mon->species, level, mon->ivs, mon->nature, FALSE);
 
         SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE1, &mon->moves[0]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE2, &mon->moves[1]);

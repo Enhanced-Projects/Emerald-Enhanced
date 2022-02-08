@@ -137,11 +137,20 @@ void GivePlayerModdedMon(void)
     u16 move4 =  (VarGet(VAR_RYU_GCMS_MOVE4));
     bool8 isBoss = (FlagGet(FLAG_RYU_BOSS_IN_GCMS));
     u8 ability = (VarGet(VAR_RYU_GCMS_ABILITY));
+    bool32 shiny = FlagGet(FLAG_RYU_FORCE_SHINY);
+    u32 personality;
+    u32 value;
 
     if (fixedIv > 31)
         fixedIv = 31;
-
-    CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
+    if (shiny)
+    {
+        CreateMon(&gPlayerParty[slot], species, level, fixedIv, FALSE, 0, OT_ID_PLAYER_ID, 0, TRUE);
+    }
+    else
+    {
+        CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature, shiny);
+    }
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     SetMonData(&gPlayerParty[slot], MON_DATA_POKEBALL, &ball);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &move1);
@@ -165,6 +174,10 @@ void PasscodeGiveMonWithNature(void)
     u8 level = 100;
     u8 scaleMode = 0;
     bool8 maxScale = FALSE;
+    bool32 shiny = FlagGet(FLAG_RYU_FORCE_SHINY);
+    u32 personality;
+    u32 value;
+    bool32 isBoss = TRUE;
 
     if (VarGet(VAR_TEMP_9) == 69)
     {
@@ -174,7 +187,16 @@ void PasscodeGiveMonWithNature(void)
     
     level = RyuChooseLevel(CountBadges(), maxScale, scaleMode, CalculatePlayerPartyStrength());
 
-    CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
+    if (shiny)
+    {
+        CreateMon(&gPlayerParty[slot], species, level, fixedIv, FALSE, 0, OT_ID_PLAYER_ID, 0, TRUE);
+    }
+    else
+    {
+        CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature, FALSE);
+    }
+    if (FlagGet(FLAG_RYU_DEV_BOSS_FORCED) == TRUE)
+        SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &isBoss);
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
@@ -195,7 +217,7 @@ bool8 RyuGiveMewtwo(void)
       return FALSE;
     }
 
-    CreateMonWithNature(&gPlayerParty[slot], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
+    CreateMonWithNature(&gPlayerParty[slot], SPECIES_MEWTWO, 95, 31, NATURE_MODEST, FALSE);
     SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &ev);
     SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &ev);
     return TRUE;
@@ -284,7 +306,7 @@ void RyuDawnGiftPoke(void)
     u8 partycount = (CalculatePlayerPartyCount());
     u8 friendship = 70;
 
-    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNEASEL, 24, 31, MON_FEMALE, NATURE_ADAMANT, 0);
+    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNEASEL, 24, 31, MON_FEMALE, NATURE_ADAMANT, 0, TRUE);
     SetMonData(&gPlayerParty[partycount], MON_DATA_ATK_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPEED_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);
@@ -297,7 +319,7 @@ void RyuBrendanGiftPoke(void)
     u8 friendship = 70;
 
     partycount = VarGet(gSpecialVar_Result);
-    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNORUNT, 24, 31, MON_FEMALE, NATURE_MODEST, 0);
+    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNORUNT, 24, 31, MON_FEMALE, NATURE_MODEST, 0, TRUE);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPATK_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPEED_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);
@@ -505,7 +527,7 @@ void RyuGiveKoutaMawile(void)
     u8 iv = 252;
     u8 partycount = CalculatePlayerPartyCount();
 
-    CreateMonWithNature(&gPlayerParty[partycount], SPECIES_MAWILE, 80, 31, NATURE_ADAMANT);
+    CreateMonWithNature(&gPlayerParty[partycount], SPECIES_MAWILE, 80, 31, NATURE_ADAMANT, TRUE);
     SetMonData(&gPlayerParty[partycount], MON_DATA_ATK_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_HP_EV, &iv);
     VarSet(VAR_TEMP_3, 2);
@@ -1240,7 +1262,7 @@ int Ryu_GiveRevivedFossilEgg(void)//gives the player a revived fossil mon with 3
         rnd3 = ((Random() %6) + 39);
     }while (((rnd1 != rnd2) && (rnd2 != rnd3) && (rnd3 != rnd1)) == FALSE);//This loop makes sure that rnd 1 - 3 are not the same
 
-    CreateMon(&gPlayerParty[slot], species, level, fixedIV, 0, 0, OT_ID_PLAYER_ID, 0);//this creates a fossil mon with 3 random iv's of 31
+    CreateMon(&gPlayerParty[slot], species, level, fixedIV, 0, 0, OT_ID_PLAYER_ID, 0, FALSE);//this creates a fossil mon with 3 random iv's of 31
                                                                                       //I wish there was a better way to do this
     switch (rnd1)//this sets the mon data rnd1 (which refers to the define of MON_DATA_STAT_IV where stat is the random one)
     {
@@ -2042,7 +2064,7 @@ void giveContestMon(void)
         MOVE_FUTURE_SIGHT
     };
     
-    CreateMonWithNature(&gPlayerParty[slot], SPECIES_MEGA_RAYQUAZA, 100, 31, NATURE_ADAMANT);
+    CreateMonWithNature(&gPlayerParty[slot], SPECIES_MEGA_RAYQUAZA, 100, 31, NATURE_ADAMANT, TRUE);
     SetMonData(&gPlayerParty[slot], MON_DATA_SMART, &stat);
     SetMonData(&gPlayerParty[slot], MON_DATA_TOUGH, &stat);
     SetMonData(&gPlayerParty[slot], MON_DATA_COOL, &stat);
@@ -2080,7 +2102,7 @@ void RyuGiveDevMon(void)
     u8 ribbon = TRUE;
 
 
-    CreateMonWithGenderNatureLetter(&gPlayerParty[slot], species, lv, iv, gender, nature, what); 
+    CreateMonWithGenderNatureLetter(&gPlayerParty[slot], species, lv, iv, gender, nature, what, TRUE); //last arg makes mon shiny... because why not.
     for (i = 0; i < 6; i++)
         SetMonData(&gPlayerParty[slot], (MON_DATA_HP_EV + i), &ev); // set ev's loop
     
@@ -2313,7 +2335,7 @@ void RyuGiveHolidayModdedMon(void)
     u16 fixedIv = 31;
     u16 nature = (VarGet(VAR_TEMP_C));
     bool16 isBoss = TRUE;
-    CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
+    CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature, FALSE);
     SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &isBoss);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     GetSetPokedexFlag(species, FLAG_SET_CAUGHT);
@@ -2332,4 +2354,9 @@ void RyuSetupRandomForE4(void)
     VarSet(VAR_RYU_E43, r3);
     VarSet(VAR_RYU_E44, r4);
     //mgba_printf(LOGINFO, "%d, %d, %d, %d", r1, r2, r3, r4);
+}
+
+void tryShiny (void)
+{
+    CreateMon(&gPlayerParty[2], SPECIES_ZYGARDE_10, 250, 31, 1, 0, OT_ID_PLAYER_ID, 0, TRUE);
 }
