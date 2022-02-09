@@ -146,11 +146,9 @@ void GivePlayerModdedMon(void)
     if (shiny)
     {
         CreateMon(&gPlayerParty[slot], species, level, fixedIv, FALSE, 0, OT_ID_PLAYER_ID, 0, TRUE);
-        FlagClear(FLAG_RYU_FORCE_SHINY);
     }
     else
     {
-        FlagClear(FLAG_RYU_FORCE_SHINY);
         CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature, shiny);
     }
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
