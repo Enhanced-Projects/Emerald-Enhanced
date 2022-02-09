@@ -138,7 +138,6 @@ GCMS_ShinyCharmWarningMsg:
 	.string "attempting to create your mon.$"
 
 GCMS_NatureMenu::
-	goto_if_set FLAG_RYU_FORCE_SHINY, GCMS_NatureMenuShiny
 	msgbox GCMS_ChooseNatureMsg
 	closemessage
 	multichoicegrid 0, 0, 139, 4, 1
@@ -182,10 +181,6 @@ GCMS_NoSpace::
 	release
 	end
 	
-GCMS_NatureMenuShiny::
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-
 GCMS_ChooseNature0::
 	setvar VAR_TEMP_C, 0
 	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
