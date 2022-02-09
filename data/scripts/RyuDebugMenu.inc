@@ -95,7 +95,8 @@ RDB_SpawnFollowerMultiMenu::
 	case 9, RDB_SpawnBlaise
 	case 10, RDB_SpawnTiana
 	case 11, RDB_SpawnHexer
-	case 12, RDB_RETURNTOMAIN
+	case 12, RDB_SpawnMay
+	case 13, RDB_RETURNTOMAIN
 	goto RDB_RETURNTOMAIN
 
 RDB_SpawnWhichFollower:
@@ -164,6 +165,12 @@ RDB_SpawnTiana::
 RDB_SpawnHexer::
 	call RyuForceCancelFollowerForQuest
 	createfollower OBJ_EVENT_GFX_HEX_MANIAC, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnMay::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
