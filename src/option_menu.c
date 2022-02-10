@@ -113,8 +113,8 @@ static const u8 sTextBarSpeed[] = _("Bar Anim Spe");
 static const u8 sText_ExpBar[] = _("EXP BAR");
 static const u8 sText_Transition[] = _("B. Transition");
 static const u8 sText_ForceSetBattleMode[] = _("Battle Style");
-static const u8 sText_Dynamic[] = _("Dynamic");
-static const u8 sText_Set[] = _("Set");
+static const u8 sText_Dynamic[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dynamic");
+static const u8 sText_Set[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Set");
 static const u8 sText_VanillaLevelCap[] = _("Lv cap 100");
 static const u8 sText_ToggleAutoRun[] = _("Auto Run");
 
@@ -646,7 +646,7 @@ static void VanillaCap_DrawChoices(int selection, int y, u8 textSpeed)
 
     styles[selection] = 1;
     DrawOptionMenuChoice(gText_BattleSceneOff, 104, y, styles[0], textSpeed);
-    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOff, 198), y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOn, 198), y, styles[1], textSpeed);
 }
 
 static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed)
@@ -655,13 +655,13 @@ static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed)
 
     styles[selection] = 1;
     DrawOptionMenuChoice(gText_BattleSceneOff, 104, y, styles[0], textSpeed);
-    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOff, 198), y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOn, 198), y, styles[1], textSpeed);
 }
 
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed)
 {
     u8 styles[3] = {0};
-    int xMid = GetMiddleX(gText_ButtonTypeNormal, gText_ButtonTypeLR, gText_ButtonTypeLEqualsA);
+    int xMid = GetMiddleX(gText_UiThemeLight, gText_UiThemeDark, gText_UiThemeUser);
 
     styles[selection] = 1;
     DrawOptionMenuChoice(gText_UiThemeLight, 104, y, styles[0], textSpeed);
