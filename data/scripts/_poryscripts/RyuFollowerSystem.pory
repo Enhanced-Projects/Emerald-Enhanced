@@ -36,7 +36,9 @@ RyuFollowerSelectNPCScript::
 
 RyuFollower_ShellyScript::
 	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, MH_FollowerShellyScript
+	drawfullscreenimage SCENEBGSHELLY
     call RyuFollower_ShellyChatterSelector
+	clearfullscreenimage
 	msgbox RyuFollower_ShellyLeaveMsg MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq RF_FollowerLeave

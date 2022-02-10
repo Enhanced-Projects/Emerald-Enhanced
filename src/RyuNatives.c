@@ -892,7 +892,7 @@ bool8 ScrCmd_drawfullscreenimage(struct ScriptContext *ctx)//draws the fullscree
 bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
 {
     SetVBlankCallback(NULL);
-    SetMainCallback2(CB2_ReturnToFieldLocal);
+    SetMainCallback2(CB2_ReturnToFieldContinueScript);
     return TRUE;
 }
 
