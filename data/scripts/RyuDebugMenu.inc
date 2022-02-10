@@ -95,7 +95,8 @@ RDB_SpawnFollowerMultiMenu::
 	case 9, RDB_SpawnBlaise
 	case 10, RDB_SpawnTiana
 	case 11, RDB_SpawnHexer
-	case 12, RDB_RETURNTOMAIN
+	case 12, RDB_SpawnMay
+	case 13, RDB_RETURNTOMAIN
 	goto RDB_RETURNTOMAIN
 
 RDB_SpawnWhichFollower:
@@ -164,6 +165,12 @@ RDB_SpawnTiana::
 RDB_SpawnHexer::
 	call RyuForceCancelFollowerForQuest
 	createfollower OBJ_EVENT_GFX_HEX_MANIAC, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnMay::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
@@ -1106,11 +1113,6 @@ DevModeMonGive::
 	goto_if_gt RDB_CancelSpawn
 	copyvar VAR_TEMP_4, VAR_RESULT
 	bufferspeciesname 0, VAR_TEMP_4
-	msgbox DMMG_ShinyQuery, MSGBOX_YESNO
-	call SelectShiny
-	closemessage
-	msgbox DMMG_BossQuery, MSGBOX_YESNO
-	call SelectBoss
 	getpartysize
 	copyvar VAR_TEMP_8, VAR_RESULT
 	setflag FLAG_RYU_DEVELOPER_POKEMON_MENU
@@ -1118,26 +1120,6 @@ DevModeMonGive::
 	clearflag FLAG_RYU_DEVELOPER_POKEMON_MENU
 	msgbox SpawnMenuSuccess
 	goto RyuDebug_SpawningMenu
-
-SelectShiny::
-	compare VAR_RESULT, TRUE
-	goto_if_eq DMMG_Shiny
-	return
-
-SelectBoss::
-	compare VAR_RESULT, TRUE
-	goto_if_eq DMMG_Boss
-	return
-
-DMMG_Shiny::
-	msgbox DMMG_ShinyInfo
-	closemessage
-	setflag FLAG_RYU_FORCE_SHINY
-	return
-
-DMMG_Boss::
-	setflag FLAG_RYU_DEV_BOSS_FORCED
-	return
 
 DevModeItemGive::
 	msgbox DMIG
@@ -1178,15 +1160,6 @@ RDB_SpawnCancelled:
 
 SpawnMenuSuccess:
 	.string "Operation Finished.$"
-
-DMMG_ShinyQuery:
-	.string "Should the mon be {COLOR LIGHT_RED}{SHADOW BLUE}Shiny{COLOR DARK_GREY}{SHADOW LIGHT_GREY}?$"
-
-DMMG_ShinyInfo:
-	.string "When generating a shiny, note that\n you will not be able to select\la nature, due to how this works.$"
-
-DMMG_BossQuery:
-	.string "Should this mon be a {COLOR RED}{SHADOW 0}Boss{COLOR DARK_GREY}{SHADOW LIGHT_GREY}?$"
 
 RyuDebug_BattleSim::
 	checkplayergender

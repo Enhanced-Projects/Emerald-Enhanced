@@ -966,6 +966,7 @@ static const u8 sFollowerNonCombat[] = _("{COLOR LIGHT_RED}{SHADOW RED}{DOWN_ARR
 static const u8 sFollowerBlaise[] = _("Spawn Blaise");
 static const u8 sFollowerTiana[] = _("Spawn Tiana");
 static const u8 sFollowerHexer[] = _("Spawn Hexer");
+static const u8 sFollowerMay[] = _("Spawn May");
 static const u8 sReturnPrevious[] = _("Return");
 
 static const struct ListMenuItem sBotanyConsumablesSet[] =
@@ -1072,7 +1073,8 @@ static const struct ListMenuItem sRyuFollowerDebugSet[] =
         {sFollowerBlaise, 9},
         {sFollowerTiana, 10},
         {sFollowerHexer, 11},
-        {sReturnPrevious, 12},
+        {sFollowerMay, 12},
+        {sReturnPrevious, 13},
 };
 
 

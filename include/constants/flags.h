@@ -433,8 +433,8 @@
 #define FLAG_RYU_LATIAS_RAN                  0x198
 #define FLAG_RYU_ITEM_SHINY_STONE            0x199
 #define FLAG_RYU_ITEM_ICE_STONE              0x19A
-#define FLAG_RYU_FORCE_SHINY                 0x19B
-#define FLAG_RYU_DEV_BOSS_FORCED             0x19C
+#define FLAG_UNUSED_0x19B                    0x19B
+#define FLAG_UNUSED_0x19C                    0x19C
 #define FLAG_UNUSED_0x19D                    0x19D
 #define FLAG_UNUSED_0x19E                    0x19E
 #define FLAG_UNUSED_0x19F                    0x19F
