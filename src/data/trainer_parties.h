@@ -13747,7 +13747,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_RelMinnie[] = {
 	{
 	.iv = 255,
 	.lvl = 111,
-	.species = SPECIES_FLAAFFY,
+	.species = SPECIES_AMPHAROS,
 	},
 	{
 	.iv = 255,

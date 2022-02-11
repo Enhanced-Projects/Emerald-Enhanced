@@ -63,27 +63,11 @@ LavaridgeTown_Gym_1F_EventScript_Flannery:: @ 81FE78C
 	case 7, FLANNERY4
 	case 8, FLANNERY4
 	end
-
-LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated:: @ 81FE7C1
-	message LavaridgeTown_Gym_1F_Text_ReceivedHeatBadge
-	waitmessage
-	call Common_EventScript_PlayGymBadgeFanfare
-	msgbox LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis, MSGBOX_DEFAULT
-	setflag FLAG_DEFEATED_LAVARIDGE_GYM
-	setflag FLAG_BADGE04_GET
-	setvar VAR_LAVARIDGE_TOWN_STATE, 1
-	call LavaridgeTown_Gym_1F_EventScript_GiveOverheat
-	closemessage
-	delay 30
-	playfanfare MUS_ME_TORE_EYE
-	msgbox LavaridgeTown_Gym_1F_Text_RegisteredFlannery, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	release
-	end
 	
 LG_Reset::
+	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostBattle
+	closemessage
+LG_FollowerReset::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
@@ -98,8 +82,8 @@ LG_Reset::
 	cleartrainerflag TRAINER_FLANNERY_2
 	cleartrainerflag TRAINER_FLANNERY_3
 	cleartrainerflag TRAINER_FLANNERY_4
+	call LavaridgeTown_Gym_1F_EventScript_GiveOverheat
 	clearflag FLAG_RYU_BOSS_SCALE
-	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostBattle, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_CHALLENGEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM4HANDOUT, RyuGymItemReward4
@@ -125,148 +109,19 @@ FLANNERY3::
 
 FLANNERY4::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, LG_FollowerMatch
-	call_if_set FLAG_RYU_DS_HAS_PARTNER, LG_PartnerQuery
-	trainerbattle_single TRAINER_FLANNERY_4, LavaridgeTown_Gym_1F_Text_FlanneryPreBattle, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LG_Reset
-	release
-	end
-	
-LG_PartnerQuery::
-    msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq LG_RelDialog
-	goto LG_NoRelGymBattle
-	return
-	
-	
-LG_RelDialog::
-	call RyuPartnerBattleMultichoice
-	compare VAR_0x8008, TRAINER_REL_SHELLY
-	goto_if_eq LG_GymBattleIntroShelly
-	compare VAR_0x8008, TRAINER_REL_DAWN
-	goto_if_eq LG_GymBattleIntroDawn
-	compare VAR_0x8008, TRAINER_REL_BRENDAN
-	goto_if_eq LG_GymBattleIntroBrendan
-	compare VAR_0x8008, TRAINER_REL_LANA
-	goto_if_eq LG_GymBattleIntroLana
-	compare VAR_0x8008, TRAINER_REL_LANETTE
-	goto_if_eq LG_GymBattleIntroLanette
-	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
-	goto_if_eq LG_GymBattleIntroCourtney
-	compare VAR_0x8008, TRAINER_REL_NURSE
-	goto_if_eq LG_GymBattleIntroJoy
-	goto LG_NoRelGymBattle
-	
-LG_NoRelGymBattle::
 	trainerbattle_single TRAINER_FLANNERY_4, LavaridgeTown_Gym_1F_Text_FlanneryPreBattle, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LG_Reset
 	release
 	end
 
 LG_FollowerMatch::
-	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPreBattle
+	msgbox LG_PreBattleText
 	closemessage
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	call RyuFollowerAllySelector
-	choose_mons
-	compare VAR_RESULT, FALSE
-	goto_if_eq LG_ChooseValidMons
-	multi_2_vs_1 TRAINER_FLANNERY_4, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, VAR_0x8008, VAR_0x8009
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	goto LG_Reset
-	end
-	
-LG_NoRelationship1::
-	msgbox Ryu_NOREL MSGBOX_DEFAULT
-	closemessage
-	goto LG_RelDialog
-	
-LG_GymBattleIntroShelly::
-	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, LG_NoRelationship1
-	msgbox Ryu_PlayerCalledShelly MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playse SE_FU_ZUZUZU
-	addobject 7
-	applymovement 7, LG_PartnerEnter
-	waitmovement 0
-	msgbox LG_SHELLY_INTRO MSGBOX_DEFAULT
-	goto LG_AltGymBattle
-	
-LG_GymBattleIntroDawn::
-	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, LG_NoRelationship1
-	msgbox Ryu_PlayerCalledDawn MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playse SE_FU_ZUZUZU
-	addobject 9
-	applymovement 9, LG_PartnerEnter
-	waitmovement 0
-	msgbox LG_DAWN_INTRO MSGBOX_DEFAULT
-	goto LG_AltGymBattle
-	
-LG_GymBattleIntroLana::
-	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, LG_NoRelationship1
-	msgbox Ryu_PlayerCalledLana MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playse SE_FU_ZUZUZU
-	addobject 10
-	applymovement 10, LG_PartnerEnter
-	waitmovement 10
-	msgbox LG_LANA_INTRO MSGBOX_DEFAULT
-	goto LG_AltGymBattle
-	
-LG_GymBattleIntroBrendan::
-	goto_if_unset FLAG_RYU_DS_BRENDAN_PARTNERS, LG_NoRelationship1
-	msgbox Ryu_PlayerCalledBrendan MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playse SE_FU_ZUZUZU
-	addobject 8
-	applymovement 8, LG_PartnerEnter
-	waitmovement 0
-	msgbox LG_BRENDAN_INTRO MSGBOX_DEFAULT
-	goto LG_AltGymBattle
-	
-LG_GymBattleIntroLanette::
-	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, LG_NoRelationship1
-	msgbox Ryu_PlayerCalledLanette MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playse SE_FU_ZUZUZU
-	addobject 11
-	applymovement 11, LG_PartnerEnter
-	waitmovement 11
-	msgbox LG_LANETTE_INTRO MSGBOX_DEFAULT
-	goto LG_AltGymBattle
+	call RyuFollowerAllySelector @// load follower details for battle.
+	call LG_FollowerIntroSelector @//Select the correct partner dialogue at beginning of match
+	goto LG_StartFollowerBattle
 
-LG_GymBattleIntroCourtney::
-	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, LG_NoRelationship1
-	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 12
-	playse SE_DOOR
-	applymovement 12, LG_PartnerEnter
-	waitmovement 0
-	msgbox LG_COURTNEY_INTRO MSGBOX_DEFAULT
-	goto LG_AltGymBattle
-
-LG_GymBattleIntroJoy::
-	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, LG_NoRelationship1
-	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 8
-	playse SE_DOOR
-	applymovement 8, LG_PartnerEnter
-	waitmovement 0
-	msgbox LG_JOY_INTRO MSGBOX_DEFAULT
-	goto LG_AltGymBattle
-	
-LG_AltGymBattle::
-	msgbox LG_PreBattleText MSGBOX_DEFAULT
+LG_StartFollowerBattle::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq LG_ChooseValidMons
@@ -274,176 +129,23 @@ LG_AltGymBattle::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
-	delay 10
-	goto LG_GymBattleEnd
+	msgbox LG_DefeatText
+	call LG_FollowerOutroSelector
+	goto LG_FollowerReset
+	end
 
 LG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, LG_FollowerMatch
-	goto LG_AltGymBattle
-	
-LG_GymBattleEnd::
-	compare VAR_0x8008, TRAINER_REL_DAWN
-	goto_if_eq LG_GymBattleEndDawn
-	compare VAR_0x8008, TRAINER_REL_SHELLY
-	goto_if_eq LG_GymBattleEndShelly
-	compare VAR_0x8008, TRAINER_REL_BRENDAN
-	goto_if_eq LG_GymBattleEndBrendan
-	compare VAR_0x8008, TRAINER_REL_LANA
-	goto_if_eq LG_GymBattleEndLana
-	compare VAR_0x8008, TRAINER_REL_LANETTE
-	goto_if_eq LG_GymBattleEndLanette
-	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
-	goto_if_eq LG_GymBattleEndCourtney
-	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
-	goto_if_eq LG_GymBattleEndJoy
-	release
-	end
-	
-LG_GymBattleEndShelly::
-	msgbox LG_ShellyGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 7, LG_PartnerExit
-	waitmovement 0
-	playse SE_FU_ZUZUZU
-	removeobject 7
-	goto LG_Reset
-	release
-	end
-	
-LG_GymBattleEndDawn::
-	msgbox LG_DawnGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 9, LG_PartnerExit
-	waitmovement 0
-	playse SE_FU_ZUZUZU
-	removeobject 9
-	goto LG_Reset
-	release
-	end
-	
-LG_GymBattleEndBrendan::
-	msgbox LG_BrendanGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 8, LG_PartnerExit
-	waitmovement 0
-	playse SE_FU_ZUZUZU
-	removeobject 8
-	goto LG_Reset
-	release
-	end
-	
-LG_GymBattleEndLana::
-	msgbox LG_LanaGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 10, LG_PartnerExit
-	waitmovement 10
-	playse SE_FU_ZUZUZU
-	removeobject 10
-	special DrawWholeMapView
-	goto LG_Reset
-	release
-	end
-	
-LG_GymBattleEndLanette::
-	msgbox LG_LanetteGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 11, LG_PartnerExit
-	waitmovement 11
-	playse SE_FU_ZUZUZU
-	removeobject 11
-	special DrawWholeMapView
-	goto LG_Reset
-	release
-	end
-
-LG_GymBattleEndCourtney::
-	msgbox LG_CourtneyGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 12, LG_PartnerExit
-	waitmovement 12
-	playse SE_FU_ZUZUZU
-	removeobject 12
-	goto LG_Reset
-	release
-	end
-
-LG_GymBattleEndJoy::
-	msgbox LG_JoyGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 13, LG_PartnerExit
-	waitmovement 13
-	playse SE_DOOR
-	removeobject 13
-	goto LG_Reset
-	release
-	end
-	
-LG_SHELLY_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}!\p"
-    .string "I got a break from admin stuff, so\n"
-    .string "I have time to help you crush this\l"
-    .string "hothead. Lets GO!$"
-
-LG_DAWN_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Hiya {PLAYER}! I'm not the\n"
-    .string "greatest against fire types, but\l"
-    .string "I'm willing to try for you!$"
-	
-LG_LANA_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I never really liked fire\n"
-    .string "types. It might be tough, but\l"
-    .string "I can overcome it!$"
-	
-LG_LANETTE_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Ohoho, quite the aggressive\ntraining style. Let's show what a cool\ltemper can do for a battle.$"
-
-LG_COURTNEY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah yes, a fello pyromaniac.\nGood times.$"
-
-LG_JOY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I like visiting the hot springs\nwhen I'm in town.$"
+	goto LG_StartFollowerBattle
 
 LG_PreBattleText:
     .string "Flannery: Oh, ho ho ho...\p"
     .string "Even with backup you won't be able\n"
     .string "to handle me... I'm too hot!$"
 
-LG_BRENDAN_INTRO:
-    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Hey, {PLAYER}, I got your\n"
-    .string "back, babe. Let's do this!$"
-
 LG_DefeatText:
     .string "Ow! You quenched me!$"
-	
-LG_ShellyGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}She stood no chance against\n"
-    .string "my water types.\p"
-    .string "It's no suprise!$"
-
-LG_DawnGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}That was really hard, but\n"
-    .string "I'm glad it worked out!\p"
-	.string "See you later, {PLAYER}!$"
-	
-LG_LanetteGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}This girl has much promise.\nShe just needs to settle down.\lBeing hotheaded doesn't win battles!$"
-
-LG_BrendanGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Well, that was a fun\n"
-    .string "work-out. Don't hesitate to call\l"
-    .string "me if you want my help again!$"
-	
-LG_LanaGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}That wasn't too bad after\n"
-    .string "all! I was concerned for no reason!$"
-
-LG_CourtneyGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Fire is the best way to remove\nscum from the face of the earth.$"
-
-LG_JoyGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I could really use a rest\nat the hot springs...$"
 
 LG_PartnerEnter:
 	walk_in_place_up
@@ -462,20 +164,11 @@ LG_PartnerExit:
 	walk_down
 	step_end
 
-LavaridgeTown_Gym_1F_EventScript_GiveOverheat2:: @ 81FE81D
-	goto_if_set FLAG_RECEIVED_TM50, ryu_end
+LavaridgeTown_Gym_1F_EventScript_GiveOverheat:: @ 81FE841
+	goto_if_set FLAG_RECEIVED_TM50, ryu_return
 	giveitem ITEM_TM50
 	compare VAR_RESULT, 0
-	goto_if_eq Common_EventScript_ShowBagIsFull
-	msgbox LavaridgeTown_Gym_1F_Text_ExplainOverheat, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_TM50
-	release
-	end
-
-LavaridgeTown_Gym_1F_EventScript_GiveOverheat:: @ 81FE841
-	additem ITEM_TM50
-	compare VAR_RESULT, 0
-	goto_if_eq Common_EventScript_BagIsFull
+	goto_if_eq ryu_return
 	msgbox LavaridgeTown_Gym_1F_Text_ExplainOverheat, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM50
 	return
@@ -777,4 +470,114 @@ LavaridgeTown_Gym_1F_Text_FlanneryRematchNeedTwoMons: @ 81FF75E
 	.string "that can battle?\p"
 	.string "I hate to say this, but when you come\n"
 	.string "see me, bring at least two Pokémon.$"
+
+LG_ShellyGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}She stood no chance against\n"
+    .string "my water types.\p"
+    .string "It's no suprise!$"
+
+LG_DawnGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}That was really hard, but\n"
+    .string "I'm glad it worked out!\p"
+	.string "See you later, {PLAYER}!$"
+	
+LG_LanetteGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This girl has much promise.\nShe just needs to settle down.\lBeing hotheaded doesn't win battles!$"
+
+LG_BrendanGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Well, that was a fun\n"
+    .string "work-out. Don't hesitate to call\l"
+    .string "me if you want my help again!$"
+	
+LG_LanaGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}That wasn't too bad after\n"
+    .string "all! I was concerned for no reason!$"
+
+LG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Fire is the best way to remove\nscum from the face of the earth.$"
+
+LG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I could really use a rest\nat the hot springs...$"
+
+LG_SHELLY_INTRO:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}!\p"
+    .string "I got a break from admin stuff, so\n"
+    .string "I have time to help you crush this\l"
+    .string "hothead. Lets GO!$"
+
+LG_DAWN_INTRO:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Hiya {PLAYER}! I'm not the\n"
+    .string "greatest against fire types, but\l"
+    .string "I'm willing to try for you!$"
+	
+LG_LANA_INTRO:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I never really liked fire\n"
+    .string "types. It might be tough, but\l"
+    .string "I can overcome it!$"
+	
+LG_LANETTE_INTRO:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Ohoho, quite the aggressive\ntraining style. Let's show what a cool\ltemper can do for a battle.$"
+
+LG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah yes, a fello pyromaniac.\nGood times.$"
+
+LG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I like visiting the hot springs\nwhen I'm in town.$"
+
+LG_BRENDAN_INTRO:
+    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Hey, {PLAYER}, I got your\n"
+    .string "back, babe. Let's do this!$"
 `
+
+script LG_FollowerOutroSelector {
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
+		return
+	}
+	switch (var(VAR_0x8009)) {
+		case TRAINER_BACK_PIC_MINNIE:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}She's even pretty when she loses!\pHope I can be pretty for you\none day, too!")
+		case TRAINER_REL_LANETTE:
+			msgbox(LG_LanetteGymBattleComplete)
+		case TRAINER_REL_SHELLY:
+			msgbox(LG_ShellyGymBattleComplete)
+		case TRAINER_REL_DAWN:
+			msgbox(LG_DawnGymBattleComplete)
+		case TRAINER_REL_BRENDAN:
+			msgbox(LG_BrendanGymBattleComplete)
+		case TRAINER_REL_LANA:
+			msgbox(LG_LanaGymBattleComplete)
+		case TRAINER_REL_COURTNEY_2:
+			msgbox(LG_CourtneyGymBattleComplete)
+		case TRAINER_REL_NURSE:
+			msgbox(LG_JoyGymBattleComplete)
+	}
+	closemessage
+	return
+}
+
+script LG_FollowerIntroSelector {
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
+		return
+	}
+	switch (var(VAR_0x8009)) {
+		case TRAINER_BACK_PIC_MINNIE:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Oooh, she's so pretty!\nI want wings like her!"))
+		case TRAINER_REL_LANETTE:
+			msgbox(LG_LANETTE_INTRO)
+		case TRAINER_REL_SHELLY:
+			msgbox(LG_SHELLY_INTRO)
+		case TRAINER_REL_DAWN:
+			msgbox(LG_DAWN_INTRO)
+		case TRAINER_REL_BRENDAN:
+			msgbox(LG_BRENDAN_INTRO)
+		case TRAINER_REL_LANA:
+			msgbox(LG_LANA_INTRO)
+		case TRAINER_REL_COURTNEY_2:
+			msgbox(LG_COURTNEY_INTRO)
+		case TRAINER_REL_NURSE:
+			msgbox(LG_JOY_INTRO)
+	}
+	closemessage
+	return
+}
+

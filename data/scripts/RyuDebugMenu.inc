@@ -355,6 +355,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	setflag FLAG_RYU_HAS_FOLLOWER
 	release
 	end
 
