@@ -1,0 +1,660 @@
+//Alternate champion room 
+
+script RyuChampionThrone { //the main script
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, RCR_EnterThrone)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
+	if (var(VAR_RESULT) == 0) {
+		goto(RyuChampionThroneStart)
+	}
+	call(RCR_FollowerIntroSetup)
+	call(RCR_ChooseOpponent)
+	goto(RCR_SetUpBattle)
+	end
+}
+
+script RCR_FollowerIntroSetup {//Dynamically chooses which follower text to display
+	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote)
+	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	addvar(VAR_RYU_FOLLOWER_ELITE_MATCHES, 1)
+	addvar(VAR_RYU_FOLLOWER_BATTLES, 1)
+	switch (var(VAR_RYU_FOLLOWER_ID)) {
+		case OBJ_EVENT_GFX_TWIN:
+			msgbox(FMinnieMsg)
+		case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+			msgbox(FShellyMsg)
+		case OBJ_EVENT_GFX_WOMAN_2:
+			msgbox(FLanetteMsg)
+		case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+			msgbox(FDawnMsg)
+		case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+			msgbox(FBrendanMsg)
+		case OBJ_EVENT_GFX_LEAF:
+			msgbox(FLeafMsg)
+		case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+			msgbox(FCourtneyMsg)
+		case OBJ_EVENT_GFX_NURSE:
+			msgbox(FJoyMsg)
+	}
+	closemessage
+	return
+}
+
+
+script RyuChampionThroneStart { //For solo challenging
+	setvar(VAR_RYU_AUTOSCALE_MIN_LEVEL, 110)
+	setflag(FLAG_RYU_BOSS_SCALE)
+	closemessage
+	specialvar(VAR_RESULT, checkForOverlordRyuEncounter)
+	switch (var(VAR_RESULT)) { //Check for and goto overlord fight
+			case 1:
+				goto(RCR_OverlordRyuBossFight)
+			case 2:
+				goto(RCR_OverlordRyuRematch)
+	}
+	call(RCR_ChooseOpponent)
+	playse(SE_DOOR)
+	addobject(VAR_TEMP_5)
+	applymovement(VAR_TEMP_5, RCR_ChallengerApproach)
+	waitmovement(VAR_TEMP_5)
+	applymovement(OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	switch (var(VAR_TEMP_5)) {
+			case 1:
+				msgbox(RCR_Steven_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_STEVEN, RCR_Steven_DefeatText)
+				setflag(FLAG_TEMP_B)
+			case 2:
+				msgbox(RCR_Norman_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_NORMAN_4, RCR_Norman_DefeatText)
+			case 7:
+				msgbox(RCR_Johnatan_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_JOHNATAN, RCR_Johnatan_DefeatText)
+			case 8:
+				msgbox(RCR_Robert_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_ROBERT, RCR_Robert_DefeatText)
+			case 9:
+				msgbox(RCR_Lance_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_LANCE, RCR_Lance_DefeatText)
+			case 10:
+				msgbox(RCR_Zod_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_ZOD, RCR_Zod_DefeatText)
+			case 11:
+				msgbox(RCR_Giovanni_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_GIOVANNI, RCR_Giovanni_DefeatText)
+			case 12:
+				msgbox(RCR_Sigma_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_SIGMA, RCR_Sigma_DefeatText)
+			case 13:
+				msgbox(RCR_Juan_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_JUAN, RCR_Juan_DefeatText)
+			case 19:
+				msgbox(RCR_Danny_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_DANNY, RCR_Danny_DefeatText)
+	}
+	goto(RCR_FinishChallenge)
+}
+	
+script RCR_OverlordRyuBossFight { //THE OVERLORD
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
+		call(RyuForceCancelFollowerForQuest)
+	}
+	playbgm(MUS_REKKUU_KOURIN, 1)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	addobject(15)
+	applymovement(15, RCR_ChallengerApproach)
+	waitmovement(15)
+	msgbox(RCR_RYU_Intro)
+	closemessage
+	setflag(FLAG_RYU_MAX_SCALE)
+	setflag(FLAG_TEMP_6)
+	setflag(FLAG_IS_FIGHTING_RYU)
+	trainerbattle_no_intro(TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(EGC_RYU_PLAYER_LOST)
+	}
+	clearflag(FLAG_RYU_MAX_SCALE)
+	if (flag(FLAG_RYU_DEFEATED_OVERLORD) == FALSE) {
+		call(MawileMegaReward)
+	}
+	goto(RCR_OverlordRyuEndMatch)
+}
+
+script RCR_OverlordRyuRematch { //THE RYUMATCH
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
+		call(RyuForceCancelFollowerForQuest)
+	}
+	playbgm(MUS_REKKUU_KOURIN, 1)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	addobject(15)
+	applymovement(15, RCR_ChallengerApproach)
+	waitmovement(15)
+	msgbox(RCR_RYU_Intro)
+	closemessage
+	setflag(FLAG_TEMP_3)
+	setflag(FLAG_RYU_MAX_SCALE)
+	setflag(FLAG_TEMP_6)
+	setflag(FLAG_IS_FIGHTING_RYU)
+	trainerbattle_no_intro(TRAINER_OVERLORD_RYU_REMATCH, RCR_RYU_DefeatText)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(EGC_RYU_PLAYER_LOST)
+	}
+	clearflag(FLAG_RYU_MAX_SCALE)
+	if (flag(FLAG_RYU_DEFEATED_OVERLORD) == FALSE) {
+		call(MawileMegaReward)
+	}
+	goto(RCR_OverlordRyuEndMatch)
+}
+	
+script RCR_OverlordRyuEndMatch {
+	clearflag(FLAG_RYU_WAYSTONE_DISABLED)
+    goto(AT1_Warp)
+	end
+}
+
+script RCR_ChooseOpponent { //randomly selects which challenger the player is getting
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, RCR_CameraMove)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	random(9)
+	switch (var(VAR_RESULT)) {
+	case 0:
+		setvar(VAR_TEMP_5, 1)
+	case 1:
+		setvar(VAR_TEMP_5, 2)
+	case 2:
+		setvar(VAR_TEMP_5, 7)
+	case 3:
+		setvar(VAR_TEMP_5, 8)
+	case 4:
+		setvar(VAR_TEMP_5, 9)
+	case 5:
+		setvar(VAR_TEMP_5, 10)
+	case 6:
+		setvar(VAR_TEMP_5, 11)
+	case 7:
+		setvar(VAR_TEMP_5, 12)
+	case 8:
+		setvar(VAR_TEMP_5, 13)
+	case 9:
+		setvar(VAR_TEMP_5, 19)
+	}
+	return
+}
+	
+script RCR_SetUpBattle { //For follower matches
+	setvar(VAR_RYU_AUTOSCALE_MIN_LEVEL, 110)
+	setflag(FLAG_RYU_BOSS_SCALE)
+	playse(SE_DOOR)
+	addobject(VAR_TEMP_5)
+	applymovement(VAR_TEMP_5, RCR_ChallengerApproach)
+	applymovement(OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	waitmovement(VAR_TEMP_5)
+	addvar(VAR_RYU_FOLLOWER_BATTLES, 1)
+	switch(var(VAR_TEMP_5)) {
+	case 1:
+		msgbox(RCR_Steven_Intro)
+		closemessage
+		//special(SavePlayerParty) I don't remember if i still need this or not, so commented out for now.
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_STEVEN, RCR_Steven_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 2:
+		msgbox(RCR_Norman_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_NORMAN, RCR_Norman_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 7:
+		msgbox(RCR_Johnatan_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_JOHNATAN, RCR_Johnatan_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 8:
+		msgbox(RCR_Robert_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_ROBERT, RCR_Robert_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 9:
+		msgbox(RCR_Lance_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_LANCE, RCR_Lance_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 10:
+		msgbox(RCR_Zod_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_ZOD, RCR_Zod_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 11:
+		msgbox(RCR_Giovanni_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_GIOVANNI, RCR_Giovanni_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 12:
+		msgbox(RCR_Sigma_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_SIGMA, RCR_Sigma_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 13:
+		msgbox(RCR_Juan_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_JUAN, RCR_Juan_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 19:
+		msgbox(RCR_Danny_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_DANNY, RCR_Danny_DefeatText, VAR_0x8008, VAR_0x8009)
+	}
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(EGC_RYU_PLAYER_LOST)
+	}
+	goto(RCR_FinishChallenge)
+}
+
+script RCR_ChooseValidMons{ //player didn't select valid mons or pressed B at party selection
+	msgbox(EGC_NeedToChoose)
+	closemessage
+	return
+}
+
+script RCR_ChallengerStevenAggroniteReward { //special reward for steven
+	msgbox(RCR_StevenExplainAggronite)
+	additem(ITEM_AGGRONITE)
+	setflag(FLAG_CHALLENGER_STEVEN_AGGRONITE)
+	closemessage
+	return
+}
+
+script RCR_BOSSMODE { //finish animation for overlord ryu post battle
+	applymovement(OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	goto(RCR_FinishChallenge)
+}
+
+script MawileMegaReward { //overlord ryu's mawilite reward
+	msgbox(RyuGivesMawilite)
+	additem(ITEM_MAWILITE)
+	setflag(FLAG_RYU_DEFEATED_OVERLORD)
+	return
+}
+	
+script RCR_CheckStevenGift { //check if player received steven's gift yet
+	if (flag(FLAG_CHALLENGER_STEVEN_AGGRONITE) == FALSE) {
+		call(RCR_ChallengerStevenAggroniteReward)
+	}
+	return
+}
+	
+script RCR_FinishChallenge { //clean up and go to hall of fame
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
+		call(RCR_CheckMinnieEvent)
+	}
+	msgbox(RCR_PlayerRecordingInfo)
+	if (flag(FLAG_TEMP_B) == TRUE) {
+		call(RCR_CheckStevenGift)
+	}
+	addvar(VAR_RYU_TITLE_DEFENSE_WINS, 1)
+	closemessage
+	clearflag(FLAG_RYU_WAYSTONE_DISABLED)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	call(Ryu_CheckForPartnerReward)
+	applymovement(OBJ_EVENT_ID_PLAYER, RCR_ToHOF)
+	applymovement(OBJ_EVENT_ID_FOLLOWER, RCR_ToHOF)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
+		call(RyuForceCancelFollowerForQuest)
+	}
+	warp(MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 255, 7, 16)
+	waitstate
+	end
+}
+
+script RCR_CheckMinnieEvent { //sets the flag which is used in the harem end to show minnie's mini-scene
+	if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_TWIN) {
+		call(EGC_FollowerMinnieFlagSet)
+	}
+	return
+}
+
+script EGC_RYU_PLAYER_LOST { //you suck, custom death script
+	clearflag(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN)
+	playse(SE_DOOR)
+	fadescreenspeed(FADE_TO_BLACK, 12)
+	addobject(16)
+	setobjectxy(16, 10, 8)
+	applymovement(16, Common_Movement_FaceLeft)
+	waitmovement(16)
+	delay(10)
+	fadescreen(FADE_FROM_BLACK)
+	applymovement(16, NurseTriage)
+	waitmovement(16)
+	delay(12)
+	fadescreen(FADE_TO_BLACK)
+	setflag(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN)
+	clearflag(FLAG_RYU_MAX_SCALE)
+	clearflag(FLAG_RYU_WAYSTONE_DISABLED)
+	msgbox(EGC_PlayerLostMsg)
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		goto(AT1_AltTeleport)
+	}
+	delay(5)
+	special(RyuWarp)
+	release
+	end
+}
+
+//==================Movement
+
+movement RCR_EnterThrone {
+	walk_in_place_down
+	emote_exclamation_mark
+	step_end
+}
+
+movement RCR_CameraMove{
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+}
+	
+movement RCR_ToHOF{
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+}
+	
+movement RCR_ReturnToPlayer{
+	delay_16
+	delay_16
+	delay_8
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+}
+
+movement RCR_ChallengerApproach{
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_up
+	step_end
+}
+
+movement NurseTriage{
+	walk_in_place_left
+	walk_in_place_up
+	walk_in_place_left
+	emote_exclamation_mark
+	step_end
+}
+
+//==================challenger Text
+//Left these raw because why not
+raw `
+
+RCR_StevenExplainAggronite:
+	.string "Steven: Nice work, {PLAYER}!\pI have a gift for you, it should\nbe good for you!\pIt's an Aggronite. Enjoy!$"
+
+EGC_PlayerLostMsg:
+	.string " (The last thing you see is the\n nurse rushing to your aid before\l passing out...)$"
+
+RCR_RYU_Intro:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: I'd say your chances of winning\nare about one in 8192.\lTime for you to learn your place!$"
+
+RyuGivesMawilite:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: Nice! I was cheating and\n"
+	.string "you still won!\p"
+	.string "Congratulations on beating the final\n"
+	.string "boss of Emerald Enhanced.\p"
+	.string "Here, take this mega stone, it's\n"
+	.string "for my favorite pokemon!$"
+
+RCR_RYU_DefeatText:
+	.string "Even with my devhax...$"
+
+RCR_PlayerRecordingInfo:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} You have lost the match.\pI will now go put the data\ninto the system.\pPlease come challenge me again!$"
+
+RCR_Steven_Intro:
+    .string "Steven: Hi there, {PLAYER}!\p"
+    .string "I thought I'd come up and see\n"
+    .string "how the current champion is doing!\l"
+    .string "I won't be pulling any punches!$"
+	
+RCR_Steven_DefeatText:
+    .string "Ah. It would seem the potential I\n"
+    .string "saw in you has been fully realized\l"
+    .string "You win!$"
+	
+RCR_Norman_Intro:
+    .string "Dad: I've come for our rematch!\p"
+    .string "I can't let you be on top, I'm\n"
+    .string "your father, You're supposed to be\l"
+    .string "looking up to me!$"
+	
+RCR_Norman_DefeatText:
+    .string "Unbelievable... Even now after all\n"
+    .string "my training... I still can't beat\l"
+    .string "{PLAYER}...$"
+	
+RCR_Johnatan_Intro:
+	.string "Nice to meet you {PLAYER}.\nI will show you the might\lof Bug Pokemon.$"
+	
+RCR_Johnatan_DefeatText:
+	.string "I should have done better…$"
+	
+RCR_Robert_Intro:
+	.string "Hello, your emminence. I'm here to\n"
+	.string "challenge you for the title of\l"
+	.string "League Master.\p"
+	.string "I use the power of the sun.\p"
+	.string "Do you have UV Protection?$"
+	
+RCR_Robert_DefeatText:
+    .string "Ah, you've taken to the shade.$"
+	
+RCR_Lance_Intro:
+    .string "Greetings, {PLAYER}.\p"
+    .string "I have come here all the way from\n"
+    .string "the Kanto region to expand my\p"
+    .string "dominance of the world. I've\n"
+    .string "already been champion of Kanto and\l"
+    .string "Johto.\p"
+    .string "I will now also conquer the Hoenn\n"
+    .string "League!$"
+
+RCR_Lance_DefeatText:
+    .string "Ah... Yes, I heard you were quite\n"
+    .string "formidable... Till we meet again!$"
+	
+RCR_Zod_Intro:
+    .string "zzz...\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Zod Yawns)\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Let's get this over with...\n"
+    .string "So sleepy...$"
+
+RCR_Zod_DefeatText:
+	.string "This is as I've foreseen...$"
+	
+RCR_Giovanni_Intro:
+    .string "I was once a weak crime boss.\p"
+	.string "In solitude, I've realized that\n"
+	.string "strength doesn't rely on numbers\l"
+	.string "alone.\p"
+	.string "The bond between trainer and\n"
+	.string "Pokemon, It's something I still\l"
+	.string "don't fully understand.\p"
+	.string "Perhaps you can teach me?\p"
+	.string "If you don't give it your all,\n"
+	.string "you'll be in a world of pain!$"
+
+RCR_Giovanni_DefeatText:
+    .string "So that's your full power... I'm\nimpressed. I hope we meet again,\l{PLAYER}.$"
+	
+RCR_Sigma_Intro:
+	.string "Hello! I recently came from the\n"
+	.string "Johto Region, and I am looking\p"
+	.string "for some strong Trainers to battle!\p"
+	.string "Hmm...you look tough!\n"
+	.string "Can you show me your strength\l"
+	.string "in battle?$" 
+	
+RCR_Sigma_DefeatText:
+	.string "What strength!$"
+
+RCR_Juan_Intro:
+	.string "I'm here to avenge Wallace!$"
+	
+RCR_Juan_DefeatText:
+	.string "Ahahaha, excellent!\n"
+	.string "You truly are a remarkable trainer!$"
+
+RCR_Danny_Intro:
+	.string "Never thought Hoenn would be\n"
+	.string "such a marvelous spot to\p"
+	.string "vacation! The cascading\n"
+	.string "waterfalls on such a high cliff,\p"
+	.string "the flowers flowing in the wind...\p"
+	.string "And such riveting battles along\n"
+	.string "the way!\p"
+	.string "My name is Danny, a gym leader\n"
+	.string "from Orange Islands!\p"
+	.string "Let's have a great battle,\n"
+	.string "shall we?$"
+
+RCR_Danny_DefeatText:
+	.string "As expected of the Champion\nof Hoenn!\lWhat a great battle!$"
+
+@============================================Follower Texts
+
+FMinnieMsg:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, I'm not sure if\n"
+    .string "I'm strong enough for this...\p"
+    .string "B-but... I will try my hardest\n"
+    .string "for you!$"
+
+FShellyMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Man this journey has been\n"
+    .string "refreshing. I got so tired of\p"
+    .string "sitting at that desk.\n"
+    .string "It's so nice to be able to stretch\l"
+    .string "my legs again!$"
+
+FLanetteMsg:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'm not much of a fighter\n"
+    .string "but I'll follow you to the nine\p"
+    .string "hells if you ask me to. I'll do\n"
+    .string "what I can!$"
+
+FDawnMsg:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}It's been a long walk, but I'm\n"
+    .string "glad that I can be here with you.\p"
+    .string "It's so surreal, being here in the\n"
+    .string "Hoenn Champion room...\p"
+    .string "Well... LET'S GO!!$"
+
+FBrendanMsg:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Not gonna lie, I expected\n"
+    .string "to get here before you, maybe after\p"
+    .string "you, but I never thought we'd be\n"
+    .string "doing this together. Here we go!$"
+
+FLeafMsg:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, Wow, this room is HUGE!\n"
+    .string "The Kanto one doesn't even compare.\p"
+    .string "Well, I've already beaten the Kanto\n"
+    .string "Champion, time to add Hoenn to my\l"
+    .string "repertoire!$"
+
+FCourtneyMsg:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}You know, I didn't fancy mself a\n"
+    .string "voyeur... But hurting people in\p"
+    .string "such a public way really excites me.\p"
+    .string "My pupper is hungry!$"
+
+FJoyMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, you brought me all the way to\n"
+	.string "the Championship... I'm not really\p"
+	.string "cut out for this, but I'm here\n"
+	.string "to support you any way I can!$"
+
+`
