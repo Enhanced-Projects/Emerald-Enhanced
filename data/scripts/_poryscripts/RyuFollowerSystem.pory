@@ -135,6 +135,7 @@ RyuFollower_MaySelector::
 RyuFollower_MayNormal::
 	call RyuFollower_MayChatterSelector
 	msgbox RF_MayDismissQuery, MSGBOX_YESNO
+	closemessage
 	compare VAR_RESULT, YES
 	goto_if_eq Ryu_ReturnMayToHome
 	release

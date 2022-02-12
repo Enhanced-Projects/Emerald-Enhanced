@@ -579,7 +579,7 @@ script LG_FollowerIntroSelector {
 		case TRAINER_REL_NURSE:
 			msgbox(LG_JOY_INTRO)
 		case TRAINER_REL_MAY:
-			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I love a good sauna. It's the best thing ever!")
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I love a good sauna.\nIt's the best thing ever!")
 	}
 	closemessage
 	return
