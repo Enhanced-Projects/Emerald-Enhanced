@@ -156,18 +156,7 @@ static const struct TilesPal sDexnavWindowFrame = {gTextWindowFrame1_Gfx, sTextW
 // code
 const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 {
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
-    {
-        if (id >= WINDOW_FRAMES_COUNT)
-        {
-            return &sWindowFrames[0];
-        }
-        else
-        {
-            return &sWindowFrames[id];
-        }
-    }
-    else
+    if (VarGet(VAR_RYU_THEME_NUMBER))
     {
         if (id >= WINDOW_FRAMES_COUNT)
         {
@@ -178,7 +167,42 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
             return &sWindowFramesDark[id];
         }
     }
+    else
+    {
+        if (id >= WINDOW_FRAMES_COUNT)
+        {
+            return &sWindowFrames[0];
+        }
+        else
+        {
+            return &sWindowFrames[id];
+        }
+    }
     
+}
+
+const struct TilesPal *GetWindowFrameLightTilesPal(u8 id)
+{
+    if (id >= WINDOW_FRAMES_COUNT)
+    {
+        return &sWindowFrames[0];
+    }
+    else
+    {
+        return &sWindowFrames[id];
+    }
+}
+
+const struct TilesPal *GetWindowFrameDarkTilesPal(u8 id)
+{
+    if (id >= WINDOW_FRAMES_COUNT)
+    {
+        return &sWindowFramesDark[0];
+    }
+    else
+    {
+        return &sWindowFramesDark[id];
+    }
 }
 
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
