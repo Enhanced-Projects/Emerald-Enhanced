@@ -85,8 +85,8 @@
       "x": 7,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
-      "dest_warp_id": 2
+      "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_UPPER_HALLWAY",
+      "dest_warp_id": 3
     }
   ],
   "coord_events": [

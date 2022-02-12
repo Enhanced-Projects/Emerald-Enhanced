@@ -892,7 +892,7 @@ bool8 ScrCmd_drawfullscreenimage(struct ScriptContext *ctx)//draws the fullscree
 bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
 {
     SetVBlankCallback(NULL);
-    SetMainCallback2(CB2_ReturnToFieldLocal);
+    SetMainCallback2(CB2_ReturnToFieldContinueScript);
     return TRUE;
 }
 
@@ -1009,6 +1009,10 @@ bool8 RyuFollowerToTrainerID(void)
         case OBJ_EVENT_GFX_NURSE:
             gSpecialVar_0x8008 = TRAINER_REL_NURSE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
+            return TRUE;
+        case OBJ_EVENT_GFX_LINK_RS_MAY:
+            gSpecialVar_0x8008 = TRAINER_REL_MAY;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY;
             return TRUE;
         }
         return FALSE;
@@ -2075,7 +2079,7 @@ void RyuGiveDevMon(void)
     u8 ev = 252;
     u8 ppmax = 255;
     u8 iv = 31;
-    u8 lv = 40;//TRUE_MAX_LEVEL;
+    u8 lv = 250;//TRUE_MAX_LEVEL;
     u8 what = 0;
     u8 ribbon = TRUE;
 

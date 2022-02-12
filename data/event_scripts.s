@@ -575,7 +575,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuIntroScripts.inc"
 	.include "data/scripts/RyuSacrificeSystem.inc"
 	.include "data/scripts/RyuDevonLine.inc"
-	.include "data/scripts/RyuChampionRoom.inc"
 	.include "data/scripts/RyuTeleportationMenu.inc"
 	.include "data/scripts/RyuPasscodeMenu.inc"
 	.include "data/scripts/RyuDebugMenu.inc"
@@ -605,6 +604,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/RyuBallChanger.inc"
 	.include "data/scripts/_poryscripts/RyuFollowerSystem.inc"
 	.include "data/scripts/_poryscripts/UserInterfaceCustomization.inc"
+	.include "data/scripts/_poryscripts/RyuChampionRoom.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -1230,3 +1230,11 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/MauvilleCity_AdrastiWarehouse/scripts.inc"
 
 	.include "data/maps/Victini/scripts.inc"
+
+	.include "data/maps/LittlerootTown_BrendansHouse_UpperHallway/scripts.inc"
+
+	.include "data/maps/LittlerootTown_BrendansHouse_MayBedroom/scripts.inc"
+
+	.include "data/maps/LittlerootTown_DawnsHouse_UpperHallway/scripts.inc"
+
+	.include "data/maps/LittlerootTown_DawnsHouse_MayBedroom/scripts.inc"

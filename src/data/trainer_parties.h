@@ -6994,17 +6994,31 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Edwin2[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Edwin3[] = {
-    {
-    .iv = 0,
-    .lvl = 29,
-    .species = SPECIES_LOMBRE,
-    },
-    {
-    .iv = 0,
-    .lvl = 29,
-    .species = SPECIES_NUZLEAF,
-    }
+static const struct TrainerMonItemCustomMoves sParty_RelMay[] = {
+	{
+	.iv = 250,
+	.lvl = 91,
+	.species = SPECIES_DELCATTY,
+	.heldItem = ITEM_EXPERT_BELT,
+	.ability = 2,
+	.moves = {MOVE_ICE_BEAM, MOVE_FLAMETHROWER, MOVE_MOONBLAST, MOVE_HYPER_BEAM},
+	},
+	{
+	.iv = 250,
+	.lvl = 92,
+	.species = SPECIES_BLAZIKEN,
+	.heldItem = ITEM_BLACK_BELT,
+	.ability = 2,
+	.moves = {MOVE_DOUBLE_KICK, MOVE_DOUBLE_EDGE, MOVE_DRILL_RUN, MOVE_PURSUIT},
+	},
+	{
+	.iv = 250,
+	.lvl = 90,
+	.species = SPECIES_VENUSAUR,
+	.heldItem = ITEM_LIFE_ORB,
+	.ability = 2,
+	.moves = {MOVE_GIGA_DRAIN, MOVE_SOLAR_BEAM, MOVE_SPORE, MOVE_SLUDGE_BOMB},
+	},
 };
 
 static const struct TrainerMonItemCustomMoves sParty_DrakeRematch2[] = {
@@ -13747,7 +13761,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_RelMinnie[] = {
 	{
 	.iv = 255,
 	.lvl = 111,
-	.species = SPECIES_FLAAFFY,
+	.species = SPECIES_AMPHAROS,
 	},
 	{
 	.iv = 255,

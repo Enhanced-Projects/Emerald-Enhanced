@@ -97,6 +97,36 @@ void UpdatePerHour(struct Time *localTime)
             }
         }
     }
+    if (((gLocalTime.hours >= 17) || (gLocalTime.hours <= 8)) && (FlagGet(FLAG_RYU_MAY_INTRO_EVENT_DONE) == TRUE)) //birch is at the lab between 8am and 5pm if player unlocked May.
+    {
+        FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
+        if (gSaveBlock2Ptr->playerGender == MALE)
+        {
+            FlagSet(FLAG_HIDE_LRT_DH_BIRCH); //hide birch in Dawn's house
+        }
+        else
+        {
+            FlagSet(FLAG_HIDE_LRT_BH_BIRCH); //hide birch in Brendan's house
+        }
+    }
+    else if (((gLocalTime.hours > 8) && (gLocalTime.hours < 17)) && (FlagGet(FLAG_RYU_MAY_INTRO_EVENT_DONE) == TRUE)) //birch is at home from 6pm to 7am if player unlocked May.
+    {
+        FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
+        if (gSaveBlock2Ptr->playerGender == MALE)
+        {
+            FlagClear(FLAG_HIDE_LRT_DH_BIRCH); //show birch in Dawn's house
+        }
+        else
+        {
+            FlagClear(FLAG_HIDE_LRT_BH_BIRCH); //show birch in Brendan's house
+        }
+    }
+    else //default to having birch in the lab if above requirements aren't met.
+    {
+        FlagSet(FLAG_HIDE_LRT_DH_BIRCH);
+        FlagSet(FLAG_HIDE_LRT_BH_BIRCH);
+        FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
+    }
     VarSet(VAR_HOURS, gLocalTime.hours);
 }
 

@@ -5550,6 +5550,46 @@
       "secondary_tileset": "gTileset_RusturfTunnel",
       "border_filepath": "data/layouts/Victini/border.bin",
       "blockdata_filepath": "data/layouts/Victini/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_UPPER_HALLWAY",
+      "name": "LittlerootTown_BrendansHouse_UpperHallway_Layout",
+      "width": 6,
+      "height": 5,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansDawnsHouse",
+      "border_filepath": "data/layouts/LittlerootTown_BrendansHouse_UpperHallway/border.bin",
+      "blockdata_filepath": "data/layouts/LittlerootTown_BrendansHouse_UpperHallway/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_MAY_BEDROOM",
+      "name": "LittlerootTown_BrendansHouse_MayBedroom_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansDawnsHouse",
+      "border_filepath": "data/layouts/LittlerootTown_BrendansHouse_MayBedroom/border.bin",
+      "blockdata_filepath": "data/layouts/LittlerootTown_BrendansHouse_MayBedroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_TOWN_DAWNS_HOUSE_UPPER_HALLWAY",
+      "name": "LittlerootTown_DawnsHouse_UpperHallway_Layout",
+      "width": 6,
+      "height": 5,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansDawnsHouse",
+      "border_filepath": "data/layouts/LittlerootTown_DawnsHouse_UpperHallway/border.bin",
+      "blockdata_filepath": "data/layouts/LittlerootTown_DawnsHouse_UpperHallway/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_TOWN_DAWNS_HOUSE_MAY_BEDROOM",
+      "name": "LittlerootTown_DawnsHouse_MayBedroom_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansDawnsHouse",
+      "border_filepath": "data/layouts/LittlerootTown_DawnsHouse_MayBedroom/border.bin",
+      "blockdata_filepath": "data/layouts/LittlerootTown_DawnsHouse_MayBedroom/map.bin"
     }
   ]
 }

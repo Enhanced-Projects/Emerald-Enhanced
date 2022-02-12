@@ -55,7 +55,10 @@ PBG_PlayerNotReadyText:
     .string "certainly take you right out of it!\p"
     .string "Come back when you are stronger!$"
 
-PG_Reset::
+PBG_Reset::
+	msgbox PetalburgCity_Gym_Text_NormanPostRematch, MSGBOX_DEFAULT
+	closemessage
+PBG_FollowerReset::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
@@ -63,11 +66,10 @@ PG_Reset::
 	setvar VAR_TEMP_8, 5
 	special checkbadgecount
 	compare VAR_RESULT, 4
-	call_if_ge PG_GiveMegaBracelet
+	call_if_ge PBG_GiveMegaBracelet
 	special checkbadgecount
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
-	msgbox PetalburgCity_Gym_Text_NormanPostRematch, MSGBOX_DEFAULT
 	setflag FLAG_BADGE05_GET
 	setflag FLAG_DEFEATED_PETALBURG_GYM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
@@ -83,7 +85,7 @@ PG_Reset::
 	release
 	end
 
-PG_GiveMegaBracelet::
+PBG_GiveMegaBracelet::
 	goto_if_set FLAG_RYU_RECEIVED_MEGA_BRACELET, ryu_return
 	msgbox NormanGivesMB
 	additem ITEM_MEGA_BRACELET
@@ -103,7 +105,7 @@ norman1::
 	msgbox PBG_AreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne PBG_NotReadyYet
-	trainerbattle_single TRAINER_NORMAN_1, PG_Norman_Not4Badges_Intro, PetalburgCity_Gym_Text_NormanDefeat, PG_Reset
+	trainerbattle_single TRAINER_NORMAN_1, PBG_Norman_Not4Badges_Intro, PetalburgCity_Gym_Text_NormanDefeat, PBG_Reset
 	release
 	end
 
@@ -111,373 +113,60 @@ norman2::
 	msgbox PBG_AreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne PBG_NotReadyYet
-	trainerbattle_single TRAINER_NORMAN_2, PG_Norman_Not4Badges_Intro, PetalburgCity_Gym_Text_NormanDefeat, PG_Reset
+	trainerbattle_single TRAINER_NORMAN_2, PBG_Norman_Not4Badges_Intro, PetalburgCity_Gym_Text_NormanDefeat, PBG_Reset
 	release
 	end
 
 norman3::
-	trainerbattle_single TRAINER_NORMAN_3, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PG_Reset
+	trainerbattle_single TRAINER_NORMAN_3, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PBG_Reset
 	release
 	end
 
 norman4::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, PG_FollowerMatch
-	call_if_set FLAG_RYU_DS_HAS_PARTNER, PG_PartnerQuery
-	trainerbattle_single TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PG_Reset
-	release
-	end
-	
-PG_PartnerQuery::
-    msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq PG_RelDialog
-	goto PG_NoRelGymBattle
-	return
-	
-	
-PG_RelDialog::
-	call RyuPartnerBattleMultichoice
-	compare VAR_0x8008, TRAINER_REL_SHELLY
-	goto_if_eq PG_GymBattleIntroShelly
-	compare VAR_0x8008, TRAINER_REL_DAWN
-	goto_if_eq PG_GymBattleIntroDawn
-	compare VAR_0x8008, TRAINER_REL_BRENDAN
-	goto_if_eq PG_GymBattleIntroBrendan
-	compare VAR_0x8008, TRAINER_REL_LANA
-	goto_if_eq PG_GymBattleIntroLana
-	compare VAR_0x8008, TRAINER_REL_LANETTE
-	goto_if_eq PG_GymBattleIntroLanette
-	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
-	goto_if_eq PG_GymBattleIntroCourtney
-	compare VAR_0x8008, TRAINER_REL_NURSE
-	goto_if_eq PG_GymBattleIntroJoy
-	goto PG_NoRelGymBattle
-	
-PG_NoRelGymBattle::
-	trainerbattle_single TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PG_Reset
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, PBG_FollowerMatch
+	trainerbattle_single TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PBG_Reset
 	release
 	end
 
-PG_FollowerMatch::
-	msgbox PetalburgCity_Gym_Text_NormanPreRematch
+PBG_FollowerMatch::
+	msgbox PBG_PreBattleText
 	closemessage
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	call RyuFollowerAllySelector
+	call RyuFollowerAllySelector @// load follower details for battle.
+	call PBG_FollowerIntroSelector @//Select the correct partner dialogue at beginning of match
+	goto PBG_StartFollowerBattle
+
+PBG_StartFollowerBattle::
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq PG_ChooseValidMons
-	multi_2_vs_1 TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanDefeat, VAR_0x8008, VAR_0x8009
+	goto_if_eq PBG_ChooseValidMons
+	multi_2_vs_1 TRAINER_NORMAN_4, PBG_DadDefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
-	goto PG_Reset
+	msgbox PBG_DefeatText
+	call PBG_FollowerOutroSelector
+	goto PBG_FollowerReset
 	end
-	
-PG_NoRelationship1::
-	msgbox Ryu_NOREL MSGBOX_DEFAULT
-	closemessage
-	goto PG_RelDialog
-	
-PG_GymBattleIntroShelly::
-	msgbox Ryu_PlayerCalledShelly MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, PG_NoRelationship1
-	addobject 11
-	playse SE_DOOR
-	applymovement 11, PG_PartnerEnter
-	waitmovement 0
-	msgbox PG_SHELLY_INTRO MSGBOX_DEFAULT
-	goto PG_AltGymBattle
-	
-PG_GymBattleIntroLana::
-	msgbox Ryu_PlayerCalledLana MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, PG_NoRelationship1
-	addobject 13
-	playse SE_DOOR
-	applymovement 13, PG_PartnerEnter
-	waitmovement 0
-	msgbox PG_LANA_INTRO MSGBOX_DEFAULT
-	goto PG_AltGymBattle
-	
-PG_GymBattleIntroDawn::
-	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, PG_NoRelationship1
-	msgbox Ryu_PlayerCalledDawn MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 10
-	playse SE_DOOR
-	applymovement 10, PG_PartnerEnter
-	waitmovement 0
-	msgbox PG_DAWN_INTRO MSGBOX_DEFAULT
-	goto PG_AltGymBattle
-	
-PG_GymBattleIntroBrendan::
-	goto_if_unset FLAG_RYU_DS_BRENDAN_PARTNERS, PG_NoRelationship1
-	msgbox Ryu_PlayerCalledBrendan MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 12
-	playse SE_DOOR
-	applymovement 12, PG_PartnerEnter
-	waitmovement 0
-	msgbox PG_BRENDAN_INTRO MSGBOX_DEFAULT
-	goto PG_AltGymBattle
-	
-PG_GymBattleIntroLanette::
-	msgbox Ryu_PlayerCalledLanette MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, PG_NoRelationship1
-	addobject 14
-	playse SE_DOOR
-	applymovement 14, PG_PartnerEnter
-	waitmovement 14
-	msgbox PG_LANETTE_INTRO MSGBOX_DEFAULT
-	goto PG_AltGymBattle
 
-PG_GymBattleIntroCourtney::
-	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, PG_NoRelationship1
-	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 15
-	playse SE_DOOR
-	applymovement 15, PG_PartnerEnter
-	waitmovement 0
-	msgbox PG_CourtneyPreBattleText MSGBOX_DEFAULT
-	goto PG_AltGymBattle
-
-PG_GymBattleIntroJoy::
-	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, PG_NoRelationship1
-	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 16
-	playse SE_DOOR
-	applymovement 16, PG_PartnerEnter
-	waitmovement 0
-	msgbox PG_JOY_INTRO MSGBOX_DEFAULT
-	goto PG_AltGymBattle
-	
-PG_AltGymBattle::
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_F
-	goto_if_eq PG_CourtneyAltGymBattle
-	msgbox PG_PreBattleText MSGBOX_DEFAULT
-	choose_mons
-	compare VAR_RESULT, FALSE
-	goto_if_eq PG_ChooseValidMons
-	multi_2_vs_1 TRAINER_NORMAN_4, PG_DefeatText, VAR_0x8008, VAR_0x8009
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	delay 10
-	goto PG_GymBattleEnd
-
-PG_CourtneyAltGymBattle::
-	msgbox PG_COURTNEY_INTRO MSGBOX_DEFAULT
-	choose_mons
-	compare VAR_RESULT, FALSE
-	goto_if_eq PG_ChooseValidMons
-	multi_2_vs_1 TRAINER_NORMAN_4, PG_DefeatText, VAR_0x8008, VAR_0x8009
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	delay 10
-	goto PG_GymBattleEnd
-	
-PG_ChooseValidMons::
+PBG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, PG_FollowerMatch
-	goto PG_AltGymBattle
+	goto PBG_StartFollowerBattle
 	
-PG_GymBattleEnd::
-	compare VAR_0x8008, TRAINER_REL_DAWN
-	goto_if_eq PG_GymBattleEndDawn
-	compare VAR_0x8008, TRAINER_REL_SHELLY
-	goto_if_eq PG_GymBattleEndShelly
-	compare VAR_0x8008, TRAINER_REL_BRENDAN
-	goto_if_eq PG_GymBattleEndBrendan
-	compare VAR_0x8008, TRAINER_REL_LANA
-	goto_if_eq PG_GymBattleEndLana
-	compare VAR_0x8008, TRAINER_REL_LANETTE
-	goto_if_eq PG_GymBattleEndLanette
-	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
-	goto_if_eq PG_GymBattleEndCourtney
-	compare VAR_0x8008, TRAINER_REL_NURSE
-	goto_if_eq PG_GymBattleEndJoy
-	release
-	end
-	
-PG_GymBattleEndShelly::
-	msgbox PG_ShellyGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 11, PG_PartnerExit
-	waitmovement 0
-	playse SE_DOOR
-	removeobject 11
-	goto PG_Reset
-	release
-	end
-
-PG_GymBattleEndDawn::
-	msgbox PG_DawnGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 10, PG_PartnerExit
-	waitmovement 0
-	playse SE_DOOR
-	removeobject 10
-	goto PG_Reset
-	release
-	end
-	
-PG_GymBattleEndBrendan::
-	msgbox PG_BrendanGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 12, PG_PartnerExit
-	waitmovement 0
-	playse SE_DOOR
-	removeobject 12
-	goto PG_Reset
-	release
-	end
-	
-PG_GymBattleEndLana::
-	msgbox PG_LeafGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 13, PG_PartnerExit
-	waitmovement 13
-	playse SE_DOOR
-	removeobject 13
-	goto PG_Reset
-	release
-	end
-	
-PG_GymBattleEndLanette::
-	msgbox PG_LanetteGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 14, PG_PartnerExit
-	waitmovement 14
-	playse SE_DOOR
-	removeobject 14
-	goto PG_Reset
-	release
-	end
-
-PG_GymBattleEndCourtney::
-	msgbox PG_CourtneyGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 15, PG_PartnerExit
-	waitmovement 15
-	playse SE_DOOR
-	removeobject 15
-	goto PG_Reset
-	release
-	end
-
-PG_GymBattleEndJoy::
-	msgbox PG_JoyGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 16, PG_PartnerExit
-	waitmovement 16
-	playse SE_DOOR
-	removeobject 16
-	goto PG_Reset
-	release
-	end
-	
-PG_PreBattleText:
+PBG_PreBattleText:
     .string "Norman: Two challengers. Time for\n"
     .string "a double battle. You better have\l"
     .string "potions!$"
-
-PG_CourtneyPreBattleText:
-    .string "So... You're the one who corrupted\n"
-    .string "my child...\p"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Not at all, In fact, {PLAYER} sought\n"
-    .string "me out, and showed me a better life.\p"
-    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see... Well, I still can't approve.\n"
-    .string "Let's see how close you really are!$"
-
-PG_SHELLY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I didn't really expect to meet\nyour father this way, but battle is\las good a way as any, I guess.$"
 	
-PG_DAWN_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I've been wanting another crack\nat Norman since he beat me before.\pI bet we win this time!$"
-	
-PG_BRENDAN_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Best. Parent. Intro. Ever.\n"
-    .string "Let's get it on!$"
-
-PG_ALTTEXT1:
-	.string "I'm quite proud of you, {PLAYER}!$"
-	
-PG_ShellyGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Well, this was fun!\nNice to meet you, pops!$"
-	
-PG_LANA_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, so your dad is a Gym\n"
-    .string "Leader. Your strength makes sense\l"
-    .string "now!$"
-	
-PG_LANETTE_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh... he's your father...\nUm... Hi...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lanette looks at the floor)$"
-
-PG_COURTNEY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}We do not need your approval.\nI never decline a challenge, though.$"
-
-PG_JOY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED} Oh! Wow! Your father's a Gym\nLeader!\pI didn't know that!\pSo that's where your strength\ncomes from$"
-	
-PG_DawnGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Ha! Got you this time!\nI knew you couldn't stand to both of us!\lSee you later, {PLAYER}!$"
-	
-PG_BrendanGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Ha! He's not so strong\n"
-    .string "in a double battle.\l"
-    .string "He can't beat our bond!$"
-	
-PG_LeafGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I can definetly see some of your\n"
-    .string "dad's battle style in yours.$"
-	
-PG_LanetteGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, that wasn't so bad\nNice to meet you!$"
-
-PG_CourtneyGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I hope you understand now.\nWe're inseperable.\pOf course, I don't care if you\napprove or not.$"
-
-PG_JoyGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Yes, I can definitely see it.\nNice to meet you again!$"
-	
-PG_DefeatText:
+PBG_DefeatText:
     .string "I didn't do enough damage...$"
-	
-PG_PartnerEnter:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	walk_up
-	step_end
 
+PBG_ALTTEXT1:
+	.string "I'm quite proud of you, {PLAYER}!$"
 
-PG_PartnerExit:
-	walk_down
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
+PBG_DadDefeatText:
+	.string "Defeated by my own child?!$"
 
 PBG_UpdateVar:
 	goto_if_set FLAG_BADGE05_GET, PBG_SetVar10
@@ -887,7 +576,7 @@ PetalburgCity_Gym_Text_GymStatueCertified: @ 8207467
 	.string "Norman's Certified Trainers:\n"
 	.string "{PLAYER}$"
 
-PG_Norman_Not4Badges_Intro:
+PBG_Norman_Not4Badges_Intro:
     .string "I may have gotten older, but I can\n"
     .string "still teach you a lesson\p"
     .string "Let's do this!$"
@@ -1107,4 +796,119 @@ PBG_Quiz7::
 PBG_Quiz8:: @gym leader door
 	.string "Are there only 19 types?$"
 
+
+PBG_CourtneyPreBattleText:
+    .string "So... You're the one who corrupted\n"
+    .string "my child...\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Not at all, In fact, {PLAYER} sought\n"
+    .string "me out, and showed me a better life.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see... Well, I still can't approve.\n"
+    .string "Let's see how close you really are!$"
+
+PBG_SHELLY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I didn't really expect to meet\nyour father this way, but battle is\las good a way as any, I guess.$"
+	
+PBG_DAWN_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I've been wanting another crack\nat Norman since he beat me before.\pI bet we win this time!$"
+	
+PBG_BRENDAN_INTRO:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Best. Parent. Intro. Ever.\n"
+    .string "Let's get it on!$"
+
+	
+PBG_ShellyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well, this was fun!\nNice to meet you, pops!$"
+	
+PBG_LANA_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, so your dad is a Gym\n"
+    .string "Leader. Your strength makes sense\l"
+    .string "now!$"
+	
+PBG_LANETTE_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh... he's your father...\nUm... Hi...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lanette looks at the floor)$"
+
+PBG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}We do not need your approval.\nI never decline a challenge, though.$"
+
+PBG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} Oh! Wow! Your father's a Gym\nLeader!\pI didn't know that!\pSo that's where your strength\ncomes from$"
+	
+PBG_DawnGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ha! Got you this time!\nI knew you couldn't stand to both of us!\lSee you later, {PLAYER}!$"
+	
+PBG_BrendanGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Ha! He's not so strong\n"
+    .string "in a double battle.\l"
+    .string "He can't beat our bond!$"
+	
+PBG_LanaGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I can definetly see some of your\n"
+    .string "dad's battle style in yours.$"
+	
+PBG_LanetteGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, that wasn't so bad\nNice to meet you!$"
+
+PBG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I hope you understand now.\nWe're inseperable.\pOf course, I don't care if you\napprove or not.$"
+
+PBG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Yes, I can definitely see it.\nNice to meet you again!$"
+
 `
+
+
+script PBG_FollowerOutroSelector {
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
+		return
+	}
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I knew you could do it!")
+		case TRAINER_REL_LANETTE:
+			msgbox(PBG_LanetteGymBattleComplete)
+		case TRAINER_REL_SHELLY:
+			msgbox(PBG_ShellyGymBattleComplete)
+		case TRAINER_REL_DAWN:
+			msgbox(PBG_DawnGymBattleComplete)
+		case TRAINER_REL_BRENDAN:
+			msgbox(PBG_BrendanGymBattleComplete)
+		case TRAINER_REL_LANA:
+			msgbox(PBG_LanaGymBattleComplete)
+		case TRAINER_REL_COURTNEY_2:
+			msgbox(PBG_CourtneyGymBattleComplete)
+		case TRAINER_REL_NURSE:
+			msgbox(PBG_JoyGymBattleComplete)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Nice rematch, Norman!")
+	}
+	closemessage
+	return
+}
+
+script PBG_FollowerIntroSelector {
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
+		return
+	}
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}So this is your papa?\nHe looks really tough!\pI see why you're so strong\nnow!"))
+		case TRAINER_REL_LANETTE:
+			msgbox(PBG_LANETTE_INTRO)
+		case TRAINER_REL_SHELLY:
+			msgbox(PBG_SHELLY_INTRO)
+		case TRAINER_REL_DAWN:
+			msgbox(PBG_DAWN_INTRO)
+		case TRAINER_REL_BRENDAN:
+			msgbox(PBG_BRENDAN_INTRO)
+		case TRAINER_REL_LANA:
+			msgbox(PBG_LANA_INTRO)
+		case TRAINER_REL_COURTNEY_2:
+			msgbox(PBG_COURTNEY_INTRO)
+		case TRAINER_REL_NURSE:
+			msgbox(PBG_JOY_INTRO)
+		case TRAINER_REL_MAY:
+			msgbox("Most trainers only make it to Norman\nin their gym challenge.\pI already beat him, though.")
+	}
+	closemessage
+	return
+}

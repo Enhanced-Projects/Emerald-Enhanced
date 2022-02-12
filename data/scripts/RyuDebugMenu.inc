@@ -11,6 +11,7 @@ RyuDevSwitch::
 	setflag FLAG_RYU_CHEATS_USED
 	@clearflag FLAG_HIDE_103_TEST_TRAINER
 	msgbox RyuNowDeveloper MSGBOX_SIGN
+	setvar VAR_TEMP_9, 100
 	end
 	
 RyuNowDeveloper:
@@ -91,11 +92,11 @@ RDB_SpawnFollowerMultiMenu::
 	case 5, RDB_SpawnLeaf
 	case 6, RDB_SpawnCourtney
 	case 7, RDB_SpawnJoy
-	case 8, RDB_NONCOMBATFOLLOWER
-	case 9, RDB_SpawnBlaise
-	case 10, RDB_SpawnTiana
-	case 11, RDB_SpawnHexer
-	case 12, RDB_SpawnMay
+	case 8, RDB_SpawnMay
+	case 9, RDB_NONCOMBATFOLLOWER
+	case 10, RDB_SpawnBlaise
+	case 11, RDB_SpawnTiana
+	case 12, RDB_SpawnHexer
 	case 13, RDB_RETURNTOMAIN
 	goto RDB_RETURNTOMAIN
 
@@ -702,14 +703,15 @@ RyuDebug_GiveAllBeginMsg:
 
 RyuDebug_DevMonQuickStart::
 	setflag FLAG_RYU_IGNORE_CAP @@why not just max lv
+	clearflag FLAG_RYU_VANILLA_CAP
 	setvar VAR_TEMP_A, NATURE_MODEST     
-	setvar VAR_TEMP_B, SPECIES_PRIMARINA
+	setvar VAR_TEMP_B, SPECIES_NAGANADEL
 	setvar VAR_TEMP_C, HIDDEN_ABILITY
 	setvar VAR_TEMP_D, MON_FEMALE @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS.
 	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
-	setvar VAR_TEMP_1, MOVE_PSYCHIC
-	setvar VAR_TEMP_2, MOVE_MOONBLAST
-	setvar VAR_TEMP_3, MOVE_SPARKLING_ARIA
+	setvar VAR_TEMP_1, MOVE_SLUDGE_BOMB
+	setvar VAR_TEMP_2, MOVE_DRAGON_PULSE
+	setvar VAR_TEMP_3, MOVE_FLAMETHROWER
 	setvar VAR_TEMP_4, MOVE_THUNDERBOLT
 	callnative RyuGiveDevMon
 	@@
@@ -718,18 +720,15 @@ RyuDebug_DevMonQuickStart::
 	@@
 	@@
 	setvar VAR_TEMP_A, NATURE_ADAMANT
-	setvar VAR_TEMP_B, SPECIES_PHEROMOSA
-	setvar VAR_TEMP_C, PRIMARY_ABILITY
+	setvar VAR_TEMP_B, SPECIES_KINGLER
+	setvar VAR_TEMP_C, HIDDEN_ABILITY
 	setvar VAR_TEMP_D, MON_FEMALE
-	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
-	setvar VAR_TEMP_1, MOVE_HIGH_HORSEPOWER
+	setvar VAR_TEMP_E, ITEM_SCOPE_LENS
+	setvar VAR_TEMP_1, MOVE_EARTHQUAKE
 	setvar VAR_TEMP_2, MOVE_TRIPLE_KICK
-	setvar VAR_TEMP_3, MOVE_POISON_JAB
+	setvar VAR_TEMP_3, MOVE_ICE_SHARD
 	setvar VAR_TEMP_4, MOVE_CRABHAMMER
 	callnative RyuGiveDevMon
-	@@ finished, go to next stage.
-	release
-	end
 	special HealPlayerParty
 	goto RyuDebug_QuickItemFlagStart
 

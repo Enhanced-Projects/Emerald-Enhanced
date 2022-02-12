@@ -8255,20 +8255,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Edwin2},
     },
 
-    [TRAINER_EMPTY_194] =
+    [TRAINER_REL_MAY] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_COLLECTOR,
-        .trainerFaction = FACTION_OUTCASTS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-        .trainerPic = TRAINER_PIC_COLLECTOR,
-        .trainerName = _("Edwin"),
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_RS_MAY,
+        .trainerName = _("May"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Edwin3),
-        .party = {.NoItemDefaultMoves = sParty_Edwin3},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .partySize = ARRAY_COUNT(sParty_RelMay),
+        .party = {.ItemCustomMoves = sParty_RelMay},
     },
 
     [TRAINER_DRAKE_REMATCH_2] =

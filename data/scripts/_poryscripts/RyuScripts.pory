@@ -2684,3 +2684,31 @@ script gScript_InvalidSaveDetected {
 	msgbox("You are attempting to load an\ninvalid save.\pPlease replace the correct save\nfile and try again.")
 	special(DoSoftReset)
 }
+
+script RyuScript_SetRivalGfxId { //dynamically sets the rival gfx in OBJ_EVENT_GFX_VAR_3
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) {
+		setvar(OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)
+	}
+	else
+	{
+		setvar(OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL)
+	}
+	return
+}
+
+script CheckDexForMayQuest {//if player has over 210 mons caught, enables May quest.
+	if (flag(FLAG_RYU_MAY_PREREQUISITE_COMPLETED) == TRUE) {
+		goto(ryu_return)
+	}
+	callnative(ScriptGetPokedexInfo)
+	buffernumberstring(0, VAR_0x8006)
+	if (var(VAR_0x8006) >= 210){
+		msgbox("Birch: My word!\nYou have caught {STR_VAR_1}\ldifferent species of Pokémon!\pThis is incredible!\pI... don't have to work\nso hard anymore!\pThanks a ton, {PLAYER}!\pI knew you'd be the right\nperson for the job!")
+		setflag(FLAG_RYU_MAY_PREREQUISITE_COMPLETED)
+		closemessage
+		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You can now recruit May\n as a follower once the\l intro is completed.)")
+		closemessage
+		return
+	}
+}

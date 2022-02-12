@@ -1069,11 +1069,11 @@ static const struct ListMenuItem sRyuFollowerDebugSet[] =
         {sFollowerLeaf, 5},
         {sFollowerCourtney, 6},
         {sFollowerJoy, 7},
-        {sFollowerNonCombat, 8},
-        {sFollowerBlaise, 9},
-        {sFollowerTiana, 10},
-        {sFollowerHexer, 11},
-        {sFollowerMay, 12},
+        {sFollowerMay, 8},
+        {sFollowerNonCombat, 9},
+        {sFollowerBlaise, 10},
+        {sFollowerTiana, 11},
+        {sFollowerHexer, 12},
         {sReturnPrevious, 13},
 };
 

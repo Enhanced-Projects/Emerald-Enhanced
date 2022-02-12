@@ -356,11 +356,14 @@ ACO_ShellyNightScene::
 	waitmovement 9
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
+	fadeoutbgm 2
+	drawfullscreenimage SCENEBGSHELLYNIGHT
 	msgbox ACO_QuartersScene MSGBOX_DEFAULT
 	closemessage
-	special SpawnCameraObject
-	fadeoutbgm 2
 	msgbox ACO_QuartersScene2 MSGBOX_DEFAULT
+	clearfullscreenimage
+	closemessage
+	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan
 	applymovement 9, ACO_ShellySlide
 	waitmovement 9
@@ -390,6 +393,7 @@ ACO_ShellyNightScene::
 
 ACO_ShellyAfterStory::
 	lockall
+	setflag FLAG_RYU_PREVENT_ACH_POPUP
 	ach give ACH_EYE_OF_STORM
 	call RyuScript_IncrementQuestsFinished
 	msgbox ACO_ShellyAfterstoryIntro
@@ -412,21 +416,26 @@ ACO_CheckFollowerShelly::
 	goto ryu_end
 
 ACO_Night2Scene::
+	lockall
 	setvar VAR_RYU_QUEST_AQUA, 161
+	setflag FLAG_RYU_PREVENT_ACH_POPUP
 	addobject 9
 	applymovement 9, ACO_Night_ShellyToCouch
 	waitmovement 9
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-	special SpawnCameraObject
-	fadeoutbgm 2
+	fadeoutbgm 1
 	msgbox ACO_ShellyNight2Msg1
 	closemessage
-	msgbox ACO_ShellySlides
-	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan
+	drawfullscreenimage SCENEBGSHELLYNIGHT
+	msgbox ACO_GetUsedToThis
 	closemessage
+	msgbox ACO_ShellySlides
+	closemessage
+	clearfullscreenimage
+	delay 10
 	applymovement 9, ACO_ShellySlide
-	waitmovement 9
 	fadescreenspeed 1, 10
+	waitmovement 9
 	msgbox ACO_ShellyNight2Msg2
 	closemessage
 	delay 60
@@ -441,7 +450,8 @@ ACO_Night2Scene::
 	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	fadescreenspeed 0, 10
 	playbgm MUS_HIGHTOWN, 0
-	release
+	clearflag FLAG_RYU_PREVENT_ACH_POPUP
+	releaseall
 	end
 
 ACO_ShellyFollowerQuery:
@@ -468,6 +478,8 @@ ACO_ShellyNight2Msg2:
 ACO_NightScene2Wakeup:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (As you wake up, Shelly is\n already gone.\p Probably attending business dealings.\p The briny air empowers you\n as you come to.)$"
 
+ACO_GetUsedToThis:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I could get used to this, you know.$"
 
 ACO_Night_ShellyToCouch:
 	walk_down

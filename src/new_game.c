@@ -305,7 +305,11 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);// can't delete all kecleon overworlds because scripts, so this will do.
     FlagSet(FLAG_SYS_NATIONAL_DEX);
     FlagSet(FLAG_RYU_AUTORUN);
-
+    FlagSet(FLAG_RYU_HIDE_LRT_MAY);
+    FlagSet(FLAG_HIDE_LRT_BH_BIRCH);
+    FlagSet(FLAG_HIDE_LRT_DH_BIRCH);
+    FlagSet(FLAG_RYU_MAY_EVENT_HIDE_BIRCH);
+    FlagSet(FLAG_RYU_DS_MAY_ACQ);
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);

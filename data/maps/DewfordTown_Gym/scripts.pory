@@ -20,21 +20,21 @@ DewfordTown_Gym_EventScript_Brawly:: @ 81FC7C2
 	case 8, brawly4
 
 DFG_Reset::
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	setvar VAR_TEMP_8, 2
+	msgbox DewfordTown_Gym_Text_BrawlyPostBattle
+	closemessage
+DFG_FollowerReset::
+	call DewfordTown_Gym_EventScript_GiveBulkUp
 	special checkbadgecount
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_DEWFORD_GYM
 	setflag FLAG_BADGE02_GET
-	msgbox DewfordTown_Gym_Text_BrawlyPostBattle
 	closemessage
 	cleartrainerflag TRAINER_BRAWLY_1
 	cleartrainerflag TRAINER_BRAWLY_2
 	cleartrainerflag TRAINER_BRAWLY_3
 	cleartrainerflag TRAINER_BRAWLY_4
+	call DewfordTown_Gym_EventScript_GiveBulkUp
 	clearflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_CHALLENGEMODE, RyuHealedGym
@@ -60,277 +60,36 @@ brawly3::
 
 brawly4::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, DFG_FollowerMatch
-	goto_if_set FLAG_RYU_DS_HAS_PARTNER, DFG_PartnerQuery
 	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyDefeat, DFG_Reset
-	release
-	end
-
-DFG_PartnerQuery::
-    msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq DFG_RelDialog
-	goto DFG_NoRelGymBattle
-	return
-	
-	
-DFG_RelDialog::
-	call RyuPartnerBattleMultichoice
-	compare VAR_0x8008, TRAINER_REL_SHELLY
-	goto_if_eq DFG_GymBattleIntroShelly
-	compare VAR_0x8008, TRAINER_REL_DAWN
-	goto_if_eq DFG_GymBattleIntroDawn
-	compare VAR_0x8008, TRAINER_REL_BRENDAN
-	goto_if_eq DFG_GymBattleIntroBrendan
-	compare VAR_0x8008, TRAINER_REL_LANA
-	goto_if_eq DFG_GymBattleIntroLana
-	compare VAR_0x8008, TRAINER_REL_LANETTE
-	goto_if_eq DFG_GymBattleIntroLanette
-	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
-	goto_if_eq DFG_GymBattleIntroCourtney
-	compare VAR_0x8008, TRAINER_REL_NURSE
-	goto_if_eq DFG_GymBattleIntroJoy
-	goto DFG_NoRelGymBattle
-	
-DFG_NoRelGymBattle::
-	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyDefeat, DFG_Reset
+	msgbox DewfordTown_Gym_Text_BrawlyPostBattle
 	release
 	end
 
 DFG_FollowerMatch::
-	msgbox DewfordTown_Gym_Text_BrawlyPreBattle
+	msgbox DFG_PreBattleText
 	closemessage
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	call RyuFollowerAllySelector
+	call RyuFollowerAllySelector @// load follower details for battle.
+	call DFG_FollowerIntroSelector @//Select the correct partner dialogue at beginning of match
+	goto DFG_StartFollowerBattle
+
+DFG_StartFollowerBattle::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq DFG_ChooseValidMons
-	multi_2_vs_1 TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, VAR_0x8008, VAR_0x8009
+	multi_2_vs_1 TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyDefeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
-	goto DFG_Reset
+	msgbox DFG_DefeatText
+	call DFG_FollowerOutroSelector
+	goto DFG_FollowerReset
 	end
-	
-DFG_NoRelationship1::
-	msgbox Ryu_NOREL MSGBOX_DEFAULT
-	closemessage
-	goto DFG_RelDialog
-	
-DFG_GymBattleIntroShelly::
-	msgbox Ryu_PlayerCalledShelly MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, DFG_NoRelationship1
-	addobject 11
-	playse SE_DOOR
-	applymovement 11, DFG_PartnerEnter
-	waitmovement 0
-	msgbox DFG_SHELLY_INTRO MSGBOX_DEFAULT
-	goto DFG_AltGymBattle
-
-DFG_GymBattleIntroLana::
-	msgbox Ryu_PlayerCalledLana MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, DFG_NoRelationship1
-	addobject 12
-	playse SE_DOOR
-	applymovement 12, DFG_PartnerEnter
-	waitmovement 12
-	msgbox DFG_LANA_INTRO MSGBOX_DEFAULT
-	goto DFG_AltGymBattle
-	
-DFG_GymBattleIntroDawn::
-	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, DFG_NoRelationship1
-	msgbox Ryu_PlayerCalledDawn MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 9
-	playse SE_DOOR
-	applymovement 9, DFG_PartnerEnter
-	waitmovement 0
-	msgbox DFG_DAWN_INTRO MSGBOX_DEFAULT
-	goto DFG_AltGymBattle
-	
-DFG_GymBattleIntroBrendan::
-	goto_if_unset FLAG_RYU_DS_BRENDAN_PARTNERS, DFG_NoRelationship1
-	msgbox Ryu_PlayerCalledBrendan MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 10
-	playse SE_DOOR
-	applymovement 10, DFG_PartnerEnter
-	waitmovement 0
-	msgbox DFG_BRENDAN_INTRO MSGBOX_DEFAULT
-	goto DFG_AltGymBattle
-	
-DFG_GymBattleIntroLanette::
-	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, DFG_NoRelationship1
-	msgbox Ryu_PlayerCalledLanette MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 13
-	playse SE_DOOR
-	applymovement 13, DFG_PartnerEnter
-	waitmovement 0
-	msgbox DFG_LANETTE_INTRO MSGBOX_DEFAULT
-	goto DFG_AltGymBattle
-	
-DFG_GymBattleIntroCourtney::
-	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, DFG_NoRelationship1
-	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 14
-	playse SE_DOOR
-	applymovement 14, DFG_PartnerEnter
-	waitmovement 0
-	msgbox DFG_COURTNEY_INTRO MSGBOX_DEFAULT
-	goto DFG_AltGymBattle
-
-DFG_GymBattleIntroJoy::
-	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, DFG_NoRelationship1
-	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	addobject 15
-	playse SE_DOOR
-	applymovement 15, DFG_PartnerEnter
-	waitmovement 0
-	msgbox DFG_JOY_INTRO MSGBOX_DEFAULT
-	goto DFG_AltGymBattle
-	
-DFG_AltGymBattle::
-	msgbox DFG_PreBattleText MSGBOX_DEFAULT
-	choose_mons
-	compare VAR_RESULT, FALSE
-	goto_if_eq DFG_ChooseValidMons
-	multi_2_vs_1 TRAINER_BRAWLY_4, DFG_DefeatText, VAR_0x8008, VAR_0x8009
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq Ryu_PlayerLostTheGame
-	delay 10
-	goto DFG_GymBattleEnd
 
 DFG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, DFG_FollowerMatch
-	goto DFG_AltGymBattle
-	
-DFG_GymBattleEnd::
-	compare VAR_0x8008, TRAINER_REL_DAWN
-	goto_if_eq DFG_GymBattleEndDawn
-	compare VAR_0x8008, TRAINER_REL_SHELLY
-	goto_if_eq DFG_GymBattleEndShelly
-	compare VAR_0x8008, TRAINER_REL_BRENDAN
-	goto_if_eq DFG_GymBattleEndBrendan
-	compare VAR_0x8008, TRAINER_REL_LANA
-	goto_if_eq DFG_GymBattleEndLana
-	compare VAR_0x8008, TRAINER_REL_LANETTE
-	goto_if_eq DFG_GymBattleEndLanette
-	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
-	goto_if_eq DFG_GymBattleEndCourtney
-	compare VAR_0x8008, TRAINER_REL_NURSE
-	goto_if_eq DFG_GymBattleEndJoy
-	release
-	end
-	
-DFG_GymBattleEndShelly::
-	msgbox DFG_ShellyGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 11, DFG_PartnerExit
-	waitmovement 0
-	playse SE_DOOR
-	removeobject 11
-	release
-	end
-	
-DFG_GymBattleEndDawn::
-	msgbox DFG_DawnGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 9, DFG_PartnerExit
-	waitmovement 0
-	playse SE_DOOR
-	removeobject 9
-	release
-	end
-	
-DFG_GymBattleEndBrendan::
-	msgbox DFG_BrendanGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 10, DFG_PartnerExit
-	waitmovement 0
-	playse SE_DOOR
-	removeobject 10
-	release
-	end
-
-DFG_GymBattleEndLana:
-	msgbox DFG_LanaGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 12, DFG_PartnerExit
-	waitmovement 0
-	playse SE_DOOR
-	removeobject 12
-	release
-	end
-	
-DFG_GymBattleEndLanette:
-	msgbox DFG_LanetteGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 13, DFG_PartnerExit
-	waitmovement 0
-	playse SE_DOOR
-	removeobject 13
-	release
-	end
-
-DFG_GymBattleEndCourtney::
-	msgbox DFG_CourtneyGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 14, DFG_PartnerExit
-	waitmovement 14
-	playse SE_DOOR
-	removeobject 14
-	goto DFG_Reset
-	release
-	end
-
-DFG_GymBattleEndJoy::
-	msgbox DFG_JoyGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 15, DFG_PartnerExit
-	waitmovement 15
-	playse SE_DOOR
-	removeobject 15
-	goto DFG_Reset
-	release
-	end
-	
-DFG_SHELLY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah, yes, a good ol'\nfashioned brawl. I used to fight\lAqua grunts for fun all the time!$"
-
-DFG_DAWN_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I'm glad you called, I was\n"
-	.string "getting bored, anyways. I'm here to back\l"
-	.string "you up, like always!$"
-	
-DFG_BRENDAN_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Now this is definetly\n"
-    .string "more my style. Let's have at it!$"
-
-DFG_LANA_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}My Heracross oughta make quick\nwork of this guy...$"
-	
-DFG_LANETTE_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I pride myself on my\nabilty to outsmart brawny types.$"
-
-DFG_COURTNEY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I like this guy, he punches\nthings. Not as well as you, of couse.$"
-
-DFG_JOY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I think I see more people from\nthis gym than any other.\pFighting types are so rough!$"
+	goto DFG_StartFollowerBattle
 	
 DFG_PreBattleText:
 	.string "Brawly: Here at Dewford Gym, we\n"
@@ -342,106 +101,15 @@ DFG_PreBattleText:
 DFG_DefeatText:
 	.string "You guys fit right in here!\n" 
 	.string "Hit the waves with me any time!$"
-	
-DFG_ShellyGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}That really takes me back\n"
-    .string "to my grunt days. A nice workout!\l"
-    .string "Call me if you want backup again!$"
-
-DFG_DawnGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for the fun! Call me\n"
-	.string "if you ever want help again!$"
-	
-DFG_BrendanGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah, that's better. Worked"
-    .string "out all my aggression. Let's do it"
-    .string "again sometime!$"
-
-DFG_LanaGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I do enjoy a nice workout\n"
-    .string "once in a while...\p"
-    .string "But now I'm all hot and bothered...$"
-	
-DFG_LanetteGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}As expected, brawn can't\nbeat brains!$"
-
-DFG_CourtneyGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Nothing like an early morning\nbeatdown!$"
-
-DFG_JoyGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}No one seems to have been\nseriously injured, so it's okay, I guess.$"
-	
-DFG_PartnerEnter:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_in_place_up
-	step_end
-
-DFG_PartnerExit:
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-DewfordTown_Gym_EventScript_BrawlyDefeated:: @ 81FC7F7
-	message DewfordTown_Gym_Text_ReceivedKnuckleBadge
-	waitmessage
-	call Common_EventScript_PlayGymBadgeFanfare
-	msgbox DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis, MSGBOX_DEFAULT
-	setflag FLAG_DEFEATED_DEWFORD_GYM
-	setflag FLAG_BADGE02_GET
-	call DewfordTown_Gym_EventScript_GiveBulkUp
-	closemessage
-	delay 30
-	playfanfare MUS_ME_TORE_EYE
-	msgbox DewfordTown_Gym_Text_RegisteredBrawly, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setvar VAR_ROXANNE_CALL_STEP_COUNTER, 0
-	release
-	end
 
 DewfordTown_Gym_EventScript_GiveBulkUp:: @ 81FC855
-	additem ITEM_TM08
+	goto_if_set FLAG_RECEIVED_TM08, ryu_return
+	giveitem ITEM_TM08
 	compare VAR_RESULT, 0
-	goto_if_eq Common_EventScript_BagIsFull
+	goto_if_eq ryu_return
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM08
 	return
-
-DewfordTown_Gym_EventScript_GiveBulkUp2: @ 81FC878
-	additem ITEM_TM08
-	compare VAR_RESULT, 0
-	goto_if_eq Common_EventScript_ShowBagIsFull
-	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_TM08
-	release
-	end
-
-DewfordTown_Gym_EventScript_BrawlyRematch:: @ 81FC89C
-	trainerbattle_rematch_double TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyPreRematch, DewfordTown_Gym_Text_BrawlyRematchDefeat, DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons
-	msgbox DewfordTown_Gym_Text_BrawlyPostRematch, MSGBOX_AUTOCLOSE
-	end
 
 DewfordTown_Gym_EventScript_Takao:: @ 81FC8B7
 	trainerbattle_single TRAINER_TAKAO, DewfordTown_Gym_Text_TakaoPreBattle, DewfordTown_Gym_Text_TakaoDefeat, DewfordTown_Gym_EventScript_TakaoBrightenRoom
@@ -714,4 +382,113 @@ DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons: @ 81FD3DE
 	.string "that can battle.\p"
 	.string "I'm sorry, but I'd like you to come back\n"
 	.string "with at least two Pokémon.$"
+
+DFG_SHELLY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah, yes, a good ol'\nfashioned brawl. I used to fight\lAqua grunts for fun all the time!$"
+
+DFG_DAWN_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I'm glad you called, I was\n"
+	.string "getting bored, anyways. I'm here to back\l"
+	.string "you up, like always!$"
+	
+DFG_BRENDAN_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Now this is definetly\n"
+    .string "more my style. Let's have at it!$"
+
+DFG_LANA_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}My Heracross oughta make quick\nwork of this guy...$"
+	
+DFG_LANETTE_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I pride myself on my\nabilty to outsmart brawny types.$"
+
+DFG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I like this guy, he punches\nthings. Not as well as you, of couse.$"
+
+DFG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I think I see more people from\nthis gym than any other.\pFighting types are so rough!$"
+
+DFG_ShellyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}That really takes me back\n"
+    .string "to my grunt days. A nice workout!\l"
+    .string "Call me if you want backup again!$"
+
+DFG_DawnGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for the fun! Call me\n"
+	.string "if you ever want help again!$"
+	
+DFG_BrendanGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah, that's better. Worked"
+    .string "out all my aggression. Let's do it"
+    .string "again sometime!$"
+
+DFG_LanaGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I do enjoy a nice workout\n"
+    .string "once in a while...\p"
+    .string "But now I'm all hot and bothered...$"
+	
+DFG_LanetteGymBattleComplete:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}As expected, brawn can't\nbeat brains!$"
+
+DFG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Nothing like an early morning\nbeatdown!$"
+
+DFG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}No one seems to have been\nseriously injured, so it's okay, I guess.$"
+
 `
+
+script DFG_FollowerOutroSelector {
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
+		return
+	}
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}That'll show ya, you big meanie!"))
+		case TRAINER_REL_LANETTE:
+			msgbox(DFG_LanetteGymBattleComplete)
+		case TRAINER_REL_SHELLY:
+			msgbox(DFG_ShellyGymBattleComplete)
+		case TRAINER_REL_DAWN:
+			msgbox(DFG_DawnGymBattleComplete)
+		case TRAINER_REL_BRENDAN:
+			msgbox(DFG_BrendanGymBattleComplete)
+		case TRAINER_REL_LANA:
+			msgbox(DFG_LanaGymBattleComplete)
+		case TRAINER_REL_COURTNEY_2:
+			msgbox(DFG_CourtneyGymBattleComplete)
+		case TRAINER_REL_NURSE:
+			msgbox(DFG_JoyGymBattleComplete)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}See? I can punch things too!")
+	}
+	closemessage
+	return
+}
+
+script DFG_FollowerIntroSelector {
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
+		return
+	}
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}This guy is mean, all he does\nis punch stuff!\pLet's teach him a lesson!"))
+		case TRAINER_REL_LANETTE:
+			msgbox(DFG_LANETTE_INTRO)
+		case TRAINER_REL_SHELLY:
+			msgbox(DFG_SHELLY_INTRO)
+		case TRAINER_REL_DAWN:
+			msgbox(DFG_DAWN_INTRO)
+		case TRAINER_REL_BRENDAN:
+			msgbox(DFG_BRENDAN_INTRO)
+		case TRAINER_REL_LANA:
+			msgbox(DFG_LANA_INTRO)
+		case TRAINER_REL_COURTNEY_2:
+			msgbox(DFG_COURTNEY_INTRO)
+		case TRAINER_REL_NURSE:
+			msgbox(DFG_JOY_INTRO)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Huh, I haven't been here yet.\nNot a fan of sweaty dojos, though.")
+	}
+	closemessage
+	return
+}
