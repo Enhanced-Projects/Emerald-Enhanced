@@ -673,10 +673,10 @@ script LRT_HideMay {
 
 script LRT_MayEvent {
 	setvar(VAR_TEMP_4, 200)
-	call_if_set(FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest)
 	if ((flag(FLAG_RYU_MAY_INTRO_EVENT_DONE)== TRUE) || (flag(FLAG_RYU_DS_MAY_FRIENDS) == TRUE) || (flag(FLAG_RYU_DS_MAY_ACQ) == TRUE)) {
 		goto(ryu_end)
 	}
+	call_if_set(FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest)
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hi!, I'm May.\nThe professor here signed\lpapers to adopt me, but, uh,\pI forgot where his house is.\nCan you show me?")
 	bufferdynamicmulti(LRT_DNM1, LRT_DNM2)
 	multichoice(0, 7, MULTI_DYNAMIC_2, 0)
