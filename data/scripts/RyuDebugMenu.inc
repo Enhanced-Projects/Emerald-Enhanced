@@ -92,11 +92,11 @@ RDB_SpawnFollowerMultiMenu::
 	case 5, RDB_SpawnLeaf
 	case 6, RDB_SpawnCourtney
 	case 7, RDB_SpawnJoy
-	case 8, RDB_NONCOMBATFOLLOWER
-	case 9, RDB_SpawnBlaise
-	case 10, RDB_SpawnTiana
-	case 11, RDB_SpawnHexer
-	case 12, RDB_SpawnMay
+	case 8, RDB_SpawnMay
+	case 9, RDB_NONCOMBATFOLLOWER
+	case 10, RDB_SpawnBlaise
+	case 11, RDB_SpawnTiana
+	case 12, RDB_SpawnHexer
 	case 13, RDB_RETURNTOMAIN
 	goto RDB_RETURNTOMAIN
 
