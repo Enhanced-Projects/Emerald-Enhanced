@@ -439,7 +439,7 @@ script SG_FollowerOutroSelector {
 		case TRAINER_REL_NURSE:
 			msgbox(SG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
-			msgbox("He has WAY too much energy\nfor his age!")
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}He has WAY too much energy\nfor his age!")
 	}
 	closemessage
 	return
@@ -467,7 +467,7 @@ script SG_FollowerIntroSelector {
 		case TRAINER_REL_NURSE:
 			msgbox(SG_JOY_INTRO)
 		case TRAINER_REL_MAY:
-			msgbox("Kind of annoying to get here...\nbut here we go!")
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Kind of annoying to get here...\nbut here we go!")
 	}
 	closemessage
 	return

@@ -636,7 +636,7 @@ script MDG_FollowerOutroSelector {
 		case TRAINER_REL_NURSE:
 			msgbox(MDG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
-			msgbox("I don't think my Blaziken enjoyed\nthis match very much.")
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I don't think my Blaziken enjoyed\nthis match very much.")
 	}
 	closemessage
 	return

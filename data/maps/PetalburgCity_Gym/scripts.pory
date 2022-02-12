@@ -907,7 +907,7 @@ script PBG_FollowerIntroSelector {
 		case TRAINER_REL_NURSE:
 			msgbox(PBG_JOY_INTRO)
 		case TRAINER_REL_MAY:
-			msgbox("Most trainers only make it to Norman\nin their gym challenge.\pI already beat him, though.")
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Most trainers only make it to Norman\nin their gym challenge.\pI already beat him, though.")
 	}
 	closemessage
 	return
