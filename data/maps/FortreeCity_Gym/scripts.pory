@@ -389,8 +389,8 @@ script FG_FollowerOutroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return
 	}
-	switch (var(VAR_0x8009)) {
-		case TRAINER_BACK_PIC_MINNIE:
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}She's even pretty when she loses!\pHope I can be pretty for you\none day, too!")
 		case TRAINER_REL_LANETTE:
 			msgbox(FG_LanetteGymBattleComplete)
@@ -406,6 +406,8 @@ script FG_FollowerOutroSelector {
 			msgbox(FG_CourtneyGymBattleComplete)
 		case TRAINER_REL_NURSE:
 			msgbox(FG_JoyGymBattleComplete)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aha! I did it!")
 	}
 	closemessage
 	return
@@ -415,8 +417,8 @@ script FG_FollowerIntroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return
 	}
-	switch (var(VAR_0x8009)) {
-		case TRAINER_BACK_PIC_MINNIE:
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
 			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Oooh, she's so pretty!\nI want wings like her!"))
 		case TRAINER_REL_LANETTE:
 			msgbox(FG_LANETTE_INTRO)
@@ -432,6 +434,8 @@ script FG_FollowerIntroSelector {
 			msgbox(FG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:
 			msgbox(FG_JOY_INTRO)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I lost to her once...\nLet's see if I can even the score!")
 	}
 	closemessage
 	return

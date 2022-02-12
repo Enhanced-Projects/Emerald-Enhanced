@@ -75,4 +75,5 @@ ProfBirch_EventScript_RatePokedex:: @ 8272184
 	buffernumberstring 0, VAR_0x8008  @ Num National seen
 	buffernumberstring 1, VAR_0x8009  @ Num National caught
 	msgbox gBirchDexRatingText_OnANationwideBasis, MSGBOX_DEFAULT
+	call CheckDexForMayQuest
 	return

@@ -31,7 +31,7 @@ RyuFollowerSelectNPCScript::
 	case OBJ_EVENT_GFX_NURSE, RyuFollower_NurseJoy
 	case OBJ_EVENT_GFX_LASS, r102_FollowerTianaScript
 	case OBJ_EVENT_GFX_HEX_MANIAC, MP_FQ_HexerFollowerScript
-	case OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollower_MayNormal
+	case OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollower_MaySelector
 	end
 
 RyuFollower_ShellyScript::
@@ -125,16 +125,18 @@ RyuFollower_NurseAlreadyHealed::
 	release
 	end
 
+RyuFollower_MaySelector::
+	goto_if_set FLAG_RYU_DS_MAY_CLOSEFRIENDS, RyuFollower_MayNormal
+	msgbox RF_MayIntroMsg
+	closemessage
+	release
+	end
+
 RyuFollower_MayNormal::
 	call RyuFollower_MayChatterSelector
 	msgbox RF_MayDismissQuery, MSGBOX_YESNO
 	compare VAR_RESULT, YES
-	goto_if_eq RF_DismissMay
-	release
-	end
-
-RF_DismissMay:: @@To be expanded upon later.
-	destroyfollower
+	goto_if_eq Ryu_ReturnMayToHome
 	release
 	end
 
@@ -155,6 +157,9 @@ RF_NurseChatter:
 
 RF_OkayAllBetter:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay!\nAll better!\pTry to be a little more gentle\nplease...$"
+
+RF_MayIntroMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}So, Where's the Professor live?$"
 
 FollowerDawnSetup::
 	removeobject 2
@@ -248,6 +253,7 @@ RF_FollowerLeaveCall::
 	case OBJ_EVENT_GFX_LASS, Ryu_RestoreTiana
 	case OBJ_EVENT_GFX_HEX_MANIAC, Ryu_DestroyWithoutPrejudice
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, ryu_end
+	case OBJ_EVENT_GFX_LINK_RS_MAY, Ryu_ReturnMayToHome
 	return
 
 Ryu_DestroyWithoutPrejudice::
@@ -258,6 +264,24 @@ RF_FollowerLeave::
 	call RF_FollowerLeaveCall
 	release
 	end
+
+Ryu_ReturnMayToHome::
+	destroyfollower
+	checkplayergender
+	switch VAR_RESULT
+	case MALE, Ryu_ReturnMayToDawnsHouse
+	case FEMALE, Ryu_ReturnMayToBrendansHouse
+	return
+
+Ryu_ReturnMayToDawnsHouse::
+	clearflag FLAG_RYU_DH_HIDE_MAY
+	setflag FLAG_RYU_BH_HIDE_MAY
+	return
+
+Ryu_ReturnMayToBrendansHouse::
+	clearflag FLAG_RYU_BH_HIDE_MAY
+	setflag FLAG_RYU_DH_HIDE_MAY
+	return
 
 Ryu_RestoreLanetteAtHouse::
 	destroyfollower
@@ -305,7 +329,7 @@ Ryu_RestoreTiana::
 	clearflag FLAG_RYU_HIDE_101_TIANA
 	return
 
-@ //RyuFollowerToTrainerID will write the current follower’s Party and sprite to VAR_0x8008 and 0x8009
+@ //RyuFollowerToTrainerID will write the current follower’s Party and back sprite to VAR_0x8008 and 0x8009
 @ //and return true if there is a follower or do nothing and return false otherwise.
 RyuFollowerAllySelector::
 	specialvar VAR_RESULT, RyuFollowerToTrainerID

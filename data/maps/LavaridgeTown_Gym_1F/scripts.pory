@@ -533,9 +533,9 @@ script LG_FollowerOutroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return
 	}
-	switch (var(VAR_0x8009)) {
-		case TRAINER_BACK_PIC_MINNIE:
-			msgbox("{COLOR LIGHT_RED}{SHADOW RED}She's even pretty when she loses!\pHope I can be pretty for you\none day, too!")
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I like fire types too!")
 		case TRAINER_REL_LANETTE:
 			msgbox(LG_LanetteGymBattleComplete)
 		case TRAINER_REL_SHELLY:
@@ -550,6 +550,8 @@ script LG_FollowerOutroSelector {
 			msgbox(LG_CourtneyGymBattleComplete)
 		case TRAINER_REL_NURSE:
 			msgbox(LG_JoyGymBattleComplete)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}The steam really relaxed me...\nyou might have to carry me home!")
 	}
 	closemessage
 	return
@@ -559,9 +561,9 @@ script LG_FollowerIntroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return
 	}
-	switch (var(VAR_0x8009)) {
-		case TRAINER_BACK_PIC_MINNIE:
-			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Oooh, she's so pretty!\nI want wings like her!"))
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}It's so hard to breathe in here!\nCan we make this quick?"))
 		case TRAINER_REL_LANETTE:
 			msgbox(LG_LANETTE_INTRO)
 		case TRAINER_REL_SHELLY:
@@ -576,6 +578,8 @@ script LG_FollowerIntroSelector {
 			msgbox(LG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:
 			msgbox(LG_JOY_INTRO)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I love a good sauna. It's the best thing ever!")
 	}
 	closemessage
 	return

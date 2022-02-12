@@ -36,6 +36,8 @@ script RCR_FollowerIntroSetup {//Dynamically chooses which follower text to disp
 			msgbox(FCourtneyMsg)
 		case OBJ_EVENT_GFX_NURSE:
 			msgbox(FJoyMsg)
+		case OBJ_EVENT_GFX_LINK_RS_MAY:
+			msgbox(FMayMsg)
 	}
 	closemessage
 	return
@@ -656,5 +658,10 @@ FJoyMsg:
 	.string "the Championship... I'm not really\p"
 	.string "cut out for this, but I'm here\n"
 	.string "to support you any way I can!$"
+
+FMayMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}At last... Championship.\n"
+	.string "I can finally have an all-out\l"
+	.string "battle!"
 
 `

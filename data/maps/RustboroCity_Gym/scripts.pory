@@ -400,9 +400,9 @@ script RG_FollowerOutroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return
 	}
-	switch (var(VAR_0x8009)) {
-		case TRAINER_BACK_PIC_MINNIE:
-			msgbox("{COLOR LIGHT_RED}{SHADOW RED}She's even pretty when she loses!\pHope I can be pretty for you\none day, too!")
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Does this mean I passed the test?\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Roxanne: Absolutely. Excellent job!")
 		case TRAINER_REL_LANETTE:
 			msgbox(RG_LanetteGymBattleComplete)
 		case TRAINER_REL_SHELLY:
@@ -417,6 +417,8 @@ script RG_FollowerOutroSelector {
 			msgbox(RG_CourtneyGymBattleComplete)
 		case TRAINER_REL_NURSE:
 			msgbox(RG_JoyGymBattleComplete)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}That was pretty close,\nbut I knew we could do it!")
 	}
 	closemessage
 	return
@@ -426,9 +428,9 @@ script RG_FollowerIntroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return
 	}
-	switch (var(VAR_0x8009)) {
-		case TRAINER_BACK_PIC_MINNIE:
-			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Oooh, she's so pretty!\nI want wings like her!"))
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Oh!, Hi, teach!\pRoxanne taught the top\nstudents how to fight.\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Roxanne: I hope you've been studying,\nMinnie!"))
 		case TRAINER_REL_LANETTE:
 			msgbox(RG_LANETTE_INTRO)
 		case TRAINER_REL_SHELLY:
@@ -443,6 +445,8 @@ script RG_FollowerIntroSelector {
 			msgbox(RG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:
 			msgbox(RG_JOY_INTRO)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}She could be problematic.\nHer Pokémon are deceptively fast!")
 	}
 	closemessage
 	return

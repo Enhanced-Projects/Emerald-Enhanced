@@ -1,6 +1,8 @@
 raw `
 LittlerootTown_DawnsHouse_1F_MapScripts:: @ 81F88A5
+	map_script ON_FRAME, LRT_MayIntroCheck
 	.byte 0
+
 
 LRT_leftSideTriggerFemale::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
@@ -31,7 +33,7 @@ LRT_GameClearTriggerFemale::
 	closemessage
 	additem ITEM_SS_TICKET
 	setflag FLAG_RECEIVED_SS_TICKET
-	setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	setflag FLAG_HIDE_BH_DAD
 	applymovement 3, LRT_FemaleDadLeave
 	waitmovement 0
 	playse SE_DOOR

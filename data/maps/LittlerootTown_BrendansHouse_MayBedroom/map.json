@@ -1,39 +1,39 @@
 {
-  "id": "MAP_LITTLEROOT_TOWN_RIVAL_HOUSE_QUEST",
-  "name": "Littleroot_Town_Rival_HouseQuest",
-  "layout": "LAYOUT_LITTLEROOT_TOWN_RIVAL_HOUSE_QUEST",
-  "music": "MUS_DAN02",
+  "id": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_MAY_BEDROOM",
+  "name": "LittlerootTown_BrendansHouse_MayBedroom",
+  "layout": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_MAY_BEDROOM",
+  "music": "MUS_ABANDONED_SHIP",
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
-  "allow_running": true,
+  "allow_running": false,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
-      "x": 13,
-      "y": 10,
+      "graphics_id": "OBJ_EVENT_GFX_LINK_RS_MAY",
+      "x": 8,
+      "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "LRT_BH_May",
+      "flag": "FLAG_RYU_BH_HIDE_MAY"
     }
   ],
   "warp_events": [
     {
-      "x": 7,
-      "y": 8,
-      "elevation": 3,
-      "dest_map": "MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_1F",
+      "x": 4,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_UPPER_HALLWAY",
       "dest_warp_id": 2
     }
   ],

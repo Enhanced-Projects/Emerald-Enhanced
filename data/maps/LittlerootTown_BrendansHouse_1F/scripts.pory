@@ -1,6 +1,11 @@
 raw `
 LittlerootTown_BrendansHouse_1F_MapScripts:: @ 81F7755
+	map_script ON_FRAME, LRT_MayIntroCheck
     .byte 0
+
+LRT_MayIntroCheck::
+	map_script_2 VAR_TEMP_5, 0, LRT_MayIntroEvent
+	.2byte 0
 
 
 LRT_leftSideTrigger::
@@ -32,7 +37,7 @@ LRT_GameClearTriggerMale::
 	closemessage
 	additem ITEM_SS_TICKET
 	setflag FLAG_RECEIVED_SS_TICKET
-	setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	setflag FLAG_HIDE_BH_DAD
 	applymovement 3, LRT_MaleDadLeave
 	waitmovement 0
 	playse SE_DOOR
@@ -169,3 +174,189 @@ WarpZone_Text_Sign4:
 	.string "$"
 
 `
+script LRT_RivalMother {
+	lock
+	faceplayer
+	if (flag(FLAG_RYU_MAY_PREREQUISITE_COMPLETED) == TRUE) {
+		if ((flag(FLAG_RYU_MAY_AVAILABLE) == TRUE) || (flag(FLAG_RYU_MAY_EVENT_FAILED) == TRUE)) {
+			goto(LRT_RivalMom_Afterstory)
+		}
+		msgbox("Oh, hi!\pYou've done so much work for\nmy husband.\pInstead of letting his research take\nhim over, He finally took me on\lvacation!\pWe met this lovely girl while we\nwere travelling and found out that\lher parents were gone!\pThe professor decided to adopt her.\nIsn't that great?!")
+		closemessage
+		setflag(FLAG_RYU_MAY_AVAILABLE)
+		clearflag(FLAG_RYU_DS_MAY_ACQ)
+		release
+		end
+	}
+	msgbox("Oh, hi, {PLAYER}.\pWere you looking for my husband?\pHe's in the lab... like usual.\lWish he would come home.")
+	closemessage
+	release
+	end
+}
+
+script LRT_RivalMom_Afterstory {
+	if (flag(FLAG_RYU_RIVALMOM_OUTRO) == FALSE) {
+		msgbox("Hi, {PLAYER}!\pMy husband is home more often now,\nthanks to you!\pYou saved our marriage, and even\nmade it possible for us to give a\lhome to a girl in need.\pIf you need anything at all,\nlet me know!")
+		setflag(FLAG_RYU_RIVALMOM_OUTRO)
+	}
+	msgbox("How's it going, {PLAYER}?!\pDid you need something?")
+	release
+	end
+}
+
+script LRT_MayIntroEvent { 
+	if(flag(FLAG_RYU_DS_MAY_FRIENDS) == FALSE) {
+		setvar(VAR_TEMP_5, 100)
+		release
+		end
+	}
+	elif ((flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) || (!(var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LINK_RS_MAY))) {
+		setvar(VAR_TEMP_5, 100)
+		release
+		end
+	}
+	if (flag(FLAG_RYU_MAY_INTRO_EVENT_DONE) == TRUE) {
+		setvar(VAR_TEMP_5, 100)
+		release
+		end
+	}
+	lock
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	applymovement(OBJ_EVENT_ID_FOLLOWER, LRT_BH_MayNextToPlayer)
+	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	applymovement(2, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitmovement(2)
+	applymovement(2, Common_Movement_FaceDown)
+	waitmovement(2)
+	msgbox("Oh, she's arrived!\pBIRCH!!! She's HERE!\nGet DOWN HERE!")
+	closemessage
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, LRT_MayEvent_Cam1)
+	playse(SE_DOOR)
+	addobject(7)
+	applymovement(7, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitmovement(7)
+	applymovement(7, Common_Movement_StepDown)
+	waitmovement(7)
+	applymovement(7, Common_Movement_StepLeft)
+	waitmovement(7)
+	turnobject(7, DIR_SOUTH)
+	msgbox(LRT_BirchMaySpeech)
+	closemessage
+	if (flag(FLAG_RYU_DS_DAWN_PARTNERS) == TRUE) {
+		call(LRT_BH_DawnEnter)
+	}
+	setflag(FLAG_RYU_MAY_INTRO_EVENT_DONE)
+	applymovement(OBJ_EVENT_ID_FOLLOWER, LRT_BH_MayToStairs)
+	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	applymovement(7, Common_Movement_StepLeft)
+	waitmovement(7)
+	applymovement(7, Common_Movement_FaceDown)
+	waitmovement(7)
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) {
+		applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight)
+		waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	}
+	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown)
+	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	msgbox("May:{COLOR LIGHT_RED}{SHADOW RED} Okay... Thanks, {PLAYER}!\nI'm going to go get unpacked now.\pCome visit later if you wanna\nhang out!")
+	closemessage
+	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp)
+	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	playse(SE_DOOR)
+	destroyfollower
+	clearflag(FLAG_RYU_BH_HIDE_MAY)
+	setflag(FLAG_RYU_DS_MAY_CLOSEFRIENDS)
+	msgbox("Birch: Okay! That's all settled.\nI have some work to attend to,\lthen I'll be back home, honey!")
+	applymovement(7, LRT_MAYEVENT_BirchExit)
+	waitmovement(7)
+	removeobject(7)
+	applymovement(8, Common_Movement_StepLeft)
+	waitmovement(8)
+	applymovement(8, Common_Movement_StepUp)
+	waitmovement(8)
+	playse(SE_DOOR)
+	removeobject(8)
+	setflag(FLAG_RYU_MAY_INTRO_EVENT_DONE)
+	applymovement(OBJ_EVENT_ID_CAMERA, LRT_MayEvent_Cam2)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	special(RemoveCameraObject)
+	release
+	end
+}
+
+script LRT_BH_DawnEnter {
+	setvar(VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)
+	addobject(8)
+	applymovement(8, Common_Movement_StepDown)
+	waitmovement(8)
+	applymovement(8, Common_Movement_StepRight)
+	waitmovement(8)
+	turnobject(8, DIR_SOUTH)
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) {
+		msgbox("{RIVAL}:{COLOR LIGHT_RED}{SHADOW RED} How is it that you have\nmet and already wooed my sister\pbefore I even met her?\pYou're such a stud!")
+	}
+	else {
+		msgbox("{RIVAL}:{COLOR LIGHT_RED}{SHADOW RED} Wow, you met my new sister even\nbefore I did,\pand already have her falling for you.\n Impressive!")
+	}
+	closemessage
+	applymovement(7, Common_Movement_FaceLeft)
+	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceLeft)
+	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (May and her new father both blush)")
+	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	msgbox("May: {COLOR LIGHT_RED}{SHADOW RED}I have not!")
+	closemessage
+	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp)
+	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	applymovement(8, Common_Movement_FaceRight)
+	waitmovement(8)
+	applymovement(8, Common_Movement_FaceDown)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({RIVAL} chuckles...)")
+	closemessage
+	msgbox("Rival's Mom: Well anyways,\nWelcome home, dear!\pI'm guessing Birch already set\nup your new room.")
+	closemessage
+	msgbox("Birch: Ahem. Yes, that's what I was\ndoing.\pIt's all good to go!")
+	closemessage
+	return
+}
+
+movement LRT_MAYEVENT_BirchExit {
+	walk_down * 4
+	walk_right
+	walk_down
+	step_end
+}
+
+movement LRT_BH_MayNextToPlayer {
+	walk_up
+	walk_left
+	face_up
+	step_end
+}
+
+movement LRT_MayEvent_Cam1 {
+	walk_up * 2
+	step_end
+}
+
+movement LRT_MayEvent_Cam2 {
+	walk_down * 2
+	step_end
+}
+
+text LRT_BirchMaySpeech {
+	"Birch: Oh! Hi, {COLOR LIGHT_RED}{SHADOW RED}May{COLOR DARK_GREY}{SHADOW LIGHT_GREY}!\p"
+	"I'm glad you found us okay!\p"
+	"{COLOR LIGHT_RED}{SHADOW RED}{PLAYER} here helped me find the right\nhouse."
+}
+
+movement LRT_BH_MayToStairs {
+	walk_up * 4
+	step_end
+}

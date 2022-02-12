@@ -1010,6 +1010,10 @@ bool8 RyuFollowerToTrainerID(void)
             gSpecialVar_0x8008 = TRAINER_REL_NURSE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
             return TRUE;
+        case OBJ_EVENT_GFX_LINK_RS_MAY:
+            gSpecialVar_0x8008 = TRAINER_REL_MAY;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY;
+            return TRUE;
         }
         return FALSE;
     }
@@ -2075,7 +2079,7 @@ void RyuGiveDevMon(void)
     u8 ev = 252;
     u8 ppmax = 255;
     u8 iv = 31;
-    u8 lv = 40;//TRUE_MAX_LEVEL;
+    u8 lv = 250;//TRUE_MAX_LEVEL;
     u8 what = 0;
     u8 ribbon = TRUE;
 

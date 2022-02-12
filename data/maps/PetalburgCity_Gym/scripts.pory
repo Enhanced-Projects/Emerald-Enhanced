@@ -861,9 +861,9 @@ script PBG_FollowerOutroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return
 	}
-	switch (var(VAR_0x8009)) {
-		case TRAINER_BACK_PIC_MINNIE:
-			msgbox("{COLOR LIGHT_RED}{SHADOW RED}She's even pretty when she loses!\pHope I can be pretty for you\none day, too!")
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I knew you could do it!")
 		case TRAINER_REL_LANETTE:
 			msgbox(PBG_LanetteGymBattleComplete)
 		case TRAINER_REL_SHELLY:
@@ -878,6 +878,8 @@ script PBG_FollowerOutroSelector {
 			msgbox(PBG_CourtneyGymBattleComplete)
 		case TRAINER_REL_NURSE:
 			msgbox(PBG_JoyGymBattleComplete)
+		case TRAINER_REL_MAY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Nice rematch, Norman!")
 	}
 	closemessage
 	return
@@ -887,9 +889,9 @@ script PBG_FollowerIntroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return
 	}
-	switch (var(VAR_0x8009)) {
-		case TRAINER_BACK_PIC_MINNIE:
-			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Oooh, she's so pretty!\nI want wings like her!"))
+	switch (var(VAR_0x8008)) {
+		case TRAINER_REL_MINNIE:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}So this is your papa?\nHe looks really tough!\pI see why you're so strong\nnow!"))
 		case TRAINER_REL_LANETTE:
 			msgbox(PBG_LANETTE_INTRO)
 		case TRAINER_REL_SHELLY:
@@ -904,6 +906,8 @@ script PBG_FollowerIntroSelector {
 			msgbox(PBG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:
 			msgbox(PBG_JOY_INTRO)
+		case TRAINER_REL_MAY:
+			msgbox("Most trainers only make it to Norman\nin their gym challenge.\pI already beat him, though.")
 	}
 	closemessage
 	return
