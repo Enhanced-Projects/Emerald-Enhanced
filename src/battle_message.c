@@ -3773,9 +3773,45 @@ struct TrainerSlide
     const u8 *msgFirstDown;
 };
 
+//trainer slide messages
+
+const u8 sTextSidneyFirstFainted[] = _("That was pure luck!");
+const u8 sTextSidneyLastSwitch[] = _("This is FAR from over...");
+const u8 sTextSidneyLastLow[] = _("Looking pretty grim...");
+
+const u8 sTextPhoebeFirstFainted[] = _("That wasn't very nice!");
+const u8 sTextPhoebeLastSwitch[] = _("Prepare to meet your maker!");
+const u8 sTextPhoebeLastLow[] = _("No... not oblivion again...");
+
+const u8 sTextGlaciaFirstFainted[] = _("Oh my, so cold.");
+const u8 sTextGlaciaLastSwitch[] = _("I feel the permafrost seeping in...");
+const u8 sTextGlaciaLastLow[] = _("Not like this!");
+
+const u8 sTextDrakeFirstFainted[] = _("Your heart is quite admirable!");
+const u8 sTextDrakeLastSwitch[] = _("Your willpower is overwhelming...");
+const u8 sTextDrakeLastLow[] = _("I won't be intimidated!");
+
+const u8 sTextWallaceFirstFainted[] = _("So you do know how to swim...");
+const u8 sTextWallaceLastSwitch[] = _("This one should capsize you!");
+const u8 sTextWallaceLastLow[] = _("It's not over until the siren sings!");
+
+
 static const struct TrainerSlide sTrainerSlides[] =
 {
-    {0x291, sText_AarghAlmostHadIt, sText_BoxIsFull, sText_123Poof},
+  //{trainerid, lastSwitchIn, lastLowHp, firstFainted},
+    {TRAINER_SIDNEY_REMATCH_2, sTextSidneyLastSwitch,       sTextSidneyLastLow,       sTextSidneyFirstFainted},
+    {TRAINER_SIDNEY_REMATCH,   sTextSidneyLastSwitch,       sTextSidneyLastLow,       sTextSidneyFirstFainted},
+    {TRAINER_SIDNEY,           sTextSidneyLastSwitch,       sTextSidneyLastLow,       sTextSidneyFirstFainted},
+    {TRAINER_PHOEBE_REMATCH_2, sTextPhoebeLastSwitch,       sTextPhoebeLastLow,       sTextPhoebeFirstFainted},
+    {TRAINER_PHOEBE_REMATCH,   sTextPhoebeLastSwitch,       sTextPhoebeLastLow,       sTextPhoebeFirstFainted},
+    {TRAINER_PHOEBE,           sTextPhoebeLastSwitch,       sTextPhoebeLastLow,       sTextPhoebeFirstFainted},
+    {TRAINER_GLACIA_REMATCH_2, sTextGlaciaLastSwitch,       sTextGlaciaLastLow,       sTextGlaciaFirstFainted},
+    {TRAINER_GLACIA_REMATCH,   sTextGlaciaLastSwitch,       sTextGlaciaLastLow,       sTextGlaciaFirstFainted},
+    {TRAINER_GLACIA,           sTextGlaciaLastSwitch,       sTextGlaciaLastLow,       sTextGlaciaFirstFainted},
+    {TRAINER_DRAKE_REMATCH_2,  sTextDrakeLastSwitch,        sTextDrakeLastLow,        sTextDrakeFirstFainted},
+    {TRAINER_DRAKE_REMATCH,    sTextDrakeLastSwitch,        sTextDrakeLastLow,        sTextDrakeFirstFainted},
+    {TRAINER_DRAKE,            sTextDrakeLastSwitch,        sTextDrakeLastLow,        sTextDrakeFirstFainted},
+    {TRAINER_WALLACE,          sTextWallaceLastSwitch,      sTextWallaceLastLow,      sTextWallaceFirstFainted}
 };
 
 static u32 GetEnemyMonCount(bool32 onlyAlive)

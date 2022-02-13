@@ -662,23 +662,14 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
 
             if (TryStartRoamerEncounter() == TRUE)
             {
-                roamer = &gSaveBlock1Ptr->roamer;
-                if ((CheckAPFlag(AP_GLOBAL_REPEL) == TRUE) || (FlagGet(FLAG_RYU_DEV_DISENC) == 1))
-                    return FALSE;
-                else if (
-                    VarGet(VAR_REPEL_STEP_COUNT)
-                    && RyuChooseWildLevel() < GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)
-                )
-                    return FALSE;
-
-                BattleSetup_StartRoamerBattle();
+                //now always returns false, the below code does nothing.
                 return TRUE;
             }
             else
             {
-                if (DoMassOutbreakEncounterTest() == TRUE && SetUpMassOutbreakEncounter(WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+                if (DoMassOutbreakEncounterTest() == TRUE)
                 {
-                    BattleSetup_StartWildBattle();
+                    //now always returns false, does nothing.
                     return TRUE;
                 }
 
@@ -711,10 +702,7 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
 
             if (TryStartRoamerEncounter() == TRUE)
             {
-                roamer = &gSaveBlock1Ptr->roamer;
-                if (!IsWildLevelAllowedByRepel(RyuChooseWildLevel()))
-                    return FALSE;
-                BattleSetup_StartRoamerBattle();
+                //does nothing, always false.
                 return TRUE;
             }
             else // try a regular surfing encounter
@@ -808,10 +796,7 @@ bool8 SweetScentWildEncounter(void)
                 return TRUE;
             }
 
-            if (DoMassOutbreakEncounterTest() == TRUE)
-                SetUpMassOutbreakEncounter(0);
-            else
-                TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, 0);
+            TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, 0);
 
             BattleSetup_StartWildBattle();
             return TRUE;
@@ -820,12 +805,6 @@ bool8 SweetScentWildEncounter(void)
         {
             if (gWildMonHeaders[headerId].waterMonsInfo == NULL)
                 return FALSE;
-
-            if (TryStartRoamerEncounter() == TRUE)
-            {
-                BattleSetup_StartRoamerBattle();
-                return TRUE;
-            }
 
             TryGenerateWildMon(gWildMonHeaders[headerId].waterMonsInfo, WILD_AREA_WATER, 0);
             BattleSetup_StartWildBattle();
@@ -959,6 +938,15 @@ static bool8 IsWildLevelAllowedByRepel(u8 wildLevel)
                 return TRUE;
         }
     }
+
+    return FALSE;
+}
+
+bool32 AreMonsRepelled(void)
+{
+    u32 encounterslevel = RyuChooseWildLevel();
+    if (IsWildLevelAllowedByRepel(encounterslevel) == FALSE)
+        return TRUE;
 
     return FALSE;
 }

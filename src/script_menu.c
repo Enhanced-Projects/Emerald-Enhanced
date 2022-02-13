@@ -895,7 +895,8 @@ static const u8 sText_DebugUtilityItem13[] = _("Alchemy Info");
 static const u8 sText_DebugUtilityItem14[] = _("Toggle Level Cap");
 static const u8 sText_DebugUtilityItem15[] = _("Enable Real Estate");
 static const u8 sText_DebugUtilityItem16[] = _("Test DNS");
-static const u8 sText_DebugUtilityItem17[] = _("Exit");
+static const u8 sText_DebugUtilityItem17[] = _("Print out theme colors");
+static const u8 sText_DebugUtilityItem18[] = _("Exit");
 
 // strings to display as items.
 static const u8 sText_BotanyConsumableItem1[] = _("Muscle Powder");
@@ -965,6 +966,7 @@ static const u8 sFollowerNonCombat[] = _("{COLOR LIGHT_RED}{SHADOW RED}{DOWN_ARR
 static const u8 sFollowerBlaise[] = _("Spawn Blaise");
 static const u8 sFollowerTiana[] = _("Spawn Tiana");
 static const u8 sFollowerHexer[] = _("Spawn Hexer");
+static const u8 sFollowerMay[] = _("Spawn May");
 static const u8 sReturnPrevious[] = _("Return");
 
 static const struct ListMenuItem sBotanyConsumablesSet[] =
@@ -1029,6 +1031,7 @@ static const struct ListMenuItem sDebugUtilitySet[] =
         {sText_DebugUtilityItem15, 15},
         {sText_DebugUtilityItem16, 16},
         {sText_DebugUtilityItem17, 17},
+        {sText_DebugUtilityItem18, 18},
 };
 
 static const struct ListMenuItem sAlchemyMenu[] =
@@ -1066,11 +1069,12 @@ static const struct ListMenuItem sRyuFollowerDebugSet[] =
         {sFollowerLeaf, 5},
         {sFollowerCourtney, 6},
         {sFollowerJoy, 7},
-        {sFollowerNonCombat, 8},
-        {sFollowerBlaise, 9},
-        {sFollowerTiana, 10},
-        {sFollowerHexer, 11},
-        {sReturnPrevious, 12},
+        {sFollowerMay, 8},
+        {sFollowerNonCombat, 9},
+        {sFollowerBlaise, 10},
+        {sFollowerTiana, 11},
+        {sFollowerHexer, 12},
+        {sReturnPrevious, 13},
 };
 
 

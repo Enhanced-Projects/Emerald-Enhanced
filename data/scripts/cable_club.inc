@@ -1950,9 +1950,9 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_EDWIN_1
 	cleartrainerflag TRAINER_HECTOR
 	cleartrainerflag TRAINER_EMPTY_193
-	cleartrainerflag TRAINER_EMPTY_194
-	cleartrainerflag TRAINER_EMPTY_195
-	cleartrainerflag TRAINER_EMPTY_196
+	cleartrainerflag TRAINER_REL_MAY
+	cleartrainerflag TRAINER_DRAKE_REMATCH_2
+	cleartrainerflag TRAINER_GLACIA_REMATCH_2
 	cleartrainerflag TRAINER_HAROLD
 	cleartrainerflag TRAINER_TIM
 	cleartrainerflag TRAINER_JIM
@@ -1974,7 +1974,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_LYDIA_1
 	cleartrainerflag TRAINER_HALLE
 	cleartrainerflag TRAINER_GARRISON
-	cleartrainerflag TRAINER_EMPTY_197
+	cleartrainerflag TRAINER_PHOEBE_REMATCH_2
 	cleartrainerflag TRAINER_CHALLENGER_DANNY
 	cleartrainerflag TRAINER_BAD_TENANT
 	cleartrainerflag TRAINER_STEVEN_POSTGAME00
@@ -2083,7 +2083,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_JOHN_AND_JAY_2
 	cleartrainerflag TRAINER_JOHN_AND_JAY_3
 	cleartrainerflag TRAINER_JOHN_AND_JAY_4
-	cleartrainerflag TRAINER_EMPTY_78
+	cleartrainerflag TRAINER_SIDNEY_REMATCH_2
 	cleartrainerflag TRAINER_RELI_AND_IAN
 	cleartrainerflag TRAINER_LILA_AND_ROY_1
 	cleartrainerflag TRAINER_STEVEN_POSTGAME0

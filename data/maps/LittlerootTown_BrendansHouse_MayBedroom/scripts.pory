@@ -1,0 +1,13 @@
+mapscripts LittlerootTown_BrendansHouse_MayBedroom_MapScripts {}
+
+
+script LRT_BH_May {
+    if (flag(FLAG_RYU_DS_MAY_ACQ) == TRUE) {
+        msgbox("Hey, {PLAYER}! What's up?\pI'm getting ready to head out\nand do some field work.")
+        release
+        end
+    }
+    msgbox("Start May's quest here.")
+    release
+    end
+}

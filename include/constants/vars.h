@@ -267,15 +267,15 @@
 #define VAR_RYU_GCMS_VALUE                   0x40F8
 #define VAR_RYU_FOLLOWER_BATTLES             0x40F9//battles fought with partners
 #define VAR_UNUSED_0x40FA                    0x40FA//previously exp drive, now unused.
-#define VAR_RYU_CHALLENGE_WAYSTONE_USES       0x40FB
+#define VAR_RYU_CHALLENGE_WAYSTONE_USES      0x40FB
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC
 #define VAR_RYU_WEATHER                      0x40FD
 #define VAR_RYU_QUEST_LANA                   0x40FE
 #define VAR_RYU_QUEST_MAGMA                  0x40FF // Magma quest var
-#define VAR_RYU_DELIVERY_1_GFX_ID            0x4100
-#define VAR_RYU_DELIVERY_2_GFX_ID            0x4101
-#define VAR_RYU_DELIVERY_3_GFX_ID            0x4102
-#define VAR_RYU_DELIVERY_4_GFX_ID            0x4103
+#define VAR_RYU_E41                          0x4100
+#define VAR_RYU_E42                          0x4101
+#define VAR_RYU_E43                          0x4102
+#define VAR_RYU_E44                          0x4103
 #define VAR_RYU_DELIVERY_5_GFX_ID            0x4104
 #define VAR_RYU_DELIVERY_6_GFX_ID            0x4105
 #define VAR_HOURS                            0x4106

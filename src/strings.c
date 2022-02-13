@@ -1517,6 +1517,7 @@ const u8 gText_BattleSceneOn[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
 const u8 gText_BattleSceneOff[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 const u8 gText_UiThemeLight[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Light");
 const u8 gText_UiThemeDark[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dark");
+const u8 gText_UiThemeUser[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}User");
 const u8 gText_TransitionStyleNormal[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
 const u8 gText_TransitionStyleInstant[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Instant");
 const u8 gText_SoundMono[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
@@ -2014,6 +2015,7 @@ const u8 gText_RyuRelationshipNurseMenuOption[] = _("Joy");
 
 const u8 gText_RyuBetaMenuBlank[] = _("Empty");
 const u8 gText_RyuBetaMenuCheckWaystone[] = _("Check Waystone");
+const u8 gText_RyuBetaMenuUICustom[] = _("Custom UI");
 const u8 gText_RyuBetaMenuViewQuestVars[] = _("View Quest Stages");
 const u8 gText_RyuBetaMenuResetTempBattleFlags[] = _("Reset Battle Flags");
 const u8 gText_RyuBetaMenuResetBadges[] = _("Reset Badges");

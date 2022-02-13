@@ -6,6 +6,7 @@ LittlerootTown_MapScripts:: @ 81E7DCB
 
 Ryu_HaremEventCheck::
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, Ryu_HaremEvent
+	map_script_2 VAR_TEMP_4, 0, Ryu_MayEventCheck
 	.2byte 0
 
 LRT_CheckMagmaWarp::
@@ -59,7 +60,8 @@ LRT_CancelFollower::
 	end
 	
 LRT_MinnieScript::
-	msgbox LRT_FollowerHeal MSGBOX_YESNO
+	call RyuFollower_MinnieChatterSelector
+	msgbox LRT_MinnieLeaveQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq LRT_RemoveMinnie
 	closemessage
@@ -79,7 +81,7 @@ LRT_RemoveMinnie:
 	end
 
 LRT_MinnieLeave:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: Okay! Have fun!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay! Have fun!$"
 	
 LRT_FollowerMinnie:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hi! I'm Minnie!\nMy sister guards the exit.\pI'm a bodyguard. Can I come with you?$"
@@ -87,8 +89,8 @@ LRT_FollowerMinnie:
 LRT_NoFollower::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay!\nLet me know if you change your mind!$"
 	
-LRT_FollowerHeal:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: Do you want me to leave?$"
+LRT_MinnieLeaveQuery:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Do you want me to leave?$"
 	
 LRT_BirchLabSignNormal::
 	msgbox BirchsLabSign MSGBOX_SIGN
@@ -648,3 +650,92 @@ PlayersHouse_2F_Text_ItsAGameCube: @ 81F884F
 	.string "serve as the Controller.$"
 	
 `
+
+script Ryu_MayEventCheck {
+	setvar(VAR_TEMP_4, 100)
+	if ((flag(FLAG_RYU_MAY_AVAILABLE) == TRUE) && (flag(FLAG_RYU_MAY_INTRO_EVENT_DONE) == FALSE)) {
+		clearflag(FLAG_RYU_HIDE_LRT_MAY)
+		addobject(13)
+	}
+	else {
+		goto(LRT_HideMay)
+	}
+	release
+	end
+}
+
+script LRT_HideMay {
+	setflag(FLAG_RYU_HIDE_LRT_MAY)
+	removeobject(13)
+	release
+	end
+}
+
+script LRT_MayEvent {
+	setvar(VAR_TEMP_4, 200)
+	if ((flag(FLAG_RYU_MAY_INTRO_EVENT_DONE)== TRUE) || (flag(FLAG_RYU_DS_MAY_FRIENDS) == TRUE) || (flag(FLAG_RYU_DS_MAY_ACQ) == TRUE)) {
+		goto(ryu_end)
+	}
+	call_if_set(FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hi!, I'm May.\nThe professor here signed\lpapers to adopt me, but, uh,\pI forgot where his house is.\nCan you show me?")
+	bufferdynamicmulti(LRT_DNM1, LRT_DNM2)
+	multichoice(0, 7, MULTI_DYNAMIC_2, 0)
+	if (var(VAR_RESULT) == 1) {
+		msgbox("Oh, great! Thanks a ton.")
+		setflag(FLAG_RYU_DS_MAY_FRIENDS)
+		applymovement(13, LRT_Mayevent_MayToFollower)
+		waitmovement(13)
+		removeobject(13)
+		setflag(FLAG_RYU_HIDE_LRT_MAY)
+		clearflag(FLAG_RYU_DS_MAY_ACQ)
+		createfollower(OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollowerSelectNPCScript, DIR_NORTH)
+		release
+		end
+	}
+	msgbox("Oh, wait...\pI think I see it over there.\nWell, nice to meet you!")
+	closemessage
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) {
+		applymovement(13, LRT_MayToHomeEast)
+	}
+	else{
+		applymovement(13, LRT_MayToHomeWest)
+	}
+	waitmovement(13)
+	playse(SE_DOOR)
+	removeobject(13)
+	setflag(FLAG_RYU_HIDE_LRT_MAY)
+	clearflag(FLAG_RYU_MAY_AVAILABLE)
+	clearflag(FLAG_RYU_MAY_INTRO_EVENT_DONE)
+	setflag(FLAG_RYU_DS_MAY_ACQ)
+	setflag(FLAG_RYU_MAY_EVENT_FAILED)
+	release
+	end
+}
+
+movement LRT_Mayevent_MayToFollower {
+	walk_left
+	walk_down * 3
+	walk_right
+	step_end
+}
+
+text LRT_DNM1 {
+	"{COLOR LIGHT_BLUE}{SHADOW BLUE}Sorry, busy."
+}
+
+text LRT_DNM2 {
+	"{COLOR LIGHT_BLUE}{SHADOW BLUE}Sure, no problem."
+}
+
+movement LRT_MayToHomeEast {
+	walk_down * 7
+	walk_right * 3
+	step_end
+}
+
+movement LRT_MayToHomeWest {
+	walk_down * 7
+	walk_left * 4
+	step_end
+}

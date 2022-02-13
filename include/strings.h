@@ -304,6 +304,7 @@ extern const u8 gText_BattleSceneOn[];
 extern const u8 gText_BattleSceneOff[];
 extern const u8 gText_UiThemeLight[];
 extern const u8 gText_UiThemeDark[];
+extern const u8 gText_UiThemeUser[];
 extern const u8 gText_TransitionStyleNormal[];
 extern const u8 gText_TransitionStyleInstant[];
 extern const u8 gText_SoundMono[];
@@ -3076,6 +3077,7 @@ extern const u8 gText_RyuUserModeEvMenuSpe[];
 
 extern const u8 gText_RyuBetaMenuBlank[];
 extern const u8 gText_RyuBetaMenuCheckWaystone[];
+extern const u8 gText_RyuBetaMenuUICustom[];
 extern const u8 gText_RyuBetaMenuViewQuestVars[];
 extern const u8 gText_RyuBetaMenuResetTempBattleFlags[];
 extern const u8 gText_RyuBetaMenuResetBadges[];

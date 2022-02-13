@@ -11,6 +11,7 @@ RyuDevSwitch::
 	setflag FLAG_RYU_CHEATS_USED
 	@clearflag FLAG_HIDE_103_TEST_TRAINER
 	msgbox RyuNowDeveloper MSGBOX_SIGN
+	setvar VAR_TEMP_9, 100
 	end
 	
 RyuNowDeveloper:
@@ -75,7 +76,8 @@ RyuDebug_UtilitiesMenu:
 	case 14, RDB_ToggleLevelCap
 	case 15, RDB_EnableRealEstate
 	case 16, RyuDebug_InitTimeSlide
-	case 17, RyuDebug_menu_nodevcheck
+	case 17, RyuDebug_ReadoutRGBTheme
+	case 18, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -90,11 +92,12 @@ RDB_SpawnFollowerMultiMenu::
 	case 5, RDB_SpawnLeaf
 	case 6, RDB_SpawnCourtney
 	case 7, RDB_SpawnJoy
-	case 8, RDB_NONCOMBATFOLLOWER
-	case 9, RDB_SpawnBlaise
-	case 10, RDB_SpawnTiana
-	case 11, RDB_SpawnHexer
-	case 12, RDB_RETURNTOMAIN
+	case 8, RDB_SpawnMay
+	case 9, RDB_NONCOMBATFOLLOWER
+	case 10, RDB_SpawnBlaise
+	case 11, RDB_SpawnTiana
+	case 12, RDB_SpawnHexer
+	case 13, RDB_RETURNTOMAIN
 	goto RDB_RETURNTOMAIN
 
 RDB_SpawnWhichFollower:
@@ -163,6 +166,12 @@ RDB_SpawnTiana::
 RDB_SpawnHexer::
 	call RyuForceCancelFollowerForQuest
 	createfollower OBJ_EVENT_GFX_HEX_MANIAC, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnMay::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
@@ -347,10 +356,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	removeitem ITEM_RED_ORB, 1
-	givepokedexflag SPECIES_KYOGRE, TRUE
-	givepokedexflag SPECIES_GROUDON, TRUE
-	clearflag FLAG_RYU_ONE_TIME_SAVE_FIX
 	release
 	end
 
@@ -698,14 +703,15 @@ RyuDebug_GiveAllBeginMsg:
 
 RyuDebug_DevMonQuickStart::
 	setflag FLAG_RYU_IGNORE_CAP @@why not just max lv
+	clearflag FLAG_RYU_VANILLA_CAP
 	setvar VAR_TEMP_A, NATURE_MODEST     
-	setvar VAR_TEMP_B, SPECIES_PRIMARINA
+	setvar VAR_TEMP_B, SPECIES_NAGANADEL
 	setvar VAR_TEMP_C, HIDDEN_ABILITY
 	setvar VAR_TEMP_D, MON_FEMALE @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS.
 	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
-	setvar VAR_TEMP_1, MOVE_PSYCHIC
-	setvar VAR_TEMP_2, MOVE_MOONBLAST
-	setvar VAR_TEMP_3, MOVE_SPARKLING_ARIA
+	setvar VAR_TEMP_1, MOVE_SLUDGE_BOMB
+	setvar VAR_TEMP_2, MOVE_DRAGON_PULSE
+	setvar VAR_TEMP_3, MOVE_FLAMETHROWER
 	setvar VAR_TEMP_4, MOVE_THUNDERBOLT
 	callnative RyuGiveDevMon
 	@@
@@ -714,16 +720,15 @@ RyuDebug_DevMonQuickStart::
 	@@
 	@@
 	setvar VAR_TEMP_A, NATURE_ADAMANT
-	setvar VAR_TEMP_B, SPECIES_PHEROMOSA
-	setvar VAR_TEMP_C, PRIMARY_ABILITY
+	setvar VAR_TEMP_B, SPECIES_KINGLER
+	setvar VAR_TEMP_C, HIDDEN_ABILITY
 	setvar VAR_TEMP_D, MON_FEMALE
-	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
-	setvar VAR_TEMP_1, MOVE_HIGH_HORSEPOWER
+	setvar VAR_TEMP_E, ITEM_SCOPE_LENS
+	setvar VAR_TEMP_1, MOVE_EARTHQUAKE
 	setvar VAR_TEMP_2, MOVE_TRIPLE_KICK
-	setvar VAR_TEMP_3, MOVE_POISON_JAB
+	setvar VAR_TEMP_3, MOVE_ICE_SHARD
 	setvar VAR_TEMP_4, MOVE_CRABHAMMER
 	callnative RyuGiveDevMon
-	@@ finished, go to next stage.
 	special HealPlayerParty
 	goto RyuDebug_QuickItemFlagStart
 
@@ -811,13 +816,13 @@ RyuExitPokeEditMenu::
 Ryu_ResetEVIV::
 	bufferdynamicmulti RIVEV1, RIVEV2, RIVEV3
 	multichoice 0, 6, MULTI_DYNAMIC_3, 0
-	copyvar VAR_TEMP_0, VAR_RESULT
+	copyvar VAR_0x8003, VAR_RESULT
 	compare VAR_RESULT, 127
 	goto_if_eq RyuPokeEditMenu
 	msgbox RyuIvEv_ChooseSlot
 	call RyuBufferPartyMonNames
 	multichoice 0, 0, MULTI_DYNAMIC_6, 1
-	copyvar VAR_TEMP_1, VAR_RESULT
+	copyvar VAR_0x8001, VAR_RESULT
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuPokeEditMenu
@@ -871,31 +876,30 @@ RyuSetIvEvDebugMenu::
 	msgbox RyuIvEv_SelectOP
 	bufferdynamicmulti IVEVMENU_1, IVEVMENU_2, EVMENU_3
 	multichoice 0, 3, MULTI_DYNAMIC_3, 1
-	copyvar VAR_TEMP_4, VAR_RESULT @set EV or IV mode
+	copyvar VAR_0x8003, VAR_RESULT @..................Which Mode
 	compare VAR_RESULT, 2
 	goto_if_ge RyuPokeEditMenu
 	msgbox RyuIvEv_ChooseSlot
 	call RyuBufferPartyMonNames
 	multichoice 0, 0, MULTI_DYNAMIC_6, 1
-	copyvar VAR_TEMP_2, VAR_RESULT @put slot number in early
+	copyvar VAR_0x8001, VAR_RESULT @...................Which Slot
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuIvEv_ExitQuery
 	msgbox RyuIvEv_SetWhichStat
 	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed
 	multichoice 0, 0, MULTI_DYNAMIC_6, 0
-	copyvar VAR_TEMP_3, VAR_RESULT
+	copyvar VAR_0x8002, VAR_RESULT @...................Which stat
 	closemessage
 	compare VAR_RESULT, 127
 	goto_if_eq RyuIvEv_ExitQuery
 	msgbox RyuIvEv_ChooseValue
 	numberentry 5, 10, 3
-	copyvar VAR_TEMP_1, VAR_RESULT 
+	copyvar VAR_0x8000, VAR_RESULT @...................The value to set
 	callnative RyuSetSlotStatIVEV
 	msgbox IvMenuDone
 	closemessage
-	copyvar VAR_0x8001, VAR_TEMP_2
-	call ShowMonDataInfoBox
+	call ShowMonDataInfoBox @..........................Should use gSpecialVar_0x8001 by default
 	goto RyuIvEv_ExitQuery
 
 RyuIvEv_ExitQuery::
@@ -906,7 +910,7 @@ RyuIvEv_ExitQuery::
 	goto RyuPokeEditMenu
 
 RyuIvEv_Cancel:
-	.string "Cancel operation?$"
+	.string "Return to previous menu?$"
 
 IVEVMENU_2:
 	.string "Set IVs$"
@@ -1160,12 +1164,14 @@ RyuDebug_BattleSim::
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_ne RDB_BattleSimFemale
+	cleartrainerflag TRAINER_DOPPELGANGER_M
 	trainerbattle_single TRAINER_DOPPELGANGER_M, BS_Intro, BS_Defeat
 	waitstate
 	release
 	end
 
 RDB_BattleSimFemale::
+	cleartrainerflag TRAINER_DOPPELGANGER_F
 	trainerbattle_single TRAINER_DOPPELGANGER_F, BS_Intro, BS_Defeat
 	waitstate
 	release
@@ -1176,4 +1182,14 @@ BS_Defeat:
 
 BS_Intro:
 	.string "Starting Simulation.$"
+
+
+RyuDebug_ReadoutRGBTheme:
+	callnative printThemeColors
+	msgbox rdbrr
+	release
+	end
+
+rdbrr:
+	.string "Refer to mGBA debug to see values.$"
 

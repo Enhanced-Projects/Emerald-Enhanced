@@ -156,18 +156,7 @@ static const struct TilesPal sDexnavWindowFrame = {gTextWindowFrame1_Gfx, sTextW
 // code
 const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 {
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
-    {
-        if (id >= WINDOW_FRAMES_COUNT)
-        {
-            return &sWindowFrames[0];
-        }
-        else
-        {
-            return &sWindowFrames[id];
-        }
-    }
-    else
+    if (VarGet(VAR_RYU_THEME_NUMBER))
     {
         if (id >= WINDOW_FRAMES_COUNT)
         {
@@ -178,7 +167,42 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
             return &sWindowFramesDark[id];
         }
     }
+    else
+    {
+        if (id >= WINDOW_FRAMES_COUNT)
+        {
+            return &sWindowFrames[0];
+        }
+        else
+        {
+            return &sWindowFrames[id];
+        }
+    }
     
+}
+
+const struct TilesPal *GetWindowFrameLightTilesPal(u8 id)
+{
+    if (id >= WINDOW_FRAMES_COUNT)
+    {
+        return &sWindowFrames[0];
+    }
+    else
+    {
+        return &sWindowFrames[id];
+    }
+}
+
+const struct TilesPal *GetWindowFrameDarkTilesPal(u8 id)
+{
+    if (id >= WINDOW_FRAMES_COUNT)
+    {
+        return &sWindowFramesDark[0];
+    }
+    else
+    {
+        return &sWindowFramesDark[id];
+    }
 }
 
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
@@ -199,17 +223,33 @@ void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
         LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFramesDark[frameId].tiles, 0x120, destOffset);
         LoadPalette(sWindowFramesDark[frameId].pal, palOffset, 0x20);
     }
-    else
+    else if (VarGet(VAR_RYU_THEME_NUMBER) == 0)
     {
         LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFrames[frameId].tiles, 0x120, destOffset);
         LoadPalette(sWindowFrames[frameId].pal, palOffset, 0x20);
     }
+    else
+    {
+        LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFramesDark[0].tiles, 0x120, destOffset);
+        LoadPalette(gSaveBlock2Ptr->userInterfaceTextboxPalette, palOffset, 0x20);
+    }
     
+}
+
+void LoadDarkWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
+{
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFramesDark[frameId].tiles, 0x120, destOffset);
+    LoadPalette(sWindowFramesDark[frameId].pal, palOffset, 0x20);
 }
 
 void LoadUserWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
     LoadWindowGfx(windowId, gSaveBlock2Ptr->optionsWindowFrameType, destOffset, palOffset);
+}
+
+void LoadUserDarkWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
+{
+    LoadDarkWindowGfx(windowId, gSaveBlock2Ptr->optionsWindowFrameType, destOffset, palOffset);
 }
 
 void DrawTextBorderOuter(u8 windowId, u16 tileNum, u8 palNum)
@@ -294,6 +334,8 @@ const u16 *GetOverworldTextboxPalettePtr(void)
             return gMessageBox_Pal;
         case 1:
             return gRyuDarkTheme_Pal;
+        case 2:
+            return gSaveBlock2Ptr->userInterfaceTextboxPalette;
         default:
             return gMessageBox_Pal;
     }

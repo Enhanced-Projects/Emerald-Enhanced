@@ -147,6 +147,15 @@ void ResetMenuAndMonGlobals(void)
     ResetBagScrollPositions();
     ResetPokeblockScrollPositions();
 }
+extern const u16 gRyuDarkTheme_Pal[];
+void RyuResetUserPaletteData(void)
+{
+    u32 i;
+    for (i = 0; i < 16; i++)
+    {
+        gSaveBlock2Ptr->userInterfaceTextboxPalette[i] = gRyuDarkTheme_Pal[i];
+    }
+}
 
 extern void RyuClearAlchemyEffect();
 
@@ -165,6 +174,8 @@ void NewGameInitData(void)
         ClearSav1();
         memset(gSaveBlock2Ptr->achFlags, 0, 32);//initialize achievements on raw new game.
         memset(gSaveBlock2Ptr->achievementPowerFlags, 0, (sizeof(gSaveBlock2Ptr->achievementPowerFlags)));//disable all AP's on raw new game.
+        RyuResetRealEstateData(); //only initialize real estate data if there's not a previous file.
+        RyuResetUserPaletteData(); //same as above
     }
     else //hacky, I know but it's the only way I could get it to work :shrug:
     {
@@ -294,7 +305,11 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);// can't delete all kecleon overworlds because scripts, so this will do.
     FlagSet(FLAG_SYS_NATIONAL_DEX);
     FlagSet(FLAG_RYU_AUTORUN);
-
+    FlagSet(FLAG_RYU_HIDE_LRT_MAY);
+    FlagSet(FLAG_HIDE_LRT_BH_BIRCH);
+    FlagSet(FLAG_HIDE_LRT_DH_BIRCH);
+    FlagSet(FLAG_RYU_MAY_EVENT_HIDE_BIRCH);
+    FlagSet(FLAG_RYU_DS_MAY_ACQ);
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);
@@ -322,6 +337,5 @@ void NewGameInitData(void)
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
     RyuClearAlchemyEffect();
-    RyuResetRealEstateData();
 }
 

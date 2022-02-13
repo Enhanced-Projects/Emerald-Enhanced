@@ -77,7 +77,7 @@ extern const u8 RyuScript_EncounterCelesteela[];
 extern const u8 RyuScript_EncounterKeldeo[];
 extern const u8 Ryu_FFTextSpeedWarning[];
 extern const u8 RyuScript_Lv100FailMsg[];
-extern const u8 RyuScrupt_Lv100SwitchMsg[];
+extern const u8 RyuScript_Lv100SwitchMsg[];
 extern const u8 RyuCheckForLNSUAch[];
 
 void GetPlayerPosition(struct MapPosition *);
@@ -236,7 +236,7 @@ void RyuDoNotifyTasks(void)
         ScriptContext1_SetupScript(RyuScript_Lv100FailMsg);
 
     if (FlagGet(FLAG_RYU_NOTIFY_LV100_SWITCH) == TRUE)//Player switched to 100cap, warn about side effects.
-        ScriptContext1_SetupScript(RyuScrupt_Lv100SwitchMsg);
+        ScriptContext1_SetupScript(RyuScript_Lv100SwitchMsg);
 
     if (!(FlagGet(FLAG_SYS_DEXNAV_GET)) && (!(FlagGet(FLAG_TEMP_F)))) //notify and give Dexnav
         if (CountBadges() >= 6)

@@ -403,6 +403,18 @@ void BattleSetup_StartScriptedWildBattle(void)
     ScriptContext2_Enable();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = 0;
+
+    if (FlagGet(FLAG_RYU_BOSS_WILD) == TRUE)
+    {
+        u8 i = 0;
+        u8 iv = 31;
+        bool8 tru = TRUE;
+        FlagClear(FLAG_RYU_BOSS_WILD);
+        SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, &tru);
+        for (i = 0; i < 6; i++)
+            SetMonData(&gEnemyParty[0], (39 + i), &iv);
+    }
+
     CreateBattleStartTask(GetWildBattleTransition(), 0);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
@@ -414,6 +426,18 @@ void BattleSetup_StartLatiBattle(void)
     ScriptContext2_Enable();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_LEGENDARY;
+
+    if (FlagGet(FLAG_RYU_BOSS_WILD) == TRUE)
+    {
+        u8 i = 0;
+        u8 iv = 31;
+        bool8 tru = TRUE;
+        FlagClear(FLAG_RYU_BOSS_WILD);
+        SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, &tru);
+        for (i = 0; i < 6; i++)
+            SetMonData(&gEnemyParty[0], (39 + i), &iv);
+    }
+    
     CreateBattleStartTask(GetWildBattleTransition(), 0);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
@@ -485,7 +509,12 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_MELOETTA:
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
         break;
-
+    case SPECIES_LATIAS:
+        CreateBattleStartTask(B_TRANSITION_WHITEFADE, MUS_VS_RAYQUAZA);
+        break;
+    case SPECIES_LATIOS:
+        CreateBattleStartTask(B_TRANSITION_RECTANGULAR_SPIRAL, MUS_VS_RAYQUAZA);
+        break;
     }
 
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
@@ -852,13 +881,13 @@ u8 GetTrainerBattleTransition(void)
 
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_ELITE_FOUR)
     {
-        if (gTrainerBattleOpponent_A == TRAINER_SIDNEY || gTrainerBattleOpponent_A == TRAINER_SIDNEY_REMATCH)
+        if (gTrainerBattleOpponent_A == TRAINER_SIDNEY || gTrainerBattleOpponent_A == TRAINER_SIDNEY_REMATCH || gTrainerBattleOpponent_A == TRAINER_SIDNEY_REMATCH_2)
             return B_TRANSITION_SIDNEY;
-        if (gTrainerBattleOpponent_A == TRAINER_PHOEBE || gTrainerBattleOpponent_A == TRAINER_PHOEBE_REMATCH)
+        if (gTrainerBattleOpponent_A == TRAINER_PHOEBE || gTrainerBattleOpponent_A == TRAINER_PHOEBE_REMATCH || gTrainerBattleOpponent_A == TRAINER_PHOEBE_REMATCH_2)
             return B_TRANSITION_PHOEBE;
-        if (gTrainerBattleOpponent_A == TRAINER_GLACIA || gTrainerBattleOpponent_A == TRAINER_GLACIA_REMATCH)
+        if (gTrainerBattleOpponent_A == TRAINER_GLACIA || gTrainerBattleOpponent_A == TRAINER_GLACIA_REMATCH || gTrainerBattleOpponent_A == TRAINER_GLACIA_REMATCH_2)
             return B_TRANSITION_GLACIA;
-        if (gTrainerBattleOpponent_A == TRAINER_DRAKE || gTrainerBattleOpponent_A == TRAINER_DRAKE_REMATCH)
+        if (gTrainerBattleOpponent_A == TRAINER_DRAKE || gTrainerBattleOpponent_A == TRAINER_DRAKE_REMATCH || gTrainerBattleOpponent_A == TRAINER_DRAKE_REMATCH_2)
             return B_TRANSITION_DRAKE;
         return B_TRANSITION_CHAMPION;
     }
@@ -1343,6 +1372,8 @@ void BattleSetup_StartTrainerBattle(void)
 
 const u8 gText_BountyAdded[] = _("¥{RYU_STR_4} bounty added.");
 
+extern void RyuClearAlchemyEffect();
+
 static void CB2_EndTrainerBattle(void)
 {
     u16 species = 0;
@@ -1402,11 +1433,15 @@ static void CB2_EndTrainerBattle(void)
         FlagClear(FLAG_USED_THIEF);
     }
 
-    if (gSaveBlock2Ptr->alchemyEffect > 0 && gSaveBlock2Ptr->alchemyEffect < 10 && gSaveBlock2Ptr->alchemyCharges > 0)
-        gSaveBlock2Ptr->alchemyCharges--;
-
     if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_HEALING_FACTOR && gSaveBlock2Ptr->alchemyCharges > 0)
-        gSaveBlock2Ptr->alchemyCharges--;
+    {
+        gSaveBlock2Ptr->alchemyCharges -= 1;
+        if (gSaveBlock2Ptr->alchemyCharges == 0)
+        {
+            RyuClearAlchemyEffect();
+        }
+    }
+
 
     for (i = 0; i < PARTY_SIZE; i++)
         {   

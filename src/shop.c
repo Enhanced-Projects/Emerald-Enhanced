@@ -863,7 +863,7 @@ static void BuyMenuInitBgs(void)
 
 static void BuyMenuDecompressBgGraphics(void)
 {
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
     {
         DecompressAndCopyTileDataToVram(1, gBuyMenuFrameDark_Gfx, 0x3A0, 0x3E3, 0);
         LZDecompressWram(gBuyMenuFrame_Tilemap, gShopDataPtr->tilemapBuffers[0]);

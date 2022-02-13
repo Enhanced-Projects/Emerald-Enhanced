@@ -517,9 +517,9 @@
 #define TRAINER_HECTOR                      513
 #define TRAINER_COURTNEY_MOSSDEEP           514
 #define TRAINER_EMPTY_193                     515
-#define TRAINER_EMPTY_194                     516
-#define TRAINER_EMPTY_195                     517
-#define TRAINER_EMPTY_196                     518
+#define TRAINER_REL_MAY                     516
+#define TRAINER_DRAKE_REMATCH_2                     517
+#define TRAINER_GLACIA_REMATCH_2                     518
 #define TRAINER_WALLY_VR_1                  519
 #define TRAINER_BRENDAN_1                   520
 #define TRAINER_BRENDAN_3                   521
@@ -549,7 +549,7 @@
 #define TRAINER_LYDIA_1                     545
 #define TRAINER_HALLE                       546
 #define TRAINER_GARRISON                    547
-#define TRAINER_EMPTY_197                     548
+#define TRAINER_PHOEBE_REMATCH_2                     548
 #define TRAINER_CHALLENGER_DANNY                     549
 #define TRAINER_BAD_TENANT                     550
 #define TRAINER_STEVEN_POSTGAME00                     551
@@ -686,7 +686,7 @@
 #define TRAINER_JOHN_AND_JAY_2              682
 #define TRAINER_JOHN_AND_JAY_3              683
 #define TRAINER_JOHN_AND_JAY_4              684
-#define TRAINER_EMPTY_78              685
+#define TRAINER_SIDNEY_REMATCH_2            685
 #define TRAINER_RELI_AND_IAN                686
 #define TRAINER_LILA_AND_ROY_1              687
 #define TRAINER_STEVEN_POSTGAME0              688

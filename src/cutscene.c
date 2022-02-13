@@ -34,7 +34,15 @@ static const u8 sBrendanNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutsce
 
 static const u8 sCourtneyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_tiles.8bpp");
 static const u8 sCourtneyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_map.bin");
-static const u8 sCourtneyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney.gbapal");
+static const u8 sCourtneyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_palette.gbapal");
+
+static const u8 sCourtneyNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_night_tiles.8bpp");
+static const u8 sCourtneyNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_night_map.bin");
+static const u8 sCourtneyNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_night_palette.gbapal");
+
+static const u8 sCourtneyNeutralBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_neutral_tiles.8bpp");
+static const u8 sCourtneyNeutralBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_neutral_map.bin");
+static const u8 sCourtneyNeutralBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_neutral_palette.gbapal");
 
 static const u8 sHeatranBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_tiles.8bpp");
 static const u8 sHeatranBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_map.bin");
@@ -59,6 +67,14 @@ static const u8 sGameOverBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/g
 static const u8 sWarpBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_tiles.4bpp");
 static const u8 sWarpBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_map.bin");
 static const u8 sWarpBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_palette.gbapal");
+
+static const u8 sShellyBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_tiles.8bpp");
+static const u8 sShellyBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_map.bin");
+static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_tiles.gbapal");
+
+static const u8 sShellyNightBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_night_tiles.8bpp");
+static const u8 sShellyNightBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_night_map.bin");
+static const u8 sShellyNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_night_tiles.gbapal");
 
 
 static const struct CutsceneBG gCutsceneBgTable[] =
@@ -206,6 +222,50 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .palette = sWarpBgPalette,
 		.palIdxCnt = 16
 	},
+	[SCENEBGCOURTNEYNIGHT] = 
+    {
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sCourtneyNightBgTiles,
+		.tileSize = sizeof(sCourtneyNightBgTiles),
+        .map = sCourtneyNightBgMap,
+		.mapSize = sizeof(sCourtneyNightBgMap),
+        .palette = sCourtneyNightBgPalette,
+		.palIdxCnt = 240
+	},
+	[SCENEBGCOURTNEYNEUTRAL] = 
+    {
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sCourtneyNeutralBgTiles,
+		.tileSize = sizeof(sCourtneyNeutralBgTiles),
+        .map = sCourtneyNeutralBgMap,
+		.mapSize = sizeof(sCourtneyNeutralBgMap),
+        .palette = sCourtneyNeutralBgPalette,
+		.palIdxCnt = 240
+	},
+	[SCENEBGSHELLY] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sShellyBgTiles,
+		.tileSize = sizeof(sShellyBgTiles),
+        .map = sShellyBgMap,
+		.mapSize = sizeof(sShellyBgMap),
+        .palette = sShellyBgPalette,
+		.palIdxCnt = 240
+	},
+	[SCENEBGSHELLYNIGHT] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sShellyNightBgTiles,
+		.tileSize = sizeof(sShellyNightBgTiles),
+        .map = sShellyNightBgMap,
+		.mapSize = sizeof(sShellyNightBgMap),
+        .palette = sShellyNightBgPalette,
+		.palIdxCnt = 224
+	}
 };
 
 static const struct BgTemplate sCutsceneBackground8bpp = {

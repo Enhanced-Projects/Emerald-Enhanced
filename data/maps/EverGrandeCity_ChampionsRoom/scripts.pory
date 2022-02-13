@@ -74,7 +74,7 @@ EGC_AltWallaceFollower::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
-	clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	call EnablePlayersHouseDad @//this should fix the player's dad showing up in rival's house
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
 	end
@@ -656,6 +656,17 @@ EGC_BirchIntro: @ 82291E6
 	.string "over.\n"
 	.string "Well while I'm here, why don't I\n"
 	.string "check your pokedex?$"
-
-
 `
+
+script EnablePlayersHouseDad {
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) {
+		clearflag(FLAG_HIDE_BH_DAD)
+		setflag(FLAG_HIDE_DH_DAD)
+	}
+	else {
+		clearflag(FLAG_HIDE_DH_DAD)
+		setflag(FLAG_HIDE_BH_DAD)
+	}
+	return
+}

@@ -261,47 +261,6 @@ RyuGivePokenav::
 	clearflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	return
 
-
-@==================================================================================================RYU EV USER MODE MENU
-
-RyuUserModeEVMenu::
-	lock
-	release
-	end
-
-EVMENU_1:
-	.string "Set EV to 0$"
-
-EVMENU_2:
-	.string "Set IV to 0$"
-
-EVMENU_3:
-	.string "Cancel$"
-	
-RyuUserEvExit::
-	closemessage
-	release
-	end
-	
-RyuUserEvNoImprint::
-	msgbox EvNoImprints MSGBOX_DEFAULT
-	closemessage
-	release
-	end
-
-RyuUserEvSelectIVEV:
-	.string "Reduce Skill level(EV) or genetic\npredisposition(IV)?$"
-	
-RyuUserEVInfo:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
-	.string "{SHADOW LIGHT_GREY}Select a stat to reduce to 0.$"
-
-RyuEvSuccessMsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}iv or ev for the selected slot\nhave been reduced to 0.$"
-
-EvNoImprints:
-	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough prints.\pObtain more at Lilycove\nTraining Center.$"
-
 @@======================================================================================================================================= CHALLENGE CHALLENGE RELATED
 
 Ryu_CheckSetNuzlockPCUseVar::
@@ -670,8 +629,9 @@ Ryu_ItsSingingBeautifully::
 	.string "It finishes its tune and attacks!$"
 
 SB_SetupRandomSteppedOnEncounter::
-	compare VAR_REPEL_STEP_COUNT, 0
-	goto_if_ne ryu_end
+	specialvar VAR_RESULT, AreMonsRepelled
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_end
 	random 5
 	switch VAR_RESULT
 	case 0, SB_Random0
@@ -684,7 +644,13 @@ SB_SetupRandomSteppedOnEncounter::
 SB_SetupRandomMimikyuEncounter::
 	lock
 	clearflag FLAG_TEMP_A
-	setwildbattle SPECIES_MIMIKYU, 33, ITEM_NONE
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_MIMIKYU, VAR_TEMP_7, ITEM_NONE
 	playmoncry SPECIES_MIMIKYU, 0
 	waitmoncry
 	playse SE_PIN
@@ -702,10 +668,16 @@ StumbledOnMimikyu:
 
 
 SB_Random0::
-	setwildbattle SPECIES_PYUKUMUKU, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_PYUKUMUKU, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_PYUKUMUKU, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_PYUKUMUKU
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -714,10 +686,16 @@ SB_Random0::
 	end
 
 SB_Random1::
-	setwildbattle SPECIES_SANDYGAST, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_SANDYGAST, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_SANDYGAST, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_SANDYGAST
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -726,10 +704,16 @@ SB_Random1::
 	end
 
 SB_Random2::
-	setwildbattle SPECIES_SHELLDER, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_SHELLDER, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_SHELLDER, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_SHELLDER
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -738,10 +722,16 @@ SB_Random2::
 	end
 
 SB_Random3::
-	setwildbattle SPECIES_MAREANIE, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_MAREANIE, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_MAREANIE, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_MAREANIE
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -750,10 +740,16 @@ SB_Random3::
 	end
 
 SB_Random4::
-	setwildbattle SPECIES_SKRELP, 20, ITEM_NONE
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_SKRELP, 0
+	waitmoncry
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 12
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle SPECIES_SKRELP, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	bufferspeciesname 0, SPECIES_SKRELP
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -913,6 +909,18 @@ RyuLegendary_GameClearResetLegends::
 	call_if_set FLAG_RYU_NECROZMA_RAN, RL_ResetNecrozma
 	call_if_set FLAG_RYU_KYOGRE_RAN, RL_ResetKyogre
 	call_if_set FLAG_RYU_VICTINI_RAN, RL_ResetVictini
+	call_if_set FLAG_RYU_LATIOS_RAN, RL_ResetLatios
+	call_if_set FLAG_RYU_LATIAS_RAN, RL_ResetLatias
+	return
+
+RL_ResetLatias::
+	clearflag FLAG_RYU_LATIOS
+	clearflag FLAG_RYU_LATIOS_RAN
+	return
+
+RL_ResetLatios::
+	clearflag FLAG_RYU_LATIAS
+	clearflag FLAG_RYU_LATIAS_RAN
 	return
 
 RL_ResetZapdos::
@@ -2320,7 +2328,7 @@ script RyuScript_Lv100FailMsg {
 	end
 }
 
-script RyuScrupt_Lv100SwitchMsg {
+script RyuScript_Lv100SwitchMsg {
 	msgbox(format("You have enabled the lv100 vanilla cap. If you have pokemon in your pc that are higher than level 100, \p{COLOR LIGHT_RED}{SHADOW RED}They will be adjusted down to 100. \p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Keep this in mind when using the vanilla cap.\pIf this is not what you want, disable the cap before withdrawing mons from the PC."))
 	clearflag(FLAG_RYU_NOTIFY_LV100_SWITCH)
 	closemessage
@@ -2407,6 +2415,9 @@ raw `
 @===================================================================================================Holiday 2020
 
 RyuScript_GiveHolidayGiftMon::
+	msgbox RS_EventOver
+	release
+	end
 	msgbox RS_LucyIntro
 	getpartysize
 	compare VAR_RESULT, 6
@@ -2433,6 +2444,9 @@ HGM05Msg:
     .string "Marshadow$"
 HGM06Msg:
     .string "Lunala$"
+
+RS_EventOver:
+	.string "Event is over.\nWhat are you doing here?$"
 
 RS_HolidayOutro::
 	callnative RyuHolidayGiftMonSetData
@@ -2550,4 +2564,151 @@ script RS_HGM06{
 	callnative(RyuGiveHolidayModdedMon)
 	bufferspeciesname(0, SPECIES_LUNALA)
 	goto(RS_HolidayOutro)
+}
+
+//==================================================================================================RYU EV USER MODE MENU
+
+script RyuUserModeEVMenu {
+	lock
+	msgbox(RyuUserEvSelectIVEV)
+	bufferdynamicmulti(EVMENU_1, EVMENU_2, EVMENU_3)
+	multichoice(0, 3, MULTI_DYNAMIC_3, 0)
+	if (var(VAR_RESULT) >= 2) {
+		goto(RyuUserEvExit)
+	}
+	switch(var(VAR_RESULT)) {
+		case 1:
+			checkitem(ITEM_IVPRINT, 1)
+			if (var(VAR_RESULT) == 0) {
+				goto(RyuUserNoImprint)
+			}
+			removeitem(ITEM_EVPRINT, 1)
+			setvar(VAR_0x8003, 1) //mode
+		case 0:
+			checkitem(ITEM_EVPRINT, 1)
+			if (var(VAR_RESULT) == 0) {
+				goto(RyuUserNoImprint)
+			}
+			removeitem(ITEM_EVPRINT, 1)
+			setvar(VAR_0x8003, 0) // mode
+	}
+	msgbox(RyuUserIVEV_SelectSlot)
+	call(RyuBufferPartyMonNames)
+	multichoice(0, 0, MULTI_DYNAMIC_6, 1)
+	copyvar(VAR_0x8001, VAR_RESULT) //slot
+	if (var(VAR_RESULT) == 127) {
+		goto(RyuUserEvInvalidSlot)
+	}
+	specialvar(VAR_TEMP_A, CheckIfSelectedSlotIsValid)
+	if (var(VAR_TEMP_A) == FALSE) {
+		goto(RyuUserEvInvalidSlot)
+	}
+	msgbox(RyuUserIVEV_SelectStat)
+	bufferdynamicmulti(RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed)
+	multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+	copyvar(VAR_0x8002, VAR_RESULT) //stat
+	if (var(VAR_RESULT) == 127) {
+		goto(RyuUserEvInvalidStat)
+	}
+	setvar(VAR_0x8000, 0) //value
+	callnative(RyuSetSlotStatIVEV)
+	call(ShowMonDataInfoBox) //0x8001 should already have correct slot in it.
+	release
+	end
+}
+
+text EVMENU_1{
+	"Set EV to 0"
+}
+
+text EVMENU_2{
+	"Set IV to 0"
+}
+
+text EVMENU_3{
+	"Cancel"
+}
+	
+script RyuUserEvExit{
+	closemessage
+	release
+	end
+}
+
+script RyuUserEvInvalidSlot{
+	msgbox("Selected an invalid slot.")
+	closemessage
+	release
+	end
+}
+
+script RyuUserEvInvalidStat{
+	msgbox("You didn't select a stat.")
+	closemessage
+	release
+	end
+}
+	
+	
+script RyuUserNoImprint{
+	msgbox(EvNoImprints)
+	closemessage
+	release
+	end
+}
+	
+
+text RyuUserEvSelectIVEV {
+	"Reduce Skill level(EV) or genetic\npredisposition(IV)?"
+}
+	
+text RyuUserIVEV_SelectStat{
+	"{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
+	"{SHADOW LIGHT_GREY}Select a stat to reduce to 0."
+}
+	
+text RyuUserIVEV_SelectSlot{
+	"{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
+	"{SHADOW LIGHT_GREY}Select a pokemon from your party."
+}
+
+text RyuEvSuccessMsg{
+	"{COLOR LIGHT_GREEN}{SHADOW GREEN}iv or ev for the selected slot\nhave been reduced to 0."
+}
+
+text EvNoImprints{
+	"{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough prints.\pObtain more at Lilycove\nTraining Center."
+}
+
+script gScript_InvalidSaveDetected {
+	msgbox("You are attempting to load an\ninvalid save.\pPlease replace the correct save\nfile and try again.")
+	special(DoSoftReset)
+}
+
+script RyuScript_SetRivalGfxId { //dynamically sets the rival gfx in OBJ_EVENT_GFX_VAR_3
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) {
+		setvar(OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)
+	}
+	else
+	{
+		setvar(OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL)
+	}
+	return
+}
+
+script CheckDexForMayQuest {//if player has over 210 mons caught, enables May quest.
+	if (flag(FLAG_RYU_MAY_PREREQUISITE_COMPLETED) == TRUE) {
+		goto(ryu_return)
+	}
+	callnative(ScriptGetPokedexInfo)
+	buffernumberstring(0, VAR_0x8006)
+	if (var(VAR_0x8006) >= 210){
+		msgbox("Birch: My word!\nYou have caught {STR_VAR_1}\ldifferent species of Pokémon!\pThis is incredible!\pI... don't have to work\nso hard anymore!\pThanks a ton, {PLAYER}!\pI knew you'd be the right\nperson for the job!")
+		setflag(FLAG_RYU_MAY_PREREQUISITE_COMPLETED)
+		closemessage
+		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You can now recruit May\n as a follower once the\l intro is completed.)")
+		closemessage
+		return
+	}
 }

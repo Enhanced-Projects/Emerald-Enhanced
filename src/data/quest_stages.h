@@ -111,8 +111,9 @@ const u8 sDevonQuestStage104Desc[] = _("Player finished working with Castform\ni
 const u8 sDevonQuestStage105Desc[] = _("Player returned to the institute.\nIt was recommended to ask the space center\nfor help. Go there.");
 const u8 sDevonQuestStage106Desc[] = _("Player should clear out the magma goons on\nthe bottom floor.\nThen go upstairs and deal with Maxie.");
 const u8 sDevonQuestStage107Desc[] = _("Player cleared out magma and met the\nmysterious talking pokemon.\nGo to the hidden cave at the top left\nof the first floor of Victory Road.");
-const u8 sDevonQuestStage108Desc[] = _("You must become champion to continue.\nOnce you are, head to the northeast area\nof the Safari Zone.\nThere will be another cave at the top left.");
-const u8 sDevonQuestStage115Desc[] = _("Player finished the DEVON SCIENTIST QUESTLINE\n and the mysterious pokemon joined\ntheir party.");
+const u8 sDevonQuestStage108Desc[] = _("Player faced the mysterious talking pokemon\nin Victory Road.\nReturn to the Space Center and see Cozmo.");
+const u8 sDevonQuestStage109Desc[] = _("Player received the Forecaster and information\nabout a strange aberration in the Safari Zone.\nBecome champion and then explore the northeast\narea of the Safari Zone.");
+const u8 sDevonQuestStage115Desc[] = _("Player finished the DEVON SCIENTIST QUESTLINE\nand the mysterious pokemon joined\ntheir party.");
 const u8 sDevonQuestStage111Desc[] = _("Player defeated the mysterious pokemon, but\nneeds to make space in their party and return.");
 const u8 sDevonQuestStage1055Desc[] = _("Player has entered the Space Center.\nSpeak to Steven.");
 const u8 sDevonQuestStage1075Desc[] = _("Player has spoken to Mewtwo.\nDefeat it for it to join you.");
@@ -626,6 +627,10 @@ const static struct QuestStageDesc gDevonScientistQuestStages[] = {
   {
     .description = sDevonQuestStage108Desc,
     .questStage = 108,
+  },
+  {
+    .description = sDevonQuestStage109Desc,
+    .questStage = 109,
   },
   {
     .description = sDevonQuestStage115Desc,

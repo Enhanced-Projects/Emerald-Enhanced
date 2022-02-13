@@ -7,14 +7,12 @@ LRT_IntroMsg1:
 
 GameModeSelect:: @ 823BF04
 	lockall
-	@call GameModeSelectLati //doesn't work.
 	closemessage
 	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
 	msgbox RI_CheckPreviousExp, MSGBOX_YESNO
 	compare VAR_RESULT, NO
+	goto_if_eq NGNormalMode
 	closemessage
-	msgbox RI_ConfirmDifficulty
-	goto_if_eq IT_EasyMode
 	msgbox Ryu_PleaseSelectDifficulty
 	multichoicedefault 1, 2, MULTI_SELECT_FRESH_NEW_GAME_MODE, 0, 0
 	switch VAR_RESULT
@@ -24,6 +22,10 @@ GameModeSelect:: @ 823BF04
 	case 3, IT_FrontierMode
 	goto IT_NormalMode
 	end
+
+NGNormalMode::
+	msgbox RI_ConfirmDifficulty
+	goto IT_NormalMode
 
 RI_ConfirmDifficulty:
 	.string "You have been set to the\nrecommended mode.$"
@@ -111,11 +113,11 @@ Ryu_NGP_ExpShare::
 	additem ITEM_EXP_SHARE, 1
 	return
 
-Ryu_NGP_AcroBike::
+Ryu_NGP_AcroBike:: @// broken
 	additem ITEM_ACRO_BIKE 1
 	return
 
-Ryu_NGP_MachBike::
+Ryu_NGP_MachBike:: @// broken
 	additem ITEM_MACH_BIKE, 1
 	return
 
@@ -294,7 +296,8 @@ SetMaleStartingVariables:: @ 823BF20
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING
 	setflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
-	setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	setflag FLAG_HIDE_BH_DAD
+	setflag FLAG_HIDE_DH_DAD
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_MOM
@@ -315,7 +318,8 @@ SetFemaleStartingVariables:: @ 823BF46
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING
 	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
-	setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	setflag FLAG_HIDE_BH_DAD
+	setflag FLAG_HIDE_DH_DAD
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM

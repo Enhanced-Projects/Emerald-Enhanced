@@ -261,3 +261,28 @@ script LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarLeft {
 text BallChangerQuery{
 	"Would you like to change the ball\nyour lead pokemon is stored in?"
 }
+
+script LCCDS_IncenseMarket {
+	lock
+	faceplayer
+	msgbox("Welcome to the Incense Market!")
+	pokemart(LCC_IncenseMarket)
+	msgbox("Thanks for stopping by!")
+	release
+	end
+}
+
+raw `
+	.align 2
+LCC_IncenseMarket:
+	.2byte ITEM_SEA_INCENSE
+	.2byte ITEM_LAX_INCENSE
+	.2byte ITEM_ODD_INCENSE
+	.2byte ITEM_ROCK_INCENSE
+	.2byte ITEM_FULL_INCENSE
+	.2byte ITEM_WAVE_INCENSE
+	.2byte ITEM_ROSE_INCENSE
+	.2byte ITEM_LUCK_INCENSE
+	.2byte ITEM_PURE_INCENSE
+	.2byte ITEM_NONE
+`

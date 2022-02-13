@@ -7,7 +7,7 @@ MHA_Courtney::
 	faceplayer
 	goto_if_unset FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, ryu_end
 	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGCOURTNEY
+	drawfullscreenimage SCENEBGCOURTNEYNIGHT
 	goto_if_set FLAG_RYU_DS_COURTNEY_PARTNERS, MHAQ_PartnerCourtney
 	msgbox MHAQ_StayTheNight, MSGBOX_YESNO
 	clearfullscreenimage

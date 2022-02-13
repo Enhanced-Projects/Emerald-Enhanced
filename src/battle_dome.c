@@ -3012,7 +3012,7 @@ static void Task_ShowTourneyInfoCard(u8 taskId)
         LoadCompressedPalette(gDomeTourneyTree_Pal, 0, 0x200);
         LoadCompressedPalette(gDomeTourneyTreeButtons_Pal, 0x100, 0x200);
         
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LoadCompressedPalette(gBattleWindowTextDarkPalette, 0xF0, 0x20);
         }
@@ -5301,7 +5301,7 @@ static void Task_ShowTourneyTree(u8 taskId)
         LoadCompressedPalette(gDomeTourneyTree_Pal, 0, 0x200);
         LoadCompressedPalette(gDomeTourneyTreeButtons_Pal, 0x100, 0x200);
 
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LoadCompressedPalette(gBattleWindowTextDarkPalette, 0xF0, 0x20);
         }

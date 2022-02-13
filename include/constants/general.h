@@ -371,6 +371,10 @@
 #define SCENEBGPIDGEYSCREENSHOT 10
 #define SCENEBGGAMEOVER 11
 #define SCENEBGWARP 12
+#define SCENEBGCOURTNEYNIGHT 13
+#define SCENEBGCOURTNEYNEUTRAL 14
+#define SCENEBGSHELLY 15
+#define SCENEBGSHELLYNIGHT 16
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0
@@ -478,6 +482,13 @@
 #define PROPERTY_MOSSDEEP    11
 //there are an additional 20 properties
 
+//Modes for the User RGB setter function
+
+#define USER_COLOR_STANDARD_TEXT 0
+#define USER_COLOR_STANDARD_TEXT_SHADOW 1
+#define USER_COLOR_WINDOW_HIGHLIGHT 2
+#define USER_COLOR_WINDOW_BORDER 3
+#define USER_COLOR_WINDOW_BACKGROUND 4
 
 //notification types
 
@@ -489,7 +500,7 @@
 #define NOTIFY_QUEST       5
 #define NOTIFY_GENERAL     6
 
-#define EE_GAME_VERSION 8105
+#define EE_GAME_VERSION 8300
 
 
 #endif

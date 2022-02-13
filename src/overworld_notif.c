@@ -293,19 +293,22 @@ void WindowFunc_DrawNotifyFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, 
 
 void ShowNotificationWindow(void)
 {
-    u32 windowId;
-    struct NotificationQueueEntry *notifData = &sNotification.queue[sNotification.currentNotif];
-    windowId = AddNotificationWindow();
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gNotifyFrame, 9*0x20, 0x21D);
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gNotifyFrame+(notifData->type+1)*2*7*0x10, 2*7*0x20, 0x21D+9);
-    LoadPalette(gNotifyFramePal, 0xE0, 0x20);
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    PutWindowTilemap(windowId);
-    CallWindowFunction(windowId, WindowFunc_DrawNotifyFrame);
-    //AddTextPrinterParameterized(windowId, 0, sNotificationTypeNames[notifData->type], 2, 0, 0xFF, NULL);
-    AddTextPrinterParameterized3(windowId, 1, 1, 5, (u8[]){1, 6, 2}, 0xFF, notifData->notifText);
-    //AddTextPrinterParameterized3(windowId, 1, 1, 5+12, color, 0xFF, notifData->notifText);
-    CopyWindowToVram(windowId, 3);
+    if (!(FlagGet(FLAG_RYU_PREVENT_ACH_POPUP)))
+    {
+        u32 windowId;
+        struct NotificationQueueEntry *notifData = &sNotification.queue[sNotification.currentNotif];
+        windowId = AddNotificationWindow();
+        LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gNotifyFrame, 9*0x20, 0x21D);
+        LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gNotifyFrame+(notifData->type+1)*2*7*0x10, 2*7*0x20, 0x21D+9);
+        LoadPalette(gNotifyFramePal, 0xE0, 0x20);
+        FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
+        PutWindowTilemap(windowId);
+        CallWindowFunction(windowId, WindowFunc_DrawNotifyFrame);
+        //AddTextPrinterParameterized(windowId, 0, sNotificationTypeNames[notifData->type], 2, 0, 0xFF, NULL);
+        AddTextPrinterParameterized3(windowId, 1, 1, 5, (u8[]){1, 6, 2}, 0xFF, notifData->notifText);
+        //AddTextPrinterParameterized3(windowId, 1, 1, 5+12, color, 0xFF, notifData->notifText);
+        CopyWindowToVram(windowId, 3);
+    }
 }
 
 void HideNotificationWindow(void)

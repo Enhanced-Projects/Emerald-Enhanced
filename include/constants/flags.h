@@ -427,27 +427,27 @@
 #define FLAG_RYU_VICTINI                     0x192
 #define FLAG_RYU_VICTINI_RAN                 0x193
 #define FLAG_RYU_LANETTE_IEVENT              0x194
-#define FLAG_UNUSED_0x195                    0x195
-#define FLAG_UNUSED_0x196                    0x196
-#define FLAG_UNUSED_0x197                    0x197
-#define FLAG_UNUSED_0x198                    0x198
-#define FLAG_UNUSED_0x199                    0x199
-#define FLAG_UNUSED_0x19A                    0x19A
-#define FLAG_UNUSED_0x19B                    0x19B
-#define FLAG_UNUSED_0x19C                    0x19C
-#define FLAG_UNUSED_0x19D                    0x19D
-#define FLAG_UNUSED_0x19E                    0x19E
-#define FLAG_UNUSED_0x19F                    0x19F
-#define FLAG_UNUSED_0x1A0                    0x1A0
-#define FLAG_UNUSED_0x1A1                    0x1A1
-#define FLAG_UNUSED_0x1A2                    0x1A2
-#define FLAG_UNUSED_0x1A3                    0x1A3
+#define FLAG_RYU_LATIOS                      0x195
+#define FLAG_RYU_LATIOS_RAN                  0x196
+#define FLAG_RYU_LATIAS                      0x197
+#define FLAG_RYU_LATIAS_RAN                  0x198
+#define FLAG_RYU_ITEM_SHINY_STONE            0x199
+#define FLAG_RYU_ITEM_ICE_STONE              0x19A
+#define FLAG_RYU_DS_MAY_ACQ                  0x19B
+#define FLAG_RYU_DS_MAY_FRIENDS              0x19C
+#define FLAG_RYU_DS_MAY_CLOSEFRIENDS         0x19D
+#define FLAG_RYU_DS_MAY_LOVERS               0x19E
+#define FLAG_RYU_DS_MAY_PARTNERS             0x19F
+#define FLAG_RYU_HIDE_LRT_MAY                0x1A0
+#define FLAG_RYU_MAY_PREREQUISITE_COMPLETED  0x1A1
+#define FLAG_RYU_MAY_AVAILABLE               0x1A2
+#define FLAG_RYU_RIVALMOM_OUTRO              0x1A3
 #define FLAG_UNUSED_0x1A4                    0x1A4
 #define FLAG_REMATCH_SIDNEY                  0x1A5
 #define FLAG_REMATCH_PHOEBE                  0x1A6
 #define FLAG_REMATCH_GLACIA                  0x1A7
 #define FLAG_REMATCH_DRAKE                   0x1A8
-#define FLAG_UNUSED_0x1A9                    0x1A9
+#define FLAG_RYU_MAY_EVENT_HIDE_BIRCH        0x1A9
 
 #define FLAG_RYU_AFTERSHELLYSTORY            0x1AA
 #define FLAG_RYU_DS_HAS_PARTNER              0x1AB
@@ -483,15 +483,15 @@
 #define FLAG_DEFEATED_LATIAS_OR_LATIOS       0x1C8
 #define FLAG_CAUGHT_LATIAS_OR_LATIOS         0x1C9
 #define FLAG_CAUGHT_MEW                      0x1CA
-#define FLAG_UNUSED_0x1CB                    0x1CB
-#define FLAG_UNUSED_0x1CC                    0x1CC
-#define FLAG_UNUSED_0x1CD                    0x1CD
-#define FLAG_UNUSED_0x1CE                    0x1CE
-#define FLAG_UNUSED_0x1CF                    0x1CF
+#define FLAG_RYU_BH_HIDE_MAY                 0x1CB
+#define FLAG_RYU_MAY_INTRO_EVENT_DONE        0x1CC
+#define FLAG_HIDE_LRT_BH_BIRCH               0x1CD
+#define FLAG_HIDE_LRT_DH_BIRCH               0x1CE
+#define FLAG_RYU_MAY_EVENT_FAILED            0x1CF
 #define FLAG_MET_SCOTT_ON_SS_TIDAL           0x1D0
 #define FLAG_SCOTT_GIVES_BATTLE_POINTS       0x1D1
 #define FLAG_COLLECTED_ALL_GOLD_SYMBOLS      0x1D2
-#define FLAG_UNUSED_0x1D3                    0x1D3
+#define FLAG_RYU_DH_HIDE_MAY                 0x1D3
 #define FLAG_UNUSED_0x1D4                    0x1D4
 #define FLAG_UNUSED_0x1D5                    0x1D5
 #define FLAG_UNUSED_0x1D6                    0x1D6
@@ -788,11 +788,11 @@
 #define FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT                          0x2DB
 #define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1                    0x2DC
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_2                   0x2DD
-#define FLAG_HIDE_PLAYERS_HOUSE_DAD                                 0x2DE
+#define FLAG_HIDE_BH_DAD                                 0x2DE
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING      0x2DF
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING         0x2E0
 #define FLAG_SYS_DEXNAV_GET                                         0x2E1
-#define FLAG_UNUSED_0x2E2                                           0x2E2
+#define FLAG_HIDE_DH_DAD                                            0x2E2
 #define FLAG_UNUSED_0x2E3                                           0x2E3
 #define FLAG_UNUSED_0x2E4                                           0x2E4
 #define FLAG_UNUSED_0x2E5                                           0x2E5
@@ -1685,6 +1685,7 @@
 #define FLAG_UNUSED_SPECIAL_0xc                 (SPECIAL_FLAGS_START + 0xC)
 #define FLAG_UNUSED_SPECIAL_0xd                 (SPECIAL_FLAGS_START + 0xD)
 #define FLAG_RYU_USED_COMPANION_E4              (SPECIAL_FLAGS_START + 0xE) //Used a companion for championship match
+#define FLAG_RYU_PASSED_SAVE_VERSION_CHECK      (SPECIAL_FLAGS_START + 0xF) //prevents lag from checking save vs game version
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 

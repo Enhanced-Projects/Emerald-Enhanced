@@ -1,0 +1,25 @@
+mapscripts LittlerootTown_DawnsHouse_UpperHallway_MapScripts {}
+
+script LRT_DH_MayRoomTrigger {
+    checkfacing
+    if (var(VAR_RESULT) == DIR_SOUTH) {
+        goto(ryu_end)
+    }
+    lock
+    if ((flag(FLAG_RYU_DS_MAY_FRIENDS) == TRUE) || (flag(FLAG_RYU_MAY_EVENT_FAILED) == TRUE)) {
+        warpdoor(MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_MAY_BEDROOM, 0, 4, 1)
+        waitstate
+    }
+    checkplayergender
+    if (var(VAR_RESULT) == FEMALE) {
+        msgbox("It's Dad's storage room.\nBetter leave it alone.")
+    }
+    else {
+        msgbox("It's an empty bedroom.\nBest leave it alone.")
+    }
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown)
+    waitmovement(0xFF)
+    release
+    end
+}

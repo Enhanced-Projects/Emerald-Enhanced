@@ -127,9 +127,11 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must
                         }
                     case 2://check details
                         callnative(RyuBufferOwnedPropertyDetails)
-                        msgbox("{STR_VAR_2} Details:\pIs currently Rented?: {STR_VAR_3}\nIs {PLAYER}'s home?: {RYU_STR_1}\pIs pending repair?: {RYU_STR_2}")
-                        compare_var_to_var(VAR_RYU_DAMAGED_HOUSE_ID, VAR_TEMP_D)
-                        call_if_eq(AskPlayerToRepairProperty)
+                        msgbox("{STR_VAR_2} Details:\pIs currently Rented?: {STR_VAR_3}\nIs {PLAYER}'s home?: {RYU_STR_1}\pIs pending repair?: {RYU_STR_2}$")
+                        if (flag(FLAG_RYU_PROPERTY_DAMAGED) == TRUE) {
+                            compare_var_to_var(VAR_RYU_DAMAGED_HOUSE_ID, VAR_TEMP_D)
+                            call_if_eq(AskPlayerToRepairProperty)
+                        }
                         closemessage
                         release
                         end
@@ -235,6 +237,7 @@ script AskPlayerToRepairProperty {
         release
         end
     }
+    return
 }
 
 //waystone 'Home' option

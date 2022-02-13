@@ -1,0 +1,348 @@
+//This lets the player choose a custom set of colors for the interface.
+
+text UIMM1 {
+    "Edit Textbox"
+}
+
+text UIMM2 {
+    "Edit Menu Border Style"
+}
+
+text UIMM3 {
+    "Exit"
+}
+
+script RyuUserInterfaceMainMenu {
+    bufferdynamicmulti(UI_SM1, UI_SM2)
+    msgbox("Use preset or custom theme?")
+    multichoice(0, 0, MULTI_DYNAMIC_2, 0)
+    if (var(VAR_RESULT) == 1){
+        goto(RyuUserInterfacePresetsMenu)
+    }
+    elif (var(VAR_RESULT) == 0) {
+        goto(RyuUserInterfaceTextboxMenu)
+    }
+    else {
+        goto(RDB_BetaMenuStandalone)
+    }
+}
+//TEXT WINDOW
+
+script RyuUserInterfaceTextboxMenu {
+    msgbox("Editing the text box colors.\nPress B to exit.")
+    bufferdynamicmulti(UISM1, UISM2, UISM3, UISM4, UISM5, UISM6)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    closemessage
+    switch (var(VAR_RESULT)) {
+        case 0:
+            callnative(RyuResetUserPaletteData)
+            msgbox("Custom UI settings reset.")
+            closemessage
+            goto(RDB_BetaMenuStandalone)
+        case 1:
+            msgbox("Choosing color for standard text.")
+            closemessage
+            msgbox("Enter the value to use for {COLOR LIGHT_RED}{SHADOW RED}RED\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, standard text)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8001, 31)
+            }
+            else {
+                copyvar(VAR_0x8001, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_GREEN}{SHADOW GREEN}GREEN\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, standard text)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8002, 31)
+            }
+            else {
+                copyvar(VAR_0x8002, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_BLUE}{SHADOW BLUE}BLUE\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, standard text)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8003, 31)
+            }
+            else {
+                copyvar(VAR_0x8003, VAR_RESULT)
+            }
+            buffernumberstring(0, VAR_0x8001)
+            buffernumberstring(1, VAR_0x8002)
+            buffernumberstring(2, VAR_0x8003)
+            msgbox("the RGB value you chose is {STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}.\nIs this acceptable?", MSGBOX_YESNO)
+            switch(var(VAR_RESULT)) {
+                case YES:
+                    setvar(0x8004, USER_COLOR_STANDARD_TEXT)
+                    callnative(SetUserRGBValue)
+                    msgbox("Color changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+                case NO:
+                    msgbox("Color not changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+            }
+        case 2:
+            msgbox("Choosing color for standard text shadow.")
+            closemessage
+            msgbox("Enter the value to use for {COLOR LIGHT_RED}{SHADOW RED}RED\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, standard text shadow)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8001, 31)
+            }
+            else {
+                copyvar(VAR_0x8001, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_GREEN}{SHADOW GREEN}GREEN\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, standard text shadow)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8002, 31)
+            }
+            else {
+                copyvar(VAR_0x8002, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_BLUE}{SHADOW BLUE}BLUE\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, standard text shadow)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8003, 31)
+            }
+            else {
+                copyvar(VAR_0x8003, VAR_RESULT)
+            }
+            buffernumberstring(0, VAR_0x8001)
+            buffernumberstring(1, VAR_0x8002)
+            buffernumberstring(2, VAR_0x8003)
+            msgbox("the RGB value you chose is {STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}.\nIs this acceptable?", MSGBOX_YESNO)
+            switch(var(VAR_RESULT)) {
+                case YES:
+                    setvar(0x8004, USER_COLOR_STANDARD_TEXT_SHADOW)
+                    callnative(SetUserRGBValue)
+                    msgbox("Color changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+                case NO:
+                    msgbox("Color not changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+            }
+        case 3:
+            msgbox("Choosing color for window decorative\nhighlight.")
+            closemessage
+            msgbox("Enter the value to use for {COLOR LIGHT_RED}{SHADOW RED}RED\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, window highlight)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8001, 31)
+            }
+            else {
+                copyvar(VAR_0x8001, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_GREEN}{SHADOW GREEN}GREEN\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, window highlight)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8002, 31)
+            }
+            else {
+                copyvar(VAR_0x8002, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_BLUE}{SHADOW BLUE}BLUE\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, window highlight)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8003, 31)
+            }
+            else {
+                copyvar(VAR_0x8003, VAR_RESULT)
+            }
+            buffernumberstring(0, VAR_0x8001)
+            buffernumberstring(1, VAR_0x8002)
+            buffernumberstring(2, VAR_0x8003)
+            msgbox("the RGB value you chose is {STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}.\nIs this acceptable?", MSGBOX_YESNO)
+            switch(var(VAR_RESULT)) {
+                case YES:
+                    setvar(0x8004, USER_COLOR_WINDOW_HIGHLIGHT)
+                    callnative(SetUserRGBValue)
+                    msgbox("Color changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+                case NO:
+                    msgbox("Color not changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+            }
+        case 4:
+            msgbox("Choosing color for Window Border.")
+            closemessage
+            msgbox("Enter the value to use for {COLOR LIGHT_RED}{SHADOW RED}RED\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, window border)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8001, 31)
+            }
+            else {
+                copyvar(VAR_0x8001, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_GREEN}{SHADOW GREEN}GREEN\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, window border)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8002, 31)
+            }
+            else {
+                copyvar(VAR_0x8002, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_BLUE}{SHADOW BLUE}BLUE\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, window border)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8003, 31)
+            }
+            else {
+                copyvar(VAR_0x8003, VAR_RESULT)
+            }
+            buffernumberstring(0, VAR_0x8001)
+            buffernumberstring(1, VAR_0x8002)
+            buffernumberstring(2, VAR_0x8003)
+            msgbox("the RGB value you chose is {STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}.\nIs this acceptable?", MSGBOX_YESNO)
+            switch(var(VAR_RESULT)) {
+                case YES:
+                    setvar(0x8004, USER_COLOR_WINDOW_BORDER)
+                    callnative(SetUserRGBValue)
+                    msgbox("Color changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+                case NO:
+                    msgbox("Color not changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+            }
+        case 5:
+            msgbox("Choosing color for window and text\nbackground")
+            closemessage
+            msgbox("Enter the value to use for {COLOR LIGHT_RED}{SHADOW RED}RED\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, text background)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8001, 31)
+            }
+            else {
+                copyvar(VAR_0x8001, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_GREEN}{SHADOW GREEN}GREEN\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, text background)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8002, 31)
+            }
+            else {
+                copyvar(VAR_0x8002, VAR_RESULT)
+            }
+            msgbox("Enter the value to use for {COLOR LIGHT_BLUE}{SHADOW BLUE}BLUE\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}(Range 0 - 31, text background)")
+            numberentry(0, 10, 2)
+            if (var(VAR_RESULT) > 31) {
+                setvar(VAR_0x8003, 31)
+            }
+            else {
+                copyvar(VAR_0x8003, VAR_RESULT)
+            }
+            buffernumberstring(0, VAR_0x8001)
+            buffernumberstring(1, VAR_0x8002)
+            buffernumberstring(2, VAR_0x8003)
+            msgbox("the RGB value you chose is {STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}.\nIs this acceptable?", MSGBOX_YESNO)
+            switch(var(VAR_RESULT)) {
+                case YES:
+                    setvar(0x8004, USER_COLOR_WINDOW_BACKGROUND)
+                    callnative(SetUserRGBValue)
+                    msgbox("Color changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+                case NO:
+                    msgbox("Color not changed. Returning.")
+                    goto(RyuUserInterfaceTextboxMenu)
+            }
+        case 127:
+            msgbox("Exiting.")
+            closemessage
+            goto(RDB_BetaMenuStandalone)
+    }
+}
+
+text UI_SM1 {
+    "Custom"
+}
+
+text UI_SM2 {
+    "Preset"
+}
+
+text UISM1 {
+    "Reset to Default"
+}
+
+text UISM2 {
+    "Standard text color"
+}
+
+text UISM3 {
+    "Standard text shadow"
+}
+
+text UISM4 {
+    "Textbox frame highlight color"
+}
+
+text UISM5 {
+    "Textbox border color"
+}
+
+text UISM6 {
+    "Textbox background color"
+}
+
+//WINDOW BORDER DECORATION
+
+
+script RyuUserInterfaceWindowMenu {
+    end
+    msgbox("Editing the text box colors.\nPress B to exit.")
+    bufferdynamicmulti(UISM1, UISM2, UISM3, UISM4, UISM5, UISM6)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    closemessage
+    switch (var(VAR_RESULT)) {
+        case 0:
+            callnative(RyuResetUserPaletteData)
+            goto(RyuUserInterfaceMainMenu)
+    }
+}
+
+script RyuUserInterfacePresetsMenu {
+    msgbox("Choose a preset theme.")
+    bufferdynamicmulti(UIPM_1, UIPM_2, UIPM_3, UIPM_4, UIPM_5, UIPM_6)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    if (var(VAR_RESULT) == 127) {
+        msgbox("No selection made. Returning.")
+        goto(RyuUserInterfaceTextboxMenu)
+    }
+    copyvar(VAR_0x8001, VAR_RESULT)
+    callnative(ApplyPresetRGBUserTheme)
+    closemessage
+    msgbox("Is this selection acceptable?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        release
+        end
+    }
+    else {
+        goto(RyuUserInterfacePresetsMenu)
+    }
+    release
+    end
+}
+
+text UIPM_1 {
+    "Blue Steel"
+}
+
+text UIPM_2 {
+    "Royal Purple"
+}
+
+text UIPM_3 {
+    "Empty"
+}
+
+text UIPM_4 {
+    "Empty"
+}
+
+text UIPM_5 {
+    "Empty"
+}
+
+text UIPM_6 {
+    "Empty"
+}
+

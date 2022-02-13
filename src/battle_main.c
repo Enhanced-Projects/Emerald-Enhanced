@@ -2233,7 +2233,7 @@ void sub_8038D64(void)
 
         InitBattleBgsVideo();
 
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 64);
         }

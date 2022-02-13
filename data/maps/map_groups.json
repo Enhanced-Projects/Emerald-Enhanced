@@ -111,7 +111,11 @@
     "LittlerootTown_DawnsHouse_1F",
     "LittlerootTown_DawnsHouse_2F",
     "LittlerootTown_ProfessorBirchsLab",
-    "Littleroot_Town_Rival_HouseQuest"
+    "Littleroot_Town_Rival_HouseQuest",
+    "LittlerootTown_BrendansHouse_UpperHallway",
+    "LittlerootTown_BrendansHouse_MayBedroom",
+    "LittlerootTown_DawnsHouse_UpperHallway",
+    "LittlerootTown_DawnsHouse_MayBedroom"
   ],
   "gMapGroup2": [
     "OldaleTown_House1",

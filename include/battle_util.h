@@ -132,5 +132,6 @@ bool32 SetIllusionMon(struct Pokemon *mon, u32 battlerId);
 bool8 ShouldGetStatBadgeBoost(u16 flagId, u8 battlerId);
 u8 GetBattleMoveSplit(u32 moveId);
 extern bool8 RyuAffectionStatusHealCheck(u8 battlerId);
+bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags);
 
 #endif // GUARD_BATTLE_UTIL_H

@@ -372,9 +372,9 @@ static const u16 RyuValToEv[] = {
     MON_DATA_HP_EV,
     MON_DATA_ATK_EV,
     MON_DATA_DEF_EV,
+    MON_DATA_SPEED_EV,
     MON_DATA_SPATK_EV,
-    MON_DATA_SPDEF_EV,
-    MON_DATA_SPEED_EV
+    MON_DATA_SPDEF_EV
 };
 
 static const u16 RyuValToIv[] = {
@@ -388,13 +388,12 @@ static const u16 RyuValToIv[] = {
 
 void RyuSetSlotStatIVEV(void)//Now with extra lewd
 {
-    u16 value = (VarGet(VAR_TEMP_1)); //set stat to this value
-    u16 slot = (VarGet(VAR_TEMP_2)); //which mon slot
-    u16 stat = (VarGet(VAR_TEMP_3)); //which mon stat
-    u16 mode = (VarGet(VAR_TEMP_4));//0 = ev, 1 = iv
+    u16 value = gSpecialVar_0x8000; //set stat to this value
+    u16 slot = gSpecialVar_0x8001; //which mon slot
+    u16 stat = gSpecialVar_0x8002; //which mon stat
+    u16 mode = gSpecialVar_0x8003;//0 = ev, 1 = iv
     u16 evmax = 252;
     u16 ivmax = 31;
-    mgba_printf(LOGINFO, "value:%d, slot:%d, stat:%d, mode:%d", value, slot, stat, mode);
 
     if (mode == 0)
     {
@@ -402,7 +401,13 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
         {
             value = evmax;
             SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
-            mgba_printf(LOGINFO, "EV mode: Setting slot%d's %d stat to %d.", slot, stat, value);
+            CalculateMonStats(&gPlayerParty[slot]);
+            return;
+        }
+        else
+        {
+            SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
+            CalculateMonStats(&gPlayerParty[slot]);
             return;
         }
     }
@@ -413,17 +418,23 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
         {
             value = ivmax;
             SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);
-            mgba_printf(LOGINFO, "IV mode: Setting slot%d's %d stat to %d.", slot, stat, value);
+            CalculateMonStats(&gPlayerParty[slot]);
             return;
         }
+        else
+        {
+            SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);
+            CalculateMonStats(&gPlayerParty[slot]);
+        }
+        
     } 
 }
 
 void RyuResetIvEvs(void)
 {
     u8 ev = 0;
-    u16 slot = (VarGet(VAR_TEMP_1));
-    u16 mode = (VarGet(VAR_TEMP_0));
+    u16 slot = gSpecialVar_0x8001;
+    u16 mode = gSpecialVar_0x8003;
     PlaySE(SE_EXPMAX);
     if (mode == 0)
     {
@@ -444,6 +455,7 @@ void RyuResetIvEvs(void)
         SetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, &ev);
     }
     CalculateMonStats(&gPlayerParty[slot]);
+    return;
 }
 
 void RyuSetMonMove(void)
@@ -880,7 +892,7 @@ bool8 ScrCmd_drawfullscreenimage(struct ScriptContext *ctx)//draws the fullscree
 bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
 {
     SetVBlankCallback(NULL);
-    SetMainCallback2(CB2_ReturnToFieldLocal);
+    SetMainCallback2(CB2_ReturnToFieldContinueScript);
     return TRUE;
 }
 
@@ -997,6 +1009,10 @@ bool8 RyuFollowerToTrainerID(void)
         case OBJ_EVENT_GFX_NURSE:
             gSpecialVar_0x8008 = TRAINER_REL_NURSE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
+            return TRUE;
+        case OBJ_EVENT_GFX_LINK_RS_MAY:
+            gSpecialVar_0x8008 = TRAINER_REL_MAY;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY;
             return TRUE;
         }
         return FALSE;
@@ -2061,8 +2077,9 @@ void RyuGiveDevMon(void)
     u8 slot = (CalculatePlayerPartyCount());
     u16 i = 0;
     u8 ev = 252;
+    u8 ppmax = 255;
     u8 iv = 31;
-    u8 lv = TRUE_MAX_LEVEL;
+    u8 lv = 250;//TRUE_MAX_LEVEL;
     u8 what = 0;
     u8 ribbon = TRUE;
 
@@ -2073,7 +2090,7 @@ void RyuGiveDevMon(void)
     
     CalculateMonStats(&gPlayerParty[slot]);
 
-    SetMonData(&gPlayerParty[slot], MON_DATA_PP_BONUSES, &ev); //sets all pp to max bonus
+    SetMonData(&gPlayerParty[slot], MON_DATA_PP_BONUSES, &ppmax); //sets all pp to max bonus
 
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &move1);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &move2);
@@ -2305,4 +2322,18 @@ void RyuGiveHolidayModdedMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     GetSetPokedexFlag(species, FLAG_SET_CAUGHT);
     GetSetPokedexFlag(species, FLAG_SET_SEEN);
+}
+
+void RyuSetupRandomForE4(void)
+{
+    u8 r1, r2, r3, r4;
+    r1 = (Random() % 2);
+    r2 = (Random() % 2);
+    r3 = (Random() % 2);
+    r4 = (Random() % 2);
+    VarSet(VAR_RYU_E41, r1);
+    VarSet(VAR_RYU_E42, r2);
+    VarSet(VAR_RYU_E43, r3);
+    VarSet(VAR_RYU_E44, r4);
+    //mgba_printf(LOGINFO, "%d, %d, %d, %d", r1, r2, r3, r4);
 }

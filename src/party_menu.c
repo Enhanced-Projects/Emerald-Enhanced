@@ -658,7 +658,7 @@ static bool8 AllocPartyMenuBgGfx(void)
         }
         break;
     case 2:
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
             LoadCompressedPalette(gPartyMenu_dark_Pal, 0, 0x160);
         }

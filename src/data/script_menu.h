@@ -991,7 +991,7 @@ static const struct MenuAction MultichoiceList_133[]=
 {
     {gText_BetaMenuShowSaveVersion},
     {gText_RyuBetaMenuCheckWaystone},
-    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuUICustom},
     {gText_RyuBetaMenuResetTempBattleFlags},
     {gText_RyuBetaMenuResetBadges},
     {gText_RyuBetaMenuResetGCMS},

@@ -636,6 +636,7 @@ MH4_Maxie2Event::
 	
 MH4_CourtneyScript::
 	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, RyuFollower_CourtneyScript
+	drawfullscreenimage SCENEBGCOURTNEYNEUTRAL
 	compare VAR_RYU_QUEST_MAGMA, 575
 	goto_if_ge MH4_PostLabCourtneyFollower
 	compare VAR_RYU_QUEST_MAGMA, 570
@@ -643,20 +644,24 @@ MH4_CourtneyScript::
 	compare VAR_RYU_QUEST_MAGMA, 560
 	goto_if_ge MH4_PostGroudonCourtneyFollower
 	msgbox MH4_CourtneyChatter
+	clearfullscreenimage
 	goto ryu_end
 	
 MH4_PostLabCourtneyFollower::
 	msgbox MH4_PostLabCourtneyChatter
+	clearfullscreenimage
 	release
 	end
 
 MH4_PostGroudonCourtneyFollower::
 	msgbox MH4_CourtneyPostGroudonChatter
+	clearfullscreenimage
 	release
 	end
 	
 MH4_PostR114CourtneyFollower::
 	msgbox MH4_PostR114CourtneyChatter
+	clearfullscreenimage
 	release
 	end
 	
@@ -1239,6 +1244,7 @@ MH4_NormalMagmaGroudonEndEvent::
 	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	setvar VAR_RYU_QUEST_MAGMA, 598@Player finished the main magma line with the normal ending and caught Groudon.
 	call RyuScript_IncrementQuestsFinished
+	ach give ACH_HEATED_ARGUMENT
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	fadescreen FADE_TO_BLACK
 	removeobject 20

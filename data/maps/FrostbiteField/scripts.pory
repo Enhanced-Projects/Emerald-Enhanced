@@ -35,3 +35,13 @@ FrostbiteField_EventScript_Maurice::
 	msgbox FrostbiteField_Text_MauricePostBattle, MSGBOX_AUTOCLOSE
 	end
 `
+
+
+script FF_IceStone {
+	goto_if_set(FLAG_RYU_ITEM_ICE_STONE, ryu_end)
+	finditem(ITEM_ICE_STONE)
+	setflag(FLAG_RYU_ITEM_ICE_STONE)
+	removeobject(10)
+	release
+	end
+}
