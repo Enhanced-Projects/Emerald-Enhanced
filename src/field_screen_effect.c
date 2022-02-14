@@ -334,7 +334,7 @@ static void Task_ExitDoor(u8 taskId)
         FieldSetDoorOpened(*x, *y);
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
         {
-            u8 objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            u8 objEventId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             struct ObjectEvent playerObjEv = gObjectEvents[objEventId];
             switch (playerObjEv.facingDirection)
             {
@@ -362,7 +362,7 @@ static void Task_ExitDoor(u8 taskId)
             playerObjEv.currentCoords.y += dy;
             playerObjEv.currentCoords.x += dx;
             GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x+dx, gSaveBlock1Ptr->pos.y+dy, playerObjEv.facingDirection, &followerX, &followerY);
-            TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
+            TryMoveObjectEventToMapCoords(FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
         }
         task->data[0] = 1;
         break;
@@ -372,7 +372,7 @@ static void Task_ExitDoor(u8 taskId)
         {
             u8 objEventId;
             SetPlayerVisibility(TRUE);
-            objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            objEventId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
             task->data[0] = 2;
         }
@@ -382,7 +382,7 @@ static void Task_ExitDoor(u8 taskId)
         {
             u8 objEventId;
             task->data[1] = FieldAnimateDoorClose(*x, *y);
-            objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            objEventId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             ObjectEventClearHeldMovementIfFinished(&gObjectEvents[objEventId]);
             task->data[0] = 3;
         }
@@ -419,7 +419,7 @@ static void Task_ExitNonAnimDoor(u8 taskId)
         PlayerGetDestCoords(x, y);
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
         {
-            u8 objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            u8 objEventId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             struct ObjectEvent playerObjEv = gObjectEvents[objEventId];
             switch (playerObjEv.facingDirection)
             {
@@ -447,7 +447,7 @@ static void Task_ExitNonAnimDoor(u8 taskId)
             playerObjEv.currentCoords.y += dy;
             playerObjEv.currentCoords.x += dx;
             GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x+dx, gSaveBlock1Ptr->pos.y+dy, playerObjEv.facingDirection, &followerX, &followerY);
-            TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
+            TryMoveObjectEventToMapCoords(FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
         }
         task->data[0] = 1;
         break;
@@ -457,7 +457,7 @@ static void Task_ExitNonAnimDoor(u8 taskId)
         {
             u8 objEventId;
             SetPlayerVisibility(TRUE);
-            objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            objEventId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             ObjectEventSetHeldMovement(&gObjectEvents[objEventId], GetWalkNormalMovementAction(GetPlayerFacingDirection()));
             task->data[0] = 2;
         }
@@ -486,10 +486,10 @@ static void Task_ExitNonDoor(u8 taskId)
         FreezeObjectEvents();
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
         {
-            u8 objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            u8 objEventId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             struct ObjectEvent playerObjEv = gObjectEvents[objEventId];
             GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y, playerObjEv.facingDirection, &followerX, &followerY);
-            TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
+            TryMoveObjectEventToMapCoords(FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
         }
         ScriptContext2_Enable();
         gTasks[taskId].data[0]++;
@@ -779,9 +779,9 @@ static void Task_DoDoorWarp(u8 taskId)
         if (task->data[1] < 0 || gTasks[task->data[1]].isActive != TRUE)
         {
             u8 objEventId;
-            objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            objEventId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             ObjectEventClearHeldMovementIfActive(&gObjectEvents[objEventId]);
-            objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            objEventId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_WALK_NORMAL_UP);
             task->data[0] = 2;
         }
@@ -791,7 +791,7 @@ static void Task_DoDoorWarp(u8 taskId)
         {
             u8 objEventId;
             task->data[1] = FieldAnimateDoorClose(*x, *y - 1);
-            objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            objEventId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             ObjectEventClearHeldMovementIfFinished(&gObjectEvents[objEventId]);
             SetPlayerVisibility(FALSE);
             task->data[0] = 3;

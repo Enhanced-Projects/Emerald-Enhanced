@@ -52,8 +52,8 @@ RusturfTunnel_EventScript_AquaGruntBackUp:: @ 822D083
 RT_SummonMagmaGruntBecausePlayerNoob::
 	addobject 4
 	applymovement 4, RT_MagmaToPlayer @6 left
-	applymovement OBJ_EVENT_ID_PLAYER, RT_PlayerToMagma @6 right
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, RT_PlayerToMagma @6 right
+	waitmovement PLAYER
 	goto RT_MagmaPortion
 
 RT_MagmaToPlayer::
@@ -100,12 +100,12 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
 	additem ITEM_DEVON_GOODS
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
+	applymovement PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
 	applymovement 3, RusturfTunnel_Movement_GruntEscape
 	waitmovement 0
 	removeobject 3
 	delay 50
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBrineyExit
+	applymovement PLAYER, RusturfTunnel_Movement_PlayerWatchBrineyExit
 	clearflag FLAG_DEVON_GOODS_STOLEN
 	setflag FLAG_RECOVERED_DEVON_GOODS
 	setvar VAR_RUSTBORO_CITY_STATE, 4
@@ -120,7 +120,7 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	addobject 4
 	applymovement 4, RT_MagmaGruntEnters
 	waitmovement 4
-	applymovement OBJ_EVENT_ID_PLAYER, RT_DelayedFace
+	applymovement PLAYER, RT_DelayedFace
 	msgbox RT_WhatAChump
 	closemessage
 	playse SE_PIN
@@ -156,10 +156,10 @@ RT_PostBattle::
 RT_AquaIntro::
 	setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
-	applymovement OBJ_EVENT_ID_PLAYER, RT_PlayerEscapeMagma
+	applymovement PLAYER, RT_PlayerEscapeMagma
 	msgbox RT_WaitWhereYou
 	closemessage
-	waitmovement OBJ_EVENT_ID_PLAYER
+	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_AQUA, 5 @player started aqua
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	setflag FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON
@@ -199,8 +199,8 @@ RT_ADIntro:
 	addobject 5
 	fadescreen FADE_FROM_BLACK
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_FaceLeft
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	msgbox RT_OhItsYou
 	closemessage
 	playse SE_PIN
@@ -239,11 +239,11 @@ RT_MagmaIntro::
 	waitmovement 4
 	msgbox RT_SoHow
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	applymovement PLAYER, Common_Movement_StepRight
 	waitmovement 0xff
 	msgbox RT_OneCompleted
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement PLAYER, Common_Movement_QuestionMark
 	waitmovement 0xff
 	msgbox RT_Nevermind
 	applymovement 4, RT_MagmaEscaped2

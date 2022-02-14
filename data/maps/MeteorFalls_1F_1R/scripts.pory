@@ -104,7 +104,7 @@ MF_DevonEventSouth::
 	
 MF_DevonContd::
 	clearflag FLAG_RYU_GAME_OVER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_FaceUp
 	bufferpartymonnick 0, 0
 	msgbox MF_PlayerWonVsMagma MSGBOX_DEFAULT
 	closemessage
@@ -139,7 +139,7 @@ MF_continue_devon_south::
 	applymovement 8, MF_GruntToPlayerSouth
 	waitmovement 0
 	cleartrainerflag TRAINER_GRUNT_15
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_FaceUp
 	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_GRUNT_15, MF_GruntAttacks, MF_ellipsis, MF_PlayerDevonContdSouth
 	release
@@ -148,8 +148,8 @@ MF_continue_devon_south::
 MF_PlayerDevonContdSouth::
 	clearflag FLAG_RYU_GAME_OVER
 	delay 10
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox MF_GruntLost MSGBOX_DEFAULT
 	closemessage
 	applymovement 8, MF_AquaLeavesSouth
@@ -607,8 +607,8 @@ MF_AquaSouthContd::
 	msgbox MF_WhoMightYouBe
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox MF_HahaIJest
 	closemessage
 	applymovement 8, MF_MattToPlayer

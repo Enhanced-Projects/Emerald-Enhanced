@@ -79,6 +79,9 @@ script RDBM_CheckWaystone{
         case 120:
             msgbox(format("You can't leave limbo, you lost your challenge."))
             goto(RDBM_WaystoneDisabled)
+        case 130:
+            msgbox(format("You should be chasing Wally down\nwith May."))
+            goto(RDBM_WaystoneDisabled)
     }
     msgbox(WaystoneEnabled)
     clearflag(FLAG_RYU_WAYSTONE_DISABLED)

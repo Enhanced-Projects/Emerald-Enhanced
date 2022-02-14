@@ -36,8 +36,8 @@ r120_LeafEvent::
 	lock
 	setvar VAR_RYU_QUEST_LANA, 67
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, r120_PanUp
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, r120_PanUp
+	waitmovement CAMERA
 	applymovement 45, Common_Movement_ExclamationMark
 	msgbox r120_Story1 MSGBOX_DEFAULT
 	closemessage
@@ -48,15 +48,15 @@ r120_LeafEvent::
 	msgbox r120_HikerMiffed MSGBOX_DEFAULT
 	closemessage
 	applymovement 46, Common_Movement_FaceLeft
-	applymovement OBJ_EVENT_ID_CAMERA, r120_ReturnCamera
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, r120_ReturnCamera
+	waitmovement CAMERA
 	special RemoveCameraObject
-	applymovement OBJ_EVENT_ID_PLAYER, r120_FollowLeafIntoChamber
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, r120_FollowLeafIntoChamber
+	waitmovement PLAYER
 	msgbox r120_HikerRequest MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	clearflag FLAG_HIDE_AT1_LEAF
 	setvar VAR_RYU_QUEST_LANA, 68
 	warp MAP_ANCIENT_TOMB1F, 255, 8, 29
@@ -65,18 +65,18 @@ r120_LeafEvent::
 	
 r120_LanaNotReady::
 	msgbox r120_notReady
-	applymovement OBJ_EVENT_ID_PLAYER, r120_stepDown
-	applymovement OBJ_EVENT_ID_FOLLOWER, r120_stepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, r120_stepDown
+	applymovement FOLLOWER, r120_stepDown
+	waitmovement PLAYER
 	release
 	end
 	
 R120_dead::
 	msgbox R120_death MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, r120_stepDown
-	applymovement OBJ_EVENT_ID_FOLLOWER, r120_stepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, r120_stepDown
+	applymovement FOLLOWER, r120_stepDown
+	waitmovement PLAYER
 	release
 	end
 	
@@ -152,8 +152,8 @@ r120_AT_SECOND_VISIT_SETUP::
 	lock
 	msgbox r120_SV_Intro MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, r120_SV_walkup
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, r120_SV_walkup
+	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_LANA, 82
 	clearflag FLAG_HIDE_AT1_LEAF
 	warp MAP_ANCIENT_TOMB, 255, 8, 29

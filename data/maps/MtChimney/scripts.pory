@@ -102,7 +102,7 @@ MtChimney_EventScript_Maxie:: @ 822EE0B
 	call_if_eq MtChimney_EventScript_ArchieApproachPlayerEast
 	compare VAR_FACING, DIR_NORTH
 	call_if_eq MtChimney_EventScript_ArchieApproachPlayerNorth
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MC_PlayerAqua
 	goto MC_PlayerNotAqua
@@ -120,8 +120,8 @@ MC_PlayerNotAqua::
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	goto MtChimney_EventScript_MeteoriteMachine
 	releaseall
 	end
@@ -134,8 +134,8 @@ MC_PlayerAqua::
 	compare VAR_FACING, 2
 	call_if_eq MtChimney_EventScript_ArchieExitNorth
 	removeobject 1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	msgbox MC_YouSeeStarPiece
 	closemessage
 	giveitem ITEM_STAR_PIECE, 1

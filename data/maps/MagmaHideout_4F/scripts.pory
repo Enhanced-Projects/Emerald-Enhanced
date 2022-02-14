@@ -18,7 +18,7 @@ MagmaHideout_4F_EventScript_Maxie:: @ 823A560
 	playfanfare MUS_ME_TAMA
 	playse SE_TAMA
 	special DoOrbEffect
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	delay 150
 	removeobject 7  @ sleeping Groudon
@@ -50,7 +50,7 @@ MagmaHideout_4F_EventScript_Maxie:: @ 823A560
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_MaxieGroudonWhatsWrong, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	delay 30
 	applymovement 6, Common_Movement_FacePlayer
@@ -236,12 +236,12 @@ MagmaHideout_4F_Text_MaxieImGoingAfterGroudon: @ 823ABE2
 MH4_Aqua_Bossfight::
 	lockall
 	setvar VAR_RYU_QUEST_AQUA, 101 @Player is doing courtney/maxie boss fight
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_StepRight
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_StepDown
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceRight
+	waitmovement FOLLOWER
 	msgbox MH4_Aqua_Boss_Shelly_Intro
 	closemessage
 	delay 20
@@ -277,10 +277,10 @@ MH4_PostBossBattle::
 	removeobject 10
 	removeobject 11
 	setflag FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	msgbox MH4_LetsGoBack
 	closemessage
 	setflag FLAG_RYU_DS_SHELLY_CLOSEFRIENDS
@@ -381,7 +381,7 @@ MH_Groudon_Enc::
 	playmoncry SPECIES_GROUDON, 0
 	waitmoncry
 	special DoOrbEffect
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	delay 150
 	waitstate
@@ -510,8 +510,8 @@ MH4_MagmaAdminCheck::
 	goto_if_eq ryu_end
 	msgbox MH4_NotAdminCantGoHere
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
 	release
 	end
 
@@ -537,7 +537,7 @@ MH4_MagmaMaxieEvent::
 	goto_if_ne ryu_end
 	lock
 	setvar VAR_RYU_QUEST_MAGMA, 305@Player is meeting maxie in the hideout.
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	applymovement PLAYER, Common_Movement_StepDown
 	applymovement 11, MH4_MaxieToPlayer@left 3 up 1 left 2, up 3
 	waitmovement 11
 	msgbox MH4_SoItSeems
@@ -549,8 +549,8 @@ MH4_MagmaMaxieEvent::
 	
 MH4_ToldToGoOtherWay::
 	msgbox MH4_MaxieAsked
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
 	release
 	end
 	
@@ -563,17 +563,17 @@ MH4_Maxie2Event::
 	waitmovement 11
 	msgbox MH4_NowThenPlayer
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	applymovement 11, Common_Movement_FaceUp
 	waitmovement 11
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, MH4_Cam1
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, MH4_Cam1
+	waitmovement CAMERA
 	msgbox MH4_TheAncientCreature
 	closemessage
-	applymovement OBJ_EVENT_ID_CAMERA, MH4_Cam2
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, MH4_Cam2
+	waitmovement CAMERA
 	special RemoveCameraObject
 	msgbox MH4_HoweverThereAre
 	closemessage
@@ -621,8 +621,8 @@ MH4_Maxie2Event::
 	setvar VAR_RYU_QUEST_MAGMA, 315@player is tasked with clearing out aqua grunts
 	applymovement 12, MH4_CourtneyToPlayerFollower@4 left, 1 down, 1 left, face up
 	waitmovement 12
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	msgbox MH4_Analyzing
 	closemessage
 	removeobject 12
@@ -854,8 +854,8 @@ MH4_MagmaEvent8::
 	addobject 17
 	addobject 18
 	addobject 19
-	applymovement OBJ_EVENT_ID_CAMERA, MH4_Cam3
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, MH4_Cam3
+	waitmovement CAMERA
 	applymovement 16, Common_Movement_FaceDown
 	waitmovement 16
 	msgbox MH4_WhatUtter
@@ -863,19 +863,19 @@ MH4_MagmaEvent8::
 	delay 30
 	msgbox MH4_ToThinkThat
 	closemessage
-	applymovement OBJ_EVENT_ID_CAMERA, MH4_Cam4
+	applymovement CAMERA, MH4_Cam4
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox MH4_PlayerSeesSomething
-	waitmovement OBJ_EVENT_ID_CAMERA
+	waitmovement CAMERA
 	closemessage
 	special RemoveCameraObject
 	addobject 17
 	addobject 18
 	addobject 19
-	applymovement OBJ_EVENT_ID_PLAYER, MH4_PlayerToAdmins
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MH4_PlayerToAdmins
+	waitmovement PLAYER
 	applymovement 16, Common_Movement_FaceUp
 	waitmovement 16
 	msgbox MH4_AgentPlayerImpeccable
@@ -935,17 +935,17 @@ MH4_MagmaEvent8::
 	end
 	
 MH4_ME8_MovePlayerRight::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	return
 	
 MH4_ME8_MovePlayerLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	return
 
 	
@@ -1144,12 +1144,12 @@ MH4_AquaSeafloorCavernFinished::
 	end
 	
 MH4_PlayerFacingUp::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	applymovement 20, Common_Movement_FaceLeft
 	waitmovement 20
 	goto MH4_PlayerFacingRight
@@ -1178,7 +1178,7 @@ MH4_GroudonEvent::
 	setvar VAR_RESULT, 1
 	playse SE_TAMA
 	special DoOrbEffect
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	removeobject 7  @ sleeping Groudon
 	addobject 1     @ awakened Groudon
@@ -1311,15 +1311,15 @@ MH4_CourtneyGivesMasterBall::
 	applymovement 21, MH4_CourtneyToPlayer
 	waitmovement 21
 	msgbox MH4_PlayerTakeThis
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_FaceUp
 	closemessage
 	applymovement 20, Common_Movement_FaceDown
 	waitmovement 20
 	giveitem ITEM_MASTER_BALL, 1
 	msgbox MH4_CourtneyHowCouldYou
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -1360,8 +1360,8 @@ MH4_CourtneyEnd1::
 	waitmovement 22
 	msgbox MH4_TabithaSuprised
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MH4_PlayerToTabitha@fast
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MH4_PlayerToTabitha@fast
+	waitmovement PLAYER
 	msgbox MH4_PlayerTiredOfTabitha
 	closemessage
 	applymovement 22, MH4_GruntSlideUp2DiagNW
@@ -1383,12 +1383,12 @@ MH4_CourtneyEnd2::
 	waitmovement 21
 	applymovement 21, Common_Movement_FaceDown
 	waitmovement 21
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	setflag FLAG_RYU_DS_COURTNEY_LOVERS
 	msgbox MH4_CourtneyLovesPlayer
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement PLAYER, Common_Movement_FaceLeft
 	applymovement 21, Common_Movement_FaceLeft
 	waitmovement 21
 	msgbox MH4_BlaiseAsksWhoLeaderIs
@@ -1401,8 +1401,8 @@ MH4_CourtneyEnd2::
 	waitmovement 23
 	removeobject 23
 	applymovement 21, Common_Movement_FaceDown
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox MH4_WhatTroubleCanWe
 	closemessage
 	goto MH4_CourtneyEnd3
@@ -1600,8 +1600,8 @@ MH4_DoGroudonAquaScene::
 	addobject 25
 	delay 60
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, MH4_MoveCameraDownForGroudon
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, MH4_MoveCameraDownForGroudon
+	waitmovement CAMERA
 	special RemoveCameraObject
 	playmoncry SPECIES_GROUDON, 0
 	waitmoncry

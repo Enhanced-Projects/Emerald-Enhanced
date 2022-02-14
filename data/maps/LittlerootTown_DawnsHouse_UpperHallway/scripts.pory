@@ -18,7 +18,7 @@ script LRT_DH_MayRoomTrigger {
         msgbox("It's an empty bedroom.\nBest leave it alone.")
     }
     closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown)
+    applymovement(PLAYER, Common_Movement_StepDown)
     waitmovement(0xFF)
     release
     end

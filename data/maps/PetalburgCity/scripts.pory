@@ -4,6 +4,7 @@ raw `
 .set LOCALID_WALLYS_DAD, 5
 .set LOCALID_GYM_BOY, 8
 .set LOCALID_SCOTT, 9
+.set WALLY, 13
 
 PetalburgCity_MapScripts::
 	map_script ON_TRANSITION, PetalburgCity_OnTransition
@@ -35,6 +36,8 @@ PetalburgCity_EventScript_SetGymDoorsUnlocked:: @ 81DC316
 
 PetalburgCity_OnFrame: @ 81DC31C
 	map_script_2 VAR_RYU_QUEST_MAGMA, 245, PC_DoMagmaStuffAfterHeist
+	map_script_2 VAR_TEMP_2, 0, PC_EnableMayObject
+	map_script_2 VAR_TEMP_3, 0, PBC_DoWallyChaseScene
 	.2byte 0
 
 PetalburgCity_EventScript_Boy1:: @ 81DC3E6
@@ -116,7 +119,7 @@ PetalburgCity_EventScript_ShowGymToPlayer:: @ 81DC4CA
 	call_if_eq PetalburgCity_EventScript_LeadPlayerToGym3
 	msgbox PetalburgCity_Text_ThisIsPetalburgGym, MSGBOX_DEFAULT
 	applymovement 8, Common_Movement_WalkInPlaceFastestRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	msgbox PetalburgCity_Text_ThisIsGymSign, MSGBOX_DEFAULT
 	closemessage
@@ -129,7 +132,7 @@ PetalburgCity_EventScript_ShowGymToPlayer:: @ 81DC4CA
 PetalburgCity_EventScript_BoyApproachPlayer0:: @ 81DC57F
 	applymovement 8, PetalburgCity_Movement_BoyApproachPlayer0
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestDown
 	waitmovement 0
 	return
 
@@ -141,38 +144,38 @@ PetalburgCity_EventScript_BoyApproachPlayer1:: @ 81DC594
 PetalburgCity_EventScript_BoyApproachPlayer2:: @ 81DC59F
 	applymovement 8, PetalburgCity_Movement_BoyApproachPlayer2
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	return
 
 PetalburgCity_EventScript_BoyApproachPlayer3:: @ 81DC5B4
 	applymovement 8, PetalburgCity_Movement_BoyApproachPlayer3
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	return
 
 PetalburgCity_EventScript_LeadPlayerToGym0:: @ 81DC5C9
 	applymovement 8, PetalburgCity_Movement_BoyWalkToGym0
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWalkToGym0
+	applymovement PLAYER, PetalburgCity_Movement_PlayerWalkToGym0
 	waitmovement 0
 	return
 
 PetalburgCity_EventScript_LeadPlayerToGym1:: @ 81DC5DB
 	applymovement 8, PetalburgCity_Movement_BoyWalkToGym1
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWalkToGym1
+	applymovement PLAYER, PetalburgCity_Movement_PlayerWalkToGym1
 	waitmovement 0
 	return
 
 PetalburgCity_EventScript_LeadPlayerToGym2:: @ 81DC5ED
 	applymovement 8, PetalburgCity_Movement_BoyWalkToGym2
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWalkToGym2
+	applymovement PLAYER, PetalburgCity_Movement_PlayerWalkToGym2
 	waitmovement 0
 	return
 
 PetalburgCity_EventScript_LeadPlayerToGym3:: @ 81DC5FF
 	applymovement 8, PetalburgCity_Movement_BoyWalkToGym3
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWalkToGym3
+	applymovement PLAYER, PetalburgCity_Movement_PlayerWalkToGym3
 	waitmovement 0
 	return
 
@@ -353,25 +356,25 @@ PetalburgCity_EventScript_Scott:: @ 81DC6E9
 	end
 
 PetalburgCity_EventScript_ScottExit0:: @ 81DC78E
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit0
+	applymovement PLAYER, PetalburgCity_Movement_PlayerWatchScottExit0
 	applymovement 9, PetalburgCity_Movement_ScottExit0
 	waitmovement 0
 	return
 
 PetalburgCity_EventScript_ScottExit1:: @ 81DC7A0
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit1
+	applymovement PLAYER, PetalburgCity_Movement_PlayerWatchScottExit1
 	applymovement 9, PetalburgCity_Movement_ScottExit1
 	waitmovement 0
 	return
 
 PetalburgCity_EventScript_ScottExit2:: @ 81DC7B2
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit2
+	applymovement PLAYER, PetalburgCity_Movement_PlayerWatchScottExit2
 	applymovement 9, PetalburgCity_Movement_ScottExit2
 	waitmovement 0
 	return
 
 PetalburgCity_EventScript_ScottExit3:: @ 81DC7C4
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit3
+	applymovement PLAYER, PetalburgCity_Movement_PlayerWatchScottExit3
 	applymovement 9, PetalburgCity_Movement_ScottExit3
 	waitmovement 0
 	return
@@ -567,16 +570,16 @@ PC_NoTimeToSwim::
 	lock
 	msgbox PC_NotTheTime
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
 	release
 	end
 	
 PC_YouCantLeaveThisDirection::
 	msgbox PC_YouShouldBeFleeingWest
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
 	release
 	end
 	
@@ -593,12 +596,12 @@ PC_StopPlayerForDad::
 	waitmovement 7
 	addobject 10
 	addobject 11
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox PC_PlayerElipsis
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PC_ContinueEscapingLeft@6 left
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, PC_ContinueEscapingLeft@6 left
+	waitmovement PLAYER
 	getplayerxy VAR_TEMP_D, VAR_TEMP_E
 	compare VAR_TEMP_E, 10
 	call_if_eq PC_AdjustPlayerTop
@@ -613,49 +616,49 @@ PC_StopPlayerForDad::
 	end
 	
 PC_AdjustPlayerTop::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	return
 	
 PC_AdjustPlayerMid::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	return
 	
 PC_AdjustPlayerBottom::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	return
 	
 PC_ContinueScene::
-	applymovement OBJ_EVENT_ID_PLAYER, PC_MoveGuard
+	applymovement PLAYER, PC_MoveGuard
 	applymovement 8, PC_MoveGuard
 	waitmovement 8
 	applymovement 10, PC_MagmaGruntEscape
 	waitmovement 10
 	removeobject 10
-	applymovement OBJ_EVENT_ID_PLAYER PC_PlayerAttemptEscape
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER PC_PlayerAttemptEscape
+	waitmovement PLAYER
 	applymovement 8, Common_Movement_FaceDown
 	applymovement 9, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, PC_PlayerStruggle
+	waitmovement PLAYER
+	applymovement PLAYER, PC_PlayerStruggle
 	msgbox PC_LetGoYou
 	closemessage
 	applymovement 8, Common_Movement_FaceRight
 	applymovement 9, Common_Movement_FaceRight
 	waitmovement 9
 	addobject 7
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	applymovement 7, PC_DadToPlayer@leave 2 space gap
 	waitmovement 7
 	msgbox PC_DadPlayerLook
@@ -672,7 +675,7 @@ PC_ContinueScene::
 	waitmovement 11
 	msgbox PC_WhoAreYou
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	applymovement PLAYER, Common_Movement_StepLeft
 	delay 20
 	applymovement 11, Common_Movement_StepLeft
 	waitmovement 11
@@ -810,4 +813,149 @@ script R109_ShinyStone {
 	removeobject(26)
 	release
 	end
+}
+
+script PC_EnableMayObject {
+	setvar(VAR_TEMP_2, 100)
+	if ((flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY)) {
+		removeobject(12)
+		setflag(FLAG_RYU_HIDE_REL_OBJECTS)
+	}
+	elif ((var(VAR_RYU_QUEST_MAY) == 30) || (flag(FLAG_RYU_MAY_QUEST_PENDING_PETALBURG) == TRUE)) {
+		addobject(12)
+		clearflag(FLAG_RYU_HIDE_REL_OBJECTS)
+		call(CheckDismissRivalLeaf)
+	}
+	elif ((var(VAR_RYU_QUEST_MAY) > 30) || (var(VAR_RYU_QUEST_MAY) < 30)) {
+		removeobject(12)
+		setflag(FLAG_RYU_HIDE_REL_OBJECTS)
+	}
+	else {
+		removeobject(12)
+		setflag(FLAG_RYU_HIDE_REL_OBJECTS)
+	}
+	end
+}
+
+script CheckDismissRivalLeaf { //this is long, i know, but rival as well as leaf share a palette slot with RS MAY, so the palettes clash.
+	if ((flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) && ((var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL) || (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL) || (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LEAF))) {
+		lockall
+		lock
+		call(RyuForceCancelFollowerForQuest)
+		release
+		
+	}
+	return
+}
+
+script PBC_CheckPreventEntry {
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
+		if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY) {
+			release
+			end
+		}
+		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (I should grab May before\n entering.)")
+		closemessage
+		applymovement(PLAYER, Common_Movement_StepDown)
+		applymovement(FOLLOWER, Common_Movement_StepDown)
+		waitmovement(PLAYER)
+		release
+		end
+	}
+		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (I should grab May before\n entering.)")
+		closemessage
+		applymovement(PLAYER, Common_Movement_StepDown)
+		applymovement(FOLLOWER, Common_Movement_StepDown)
+		waitmovement(PLAYER)
+		release
+		end
+}
+
+script PBC_May {
+	setflag(FLAG_RYU_HIDE_REL_OBJECTS)
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
+		call(RyuForceCancelFollowerForQuest)
+	}
+	if (var(VAR_RYU_QUEST_MAY) == 41) { //allow re-obtaining follower may if player managed to dismiss her before completing the investigation.
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Shall we continue the investigation?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			removeobject(12)
+			setflag(FLAG_RYU_HIDE_REL_OBJECTS)
+			createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Ready when you are!")
+			release
+			end
+		}
+		else {
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay! Just let me know when you\nwant to resume!")
+			closemessage
+			release
+			end
+		}
+	}
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hey! Glad you made it!\pWally used to live here, but\nthe house seems empty.\pLet's investigate together!")
+	setvar(VAR_RYU_QUEST_MAY, 35) //Player is investigating wally's house with May.
+	applymovement(12, Common_Movement_StepRight)
+	waitmovement(12)
+	applymovement(12, Common_Movement_StepUp)
+	playse(SE_DOOR)
+	removeobject(12)
+	applymovement(PLAYER, Common_Movement_StepRight)
+	applymovement(PLAYER, Common_Movement_StepUp)
+	waitmovement(0xFF)
+	warpdoor(MAP_PETALBURG_CITY_WALLYS_HOUSE, 0, 4, 5)
+	waitstate
+}
+
+script PBC_DoWallyChaseScene {
+	setvar(VAR_TEMP_3, 100)
+	if (var(VAR_RYU_QUEST_MAY) == 50) {
+		applymovement(PLAYER, PBC_ChaseWally0)
+		applymovement(FOLLOWER, PBC_ChaseWally0)
+		waitmovement(FOLLOWER)
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}There he is! Go!")
+		closemessage
+		addobject(WALLY)
+		applymovement(PLAYER, PBC_ChaseWally1)
+		applymovement(FOLLOWER, PBC_ChaseWally1)
+		waitmovement(FOLLOWER)
+		playse(SE_PIN)
+		applymovement(WALLY, Common_Movement_ExclamationMark)
+		waitmovement(WALLY)
+		applymovement(WALLY, Common_Movement_FaceRight)
+		waitmovement(WALLY)
+		applymovement(WALLY, PBC_ChaseWally3)
+		applymovement(PLAYER, PBC_ChaseWally2)
+		applymovement(FOLLOWER, PBC_ChaseWally2)
+		waitmovement(WALLY)
+		removeobject(WALLY)
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Darn! We lost him!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Well... What do we do now?\p{COLOR LIGHT_RED}{SHADOW RED}He used to stay with family\nin Verdanturf.\pWe might find him there.\nLet's go!")
+		closemessage
+		setvar(VAR_RYU_QUEST_MAY, 60)//Player and May chased wally to route 104 and lost him. Check Verdanturf.
+		release
+		end
+	}
+}
+
+movement PBC_ChaseWally0 {
+	walk_fastest_down * 3
+	face_down
+	step_end
+}
+
+movement PBC_ChaseWally1 {
+	walk_fastest_down * 3
+	face_left
+	step_end
+}
+
+movement PBC_ChaseWally2 {
+	walk_fast_down * 1
+	walk_fast_left * 5
+	step_end
+}
+
+movement PBC_ChaseWally3 {
+	walk_fastest_left * 10
+	step_end
 }

@@ -20,8 +20,8 @@ GC_ME_BlaiseEvent:
 	faceplayer
 	msgbox GC_ME_WellLooksLike
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_QuestionMark
+	waitmovement PLAYER
 	msgbox GC_ME_WhatDontYou
 	closemessage
 	fadescreen FADE_TO_BLACK
@@ -41,20 +41,20 @@ GC_ME_BlaiseEvent:
 	
 	
 GC_ME_NormalMovement::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
 	goto GC_ME_BlaiseContd
 	
 GC_ME_AlternateMovement::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	goto GC_ME_BlaiseContd
 	
 	
@@ -136,16 +136,16 @@ GC_B2Msg:
 
 GC_ME_Everstone1::
 	lock
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
 	setvar VAR_RYU_QUEST_MAGMA, 125 @player found the second everstone mound
 	msgbox GC_ME_YupRightOn
 	closemessage
 	addobject 12
 	applymovement 12, GC_ME_StevenEntry
 	waitmovement 12
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown
+	applymovement PLAYER, Common_Movement_FaceDown
+	applymovement FOLLOWER, Common_Movement_FaceDown
 	waitmovement 0xFF
 	msgbox GC_ME_TeamMagma
 	closemessage
@@ -155,15 +155,15 @@ GC_ME_Everstone1::
 	closemessage
 	msgbox GC_ME_YouveGotIt
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, GC_ME_PlayerToSteven
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, GC_ME_PlayerToSteven
+	waitmovement PLAYER
 	playse SE_PIN
 	applymovement 12, Common_Movement_ExclamationMark
 	waitmovement 12
 	msgbox GC_ME_WhatYoureOn
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	msgbox GC_ME_QuiteTheEager
 	closemessage
 	setflag FLAG_RYU_GAME_OVER
@@ -178,8 +178,8 @@ GC_ME_Event3::
 	removeobject 12
 	msgbox GC_ME_AndOnThat
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	playfanfare MUS_FANFA1
 	giveitem ITEM_MAGMA_EMBLEM, 1
 	call RyuGivePokenav

@@ -30,8 +30,8 @@ Ryu_FrontierModeCheckLeave::
 	
 RyuFrontierModeUnlockHoenn::
 	msgbox BF_CantLeaveNoSymbols
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	release
 	end
 	

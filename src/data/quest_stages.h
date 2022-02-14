@@ -151,7 +151,7 @@ const u8 sLanaQuestStage955Desc[] = _("You helped Lana overcome her anxiety and\
 const u8 sLanaQuestStage1000Desc[] = _("You have finished Lana's questline, unlocked\n her as a follower, and received her gifts.\nGood End.");
 
 const u8 sNurseQuestStageZeroDesc[] = _("Heal 50 times at a pokemon center to\nget noticed by the Nurse and start her quest.");
-const u8 sNurseQuestStage1Desc[]  = _("Player hasn't started the Nurse quest yet.");
+const u8 sNurseQuestStage1Desc[]  = _("Player hasn't started the Nurse quest yet,\nbut can do so by exiting a pokecenter.\nIsland pokecenters don't count.");
 const u8 sNurseQuestStage2Desc[]  = _("You started the first Nurse quest.\nTake her to Verdanturf");
 const u8 sNurseQuestStage3Desc[]  = _("You escorted the Nurse to Verdanturf.\nShe will approach you when she's ready to\nbe escorted elsewhere.");
 const u8 sNurseQuestStage4Desc[]  = _("The Nurse would like you to escort her to\nFallarbor Town.");
@@ -163,6 +163,19 @@ const u8 sNurseQuestStage9Desc[] = _("You've arrived at the Nurse's quarters.");
 const u8 sNurseQuestStage10Desc[] = _("You have finished Nurse Joy's quest.");
 const u8 sNurseQuestStage11Desc[] = _("You terminated the Nurse's quest by\ndeclining to escort her. Bad End.");
 
+const u8 sMayQuestStage0[] = _("You have not started this quest yet.");
+const u8 sMayQuestStage5[] = _("You unlocked May's quest.\nTalk to {RIVAL}'s mom to begin the intro.");
+const u8 sMayQuestStage10[] = _("May's intro started.\nGo to Littleroot Town's entrance to meet\nMay.");
+const u8 sMayQuestStage15[] = _("You decided to help May.\nTake her to {RIVAL}'s house.");
+const u8 sMayQuestStage25[] = _("Go talk to May in her room to start her\nrecruitment quest.");
+const u8 sMayQuestStage30[] = _("You decided to help May find her missing\nfriend.\nGo find May in Petalburg.");
+const u8 sMayQuestStage40[] = _("You met up with may in Petalburg.\nInvestigate the house.");
+const u8 sMayQuestStage41[] = _("You Concluded your investigation and may\ndecided to wait till night to try\nto catch who's been in the house.");
+const u8 sMayQuestStage50[] = _("Your investigation is complete and you\ndiscovered that it was Wally who was\nin the house at nights.\nHe ran out the door, Chase him!");
+const u8 sMayQuestStage60[] = _("You lost track of Wally west of Petalburg.\nMay suggested trying Verdanturf.\nGo there.");
+const u8 sMayQuestStage666[] = _("You declined helping may in Littleroot.\nBAD END.");
+const u8 sMayQuestStage999[] = _("You didn't help may locate her lost friend.\nBAD END.");
+
 struct QuestStageDesc
 {
   const u8 * description;
@@ -171,7 +184,7 @@ struct QuestStageDesc
 
 #define QUEST_STAGE_0 {sQuestStage0, 0}
 #define QUEST_STAGE_END {NULL, 0xFFFF}
-const static struct QuestStageDesc gAquaQuestStages[] = {
+const static struct QuestStageDesc gAquaQuestStages[] = { //Always visible in quest tracker.
   {
     .description = sMainQuestNotStartedStg,
     .questStage = 0,
@@ -335,7 +348,7 @@ const static struct QuestStageDesc gAquaQuestStages[] = {
   QUEST_STAGE_END
 };
 
-const static struct QuestStageDesc gMagmaQuestStages[] = {
+const static struct QuestStageDesc gMagmaQuestStages[] = {//always visible in quest tracker
   {
     .description = sMainQuestNotStartedStg,
     .questStage = 0,
@@ -503,7 +516,7 @@ const static struct QuestStageDesc gMagmaQuestStages[] = {
   QUEST_STAGE_END
 };
 
-const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
+const static struct QuestStageDesc gDevonCorporateQuestStages[] = { //always visible in quest tracker unless player is doing the scientist quest. 
   {
     .description = sMainQuestNotStartedStg,
     .questStage = 0,
@@ -587,7 +600,7 @@ const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
   QUEST_STAGE_END
 };
 
-const static struct QuestStageDesc gDevonScientistQuestStages[] = {
+const static struct QuestStageDesc gDevonScientistQuestStages[] = { //only visible when stage is between 1 and 2000
   {
     .description = sMainQuestNotStartedStg,
     .questStage = 0,
@@ -651,7 +664,7 @@ const static struct QuestStageDesc gDevonScientistQuestStages[] = {
   QUEST_STAGE_END
 };
 
-const static struct QuestStageDesc gLanaQuestStages[] = {
+const static struct QuestStageDesc gLanaQuestStages[] = { //only visible after the event in slateport pokecenter. (stage 2 - 1000)
   {
     .description = sLanaQuestStageZeroDesc,
     .questStage = 0,
@@ -763,7 +776,7 @@ const static struct QuestStageDesc gLanaQuestStages[] = {
   QUEST_STAGE_END
 };
 
-const static struct QuestStageDesc gNurseQuestStages[] = {
+const static struct QuestStageDesc gNurseQuestStages[] = { //only visible when stage is 1 or greater.
   {
     .description = sNurseQuestStageZeroDesc,
     .questStage = 0,
@@ -813,4 +826,40 @@ const static struct QuestStageDesc gNurseQuestStages[] = {
     .questStage = 11,
   },
   QUEST_STAGE_END
+};
+
+const static struct QuestStageDesc gMayQuestStages[] = { //only visible when stage is 5 or higher.
+    {
+      .description = sMayQuestStage0,
+      .questStage = 0,
+    },
+    {
+      .description = sMayQuestStage5,
+      .questStage = 5,
+    },
+    {
+      .description = sMayQuestStage10,
+      .questStage = 10,
+    },
+    {
+      .description = sMayQuestStage15,
+      .questStage = 15,
+    },
+    {
+      .description = sMayQuestStage25,
+      .questStage = 25,
+    },
+    {
+      .description = sMayQuestStage30,
+      .questStage = 30,
+    },
+    {
+      .description = sMayQuestStage666,
+      .questStage = 666,
+    },
+    {
+      .description = sMayQuestStage999,
+      .questStage = 999,
+    },
+    QUEST_STAGE_END
 };

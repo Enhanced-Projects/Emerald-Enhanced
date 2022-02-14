@@ -299,7 +299,7 @@ void SpawnLinkPartnerObjectEvent(void)
                     if (gLinkPlayers[i].gender == 0)
                         linkSpriteId = OBJ_EVENT_GFX_LINK_RS_BRENDAN;
                     else
-                        linkSpriteId = OBJ_EVENT_GFX_LINK_RS_MAY;
+                        linkSpriteId = OBJ_EVENT_GFX_MAY;
                     break;
                 case VERSION_EMERALD:
                     if (gLinkPlayers[i].gender == 0)
@@ -331,7 +331,7 @@ static void LoadLinkPartnerObjectEventSpritePalette(u16 graphicsId, u8 localEven
     // Note: This temp var is necessary; paletteNum += 6 doesn't match.
     adjustedPaletteNum = paletteNum + 6;
     if (graphicsId == OBJ_EVENT_GFX_LINK_RS_BRENDAN ||
-        graphicsId == OBJ_EVENT_GFX_LINK_RS_MAY ||
+        graphicsId == OBJ_EVENT_GFX_MAY ||
         graphicsId == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL ||
         graphicsId == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)
     {
@@ -347,7 +347,7 @@ static void LoadLinkPartnerObjectEventSpritePalette(u16 graphicsId, u8 localEven
                 case OBJ_EVENT_GFX_LINK_RS_BRENDAN:
                     LoadPalette(gObjectEventPalette33, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
-                case OBJ_EVENT_GFX_LINK_RS_MAY:
+                case OBJ_EVENT_GFX_MAY:
                     LoadPalette(gObjectEventPalette34, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
                 case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
@@ -1000,7 +1000,7 @@ void IsGrassTypeInParty(void)
 
 void SpawnCameraObject(void)
 {
-    u8 obj = SpawnSpecialObjectEventParameterized(OBJ_EVENT_GFX_BOY_1, MOVEMENT_TYPE_FACE_DOWN, OBJ_EVENT_ID_CAMERA, gSaveBlock1Ptr->pos.x + 7, gSaveBlock1Ptr->pos.y + 7, 3);
+    u8 obj = SpawnSpecialObjectEventParameterized(OBJ_EVENT_GFX_BOY_1, MOVEMENT_TYPE_FACE_DOWN, CAMERA, gSaveBlock1Ptr->pos.x + 7, gSaveBlock1Ptr->pos.y + 7, 3);
     gObjectEvents[obj].invisible = TRUE;
     CameraObjectSetFollowedObjectId(gObjectEvents[obj].spriteId);
 }
@@ -1008,7 +1008,7 @@ void SpawnCameraObject(void)
 void RemoveCameraObject(void)
 {
     CameraObjectSetFollowedObjectId(GetPlayerAvatarObjectId());
-    RemoveObjectEventByLocalIdAndMap(OBJ_EVENT_ID_CAMERA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    RemoveObjectEventByLocalIdAndMap(CAMERA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
 }
 
 u8 GetPokeblockNameByMonNature(void)

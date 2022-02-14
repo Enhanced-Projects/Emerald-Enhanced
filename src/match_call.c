@@ -334,7 +334,7 @@ static bool32 sub_81963F0(u8 taskId)
         if (!gMatchCallState.triggeredFromScript)
         {
             LoadMessageBoxAndBorderGfx();
-            playerObjectId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            playerObjectId = GetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0);
             ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
             ScriptMovement_UnfreezeObjectEvents();
             UnfreezeObjectEvents();

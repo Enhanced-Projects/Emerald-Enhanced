@@ -322,7 +322,7 @@ LT_RivalEnter2::
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
-	applymovement OBJ_EVENT_ID_PLAYER, LT_stepright
+	applymovement PLAYER, LT_stepright
 	goto LT_RivalEnter
 	
 LT_MaleRivalEnter2::
@@ -330,7 +330,7 @@ LT_MaleRivalEnter2::
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
-	applymovement OBJ_EVENT_ID_PLAYER, LT_stepright
+	applymovement PLAYER, LT_stepright
 	goto LT_RivalEnter
 	
 LT_RivalEnter3::
@@ -339,7 +339,7 @@ LT_RivalEnter3::
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
-	applymovement OBJ_EVENT_ID_PLAYER, LT_stepleft
+	applymovement PLAYER, LT_stepleft
 	goto LT_RivalEnter
 	
 LT_MaleRivalEnter3::
@@ -347,7 +347,7 @@ LT_MaleRivalEnter3::
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
-	applymovement OBJ_EVENT_ID_PLAYER, LT_stepleft
+	applymovement PLAYER, LT_stepleft
 	goto LT_RivalEnter
 	
 LT_stepright:

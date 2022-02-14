@@ -190,6 +190,7 @@ bool8 RyuGiveMewtwo(void)
 {
     u8 ev = 252;
     u8 slot = CalculatePlayerPartyCount();
+    u8 boss = TRUE;
     // empty party (how?) or full party
     if (slot == 0 || slot > 5) {
       return FALSE;
@@ -208,7 +209,7 @@ bool8 RyuGiveMewtwo(void)
     }
     if (Random() % 100 < 30) 
     {
-        SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, 1);
+        SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &boss);
     }
     return TRUE;
 }
@@ -1022,7 +1023,7 @@ bool8 RyuFollowerToTrainerID(void)
             gSpecialVar_0x8008 = TRAINER_REL_NURSE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
             return TRUE;
-        case OBJ_EVENT_GFX_LINK_RS_MAY:
+        case OBJ_EVENT_GFX_MAY:
             gSpecialVar_0x8008 = TRAINER_REL_MAY;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY;
             return TRUE;
@@ -2014,6 +2015,9 @@ int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game
     
     if (FlagGet(FLAG_RYU_LIMBO) == 1)//Player is in Limbo after failing challenge or hardcore.
         return 120;
+    
+    if (VarGet(VAR_RYU_QUEST_MAY) == 50) 
+        return 130;
 
     return 0;
 }
@@ -2348,4 +2352,15 @@ void RyuSetupRandomForE4(void)
     VarSet(VAR_RYU_E43, r3);
     VarSet(VAR_RYU_E44, r4);
     //mgba_printf(LOGINFO, "%d, %d, %d, %d", r1, r2, r3, r4);
+}
+
+void RyuCheckIfInWallysHouse (void)
+{
+    if ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PETALBURG_CITY_WALLYS_HOUSE)) && (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PETALBURG_CITY_WALLYS_HOUSE)))
+    {
+        gSpecialVar_Result = TRUE;
+        return;
+    }
+    gSpecialVar_Result = FALSE;
+    return;
 }

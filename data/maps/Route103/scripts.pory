@@ -99,7 +99,7 @@ Route103_EventScript_RivalExit:: @ 81EC50A
 	end
 
 Route103_EventScript_RivalExitFacingNorth:: @ 81EC53D
-	applymovement OBJ_EVENT_ID_PLAYER, Route103_Movement_WatchRivalExitFacingNorth
+	applymovement PLAYER, Route103_Movement_WatchRivalExitFacingNorth
 	applymovement 2, Route103_Movement_RivalExitFacingNorth1
 	waitmovement 0
 	applymovement 2, Route103_EventScript_RivalExitFacingNorth2
@@ -108,7 +108,7 @@ Route103_EventScript_RivalExitFacingNorth:: @ 81EC53D
 	end
 
 Route103_EventScript_RivalExitFacingEastOrWest:: @ 81EC561
-	applymovement OBJ_EVENT_ID_PLAYER, Route103_Movement_WatchRivalExitFacingEastOrWest
+	applymovement PLAYER, Route103_Movement_WatchRivalExitFacingEastOrWest
 	applymovement 2, Route103_Movement_RivalExit1
 	waitmovement 0
 	applymovement 2, Route103_Movement_RivalExit2
@@ -354,10 +354,10 @@ r103_MagmaMeeting3_TopRight::
 	compare VAR_RYU_QUEST_MAGMA, 225
 	goto_if_ge ryu_end
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
 	goto R103_MagmaMeeting3Main
 
 r103_MagmaMeeting3_Top::
@@ -368,10 +368,10 @@ r103_MagmaMeeting3_Top::
 	compare VAR_RYU_QUEST_MAGMA, 225
 	goto_if_ge ryu_end
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	goto R103_MagmaMeeting3Main
 
 r103_MagmaMeeting3_Bottom::
@@ -382,10 +382,10 @@ r103_MagmaMeeting3_Bottom::
 	compare VAR_RYU_QUEST_MAGMA, 225
 	goto_if_ge ryu_end
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	goto R103_MagmaMeeting3Main
 
 r103_MagmaMeeting3_BottomRight::
@@ -395,10 +395,10 @@ r103_MagmaMeeting3_BottomRight::
 	compare VAR_RYU_QUEST_MAGMA, 225
 	goto_if_ge ryu_end
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
 	goto R103_MagmaMeeting3Main
 	
 R103_MagmaMeeting3Main::
@@ -437,8 +437,8 @@ R103_MagmaMeeting3Main::
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_RYU_QUEST_MAGMA, 225@Heist Initialized
 	setflag FLAG_RYU_BANNED_FROM_OLDALE
-	applymovement OBJ_EVENT_ID_PLAYER, OT_MoveIntoPlace
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, OT_MoveIntoPlace
+	waitmovement PLAYER
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	release
 	end
@@ -560,10 +560,10 @@ script r103_CheckTutorial103 {
 			msgbox("{RIVAL} is waiting for you to\nmeet him!")
 		}
 		closemessage
-		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft)
-		applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft)
-		waitmovement(OBJ_EVENT_ID_PLAYER)
-		waitmovement(OBJ_EVENT_ID_FOLLOWER)
+		applymovement(PLAYER, Common_Movement_StepLeft)
+		applymovement(FOLLOWER, Common_Movement_StepLeft)
+		waitmovement(PLAYER)
+		waitmovement(FOLLOWER)
 		releaseall
 		end
 	}

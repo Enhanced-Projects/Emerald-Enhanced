@@ -14,7 +14,7 @@ FrostyForest_OnTransition:
 FrostyForest_EventScript_FallThroughIce::
 	lockall
 	delay 20
-	applymovement OBJ_EVENT_ID_PLAYER, FrostyForest_Movement_FallThroughIce
+	applymovement PLAYER, FrostyForest_Movement_FallThroughIce
 	waitmovement 0
 	playse SE_RU_HYUU
 	delay 60
@@ -33,7 +33,7 @@ FrostyForest_IceWarpTile::
   waitse
   playse SE_RU_GASYAN
   waitse
-  applymovement OBJ_EVENT_ID_PLAYER, FF_StepInPlace
+  applymovement PLAYER, FF_StepInPlace
   setmetatile VAR_TEMP_5, VAR_TEMP_6, 769, TRUE
   special DrawWholeMapView
   delay 30

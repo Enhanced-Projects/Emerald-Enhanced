@@ -14,6 +14,7 @@ RyuResetFollowerPositionAR::
 	return
 
 RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
 	call RF_FollowerLeaveCall
 	return
 	
@@ -31,7 +32,7 @@ RyuFollowerSelectNPCScript::
 	case OBJ_EVENT_GFX_NURSE, RyuFollower_NurseJoy
 	case OBJ_EVENT_GFX_LASS, r102_FollowerTianaScript
 	case OBJ_EVENT_GFX_HEX_MANIAC, MP_FQ_HexerFollowerScript
-	case OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollower_MaySelector
+	case OBJ_EVENT_GFX_MAY, RyuFollower_MaySelector
 	end
 
 RyuFollower_ShellyScript::
@@ -126,6 +127,11 @@ RyuFollower_NurseAlreadyHealed::
 	end
 
 RyuFollower_MaySelector::
+	switch VAR_RYU_QUEST_MAY
+	case 60, RF_MayStage60
+	case 50, RF_MayStage50
+	case 40, CheckWHInvestigationStatus
+	case 41, RyuFollower_MayReturnToWallyHouseNight
 	goto_if_set FLAG_RYU_DS_MAY_CLOSEFRIENDS, RyuFollower_MayNormal
 	msgbox RF_MayIntroMsg
 	closemessage
@@ -165,7 +171,7 @@ RF_MayIntroMsg:
 FollowerDawnSetup::
 	removeobject 2
 	createfollower OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_EAST
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceLeft
+	applymovement FOLLOWER, Common_Movement_FaceLeft
 	waitmovement 0
 	clearfullscreenimage
 	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
@@ -176,7 +182,7 @@ FollowerDawnSetup::
 FollowerBrendanSetup::
 	removeobject 2
 	createfollower OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RyuFollowerSelectNPCScript, DIR_WEST
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
+	applymovement FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
 	clearfullscreenimage
 	setflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
@@ -187,7 +193,7 @@ FollowerBrendanSetup::
 FollowerLeafSetup::
 	removeobject 2
 	createfollower OBJ_EVENT_GFX_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	applymovement FOLLOWER, Common_Movement_FaceUp
 	waitmovement 0
 	setflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
 	msgbox LeafOkLetsGo
@@ -217,22 +223,22 @@ FollowerNurseSetup::
 	waitmovement 1
 	removeobject 1
 	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_NORTH
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
+	applymovement FOLLOWER, Common_Movement_StepDown
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
 	setmetatile 7, 3, 517, 1
 	setmetatile 7, 2, 519, 0
 	playse SE_DOOR
 	special DrawWholeMapView
 	waitse
 	msgbox NurseOkLetsGo
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceRight
+	waitmovement FOLLOWER
 	release
 	end
 
@@ -254,7 +260,7 @@ RF_FollowerLeaveCall::
 	case OBJ_EVENT_GFX_LASS, Ryu_RestoreTiana
 	case OBJ_EVENT_GFX_HEX_MANIAC, Ryu_DestroyWithoutPrejudice
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, ryu_end
-	case OBJ_EVENT_GFX_LINK_RS_MAY, Ryu_ReturnMayToHome
+	case OBJ_EVENT_GFX_MAY, Ryu_ReturnMayToHome
 	return
 
 Ryu_DestroyWithoutPrejudice::
@@ -268,10 +274,16 @@ RF_FollowerLeave::
 
 Ryu_ReturnMayToHome::
 	destroyfollower
+	compare VAR_RYU_QUEST_MAY, 41
+	goto_if_eq Ryu_ReturnMayToPetalburg
 	checkplayergender
 	switch VAR_RESULT
 	case MALE, Ryu_ReturnMayToDawnsHouse
 	case FEMALE, Ryu_ReturnMayToBrendansHouse
+	return
+
+Ryu_ReturnMayToPetalburg::
+	setflag FLAG_RYU_MAY_QUEST_PENDING_PETALBURG
 	return
 
 Ryu_ReturnMayToDawnsHouse::
@@ -398,14 +410,14 @@ RF_SetupNurseSpawnEvent:: @Generates a nurse NPC to interact with.
 	lockall
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end @@can't do quest if follower is already present.
 	setflag FLAG_RYU_HIDE_JOY
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown @@move player down to make space for nurse to spawn
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown @@move player down to make space for nurse to spawn
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	drawfullscreenimage SCENEBGNURSE
 	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_NORTH
 	return
@@ -482,10 +494,10 @@ VT_FinishNurseQuest1::
 	giveitem ITEM_FULL_RESTORE, 1
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_DS_JOY_ACQ
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_HeartEmote
+	waitmovement FOLLOWER
 	call RF_FollowerLeaveCall
 	clearflag FLAG_RYU_HIDE_JOY
 	setvar VAR_RYU_QUEST_NURSE, 3
@@ -502,10 +514,10 @@ FT_FinishNurseQuest2::
 	setflag FLAG_RYU_DS_JOY_FRIENDS
 	ach give ACH_NEW_REGION_WHO_DIS
 	ach give ACH_TRUE_LOVE
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_HeartEmote
+	waitmovement FOLLOWER
 	call RF_FollowerLeaveCall
 	clearflag FLAG_RYU_HIDE_JOY
 	setvar VAR_RYU_QUEST_NURSE, 5
@@ -523,10 +535,10 @@ OT_FinishNurseQuest3::
 	giveitem ITEM_PP_MAX, 1
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_DS_JOY_CLOSEFRIENDS
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_HeartEmote
+	waitmovement FOLLOWER
 	call RF_FollowerLeaveCall
 	clearflag FLAG_RYU_HIDE_JOY
 	setvar VAR_RYU_QUEST_NURSE, 7
@@ -541,10 +553,10 @@ RF_FinishNurseQuest4:: @Will take player to lilycove city as that is Hoenn's cap
 	msgbox RF_NurseStage4Done
 	giveitem ITEM_HP_UP, 4
 	setflag FLAG_RYU_DS_JOY_LOVERS
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_HeartEmote
+	waitmovement FOLLOWER
 	call RF_FollowerLeaveCall
 	clearflag FLAG_RYU_HIDE_JOY
 	setvar VAR_RYU_QUEST_NURSE, 10 @Player did all the nurse quest stages, no longer need to check.
@@ -558,8 +570,8 @@ RF_PlayerDeclinedNurseQuest1::
 	msgbox RF_NurseQuestCancelledText
 	closemessage
 	clearfullscreenimage
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
 	call RF_FollowerLeaveCall
 	release
 	end

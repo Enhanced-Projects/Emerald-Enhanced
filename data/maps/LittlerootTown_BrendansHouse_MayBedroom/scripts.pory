@@ -7,7 +7,74 @@ script LRT_BH_May {
         release
         end
     }
-    msgbox("Start May's quest here.")
+    lock
+    faceplayer
+    msgbox(LRT_MayQuestStart)
+    closemessage
+    checkplayergender
+    if (var(VAR_RESULT) == MALE) {
+        msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} shakes his head.)")
+    }
+    else {
+        msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} shakes her head.)")
+    }
+    closemessage
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Shame, He's really nice.\nHe's kinda like you, but\lwithout the confidence.")
+    closemessage
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Did you want to meet him?")
+    bufferdynamicmulti(LRT_MayQ1, LRT_MayQ2)
+    multichoice(0, 8, MULTI_DYNAMIC_2, 1)
+    if (var(VAR_RESULT) == 0) {
+        msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay! Well, I'll see you later then!")
+        closemessage
+        applymovement(1, MayExit)
+        waitmovement(1)
+        playse(SE_DOOR)
+        removeobject(1)
+        setflag(FLAG_RYU_BH_HIDE_MAY)
+        setflag(FLAG_RYU_DH_HIDE_MAY)
+        clearflag(FLAG_RYU_DS_MAY_FRIENDS)
+        clearflag(FLAG_RYU_DS_MAY_CLOSEFRIENDS)
+        setflag(FLAG_RYU_DS_MAY_ACQ)
+        setvar(VAR_RYU_QUEST_MAY, 999) //player failed may's quest in her bedroom
+    }
+    else
+    {
+        msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay! I'll head there now.\nSee you there!\pAnd, thanks, by the way.\pIt's nice to have another friend.")
+        setvar(VAR_RYU_QUEST_MAY, 30)//player officially started may's quest.
+        applymovement(1, MayExit)
+        waitmovement(1)
+        playse(SE_DOOR)
+        removeobject(1)
+        setflag(FLAG_RYU_BH_HIDE_MAY)
+        setflag(FLAG_RYU_DH_HIDE_MAY)
+    }
     release
     end
+}
+
+text LRT_MayQ2 {
+    "Sure, let's go!"
+}
+
+text LRT_MayQ1 {
+    "Sorry, I can't..."
+}
+
+text LRT_MayQuestStart {
+    "{COLOR LIGHT_RED}{SHADOW RED}Heya, {PLAYER}!\n"
+    "I got settled in.\p"
+    "This is a nice little town\n"
+    "you live in. I like it!\p"
+    "Speaking of Towns, I was about\n"
+    "to go visit Petalburg and try to\l"
+    "find an old friend of mine.\p"
+    "His name is Wally. Ever met him?"
+}
+
+movement MayExit {
+    walk_up
+    walk_left * 3
+    walk_up
+    step_end
 }

@@ -127,8 +127,8 @@ r115_StartDevon::
 	lock
 	msgbox r115_ISeeThemThere
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, r115_toMsIto
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, r115_toMsIto
+	waitmovement PLAYER
 	goto R115_DevonScene
 
 R115_DevonScene::
@@ -159,7 +159,7 @@ R115_DevonScene::
 	applymovement 26, Common_Movement_FaceLeft
 	waitmovement 26
 	cleartrainerflag TRAINER_GRUNT_2
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement PLAYER, Common_Movement_FaceRight
 	trainerbattle_single TRAINER_GRUNT_2, r115_GruntIntro, r115_LostAgain, r115_scenePart2
 
 	
@@ -167,16 +167,16 @@ R115_DevonScene::
 r115_scenePart2::
 	msgbox r115_CaseClosed
 	fadedefaultbgm
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox r115_YourBestInterest
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	msgbox r115_BackThen
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_QuestionMark
+	waitmovement PLAYER
 	msgbox r115_HowMeetUp
 	closemessage
 	applymovement 25, Common_Movement_StepRight
@@ -217,8 +217,8 @@ r115_scenePart3::
 	msgbox r115_itsAllGood
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox r115_ThatRemindsMe
 	closemessage
 	savebgm 432
@@ -228,8 +228,8 @@ r115_scenePart3::
 	msgbox r115_stationedAtFrontDesk
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox r115_FiguredSomethingOut
 	closemessage
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 50 @Player found Ms Ito and is returning to Devon Corp.
@@ -439,7 +439,7 @@ r115_toMsIto:
 @end devon scene
 	
 r115_DevPhase::
-	applymovement OBJ_EVENT_ID_PLAYER, r115_StepLeft
+	applymovement PLAYER, r115_StepLeft
 	release
 	end
 	

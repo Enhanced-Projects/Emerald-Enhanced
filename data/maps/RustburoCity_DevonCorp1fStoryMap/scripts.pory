@@ -5,13 +5,13 @@ RustburoCity_DevonCorp1fStoryMap_MapScripts::
 	
 DC_FirstFloorSceneStart::
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, DC_FirstFloorPlayerEntry
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, DC_FirstFloorPlayerEntry
+	waitmovement PLAYER
 	special SpawnCameraObject
 	msgbox DC_YouHearNoise
 	closemessage
-	applymovement OBJ_EVENT_ID_CAMERA, DC_FirstFloorCamera1
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, DC_FirstFloorCamera1
+	waitmovement CAMERA
 	savebgm 423
 	fadenewbgm 423
 	msgbox DC_BeenThroughThis
@@ -23,18 +23,18 @@ DC_FirstFloorSceneStart::
 	playse SE_PIN
 	applymovement 4, Common_Movement_ExclamationMark
 	waitmovement 4
-	applymovement OBJ_EVENT_ID_CAMERA, DC_ReturnCameraToPlayer
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, DC_ReturnCameraToPlayer
+	waitmovement CAMERA
 	special RemoveCameraObject
-	applymovement OBJ_EVENT_ID_PLAYER, DC_PlayerToEmployees
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, DC_PlayerToEmployees
+	waitmovement PLAYER
 	applymovement 4, Common_Movement_FaceUp
 	waitmovement 4
 	msgbox DC_DoMeAFavor
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, DC_ExitFirstFloor
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, DC_ExitFirstFloor
+	waitmovement PLAYER
 	playse SE_DOOR
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 45 @Player needs to go find Ms. Ito north of rustburo.
 	fadescreen 1

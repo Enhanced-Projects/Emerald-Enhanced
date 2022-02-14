@@ -171,7 +171,7 @@ RDB_SpawnHexer::
 
 RDB_SpawnMay::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
