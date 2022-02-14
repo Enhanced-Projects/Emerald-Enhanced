@@ -2757,7 +2757,7 @@ static void PrintNotEggInfo(void)
     ConvertIntToDecimalStringN(gStringVar2, summary->level, STR_CONV_MODE_LEFT_ALIGN, 3);
     StringAppend(gStringVar1, gStringVar2);
     PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, gStringVar1, 24, 17, 0, 1);
-    if (GetMonData(mon, MON_DATA_GIFT_RIBBON_7) == 1)
+    if (GetMonData(mon, MON_DATA_BOSS_STATUS) == 1)
     {
         GetMonNickname(mon, gRyuStringVar1);
         StringCopy(gRyuStringVar2, Text_ColorRed);

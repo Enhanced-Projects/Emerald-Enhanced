@@ -149,7 +149,7 @@ void GivePlayerModdedMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &move3);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &move4);
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
-    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &isBoss);
+    SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &isBoss);
 
     CalculateMonStats(&gPlayerParty[slot]);
 }
@@ -194,10 +194,22 @@ bool8 RyuGiveMewtwo(void)
     if (slot == 0 || slot > 5) {
       return FALSE;
     }
-
-    CreateMonWithNature(&gPlayerParty[slot], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
-    SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &ev);
-    SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &ev);
+    if (Random() % 100 < 50)
+    {
+        CreateMonWithNature(&gPlayerParty[slot], SPECIES_MEWTWO, 95, 31, NATURE_ADAMANT);
+        SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &ev);
+    }
+    else
+    {
+        CreateMonWithNature(&gPlayerParty[slot], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &ev);
+    }
+    if (Random() % 100 < 30) 
+    {
+        SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, 1);
+    }
     return TRUE;
 }
 
@@ -232,7 +244,7 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
     u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
     u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
     u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
-    bool8 bossFlag = (GetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7));
+    bool8 bossFlag = (GetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS));
     u8 i;
 
 
@@ -1673,7 +1685,7 @@ void RyuHolidayGiftMonSetData(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_IV, &iv);
     SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV, &iv);
 
-    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon);
+    SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &ribbon);
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
 }
@@ -2099,7 +2111,7 @@ void RyuGiveDevMon(void)
 
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
-    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon); //make it a boss because why not
+    SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &ribbon); //make it a boss because why not
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
@@ -2318,7 +2330,7 @@ void RyuGiveHolidayModdedMon(void)
     u16 nature = (VarGet(VAR_TEMP_C));
     bool16 isBoss = TRUE;
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
-    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &isBoss);
+    SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &isBoss);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     GetSetPokedexFlag(species, FLAG_SET_CAUGHT);
     GetSetPokedexFlag(species, FLAG_SET_SEEN);
