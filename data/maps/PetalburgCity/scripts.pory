@@ -932,6 +932,8 @@ script PBC_DoWallyChaseScene {
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Darn! We lost him!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Well... What do we do now?\p{COLOR LIGHT_RED}{SHADOW RED}He used to stay with family\nin Verdanturf.\pWe might find him there.\nLet's go!")
 		closemessage
 		setvar(VAR_RYU_QUEST_MAY, 60)//Player and May chased wally to route 104 and lost him. Check Verdanturf.
+		clearflag(FLAG_RYU_WAYSTONE_DISABLED)
+		clearflag(FLAG_RYU_WAYSTONE_DISABLED)
 		release
 		end
 	}

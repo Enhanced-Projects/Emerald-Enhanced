@@ -965,18 +965,14 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)//this function draws eithe
     }
 }
 
-bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx) //can no longer set happiness above 200. Affection must be earned the hard way
+bool8 ScrCmd_getobjectxy(struct ScriptContext *ctx) //can no longer set happiness above 200. Affection must be earned the hard way
 {
     u16 index = VarGet(ScriptReadHalfword(ctx));
-    u16 value = VarGet(ScriptReadByte(ctx));
-    u16 current = GetMonData(&gPlayerParty[index], MON_DATA_FRIENDSHIP);
+    struct Coords16 objectCoords;
+    objectCoords = gObjectEvents[index].currentCoords;
+    gSpecialVar_0x8006 = objectCoords.x;
+    gSpecialVar_0x8007 = objectCoords.y;
 
-    value = value + current;
-
-    if (value > 200)
-        value = 200;
-
-    SetMonData(&gPlayerParty[index], MON_DATA_FRIENDSHIP, &value);
     return FALSE;
 }
 
@@ -2363,4 +2359,10 @@ void RyuCheckIfInWallysHouse (void)
     }
     gSpecialVar_Result = FALSE;
     return;
+}
+
+void RyuMaxHappiness (void)
+{
+    u8 max = 255;
+    SetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP, &max);
 }

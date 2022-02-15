@@ -1,4 +1,6 @@
 raw `
+.set WALLY, 4
+
 VerdanturfTown_MapScripts:: @ 81EB566
 	map_script ON_TRANSITION, VerdanturfTown_OnTransition
 	.byte 0
@@ -7,6 +9,12 @@ VerdanturfTown_OnTransition: @ 81EB56C
 	setflag FLAG_VISITED_VERDANTURF_TOWN
 	call RyuCheckForWellTravelledAch
 	setvar VAR_CONTEST_HALL_STATE, 0
+	compare VAR_RYU_QUEST_MAY, 60
+	goto_if_eq VT_EnableWallyEvent
+	end
+
+VT_EnableWallyEvent::
+	addobject WALLY
 	end
 
 VerdanturfTown_EventScript_Twin:: @ 81EB575
@@ -135,4 +143,54 @@ script VerdanturfTown_RealEstatePropertyDoor {
 script VerdanturfTown_RealEstatePropertySign {
 	setvar(VAR_TEMP_D, PROPERTY_VERDANTURF)
 	goto(RyuRealEstateHouseSign)
+}
+
+script VT_NoticeWally2 {
+	applymovement(PLAYER, Common_Movement_StepUp)
+	waitmovement(PLAYER)
+	applymovement(PLAYER, Common_Movement_FaceLeft)
+	waitmovement(PLAYER)
+	applymovement(FOLLOWER, Common_Movement_StepLeft)
+	waitmovement(FOLLOWER)
+	goto(VT_NoticeWally3)
+}
+
+script VT_NoticeWally1 {
+	applymovement(FOLLOWER, Common_Movement_StepDown)
+	waitmovement(FOLLOWER)
+	applymovement(FOLLOWER, Common_Movement_StepLeft)
+	waitmovement(FOLLOWER)
+	goto(VT_NoticeWally3)
+}
+
+script VT_NoticeWally3 {
+	applymovement(WALLY, VT_WallyAttemptExit)
+	waitmovement(WALLY)
+	msgbox("Bah! I was trying to stay\nhidden!\pI got tired of my family spoiling\nme all the time...")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}But everyone's been looking for\nyou!\pWhy make everyone think you are\ngone?!")
+	closemessage
+	msgbox("Meet me in the cave, and I'll\nexplain everything....\pJust promise not to tell anyone!\nIt's important.")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}...Fine... but you better be there\nor I'll make you pay!")
+	setvar(VAR_RYU_QUEST_MAY, 70) //Player found wally in verdanturf. Meet him in Rusturf Tunnel to see what he's doing.
+	setvar(VAR_TEMP_0, 100)
+	applymovement(WALLY, VT_WallyExitRight)
+	waitmovement(WALLY)
+	removeobject(WALLY)
+	release
+	end
+}
+
+movement VT_WallyAttemptExit {
+	walk_fast_left
+	walk_fast_down * 3
+	walk_fast_right * 4
+	step_end
+}
+
+movement VT_WallyExitRight {
+	walk_fast_right * 3
+	walk_fast_up * 5
+	step_end
 }

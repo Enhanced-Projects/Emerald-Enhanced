@@ -955,7 +955,7 @@ RyuEVSpeed:
 	.string "Speed$"
 	
 RyuSetFriendshipDebugMenu::
-	addmonhappiness 0, 255
+	callnative RyuMaxHappiness
 	msgbox RyuSetFriendshipMsg MSGBOX_DEFAULT
 	closemessage
 	goto RyuPokeEditMenu
