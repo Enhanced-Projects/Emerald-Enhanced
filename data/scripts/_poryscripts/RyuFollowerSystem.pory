@@ -173,10 +173,10 @@ RyuFollower_MayNormal::
 	end
 
 RF_MayLetsGoHome:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's head home.\nI need some rest."
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's head home.\nI need some rest.$"
 
 RF_MayWeShouldGoHome:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm tired. We should go home and\ntake a nap."
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm tired. We should go home and\ntake a nap.$"
 
 RF_MayDismissQuery::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I find my own way?$"

@@ -2,7 +2,7 @@
   "id": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_UPPER_HALLWAY",
   "name": "LittlerootTown_BrendansHouse_UpperHallway",
   "layout": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_UPPER_HALLWAY",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_MISHIRO",
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -10,7 +10,7 @@
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [

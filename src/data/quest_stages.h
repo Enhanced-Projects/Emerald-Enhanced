@@ -179,7 +179,7 @@ const u8 sMayQuestStage150[] = _("You and May spoke with Wally in the tunnel.\nG
 const u8 sMayQuestStage160[] = _("After Rusturf Tunnel, May took off with Wally\nto his house. You met up with May later\nat her house. Neutral End");
 const u8 sMayQuestStage180[] = _("After Rusturf Tunnel, May took off with Wally\nto his house. You picked May up from his house.\nGood End.");
 const u8 sMayQuestStage200[] = _("You finished May's questline.\nStay with her at home to\nfinalize the relationship.");
-const u8 sMayQuestStage250[] = _("You completed May's quest line with the Best End.");
+const u8 sMayQuestStage250[] = _("You completed May's quest line.\nBEST End.");
 const u8 sMayQuestStage666[] = _("You declined helping may in Littleroot.\nBAD END.");
 const u8 sMayQuestStage999[] = _("You didn't help may locate her lost friend.\nBAD END.");
 

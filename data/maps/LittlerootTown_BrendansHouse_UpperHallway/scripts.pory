@@ -1,25 +1,29 @@
 mapscripts LittlerootTown_BrendansHouse_UpperHallway_MapScripts {}
 
 script LRT_BH_MayRoomTrigger {
-    checkfacing
-    if (var(VAR_RESULT) == DIR_SOUTH) {
-        goto(ryu_end)
-    }
     lock
-    if ((flag(FLAG_RYU_DS_MAY_FRIENDS) == TRUE) || (flag(FLAG_RYU_MAY_EVENT_FAILED) == TRUE)) {
-        warpdoor(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_MAY_BEDROOM, 0, 4, 1)
-        waitstate
-    }
     checkplayergender
     if (var(VAR_RESULT) == MALE) {
         msgbox("It's Dad's storage room.\nBetter leave it alone.")
+        closemessage
+        applymovement(PLAYER, Common_Movement_StepDown)
+        applymovement(FOLLOWER, Common_Movement_StepDown)
+        waitmovement(0xFF)
+        release
+        end
+    }
+    checkplayergender
+    if ((var(VAR_RESULT) == FEMALE) && ((flag(FLAG_RYU_DS_MAY_FRIENDS) == TRUE) || (flag(FLAG_RYU_MAY_EVENT_FAILED) == TRUE))) {
+        warpdoor(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_MAY_BEDROOM, 0, 4, 1)
+        waitstate
     }
     else {
         msgbox("It's an empty bedroom.\nBest leave it alone.")
+        closemessage
+        applymovement(PLAYER, Common_Movement_StepDown)
+        applymovement(FOLLOWER, Common_Movement_StepDown)
+        waitmovement(0xFF)
+        release
+        end
     }
-    closemessage
-    applymovement(PLAYER, Common_Movement_StepDown)
-    waitmovement(0xFF)
-    release
-    end
 }
