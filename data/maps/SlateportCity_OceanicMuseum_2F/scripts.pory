@@ -150,8 +150,8 @@ OM_AquaEvent2::
 	addobject 5
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, OM_CameraToStern
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, OM_CameraToStern
+	waitmovement CAMERA
 	msgbox OM_ISeeThats
 	closemessage
 	playse SE_PIN
@@ -161,12 +161,12 @@ OM_AquaEvent2::
 	closemessage
 	applymovement 5, Common_Movement_FaceLeft
 	waitmovement 5
-	applymovement OBJ_EVENT_ID_CAMERA, OM_CameraToPlayer
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, OM_CameraToPlayer
+	waitmovement CAMERA
 	special RemoveCameraObject
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, OM_PlayerToSteven
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, OM_PlayerToSteven
+	waitmovement PLAYER
 	msgbox OM_ATrainer
 	closemessage
 	msgbox OM_StevenNotices
@@ -297,9 +297,9 @@ OM_SternExit:
 OM_SetupSternForDevon::
 OM_ReEnableStern::
 	setvar VAR_TEMP_5, 10
-	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 17 @Player is on second floor to speak with Stern.
 	goto_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
 	goto_if_set FLAG_RYU_DEVON_STERN_EVENT_DONE, ryu_end
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 17 @Player is on second floor to speak with Stern.
 	addobject 4
 	end
 
@@ -309,7 +309,6 @@ OM_FinishedSternEvent::
 	end
 	
 OM_CaptainStern::
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, ryu_end
 	compare VAR_RYU_QUEST_DEVON_CORPORATE, 18
 	goto_if_ge OM_AlreadyDoneScene
 	msgbox OM_ThanksForBringing
@@ -320,14 +319,14 @@ OM_CaptainStern::
 	addobject 6
 	fadescreen FADE_FROM_BLACK
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	applymovement 4, Common_Movement_ExclamationMark
 	waitmovement 4
 	msgbox OM_WhatAreYouDoing
 	closemessage
 	applymovement 6, OM_ArchieToPlayer
 	waitmovement 6
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	turnobject PLAYER, DIR_WEST
 	msgbox OM_ImArchieHandOver
 	closemessage
 	setflag FLAG_RYU_GAME_OVER
@@ -342,7 +341,7 @@ OM_ArchieSceneEnd::
 	closemessage
 	removeobject 6
 	playse SE_KAIDAN
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	turnobject PLAYER, DIR_EAST
 	msgbox OM_ThanksForProtecting
 	removeitem ITEM_DEVON_GOODS, 1
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 18 @player spoke with stern and protected him from archie. Return to Devon.

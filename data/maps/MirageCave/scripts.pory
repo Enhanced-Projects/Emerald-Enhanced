@@ -5,7 +5,7 @@ MirageCave_MapScripts::
 MirageCave_TriggerPortal::
 	goto_if_set FLAG_RYU_ULTRA_BEASTS_ESCAPED, ryu_end
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceUp
+	applymovement PLAYER Common_Movement_FaceUp
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes
@@ -15,8 +15,8 @@ MirageCave_TriggerPortal::
 	fadescreen FADE_TO_BLACK
 	playse SE_THUNDER
 	waitse
-	applymovement OBJ_EVENT_ID_PLAYER, MirageCave_PlayerMovement
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MirageCave_PlayerMovement
+	waitmovement PLAYER
 	playmoncry SPECIES_GUZZLORD, 0
 	delay 60
 	playmoncry SPECIES_PHEROMOSA, 0

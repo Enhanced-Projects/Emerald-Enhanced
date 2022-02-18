@@ -123,7 +123,7 @@ LRT_BrendanWONT_HAPPEN::
 	clearflag FLAG_RYU_DS_BRENDAN_FRIENDS
 	clearflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
 	msgbox LRT_BrendanBADEND, MSGBOX_DEFAULT
-	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanTURN
+	applymovement PLAYER LRT_BrendanTURN
 	waitmovement 0
 	release
 	end
@@ -136,10 +136,10 @@ LRT_BrendanNIGHT::
 	msgbox LRT_BrendanROMPre MSGBOX_DEFAULT
  	closemessage
 	applymovement 2, Common_Movement_HeartEmote
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	applymovement 2 LRT_BrendanHEART2
-	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART
+	applymovement PLAYER LRT_BrendanHEART
 	delay 20
 	fadescreen FADE_TO_BLACK
 	fadeoutbgm 1
@@ -156,9 +156,9 @@ LRT_BrendanNIGHT::
 	clearfullscreenimage
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	@fadescreen FADE_FROM_BLACK
-	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
+	applymovement PLAYER LRT_BrendanHEART3
 	applymovement 2, LRT_ReturnBrendantoPC
-	waitmovement OBJ_EVENT_ID_PLAYER
+	waitmovement PLAYER
 	release
 	end
 
@@ -179,10 +179,10 @@ LRT_BrendanNight2::
 	clearfullscreenimage
 	fadescreen FADE_TO_BLACK
 	applymovement 2, Common_Movement_HeartEmote
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement PLAYER, Common_Movement_HeartEmote
 	waitmovement 2
 	applymovement 2, LRT_BrendanHEART2
-	applymovement OBJ_EVENT_ID_PLAYER, LRT_BrendanHEART
+	applymovement PLAYER, LRT_BrendanHEART
 	delay 20
 	fadescreen 1
 	fadeoutbgm 1
@@ -202,9 +202,9 @@ LRT_BrendanNight2::
 	clearfullscreenimage
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	fadescreen FADE_FROM_BLACK
-	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
+	applymovement PLAYER LRT_BrendanHEART3
 	applymovement 2, LRT_ReturnBrendantoPC
-	waitmovement OBJ_EVENT_ID_PLAYER
+	waitmovement PLAYER
 	release
 	end
 
@@ -403,19 +403,19 @@ LRT_LeafEvent::
 	setvar VAR_RYU_QUEST_LANA, 76
 	msgbox LRT_Story1 MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	msgbox LRT_Story2 MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	msgbox LRT_Story3 MSGBOX_DEFAULT
 	closemessage
 	msgbox LRT_PlayerKiss MSGBOX_DEFAULT
 	applymovement 3, Common_Movement_ExclamationMark
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_HeartEmote
+	waitmovement PLAYER
 	closemessage
 	msgbox LRT_Story4 MSGBOX_DEFAULT
 	closemessage
@@ -571,9 +571,9 @@ HaremBegin:
 	playse SE_DOOR
 	waitse
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
+	turnobject PLAYER, DIR_EAST
 	applymovement 4, LRT_Harem_RivalMove
 	waitmovement 4
 	msgbox LRT_HaremBeginRivalMsg

@@ -11,17 +11,17 @@ THH_ME_MagmaEvent::
 THH_ME_NotHere::
 	setvar VAR_TEMP_3, 100
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox THH_ME_HesNotHere
 	closemessage
 	goto_if_unset FLAG_RYU_DS_COURTNEY_LOVERS, THH_ME_NotHereEnd
 	setvar VAR_RYU_QUEST_MAGMA, 580@Player is on the romance line of the alternate magma quest. Final Stage.
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
 	msgbox THH_ME_WhatYouGotThere
 	closemessage
 	release
@@ -34,23 +34,23 @@ THH_ME_NotHereEnd::
 	ach give ACH_HUNTING_TRIP
 	msgbox THH_ME_ThatsTheEnd
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox THH_ME_ItCantBeHelped
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
 	msgbox THH_ME_Burn
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox THH_ME_WhatIGetMyselfInto
 	closemessage
-	applymovement OBJ_EVENT_ID_FOLLOWER, THH_ME_CourtneyExit
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, THH_ME_CourtneyExit
+	waitmovement FOLLOWER
 	playse SE_DOOR
 	waitse
 	destroyfollower

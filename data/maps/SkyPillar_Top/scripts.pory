@@ -120,10 +120,10 @@ SkyPillar_Top_EventScript_RanFromRayquaza2:: @ 8239785
 SkyPillar_Top_EventScript_AwakenRayquaza:: @ 823979A
 	lockall
 	fadeoutbgm 1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanUp
+	applymovement CAMERA, SkyPillar_Top_Movement_CameraPanUp
 	waitmovement 0
 	special RemoveCameraObject
 	applymovement 1, SkyPillar_Top_Movement_RayquazaStir
@@ -153,7 +153,7 @@ SkyPillar_Top_EventScript_AwakenRayquaza:: @ 823979A
 	delay 20
 	fadeinbgm 1
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanDown
+	applymovement CAMERA, SkyPillar_Top_Movement_CameraPanDown
 	waitmovement 0
 	special RemoveCameraObject
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 5

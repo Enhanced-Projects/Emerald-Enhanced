@@ -1,7 +1,22 @@
 raw `
+.set WALLY, 4
+
 VerdanturfTown_MapScripts:: @ 81EB566
 	map_script ON_TRANSITION, VerdanturfTown_OnTransition
+	map_script ON_FRAME, VT_OnFrame
 	.byte 0
+
+VT_OnFrame::
+	map_script_2 VAR_TEMP_4, 0, VT_SetupWally
+	.2byte 0
+
+VT_SetupWally::
+	setvar VAR_TEMP_4, 100
+	compare VAR_RYU_QUEST_MAY, 60
+	goto_if_ne ryu_end
+	clearflag FLAG_RYU_HIDE_VERDANTURF_WALLY
+	addobject WALLY
+	end
 
 VerdanturfTown_OnTransition: @ 81EB56C
 	setflag FLAG_VISITED_VERDANTURF_TOWN
@@ -135,4 +150,81 @@ script VerdanturfTown_RealEstatePropertyDoor {
 script VerdanturfTown_RealEstatePropertySign {
 	setvar(VAR_TEMP_D, PROPERTY_VERDANTURF)
 	goto(RyuRealEstateHouseSign)
+}
+
+script VT_NoticeWally2 {
+	if (!(var(VAR_RYU_QUEST_MAY) == 60)) {
+		setvar(VAR_TEMP_0, 100)
+		goto(ryu_end)
+	}
+	applymovement(PLAYER, Common_Movement_StepUp)
+	waitmovement(PLAYER)
+	applymovement(PLAYER, Common_Movement_FaceLeft)
+	waitmovement(PLAYER)
+	goto(VT_NoticeWally3)
+}
+
+script VT_NoticeWally1 {
+	if (!(var(VAR_RYU_QUEST_MAY) == 60)) {
+		setvar(VAR_TEMP_0, 100)
+		goto(ryu_end)
+	}
+	applymovement(FOLLOWER, Common_Movement_StepDown)
+	waitmovement(FOLLOWER)
+	applymovement(FOLLOWER, Common_Movement_StepLeft)
+	waitmovement(FOLLOWER)
+	goto(VT_NoticeWally3)
+}
+
+script VT_NoticeWally3 {
+	if (!(var(VAR_RYU_QUEST_MAY) == 60)) {
+		setvar(VAR_TEMP_0, 100)
+		goto(ryu_end)
+	}
+	applymovement(WALLY, VT_WallyAttemptExit)
+	waitmovement(WALLY)
+	msgbox("Bah! I was trying to stay\nhidden!\pI got tired of my family spoiling\nme all the time...")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}But everyone's been looking for\nyou!\pWhy make everyone think you are\ngone?!")
+	closemessage
+	msgbox("Meet me in the cave, and I'll\nexplain everything....\pJust promise not to tell anyone!\nIt's important.")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}...Fine... but you better be there\nor I'll make you pay!")
+	setvar(VAR_RYU_QUEST_MAY, 70) //Player found wally in verdanturf. Meet him in Rusturf Tunnel to see what he's doing.
+	setvar(VAR_TEMP_0, 100)
+	applymovement(WALLY, VT_WallyExitRight)
+	waitmovement(WALLY)
+	removeobject(WALLY)
+	setflag(FLAG_RYU_HIDE_VERDANTURF_WALLY)
+	clearflag(FLAG_RYU_HIDE_RT_WALLY)
+	release
+	end
+}
+
+script VT_AddMayForquest {
+	if (!(var(VAR_RYU_QUEST_MAY) == 40)) {
+		goto(ryu_end)
+	}
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
+		call(RyuForceCancelFollowerForQuest)
+	}
+	setflag(FLAG_RYU_HIDE_VERDANTURF_MAY)
+	removeobject(5)
+	createfollower(OBJ_EVENT_GFX_MAY, RyuFollower_SelectNPCScript, DIR_EAST)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Let's head into the cave\nto meet Wally.")
+	release
+	end
+}
+
+movement VT_WallyAttemptExit {
+	walk_fast_left
+	walk_fast_down * 3
+	walk_fast_right * 4
+	step_end
+}
+
+movement VT_WallyExitRight {
+	walk_fast_right * 3
+	walk_fast_up * 5
+	step_end
 }

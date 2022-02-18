@@ -34,7 +34,7 @@ ES_CourtneySurfWithPlayer::
 	msgbox ES_PlayerAndCourtneySurf
 	destroyfollower
 	setflag FLAG_RYU_TEMP_HIDE_FOLLOWER_COURTNEY
-	removeobject OBJ_EVENT_ID_FOLLOWER
+	removeobject FOLLOWER
 	dofieldeffect FLDEFF_USE_SURF
 	releaseall
 	end

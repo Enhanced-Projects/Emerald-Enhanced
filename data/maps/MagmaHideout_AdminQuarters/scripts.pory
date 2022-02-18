@@ -17,21 +17,21 @@ MHA_Courtney::
 	goto MHAQ_CourtneyFollowerActivate
 	
 MHAQ_StayingWithCourtney1::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
 	applymovement 1, MHAQ_CourtneyToBed
 	waitmovement 1
 	msgbox MHAQ_WellComeOnThen
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MHAQ_PlayerToBed
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MHAQ_PlayerToBed
+	waitmovement PLAYER
 	msgbox MHAQ_CourtneyMassagesPlayer
 	closemessage
 	fadeoutbgm 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	applymovement PLAYER, Common_Movement_StepLeft
 	applymovement 1, Common_Movement_StepLeft
 	fadescreen FADE_TO_BLACK
 	msgbox MHAQ_PlayerAndCourtney
@@ -39,15 +39,15 @@ MHAQ_StayingWithCourtney1::
 	setobjectxy 1, 13, 1
 	closemessage
 	delay 60
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
 	fadescreen FADE_FROM_BLACK
 	fadeinbgm 0
 	playbgm MUS_AJITO, 0
 	msgbox MHAQ_PlayerWakesUp
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MHAQ_PlayerToExit
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MHAQ_PlayerToExit
+	waitmovement PLAYER
 	setobjectxy 1, 1, 3
 	setflag FLAG_RYU_DS_COURTNEY_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
@@ -59,14 +59,14 @@ MHAQ_StayingWithCourtney2::
 	msgbox MHAQ_OhYouCouldnt
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	applymovement PLAYER, Common_Movement_FaceDown
 	applymovement 1, MHAQ_CourtneyToBed
 	waitmovement 1
-	applymovement OBJ_EVENT_ID_PLAYER, MHAQ_PlayerToBed
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MHAQ_PlayerToBed
+	waitmovement PLAYER
 	fadescreen FADE_TO_BLACK
 	fadeoutbgm 0
 	msgbox MHAQ_PlayerAndCourtneyStayedTogether
@@ -75,26 +75,26 @@ MHAQ_StayingWithCourtney2::
 	delay 30
 	applymovement 1, MHAQ_CourtneyToOtherSide
 	waitmovement 1
-	applymovement OBJ_EVENT_ID_PLAYER, MHAQ_PlayerToOtherSide
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MHAQ_PlayerToOtherSide
+	waitmovement PLAYER
 	fadescreen FADE_FROM_BLACK
 	playbgm MUS_AJITO, 0
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox MHAQ_HowdWeEndUpHere
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_HeartEmote
 	applymovement 1, Common_Movement_HeartEmote
 	waitmovement 1
 	delay 20
 	fadeinbgm 0
-	applymovement OBJ_EVENT_ID_PLAYER, MHAQ_PlayerToExit2
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MHAQ_PlayerToExit2
+	waitmovement PLAYER
 	setobjectxy 1, 1, 3
 	setflag FLAG_RYU_DS_COURTNEY_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER

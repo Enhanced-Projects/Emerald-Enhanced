@@ -34,7 +34,7 @@ DewfordTown_EventScript_Briney_Move5Right::
 	applymovement 10, DT_Briney_5Right
 	waitmovement 10
 	call DT_TurnPlayer
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement PLAYER, Common_Movement_FaceRight
 	goto DT_Briney_Battle
 
 DewfordTown_EventScript_Briney_Move4Right::
@@ -87,13 +87,13 @@ DT_TurnPlayer::
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	compare VAR_TEMP_3, 110
 	goto_if_eq DT_TurnPlayerUp
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	return
 
 DT_TurnPlayerUp::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	return
 
 DT_Briney_5Right:

@@ -489,7 +489,7 @@ static void RyuGenerateBossMon(u16 species, u8 level)
         SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_SPEED_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_LEVEL, &level);
-        SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, val);
+        SetMonData(&gEnemyParty[0], MON_DATA_BOSS_STATUS, val);
         SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
         // If the pokemon has no hidden ability, set it to a random ability
         if (GetMonAbility(&gEnemyParty[0]) == ABILITY_NONE)

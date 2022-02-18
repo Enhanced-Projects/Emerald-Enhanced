@@ -17,8 +17,8 @@ R104_ME_EventStart::
 	closemessage
 	delay 30
 	msgbox R104_ME_BringThemToMe
-	applymovement OBJ_EVENT_ID_PLAYER, R104_ME_UpToMaxie
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, R104_ME_UpToMaxie
+	waitmovement PLAYER
 	applymovement 8, R104_ME_MoveTabitha
 	waitmovement 8
 	applymovement 1, Common_Movement_StepDown
@@ -47,11 +47,11 @@ R104_ME_EventStart::
 	waitmovement 8
 	playse SE_W003
 	waitse
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement PLAYER, Common_Movement_FaceRight
 	waitmovement 0xFF
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0xFF
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_FaceUp
 	waitmovement 0xFF
 	addobject 10
 	msgbox R104_ME_PlayerLosesItems
@@ -73,7 +73,7 @@ R104_ME_EventStart::
 	msgbox R104_ME_ComeAlong
 	closemessage
 	applymovement 1, R104_ME_MaxieExits
-	applymovement OBJ_EVENT_ID_PLAYER R14_MovePlayerOutOfWay
+	applymovement PLAYER R14_MovePlayerOutOfWay
 	applymovement 8, Common_Movement_FaceRight
 	msgbox R104_ME_HehYoureFortunate
 	closemessage
@@ -93,8 +93,8 @@ R104_ME_EventStart::
 	removeobject 10
 	fadescreen FADE_FROM_BLACK
 	applymovement 9, Common_Movement_FaceLeft
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	msgbox R104_ME_JustUsTwo
 	closemessage
 	applymovement 9, Common_Movement_StepLeft

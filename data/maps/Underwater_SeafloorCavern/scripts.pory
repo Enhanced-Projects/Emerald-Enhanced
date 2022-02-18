@@ -37,7 +37,7 @@ UW_OnWarpScript::
 
 UW_HidePlayerForScene::
 	setvar VAR_RYU_QUEST_AQUA, 129 @@player hidden for underwater scene
-	applymovement OBJ_EVENT_ID_PLAYER, UW_SetInvisible
+	applymovement PLAYER, UW_SetInvisible
 	end
 
 UW_SetInvisible:

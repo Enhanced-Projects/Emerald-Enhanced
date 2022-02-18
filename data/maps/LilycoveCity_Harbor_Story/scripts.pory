@@ -11,8 +11,8 @@ LCC_MagmaHarbor_Blaise::
 	setvar VAR_RYU_QUEST_MAGMA, 190@Player entered the magma controlled harbor
 	msgbox LCC_IAlreadyCleared
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, LCC_Harbor_PlayerToBlaise
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, LCC_Harbor_PlayerToBlaise
+	waitmovement PLAYER
 	applymovement 1, Common_Movement_FaceUp
 	waitmovement 1
 	msgbox LCC_GoAheadPlayer
@@ -27,11 +27,11 @@ LCC_MagmaHarbor_Blaise::
 	applymovement 1, Common_Movement_QuestionMark
 	waitmovement 1
 	applymovement 1, Common_Movement_FaceDown
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 3
 	msgbox LCC_RollTheCamera
@@ -66,8 +66,8 @@ LCC_MagmaHarbor_Blaise::
 	applymovement 1, Common_Movement_StepDown
 	applymovement 3, Common_Movement_StepRight
 	waitmovement 3
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	removeobject 2
 	removeobject 3
 	removeobject 5
@@ -76,7 +76,7 @@ LCC_MagmaHarbor_Blaise::
 	
 LCC_Harbor_Part2::
 	setvar VAR_RYU_QUEST_MAGMA, 195@Finished Battle with Shelly
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	applymovement PLAYER, Common_Movement_StepDown
 	msgbox LCC_HowCouldYou
 	closemessage
 	applymovement 4, LCC_ShellyExits

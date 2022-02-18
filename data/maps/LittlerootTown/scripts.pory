@@ -136,7 +136,7 @@ LRT_PreventLeave::
 	compare VAR_RESULT, FEMALE
 	goto_if_eq LRT_cantLeaveFemale
 	msgbox LRT_Girl_PreventLeave MSGBOX_DEFAULT
-	applymovement OBJ_EVENT_ID_PLAYER, LRT_CantLeave
+	applymovement PLAYER, LRT_CantLeave
 	applymovement 1, LRT_StepLeft
 	waitmovement 0
 	release
@@ -144,7 +144,7 @@ LRT_PreventLeave::
 	
 LRT_cantLeaveFemale:
 	msgbox LRT_Girl_PreventLeaveFemale MSGBOX_DEFAULT
-	applymovement OBJ_EVENT_ID_PLAYER, LRT_CantLeave
+	applymovement PLAYER, LRT_CantLeave
 	applymovement 1, LRT_StepLeft
 	waitmovement 0
 	release
@@ -216,7 +216,7 @@ LRT_StopGoingSouth::
 
 LRT_StopPlayer::
 	msgbox LRT_CantExitSouthYet MSGBOX_DEFAULT
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	applymovement PLAYER, Common_Movement_StepUp
 	waitmovement 0
 	release
 	end
@@ -278,8 +278,8 @@ LRT_FM2:
 Ryu_HaremEvent::
 	goto_if_set FLAG_RYU_HAREM_EVENT_COMPLETED, ryu_ClearHaremEvent
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, LRT_Cam1
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, LRT_Cam1
+	waitmovement CAMERA
 	lockall
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -377,7 +377,7 @@ LRT_Harem_AlsoMinnie::
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	call_if_eq MinnieToFemalePlayer
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject PLAYER, DIR_NORTH
 	playse SE_PIN
 	msgbox AlsoMinnieMsg
 	closemessage
@@ -491,37 +491,37 @@ Ryu_HaremEventFemale::
 	closemessage
 	applymovement 9, ShellyToDawn
 	waitmovement 9
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	msgbox LRT_HAREM_INTRO_Shelly
 	closemessage
 	applymovement 8, LanaToDawn
 	waitmovement 8
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox LRT_HAREM_INTRO_Lana
 	closemessage
 	applymovement 6, LanetteToDawn
 	waitmovement 6
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	msgbox LRT_HAREM_INTRO_Lanette
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	applymovement 12, NurseToDawn
 	waitmovement 12
-	applymovement OBJ_EVENT_ID_CAMERA, LRT_Cam2
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, LRT_Cam2
+	waitmovement CAMERA
 	special RemoveCameraObject
 	applymovement 10, Common_Movement_FaceRight
 	msgbox LRT_HAREM_INTRO_Nurse
 	closemessage
 	call_if_set FLAG_RYU_RECRUITED_MINNIE, LRT_Harem_AlsoMinnie
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	applymovement 10, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	waitmovement PLAYER
 	msgbox LRT_HAREM_INTRO_Rival
 	closemessage
 	return
@@ -533,8 +533,8 @@ Ryu_HaremEventMale::
 	closemessage
 	applymovement 5, LanetteToBrendan
 	waitmovement 5
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	msgbox LRT_HAREM_INTRO_Lanette
 	closemessage
 	applymovement 11, NurseToBrendan
@@ -542,26 +542,26 @@ Ryu_HaremEventMale::
 	applymovement 9, Common_Movement_FaceLeft
 	msgbox LRT_HAREM_INTRO_Nurse
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	applymovement 7, LanaToBrendan
 	waitmovement 7
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	msgbox LRT_HAREM_INTRO_Lana
 	closemessage
 	applymovement 8, ShellyToBrendan
 	waitmovement 8
-	applymovement OBJ_EVENT_ID_CAMERA, LRT_Cam2
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, LRT_Cam2
+	waitmovement CAMERA
 	special RemoveCameraObject
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox LRT_HAREM_INTRO_Shelly
 	closemessage
 	call_if_set FLAG_RYU_RECRUITED_MINNIE, LRT_Harem_AlsoMinnie
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
 	applymovement 6, Common_Movement_FaceLeft
 	waitmovement 6
 	msgbox LRT_HAREM_INTRO_Rival
@@ -653,7 +653,7 @@ PlayersHouse_2F_Text_ItsAGameCube: @ 81F884F
 
 script Ryu_MayEventCheck {
 	setvar(VAR_TEMP_4, 100)
-	if ((flag(FLAG_RYU_MAY_AVAILABLE) == TRUE) && (flag(FLAG_RYU_MAY_INTRO_EVENT_DONE) == FALSE)) {
+	if (var(VAR_RYU_QUEST_MAY) == 10) {
 		clearflag(FLAG_RYU_HIDE_LRT_MAY)
 		addobject(13)
 	}
@@ -673,25 +673,28 @@ script LRT_HideMay {
 
 script LRT_MayEvent {
 	setvar(VAR_TEMP_4, 200)
-	if ((flag(FLAG_RYU_MAY_INTRO_EVENT_DONE)== TRUE) || (flag(FLAG_RYU_DS_MAY_FRIENDS) == TRUE) || (flag(FLAG_RYU_DS_MAY_ACQ) == TRUE)) {
+	if ((var(VAR_RYU_QUEST_MAY) > 15) || (flag(FLAG_RYU_DS_MAY_FRIENDS) == TRUE) || (flag(FLAG_RYU_DS_MAY_ACQ) == TRUE)) {
 		goto(ryu_end)
 	}
+	lock
 	call_if_set(FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest)
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hi!, I'm May.\nThe professor here signed\lpapers to adopt me, but, uh,\pI forgot where his house is.\nCan you show me?")
 	bufferdynamicmulti(LRT_DNM1, LRT_DNM2)
 	multichoice(0, 7, MULTI_DYNAMIC_2, 0)
 	if (var(VAR_RESULT) == 1) {
 		msgbox("Oh, great! Thanks a ton.")
+		setvar(VAR_RYU_QUEST_MAY, 15) //Player met may in littleroot, and said yes. Continue quest
 		setflag(FLAG_RYU_DS_MAY_FRIENDS)
 		applymovement(13, LRT_Mayevent_MayToFollower)
 		waitmovement(13)
 		removeobject(13)
 		setflag(FLAG_RYU_HIDE_LRT_MAY)
 		clearflag(FLAG_RYU_DS_MAY_ACQ)
-		createfollower(OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollowerSelectNPCScript, DIR_NORTH)
+		createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_NORTH)
 		release
 		end
 	}
+	setvar(VAR_RYU_QUEST_MAY, 666) //Player failed may's quest
 	msgbox("Oh, wait...\pI think I see it over there.\nWell, nice to meet you!")
 	closemessage
 	checkplayergender
@@ -705,8 +708,6 @@ script LRT_MayEvent {
 	playse(SE_DOOR)
 	removeobject(13)
 	setflag(FLAG_RYU_HIDE_LRT_MAY)
-	clearflag(FLAG_RYU_MAY_AVAILABLE)
-	clearflag(FLAG_RYU_MAY_INTRO_EVENT_DONE)
 	setflag(FLAG_RYU_DS_MAY_ACQ)
 	setflag(FLAG_RYU_MAY_EVENT_FAILED)
 	release

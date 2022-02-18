@@ -14,12 +14,12 @@ MP_DoHexerQuestSetup:
 
 MP_HexerStartFactionEvent::
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, MP_FollowerToGraveStone
+	applymovement FOLLOWER, Common_Movement_ExclamationMark
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, MP_FollowerToGraveStone
 	delay 30
-	applymovement OBJ_EVENT_ID_PLAYER, MP_PlayerToFollower
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MP_PlayerToFollower
+	waitmovement PLAYER
 	fadescreen FADE_TO_BLACK
 	playse SE_W091
 	waitse
@@ -36,8 +36,8 @@ MP_HexerStartFactionEvent::
 	msgbox MP_HexerThanks
 	closemessage
 	changefactionstanding FACTION_OUTCASTS, 50, FALSE
-	applymovement OBJ_EVENT_ID_FOLLOWER, MP_FollowerOffScreen
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, MP_FollowerOffScreen
+	waitmovement FOLLOWER
 	playse SE_DOOR
 	waitse
 	destroyfollower
@@ -202,14 +202,14 @@ MP_SetupLeafEvent::
 	special SpawnCameraObject
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	addobject 4
-	applymovement OBJ_EVENT_ID_CAMERA, MP_CameraMovement1
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, MP_CameraMovement1
+	waitmovement CAMERA
 	delay 20
 	applymovement 4 Common_Movement_FaceUp
 	waitmovement 4
 	delay 20
-	applymovement OBJ_EVENT_ID_CAMERA, MP_CameraMovement2
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, MP_CameraMovement2
+	waitmovement CAMERA
 	special RemoveCameraObject
 	release
 	end

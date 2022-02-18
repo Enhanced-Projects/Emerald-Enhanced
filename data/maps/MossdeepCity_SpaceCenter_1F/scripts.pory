@@ -34,7 +34,7 @@ SPC_StevenApproach::
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 106
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	applymovement PLAYER, Common_Movement_StepUp
 	applymovement 10, Common_Movement_StepDown
 	waitmovement 10
 	applymovement 10, Common_Movement_QuestionMark
@@ -64,8 +64,8 @@ SPC_PreventLeaveTillDone::
 	goto_if_ne ryu_end
 	msgbox SPC_CantLeave
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	release
 	end
 
@@ -74,7 +74,7 @@ SPC_CantEnter:
 
 SPC_PreventEntry::
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	msgbox SPC_CantEnter
 	warpsilent MAP_MOSSDEEP_CITY, 255, 64, 15
 	waitstate

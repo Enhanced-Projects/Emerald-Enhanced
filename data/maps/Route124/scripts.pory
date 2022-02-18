@@ -25,15 +25,15 @@ R124_SetFollowerCourtneyEndEvent_NR::
 	
 Route124_DoFinalMagmaEvent:
 	delay 30
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_MAGMA, 596@@Magma alternate Romance Complete
 	call RyuScript_IncrementQuestsFinished
 	ach give ACH_ETERNAL_DAMNATION
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
 	lockall
 	playse SE_NAGERU
 	waitse
@@ -54,14 +54,14 @@ Route124_DoFinalMagmaEvent:
 	fadescreen FADE_TO_BLACK
 	call R124_CollapseMaxieCave
 	fadescreen FADE_FROM_BLACK
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceRight
+	waitmovement FOLLOWER
 	msgbox R124_MightyenaReturn
 	closemessage
 	removeobject 13
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement FOLLOWER, Common_Movement_FaceLeft
+	waitmovement FOLLOWER
+	applymovement PLAYER, Common_Movement_FaceRight
 	msgbox R124_HeWontBeBotheringUsAnymore
 	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	setflag FLAG_RYU_MAGMA_LINE_DONE
@@ -100,8 +100,8 @@ R124_CheckMagmaBan::
 	lockall
 	msgbox Ryu_YouReallyDontWantToGoThere
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
 	release
 	end
 

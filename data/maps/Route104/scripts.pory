@@ -33,19 +33,19 @@ r104_MagmaEvent2Intro::
 	goto r104_PlayerEntersCottage
 	
 r104_CorrectPlayerLocation1::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
 	goto r104_PlayerEntersCottage
 	
 r104_CorrectPlayerLocation2::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
 	goto r104_PlayerEntersCottage
 	
 	
@@ -54,8 +54,8 @@ r104_PlayerEntersCottage::
 	waitmovement 35
 	applymovement 35 Common_Movement_FaceDown
 	waitmovement 35
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	playse SE_DOOR
 	warpsilent MAP_ROUTE104_MR_BRINEYS_HOUSE_STORY, 255, 5, 8
 	waitstate
@@ -105,12 +105,12 @@ Route104_EventScript_RivalTrigger:: @ 81ECCB3
 	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	setvar VAR_RUSTBORO_CITY_STATE, 8
 	setvar VAR_ROUTE104_STATE, 2
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	delay 10
 	addobject 34
 	clearflag FLAG_HIDE_ROUTE_104_RIVAL
-	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerBackUp
+	applymovement PLAYER, Route104_Movement_PlayerBackUp
 	waitmovement 0
 	applymovement 34, Route104_Movement_RivalExitBrineysCottage
 	waitmovement 0
@@ -161,7 +161,7 @@ Route104_EventScript_DawnEncounter:: @ 81ECD4B
 	waitfanfare
 	closemessage
 	delay 30
-	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerFaceRival
+	applymovement PLAYER, Route104_Movement_PlayerFaceRival
 	applymovement 34, Route104_Movement_RivalWalkSlowLeft
 	msgbox Route104_Text_DawnHowsYourPokedex, MSGBOX_DEFAULT
 	closemessage
@@ -234,7 +234,7 @@ Route104_EventScript_BrendanEncounter:: @ 81ECE6F
 	waitfanfare
 	closemessage
 	delay 30
-	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerFaceRival
+	applymovement PLAYER, Route104_Movement_PlayerFaceRival
 	applymovement 34, Route104_Movement_RivalWalkSlowLeft
 	msgbox Route104_Text_BrendanHowsYourPokedex, MSGBOX_DEFAULT
 	closemessage

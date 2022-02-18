@@ -28,8 +28,8 @@ LCPC_OnFrameScript::
 	.2byte 0
 
 LCPC_DoNurseSceneSetup::
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, 2, 6
+	turnobject PLAYER, DIR_EAST
+	setobjectxy FOLLOWER, 2, 6
 	addobject 1
 	setvar VAR_RYU_QUEST_NURSE, 9
 	end
@@ -53,36 +53,36 @@ LCPC_NurseGuard::
 LCPC_DoNurseScene::
 	lockall
 	setvar VAR_RYU_QUEST_NURSE, 10
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	msgbox LCPC_OneMomentPlease
 	closemessage
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-	applymovement OBJ_EVENT_ID_FOLLOWER, LCPC_NurseToGuard
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	turnobject PLAYER, DIR_NORTH
+	applymovement FOLLOWER, LCPC_NurseToGuard
+	waitmovement FOLLOWER
 	applymovement 1, Common_Movement_StepLeft
 	waitmovement 1
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, LCPC_StepInPlaceDownTwice
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceDown
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, LCPC_StepInPlaceDownTwice
+	waitmovement FOLLOWER
 	msgbox LCPC_PlayerComeHere
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToNurse
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, LCPC_PlayerToNurse
+	waitmovement PLAYER
 	msgbox LCPC_LetsGoIn
 	closemessage
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_StepUp
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_StepUp
+	waitmovement FOLLOWER
 	playse SE_KAIDAN
 	waitse
 	call RF_FollowerLeaveCall
-	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToNurseRoom
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, LCPC_PlayerToNurseRoom
+	waitmovement PLAYER
 	playse SE_KAIDAN
 	waitse
 	setvar VAR_TEMP_8, 69
@@ -151,20 +151,20 @@ LCPC_NurseNight2::
 	goto ryu_end
 	
 LCPC_PlayerSouth::
-	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToBed1
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, LCPC_PlayerToBed1
+	waitmovement PLAYER
 	goto_if_set FLAG_RYU_DS_JOY_PARTNERS, LCPC_ContinueNightScene2
 	goto LCPC_ContinueNightScene1
 
 LCPC_PlayerWest::
-	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToBed2
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, LCPC_PlayerToBed2
+	waitmovement PLAYER
 	goto_if_set FLAG_RYU_DS_JOY_PARTNERS, LCPC_ContinueNightScene2
 	goto LCPC_ContinueNightScene1
 
 LCPC_PlayerNorth::
-	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToBed3
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, LCPC_PlayerToBed3
+	waitmovement PLAYER
 	goto_if_set FLAG_RYU_DS_JOY_PARTNERS, LCPC_ContinueNightScene2
 	goto LCPC_ContinueNightScene1
 	

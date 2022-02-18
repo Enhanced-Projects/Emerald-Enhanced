@@ -35,20 +35,20 @@ LRT_ME_FindMaxie::
 	waitstate
 	
 LRT_ME_RomanceEvent::
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceLeft
+	waitmovement FOLLOWER
 	msgbox LRT_ME_StepCloserAndI
 	closemessage
 	applymovement 1, Common_Movement_StepLeft
 	waitmovement 1
 	applymovement 1, Common_Movement_FaceRight
 	waitmovement 1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	msgbox LRT_ME_CourtneyLook
 	closemessage
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_StepUp
+	waitmovement FOLLOWER
 	msgbox LRT_ME_LetsGo
 	closemessage
 	warpsilent MAP_LITTLEROOT_TOWN, 2, 7, 17

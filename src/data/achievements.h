@@ -238,12 +238,20 @@ static const u8 sWantedLabel[] = _("Wanted");
 static const u8 sWantedHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Be a Thief.");
 static const u8 sWantedDesc[] = _("Your face is up on wanted posters.\n(Bounty over 100,000)");
 
+static const u8 sDeOrphanedLabel[] = _("De-Orphaned");
+static const u8 sDeOrphanedHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Find a home for an Orphan.");
+static const u8 sDeOrphanedDesc[] = _("You gave her a new lease on life!\n(Found a home for May)");
+
+static const u8 sLostGirlLabel[] = _("Lost Girl");
+static const u8 sLostGirlHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Recruit an orphan");
+static const u8 sLostGirlDesc[] = _("With no expectations, she's super loyal!\n(Romanced May)");
+
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
     [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, sWholeNewWorldAchHint}, //started exploring enhanced hoenn
     [ACH_ENHANCED_BATTLE] = {28, 40, CATEGORY_BATTLE, ACH_ENHANCED_BATTLE, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc, sEnhancedBattleAchHint}, //completed a non-tutorial battle
     [ACH_NEW_REGION_WHO_DIS] = {57, 40, CATEGORY_COMPANIONS, ACH_NEW_REGION_WHO_DIS, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc, sNewRegionWhoDisAchHint}, // Befriended any romanceable npc
-    [ACH_ADVENTURE_TIME] = {43, 40, CATEGORY_QUESTING, ACH_ADVENTURE_TIME, sAdventureTimeAchLabel, sAdventureTimeAchDesc, sAdventureTimeAchHint}, //Began your adventure
+    [ACH_ADVENTURE_TIME] = {42, 40, CATEGORY_QUESTING, ACH_ADVENTURE_TIME, sAdventureTimeAchLabel, sAdventureTimeAchDesc, sAdventureTimeAchHint}, //Began your adventure
     [ACH_TRUE_LOVE] = {55, 37, CATEGORY_COMPANIONS, ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc, sTrueLoveAchHint}, //fully romanced any character
     [ACH_SILENT_STRONG_TYPE] = {57, 33, CATEGORY_COMPANIONS, ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc, sSilentStrongTypeAchHint}, //fully romanced lana
     [ACH_CHILDHOOD_FRIEND] = {57, 35, CATEGORY_COMPANIONS, ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc, sChildhoodFriendAchHint}, //fully romanced rival
@@ -290,14 +298,16 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_THE_TRADESMAN] = {14, 45, CATEGORY_EXPLORATION, ACH_THE_TRADESMAN, sTheTradesmanLabel, sTheTradesmanDesc, sTheTradesmanHint},//High standing with the Professionals
     [ACH_THE_WARRIOR] = {14, 47, CATEGORY_EXPLORATION, ACH_THE_WARRIOR, sTheWarriorLabel, sTheWarriorDesc, sTheWarriorHint},//High standing with the Athletes
     [ACH_THE_UNIVERSALIST] = {12, 43, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_THE_UNIVERSALIST, sTheUniversalistLabel, sTheUniversalistDesc, sTheUniversalistHint},// All factions high standing. GOLD ACHIEVEMENT
-    [ACH_LOREMASTER] = {43, 31, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_LOREMASTER, sLoremasterLabel, sLoremasterDesc, sLoremasterHint},// All quest complete achievements GOLD ACHIEVEMENT
+    [ACH_LOREMASTER] = {42, 31, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_LOREMASTER, sLoremasterLabel, sLoremasterDesc, sLoremasterHint},// All quest complete achievements GOLD ACHIEVEMENT
     [ACH_TOURIST] = {12, 29, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_TOURIST, sTouristLabel, sTouristDesc, sTouristHint},// All exploration achievements GOLD ACHIEVEMENT
     [ACH_CRITCAP] = {30, 33, CATEGORY_BATTLE, ACH_CRITCAP, sCritCapLabel, sCritCapDesc, sCritCapHint},// Got a crtitical capture
     [ACH_POKEMON_TRAINER] = {10, 35, CATEGORY_EXPLORATION, ACH_POKEMON_TRAINER, sPokemonTrainerLabel, sPokemonTrainerDesc, sPokemonTrainerHint},// Captured 151 or more mons/
     [ACH_REALTOR] = {45, 33, CATEGORY_QUESTING, ACH_REALTOR, sRealtorLabel, sRealtorDesc, sRealtorHint},// Unlock Real Estate
     [ACH_MILLIONAIRE] = {8, 45, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_MILLIONAIRE, sMillionaireLabel, sMillionaireDesc, sMillionaireHint},// 1 mirion dorars
     [ACH_MONEYBAGS] = {16, 45, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_MILLIONAIRE, sBillionaireLabel, sBillionaireDesc, sBillionaireHint},// 1 birion dorars
-    [ACH_SLUM_LORD] = {16, 35, CATEGORY_QUESTING, ACH_SLUM_LORD, sSlumLordLabel, sSlumLordDesc, sSlumLordHint},// Own all NUM_PROPERTIES properties
+    [ACH_SLUM_LORD] = {16, 35, CATEGORY_EXPLORATION, ACH_SLUM_LORD, sSlumLordLabel, sSlumLordDesc, sSlumLordHint},// Own all NUM_PROPERTIES properties
     [ACH_ULTRA_BEASTLY] = {28, 31, CATEGORY_BATTLE | CATEGORY_FLAG_GOLD, ACH_ULTRA_BEASTLY, sUltraBeastlyLabel, sUltraBeastlyDesc, sUltraBeastlyHint}, //Capture all roaming Ultra Beasts
     [ACH_WANTED] = {12, 47, CATEGORY_EXPLORATION, ACH_WANTED, sWantedLabel, sWantedDesc, sWantedHint}, //bounty of greater than 100000
+    [ACH_DE_ORPHANED] = {37, 35, CATEGORY_QUESTING, ACH_DE_ORPHANED, sDeOrphanedLabel, sDeOrphanedDesc, sDeOrphanedHint}, //Unlocked May quest
+    [ACH_LOST_GIRL] = {55, 35, CATEGORY_COMPANIONS, ACH_LOST_GIRL, sLostGirlLabel, sLostGirlDesc, sLostGirlHint}, //recruited May
 };

@@ -34,29 +34,29 @@ SCH_SetupAquaScene::
 SCH_CantLeaveYet::
 	compare VAR_RYU_QUEST_AQUA, 102
 	goto_if_ne ryu_end
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	release
 	end
 
 SlateportCity_Harbor_EventScript_SternApproachPlayer0:: @ 820CA89
 	applymovement 4, SlateportCity_Harbor_Movement_SternApproachPlayer0
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestDown
 	waitmovement 0
 	return
 
 SlateportCity_Harbor_EventScript_SternApproachPlayer1:: @ 820CA9E
 	applymovement 4, SlateportCity_Harbor_Movement_SternApproachPlayer1
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	return
 
 SlateportCity_Harbor_EventScript_SternApproachPlayer:: @ 820CAB3
 	applymovement 4, SlateportCity_Harbor_Movement_SternApproachPlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	return
 
@@ -163,7 +163,7 @@ SlateportCity_Harbor_EventScript_BoardFerry:: @ 820CBE9
 	compare VAR_FACING, DIR_EAST
 	call_if_eq SlateportCity_Harbor_EventScript_BoardFerryEast
 	delay 30
-	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_PETALBURG_CITY
+	hideobjectat PLAYER, MAP_PETALBURG_CITY
 	setvar VAR_0x8004, 5
 	call Common_EventScript_FerryDepart
 	return
@@ -174,12 +174,12 @@ SlateportCity_Harbor_EventScript_CancelDestinationSelect:: @ 820CC2D
 	end
 
 SlateportCity_Harbor_EventScript_BoardFerryEast:: @ 820CC37
-	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Harbor_Movement_BoardFerryEast
+	applymovement PLAYER, SlateportCity_Harbor_Movement_BoardFerryEast
 	waitmovement 0
 	return
 
 SlateportCity_Harbor_EventScript_BoardFerryNorth:: @ 820CC42
-	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Harbor_Movement_BoardFerryNorth
+	applymovement PLAYER, SlateportCity_Harbor_Movement_BoardFerryNorth
 	waitmovement 0
 	return
 
@@ -413,13 +413,13 @@ SlateportCity_Harbor_Text_ThisWillHelpResearch: @ 820D970
 
 SCH_AquaEvent::
 	clearflag FLAG_RYU_HIDE_REL_OBJECTS
-	applymovement OBJ_EVENT_ID_PLAYER, SCH_WalktoStern
+	applymovement PLAYER, SCH_WalktoStern
 	msgbox SCH_NowThenCapt
 	closemessage
-	waitmovement OBJ_EVENT_ID_PLAYER
+	waitmovement PLAYER
 	msgbox SCH_YouWillNot
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, SCH_HitStern
+	applymovement PLAYER, SCH_HitStern
 	playse SE_W003
 	waitse
 	fadescreen FADE_TO_BLACK

@@ -92,6 +92,7 @@ static u8 sTextLana[] = _("Lana");
 static u8 sTextLanette[] = _("Lanette");
 static u8 sTextAqua[] = _("Aqua");
 static u8 sTextNurse[] = _("Nurse");
+static u8 sTextMay[] = _("May");
 
 struct QuestData {
     const struct QuestStageDesc * stageDescs;
@@ -183,7 +184,8 @@ static struct QuestData sQuests[] = {
     {gMagmaQuestStages, sTextMagma, VAR_RYU_QUEST_MAGMA},
     {gAquaQuestStages, sTextAqua, VAR_RYU_QUEST_AQUA},
     {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LANA},
-    {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE}
+    {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE},
+    {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY}
 };
 
 static u8 sColors[][3] = {
@@ -460,7 +462,8 @@ static void Task_QuestMain(u8 taskId)
         {
             const struct QuestStageDesc * questDesc = FindQuestDescFromStage(SELECTED_QUEST(taskId));
             FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
-            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
+            StringExpandPlaceholders(gStringVar4, questDesc->description);
+            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, gStringVar4);
             CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
             gTasks[taskId].func = Task_QuestMain;
             //AddTextPrinterParameterized3(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 3, sColors[0], 0, questDesc->description);

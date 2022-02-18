@@ -57,23 +57,23 @@ OldaleTown_EventScript_MartEmployee:: @ 81E8EFC
 
 OldaleTown_EventScript_GoToMartSouth:: @ 81E8F47
 	applymovement 2, OldaleTown_Movement_EmployeeSouth
-	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerSouth
-	applymovement OBJ_EVENT_ID_FOLLOWER, OldaleTown_Movement_PlayerSouth
+	applymovement PLAYER, OldaleTown_Movement_PlayerSouth
+	applymovement FOLLOWER, OldaleTown_Movement_PlayerSouth
 	waitmovement 0
 	goto OldaleTown_EventScript_ExplainPokemonMart
 	end
 
 OldaleTown_EventScript_GoToMartNorth:: @ 81E8F5E
 	applymovement 2, OldaleTown_Movement_EmployeeNorth
-	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerNorth
-	applymovement OBJ_EVENT_ID_FOLLOWER, OldaleTown_Movement_PlayerNorth
+	applymovement PLAYER, OldaleTown_Movement_PlayerNorth
+	applymovement FOLLOWER, OldaleTown_Movement_PlayerNorth
 	waitmovement 0
 	goto OldaleTown_EventScript_ExplainPokemonMart
 	end
 
 OldaleTown_EventScript_GoToMartEast:: @ 81E8F75
-	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerEast
-	applymovement OBJ_EVENT_ID_FOLLOWER, OldaleTown_Movement_PlayerEast
+	applymovement PLAYER, OldaleTown_Movement_PlayerEast
+	applymovement FOLLOWER, OldaleTown_Movement_PlayerEast
 	applymovement 2, OldaleTown_Movement_EmployeeEast
 	waitmovement 0
 	goto OldaleTown_EventScript_ExplainPokemonMart
@@ -211,7 +211,7 @@ OldaleTown_EventScript_FootprintsMan:: @ 81E901F
 
 OldaleTown_EventScript_BlockedPath:: @ 81E903F
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerStepBack
+	applymovement PLAYER, OldaleTown_Movement_PlayerStepBack
 	applymovement 3, OldaleTown_Movement_BackUp
 	waitmovement 0
 	msgbox OldaleTown_Text_WaitDontComeInHere, MSGBOX_DEFAULT
@@ -238,7 +238,7 @@ OldaleTown_EventScript_RivalTrigger1:: @ 81E9086
 	lockall
 	applymovement 4, OldaleTown_Movement_RivalApproachPlayer1
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	setvar VAR_0x8009, 1
 	goto OldaleTown_EventScript_ShowRivalMessage
@@ -248,7 +248,7 @@ OldaleTown_EventScript_RivalTrigger2:: @ 81E90A6
 	lockall
 	applymovement 4, OldaleTown_Movement_RivalApproachPlayer2
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	setvar VAR_0x8009, 1
 	goto OldaleTown_EventScript_ShowRivalMessage
@@ -258,7 +258,7 @@ OldaleTown_EventScript_RivalTrigger3:: @ 81E90C6
 	lockall
 	applymovement 4, OldaleTown_Movement_RivalApproachPlayer3
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	setvar VAR_0x8009, 1
 	goto OldaleTown_EventScript_ShowRivalMessage
@@ -305,7 +305,7 @@ OldaleTown_EventScript_DoExitMovement1:: @ 81E9148
 	return
 
 OldaleTown_EventScript_DoExitMovement2:: @ 81E915E
-	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_WatchRivalExit
+	applymovement PLAYER, OldaleTown_Movement_WatchRivalExit
 	applymovement 4, OldaleTown_Movement_RivalExit
 	waitmovement 0
 	return
@@ -432,8 +432,8 @@ OT_CheckIfPlayerCanEnter::
 	lock
 	msgbox OT_YouCantGoInHere
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
 	release
 	end
 	
@@ -450,26 +450,26 @@ OT_CantLeaveYet::
 	
 OT_CantLeaveNorth::
 	msgbox OT_NotDone
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
 	goto ryu_end
 	
 OT_CantLeaveSouth::
 	msgbox OT_NotDone
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	goto ryu_end
 	
 OT_CantLeaveWest::
 	msgbox OT_NotDone
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
 	goto ryu_end
 	
 OT_CantEnterEast:
 	msgbox OT_CantEnterHere
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
 	goto ryu_end
 
 	
@@ -488,8 +488,8 @@ OT_StartMagmaHeist::
 OT_ContinueHeist::
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setvar VAR_RYU_QUEST_MAGMA 240@player defeated shop guard
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	applymovement 5, Common_Movement_StepRight
 	waitmovement 5
 	addobject 6
@@ -508,14 +508,14 @@ OT_ContinueHeist::
 	removeobject 7
 	removeobject 8
 	removeobject 9
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
 	msgbox OT_YouThinkThis
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_QuestionMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER Common_Movement_QuestionMark
+	waitmovement PLAYER
 	playse SE_HINSI
 	waitse
 	playse SE_HINSI
@@ -528,14 +528,14 @@ OT_ContinueHeist::
 	waitse
 	playse SE_HINSI
 	waitse
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox OT_ThatsWhatIMean
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	addobject 6
 	addobject 7
 	addobject 8
@@ -560,8 +560,8 @@ OT_ContinueHeist::
 	applymovement 9, OT_LastMagmaLeave
 	waitmovement 9
 	removeobject 9
-	applymovement OBJ_EVENT_ID_PLAYER, OT_PlayerLeaveOldale
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, OT_PlayerLeaveOldale
+	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_MAGMA, 245@Player left oldale after heist
 	setflag FLAG_RYU_BANNED_FROM_OLDALE
 	release

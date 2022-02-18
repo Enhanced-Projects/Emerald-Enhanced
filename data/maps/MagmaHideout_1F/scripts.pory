@@ -118,9 +118,9 @@ MH_ExitPrevention::
 	compare VAR_RYU_QUEST_MAGMA, 405
 	goto_if_ge ryu_end
 	msgbox MH_Cantleavenotdone
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	applymovement FOLLOWER, Common_Movement_StepUp
+	waitmovement PLAYER
 	release
 	end
 
@@ -208,13 +208,13 @@ MH_CheckPlayerIsMagma::
 MH_CheckMagmaExit::
 	lock
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_ExclamationMark
+	waitmovement FOLLOWER
 	msgbox MH_Courtney_NotDoneYet
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	applymovement FOLLOWER, Common_Movement_StepUp
+	waitmovement PLAYER
 	release
 	end
 	

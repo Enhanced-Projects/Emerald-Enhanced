@@ -106,8 +106,8 @@
 #define ACH_SLUM_LORD  57 ///own all properties
 #define ACH_ULTRA_BEASTLY  58 //capture all ubs
 #define ACH_WANTED  59
-#define ACH_UNUSED_61  60
-#define ACH_UNUSED_62  61
+#define ACH_DE_ORPHANED 60// gave may a place to live
+#define ACH_LOST_GIRL  61
 #define ACH_UNUSED_63  62
 #define ACH_UNUSED_64  63
 #define ACH_UNUSED_65  64

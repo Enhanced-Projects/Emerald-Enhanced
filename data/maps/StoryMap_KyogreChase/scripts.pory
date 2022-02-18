@@ -19,11 +19,11 @@ KyogreChase_TestScene::
 	waitmovement 1
 	applymovement 1, KyogreChase_ChaseScene
 	applymovement 2, KyogreChase_ChaseScene
-	applymovement OBJ_EVENT_ID_CAMERA, KyogreChase_ChaseScene
+	applymovement CAMERA, KyogreChase_ChaseScene
 	delay 120
 	msgbox KyogreChase_ChaseSceneMsg
 	closemessage
-	waitmovement OBJ_EVENT_ID_CAMERA
+	waitmovement CAMERA
 	applymovement 1, DM_TurnToSub
 	waitmovement 1
 	playse SE_W088

@@ -439,10 +439,10 @@
 #define FLAG_RYU_DS_MAY_LOVERS               0x19E
 #define FLAG_RYU_DS_MAY_PARTNERS             0x19F
 #define FLAG_RYU_HIDE_LRT_MAY                0x1A0
-#define FLAG_RYU_MAY_PREREQUISITE_COMPLETED  0x1A1
-#define FLAG_RYU_MAY_AVAILABLE               0x1A2
+#define FLAG_UNUSED_0x1A1                    0x1A1
+#define FLAG_RYU_MAY_QUEST_PENDING_PETALBURG 0x1A2
 #define FLAG_RYU_RIVALMOM_OUTRO              0x1A3
-#define FLAG_UNUSED_0x1A4                    0x1A4
+#define FLAG_RYU_HIDE_PETALBURG_MAY          0x1A4
 #define FLAG_REMATCH_SIDNEY                  0x1A5
 #define FLAG_REMATCH_PHOEBE                  0x1A6
 #define FLAG_REMATCH_GLACIA                  0x1A7
@@ -484,7 +484,7 @@
 #define FLAG_CAUGHT_LATIAS_OR_LATIOS         0x1C9
 #define FLAG_CAUGHT_MEW                      0x1CA
 #define FLAG_RYU_BH_HIDE_MAY                 0x1CB
-#define FLAG_RYU_MAY_INTRO_EVENT_DONE        0x1CC
+#define FLAG_UNUSED_0x1CC                    0x1CC
 #define FLAG_HIDE_LRT_BH_BIRCH               0x1CD
 #define FLAG_HIDE_LRT_DH_BIRCH               0x1CE
 #define FLAG_RYU_MAY_EVENT_FAILED            0x1CF
@@ -492,12 +492,12 @@
 #define FLAG_SCOTT_GIVES_BATTLE_POINTS       0x1D1
 #define FLAG_COLLECTED_ALL_GOLD_SYMBOLS      0x1D2
 #define FLAG_RYU_DH_HIDE_MAY                 0x1D3
-#define FLAG_UNUSED_0x1D4                    0x1D4
-#define FLAG_UNUSED_0x1D5                    0x1D5
-#define FLAG_UNUSED_0x1D6                    0x1D6
-#define FLAG_UNUSED_0x1D7                    0x1D7
-#define FLAG_UNUSED_0x1D8                    0x1D8
-#define FLAG_UNUSED_0x1D9                    0x1D9
+#define FLAG_RYU_HIDE_VERDANTURF_MAY         0x1D4
+#define FLAG_RYU_HIDE_VERDANTURF_WALLY       0x1D5
+#define FLAG_RYU_HIDE_RT_WALLY               0x1D6
+#define FLAG_RYU_HIDE_PBC_HOME_WALLY         0x1D7
+#define FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN        0x1D8 //Both of these flags set unlocks an additional special scene for the harem end.
+#define FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS 0x1D9 //
 
 #define FLAG_RYU_SCI_MEWTWO1                 0x1DA
 
@@ -1625,16 +1625,16 @@
 #define FLAG_HIDDEN_MT_FREEZE_2F_PEARL_5               (DAILY_FLAGS_START + 0x19)
 #define FLAG_HIDDEN_MT_FREEZE_3F_PEARL_1               (DAILY_FLAGS_START + 0x1A)
 #define FLAG_HIDDEN_MT_FREEZE_3F_PEARL_2               (DAILY_FLAGS_START + 0x1B)
-#define FLAG_FINISHED_NATURALIST_DAILY                    (DAILY_FLAGS_START + 0x1C) // Unused Flag
-#define FLAG_FINISHED_STUDENT_DAILY                       (DAILY_FLAGS_START + 0x1D) // Unused Flag
-#define FLAG_FINISHED_NOBLE_DAILY                         (DAILY_FLAGS_START + 0x1E) // Unused Flag
-#define FLAG_FINISHED_POKEFAN_DAILY                       (DAILY_FLAGS_START + 0x1F) // Unused Flag
-#define FLAG_FINISHED_OUTCAST_DAILY                       (DAILY_FLAGS_START + 0x20) // Unused Flag
-#define FLAG_FINISHED_PROFESSIONAL_DAILY                  (DAILY_FLAGS_START + 0x21) // Unused Flag
-#define FLAG_FINISHED_ATHLETE_DAILY                       (DAILY_FLAGS_START + 0x22) // Unused Flag
-#define FLAG_DAILY_QUEST_ACTIVE                        (DAILY_FLAGS_START + 0x23) // Unused Flag
-#define FLAG_RYU_INTEREST_ACCRUED                              (DAILY_FLAGS_START + 0x24) // Unused Flag
-#define FLAG_UNUSED_0x945                              (DAILY_FLAGS_START + 0x25) // Unused Flag
+#define FLAG_FINISHED_NATURALIST_DAILY                 (DAILY_FLAGS_START + 0x1C)
+#define FLAG_FINISHED_STUDENT_DAILY                    (DAILY_FLAGS_START + 0x1D)
+#define FLAG_FINISHED_NOBLE_DAILY                      (DAILY_FLAGS_START + 0x1E)
+#define FLAG_FINISHED_POKEFAN_DAILY                    (DAILY_FLAGS_START + 0x1F)
+#define FLAG_FINISHED_OUTCAST_DAILY                    (DAILY_FLAGS_START + 0x20)
+#define FLAG_FINISHED_PROFESSIONAL_DAILY               (DAILY_FLAGS_START + 0x21)
+#define FLAG_FINISHED_ATHLETE_DAILY                    (DAILY_FLAGS_START + 0x22)
+#define FLAG_DAILY_QUEST_ACTIVE                        (DAILY_FLAGS_START + 0x23)
+#define FLAG_RYU_INTEREST_ACCRUED                      (DAILY_FLAGS_START + 0x24)
+#define FLAG_RYU_MAY_DAILY_REWARD                      (DAILY_FLAGS_START + 0x25)
 #define FLAG_UNUSED_0x946                              (DAILY_FLAGS_START + 0x26) // Unused Flag
 #define FLAG_UNUSED_0x947                              (DAILY_FLAGS_START + 0x27) // Unused Flag
 #define FLAG_UNUSED_0x948                              (DAILY_FLAGS_START + 0x28) // Unused Flag
@@ -1686,6 +1686,14 @@
 #define FLAG_UNUSED_SPECIAL_0xd                 (SPECIAL_FLAGS_START + 0xD)
 #define FLAG_RYU_USED_COMPANION_E4              (SPECIAL_FLAGS_START + 0xE) //Used a companion for championship match
 #define FLAG_RYU_PASSED_SAVE_VERSION_CHECK      (SPECIAL_FLAGS_START + 0xF) //prevents lag from checking save vs game version
+#define FLAG_RYU_TEMP_1                         (SPECIAL_FLAGS_START + 0x10)
+#define FLAG_RYU_TEMP_2                         (SPECIAL_FLAGS_START + 0x11)
+#define FLAG_RYU_TEMP_3                        (SPECIAL_FLAGS_START + 0x12)
+#define FLAG_RYU_TEMP_4                         (SPECIAL_FLAGS_START + 0x13)
+#define FLAG_RYU_TEMP_5                         (SPECIAL_FLAGS_START + 0x14)
+#define FLAG_RYU_TEMP_6                         (SPECIAL_FLAGS_START + 0x15)
+#define FLAG_RYU_TEMP_7                         (SPECIAL_FLAGS_START + 0x16)
+#define FLAG_RYU_TEMP_8                         (SPECIAL_FLAGS_START + 0x17)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 

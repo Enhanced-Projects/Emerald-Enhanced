@@ -1161,7 +1161,7 @@ u8 GetFirstInactiveObjectEventId(void)
 
 u8 GetObjectEventIdByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroupId)
 {
-    if (localId < OBJ_EVENT_ID_PLAYER)
+    if (localId < PLAYER)
     {
         return GetObjectEventIdByLocalIdAndMapInternal(localId, mapNum, mapGroupId);
     }
@@ -1614,7 +1614,7 @@ void GetSafeCoordsForFollower(struct ObjectEvent *playerObjectEvent, int playerX
 }
 
 const struct ObjectEventTemplate gFollowerObjectEventTemplate = {
-    .localId = OBJ_EVENT_ID_FOLLOWER,
+    .localId = FOLLOWER,
     .graphicsId = 0,
     //.unk2 = 0,
     .x = 0,
@@ -1646,13 +1646,13 @@ u8 CreateFollowerObjectEvent(u16 graphicsId, const u8 *script, int direction)
     u8 playerObjectId;
 
     // Ensure the player object exists.
-    if (TryGetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0, &playerObjectId))
+    if (TryGetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0, &playerObjectId))
         return OBJECT_EVENTS_COUNT;
 
     // Ensure a follower does not already exist.
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        if (gObjectEvents[i].active && gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER)
+        if (gObjectEvents[i].active && gObjectEvents[i].localId == FOLLOWER)
             return 0;
     }
 
@@ -1696,7 +1696,7 @@ void DestroyFollowerObjectEvent(void)
     int i;
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        if (gObjectEvents[i].active && gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER)
+        if (gObjectEvents[i].active && gObjectEvents[i].localId == FOLLOWER)
         {
             RemoveObjectEvent(&gObjectEvents[i]);
             return;
@@ -4758,7 +4758,7 @@ bool8 FollowPlayerMovement_GoSpeed0(struct ObjectEvent *objectEvent, struct Spri
     s16 y;
     u8 playerObjectId;
 
-    if (TryGetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0, &playerObjectId))
+    if (TryGetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0, &playerObjectId))
         direction = DIR_NONE;
 
     direction = GetFollowPlayerDirection(
@@ -4780,7 +4780,7 @@ bool8 FollowPlayerMovement_GoSpeed1(struct ObjectEvent *objectEvent, struct Spri
     s16 y;
     u8 playerObjectId;
 
-    if (TryGetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0, &playerObjectId))
+    if (TryGetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0, &playerObjectId))
         direction = DIR_NONE;
 
     direction = GetFollowPlayerDirection(
@@ -4802,7 +4802,7 @@ bool8 FollowPlayerMovement_GoSpeed2(struct ObjectEvent *objectEvent, struct Spri
     s16 y;
     u8 playerObjectId;
 
-    if (TryGetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0, &playerObjectId))
+    if (TryGetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0, &playerObjectId))
         direction = DIR_NONE;
 
     direction = GetFollowPlayerDirection(
@@ -4824,7 +4824,7 @@ bool8 FollowPlayerMovement_JumpLedge(struct ObjectEvent *objectEvent, struct Spr
     s16 y;
     u8 playerObjectId;
 
-    if (TryGetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0, &playerObjectId))
+    if (TryGetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0, &playerObjectId))
         direction = DIR_NONE;
 
     direction = GetFollowPlayerDirection(
@@ -4848,7 +4848,7 @@ bool8 FollowPlayerMovement_CrossLedge(struct ObjectEvent *objectEvent, struct Sp
     u8 playerObjectId;
     int movementAction;
 
-    if (TryGetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0, &playerObjectId))
+    if (TryGetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0, &playerObjectId))
         direction = DIR_NONE;
 
     direction = GetFollowPlayerDirection(
@@ -5166,7 +5166,7 @@ static bool8 DoesObjectCollideWithObjectAt(struct ObjectEvent *objectEvent, s16 
             {
                 if (AreZCoordsCompatible(objectEvent->currentElevation, curObject->currentElevation))
                 {
-                    if (curObject->localId == OBJ_EVENT_ID_FOLLOWER)
+                    if (curObject->localId == FOLLOWER)
                         return 2;
                     else
                         return 1;
@@ -6617,7 +6617,7 @@ bool8 MovementAction_FacePlayer_Step0(struct ObjectEvent *objectEvent, struct Sp
 {
     u8 playerObjectId;
 
-    if (!TryGetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0, &playerObjectId))
+    if (!TryGetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0, &playerObjectId))
     {
         FaceDirection(objectEvent, sprite, GetDirectionToFace(objectEvent->currentCoords.x, objectEvent->currentCoords.y, gObjectEvents[playerObjectId].currentCoords.x, gObjectEvents[playerObjectId].currentCoords.y));
     }
@@ -6629,7 +6629,7 @@ bool8 MovementAction_FaceAwayPlayer_Step0(struct ObjectEvent *objectEvent, struc
 {
     u8 playerObjectId;
 
-    if (!TryGetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0, &playerObjectId))
+    if (!TryGetObjectEventIdByLocalIdAndMap(PLAYER, 0, 0, &playerObjectId))
     {
         FaceDirection(objectEvent, sprite, GetOppositeDirection(GetDirectionToFace(objectEvent->currentCoords.x, objectEvent->currentCoords.y, gObjectEvents[playerObjectId].currentCoords.x, gObjectEvents[playerObjectId].currentCoords.y)));
     }
@@ -8211,7 +8211,7 @@ void ObjectEventUpdateZCoord(struct ObjectEvent *objEvent)
     //u8 z2 = MapGridGetZCoordAt(eventObj->previousCoords.x, eventObj->previousCoords.y);
     u8 z, z2;
 
-    if (objEvent->localId == OBJ_EVENT_ID_FOLLOWER)
+    if (objEvent->localId == FOLLOWER)
     {
         // The follower should always have the same elevation as the player, otherwise the player's sprite can
         // cover the follower when switching elevations.

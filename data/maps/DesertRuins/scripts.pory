@@ -124,7 +124,7 @@ DR_LeafEvent::
 	setvar VAR_RYU_QUEST_LANA, 47
 	delay 25
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, DR_CameraSequence
+	applymovement CAMERA, DR_CameraSequence
 	waitmovement 0
 	applymovement 2 DR_OpenSequence
 	waitmovement 2
@@ -140,14 +140,14 @@ DR_LeafEvent::
 	fadeinbgm 0
 	playse SE_PIN
 	waitse
-	applymovement OBJ_EVENT_ID_CAMERA, DR_CameraFollowsLeaf
+	applymovement CAMERA, DR_CameraFollowsLeaf
 	applymovement 2, DR_LeafToBackDoor
 	waitmovement 2
 	playse SE_KAIDAN
 	setobjectxy 2, 16, 32
 	waitse
 	removeobject 2
-	applymovement OBJ_EVENT_ID_CAMERA, DR_CameraReturn
+	applymovement CAMERA, DR_CameraReturn
 	waitmovement 0
 	special RemoveCameraObject
 	setflag FLAG_SYS_REGIROCK_PUZZLE_COMPLETED
@@ -159,7 +159,7 @@ DR_LeafCheck2::
 	addobject 4
 	removeobject 2
 	special DrawWholeMapView
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_FaceUp
 	setvar VAR_RYU_QUEST_LANA, 49
 	setobjectxy 2, 16, 32
 	clearflag FLAG_HIDE_DR_LANA
@@ -184,7 +184,7 @@ DR_LeafEvent2::
 	waitmovement 4
 	msgbox DR_LeafMsg MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, DR_StepRight
+	applymovement PLAYER, DR_StepRight
 	waitmovement 0
 	applymovement 4, DR_LeafLeaves
 	waitmovement 4

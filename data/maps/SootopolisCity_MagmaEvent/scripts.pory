@@ -19,15 +19,15 @@ SCME_StartEvent::
 SCME_MainEvent::
 	setflag FLAG_HIDE_SCME_KYOGRE
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToGroudon
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, SCME_PanToGroudon
+	waitmovement CAMERA
 	delay 20
-	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanFromGroudonToJuan
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, SCME_PanFromGroudonToJuan
+	waitmovement CAMERA
 	msgbox SCME_WhatInHoenn
 	closemessage
-	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToMagma
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, SCME_PanToMagma
+	waitmovement CAMERA
 	msgbox SCME_YesGroudon
 	closemessage
 	applymovement 4, Common_Movement_StepRight
@@ -52,8 +52,8 @@ SCME_MainEvent_Part2::
 	waitmovement 3
 	msgbox SCME_WhatsThis
 	closemessage
-	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToGroudonKyogreFromMagma
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, SCME_PanToGroudonKyogreFromMagma
+	waitmovement CAMERA
 	playmoncry SPECIES_GROUDON, 3
 	waitmoncry
 	delay 30
@@ -66,10 +66,10 @@ SCME_MainEvent_Part2::
 	playmoncry SPECIES_KYOGRE, 3
 	waitmoncry
 	delay 10
-	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToMaxieFromLegends
-	waitmovement OBJ_EVENT_ID_CAMERA
-	applymovement OBJ_EVENT_ID_PLAYER, SCME_PlayerToMaxie@3 left, 3 down, face down
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement CAMERA, SCME_PanToMaxieFromLegends
+	waitmovement CAMERA
+	applymovement PLAYER, SCME_PlayerToMaxie@3 left, 3 down, face down
+	waitmovement PLAYER
 	msgbox SCME_IllHandleThis
 	closemessage
 	applymovement 3, Common_Movement_FaceUp
@@ -80,11 +80,11 @@ SCME_MainEvent_Part2::
 	waitmovement 3
 	giveitem ITEM_MASTER_BALL, 1
 	msgbox SCME_UseThisBall
-	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToPlayerFromMaxie
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, SCME_PanToPlayerFromMaxie
+	waitmovement CAMERA
 	special RemoveCameraObject
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	msgbox SCME_NowsMyChance
 	closemessage
 	setvar VAR_RYU_QUEST_MAGMA, 555
@@ -124,8 +124,8 @@ SC_Groudon_Defeated::
 SC_Groudon_PostEvent::
 	removeobject 1
 	setflag FLAG_HIDE_SCME_GROUDON
-	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER Common_Movement_FaceRight
+	waitmovement PLAYER
 	msgbox SCME_ReturnWhereYou
 	closemessage
 	call SCME_BlueOrbEffect
@@ -133,8 +133,8 @@ SC_Groudon_PostEvent::
 	removeobject 2
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToMaxie2
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, SCME_PanToMaxie2
+	waitmovement CAMERA
 	msgbox SCME_PlayerWhy
 	closemessage
 	addobject 16
@@ -148,10 +148,10 @@ SC_Groudon_PostEvent::
 	closemessage
 	applymovement 3, Common_Movement_FaceLeft
 	waitmovement 3
-	applymovement OBJ_EVENT_ID_PLAYER, SCME_PlayerFromKyogreToAqua
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_CAMERA, SCME_CamToPlayerAgain
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement PLAYER, SCME_PlayerFromKyogreToAqua
+	waitmovement PLAYER
+	applymovement CAMERA, SCME_CamToPlayerAgain
+	waitmovement CAMERA
 	special RemoveCameraObject
 	release
 	end
@@ -180,8 +180,8 @@ SCME_PostEventPart2::
 	closemessage
 	msgbox SCME_RestOfMagma
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, SCME_PlayerToSteven@3 left, 2 up, 1 left
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, SCME_PlayerToSteven@3 left, 2 up, 1 left
+	waitmovement PLAYER
 	msgbox SCME_LetThemGo
 	closemessage
 	playse SE_PIN
@@ -198,8 +198,8 @@ SCME_PostEventPart2::
 	msgbox SCME_FineThenGo
 	applymovement 13, Common_Movement_FaceRight
 	waitmovement 13
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	applymovement 16, Common_Movement_FaceDown
 	waitmovement 16
 	goto_if_unset FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, SCME_CourtneyAlone

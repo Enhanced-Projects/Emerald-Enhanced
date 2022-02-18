@@ -231,7 +231,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_destroyfollower           @ 0xe4
 	.4byte ScrCmd_bufferdynamicmulti        @ 0xe5
 	.4byte ScrCmd_drawcustompic             @ 0xe6
-	.4byte ScrCmd_addmonhappiness           @ 0xe7
+	.4byte ScrCmd_getobjectxy               @ 0xe7
 	.4byte ScrCmd_scriptdebug               @ 0xe8
 	.4byte ScrCmd_buffersingledynamicline   @ 0xe9
 	.4byte ScrCmd_checkbp                   @ 0xea

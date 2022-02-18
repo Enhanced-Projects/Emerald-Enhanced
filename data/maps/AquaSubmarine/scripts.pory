@@ -15,14 +15,14 @@ AS_OnWarpScript:
 	.2byte 0
 
 AS_MakePlayerInvisible:
-	applymovement OBJ_EVENT_ID_PLAYER, SCH_SetInvisible
+	applymovement PLAYER, SCH_SetInvisible
 	end
 
 
 AS_DoMainAquaScene::
 	setvar VAR_RYU_QUEST_AQUA, 141 @Player is at final part of aqua shelly scene
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox AS_Heheh
 	closemessage
 	applymovement 1, Common_Movement_FaceLeft
@@ -71,8 +71,8 @@ AS_DoMainAquaScene::
 	delay 10
 	playse SE_PIN
 	waitmovement 4
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox AS_BossWeJust
 	closemessage
 	playbgm MUS_DUMMY, 0
@@ -93,10 +93,10 @@ AS_DoMainAquaScenePt2::
 	waitmovement 3
 	applymovement 3, Common_Movement_StepDown
 	waitmovement 3
-	applymovement OBJ_EVENT_ID_PLAYER, AS_PlayerToArchie @ down 2, right 2
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, AS_PlayerToArchie @ down 2, right 2
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox AS_WaitIllDoIt
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
@@ -110,42 +110,42 @@ AS_DoMainAquaScenePt2::
 	waitmovement 1
 	applymovement 1, Common_Movement_FaceRight
 	waitmovement 1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	msgbox AS_ImTheOnly
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 3
 	giveitem ITEM_BLUE_ORB, 1
 	giveitem ITEM_MASTER_BALL, 1
 	msgbox AS_KyogreMustBe
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_AQUA, 143 @Player is getting ready to exit the submarine
 	warp MAP_AQUA_SUBMARINE, 255, 5, 8 @Top floor
 	waitstate
 	
 	
 AS_DoUpperFloorScene::
-	applymovement OBJ_EVENT_ID_PLAYER, AS_PlayerSubMovement1 
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, AS_PlayerSubMovement1 
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	playse SE_DOOR
 	waitse
 	addobject 5
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	applymovement 5, AS_PlayerSubMovement1
 	waitmovement 5
 	msgbox AS_Wait
@@ -165,8 +165,8 @@ AS_DoUpperFloorScene::
 	delay 30
 	msgbox AS_IWill
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, AS_PlayerExitSub
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, AS_PlayerExitSub
+	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_AQUA, 145
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 60000

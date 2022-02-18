@@ -14,7 +14,7 @@ LittlerootTown_ProfessorBirchsLab_OnWarp: @ 81F9D06
 	.2byte 0
 
 LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter:: @ 81F9D40
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject PLAYER, DIR_NORTH
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject:: @ 81F9D71
@@ -71,8 +71,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival:: @ 81F9E48
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent:: @ 81F9E67
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex
-	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex
+	applymovement PLAYER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex
+	applymovement FOLLOWER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex
 	waitmovement 0
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex
 	end
@@ -168,8 +168,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex:: @ 81FA2F8
 	closemessage
 	applymovement 3, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_WalkInPlaceFastestRight
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement FOLLOWER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -536,8 +536,8 @@ script LRT_BL_DoBrendanAfterStoryLabEvent {
 	msgbox("Yo! {PLAYER}!\pIt looks like you did a great\njob of raising the snorunt.\lFroslass is an awesome Pokémon.\pYou should come stay with me\nmore often\pI get lonely at night!\nI have no choice but to\ltake matters into my own hands!")
 	closemessage
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, LRT_Camera1)
-	waitmovement(OBJ_EVENT_ID_CAMERA)
+	applymovement(CAMERA, LRT_Camera1)
+	waitmovement(CAMERA)
 	playse(SE_TOY_KABE)
 	waitse
 	playse(SE_PIN)
@@ -549,8 +549,8 @@ script LRT_BL_DoBrendanAfterStoryLabEvent {
 	closemessage
 	msgbox("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Yes.. uh.. yep...\neverything's fine!\lignore me!")
 	closemessage
-	applymovement(OBJ_EVENT_ID_CAMERA, LRT_Camera2)
-	waitmovement(OBJ_EVENT_ID_CAMERA)
+	applymovement(CAMERA, LRT_Camera2)
+	waitmovement(CAMERA)
 	special(RemoveCameraObject)
 	msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(Clearly, {RIVAL} wanted to play\n a joke on his dad.)")
 	closemessage
@@ -574,8 +574,8 @@ script LRT_BL_AfterEventGiftMon {
 		setflag(FLAG_RYU_DAWN_LAB_AFTERROMANCEEVENT)
 		closemessage
 		special(SpawnCameraObject)
-		applymovement(OBJ_EVENT_ID_CAMERA, LRT_Camera1)
-		waitmovement(OBJ_EVENT_ID_CAMERA)
+		applymovement(CAMERA, LRT_Camera1)
+		waitmovement(CAMERA)
 		playse(SE_TOY_KABE)
 		waitse
 		playse(SE_PIN)
@@ -585,8 +585,8 @@ script LRT_BL_AfterEventGiftMon {
 		closemessage
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}You okay back there, dad?!\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Yes.. uh.. yep...\neverything's fine!\lignore me!")
 		closemessage
-		applymovement(OBJ_EVENT_ID_CAMERA, LRT_Camera2)
-		waitmovement(OBJ_EVENT_ID_CAMERA)
+		applymovement(CAMERA, LRT_Camera2)
+		waitmovement(CAMERA)
 		special(RemoveCameraObject)
 		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({RIVAL} snickers a little.)\p (She clearly wanted to play a\n joke on her father.)")
 		closemessage

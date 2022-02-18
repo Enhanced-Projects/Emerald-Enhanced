@@ -9,7 +9,7 @@ AquaHideout_B2F_EventScript_MattNoticePlayer:: @ 8233DE5
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, AC_DevonTrigger
 	goto_if_set FLAG_RYU_AQUA_BAD_END, ryu_end
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
-	applymovement OBJ_EVENT_ID_PLAYER, AC_MoveLeft
+	applymovement PLAYER, AC_MoveLeft
 	setvar VAR_0x8008, 1  @ Matt object event id
 	playse SE_PIN
 	applymovement VAR_0x8008, Common_Movement_ExclamationMark
@@ -126,7 +126,7 @@ AC_MattTrigger::
 AC_MatOutro::
 	msgbox AC_MattDefeated MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, AC_PlayerMove
+	applymovement PLAYER, AC_PlayerMove
 	applymovement 10, AC_MattExit
 	waitmovement 10
 	playse SE_TK_WARPOUT
@@ -292,8 +292,8 @@ AH_AquaScene::
 	getplayerxy VAR_TEMP_8, VAR_TEMP_9
 	compare VAR_TEMP_9, 16
 	call_if_eq AH_MovePlayerDownForScene
-	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerFromTopWarps
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, AH_PlayerFromTopWarps
+	waitmovement PLAYER
 	goto AH_ContinueScene
 
 AH_ContinueScene::
@@ -305,26 +305,26 @@ AH_ContinueScene::
 	waitmovement 1
 	removeobject 1
 	setflag FLAG_RYU_DEVON_HIDE_MATT_SUB
-	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerToSub
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, AH_PlayerToSub
+	waitmovement PLAYER
 	applymovement 4, AH_MoveSubToExit
 	waitmovement 4
 	warpsilent MAP_UNDERWATER_SEAFLOOR_CAVERN, 255, 6, 5
 	waitstate
 
 AH_MovePlayerDownForScene::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	return
 
 
 AH_BottomSubRoomTrigger::
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
 	setvar VAR_RYU_QUEST_AQUA, 127 @Scene from aqua b2f starting
-	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerFromBottomWarp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, AH_PlayerFromBottomWarp
+	waitmovement PLAYER
 	goto AH_ContinueScene
 
 AH_PlayerPreparations:

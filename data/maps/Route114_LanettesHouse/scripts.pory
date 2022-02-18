@@ -39,8 +39,8 @@ LNH_PreventEnterBasement::
 	lockall
 	msgbox LNH_Blocked
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
 	releaseall
 	end
 	
@@ -50,7 +50,7 @@ Ryu_LNH_RomQuest::
 	goto_if_set FLAG_RYU_LANETTE_EVENT_0, ryu_end
 	goto_if_set FLAG_RYU_LANETTE_INTRO, LNH_CheckHasMons
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_FaceUp
 	msgbox LNH_RomStart
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
@@ -96,7 +96,7 @@ LNH_PlayerHasCollection::
 	waitfanfare
 	msgbox LNH_RepairRequest
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, LNH_MoveOutOfWay
+	applymovement PLAYER, LNH_MoveOutOfWay
 	applymovement 1, LNH_LanetteExitHouse
 	waitmovement 1
 	playse SE_DOOR
@@ -507,13 +507,13 @@ LNH_LeafEvent::
 	waitmovement 2
 	msgbox LNH_StoryMsg2 MSGBOX_DEFAULT
 	applymovement 2, LNH_LeafLeave
-	applymovement OBJ_EVENT_ID_PLAYER, LNH_LeafShovesPlayer
+	applymovement PLAYER, LNH_LeafShovesPlayer
 	waitmovement 2
 	playse SE_DOOR
 	removeobject 2
 	waitse
-	applymovement OBJ_EVENT_ID_PLAYER, LNH_Return
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, LNH_Return
+	waitmovement PLAYER
 	msgbox LNH_StoryMsg3 MSGBOX_DEFAULT
 	applymovement 1, LNH_LanetteWalkDown
 	waitmovement 1
