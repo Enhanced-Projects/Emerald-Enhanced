@@ -1023,7 +1023,26 @@
 #define FRONTIER_MON_BLANK1_BLANK4                         996
 #define FRONTIER_MON_BLANK2_BLANK4                         997
 #define FRONTIER_MON_BLANK3_BLANK4                         998
+//Ultra Beasts
+#define FRONTIER_MON_NIHILEGO_1                            999
+#define FRONTIER_MON_NIHILEGO_2                           1000
+#define FRONTIER_MON_BUZZWOLE_1                           1001
+#define FRONTIER_MON_BUZZWOLE_2                           1002
+#define FRONTIER_MON_PHEROMOSA_1                          1003
+#define FRONTIER_MON_PHEROMOSA_2                          1004
+#define FRONTIER_MON_XURKITREE_1                          1005
+#define FRONTIER_MON_XURKITREE_2                          1006
+#define FRONTIER_MON_CELESTEELA_1                         1007
+#define FRONTIER_MON_CELESTEELA_2                         1008
+#define FRONTIER_MON_KARTANA_1                            1009
+#define FRONTIER_MON_KARTANA_2                            1010
+#define FRONTIER_MON_GUZZLORD_1                           1011
+#define FRONTIER_MON_GUZZLORD_2                           1012
+#define FRONTIER_MON_NAGANADEL_1                          1013
+#define FRONTIER_MON_NAGANADEL_2                          1014
+#define FRONTIER_MON_STAKATAKA_1                          1015
+#define FRONTIER_MON_STAKATAKA_2                          1016
 
-#define NUM_FRONTIER_MONS                                  999
+#define NUM_FRONTIER_MONS                                 1017
 
 #endif //GUARD_CONSTANTS_BATTLE_FRONTIER_MONS_H

@@ -8882,5 +8882,167 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_HASTY,
         .ivs = 31,
         .ability = 1
+    },
+    [FRONTIER_MON_NIHILEGO_1] = { // Nihilego-DualHazards
+        .species = SPECIES_NIHILEGO,
+        .moves = {MOVE_POWER_GEM, MOVE_ACID, MOVE_STEALTH_ROCK, MOVE_TOXIC_SPIKES},
+        .heldItem = ITEM_AIR_BALLOON,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_NIHILEGO_2] = { // Nihilego-Offensive
+        .species = SPECIES_NIHILEGO,
+        .moves = {MOVE_SLUDGE_WAVE, MOVE_POWER_GEM, MOVE_GRASS_KNOT, MOVE_ACID},
+        .heldItem = ITEM_LIFE_ORB,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_BUZZWOLE_1] = { // Buzzwole-Defensive
+        .species = SPECIES_BUZZWOLE,
+        .moves = {MOVE_HAMMER_ARM, MOVE_LEECH_LIFE, MOVE_TOXIC, MOVE_ROOST},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_IMPISH,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_BUZZWOLE_2] = { // Buzzwole-Offensive
+        .species = SPECIES_BUZZWOLE,
+        .moves = {MOVE_HAMMER_ARM, MOVE_LEECH_LIFE, MOVE_STONE_EDGE, MOVE_EARTHQUAKE},
+        .heldItem = ITEM_ASSAULT_VEST,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_PHEROMOSA_1] = { // Pheromosa-Special
+        .species = SPECIES_PHEROMOSA,
+        .moves = {MOVE_FOCUS_BLAST, MOVE_BUG_BUZZ, MOVE_ICE_BEAM, MOVE_QUIVER_DANCE},
+        .heldItem = ITEM_FOCUS_SASH,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_PHEROMOSA_2] = { // Pheromosa-Physical
+        .species = SPECIES_PHEROMOSA,
+        .moves = {MOVE_HI_JUMP_KICK, MOVE_U_TURN, MOVE_ICE_BEAM, MOVE_DRILL_RUN},
+        .heldItem = ITEM_FOCUS_SASH,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_XURKITREE_1] = { // Xurkitree-Bulkitree
+        .species = SPECIES_XURKITREE,
+        .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_TAIL_GLOW, MOVE_SUBSTITUTE},
+        .heldItem = ITEM_SHELL_BELL,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_XURKITREE_2] = { // Xurkitree-Scarf
+        .species = SPECIES_XURKITREE,
+        .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_ENERGY_BALL, MOVE_HIDDEN_POWER},
+        .heldItem = ITEM_CHOICE_SCARF,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_CELESTEELA_1] = { // Celesteela-Offensive
+        .species = SPECIES_CELESTEELA,
+        .moves = {MOVE_ACROBATICS, MOVE_HEAVY_SLAM, MOVE_EARTHQUAKE, MOVE_AUTOTOMIZE},
+        .heldItem = ITEM_FLYING_GEM,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_CELESTEELA_2] = { // Celesteela-Defensive
+        .species = SPECIES_CELESTEELA,
+        .moves = {MOVE_HEAVY_SLAM, MOVE_LEECH_SEED, MOVE_TOXIC, MOVE_EE_PROTECT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_IMPISH,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_KARTANA_1] = { // Kartana-Scarf
+        .species = SPECIES_KARTANA,
+        .moves = {MOVE_LEAF_BLADE, MOVE_SACRED_SWORD, MOVE_SMART_STRIKE, MOVE_SECRET_POWER},
+        .heldItem = ITEM_CHOICE_SCARF,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 25,
+        .ability = 0
+    },
+    [FRONTIER_MON_KARTANA_2] = { // Kartana-SD
+        .species = SPECIES_KARTANA,
+        .moves = {MOVE_LEAF_BLADE, MOVE_SACRED_SWORD, MOVE_SECRET_POWER, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_FOCUS_SASH,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 25,
+        .ability = 0
+    },
+    [FRONTIER_MON_GUZZLORD_1] = { // Guzzlord-Defensive
+        .species = SPECIES_GUZZLORD,
+        .moves = {MOVE_DRACO_METEOR, MOVE_KNOCK_OFF, MOVE_TOXIC, MOVE_EE_PROTECT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_DEFENSE,
+        .nature = NATURE_SASSY,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_GUZZLORD_2] = { // Guzzlord-Specs
+        .species = SPECIES_GUZZLORD,
+        .moves = {MOVE_DRACO_METEOR, MOVE_DARK_PULSE, MOVE_FIRE_BLAST, MOVE_SLUDGE_BOMB},
+        .heldItem = ITEM_CHOICE_SPECS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_NAGANADEL_1] = { // Naganadel-Scarf
+        .species = SPECIES_NAGANADEL,
+        .moves = {MOVE_SLUDGE_WAVE, MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_THUNDERBOLT},
+        .heldItem = ITEM_CHOICE_SCARF,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_NAGANADEL_2] = { // Naganadel-NP
+        .species = SPECIES_NAGANADEL,
+        .moves = {MOVE_SLUDGE_WAVE, MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_NASTY_PLOT},
+        .heldItem = ITEM_FOCUS_SASH,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_STAKATAKA_1] = { // Stakataka-Defensive
+        .species = SPECIES_STAKATAKA,
+        .moves = {MOVE_GYRO_BALL, MOVE_SHADOW_FORCE, MOVE_TOXIC, MOVE_EE_PROTECT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_SASSY,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_STAKATAKA_2] = { // Stakataka-Offensive
+        .species = SPECIES_STAKATAKA,
+        .moves = {MOVE_GYRO_BALL, MOVE_SHADOW_FORCE, MOVE_SUPERPOWER, MOVE_TRICK_ROOM},
+        .heldItem = ITEM_SHELL_BELL,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_BRAVE,
+        .ivs = 31,
+        .ability = 0
     }
 };
