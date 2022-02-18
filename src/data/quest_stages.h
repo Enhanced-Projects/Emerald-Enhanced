@@ -173,6 +173,13 @@ const u8 sMayQuestStage40[] = _("You met up with may in Petalburg.\nInvestigate 
 const u8 sMayQuestStage41[] = _("You Concluded your investigation and may\ndecided to wait till night to try\nto catch who's been in the house.");
 const u8 sMayQuestStage50[] = _("Your investigation is complete and you\ndiscovered that it was Wally who was\nin the house at nights.\nHe ran out the door, Chase him!");
 const u8 sMayQuestStage60[] = _("You lost track of Wally west of Petalburg.\nMay suggested trying Verdanturf.\nGo there.");
+const u8 sMayQuestStage70[] = _("You found Wally in Verdanturf Town.\nHe ran into the cave. Take May and\nfollow him into the cave.");
+const u8 sMayQuestStage85[] = _("You finished the main part of May's\nquestline. Speak to her to finish.");
+const u8 sMayQuestStage150[] = _("You and May spoke with Wally in the tunnel.\nGo speak with may outside Wally's house\nor in her bedroom to finish\nthe quest.");
+const u8 sMayQuestStage160[] = _("After Rusturf Tunnel, May took off with Wally\nto his house. You met up with May later\nat her house. Neutral End");
+const u8 sMayQuestStage180[] = _("After Rusturf Tunnel, May took off with Wally\nto his house. You picked May up from his house.\nGood End.");
+const u8 sMayQuestStage200[] = _("You finished May's questline.\nStay with her at home to\nfinalize the relationship.");
+const u8 sMayQuestStage250[] = _("You completed May's quest line with the Best End.");
 const u8 sMayQuestStage666[] = _("You declined helping may in Littleroot.\nBAD END.");
 const u8 sMayQuestStage999[] = _("You didn't help may locate her lost friend.\nBAD END.");
 
@@ -852,6 +859,50 @@ const static struct QuestStageDesc gMayQuestStages[] = { //only visible when sta
     {
       .description = sMayQuestStage30,
       .questStage = 30,
+    },
+    {
+      .description = sMayQuestStage40,
+      .questStage = 40,
+    },
+    {
+      .description = sMayQuestStage41,
+      .questStage = 41,
+    },
+    {
+      .description = sMayQuestStage50,
+      .questStage = 50,
+    },
+    {
+      .description = sMayQuestStage60,
+      .questStage = 60,
+    },
+    {
+      .description = sMayQuestStage70,
+      .questStage = 70,
+    },
+    {
+      .description = sMayQuestStage85,
+      .questStage = 85,
+    },
+    {
+      .description = sMayQuestStage150,
+      .questStage = 150,
+    },
+    {
+      .description = sMayQuestStage160,
+      .questStage = 160,
+    },
+    {
+      .description = sMayQuestStage180,
+      .questStage = 180,
+    },
+    {
+      .description = sMayQuestStage200,
+      .questStage = 200,
+    },
+    {
+      .description = sMayQuestStage250,
+      .questStage = 250,
     },
     {
       .description = sMayQuestStage666,

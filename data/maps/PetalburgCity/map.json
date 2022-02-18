@@ -179,7 +179,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PBC_May",
-      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
+      "flag": "FLAG_RYU_HIDE_PETALBURG_MAY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WALLY",
@@ -356,6 +356,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "PBC_CheckPreventEntry"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "PBC_FinalMayEvent"
     }
   ],
   "bg_events": [

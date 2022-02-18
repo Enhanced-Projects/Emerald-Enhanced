@@ -2366,3 +2366,9 @@ void RyuMaxHappiness (void)
     u8 max = 255;
     SetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP, &max);
 }
+
+void RyuGetMayDailyReward (void) //generates a random berry and quantity for may's daily reward for neutral and good ends.
+{
+    gSpecialVar_0x8004 = ((Random() % 66) + 144);
+    gSpecialVar_0x8005 = (Random() % 3);
+}

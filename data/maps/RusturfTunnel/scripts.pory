@@ -1,13 +1,9 @@
 raw `
+
+.set WALLY, 6
 RusturfTunnel_MapScripts:: @ 822CE27
 	map_script ON_TRANSITION, RusturfTunnel_OnTransition
-	map_script ON_FRAME, RusturfTunnel_OnFrame
 	.byte 0
-
-RusturfTunnel_OnFrame: @ 822CE32
-	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 4, RusturfTunnel_EventScript_ClearTunnelScene
-	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 5, RusturfTunnel_EventScript_ClearTunnelScene
-	.2byte 0
 
 RusturfTunnel_OnTransition: @ 822CE44
 	compare VAR_RUSTURF_TUNNEL_STATE, 2
@@ -573,3 +569,185 @@ RusturfTunnel_Text_MikePostBattle: @ 822D8F9
 	.string "There's a feel-good story!$"
 
 `
+
+ script RT_Wally {
+	lock
+	lockall
+	setvar(VAR_TEMP_2, 100)
+	if (!(var(VAR_RYU_QUEST_MAY) == 70)) {
+		goto(ryu_end)
+	}
+	applymovement(PLAYER, Common_Movement_StepLeft)
+	waitmovement(PLAYER)
+	applymovement(PLAYER, Common_Movement_StepDown)
+	waitmovement(PLAYER)
+	turnobject(PLAYER, DIR_WEST)
+	applymovement(FOLLOWER, Common_Movement_StepDown)
+	waitmovement(FOLLOWER)
+	applymovement(FOLLOWER, Common_Movement_StepLeft)
+	waitmovement(FOLLOWER)
+	turnobject(FOLLOWER, DIR_WEST)
+	msgbox("I guess you were serious about\nfinding me, huh?")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED} . . .")
+	delay(20)
+	closemessage
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} You sense that May is near\n bursting out in tears...)")
+	bufferdynamicmulti(RT_Opt1, RT_Opt2)
+	multichoice(0, 8, MULTI_DYNAMIC_2, 1)
+	if (var(VAR_RESULT) == 1) {
+		setflag(FLAG_RYU_DS_MAY_LOVERS)
+		applymovement(PLAYER, RT_PlayerHugMay)
+		waitmovement(PLAYER)
+		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} hugs may.)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}I think you should start\ntalking.\pMay lost her best friend.\pYou disappeared without a trace\nand told no one.\pI would think that you would\nat least tell your friend.\pSpill it.")
+		closemessage
+		applymovement(PLAYER, Common_Movement_StepDown)
+		waitmovement(PLAYER)
+		turnobject(PLAYER, DIR_WEST)
+	}
+	else {
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Spill it!\nWhy did you hide this\nfrom me!?")
+		closemessage
+	}
+	msgbox("Okay, jeez.\pI disappeared because\nmy parents were trying to\lrelocate.\pTo them, I was just a paycheck\nbecause of my breathing problems.\pThey really didn't care\nwhich you can tell because they haven't\lreally been looking for me.")
+	closemessage
+	turnobject(WALLY, DIR_SOUTH)
+	msgbox(". . .")
+	closemessage
+	turnobject(WALLY, DIR_EAST)
+	delay(20)
+	msgbox("They wanted to leave the region.\pI like it here.\pYes, the humidity makes it\npretty hard for me to breathe\lbut I found a natural remedy.\pSo I ran away and lived\nwith my aunt for a while\land she didn't tell them.\p")
+	applymovement(FOLLOWER, Common_Movement_StepLeft)
+	waitmovement(FOLLOWER)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Did you not trust me enough?\pThought I would tattle?\pWhat am I, five years old?")
+	turnobject(WALLY, DIR_SOUTH)
+	msgbox("I... didn't know who to trust.\nI mean, my own parents\lreally didn't care about me....")
+	closemessage
+	turnobject(WALLY, DIR_EAST)
+	msgbox("Well, it looks like you\nfound a new friend who can\ltake care of you.\pEven if I have found something\nthat helps me breathe,\lI'm still pretty weak.")
+	closemessage
+	turnobject(FOLLOWER, DIR_SOUTH)
+	applymovement(FOLLOWER, Common_Movement_HeartEmote)
+	waitmovement(FOLLOWER)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Silly... {PLAYER}'s not going\nto tell me that I can't\lhave friends.")
+	turnobject(FOLLOWER, DIR_WEST)
+	if (var(VAR_RYU_PARTNER_COUNT) > 1) {
+		setflag(FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS)
+		checkplayergender
+		if (var(VAR_RESULT) == MALE) {
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}'s got other close friends besides\nme, and he keeps all of us\lhappy.")
+		}
+		else {
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}'s got other close friends besides\nme, and she keeps all of us\lhappy.")
+		}
+	}
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}There's no reason you can't\nstill be my friend.")
+	applymovement(PLAYER, RT_NOD)
+	msgbox("I see... \pWell I'm very sorry that I\ndisappeared.\pI'm here now, and will\nbe staying at my parents'\lhouse.\pMy aunt did all the paperwork\nto take over the house.\pShe keeps it stocked and powered\nfor me.\pYou can visit any time.")
+	closemessage
+	msgbox("I'm going to head home now.\pLike I said, come visit any time.")
+	if (flag(FLAG_RYU_DS_MAY_LOVERS) == TRUE){
+		setvar(VAR_RYU_QUEST_MAY, 85) // Quest is technically complete at this point, player just needs to speak to follower may to conclude.
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay! I might do that.\nHope you don't mind if I\lbring a friend.")
+		closemessage
+		msgbox("No, it's fine. See you later!")
+		closemessage
+		applymovement(WALLY, RT_WallyExit)
+		delay(30)
+		applymovement(PLAYER, RT_GetOutOfWay)
+		waitmovement(WALLY)
+		removeobject(WALLY)
+		setflag(FLAG_RYU_HIDE_RT_WALLY)
+		applymovement(FOLLOWER, Common_Movement_StepRight)
+		applymovement(PLAYER, Common_Movement_StepUp)
+		waitmovement(PLAYER)
+		clearflag(FLAG_RYU_HIDE_PBC_HOME_WALLY)
+		release
+		end
+	}
+	else{
+		setvar(VAR_RYU_QUEST_MAY, 150)// player may get neutral or good end
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}I think I'll come now,\nWe have a lot to talk about.")
+		closemessage
+		msgbox("Uh, okay, then.\nRight this way.")
+		closemessage
+		applymovement(WALLY, RT_WallyExit)
+		delay(40)
+		applymovement(PLAYER, RT_GetOutOfWay)
+		delay(10)
+		applymovement(FOLLOWER, RT_FollowerExit)
+		waitmovement(FOLLOWER)
+		setflag(FLAG_RYU_HIDE_RT_WALLY)
+		removeobject(WALLY)
+		destroyfollower
+		checkplayergender
+		if (var(VAR_RESULT) == MALE) {
+			call(Ryu_ReturnMayToDawnsHouse)
+		}
+		else {
+			call(Ryu_ReturnMayToBrendansHouse)
+		}
+		clearflag(FLAG_RYU_HIDE_PBC_HOME_WALLY)
+		release
+		end
+	}
+ }
+
+ script RF_MayStage85 {
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Thank you so much for\nhelping me find Wally.\pI seriously thought something\nhad happened to him.\p. . .\p. . .")
+	closemessage
+	applymovement(FOLLOWER, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (May kisses you and smiles\n cutely.)")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hehe. Didn't expect that, huh?")
+	setvar(VAR_RYU_QUEST_MAY, 200)//May's quest done. Stay with her to become partners.
+	closemessage
+	release
+	end
+ }
+ //at this point, player can go home and may will show up there, with the neutral end, or the player can visit wally's house, and catch up to may as she's leaving to get the good end.
+ //if the player goes home before stopping at wally's, it defaults to the neutral end.
+
+ movement RT_PlayerHugMay {
+	walk_up
+	walk_in_place_slow_left
+	emote_heart
+	step_end
+ }
+
+ movement RT_GetOutOfWay {
+	walk_down
+	face_up
+	step_end
+ }
+
+ movement RT_NOD {
+	walk_in_place_slow_left
+	step_end
+ }
+
+ movement RT_WallyExit {
+	walk_down
+	walk_right
+	walk_right
+	walk_up
+	walk_right
+	walk_up
+	walk_right * 8
+	step_end
+ }
+
+ movement RT_FollowerExit {
+	walk_right * 2
+	walk_up
+	walk_right * 7
+	step_end
+ }
+
+ text RT_Opt1 {
+	 "{COLOR LIGHT_GREEN}{SHADOW GREEN}Stand silently"
+ }
+ text RT_Opt2 {
+	 "{COLOR LIGHT_RED}{SHADOW RED}Hug her"
+ }

@@ -248,6 +248,22 @@ script PBC_DoCamMove2 {
 	return
 }
 
+script PBC_Wally {
+	if ((flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY)) {
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Heya Wally!\nHow are you doing today?\lBreathing okay?\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Yes, I'm doing good, mostly.\nLooks like you're pretty\lhappy, too!")
+		closemessage
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Yep. {PLAYER}'s been treating me well!")
+		closemessage
+		release
+		end
+	}
+	else {
+		msgbox("Hi, {PLAYER}!\nHow's May doing?\pWell, I hope.\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Yep, she is.\nAlways beats me in racing\lgames!")
+		release
+		end
+	}
+}
+
 movement PBC_WH_Cam1 {
 	walk_fast_down * 3
 	step_end

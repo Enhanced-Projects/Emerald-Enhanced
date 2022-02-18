@@ -62,10 +62,6 @@ PetalburgCity_EventScript_Gentleman:: @ 81DC488
 	msgbox PetalburgCity_Text_FullPartyExplanation, MSGBOX_NPC
 	end
 
-PetalburgCity_EventScript_WallyHouseSign:: @ 81DC491
-	msgbox PetalburgCity_Text_WallyHouseSign, MSGBOX_SIGN
-	end
-
 PetalburgCity_EventScript_ShowGymToPlayer0:: @ 81DC49A
 	lockall
 	setvar VAR_0x8008, 0
@@ -805,6 +801,18 @@ PC_DadToPlayer:
 	step_end
 `
 
+script PetalburgCity_EventScript_WallyHouseSign {
+	lock
+	if (var(VAR_RYU_QUEST_MAY) > 170) {
+		msgbox("Wally's House", MSGBOX_SIGN)
+	}
+	else {
+		msgbox("Condemned Property", MSGBOX_SIGN)
+	}
+	release
+	end
+}
+
 
 script R109_ShinyStone {
 	goto_if_set(FLAG_RYU_ITEM_SHINY_STONE, ryu_end)
@@ -823,7 +831,7 @@ script PC_EnableMayObject {
 	}
 	elif ((var(VAR_RYU_QUEST_MAY) == 30) || (flag(FLAG_RYU_MAY_QUEST_PENDING_PETALBURG) == TRUE)) {
 		addobject(12)
-		clearflag(FLAG_RYU_HIDE_REL_OBJECTS)
+		clearflag(FLAG_RYU_HIDE_PETALBURG_MAY)
 		call(CheckDismissRivalLeaf)
 	}
 	elif ((var(VAR_RYU_QUEST_MAY) > 30) || (var(VAR_RYU_QUEST_MAY) < 30)) {
@@ -849,6 +857,9 @@ script CheckDismissRivalLeaf { //this is long, i know, but rival as well as leaf
 }
 
 script PBC_CheckPreventEntry {
+	if (var(VAR_RYU_QUEST_MAY) >= 150) {
+		goto(PBC_FinalMayEvent)
+	}
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
 		if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY) {
 			release
@@ -872,7 +883,7 @@ script PBC_CheckPreventEntry {
 }
 
 script PBC_May {
-	setflag(FLAG_RYU_HIDE_REL_OBJECTS)
+	setflag(FLAG_RYU_HIDE_PETALBURG_MAY)
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
 		call(RyuForceCancelFollowerForQuest)
 	}
@@ -880,7 +891,7 @@ script PBC_May {
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Shall we continue the investigation?", MSGBOX_YESNO)
 		if (var(VAR_RESULT) == YES) {
 			removeobject(12)
-			setflag(FLAG_RYU_HIDE_REL_OBJECTS)
+			setflag(FLAG_RYU_HIDE_PETALBURG_MAY)
 			createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH)
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Ready when you are!")
 			release
@@ -932,11 +943,14 @@ script PBC_DoWallyChaseScene {
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Darn! We lost him!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Well... What do we do now?\p{COLOR LIGHT_RED}{SHADOW RED}He used to stay with family\nin Verdanturf.\pWe might find him there.\nLet's go!")
 		closemessage
 		setvar(VAR_RYU_QUEST_MAY, 60)//Player and May chased wally to route 104 and lost him. Check Verdanturf.
+		clearflag(FLAG_RYU_HIDE_VERDANTURF_WALLY)
 		clearflag(FLAG_RYU_WAYSTONE_DISABLED)
 		clearflag(FLAG_RYU_WAYSTONE_DISABLED)
 		release
 		end
 	}
+	release
+	end
 }
 
 movement PBC_ChaseWally0 {
@@ -960,4 +974,27 @@ movement PBC_ChaseWally2 {
 movement PBC_ChaseWally3 {
 	walk_fastest_left * 10
 	step_end
+}
+
+script PBC_FinalMayEvent {
+	lockall
+	setvar(VAR_TEMP_6, 100)
+	if (var(VAR_RYU_QUEST_MAY) < 150) {
+		goto(ryu_end)
+	}
+	playse(SE_PIN)
+	applymovement(PLAYER, Common_Movement_ExclamationMark)
+	waitmovement(PLAYER)
+	playse(SE_DOOR)
+	applymovement(PLAYER, Common_Movement_StepRight)
+	waitmovement(PLAYER)
+	turnobject(PLAYER, DIR_WEST)
+	createfollower(OBJ_EVENT_GFX_MAY, RyuFollower_SelectNPCScript, DIR_EAST)
+	turnobject(FOLLOWER, DIR_EAST)
+	turnobject(PLAYER, DIR_WEST)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}That's all settled.\pThanks for picking me up!\pI'm tired.\nWe should go home and take\la rest.")
+	setvar(VAR_RYU_QUEST_MAY, 180) //Player finished may quest with good end.
+	closemessage
+	release
+	end
 }

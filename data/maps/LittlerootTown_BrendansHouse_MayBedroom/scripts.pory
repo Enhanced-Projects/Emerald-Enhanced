@@ -1,14 +1,82 @@
 mapscripts LittlerootTown_BrendansHouse_MayBedroom_MapScripts {}
-
-
+raw `
+    .set MAY, 1
+`
 script LRT_BH_May {
+    if (flag(FLAG_RYU_DS_MAY_PARTNERS) == true) {
+        goto(LRT_May_nightTime)
+    }
     if (flag(FLAG_RYU_DS_MAY_ACQ) == TRUE) {
         msgbox("Hey, {PLAYER}! What's up?\pI'm getting ready to head out\nand do some field work.")
         release
         end
     }
     lock
+    if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
+		call(RyuForceCancelFollowerForQuest)
+	}
     faceplayer
+    switch (var(VAR_RYU_QUEST_MAY)) {
+        case 150:
+            msgbox("How goes it, {PLAYER}?\p{COLOR LIGHT_BLUE}{SHADOW BLUE}. . . \p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see. Well, I'm going to\nmeet Wally soon\lso, catch ya later!")
+            setvar(VAR_RYU_QUEST_MAY, 160)//Player got the neutral end.
+            release
+            end
+        case 160: //neutral end
+            //drawfullscreenimage SCENEBGMAYNORMAL
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Thanks a lot for helping me\nfind Wally!")
+            if (flag(FLAG_RYU_MAY_DAILY_REWARD) == FALSE) {
+                callnative(RyuGetMayDailyReward) //this will eventually be random pokeblock instead of berry.
+                additem(VAR_0x8004, VAR_0x8005)
+                bufferitemnameplural(0, VAR_0x8004, VAR_0x8005)
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Here, take this {STR_VAR_1}!\pI found it while I was\nrunning around with Wally.")
+                setflag(FLAG_RYU_MAY_DAILY_REWARD)
+            }
+            else {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Come see me tomorrow, I might\nhave another berry for you!")
+            }
+            release
+            end
+        case 180: //good end
+            //drawfullscreenimage SCENEBGMAYNORMAL
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Did you come to visit for\nthe night?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == NO) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh, I see. Well, let me check\nif I have a berry for you...\p . . .")
+                if (flag(FLAG_RYU_MAY_DAILY_REWARD) == FALSE) {
+                    callnative(RyuGetMayDailyReward)
+                    additem(VAR_0x8004, VAR_0x8005)
+                    bufferitemnameplural(0, VAR_0x8004, VAR_0x8005)
+                    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aha! here we go!\pSome {STR_VAR_1} for you!")
+                    closemessage
+                    msgbox("{COLOR LIGHT_RED}{SHADOW RED}You can come over to hang\nout for a night, you know.")
+                    release
+                    end
+                }
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Nope, none, sorry.\nCome see me tomorrow!")
+                release
+                end
+            }
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}All right! Let's play some\nF-Zero or Mario Kart\lAll night!")
+            closemessage
+            fadescreen(FADE_TO_BLACK)
+            delay(10)
+            msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and May stay up\n all night playing games.)")
+            delay(20)
+            applymovement(PLAYER, LRT_MayRoom_PlayerExit)
+            waitmovement(PLAYER)
+            fadescreen(FADE_FROM_BLACK)
+            msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE} (Wow, we played games all night!\p I should go home and take\n a nap...)")
+            release
+            end
+        case 200: //best end
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}You've been so good to me...\nthank you.\pLife was pretty rough for me\nbefore you came around.\pIf there is EVER anything\nI can do to help you\lPlease let me know!")
+            closemessage
+            setflag(FLAG_RYU_DS_MAY_PARTNERS)
+            setvar(VAR_RYU_QUEST_MAY, 250)
+            ach(give, ACH_LOST_GIRL)
+            release
+            end
+    }
     msgbox(LRT_MayQuestStart)
     closemessage
     checkplayergender
@@ -31,12 +99,14 @@ script LRT_BH_May {
         waitmovement(1)
         playse(SE_DOOR)
         removeobject(1)
-        setflag(FLAG_RYU_BH_HIDE_MAY)
-        setflag(FLAG_RYU_DH_HIDE_MAY)
         clearflag(FLAG_RYU_DS_MAY_FRIENDS)
         clearflag(FLAG_RYU_DS_MAY_CLOSEFRIENDS)
         setflag(FLAG_RYU_DS_MAY_ACQ)
         setvar(VAR_RYU_QUEST_MAY, 999) //player failed may's quest in her bedroom
+        call(LRT_MayRoom_MakePlayerLeave)
+        playse(SE_DOOR)
+        warpteleport(MAP_LITTLEROOT_TOWN, 255, 10, 10)
+        waitstate
     }
     else
     {
@@ -48,9 +118,112 @@ script LRT_BH_May {
         removeobject(1)
         setflag(FLAG_RYU_BH_HIDE_MAY)
         setflag(FLAG_RYU_DH_HIDE_MAY)
+        call(LRT_MayRoom_MakePlayerLeave)
+        playse(SE_DOOR)
+        warpteleport(MAP_LITTLEROOT_TOWN, 255, 10, 10)
+        waitstate
     }
     release
     end
+}
+
+script LRT_MayRoom_MakePlayerLeave {
+    getplayerxy(VAR_TEMP_8, VAR_TEMP_9)
+    if (var(VAR_TEMP_8) > 4) {
+        applymovement(PLAYER, Common_Movement_StepLeft)
+        waitmovement(PLAYER)
+        goto(LRT_MayRoom_CorrectPositionLoop)
+    }
+    if (var(VAR_TEMP_9) > 1) {
+        applymovement(PLAYER, Common_Movement_StepUp)
+        waitmovement(PLAYER)
+        goto(LRT_MayRoom_CorrectPositionLoop)
+    }
+}
+
+script LRT_MayRoom_CorrectPositionLoop {
+    getplayerxy(VAR_TEMP_8, VAR_TEMP_9)
+    if (var(VAR_TEMP_8) > 4) {
+        goto(LRT_MayRoom_MakePlayerLeave)
+    }
+    if (var(VAR_TEMP_9) > 1) {
+        goto(LRT_MayRoom_MakePlayerLeave)
+    }
+    return
+}
+
+script LRT_May_nightTime {
+    //drawfullscreenimage(SCENEBGMAYNIGHT)
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh! {PLAYER}! I'm so glad you're here!\pDid you come to stay the\nnight with me?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES) {
+        //clearfullscreenimage
+        getplayerxy(VAR_0x8001, VAR_0x8002)
+        if (var(VAR_0x8001) == 7) {
+            applymovement(PLAYER, Common_Movement_StepDown)
+            waitmovement(PLAYER)
+        }
+        else {
+            applymovement(PLAYER, Common_Movement_StepLeft)
+            waitmovement(PLAYER)
+            turnobject(PLAYER, DIR_WEST)
+        }
+        applymovement(MAY, Common_Movement_StepDown)
+        waitmovement(MAY)
+        applymovement(MAY, LRT_MayRoom_GoToBed)
+        applymovement(PLAYER, LRT_MayRoom_GoToBed)
+        waitmovement(PLAYER)
+        applymovement(MAY, Common_Movement_StepLeft)
+        waitmovement(MAY)
+        fadescreenspeed(FADE_TO_BLACK, 2)
+        delay(20)
+        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and May snuggle up\n and sleep soundly for the\l whole night...)")
+        closemessage
+        delay(30)
+        removeobject(MAY)
+        addobject(MAY)
+        fadescreen(FADE_FROM_BLACK)
+        turnobject(MAY, DIR_WEST)
+        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (When you come to, May is\n already awake and playing\l games on her TV.)\p{COLOR LIGHT_RED}{SHADOW RED}Well, good morning, sleepy head!")
+        closemessage
+        applymovement(PLAYER, LRT_MayRoom_GoToMay)
+        waitmovement(PLAYER)
+        faceplayer
+        playse(SE_M_CHARM)
+        applymovement(PLAYER, Common_Movement_HeartEmote)
+        applymovement(MAY, Common_Movement_HeartEmote)
+        waitmovement(MAY)
+        msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}It's nice to see you first\nthing in the morning.\pReally kickstarts my day!")
+        closemessage
+        msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(May chuckles coyly.)")
+        closemessage
+        release
+        end
+    }
+    else {
+        msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh! Did you come to pick\nme up?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES) {
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Yay! I was really stuck on this\ngame, anyways.\pI need some fresh air.")
+            closemessage
+            removeobject(MAY)
+            createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_EAST)
+            setflag(FLAG_RYU_BH_HIDE_MAY)
+            setflag(FLAG_RYU_DH_HIDE_MAY)
+            release
+            end
+        }
+        else {
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh... okay, then...\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (She looks disappointed...)")
+            closemessage
+            release
+            end
+        }
+    }
+}
+
+script LRT_BH_MayAfterStory {
+    if (var(VAR_RYU_QUEST_MAY) == 170) {//do neutral end stuff.
+        msgbox("")
+    }
 }
 
 text LRT_MayQ2 {
@@ -72,9 +245,27 @@ text LRT_MayQuestStart {
     "His name is Wally. Ever met him?"
 }
 
+movement LRT_MayRoom_PlayerExit {
+    walk_fastest_left * 3
+    face_up
+    step_end
+}
+
+movement LRT_MayRoom_GoToMay {
+    walk_right * 6
+    walk_up
+    face_right
+    step_end
+}
+
+movement LRT_MayRoom_GoToBed {
+    walk_left * 6
+    step_end
+}
+
 movement MayExit {
     walk_up
-    walk_left * 3
+    walk_left * 4
     walk_up
     step_end
 }

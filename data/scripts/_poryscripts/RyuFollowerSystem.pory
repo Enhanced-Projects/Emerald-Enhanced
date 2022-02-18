@@ -18,7 +18,7 @@ RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCan
 	call RF_FollowerLeaveCall
 	return
 	
-
+RyuFollower_SelectNPCScript::
 RyuFollowerSelectNPCScript::
 	switch VAR_RYU_FOLLOWER_ID
 	case OBJ_EVENT_GFX_TWIN, LRT_MinnieScript
@@ -128,15 +128,40 @@ RyuFollower_NurseAlreadyHealed::
 
 RyuFollower_MaySelector::
 	switch VAR_RYU_QUEST_MAY
+	case 200, RF_MayStage200
+	case 180, RF_MayStage180
+	case 85, RF_MayStage85
+	case 70, RF_MayStage70
 	case 60, RF_MayStage60
 	case 50, RF_MayStage50
 	case 40, CheckWHInvestigationStatus
 	case 41, RyuFollower_MayReturnToWallyHouseNight
-	goto_if_set FLAG_RYU_DS_MAY_CLOSEFRIENDS, RyuFollower_MayNormal
+	goto_if_set FLAG_RYU_DS_MAY_LOVERS, RyuFollower_MayNormal
 	msgbox RF_MayIntroMsg
 	closemessage
 	release
 	end
+
+RF_MayStage200::
+	msgbox RF_MayWeShouldGoHome
+	closemessage
+	msgbox RF_MayDismissQuery, MSGBOX_YESNO
+	closemessage
+	compare VAR_RESULT, YES
+	goto_if_eq Ryu_ReturnMayToHome
+	release
+	end
+
+RF_MayStage180:
+	msgbox RF_MayLetsGoHome
+	closemessage
+	msgbox RF_MayDismissQuery, MSGBOX_YESNO
+	closemessage
+	compare VAR_RESULT, YES
+	goto_if_eq Ryu_ReturnMayToHome
+	release
+	end
+
 
 RyuFollower_MayNormal::
 	call RyuFollower_MayChatterSelector
@@ -146,6 +171,12 @@ RyuFollower_MayNormal::
 	goto_if_eq Ryu_ReturnMayToHome
 	release
 	end
+
+RF_MayLetsGoHome:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's head home.\nI need some rest."
+
+RF_MayWeShouldGoHome:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm tired. We should go home and\ntake a nap."
 
 RF_MayDismissQuery::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I find my own way?$"
@@ -276,6 +307,8 @@ Ryu_ReturnMayToHome::
 	destroyfollower
 	compare VAR_RYU_QUEST_MAY, 41
 	goto_if_eq Ryu_ReturnMayToPetalburg
+	compare VAR_RYU_QUEST_MAY, 70
+	goto_if_eq Ryu_ReturnMayToVerdanturf
 	checkplayergender
 	switch VAR_RESULT
 	case MALE, Ryu_ReturnMayToDawnsHouse
@@ -283,7 +316,12 @@ Ryu_ReturnMayToHome::
 	return
 
 Ryu_ReturnMayToPetalburg::
+	clearflag FLAG_RYU_HIDE_PETALBURG_MAY
 	setflag FLAG_RYU_MAY_QUEST_PENDING_PETALBURG
+	return
+
+Ryu_ReturnMayToVerdanturf:
+	clearflag FLAG_RYU_HIDE_VERDANTURF_MAY
 	return
 
 Ryu_ReturnMayToDawnsHouse::
@@ -816,17 +854,26 @@ script RyuFollower_NurseChatterSelector {
 }
 
 script RyuFollower_MayChatterSelector {
-	random(4)
+	random(5)
 	switch (var(VAR_RESULT)) {
 		case 0:
-			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I've been in the void for a while. Sure is nice to be out and about for a while!"))
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}It's much better, having a place to lay my head."))
 		case 1:
-			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Huh, Hoenn sure has changed a lot since I left. Hmm..."))
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Did I ever thank you for helping me? No? Thank you!"))
 		case 2:
-			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}The professor adopted me, since my parents ran off. He sure is nice."))
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Let's see what shenanigans we can get into today."))
 		case 3:
-			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Oooh, that's different! I don't remember that being there!"))
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I'm ready and willing to battle whenever you are, partner!"))
+		case 4:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}When we get done, we should play some games at home!"))
 	}
 	closemessage
 	return
+}
+
+script RF_MayStage70 {
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Let's go meet wally in Rusturf\nTunnel.\pI'm really curious as to why\nhe disappeared.")
+	closemessage
+	release
+	end
 }

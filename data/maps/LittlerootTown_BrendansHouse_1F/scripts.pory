@@ -188,6 +188,7 @@ script LRT_RivalMother {
 		closemessage
 		setvar(VAR_RYU_QUEST_MAY, 10) //Player talked to may's adopted mother, find may in littleroot.
 		clearflag(FLAG_RYU_DS_MAY_ACQ)
+		ach(give, ACH_DE_ORPHANED)
 		release
 		end
 	}
@@ -219,6 +220,11 @@ script LRT_MayIntroEvent {
 		end
 	}
 	if (var(VAR_RYU_QUEST_MAY) == 25) { //may intro event done
+		setvar(VAR_TEMP_5, 100)
+		release
+		end
+	}
+	if (var(VAR_RYU_QUEST_MAY) >= 25) {
 		setvar(VAR_TEMP_5, 100)
 		release
 		end
