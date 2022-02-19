@@ -356,7 +356,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setflag FLAG_RYU_HIDE_PBC_HOME_WALLY
 	release
 	end
 
