@@ -107,8 +107,7 @@ RustboroCity_Gym_EventScript_GiveRockTomb:: @ 8212FA4
 	goto_if_eq ryu_return
 	setflag FLAG_RECEIVED_TM39
 	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
-	release
-	end
+	return
 
 RustboroCity_Gym_EventScript_Josh:: @ 8212FE3
 	trainerbattle_single TRAINER_JOSH, RustboroCity_Gym_Text_JoshPreBattle, RustboroCity_Gym_Text_JoshDefeat
