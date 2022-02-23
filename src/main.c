@@ -398,8 +398,6 @@ static void SerialIntr(void)
 static void IntrDummy(void)
 {}
 
-//@PIDGEY Try these different vblanks and tell me if one seems better than the other,
-//the ruby one seems fastest to me in overworld movement.
 
 #define B_USE_RUBY_VBLANK
 //#define B_USE_VANILLA_VBLANK

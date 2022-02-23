@@ -194,8 +194,6 @@ void GiveTakeStatAssistItem(void)//gives the pda item when ap is active. You nee
         RemoveBagItem(ITEM_STATASSIST, 1);
 }
 
-// @pidgey do i even need these?
-
 void APGlobalRepelToggle(void) //toggles the global repel
 {
     if (CheckAPFlag(AP_GLOBAL_REPEL) == TRUE)
