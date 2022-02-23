@@ -19,6 +19,7 @@
 #include "event_data.h"
 #include "constants/vars.h"
 #include "graphics.h"
+#include "constants/rgb.h"
 
 #define Y_DIFF 16 // Difference in pixels between items.
 
@@ -44,7 +45,8 @@ enum
 enum
 {
     WIN_TEXT_OPTION,
-    WIN_OPTIONS
+    WIN_OPTIONS,
+    WIN_COLOR_PICKER
 };
 
 struct OptionMenu
@@ -59,6 +61,7 @@ static void Task_OptionMenuFadeIn(u8 taskId);
 static void Task_OptionMenuProcessInput(u8 taskId);
 static void Task_OptionMenuSave(u8 taskId);
 static void Task_OptionMenuFadeOut(u8 taskId);
+static void Task_OptionColorPicker(u8 taskId);
 static void HighlightOptionMenuItem(int cursor);
 static void TextSpeed_DrawChoices(int selection, int y, u8 textSpeed);
 static void BattleScene_DrawChoices(int selection, int y, u8 textSpeed);
@@ -81,6 +84,7 @@ static int Sound_ProcessInput(int selection);
 static void DrawTextOption(void);
 static void DrawOptionMenuTexts(void);
 static void sub_80BB154(void);
+
 
 struct
 {
@@ -161,6 +165,15 @@ static const struct WindowTemplate sOptionMenuWinTemplates[] =
         .paletteNum = 1,
         .baseBlock = 0x36
     },
+    {
+        .bg = 1,
+        .tilemapLeft = 10,
+        .tilemapTop = 8,
+        .width = 17,
+        .height = 10,
+        .paletteNum = 7,
+        .baseBlock = 0x36+30*15
+    },
     DUMMY_WIN_TEMPLATE
 };
 
@@ -232,12 +245,14 @@ void CB2_InitOptionMenu(void)
         DeactivateAllTextPrinters();
         SetGpuReg(REG_OFFSET_WIN0H, 0);
         SetGpuReg(REG_OFFSET_WIN0V, 0);
-        SetGpuReg(REG_OFFSET_WININ, 1);
+        SetGpuReg(REG_OFFSET_WININ, 1 | WININ_WIN1_BG1);
         SetGpuReg(REG_OFFSET_WINOUT, 35);
         SetGpuReg(REG_OFFSET_BLDCNT, 193);
+        SetGpuReg(REG_OFFSET_WIN1H, WIN_RANGE(0, 240));
+        SetGpuReg(REG_OFFSET_WIN1V, WIN_RANGE(0, 32));
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 4);
-        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_WIN1_ON | DISPCNT_WIN0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
         ShowBg(0);
         ShowBg(1);
         gMain.state++;
@@ -247,6 +262,7 @@ void CB2_InitOptionMenu(void)
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
+        gReservedSpritePaletteCount = 6;
         gMain.state++;
         break;
     case 3:
@@ -384,6 +400,9 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     {
         if (sOptions->menuCursor == MENUITEM_SAVE)
             gTasks[taskId].func = Task_OptionMenuSave;
+        else if (sOptions->menuCursor == MENUITEM_THEME
+        && sOptions->sel[MENUITEM_THEME] == 2)
+            gTasks[taskId].func = Task_OptionColorPicker;
     }
     else if (gMain.newKeys & B_BUTTON)
     {
@@ -448,6 +467,563 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 
         if (previousOption != sOptions->sel[cursor])
             DrawChoices(cursor, sOptions->visibleCursor * Y_DIFF, 0);
+    }
+}
+
+static const struct OamData sHueBarOamData = {
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_8BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .size = SPRITE_SIZE(64x64),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+};
+
+static const struct OamData sSaturationBarOamData = {
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .size = SPRITE_SIZE(64x64),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 4,
+};
+
+static const struct OamData sValueBarOamData = {
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .size = SPRITE_SIZE(64x64),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 5,
+};
+
+static const struct SpriteTemplate sHueBarSpriteTemplate =
+{
+    .tileTag = 0x7000,
+    .paletteTag = 0xFFFF,
+    .oam = &sHueBarOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sSaturationBarSpriteTemplate =
+{
+    .tileTag = 0x7001,
+    .paletteTag = 0xFFFF,
+    .oam = &sSaturationBarOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sValueBarSpriteTemplate =
+{
+    .tileTag = 0x7002,
+    .paletteTag = 0xFFFF,
+    .oam = &sValueBarOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct OamData sSelectorOamData = {
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(8x8),
+    .x = 0,
+    .size = SPRITE_SIZE(8x8),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+};
+
+void SelectorSpriteCallback(struct Sprite * sprite) {
+    if(!sprite->data[0]) {
+        sprite->oam.objMode = ST_OAM_OBJ_NORMAL;
+        return;
+    }
+    if(!(sprite->data[1]--)) {
+        sprite->data[1] = 20;
+        sprite->oam.objMode = !(sprite->oam.objMode-1) + 1;
+    }
+}
+
+static const struct SpriteTemplate sSelectorSpriteTemplate =
+{
+    .tileTag = 0x7003,
+    .paletteTag = 0x7003,
+    .oam = &sSelectorOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SelectorSpriteCallback,
+};
+
+static const u8 sHueBarTiles[] = INCBIN_U8("graphics/misc/hue_bar.8bpp");
+static const u16 sHueBarPalette[] = INCBIN_U16("graphics/misc/hue_bar.gbapal");
+static const u8 sSaturationBarTiles[] = INCBIN_U8("graphics/misc/saturation_bar.4bpp");
+static const u8 sValueBarTiles[] = INCBIN_U8("graphics/misc/value_bar.4bpp");
+static const u8 sSelectorTiles[] = INCBIN_U8("graphics/misc/color_picker_point.4bpp");
+static const u16 sSelectorPalette[] = INCBIN_U16("graphics/misc/color_picker_point.gbapal");
+
+static const struct SpriteSheet sHsvSpriteSheets[] = {
+    {sHueBarTiles, sizeof(sHueBarTiles), 0x7000},
+    {sSaturationBarTiles, sizeof(sSaturationBarTiles), 0x7001},
+    {sValueBarTiles, sizeof(sValueBarTiles), 0x7002},
+    {sSelectorTiles, sizeof(sSelectorTiles), 0x7003}
+};
+
+static const struct SpritePalette sSelectorSpritePalette = {
+    .data = sSelectorPalette,
+    .tag = 0x7003,
+};
+
+struct HSV {
+    u8 h;
+    u8 s;
+    u8 v;
+};
+
+static inline struct HSV ConvertRGB2HSV(u32 rgb) {
+    s32 r = GET_R(rgb);
+    s32 g = GET_G(rgb);
+    s32 b = GET_B(rgb);
+    s32 cmax = max(g, b);
+    s32 cmin = min(g, b);
+    s32 cdiff;
+    s32 h, s, v;
+    cmax = max(r, cmax);
+    cmin = min(r, cmin);
+    cdiff = cmax - cmin;
+    if(cmax != cmin) {
+        if(cmax == r) {
+            h = 240 + ((g - b) * 40) / cdiff;
+        } else if (cmax == g) {
+            h = 80 + ((b - r) * 40) / cdiff;
+        } else if (cmax == b) {
+            h = 160 + ((r - g) * 40) / cdiff;
+        }
+        h %= 240;
+    } else {
+        h = 0;
+    }
+    //dest[0] = h;
+    if(cmax)
+        s = ((cdiff * 120) / cmax);
+    else
+        s = 0;
+    //dest[1] = s;
+    v = (cmax * 120) / 31;
+    //dest[2] = v;
+    return (struct HSV){h, s, v};
+}
+
+static u16 GetHueColor(struct HSV hsv) {
+    u32 section = hsv.h / 40;
+    u32 remainder = hsv.h % 40;
+    u32 x = (remainder * 31) / 40;
+    u32 r, g, b;
+    switch(section) {
+    case 0:
+        r = 31;
+        g = x;
+        b = 0;
+        break;
+    case 1:
+        r = 31 - x;
+        g = 31;
+        b = 0;
+        break;
+    case 2:
+        r = 0;
+        g = 31;
+        b = x;
+        break;
+    case 3:
+        r = 0;
+        g = 31 - x;
+        b = 31;
+        break;
+    case 4:
+        r = x;
+        g = 0;
+        b = 31;
+        break;
+    case 5:
+        r = 31;
+        g = 0;
+        b = 31 - x;
+        break;
+    }
+    return RGB(r, g, b);
+}
+
+static void MakeSaturationBarPalette(struct HSV hsv)
+{
+    int i;
+    u16 pal[16];
+    u32 baseColor = GetHueColor(hsv);
+    u32 cmax = (31 * hsv.v) / 120;
+    u32 r = GET_R(baseColor);
+    u32 g = GET_G(baseColor);
+    u32 b = GET_B(baseColor);
+    r = (r * hsv.v) / 120;
+    g = (g * hsv.v) / 120;
+    b = (b * hsv.v) / 120;
+    pal[0] = 0x7C1F;
+    for(i = 0; i < 15; i++) {
+        pal[i+1] = RGB(r + ((cmax-r) * i) / 14, 
+                     g + ((cmax-g) * i) / 14,
+                     b + ((cmax-b) * i) / 14);
+    }
+    LoadPalette(pal, 0x140, 0x20);
+}
+
+static void MakeValueBarPalette(struct HSV hsv)
+{
+    int i;
+    u16 pal[16];
+    u32 baseColor = GetHueColor(hsv);
+    //u32 cmax = (31 * hsv.v) / 120;
+    u32 r = GET_R(baseColor);
+    u32 g = GET_G(baseColor);
+    u32 b = GET_B(baseColor);
+    r += ((31-r) * (120 - hsv.s)) / 120; 
+    g += ((31-g) * (120 - hsv.s)) / 120;
+    b += ((31-b) * (120 - hsv.s)) / 120;
+    pal[0] = 0x7C1F;
+    for(i = 0; i < 15; i++) {
+        pal[i+1] = RGB((r * i) / 14, 
+                       (g * i) / 14,
+                       (b * i) / 14);
+    }
+    LoadPalette(pal, 0x150, 0x20);
+}
+
+void SetPaletteBufferColor(u32 idx, u32 color)
+{
+    gPlttBufferUnfaded[idx] = color;
+    gPlttBufferFaded[idx] = color;
+}
+
+extern const u16 CustomInterfacePaletteSlots[];
+static void AdjustThemePalette(struct HSV hsv, u16 * colors, u32 idx) {
+    u32 section = hsv.h / 40;
+    u32 remainder = hsv.h % 40;
+    u32 x = (remainder * 31) / 40;
+    u32 r, g, b;
+    switch(section) {
+    case 0:
+        r = 31;
+        g = x;
+        b = 0;
+        break;
+    case 1:
+        r = 31 - x;
+        g = 31;
+        b = 0;
+        break;
+    case 2:
+        r = 0;
+        g = 31;
+        b = x;
+        break;
+    case 3:
+        r = 0;
+        g = 31 - x;
+        b = 31;
+        break;
+    case 4:
+        r = x;
+        g = 0;
+        b = 31;
+        break;
+    case 5:
+        r = 31;
+        g = 0;
+        b = 31 - x;
+        break;
+    }
+    r += ((31-r) * (120 - hsv.s)) / 120; 
+    g += ((31-g) * (120 - hsv.s)) / 120;
+    b += ((31-b) * (120 - hsv.s)) / 120;
+    r = (r * hsv.v) / 120;
+    g = (g * hsv.v) / 120;
+    b = (b * hsv.v) / 120;
+    colors[idx] = RGB(r, g, b);
+    //gSaveBlock2Ptr->userInterfaceTextboxPalette[CustomInterfacePaletteSlots[idx]] = RGB(r, g, b);
+    if (idx == 4)
+    {
+        SetPaletteBufferColor(0x70+11, RGB(r, g, b));
+        SetPaletteBufferColor(0x70+12, RGB(r, g, b));
+        SetPaletteBufferColor(0x70+1, RGB(r, g, b));
+        //gSaveBlock2Ptr->userInterfaceTextboxPalette[11] = RGB(r, g, b);
+        //gSaveBlock2Ptr->userInterfaceTextboxPalette[12] = RGB(r, g, b);
+        //gSaveBlock2Ptr->userInterfaceTextboxPalette[1] = RGB(r, g, b);
+        SetPaletteBufferColor(0x11, RGB(r, g, b));
+    }
+    SetPaletteBufferColor(0x70+CustomInterfacePaletteSlots[idx], RGB(r, g, b));
+    //LoadPalette(gSaveBlock2Ptr->userInterfaceTextboxPalette, 0x70, 0x20);
+}
+
+struct ColorPickerData {
+    u8 state;
+    u8 sliderSpriteIds[3];
+    s8 heldTimer;
+    s8 selectedBar;
+    s8 selectedElement;
+    struct HSV hsv;
+    u16 colorBuffer[5];
+};
+
+enum {
+    INPUT_PREV_ELEM,
+    INPUT_NEXT_ELEM,
+    INPUT_PREV_SLIDER,
+    INPUT_NEXT_SLIDER,
+    INPUT_INC_VALUE,
+    INPUT_DEC_VALUE,
+    INPUT_CANCEL,
+    INPUT_APPLY,
+};
+static u32 ColorPickerProcessInput(void) {
+    if(JOY_NEW(A_BUTTON)) {
+        return INPUT_APPLY;
+    }
+    if(JOY_NEW(B_BUTTON)) {
+        return INPUT_CANCEL;
+    }
+    if(JOY_NEW(L_BUTTON)) {
+        return INPUT_PREV_ELEM;
+    } else if(JOY_NEW(R_BUTTON)) {
+        return INPUT_NEXT_ELEM;
+    }
+    if(JOY_NEW(DPAD_UP)) {
+        return INPUT_PREV_SLIDER;
+    } else if(JOY_NEW(DPAD_DOWN)) {
+        return INPUT_NEXT_SLIDER;
+    }
+    
+    if(JOY_HELD(DPAD_LEFT)) {
+        return INPUT_DEC_VALUE;
+    } else if(JOY_HELD(DPAD_RIGHT)) {
+        return INPUT_INC_VALUE;
+    }
+    return -1u;
+}
+
+static const u8 * gElementNames[] = {
+    (u8[])_("Text Color"),
+    (u8[])_("Text Shadow Color"),
+    (u8[])_("Window Highlight"),
+    (u8[])_("Window Border"),
+    (u8[])_("Window Background"),
+};
+
+static void Task_OptionColorPicker(u8 taskId)
+{
+    struct ColorPickerData * taskData = (void*)gTasks[taskId].data;
+    int i;
+
+    switch(taskData->state)
+    {
+        case 0: {
+            FreeAllSpritePalettes();
+            ResetSpriteData();
+            gReservedSpritePaletteCount = 6;
+            gKeyRepeatStartDelay = 0;
+            SetGpuRegBits(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1);
+            SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_OBJ | WININ_WIN0_BG1 | WININ_WIN0_BG0 | WININ_WIN1_BG1);
+            SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_CLR | WINOUT_WIN01_BG1 | WINOUT_WIN01_BG0);
+            PutWindowTilemap(WIN_COLOR_PICKER);
+            DrawStdFrameWithCustomTileAndPalette(WIN_COLOR_PICKER, TRUE, 0x1A2, 7);
+            AddTextPrinterParameterized(WIN_COLOR_PICKER, 1, (u8[])_("{LEFT_ARROW_2}{L_BUTTON} Element{R_BUTTON}{RIGHT_ARROW_2} "), 17*4-48, 0, 0xFF, NULL);
+            AddTextPrinterParameterized(WIN_COLOR_PICKER, 1, gElementNames[taskData->selectedElement], ((17*8)-GetStringWidth(1, gElementNames[taskData->selectedElement], 0)) / 2, 16, 0xFF, NULL);
+            AddTextPrinterParameterized(WIN_COLOR_PICKER, 1, (u8[])_("Example Text"), 2, 52, 0xFF, NULL);
+            AddTextPrinterParameterized(WIN_COLOR_PICKER, 0, (u8[])_("Example Text"), 2, 66, 0xFF, NULL);
+            CopyWindowToVram(WIN_COLOR_PICKER, 3);
+            SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(74, 222));
+            SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(58, 150));
+            LoadPalette(sHueBarPalette, 0x100, sizeof sHueBarPalette);
+            for(i = 0; i < 5; i++) {
+                taskData->colorBuffer[i] = gSaveBlock2Ptr->userInterfaceTextboxPalette[CustomInterfacePaletteSlots[i]];
+            }
+            taskData->hsv = ConvertRGB2HSV(taskData->colorBuffer[taskData->selectedElement]);
+            MakeSaturationBarPalette(taskData->hsv);
+            MakeValueBarPalette(taskData->hsv);
+            //LoadPalette(sHueBarPalette, 0x140, 0x20);
+            //LoadPalette(sHueBarPalette, 0x150, 0x20);
+            LoadSpriteSheet(sHsvSpriteSheets);
+            LoadSpriteSheet(sHsvSpriteSheets+1);
+            LoadSpriteSheet(sHsvSpriteSheets+2);
+            LoadSpriteSheet(sHsvSpriteSheets+3);
+            LoadSpritePalette(&sSelectorSpritePalette);
+            CreateSprite(&sHueBarSpriteTemplate, 90+32+64, 40+58+32+8, 100);
+            CreateSprite(&sSaturationBarSpriteTemplate, 90+32+64, 40+74+32+8, 100);
+            CreateSprite(&sValueBarSpriteTemplate, 90+32+64, 40+90+32+8, 100);
+            taskData->sliderSpriteIds[0] = CreateSprite(&sSelectorSpriteTemplate, 90+64+taskData->hsv.h/4, 40+58+12, 0);
+            taskData->sliderSpriteIds[1] = CreateSprite(&sSelectorSpriteTemplate, 90+64+taskData->hsv.s/2, 40+74+12, 0);
+            taskData->sliderSpriteIds[2] = CreateSprite(&sSelectorSpriteTemplate, 90+64+taskData->hsv.v/2, 40+90+12, 0);
+            gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].data[0] = 1;
+            //DrawStdWindowFrame();
+            taskData->state++;
+            break;
+        }
+        case 1: {
+            u32 input = ColorPickerProcessInput();
+            if(input == -1u) 
+                break;
+            switch(input) {
+                case INPUT_CANCEL:
+                    LoadPalette(gSaveBlock2Ptr->userInterfaceTextboxPalette, 0x70, 0x20);
+                    taskData->state++;
+                    break;
+                case INPUT_APPLY:
+                    gSaveBlock2Ptr->userInterfaceTextboxPalette[1] = taskData->colorBuffer[4];
+                    gSaveBlock2Ptr->userInterfaceTextboxPalette[2] = taskData->colorBuffer[0];
+                    gSaveBlock2Ptr->userInterfaceTextboxPalette[3] = taskData->colorBuffer[1];
+                    gSaveBlock2Ptr->userInterfaceTextboxPalette[11] = taskData->colorBuffer[4];
+                    gSaveBlock2Ptr->userInterfaceTextboxPalette[12] = taskData->colorBuffer[4];
+                    gSaveBlock2Ptr->userInterfaceTextboxPalette[13] = taskData->colorBuffer[3];
+                    gSaveBlock2Ptr->userInterfaceTextboxPalette[14] = taskData->colorBuffer[2];
+                    taskData->state++;
+                    break;
+                case INPUT_PREV_ELEM:
+                    taskData->selectedElement--;
+                    if(taskData->selectedElement < 0)
+                        taskData->selectedElement = 4;
+                    break;
+                case INPUT_NEXT_ELEM:
+                    taskData->selectedElement++;
+                    if(taskData->selectedElement > 4)
+                        taskData->selectedElement = 0;
+                    break;
+                case INPUT_PREV_SLIDER:
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].data[0] = 0;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].data[1] = 20;
+                    taskData->selectedBar--;
+                    if(taskData->selectedBar < 0)
+                        taskData->selectedBar = 2;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].data[0] = 1;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].oam.objMode = 2;
+                    break;
+                case INPUT_NEXT_SLIDER:
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].data[0] = 0;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].data[1] = 20;
+                    taskData->selectedBar++;
+                    if(taskData->selectedBar > 2)
+                        taskData->selectedBar = 0;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].data[0] = 1;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].oam.objMode = 2;
+                    break;
+                case INPUT_INC_VALUE: {
+                    u8 * val = NULL;
+                    u32 bound;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].oam.objMode = 1;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].data[1] = 20;
+                    switch(taskData->selectedBar) {
+                    case 0:
+                        val = &taskData->hsv.h;
+                        bound = 239;
+                        break;
+                    case 1:
+                        val = &taskData->hsv.s;
+                        bound = 120;
+                        break;
+                    case 2:
+                        val = &taskData->hsv.v;
+                        bound = 120;
+                        break;
+                    }
+                    if(val == NULL) break;
+                    *val = *val + 1;
+                    if(*val > bound)
+                        *val = bound;
+                    break;
+                }
+                case INPUT_DEC_VALUE: {
+                    u8 * val;
+                    u32 bound;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].oam.objMode = 1;
+                    gSprites[taskData->sliderSpriteIds[taskData->selectedBar]].data[1] = 20;
+                    switch(taskData->selectedBar) {
+                    case 0:
+                        val = &taskData->hsv.h;
+                        bound = 239;
+                        break;
+                    case 1:
+                        val = &taskData->hsv.s;
+                        bound = 120;
+                        break;
+                    case 2:
+                        val = &taskData->hsv.v;
+                        bound = 120;
+                        break;
+                    default:
+                        val = NULL;
+                    }
+                    if(val == NULL) break;
+                    *val = *val - 1;
+                    if(*val > bound)
+                        *val = 0;
+                    break;
+                }
+            }
+            if(input == INPUT_PREV_ELEM
+            || input == INPUT_NEXT_ELEM
+            || input == INPUT_INC_VALUE
+            || input == INPUT_DEC_VALUE) {
+                if(input == INPUT_PREV_ELEM
+                || input == INPUT_NEXT_ELEM) {
+                    taskData->hsv = ConvertRGB2HSV(taskData->colorBuffer[taskData->selectedElement]);
+                    FillWindowPixelRect(WIN_COLOR_PICKER, 0x11, 0, 16, 17*8, 32);
+                    //AddTextPrinterParameterized(WIN_COLOR_PICKER, 1, (u8[])_("            "), 0, 16, 0xFF, NULL);
+                    AddTextPrinterParameterized(WIN_COLOR_PICKER, 1, gElementNames[taskData->selectedElement], ((17*8)-GetStringWidth(1, gElementNames[taskData->selectedElement], 0)) / 2, 16, 0xFF, NULL);
+                    CopyWindowToVram(WIN_COLOR_PICKER, 2);
+                }
+                if(input == INPUT_INC_VALUE
+                || input == INPUT_DEC_VALUE) {
+                    AdjustThemePalette(taskData->hsv, taskData->colorBuffer, taskData->selectedElement);
+                }
+                MakeSaturationBarPalette(taskData->hsv);
+                MakeValueBarPalette(taskData->hsv);
+                gSprites[taskData->sliderSpriteIds[0]].pos1.x = 90+64+(taskData->hsv.h+1)/4;
+                gSprites[taskData->sliderSpriteIds[1]].pos1.x = 90+64+taskData->hsv.s/2;
+                gSprites[taskData->sliderSpriteIds[2]].pos1.x = 90+64+taskData->hsv.v/2;
+            }
+            break;
+        }
+        case 2:
+            SetGpuReg(REG_OFFSET_WININ, 1 | WININ_WIN1_BG1);
+            SetGpuReg(REG_OFFSET_WINOUT, 35);
+            SetGpuReg(REG_OFFSET_BLDCNT, 193);
+            SetGpuReg(REG_OFFSET_WIN1H, WIN_RANGE(0, 240));
+            SetGpuReg(REG_OFFSET_WIN1V, WIN_RANGE(0, 32));
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 4);
+            HighlightOptionMenuItem(3);
+            ClearStdWindowAndFrameToTransparent(WIN_COLOR_PICKER, TRUE);
+            CpuFill32(0, gTasks[taskId].data, sizeof(gTasks[taskId].data));
+            gTasks[taskId].func = Task_OptionMenuProcessInput;
+            break;
     }
 }
 
@@ -593,6 +1169,12 @@ static int Theme_ProcessInput(int selection)
     if(selection == 2) {
         LoadBgTiles(1, GetWindowFrameDarkTilesPal(0)->tiles, 0x120, 0x1A2);
         LoadPalette(gSaveBlock2Ptr->userInterfaceTextboxPalette, 0x70, 0x20);
+        gPlttBufferUnfaded[0x11] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];
+        gPlttBufferFaded[0x11] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];
+        gPlttBufferUnfaded[0x16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];
+        gPlttBufferFaded[0x16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];
+        gPlttBufferUnfaded[0x17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];
+        gPlttBufferFaded[0x17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];
         //LoadPalette(GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
         sOptions->sel[MENUITEM_FRAMETYPE] = 0;
         DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
