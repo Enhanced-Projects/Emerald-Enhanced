@@ -1932,6 +1932,12 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
         VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
     }
 
+    if (FlagGet(FLAG_RYU_DS_MAY_PARTNERS) == 1) //may doesn't count for the true ending.
+    {
+        partners++;
+        GiveAchievement(ACH_LOST_GIRL);
+    }
+
     return partners;
 }
 
@@ -2012,7 +2018,7 @@ int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game
     if (FlagGet(FLAG_RYU_LIMBO) == 1)//Player is in Limbo after failing challenge or hardcore.
         return 120;
     
-    if (VarGet(VAR_RYU_QUEST_MAY) == 50) 
+    if (VarGet(VAR_RYU_QUEST_MAY) == 50) //Player is investigating wally's house with May
         return 130;
 
     return 0;

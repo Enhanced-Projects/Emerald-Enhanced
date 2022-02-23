@@ -72,6 +72,7 @@ script LRT_BH_May {
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}You've been so good to me...\nthank you.\pLife was pretty rough for me\nbefore you came around.\pIf there is EVER anything\nI can do to help you\lPlease let me know!")
             closemessage
             setflag(FLAG_RYU_DS_MAY_PARTNERS)
+            addvar(VAR_RYU_QUESTS_FINISHED, 1)
             setvar(VAR_RYU_QUEST_MAY, 250)
             ach(give, ACH_LOST_GIRL)
             release
@@ -183,6 +184,7 @@ script LRT_May_nightTime {
         removeobject(MAY)
         addobject(MAY)
         fadescreen(FADE_FROM_BLACK)
+        addvar(VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1)
         msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (When you come to, May is\n already awake and playing\l games on her TV.)")
         closemessage
         turnobject(MAY, DIR_SOUTH)
