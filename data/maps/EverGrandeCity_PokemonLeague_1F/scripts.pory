@@ -60,7 +60,8 @@ EverGrandeCity_PokemonLeague_1F_EventScript_DoorGuard:: @ 8229636
 	call_if_le EverGrandeCity_PokemonLeague_1F_EventScript_PlayerMoveToFrontFromLeft
 	message EverGrandeCity_PokemonLeague_1F_Text_MustHaveAllGymBadges
 	waitmessage
-	delay 120
+	call_if_set FLAG_RYU_DOING_RYU_CHALLENGE, e4blockChallenge
+	delay 20
 	goto_if_unset FLAG_BADGE06_GET, EverGrandeCity_PokemonLeague_1F_EventScript_NotAllBadges
 	closemessage
 	applymovement 3, EverGrandeCity_PokemonLeague_1F_Movement_LeftGuardOutOfWay
@@ -143,3 +144,12 @@ EverGrandeCity_PokemonLeague_1F_Text_GoForth: @ 82297EF
 	.string "Pokémon, and go forth!$"
 
 `
+
+script e4blockChallenge {
+	specialvar(VAR_RESULT, CountBadges)
+	if (var(VAR_RESULT) < 8) {
+		msgbox("You must have all 8 badges to\npass if you are doing\lRyu's Challenge.")
+		release
+		end
+	}
+}
