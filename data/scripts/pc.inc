@@ -8,12 +8,23 @@ EventScript_PC:: @ 8271D92
 	end
 
 EventScript_PCMainMenu:: @ 8271DAC
+	goto_if_set FLAG_RYU_DOING_RYU_CHALLENGE, PC_ChallengeMode
 	message gText_WhichPCShouldBeAccessed
 	waitmessage
 	special ScriptMenu_CreatePCMultichoice
 	waitstate
 	goto EventScript_AccessPC
 	end
+
+PC_ChallengeMode::
+	msgbox challengemodepc
+	closemessage
+	release
+	end
+
+challengemodepc:
+	.string "You cannot use this PC\ndue to Ryu's Challenge.$"
+
 
 EventScript_AccessPC:: @ 8271DBC
 	switch VAR_RESULT
