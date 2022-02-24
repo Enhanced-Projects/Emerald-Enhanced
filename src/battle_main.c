@@ -1832,9 +1832,9 @@ u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStr
         return maxLevel;
 
     // While we are in Ryu’s special challenge, all trainers should be scaled to 95% of the strongest player party member.
-    // We therefore subtract 5% from the maxLevel (truncated, but at least 1),
-    // so a player with a level 10 party will encounter enemies at level 9,
-    // level 20 party encounters level 19 enemies, level 40 party encounters level 38 enemies, etc.
+    // We therefore subtract at most 5% from the maxLevel (rounded down),
+    // so a player with a level 10 party will encounter enemies at level 10,
+    // level 20 party encounters level 19-20 enemies, level 40 party encounters level 38-40 enemies, etc.
     // Scaling of wild Pokemon is not affected by the challenge and handled further down with the usual logic.
     if (VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100 && scalingType != SCALING_TYPE_WILD) {
         u8 highest = 0, i, level;
@@ -1842,7 +1842,7 @@ u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStr
             level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
             if (level > highest) highest = level;
         }
-        return max(minLevel, highest - max(highest / 20, 1));
+        return max(minLevel, highest - Random() % (highest / 20 + 1));
     }
 
     // Wild pokemon should always use badge scaling, unless the AP is enabled,
