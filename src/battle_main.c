@@ -1820,22 +1820,30 @@ s16 CalculatePlayerPartyStrength(void) {
     return max(highest - 20, average);
 }
 
-//@KAGERU: Special Challenge flag is FLAG_RYU_DOING_RYU_CHALLENGE, challenge failures will set the FLAG_RYU_FAILED_RYU_CHALLENGE and
-//the challenge is active while 
-//VAR_RYU_SPECIAL_CHALLENGE_STATE is set to 100. It's zero if not started yet, 666 when failed, 69 when complete.
-//You can make it only do the special challenge scale when the variable is 100. Note that Nuzlocke mode was renamed to Challenge mode, and is unrelated to this.
-//delete this comment when you get around to working on this.
-
 u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStrength)
 {
     u8 level = 0;
     // Allows overriding the autoscaling from scripts.
     // Usually, this will just be 2 to make sure we don’t generate level 0 or 1 mons.
-    u8 minLevel = VarGet(VAR_RYU_AUTOSCALE_MIN_LEVEL) + (Random() % 5);
+    u8 minLevel = VarGet(VAR_RYU_AUTOSCALE_MIN_LEVEL);
     u8 maxLevel = MAX_LEVEL;
 
     if (maxScale)
         return maxLevel;
+
+    // While we are in Ryu’s special challenge, all trainers should be scaled to 95% of the strongest player party member.
+    // We therefore subtract 5% from the maxLevel (truncated, but at least 1),
+    // so a player with a level 10 party will encounter enemies at level 9,
+    // level 20 party encounters level 19 enemies, level 40 party encounters level 38 enemies, etc.
+    // Scaling of wild Pokemon is not affected by the challenge and handled further down with the usual logic.
+    if (VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100 && scalingType != SCALING_TYPE_WILD) {
+        u8 highest = 0, i, level;
+        for (i = 0; i < CalculatePlayerPartyCount(); i++) {
+            level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+            if (level > highest) highest = level;
+        }
+        return max(minLevel, highest - max(highest / 20, 1));
+    }
 
     // Wild pokemon should always use badge scaling, unless the AP is enabled,
     // in which case they always scale to slightly below team level, even before NG+.
