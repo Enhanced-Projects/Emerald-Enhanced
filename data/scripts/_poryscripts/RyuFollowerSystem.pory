@@ -91,6 +91,7 @@ RyuFollower_CourtneyScript::
 RyuFollower_NurseJoy::
 	fadescreen FADE_TO_BLACK
 	drawfullscreenimage SCENEBGNURSE
+        goto_if_set FLAG_RYU_DOING_RYU_CHALLENGE, RF_NurseChallenge
 	goto_if_set FLAG_TEMP_8, RyuFollower_NurseAlreadyHealed
 	msgbox RF_ShouldIHeal, MSGBOX_YESNO
 	compare VAR_RESULT, YES
@@ -876,4 +877,12 @@ script RF_MayStage70 {
 	closemessage
 	release
 	end
+}
+
+script RF_NurseChallenge {
+        msgbox("{COLOR LIGHT_RED}{SHADOW RED}I wonder how the pokecenter\nstaff is doing without me...")
+        call(RyuFollower_NurseChatterSelector)
+        clearfullscreenimage
+        release
+        end
 }
