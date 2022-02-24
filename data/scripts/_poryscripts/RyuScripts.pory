@@ -2320,6 +2320,22 @@ script RyuScript_EncounterKeldeo {
 	end
 }
 
+script RyuScript_NotifyFailedChallenge {
+	msgbox("You have failed Ryu's Challenge.\nYou can try again in another\lNew Game Plus")
+	setflag(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE)
+	closemessage
+	release
+	end
+}
+
+script RyuScript_NotifySucceededChallenge {
+	msgbox("You have completed\nRyu's Challenge.\pPing Ryu in discord to get your\nsave checked and score posted!")
+	setflag(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS)
+	closemessage
+	release
+	end
+}
+
 script RyuScript_Lv100FailMsg {
 	msgbox(format("You attempted to switch to the lv100 vanilla cap, but your party is not at or below level 100. Get only lv100 mons in your party to use this option."))
 	clearflag(FLAG_RYU_FAILED_100_CAP_SWITCH)

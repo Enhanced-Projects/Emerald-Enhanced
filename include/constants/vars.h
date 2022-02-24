@@ -283,6 +283,7 @@
 #define VAR_RYU_MONEY_BASE_RANDOM_COMPONENT  0x4107
 #define VAR_RYU_MONEY_BASE_VALUE             0x4108
 #define VAR_RYU_MONEY_BASE_COEFFICIENT       0x4109
+#define VAR_RYU_SPECIAL_CHALLENGE_STATE      0x410A
 
 
 //vars 4100 thru 417f are unused; total of 128.

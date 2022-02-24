@@ -141,9 +141,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_AideReceivedStarter:: @ 81F9FB1
 	release
 	end
 
-LittlerootTown_ProfessorBirchsLab_EventScript_Birch:: @ 81FA25A
-	lock
-	faceplayer
+LRT_StandardBirch::
 	ach query, ACH_POKEMON_TRAINER
 	compare VAR_RESULT, TRUE
 	call_if_ne LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting
@@ -616,4 +614,117 @@ movement LRT_BL_BirchDropThing {
 	walk_in_place_fastest_right
 	walk_in_place_fastest_down
 	step_end
+}
+
+script LittlerootTown_ProfessorBirchsLab_EventScript_Birch{
+	lock
+	faceplayer
+	delay(60)
+	special(RyuDevCheck)
+	if (var(VAR_RESULT) == 420) {
+		goto(RyuChallengeQuery)
+	}
+	goto(LRT_StandardBirch)
+}
+
+script RyuChallengeQuery {
+	if (flag(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) {
+		msgbox("You have already started the challenge.\pCheck status?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			buffernumberstring(0, VAR_RYU_SPECIAL_CHALLENGE_STATE)
+			switch (var(VAR_RYU_SPECIAL_CHALLENGE_STATE)) {
+				case 0:
+					msgbox("Challenge not started. {COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_1})")
+					goto(ryu_end)
+				case 100:
+					msgbox("Challenge In Progress.\pChallenge Not Failed.\pChallenge Not Complete.{COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_1})")
+					goto(ryu_end)
+				case 69:
+					msgbox("Challenge Complete.{COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_1})\pSubmit your save to Ryu on\nthe Discord.")
+					goto(ryu_end)
+				case 666:
+					msgbox("Challenge Failed.{COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_1})\pNew Game Plus to try again.")
+					goto(ryu_end)
+
+				msgbox("Warning! Challenge state invalid!\pContact the discord with this\ninformation!\pWill now restart the game!")
+				special(DoSoftReset)
+			}
+		}
+		msgbox("Exiting Challenge Status.")
+		release
+		end
+	}
+	msgbox("If you didn't activate this code\non purpose, please consult the\ldiscord for info on\pRyu's Challenge.")
+	closemessage
+	msgbox("You have entered the key combo\nfor Ryu's Challenge.\pDo you want to attempt the\nChallenge?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		goto(ryu_return)
+	}
+	msgbox("I will now see if you\nmeet the requirements.\pPlease Wait.")
+	delay(60)
+	if (flag(FLAG_RYU_ISNGPLUS) == FALSE) {
+		goto(RyuChallengeFailedRequisite1)
+	}
+	if (flag(FLAG_RYU_CHEATS_USED) == TRUE) {
+		goto(RyuChallengeFailedRequisite2)
+	}
+	if (var(VAR_RYU_NGPLUS_COUNT) < 6) {
+		goto(RyuChallengeFailedRequisite3)
+	}
+	specialvar(VAR_RESULT, CountBadges)
+	if (!(var(VAR_RESULT) == 0)) {
+		goto(RyuChallengeFailedRequisite4)
+	}
+	if (!(var(VAR_LITTLEROOT_INTRO_STATE) == 10)) {
+		goto(RyuChallengeFailedRequisite5)
+	}
+	setflag(FLAG_RYU_DOING_RYU_CHALLENGE)
+	msgbox("You have begun Ryu's Challenge.\nIf you black out, the challenge will\lfail.\pYou must submit a save in the\ndiscord to get the\lreward.")
+	setvar(VAR_RYU_SPECIAL_CHALLENGE_STATE, 100)
+	setflag(FLAG_RYU_BANNED_FROM_MARTS)
+	setvar(VAR_RYU_AUTOLEVEL_MODIFIER, 5)
+	closemessage
+	msgbox("Note that you will now no\nlonger be able to use the PC.")
+	closemessage
+	msgbox("To see the details of how the\nchallenge works, consult the Discord.\pA discord link will follow this\nmessage, in case you need it.")
+	closemessage
+	msgbox("{COLOR BLUE}{SHADOW LIGHT_GREY}discord.gg/UhmsDqHUHF")
+	closemessage
+	msgbox("If you did not intend to start\nthis challenge, or wish to\lnot do it,\pload an earlier save.")
+	closemessage
+	msgbox("Your challenge status is now\nbeing tracked by the game.\pYou will be notified if you fail\nor succeeed.")
+	closemessage
+	release
+	end
+}
+
+
+script RyuChallengeFailedRequisite1 {
+	msgbox("You do not meed the requirements.\pYou must be on a New Game Plus.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite2 {
+	msgbox("You do not meed the requirements.\pYou may not use cheats.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite3 {
+	msgbox("You do not meed the requirements.\pYou must be at prestige 6 or higher.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite4 {
+	msgbox("You do not meed the requirements.\pYou may not have any badges.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite5 {
+	msgbox("You do not meed the requirements.\pYou must complete the tutorial.")
+	release
+	end
 }

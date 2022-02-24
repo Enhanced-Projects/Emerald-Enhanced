@@ -5,14 +5,27 @@
 
 RyuDevSwitch::
 	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
+	switch VAR_RESULT
+	case 69, Ryu_enableDevMode
+	case 666, Ryu_SpecialChallengeActive
+	case 420, RyuChallengeQuery
+	release
+	end
+
+Ryu_enableDevMode::
 	setflag FLAG_RYU_DEV_MODE
 	setflag FLAG_RYU_CHEATS_USED
-	@clearflag FLAG_HIDE_103_TEST_TRAINER
 	msgbox RyuNowDeveloper MSGBOX_SIGN
 	setvar VAR_TEMP_9, 100
 	end
+
+Ryu_SpecialChallengeActive::
+	msgbox RyuCantEnableDevBecauseChallenge
+	release
+	end
+
+RyuCantEnableDevBecauseChallenge:
+	.string "You cannot enable dev mode\nbecause you are participating\lin\pRyu's Challenge.$"
 	
 RyuNowDeveloper:
 	.string "{PLAYER} is now a developer.$"
@@ -356,6 +369,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	buffernumberstring 0, VAR_RYU_SPECIAL_CHALLENGE_STATE
+	msgbox RDB_TempVarsViewMsg
 	release
 	end
 

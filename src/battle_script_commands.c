@@ -6520,7 +6520,10 @@ static void Cmd_getmoneyreward(void)
         moneyReward *= 3;
     }
 
-    AddMoney(&gSaveBlock1Ptr->money, moneyReward);
+    if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
+        AddMoney(&gSaveBlock1Ptr->money, 1);
+    else
+        AddMoney(&gSaveBlock1Ptr->money, moneyReward);
 
     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);
     gBattlescriptCurrInstr++;

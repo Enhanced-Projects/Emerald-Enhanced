@@ -1820,6 +1820,12 @@ s16 CalculatePlayerPartyStrength(void) {
     return max(highest - 20, average);
 }
 
+//@KAGERU: Special Challenge flag is FLAG_RYU_DOING_RYU_CHALLENGE, challenge failures will set the FLAG_RYU_FAILED_RYU_CHALLENGE and
+//the challenge is active while 
+//VAR_RYU_SPECIAL_CHALLENGE_STATE is set to 100. It's zero if not started yet, 666 when failed, 69 when complete.
+//You can make it only do the special challenge scale when the variable is 100. Note that Nuzlocke mode was renamed to Challenge mode, and is unrelated to this.
+//delete this comment when you get around to working on this.
+
 u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStrength)
 {
     u8 level = 0;
@@ -1950,6 +1956,9 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     level += 12;
                 else if ((GetFactionStanding(trainerNum)) <= 50  && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
                     level += 7;
+
+                if (level > MAX_LEVEL)
+                    level = MAX_LEVEL;
             }
 
             nameHash += trainerNameHash;

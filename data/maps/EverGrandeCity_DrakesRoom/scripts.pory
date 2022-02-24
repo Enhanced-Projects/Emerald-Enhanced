@@ -163,7 +163,7 @@ script EGC_FollowerDrakeRematch {
 	if (var(VAR_RESULT) == FALSE) {
 		goto(EGC_PR_ChooseValidMons)
 	}
-	if (var(VAR_RYU_E42) == 0) {
+	if (var(VAR_RYU_E44) == 0) {
 		msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleSpeech)
 		multi_2_vs_1(TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
 	}

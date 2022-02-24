@@ -780,7 +780,7 @@
 #define FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT                        0x2D5
 #define FLAG_UNUSED_0x2D6                                           0x2D6
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7
-#define FLAG_UNUSED_0x2D8                                           0x2D8
+#define FLAG_RYU_DOING_RYU_CHALLENGE                                0x2D8
 
 #define FLAG_RYU_PASSCODE_FRONTIER_MON_DEV                          0x2D9
 
@@ -793,9 +793,9 @@
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING         0x2E0
 #define FLAG_SYS_DEXNAV_GET                                         0x2E1
 #define FLAG_HIDE_DH_DAD                                            0x2E2
-#define FLAG_UNUSED_0x2E3                                           0x2E3
-#define FLAG_UNUSED_0x2E4                                           0x2E4
-#define FLAG_UNUSED_0x2E5                                           0x2E5
+#define FLAG_RYU_FAILED_RYU_CHALLENGE                               0x2E3
+#define FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE                         0x2E4
+#define FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS                         0x2E5
 #define FLAG_UNUSED_0x2E6                                           0x2E6
 #define FLAG_UNUSED_0x2E7                                           0x2E7
 #define FLAG_UNUSED_0x2E8                                           0x2E8

@@ -234,6 +234,22 @@ void RyuKillMon(void)
 }
 
 extern const u16 gFrontierBannedSpecies[27];
+extern const u16 gChallengeBannedSpecies[40];
+
+int CheckValidMonsForSpecialChallenge (void)
+{
+    u8 slot = 8;
+    s32 i = 0;
+    s32 k = 0;
+    for (k = 0; k < 6; k++)
+    {
+        for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
+        {
+            if (gChallengeBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
+                return 666;
+        }
+    }
+}
 
 
 int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be used by gcms.
@@ -319,7 +335,15 @@ void RyuBrendanGiftPoke(void)
 void RyuDevCheck(void)
 {
     if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)))
+    {
         gSpecialVar_Result = 69;
+        return;
+    }
+    else if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)))
+    {
+        gSpecialVar_Result = 420;
+        return;
+    }
 }
 
 int CountBadges(void)
@@ -2353,6 +2377,14 @@ void RyuSetupRandomForE4(void)
     VarSet(VAR_RYU_E42, r2);
     VarSet(VAR_RYU_E43, r3);
     VarSet(VAR_RYU_E44, r4);
+
+    if (VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100) //special challenge active, always give rematch 2 parties on rematch.
+        {
+            VarSet(VAR_RYU_E41, 1);
+            VarSet(VAR_RYU_E42, 1);
+            VarSet(VAR_RYU_E43, 1);
+            VarSet(VAR_RYU_E44, 1);
+        }
     //mgba_printf(LOGINFO, "%d, %d, %d, %d", r1, r2, r3, r4);
 }
 

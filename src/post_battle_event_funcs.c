@@ -25,6 +25,14 @@ int GameClear(void)
 
     HealPlayerParty();
 
+    if ((VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100) 
+        && (FlagGet(FLAG_RYU_FAILED_RYU_CHALLENGE) == FALSE) 
+        && (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) 
+        && (FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE))
+        {
+            VarSet(VAR_RYU_SPECIAL_CHALLENGE_STATE, 69);
+        }
+
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE)
     {
