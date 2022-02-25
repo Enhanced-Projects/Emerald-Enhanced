@@ -375,7 +375,6 @@ RDB_TempVarsViewMsg:
 
 
 RyuDebug_Utility1::
-	clearflag FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS
 	release
 	end
 

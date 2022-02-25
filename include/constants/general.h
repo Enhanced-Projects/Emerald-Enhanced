@@ -500,7 +500,7 @@
 #define NOTIFY_QUEST       5
 #define NOTIFY_GENERAL     6
 
-#define EE_GAME_VERSION 8301
+#define EE_GAME_VERSION 8302
 
 
 #endif
