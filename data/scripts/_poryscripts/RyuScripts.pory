@@ -2330,7 +2330,9 @@ script RyuScript_NotifyFailedChallenge {
 
 script RyuScript_NotifySucceededChallenge {
 	msgbox("You have completed\nRyu's Challenge.\pPing Ryu in discord to get your\nsave checked and score posted!")
+	callnative(RyuSavePlayTimeChallenge)
 	setflag(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS)
+	goto(RyuDebug_CheckRyuChallengeStatus)
 	closemessage
 	release
 	end

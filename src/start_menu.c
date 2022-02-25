@@ -470,8 +470,6 @@ void PrintNumberToScreen(s32 num)
     ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeSeconds, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringAppend(gRyuStringVar1, gRyuStringVar2);
 
-    mgba_printf(LOGINFO, "Play time is %d:%d:%d", gSaveBlock2Ptr->playTimeHours, gSaveBlock2Ptr->playTimeMinutes, gSaveBlock2Ptr->playTimeSeconds);
-
     //time readout
     RtcCalcLocalTime();
     StringCopy(gStringVar3, gText_HighlightTransparent);

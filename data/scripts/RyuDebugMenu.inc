@@ -91,7 +91,8 @@ RyuDebug_UtilitiesMenu:
 	case 16, RyuDebug_InitTimeSlide
 	case 17, RyuDebug_ReadoutRGBTheme
 	case 18, RyuDebug_CheckRyuChallengeStatus
-	case 19, RyuDebug_menu_nodevcheck
+	case 19, RyuDebug_CheckExactPlayTime
+	case 20, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -374,8 +375,7 @@ RDB_TempVarsViewMsg:
 
 
 RyuDebug_Utility1::
-	setvar VAR_RYU_GAME_MODE 1
-	setflag FLAG_RYU_DOING_RYU_CHALLENGE
+	clearflag FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS
 	release
 	end
 
@@ -1215,10 +1215,23 @@ rdbrr:
 
 RyuDebug_CheckRyuChallengeStatus::
 	callnative RyuCheckSpecialChallengeStatus
+	callnative RyuLoadPlayTimeChallenge
 	msgbox RDB_SCS
 	release
 	end
 
 RDB_SCS:
-	.string "Check the mGBA logs for details\non the challenge status.$"
+	.string "Finished play time: {RYU_STR_1}:{RYU_STR_2}:{RYU_STR_3}\p"
+	.string "Speed options used:\p"
+	.string "{STR_VAR_1}\p"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({COLOR DARK_GREY}{SHADOW LIGHT_GREY} bs - {COLOR LIGHT_RED}{SHADOW RED}Bar Speed{COLOR DARK_GREY}{SHADOW LIGHT_GREY}, 1c - {COLOR LIGHT_RED}{SHADOW RED}100 cap{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\n"
+	.string " itx - {COLOR LIGHT_RED}{SHADOW RED}instant text{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\p"
+	.string " its - {COLOR LIGHT_RED}{SHADOW RED}instant transition{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\n"
+	.string " da - {COLOR LIGHT_RED}{SHADOW RED}disabled anims{COLOR LIGHT_GREEN}{SHADOW GREEN})$"
+
+RyuDebug_CheckExactPlayTime::
+	callnative RyuBufferLongPlayTimeString
+	msgbox (RDB_TempVarsViewMsg)
+	release
+	end
 

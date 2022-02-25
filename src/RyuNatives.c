@@ -2385,7 +2385,6 @@ void RyuSetupRandomForE4(void)
             VarSet(VAR_RYU_E43, 1);
             VarSet(VAR_RYU_E44, 1);
         }
-    //mgba_printf(LOGINFO, "%d, %d, %d, %d", r1, r2, r3, r4);
 }
 
 void RyuCheckIfInWallysHouse (void)
@@ -2411,6 +2410,10 @@ void RyuGetMayDailyReward (void) //generates a random berry and quantity for may
     gSpecialVar_0x8005 = (Random() % 3);
 }
 
+const u8 sText_SpeedOptionsUsed[] = _(" bs  / 1c  / itx / its / da \n");
+const u8 sText_one[] = _("  {COLOR LIGHT_RED}{SHADOW RED}y{COLOR DARK_GREY}{SHADOW LIGHT_GREY}   ");
+const u8 sText_zero[] = _("  {COLOR LIGHT_GREEN}{SHADOW GREEN}n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}   ");
+const u8 sText_slash[] = _("/");
 void RyuCheckSpecialChallengeStatus (void)
 {
     bool32 UsedBarSpeed = (FlagGet(FLAG_RYU_CHANGED_BAR_SPEED));
@@ -2418,21 +2421,100 @@ void RyuCheckSpecialChallengeStatus (void)
     bool32 UsedInstantText = (FlagGet(FLAG_RYU_USED_INSTANT_TEXT));
     bool32 UsedInstantTransition = (FlagGet(FLAG_RYU_USED_INSTANT_TRANSITION));
     bool32 DisabledAnims = (FlagGet(FLAG_RYU_DISABLED_ANIMS));
-    mgba_open();
+    StringCopy(gStringVar1, sText_SpeedOptionsUsed);
 
     if (UsedBarSpeed)
-        mgba_printf(LOGINFO, "Player Increased Bar Speed.");
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+    
+    StringAppend(gStringVar1, sText_slash);
+
     if (Used100Cap)
-        mgba_printf(LOGINFO, "Player used the 100 cap.");
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+
+    StringAppend(gStringVar1, sText_slash);
+
     if (UsedInstantText)
-        mgba_printf(LOGINFO, "Player used instant Text");
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+
+    StringAppend(gStringVar1, sText_slash);
+
     if (UsedInstantTransition)
-        mgba_printf(LOGINFO, "Player used instant Transition");
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+
+    StringAppend(gStringVar1, sText_slash);
+
     if (DisabledAnims)
-        mgba_printf(LOGINFO, "Player disabled battle anims.");
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+}
 
-    mgba_printf(LOGINFO, "Player's special challenge status is: %d", VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE));
+void RyuSavePlayTimeChallenge (void)
+{
+    u16 hours = (gSaveBlock2Ptr->playTimeHours);
+    u16 minutes = (gSaveBlock2Ptr->playTimeMinutes);
+    u16 seconds = (gSaveBlock2Ptr->playTimeSeconds);
+    
+    if (hours > 60)
+        hours = 60;
+    
+    if (minutes > 60)
+        minutes = 60;
+    
+    if (seconds > 60)
+        seconds = 60;
 
-    mgba_close();
+    gSaveBlock2Ptr->challengeTimeBlockHours = hours;
+    gSaveBlock2Ptr->challengeTimeBlockMinutes = minutes;
+    gSaveBlock2Ptr->challengeTimeBlockSeconds = seconds;
+}
 
+void RyuLoadPlayTimeChallenge (void)
+{
+    u32 secondsLong = GetGameStat(GAME_STAT_CHALLENGE_TIME_SECONDS);
+    u16 hours = gSaveBlock2Ptr->challengeTimeBlockHours;
+    u16 minutes = gSaveBlock2Ptr->challengeTimeBlockMinutes;
+    u16 seconds = gSaveBlock2Ptr->challengeTimeBlockSeconds;
+
+    ConvertIntToDecimalStringN(gRyuStringVar1, hours, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar2, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar3, seconds, STR_CONV_MODE_LEADING_ZEROS, 2);
+}
+
+const u8 sText_CurrentPT[] = _("Current exact play time (HH:MM:SS:FF)\n");
+extern const u8 sText_Colon[];
+void RyuBufferLongPlayTimeString (void)
+{
+    u16 hours = gSaveBlock2Ptr->playTimeHours;
+    u16 minutes = gSaveBlock2Ptr->playTimeMinutes;
+    u16 seconds = gSaveBlock2Ptr->playTimeSeconds;
+    u16 frames = gSaveBlock2Ptr->playTimeVBlanks;
+
+    ConvertIntToDecimalStringN(gRyuStringVar1, hours, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar2, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar3, seconds, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar4, frames, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringCopy(gStringVar1, sText_CurrentPT);    
+    StringAppend(gStringVar1, gRyuStringVar1);    
+    StringAppend(gStringVar1, sText_Colon);    
+    StringAppend(gStringVar1, gRyuStringVar2);
+    StringAppend(gStringVar1, sText_Colon);     
+    StringAppend(gStringVar1, gRyuStringVar3);
+    StringAppend(gStringVar1, sText_Colon);     
+    StringAppend(gStringVar1, gRyuStringVar4);    
+}
+
+void SetArbitraryplayTime (void)
+{
+    gSaveBlock2Ptr->playTimeHours = 39;
+    gSaveBlock2Ptr->playTimeMinutes = 15;
+    gSaveBlock2Ptr->playTimeSeconds = 55;
 }

@@ -420,6 +420,10 @@ struct SaveBlock2
              u8 propertyFlags[NUM_PROPERTY_BYTES];
              u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
              u16 userInterfaceTextboxPalette[16];
+             u32 challengeTimeBlockHours:6;
+             u32 challengeTimeBlockMinutes:6;
+             u32 challengeTimeBlockSeconds:6;
+             u32 unusedChallengeTimeBlockBits:14;
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
