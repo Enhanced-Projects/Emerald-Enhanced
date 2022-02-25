@@ -373,6 +373,8 @@ RDB_TempVarsViewMsg:
 
 
 RyuDebug_Utility1::
+	setvar VAR_RYU_GAME_MODE 1
+	setflag FLAG_RYU_DOING_RYU_CHALLENGE
 	release
 	end
 

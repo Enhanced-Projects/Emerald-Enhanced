@@ -678,6 +678,10 @@ script RyuChallengeQuery {
 	if (!(var(VAR_LITTLEROOT_INTRO_STATE) == 10)) {
 		goto(RyuChallengeFailedRequisite5)
 	}
+	specialvar(VAR_RESULT, CheckValidMonsForSpecialChallenge)
+	if (var(VAR_RESULT) == 666) {
+		goto(RyuChallengeFailedRequisite6)
+	}
 	setflag(FLAG_RYU_DOING_RYU_CHALLENGE)
 	msgbox("You have begun Ryu's Challenge.\nIf you black out, the challenge will\lfail.\pYou must submit a save in the\ndiscord to get the\lreward.")
 	setvar(VAR_RYU_SPECIAL_CHALLENGE_STATE, 100)
@@ -725,6 +729,12 @@ script RyuChallengeFailedRequisite4 {
 
 script RyuChallengeFailedRequisite5 {
 	msgbox("You do not meed the requirements.\pYou must complete the tutorial.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite6 {
+	msgbox("You do not meed the requirements.\pYou may not use legendaries.")
 	release
 	end
 }
