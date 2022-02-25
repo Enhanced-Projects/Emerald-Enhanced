@@ -367,6 +367,10 @@ RyuDebug_ViewTempVars::
 
 RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
+@@clearflag FLAG_RYU_DEV_MODE
+@@clearflag FLAG_RYU_CHEATS_USED
+@@setvar VAR_RYU_NGPLUS_COUNT, 6
+
 
 RyuDebug_Utility1::
 	release

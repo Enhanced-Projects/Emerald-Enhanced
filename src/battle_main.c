@@ -1912,6 +1912,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     u32 personalityValue, personalityAdd;
     u32 fixedIV, monsCount, badges = 0;
     s32 i, j;
+    u8 evmax = 252;
+    u8 evmed = 126;
 
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
@@ -2050,6 +2052,26 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 {
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
+                }
+                if ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE))
+                {
+                    SetMonData(&party[i], MON_DATA_HP_EV,    &evmax);
+                    SetMonData(&party[i], MON_DATA_ATK_EV,   &evmax);
+                    SetMonData(&party[i], MON_DATA_SPATK_EV, &evmax);
+                    SetMonData(&party[i], MON_DATA_DEF_EV,   &evmax);
+                    SetMonData(&party[i], MON_DATA_SPDEF_EV, &evmax);
+                    SetMonData(&party[i], MON_DATA_SPEED_EV, &evmax);
+                    CalculateMonStats(&party[i]);
+                }
+                else if ((FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE) || (VarGet(VAR_RYU_NGPLUS_COUNT) > 5))
+                {
+                    SetMonData(&party[i], MON_DATA_HP_EV,    &evmed);
+                    SetMonData(&party[i], MON_DATA_ATK_EV,   &evmed);
+                    SetMonData(&party[i], MON_DATA_SPATK_EV, &evmed);
+                    SetMonData(&party[i], MON_DATA_DEF_EV,   &evmed);
+                    SetMonData(&party[i], MON_DATA_SPDEF_EV, &evmed);
+                    SetMonData(&party[i], MON_DATA_SPEED_EV, &evmed);
+                    CalculateMonStats(&party[i]);
                 }
                 break;
             }
