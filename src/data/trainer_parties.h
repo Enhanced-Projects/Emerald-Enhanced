@@ -12940,7 +12940,7 @@ static const struct TrainerMonItemCustomMoves sParty_Juan4[] = {
 	.species = SPECIES_EMPOLEON,
 	.heldItem = ITEM_LIFE_ORB,
 	.ability = 0,
-	.moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_GRASS_KNOT, MOVE_RAIN_DANCE},
+	.moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_GRASS_KNOT, MOVE_FLASH_CANNON},
 	},
 	{
 	.iv = 255,

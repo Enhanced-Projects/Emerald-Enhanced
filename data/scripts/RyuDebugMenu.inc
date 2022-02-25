@@ -90,7 +90,8 @@ RyuDebug_UtilitiesMenu:
 	case 15, RDB_EnableRealEstate
 	case 16, RyuDebug_InitTimeSlide
 	case 17, RyuDebug_ReadoutRGBTheme
-	case 18, RyuDebug_menu_nodevcheck
+	case 18, RyuDebug_CheckRyuChallengeStatus
+	case 19, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -1211,4 +1212,13 @@ RyuDebug_ReadoutRGBTheme:
 
 rdbrr:
 	.string "Refer to mGBA debug to see values.$"
+
+RyuDebug_CheckRyuChallengeStatus::
+	callnative RyuCheckSpecialChallengeStatus
+	msgbox RDB_SCS
+	release
+	end
+
+RDB_SCS:
+	.string "Check the mGBA logs for details\non the challenge status.$"
 

@@ -1359,6 +1359,12 @@
 #define FLAG_RYU_GIFTED_VENUSAURITE                               0x503
 #define FLAG_RYU_GIFTED_CAMERUPTITE                               0x504
 
+#define FLAG_RYU_CHANGED_BAR_SPEED                                0x505
+#define FLAG_RYU_USED_100_CAP                                     0x506
+#define FLAG_RYU_USED_INSTANT_TEXT                                0x507
+#define FLAG_RYU_USED_INSTANT_TRANSITION                          0x508
+#define FLAG_RYU_DISABLED_ANIMS                                   0x509
+
 
 #define NEW_FLAGS_END                                             0x5FF
 // Trainer Flags

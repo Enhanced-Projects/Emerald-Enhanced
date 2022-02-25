@@ -2410,3 +2410,29 @@ void RyuGetMayDailyReward (void) //generates a random berry and quantity for may
     gSpecialVar_0x8004 = ((Random() % 66) + 144);
     gSpecialVar_0x8005 = (Random() % 3);
 }
+
+void RyuCheckSpecialChallengeStatus (void)
+{
+    bool32 UsedBarSpeed = (FlagGet(FLAG_RYU_CHANGED_BAR_SPEED));
+    bool32 Used100Cap = (FlagGet(FLAG_RYU_USED_100_CAP));
+    bool32 UsedInstantText = (FlagGet(FLAG_RYU_USED_INSTANT_TEXT));
+    bool32 UsedInstantTransition = (FlagGet(FLAG_RYU_USED_INSTANT_TRANSITION));
+    bool32 DisabledAnims = (FlagGet(FLAG_RYU_DISABLED_ANIMS));
+    mgba_open();
+
+    if (UsedBarSpeed)
+        mgba_printf(LOGINFO, "Player Increased Bar Speed.");
+    if (Used100Cap)
+        mgba_printf(LOGINFO, "Player used the 100 cap.");
+    if (UsedInstantText)
+        mgba_printf(LOGINFO, "Player used instant Text");
+    if (UsedInstantTransition)
+        mgba_printf(LOGINFO, "Player used instant Transition");
+    if (DisabledAnims)
+        mgba_printf(LOGINFO, "Player disabled battle anims.");
+
+    mgba_printf(LOGINFO, "Player's special challenge status is: %d", VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE));
+
+    mgba_close();
+
+}

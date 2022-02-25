@@ -1033,7 +1033,10 @@ static void Task_OptionMenuSave(u8 taskId)
 {
     gSaveBlock2Ptr->optionsTextSpeed = sOptions->sel[MENUITEM_TEXTSPEED];
     if (sOptions->sel[MENUITEM_TEXTSPEED] == 3)
+    {
         FlagSet(FLAG_SELECTED_FF_TEXT_OPTION);
+        FlagSet(FLAG_RYU_USED_INSTANT_TEXT);
+    }
     else
         FlagClear(FLAG_SELECTED_FF_TEXT_OPTION);
 
@@ -1041,6 +1044,10 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsThemeNumber = sOptions->sel[MENUITEM_THEME];
     
     gSaveBlock2Ptr->forceSetBattleType = sOptions->sel[MENUITEM_FORCESETBATTLE];
+    if ((gSaveBlock2Ptr->optionsBattleSceneOff) == TRUE)
+    {
+        FlagSet(FLAG_RYU_DISABLED_ANIMS);
+    }
     if (sOptions->sel[MENUITEM_RDM_MUSIC])
         FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
     else
@@ -1055,8 +1062,15 @@ static void Task_OptionMenuSave(u8 taskId)
         gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
 
     VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_BAR_SPEED]);
+    if ((VarGet(VAR_OPTIONS_EXP_BAR_SPEED) > 7) || (VarGet(VAR_OPTIONS_HP_BAR_SPEED) > 7))
+    {
+        FlagSet(FLAG_RYU_CHANGED_BAR_SPEED);
+    }
     if (sOptions->sel[MENUITEM_TRANSITION])
+    {
         FlagSet(FLAG_OPTIONS_INSTANT_TRANSITION);
+        FlagSet(FLAG_RYU_USED_INSTANT_TRANSITION);
+    }
     else
         FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
 
@@ -1072,6 +1086,7 @@ static void Task_OptionMenuSave(u8 taskId)
         {
             FlagSet(FLAG_RYU_VANILLA_CAP);
             FlagSet(FLAG_RYU_NOTIFY_LV100_SWITCH);
+            FlagSet(FLAG_RYU_USED_100_CAP);
         }
         else
         {
