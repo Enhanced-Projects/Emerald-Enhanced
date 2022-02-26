@@ -650,6 +650,15 @@ script RyuChallengeQuery {
 				special(DoSoftReset)
 			}
 		}
+		else {
+			msgbox("Would you like to retire from the challenge?", MSGBOX_YESNO)
+			if (var(VAR_RESULT) == YES) {
+				msgbox("Ending Challenge.\pYou will need to start a new game +\nto try again.")
+				clearflag(FLAG_RYU_DOING_RYU_CHALLENGE)
+				setvar(VAR_RYU_SPECIAL_CHALLENGE_STATE, 666)
+				setflag(FLAG_RYU_FAILED_RYU_CHALLENGE)
+			}
+		}
 		msgbox("Exiting Challenge Status.")
 		release
 		end
@@ -681,6 +690,9 @@ script RyuChallengeQuery {
 	specialvar(VAR_RESULT, CheckValidMonsForSpecialChallenge)
 	if (var(VAR_RESULT) == 666) {
 		goto(RyuChallengeFailedRequisite6)
+	}
+	if (flag(FLAG_RYU_FAILED_RYU_CHALLENGE) == TRUE) {
+		goto(RyuChallengeFailedRequisite7)
 	}
 	setflag(FLAG_RYU_DOING_RYU_CHALLENGE)
 	msgbox("You have begun Ryu's Challenge.\nIf you black out, the challenge will\lfail.\pYou must submit a save in the\ndiscord to get the\lreward.")
@@ -735,6 +747,12 @@ script RyuChallengeFailedRequisite5 {
 
 script RyuChallengeFailedRequisite6 {
 	msgbox("You do not meed the requirements.\pYou may not use legendaries.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite7 {
+	msgbox("You do not meed the requirements.\pYou have already failed the\nchallenge.")
 	release
 	end
 }

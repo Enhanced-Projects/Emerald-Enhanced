@@ -3035,6 +3035,14 @@ inline u8 GetCurrentMaxLevel()
     return BASE_MAX_LEVEL + min(ngPlusCount, MAX_NGPLUS_COUNT) * LEVELS_PER_NGPLUS;
 }
 
+inline u8 RyuGetAffectionChance()
+{
+    if ((FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) || FlagGet(FLAG_RYU_HARDCORE_MODE))
+        return 10;
+    else
+        return 15;
+}
+
 u8 GetLevelFromMonExp(struct Pokemon *mon)
 {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);

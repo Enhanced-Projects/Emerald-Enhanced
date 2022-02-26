@@ -1179,7 +1179,7 @@ bool32 RyuCheckAffectionEvasion(void)
     if (gBattleMons[gBattlerTarget].friendship > 245 &&
         (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)) &&
         GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER &&
-        (Random() % 99) < 15)
+        (Random() % 99) < AFFECTION_BASE_CHANCE)
         {
             gActiveBattler = gBattlerTarget;
             gBattleMons[gBattlerTarget].friendship -= 5;
@@ -1861,7 +1861,7 @@ static void Cmd_typecalc(void)
 
 bool32 RyuCheckAffectionFocusEffect(void)
 {
-    if ((Random() % 99) < 15 &&
+    if ((Random() % 99) < AFFECTION_BASE_CHANCE &&
         (gBattleMons[gBattlerTarget].friendship >= 245) &&
          GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER &&
          (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)) &&
@@ -9037,7 +9037,7 @@ bool8 RyuAffectionStatusHealCheck(u8 battlerId)
     if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) ||
         ((GetBattlerPosition(battlerId) == B_POSITION_PLAYER_RIGHT) && ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == TRUE)) ||
         (gBattleMons[battlerId].friendship < 240) ||
-        (random > 24))
+        (random > AFFECTION_BASE_CHANCE))
             return FALSE;
 
     gBattleMons[battlerId].friendship -= 5;

@@ -2323,6 +2323,7 @@ script RyuScript_EncounterKeldeo {
 script RyuScript_NotifyFailedChallenge {
 	msgbox("You have failed Ryu's Challenge.\nYou can try again in another\lNew Game Plus")
 	setflag(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE)
+	clearflag(FLAG_RYU_DOING_RYU_CHALLENGE)
 	closemessage
 	release
 	end
@@ -2331,6 +2332,7 @@ script RyuScript_NotifyFailedChallenge {
 script RyuScript_NotifySucceededChallenge {
 	msgbox("You have completed\nRyu's Challenge.\pPing Ryu in discord to get your\nsave checked and score posted!")
 	callnative(RyuSavePlayTimeChallenge)
+	clearflag(FLAG_RYU_DOING_RYU_CHALLENGE)
 	setflag(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS)
 	goto(RyuDebug_CheckRyuChallengeStatus)
 	closemessage
