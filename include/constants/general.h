@@ -503,7 +503,7 @@
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
 
-#define EE_GAME_VERSION 8302
+#define EE_GAME_VERSION 8303
 
 
 #endif
