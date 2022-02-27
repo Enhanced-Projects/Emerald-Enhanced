@@ -2321,9 +2321,11 @@ script RyuScript_EncounterKeldeo {
 }
 
 script RyuScript_NotifyFailedChallenge {
-	msgbox("You have failed Ryu's Challenge.\nYou can try again in another\lNew Game Plus")
+	msgbox("You have failed Ryu's Challenge.\nYou can try again in another\lNew Game Plus.\pOne moment please.")
 	setflag(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE)
 	clearflag(FLAG_RYU_DOING_RYU_CHALLENGE)
+	callnative(RyuForceSaveTheGame)
+	msgbox("We look forward to you trying\nagain!")
 	closemessage
 	release
 	end
