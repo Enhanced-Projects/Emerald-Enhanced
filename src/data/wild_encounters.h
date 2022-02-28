@@ -4149,9 +4149,9 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.mapGroup = MAP_GROUP(MIRAGE_CAVE),
 		.mapNum = MAP_NUM(MIRAGE_CAVE),
 		.landMonsInfo = &gMirageCave_LandMonsInfo,
-		.waterMonsInfo = gMirageCave_WaterMonsInfo,
+		.waterMonsInfo = &gMirageCave_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = gMirageCave_FishingMonsInfo,
+		.fishingMonsInfo = &gMirageCave_FishingMonsInfo,
 	},
 	{
 		.mapGroup = MAP_GROUP(BANANA_SLAKOTH_GARDEN),
