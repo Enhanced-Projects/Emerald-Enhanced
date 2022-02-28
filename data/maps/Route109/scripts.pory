@@ -225,8 +225,8 @@ R109_CheckMagmaEvent::
 R109_StartMagmaEvent::
 	lock
 	setvar VAR_RYU_QUEST_MAGMA, 270@player at beach
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	msgbox R109_ThatWasA
 	closemessage
 	giveitem ITEM_HYPER_POTION, 40

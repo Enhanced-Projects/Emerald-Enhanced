@@ -267,13 +267,13 @@ MPS_AquaMiniBossFight1::
 	applymovement 14 MPS_MattToPlayer
 	waitmovement 14
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	msgbox MPS_MattBackup
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MPS_PlayerToCourtney
+	applymovement PLAYER, MPS_PlayerToCourtney
 	applymovement 14, MPS_MattToTabitha
 	waitmovement 14
 	msgbox MPS_TabithaMattBattleIntro
@@ -289,8 +289,8 @@ MPS_AfterCourtney::
 	closemessage
 	applymovement 15, MPS_MaxieToPlayer
 	waitmovement 15
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox MPS_SoYouveComeAgain
 	closemessage
 	setflag FLAG_RYU_GAME_OVER
@@ -308,8 +308,8 @@ MPS_AfterMaxie::
 	applymovement 16, MPS_ShellyToPlayer @7 up, 1 right
 	waitmovement 17
 	msgbox MPS_Player
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	applymovement 17, Common_Movement_FaceLeft
 	waitmovement 17
 	msgbox MPS_YouAlongWith
@@ -318,8 +318,8 @@ MPS_AfterMaxie::
 	waitmovement 17
 	msgbox MPS_SoThatMagma
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MPS_PlayerToArchieOldCouple
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, MPS_PlayerToArchieOldCouple
+	waitmovement PLAYER
 	applymovement 17, Common_Movement_FaceDown
 	waitmovement 17
 	giveitem ITEM_RED_ORB, 1

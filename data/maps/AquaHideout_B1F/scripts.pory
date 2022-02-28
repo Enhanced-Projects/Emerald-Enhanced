@@ -135,10 +135,10 @@ AQH_MovePlayerThroughBlock::
 	closemessage
 	applymovement VAR_LAST_TALKED, AQH_Movement_MoveBlockers
 	waitmovement VAR_LAST_TALKED
-	applymovement OBJ_EVENT_ID_PLAYER, AQH_Movement_AllowPlayerThrough
+	applymovement PLAYER, AQH_Movement_AllowPlayerThrough
 	delay 10
-	applymovement OBJ_EVENT_ID_FOLLOWER, AQH_Movement_AllowFollowerThrough
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, AQH_Movement_AllowFollowerThrough
+	waitmovement FOLLOWER
 	applymovement VAR_LAST_TALKED, AQH_Movement_ReturnBlocker
 	waitmovement VAR_LAST_TALKED
 	releaseall

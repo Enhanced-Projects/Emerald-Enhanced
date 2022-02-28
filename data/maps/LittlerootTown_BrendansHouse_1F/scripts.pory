@@ -10,13 +10,13 @@ LRT_MayIntroCheck::
 
 LRT_leftSideTrigger::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
-	applymovement OBJ_EVENT_ID_PLAYER, Lrt_trigger_moveRight
+	applymovement PLAYER, Lrt_trigger_moveRight
 	waitmovement 0
 	goto LRT_GameClearTriggerMale
 	
 LRT_rightSideTrigger::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
-	applymovement OBJ_EVENT_ID_PLAYER, Lrt_trigger_moveLeft
+	applymovement PLAYER, Lrt_trigger_moveLeft
 	waitmovement 0
 	goto LRT_GameClearTriggerMale
 	
@@ -95,13 +95,13 @@ LRT_maleRivalDSStage3::
 	return
 	
 LRT_MRDSS3::	
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_StepRight
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceDown
+	waitmovement FOLLOWER
 	applymovement 2, LRT_MeetFemalePlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, LRT_facedown
+	applymovement PLAYER, LRT_facedown
 	msgbox LRT_maleRivalMomCuteCouple MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_MALE_MOM_MET
 	applymovement 2, LRT_ReturnToTable2
@@ -177,14 +177,18 @@ WarpZone_Text_Sign4:
 script LRT_RivalMother {
 	lock
 	faceplayer
-	if (flag(FLAG_RYU_MAY_PREREQUISITE_COMPLETED) == TRUE) {
-		if ((flag(FLAG_RYU_MAY_AVAILABLE) == TRUE) || (flag(FLAG_RYU_MAY_EVENT_FAILED) == TRUE)) {
+	if (var(VAR_RYU_QUEST_MAY) >= 5) {
+		if (flag(FLAG_RYU_MAY_EVENT_FAILED) == TRUE) {
+			goto(LRT_RivalMom_Afterstory)
+		}
+		if (var(VAR_RYU_QUEST_MAY) >= 10) {
 			goto(LRT_RivalMom_Afterstory)
 		}
 		msgbox("Oh, hi!\pYou've done so much work for\nmy husband.\pInstead of letting his research take\nhim over, He finally took me on\lvacation!\pWe met this lovely girl while we\nwere travelling and found out that\lher parents were gone!\pThe professor decided to adopt her.\nIsn't that great?!")
 		closemessage
-		setflag(FLAG_RYU_MAY_AVAILABLE)
+		setvar(VAR_RYU_QUEST_MAY, 10) //Player talked to may's adopted mother, find may in littleroot.
 		clearflag(FLAG_RYU_DS_MAY_ACQ)
+		ach(give, ACH_DE_ORPHANED)
 		release
 		end
 	}
@@ -210,20 +214,25 @@ script LRT_MayIntroEvent {
 		release
 		end
 	}
-	elif ((flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) || (!(var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LINK_RS_MAY))) {
+	elif ((flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) || (!(var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY))) {
 		setvar(VAR_TEMP_5, 100)
 		release
 		end
 	}
-	if (flag(FLAG_RYU_MAY_INTRO_EVENT_DONE) == TRUE) {
+	if (var(VAR_RYU_QUEST_MAY) == 25) { //may intro event done
+		setvar(VAR_TEMP_5, 100)
+		release
+		end
+	}
+	if (var(VAR_RYU_QUEST_MAY) >= 25) {
 		setvar(VAR_TEMP_5, 100)
 		release
 		end
 	}
 	lock
-	waitmovement(OBJ_EVENT_ID_CAMERA)
-	applymovement(OBJ_EVENT_ID_FOLLOWER, LRT_BH_MayNextToPlayer)
-	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	waitmovement(CAMERA)
+	applymovement(FOLLOWER, LRT_BH_MayNextToPlayer)
+	waitmovement(FOLLOWER)
 	applymovement(2, Common_Movement_ExclamationMark)
 	playse(SE_PIN)
 	waitmovement(2)
@@ -232,7 +241,7 @@ script LRT_MayIntroEvent {
 	msgbox("Oh, she's arrived!\pBIRCH!!! She's HERE!\nGet DOWN HERE!")
 	closemessage
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, LRT_MayEvent_Cam1)
+	applymovement(CAMERA, LRT_MayEvent_Cam1)
 	playse(SE_DOOR)
 	addobject(7)
 	applymovement(7, Common_Movement_ExclamationMark)
@@ -248,24 +257,24 @@ script LRT_MayIntroEvent {
 	if (flag(FLAG_RYU_DS_DAWN_PARTNERS) == TRUE) {
 		call(LRT_BH_DawnEnter)
 	}
-	setflag(FLAG_RYU_MAY_INTRO_EVENT_DONE)
-	applymovement(OBJ_EVENT_ID_FOLLOWER, LRT_BH_MayToStairs)
-	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	setvar(VAR_RYU_QUEST_MAY, 25) //Player completed may event in rival's house.
+	applymovement(FOLLOWER, LRT_BH_MayToStairs)
+	waitmovement(FOLLOWER)
 	applymovement(7, Common_Movement_StepLeft)
 	waitmovement(7)
 	applymovement(7, Common_Movement_FaceDown)
 	waitmovement(7)
 	checkplayergender
 	if (var(VAR_RESULT) == MALE) {
-		applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight)
-		waitmovement(OBJ_EVENT_ID_FOLLOWER)
+		applymovement(FOLLOWER, Common_Movement_StepRight)
+		waitmovement(FOLLOWER)
 	}
-	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown)
-	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	applymovement(FOLLOWER, Common_Movement_FaceDown)
+	waitmovement(FOLLOWER)
 	msgbox("May:{COLOR LIGHT_RED}{SHADOW RED} Okay... Thanks, {PLAYER}!\nI'm going to go get unpacked now.\pCome visit later if you wanna\nhang out!")
 	closemessage
-	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp)
-	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	applymovement(FOLLOWER, Common_Movement_StepUp)
+	waitmovement(FOLLOWER)
 	playse(SE_DOOR)
 	destroyfollower
 	clearflag(FLAG_RYU_BH_HIDE_MAY)
@@ -280,9 +289,8 @@ script LRT_MayIntroEvent {
 	waitmovement(8)
 	playse(SE_DOOR)
 	removeobject(8)
-	setflag(FLAG_RYU_MAY_INTRO_EVENT_DONE)
-	applymovement(OBJ_EVENT_ID_CAMERA, LRT_MayEvent_Cam2)
-	waitmovement(OBJ_EVENT_ID_CAMERA)
+	applymovement(CAMERA, LRT_MayEvent_Cam2)
+	waitmovement(CAMERA)
 	special(RemoveCameraObject)
 	release
 	end
@@ -305,15 +313,15 @@ script LRT_BH_DawnEnter {
 	}
 	closemessage
 	applymovement(7, Common_Movement_FaceLeft)
-	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceLeft)
-	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	applymovement(FOLLOWER, Common_Movement_FaceLeft)
+	waitmovement(FOLLOWER)
 	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (May and her new father both blush)")
-	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark)
+	applymovement(FOLLOWER, Common_Movement_ExclamationMark)
 	playse(SE_PIN)
-	msgbox("May: {COLOR LIGHT_RED}{SHADOW RED}I have not!")
+	msgbox("May: {COLOR LIGHT_RED}{SHADOW RED}Th-\nThat's not true!")
 	closemessage
-	applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp)
-	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	applymovement(FOLLOWER, Common_Movement_FaceUp)
+	waitmovement(FOLLOWER)
 	applymovement(8, Common_Movement_FaceRight)
 	waitmovement(8)
 	applymovement(8, Common_Movement_FaceDown)
@@ -322,6 +330,7 @@ script LRT_BH_DawnEnter {
 	msgbox("Rival's Mom: Well anyways,\nWelcome home, dear!\pI'm guessing Birch already set\nup your new room.")
 	closemessage
 	msgbox("Birch: Ahem. Yes, that's what I was\ndoing.\pIt's all good to go!")
+	setflag(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN) //to be used later for a special scene if player romanced dawn before may.
 	closemessage
 	return
 }

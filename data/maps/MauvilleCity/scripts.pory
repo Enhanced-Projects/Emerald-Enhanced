@@ -224,24 +224,24 @@ MC_LanetteInteraction::
 	
 
 MC_LI_North::
-	applymovement OBJ_EVENT_ID_FOLLOWER MC_LI_MoveNorth
+	applymovement FOLLOWER MC_LI_MoveNorth
 	goto MC_LI_Main
 
 MC_LI_South::
-	applymovement OBJ_EVENT_ID_FOLLOWER MC_LI_MoveSouth
+	applymovement FOLLOWER MC_LI_MoveSouth
 	goto MC_LI_Main
 
 MC_LI_East::
-	applymovement OBJ_EVENT_ID_FOLLOWER MC_LI_MoveEast
+	applymovement FOLLOWER MC_LI_MoveEast
 	goto MC_LI_Main
 
 MC_LI_West::
-	applymovement OBJ_EVENT_ID_FOLLOWER MC_LI_MoveWest
+	applymovement FOLLOWER MC_LI_MoveWest
 	goto MC_LI_Main
 
 
 MC_LI_Main::
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	waitmovement FOLLOWER
 	msgbox MC_LI_Intro
 	release
 	end

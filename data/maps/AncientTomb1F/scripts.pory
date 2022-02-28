@@ -12,16 +12,16 @@ AT1_LeafStoryEvent::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	setvar VAR_RYU_QUEST_LANA, 69
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, AT1_Cam1
-	waitmovement OBJ_EVENT_ID_CAMERA
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement CAMERA, AT1_Cam1
+	waitmovement CAMERA
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox AT1_Story1 MSGBOX_DEFAULT
 	closemessage
 	applymovement 2, AT1_WalkUp
-	applymovement OBJ_EVENT_ID_CAMERA, AT1_WalkUp
-	applymovement OBJ_EVENT_ID_PLAYER, AT1_RunUp
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, AT1_WalkUp
+	applymovement PLAYER, AT1_RunUp
+	waitmovement CAMERA
 	applymovement 2, Common_Movement_ExclamationMark
 	playse SE_PIN
 	waitmovement 2
@@ -47,7 +47,7 @@ AT1_LeafStoryEvent15::
 	waitse
 	call IC_LeafOpenDoor
 	fadenewbgm MUS_MABOROSI
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	msgbox AT1_Story4 MSGBOX_DEFAULT
 	closemessage
 	applymovement 2, AT1_LanaWalkUp2
@@ -55,16 +55,16 @@ AT1_LeafStoryEvent15::
 	removeobject 2
 	setflag FLAG_RYU_HIDE_R120_LANA_AND_HIKER
 	setflag FLAG_HIDE_AT1_LEAF
-	applymovement OBJ_EVENT_ID_CAMERA, AT1_Cam2
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, AT1_Cam2
+	waitmovement CAMERA
 	special RemoveCameraObject
-	applymovement OBJ_EVENT_ID_PLAYER, AT1_PlayerFollow
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, AT1_PlayerFollow
+	waitmovement PLAYER
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setvar VAR_RYU_QUEST_LANA, 72
 	fadescreen FADE_TO_BLACK
-	applymovement OBJ_EVENT_ID_PLAYER, AT1_FakeWarp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, AT1_FakeWarp
+	waitmovement PLAYER
 	clearflag FLAG_HIDE_AT1_LEAF
 	addobject 3
 	fadescreen FADE_FROM_BLACK
@@ -111,8 +111,8 @@ AT1_LeafStoryEvent2::
 	waitmovement 3
 	msgbox AT1_Story8 MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, AT1_SaveLana
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, AT1_SaveLana
+	waitmovement PLAYER
 	playse SE_W120
 	fadescreen FADE_TO_WHITE
 	msgbox AT1_BlackedOut MSGBOX_DEFAULT

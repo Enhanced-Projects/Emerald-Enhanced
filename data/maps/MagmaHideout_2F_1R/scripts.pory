@@ -88,10 +88,10 @@ MH2_MagmaArmyMeetingCheck::
 MH2_MagmaArmyMeetingScene::
 	setvar VAR_RYU_QUEST_MAGMA, 330
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, MH2_Cam1
-	waitmovement OBJ_EVENT_ID_CAMERA
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement CAMERA, MH2_Cam1
+	waitmovement CAMERA
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox MH2_EveryonThereIs
 	closemessage
 	delay 40
@@ -125,8 +125,8 @@ MH2_MagmaArmyMeetingScene::
 	applymovement 11, Common_Movement_StepUp
 	waitmovement 11
 	applymovement 11, Common_Movement_StepUp
-	applymovement OBJ_EVENT_ID_CAMERA, MH2_Cam2
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, MH2_Cam2
+	waitmovement CAMERA
 	special RemoveCameraObject
 	msgbox MH2_HoldOnASec
 	closemessage
@@ -142,12 +142,12 @@ MH2_MagmaArmyMeetingScene::
 	waitmovement 17
 	msgbox MH2_DontForgetYou
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, MH2_Cam3
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, MH2_Cam3
+	waitmovement CAMERA
 	msgbox MH2_ItsJustThere
 	closemessage
-	applymovement OBJ_EVENT_ID_CAMERA, MH2_Cam4
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, MH2_Cam4
+	waitmovement CAMERA
 	special RemoveCameraObject
 	applymovement 17, MH2_HelperGruntExits
 	waitmovement 17

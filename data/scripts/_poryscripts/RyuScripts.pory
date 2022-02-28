@@ -590,9 +590,9 @@ Ryu_DoMeloettaRoll::
 
 Ryu_DoMeloettaEncounter::
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement FOLLOWER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	fadescreen FADE_TO_BLACK
 	drawfullscreenimage SCENEBGMELOETTA
 	msgbox Ryu_MeloettaApproaches
@@ -654,9 +654,9 @@ SB_SetupRandomMimikyuEncounter::
 	playmoncry SPECIES_MIMIKYU, 0
 	waitmoncry
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	applymovement FOLLOWER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox StumbledOnMimikyu
 	closemessage
 	dowildbattle
@@ -1338,10 +1338,10 @@ Ryu_initializeAquaStage1::
 	compare VAR_RESULT, 3
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_1_NOTIFY, ryu_end
-	removeobject OBJ_EVENT_ID_FOLLOWER
+	removeobject FOLLOWER
 	lockall
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	waitse
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
@@ -1362,11 +1362,11 @@ Ryu_InitializeAquaStage2::
 	compare VAR_RESULT, 5
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_2_NOTIFY, ryu_end
-	removeobject OBJ_EVENT_ID_FOLLOWER
+	removeobject FOLLOWER
 	lockall
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
 	pokenavcall Ryu_AquaStage2NotifyMsg
@@ -1384,11 +1384,11 @@ Ryu_InitializeAquaStage3NR::
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_3_NOTIFY, ryu_end
-	removeobject OBJ_EVENT_ID_FOLLOWER
+	removeobject FOLLOWER
 	lockall
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
 	pokenavcall Ryu_AquaStage3NotifyMsg
@@ -1407,11 +1407,11 @@ Ryu_InitializeAquaStage3R::
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_3_NOTIFY, ryu_end
-	removeobject OBJ_EVENT_ID_FOLLOWER
+	removeobject FOLLOWER
 	lockall
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
 	pokenavcall Ryu_AquaStage3RomanceNotifyMsg
@@ -1430,11 +1430,11 @@ Ryu_InitializeAquaStage4R::
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_4_NOTIFY, ryu_end
-	removeobject OBJ_EVENT_ID_FOLLOWER
+	removeobject FOLLOWER
 	lockall
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
 	pokenavcall Ryu_AquaStage4RomanceNotifyMsg
@@ -1512,7 +1512,7 @@ Ryu_InitializeMagmaPart4::
 	lockall
 	setflag FLAG_RYU_MAGMA_4_NOTIFY
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0xff
 	msgbox Ryu_MagmaCallIntro4
 	closemessage
@@ -1536,7 +1536,7 @@ Ryu_InitializeMagmaPart6::
 	lock
 	setflag FLAG_RYU_MAGMA_6_NOTIFY
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0xff
 	msgbox Ryu_MagmaCallIntro4
 	closemessage
@@ -1780,8 +1780,8 @@ RS_PreventEntryNorth::
 	lockall
 	msgbox RS_DeniedEntry
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
 	release
 	end
 
@@ -2698,14 +2698,14 @@ script RyuScript_SetRivalGfxId { //dynamically sets the rival gfx in OBJ_EVENT_G
 }
 
 script CheckDexForMayQuest {//if player has over 210 mons caught, enables May quest.
-	if (flag(FLAG_RYU_MAY_PREREQUISITE_COMPLETED) == TRUE) {
+	if (var(VAR_RYU_QUEST_MAY) >= 5) { //if may quest advanced past th start, dont redo event
 		goto(ryu_return)
 	}
 	callnative(ScriptGetPokedexInfo)
 	buffernumberstring(0, VAR_0x8006)
 	if (var(VAR_0x8006) >= 210){
 		msgbox("Birch: My word!\nYou have caught {STR_VAR_1}\ldifferent species of Pokémon!\pThis is incredible!\pI... don't have to work\nso hard anymore!\pThanks a ton, {PLAYER}!\pI knew you'd be the right\nperson for the job!")
-		setflag(FLAG_RYU_MAY_PREREQUISITE_COMPLETED)
+		setvar(VAR_RYU_QUEST_MAY, 5) //player has enabled the may event.
 		closemessage
 		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You can now recruit May\n as a follower once the\l intro is completed.)")
 		closemessage

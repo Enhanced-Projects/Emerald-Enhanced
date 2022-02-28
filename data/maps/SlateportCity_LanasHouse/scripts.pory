@@ -75,8 +75,8 @@ LH_EventStart::
 	msgbox LH_BeginQuest MSGBOX_DEFAULT
 	ach give ACH_ADVENTURE_TIME
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerShoved
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, LH_PlayerShoved
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	applymovement 2, LH_LanaLeaves
 	waitmovement 2
 	playse SE_DOOR
@@ -127,7 +127,7 @@ LH_StayTheNight::
 LH_LeafNight:
 	msgbox LH_LeafNightMsg1 MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerToBed
+	applymovement PLAYER, LH_PlayerToBed
 	applymovement 2, LH_LeafToBed
 	waitmovement 2
 	fadenewbgm MUS_DUMMY
@@ -144,8 +144,8 @@ LH_LeafNight:
 	closemessage
 	applymovement 2, Common_Movement_HeartEmote
 	waitmovement 2
-	applymovement OBJ_EVENT_ID_PLAYER, LH_RelSceneEnd
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, LH_RelSceneEnd
+	waitmovement PLAYER
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LH_CourtneyCaughtPlayer
 	setflag FLAG_RYU_DS_LEAF_PARTNERS
 	release
@@ -156,11 +156,11 @@ LH_CourtneyCaughtPlayer::
 	waitse
 	addobject 3
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	applymovement 3, LH_CourtneyToPlayer
 	waitmovement 3
 	msgbox LH_CourtneyCaughtMsg
@@ -172,8 +172,8 @@ LH_CourtneyCaughtPlayer::
 	removeobject 3
 	setflag FLAG_RYU_DS_LEAF_LINE_CANCELLED
 	setvar VAR_RYU_QUEST_LANA, 666
-	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerExitHouse
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, LH_PlayerExitHouse
+	waitmovement PLAYER
 	warpsilent MAP_SLATEPORT_CITY, 255, 14, 19
 	waitstate
 

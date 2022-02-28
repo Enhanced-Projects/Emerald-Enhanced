@@ -16,7 +16,7 @@ SeafloorCavern_Entrance_OnResume: @ 8234474
 SFCEntrance_DoAquaScene::
 	lockall
 	setvar VAR_RYU_QUEST_AQUA, 133 @Player is watching seafloor cavern entrance scene.
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject PLAYER, DIR_NORTH
 	fadenewbgm 386
 	delay 30
 	msgbox SFC_WeveArrived
@@ -26,8 +26,8 @@ SFCEntrance_DoAquaScene::
 	msgbox SFC_PlayerImLeaving
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox SFC_SorryAboutThis
 	closemessage
 	applymovement 2, Common_Movement_FaceUp
@@ -42,17 +42,17 @@ SFCEntrance_DoAquaScene::
 	goto SFC_DoAquaScenePart2
 
 SFC_DoAquaScenePart2::
-	applymovement OBJ_EVENT_ID_PLAYER, SFC_PlayerPacing @4 right, 9 left, 5 right
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, SFC_PlayerPacing @4 right, 9 left, 5 right
+	waitmovement PLAYER
 	msgbox SFC_EllipsisGettingWorried
 	closemessage
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
-	applymovement OBJ_EVENT_ID_PLAYER, SFC_PlayerUp @up 3
+	turnobject PLAYER, DIR_SOUTH
+	applymovement PLAYER, SFC_PlayerUp @up 3
 	waitmovement 3
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
+	turnobject PLAYER, DIR_SOUTH
 	addobject 9
 	applymovement 9, SFC_StevenToPlayer @up 4
 	waitmovement 9
@@ -78,7 +78,7 @@ SFC_DoAquaScenePart3::
 	playse SE_W088
 	waitse
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	applymovement 9, Common_Movement_ExclamationMark
 	waitmovement 9
 	fadenewbgm MUS_DUMMY
@@ -90,17 +90,17 @@ SFC_DoAquaScenePart3::
 	closemessage
 	applymovement 9, SFC_StevenEscapes @fast down 6
 	waitmovement 9
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
 	playse SE_DOOR
 	waitse
 	addobject 10
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
+	turnobject PLAYER, DIR_NORTH
 	applymovement 10, Common_Movement_StepDown
 	waitmovement 10
 	msgbox SFC_HahaWeDidIt

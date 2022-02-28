@@ -410,7 +410,7 @@ void BattleSetup_StartScriptedWildBattle(void)
         u8 iv = 31;
         bool8 tru = TRUE;
         FlagClear(FLAG_RYU_BOSS_WILD);
-        SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, &tru);
+        SetMonData(&gEnemyParty[0], MON_DATA_BOSS_STATUS, &tru);
         for (i = 0; i < 6; i++)
             SetMonData(&gEnemyParty[0], (39 + i), &iv);
     }
@@ -433,7 +433,7 @@ void BattleSetup_StartLatiBattle(void)
         u8 iv = 31;
         bool8 tru = TRUE;
         FlagClear(FLAG_RYU_BOSS_WILD);
-        SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, &tru);
+        SetMonData(&gEnemyParty[0], MON_DATA_BOSS_STATUS, &tru);
         for (i = 0; i < 6; i++)
             SetMonData(&gEnemyParty[0], (39 + i), &iv);
     }
@@ -457,7 +457,7 @@ void BattleSetup_StartLegendaryBattle(void)
         u8 iv = 31;
         bool8 tru = TRUE;
         FlagClear(FLAG_RYU_BOSS_WILD);
-        SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, &tru);
+        SetMonData(&gEnemyParty[0], MON_DATA_BOSS_STATUS, &tru);
         for (i = 0; i < 6; i++)
             SetMonData(&gEnemyParty[0], (39 + i), &iv);
     }

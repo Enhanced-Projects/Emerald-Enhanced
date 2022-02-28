@@ -151,13 +151,13 @@ script RyuNoblesSpecialFactionQuestTrigger { //This should go on a flor trigger 
     lock
     faceplayer
     playse(SE_PIN)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
-    waitmovement(OBJ_EVENT_ID_PLAYER)
+    applymovement(PLAYER, Common_Movement_ExclamationMark)
+    waitmovement(PLAYER)
     msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You hear someone inside shouting\n something about getting off their\l lawn.)")
     closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown)
-    waitmovement(OBJ_EVENT_ID_PLAYER)
-    turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+    applymovement(PLAYER, Common_Movement_StepDown)
+    waitmovement(PLAYER)
+    turnobject(PLAYER, DIR_NORTH)
     playse(SE_DOOR)
     addobject(28)//whatever the special NPC is for this quest
     msgbox("I already told you people.\nYou can't evict me, my rent is\ppaid and my maintenance is up to\ndate.\pYou can't just boot me out because\nyou don't like me.")

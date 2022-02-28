@@ -249,10 +249,10 @@ DoMattScene::
 	waitstate
 
 MDC_DoMossDeepScene2::
-	applymovement OBJ_EVENT_ID_PLAYER, FarawayIsland_Interior_Movement_MewAppear
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, FarawayIsland_Interior_Movement_MewAppear
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	fadenewbgm MUS_OOAME
 	delay 60
 	setvar VAR_RYU_QUEST_AQUA, 116
@@ -269,16 +269,16 @@ MDC_DoMossDeepScene2::
 	waitstate
 
 MDC_ScenePart4::
-	applymovement OBJ_EVENT_ID_PLAYER, FarawayIsland_Interior_Movement_MewAppear
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, FarawayIsland_Interior_Movement_MewAppear
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_AQUA, 122 @player watched the 4th part of the aqua cutscene
 	msgbox MDC_BossShelly
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox MDC_RedOrbStartsToGlow
 	call SCME_BlueOrbEffect
 	closemessage
@@ -288,23 +288,23 @@ MDC_ScenePart4::
 	waitstate
 
 MDC_ScenePart6::
-	applymovement OBJ_EVENT_ID_PLAYER, FarawayIsland_Interior_Movement_MewAppear
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, FarawayIsland_Interior_Movement_MewAppear
+	waitmovement PLAYER
 	fadenewbgm MUS_HIDERI
 	delay 60
 	setweather WEATHER_DROUGHT
 	doweather
 	delay 60
 	setvar VAR_RYU_QUEST_AQUA, 130 @scene returned to player after watching kyogre and groudon
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox MDC_TheSun
 	closemessage
 	addobject 13
 	applymovement 13, MDC_MaxieToPlayer @5 up
 	waitmovement 13
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceDown
+	waitmovement PLAYER
 	msgbox MDC_BearerOfRed
 	closemessage
 	giveitem ITEM_MASTER_BALL, 1

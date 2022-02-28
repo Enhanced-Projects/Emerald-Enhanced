@@ -26,14 +26,14 @@ MHC_MaxieFinalEvent::
 	goto_if_lt ryu_end
 	compare VAR_RYU_QUEST_MAGMA, 590
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
+	applymovement FOLLOWER, Common_Movement_StepLeft
+	waitmovement FOLLOWER
 	applymovement 1, Common_Movement_FaceRight
 	waitmovement 1
 	msgbox THC_FoundYou
@@ -46,32 +46,32 @@ MHC_MaxieFinalEvent::
 	msgbox MHC_ToThinkThat
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement FOLLOWER, Common_Movement_ExclamationMark
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_StepLeft
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
+	applymovement PLAYER, Common_Movement_FaceDown
 	msgbox MHC_IHaveAnIdea
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceLeft
+	applymovement PLAYER, Common_Movement_FaceLeft
+	waitmovement PLAYER
+	applymovement FOLLOWER, Common_Movement_FaceLeft
 	msgbox MHC_StayRightThere
 	closemessage
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement FOLLOWER, Common_Movement_StepLeft
+	waitmovement FOLLOWER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement FOLLOWER, Common_Movement_FaceRight
+	waitmovement FOLLOWER
+	applymovement PLAYER, Common_Movement_FaceLeft
 	msgbox MHC_BeRightBack
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MHC_PlayerExitCave
-	applymovement OBJ_EVENT_ID_FOLLOWER, MHC_CourtneyExitCave
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement PLAYER, MHC_PlayerExitCave
+	applymovement FOLLOWER, MHC_CourtneyExitCave
+	waitmovement FOLLOWER
 	setvar VAR_RYU_QUEST_MAGMA, 590@Final Event of Magma Alternate Romance happening
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	warpsilent MAP_ROUTE124, 255, 51, 24

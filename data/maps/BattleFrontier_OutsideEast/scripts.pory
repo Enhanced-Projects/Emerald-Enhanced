@@ -16,8 +16,8 @@ BF_CheckPartyForArtisanCave::
 
 BF_FrontierModeCantEnter::
 	msgbox CantEnterInFrontierMode
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	waitmovement PLAYER
 	release
 	end
 	

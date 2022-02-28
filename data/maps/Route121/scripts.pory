@@ -23,9 +23,9 @@ R121_CheckMagmaBan::
 	lockall
 	msgbox Ryu_YouReallyDontWantToGoThere
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepLeft
+	applymovement FOLLOWER, Common_Movement_StepLeft
+	waitmovement PLAYER
 	release
 	end
 	

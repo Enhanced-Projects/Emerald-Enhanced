@@ -1,4 +1,287 @@
 raw `
 PetalburgCity_WallysHouse_MapScripts:: @ 8204229
+	map_script ON_FRAME, PBC_WH_MayEvent1
 	.byte 0
+
+PBC_WH_MayEvent1::
+	map_script_2 VAR_TEMP_1, 0, PBC_WH_StartMayEvent
+	.2byte 0
 `
+
+script PBC_WH_StartMayEvent {
+	setvar(VAR_TEMP_1, 100)
+	if ((var(VAR_RYU_QUEST_MAY) >= 41) || (var(VAR_RYU_QUEST_MAY) < 35)) {
+		goto(ryu_end)
+	}
+	setvar(VAR_RYU_QUEST_MAY, 40) //player should investigate wally's house.
+	if ((!flag(FLAG_RYU_HAS_FOLLOWER)) || (!(var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY))) {
+		call(RyuForceCancelFollowerForQuest)
+		createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_EAST)
+	}
+	turnobject(FOLLOWER, DIR_EAST)
+	turnobject(PLAYER, DIR_WEST)
+	msgbox({COLOR LIGHT_RED}{SHADOW RED}"{COLOR LIGHT_RED}{SHADOW RED}Apparently Wally disappeared one day\pand his parents plus the authorities\nsearched for a whole year and never\lfound him.\pLet's take a look around!")
+	applymovement(PLAYER, Common_Movement_StepUp)
+	applymovement(FOLLOWER, Common_Movement_StepUp)
+	waitmovement(FOLLOWER)
+	release
+	end
+}
+
+script PBC_WH_CheckPlayerExit1 {
+	if (!(var(VAR_RYU_QUEST_MAY) == 40)) {
+		setvar(VAR_TEMP_0, 100)
+		release
+		end
+	}
+	else {
+		lock
+		lockall
+		specialvar(VAR_RESULT, GetPlayerFacingDirection)
+		if (!(var(VAR_RESULT) == DIR_NORTH)) {
+			applymovement(PLAYER, Common_Movement_StepUp)
+			applymovement(FOLLOWER, Common_Movement_StepUp)
+			waitmovement(FOLLOWER)
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}We should keep investigating.")
+			release
+			end
+		}
+		releaseall
+		end
+	}
+}
+
+script PBC_WH_Plant {
+	lock
+	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_TEMP_1) == FALSE)) {
+		msgbox("This plant is quite dry.\nSeems like it hasn't been watered\nin a long time.")
+		closemessage
+		setflag(FLAG_RYU_TEMP_1)
+	}
+	else {
+		msgbox("It's a dry plant.")
+		closemessage
+	}
+	release
+	end
+}
+
+script PBC_WH_Fridge {
+	lock
+	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_TEMP_2) == FALSE)) {
+		msgbox("The refrigerator appears to be\nclean and turned off.\pHasn't been used in a long\ntime.")
+		closemessage
+		setflag(FLAG_RYU_TEMP_2)
+	}
+	else {
+		msgbox("It's an empty fridge.")
+		closemessage
+	}
+	release
+	end
+}
+
+script PBC_WH_Counter {
+	lock
+	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_TEMP_3) == FALSE)) {
+		msgbox("The counter appears pretty dusty.\pSeems like it hasn't been\ldisturbed.")
+		closemessage
+		setflag(FLAG_RYU_TEMP_3)
+	}
+	else {
+		msgbox("It's a basic counter.")
+		closemessage
+	}
+	release
+	end
+}
+
+script PBC_WH_Sink {
+	lock
+	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_TEMP_4) == FALSE)) {
+		msgbox("There's no dust on the counter.\nWater was run in it recently.")
+		closemessage
+		setflag(FLAG_RYU_TEMP_4)
+	}
+	else {
+		msgbox("It's a shiny sink.")
+		closemessage
+	}
+	release
+	end
+}
+
+script PBC_WH_Cupboard {
+	lock
+	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_TEMP_5) == FALSE)) {
+		msgbox("There's a layer of dust\non all the dishes except for\la single green cup.")
+		closemessage
+		setflag(FLAG_RYU_TEMP_5)
+	}
+	else {
+		msgbox("The dishes are organized neatly.")
+		closemessage
+	}
+	release
+	end
+}
+
+script PBC_WH_Table {
+	lock
+	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_TEMP_6) == FALSE)) {
+		msgbox("The table is dusty except for\none small spot.")
+		closemessage
+		setflag(FLAG_RYU_TEMP_6)
+	}
+	else {
+		msgbox("It's a fancy dining table.")
+		closemessage
+	}
+	release
+	end
+}
+
+script RyuFollower_MayReturnToWallyHouseNight {
+	callnative(RyuCheckIfInWallysHouse)
+	if (var(VAR_RESULT) == TRUE) {
+		goto(RyuDoWHNightScene)
+	}
+	gettime
+	if ((var(VAR_0x8000) > 20) || (var(VAR_0x8000) < 4)) {
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Let's go back to Wally's house\nand see if we can catch\lthe intruder.")
+	}
+	else{
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Let's kill some time until\nnight, then go back to\lWally's house.")
+	}
+	closemessage
+	release
+	end
+}
+
+script CheckWHInvestigationStatus {
+	if ((var(VAR_RYU_QUEST_MAY) == 40) || (var(VAR_RYU_QUEST_MAY) == 41)) {
+		goto_if_unset(FLAG_RYU_TEMP_1, PBC_WH_InvestigationNotDone)
+		goto_if_unset(FLAG_RYU_TEMP_2, PBC_WH_InvestigationNotDone)
+		goto_if_unset(FLAG_RYU_TEMP_3, PBC_WH_InvestigationNotDone)
+		goto_if_unset(FLAG_RYU_TEMP_4, PBC_WH_InvestigationNotDone)
+		goto_if_unset(FLAG_RYU_TEMP_5, PBC_WH_InvestigationNotDone)
+		goto_if_unset(FLAG_RYU_TEMP_6, PBC_WH_InvestigationNotDone)
+		goto(PBC_WH_MayInvestigationComplete)
+	}
+}
+
+script PBC_WH_InvestigationNotDone {
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Let's keep looking around.\nsurely there's some kind of\lclue here.")
+		closemessage
+		release
+		end
+}
+
+script PBC_WH_MayInvestigationComplete {
+		applymovement(FOLLOWER, Common_Movement_ExclamationMark)
+		playse(SE_PIN)
+		waitmovement(FOLLOWER)
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Someone's definitely been here recently!\nLooks like they only drink\lwater, though.")
+		closemessage
+		gettime
+		if ((var(VAR_0x8000) > 20) || (var(VAR_0x8000) < 4)) {
+			goto(RyuDoWHNightScene)
+		}
+		else {
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Judging by how dry that used\ncup is, I would say that\pwhoever is using it, is doing\nso at night.\pLet's come back at night time!")
+			setvar(VAR_RYU_QUEST_MAY, 41) //Player completed investigation during the day, come back to the house at night.
+		}
+		release
+		end
+}
+
+script RyuDoWHNightScene {
+	playse(SE_DOOR)
+	waitse
+	addobject(1)
+	playse(SE_PIN)
+	getplayerxy(VAR_0x8003, VAR_0x8004)
+	if (var(VAR_0x8004) < 4) {
+		call(PBC_DoCamMove1)
+	}
+	turnobject(PLAYER, DIR_SOUTH)
+	turnobject(FOLLOWER, DIR_SOUTH)
+	applymovement(PLAYER, Common_Movement_ExclamationMark)
+	applymovement(FOLLOWER, Common_Movement_ExclamationMark)
+	waitmovement(FOLLOWER)
+	applymovement(FOLLOWER, Common_Movement_QuestionMark)
+	waitmovement(FOLLOWER)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}W-... Wally?!\nWhat are you doing here?!\pWhere have you been?\pWhere are your parents?!")
+	closemessage
+	msgbox("May...?\nWhy are you here?\p... ... ...")
+	closemessage
+	turnobject(1, DIR_SOUTH)
+	playse(SE_DOOR)
+	waitse
+	playse(SE_NIGERU)
+	waitse
+	removeobject(1)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Wally! Wait!...\pLet's go after him!")
+	closemessage
+	setvar(VAR_RYU_QUEST_MAY, 50) //Player concluded investigation and saw wally. Chase him outside!
+	if (flag(FLAG_RYU_TEMP_8) == TRUE) {//return camera
+		call(PBC_DoCamMove2)
+	}
+	setflag(FLAG_RYU_WAYSTONE_DISABLED)
+	releaseall
+	end
+}
+
+script PBC_DoCamMove1 {
+	special(SpawnCameraObject)
+	applymovement(CAMERA, PBC_WH_Cam1)
+	waitmovement(CAMERA)
+	setflag(FLAG_RYU_TEMP_8)
+	return
+}
+
+script PBC_DoCamMove2 {
+	applymovement(CAMERA, PBC_WH_Cam2)
+	waitmovement(CAMERA)
+	special(RemoveCameraObject)
+	clearflag(FLAG_RYU_TEMP_8)
+	return
+}
+
+script PBC_Wally {
+	if ((flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY)) {
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Heya Wally!\nHow are you doing today?\lBreathing okay?\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Yes, I'm doing good, mostly.\nLooks like you're pretty\lhappy, too!")
+		closemessage
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Yep. {PLAYER}'s been treating me well!")
+		closemessage
+		release
+		end
+	}
+	else {
+		msgbox("Hi, {PLAYER}!\nHow's May doing?\pWell, I hope.\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Yep, she is.\nAlways beats me in racing\lgames!")
+		release
+		end
+	}
+}
+
+movement PBC_WH_Cam1 {
+	walk_fast_down * 3
+	step_end
+}
+
+movement PBC_WH_Cam2 {
+	walk_fast_up * 3
+	step_end
+}
+
+script RF_MayStage50 {
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}We have to chase after Wally!\nLet's go!")
+	release
+	end
+}
+
+script RF_MayStage60 {
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}We lost him...\nHe used to visit family in\lVerdanturf... let's try there.")
+	release
+	end
+}

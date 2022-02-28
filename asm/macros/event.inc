@@ -1652,11 +1652,10 @@
 	.2byte \y
 	.endm
 
-	@sets party mon index to happiness value
-	.macro addmonhappiness partyindex:req, value:req
+	@Checks object index's x/y location and puts it in VAR_0x8006 and VAR_0x8007
+	.macro getobjectxy objectindex:req
 	.byte 0xe7
-	.2byte \partyindex
-	.2byte \value
+	.2byte \objectindex
 	.endm
 
 	@Takes battle points away from the player's balance

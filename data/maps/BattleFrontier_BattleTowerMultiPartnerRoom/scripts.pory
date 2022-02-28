@@ -42,7 +42,7 @@ BattleFrontier_BattleTowerMultiPartnerRoom_OnWarp: @ 8243E14
 	.2byte 0
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_TurnPlayerNorth:: @ 8243E1E
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject PLAYER, DIR_NORTH
 	end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_OnFrame: @ 8243E23
@@ -58,12 +58,12 @@ BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_ExitRoom:: @ 8243E35
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_EnterRoom:: @ 8243E41
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEnterRoom
+	applymovement PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEnterRoom
 	waitmovement 0
 	applymovement 1, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_AttendantBlockExit
 	waitmovement 0
 	copyobjectxytoperm 1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	msgbox BattleFrontier_BattleTowerMultiPartnerRoom_Text_PleaseFindPartner, MSGBOX_DEFAULT
 	special HealPlayerParty
@@ -114,21 +114,21 @@ BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_EnterElevator:: @ 8243EB5
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_MoveToElevator:: @ 8243EE4
 	applymovement 1, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_AttendantEnterElevator
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEnterElevator
+	applymovement PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEnterElevator
 	waitmovement 0
 	return
 
 @ Unused
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_MoveToElevatorEast: @ 8243EF6
 	applymovement 1, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_AttendantEnterElevator
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEnterElevatorEast
+	applymovement PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEnterElevatorEast
 	waitmovement 0
 	return
 
 @ Unused
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_MoveToElevatorWest: @ 8243F08
 	applymovement 1, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_AttendantEnterElevator
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEneterElevatorWest
+	applymovement PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEneterElevatorWest
 	waitmovement 0
 	return
 

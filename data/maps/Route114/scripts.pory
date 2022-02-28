@@ -217,8 +217,8 @@ R114_PlayerFindMaxie::
 	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, R114_AlternateFindMaxie
 	msgbox R114_MaxieNowIndoors
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox R114_TheProfessorLab
 	
 	closemessage
@@ -229,8 +229,8 @@ R114_AlternateFindMaxie::
 	msgbox R114_HeHidesAgain
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox R114_TheProfessorLab
 	closemessage
 	release

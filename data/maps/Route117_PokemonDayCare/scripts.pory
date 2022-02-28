@@ -17,8 +17,8 @@ DC_LanaTrigger::
 	msgbox DC_LanaStoppedBy MSGBOX_DEFAULT
 	msgbox DC_LanaStory2 MSGBOX_DEFAULT
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, DC_Camera1
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, DC_Camera1
+	waitmovement CAMERA
 	special RemoveCameraObject
 	closemessage
 	msgbox DC_LanaStory3 MSGBOX_DEFAULT

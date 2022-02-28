@@ -43,8 +43,8 @@ FP_CourtneyRomance1::
 	goto_if_ne ryu_end
 	goto_if_set FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, ryu_end
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, FP_ToCourtney@1 up 2 right 1 up
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, FP_ToCourtney@1 up 2 right 1 up
+	waitmovement PLAYER
 	playse SE_PIN
 	applymovement 10, Common_Movement_QuestionMark
 	waitmovement 10
@@ -67,7 +67,7 @@ FP_CourtneyRomance1::
 	waitmovement 10
 	msgbox FP_PlayerRomanceCourtney1
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, FP_ToEmbraceCourtney
+	applymovement PLAYER, FP_ToEmbraceCourtney
 	applymovement 10, FP_CourtneyEmbraced
 	waitmovement 10
 	playse SE_PIN
@@ -78,10 +78,10 @@ FP_CourtneyRomance1::
 	fadescreen FADE_TO_BLACK
 	delay 80
 	fadescreen FADE_FROM_BLACK
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
+	applymovement PLAYER Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox FP_IfYouTell
 	closemessage
 	msgbox FP_CourtneyStraightens
@@ -169,16 +169,16 @@ script FP_CourtneyFollowerEvent {
 			lockall
 			checkfacing
 			if (var(VAR_RESULT) == DIR_SOUTH){
-				applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight)
-				waitmovement(OBJ_EVENT_ID_FOLLOWER)
-				applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown)
-				waitmovement(OBJ_EVENT_ID_FOLLOWER)
+				applymovement(FOLLOWER, Common_Movement_StepRight)
+				waitmovement(FOLLOWER)
+				applymovement(FOLLOWER, Common_Movement_StepDown)
+				waitmovement(FOLLOWER)
 			}
 			else {
-				applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight)
-				waitmovement(OBJ_EVENT_ID_FOLLOWER)
-				applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp)
-				waitmovement(OBJ_EVENT_ID_FOLLOWER)
+				applymovement(FOLLOWER, Common_Movement_StepRight)
+				waitmovement(FOLLOWER)
+				applymovement(FOLLOWER, Common_Movement_StepUp)
+				waitmovement(FOLLOWER)
 			}
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}...\p"
 				   "This place...\p"
@@ -192,16 +192,16 @@ script FP_CourtneyFollowerEvent {
 			closemessage
 			checkfacing
 			if (var(VAR_RESULT) == DIR_SOUTH){
-				applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp)
-				waitmovement(OBJ_EVENT_ID_FOLLOWER)
-				applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft)
-				waitmovement(OBJ_EVENT_ID_FOLLOWER)
+				applymovement(FOLLOWER, Common_Movement_StepUp)
+				waitmovement(FOLLOWER)
+				applymovement(FOLLOWER, Common_Movement_StepLeft)
+				waitmovement(FOLLOWER)
 			}
 			else {
-				applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown)
-				waitmovement(OBJ_EVENT_ID_FOLLOWER)
-				applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft)
-				waitmovement(OBJ_EVENT_ID_FOLLOWER)
+				applymovement(FOLLOWER, Common_Movement_StepDown)
+				waitmovement(FOLLOWER)
+				applymovement(FOLLOWER, Common_Movement_StepLeft)
+				waitmovement(FOLLOWER)
 			}
 			releaseall
 			end

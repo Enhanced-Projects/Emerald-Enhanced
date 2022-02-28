@@ -291,28 +291,28 @@ JP_CheckFinishedMagmaHideout1::
 	.2byte 0
 	
 JP_MagmaBlaiseEvent::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement PLAYER, Common_Movement_StepDown
+	applymovement FOLLOWER, Common_Movement_StepLeft
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceRight
+	waitmovement FOLLOWER
+	applymovement PLAYER, Common_Movement_FaceLeft
 	msgbox JP_CourtneyDoneMessage
 	closemessage
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_WalkUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement FOLLOWER, Common_Movement_WalkUp
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_StepRight
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceDown
+	waitmovement FOLLOWER
+	applymovement PLAYER, Common_Movement_FaceUp
 	msgbox JP_CourtneyOutro
 	closemessage
 	setflag FLAG_RYU_DS_COURTNEY_FRIENDS
 	ach give ACH_NEW_REGION_WHO_DIS
 	ach give ACH_TRUE_LOVE
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
 	destroyfollower
 	addobject 9
 	applymovement 9, JP_BlaiseEnters@down 12 face right
@@ -320,9 +320,9 @@ JP_MagmaBlaiseEvent::
 	msgbox JP_YoPlayer
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
+	applymovement PLAYER, Common_Movement_FaceLeft
 	applymovement 9, Common_Movement_StepRight
 	waitmovement 9
 	applymovement 9, Common_Movement_StepRight
@@ -335,8 +335,8 @@ JP_MagmaBlaiseEvent::
 	removeobject 9
 	msgbox JP_PlayerThoughts
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepUp
+	waitmovement PLAYER
 	playse SE_KOUKA_M
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	clearflag FLAG_HIDE_MAGMA_ARMY
@@ -411,8 +411,8 @@ script JP_CheckMagmaClearCivilians {
 	if (var(VAR_RYU_QUEST_MAGMA) == 300){
 		lock
 		msgbox("You can't enter this area yet.\pFinish clearing the civilians first.")
-		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown)
-		applymovement(OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown)
+		applymovement(PLAYER, Common_Movement_StepDown)
+		applymovement(FOLLOWER, Common_Movement_StepDown)
 		waitmovement(0xff)
 		goto(ryu_end)
 	}

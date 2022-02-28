@@ -3792,7 +3792,7 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
     case MON_DATA_GIFT_RIBBON_6:
         retVal = substruct3->giftRibbon6;
         break;
-    case MON_DATA_GIFT_RIBBON_7:
+    case MON_DATA_BOSS_STATUS:
         retVal = substruct3->giftRibbon7;
         break;
     case MON_DATA_FATEFUL_ENCOUNTER:
@@ -4169,7 +4169,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
     case MON_DATA_GIFT_RIBBON_6:
         SET8(substruct3->giftRibbon6);
         break;
-    case MON_DATA_GIFT_RIBBON_7:
+    case MON_DATA_BOSS_STATUS:
         SET8(substruct3->giftRibbon7);
         break;
     case MON_DATA_FATEFUL_ENCOUNTER:
@@ -5346,7 +5346,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem, u
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_FRIENDSHIP_DAY:
-                if ((timeOfDay == RTC_TIME_DAY) && friendship >= 220)
+                if ((timeOfDay == RTC_TIME_DAY) && friendship >= 200)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_DAY:
@@ -5354,7 +5354,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem, u
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_FRIENDSHIP_NIGHT:
-                if ((timeOfDay == RTC_TIME_NIGHT) && friendship >= 220)
+                if ((timeOfDay == RTC_TIME_NIGHT) && friendship >= 200)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_NIGHT:
@@ -6654,7 +6654,7 @@ void SetWildMonHeldItem(void)
 
 bool8 IsMonBoss(struct Pokemon *mon)
     {
-        if (GetMonData(mon, MON_DATA_GIFT_RIBBON_7, NULL) == 1)
+        if (GetMonData(mon, MON_DATA_BOSS_STATUS, NULL) == 1)
             return TRUE;
 
         return FALSE;

@@ -63,6 +63,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "VerdanturfTown_EventScript_Boy",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "x": 7,
+      "y": 31,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_VERDANTURF_WALLY"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAY",
+      "x": 7,
+      "y": 20,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "VT_AddMayForquest",
+      "flag": "FLAG_RYU_HIDE_VERDANTURF_MAY"
     }
   ],
   "warp_events": [
@@ -125,6 +151,24 @@
       "var": "VAR_RYU_QUEST_NURSE",
       "var_value": "2",
       "script": "VT_FinishNurseQuest1"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 33,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "VT_NoticeWally1"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "VT_NoticeWally2"
     }
   ],
   "bg_events": [

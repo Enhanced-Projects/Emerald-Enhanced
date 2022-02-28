@@ -38,15 +38,15 @@ ACO_SetPreventNotify::
 	
 ACO_PlayerShellyReturnFromJaggedPass:
 	lockall
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	turnobject OBJ_EVENT_ID_FOLLOWER, DIR_NORTH
+	applymovement FOLLOWER, Common_Movement_StepUp
+	waitmovement FOLLOWER
+	applymovement FOLLOWER, Common_Movement_StepRight
+	waitmovement FOLLOWER
+	turnobject FOLLOWER, DIR_NORTH
 	msgbox ACO_WereBack
 	closemessage
-	applymovement OBJ_EVENT_ID_FOLLOWER, ACO_ShellyFromplayerToDesk
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement FOLLOWER, ACO_ShellyFromplayerToDesk
+	waitmovement FOLLOWER
 	setvar VAR_RYU_QUEST_AQUA, 107 @Player returned to the aqua office from jagged pass. Player should see shelly for rewards.
 	call RF_FollowerLeaveCall
 	release
@@ -100,8 +100,8 @@ ACO_ShellyAfterJaggedPassRomanceEvent::
 	closemessage
 	applymovement 1, ACO_ShellyWalkAroundDesk 
 	waitmovement 1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	msgbox ACO_PlayerAchievedQuartermaster
 	playfanfare MUS_FANFA4
 	waitfanfare
@@ -122,7 +122,7 @@ ACO_ShellyAfterJaggedPassRomanceEvent::
 	closemessage
 	applymovement 1, ACO_ShellyBackBehindDesk @2 up, 2 left, face down
 	waitmovement 1
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject PLAYER, DIR_NORTH
 	msgbox ACO_NowTheresSomething
 	closemessage
 	setvar VAR_RYU_QUEST_AQUA, 111 @player should head to slateport shipyard to fight the enemies there.
@@ -190,8 +190,8 @@ ACO_StartAquaQuest::
 	waitmovement 10
 	msgbox ACO_GreetingsStranger
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	msgbox ACO_YouActAsIf
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
@@ -226,8 +226,8 @@ ACO_BlockEntry::
 	lockall
 	msgbox ACO_CantBeHere
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_StepDown
+	waitmovement PLAYER
 	release
 	end
 	
@@ -246,8 +246,8 @@ ACO_ReturnedFromMuseumWhiteout:
 	msgbox ACO_WhatWereYou
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox ACO_ButTheMission
 	closemessage
 	msgbox ACO_YesTheMission
@@ -259,8 +259,8 @@ ACO_ReturnedFromMuseumWhiteout:
 	waitmovement 9
 	applymovement 9, Common_Movement_StepLeft
 	waitmovement 9
-	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceDown
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER Common_Movement_FaceDown
+	waitmovement PLAYER
 	msgbox ACO_SoDoesThat
 	closemessage
 	applymovement 9, Common_Movement_FaceRight
@@ -281,8 +281,8 @@ ACO_ReturnedFromMuseumWhiteout:
 	waitmovement 9
 	playse SE_DOOR
 	removeobject 9
-	applymovement OBJ_EVENT_ID_PLAYER, OM_PlayerExitShellyRoom @maybe reusable later
-	waitmovement  OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, OM_PlayerExitShellyRoom @maybe reusable later
+	waitmovement  PLAYER
 	playse SE_DOOR
 	waitse
 	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 5, 4
@@ -308,29 +308,29 @@ ACO_DoAquaOutro::
 	msgbox ACO_PlayerPleaseComeIn
 	closemessage
 	applymovement 10, ACO_Outro_FromEntranceToBedroom
-	applymovement OBJ_EVENT_ID_PLAYER, ACO_Outro_FromEntranceToBedroom2
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, ACO_Outro_FromEntranceToBedroom2
+	waitmovement PLAYER
 	playse SE_DOOR
 	waitse
 	removeobject 10
 	fadescreen FADE_TO_BLACK
-	applymovement OBJ_EVENT_ID_PLAYER, ACO_PlayerFromBehindDeskToBedroom
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, ACO_PlayerFromBehindDeskToBedroom
+	waitmovement PLAYER
 	addobject 9
 	applymovement 9, Common_Movement_StepDown
 	waitmovement 9
 	fadescreen FADE_FROM_BLACK
 	applymovement 9, ACO_ShellyFromBedroomDoorToCouch
 	waitmovement 9
-	applymovement OBJ_EVENT_ID_PLAYER, ACO_PlayerFromBedroomDoorToShelly
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, ACO_PlayerFromBedroomDoorToShelly
+	waitmovement PLAYER
 	msgbox ACO_WhoWasThat
 	closemessage
 	fadenewbgm 456
 	playse SE_PIN
 	waitse
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_ExclamationMark
+	waitmovement PLAYER
 	msgbox ACO_OhWell
 	closemessage
 	delay 30
@@ -339,8 +339,8 @@ ACO_DoAquaOutro::
 	applymovement 9 ACO_PlayerSlideUp
 	waitmovement 9
 	playse SE_W204
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_HeartEmote
+	waitmovement PLAYER
 	applymovement 9, Common_Movement_StepDown
 	waitmovement 9
 	applymovement 9, Common_Movement_FaceUp
@@ -354,8 +354,8 @@ ACO_ShellyNightScene::
 	waitmovement 9
 	applymovement 9, Common_Movement_FaceLeft
 	waitmovement 9
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement PLAYER, Common_Movement_FaceRight
+	waitmovement PLAYER
 	fadeoutbgm 2
 	drawfullscreenimage SCENEBGSHELLYNIGHT
 	msgbox ACO_QuartersScene MSGBOX_DEFAULT
@@ -364,7 +364,7 @@ ACO_ShellyNightScene::
 	clearfullscreenimage
 	closemessage
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan
+	applymovement CAMERA, ACO_CameraPan
 	applymovement 9, ACO_ShellySlide
 	waitmovement 9
 	msgbox ACO_CONCLUSION MSGBOX_AUTOCLOSE
@@ -373,8 +373,8 @@ ACO_ShellyNightScene::
 	closemessage
 	delay 40
 	removeobject 9
-	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan2
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, ACO_CameraPan2
+	waitmovement CAMERA
 	special RemoveCameraObject
 	msgbox ACO_TRANSITION MSGBOX_DEFAULT
 	fadescreenspeed 0, 10
@@ -422,7 +422,7 @@ ACO_Night2Scene::
 	addobject 9
 	applymovement 9, ACO_Night_ShellyToCouch
 	waitmovement 9
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	turnobject PLAYER, DIR_EAST
 	fadeoutbgm 1
 	msgbox ACO_ShellyNight2Msg1
 	closemessage
@@ -443,8 +443,8 @@ ACO_Night2Scene::
 	closemessage
 	delay 40
 	removeobject 9
-	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan2
-	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement CAMERA, ACO_CameraPan2
+	waitmovement CAMERA
 	special RemoveCameraObject
 	special HealPlayerParty
 	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1

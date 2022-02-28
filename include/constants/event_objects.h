@@ -237,7 +237,7 @@
 #define OBJ_EVENT_GFX_DEOXYS_TRIANGLE            233
 #define OBJ_EVENT_GFX_BRANDON                    234
 #define OBJ_EVENT_GFX_LINK_RS_BRENDAN            235
-#define OBJ_EVENT_GFX_LINK_RS_MAY                236
+#define OBJ_EVENT_GFX_MAY                236
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
 
@@ -279,9 +279,9 @@
 
 #define FIRST_DECORATION_SPRITE_GFX OBJ_EVENT_GFX_SLAKOTH_DOLL
 
-#define OBJ_EVENT_ID_PLAYER 0xFF
-#define OBJ_EVENT_ID_FOLLOWER 0x8F
-#define OBJ_EVENT_ID_CAMERA 0x7F
+#define PLAYER 0xFF
+#define FOLLOWER 0x8F
+#define CAMERA 0x7F
 #define EVENT_OBJ_ID_PLAYER 0xFF
 #define EVENT_OBJ_FOLLOWER 0x8F
 #define EVENT_OBJ_ID_CAMERA 0x7F

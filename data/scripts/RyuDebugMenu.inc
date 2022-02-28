@@ -171,7 +171,7 @@ RDB_SpawnHexer::
 
 RDB_SpawnMay::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_LINK_RS_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
@@ -356,6 +356,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	setflag FLAG_RYU_HIDE_PBC_HOME_WALLY
 	release
 	end
 
@@ -955,7 +956,7 @@ RyuEVSpeed:
 	.string "Speed$"
 	
 RyuSetFriendshipDebugMenu::
-	addmonhappiness 0, 255
+	callnative RyuMaxHappiness
 	msgbox RyuSetFriendshipMsg MSGBOX_DEFAULT
 	closemessage
 	goto RyuPokeEditMenu

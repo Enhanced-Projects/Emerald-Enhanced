@@ -42,16 +42,16 @@ AS_Leaf_Event::
 	closemessage
 	msgbox AS_LeafMsg12 MSGBOX_DEFAULT
 	applymovement 3, AS_PushingDown
-	applymovement OBJ_EVENT_ID_PLAYER, AS_PushedDown
+	applymovement PLAYER, AS_PushedDown
 	waitmovement 3
 	removeobject 3
 	playse SE_DOOR
 	waitse
 	msgbox AS_PlayerMsg1 MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox AS_PlayerMsg2 MSGBOX_DEFAULT
 	@setflag FLAG_LANA_EVENT_4

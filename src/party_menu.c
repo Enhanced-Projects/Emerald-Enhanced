@@ -2170,7 +2170,7 @@ static void DisplayPartyPokemonNickname(struct Pokemon *mon, struct PartyMenuBox
     {
         if (c == 1)
             menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->dimensions[0] >> 3, menuBox->infoRects->dimensions[1] >> 3, menuBox->infoRects->dimensions[2] >> 3, menuBox->infoRects->dimensions[3] >> 3, FALSE);
-        if (GetMonData(mon, MON_DATA_GIFT_RIBBON_7) == 1)
+        if (GetMonData(mon, MON_DATA_BOSS_STATUS) == 1)
         {
             StringCopy(gStringVar4, gText_ColorRedShadowLightRed);
             GetMonNickname(mon, gRyuStringVar1);
