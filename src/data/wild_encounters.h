@@ -695,6 +695,24 @@ const struct WildPokemon gMirageCave_FishingMons[] =
 };
 
 const struct WildPokemonInfo gMirageCave_FishingMonsInfo = {30, gMirageCave_FishingMons};
+
+const struct WildPokemon gBananaSlakothGarden_LandMons[] =
+{
+	{55, 65, SPECIES_SLAKOTH},//20%
+	{55, 65, SPECIES_SLAKOTH},//20%
+	{55, 65, SPECIES_SLAKOTH},//10%
+	{55, 65, SPECIES_MUNCHLAX},//10%
+	{55, 64, SPECIES_TROPIUS},//10%
+	{55, 65, SPECIES_TROPIUS},//10%
+	{55, 65, SPECIES_VIGOROTH},//5%
+	{55, 65, SPECIES_VIGOROTH},//5%
+	{55, 65, SPECIES_EXEGGCUTE},//4%
+	{55, 65, SPECIES_EXEGGUTOR},//4%
+	{55, 65, SPECIES_SLAKING},//1%
+	{55, 65, SPECIES_SNORLAX},//1%
+};
+
+const struct WildPokemonInfo gBananaSlakothGarden_LandMonsInfo = {20, gBananaSlakothGarden_LandMons};
 //End custom locations
 
 const struct WildPokemon gRoute101_LandMons[] =
@@ -4123,6 +4141,30 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.mapGroup = MAP_GROUP(DESERT_TOMB2F),
 		.mapNum = MAP_NUM(DESERT_TOMB2F),
 		.landMonsInfo = &gDesertTomb2f_LandMonsInfo,
+		.waterMonsInfo = NULL,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = NULL,
+	},
+	{
+		.mapGroup = MAP_GROUP(MIRAGE_CAVE),
+		.mapNum = MAP_NUM(MIRAGE_CAVE),
+		.landMonsInfo = &gMirageCave_LandMonsInfo,
+		.waterMonsInfo = gMirageCave_WaterMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = gMirageCave_FishingMonsInfo,
+	},
+	{
+		.mapGroup = MAP_GROUP(BANANA_SLAKOTH_GARDEN),
+		.mapNum = MAP_NUM(BANANA_SLAKOTH_GARDEN),
+		.landMonsInfo = &gBananaSlakothGarden_LandMonsInfo,
+		.waterMonsInfo = NULL,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = NULL,
+	},
+	{
+		.mapGroup = MAP_GROUP(BANANA_SLAKOTH_GARDEN_SOUTH),
+		.mapNum = MAP_NUM(BANANA_SLAKOTH_GARDEN_SOUTH),
+		.landMonsInfo = &gBananaSlakothGarden_LandMonsInfo,
 		.waterMonsInfo = NULL,
 		.rockSmashMonsInfo = NULL,
 		.fishingMonsInfo = NULL,
