@@ -76,6 +76,8 @@ extern const u8 RyuScript_EncounterStakataka[];
 extern const u8 RyuScript_EncounterCelesteela[];
 extern const u8 RyuScript_EncounterKeldeo[];
 extern const u8 Ryu_FFTextSpeedWarning[];
+extern const u8 RyuScript_NotifyFailedChallenge[];
+extern const u8 RyuScript_NotifySucceededChallenge[];
 extern const u8 RyuScript_Lv100FailMsg[];
 extern const u8 RyuScript_Lv100SwitchMsg[];
 extern const u8 RyuCheckForLNSUAch[];
@@ -231,6 +233,12 @@ void RyuDoNotifyTasks(void)
 
     if (FlagGet(FLAG_SELECTED_FF_TEXT_OPTION) == TRUE) //warn player about instant text
         ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
+
+    if ((FlagGet(FLAG_RYU_FAILED_RYU_CHALLENGE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE) == FALSE))
+        ScriptContext1_SetupScript(RyuScript_NotifyFailedChallenge);
+
+    if ((VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 69) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS) == FALSE))
+        ScriptContext1_SetupScript(RyuScript_NotifySucceededChallenge);
 
     if (FlagGet(FLAG_RYU_FAILED_100_CAP_SWITCH) == TRUE)//Player attempted to switch to 100cap and failed.
         ScriptContext1_SetupScript(RyuScript_Lv100FailMsg);

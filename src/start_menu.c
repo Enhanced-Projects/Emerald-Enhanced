@@ -169,6 +169,8 @@ static const u8* const sPyramindFloorNames[] =
 static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 1, 0xA, 4, 0xF, 8};
 static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC, 4, 0xF, 8};
 
+const u8 sText_PlayTime[] = _("Play Time: ");
+
 static const struct MenuAction sStartMenuItems[] =
 {
     {gText_MenuDexNav, {.u8_void = StartMenuDexNavCallback}},
@@ -438,13 +440,14 @@ void AddInfoBoxWindow(void)
     int Time = (RyuGetTimeOfDay());
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 1, 1, 13, 5, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 13, 7, 15, 8);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
     DrawStdFrameWithCustomTileAndPalette(sPrintNumberWindowId, FALSE, 0x214, 14);
     sPrintNumberWindow2Id = 0xFF;
 }
+extern const u8 sText_Colon[];
 
 void PrintNumberToScreen(s32 num)
 {
@@ -455,6 +458,17 @@ void PrintNumberToScreen(s32 num)
     StringAppend(gStringVar1, gText_ryuJukeboxLabel);
     ConvertIntToDecimalStringN(gStringVar2, num, 0, 3);
     StringAppend(gStringVar1, gStringVar2);
+
+    //playtime readout
+    StringCopy(gRyuStringVar1, sText_PlayTime);
+    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gRyuStringVar1, gRyuStringVar2);
+    StringAppend(gRyuStringVar1, sText_Colon);
+    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gRyuStringVar1, gRyuStringVar2);
+    StringAppend(gRyuStringVar1, sText_Colon);
+    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeSeconds, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gRyuStringVar1, gRyuStringVar2);
 
     //time readout
     RtcCalcLocalTime();
@@ -501,6 +515,7 @@ void PrintNumberToScreen(s32 num)
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0xFF, NULL);
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 62, 0, 0xFF, NULL);
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 12, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 0, 38, 0xFF, NULL);
 
     //print skill levels
     StringCopy(gStringVar1, gText_RyuLifeSkills);
@@ -819,7 +834,7 @@ void DrawDevonLogo(void)
     }
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 100);
+    SetWindowTemplateFields(&template, 0, 4, 9, 3, 2, 15, 100);
     sPrintNumberWindow2Id = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
     PutWindowTilemap(sPrintNumberWindow2Id);

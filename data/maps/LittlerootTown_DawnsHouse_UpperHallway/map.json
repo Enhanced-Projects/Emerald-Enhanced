@@ -2,7 +2,7 @@
   "id": "MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_UPPER_HALLWAY",
   "name": "LittlerootTown_DawnsHouse_UpperHallway",
   "layout": "LAYOUT_LITTLEROOT_TOWN_DAWNS_HOUSE_UPPER_HALLWAY",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_MISHIRO",
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

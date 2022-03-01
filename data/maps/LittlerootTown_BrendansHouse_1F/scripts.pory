@@ -4,9 +4,8 @@ LittlerootTown_BrendansHouse_1F_MapScripts:: @ 81F7755
     .byte 0
 
 LRT_MayIntroCheck::
-	map_script_2 VAR_TEMP_5, 0, LRT_MayIntroEvent
+	map_script_2 VAR_TEMP_5, 0, LRT_StartFemalePlayerMayEvent
 	.2byte 0
-
 
 LRT_leftSideTrigger::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
@@ -174,6 +173,7 @@ WarpZone_Text_Sign4:
 	.string "$"
 
 `
+
 script LRT_RivalMother {
 	lock
 	faceplayer
@@ -206,6 +206,26 @@ script LRT_RivalMom_Afterstory {
 	msgbox("How's it going, {PLAYER}?!\pDid you need something?")
 	release
 	end
+}
+
+script LRT_StartFemalePlayerMayEvent {
+	setvar(VAR_TEMP_5, 100)
+	setvar(VAR_TEMP_6, 100)
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) {
+		goto(ryu_end)
+	}
+	goto(LRT_MayIntroEvent)
+}
+
+script LRT_StartMalePlayerMayEvent {
+	setvar(VAR_TEMP_5, 100)
+	setvar(VAR_TEMP_6, 100)
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		goto(ryu_end)
+	}
+	goto(LRT_MayIntroEvent)
 }
 
 script LRT_MayIntroEvent { 

@@ -72,6 +72,7 @@ script LRT_BH_May {
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}You've been so good to me...\nthank you.\pLife was pretty rough for me\nbefore you came around.\pIf there is EVER anything\nI can do to help you\lPlease let me know!")
             closemessage
             setflag(FLAG_RYU_DS_MAY_PARTNERS)
+            addvar(VAR_RYU_QUESTS_FINISHED, 1)
             setvar(VAR_RYU_QUEST_MAY, 250)
             ach(give, ACH_LOST_GIRL)
             release
@@ -154,37 +155,40 @@ script LRT_MayRoom_CorrectPositionLoop {
 
 script LRT_May_nightTime {
     //drawfullscreenimage(SCENEBGMAYNIGHT)
+    faceplayer
     msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh! {PLAYER}! I'm so glad you're here!\pDid you come to stay the\nnight with me?", MSGBOX_YESNO)
+    closemessage
     if(var(VAR_RESULT) == YES) {
         //clearfullscreenimage
         getplayerxy(VAR_0x8001, VAR_0x8002)
         if (var(VAR_0x8001) == 7) {
             applymovement(PLAYER, Common_Movement_StepDown)
             waitmovement(PLAYER)
+            applymovement(MAY, Common_Movement_StepLeft)
+            waitmovement(MAY)
         }
         else {
             applymovement(PLAYER, Common_Movement_StepLeft)
-            waitmovement(PLAYER)
-            turnobject(PLAYER, DIR_WEST)
+            applymovement(MAY, Common_Movement_StepLeft)
+            waitmovement(MAY)
         }
-        applymovement(MAY, Common_Movement_StepDown)
-        waitmovement(MAY)
-        applymovement(MAY, LRT_MayRoom_GoToBed)
-        applymovement(PLAYER, LRT_MayRoom_GoToBed)
-        waitmovement(PLAYER)
-        applymovement(MAY, Common_Movement_StepLeft)
+        applymovement(PLAYER, MR_PlayerToBed) //L,D,D,R, FR
+        delay(30)
+        applymovement(MAY, MR_MayToBed) //L,D,D,D,R,FL
         waitmovement(MAY)
         fadescreenspeed(FADE_TO_BLACK, 2)
-        delay(20)
+        delay(15)
         msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and May snuggle up\n and sleep soundly for the\l whole night...)")
         closemessage
         delay(30)
         removeobject(MAY)
         addobject(MAY)
         fadescreen(FADE_FROM_BLACK)
-        turnobject(MAY, DIR_WEST)
-        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (When you come to, May is\n already awake and playing\l games on her TV.)\p{COLOR LIGHT_RED}{SHADOW RED}Well, good morning, sleepy head!")
+        addvar(VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1)
+        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (When you come to, May is\n already awake and playing\l games on her TV.)")
         closemessage
+        turnobject(MAY, DIR_SOUTH)
+        msgbox("{COLOR LIGHT_RED}{SHADOW RED}Well, good morning, sleepy head!")
         applymovement(PLAYER, LRT_MayRoom_GoToMay)
         waitmovement(PLAYER)
         faceplayer
@@ -252,14 +256,14 @@ movement LRT_MayRoom_PlayerExit {
 }
 
 movement LRT_MayRoom_GoToMay {
-    walk_right * 6
-    walk_up
-    face_right
+    walk_right 
+    walk_up * 2
     step_end
 }
 
 movement LRT_MayRoom_GoToBed {
-    walk_left * 6
+    walk_left
+    walk_down * 2
     step_end
 }
 
@@ -267,5 +271,21 @@ movement MayExit {
     walk_up
     walk_left * 4
     walk_up
+    step_end
+}
+
+movement MR_PlayerToBed {
+    walk_left
+    walk_down * 2
+    walk_right
+    face_left
+    step_end
+}
+
+movement MR_MayToBed {
+    walk_left
+    walk_down * 3
+    walk_right
+    face_left
     step_end
 }

@@ -166,7 +166,7 @@
 #define VAR_MAUVILLE_GYM_STATE               0x4093
 #define VAR_LILYCOVE_MUSEUM_2F_STATE         0x4094
 #define VAR_LILYCOVE_FAN_CLUB_STATE          0x4095
-#define VAR_UNUSED_0x4096                   0x4096
+#define VAR_RYU_GAME_MODE                    0x4096
 #define VAR_INIT_SECRET_BASE                 0x4097
 #define VAR_PETALBURG_WOODS_STATE            0x4098
 #define VAR_LILYCOVE_CONTEST_LOBBY_STATE     0x4099
@@ -283,6 +283,7 @@
 #define VAR_RYU_MONEY_BASE_RANDOM_COMPONENT  0x4107
 #define VAR_RYU_MONEY_BASE_VALUE             0x4108
 #define VAR_RYU_MONEY_BASE_COEFFICIENT       0x4109
+#define VAR_RYU_SPECIAL_CHALLENGE_STATE      0x410A
 
 
 //vars 4100 thru 417f are unused; total of 128.

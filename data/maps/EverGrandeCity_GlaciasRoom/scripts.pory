@@ -153,7 +153,7 @@ script EGC_FollowerGlaciaRematch {
 	if (var(VAR_RESULT) == FALSE) {
 		goto(EGC_PR_ChooseValidMons)
 	}
-	if (var(VAR_RYU_E42) == 0) {
+	if (var(VAR_RYU_E43) == 0) {
 		msgbox(EverGrandeCity_GlaciasRoom_Text_PreBattleSpeech)
 		multi_2_vs_1(TRAINER_GLACIA_REMATCH, EverGrandeCity_GlaciasRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
 	}

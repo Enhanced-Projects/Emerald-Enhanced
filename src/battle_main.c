@@ -1825,11 +1825,25 @@ u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStr
     u8 level = 0;
     // Allows overriding the autoscaling from scripts.
     // Usually, this will just be 2 to make sure we don’t generate level 0 or 1 mons.
-    u8 minLevel = VarGet(VAR_RYU_AUTOSCALE_MIN_LEVEL) + (Random() % 5);
+    u8 minLevel = VarGet(VAR_RYU_AUTOSCALE_MIN_LEVEL);
     u8 maxLevel = MAX_LEVEL;
 
     if (maxScale)
         return maxLevel;
+
+    // While we are in Ryu’s special challenge, all trainers should be scaled to 95% of the strongest player party member.
+    // We therefore subtract at most 5% from the maxLevel (rounded down),
+    // so a player with a level 10 party will encounter enemies at level 10,
+    // level 20 party encounters level 19-20 enemies, level 40 party encounters level 38-40 enemies, etc.
+    // Scaling of wild Pokemon is not affected by the challenge and handled further down with the usual logic.
+    if (VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100 && scalingType != SCALING_TYPE_WILD) {
+        u8 highest = 0, i, level;
+        for (i = 0; i < CalculatePlayerPartyCount(); i++) {
+            level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+            if (level > highest) highest = level;
+        }
+        return max(minLevel, highest - Random() % (highest / 20 + 1));
+    }
 
     // Wild pokemon should always use badge scaling, unless the AP is enabled,
     // in which case they always scale to slightly below team level, even before NG+.
@@ -1898,6 +1912,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     u32 personalityValue, personalityAdd;
     u32 fixedIV, monsCount, badges = 0;
     s32 i, j;
+    u8 evmax = 252;
+    u8 evmed = 126;
 
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
@@ -1950,6 +1966,9 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     level += 12;
                 else if ((GetFactionStanding(trainerNum)) <= 50  && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
                     level += 7;
+
+                if (level > MAX_LEVEL)
+                    level = MAX_LEVEL;
             }
 
             nameHash += trainerNameHash;
@@ -2033,6 +2052,26 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 {
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
+                }
+                if ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE))
+                {
+                    SetMonData(&party[i], MON_DATA_HP_EV,    &evmax);
+                    SetMonData(&party[i], MON_DATA_ATK_EV,   &evmax);
+                    SetMonData(&party[i], MON_DATA_SPATK_EV, &evmax);
+                    SetMonData(&party[i], MON_DATA_DEF_EV,   &evmax);
+                    SetMonData(&party[i], MON_DATA_SPDEF_EV, &evmax);
+                    SetMonData(&party[i], MON_DATA_SPEED_EV, &evmax);
+                    CalculateMonStats(&party[i]);
+                }
+                else if ((FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE) || (VarGet(VAR_RYU_NGPLUS_COUNT) > 5))
+                {
+                    SetMonData(&party[i], MON_DATA_HP_EV,    &evmed);
+                    SetMonData(&party[i], MON_DATA_ATK_EV,   &evmed);
+                    SetMonData(&party[i], MON_DATA_SPATK_EV, &evmed);
+                    SetMonData(&party[i], MON_DATA_DEF_EV,   &evmed);
+                    SetMonData(&party[i], MON_DATA_SPDEF_EV, &evmed);
+                    SetMonData(&party[i], MON_DATA_SPEED_EV, &evmed);
+                    CalculateMonStats(&party[i]);
                 }
                 break;
             }

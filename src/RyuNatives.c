@@ -234,6 +234,22 @@ void RyuKillMon(void)
 }
 
 extern const u16 gFrontierBannedSpecies[27];
+extern const u16 gChallengeBannedSpecies[40];
+
+int CheckValidMonsForSpecialChallenge (void)
+{
+    u8 slot = 8;
+    s32 i = 0;
+    s32 k = 0;
+    for (k = 0; k < 6; k++)
+    {
+        for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
+        {
+            if (gChallengeBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
+                return 666;
+        }
+    }
+}
 
 
 int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be used by gcms.
@@ -319,7 +335,15 @@ void RyuBrendanGiftPoke(void)
 void RyuDevCheck(void)
 {
     if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)))
+    {
         gSpecialVar_Result = 69;
+        return;
+    }
+    else if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)))
+    {
+        gSpecialVar_Result = 420;
+        return;
+    }
 }
 
 int CountBadges(void)
@@ -1932,6 +1956,12 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
         VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
     }
 
+    if (FlagGet(FLAG_RYU_DS_MAY_PARTNERS) == 1) //may doesn't count for the true ending.
+    {
+        partners++;
+        GiveAchievement(ACH_LOST_GIRL);
+    }
+
     return partners;
 }
 
@@ -2012,7 +2042,7 @@ int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game
     if (FlagGet(FLAG_RYU_LIMBO) == 1)//Player is in Limbo after failing challenge or hardcore.
         return 120;
     
-    if (VarGet(VAR_RYU_QUEST_MAY) == 50) 
+    if (VarGet(VAR_RYU_QUEST_MAY) == 50) //Player is investigating wally's house with May
         return 130;
 
     return 0;
@@ -2347,7 +2377,14 @@ void RyuSetupRandomForE4(void)
     VarSet(VAR_RYU_E42, r2);
     VarSet(VAR_RYU_E43, r3);
     VarSet(VAR_RYU_E44, r4);
-    //mgba_printf(LOGINFO, "%d, %d, %d, %d", r1, r2, r3, r4);
+
+    if (VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100) //special challenge active, always give rematch 2 parties on rematch.
+        {
+            VarSet(VAR_RYU_E41, 1);
+            VarSet(VAR_RYU_E42, 1);
+            VarSet(VAR_RYU_E43, 1);
+            VarSet(VAR_RYU_E44, 1);
+        }
 }
 
 void RyuCheckIfInWallysHouse (void)
@@ -2371,4 +2408,113 @@ void RyuGetMayDailyReward (void) //generates a random berry and quantity for may
 {
     gSpecialVar_0x8004 = ((Random() % 66) + 144);
     gSpecialVar_0x8005 = (Random() % 3);
+}
+
+const u8 sText_SpeedOptionsUsed[] = _(" bs  / 1c  / itx / its / da \n");
+const u8 sText_one[] = _("  {COLOR LIGHT_RED}{SHADOW RED}y{COLOR DARK_GREY}{SHADOW LIGHT_GREY}   ");
+const u8 sText_zero[] = _("  {COLOR LIGHT_GREEN}{SHADOW GREEN}n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}   ");
+const u8 sText_slash[] = _("/");
+void RyuCheckSpecialChallengeStatus (void)
+{
+    bool32 UsedBarSpeed = (FlagGet(FLAG_RYU_CHANGED_BAR_SPEED));
+    bool32 Used100Cap = (FlagGet(FLAG_RYU_USED_100_CAP));
+    bool32 UsedInstantText = (FlagGet(FLAG_RYU_USED_INSTANT_TEXT));
+    bool32 UsedInstantTransition = (FlagGet(FLAG_RYU_USED_INSTANT_TRANSITION));
+    bool32 DisabledAnims = (FlagGet(FLAG_RYU_DISABLED_ANIMS));
+    StringCopy(gStringVar1, sText_SpeedOptionsUsed);
+
+    if (UsedBarSpeed)
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+    
+    StringAppend(gStringVar1, sText_slash);
+
+    if (Used100Cap)
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+
+    StringAppend(gStringVar1, sText_slash);
+
+    if (UsedInstantText)
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+
+    StringAppend(gStringVar1, sText_slash);
+
+    if (UsedInstantTransition)
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+
+    StringAppend(gStringVar1, sText_slash);
+
+    if (DisabledAnims)
+        StringAppend(gStringVar1, sText_one);
+    else
+        StringAppend(gStringVar1, sText_zero);
+}
+
+void RyuSavePlayTimeChallenge (void)
+{
+    u16 hours = (gSaveBlock2Ptr->playTimeHours);
+    u16 minutes = (gSaveBlock2Ptr->playTimeMinutes);
+    u16 seconds = (gSaveBlock2Ptr->playTimeSeconds);
+    
+    if (hours > 60)
+        hours = 60;
+    
+    if (minutes > 60)
+        minutes = 60;
+    
+    if (seconds > 60)
+        seconds = 60;
+
+    gSaveBlock2Ptr->challengeTimeBlockHours = hours;
+    gSaveBlock2Ptr->challengeTimeBlockMinutes = minutes;
+    gSaveBlock2Ptr->challengeTimeBlockSeconds = seconds;
+}
+
+void RyuLoadPlayTimeChallenge (void)
+{
+    u32 secondsLong = GetGameStat(GAME_STAT_CHALLENGE_TIME_SECONDS);
+    u16 hours = gSaveBlock2Ptr->challengeTimeBlockHours;
+    u16 minutes = gSaveBlock2Ptr->challengeTimeBlockMinutes;
+    u16 seconds = gSaveBlock2Ptr->challengeTimeBlockSeconds;
+
+    ConvertIntToDecimalStringN(gRyuStringVar1, hours, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar2, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar3, seconds, STR_CONV_MODE_LEADING_ZEROS, 2);
+}
+
+const u8 sText_CurrentPT[] = _("Current exact play time (HH:MM:SS:FF)\n");
+extern const u8 sText_Colon[];
+void RyuBufferLongPlayTimeString (void)
+{
+    u16 hours = gSaveBlock2Ptr->playTimeHours;
+    u16 minutes = gSaveBlock2Ptr->playTimeMinutes;
+    u16 seconds = gSaveBlock2Ptr->playTimeSeconds;
+    u16 frames = gSaveBlock2Ptr->playTimeVBlanks;
+
+    ConvertIntToDecimalStringN(gRyuStringVar1, hours, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar2, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar3, seconds, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar4, frames, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringCopy(gStringVar1, sText_CurrentPT);    
+    StringAppend(gStringVar1, gRyuStringVar1);    
+    StringAppend(gStringVar1, sText_Colon);    
+    StringAppend(gStringVar1, gRyuStringVar2);
+    StringAppend(gStringVar1, sText_Colon);     
+    StringAppend(gStringVar1, gRyuStringVar3);
+    StringAppend(gStringVar1, sText_Colon);     
+    StringAppend(gStringVar1, gRyuStringVar4);    
+}
+
+void SetArbitraryplayTime (void)
+{
+    gSaveBlock2Ptr->playTimeHours = 39;
+    gSaveBlock2Ptr->playTimeMinutes = 15;
+    gSaveBlock2Ptr->playTimeSeconds = 55;
 }

@@ -48,7 +48,7 @@ const u8 sMagmaQuestStage105Desc[] = _("Player should go to Mr Briney's cottage\
 const u8 sMagmaQuestStage115Desc[] = _("Player was ordered to meet Blaise in\ngranite cave.\nGo find him in the base floor,\ndisguised as a Kindler.");
 const u8 sMagmaQuestStage120Desc[] = _("Player needs to locate the other everstone\nin Granite Cave.");
 const u8 sMagmaQuestStage130Desc[] = _("Player must now obtain a total of 3 badges\nto continue. Go to Rt 111 north of the desert.\nApproach from the north side using the stairs.");
-const u8 sMagmaQuestStage160Desc[] = _("Player must now obtain 8000 grams of volcanic\nash. Once collected, return here to blaise\nto continue.");
+const u8 sMagmaQuestStage160Desc[] = _("Player must now obtain 2000 grams of volcanic\nash. Once collected, return here to blaise\nto continue.");
 const u8 sMagmaQuestStage165Desc[] = _("Player collected the ash.\nGo to Lilycove to begin sabotage.\nSpeak to the Magma grunt in the middle\nof the coastline.");
 const u8 sMagmaQuestStage170Desc[] = _("Player spoke to first grunt.\nGo to north grunt now to continue.");
 const u8 sMagmaQuestStage175Desc[] = _("Player spoke to top grunt.\nGo to bottom grunt to finish the sabotage.");
@@ -179,7 +179,7 @@ const u8 sMayQuestStage150[] = _("You and May spoke with Wally in the tunnel.\nG
 const u8 sMayQuestStage160[] = _("After Rusturf Tunnel, May took off with Wally\nto his house. You met up with May later\nat her house. Neutral End");
 const u8 sMayQuestStage180[] = _("After Rusturf Tunnel, May took off with Wally\nto his house. You picked May up from his house.\nGood End.");
 const u8 sMayQuestStage200[] = _("You finished May's questline.\nStay with her at home to\nfinalize the relationship.");
-const u8 sMayQuestStage250[] = _("You completed May's quest line with the Best End.");
+const u8 sMayQuestStage250[] = _("You completed May's quest line.\nBEST End.");
 const u8 sMayQuestStage666[] = _("You declined helping may in Littleroot.\nBAD END.");
 const u8 sMayQuestStage999[] = _("You didn't help may locate her lost friend.\nBAD END.");
 

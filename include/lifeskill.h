@@ -39,10 +39,8 @@
 #define BR_ICE_STONE 29
 //WHEN YOU ADD ANYTHING TO THE THREE ABOVE GROUPS, YOU MUST ALSO ADJUST THE DEFINES FOR THE
 //NUM RECIPES IN include/constants/vars.h. THIS MAKES IT POSSIBLE FOR SCRIPT TO READ THEM
-//recipe to item mapping
-// because ryu is incapable of making new constant headers for scripts
 
-#define NUM_PICKUP_TABLE_ENTRIES 18 //yup, i prefer to use known working ones than risk making new ones. Feel free to relocate @pidgey @kageru.
+#define NUM_PICKUP_TABLE_ENTRIES 18
 
 typedef struct Ingredient {
   u16 itemId;

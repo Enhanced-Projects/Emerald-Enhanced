@@ -11,6 +11,7 @@
 #include "pidgey_ui_sys.h"
 #include "menu.h"
 #include "palette.h"
+#include "string_util.h"
 
 const u8 gFactionNames[8][14] = {
     [FACTION_NATURALISTS] = _("Naturalists"),
@@ -92,6 +93,34 @@ u32 ConvertFactionStandingToState(u32 standing)
             return FACTION_STAND_HIGH;
         case 200: 
             return FACTION_STAND_BEST;
+    }
+}
+
+const u8 gText_RyuDailyNoneType[] = _("None");
+const u8 gText_RyuDailyFetchType[] = _("Fetch");
+const u8 gText_RyuDailyCaptureType[] = _("Capture");
+const u8 gText_RyuDailyTravelType[] = _("Travel");
+const u8 gText_RyuDailyHatchType[] = _("Hatch");
+
+void BufferDailyQuestType (void)
+{
+    switch (VarGet(VAR_RYU_DAILY_QUEST_TYPE))
+    {
+        case 0:
+            StringCopy(gStringVar2, gText_RyuDailyNoneType);
+            break;
+        case 1:
+            StringCopy(gStringVar2, gText_RyuDailyFetchType);
+            break;
+        case 2:
+            StringCopy(gStringVar2, gText_RyuDailyCaptureType);
+            break;
+        case 3:
+            StringCopy(gStringVar2, gText_RyuDailyTravelType);
+            break;
+        case 4:
+            StringCopy(gStringVar2, gText_RyuDailyHatchType);
+            break;
     }
 }
 

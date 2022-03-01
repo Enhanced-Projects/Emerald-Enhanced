@@ -88,6 +88,7 @@ SootopolisCity_Gym_1F_EventScript_Juan:: @ 8224F44
 	faceplayer
 	setflag FLAG_RYU_BOSS_SCALE
 	addvar VAR_RYU_GYM_LEADERS_FOUGHT, 1
+	goto_if_set FLAG_RYU_DOING_RYU_CHALLENGE, Juan4
 	special checkbadgecount
     switch VAR_RESULT
     case 0, Juan1

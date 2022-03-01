@@ -93,6 +93,13 @@ static u8 sTextLanette[] = _("Lanette");
 static u8 sTextAqua[] = _("Aqua");
 static u8 sTextNurse[] = _("Nurse");
 static u8 sTextMay[] = _("May");
+static u8 sText_DailyNaturalistss[] = _("Naturalists Daily");
+static u8 sText_DailyStudents[] = _("Students Daily");
+static u8 sText_DailyNobles[] = _("Nobles Daily");
+static u8 sText_DailyPokefans[] = _("Pokéfans Daily");
+static u8 sText_DailyOutcasts[] = _("Outcasts Daily");
+static u8 sText_DailyProfessionals[] = _("Professionals Daily");
+static u8 sText_DailyAthletes[] = _("Athletes Daily");
 
 struct QuestData {
     const struct QuestStageDesc * stageDescs;
@@ -391,6 +398,31 @@ static u32 InputToQuestAction(void)
         finalAction = QUEST_ACTION_BACK;
     return finalAction;
 }
+
+/* Daily quest data
+@PIDGEY here's the data for daily quests
+Assignee faction is who gave the quest to the player. This data can be found here:
+extern const u8 gFactionNames[8];
+gStringVar1 = gFactionNames[VarGet(VAR_RYU_DAILY_QUEST_ASIGNEE_FACTION)];
+
+Type of daily quest is one of 4 types, Fetch, Capture, Travel, or Hatch
+extern void BufferDailyQuestType();
+will buffer "None", "Fetch", "Capture", "Travel", "Hatch" to gStringVar2
+
+Target of daily quest is the item player needs to get, the map id they need to go to, species they need to hatch, etc.
+This can be buffered as a number string.
+The value of this depends on the value of VAR_RYU_DAILY_QUEST_TYPE
+
+For fetch types, it's an item ID, Capture types is a Species ID, travel is a map/group hash, Hatch type is also a Species ID.
+
+Data is used for quantities of things
+for Fetch type, it's quantity of items,  for capture and hatch, it's empty.
+for fetch it can be buffered as a numberstring
+
+for Travel types, it's used a a step counter in RyuDoDailyTravelQuestThings() and is usually amount of steps required in a map.
+you want to get the group and map id from the variable and buffer the name of the map that way.
+
+*/
 
 static void UpdateQuestSelections(u32 offset)
 {

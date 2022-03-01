@@ -149,6 +149,7 @@ RyuSetTime:
 IT_EasyMode::
 	setvar VAR_RYU_EXP_MULTIPLIER, 4000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 500
+	setvar VAR_RYU_GAME_MODE, 0
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -160,6 +161,7 @@ IT_EasyMode::
 IT_NormalMode::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
+	setvar VAR_RYU_GAME_MODE, 0
 	call_if_set FLAG_RYU_ISNGPLUS, Normalmode_NGP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -176,6 +178,7 @@ Normalmode_NGP::
 IT_ChallengeMode::
 	msgbox IT_ChallengeIntro MSGBOX_SIGN
 	call_if_set FLAG_RYU_ISNGPLUS, Challengemode_NGP
+	setvar VAR_RYU_GAME_MODE, 2
 	setvar VAR_RYU_EXP_MULTIPLIER, 2000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1500
 	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
@@ -203,6 +206,7 @@ IT_FrontierMode::
 	msgbox IT_FrontierIntro
 	setvar VAR_RYU_EXP_MULTIPLIER, 1
 	setvar VAR_RYU_PRICE_MULTIPLIER 1000
+	setvar VAR_RYU_GAME_MODE, 4
 	removemoney 3000
 	giveitem ITEM_MEGA_BRACELET
 	msgbox IT_FrontierOutro
@@ -223,6 +227,7 @@ IT_HardcoreMode::
 	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 5
 	setvar VAR_RYU_EXP_MULTIPLIER, 2000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 2000
+	setvar VAR_RYU_GAME_MODE, 3
 	setflag FLAG_RYU_HARDCORE_MODE
 	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 1
 	removemoney 2750

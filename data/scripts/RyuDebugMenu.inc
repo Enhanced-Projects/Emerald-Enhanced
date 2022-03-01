@@ -5,14 +5,27 @@
 
 RyuDevSwitch::
 	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
+	switch VAR_RESULT
+	case 69, Ryu_enableDevMode
+	case 666, Ryu_SpecialChallengeActive
+	case 420, RyuChallengeQuery
+	release
+	end
+
+Ryu_enableDevMode::
 	setflag FLAG_RYU_DEV_MODE
 	setflag FLAG_RYU_CHEATS_USED
-	@clearflag FLAG_HIDE_103_TEST_TRAINER
 	msgbox RyuNowDeveloper MSGBOX_SIGN
 	setvar VAR_TEMP_9, 100
 	end
+
+Ryu_SpecialChallengeActive::
+	msgbox RyuCantEnableDevBecauseChallenge
+	release
+	end
+
+RyuCantEnableDevBecauseChallenge:
+	.string "You cannot enable dev mode\nbecause you are participating\lin\pRyu's Challenge.$"
 	
 RyuNowDeveloper:
 	.string "{PLAYER} is now a developer.$"
@@ -77,7 +90,9 @@ RyuDebug_UtilitiesMenu:
 	case 15, RDB_EnableRealEstate
 	case 16, RyuDebug_InitTimeSlide
 	case 17, RyuDebug_ReadoutRGBTheme
-	case 18, RyuDebug_menu_nodevcheck
+	case 18, RyuDebug_CheckRyuChallengeStatus
+	case 19, RyuDebug_CheckExactPlayTime
+	case 20, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -354,9 +369,12 @@ RyuDebug_ViewTempVars::
 
 RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
+@@clearflag FLAG_RYU_DEV_MODE
+@@clearflag FLAG_RYU_CHEATS_USED
+@@setvar VAR_RYU_NGPLUS_COUNT, 6
+
 
 RyuDebug_Utility1::
-	setflag FLAG_RYU_HIDE_PBC_HOME_WALLY
 	release
 	end
 
@@ -888,7 +906,7 @@ RyuSetIvEvDebugMenu::
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuIvEv_ExitQuery
 	msgbox RyuIvEv_SetWhichStat
-	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed
+	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpeed, RyuEVSpAtk, RyuEVSpDef
 	multichoice 0, 0, MULTI_DYNAMIC_6, 0
 	copyvar VAR_0x8002, VAR_RESULT @...................Which stat
 	closemessage
@@ -1193,4 +1211,26 @@ RyuDebug_ReadoutRGBTheme:
 
 rdbrr:
 	.string "Refer to mGBA debug to see values.$"
+
+RyuDebug_CheckRyuChallengeStatus::
+	callnative RyuCheckSpecialChallengeStatus
+	callnative RyuLoadPlayTimeChallenge
+	msgbox RDB_SCS
+	release
+	end
+
+RDB_SCS:
+	.string "Finished play time: {RYU_STR_1}:{RYU_STR_2}:{RYU_STR_3}\p"
+	.string "Speed options used:\p"
+	.string "{STR_VAR_1}\p"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({COLOR DARK_GREY}{SHADOW LIGHT_GREY} bs - {COLOR LIGHT_RED}{SHADOW RED}Bar Speed{COLOR DARK_GREY}{SHADOW LIGHT_GREY}, 1c - {COLOR LIGHT_RED}{SHADOW RED}100 cap{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\n"
+	.string " itx - {COLOR LIGHT_RED}{SHADOW RED}instant text{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\p"
+	.string " its - {COLOR LIGHT_RED}{SHADOW RED}instant transition{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\n"
+	.string " da - {COLOR LIGHT_RED}{SHADOW RED}disabled anims{COLOR LIGHT_GREEN}{SHADOW GREEN})$"
+
+RyuDebug_CheckExactPlayTime::
+	callnative RyuBufferLongPlayTimeString
+	msgbox (RDB_TempVarsViewMsg)
+	release
+	end
 

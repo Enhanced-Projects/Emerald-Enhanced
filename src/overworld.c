@@ -405,6 +405,13 @@ void SetWarpDestinationToLimbo(void) //challenge over
 // code
 void DoWhiteOut(void)
 {
+    if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) 
+    {
+        FlagSet(FLAG_RYU_FAILED_RYU_CHALLENGE);
+        FlagClear(FLAG_RYU_DOING_RYU_CHALLENGE);
+	    VarSet(VAR_RYU_SPECIAL_CHALLENGE_STATE, 666);
+    }
+
     if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
     {
         FlagClear(FLAG_RYU_RANDOMBATTLE);

@@ -500,7 +500,10 @@
 #define NOTIFY_QUEST       5
 #define NOTIFY_GENERAL     6
 
-#define EE_GAME_VERSION 8300
+//Affection configuration
+#define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
+
+#define EE_GAME_VERSION 8303
 
 
 #endif

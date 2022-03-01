@@ -4,6 +4,7 @@
 #include "ach_atlas.h"
 #include "constants/items.h"
 #include "item.h"
+#include "overworld_notif.h"
 
 //platinum powers
 const u8 sPlatinumLabel[] = _("Platinum");
@@ -154,8 +155,20 @@ static void DummyFunc(void)
 
 }
 
+const u8 sTextFailedToActivate[] = _("Trainer Repel disabled for challenge.");
+
 bool8 CheckCanIgnoreTrainers(void)//Check if can ignore trainer sight
 {
+    if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
+    {
+        if (CheckAPFlag(AP_TRAINER_REPEL) == TRUE)
+        {
+            QueueNotification(sTextFailedToActivate, NOTIFY_GENERAL, 120);
+            ClearAPFlag(AP_TRAINER_REPEL);
+            return FALSE;
+        }
+
+    }
     if ((FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1) || (CheckAPFlag(AP_TRAINER_REPEL) == TRUE))
         return TRUE;
 
@@ -178,10 +191,20 @@ void ToggleAPStrongerWilds(void) //Allows wild mons to use autolevel, for faster
         SetAPFlag(AP_STRONGER_WILDS);
 }
 
+const u8 sTextPdaDisabledChallenge[] = _("PDA disabled for challenge.");
+
 void GiveTakePDAItem(void)//gives the pda item when ap is active, You need to set/clear the flag in the function that calls this one.
 {
     if (CheckAPFlag(AP_PDA) == TRUE)
-        AddBagItem(ITEM_PDA, 1);
+        if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
+        {
+            QueueNotification(sTextPdaDisabledChallenge, NOTIFY_GENERAL, 240);
+            ClearAPFlag(AP_PDA);
+        }
+        else
+        {
+            AddBagItem(ITEM_PDA, 1);
+        }
     else
         RemoveBagItem(ITEM_PDA, 1);
 }
@@ -193,8 +216,6 @@ void GiveTakeStatAssistItem(void)//gives the pda item when ap is active. You nee
     else
         RemoveBagItem(ITEM_STATASSIST, 1);
 }
-
-// @pidgey do i even need these?
 
 void APGlobalRepelToggle(void) //toggles the global repel
 {
