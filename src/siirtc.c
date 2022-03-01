@@ -416,7 +416,7 @@ static u8 ReadData()
 {
     u8 i;
     u8 temp;
-    u8 value;
+    u8 value = 0;
 
     for (i = 0; i < 8; i++)
     {
@@ -428,9 +428,9 @@ static u8 ReadData()
         GPIO_PORT_DATA = SCK_HI | CS_HI;
 
         temp = ((GPIO_PORT_DATA & SIO_HI) >> 1);
-        value = (value >> 1) | (temp << 7); // UB: accessing uninitialized var
+        value = (value >> 1) | (temp << 7); // UB: accessing uninitialized var(Okay, ummm... i initialized the value and it's not undefined anymore)
     }
-
+    
     return value;
 }
 

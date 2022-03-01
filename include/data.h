@@ -44,6 +44,7 @@ struct TrainerMonItemCustomMoves
     u8 lvl;
     u16 species;
     u16 heldItem;
+    u8 evspread;
     u8 ability;
     u8 nickname[12];
     u16 moves[4];

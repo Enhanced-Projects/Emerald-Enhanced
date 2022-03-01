@@ -3845,6 +3845,9 @@ bool32 ShouldDoTrainerSlide(u32 battlerId, u32 trainerId, u32 which)
     if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || GetBattlerSide(battlerId) != B_SIDE_OPPONENT)
         return FALSE;
 
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+        return FALSE;
+
     for (i = 0; i < ARRAY_COUNT(sTrainerSlides); i++)
     {
         if (trainerId == sTrainerSlides[i].trainerId)
