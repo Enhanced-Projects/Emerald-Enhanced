@@ -1221,7 +1221,7 @@ RyuDebug_CheckRyuChallengeStatus::
 
 RDB_SCS:
 	.string "Finished play time: {RYU_STR_1}:{RYU_STR_2}:{RYU_STR_3}\p"
-	.string "Your challenge took {RYU_STR_4} minutes in total.
+	.string "Your challenge took {RYU_STR_4} minutes in total.\p"
 	.string "Speed options used:\p"
 	.string "{STR_VAR_1}\p"
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({COLOR DARK_GREY}{SHADOW LIGHT_GREY} bs - {COLOR LIGHT_RED}{SHADOW RED}Bar Speed{COLOR DARK_GREY}{SHADOW LIGHT_GREY}, 1c - {COLOR LIGHT_RED}{SHADOW RED}100 cap{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\n"
