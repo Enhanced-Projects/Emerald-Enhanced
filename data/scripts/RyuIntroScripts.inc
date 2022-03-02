@@ -161,7 +161,7 @@ IT_EasyMode::
 IT_NormalMode::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
-	setvar VAR_RYU_GAME_MODE, 0
+	setvar VAR_RYU_GAME_MODE, 1
 	call_if_set FLAG_RYU_ISNGPLUS, Normalmode_NGP
 	checkplayergender
 	compare VAR_RESULT, MALE

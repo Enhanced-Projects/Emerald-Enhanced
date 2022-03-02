@@ -1033,12 +1033,8 @@ static void Task_OptionMenuSave(u8 taskId)
 {
     gSaveBlock2Ptr->optionsTextSpeed = sOptions->sel[MENUITEM_TEXTSPEED];
     if (sOptions->sel[MENUITEM_TEXTSPEED] == 3)
-    {
-        FlagSet(FLAG_SELECTED_FF_TEXT_OPTION);
-        FlagSet(FLAG_RYU_USED_INSTANT_TEXT);
-    }
-    else
-        FlagClear(FLAG_SELECTED_FF_TEXT_OPTION);
+        gSaveBlock2Ptr->optionsTextSpeed = 2;
+        
 
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptions->sel[MENUITEM_BATTLESCENE];
     gSaveBlock2Ptr->optionsThemeNumber = sOptions->sel[MENUITEM_THEME];

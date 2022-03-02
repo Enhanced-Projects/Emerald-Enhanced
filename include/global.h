@@ -423,7 +423,9 @@ struct SaveBlock2
              u32 challengeTimeBlockHours:6;
              u32 challengeTimeBlockMinutes:6;
              u32 challengeTimeBlockSeconds:6;
-             u32 unusedChallengeTimeBlockBits:14;
+             u32 challengeTimeBlockStartHours:6;
+             u32 challengeTimeBlockStartMinutes:6;
+             u32 unusedChallengeTimeBlockBits:2;
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

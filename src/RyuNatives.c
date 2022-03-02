@@ -234,16 +234,16 @@ void RyuKillMon(void)
 }
 
 extern const u16 gFrontierBannedSpecies[27];
-extern const u16 gChallengeBannedSpecies[40];
+extern const u16 gChallengeBannedSpecies[69];
 
 int CheckValidMonsForSpecialChallenge (void)
 {
     u8 slot = 8;
     s32 i = 0;
     s32 k = 0;
-    for (k = 0; k < 6; k++)
+    for (k = 0; k < 5; k++)
     {
-        for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
+        for (; gChallengeBannedSpecies[i] != 0xFFFF; i++)
         {
             if (gChallengeBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
                 return 666;
@@ -2410,7 +2410,7 @@ void RyuGetMayDailyReward (void) //generates a random berry and quantity for may
     gSpecialVar_0x8005 = (Random() % 3);
 }
 
-const u8 sText_SpeedOptionsUsed[] = _(" bs  / 1c  / itx / its / da \n");
+const u8 sText_SpeedOptionsUsed[] = _(" bs  / 1c  / its / da \n");
 const u8 sText_one[] = _("  {COLOR LIGHT_RED}{SHADOW RED}y{COLOR DARK_GREY}{SHADOW LIGHT_GREY}   ");
 const u8 sText_zero[] = _("  {COLOR LIGHT_GREEN}{SHADOW GREEN}n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}   ");
 const u8 sText_slash[] = _("/");
@@ -2431,13 +2431,6 @@ void RyuCheckSpecialChallengeStatus (void)
     StringAppend(gStringVar1, sText_slash);
 
     if (Used100Cap)
-        StringAppend(gStringVar1, sText_one);
-    else
-        StringAppend(gStringVar1, sText_zero);
-
-    StringAppend(gStringVar1, sText_slash);
-
-    if (UsedInstantText)
         StringAppend(gStringVar1, sText_one);
     else
         StringAppend(gStringVar1, sText_zero);
@@ -2477,16 +2470,33 @@ void RyuSavePlayTimeChallenge (void)
     gSaveBlock2Ptr->challengeTimeBlockSeconds = seconds;
 }
 
+void RyuSaveChallengeStartTime (void)
+{
+    u16 hours = (gSaveBlock2Ptr->playTimeHours);
+    u16 minutes = (gSaveBlock2Ptr->playTimeMinutes);
+
+    gSaveBlock2Ptr->challengeTimeBlockStartHours = hours;
+    gSaveBlock2Ptr->challengeTimeBlockStartMinutes = minutes;
+}
+
 void RyuLoadPlayTimeChallenge (void)
 {
-    u32 secondsLong = GetGameStat(GAME_STAT_CHALLENGE_TIME_SECONDS);
     u16 hours = gSaveBlock2Ptr->challengeTimeBlockHours;
     u16 minutes = gSaveBlock2Ptr->challengeTimeBlockMinutes;
     u16 seconds = gSaveBlock2Ptr->challengeTimeBlockSeconds;
+    u16 startHours = gSaveBlock2Ptr->challengeTimeBlockStartHours;
+    u16 startMinutes = gSaveBlock2Ptr->challengeTimeBlockStartMinutes;
+    u16 hourDifference = hours - startHours;
+    u16 minuteDifference = minutes - startMinutes;
+    u16 challengeMinutes = 0;
+    hourDifference *= 60;
+    challengeMinutes = hourDifference + minuteDifference;
+
 
     ConvertIntToDecimalStringN(gRyuStringVar1, hours, STR_CONV_MODE_LEADING_ZEROS, 2);    
     ConvertIntToDecimalStringN(gRyuStringVar2, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);    
     ConvertIntToDecimalStringN(gRyuStringVar3, seconds, STR_CONV_MODE_LEADING_ZEROS, 2);
+    ConvertIntToDecimalStringN(gRyuStringVar4, challengeMinutes, STR_CONV_MODE_LEADING_ZEROS, 4);
 }
 
 const u8 sText_CurrentPT[] = _("Current exact play time (HH:MM:SS:FF)\n");
