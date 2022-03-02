@@ -2496,7 +2496,7 @@ void RyuLoadPlayTimeChallenge (void)
     ConvertIntToDecimalStringN(gRyuStringVar1, hours, STR_CONV_MODE_LEADING_ZEROS, 2);    
     ConvertIntToDecimalStringN(gRyuStringVar2, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);    
     ConvertIntToDecimalStringN(gRyuStringVar3, seconds, STR_CONV_MODE_LEADING_ZEROS, 2);
-    ConvertIntToDecimalStringN(gRyuStringVar4, challengeMinutes, STR_CONV_MODE_LEADING_ZEROS, 4);
+    ConvertIntToDecimalStringN(gRyuStringVar4, challengeMinutes, STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
 const u8 sText_CurrentPT[] = _("Current exact play time (HH:MM:SS:FF)\n");
