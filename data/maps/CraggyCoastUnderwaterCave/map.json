@@ -3,7 +3,7 @@
   "name": "CraggyCoastUnderwaterCave",
   "layout": "LAYOUT_CRAGGY_COAST_UNDERWATER_CAVE",
   "music": "MUS_M_DUNGON",
-  "region_map_section": "MAPSEC_CRAGGY_COAST",
+  "region_map_section": "MAPSEC_CRAGGY_COAST_UNDERWATER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",

@@ -313,9 +313,11 @@ const u16 gOutsideMiningTier3[] = {//level 3
 
 // reward tables
 // These tables can be any size, as long as they're all the same size
-const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
+const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][12] = {
     [BOTANY_MAP_CATEGORY_JUNGLE] = {
-        ITEM_JUNGLE_BEANS,
+        ITEM_JUNGLE_BEANS, 
+        ITEM_JUNGLE_BEANS, 
+        ITEM_LUMINOUS_MOSS,
         ITEM_LUMINOUS_MOSS,
         ITEM_BIG_ROOT,
         ITEM_GRASSY_SEED,
@@ -329,6 +331,8 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_COLD] = {
         ITEM_FROST_MINT,
+        ITEM_FROST_MINT,
+        ITEM_SNOWBALL,
         ITEM_SNOWBALL,
         ITEM_NEVER_MELT_ICE,
         ITEM_MISTY_SEED,
@@ -342,7 +346,9 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_VOLCANIC] = {
         ITEM_CHIMNEY_PEPPER,
+        ITEM_CHIMNEY_PEPPER,
         ITEM_HARD_STONE,
+        ITEM_CHARCOAL,
         ITEM_CHARCOAL,
         ITEM_SOFT_SAND,
         //Shared items:
@@ -355,7 +361,9 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_SEASIDE] = {
         ITEM_SEASIDE_ALMOND,
+        ITEM_SEASIDE_ALMOND,
         ITEM_SOFT_SAND,
+        ITEM_SHOAL_SALT,
         ITEM_SHOAL_SALT,
         ITEM_SHOAL_SHELL,
         //Shared items:
@@ -368,6 +376,8 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_AQUATIC] = {
         ITEM_DEEPSEA_KELP,
+        ITEM_DEEPSEA_KELP,
+        ITEM_HEART_SCALE,
         ITEM_HEART_SCALE,
         ITEM_PEARL,
         ITEM_PSYCHIC_SEED,
@@ -381,7 +391,9 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_SAVANNA] = {
         ITEM_SAVANNA_MELON,
+        ITEM_SAVANNA_MELON,
         ITEM_SOFT_SAND,
+        ITEM_RARE_BONE,
         ITEM_RARE_BONE,
         ITEM_ELECTRIC_SEED,
         //Shared items:
@@ -394,6 +406,8 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_GENERAL] = {
         ITEM_ABSORB_BULB,
+        ITEM_ABSORB_BULB,
+        ITEM_LEEK,
         ITEM_LEEK,
         ITEM_TINY_MUSHROOM,
         ITEM_BIG_MUSHROOM,
