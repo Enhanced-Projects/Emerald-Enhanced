@@ -128,7 +128,7 @@
 #define VAR_RYU_PLAYER_BOTANY_SKILL          0x406D
 #define VAR_RYU_PLAYER_ALCHEMY_SKILL         0x406E
 #define VAR_ROUTE116_STATE                   0x406F
-#define VAR_RYU_PLAYER_MINING_EXP            0x4070
+#define VAR_RYU_PLAYER_MINING_SKILL_EXP            0x4070
 #define VAR_ROUTE118_STATE                   0x4071
 #define VAR_ROUTE119_STATE                   0x4072
 #define VAR_RYU_PLAYER_BOTANY_SKILL_EXP      0x4073
@@ -244,7 +244,7 @@
 #define VAR_RYU_ALCHEMY_COPPER               0x40E1 // Player's copper dust count
 #define VAR_RYU_ALCHEMY_SILVER               0x40E2 // Player's silver dust count
 #define VAR_RYU_ALCHEMY_GOLD                 0x40E3 // Player's gold dust count
-#define VAR_RYU_ALCHEMY_EXP                  0x40E4 // var is written to, but never read
+#define VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP                  0x40E4 // var is written to, but never read
 #define VAR_RYU_QUEST_AQUA                         0x40E5 // Aqua quest stages
 #define VAR_DAILY_SLOTS                      0x40E6
 #define VAR_DAILY_WILDS                      0x40E7

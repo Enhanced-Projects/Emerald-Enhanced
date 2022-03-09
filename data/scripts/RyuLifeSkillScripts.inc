@@ -415,7 +415,7 @@ Ryu_MineRock:: @@The special code function determines if you are inside or outsi
     checkitemspace ITEM_RARE_CANDY, 1  @@arbitrarily checks if there's space in the item pocket.
     compare VAR_RESULT, FALSE
     goto_if_eq MiningNotEnoughSpace
-    addvar VAR_RYU_PLAYER_MINING_EXP, 1
+    addvar VAR_RYU_PLAYER_MINING_SKILL_EXP, 1
     additem VAR_TEMP_B, VAR_TEMP_C
     bufferitemname 1, VAR_TEMP_B
     buffernumberstring 0, VAR_TEMP_C
@@ -442,7 +442,7 @@ Ryu_CheckForMiningLevelUp::
     goto ryu_return
 
 Ryu_CheckLevel1::
-    compare VAR_RYU_PLAYER_MINING_EXP, 75
+    compare VAR_RYU_PLAYER_MINING_SKILL_EXP, 75
     goto_if_lt ryu_return
     compare VAR_RYU_PLAYER_MINING_SKILL, 1
     goto_if_ne ryu_return
@@ -454,7 +454,7 @@ Ryu_CheckLevel1::
     return
 
 Ryu_CheckLevel2::
-    compare VAR_RYU_PLAYER_MINING_EXP, 180
+    compare VAR_RYU_PLAYER_MINING_SKILL_EXP, 180
     goto_if_lt ryu_return
     compare VAR_RYU_PLAYER_MINING_SKILL, 2
     goto_if_ne ryu_return
@@ -744,22 +744,22 @@ RA_LevelZero::
     goto ryu_return
 
 RA_LevelOne::
-    compare VAR_RYU_ALCHEMY_EXP, 1024
+    compare VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 1024
     goto_if_ge RA_LevelUp
     goto ryu_return
 
 RA_LevelTwo::
-    compare VAR_RYU_ALCHEMY_EXP, 2560
+    compare VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 2560
     goto_if_ge RA_LevelUp
     goto ryu_return
 
 RA_LevelThree::
-    compare VAR_RYU_ALCHEMY_EXP, 3584
+    compare VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 3584
     goto_if_ge RA_LevelUp
     goto ryu_return
 
 RA_LevelFour::
-    compare VAR_RYU_ALCHEMY_EXP, 4720
+    compare VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 4720
     goto_if_ge RA_LevelUp
     goto ryu_return
 

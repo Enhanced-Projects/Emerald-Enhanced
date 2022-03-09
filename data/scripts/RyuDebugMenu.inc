@@ -375,6 +375,7 @@ RDB_TempVarsViewMsg:
 
 
 RyuDebug_Utility1::
+	callnative temporarysetskills
 	release
 	end
 
@@ -565,7 +566,7 @@ RyuDebugGiveTMsDone::
 
 RyuDebug_GiveAlchemyKit::
 	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 5
-	setvar VAR_RYU_ALCHEMY_EXP, 5000
+	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 5000
 	additem ITEM_FRESH_WATER, 200
 	additem ITEM_TONIC_WATER, 200
 	additem ITEM_MINERAL_WATER, 200

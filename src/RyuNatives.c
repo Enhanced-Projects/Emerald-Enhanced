@@ -1826,7 +1826,7 @@ u16 RyuAlchemy_TryCraftingItem(void)
     u8 recipe = (VarGet(VAR_TEMP_A));
     u8 levelReq = 0;
     u8 currentLevel = (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL));
-    u16 currentExp = (VarGet(VAR_RYU_ALCHEMY_EXP));
+    u16 currentExp = (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP));
     u8 metal = 0;
     u16 item1 = 0;
     u16 item2 = 0;
@@ -1898,7 +1898,7 @@ u16 RyuAlchemy_TryCraftingItem(void)
     ConvertIntToDecimalStringN(gStringVar2, gAlchemyRecipes[recipe].givenCharges, STR_CONV_MODE_LEFT_ALIGN, 4);
     currentExp += gAlchemyRecipes[recipe].expGiven;
     ConvertIntToDecimalStringN(gStringVar3, gAlchemyRecipes[recipe].expGiven, STR_CONV_MODE_LEFT_ALIGN, 3);
-    VarSet(VAR_RYU_ALCHEMY_EXP, currentExp);
+    VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, currentExp);
     if (recipe > ALCHEMY_EFFECT_HEALING_FACTOR)
         return RyuGetAlchemyItemId(recipe - 2);
     else
@@ -1911,7 +1911,7 @@ void RyuDebug_CheckAlchemyStatus(void)
     ConvertIntToDecimalStringN(gStringVar2, gSaveBlock2Ptr->hasAlchemyEffectActive, STR_CONV_MODE_LEFT_ALIGN, 1);
     ConvertIntToDecimalStringN(gStringVar3, gSaveBlock2Ptr->alchemyCharges, STR_CONV_MODE_LEFT_ALIGN, 2);
     ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
-    ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_ALCHEMY_EXP), STR_CONV_MODE_LEFT_ALIGN, 5);
+    ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 5);
 }
 
 
@@ -1983,11 +1983,11 @@ void RyuFixCorruptedBoxMons(void)
 
 void RyuBufferSkillLevels(void)
 {
-    u16 alchExp = (VarGet(VAR_RYU_ALCHEMY_EXP));
+    u16 alchExp = (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP));
     u16 alchLvl = (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL));
     u16 botExp = (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP));
     u16 botLvl = (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL));
-    u16 minExp = (VarGet(VAR_RYU_PLAYER_MINING_EXP));
+    u16 minExp = (VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP));
     u16 minLvl = (VarGet(VAR_RYU_PLAYER_MINING_SKILL));
 
     ConvertIntToDecimalStringN(gStringVar1, alchExp, STR_CONV_MODE_LEFT_ALIGN, 5);
@@ -2527,4 +2527,14 @@ void SetArbitraryplayTime (void)
     gSaveBlock2Ptr->playTimeHours = 39;
     gSaveBlock2Ptr->playTimeMinutes = 15;
     gSaveBlock2Ptr->playTimeSeconds = 55;
+}
+
+void temporarysetskills (void) 
+{
+    VarSet(VAR_RYU_PLAYER_MINING_SKILL, 3 );
+    VarSet(VAR_RYU_PLAYER_MINING_SKILL_EXP, 1024);
+    VarSet(VAR_RYU_PLAYER_BOTANY_SKILL, 3);
+    VarSet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 1000);
+    VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL, 5);
+    VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 2000);
 }

@@ -590,7 +590,7 @@ u8 * GetMiningSkill(u8 * buffer)
 
 u8 * GetMiningExp(u8 * buffer)
 {
-    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
 u8 * GetBotanySkill(u8 * buffer)
@@ -610,7 +610,7 @@ u8 * GetAlchemySkill(u8 * buffer)
 
 u8 * GetAlchemyExp(u8 * buffer)
 {
-    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_ALCHEMY_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
 u8 * GetTotalKOs(u8 * buffer)
@@ -698,9 +698,9 @@ static const struct JournalStatData sJournalLifeSkillsPage[] =
     JOURNAL_STAT("Botany Lv", NULL, VAR_RYU_PLAYER_BOTANY_SKILL, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Botany exp", NULL, VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Mining Lv", NULL, VAR_RYU_PLAYER_MINING_SKILL, 5, JOURNALSTAT_VARIABLE),
-    JOURNAL_STAT("Mining exp", NULL, VAR_RYU_PLAYER_MINING_EXP, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Mining exp", NULL, VAR_RYU_PLAYER_MINING_SKILL_EXP, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Alchemy Lv", NULL, VAR_RYU_PLAYER_ALCHEMY_SKILL, 5, JOURNALSTAT_VARIABLE),
-    JOURNAL_STAT("Alchemy exp", NULL, VAR_RYU_ALCHEMY_EXP, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Alchemy exp", NULL, VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT_END
 };
 

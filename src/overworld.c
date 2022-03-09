@@ -1673,6 +1673,14 @@ void CB2_NewGame(void)
     bool8 hasShinyCharm = FALSE;
     bool8 hasOvalCharm = FALSE;
     bool8 hasMegaBracelet = FALSE;
+    u16 playerLifeSkills[3][2] = {0};
+
+    playerLifeSkills[0][0] = VarGet(VAR_RYU_PLAYER_MINING_SKILL);
+    playerLifeSkills[0][1] = VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP);
+    playerLifeSkills[1][0] = VarGet(VAR_RYU_PLAYER_BOTANY_SKILL);
+    playerLifeSkills[1][1] = VarGet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP);
+    playerLifeSkills[2][0] = VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL);
+    playerLifeSkills[2][1] = VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP);
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
@@ -1727,6 +1735,7 @@ void CB2_NewGame(void)
     SetMainCallback2(CB2_Overworld);
     if (isNGPlus == TRUE)
     {
+
         if (hasExpDrive == TRUE)
             FlagSet(FLAG_RYU_HAS_EXP_DRIVE);
 
@@ -1761,6 +1770,14 @@ void CB2_NewGame(void)
         FlagSet(FLAG_SYS_NATIONAL_DEX);
         FlagSet(FLAG_RYU_ISNGPLUS);
         VarSet(VAR_RYU_NGPLUS_COUNT, VarGet(VAR_RYU_NGPLUS_COUNT) + 1);
+        
+        //this should make life skills persist between new game +'s. If they aren't changed by the above code, they will set to zero.
+        VarSet(VAR_RYU_PLAYER_MINING_SKILL, playerLifeSkills[0][0]);
+        VarSet(VAR_RYU_PLAYER_MINING_SKILL_EXP, playerLifeSkills[0][1]);
+        VarSet(VAR_RYU_PLAYER_BOTANY_SKILL, playerLifeSkills[1][0]);
+        VarSet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP, playerLifeSkills[1][1]);
+        VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL, playerLifeSkills[2][0]);
+        VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, playerLifeSkills[2][1]);
     }
     else
     {
