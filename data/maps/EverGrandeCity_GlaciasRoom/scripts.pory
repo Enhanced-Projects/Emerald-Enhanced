@@ -131,7 +131,7 @@ EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech: @ 8228640
 script EGC_AltGlacia{
 	goto_if_set(FLAG_RYU_HAS_FOLLOWER, EGC_FollowerGlaciaRematch)
 	if (var(VAR_RYU_E43) == 0) {
-		msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleSpeech)
+		msgbox(EverGrandeCity_GlaciasRoom_Text_PreBattleSpeech)
 		trainerbattle_no_intro(TRAINER_GLACIA_REMATCH, EverGrandeCity_GlaciasRoom_Text_Defeat)
 	}
 	else {
