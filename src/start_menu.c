@@ -1111,6 +1111,7 @@ bool32 RyuCheckForAllExplorationAchievements(void)
 }
 
 extern int RyuGetTotalCaughtMons();
+extern void TryGiveLeetAch();
 
 static void CreateStartMenuTask(TaskFunc followupFunc)
 {
@@ -1144,6 +1145,9 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     if (CheckAchievement(ACH_TOURIST) == FALSE)
         if (RyuCheckForAllExplorationAchievements() == TRUE)
             GiveAchievement(ACH_TOURIST);
+
+    if ((FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE) && (CheckAchievement(ACH_1337) == FALSE))
+        TryGiveLeetAch();
 }
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)

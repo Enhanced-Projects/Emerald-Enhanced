@@ -1758,7 +1758,7 @@ int RyuGetTotalCaughtMons(void)
 
 void TryGiveLeetAch(void)
 {
-    if ((gSaveBlock2Ptr->playTimeHours <= 13) && (gSaveBlock2Ptr->playTimeMinutes <= 37))
+    if ((gSaveBlock2Ptr->playTimeHours <= 13) && (gSaveBlock2Ptr->playTimeMinutes <= 37) && FlagGet(FLAG_SYS_GAME_CLEAR))
         if (CheckAchievement(ACH_1337) == FALSE)
             GiveAchievement(ACH_1337);
 }
