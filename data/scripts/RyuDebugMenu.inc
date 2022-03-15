@@ -808,15 +808,37 @@ RyuNewGameQuery:
 @@EV DEBUG MENU==================================================================================================================
 
 RyuPokeEditMenu::
-	multichoicedefault 1, 0, 122, 0, 0
+	multichoicedefault 0, 0, MULTI_DEV_MODE_POKEEDIT_MENU, 0, 0
 	switch VAR_RESULT
 	case 0, RD_MonDataView
 	case 1, Ryu_ResetEVIV
 	case 2, RyuSetIvEvDebugMenu
 	case 3, RyuSetFriendshipDebugMenu
 	case 4, RyuAccessDevMoveRelearner
-	case 5, RyuExitPokeEditMenu
+	case 5, RyuChangeBossStatus
+	case 6, RyuExitPokeEditMenu
 	goto RyuExitPokeEditMenu
+
+RyuChangeBossStatus::
+	call RyuBufferPartyMonNames
+	multichoice 0, 0, MULTI_DYNAMIC_6, 1
+	copyvar VAR_0x8001, VAR_RESULT
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RyuPokeEditMenu
+	bufferpartymonnick 0, VAR_0x8001
+	msgbox RCBS_Query, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RyuPokeEditMenu
+	callnative RyuToggleBossStatus
+	msgbox RCBS_Success
+	goto RyuPokeEditMenu
+
+RCBS_Query:	
+	.string "Would you like to toggle {COLOR LIGHT_RED}{SHADOW RED}boss{COLOR DARK_GREY}{SHADOW LIGHT_GREY} status\nfor {STR_VAR_1}?$"
+
+RCBS_Success:
+	.string "Boss status successfully changed.$"
 
 RD_MonDataView::
 	setvar VAR_0x8001, 0

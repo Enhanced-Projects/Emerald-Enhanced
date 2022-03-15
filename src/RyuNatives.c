@@ -2538,3 +2538,15 @@ void temporarysetskills (void)
     VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL, 5);
     VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 2000);
 }
+
+void RyuToggleBossStatus (void)
+{
+    u8 slot = gSpecialVar_0x8001;
+    u8 tru = 1;
+    u8 fals = 0;
+
+    if (GetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS) == TRUE)
+        SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &fals);
+    else
+        SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &tru);
+}
