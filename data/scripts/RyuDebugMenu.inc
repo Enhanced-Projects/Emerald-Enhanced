@@ -929,7 +929,7 @@ RyuSetIvEvDebugMenu::
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuIvEv_ExitQuery
 	msgbox RyuIvEv_SetWhichStat
-	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpeed, RyuEVSpAtk, RyuEVSpDef
+	bufferdynamicmulti RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed
 	multichoice 0, 0, MULTI_DYNAMIC_6, 0
 	copyvar VAR_0x8002, VAR_RESULT @...................Which stat
 	closemessage
