@@ -97,12 +97,12 @@ FallarborTown_Text_MoveTutorSign: @ 81EB534
 `
 
 script FallarborTown_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_FALLARBOR)
+	setvar(VAR_0x8009, PROPERTY_FALLARBOR)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script FallarborTown_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_FALLARBOR)
+	setvar(VAR_0x8009, PROPERTY_FALLARBOR)
 	goto(RyuRealEstateHouseSign)
 }
 

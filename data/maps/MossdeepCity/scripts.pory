@@ -468,11 +468,11 @@ MDC_DevonGuy2ToMatt:
 `
 
 script MossdeepTown_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_MOSSDEEP)
+	setvar(VAR_0x8009, PROPERTY_MOSSDEEP)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script MossdeepTown_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_MOSSDEEP)
+	setvar(VAR_0x8009, PROPERTY_MOSSDEEP)
 	goto(RyuRealEstateHouseSign)
 }

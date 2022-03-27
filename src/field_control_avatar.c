@@ -214,6 +214,8 @@ const u8 gRyuReachedDailyTargetLocationString[] = _("Reached target area for the
 
 void RyuDoNotifyTasks(void)
 {
+    if (FlagGet(FLAG_RYU_ENTERING_OWNED_HOME) == FALSE)
+        FlagSet(FLAG_RYU_HIDE_HOME_ATTENDANT);
     if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for challenge/hardcore
     {
         if (!(FlagGet(FLAG_RYU_LIMBO) == 1))
@@ -655,6 +657,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
     bool8 isTrainer = FALSE;
     u8 currentTrainerFaction = 0;
     u16 currentTrainer = 0;
+    u8 currentFaction = FACTION_OTHERS;
 
     objectEventId = GetObjectEventIdByXYZ(position->x, position->y, position->height);
     if (objectEventId == OBJECT_EVENTS_COUNT || gObjectEvents[objectEventId].localId == PLAYER)
@@ -685,9 +688,16 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
         if (isTrainer == TRUE)
         {
             currentTrainer = T1_READ_16(script + 2);
+            currentFaction = GetFactionId(currentTrainer);
+            mgba_printf(LOGINFO, "faction is %d", currentFaction);
+            mgba_printf(LOGINFO, "Checking trainer %d", currentTrainer);
             if (FlagGet(TRAINER_FLAGS_START + currentTrainer) == TRUE)
                 {
                     if (currentTrainer == TRAINER_TIANA)
+                    {
+                        return script;
+                    }
+                    else if (GetFactionStanding(currentTrainer) <= 50)
                     {
                         return script;
                     }
@@ -698,6 +708,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
                             {
                                 gOriginalNPCScript = script;
                                 script = RyuGetFactionDailyQuestScriptPtr(currentTrainerFaction);
+                                return script;
                             }
                     }
                 }

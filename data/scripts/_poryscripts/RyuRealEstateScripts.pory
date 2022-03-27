@@ -2,7 +2,7 @@
 
 
 //called from each map to see if player owns the current property. 
-//The property ID must be loaded into VAR_TEMP_D prior to calling this.
+//The property ID must be loaded into VAR_0x8009 prior to calling this.
 script RyuScript_HouseDoorLocks{
     lock
     specialvar(VAR_RESULT, CheckIfPlayerOwnsCurrentProperty)
@@ -13,12 +13,13 @@ script RyuScript_HouseDoorLocks{
             end
         case 1:// Player owns property and set it as their home
             playse(SE_DOOR)
+            setflag(FLAG_RYU_ENTERING_OWNED_HOME)
             callnative(doSpecialHouseWarp)
             waitstate
         case 2:// player owns property but did not set it as their home or set it as rentable.
             msgbox("Would you like to set this property\nas your home?", MSGBOX_YESNO)
             if (var(VAR_RESULT) == TRUE) {
-                copyvar(VAR_RYU_PLAYER_HOUSE_ID, VAR_TEMP_D)
+                copyvar(VAR_RYU_PLAYER_HOUSE_ID, VAR_0x8009)
                 setflag(FLAG_RYU_HAS_HOME_REGISTERED)
                 msgbox("You've set this property as\nyour home. You can now warp here\lfrom the waystone.")
                 closemessage
@@ -60,7 +61,7 @@ script RyuScript_HouseDoorLocks{
     end
 }
 
-script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must be set to the id of the house it is next to.
+script RyuRealEstateHouseSign { //Similar to the above function, VAR_0x8009 must be set to the id of the house it is next to.
     lock
     callnative(RyuBufferRealEstateDetails) //puts the name of the property in STR_VAR_2 and the value in STR_VAR_1, as well as sell price (66%) in STR_VAR_3
     specialvar(VAR_RESULT, RyuCheckPropertyStatus)//returns a value based on status of the property.
@@ -99,11 +100,11 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must
             multichoice(0, 2, MULTI_REALESTATE_MENU, 1)//move in/lease out/check details/sell/cancel
                 switch(var(VAR_RESULT)) {
                     case 0: //Move in
-                        compare_var_to_var(VAR_RYU_PLAYER_HOUSE_ID, VAR_TEMP_D)
+                        compare_var_to_var(VAR_RYU_PLAYER_HOUSE_ID, VAR_0x8009)
                         goto_if_eq(RyuUnregisterHome)
                         msgbox("Set this property as your home?", MSGBOX_YESNO)
                         if (var(VAR_RESULT) == YES) {
-                            copyvar(VAR_RYU_PLAYER_HOUSE_ID, VAR_TEMP_D)
+                            copyvar(VAR_RYU_PLAYER_HOUSE_ID, VAR_0x8009)
                             setflag(FLAG_RYU_HAS_HOME_REGISTERED)
                             msgbox("You've set {STR_VAR_2} as\nyour home. You can now warp here\lfrom the waystone.")
                             closemessage
@@ -129,7 +130,7 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must
                         callnative(RyuBufferOwnedPropertyDetails)
                         msgbox("{STR_VAR_2} Details:\pIs currently Rented?: {STR_VAR_3}\nIs {PLAYER}'s home?: {RYU_STR_1}\pIs pending repair?: {RYU_STR_2}$")
                         if (flag(FLAG_RYU_PROPERTY_DAMAGED) == TRUE) {
-                            compare_var_to_var(VAR_RYU_DAMAGED_HOUSE_ID, VAR_TEMP_D)
+                            compare_var_to_var(VAR_RYU_DAMAGED_HOUSE_ID, VAR_0x8009)
                             call_if_eq(AskPlayerToRepairProperty)
                         }
                         closemessage
@@ -137,7 +138,7 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must
                         end
                     case 3://sell property
                         callnative(RyuBufferRealEstateDetails)
-                        compare_var_to_var(VAR_RYU_DAMAGED_HOUSE_ID, VAR_TEMP_D)
+                        compare_var_to_var(VAR_RYU_DAMAGED_HOUSE_ID, VAR_0x8009)
                         if ((var(VAR_RESULT) == TRUE) && ((flag(FLAG_RYU_PROPERTY_DAMAGED) == TRUE) || (flag(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE) == TRUE))){
                             msgbox("You cannot sell this property.\nIt is in need of repair, or\lundergoing mainenance.")
                         }
@@ -210,7 +211,7 @@ script RyuUnregisterHome {
 }
 
 script AskPlayerToRepairProperty {
-    copyvar(VAR_TEMP_D, VAR_RYU_DAMAGED_HOUSE_ID)
+    copyvar(VAR_0x8009, VAR_RYU_DAMAGED_HOUSE_ID)
     callnative(RyuBufferPropertyDamageData)
     msgbox(AskRepairPropertyText, MSGBOX_YESNO)
     if (var(VAR_RESULT) == YES){
@@ -246,7 +247,7 @@ script RT_Home{
     specialvar(VAR_RESULT, CheckIfPlayerIsRealtor)
     if (var(VAR_RESULT) == TRUE) {
         if (flag(FLAG_RYU_HAS_HOME_REGISTERED) == TRUE) {
-            copyvar(VAR_TEMP_D, VAR_RYU_PLAYER_HOUSE_ID)
+            copyvar(VAR_0x8009, VAR_RYU_PLAYER_HOUSE_ID)
             callnative(doSpecialHouseWarp)
             waitstate
         }

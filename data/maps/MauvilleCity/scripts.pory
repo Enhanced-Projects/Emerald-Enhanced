@@ -294,11 +294,11 @@ MC_LI_Intro:
 `
 
 script MauvilleCity_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_MAUVILLE)
+	setvar(VAR_0x8009, PROPERTY_MAUVILLE)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script MauvilleCity_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_MAUVILLE)
+	setvar(VAR_0x8009, PROPERTY_MAUVILLE)
 	goto(RyuRealEstateHouseSign)
 }

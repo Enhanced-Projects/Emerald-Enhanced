@@ -1,0 +1,136 @@
+// store-a-companion
+script LoadAttendantGfx {
+    setvar(VAR_TEMP_5, 100)
+    if ((flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) && (flag(FLAG_RYU_SAVED_ATTENDANT) == TRUE)) {
+        copyvar(VAR_OBJ_GFX_ID_3, VAR_RYU_ATTENDANT_ID)
+        clearflag(FLAG_RYU_HIDE_HOME_ATTENDANT)
+        special(DrawWholeMapView)
+    }
+    return
+}
+
+script whoami {
+    buffernumberstring(0, VAR_OBJ_GFX_ID_3)
+    msgbox("I am {STR_VAR_1}")
+    release
+    end
+}
+
+script SetFollowerAsAttendant {
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Should I stay here at your home?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        copyvar(VAR_RYU_ATTENDANT_ID, VAR_RYU_FOLLOWER_ID)
+        copyvar(VAR_OBJ_GFX_ID_3, VAR_RYU_ATTENDANT_ID)
+        setflag(FLAG_RYU_SAVED_ATTENDANT)
+        destroyfollower
+        getobjectxy(FOLLOWER)
+        setobjectxy(1, VAR_0x8006, VAR_0x8007)
+        addobject(1)
+        release
+        end
+    }
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay, I'll keep following you.")
+    return
+}
+
+text RASDF {
+    "Attendant:{STR_VAR_1}, Follower:{STR_VAR_2}, Enabled:{STR_VAR_3}"
+}
+
+script ExpelPartnerAtHome {
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay! I'll head back to my\nhome!\pThanks for letting me stay.")
+    call(RyuDismissAttendant)
+}
+
+script RyuAttendantScript {
+    switch (var(VAR_RYU_ATTENDANT_ID)) {
+        case OBJ_EVENT_GFX_WOMAN_2:
+            call(Ryu_AttendantLanette)
+	    case OBJ_EVENT_GFX_TWIN:
+            call(Ryu_AttendantMinnie)
+	    case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+            call(Ryu_AttendantDawn)
+	    case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+            call(Ryu_AttendantBrendan)
+	    case OBJ_EVENT_GFX_LEAF:
+            call(Ryu_AttendantLeaf)
+	    case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+            call(Ryu_AttendantCourtney)
+	    case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+            call(Ryu_AttendantShelly)
+	    case OBJ_EVENT_GFX_NURSE:
+            call(Ryu_AttendantJoy)
+	    case OBJ_EVENT_GFX_MAY:
+            call(Ryu_AttendantMay)
+    }
+}
+
+script Ryu_AttendantLanette {
+    release
+    end
+}
+
+script Ryu_AttendantMinnie {
+    release
+    end
+}
+
+script Ryu_AttendantDawn {
+    release
+    end
+}
+
+script Ryu_AttendantBrendan {
+    release
+    end
+}
+
+script Ryu_AttendantLeaf {
+    release
+    end
+}
+
+script Ryu_AttendantCourtney {
+    release
+    end
+}
+
+script Ryu_AttendantShelly {
+    release
+    end
+}
+
+script Ryu_AttendantJoy {
+    release
+    end
+}
+
+script Ryu_AttendantMay {
+    release
+    end
+}
+
+script RyuDismissAttendant {
+    switch (var(VAR_RYU_ATTENDANT_ID)) {
+        case OBJ_EVENT_GFX_WOMAN_2:
+            call(Ryu_RestoreLanetteAtHouse)
+	    case OBJ_EVENT_GFX_TWIN:
+            call(Ryu_RestoreMinnie)
+	    case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+            call(Ryu_RestoreDawn)
+	    case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+            call(Ryu_RestoreBrendan)
+	    case OBJ_EVENT_GFX_LEAF:
+            call(Ryu_RestoreLeaf)
+	    case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+            call(Ryu_RestoreCourtney)
+	    case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+            call(Ryu_RestoreShelly)
+	    case OBJ_EVENT_GFX_NURSE:
+            call(Ryu_RestoreNurse)
+	    case OBJ_EVENT_GFX_MAY:
+            call(Ryu_ReturnMayToHome)
+    }
+    release
+    end
+}

@@ -54,6 +54,7 @@
 #include "constants/items.h"
 #include "item.h"
 #include "overworld_notif.h"
+#include "factions.h"
 
 enum
 {
@@ -1284,6 +1285,8 @@ bool8 GetTrainerFlag(void)
         return GetBattlePyramidTrainerFlag(gSelectedObjectEvent);
     else if (InTrainerHill())
         return GetHillTrainerFlag(gSelectedObjectEvent);
+    else if (GetFactionStanding(GetFactionId(gTrainerBattleOpponent_A)) < 35)
+        return FALSE;
     else
         return FlagGet(GetTrainerAFlag());
 }

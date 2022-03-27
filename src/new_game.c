@@ -315,6 +315,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_RT_WALLY);
     FlagSet(FLAG_RYU_HIDE_PBC_HOME_WALLY);
     FlagSet(FLAG_RYU_HIDE_PETALBURG_MAY);
+    FlagClear(FLAG_RYU_SAVED_ATTENDANT);
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);
@@ -337,6 +338,7 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_QUESTLINE_ID, 100); //No questline started
     VarSet(VAR_RYU_PLAYER_HOUSE_ID, 0xFFFF);//Which house the player has set as their own
     VarSet(VAR_RYU_CONTEST_REWARD, 1000); //'clear' ryu contest reward id.
+    VarSet(VAR_RYU_ATTENDANT_ID, 0); //which companion is currently the player's attendant.
     
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));

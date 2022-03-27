@@ -1008,6 +1008,9 @@ static void StartMenuTask(u8 taskId)
 void RyuDoOneTImeSaveFixes(void) {
     if (gSaveBlock2Ptr->optionsTextSpeed == 3)
         gSaveBlock2Ptr->optionsTextSpeed = 2;
+
+    if (FlagGet(FLAG_RYU_SAVED_ATTENDANT) == FALSE);
+        VarSet(VAR_RYU_ATTENDANT_ID, 0);
 }
 
 bool32 RyuCheckFactionAchievements(void)

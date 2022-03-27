@@ -2550,3 +2550,12 @@ void RyuToggleBossStatus (void)
     else
         SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &tru);
 }
+
+
+void RyuCalcPartyStats (void)
+{
+    u32 i;
+
+    for (i = 0;i < PARTY_SIZE;i++)
+        CalculateMonStats(&gPlayerParty[i]);
+}

@@ -2356,7 +2356,9 @@ bool8 ScrCmd_scriptdebug(struct ScriptContext *ctx)
         msg = (const u8 *)ctx->data[0];
 
     StringExpandPlaceholders(gStringVar4, msg);
+    mgba_open();
     mgba_printf(LOGINFO, "%s", ConvertToAscii(gStringVar4));
+    mgba_close();
     return FALSE;
 }
 

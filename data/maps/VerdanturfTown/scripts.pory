@@ -143,12 +143,12 @@ VerdanturfTown_Text_RusturfTunnelSign: @ 81EBA59
 `
 
 script VerdanturfTown_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_VERDANTURF)
+	setvar(VAR_0x8009, PROPERTY_VERDANTURF)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script VerdanturfTown_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_VERDANTURF)
+	setvar(VAR_0x8009, PROPERTY_VERDANTURF)
 	goto(RyuRealEstateHouseSign)
 }
 

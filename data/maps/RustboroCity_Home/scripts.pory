@@ -1,7 +1,22 @@
-mapscripts RustboroCity_Home_MapScripts {}
+mapscripts RustboroCity_Home_MapScripts {
+        ON_TRANSITION {
+        if(flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) {
+            copyvar(VAR_OBJ_GFX_ID_0, VAR_RYU_ATTENDANT_ID)
+            addobject(1)
+            end
+        }
+    }
+    ON_FRAME [
+        VAR_TEMP_5, 0: LoadAttendantGfx
+    ]
+}
+
+const HOUSEWIFEID = 1
 
 script RustboroHouse_ExitHome {
     lock
+    clearflag(FLAG_RYU_ENTERING_OWNED_HOME)
+    clearflag(FLAG_RYU_ENTERING_RENTED_HOME)
     warpsilent(MAP_RUSTBORO_CITY, 255, 32, 47)
     waitstate
 }

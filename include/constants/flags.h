@@ -439,7 +439,7 @@
 #define FLAG_RYU_DS_MAY_LOVERS               0x19E
 #define FLAG_RYU_DS_MAY_PARTNERS             0x19F
 #define FLAG_RYU_HIDE_LRT_MAY                0x1A0
-#define FLAG_UNUSED_0x1A1                    0x1A1
+#define FLAG_RYU_SAVED_ATTENDANT             0x1A1
 #define FLAG_RYU_MAY_QUEST_PENDING_PETALBURG 0x1A2
 #define FLAG_RYU_RIVALMOM_OUTRO              0x1A3
 #define FLAG_RYU_HIDE_PETALBURG_MAY          0x1A4
@@ -484,7 +484,7 @@
 #define FLAG_CAUGHT_LATIAS_OR_LATIOS         0x1C9
 #define FLAG_CAUGHT_MEW                      0x1CA
 #define FLAG_RYU_BH_HIDE_MAY                 0x1CB
-#define FLAG_UNUSED_0x1CC                    0x1CC
+#define FLAG_RYU_ENTERING_OWNED_HOME         0x1CC
 #define FLAG_HIDE_LRT_BH_BIRCH               0x1CD
 #define FLAG_HIDE_LRT_DH_BIRCH               0x1CE
 #define FLAG_RYU_MAY_EVENT_FAILED            0x1CF
@@ -796,7 +796,7 @@
 #define FLAG_RYU_FAILED_RYU_CHALLENGE                               0x2E3
 #define FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE                         0x2E4
 #define FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS                         0x2E5
-#define FLAG_UNUSED_0x2E6                                           0x2E6
+#define FLAG_RYU_HIDE_HOME_ATTENDANT                                0x2E6
 #define FLAG_UNUSED_0x2E7                                           0x2E7
 #define FLAG_UNUSED_0x2E8                                           0x2E8
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN            0x2E9

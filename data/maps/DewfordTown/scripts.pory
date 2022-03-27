@@ -348,11 +348,11 @@ DewfordTown_Text_YeahDefinitionOfInRightNow: @ 81EA491
 `
 
 script DewfordTown_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_DEWFORD)
+	setvar(VAR_0x8009, PROPERTY_DEWFORD)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script DewfordTown_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_DEWFORD)
+	setvar(VAR_0x8009, PROPERTY_DEWFORD)
 	goto(RyuRealEstateHouseSign)
 }

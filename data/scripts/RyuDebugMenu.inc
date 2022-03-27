@@ -375,7 +375,6 @@ RDB_TempVarsViewMsg:
 
 
 RyuDebug_Utility1::
-	callnative temporarysetskills
 	release
 	end
 

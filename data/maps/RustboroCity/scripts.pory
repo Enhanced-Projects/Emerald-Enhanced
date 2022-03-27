@@ -1281,11 +1281,11 @@ DC_WithSomeGuy:
 `
 
 script RustboroCity_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_RUSTBURO)
+	setvar(VAR_0x8009, PROPERTY_RUSTBURO)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script RustboroCity_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_RUSTBURO)
+	setvar(VAR_0x8009, PROPERTY_RUSTBURO)
 	goto(RyuRealEstateHouseSign)
 }

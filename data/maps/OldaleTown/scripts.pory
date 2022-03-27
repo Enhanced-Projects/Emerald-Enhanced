@@ -677,11 +677,11 @@ OT_PlayerLeaveOldale:
 `
 
 script OldaleTown_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_OLDALE)
+	setvar(VAR_0x8009, PROPERTY_OLDALE)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script OldaleTown_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_OLDALE)
+	setvar(VAR_0x8009, PROPERTY_OLDALE)
 	goto(RyuRealEstateHouseSign)
 }

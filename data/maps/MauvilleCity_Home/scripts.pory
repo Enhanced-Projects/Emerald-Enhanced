@@ -1,8 +1,22 @@
-mapscripts MauvilleCity_Home_MapScripts {}
+mapscripts MauvilleCity_Home_MapScripts {
+        ON_TRANSITION {
+        if(flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) {
+            copyvar(VAR_OBJ_GFX_ID_0, VAR_RYU_ATTENDANT_ID)
+            addobject(1)
+            end
+        }
+    }
+    ON_FRAME [
+        VAR_TEMP_5, 0: LoadAttendantGfx
+    ]
+}
+
+const HOUSEWIFEID = 1
 
 script MauvilleHouse_ExitHome {
     lockall
     clearflag(FLAG_RYU_ENTERING_RENTED_HOME)
+    clearflag(FLAG_RYU_ENTERING_OWNED_HOME)
     warpsilent(MAP_MAUVILLE_CITY, 255, 11, 24)
     waitstate
 }

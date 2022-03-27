@@ -1262,11 +1262,11 @@ SC_ShellyAquaCallMsg:
 `
 
 script SlateportCity_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_SLATEPORT)
+	setvar(VAR_0x8009, PROPERTY_SLATEPORT)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script SlateportCity_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_SLATEPORT)
+	setvar(VAR_0x8009, PROPERTY_SLATEPORT)
 	goto(RyuRealEstateHouseSign)
 }

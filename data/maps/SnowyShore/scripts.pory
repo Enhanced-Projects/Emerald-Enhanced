@@ -207,11 +207,11 @@ text SnowyShore_Text_TownSign {
 }
 
 script SnowyShore_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_SNOWYSHORE)
+	setvar(VAR_0x8009, PROPERTY_SNOWYSHORE)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script SnowyShore_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_SNOWYSHORE)
+	setvar(VAR_0x8009, PROPERTY_SNOWYSHORE)
 	goto(RyuRealEstateHouseSign)
 }
