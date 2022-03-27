@@ -3301,6 +3301,17 @@ extern const u8 gText_RyuRESellProperty[];
 extern const u8 gText_RyuBallChangerLabel[];
 extern const u8 gText_RyuBallMarketLabel[];
 
+extern const u8 gText_RyuAttendantNameLanette[];
+extern const u8 gText_RyuAttendantNameMinnie[];
+extern const u8 gText_RyuAttendantNameDawn[];
+extern const u8 gText_RyuAttendantNameBrendan[];
+extern const u8 gText_RyuAttendantNameLana[];
+extern const u8 gText_RyuAttendantNameCourtney[];
+extern const u8 gText_RyuAttendantNameShelly[];
+extern const u8 gText_RyuAttendantNameJoy[];
+extern const u8 gText_RyuAttendantNameMay[];
+extern const u8 gText_RyuAttendantNameNone[];
+
 
 extern const u8 sText_DebugMainUtilityItem1[];
 

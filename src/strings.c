@@ -2239,3 +2239,13 @@ const u8 gText_RyuRESellProperty[] = _("Sell Property");
 const u8 gText_RyuBallChangerLabel[] = _("Ball Changer");
 const u8 gText_RyuBallMarketLabel[] = _("Ball Market");
 
+const u8 gText_RyuAttendantNameLanette[] = _("Lanette");
+const u8 gText_RyuAttendantNameMinnie[] = _("Minnie");
+const u8 gText_RyuAttendantNameDawn[] = _("Dawn");
+const u8 gText_RyuAttendantNameBrendan[] = _("Brendan");
+const u8 gText_RyuAttendantNameLana[] = _("Lana");
+const u8 gText_RyuAttendantNameCourtney[] = _("Courtney");
+const u8 gText_RyuAttendantNameShelly[] = _("Shelly");
+const u8 gText_RyuAttendantNameJoy[] = _("Joy");
+const u8 gText_RyuAttendantNameMay[] = _("May");
+const u8 gText_RyuAttendantNameNone[] = _("None");

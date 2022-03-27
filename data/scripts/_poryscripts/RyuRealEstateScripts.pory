@@ -100,8 +100,9 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_0x8009 must
             multichoice(0, 2, MULTI_REALESTATE_MENU, 1)//move in/lease out/check details/sell/cancel
                 switch(var(VAR_RESULT)) {
                     case 0: //Move in
-                        compare_var_to_var(VAR_RYU_PLAYER_HOUSE_ID, VAR_0x8009)
-                        goto_if_eq(RyuUnregisterHome)
+                        if (var(VAR_RYU_PLAYER_HOUSE_ID) == VAR_0x8009) {
+                            goto(RyuUnregisterHome)
+                        }
                         msgbox("Set this property as your home?", MSGBOX_YESNO)
                         if (var(VAR_RESULT) == YES) {
                             copyvar(VAR_RYU_PLAYER_HOUSE_ID, VAR_0x8009)
@@ -195,9 +196,13 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_0x8009 must
 script RyuUnregisterHome {
     if (flag(FLAG_RYU_HAS_HOME_REGISTERED) == TRUE) {
         msgbox("This property is currently your\nhome.\pWould you like to unregister?", MSGBOX_YESNO)
-        if (var(VAR_RESULT) == TRUE) {
+        if (var(VAR_RESULT) == YES) {
             clearflag(FLAG_RYU_HAS_HOME_REGISTERED)
-            msgbox("Home Unregistered.")
+            call(RyuDismissAttendant)
+            clearflag(FLAG_RYU_SAVED_ATTENDANT)
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            setvar(VAR_RYU_PLAYER_HOUSE_ID, 0xFFFF)
+            msgbox("Home Unregistered.\pIf you had an attendant, they\nwere sent home.")
             closemessage
             release
             end

@@ -2559,3 +2559,43 @@ void RyuCalcPartyStats (void)
     for (i = 0;i < PARTY_SIZE;i++)
         CalculateMonStats(&gPlayerParty[i]);
 }
+
+void RyuBufferAttendantName (void)
+{
+    u16 attendant = VarGet(VAR_RYU_ATTENDANT_ID);
+
+    switch(attendant)
+    {
+            case OBJ_EVENT_GFX_WOMAN_2:
+                StringCopy(gStringVar1, gText_RyuAttendantNameLanette);
+                break;
+	        case OBJ_EVENT_GFX_TWIN:
+                StringCopy(gStringVar1, gText_RyuAttendantNameMinnie);
+                break;
+	        case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+                StringCopy(gStringVar1, gText_RyuAttendantNameDawn);
+                break;
+	        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+                StringCopy(gStringVar1, gText_RyuAttendantNameBrendan);
+                break;
+	        case OBJ_EVENT_GFX_LEAF:
+                StringCopy(gStringVar1, gText_RyuAttendantNameLana);
+                break;
+	        case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+                StringCopy(gStringVar1, gText_RyuAttendantNameCourtney);
+                break;
+	        case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+                StringCopy(gStringVar1, gText_RyuAttendantNameShelly);
+                break;
+	        case OBJ_EVENT_GFX_NURSE:
+                StringCopy(gStringVar1, gText_RyuAttendantNameJoy);
+                break;
+	        case OBJ_EVENT_GFX_MAY:
+                StringCopy(gStringVar1, gText_RyuAttendantNameMay);
+                break;
+	        case 0xFFFF:
+                StringCopy(gStringVar1, gText_RyuAttendantNameNone);
+                break;
+    }
+
+}

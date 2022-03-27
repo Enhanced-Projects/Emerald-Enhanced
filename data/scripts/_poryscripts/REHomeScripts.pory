@@ -22,8 +22,8 @@ script SetFollowerAsAttendant {
         copyvar(VAR_RYU_ATTENDANT_ID, VAR_RYU_FOLLOWER_ID)
         copyvar(VAR_OBJ_GFX_ID_3, VAR_RYU_ATTENDANT_ID)
         setflag(FLAG_RYU_SAVED_ATTENDANT)
-        destroyfollower
         getobjectxy(FOLLOWER)
+        destroyfollower
         setobjectxy(1, VAR_0x8006, VAR_0x8007)
         addobject(1)
         release
@@ -40,9 +40,84 @@ text RASDF {
 script ExpelPartnerAtHome {
     msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay! I'll head back to my\nhome!\pThanks for letting me stay.")
     call(RyuDismissAttendant)
+    release
+    end
 }
 
+script RyuRE_ActivateBed {
+    lock
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}Sleep for the night?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        specialvar(VAR_RESULT, GetPlayerFacingDirection)
+        switch (var(VAR_RESULT)) {
+            case DIR_NORTH:
+                applymovement(PLAYER, Common_Movement_StepUp)
+                waitmovement(PLAYER)
+                turnobject(PLAYER, DIR_SOUTH)
+                goto(RyuRE_UseBed)
+            case DIR_SOUTH:
+                applymovement(PLAYER, Common_Movement_StepUp)
+                waitmovement(PLAYER)
+                turnobject(PLAYER, DIR_SOUTH)
+                goto(RyuRE_UseBed)
+            case DIR_EAST:
+                applymovement(PLAYER, Common_Movement_StepRight)
+                waitmovement(PLAYER)
+                turnobject(PLAYER, DIR_SOUTH)
+                goto(RyuRE_UseBed)
+            case DIR_WEST:
+                applymovement(PLAYER, Common_Movement_StepLeft)
+                waitmovement(PLAYER)
+                turnobject(PLAYER, DIR_SOUTH)
+                goto(RyuRE_UseBed)
+        }
+        release
+        end
+    }
+release
+end
+}
+
+script RyuRE_UseBed {
+        fadescreen(FADE_TO_BLACK)
+        closemessage
+        getplayerxy(VAR_0x8003, VAR_0x8004)
+        setobjectxy(1, VAR_0x8003, VAR_0x8004)
+        switch (var(VAR_RYU_ATTENDANT_ID)) {
+            case OBJ_EVENT_GFX_WOMAN_2:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aw! But it's still so early!\nI'm used to being up\lmuch later than this.\pOh well, guess I'll enjoy\nthe extra sleep.")
+                closemessage
+                callnative(RyuBufferAttendantName)
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {STR_VAR_1} spend the night\n together . . .)")
+                delay(20)
+                fadescreen(FADE_FROM_BLACK)
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Good morning, {PLAYER}!\pShould I make some coffee?")
+                release
+                end
+	        case OBJ_EVENT_GFX_TWIN:
+                call(Ryu_AttendantMinnie)
+	        case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+                call(Ryu_AttendantDawn)
+	        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+                call(Ryu_AttendantBrendan)
+	        case OBJ_EVENT_GFX_LEAF:
+                call(Ryu_AttendantLeaf)
+	        case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+                call(Ryu_AttendantCourtney)
+	        case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+                call(Ryu_AttendantShelly)
+	        case OBJ_EVENT_GFX_NURSE:
+                call(Ryu_AttendantJoy)
+	        case OBJ_EVENT_GFX_MAY:
+                call(Ryu_AttendantMay)
+            case 0xFFFF:
+                release
+                end
+        }
+    }
+
 script RyuAttendantScript {
+    lock
     switch (var(VAR_RYU_ATTENDANT_ID)) {
         case OBJ_EVENT_GFX_WOMAN_2:
             call(Ryu_AttendantLanette)
@@ -63,10 +138,12 @@ script RyuAttendantScript {
 	    case OBJ_EVENT_GFX_MAY:
             call(Ryu_AttendantMay)
     }
+    release
+    end
 }
 
 script Ryu_AttendantLanette {
-    release
+    releaseall
     end
 }
 
@@ -131,6 +208,5 @@ script RyuDismissAttendant {
 	    case OBJ_EVENT_GFX_MAY:
             call(Ryu_ReturnMayToHome)
     }
-    release
-    end
+    return
 }
