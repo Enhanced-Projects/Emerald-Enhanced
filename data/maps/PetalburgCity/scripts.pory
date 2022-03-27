@@ -979,7 +979,7 @@ movement PBC_ChaseWally3 {
 script PBC_FinalMayEvent {
 	lockall
 	setvar(VAR_TEMP_6, 100)
-	if (var(VAR_RYU_QUEST_MAY) < 150) {
+	if ((var(VAR_RYU_QUEST_MAY) < 150) || (var(VAR_RYU_QUEST_MAY) >= 180)) {
 		goto(ryu_end)
 	}
 	playse(SE_PIN)
