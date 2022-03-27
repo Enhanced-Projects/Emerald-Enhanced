@@ -1285,7 +1285,7 @@ bool8 GetTrainerFlag(void)
         return GetBattlePyramidTrainerFlag(gSelectedObjectEvent);
     else if (InTrainerHill())
         return GetHillTrainerFlag(gSelectedObjectEvent);
-    else if (GetFactionStanding(GetFactionId(gTrainerBattleOpponent_A)) < 35)
+    else if (GetFactionStanding(GetFactionId(gTrainerBattleOpponent_A)) < 20)
         return FALSE;
     else
         return FlagGet(GetTrainerAFlag());
