@@ -1,7 +1,7 @@
 mapscripts LilycoveCity_Home_MapScripts {
         ON_TRANSITION {
         if(flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) {
-            copyvar(VAR_OBJ_GFX_ID_0, VAR_RYU_ATTENDANT_ID)
+            copyvar(VAR_OBJ_GFX_ID_3, VAR_RYU_ATTENDANT_ID)
             addobject(1)
             end
         }

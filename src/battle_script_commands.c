@@ -6522,6 +6522,8 @@ static void Cmd_getmoneyreward(void)
 
     if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
         AddMoney(&gSaveBlock1Ptr->money, 1);
+    else if (gSpecialVar_0x8002 == 65535)
+        AddMoney(&gSaveBlock1Ptr->money, 1);
     else
         AddMoney(&gSaveBlock1Ptr->money, moneyReward);
 

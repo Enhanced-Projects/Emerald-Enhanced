@@ -137,7 +137,7 @@
 #define VAR_ROUTE123_STATE                   0x4076 // Unused Var
 #define VAR_RYU_AUTOLEVEL_MODIFIER           0x4077 // level modifier for autolevel
 #define VAR_RYU_QUESTS_FINISHED              0x4078 //
-#define VAR_RYU_ATTENDANT_ID                 0x4079 //
+#define VAR_DO_NOT_USE_0x4079                0x4079 // DO NOT USE, SETS ITSELF FOR NO REASON
 #define VAR_ROUTE127_STATE                   0x407A // Unused Var
 #define VAR_ROUTE128_STATE                   0x407B
 #define VAR_ROUTE129_STATE                   0x407C // Unused Var
@@ -284,6 +284,7 @@
 #define VAR_RYU_MONEY_BASE_VALUE             0x4108
 #define VAR_RYU_MONEY_BASE_COEFFICIENT       0x4109
 #define VAR_RYU_SPECIAL_CHALLENGE_STATE      0x410A
+#define VAR_RYU_ATTENDANT_ID                 0x410B
 
 
 //vars 4100 thru 417f are unused; total of 128.

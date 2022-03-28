@@ -316,6 +316,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_PBC_HOME_WALLY);
     FlagSet(FLAG_RYU_HIDE_PETALBURG_MAY);
     FlagClear(FLAG_RYU_SAVED_ATTENDANT);
+    FlagClear(FLAG_RYU_HIDE_HOME_ATTENDANT);
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);

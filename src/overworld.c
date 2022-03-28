@@ -1673,6 +1673,7 @@ void CB2_NewGame(void)
     bool8 hasShinyCharm = FALSE;
     bool8 hasOvalCharm = FALSE;
     bool8 hasMegaBracelet = FALSE;
+    bool8 hasRecipeBook = FALSE;
     u16 playerLifeSkills[3][2] = {0};
 
     playerLifeSkills[0][0] = VarGet(VAR_RYU_PLAYER_MINING_SKILL);
@@ -1720,6 +1721,9 @@ void CB2_NewGame(void)
 
     if (FlagGet(FLAG_SYS_DEXNAV_GET) == 1)
         hasDexNav = TRUE;
+    
+    if (CheckBagHasItem(ITEM_RECIPE_BOOK, 1))
+        hasRecipeBook = TRUE;
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
@@ -1765,6 +1769,9 @@ void CB2_NewGame(void)
         
         if (hasMegaBracelet == TRUE)
             FlagSet(FLAG_RYU_HAS_MEGA_BRACELET);
+
+        if (hasRecipeBook == TRUE)
+            FlagSet(FLAG_RYU_HAS_RECIPE_BOOK);
 
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);

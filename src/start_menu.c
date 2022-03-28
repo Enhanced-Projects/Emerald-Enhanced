@@ -1004,13 +1004,19 @@ static void StartMenuTask(u8 taskId)
     if (InitStartMenuStep() == TRUE)
         SwitchTaskToFollowupFunc(taskId);
 }
-
+const u8 OneTimeNotifyMsg[] = _("Applied One Time Save Fixes.");
 void RyuDoOneTImeSaveFixes(void) {
     if (gSaveBlock2Ptr->optionsTextSpeed == 3)
         gSaveBlock2Ptr->optionsTextSpeed = 2;
 
     if (FlagGet(FLAG_RYU_SAVED_ATTENDANT) == FALSE);
-        VarSet(VAR_RYU_ATTENDANT_ID, 0);
+        VarSet(VAR_RYU_ATTENDANT_ID, 0xFFFF);
+
+    if ((VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL > 0)) && (!(CheckBagHasItem(579, 1))))
+        AddBagItem(579, 1);
+
+    QueueNotification(OneTimeNotifyMsg, NOTIFY_GENERAL, 60);
+    FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
 }
 
 bool32 RyuCheckFactionAchievements(void)
@@ -1132,7 +1138,6 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
     if (FlagGet(FLAG_RYU_ONE_TIME_SAVE_FIX) == FALSE)
         RyuDoOneTImeSaveFixes();
-    RyuDoOneTImeSaveFixes(); //this should let me put in one time use fixes for various quest things
     if (CheckAchievement(ACH_POKEMON_MASTER) == FALSE)
         if (RyuGetTotalCaughtMons() >= 386)
             GiveAchievement(ACH_POKEMON_MASTER);

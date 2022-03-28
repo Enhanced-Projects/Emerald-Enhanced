@@ -964,11 +964,11 @@ static const u8 sFollowerBrendan[] = _("Spawn Brendan");
 static const u8 sFollowerLeaf[] = _("Spawn Leaf");
 static const u8 sFollowerCourtney[] = _("Spawn Courtney");
 static const u8 sFollowerJoy[] = _("Spawn Joy");
+static const u8 sFollowerMay[] = _("Spawn May");
 static const u8 sFollowerNonCombat[] = _("{COLOR LIGHT_RED}{SHADOW RED}{DOWN_ARROW} NON COMBAT {DOWN_ARROW}");
 static const u8 sFollowerBlaise[] = _("Spawn Blaise");
 static const u8 sFollowerTiana[] = _("Spawn Tiana");
 static const u8 sFollowerHexer[] = _("Spawn Hexer");
-static const u8 sFollowerMay[] = _("Spawn May");
 static const u8 sReturnPrevious[] = _("Return");
 
 static const struct ListMenuItem sBotanyConsumablesSet[] =
