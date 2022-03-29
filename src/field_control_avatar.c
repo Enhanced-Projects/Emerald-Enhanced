@@ -689,8 +689,6 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
         {
             currentTrainer = T1_READ_16(script + 2);
             currentFaction = GetFactionId(currentTrainer);
-            mgba_printf(LOGINFO, "faction is %d", currentFaction);
-            mgba_printf(LOGINFO, "Checking trainer %d", currentTrainer);
             if (FlagGet(TRAINER_FLAGS_START + currentTrainer) == TRUE)
                 {
                     if (currentTrainer == TRAINER_TIANA)
