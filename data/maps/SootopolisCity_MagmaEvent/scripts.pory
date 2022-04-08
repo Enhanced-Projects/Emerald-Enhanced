@@ -100,14 +100,13 @@ SC_GroudonFight::
 	goto_if_ne ryu_end
 	specialvar VAR_RESULT, CountBadges
 	multvar VAR_RESULT, 10
-	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_NONE
+	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_RED_ORB
 	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_CAUGHT
 	call_if_ne SC_Groudon_Defeated
-	call MH4_RedOrb
 	compare VAR_RESULT, B_OUTCOME_CAUGHT
 	goto_if_eq SC_HideGroudon
 	goto SC_Groudon_PostEvent

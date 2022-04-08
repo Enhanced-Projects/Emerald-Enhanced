@@ -118,7 +118,6 @@ AS_DoMainAquaScenePt2::
 	waitmovement PLAYER
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 3
-	giveitem ITEM_BLUE_ORB, 1
 	giveitem ITEM_MASTER_BALL, 1
 	msgbox AS_KyogreMustBe
 	closemessage

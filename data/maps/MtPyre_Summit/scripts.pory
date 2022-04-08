@@ -322,7 +322,6 @@ MPS_AfterMaxie::
 	waitmovement PLAYER
 	applymovement 17, Common_Movement_FaceDown
 	waitmovement 17
-	giveitem ITEM_RED_ORB, 1
 	msgbox MPS_JoinMeAt
 	closemessage
 	fadescreen FADE_TO_BLACK

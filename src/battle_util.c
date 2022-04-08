@@ -8059,6 +8059,9 @@ bool32 CanMegaEvolve(u8 battlerId)
     species = GetMonData(mon, MON_DATA_SPECIES);
     itemId = GetMonData(mon, MON_DATA_HELD_ITEM);
 
+    if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) && (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY))
+        return FALSE;
+
     // Check if there is an entry in the evolution table for regular Mega Evolution.
     if (GetMegaEvolutionSpecies(species, itemId) != SPECIES_NONE)
     {

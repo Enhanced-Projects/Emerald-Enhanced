@@ -70,7 +70,7 @@ R130_Kyogre::
 	goto_if_set FLAG_RYU_KYOGRE_RAN, ryu_end
 	msgbox RyuLegendary_IntroKyogreRoute130
 	setvar VAR_TEMP_5, SPECIES_KYOGRE
-	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
+	setvar VAR_TEMP_9, ITEM_BLUE_ORB
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtKyogreRoute130 
@@ -85,7 +85,6 @@ RyuLegendary_CaughtKyogreRoute130::
 	removeobject 4 
 	pokenavcall R130_Kyogre_ReturnToMossdeep
 	waitmessage
-	call MC_BlueOrb
 	setvar VAR_RYU_QUEST_AQUA, 150 @Player captured Kyogre.
 	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
 	waitstate

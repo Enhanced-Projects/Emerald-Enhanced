@@ -96,7 +96,6 @@ SFC9_TakeOpportunity::
 SFC9_CompleteTheMission::
 	applymovement PLAYER, SFC9_WalkInPlaceTakeOrb
 	waitmovement PLAYER
-	giveitem ITEM_BLUE_ORB, 1
 	closemessage
 	delay 40
 	msgbox SFC9_AquaGone
