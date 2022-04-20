@@ -1255,6 +1255,18 @@ int RyuShardReward(void)//Rolls shard table for a random shard.
 
 }
 
+int RyuChooseRandomGhostId(void)
+{
+    u32 val = 0;
+    do
+    {
+       val = (Random() % ((NUM_SPECIES) - 1));
+    }while (!((gBaseStats[val].type1 == TYPE_GHOST) || (gBaseStats[val].type2 == TYPE_GHOST)) || (IS_ULTRA_BEAST(val) || IS_MEGA_EVOLVED(val)));
+    gSpecialVar_0x8005 = val;
+
+    return val;
+}
+
 int Ryu_GiveRevivedFossilEgg(void)//gives the player a revived fossil mon with 3 random stats at 31 IV
 {
     u16 species = (VarGet(VAR_TEMP_4));
@@ -1279,6 +1291,8 @@ int Ryu_GiveRevivedFossilEgg(void)//gives the player a revived fossil mon with 3
 
     CreateMon(&gPlayerParty[slot], species, level, fixedIV, 0, 0, OT_ID_PLAYER_ID, 0);//this creates a fossil mon with 3 random iv's of 31
                                                                                       //I wish there was a better way to do this
+
+    gSpecialVar_0x8003 = species;
     switch (rnd1)//this sets the mon data rnd1 (which refers to the define of MON_DATA_STAT_IV where stat is the random one)
     {
         case 39:
@@ -1380,6 +1394,125 @@ int Ryu_GiveRevivedFossilEgg(void)//gives the player a revived fossil mon with 3
                 break;
             }
     }
+
+    if ((slot <= 4) && (Random() % 1000 < 19))
+        {
+            SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &egg);
+            SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
+            slot += 1;
+             do
+            {
+                rnd1 = ((Random() %6) + 39);
+                rnd2 = ((Random() %6) + 39);
+                rnd3 = ((Random() %6) + 39);
+            }while (((rnd1 != rnd2) && (rnd2 != rnd3) && (rnd3 != rnd1)) == FALSE);//This loop makes sure that rnd 1 - 3 are not the same
+
+            CreateMon(&gPlayerParty[slot], RyuChooseRandomGhostId(), level, fixedIV, 0, 0, OT_ID_PLAYER_ID, 0);//this creates a fossil mon with 3 random iv's of 31
+                                                                                              //I wish there was a better way to do this
+            switch (rnd1)//this sets the mon data rnd1 (which refers to the define of MON_DATA_STAT_IV where stat is the random one)
+            {
+                case 39:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                        break;
+                    }
+                case 40:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                        break;
+                    }
+                case 41:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                        break;
+                    }
+                case 42:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                        break;
+                    }
+                case 43:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                        break;
+                    }
+                case 44:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                        break;
+                    }
+            } 
+
+            switch (rnd2)
+            {
+                case 39:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                        break;
+                    }
+                case 40:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                        break;
+                    }
+                case 41:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                        break;
+                    }
+                case 42:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                        break;
+                    }
+                case 43:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                        break;
+                    }
+                case 44:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                        break;
+                    }
+            }  
+
+            switch (rnd3)
+            {
+                case 39:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                        break;
+                    }
+                case 40:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                        break;
+                    }
+                case 41:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                        break;
+                    }
+                case 42:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                        break;
+                    }
+                case 43:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                        break;
+                    }
+                case 44:
+                    {
+                        SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                        break;
+                    }
+            }
+            SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
+            return 3;
+        }
 
     SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &egg);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);

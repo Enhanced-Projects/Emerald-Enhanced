@@ -813,6 +813,7 @@
 #define SPECIES_MELMETAL 809
 
 #define IS_ULTRA_BEAST(speciesId)((speciesId >= SPECIES_NIHILEGO && speciesId <= SPECIES_GUZZLORD) || (speciesId >= SPECIES_NAGANADEL && speciesId <= SPECIES_BLACEPHALON))
+#define IS_MEGA_EVOLVED(speciesId)(speciesId >= SPECIES_MEGA_AMPHAROS && speciesId <= SPECIES_MEGA_GARDEVOIR)
 
 // Megas
 #define SPECIES_MEGA_START 810
@@ -1774,7 +1775,7 @@
 #define NATIONAL_DEX_UNOWN_SCHOOL 900
 #define NATIONAL_DEX_MIMIKYU_BUSTED 901
 
-#define NATIONAL_DEX_COUNT 686
+#define NATIONAL_DEX_COUNT 685
 
 // Hoenn Dex(ORAS) Index Defines
 #define HOENN_DEX_NONE 0

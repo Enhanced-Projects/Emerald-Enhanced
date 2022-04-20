@@ -375,7 +375,6 @@ RDB_TempVarsViewMsg:
 
 
 RyuDebug_Utility1::
-	giveitem ITEM_RED_ORB
 	release
 	end
 

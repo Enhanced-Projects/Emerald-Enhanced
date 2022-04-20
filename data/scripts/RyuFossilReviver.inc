@@ -120,6 +120,7 @@ RFR_CheckPartyandGiveEgg::
     switch VAR_RESULT
     case 0, RFR_NoPartySlotFree
     case 1, RFR_GiveEggAndExit
+    case 3, RFR_GiveEggAndBonusGhost
     goto ryu_end
 
 Ryu_DontHaveItem::
@@ -144,7 +145,19 @@ Ryu_FossilReviverCancel::
     release
     end
 
+RFR_GiveEggAndBonusGhost:
+    removeitem VAR_TEMP_2, 1
+    bufferspeciesname 0, VAR_0x8003
+    bufferspeciesname 1, VAR_0x8005
+    msgbox RFR_GhostBonus
+    closemessage
+    release
+    end
+
 @@Strings==========================================================================================
+
+RFR_GhostBonus:
+    .string "Success!\nThe {STR_VAR_1} fossil was revived!\pWhoa! The {STR_VAR_1} fossil was\nhaunted by a {STR_VAR_2}!!!\pHere you go!$"
 
 RyuFossilReviverIntro:
     .string "Hello, traveller!\pPlease pick from this list of fossils\nso I can resurrect one for you!$"
