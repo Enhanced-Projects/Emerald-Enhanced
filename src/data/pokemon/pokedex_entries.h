@@ -9720,6 +9720,42 @@ const struct PokedexEntry gPokedexEntries[] =
 		.trainerOffset = 0,
 	},
 
+	[NATIONAL_DEX_DEOXYS_ATTACK] =
+	{
+		.categoryName = _("Offensive"),
+        .height = 17,
+        .weight = 608,
+        .description = gDeoxysPokedexText,
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 290,
+        .trainerOffset = 2,
+	},
+
+	[NATIONAL_DEX_DEOXYS_DEFENSE] =
+	{
+		.categoryName = _("Defensive"),
+        .height = 17,
+        .weight = 608,
+        .description = gDeoxysPokedexText,
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 290,
+        .trainerOffset = 2,
+	},
+
+	[NATIONAL_DEX_DEOXYS_SPEED] =
+	{
+		.categoryName = _("Preemptive"),
+        .height = 17,
+        .weight = 608,
+        .description = gDeoxysPokedexText,
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 290,
+        .trainerOffset = 2,
+	},
+
 	/*[NATIONAL_DEX_MELTAN] =
 	{
 		.categoryName = _("Hex Nut"),

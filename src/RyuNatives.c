@@ -1257,7 +1257,7 @@ int RyuShardReward(void)//Rolls shard table for a random shard.
 
 int RyuChooseRandomGhostId(void)
 {
-    u32 val = 0;
+    u32 val = Random() % 100;
     do
     {
        val = (Random() % ((NUM_SPECIES) - 1));

@@ -1004,6 +1004,9 @@ const u16 gSpeciesToNationalPokedexNum[NUM_SPECIES] = // Assigns all species to 
 	SPECIES_TO_NATIONAL(ZERAORA),
 	SPECIES_TO_NATIONAL(UNOWN_SCHOOL),
     SPECIES_TO_NATIONAL(MIMIKYU_BUSTED),
+    SPECIES_TO_NATIONAL(DEOXYS_ATTACK),
+    SPECIES_TO_NATIONAL(DEOXYS_DEFENSE),
+    SPECIES_TO_NATIONAL(DEOXYS_SPEED),
 };
 
 const u16 gHoennToNationalOrder[HOENN_DEX_COUNT] = // Assigns Hoenn Dex Pokémon (Using National Dex Index)
