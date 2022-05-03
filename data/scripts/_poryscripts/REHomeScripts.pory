@@ -445,7 +445,7 @@ script Ryu_AttendantJoy {
             end
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_NURSE RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}I hope things are going well at the\nPokecenters...")
     }

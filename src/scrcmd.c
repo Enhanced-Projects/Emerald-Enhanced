@@ -1491,60 +1491,13 @@ bool8 ScrCmd_showcontestwinner(struct ScriptContext *ctx)
     return TRUE;
 }
 
-bool8 ScrCmd_braillemessage(struct ScriptContext *ctx)
+bool8 ScrCmd_empty0x78(struct ScriptContext *ctx)
 {
-    u8 *ptr = (u8 *)ScriptReadWord(ctx);
-    struct WindowTemplate winTemplate;
-    s32 i;
-    u8 width, height;
-    u8 xWindow, yWindow, xText, yText;
-    u8 temp;
-
-    StringExpandPlaceholders(gStringVar4, ptr + 6);
-
-    width = GetStringWidth(6, gStringVar4, -1) / 8u;
-
-    if (width > 0x1C)
-        width = 0x1C;
-
-    for (i = 0, height = 4; gStringVar4[i] != 0xFF;)
-    {
-        if (gStringVar4[i++] == 0xFE)
-            height += 3;
-    }
-
-    if (height > 0x12)
-        height = 0x12;
-
-    temp = width + 2;
-    xWindow = (0x1E - temp) / 2;
-
-    temp = height + 2;
-    yText = (0x14 - temp) / 2;
-
-    xText = xWindow;
-    xWindow += 1;
-
-    yWindow = yText;
-    yText += 2;
-
-    xText = (xWindow - xText - 1) * 8 + 3;
-    yText = (yText - yWindow - 1) * 8;
-
-    winTemplate = CreateWindowTemplate(0, xWindow, yWindow + 1, width, height, 0xF, 0x1);
-    gBrailleWindowId = AddWindow(&winTemplate);
-    LoadUserWindowBorderGfx(gBrailleWindowId, 0x214, 0xE0);
-    DrawStdWindowFrame(gBrailleWindowId, 0);
-    PutWindowTilemap(gBrailleWindowId);
-    FillWindowPixelBuffer(gBrailleWindowId, PIXEL_FILL(1));
-    AddTextPrinterParameterized(gBrailleWindowId, 6, gStringVar4, xText, yText, 0xFF, 0x0);
-    CopyWindowToVram(gBrailleWindowId, 3);
     return FALSE;
 }
 
-bool8 ScrCmd_closebraillemessage(struct ScriptContext *ctx)
+bool8 ScrCmd_empty0xda(struct ScriptContext *ctx)
 {
-    CloseBrailleWindow();
     return FALSE;
 }
 

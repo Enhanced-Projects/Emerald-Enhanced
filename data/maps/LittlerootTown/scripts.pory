@@ -316,6 +316,7 @@ Ryu_HaremEvent::
 	setvar VAR_RYU_PARTNER_COUNT, 10 @Finished harem event.
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	special RemoveCameraObject
+	call RyuHaremEventMaySection
 	release
 	end
 
@@ -738,5 +739,50 @@ movement LRT_MayToHomeEast {
 movement LRT_MayToHomeWest {
 	walk_down * 7
 	walk_left * 4
+	step_end
+}
+
+//=============================================May's part of the harem event
+
+script RyuHaremEventMaySection {
+	if ((flag(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN) == TRUE) && (flag(FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS) == TRUE)) {
+		addobject(13)
+		applymovement(13, LRT_HaremEvent_MaySectionMovement1)
+		waitmovement(13)
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hoo boy, you sure are popular with\nthe ladies, huh!?\pWell, I'm okay with all of them\nas long as they don't try to\lkeep you from me.\pI wish I could have participated\nin getting your gift, but, I came around\ltoo late. It's fine!\pI just have to be extra loving\nwhen I'm travelling with you, huh?")
+		closemessage
+		getplayerxy(VAR_0x8008, VAR_0x8009)
+		if (var(VAR_0x8008) == 9) { //player is female, X coord is 9
+			applymovement(13, Common_Movement_StepLeft)
+			waitmovement(13)
+		}
+		turnobject(13, DIR_WEST)
+		applymovement(13, Common_Movement_HeartEmote)
+		playse(SE_M_CHARM)
+		waitse
+		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (May blushes and hesitates for a little\n and then kisses you.)")
+		playse(SE_PIN)
+		applymovement(PLAYER, Common_Movement_ExclamationMark)
+		waitmovement(PLAYER)
+		waitse
+		waitmessage
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}There's my gift for you.\nHope you enjoyed it!")
+		closemessage
+		applymovement(13, LRT_HaremEvent_MayMovement2)
+		waitmovement(13)
+		removeobject(13)
+		return
+	}
+	return
+}
+
+movement LRT_HaremEvent_MaySectionMovement1 {
+	walk_down * 6
+	face_left
+	step_end
+}
+
+movement LRT_HaremEvent_MayMovement2 {
+	walk_up * 6
 	step_end
 }
