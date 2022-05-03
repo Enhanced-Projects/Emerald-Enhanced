@@ -68,9 +68,9 @@ DesertRuins_EventScript_BigHoleInWall:: @ 822D9EE
 
 DesertRuins_EventScript_CaveEntranceSide:: @ 822D9F8
 	lockall
-	braillemessage DesertRuins_Braille_UseRockSmash
+	 msgbox DesertRuins_Braille_UseRockSmash
 	waitbuttonpress
-	closebraillemessage
+	closemessage
 	releaseall
 	end
 

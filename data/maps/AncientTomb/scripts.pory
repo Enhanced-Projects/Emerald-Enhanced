@@ -67,9 +67,9 @@ AncientTomb_EventScript_BigHoleInWall:: @ 8239046
 
 AncientTomb_EventScript_CaveEntranceSide:: @ 8239050
 	lockall
-	braillemessage AncientTomb_Braille_ShineInTheMiddle
+	msgbox AncientTomb_Braille_ShineInTheMiddle
 	waitbuttonpress
-	closebraillemessage
+	closemessage
 	releaseall
 	end
 

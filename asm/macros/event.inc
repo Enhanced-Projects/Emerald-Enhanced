@@ -924,12 +924,8 @@
 	.byte \a
 	.endm
 
-	@ Displays the string at pointer as braille text in a standard message box. The string must be formatted to use braille 
-	@ characters and needs to provide six extra starting characters that are skipped (in RS, these characters determined the 
-	@ box's size and position, but in Emerald these are calculated automatically).
-	.macro braillemessage text:req
+	.macro empty0x78
 	.byte 0x78
-	.4byte \text
 	.endm
 
 	@ Gives the player one of the specified (species) Pokemon at level level holding item. The trailing 0s are unused parameters
@@ -1555,7 +1551,7 @@
 	.byte 0xd9
 	.endm
 
-	.macro closebraillemessage
+	.macro empty0xda
 	.byte 0xda
 	.endm
 
