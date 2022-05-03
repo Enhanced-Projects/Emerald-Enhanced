@@ -914,3 +914,70 @@ const static struct QuestStageDesc gMayQuestStages[] = { //only visible when sta
     },
     QUEST_STAGE_END
 };
+/*
+HOW TO READ:
+  when the magma, aqua, and devon questlines are zero,
+  they should all 3 show. When the player chooses one, 
+  the other two should be hidden. OTHERWISE Inactive means
+  hidden. Started means shown. Deferred means hidden.
+  Finished should show in green. (Or red if value is in Parentheses (666))
+  when a quest is first visible, make it white
+  when a quest is none of these states, make it blue.
+
+VAR_RYU_QUEST_DEVON_CORPORATE
+  inactive: 0
+  first visible: 0
+  started: 5
+  deferred: 60000
+  finished: 1000
+
+VAR_RYU_QUEST_DEVON_SCIENTIST
+  inactive: 0
+  first visible: 100
+  started: 100
+  deferred: 60000
+  finished: 2000
+
+VAR_RYU_QUEST_MAGMA:
+  inactive: 0
+  first visible: 0
+  started: 100
+  deferred: 60000
+  finished: 596, 597, 598, 599
+
+VAR_RYU_QUEST_AQUA:
+  inactive: 0
+  first visible: 0
+  started: 5
+  deferred: 60000
+  finished: 160, 161
+
+VAR_RYU_QUEST_LANA:
+  inactive: 0
+  first visible: 2
+  started: 11
+  finished: 955, 1000, (666)
+
+VAR_RYU_QUEST_NURSE:
+  inactive: 0
+  first visible: 1
+  started: 2
+  finished: 10, (11)
+
+VAR_RYU_QUEST_MAY:
+  inactive: 0
+  first visible: 5
+  started: 5
+  finished: 255, (666), (999)
+====================DAILY QUESTS=========
+active: FLAG_DAILY_QUEST_ACTIVE TRUE
+inactive: FLAG_DAILY_QUEST_ACTIVE FALSE
+to show data:
+(VAR_RYU_DAILY_QUEST_TYPE)
+  FETCH TYPE: "Daily Quest for {gFactionNames[VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION]}: Obtain {VAR_RYU_DAILY_QUEST_DATA} {gItems[VAR_RYU_DAILY_QUEST_TARGET]}(s) and return to asignee." 
+  HATCH TYPE: "Daily Quest for {gFactionNames[VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION]}: Hatch the given egg and return to assignee."
+ TRAVEL TYPE: "Daily Quest for {gFactionNames[VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION]}: Travel to [(map sum value of)VAR_RYU_DAILY_QUEST_TARGET)]. Walk around and wait for call."
+CAPTURE TYPE: "Daily Quest for {gFactionNames[VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION]}: Capture a [gSpeciesNames[VAR_RYU_DAILY_QUEST_TARGET] and return."
+====================FACTION SPECIAL QUESTS=======
+TBD. (They are tracked by flags, not variables. May not be able to display them correctly.)
+*/
