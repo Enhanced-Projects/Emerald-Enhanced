@@ -407,13 +407,6 @@ FollowerLeafExit:
 	.string "Do you need some space?$"
 
 
-ryu_return::
-	return
-
-ryu_end::
-	release
-	end
-
 @+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Nurse quest
 
 RF_CheckPlayerQualifiesForNurseQuest::@ This is the script that activates when player is about to enter a pokemon center that has a gym on it.
@@ -905,5 +898,14 @@ script RyuFollowerSelectNPCScript{
 		case OBJ_EVENT_GFX_MAY:
 			goto(RyuFollower_MaySelector)
 	}
+	end
+}
+
+script ryu_return {
+	return
+}
+
+script ryu_end{
+	release
 	end
 }
