@@ -3848,6 +3848,15 @@ bool32 ShouldDoTrainerSlide(u32 battlerId, u32 trainerId, u32 which)
     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
         return FALSE;
 
+    if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
+        return FALSE;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        return FALSE;
+
+    if (gSaveBlock2Ptr->trainerSlideEnabled == FALSE)
+        return FALSE;
+
     for (i = 0; i < ARRAY_COUNT(sTrainerSlides); i++)
     {
         if (trainerId == sTrainerSlides[i].trainerId)

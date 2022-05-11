@@ -37,6 +37,7 @@ enum
     MENUITEM_TRANSITION,
     MENUITEM_VANILLACAP,
     MENUITEM_AUTORUN,
+    MENUITEM_TRAINERSLIDE,
     MENUITEM_SAVE,
     MENUITEM_COUNT,
 };
@@ -66,6 +67,7 @@ static void HighlightOptionMenuItem(int cursor);
 static void TextSpeed_DrawChoices(int selection, int y, u8 textSpeed);
 static void BattleScene_DrawChoices(int selection, int y, u8 textSpeed);
 static void VanillaCap_DrawChoices(int selection, int y, u8 textSpeed);
+static void TrainerSlide_DrawChoices(int selection, int y, u8 textSpeed);
 static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed);
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed);
 static void HpBar_DrawChoices(int selection, int y, u8 textSpeed);
@@ -105,6 +107,7 @@ static const sItemFunctions[MENUITEM_COUNT] =
     [MENUITEM_TRANSITION] = {Transition_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_VANILLACAP] = {VanillaCap_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_AUTORUN] = {ToggleAutoRun_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_TRAINERSLIDE] = {TrainerSlide_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_SAVE] = {NULL, NULL},
 };
 
@@ -123,6 +126,7 @@ static const u8 sText_Dynamic[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dynamic");
 static const u8 sText_Set[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Set");
 static const u8 sText_VanillaLevelCap[] = _("Lv cap 100");
 static const u8 sText_ToggleAutoRun[] = _("Auto Run");
+static const u8 sText_TrainerSlideOption[] = _("Slide in msg");
 
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
@@ -138,6 +142,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_TRANSITION]  = sText_Transition,
     [MENUITEM_VANILLACAP]  = sText_VanillaLevelCap,
     [MENUITEM_AUTORUN]  = sText_ToggleAutoRun,
+    [MENUITEM_TRAINERSLIDE]  = sText_TrainerSlideOption,
     [MENUITEM_SAVE]        = gText_OptionMenuSave,
 };
 
@@ -316,6 +321,7 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_BAR_SPEED] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
         sOptions->sel[MENUITEM_TRANSITION] = FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION);
         sOptions->sel[MENUITEM_VANILLACAP] = FlagGet(FLAG_RYU_VANILLA_CAP);
+        sOptions->sel[MENUITEM_TRAINERSLIDE] = gSaveBlock2Ptr->trainerSlideEnabled;
         sOptions->sel[MENUITEM_AUTORUN] = FlagGet(FLAG_RYU_AUTORUN);
 
 
@@ -1093,6 +1099,8 @@ static void Task_OptionMenuSave(u8 taskId)
         {
             FlagClear(FLAG_RYU_VANILLA_CAP);
         }
+
+    gSaveBlock2Ptr->trainerSlideEnabled = sOptions->sel[MENUITEM_TRAINERSLIDE];
         
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -1427,6 +1435,15 @@ static void ForceBattleSet_DrawChoices(int selection, int y, u8 textSpeed)
     styles[selection] = 1;
     DrawOptionMenuChoice(sText_Dynamic, 104, y, styles[0], textSpeed);
     DrawOptionMenuChoice(sText_Set, GetStringRightAlignXOffset(1, sText_Set, 198), y, styles[1], textSpeed);
+}
+
+static void TrainerSlide_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[2] = {0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_BattleSceneOff, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOn, 198), y, styles[1], textSpeed);
 }
 
 static void DrawOptionMenuTexts(void)
