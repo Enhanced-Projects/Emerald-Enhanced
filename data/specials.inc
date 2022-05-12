@@ -572,3 +572,4 @@ gSpecials:: @ 81DBA64
 	def_special CheckOwnedRayquaza
 	def_special AreMonsRepelled
 	def_special CheckValidMonsForSpecialChallenge
+	def_special RyuBufferRepelItemCounts

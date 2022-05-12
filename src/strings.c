@@ -2132,9 +2132,9 @@ const u8 gText_ColorLightBlueShadowDarkGrey[] = _("{COLOR LIGHT_BLUE}{SHADOW LIG
 
 const u8 gText_MartDisabledChallenge[] = _("You are in Challenge mode.\nMarts are disabled.");
 
-const u8 gText_ItemRepel[] = _("Repel (100 steps)");
-const u8 gText_ItemSuperRepel[] = _("Super Repel (200 steps)");
-const u8 gText_ItemMaxRepel[] = _("Max Repel (250 steps)");
+const u8 gText_ItemRepel[] = _("Repel (100 steps) {COLOR LIGHT_GREEN}{SHADOW GREEN}({RYU_STR_1})");
+const u8 gText_ItemSuperRepel[] = _("Super Repel (200 steps) {COLOR LIGHT_GREEN}{SHADOW GREEN}({RYU_STR_2})");
+const u8 gText_ItemMaxRepel[] = _("Max Repel (250 steps) {COLOR LIGHT_GREEN}{SHADOW GREEN}({RYU_STR_3})");
 
 const u8 gText_RyuVersion[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}Ver:");
 

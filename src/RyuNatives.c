@@ -1197,6 +1197,33 @@ void RyuCountGemOres(void)//buffers the number of each gem ore the player has to
     ConvertIntToDecimalStringN(gRyuStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
+void RyuBufferRepelItemCounts(void)
+{
+    u32 i;
+    u16 total1, total2, total3;
+    for (i = 0; i < gBagPockets[ITEMS_POCKET].capacity; i++)
+    {
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_REPEL)
+        {
+            total1 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_SUPER_REPEL)
+        {
+            total2 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_MAX_REPEL)
+        {
+            total3 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+    }
+
+    ConvertIntToDecimalStringN(gRyuStringVar3, total3, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, total2, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
+}
+
 void RyuChooseFromGemList(void)//rolls the relevant table for gems
 {
     u16 mode = (VarGet(VAR_TEMP_A));
