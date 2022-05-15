@@ -3041,9 +3041,9 @@ inline u8 GetCurrentMaxLevel()
 inline u8 RyuGetAffectionChance()
 {
     if ((FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) || FlagGet(FLAG_RYU_HARDCORE_MODE))
-        return 10;
+        return 7;
     else
-        return 15;
+        return 10;
 }
 
 u8 GetLevelFromMonExp(struct Pokemon *mon)
