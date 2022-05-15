@@ -2668,7 +2668,7 @@ void RyuBufferLongPlayTimeString (void)
     u16 seconds = gSaveBlock2Ptr->playTimeSeconds;
     u16 frames = gSaveBlock2Ptr->playTimeVBlanks;
 
-    ConvertIntToDecimalStringN(gRyuStringVar1, hours, STR_CONV_MODE_LEADING_ZEROS, 2);    
+    ConvertIntToDecimalStringN(gRyuStringVar1, hours, STR_CONV_MODE_LEFT_ALIGN, 3);    
     ConvertIntToDecimalStringN(gRyuStringVar2, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);    
     ConvertIntToDecimalStringN(gRyuStringVar3, seconds, STR_CONV_MODE_LEADING_ZEROS, 2);    
     ConvertIntToDecimalStringN(gRyuStringVar4, frames, STR_CONV_MODE_LEADING_ZEROS, 2);
@@ -2758,4 +2758,11 @@ void RyuBufferAttendantName (void)
                 break;
     }
 
+}
+
+void ryuSetPlayTime(void)
+{
+    gSaveBlock2Ptr->playTimeHours = 105;
+    gSaveBlock2Ptr->playTimeMinutes = 5;
+    gSaveBlock2Ptr->playTimeSeconds = 0;
 }

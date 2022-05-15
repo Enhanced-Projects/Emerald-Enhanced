@@ -461,7 +461,7 @@ void PrintNumberToScreen(s32 num)
 
     //playtime readout
     StringCopy(gRyuStringVar1, sText_PlayTime);
-    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEADING_ZEROS, 2);
+    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
     StringAppend(gRyuStringVar1, gRyuStringVar2);
     StringAppend(gRyuStringVar1, sText_Colon);
     ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
