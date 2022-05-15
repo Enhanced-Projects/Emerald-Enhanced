@@ -7434,8 +7434,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     {
         if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
-        else if (moveType == TYPE_FIRE && (FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1))//Placeholder flag
-        gBattlescriptCurrInstr = BattleScript_PreventFireAttackInRain;
         else if (moveType == TYPE_FIRE)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
         else if (moveType == TYPE_GRASS)
@@ -7445,8 +7443,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     {
         if (moveType == TYPE_FIRE)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
-        else if (moveType == TYPE_WATER && (FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1))//Placeholder flag
-        gBattlescriptCurrInstr = BattleScript_PreventWaterAttackInSun;
         else if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
         else if (moveType == TYPE_GRASS)
@@ -7465,15 +7461,19 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
     }   
 
-    // Eclipse boosts Dark type moves by 25%, Ghost type moves by 15% and Psychic type moves by 10%
+    // Eclipse boosts Dark type moves by 50%, Ghost type moves by 25% and Psychic type moves by 10%
     if (IsBattlerWeatherAffected(battlerAtk, WEATHER_ECLIPSE_ANY))
     {
         if (moveType == TYPE_DARK)
-            dmg = ApplyModifier(UQ_4_12(1.25), dmg);
+            dmg = ApplyModifier(UQ_4_12(1.50), dmg);
         else if (moveType == TYPE_GHOST)
-            dmg = ApplyModifier(UQ_4_12(1.15), dmg);
+            dmg = ApplyModifier(UQ_4_12(1.25), dmg);
         else if (moveType == TYPE_PSYCHIC)
             dmg = ApplyModifier(UQ_4_12(1.10), dmg);
+        else if (moveType == TYPE_FAIRY)
+            dmg = ApplyModifier(UQ_4_12(0.5), dmg);
+        else if (moveType == TYPE_NORMAL)
+            dmg = ApplyModifier(UQ_4_12(0.9), dmg);
     }   
 
     // check stab
