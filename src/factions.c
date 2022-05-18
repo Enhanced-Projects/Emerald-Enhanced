@@ -13,14 +13,14 @@
 #include "palette.h"
 #include "string_util.h"
 
-const u8 gFactionNames[8][14] = {
+const u8 gFactionNames[8][15] = {
     [FACTION_NATURALISTS] = _("Naturalists"),
     [FACTION_STUDENTS] = _("Students"),
     [FACTION_NOBLES] = _("Nobles"),
     [FACTION_POKEFANS] = _("Pokéfans"),
     [FACTION_OUTCASTS] = _("Outcasts"),
     [FACTION_PROFESSIONALS] = _("Professionals"),
-    [FACTION_ATHLETES] = _("Athletes"),
+    [FACTION_POKEMON_LEAGUE] = _("Pokémon League"),
     [FACTION_OTHERS] = _("Unaffiliated")
 };
 
@@ -46,11 +46,10 @@ void RyuDebug_ViewFactionRelations(void)
 {
     ConvertIntToDecimalStringN(gStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS], STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_ATHLETES], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_OUTCASTS], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NOBLES], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar4, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_OUTCASTS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NOBLES], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS], STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
 bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
@@ -158,17 +157,13 @@ void RyuAdjustOpposingFactionValues(u8 id, u8 amount, bool8 negative)
         RyuAdjustFactionValueInternal(FACTION_NATURALISTS, amount, negative);
         break;
     case FACTION_POKEFANS:
-        RyuAdjustFactionValueInternal(FACTION_ATHLETES, amount, negative);
+        RyuAdjustFactionValueInternal(FACTION_PROFESSIONALS, amount, negative);
         break;
     case FACTION_OUTCASTS:
         RyuAdjustFactionValueInternal(FACTION_STUDENTS, amount, negative);
         break;
     case FACTION_PROFESSIONALS:
         RyuAdjustFactionValueInternal(FACTION_POKEFANS, amount, negative);
-        break;
-    case FACTION_ATHLETES:
-        RyuAdjustFactionValueInternal(FACTION_POKEFANS, (amount / 2), negative);
-        RyuAdjustFactionValueInternal(FACTION_NOBLES, (amount / 2), negative);
         break;
     }
 }
@@ -225,8 +220,8 @@ const u8 *RyuGetFactionDailyQuestScriptPtr(u8 factionId)
             return RyuOutcastsDailyQuest;
         case FACTION_PROFESSIONALS:
             return RyuProfessionalsDailyQuest;
-        case FACTION_ATHLETES:
-            return RyuAthletesDailyQuest;
+        case FACTION_POKEMON_LEAGUE:
+            return NULL;
         case FACTION_OTHERS:
             return NULL;
     }
@@ -240,6 +235,11 @@ void ClearDailyQuestData(void)
     VarSet(VAR_RYU_DAILY_QUEST_DATA, 1000);
     FlagClear(FLAG_DAILY_QUEST_ACTIVE);
     VarSet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OTHERS);
+}
+
+void RyuSetFactionStandingPokemonLeagueDebug(void)
+{
+    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEMON_LEAGUE] = 12;
 }
 
  /* FACTION STANDING UI CODE */ 

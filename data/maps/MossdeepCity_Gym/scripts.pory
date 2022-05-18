@@ -33,6 +33,7 @@ MDG_FollowerReset::
 	special checkbadgecount
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
+	call_if_unset FLAG_BADGE07_GET, RyuAdjustPokemonLeagueFaction
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_DEFEATED_MOSSDEEP_GYM
 	cleartrainerflag TRAINER_TATE_AND_LIZA_1

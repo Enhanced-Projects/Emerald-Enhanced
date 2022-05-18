@@ -30,6 +30,7 @@ DFG_FollowerReset::
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_DEWFORD_GYM
+	call_if_unset FLAG_BADGE02_GET, RyuAdjustPokemonLeagueFaction
 	setflag FLAG_BADGE02_GET
 	closemessage
 	cleartrainerflag TRAINER_BRAWLY_1

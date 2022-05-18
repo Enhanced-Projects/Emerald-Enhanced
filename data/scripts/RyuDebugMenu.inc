@@ -233,6 +233,7 @@ RyuDebug_giveAllBadges::
 	setflag FLAG_BADGE06_GET
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_BADGE08_GET
+	callnative RyuSetFactionStandingPokemonLeagueDebug
 	playse SE_EXPMAX
 	goto RyuDebug_UtilitiesMenu
 

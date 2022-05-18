@@ -104,6 +104,7 @@ MVG_FollowerReset::
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_MAUVILLE_GYM
+	call_if_unset FLAG_BADGE03_GET, RyuAdjustPokemonLeagueFaction
 	setflag FLAG_BADGE03_GET
 	cleartrainerflag TRAINER_WATTSON_1
 	cleartrainerflag TRAINER_WATTSON_2

@@ -34,6 +34,7 @@ FG_FollowerReset::
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_FORTREE_GYM
+	call_if_unset FLAG_BADGE06_GET, RyuAdjustPokemonLeagueFaction
 	setflag FLAG_BADGE06_GET
 	call FortreeCity_Gym_EventScript_GiveAerialAce
 	cleartrainerflag TRAINER_WINONA_1

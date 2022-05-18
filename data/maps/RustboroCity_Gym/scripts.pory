@@ -37,6 +37,7 @@ RG_FollowerReset::
 	cleartrainerflag TRAINER_ROXANNE_4
 	call RustboroCity_Gym_EventScript_GiveRockTomb
 	clearflag FLAG_RYU_BOSS_SCALE
+	call_if_unset FLAG_BADGE01_GET, RyuAdjustPokemonLeagueFaction
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward

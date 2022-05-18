@@ -114,6 +114,7 @@ SG_FollowerReset::
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_SOOTOPOLIS_GYM 
+	call_if_unset FLAG_BADGE08_GET, RyuAdjustPokemonLeagueFaction
 	setflag FLAG_BADGE08_GET
 	cleartrainerflag TRAINER_JUAN_1
 	cleartrainerflag TRAINER_JUAN_2

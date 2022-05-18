@@ -2734,3 +2734,8 @@ script CheckDexForMayQuest {//if player has over 210 mons caught, enables May qu
 		return
 	}
 }
+
+script RyuAdjustPokemonLeagueFaction {
+	changefactionstanding(FACTION_POKEMON_LEAGUE, 11, TRUE)
+	return
+}

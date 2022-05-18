@@ -77,6 +77,7 @@ LG_FollowerReset::
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
 	clearflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
+	call_if_unset FLAG_BADGE04_GET, RyuAdjustPokemonLeagueFaction
     setflag FLAG_BADGE04_GET
 	setflag FLAG_DEFEATED_LAVARIDGE_GYM
 	cleartrainerflag TRAINER_FLANNERY_1
