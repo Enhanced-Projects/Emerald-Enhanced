@@ -87,6 +87,9 @@
 #include "lifeskill.h"
 #include "script_pokemon_util.h"
 #include "data/lifeskill.h"
+#include "autoscale_tables.h"
+#include "overworld_notif.h"
+
 
 void ApplyDaycareExperience(struct Pokemon *mon)
 {
@@ -2765,4 +2768,21 @@ void ryuSetPlayTime(void)
     gSaveBlock2Ptr->playTimeHours = 105;
     gSaveBlock2Ptr->playTimeMinutes = 5;
     gSaveBlock2Ptr->playTimeSeconds = 0;
+}
+
+const u8 sRepelNotifyMsg[] = _("Repel Used. {STR_VAR_1}% reduction for {STR_VAR_2} steps.");
+void RyuSetUpRepelNotify (void)
+{
+    int cmax = sWildRange[CountBadges()][1];
+    int cmin = sWildRange[CountBadges()][0];
+    int slot1level = (GetMonData(&gPlayerParty[0], MON_DATA_LEVEL));
+    int percent = 0;
+
+
+    percent = ((slot1level - cmin) * 100) / (cmax - cmin);
+    if (percent > 100)
+        percent = 100;
+    ConvertIntToDecimalStringN(gStringVar1, percent, STR_CONV_MODE_LEFT_ALIGN, 4);
+    ConvertIntToDecimalStringN(gStringVar2, VarGet(VAR_REPEL_STEP_COUNT), STR_CONV_MODE_LEFT_ALIGN, 4);
+    QueueNotification(sRepelNotifyMsg, NOTIFY_GENERAL, 60);
 }

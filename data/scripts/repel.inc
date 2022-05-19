@@ -34,6 +34,7 @@ EventScriptChoseRepel::
 	playse SE_TU_SAA
 	waitse
 	msgbox EventScript_UsedTheRepel
+	callnative RyuSetUpRepelNotify
 	release
 	end
 
@@ -46,6 +47,7 @@ EventScriptChoseSuperRepel::
 	playse SE_TU_SAA
 	waitse
 	msgbox EventScript_UsedTheRepel
+	callnative RyuSetUpRepelNotify
 	release
 	end
 
@@ -58,6 +60,7 @@ EventScriptChoseMaxRepel::
 	playse SE_TU_SAA
 	waitse
 	msgbox EventScript_UsedTheRepel
+	callnative RyuSetUpRepelNotify
 	release
 	end
 
