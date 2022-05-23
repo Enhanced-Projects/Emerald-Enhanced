@@ -687,7 +687,7 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                     }
                     else
                     {
-                        if (VarGet(VAR_RYU_LOCAL_ENCOUNTERS) >= 4)
+                        if (VarGet(VAR_RYU_LOCAL_ENCOUNTERS) >= 20)
                         {
                             u16 monHp = (GetMonData(&gEnemyParty[0], MON_DATA_MAX_HP) * 7);
                             FlagSet(FLAG_RYU_SPAWN_KINGPIN);

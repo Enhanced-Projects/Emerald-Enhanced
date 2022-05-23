@@ -1181,17 +1181,17 @@ void RyuCountGemOres(void)//buffers the number of each gem ore the player has to
     {
         if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_COMMON_GEM_ORE)
         {
-            total1 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+            total1 += RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
         }
 
         if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_UNCOMMON_GEM_ORE)
         {
-            total2 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+            total2 += RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
         }
 
         if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_RARE_GEM_ORE)
         {
-            total3 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+            total3 += RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
         }
     }
 
@@ -1203,22 +1203,24 @@ void RyuCountGemOres(void)//buffers the number of each gem ore the player has to
 void RyuBufferRepelItemCounts(void)
 {
     u32 i;
-    u16 total1, total2, total3;
+    u16 total1 = 0;
+    u16 total2 = 0;
+    u16 total3 = 0;
     for (i = 0; i < gBagPockets[ITEMS_POCKET].capacity; i++)
     {
         if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_REPEL)
         {
-            total1 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+            total1 += RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
         }
 
         if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_SUPER_REPEL)
         {
-            total2 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+            total2 += RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
         }
 
         if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_MAX_REPEL)
         {
-            total3 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+            total3 += RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
         }
     }
 
