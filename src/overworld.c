@@ -75,6 +75,7 @@
 #include "item.h"
 #include "pokedex.h"
 #include "ach_atlas.h"
+#include "RyuRealEstate.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -389,10 +390,18 @@ static void (*const gMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
 
 void SetWarpDestinationToHome(void)
 {
-    if (gSaveBlock2Ptr->playerGender == 0)
-        SetWarpDestination(1, 1, 255, 4, 4);
+    u8 homeId = (VarGet(VAR_RYU_PLAYER_HOUSE_ID));
+    if (FlagGet(FLAG_RYU_HAS_HOME_REGISTERED) == TRUE) // && (VarGet(VAR_RYU_PLAYER_HOUSE_ID) == id))
+    {
+        SetWarpDestination(gRyuPropertyData[homeId][2], gRyuPropertyData[homeId][3], 255, gRyuPropertyData[homeId][5], gRyuPropertyData[homeId][6]);
+    }
     else
-        SetWarpDestination(1, 3, 255, 4, 4);
+    {
+        if (gSaveBlock2Ptr->playerGender == 0)
+            SetWarpDestination(1, 1, 255, 4, 4);
+        else
+            SetWarpDestination(1, 3, 255, 4, 4);
+    }
     
 }
 
