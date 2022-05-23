@@ -285,6 +285,7 @@
 #define VAR_RYU_MONEY_BASE_COEFFICIENT       0x4109
 #define VAR_RYU_SPECIAL_CHALLENGE_STATE      0x410A
 #define VAR_RYU_ATTENDANT_ID                 0x410B
+#define VAR_RYU_LOCAL_ENCOUNTERS             0x410C
 
 
 //vars 4100 thru 417f are unused; total of 128.

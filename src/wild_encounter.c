@@ -608,6 +608,7 @@ bool8 RyuCheckForDarkGrass(void)
     return FALSE;
 }
 
+const u8 gText_KingpinWildAppears[] = _("A huge specimen attacks!");
 bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavior)
 {
     u16 headerId;
@@ -667,11 +668,12 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
             }
             else
             {
-                if (DoMassOutbreakEncounterTest() == TRUE)
+                /*if (DoMassOutbreakEncounterTest() == TRUE)
                 {
                     //now always returns false, does nothing.
                     return TRUE;
-                }
+                }*/
+                VarSet(VAR_RYU_LOCAL_ENCOUNTERS, (VarGet(VAR_RYU_LOCAL_ENCOUNTERS) + 1));
 
                 // try a regular wild land encounter
                 if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
@@ -684,7 +686,18 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                         BattleSetup_StartDoubleWildBattle();
                     }
                     else
+                    {
+                        if (VarGet(VAR_RYU_LOCAL_ENCOUNTERS) >= 4)
+                        {
+                            u16 monHp = (GetMonData(&gEnemyParty[0], MON_DATA_MAX_HP) * 7);
+                            FlagSet(FLAG_RYU_SPAWN_KINGPIN);
+                            SetMonData(&gEnemyParty[0], MON_DATA_MAX_HP, (&monHp));
+                            SetMonData(&gEnemyParty[0], MON_DATA_HP, (&monHp));
+                            VarSet(VAR_RYU_LOCAL_ENCOUNTERS, 0);
+                            ShowFieldMessage(gText_KingpinWildAppears);
+                        }
                         BattleSetup_StartWildBattle();
+                    }
                     return TRUE;
                 }
                 return FALSE;

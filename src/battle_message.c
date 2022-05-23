@@ -714,6 +714,7 @@ static const u8 sText_RyuAffectionUnparalyzed[] = _("{B_ATK_NAME_WITH_PREFIX} sh
 static const u8 sText_RyuAffectionEndured[] = _("{B_DEF_NAME_WITH_PREFIX} hung on because it wanted\nto please you!");
 static const u8 sText_RyuAffectionEvaded[] = _("{B_DEF_NAME_WITH_PREFIX} evaded the attack\nlike a boss!");
 static const u8 sText_RyuCantSteal[] = _("{B_ATK_NAME_WITH_PREFIX} doesn't want to be\na criminal.");
+static const u8 sTextRyuMonTooPowerfulForBall[] = _("The kingpin is too strong\nfor a pokéball!");
 static const u8 sText_EclipseStarts[] = _("A shadow engulfs the battlefield!");
 static const u8 sText_EclipseEnds[] = _("The eclipse has come to an end!");
 static const u8 sText_EclipseContinues[] = _("The battlefield remains darkened\nby the ongoing eclipse...");
@@ -1324,6 +1325,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_RYUAFFECTIONENDURED - 12] = sText_RyuAffectionEndured,
     [STRINGID_RYUAFFECTIONEVADED - 12] = sText_RyuAffectionEvaded,
     [STRINGID_RYUCANTSTEAL - 12] = sText_RyuCantSteal,
+    [STRINGID_RYUMONTOOPOWERFULLFORBALL - 12] = sTextRyuMonTooPowerfulForBall,
 };
 
 const u16 gTerrainStringIds[] =

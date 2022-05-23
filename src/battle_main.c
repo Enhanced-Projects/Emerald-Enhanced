@@ -68,6 +68,8 @@
 #include "autoscale_tables.h"
 #include "ach_atlas.h"
 #include "factions.h"
+#include "lifeskill.h"
+#include "overworld_notif.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_SE1;
 extern struct MusicPlayerInfo gMPlayInfo_SE2;
@@ -5088,6 +5090,8 @@ bool32 RyuCheckForLegendary(u16 species)
     return FALSE;
 }
 
+
+const u8 sTextLootPickupNotify[] = _("Picked up a {STR_VAR_1} from the kingpin.");
 static void ReturnFromBattleToOverworld(void)
 {
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
@@ -5141,6 +5145,19 @@ static void ReturnFromBattleToOverworld(void)
 
     if ((VarGet(VAR_RYU_TOTAL_FAINTS) >= 666) && (CheckAchievement(ACH_EVIL_INCARNATE) == FALSE))
         GiveAchievement(ACH_EVIL_INCARNATE);
+
+        if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE)
+        {
+            u16 newItem = (gRyuHighPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
+            FlagClear(FLAG_RYU_SPAWN_KINGPIN);
+            if (CheckBagHasSpace(newItem, 1))
+            {
+                AddBagItem(newItem, 1);
+                CopyItemName(newItem, gStringVar1);
+                QueueNotification(sTextLootPickupNotify, NOTIFY_PICKUP, 120);
+            }
+            
+        }
 
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);

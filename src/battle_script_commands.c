@@ -3960,6 +3960,9 @@ static void Cmd_getexp(void)
 
             calculatedExp = (RyuCalculateAlchemyExpModifier(calculatedExp));
 
+            if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE)
+                calculatedExp *= 4;
+
             RyuExpBatteryTemp = ((calculatedExp * 5) / 100);
             RyuExpDriveInternalOperation(EXP_DRIVE_MODE_ADD, RyuExpBatteryTemp);
 
@@ -12209,6 +12212,12 @@ static void Cmd_handleballthrow(void)
         BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_TrainerBallBlock;
+    }
+    else if (FlagGet(FLAG_RYU_SPAWN_KINGPIN))
+    {
+        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_MonTooPowerfulForBall;
     }
     else
     {
