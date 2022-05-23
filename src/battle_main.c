@@ -5150,13 +5150,15 @@ static void ReturnFromBattleToOverworld(void)
         {
             u16 newItem = (gRyuHighPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
             FlagClear(FLAG_RYU_SPAWN_KINGPIN);
-            if (CheckBagHasSpace(newItem, 1))
+            if (gBattleOutcome == B_OUTCOME_WON)
             {
-                AddBagItem(newItem, 1);
-                CopyItemName(newItem, gStringVar1);
-                QueueNotification(sTextLootPickupNotify, NOTIFY_PICKUP, 120);
+                if (CheckBagHasSpace(newItem, 1))
+                {
+                    AddBagItem(newItem, 1);
+                    CopyItemName(newItem, gStringVar1);
+                    QueueNotification(sTextLootPickupNotify, NOTIFY_PICKUP, 120);
+                }
             }
-            
         }
 
     m4aSongNumStop(SE_LOW_HEALTH);
