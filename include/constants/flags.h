@@ -1364,6 +1364,7 @@
 #define FLAG_RYU_USED_INSTANT_TEXT                                0x507
 #define FLAG_RYU_USED_INSTANT_TRANSITION                          0x508
 #define FLAG_RYU_DISABLED_ANIMS                                   0x509
+#define FLAG_RYU_FACING_ATTENDANT                                 0x50A
 
 
 #define NEW_FLAGS_END                                             0x5FF

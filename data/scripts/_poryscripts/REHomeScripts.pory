@@ -255,12 +255,8 @@ script Ryu_AttendantLanette {
             }
             closemessage
         case 1:
-            setvar(VAR_0x8002, 0xFFFF)
-            setflag(FLAG_RYU_MAX_SCALE)
-            cleartrainerflag(TRAINER_REL_LANETTE)
-            trainerbattle_single(TRAINER_REL_LANETTE, RyuRE_LanetteBattleIntro, RyuRE_LanetteBattleOutro)
-            waitstate
-            setvar(VAR_0x8002, 0)
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh, no. There's not enough space\nfor us to battle here.\pI'm happy to go with you and\lfight in a gym or something though!")
+            closemessage
         case 2:
             call(RyuDismissAttendant)
             createfollower(OBJ_EVENT_GFX_WOMAN_2, RyuFollowerSelectNPCScript, DIR_SOUTH)
@@ -283,10 +279,12 @@ script Ryu_AttendantMinnie {
         case 1:
             setvar(VAR_0x8002, 0xFFFF)
             setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
             cleartrainerflag(TRAINER_REL_MINNIE)
             trainerbattle_single(TRAINER_REL_MINNIE, RyuRE_MinnieBattleIntro, RyuRE_MinnieBattleOutro)
             waitstate
             setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
             release
             end
         case 2:
@@ -311,10 +309,12 @@ script Ryu_AttendantDawn {
         case 1:
             setvar(VAR_0x8002, 0xFFFF)
             setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
             cleartrainerflag(TRAINER_REL_DAWN)
             trainerbattle_single(TRAINER_REL_DAWN, RyuRE_DawnBattleIntro, RyuRE_DawnBattleOutro)
             waitstate
             setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
             release
             end
         case 2:
@@ -339,10 +339,12 @@ script Ryu_AttendantBrendan {
         case 1:
             setvar(VAR_0x8002, 0xFFFF)
             setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
             cleartrainerflag(TRAINER_REL_BRENDAN)
             trainerbattle_single(TRAINER_REL_BRENDAN, RyuRE_BrendanBattleIntro, RyuRE_BrendanBattleOutro)
             waitstate
             setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
             release
             end
         case 2:
@@ -367,10 +369,12 @@ script Ryu_AttendantLeaf {
         case 1:
             setvar(VAR_0x8002, 0xFFFF)
             setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
             cleartrainerflag(TRAINER_REL_LANA)
             trainerbattle_single(TRAINER_REL_LANA, RyuRE_LanaBattleIntro, RyuRE_LanaBattleOutro)
             waitstate
             setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
             release
             end
         case 2:
@@ -395,10 +399,12 @@ script Ryu_AttendantCourtney {
         case 1:
             setvar(VAR_0x8002, 0xFFFF)
             setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
             cleartrainerflag(TRAINER_REL_COURTNEY_2)
             trainerbattle_single(TRAINER_REL_COURTNEY_2, RyuRE_CourtneyBattleIntro, RyuRE_CourtneyBattleOutro)
             waitstate
             setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
             release
             end
         case 2:
@@ -423,10 +429,12 @@ script Ryu_AttendantShelly {
         case 1:
             setvar(VAR_0x8002, 0xFFFF)
             setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
             cleartrainerflag(TRAINER_REL_SHELLY)
             trainerbattle_single(TRAINER_REL_SHELLY, RyuRE_ShellyBattleIntro, RyuRE_ShellyBattleOutro)
             waitstate
             setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
             release
             end
         case 2:
@@ -451,10 +459,12 @@ script Ryu_AttendantJoy {
         case 1:
             setvar(VAR_0x8002, 0xFFFF)
             setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
             cleartrainerflag(TRAINER_REL_NURSE)
             trainerbattle_single(TRAINER_REL_NURSE, RyuRE_NurseBattleIntro, RyuRE_NurseBattleOutro)
             waitstate
             setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
             release
             end
         case 2:
@@ -479,10 +489,12 @@ script Ryu_AttendantMay {
         case 1:
             setvar(VAR_0x8002, 0xFFFF)
             setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
             cleartrainerflag(TRAINER_REL_MAY)
             trainerbattle_single(TRAINER_REL_MAY, RyuRE_MayBattleIntro, RyuRE_MayBattleOutro)
             waitstate
             setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
             release
             end
         case 2:

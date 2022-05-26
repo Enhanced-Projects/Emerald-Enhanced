@@ -2646,7 +2646,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BOSSMODEHEAL:
-            if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
+            if ((FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(FlagGet(FLAG_RYU_FACING_ATTENDANT))))
                 if(!(BATTLER_MAX_HP(gActiveBattler)))
                     if(gBattleMons[gActiveBattler].hp != 0)
                         if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT)
@@ -2663,7 +2663,7 @@ u8 DoBattlerEndTurnEffects(void)
             break;
         case ENDTURN_BOSSMODERAISESTAT:
         {
-            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
+            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(FlagGet(FLAG_RYU_FACING_ATTENDANT) == TRUE)))
                 {
                     StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
                     StringCopy(gStringVar2, gText_PokemonStringBuffer);
@@ -3777,7 +3777,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
 
     GET_MOVE_TYPE(move, moveType);
 
-    if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
+    if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(FlagGet(FLAG_RYU_FACING_ATTENDANT) == TRUE)))
     {
         StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
         StringCopy(gStringVar2, gText_PokemonStringBuffer);

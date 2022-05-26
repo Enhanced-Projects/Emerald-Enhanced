@@ -196,6 +196,7 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(RED, gTrainerFrontPic_Red, 0x800),
     TRAINER_SPRITE(LEAF, gTrainerFrontPic_Leaf, 0x800),
     TRAINER_SPRITE(RS_BRENDAN, gTrainerFrontPic_RubySapphireBrendan, 0x800),
+    TRAINER_SPRITE(RS_MAY, gTrainerFrontPic_RubySapphireMay, 0x800),
     TRAINER_SPRITE(DEVON_M, gTrainerFrontPic_DevonM, 0x800),
     TRAINER_SPRITE(LANCE, gTrainerFrontPic_Lance, 0x800),
     TRAINER_SPRITE(GIOVANNI, gTrainerFrontPic_Giovanni, 0x800),
