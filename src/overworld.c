@@ -2326,10 +2326,7 @@ static void ResumeMap(bool32 a1)
     ResetAllPicSprites();
     ResetCameraUpdateInfo();
     InstallCameraPanAheadCallback();
-    if (!a1)
-        InitObjectEventPalettes(0);
-    else
-        InitObjectEventPalettes(1);
+    FreeAllSpritePalettes();
 
     FieldEffectActiveListClear();
     if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1 && (GetSav1Weather() != VarGet(VAR_RYU_WEATHER)))
