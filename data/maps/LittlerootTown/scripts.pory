@@ -208,9 +208,8 @@ LRT_GameStartInfoMsg:
 	.string "New Game Flags and Variables Set.$"
 	
 LRT_StopGoingSouth::
-	getpartysize
-	compare VAR_RESULT, 0
-	goto_if_eq LRT_StopPlayer
+	compare VAR_LITTLEROOT_INTRO_STATE, 8
+	goto_if_lt LRT_StopPlayer
 	release
 	end
 

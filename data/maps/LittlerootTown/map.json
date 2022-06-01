@@ -237,7 +237,7 @@
       "x": 12,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_TEMP_4",
+      "var": "VAR_TEMP_7",
       "var_value": "0",
       "script": "LRT_StopGoingSouth"
     },
@@ -246,7 +246,7 @@
       "x": 13,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_TEMP_4",
+      "var": "VAR_TEMP_7",
       "var_value": "0",
       "script": "LRT_StopGoingSouth"
     },
