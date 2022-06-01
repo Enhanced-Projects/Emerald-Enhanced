@@ -23114,19 +23114,19 @@ static const struct LevelUpMove sHaxorusLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sCubchooLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_GROWL),
+    LEVEL_UP_MOVE( 1, MOVE_SNUGGLE),
     LEVEL_UP_MOVE( 5, MOVE_POWDER_SNOW),
-    LEVEL_UP_MOVE( 9, MOVE_BIDE),
+    LEVEL_UP_MOVE( 9, MOVE_TACKLE),
     LEVEL_UP_MOVE(13, MOVE_ICY_WIND),
     LEVEL_UP_MOVE(15, MOVE_PLAY_NICE),
     LEVEL_UP_MOVE(17, MOVE_FURY_SWIPES),
+    LEVEL_UP_MOVE(19, MOVE_ICE_SHARD),
     LEVEL_UP_MOVE(21, MOVE_BRINE),
     LEVEL_UP_MOVE(25, MOVE_ENDURE),
     LEVEL_UP_MOVE(29, MOVE_CHARM),
     LEVEL_UP_MOVE(33, MOVE_SLASH),
     LEVEL_UP_MOVE(36, MOVE_FLAIL),
     LEVEL_UP_MOVE(41, MOVE_REST),
-    LEVEL_UP_MOVE(45, MOVE_ICE_SHARD),
     LEVEL_UP_MOVE(49, MOVE_HAIL),
     LEVEL_UP_MOVE(53, MOVE_THRASH),
     LEVEL_UP_MOVE(57, MOVE_SHEER_COLD),
@@ -28372,7 +28372,7 @@ static const struct LevelUpMove sBewearLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sBounsweetLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_SPLASH),
+    LEVEL_UP_MOVE( 1, MOVE_CLING),
     LEVEL_UP_MOVE( 5, MOVE_PLAY_NICE),
     LEVEL_UP_MOVE( 9, MOVE_RAPID_SPIN),
     LEVEL_UP_MOVE(13, MOVE_RAZOR_LEAF),
