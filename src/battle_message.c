@@ -733,6 +733,15 @@ static const u8 sText_AttackWeakenedByStrongWinds[] = _("The mysterious strong w
 static const u8 sText_PkmnAuraIsGrowingExplosively[] = _("{B_ATK_NAME_WITH_PREFIX}'s aura is growing\nexplosively!");
 static const u8 sText_PkmnRevertedToPrimal[] = _("{B_ATK_NAME_WITH_PREFIX} reverted to its\nPrimal form!");
 
+static const u8 sText_RyuDoTBind[] = _("The bonds are causing pain\nfor {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTWrap[] = _("The wrap is causing pain\nfor {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTFireSpin[] = _("The Fire Spin continues to\nburn {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTClamp[] = _("{B_ATK_NAME_WITH_PREFIX} is getting clamped down on!");
+static const u8 sText_RyuDoTWhirlpool[] = _("{B_ATK_NAME_WITH_PREFIX} is getting lost in\nthe vortex!");
+static const u8 sText_RyuDoTSandTomb[] = _("{B_ATK_NAME_WITH_PREFIX} is being buried alive!");
+static const u8 sText_RyuDoTInfestation[] = _("The infestation continues to eat\nat {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTCling[] = _("{B_ATK_NAME_WITH_PREFIX} is still being hugged\ntightly by {B_DEF_NAME_WITH_PREFIX}!");
+
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
     [STRINGID_PKMNREVERTEDTOPRIMAL - 12] = sText_PkmnRevertedToPrimal,
@@ -1326,6 +1335,14 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_RYUAFFECTIONEVADED - 12] = sText_RyuAffectionEvaded,
     [STRINGID_RYUCANTSTEAL - 12] = sText_RyuCantSteal,
     [STRINGID_RYUMONTOOPOWERFULLFORBALL - 12] = sTextRyuMonTooPowerfulForBall,
+    [STRINGID_DOTBIND - 12] = sText_RyuDoTBind,
+    [STRINGID_DOTWRAP - 12] = sText_RyuDoTWrap,
+    [STRINGID_DOTFIRESPIN - 12] = sText_RyuDoTFireSpin,
+    [STRINGID_DOTCLAMP - 12] = sText_RyuDoTClamp,
+    [STRINGID_DOTWHIRLPOOL - 12] = sText_RyuDoTWhirlpool,
+    [STRINGID_DOTSANDTOMB - 12] = sText_RyuDoTSandTomb,
+    [STRINGID_DOTINFESTATION - 12] = sText_RyuDoTInfestation,
+    [STRINGID_DOTCLING - 12] = sText_RyuDoTCling
 };
 
 const u16 gTerrainStringIds[] =
@@ -1485,6 +1502,18 @@ const u16 gWrappedStringIds[] =
     STRINGID_PKMNTRAPPEDBYSANDTOMB,// MOVE_SAND_TOMB
     STRINGID_INFESTATION,          // MOVE_INFESTATION
     STRINGID_WASHUGGEDBY,          // MOVE_CLING
+};
+
+const u16 gWrappedDoTIds[] = 
+{
+    STRINGID_DOTBIND,
+    STRINGID_DOTWRAP,
+    STRINGID_DOTFIRESPIN,
+    STRINGID_DOTCLAMP,
+    STRINGID_DOTWHIRLPOOL,
+    STRINGID_DOTSANDTOMB,
+    STRINGID_DOTINFESTATION,
+    STRINGID_DOTCLING,
 };
 
 const u16 gMistUsedStringIds[] =

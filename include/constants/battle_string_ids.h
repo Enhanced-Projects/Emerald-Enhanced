@@ -604,8 +604,16 @@
 #define STRINGID_PKMNAURAISGROWINGEXPLOSIVELY         600
 #define STRINGID_PKMNREVERTEDTOPRIMAL                 601
 #define STRINGID_RYUMONTOOPOWERFULLFORBALL            602
+#define STRINGID_DOTBIND                              603
+#define STRINGID_DOTWRAP                              604
+#define STRINGID_DOTFIRESPIN                          605
+#define STRINGID_DOTCLAMP                             606
+#define STRINGID_DOTWHIRLPOOL                         607
+#define STRINGID_DOTSANDTOMB                          608
+#define STRINGID_DOTINFESTATION                       609
+#define STRINGID_DOTCLING                             610
 
-#define BATTLESTRINGS_COUNT                603
+#define BATTLESTRINGS_COUNT                611
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H
