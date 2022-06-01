@@ -397,6 +397,17 @@ RG_JOY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED} Oh, dear, everything's pointy\nhere. It's dangerous!$"
 `
 
+script RG_TryWeatherChange {
+	specialvar(VAR_RESULT, CountBadges)
+	if (var(VAR_RESULT) > 5) {
+		setweather(WEATHER_SANDSTORM)
+		doweather
+	}
+	setvar(VAR_TEMP_0, 100)
+	release
+	end
+}
+
 script RG_FollowerOutroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return

@@ -6415,14 +6415,14 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Phil},
     },
 
-    [TRAINER_JARED] =
+    [TRAINER_JULIE2] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-        .trainerFaction = FACTION_PROFESSIONALS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .trainerName = _("Jared"),
+        .trainerClass = TRAINER_CLASS_AROMA_LADY,
+        .trainerFaction = FACTION_NOBLES,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_AROMA_LADY,
+        .trainerName = _("Julie"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
@@ -6434,10 +6434,10 @@ const struct Trainer gTrainers[] = {
     [TRAINER_HUMBERTO] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+        .trainerClass = TRAINER_CLASS_PKMN_RANGER,
         .trainerFaction = FACTION_PROFESSIONALS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_POKEMON_RANGER_M,
         .trainerName = _("Humberto"),
         .items = {},
         .battleStyle = BS_SHIFT,
@@ -6466,10 +6466,10 @@ const struct Trainer gTrainers[] = {
     [TRAINER_EDWARDO] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-        .trainerFaction = FACTION_PROFESSIONALS,
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerFaction = FACTION_NOBLES,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .trainerName = _("Edwardo"),
         .items = {},
         .battleStyle = BS_SHIFT,
@@ -12850,10 +12850,10 @@ const struct Trainer gTrainers[] = {
     [TRAINER_DARIUS] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-        .trainerFaction = FACTION_PROFESSIONALS,
+        .trainerClass = TRAINER_CLASS_CAMPER,
+        .trainerFaction = FACTION_NATURALISTS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_CAMPER,
         .trainerName = _("Darius"),
         .items = {},
         .battleStyle = BS_SHIFT,

@@ -1836,7 +1836,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_PERRY
 	cleartrainerflag TRAINER_HUGH
 	cleartrainerflag TRAINER_PHIL
-	cleartrainerflag TRAINER_JARED
+	cleartrainerflag TRAINER_JULIE2
 	cleartrainerflag TRAINER_HUMBERTO
 	cleartrainerflag TRAINER_PRESLEY
 	cleartrainerflag TRAINER_EDWARDO

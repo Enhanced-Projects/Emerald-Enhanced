@@ -419,6 +419,17 @@ SG_JoyGymBattleComplete:
 
 `
 
+script SG_TryWeatherChange {
+	specialvar(VAR_RESULT, CountBadges)
+	if (var(VAR_RESULT) > 5) {
+		setweather(WEATHER_DOWNPOUR)
+		doweather
+	}
+	setvar(VAR_TEMP_0, 100)
+	release
+	end
+}
+
 script SG_FollowerOutroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {
 		return
