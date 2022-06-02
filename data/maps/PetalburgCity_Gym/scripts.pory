@@ -272,6 +272,7 @@ PBG_FirstDoor::
 	setmetatile 28, 21, 645, 0
 	special DrawWholeMapView
 	playse SE_DOOR
+	release
 	end
 	
 
