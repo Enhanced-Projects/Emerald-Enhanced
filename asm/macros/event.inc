@@ -1672,9 +1672,11 @@
 	.byte 0xea
 	.endm
 
-	@puts the correct relative follower x/y coords in vars temp 1 and 2.
-	.macro gfec
+	@Prints an ingame debug message for frames time.
+	.macro debugprint buffer:req, frames=120
 	.byte 0xeb
+	.4byte \buffer
+	.2byte \frames
 	.endm
 
 	@multiplies var by value.

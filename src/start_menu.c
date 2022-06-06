@@ -424,6 +424,10 @@ static void RemoveExtraStartMenuWindows(void)
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
     RemoveInfoBoxWindow();
+    /*if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_RDM_MUSIC) == FALSE))
+    {
+        debugprint((const u8[]) _("Random Music now enabled."));
+    }*/
 }
 
 EWRAM_DATA static u8 sPrintNumberWindowId = 1;

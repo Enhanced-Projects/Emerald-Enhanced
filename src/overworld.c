@@ -76,6 +76,7 @@
 #include "pokedex.h"
 #include "ach_atlas.h"
 #include "RyuRealEstate.h"
+#include "overworld_notif.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81

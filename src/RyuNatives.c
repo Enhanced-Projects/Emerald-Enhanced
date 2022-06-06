@@ -2784,7 +2784,51 @@ void RyuSetUpRepelNotify (void)
     percent = ((slot1level - cmin) * 100) / (cmax - cmin);
     if (percent > 100)
         percent = 100;
+    
     ConvertIntToDecimalStringN(gStringVar1, percent, STR_CONV_MODE_LEFT_ALIGN, 4);
     ConvertIntToDecimalStringN(gStringVar2, VarGet(VAR_REPEL_STEP_COUNT), STR_CONV_MODE_LEFT_ALIGN, 4);
     QueueNotification(sRepelNotifyMsg, NOTIFY_GENERAL, 60);
+}
+
+const u8 sTemporaryDebugText[] = _("Testing Printing");
+
+#define tFrames data[0]
+#define tDebugWindow data[1]
+
+void RyuCodeDebugPrintTask(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    if (tFrames < 60)
+    {
+        tFrames++;
+    }
+    else
+    {
+        ClearStdWindowAndFrameToTransparent(tDebugWindow, TRUE);
+        RemoveWindow(tDebugWindow);
+        DestroyTask(taskId);
+    }
+}
+
+bool8 ScrCmd_debugprint(struct ScriptContext *ctx)
+{
+    unsigned taskId;
+    unsigned tDebugWindow;
+    struct WindowTemplate template;
+
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+
+    StringExpandPlaceholders(gStringVar4, msg);
+    SetWindowTemplateFields(&template, 0, 1, 1, 20, 2, 15, 100);
+    tDebugWindow = AddWindow(&template);
+    FillWindowPixelBuffer(tDebugWindow, 0);
+    PutWindowTilemap(tDebugWindow);
+    CopyWindowToVram(tDebugWindow, 1);
+    AddTextPrinterParameterized(tDebugWindow, 1, msg, 0, 0, 0, NULL);
+    taskId = CreateTask(RyuCodeDebugPrintTask, 0xFF);
+    gTasks[taskId].tDebugWindow = tDebugWindow;
+    return FALSE;
 }

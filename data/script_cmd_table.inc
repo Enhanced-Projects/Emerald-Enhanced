@@ -235,7 +235,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_scriptdebug               @ 0xe8
 	.4byte ScrCmd_buffersingledynamicline   @ 0xe9
 	.4byte ScrCmd_checkbp                   @ 0xea
-	.4byte ScrCmd_gfec                      @ 0xeb
+	.4byte ScrCmd_debugprint                @ 0xeb
 	.4byte ScrCmd_multvar                   @ 0xec
 	.4byte ScrCmd_divvar                    @ 0xed
 	.4byte ScrCmd_drawfullscreenimage       @ 0xee

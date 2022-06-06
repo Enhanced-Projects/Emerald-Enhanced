@@ -326,3 +326,40 @@ bool32 IsNotificationBusy(void)
 {
     return sNotification.state != NOTIF_STATE_IDLE;
 }
+
+
+#define tDebugFrames data[0]
+#define tDebuggingWindow data[1]
+
+void RyuDebugPrintTask(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    if (tDebugFrames < 60)
+    {
+        tDebugFrames++;
+    }
+    else
+    {
+        ClearStdWindowAndFrameToTransparent(tDebuggingWindow, TRUE);
+        RemoveWindow(tDebuggingWindow);
+        DestroyTask(taskId);
+    }
+}
+
+void debugprint(const u8 *buffer)
+{
+    unsigned taskId;
+    unsigned tDebuggingWindow;
+    struct WindowTemplate template;
+
+    StringCopy(gRyuStringVar4, buffer);
+
+    SetWindowTemplateFields(&template, 0, 1, 1, 20, 2, 15, 100);
+    tDebuggingWindow = AddWindow(&template);
+    FillWindowPixelBuffer(tDebuggingWindow, 0);
+    PutWindowTilemap(tDebuggingWindow);
+    CopyWindowToVram(tDebuggingWindow, 1);
+    AddTextPrinterParameterized(tDebuggingWindow, 1, gRyuStringVar4, 0, 0, 0, NULL);
+    taskId = CreateTask(RyuDebugPrintTask, 0xFF);
+    gTasks[taskId].tDebuggingWindow = tDebuggingWindow;
+}
