@@ -834,7 +834,7 @@ void DrawDevonLogo(void)
     }
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 4, 9, 3, 2, 15, 100);
+    SetWindowTemplateFields(&template, 0, 4, 10, 3, 2, 15, 100);
     sPrintNumberWindow2Id = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
     PutWindowTilemap(sPrintNumberWindow2Id);
@@ -872,7 +872,7 @@ void DrawAquaLogo(void)
     }
     
     //prepare window
-    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 100);
+    SetWindowTemplateFields(&template, 0, 4, 10, 3, 2, 15, 100);
     sPrintNumberWindow2Id = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
     PutWindowTilemap(sPrintNumberWindow2Id);
@@ -904,7 +904,7 @@ void DrawMagmaLogo(void)
     }
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 100);
+    SetWindowTemplateFields(&template, 0, 4, 10, 3, 2, 15, 100);
     sPrintNumberWindow2Id = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
     PutWindowTilemap(sPrintNumberWindow2Id);
