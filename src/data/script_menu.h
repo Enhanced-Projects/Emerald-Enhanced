@@ -997,6 +997,7 @@ static const struct MenuAction MultichoiceList_133[]=
     {gText_RyuBetaMenuResetBadges},
     {gText_RyuBetaMenuResetGCMS},
     {gText_RyuBetaMenuGoHome},
+    {gText_RyuBetaMenuViewEffects},
     {gText_RyuBetaMenuExit},
 };
 

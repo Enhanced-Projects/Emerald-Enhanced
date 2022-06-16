@@ -2022,6 +2022,7 @@ const u8 gText_RyuBetaMenuResetTempBattleFlags[] = _("Reset Battle Flags");
 const u8 gText_RyuBetaMenuResetBadges[] = _("Reset Badges");
 const u8 gText_RyuBetaMenuResetGCMS[] = _("Reset GCMS");
 const u8 gText_RyuBetaMenuGoHome[] = _("Teleport Home");
+const u8 gText_RyuBetaMenuViewEffects[] = _("View Active Effects");
 const u8 gText_RyuBetaMenuExit[] = _("Exit Menu");
 
 const u8 gText_RyuForecasterClear[] = _("Clear");

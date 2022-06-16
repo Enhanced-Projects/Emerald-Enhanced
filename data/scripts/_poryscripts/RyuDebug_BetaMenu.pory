@@ -6,7 +6,7 @@ script StartBetaMenu{
 }
 
 script RDB_BetaMenuStandalone{
-    multichoicedefault(30, 0, MULTI_BETA_MENU, 7, 0)
+    multichoicedefault(30, 0, MULTI_BETA_MENU, 8, 0)
     switch(var(VAR_RESULT)){
         case 0:
             goto(RDBM_ViewSaveVersion)
@@ -23,6 +23,8 @@ script RDB_BetaMenuStandalone{
         case 6:
             goto(RDBM_TeleportHome)
         case 7:
+            goto(RDBM_ShowActiveEffects)
+        case 8:
             goto(RDBM_ExitResetMenu)
     }
     goto(RDBM_ExitResetMenu)
@@ -155,6 +157,31 @@ script RDBM_TeleportHome{
 	msgbox(RGBM_TPHOME)
 	closemessage
 	goto(RT_Home)
+}
+
+script RDBM_ShowActiveEffects {
+    msgbox("Showing active effects.")
+    callnative(RyuDebug_ShowActiveAlchemy)
+    delay(65)
+    if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
+        callnative(RyuDebug_ShowActiveFollower)
+        delay(65)
+    }
+    if (var(VAR_REPEL_STEP_COUNT) > 0) {
+        buffernumberstring(0, VAR_REPEL_STEP_COUNT)
+        debugprint(RDBM_RepelCount)
+    }
+    release
+    end
+}
+
+script RDBM_ScriptDelay2s {
+    delay(120)
+    return
+}
+
+text RDBM_RepelCount {
+    "Repel Active: {STR_VAR_1} steps left.$"
 }
 	
 text BetaMenuIntro{

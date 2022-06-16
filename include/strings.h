@@ -3084,6 +3084,7 @@ extern const u8 gText_RyuBetaMenuResetTempBattleFlags[];
 extern const u8 gText_RyuBetaMenuResetBadges[];
 extern const u8 gText_RyuBetaMenuResetGCMS[];
 extern const u8 gText_RyuBetaMenuGoHome[];
+extern const u8 gText_RyuBetaMenuViewEffects[];
 extern const u8 gText_RyuBetaMenuExit[];
 
 extern const u8 gText_RyuForecasterClear[];
