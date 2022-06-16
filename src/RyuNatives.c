@@ -2793,9 +2793,9 @@ void RyuSetUpRepelNotify (void)
 const u8 sTemporaryDebugText[] = _("Testing Printing");
 
 #define tFrames data[0]
-#define tDebugWindow data[1]
+#define tScriptDBWindowData data[1]
 
-void RyuCodeDebugPrintTask(u8 taskId)
+void RyuScriptDebugPrintTask(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     if (tFrames < 60)
@@ -2804,8 +2804,8 @@ void RyuCodeDebugPrintTask(u8 taskId)
     }
     else
     {
-        ClearStdWindowAndFrameToTransparent(tDebugWindow, TRUE);
-        RemoveWindow(tDebugWindow);
+        ClearStdWindowAndFrameToTransparent(tScriptDBWindowData, TRUE);
+        RemoveWindow(tScriptDBWindowData);
         DestroyTask(taskId);
     }
 }
@@ -2828,7 +2828,54 @@ bool8 ScrCmd_debugprint(struct ScriptContext *ctx)
     PutWindowTilemap(tDebugWindow);
     CopyWindowToVram(tDebugWindow, 1);
     AddTextPrinterParameterized(tDebugWindow, 1, msg, 0, 0, 0, NULL);
-    taskId = CreateTask(RyuCodeDebugPrintTask, 0xFF);
-    gTasks[taskId].tDebugWindow = tDebugWindow;
+    taskId = CreateTask(RyuScriptDebugPrintTask, 0xFF);
+    gTasks[taskId].tScriptDBWindowData = tDebugWindow;
     return FALSE;
+}
+
+extern u8 RDBM_ScriptDelay2s[];
+void RyuDebug_ShowActiveFollower (void)
+{
+    if (FlagGet(FLAG_RYU_HAS_FOLLOWER))
+    {
+        switch (VarGet(VAR_RYU_FOLLOWER_ID))
+        {
+            case OBJ_EVENT_GFX_TWIN:
+                DebugPrint(((const u8[]) _("Minnie: 5% dmg reduction.")));
+                break;
+            case OBJ_EVENT_GFX_WOMAN_2:
+                DebugPrint(((const u8[]) _("Lanette: 5% capture boost.")));
+                break;
+            case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+                DebugPrint(((const u8[]) _("Shelly: 10% DRK/WTR dmg boost.")));
+                break;
+            case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")));
+                break;
+            case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")));
+                break;
+            case OBJ_EVENT_GFX_LEAF:
+                DebugPrint(((const u8[]) _("Lana: -10% damage from FIR/WTR/GRS")));
+                break;
+            case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+                DebugPrint(((const u8[]) _("Courtney: 10% DRK/FIR dmg boost.")));
+                break;
+            case OBJ_EVENT_GFX_NURSE:
+                break;
+            case OBJ_EVENT_GFX_MAY:
+                DebugPrint(((const u8[]) _("May: 10% FRY/FIT dmg boost.")));
+                break;
+        }
+    }
+}
+
+void RyuDebug_ShowActiveAlchemy(void)
+{
+    if (gSaveBlock2Ptr->hasAlchemyEffectActive == TRUE)
+    {
+        u8 effectid = gSaveBlock2Ptr->alchemyEffect;
+        StringCopy(gStringVar3, gRyuAlchemyEffectItemToStringTable[effectid]);
+        DebugPrint(((const u8[]) _("Alchemy: {STR_VAR_3}.")));
+    }
 }

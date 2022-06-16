@@ -426,7 +426,7 @@ static void RemoveExtraStartMenuWindows(void)
     RemoveInfoBoxWindow();
     /*if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_RDM_MUSIC) == FALSE))
     {
-        debugprint((const u8[]) _("Random Music now enabled."));
+        DebugPrint((const u8[]) _("Random Music now enabled."));
     }*/
 }
 

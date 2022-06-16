@@ -329,9 +329,9 @@ bool32 IsNotificationBusy(void)
 
 
 #define tDebugFrames data[0]
-#define tDebuggingWindow data[1]
+#define tDBWindowData data[1]
 
-void RyuDebugPrintTask(u8 taskId)
+void RyuCodeDebugPrintTask(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     if (tDebugFrames < 60)
@@ -340,26 +340,27 @@ void RyuDebugPrintTask(u8 taskId)
     }
     else
     {
-        ClearStdWindowAndFrameToTransparent(tDebuggingWindow, TRUE);
-        RemoveWindow(tDebuggingWindow);
+        ClearStdWindowAndFrameToTransparent(tDBWindowData, TRUE);
+        RemoveWindow(tDBWindowData);
         DestroyTask(taskId);
     }
 }
 
-void debugprint(const u8 *buffer)
+void DebugPrint(const u8 *buffer)
 {
     unsigned taskId;
     unsigned tDebuggingWindow;
     struct WindowTemplate template;
 
     StringCopy(gRyuStringVar4, buffer);
+    StringExpandPlaceholders(gStringVar4, gRyuStringVar4);
 
     SetWindowTemplateFields(&template, 0, 1, 1, 20, 2, 15, 100);
     tDebuggingWindow = AddWindow(&template);
     FillWindowPixelBuffer(tDebuggingWindow, 0);
     PutWindowTilemap(tDebuggingWindow);
     CopyWindowToVram(tDebuggingWindow, 1);
-    AddTextPrinterParameterized(tDebuggingWindow, 1, gRyuStringVar4, 0, 0, 0, NULL);
-    taskId = CreateTask(RyuDebugPrintTask, 0xFF);
-    gTasks[taskId].tDebuggingWindow = tDebuggingWindow;
+    AddTextPrinterParameterized(tDebuggingWindow, 1, gStringVar4, 0, 0, 0, NULL);
+    taskId = CreateTask(RyuCodeDebugPrintTask, 0xFF);
+    gTasks[taskId].tDBWindowData = tDebuggingWindow;
 }
