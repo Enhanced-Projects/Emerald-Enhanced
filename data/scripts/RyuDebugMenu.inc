@@ -91,7 +91,8 @@ RyuDebug_UtilitiesMenu:
 	case 17, RyuDebug_ReadoutRGBTheme
 	case 18, RyuDebug_CheckRyuChallengeStatus
 	case 19, RyuDebug_CheckExactPlayTime
-	case 20, RyuDebug_menu_nodevcheck
+	case 20, RyuDebug_EnableVerboseUtility
+	case 21, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -1256,3 +1257,21 @@ RyuDebug_CheckExactPlayTime::
 	release
 	end
 
+RDB_VERBOSETOGGLED:
+	.string "Verbose Mode Enabled.$"
+
+RyuDebug_EnableVerboseUtility::
+	goto_if_set FLAG_RYU_VERBOSE_MODE, RDB_DisableVerbose
+	setflag FLAG_RYU_VERBOSE_MODE
+	debugprint RDB_VERBOSETOGGLED, 120
+	release
+	end
+
+RDB_DisableVerbose:
+	clearflag FLAG_RYU_VERBOSE_MODE
+	msgbox RDB_VBD
+	release
+	end
+
+RDB_VBD:
+	.string "Verbose mode disabled.$"

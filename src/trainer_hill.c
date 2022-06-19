@@ -33,6 +33,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/trainer_types.h"
 #include "random.h"
+#include "overworld_notif.h"
 
 #define HILL_TAG_NORMAL 0
 #define HILL_TAG_VARIETY 1
@@ -407,6 +408,9 @@ static void TrainerHillStartChallenge(void)
     gBattleOutcome = 0;
     gSaveBlock1Ptr->trainerHill.receivedPrize = 0;
     VarSet(VAR_RYU_TH_RNG_VALUE, Random() % TRAINER_HILL_REWARDS_PER_TABLE);
+    ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_TH_RNG_VALUE), 0, 3);
+    if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+        DebugPrint((const u8[]) _("Trainer Hill reward rolled. ({RYU_STR_1})"));
 }
 
 static void GetOwnerState(void)

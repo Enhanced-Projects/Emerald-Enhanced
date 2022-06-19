@@ -1365,6 +1365,9 @@
 #define FLAG_RYU_USED_INSTANT_TRANSITION                          0x508
 #define FLAG_RYU_DISABLED_ANIMS                                   0x509
 #define FLAG_RYU_FACING_ATTENDANT                                 0x50A
+#define FLAG_RYU_VERBOSE_MODE                                     0x50B
+#define FLAG_RYU_NOTIFIED_RDM_MUSIC                               0x50C
+#define FLAG_RYU_NOTIFIED_JUKEBOX                                 0x50D
 
 
 #define NEW_FLAGS_END                                             0x5FF

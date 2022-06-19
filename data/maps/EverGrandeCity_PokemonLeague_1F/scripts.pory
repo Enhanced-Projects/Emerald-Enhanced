@@ -2,12 +2,33 @@ raw `
 EverGrandeCity_PokemonLeague_1F_MapScripts:: @ 82295D2
 	map_script ON_TRANSITION, EverGrandeCity_PokemonLeague_1F_OnTransition
 	map_script ON_RESUME, CableClub_OnResume
+	map_script ON_FRAME, EGC_PL_SetUpE4Teams
 	.byte 0
+
+ EGC_PL_SetUpE4Teams::
+	map_script_2 VAR_TEMP_6, 0, EGC_RandomizeE4
+	.2byte 0
+
+EGC_RandomizeE4::
+	call_if_unset FLAG_RYU_VERBOSE_MODE, EGC_NoVerboseRDME4
+	compare VAR_TEMP_5, 30
+	call_if_le EGC_Delay
+	setvar VAR_TEMP_6, 100
+	callnative RyuSetupRandomForE4
+	end
+
+EGC_NoVerboseRDME4:
+	setvar VAR_TEMP_6, 100
+	callnative RyuSetupRandomForE4
+	end
+
+EGC_Delay::
+	addvar VAR_TEMP_5, 1
+	return
 
 EverGrandeCity_PokemonLeague_1F_OnTransition: @ 82295DD
 	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY
 	setflag FLAG_LANDMARK_POKEMON_LEAGUE
-	callnative RyuSetupRandomForE4
 	call_if_unset FLAG_ENTERED_ELITE_FOUR, EverGrandeCity_PokemonLeague_1F_EventScript_GuardsBlockDoor
 	end
 

@@ -233,9 +233,6 @@ void RyuDoNotifyTasks(void)
         ScriptContext1_SetupScript(RyuCheckForLNSUAch);
     }
 
-    if (FlagGet(FLAG_SELECTED_FF_TEXT_OPTION) == TRUE) //warn player about instant text
-        ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
-
     if ((FlagGet(FLAG_RYU_FAILED_RYU_CHALLENGE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE) == FALSE))
         ScriptContext1_SetupScript(RyuScript_NotifyFailedChallenge);
 

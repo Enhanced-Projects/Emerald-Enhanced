@@ -1051,9 +1051,15 @@ static void Task_OptionMenuSave(u8 taskId)
         FlagSet(FLAG_RYU_DISABLED_ANIMS);
     }
     if (sOptions->sel[MENUITEM_RDM_MUSIC])
+    {
         FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
+        FlagClear(FLAG_RYU_NOTIFIED_RDM_MUSIC);
+    }
     else
+    {
         FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
+        FlagSet(FLAG_RYU_NOTIFIED_RDM_MUSIC);
+    }
 
     gSaveBlock2Ptr->optionsButtonMode = sOptions->sel[MENUITEM_BUTTONMODE];
 

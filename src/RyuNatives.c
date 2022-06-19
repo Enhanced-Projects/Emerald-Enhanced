@@ -1958,6 +1958,8 @@ void RyuClearAlchemyEffect(void)
     gSaveBlock2Ptr->alchemyCharges = 0;
     gSaveBlock2Ptr->alchemyEffect = 0;
     gSaveBlock2Ptr->hasAlchemyEffectActive = 0;
+    if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+        DebugPrint((const u8[]) _("Cleared Alchemy Effects."));
 }
 
 void RyuSetupAlchemicalRepel(void) //There's no need to assume there's an alchemy effect active with this.
@@ -2077,6 +2079,8 @@ void RyuDebug_CheckAlchemyStatus(void)
     ConvertIntToDecimalStringN(gStringVar3, gSaveBlock2Ptr->alchemyCharges, STR_CONV_MODE_LEFT_ALIGN, 2);
     ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
     ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 5);
+    if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+        DebugPrint((const u8[]) _("Checked Alchemy Effects."));
 }
 
 
@@ -2542,6 +2546,21 @@ void RyuSetupRandomForE4(void)
     VarSet(VAR_RYU_E42, r2);
     VarSet(VAR_RYU_E43, r3);
     VarSet(VAR_RYU_E44, r4);
+    if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+    {
+            ConvertIntToDecimalStringN(gStringVar1, r1, 0, 1);
+            ConvertIntToDecimalStringN(gStringVar2, r2, 0, 1);
+            ConvertIntToDecimalStringN(gRyuStringVar1, r3, 0, 1);
+            ConvertIntToDecimalStringN(gRyuStringVar2, r4, 0, 1);
+            StringCopy(gRyuStringVar3, gStringVar1);
+            StringAppend(gRyuStringVar3, gText_Space2);
+            StringAppend(gRyuStringVar3, gStringVar2);
+            StringAppend(gRyuStringVar3, gText_Space2);
+            StringAppend(gRyuStringVar3, gRyuStringVar1);
+            StringAppend(gRyuStringVar3, gText_Space2);
+            StringAppend(gRyuStringVar3, gRyuStringVar2);
+            DebugPrint((const u8[]) _("Rolled for elite four.({RYU_STR_3})"));
+    }
 
     if (VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100) //special challenge active, always give rematch 2 parties on rematch.
         {

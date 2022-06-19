@@ -424,10 +424,10 @@ static void RemoveExtraStartMenuWindows(void)
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
     RemoveInfoBoxWindow();
-    /*if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_RDM_MUSIC) == FALSE))
+    if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_RDM_MUSIC) == FALSE))
     {
         DebugPrint((const u8[]) _("Random Music now enabled."));
-    }*/
+    }
 }
 
 EWRAM_DATA static u8 sPrintNumberWindowId = 1;
@@ -1246,13 +1246,7 @@ static bool8 HandleStartMenuInput(void)
     if ((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1) && gMain.newKeys & R_BUTTON)
     {
         PlaySE(SE_PIN);
-        if(gSongTable[song].me != 0) // if second number in this songtable entry is not zero
-        {
-            for(;gSongTable[song].me != 0; song = song + 1) // skip songs that are like that until we find one that isn't 
-            {
-
-            }
-        }
+        while (gSongTable[song].me != 0 && song != 0) song++;
         VarSet(VAR_RYU_JUKEBOX, song);
         PlayNextTrack();
     }
@@ -1355,6 +1349,8 @@ static bool8 HandleStartMenuInput(void)
             DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
             MenuSpriteId1 = 0;
         }
+        if ((FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_JUKEBOX) == FALSE))
+            DebugPrint((const u8[]) _("Jukebox enabled."));
         return TRUE;
     }
 
@@ -1366,6 +1362,7 @@ static bool8 HandleStartMenuInput(void)
             {
                 case 0:
                     FlagSet(FLAG_RYU_JUKEBOX_ENABLED);
+                    FlagClear(FLAG_RYU_NOTIFIED_JUKEBOX);
                     PlaySE(SE_PC_ON);
                     
                     if (VarGet(VAR_RYU_SAVED_BGM) > 350 && (VarGet(VAR_RYU_SAVED_BGM) < 558))
@@ -1380,6 +1377,7 @@ static bool8 HandleStartMenuInput(void)
                     break;
                 case 1:
                     FlagClear(FLAG_RYU_JUKEBOX_ENABLED);
+                    FlagSet(FLAG_RYU_NOTIFIED_JUKEBOX);
                     VarSet(VAR_RYU_SAVED_BGM, VarGet(VAR_RYU_JUKEBOX));
                     ResetMapMusic();
                     Overworld_ChangeMusicToDefault();
