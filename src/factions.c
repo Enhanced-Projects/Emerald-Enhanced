@@ -12,6 +12,7 @@
 #include "menu.h"
 #include "palette.h"
 #include "string_util.h"
+#include "ach_atlas.h"
 
 const u8 gFactionNames[8][15] = {
     [FACTION_NATURALISTS] = _("Naturalists"),
@@ -189,6 +190,8 @@ void RyuCheckForFactionAchievements(void)
             if (CheckAchievement(42 + i) == FALSE)
                 GiveAchievement(42 + i);
     }
+    if ((gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEMON_LEAGUE] < 13) && CheckAchievement(ACH_THE_WARRIOR) == FALSE)
+        GiveAchievement(ACH_THE_WARRIOR);
 }
 
 bool8 ScrCmd_checkfactionstanding(struct ScriptContext *ctx)

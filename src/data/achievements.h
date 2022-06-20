@@ -191,8 +191,8 @@ static const u8 sTheTradesmanHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  
 static const u8 sTheTradesmanDesc[] = _("Your skill may be unrivaled, but what of\nyour compassion?\n(175+ standing with the Professionals.)");
 
 static const u8 sTheWarriorLabel[] = _("The Warrior");
-static const u8 sTheWarriorHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Olympian.");
-static const u8 sTheWarriorDesc[] = _("Your unbridled power is impressive, but\nhow does your intelligence stack?\n(175+ standing with the Athletes.)");
+static const u8 sTheWarriorHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}League Conqueror.");
+static const u8 sTheWarriorDesc[] = _("You defeated the most well-known\ntrainers in Hoenn.\nGreatness Awaits!(All Badges)");
 
 static const u8 sTheUniversalistLabel[] = _("The Universalist");
 static const u8 sTheUniversalistHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Way of the seven paths.");

@@ -1350,7 +1350,10 @@ static bool8 HandleStartMenuInput(void)
             MenuSpriteId1 = 0;
         }
         if ((FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_JUKEBOX) == FALSE))
+        {
             DebugPrint((const u8[]) _("Jukebox enabled."));
+            FlagSet(FLAG_RYU_NOTIFIED_JUKEBOX);
+        }
         return TRUE;
     }
 
