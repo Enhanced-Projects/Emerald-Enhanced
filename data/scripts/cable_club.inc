@@ -1949,7 +1949,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_CONOR
 	cleartrainerflag TRAINER_EDWIN_1
 	cleartrainerflag TRAINER_HECTOR
-	cleartrainerflag TRAINER_EMPTY_193
+	cleartrainerflag TRAINER_CHALLENGER_LUSAMINE
 	cleartrainerflag TRAINER_REL_MAY
 	cleartrainerflag TRAINER_DRAKE_REMATCH_2
 	cleartrainerflag TRAINER_GLACIA_REMATCH_2

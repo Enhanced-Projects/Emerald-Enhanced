@@ -376,6 +376,7 @@ RDB_TempVarsViewMsg:
 
 
 RyuDebug_Utility1::
+	createfollower OBJ_EVENT_GFX_LUSAMINE, RyuFollowerSelectNPCScript, DIR_SOUTH
 	release
 	end
 

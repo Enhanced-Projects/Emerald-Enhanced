@@ -7043,17 +7043,61 @@ static const struct TrainerMonNoItemDefaultMoves sParty_CourtneyMossdeep[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Edwin2[] = {
-    {
-    .iv = 0,
-    .lvl = 26,
-    .species = SPECIES_LOMBRE,
-    },
-    {
-    .iv = 0,
-    .lvl = 26,
-    .species = SPECIES_NUZLEAF,
-    }
+static const struct TrainerMonItemCustomMoves sParty_ChallengerLusamine[] = {
+	{
+	.iv = 250,
+	.lvl = 91,
+	.species = SPECIES_CLEFABLE,
+	.heldItem = ITEM_SILK_SCARF,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_MOONBLAST, MOVE_COSMIC_POWER, MOVE_METRONOME, MOVE_MOONLIGHT},
+	},
+	{
+	.iv = 250,
+	.lvl = 92,
+	.species = SPECIES_LILLIGANT,
+	.heldItem = ITEM_FOCUS_SASH,
+	.evspread = 0,
+    .ability = 2,
+	.moves = {MOVE_GIGA_DRAIN, MOVE_SLUDGE_BOMB, MOVE_QUIVER_DANCE, MOVE_SIGNAL_BEAM},
+	},
+	{
+	.iv = 250,
+	.lvl = 90,
+	.species = SPECIES_MISMAGIUS,
+	.heldItem = ITEM_EXPERT_BELT,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_SHADOW_BALL, MOVE_MYSTICAL_FIRE, MOVE_POWER_GEM, MOVE_GRAVEL_STORM},
+	},
+	{
+	.iv = 250,
+	.lvl = 91,
+	.species = SPECIES_MILOTIC,
+	.heldItem = ITEM_MYSTIC_WATER,
+	.evspread = 0,
+    .ability = 2,
+	.moves = {MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_ICE_BEAM, MOVE_RECOVER},
+	},
+	{
+	.iv = 250,
+	.lvl = 92,
+	.species = SPECIES_BEWEAR,
+	.heldItem = ITEM_BLACK_BELT,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_HAMMER_ARM, MOVE_TAKE_DOWN, MOVE_EARTHQUAKE, MOVE_SHADOW_SNEAK},
+	},
+	{
+	.iv = 250,
+	.lvl = 90,
+	.species = SPECIES_NIHILEGO,
+	.heldItem = ITEM_POISON_BARB,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_ACID, MOVE_POWER_GEM, MOVE_GRASS_KNOT, MOVE_FREEZE_DRY},
+	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_RelMay[] = {

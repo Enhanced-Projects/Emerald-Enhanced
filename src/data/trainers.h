@@ -8239,20 +8239,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_CourtneyMossdeep},
     },
 
-    [TRAINER_EMPTY_193] =
+    [TRAINER_CHALLENGER_LUSAMINE] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_COLLECTOR,
-        .trainerFaction = FACTION_OUTCASTS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-        .trainerPic = TRAINER_PIC_COLLECTOR,
-        .trainerName = _("Edwin"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_AETHER_FOUNDER,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_LUSAMINE,
+        .trainerName = _("Lusamine"),
+        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Edwin2),
-        .party = {.NoItemDefaultMoves = sParty_Edwin2},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .partySize = ARRAY_COUNT(sParty_ChallengerLusamine),
+        .party = {.ItemCustomMoves = sParty_ChallengerLusamine},
     },
 
     [TRAINER_REL_MAY] =
@@ -12565,8 +12565,8 @@ const struct Trainer gTrainers[] = {
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
         .trainerFaction = FACTION_POKEFANS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_BRENDAN,
-        .trainerName = _("{PLAYER}"),
+        .trainerPic = TRAINER_PIC_LUSAMINE,
+        .trainerName = _("Lusamine"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE},
         .battleStyle = BS_SET,
         .doubleBattle = FALSE,

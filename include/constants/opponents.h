@@ -516,7 +516,7 @@
 #define TRAINER_EDWIN_1                     512
 #define TRAINER_HECTOR                      513
 #define TRAINER_COURTNEY_MOSSDEEP           514
-#define TRAINER_EMPTY_193                     515
+#define TRAINER_CHALLENGER_LUSAMINE                     515
 #define TRAINER_REL_MAY                     516
 #define TRAINER_DRAKE_REMATCH_2                     517
 #define TRAINER_GLACIA_REMATCH_2                     518

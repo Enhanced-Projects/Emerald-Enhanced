@@ -42,6 +42,7 @@ const u32 gObjectEventPic_RubySapphireMayRunning[] = INCBIN_U32("graphics/object
 const u16 gObjectEventPalette34[] = INCBIN_U16("graphics/object_events/palettes/34.gbapal");
 const u16 gUnusedObjectEventPalette[] = INCBIN_U16("graphics/object_events/palettes/unused_palette.gbapal");
 const u16 gObjectEventPaletteLeaf[] = INCBIN_U16("graphics/object_events/palettes/leaf.gbapal");
+const u16 gObjectEventPaletteLusamine[] = INCBIN_U16("graphics/object_events/palettes/lusamine.gbapal");
 const u16 gObjectEventPaletteNull16[16] = {};
 const u16 gObjectEventPaletteNull17[16] = {};
 const u16 gObjectEventPaletteNull18[16] = {};
@@ -158,6 +159,13 @@ const u32 gObjectEventPic_Tate[] = INCBIN_U32("graphics/object_events/pics/peopl
 const u32 gObjectEventPic_Wallace[] = INCBIN_U32("graphics/object_events/pics/people/wallace.4bpp");
 const u32 gObjectEventPic_Steven[] = INCBIN_U32("graphics/object_events/pics/people/steven.4bpp");
 const u32 gObjectEventPic_Wally[] = INCBIN_U32("graphics/object_events/pics/people/wally.4bpp");
+//Aether Foundation
+const u32 gObjectEventPic_Lusamine[] = INCBIN_U32("graphics/object_events/pics/people/team_aether/lusamine.4bpp");
+
+
+
+
+
 const u32 gObjectEventPic_RubySapphireLittleBoy[] = INCBIN_U32("graphics/object_events/pics/people/rs_little_boy.4bpp");
 const u32 gObjectEventPic_HotSpringsOldWoman[] = INCBIN_U32("graphics/object_events/pics/people/hot_springs_old_woman.4bpp");
 const u32 gObjectEventPic_LatiasLatios[] = INCBIN_U32("graphics/object_events/pics/pokemon/latias_latios.4bpp");

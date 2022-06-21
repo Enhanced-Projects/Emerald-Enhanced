@@ -104,6 +104,10 @@ script RyuChampionThroneStart { //For solo challenging
 				msgbox(RCR_Danny_Intro)
 				closemessage
 				trainerbattle_no_intro(TRAINER_CHALLENGER_DANNY, RCR_Danny_DefeatText)
+			case 20:
+				msgbox(RCR_Lusamine_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_LUSAMINE, RCR_Lusamine_DefeatText)
 	}
 	goto(RCR_FinishChallenge)
 }
@@ -175,11 +179,41 @@ script RCR_OverlordRyuEndMatch {
 	end
 }
 
+text RCR_NumberDebug {
+	"Fighting Opponent {RYU_STR_1}$"
+}
+
+script RCR_RETURNRANDOM {
+	random(11)
+	copyvar(VAR_0x8009, VAR_RESULT)
+	buffernumberstring(0, VAR_RESULT)
+	msgbox("Is {STR_VAR_1} ok?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		closemessage
+		copyvar(VAR_RESULT, VAR_0x8009)
+		return
+	}
+	goto(RCR_RETURNRANDOM)
+}
+
 script RCR_ChooseOpponent { //randomly selects which challenger the player is getting
 	special(SpawnCameraObject)
 	applymovement(CAMERA, RCR_CameraMove)
 	waitmovement(CAMERA)
-	random(9)
+	random(11)
+	copyvar(VAR_0x8009, VAR_RESULT)
+	if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
+		buffernumberstring(3, VAR_RESULT)
+		debugprint(RCR_NumberDebug, 120)
+		if (flag(FLAG_RYU_DEV_MODE) == TRUE)  {
+			msgbox("Accept this roll?", MSGBOX_YESNO)
+			if (var(VAR_RESULT) == NO) {
+    		    call(RCR_RETURNRANDOM)
+			}
+		}
+	}
+	closemessage
+	copyvar(VAR_RESULT, VAR_0x8009)
 	switch (var(VAR_RESULT)) {
 	case 0:
 		setvar(VAR_TEMP_5, 1)
@@ -201,6 +235,8 @@ script RCR_ChooseOpponent { //randomly selects which challenger the player is ge
 		setvar(VAR_TEMP_5, 13)
 	case 9:
 		setvar(VAR_TEMP_5, 19)
+	case 10:
+		setvar(VAR_TEMP_5, 20)
 	}
 	return
 }
@@ -306,6 +342,15 @@ script RCR_SetUpBattle { //For follower matches
 			call(RCR_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_DANNY, RCR_Danny_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 20:
+		msgbox(RCR_Lusamine_Intro)
+		closemessage
+		//special(SavePlayerParty)
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_LUSAMINE, RCR_Lusamine_DefeatText, VAR_0x8008, VAR_0x8009)
 	}
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
@@ -593,6 +638,12 @@ RCR_Juan_Intro:
 RCR_Juan_DefeatText:
 	.string "Ahahaha, excellent!\n"
 	.string "You truly are a remarkable trainer!$"
+
+RCR_Lusamine_Intro:
+	.string "Perhaps I should put you on display\nlike I have my beloved specimens...\pI must have you!\nFight me!$"
+	
+RCR_Lusamine_DefeatText:
+	.string "Wh- WHAT?! IMPOSSIBLE!\nI must add you to my collection!\pThis isn't... over...$"
 
 RCR_Danny_Intro:
 	.string "Never thought Hoenn would be\n"
