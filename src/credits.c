@@ -247,7 +247,14 @@ static const u8 gCreditsText_Donorsp26[] = _("beefheart666  Dee O'Mayall");
 static const u8 gCreditsText_Donorsp27[] = _("Darkfire  Demon NTM");
 static const u8 gCreditsText_Donorsp28[] = _("The Shogun  Shiek Hatake");
 static const u8 gCreditsText_Donorsp29[] = _("Talon  NotJosh");
-static const u8 gCreditsText_Donorsp30[] = _("Crono19d");
+static const u8 gCreditsText_Donorsp30[] = _("Crono19d   Brendan");
+static const u8 gCreditsText_Donorsp31[] = _("Taylor Graysteel");
+static const u8 gCreditsText_Donorsp32[] = _("RizakH  Emerey");
+static const u8 gCreditsText_Donorsp33[] = _("Hailie  Roxses7299");
+static const u8 gCreditsText_Donorsp34[] = _("Superzeldabound");
+static const u8 gCreditsText_Donorsp35[] = _("Donte   DarkGhost");
+static const u8 gCreditsText_Donorsp36[] = _("BigBlack23   TheWolverine");
+static const u8 gCreditsText_Donorsp37[] = _("Kyrgyzstan");
 
 static const u8 gCreditsText_DevelopmentBy[] = _("Primary Developers:");
 
@@ -257,6 +264,10 @@ static const u8 gCreditsText_GraphicsBy[] = _("Custom art by:");
 static const u8 gCreditsText_EEGraphics1[] = _("Rayan");
 static const u8 gCreditsText_EEGraphics2[] = _("kendyvevo");
 static const u8 gCreditsText_EEGraphics3[] = _("SmokingArmy");
+static const u8 gCreditsTextExternalGraphics[] = _("External Art Sources:");
+static const u8 gCreditsText_EEExtGraphics1[] = _("mid117   silentninja");
+static const u8 gCreditsText_EEExtGraphics2[] = _("SharkGuy01");
+static const u8 gCreditsText_EEExtGraphics3[] = _("");
 static const u8 gCreditsText_DocumentationBy[] = _("Documentation By:");
 static const u8 gCreditsText_Toby[] = _("Toby");
 static const u8 gCreditsText_Jannisjo[] = _("jannisjo");
@@ -462,6 +473,13 @@ static const struct CreditsEntry gCreditsEntry_Donorsp27[] = {0, FALSE, gCredits
 static const struct CreditsEntry gCreditsEntry_Donorsp28[] = {0, FALSE, gCreditsText_Donorsp28};
 static const struct CreditsEntry gCreditsEntry_Donorsp29[] = {0, FALSE, gCreditsText_Donorsp29};
 static const struct CreditsEntry gCreditsEntry_Donorsp30[] = {0, FALSE, gCreditsText_Donorsp30};
+static const struct CreditsEntry gCreditsEntry_Donorsp31[] = {0, FALSE, gCreditsText_Donorsp31};
+static const struct CreditsEntry gCreditsEntry_Donorsp32[] = {0, FALSE, gCreditsText_Donorsp32};
+static const struct CreditsEntry gCreditsEntry_Donorsp33[] = {0, FALSE, gCreditsText_Donorsp33};
+static const struct CreditsEntry gCreditsEntry_Donorsp34[] = {0, FALSE, gCreditsText_Donorsp34};
+static const struct CreditsEntry gCreditsEntry_Donorsp35[] = {0, FALSE, gCreditsText_Donorsp35};
+static const struct CreditsEntry gCreditsEntry_Donorsp36[] = {0, FALSE, gCreditsText_Donorsp36};
+static const struct CreditsEntry gCreditsEntry_Donorsp37[] = {0, FALSE, gCreditsText_Donorsp37};
 //page
 static const struct CreditsEntry gCreditsEntry_StoryboardingBy[] = {0, TRUE, gCreditsText_StoryboardingBy};
 static const struct CreditsEntry gCreditsEntry_Kouta[] = {0, FALSE, gCreditsText_Kouta};
@@ -470,6 +488,11 @@ static const struct CreditsEntry gCreditsEntry_GraphicsBy[] = {0, TRUE, gCredits
 static const struct CreditsEntry gCreditsEntry_EEGraphics1[] = {0, FALSE, gCreditsText_EEGraphics1};
 static const struct CreditsEntry gCreditsEntry_EEGraphics2[] = {0, FALSE, gCreditsText_EEGraphics2};
 static const struct CreditsEntry gCreditsEntry_EEGraphics3[] = {0, FALSE, gCreditsText_EEGraphics3};
+
+static const struct CreditsEntry gCreditsEntry_ExternalGraphics[] = {0, FALSE, gCreditsTextExternalGraphics};
+static const struct CreditsEntry gCreditsEntry_EEExtGraphics1[] = {0, FALSE, gCreditsText_EEExtGraphics1};
+static const struct CreditsEntry gCreditsEntry_EEExtGraphics2[] = {0, FALSE, gCreditsText_EEExtGraphics1};
+static const struct CreditsEntry gCreditsEntry_EEExtGraphics3[] = {0, FALSE, gCreditsText_EEExtGraphics1};
 //page
 static const struct CreditsEntry gCreditsEntry_DocumentationBy[] = {0, TRUE, gCreditsText_DocumentationBy};
 static const struct CreditsEntry gCreditsEntry_Toby[] = {0, FALSE, gCreditsText_Toby};
@@ -716,6 +739,20 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         gCreditsEntry_Donorsp28,
         gCreditsEntry_Donorsp29,
         gCreditsEntry_Donorsp30,
+        gCreditsEntry_Donorsp31,
+        _
+    },
+    {
+        gCreditsEntry_Donorsp32,
+        gCreditsEntry_Donorsp33,
+        gCreditsEntry_Donorsp34,
+        gCreditsEntry_Donorsp35,
+        _
+    },
+    {
+        gCreditsEntry_Donorsp36,
+        gCreditsEntry_Donorsp37,
+        _,
         _,
         _
     },
@@ -738,6 +775,13 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         gCreditsEntry_EEGraphics1,
         gCreditsEntry_EEGraphics2,
         gCreditsEntry_EEGraphics3,
+        _
+    },
+    {
+        gCreditsEntry_ExternalGraphics,
+        gCreditsEntry_EEExtGraphics1,
+        gCreditsEntry_EEExtGraphics2,
+        gCreditsEntry_EEExtGraphics3,
         _
     },
     {
@@ -834,88 +878,11 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         _,
     },
     {
-        _,
-        gCreditsEntry_GraphicDesigners,
-        gCreditsEntry_MotofumiFujiwara,
-        gCreditsEntry_SatoshiOhta,
-        _,
-    },
-    {
-        gCreditsEntry_GraphicDesigners,
-        gCreditsEntry_KenkichiToyama,
-        gCreditsEntry_AsukaIwashita,
-        gCreditsEntry_TakaoUnno,
-        _,
-    },
-    {
         gCreditsEntry_GraphicDesigners,
         gCreditsEntry_KenSugimori,
         gCreditsEntry_HironobuYoshida,
         gCreditsEntry_AimiTomita,
         gCreditsEntry_KanakoEo,
-    },
-    {
-        gCreditsEntry_MusicComposition,
-        gCreditsEntry_GoIchinose,
-        gCreditsEntry_JunichiMasuda,
-        gCreditsEntry_MorikazuAoki,
-        gCreditsEntry_HitomiSato,
-    },
-    {
-        _,
-        gCreditsEntry_SoundEffectsAndPkmnVoices,
-        gCreditsEntry_GoIchinose,
-        gCreditsEntry_MorikazuAoki,
-        _,
-    },
-    {
-        gCreditsEntry_GameDesigners,
-        gCreditsEntry_ShigekiMorimoto,
-        gCreditsEntry_TeruyukiShimoyamada,
-        gCreditsEntry_TakeshiKawachimaru,
-        gCreditsEntry_AkihitoTomisawa,
-    },
-    {
-        gCreditsEntry_GameDesigners,
-        gCreditsEntry_SuguruNakatsui,
-        gCreditsEntry_TetsujiOhta,
-        gCreditsEntry_HitomiSato,
-        gCreditsEntry_KenjiMatsushima,
-    },
-    {
-        gCreditsEntry_GameDesigners,
-        gCreditsEntry_JunichiMasuda,
-        gCreditsEntry_KojiNishino,
-        gCreditsEntry_ShigeruOhmori,
-        gCreditsEntry_TadashiTakahashi,
-    },
-    {
-        gCreditsEntry_ScenarioPlot,
-        gCreditsEntry_AkihitoTomisawa,
-        gCreditsEntry_JunichiMasuda,
-        gCreditsEntry_KojiNishino,
-        _,
-    },
-    {
-        gCreditsEntry_Scenario,
-        gCreditsEntry_AkihitoTomisawa,
-        gCreditsEntry_HitomiSato,
-        gCreditsEntry_ToshinobuMatsumiya,
-        _,
-    },
-    {
-        gCreditsEntry_ScriptDesigners,
-        gCreditsEntry_TomomichiOhta,
-        gCreditsEntry_SatoshiNohara,
-        _,
-        _,
-    },
-    {
-        gCreditsEntry_MapDesigners,
-        gCreditsEntry_SuguruNakatsui,
-        gCreditsEntry_TeruyukiShimoyamada,
-        gCreditsEntry_ShigeruOhmori,
-        gCreditsEntry_TetsujiOhta,
     },
     {
         _,
@@ -946,80 +913,10 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         gCreditsEntry_AkitoMori,
     },
     {
-        gCreditsEntry_PkmnDesigners,
-        gCreditsEntry_KenSugimori,
-        gCreditsEntry_MotofumiFujiwara,
-        gCreditsEntry_ShigekiMorimoto,
-        _,
-    },
-    {
-        gCreditsEntry_PkmnDesigners,
-        gCreditsEntry_HironobuYoshida,
-        gCreditsEntry_SatoshiOhta,
-        gCreditsEntry_AsukaIwashita,
-        _,
-    },
-    {
-        gCreditsEntry_PkmnDesigners,
-        gCreditsEntry_TakaoUnno,
-        gCreditsEntry_KanakoEo,
-        gCreditsEntry_AimiTomita,
-        _,
-    },
-    {
-        gCreditsEntry_PkmnDesigners,
-        gCreditsEntry_AtsukoNishida,
-        gCreditsEntry_MuneoSaito,
-        gCreditsEntry_RenaYoshikawa,
-        gCreditsEntry_JunOkutani,
-    },
-    {
-        _,
-        gCreditsEntry_SupportProgrammers,
-        gCreditsEntry_SatoshiMitsuhara,
-        gCreditsEntry_DaisukeHoshino,
-        _,
-    },
-    {
-        _,
-        gCreditsEntry_NCLProductTesting,
-        gCreditsEntry_NCLSuperMarioClub,
-        _,
-        _,
-    },
-    {
         _,
         gCreditsEntry_PackageAndManual,
         gCreditsEntry_KenSugimori,
         _,
-        _,
-    },
-    {
-        _,
-        gCreditsEntry_SpecialThanks,
-        gCreditsEntry_KenjiTominaga,
-        gCreditsEntry_HirokiEnomoto,
-        _,
-    },
-    {
-        gCreditsEntry_SpecialThanks,
-        gCreditsEntry_KazuyaSuyama,
-        gCreditsEntry_KenjiroIto,
-        gCreditsEntry_MichikoTakizawa,
-        gCreditsEntry_MakikoTakada,
-    },
-    {
-        gCreditsEntry_SpecialThanks,
-        gCreditsEntry_MikikoOhhashi,
-        gCreditsEntry_TakanaoKondo,
-        gCreditsEntry_RuiKawaguchi,
-        _,
-    },
-    {
-        gCreditsEntry_SpecialThanks,
-        gCreditsEntry_TakahiroOhnishi,
-        gCreditsEntry_NorihideOkamura,
-        gCreditsEntry_ShunsukeKohori,
         _,
     },
     {
@@ -1028,27 +925,6 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         gCreditsEntry_YuriSakurai,
         gCreditsEntry_YumiFunasaka,
         gCreditsEntry_NaokoYanase,
-    },
-    {
-        _,
-        gCreditsEntry_Artwork,
-        gCreditsEntry_SachikoNakamichi,
-        gCreditsEntry_FujikoNomura,
-        _,
-    },
-    {
-        _,
-        gCreditsEntry_Artwork,
-        gCreditsEntry_HideyukiNakajima,
-        gCreditsEntry_HidenoriSaeki,
-        _,
-    },
-    {
-        gCreditsEntry_Artwork,
-        gCreditsEntry_YokoWatanabe,
-        gCreditsEntry_SakaeKimura,
-        gCreditsEntry_ChiakiShinkai,
-        _,
     },
     {
         gCreditsEntry_Coordinators,
@@ -1111,62 +987,6 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         gCreditsEntry_ThomasHertzog,
         gCreditsEntry_ErikJohnson,
         gCreditsEntry_MikaKurosawa,
-        _,
-    },
-    {
-        gCreditsEntry_BrailleCodeCheck,
-        gCreditsEntry_NationalFederationBlind,
-        gCreditsEntry_PatriciaAMaurer,
-        gCreditsEntry_JapanBrailleLibrary,
-        gCreditsEntry_EuropeanBlindUnion,
-    },
-    {
-        _,
-        gCreditsEntry_BrailleCodeCheck,
-        gCreditsEntry_AustralianBrailleAuthority,
-        gCreditsEntry_RoyalNewZealandFederationBlind,
-        _,
-    },
-    {
-        gCreditsEntry_SpecialThanks,
-        gCreditsEntry_HiroyukiUesugi,
-        gCreditsEntry_MotoyasuTojima,
-        gCreditsEntry_NicolaPrattBarlow,
-        gCreditsEntry_ShellieDow,
-    },
-    {
-        _,
-        gCreditsEntry_TaskManagers,
-        gCreditsEntry_AzusaTajima,
-        gCreditsEntry_ShusakuEgami,
-        _,
-    },
-    {
-        gCreditsEntry_Producers,
-        gCreditsEntry_HiroyukiJinnai,
-        gCreditsEntry_HitoshiYamagami,
-        gCreditsEntry_GakujiNomoto,
-        gCreditsEntry_HiroakiTsuru,
-    },
-    {
-        _,
-        gCreditsEntry_ExecutiveDirector,
-        gCreditsEntry_SatoshiTajiri,
-        _,
-        _,
-    },
-    {
-        _,
-        gCreditsEntry_ExecProducers,
-        gCreditsEntry_SatoruIwata,
-        _,
-        _,
-    },
-    {
-        _,
-        gCreditsEntry_ExecProducers,
-        gCreditsEntry_TsunekazIshihara,
-        _,
         _,
     },
 };
