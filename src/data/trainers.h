@@ -7999,20 +7999,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Ernest4},
     },
 
-    [TRAINER_EMPTY_188] =
+    [TRAINER_CHALLENGER_CLAY] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_SAILOR,
-        .trainerFaction = FACTION_PROFESSIONALS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_SAILOR,
-        .trainerName = _("Ernest"),
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_EXPERT,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
+        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerName = _("Clay"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Ernest5),
-        .party = {.NoItemDefaultMoves = sParty_Ernest5},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .partySize = ARRAY_COUNT(sParty_ChallengerClay),
+        .party = {.ItemCustomMoves = sParty_ChallengerClay},
     },
 
     [TRAINER_ELI] =

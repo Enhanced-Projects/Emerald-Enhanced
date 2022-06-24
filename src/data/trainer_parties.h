@@ -6855,22 +6855,61 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Ernest4[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Ernest5[] = {
-    {
-    .iv = 40,
-    .lvl = 45,
-    .species = SPECIES_PELIPPER,
-    },
-    {
-    .iv = 40,
-    .lvl = 45,
-    .species = SPECIES_MACHOKE,
-    },
-    {
-    .iv = 40,
-    .lvl = 45,
-    .species = SPECIES_PALOSSAND,
-    }
+static const struct TrainerMonItemCustomMoves sParty_ChallengerClay[] = {
+	{
+	.iv = 255,
+	.lvl = 91,
+	.species = SPECIES_HIPPOPOTAS,
+	.heldItem = ITEM_HARD_STONE,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_STONE_EDGE, MOVE_STEALTH_ROCK, MOVE_EARTHQUAKE, MOVE_SLACK_OFF},
+	},
+	{
+	.iv = 255,
+	.lvl = 92,
+	.species = SPECIES_GLISCOR,
+	.heldItem = ITEM_FLYING_GEM,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_ACROBATICS, MOVE_KNOCK_OFF, MOVE_BULLDOZE, MOVE_U_TURN},
+	},
+	{
+	.iv = 255,
+	.lvl = 90,
+	.species = SPECIES_GASTRODON,
+	.heldItem = ITEM_RINDO_BERRY,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_TOXIC, MOVE_RECOVER, MOVE_SCALD, MOVE_EARTH_POWER},
+	},
+	{
+	.iv = 255,
+	.lvl = 91,
+	.species = SPECIES_MAGNEZONE,
+	.heldItem = ITEM_ASSAULT_VEST,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_FLASH_CANNON, MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_HIDDEN_POWER},
+	},
+	{
+	.iv = 250,
+	.lvl = 92,
+	.species = SPECIES_EXCADRILL,
+	.heldItem = ITEM_LIFE_ORB,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE, MOVE_SANDSTORM},
+	},
+	{
+	.iv = 250,
+	.lvl = 90,
+	.species = SPECIES_LUCARIO,
+	.heldItem = ITEM_FOCUS_SASH,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_AURA_SPHERE, MOVE_DRAGON_PULSE, MOVE_FLASH_CANNON, MOVE_VACUUM_WAVE},
+	}
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Eli[] = {
