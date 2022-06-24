@@ -30,29 +30,6 @@ NGNormalMode::
 RI_ConfirmDifficulty:
 	.string "You have been set to the\nrecommended mode.$"
 
-GameModeSelectLati::
-	msgbox GMS_WhichColor
-	multichoice 22, 8, MULTI_TV_LATI, 1
-	compare VAR_RESULT, 0
-	call_if_eq RyuIntro_SetLatiGenderMale
-	compare VAR_RESULT, 1
-	call_if_eq RYuIntro_SetLatiGenderFemale
-	return
-
-RyuIntro_SetLatiGenderMale::
-	setvar VAR_ROAMER_POKEMON, 0 @should make it so that the roamer is latios
-	clearflag FLAG_SYS_TV_LATIAS_LATIOS
-	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
-	special InitRoamer
-	return
-
-RYuIntro_SetLatiGenderFemale::
-	setvar VAR_ROAMER_POKEMON, 0 @should make it so that the roamer is latias
-	clearflag FLAG_SYS_TV_LATIAS_LATIOS
-	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
-	special InitRoamer
-	return
-
 GMS_WhichColor:
 	.string "Which color is your favorite?$"
 
@@ -343,9 +320,6 @@ SetFemaleStartingVariables:: @ 823BF46
 
 Ryu_FrontierModeBegin::
 	call RyuSetRTCFrontier
-	end
-
-InsideOfTruck_EventScript_23BF6C:: @ 823BF6C
 	end
 
 RyuSetRTC::

@@ -89,10 +89,6 @@ FT_LanetteRomanceBegin::
 FT_CheckOtherQuestActive::
 	goto_if_unset FLAG_RYU_DEVON_LINE_FINISHED, ryu_return
 	goto FT_QuestIsActive
-	
-FT_CheckOtherQuestActive2::
-	goto_if_unset FLAG_RYU_DEVON_LINE_FINISHED, FT_QuestIsActive
-	return
 
 FT_QuestIsActive:
 	msgbox FT_CurrentlyBusy
@@ -124,13 +120,6 @@ FT_FollowLanette:
 	walk_down
 	walk_down
 	step_end
-
-FallarborTown_PokemonCenter_1F_EventScript_LanetteExited:: @ 8200C48
-	playse SE_JIDO_DOA
-	removeobject 4
-	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
-	release
-	end
 
 FallarborTown_PokemonCenter_1F_Movement_LanetteExitNorth: @ 8200C53
 	walk_right

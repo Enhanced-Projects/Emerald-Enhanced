@@ -516,11 +516,6 @@ LilycoveCity_PokemonCenter_1F_Movement_MonFaceLady: @ 82A89BB
     delay_8
     step_end
 
-@ Unused
-LilycoveCity_PokemonCenter_1F_Movement_MonFaceDown: @ 82A89BE
-    face_down
-    step_end
-
 LilycoveCity_PokemonCenter_1F_Movement_LadyFacePlayer: @ 82A89C0
     face_player
     step_end
@@ -721,11 +716,6 @@ LilycoveCity_PokemonCenter_1F_Text_YouGotItRightYouveWonPersonsPrize: @ 82A9007
     .string "You've won a prize provided by\n"
     .string "{STR_VAR_1}!$"
 
-@ Unused
-LilycoveCity_PokemonCenter_1F_Text_XReceivedOneY: @ 82A9056
-    .string "{STR_VAR_1} received\n"
-    .string "one {STR_VAR_2}!$"
-
 LilycoveCity_PokemonCenter_1F_Text_YourBagIsFilledUp: @ 82A906A
     .string "Oh? Your Bag is filled up!\n"
     .string "Come see me when you have room.$"
@@ -770,11 +760,6 @@ LilycoveCity_PokemonCenter_1F_Text_WriteYourQuiz: @ 82A9270
 LilycoveCity_PokemonCenter_1F_Text_QuitWritingQuizQuestion: @ 82A92D3
     .string "Are you going to quit writing\n"
     .string "your quiz question?$"
-
-@ Unused
-LilycoveCity_PokemonCenter_1F_Text_QuitWritingQuizAnswer: @ 82A9305
-    .string "Are you going to quit choosing\n"
-    .string "your quiz answer?$"
 
 LilycoveCity_PokemonCenter_1F_Text_IllLookForAChallenger: @ 82A9336
     .string "Thank you!\n"

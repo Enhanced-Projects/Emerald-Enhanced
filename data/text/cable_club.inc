@@ -20,10 +20,6 @@ CableClub_Text_RecordCornerUsingLinkCable:: @ 8277F96
 	.string "You can use the Record Corner with\n"
 	.string "others using a GBA Game Link cable.$"
 
-@ Unused
-CableClub_Text_CloseThisMenu: @ 8277FDD
-	.string "Close this menu.$"
-
 CableClub_Text_NeedTwoMonsForDoubleBattle: @ 8277FEE
 	.string "For a Double Battle, you must\n"
 	.string "have at least two Pokémon.$"
@@ -53,11 +49,6 @@ gText_ConfirmStartLinkWithXPlayers:: @ 82780F2
 gText_AwaitingLinkup:: @ 8278131
 	.string "Awaiting linkup…\n"
 	.string "… … B Button: Cancel$"
-
-@ Unused
-CableClub_Text_OkayToSaveProgress:: @ 8278157
-	.string "Your progress must be saved before\n"
-	.string "linking. Is it okay to save?$"
 
 CableClub_Text_PleaseEnter: @ 8278197
 	.string "Please enter.$"
@@ -177,14 +168,6 @@ CableClub_Text_ParticipantsStepUpToCounter: @ 827874F
 	.string "Participants are asked to step up\n"
 	.string "to the reception counter.$"
 
-@ Unused
-CableClub_Text_Hello: @ 827878B
-	.string "Hello!$"
-
-@ Unused
-CableClub_Text_PleaseWait: @ 8278792
-	.string "Please wait.$"
-
 CableClub_Text_YouMayTradeHere:: @ 827879F
 	.string "You may trade your Pokémon here\n"
 	.string "with another Trainer.$"
@@ -201,21 +184,8 @@ CableClub_Text_CanMixRecords:: @ 8278831
 	.string "The records of two to four players\n"
 	.string "can be mixed together.$"
 
-@ Unused
-CableClub_Text_GuideToVariousServices: @ 827886B
-	.string "A guide to the Wireless Club's\n"
-	.string "various services.$"
-
 CableClub_Text_CancelSelectedItem:: @ 827889C
 	.string "Cancels the selected Menu item.$"
-
-@ Unused
-CableClub_Text_WhichBattleMode: @ 82788BC
-	.string "Which battle mode would you like?$"
-
-@ Unused
-CableClub_Text_ReturnsToPreviousStep: @ 82788DE
-	.string "Returns to the previous step.$"
 
 CableClub_Text_NeedBerryForBerryCrush: @ 82788FC
 	.string "To use the berry crush service,\n"
@@ -235,11 +205,6 @@ CableClub_Text_UnionRoomAdapterNotConnected: @ 82789B5
 	.string "Unfortunately, your Wireless\n"
 	.string "Adapter is not connected properly.\p"
 	.string "Please do come again.$"
-
-@ Unused
-CableClub_Text_OhExcuseMe: @ 8278A39
-	.string "Oh…\n"
-	.string "Excuse me!$"
 
 CableClub_Text_PlayerIsWaiting: @ 8278A48
 	.string "It appears as if {STR_VAR_1} is playing\n"
@@ -302,11 +267,6 @@ MossdeepCity_GameCorner_1F_Text_AllGoodToGo: @ 8278E00
 	.string "Okay, you're all good to go.\n"
 	.string "Don't let the others beat you!$"
 
-@ Unused
-MossdeepCity_GameCorner_1F_Text_LeavingDoComeAgain: @ 8278E3C
-	.string "Are you leaving now?\n"
-	.string "Do come again!$"
-
 MossdeepCity_GameCorner_1F_Text_ExplainRequiredMon: @ 8278E60
 	.string "It doesn't look like you have any\n"
 	.string "Pokémon that you can enter…\p"
@@ -325,11 +285,6 @@ MossdeepCity_GameCorner_1F_Text_ShortJumpingPokemonAllowed: @ 8278EDC
 MossdeepCity_GameCorner_1F_Text_OnlyDodrioAllowed: @ 8278FA4
 	.string "Dodrio BERRY-PICKING is a game that \n"
 	.string "only Dodrio may enter.$"
-
-@ Unused
-MossdeepCity_GameCorner_1F_Text_RetryPlease: @ 8278FE0
-	.string "Could you retry this from the start\n"
-	.string "again, please?$"
 
 CableClub_Text_WelcomeWhichDirectCornerRoom: @ 8279013
 	.string "Welcome to the Pokémon Wireless\n"

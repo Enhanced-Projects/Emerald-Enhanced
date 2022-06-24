@@ -1,10 +1,3 @@
-gText_WouldYouLikeToRestYourPkmn:: @ 82726EB
-    .string "Hello, and welcome to\n"
-    .string "the Pokémon Center.\p"
-    .string "We restore your tired Pokémon\n"
-    .string "to full health.\p"
-    .string "Would you like to rest your Pokémon?$"
-
 gText_IllTakeYourPkmn:: @ 8272768
     .string "Okay, I'll take your Pokémon\n"
     .string "for a few seconds.$"
@@ -39,10 +32,6 @@ gText_NoticesGoldCard:: @ 8272860
 gText_YouWantTheUsual:: @ 8272982
     .string "I'm delighted to see you, {PLAYER}!\n"
     .string "You want the usual, am I right?$"
-
-gText_IllTakeYourPkmn2:: @ 82729C0
-    .string "Okay, I'll take your Pokémon\n"
-    .string "for a few seconds.$"
 
 gText_ThankYouForWaiting:: @ 82729F0
     .string "Thank you for waiting.$"

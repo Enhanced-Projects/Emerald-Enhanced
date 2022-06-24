@@ -655,12 +655,6 @@ BattleFrontier_BattlePikeRoomNormal_Movement_CameraPanUp: @ 825D9B0
 	walk_up
 	step_end
 
-@ Unused
-BattleFrontier_BattlePikeRoomNormal_Movement_CameraPanDown: @ 825D9B3
-	walk_down
-	walk_down
-	step_end
-
 BattleFrontier_BattlePikeRoomNormal_Text_WillRestoreToFullHealth: @ 825D9B6
 	.string "Welcome…\n"
 	.string "You must be commended for your luck…\p"
@@ -678,35 +672,6 @@ BattleFrontier_BattlePikeRoomNormal_Text_WillRestoreOneMon: @ 825DA51
 	.string "to full health.$"
 
 BattleFrontier_BattlePikeRoomNormal_Text_BestOfLuckFarewell: @ 825DABE
-	.string "The best of luck to you.\n"
-	.string "Farewell.$"
-
-@ Seems there was a planned room type where the player could choose to battle and would be healed if they won
-@ Possibly replaced/superseded by the hard battle room, which is the same but the battle isnt optional
-@ Unused
-BattleFrontier_BattlePikeRoomNormal_Text_CareForBattleWillRestoreMons: @ 825DAE1
-	.string "Excuse me…\p"
-	.string "Would you care for a battle?\n"
-	.string "I'll restore your Pokémon if you win.$"
-
-@ Unused
-BattleFrontier_BattlePikeRoomNormal_Text_NowShallWe: @ 825DB2F
-	.string "Very well…\n"
-	.string "Now, shall we?$"
-
-@ Unused
-BattleFrontier_BattlePikeRoomNormal_Text_HowUnsportingOfYou: @ 825DB49
-	.string "I see…\n"
-	.string "How unsporting of you…$"
-
-@ Unused
-BattleFrontier_BattlePikeRoomNormal_Text_WillRestoreMonsAsPromised: @ 825DB67
-	.string "Magnificent…\p"
-	.string "As promised, I shall restore your\n"
-	.string "Pokémon to full health.$"
-
-@ Unused
-BattleFrontier_BattlePikeRoomNormal_Text_BestOfLuckFarewell2: @ 825DBAE
 	.string "The best of luck to you.\n"
 	.string "Farewell.$"
 
@@ -846,14 +811,6 @@ BattleFrontier_BattlePikeRoomNormal_Text_ChoseRoomHealTwo: @ 825E238
 	.string "I welcome you…\p"
 	.string "Since you have chosen this room, I will\n"
 	.string "restore two Pokémon to full health…$"
-
-@ Unused
-BattleFrontier_BattlePikeRoomNormal_Text_WillRestoreAllMons: @ 825E293
-	.string "I welcome you…\p"
-	.string "Giggle…\n"
-	.string "You should thank your lucky stars…\p"
-	.string "Since you have chosen this room,\n"
-	.string "all your Pokémon will be restored…$"
 
 BattleFrontier_BattlePikeRoomNormal_Text_ShallFetchOurMaster: @ 825E311
 	.string "I shall go fetch our master…$"

@@ -48,21 +48,6 @@ gContestAI_ScriptsTable:: @ 82DE350
 	.4byte AI_Nothing           @ CONTEST_AI_DUMMY_25
 
 
-@ Unused. Encourages improving condition on the 1st appeal, or startling mons if the users turn is later 
-AI_CheckTiming:
-	if_appeal_num_not_eq 0, AI_CheckTiming_SkipCondition
-	if_effect_not_eq CONTEST_EFFECT_IMPROVE_CONDITION_PREVENT_NERVOUSNESS, AI_CheckTiming_SkipCondition
-	score +10
-AI_CheckTiming_SkipCondition:
-	call AI_CheckTiming_TryStartle
-	end
-AI_CheckTiming_TryStartle:
-	if_user_order_more_than MON_2, AI_CheckTiming_End
-	if_effect_type_not_eq CONTEST_EFFECT_TYPE_STARTLE_MON, AI_CheckTiming_End
-	if_effect_type_not_eq CONTEST_EFFECT_TYPE_STARTLE_MONS, AI_CheckTiming_End
-	score +10
-AI_CheckTiming_End:
-	end
 
 @ Unused, doesnt make much sense
 @ Encourages using an avoid being startled move

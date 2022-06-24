@@ -39,14 +39,6 @@ SP_NoEntryNoDevonCard::
 	releaseall
 	end
 	
-SP_NoEntryDevonNotDone::
-	msgbox SP_NoOneAllowed
-	closemessage
-	msgbox SP_NotPermittedNoDevonMsg
-	closemessage
-	releaseall
-	end
-	
 SP_NoOneAllowed:
 	.string "I'm sorry but no one is permitted\nto enter without written consent from\lDevon Corp.$"
 	

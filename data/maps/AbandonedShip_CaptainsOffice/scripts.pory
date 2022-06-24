@@ -9,11 +9,6 @@ AbandonedShip_CaptainsOffice_EventScript_CaptSternAide:: @ 82387E2
 	release
 	end
 
-AbandonedShip_CaptainsOffice_EventScript_CanYouDeliverScanner:: @ 8238810
-	msgbox AbandonedShip_CaptainsOffice_Text_OhCanYouDeliverScanner, MSGBOX_DEFAULT
-	release
-	end
-
 AbandonedShip_CaptainsOffice_EventScript_ThisIsSSCactus:: @ 823881A
 	msgbox AbandonedShip_CaptainsOffice_Text_ThisIsSSCactus, MSGBOX_DEFAULT
 	release

@@ -12,12 +12,6 @@ RustboroCity_Mart_EventScript_Clerk:: @ 8214F06
 	release
 	end
 
-RustboroCity_Mart_EventScript_PokemartBasic:: @ 8214F21
-	pokemart RustboroCity_Mart_Pokemart_Basic
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
 RustboroCity_Mart_Pokemart_Basic: @ 8214F30
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_POTION
@@ -30,12 +24,6 @@ RustboroCity_Mart_Pokemart_Basic: @ 8214F30
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
 	.2byte ITEM_NONE
-	release
-	end
-
-RustboroCity_Mart_EventScript_PokemartExpanded:: @ 8214F48
-	pokemart RustboroCity_Mart_Pokemart_Expanded
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 

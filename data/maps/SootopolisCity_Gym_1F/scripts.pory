@@ -191,16 +191,6 @@ SootopolisCity_Gym_1F_EventScript_GiveWaterPulse:: @ 8224FD4
 	setflag FLAG_RECEIVED_TM03
 	return
 
-SootopolisCity_Gym_1F_EventScript_GoGetFortreeBadge:: @ 822501B
-	msgbox SootopolisCity_Gym_1F_Text_GoGetFortreeBadge, MSGBOX_DEFAULT
-	release
-	end
-
-SootopolisCity_Gym_1F_EventScript_JuanRematch:: @ 8225025
-	trainerbattle_rematch_double TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanPreRematch, SootopolisCity_Gym_1F_Text_JuanRematchDefeat, SootopolisCity_Gym_1F_Text_JuanRematchNeedTwoMons
-	msgbox SootopolisCity_Gym_1F_Text_JuanPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 SootopolisCity_Gym_1F_EventScript_GymGuide:: @ 8225040
 	lock
 	faceplayer

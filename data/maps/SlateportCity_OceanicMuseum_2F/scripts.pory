@@ -302,11 +302,6 @@ OM_ReEnableStern::
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 17 @Player is on second floor to speak with Stern.
 	addobject 4
 	end
-
-OM_FinishedSternEvent::
-	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 18
-	release
-	end
 	
 OM_CaptainStern::
 	compare VAR_RYU_QUEST_DEVON_CORPORATE, 18

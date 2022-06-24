@@ -279,15 +279,6 @@ MossdeepCity_SpaceCenter_1F_EventScript_OldManMagma:: @ 82231A4
 	release
 	end
 
-MossdeepCity_SpaceCenter_1F_EventScript_Steven:: @ 82231B9
-	lock
-	faceplayer
-	msgbox MossdeepCity_SpaceCenter_1F_Text_StevenMagmaCantBeAllowedToTakeFuel, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
 MossdeepCity_SpaceCenter_1F_EventScript_Grunt3:: @ 82231DA
 	trainerbattle_single TRAINER_GRUNT_SPACE_CENTER_3, MossdeepCity_SpaceCenter_1F_Text_Grunt3Intro, MossdeepCity_SpaceCenter_1F_Text_Grunt3Defeat
 	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE

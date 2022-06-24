@@ -8,14 +8,6 @@ EverGrandeCity_ChampionsRoom_MapScripts:: @ 82289EF
 EverGrandeCity_ChampionsRoom_OnTransition: @ 82289FF
 	end
 
-EGC_SetBrendan::
-	setvar OBJ_EVENT_GFX_VAR_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
-	return
-
-EGC_SetDawn::
-	setvar OBJ_EVENT_GFX_VAR_0, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
-	return
-
 EverGrandeCity_ChampionsRoom_OnWarp: @ 8228A05
 	map_script_2 VAR_TEMP_1, 0, EverGrandeCity_ChampionsRoom_EventScript_PlayerTurnNorth
 	.2byte 0
@@ -192,14 +184,6 @@ EGC_PlayerAndChampionExit::
 	waitstate
 	releaseall
 	end
-
-EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations:: @ 8228BEB
-	msgbox EverGrandeCity_ChampionsRoom_Text_MayCongratulations, MSGBOX_DEFAULT
-	return
-
-EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations:: @ 8228BF4
-	msgbox EverGrandeCity_ChampionsRoom_Text_BrendanCongratulations, MSGBOX_DEFAULT
-	return
 
 EverGrandeCity_ChampionsRoom_EventScript_RivalApproachPlayer:: @ 8228BFD
 	applymovement 3, EverGrandeCity_ChampionsRoom_Movement_RivalApproachPlayer
@@ -534,13 +518,6 @@ EGC_GoingToHallOfFame::
 	setflag FLAG_RYU_DS_DAWN_FRIENDS
 	return
 	
-EGC_GoingToHallOfFameFemale::
-	msgbox EGC_BrendanDeniedEntry, MSGBOX_DEFAULT
-	goto_if_set FLAG_RYU_DS_BRENDAN_LOVERS, EGC_BRENDANREL_QUERY
-	goto_if_set FLAG_RYU_DS_BRENDAN_FRIENDS, EGC_BRENDANFZ_QUERY
-	setflag FLAG_RYU_DS_BRENDAN_FRIENDS
-	return
-	
 EGC_FaceLeft:
     face_left
 	step_end
@@ -552,10 +529,6 @@ EGC_FaceRight:
 EGC_FaceUp:
 	face_up
 	step_end
-	
-EGC_RivalGiftMsg::
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She kisses you on the cheek and\n"
-	.string " gives you a warm smile.)$"
 
 EGC_MaleRivalGiftMsg:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(He kisses you on the cheek and\n"

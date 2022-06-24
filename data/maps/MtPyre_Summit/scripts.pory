@@ -100,15 +100,6 @@ MtPyre_Summit_EventScript_OldMan:: @ 823213C
 	release
 	end
 
-MtPyre_Summit_EventScript_OldManAfterRayquaza:: @ 8232167
-	msgbox MtPyre_Summit_Text_HearTheNewLegendOfHoenn, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	call_if_eq MtPyre_Summit_EventScript_OldManNewTale
-	compare VAR_RESULT, NO
-	call_if_eq MtPyre_Summit_EventScript_DeclineOldManTale
-	release
-	end
-
 MtPyre_Summit_EventScript_OldManTale:: @ 8232187
 	msgbox MtPyre_Summit_Text_GroudonKyogreTale, MSGBOX_DEFAULT
 	return
@@ -123,22 +114,6 @@ MtPyre_Summit_EventScript_OldManNewTale:: @ 8232199
 
 Normal_old_lady:
 	.string "Have you met our grandkids?\nThey run the gym in that eastern island.\pIf you see them, tell them to\nvisit us sometime!$"
-
-MtPyre_Summit_EventScript_OldLadyOrbsReturned:: @ 82321CB
-	msgbox MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs, MSGBOX_DEFAULT
-	setflag FLAG_RETURNED_RED_OR_BLUE_ORB
-	release
-	end
-
-MtPyre_Summit_EventScript_OldLadyLegendariesAwake:: @ 82321D8
-	msgbox MtPyre_Summit_Text_GroudonKyogreAwakened, MSGBOX_DEFAULT
-	release
-	end
-
-MtPyre_Summit_EventScript_OldLadyAfterOrbsReturned:: @ 82321E2
-	msgbox MtPyre_Summit_Text_SuperAncientPokemonTaughtUs, MSGBOX_DEFAULT
-	release
-	end
 
 MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis: @ 823290E
 	.string "Well, in their haste, they left this\n"

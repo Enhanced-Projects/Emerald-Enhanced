@@ -20,9 +20,6 @@ MC_GC_NOREWARDSCCR::
 	release
 	end
 
-MC_GC_FINISH::
-	goto MC_GC_PrepareReward
-
 MC_GC_PrepareReward::
 	special RyuGenerateReward
 	setvar VAR_TEMP_0, 0

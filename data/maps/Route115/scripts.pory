@@ -29,11 +29,6 @@ Route115_EventScript_RegisterTimothy:: @ 81F29BA
 	release
 	end
 
-Route115_EventScript_RematchTimothy:: @ 81F29D9
-	trainerbattle_rematch TRAINER_TIMOTHY_1, Route115_Text_TimothyRematchIntro, Route115_Text_TimothyRematchDefeat
-	msgbox Route115_Text_TimothyPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route115_EventScript_Koichi:: @ 81F29F0
 	trainerbattle_single TRAINER_KOICHI, Route115_Text_KoichiIntro, Route115_Text_KoichiDefeat
 	msgbox Route115_Text_KoichiPostBattle, MSGBOX_AUTOCLOSE
@@ -53,11 +48,6 @@ Route115_EventScript_RegisterNob:: @ 81F2A33
 	release
 	end
 
-Route115_EventScript_RematchNob:: @ 81F2A52
-	trainerbattle_rematch TRAINER_NOB_1, Route115_Text_NobRematchIntro, Route115_Text_NobRematchDefeat
-	msgbox Route115_Text_NobPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route115_EventScript_Cyndy:: @ 81F2A69
 	trainerbattle_single TRAINER_CYNDY_1, Route115_Text_CyndyIntro, Route115_Text_CyndyDefeat, Route115_EventScript_RegisterCyndy
 	msgbox Route115_Text_CyndyPostBattle, MSGBOX_DEFAULT
@@ -70,11 +60,6 @@ Route115_EventScript_RegisterCyndy:: @ 81F2A95
 	msgbox Route115_Text_CyndyRegister, MSGBOX_DEFAULT
 	@nop Trainer_CYNDY_1
 	release
-	end
-
-Route115_EventScript_RematchCyndy:: @ 81F2AB4
-	trainerbattle_rematch TRAINER_CYNDY_1, Route115_Text_CyndyRematchIntro, Route115_Text_CyndyRematchDefeat
-	msgbox Route115_Text_CyndyPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route115_EventScript_Hector:: @ 81F2ACB
@@ -435,19 +420,7 @@ r115_toMsIto:
 	walk_up
 	step_end
 
-
 @end devon scene
-	
-r115_DevPhase::
-	applymovement PLAYER, r115_StepLeft
-	release
-	end
-	
-r115_StepLeft:
-	walk_left
-	walk_left
-	step_end
-
 
 RyuLegendary_Raikou::
 	goto_if_set FLAG_RYU_RAIKOU, ryu_end

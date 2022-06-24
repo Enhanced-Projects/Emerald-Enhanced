@@ -19,18 +19,6 @@ r120_SetupLeafHiker::
 	setvar VAR_RYU_QUEST_LANA, 66
 	release
 	end
-	
-r120_SetupLeafGary::
-	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
-	clearflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
-	release
-	end
-	
-r120_normal::
-	lock
-	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
-	release
-	end
 
 r120_LeafEvent::
 	lock
@@ -63,23 +51,6 @@ r120_LeafEvent::
 	release
 	end
 	
-r120_LanaNotReady::
-	msgbox r120_notReady
-	applymovement PLAYER, r120_stepDown
-	applymovement FOLLOWER, r120_stepDown
-	waitmovement PLAYER
-	release
-	end
-	
-R120_dead::
-	msgbox R120_death MSGBOX_DEFAULT
-	closemessage
-	applymovement PLAYER, r120_stepDown
-	applymovement FOLLOWER, r120_stepDown
-	waitmovement PLAYER
-	release
-	end
-	
 r120_Story1:
 	.string "You most certainly will not pass!\nNot until my investigation is com-$"
 	
@@ -98,9 +69,6 @@ r120_HikerRequest:
     .string "no reason to disrespect her elders\l"
     .string "like that.\p"
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah... sorry again.$"
-	
-R120_death:
-	.string "The smell of rot and death\nassaults your nose as you approach...$"
 	
 r120_stepDown:
 	walk_down
@@ -360,11 +328,6 @@ Route120_EventScript_RegisterRobert:: @ 81F581A
 	release
 	end
 
-Route120_EventScript_RematchRobert:: @ 81F5839
-	trainerbattle_rematch TRAINER_ROBERT_1, Route120_Text_RobertRematchIntro, Route120_Text_RobertRematchDefeat
-	msgbox Route120_Text_RobertPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route120_EventScript_Lorenzo:: @ 81F5850
 	trainerbattle_single TRAINER_LORENZO, Route120_Text_LorenzoIntro, Route120_Text_LorenzoDefeat
 	msgbox Route120_Text_LorenzoPostBattle, MSGBOX_AUTOCLOSE
@@ -387,11 +350,6 @@ Route120_EventScript_RegisterJeffrey:: @ 81F58AA
 	msgbox Route120_Text_JeffreyRegister, MSGBOX_DEFAULT
 	@nop Trainer_JEFFREY_1
 	release
-	end
-
-Route120_EventScript_RematchJeffrey:: @ 81F58C9
-	trainerbattle_rematch TRAINER_JEFFREY_1, Route120_Text_JeffreyRematchIntro, Route120_Text_JeffreyRematchDefeat
-	msgbox Route120_Text_JeffreyPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route120_EventScript_Jennifer:: @ 81F58E0

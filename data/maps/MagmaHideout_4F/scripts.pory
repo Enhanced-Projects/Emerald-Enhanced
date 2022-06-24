@@ -359,11 +359,6 @@ MH4_SetupCourtneyPursuit::
 	clearflag FLAG_RYU_HIDE_REL_OBJECTS
 	addobject 24
 	return
-	
-MH_CourtneyMaxieAltBattle::
-	compare VAR_RYU_QUEST_MAGMA, 301
-	goto_if_ge ryu_end
-	end
 
 MH_Groudon_Enc::
 	call MH4_CheckMagmaLineGroudonCaptured
@@ -490,20 +485,6 @@ SetMaxiePosition2::
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	addobject 11
 	addobject 12
-	end
-	
-MH4_MagmaAdminCheck::
-	@goto_if_unset magma admin flag, ryu_end
-	specialvar VAR_RESULT, GetPlayerFacingDirection
-	compare VAR_RESULT, DIR_EAST
-	goto_if_eq ryu_end
-	compare VAR_RESULT, DIR_WEST
-	goto_if_eq ryu_end
-	msgbox MH4_NotAdminCantGoHere
-	closemessage
-	applymovement PLAYER, Common_Movement_StepDown
-	waitmovement PLAYER
-	release
 	end
 
 MH4_AquaShowMaxieBoss::
@@ -1574,12 +1555,6 @@ MH4_BlaiseExitsEnd:
 	walk_up
 	walk_left
 	step_end
-	
-MH4_HideDeadMagmaMembers::
-	setvar VAR_TEMP_B, 100
-	setobjectxy 22, 37, 0
-	setobjectxy 20, 37, 0
-	end
 
 @==================================================================================================Aqua
 

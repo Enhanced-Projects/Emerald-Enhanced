@@ -47,44 +47,6 @@ RustboroCity_EventScript_HideMapNamePopup:: @ 81E0707
 RustboroCity_OnFrame: @ 81E070B
 	.2byte 0
 
-RustboroCity_EventScript_ScientistAddMatchCall:: @ 81E0715
-	lockall
-	setvar VAR_ROUTE104_STATE, 1
-	applymovement PLAYER, RustboroCity_Movement_PlayerWalkDown
-	waitmovement 0
-	playse SE_KAIDAN
-	delay 10
-	addobject 15
-	applymovement 15, RustboroCity_Movement_ScientistApproachPlayer
-	waitmovement 0
-	playse SE_PIN
-	applymovement 15, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 15, Common_Movement_Delay48
-	waitmovement 0
-	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	applymovement 15, RustboroCity_Movement_ScientistWalkInPlaceDown
-	waitmovement 0
-	msgbox RustboroCity_Text_DevelopedNewPokenavFeature, MSGBOX_DEFAULT
-	closemessage
-	applymovement 15, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	playse SE_TK_KASYA
-	delay 10
-	playse SE_TK_KASYA
-	delay 10
-	playse SE_TK_KASYA
-	delay 10
-	playse SE_TK_KASYA
-	delay 20
-	applymovement 15, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	msgbox RustboroCity_Text_AddedMatchCallPleaseCallMrStone, MSGBOX_DEFAULT
-	closemessage
-	delay 20
-	goto RustboroCity_EventScript_MatchCallTutorial
-
 RustboroCity_EventScript_PleaseSelectPokenav:: @ 81E07AC
 	msgbox RustboroCity_Text_PleaseSelectPokenav, MSGBOX_DEFAULT
 	closemessage
@@ -131,25 +93,9 @@ RustboroCity_Movement_ScientistApproachPlayer: @ 81E0852
 	delay_16
 	step_end
 
-@ Unused
-RustboroCity_Movement_ScientistWalkAroundPlayer: @ 81E0855
-	delay_16
-	walk_left
-	walk_down
-	walk_down
-	walk_right
-	walk_in_place_fastest_up
-	delay_16
-	step_end
-
 RustboroCity_Movement_ScientistLeave: @ 81E085D
 	walk_up
 	step_end
-
-RustboroCity_EventScript_FatManSawGrunt:: @ 81E0874
-	msgbox RustboroCity_Text_SneakyLookingManWentAroundCorner, MSGBOX_DEFAULT
-	release
-	end
 
 RustboroCity_EventScript_DevonEmployee2:: @ 81E087E
 	lock
@@ -208,11 +154,6 @@ RustboroCity_EventScript_GymSign:: @ 81E08F5
 	msgbox RustboroCity_Text_GymSign, MSGBOX_SIGN
 	end
 
-@ Unused
-RustboroCity_EventScript_DevonCorpBranchOfficeSign:: @ 81E08FE
-	msgbox RustboroCity_Text_DevonCorpBranchOfficeSign, MSGBOX_SIGN
-	end
-
 RustboroCity_EventScript_CitySign:: @ 81E0907
 	msgbox RustboroCity_Text_CitySign, MSGBOX_SIGN
 	end
@@ -248,46 +189,6 @@ RustboroCity_EventScript_Man2:: @ 81E094E
 	faceplayer
 	msgbox RustboroCity_Text_TradePokemonGrowFast, MSGBOX_DEFAULT
 	release
-	end
-
-RustboroCity_EventScript_StolenGoodsTrigger0:: @ 81E095A
-	lockall
-	setobjectxyperm 9, 14, 21
-	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_RIGHT
-	setvar VAR_0x8004, 0
-	goto RustboroCity_EventScript_StolenGoodsScene
-	end
-
-RustboroCity_EventScript_StolenGoodsTrigger1:: @ 81E0971
-	lockall
-	setobjectxyperm 9, 14, 21
-	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_RIGHT
-	setvar VAR_0x8004, 1
-	goto RustboroCity_EventScript_StolenGoodsScene
-	end
-
-RustboroCity_EventScript_StolenGoodsTrigger2:: @ 81E0988
-	lockall
-	setobjectxyperm 9, 14, 21
-	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_RIGHT
-	setvar VAR_0x8004, 2
-	goto RustboroCity_EventScript_StolenGoodsScene
-	end
-
-RustboroCity_EventScript_StolenGoodsTrigger3:: @ 81E099F
-	lockall
-	setobjectxyperm 9, 14, 21
-	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_RIGHT
-	setvar VAR_0x8004, 3
-	goto RustboroCity_EventScript_StolenGoodsScene
-	end
-
-RustboroCity_EventScript_StolenGoodsTrigger4:: @ 81E09B6
-	lockall
-	setobjectxyperm 9, 14, 21
-	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_RIGHT
-	setvar VAR_0x8004, 4
-	goto RustboroCity_EventScript_StolenGoodsScene
 	end
 
 RustboroCity_EventScript_StolenGoodsScene:: @ 81E09CD
@@ -791,14 +692,6 @@ RustboroCity_EventScript_BrendanEncounter:: @ 81E1114
 	releaseall
 	end
 
-RustboroCity_EventScript_BrendanAskToBattle:: @ 81E1174
-	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq RustboroCity_EventScript_BattleBrendan
-	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
-	releaseall
-	end
-
 RustboroCity_EventScript_BattleBrendan:: @ 81E1191
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	goto RustboroCity_EventScript_BattleBrendanMudkip
@@ -1177,15 +1070,6 @@ RC_Thief_Running:
 	step_end
 	
 @==================================================================================================RyuDevon line
-
-RC_NoDevonEntry::
-	lock
-	msgbox RC_LookForIto
-	closemessage
-	applymovement PLAYER, Common_Movement_StepDown
-	waitmovement PLAYER
-	release
-	end
 	
 RC_LookForIto:
 	.string " (I wonder where Ms. Ito could be.\n She should have been back by now.\p I should go find her.)$"
@@ -1204,14 +1088,6 @@ RC_CantExitOnQuest::
 	lock
 	msgbox RC_CantExitMsg
 	applymovement PLAYER, Common_Movement_StepUp
-	waitmovement PLAYER
-	release
-	end
-
-RC_CantExitOnQuest2::
-	lock
-	msgbox RC_CantExitMsg
-	applymovement PLAYER, Common_Movement_StepLeft
 	waitmovement PLAYER
 	release
 	end

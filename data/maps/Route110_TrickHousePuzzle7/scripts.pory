@@ -70,19 +70,6 @@ Route110_TrickHousePuzzle7_EventScript_PurpleButton:: @ 826E35D
 	freerotatingtilepuzzle
 	end
 
-@ Unused
-Route110_TrickHousePuzzle7_EventScript_RedButton:: @ 826E373
-	playse SE_MU_PACHI
-	waitse
-	playse SE_TU_SAA
-	initrotatingtilepuzzle TRUE
-	moverotatingtileobjects 4
-	waitmovement 0
-	turnrotatingtileobjects
-	waitmovement 0
-	freerotatingtilepuzzle
-	end
-
 Route110_TrickHousePuzzle7_EventScript_Joshua:: @ 826E389
 	trainerbattle_single TRAINER_JOSHUA, Route110_TrickHousePuzzle7_Text_JoshuaIntro, Route110_TrickHousePuzzle7_Text_JoshuaDefeat
 	msgbox Route110_TrickHousePuzzle7_Text_JoshuaPostBattle, MSGBOX_AUTOCLOSE

@@ -246,14 +246,6 @@ LRT_PlayerPC:: @ 81F9576
 
 TurnedOnPc:
 	.string "{PLAYER} turned on the PC."
-
-LRT_PlayerPC2:: @ 81F958F
-	setvar VAR_0x8004, 2
-	playse SE_PC_OFF
-	special DoPCTurnOffEffect
-	releaseall
-	end
-	
 	
 LRT_DawnIntroductionScene::
 	lock

@@ -24,10 +24,6 @@ SFC_InvisPlayer:: @this is an annoying hack to make the player invisible for the
 SFC_MakePlayerInvis::
 	applymovement PLAYER, SCH_SetInvisible
 	end
-	
-SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
-    releaseall
-    end
 
 SFC_AltKyogre::
 	end

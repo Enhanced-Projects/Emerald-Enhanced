@@ -49,15 +49,6 @@ Route101_EventScript_StartBirchRescue:: @ 81EBCDE
 	releaseall
 	end
 
-Route101_EventScript_PreventExitSouth:: @ 81EBD4E
-	lockall
-	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement PLAYER, Route101_Movement_PreventExitSouth
-	waitmovement 0
-	releaseall
-	end
-
 Route101_EventScript_PreventExitWest:: @ 81EBD64
 	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT

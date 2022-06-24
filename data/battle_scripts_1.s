@@ -7954,15 +7954,6 @@ BattleScript_ArenaTurnBeginning::
 	@@volumeup
 	end2
 
-BattleScript_82DB8E0:: @ Unused battlescript
-	playse SE_DING_DONG
-	various14 BS_ATTACKER
-	arenajudmengtstring BS_TARGET
-	arenawaitmessage BS_TARGET
-	pause 0x40
-	various15 BS_ATTACKER
-	end2
-
 BattleScript_ArenaDoJudgment::
 	@@makevisible BS_PLAYER1
 	@@waitstate

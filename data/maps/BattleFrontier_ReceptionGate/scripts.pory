@@ -80,12 +80,6 @@ BattleFrontier_ReceptionGate_Movement_PlayerFaceScott: @ 82662D7
 	walk_in_place_fastest_right
 	step_end
 
-@ Unused
-BattleFrontier_ReceptionGate_Movement_WalkDown: @ 82662DD
-	walk_down
-	walk_down
-	step_end
-
 BattleFrontier_ReceptionGate_Movement_ScottEnter: @ 82662E0
 	walk_down
 	walk_down

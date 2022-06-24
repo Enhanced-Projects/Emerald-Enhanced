@@ -10,14 +10,6 @@ GameIntroSequenceCheck::
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, LRT_BeginHaremSequence
 	.2byte 0
 	
-LRT_RemoveFemaleClone::
-	@removeobject 2
-	@setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
-	setflag FLAG_TEMP_4
-	setvar VAR_TEMP_0, 99
-	release
-	end
-	
 LRT_BrendanAfterLilycoveScene::
 	lock
 	faceplayer
@@ -90,9 +82,6 @@ GI_MaleLeavingForRoute103:
 	walk_fast_right
 	walk_fast_up
 	step_end
-	
-EventScript_PlayerPCMale::
-	end
 	
 BH_DeskBook::
 	msgbox LRT_BH_DeskBookMsg MSGBOX_DEFAULT

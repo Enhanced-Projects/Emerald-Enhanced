@@ -18,13 +18,6 @@ MeteorFalls_StevensCave_EventScript_Steven:: @ 823B182
 	release
 	end
 
-MeteorFalls_StevensCave_EventScript_Defeated:: @ 823B1CD
-	applymovement 1, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox MeteorFalls_StevensCave_Text_MyPredictionCameTrue, MSGBOX_DEFAULT
-	release
-	end
-
 MeteorFalls_StevensCave_Text_ShouldKnowHowGoodIAmExpectWorst: @ 823B1E1
 	.string "Steven: Oh, wow, {PLAYER}.\n"
 	.string "I'm amazed you knew where to find me.\p"

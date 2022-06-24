@@ -404,11 +404,6 @@ RustboroCity_DevonCorp_2F_Text_ReceivedMonFromResearcher: @ 82122CB
 	.string "{PLAYER} received {STR_VAR_2} from\n"
 	.string "the Devon Researcher.$"
 
-@ Unused
-RustboroCity_DevonCorp_2F_Text_TooManyPokemon: @ 82122F5
-	.string "Uh-oh, you've got too many Pokémon.\n"
-	.string "You have no room for this one.$"
-
 RustboroCity_DevonCorp_2F_Text_DevelopNewPokenavFeature: @ 8212338
 	.string "I'm trying to develop a new feature\n"
 	.string "for the Pokénav…\p"

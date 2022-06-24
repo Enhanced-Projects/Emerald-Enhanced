@@ -16,11 +16,6 @@ MeteorFalls_1F_2R_EventScript_RegisterNicolas:: @ 822C50A
 	release
 	end
 
-MeteorFalls_1F_2R_EventScript_RematchNicolas:: @ 822C529
-	trainerbattle_rematch TRAINER_NICOLAS_1, MeteorFalls_1F_2R_Text_NicolasRematchIntro, MeteorFalls_1F_2R_Text_NicolasRematchDefeat
-	msgbox MeteorFalls_1F_2R_Text_NicolasPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 MeteorFalls_1F_2R_EventScript_John:: @ 822C540
 	trainerbattle_double TRAINER_JOHN_AND_JAY_1, MeteorFalls_1F_2R_Text_JohnIntro, MeteorFalls_1F_2R_Text_JohnDefeat, MeteorFalls_1F_2R_Text_JohnNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJohn
 	msgbox MeteorFalls_1F_2R_Text_JohnPostBattle, MSGBOX_DEFAULT
@@ -33,11 +28,6 @@ MeteorFalls_1F_2R_EventScript_RegisterJohn:: @ 822C570
 	release
 	end
 
-MeteorFalls_1F_2R_EventScript_RematchJohn:: @ 822C589
-	trainerbattle_rematch_double TRAINER_JOHN_AND_JAY_1, MeteorFalls_1F_2R_Text_JohnRematchIntro, MeteorFalls_1F_2R_Text_JohnRematchDefeat, MeteorFalls_1F_2R_Text_JohnRematchNotEnoughMons
-	msgbox MeteorFalls_1F_2R_Text_JohnPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 MeteorFalls_1F_2R_EventScript_Jay:: @ 822C5A4
 	trainerbattle_double TRAINER_JOHN_AND_JAY_1, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
 	msgbox MeteorFalls_1F_2R_Text_JayPostBattle, MSGBOX_DEFAULT
@@ -48,11 +38,6 @@ MeteorFalls_1F_2R_EventScript_RegisterJay:: @ 822C5D4
 	msgbox MeteorFalls_1F_2R_Text_JohnRegister, MSGBOX_DEFAULT  @ John speaks for both during register
 	@nop Trainer_JOHN_AND_JAY_1
 	release
-	end
-
-MeteorFalls_1F_2R_EventScript_RematchJay:: @ 822C5ED
-	trainerbattle_rematch_double TRAINER_JOHN_AND_JAY_1, MeteorFalls_1F_2R_Text_JayRematchIntro, MeteorFalls_1F_2R_Text_JayRematchDefeat, MeteorFalls_1F_2R_Text_JayRematchNotEnoughMons
-	msgbox MeteorFalls_1F_2R_Text_JayPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 MeteorFalls_1F_2R_Text_NicolasIntro: @ 822C608

@@ -91,10 +91,6 @@ MysteryEventClub_EventScript_DeclineNewProfile:: @ 829167C
 	release
 	end
 
-@ Unused
-MysteryEventClub_EventScript_Ret:: @ 8291686
-	return
-
 MysteryEventClub_Text_CollectTrainerProfiles: @ 8291687
 	.string "Hello there, Trainer!\n"
 	.string "You've got a wonderful smile, there.\p"
@@ -162,9 +158,3 @@ MysteryEventClub_Text_FantasticProfile: @ 8291B22
 	.string "be captivated by you!\p"
 	.string "Thank you!$"
 
-@ Unused
-MysteryEventClub_Text_YouKnowSecretSaying: @ 8291BB7
-	.string "Oh?\n"
-	.string "You know the secret saying!\p"
-	.string "That means you're now a fellow member\n"
-	.string "of the Mystery Event Club!$"

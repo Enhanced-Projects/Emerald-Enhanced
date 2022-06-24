@@ -2,24 +2,6 @@ raw `
 MirageTower_4F_MapScripts:: @ 823AD47
 	.byte 0
 
-MirageTower_4F_EventScript_RootFossil:: @ 823AD48
-	end
-
-MirageTower_4F_EventScript_LeaveRootFossil:: @ 823AD7F
-	msgbox MirageTower_4F_Text_LeftRootFossilAlone, MSGBOX_DEFAULT
-	release
-	end
-
-MirageTower_4F_EventScript_ClawFossil:: @ 823AD89
-	end
-
-MirageTower_4F_EventScript_LeaveClawFossil:: @ 823ADC0
-	end
-
-MirageTower_4F_EventScript_CollapseMirageTower:: @ 823ADCA
-	release
-	end
-
 MirageTower_4F_Text_TakeRootFossil: @ 823ADF9
 	.string "You found the Root Fossil.\p"
 	.string "If this Fossil is taken, the ground\n"

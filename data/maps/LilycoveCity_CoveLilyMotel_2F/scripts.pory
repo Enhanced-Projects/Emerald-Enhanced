@@ -25,10 +25,6 @@ LCC_BeenCollecting:
 LCC_CLM_BringFullDex:
 	.string "If you bring me a mostly\ncompleted dex, I will grant\lyou a diploma.$"
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex:: @ 82186F9
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex, MSGBOX_DEFAULT
-	return
-
 LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare:: @ 8218702
 	setflag FLAG_TEMP_2
 	playfanfare MUS_FANFA4
@@ -75,11 +71,6 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_Scott:: @ 821874D
 	lock
 	faceplayer
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles, MSGBOX_DEFAULT
-	release
-	end
-
-LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott:: @ 821876A
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy, MSGBOX_DEFAULT
 	release
 	end
 

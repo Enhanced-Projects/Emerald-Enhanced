@@ -86,11 +86,6 @@ Route113_EventScript_RegisterMadeline:: @ 81F221A
 	release
 	end
 
-Route113_EventScript_RematchMadeline:: @ 81F2239
-	trainerbattle_rematch TRAINER_MADELINE_1, Route113_Text_MadelineRematchIntro, Route113_Text_MadelineRematchDefeat
-	msgbox Route113_Text_MadelinePostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route113_EventScript_Lao:: @ 81F2250
 	trainerbattle_single TRAINER_LAO_1, Route113_Text_LaoIntro, Route113_Text_LaoDefeat, Route113_EventScript_RegisterLao
 	msgbox Route113_Text_LaoPostBattle, MSGBOX_DEFAULT
@@ -103,11 +98,6 @@ Route113_EventScript_RegisterLao:: @ 81F227C
 	msgbox Route113_Text_LaoRegister, MSGBOX_DEFAULT
 	@nop Trainer_LAO_1
 	release
-	end
-
-Route113_EventScript_RematchLao:: @ 81F229B
-	trainerbattle_rematch TRAINER_LAO_1, Route113_Text_LaoRematchIntro, Route113_Text_LaoRematchDefeat
-	msgbox Route113_Text_LaoPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route113_EventScript_Lung:: @ 81F22B2

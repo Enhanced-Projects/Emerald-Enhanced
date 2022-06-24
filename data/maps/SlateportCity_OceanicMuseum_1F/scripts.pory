@@ -59,13 +59,6 @@ SlateportCity_OceanicMuseum_1F_EventScript_NotEnoughMoney:: @ 820AE18
 	releaseall
 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_AllowEntranceAnyway:: @ 820AE39
-	msgbox SlateportCity_OceanicMuseum_1F_Text_CatchUpWithYourGroup, MSGBOX_DEFAULT
-	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 1
-	hidemoneybox
-	releaseall
-	end
-
 SlateportCity_OceanicMuseum_1F_Movement_PushPlayerBackFromCounter: @ 820AE4B
 	walk_down
 	step_end

@@ -300,11 +300,6 @@ GCMS_ChooseNature23::
 	setvar VAR_TEMP_C, 23
 	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature24::
-	setvar VAR_TEMP_C, 24
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
 
 GCMS_GiveModdedMon::
 	special GivePlayerModdedMon

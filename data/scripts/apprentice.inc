@@ -1,8 +1,5 @@
 .set LOCALID_APPRENTICE, 6
 
-BattleFrontier_BattleTowerLobby_EventScript_Apprentice:: @ 82B688D
-	end
-
 Apprentice_EventScript_FirstMeeting: @ 82B6900
 Apprentice_EventScript_WhichLvlMode: @ 82B6925
 	end

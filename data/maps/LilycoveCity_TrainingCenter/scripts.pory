@@ -53,14 +53,6 @@ TC_ToggleExpGain::
 TCToggleEXP:
 	.string "Would you like to disable EXP earning?$"
 
-RyuDebug_StatsFailed::
-	msgbox statsfailedmsg
-	release
-	end
-
-statsfailedmsg:
-	.string "Failed to fill stat info$"
-
 Ryu_Stats:
 	.string "{STR_VAR_2}'s Stats$"
 
@@ -237,12 +229,6 @@ TC_Exiting::
 	waitmovement 0
 	clearflag FLAG_RYU_TC_ENTERED
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
-	releaseall
-	end
-
-TC_InvalidExitCheck::
-	goto_if_set FLAG_RYU_TC_ENTERED, TC_WelcomeBack
-	goto_if_set FLAG_RYU_CHALLENGEMODE, RyuTCDisabledChallenge
 	releaseall
 	end
 

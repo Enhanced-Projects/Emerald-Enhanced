@@ -34,11 +34,6 @@ MtPyre_3F_EventScript_RegisterGabrielle:: @ 82317AD
 	release
 	end
 
-MtPyre_3F_EventScript_RematchGabrielle:: @ 82317CC
-	trainerbattle_rematch TRAINER_GABRIELLE_1, MtPyre_3F_Text_GabrielleRematchIntro, MtPyre_3F_Text_GabrielleRematchDefeat
-	msgbox MtPyre_3F_Text_GabriellePostRematch, MSGBOX_AUTOCLOSE
-	end
-
 MtPyre_3F_Text_WilliamIntro: @ 82317E3
 	.string "The rich atmosphere of the mountain\n"
 	.string "has elevated my psychic power!\p"

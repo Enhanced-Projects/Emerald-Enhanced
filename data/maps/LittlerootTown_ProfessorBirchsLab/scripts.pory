@@ -17,10 +17,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter:: @ 
 	turnobject PLAYER, DIR_NORTH
 	end
 
-LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject:: @ 81F9D71
-	addobject 3
-	end
-
 LittlerootTown_ProfessorBirchsLab_OnFrame: @ 81F9DB9
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 8, LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent
 	.2byte 0
@@ -67,14 +63,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival:: @ 81F9E48
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival
 	compare VAR_RESULT, NO
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent:: @ 81F9E67
-	lockall
-	applymovement PLAYER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex
-	applymovement FOLLOWER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex
-	waitmovement 0
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex
 	end
 
 LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex: @ 81F9E78
@@ -211,11 +199,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex:: @ 81FA3AC
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	return
-
-LittlerootTown_ProfessorBirchsLab_EventScript_PokemonAwait:: @ 81FA3C4
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait, MSGBOX_DEFAULT
-	release
-	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls:: @ 81FA3CE
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull, MSGBOX_DEFAULT

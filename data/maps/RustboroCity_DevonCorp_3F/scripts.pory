@@ -133,10 +133,6 @@ DC_Turnaround2:
 	walk_up
 	step_end
 
-DC_Release::
-	release
-	end
-
 DC_CorporateLine::
 	lock
 	applymovement 5, DC_FranticPace
@@ -655,11 +651,6 @@ DC_Mission2::
 	release
 	end
 	
-RC_ES_Recieved::
-	msgbox RC_AlreadyDeliveredLetter MSGBOX_DEFAULT
-	release
-	end
-	
 RC_AlreadyDeliveredLetter:
 	.string "Mr Stone: Thanks for delivering\nmy letter. My son already replied.\pHave you had a chance to visit\nSlateport yet?$"
 
@@ -699,19 +690,10 @@ DC_M2Msg:
 DC_GoSeeCozmo:
 	.string "Mr. Stone: {PLAYER}! Please go visit Cozmo,\nhe's waiting for you.$"
 	
-DC_OnQuest1::
-	msgbox DC_M1Desc MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
-	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
-	release
-	end
-	
 DC_GoToMeteorFalls::
 	msgbox DC_MFQuestdescription MSGBOX_DEFAULT
 	release
 	end
-
 
 RustboroCity_DevonCorp_3F_EventScript_MeetPresident:: @ 821246E
 	lockall

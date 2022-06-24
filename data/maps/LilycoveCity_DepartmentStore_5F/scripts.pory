@@ -2,11 +2,6 @@ raw `
 LilycoveCity_DepartmentStore_5F_MapScripts:: @ 821FF7A
 	.byte 0
 
-LilycoveCity_DepartmentStore_5F_EventScript_BlockRoofStairs:: @ 821FF9A
-	setobjectxy 7, 16, 2
-	turnobject 7, DIR_NORTH
-	end
-
 	.align 2
 LCC_EvoItemMart: @ 821FFC0
 	.2byte ITEM_LEAF_STONE
@@ -123,14 +118,6 @@ LilycoveCity_DepartmentStore_5F_EventScript_Woman:: @ 8220075
 LilycoveCity_DepartmentStore_5F_EventScript_WomanNormal:: @ 822009C
 	msgbox LilycoveCity_DepartmentStore_5F_Text_SellManyCuteMatsHere, MSGBOX_DEFAULT
 	closemessage
-	releaseall
-	end
-
-LilycoveCity_DepartmentStore_5F_EventScript_WomanLegendaryWeather:: @ 82200A7
-	msgbox LilycoveCity_DepartmentStore_5F_Text_ClosedRooftopForWeather, MSGBOX_DEFAULT
-	closemessage
-	applymovement 7, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
 	releaseall
 	end
 

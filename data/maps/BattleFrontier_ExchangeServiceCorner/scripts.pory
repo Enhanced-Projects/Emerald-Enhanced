@@ -565,10 +565,6 @@ BattleFrontier_ExchangeServiceCorner_Text_WelcomePleaseChoosePrize: @ 825F7FA
 	.string "have collected for lovely prizes.\p"
 	.string "Please choose a prize from this list.$"
 
-@ Unused
-BattleFrontier_ExchangeServiceCorner_Text_PleaseChoosePrize: @ 825F890
-	.string "Please choose a prize from this list.$"
-
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmKissPoster: @ 825F8B6
 	.string "You've chosen the Kiss Poster.\n"
 	.string "Is that correct?$"

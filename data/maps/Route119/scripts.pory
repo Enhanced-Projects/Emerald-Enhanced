@@ -98,11 +98,6 @@ Route119_EventScript_RegisterJackson:: @ 81F483C
 	release
 	end
 
-Route119_EventScript_RematchJackson:: @ 81F485B
-	trainerbattle_rematch TRAINER_JACKSON_1, Route119_Text_JacksonRematchIntro, Route119_Text_JacksonRematchDefeat
-	msgbox Route119_Text_JacksonPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route119_EventScript_Catherine:: @ 81F4872
 	trainerbattle_single TRAINER_CATHERINE_1, Route119_Text_CatherineIntro, Route119_Text_CatherineDefeat, Route119_EventScript_RegisterCatherine
 	msgbox Route119_Text_CatherinePostBattle, MSGBOX_DEFAULT
@@ -115,11 +110,6 @@ Route119_EventScript_RegisterCatherine:: @ 81F489E
 	msgbox Route119_Text_CatherineRegister, MSGBOX_DEFAULT
 	@nop Trainer_CATHERINE_1
 	release
-	end
-
-Route119_EventScript_RematchCatherine:: @ 81F48BD
-	trainerbattle_rematch TRAINER_CATHERINE_1, Route119_Text_CatherineRematchIntro, Route119_Text_CatherineRematchDefeat
-	msgbox Route119_Text_CatherinePostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route119_EventScript_Hugh:: @ 81F48D4
@@ -167,26 +157,6 @@ Route119_EventScript_Rachel:: @ 81F498C
 	msgbox Route119_Text_RachelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route119_EventScript_BridgeAquaGrunt1:: @ 81F49A3
-	lock
-	faceplayer
-	msgbox Route119_Text_StayAwayFromWeatherInstitute, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-Route119_EventScript_BridgeAquaGrunt2:: @ 81F49BA
-	lock
-	faceplayer
-	msgbox Route119_Text_DontGoNearWeatherInstitute, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
 Route119_EventScript_Boy1:: @ 81F49D1
 	msgbox Route119_Text_ThoughtFlyByCatchingBirdMons, MSGBOX_NPC
 	end
@@ -197,10 +167,6 @@ Route119_EventScript_Boy2:: @ 81F49DA
 
 Route119_EventScript_TrainerTipsDecoration:: @ 81F49E3
 	msgbox Route119_Text_TrainerTipsDecoration, MSGBOX_SIGN
-	end
-
-Route119_EventScript_ScottWonAtFortreeGymCall:: @ 81F49EC
-	releaseall
 	end
 
 Route119_Text_StayAwayFromWeatherInstitute: @ 81F50EB

@@ -15,39 +15,8 @@ CableClub_EventScript_HideMysteryGiftMan:: @ 8276AFF
 	setflag FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN
 	return
 
-CableClub_EventScript_MysteryGiftMan:: @ 8276B03
-	specialvar VAR_RESULT, ShouldDistributeEonTicket
-	compare VAR_RESULT, TRUE
-	goto_if_eq CableClub_EventScript_DistributeEonTicket
-	goto CableClub_EventScript_AlreadyGotEonTicket
-	end
-
 CableClub_EventScript_AlreadyGotEonTicket:: @ 8276B19
 	gotoram
-
-@ Unused?
-CableClub_EventScript_MysteryGiftThankYou:: @ 8276B1A
-	msgbox gText_ThankYouForAccessingMysteryGift, MSGBOX_NPC
-	end
-
-CableClub_EventScript_DistributeEonTicket:: @ 8276B23
-	checkitem ITEM_EON_TICKET, 1
-	compare VAR_RESULT, TRUE
-	goto_if_eq CableClub_EventScript_AlreadyGotEonTicket
-	goto_if_set FLAG_ENABLE_SHIP_SOUTHERN_ISLAND, CableClub_EventScript_AlreadyGotEonTicket
-	msgbox Mevent_Text_TheresATicketForYou, MSGBOX_DEFAULT
-	giveitem ITEM_EON_TICKET
-	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
-	setvar VAR_DISTRIBUTE_EON_TICKET, 0
-	msgbox Mevent_Text_TryUsingItAtLilycovePort, MSGBOX_DEFAULT
-	release
-	end
-
-@ Unused?
-CableClub_EventScript_MysteryGiftThankYou2:: @ 8276B62
-	msgbox gText_ThankYouForAccessingMysteryGift, MSGBOX_DEFAULT
-	release
-	end
 
 CableClub_OnWarp: @ 8276B6C
 	map_script_2 VAR_CABLE_CLUB_STATE, USING_SINGLE_BATTLE, CableClub_EventScript_CheckTurnAttendant
@@ -232,20 +201,6 @@ CableClub_EventScript_PlayerExitLinkRoom:: @ 8276DD5
 	waitmovement 0
 	return
 
-CableClub_EventScript_Tutorial:: @ 8276DE0
-	lockall
-	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	msgbox CableClub_Text_FirstTimeRightThisWay, MSGBOX_DEFAULT
-	closemessage
-	applymovement PLAYER, CableClub_Movement_PlayerApproachCounter
-	waitmovement 0
-	delay 30
-	msgbox CableClub_Text_ExplainWirelessClubFirstTime, MSGBOX_DEFAULT
-	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 2
-	releaseall
-	end
-
 CableClub_Movement_PlayerApproachCounter: @ 8276E10
 	walk_up
 	walk_up
@@ -255,11 +210,6 @@ CableClub_EventScript_WelcomeToCableClub:: @ 8276E13
 	message CableClub_Text_WelcomeWhichCableClubService
 	waitmessage
 	delay 28
-	goto CableClub_EventScript_SelectCableClubRoom
-	end
-
-CableClub_EventScript_UnusedWelcomeToCableClub:: @ 8276E22
-	msgbox CableClub_Text_WhichService, MSGBOX_DEFAULT
 	goto CableClub_EventScript_SelectCableClubRoom
 	end
 
@@ -383,12 +333,6 @@ CableClub_EventScript_EnterColosseum:: @ 8276FBD
 	special DoCableClubWarp
 	waitstate
 	end
-
-@ Unused
-CableClub_EventScript_PlayerApproachLinkRoomRight:: @ 827702B
-	applymovement PLAYER, Movement_PlayerApproachLinkRoomRight
-	waitmovement 0
-	return
 
 CableClub_EventScript_WarpTo4PColosseum:: @ 8277036
 	special SetCableClubWarp
@@ -604,22 +548,9 @@ MossdeepCity_GameCorner_1F_EventScript_AbortMinigame:: @ 82772F9
 	release
 	end
 
-@ Unused
-CableClub_EventScript_CableClubWarp:: @ 8277306
-	special SetCableClubWarp
-	special DoCableClubWarp
-	waitstate
-	end
-
 CableClub_EventScript_AbortLinkIncorrectNumberOfParticipants:: @ 827730E
 	special CloseLink
 	msgbox CableClub_Text_IncorrectNumberOfParticipants, MSGBOX_DEFAULT
-	release
-	end
-
-CableClub_EventScript_AbortLinkPlayerHasBadEgg:: @ 827731B
-	special CloseLink
-	msgbox CableClub_Text_YouHaveAMonThatCantBeTaken, MSGBOX_DEFAULT
 	release
 	end
 
@@ -641,11 +572,6 @@ CableClub_EventScript_NotReadyYet:: @ 827733F
 
 Movement_AttendantFaceDown: @ 8277349
 	face_down
-	step_end
-
-@ Unused
-Movement_AttendantFaceRight: @ 827734B
-	face_right
 	step_end
 
 Movement_AttendantFaceLeft: @ 827734D
@@ -672,11 +598,6 @@ Movement_PlayerApproachLinkRoomLeft: @ 8277356
 
 Movement_PlayerEnterLinkRoom: @ 827735A
 	walk_up
-	step_end
-
-@ Unused
-Movement_PlayerFaceAttendantLeft: @ 827735C
-	face_left
 	step_end
 
 Movement_PlayerFaceAttendantRight: @ 827735E
@@ -766,20 +687,6 @@ EventScript_TradeCenter_Chair0:: @ 82773F5
 
 EventScript_TradeCenter_Chair1:: @ 82773FF
 	setvar VAR_0x8005, 1
-	special PlayerEnteredTradeSeat
-	waitstate
-	end
-
-/* Never used */
-EventScript_TradeCenter_Chair2:: @ 8277409
-	setvar VAR_0x8005, 2
-	special PlayerEnteredTradeSeat
-	waitstate
-	end
-
-/* Never used */
-EventScript_TradeCenter_Chair3:: @ 8277413
-	setvar VAR_0x8005, 3
 	special PlayerEnteredTradeSeat
 	waitstate
 	end
@@ -1447,17 +1354,6 @@ MossdeepCity_GameCorner_1F_EventScript_AdapterNotConnected:: @ 8277E48
 	delay 60
 	msgbox MossdeepCity_GameCorner_1F_Text_AdapterNotConnected, MSGBOX_DEFAULT
 	release
-	end
-
-MossdeepCity_GameCorner_1F_EventScript_DontHaveRequiredMon:: @ 8277E55
-	msgbox MossdeepCity_GameCorner_1F_Text_ExplainRequiredMon, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq MossdeepCity_GameCorner_1F_EventScript_AbortMinigame
-	compare VAR_0x8005, 0
-	call_if_eq MossdeepCity_GameCorner_1F_EventScript_ExplainPokemonJumpRequirements
-	compare VAR_0x8005, 1
-	call_if_eq MossdeepCity_GameCorner_1F_EventScript_ExplainDodrioBerryPickingRequirements
-	goto MossdeepCity_GameCorner_1F_EventScript_AbortMinigame
 	end
 
 MossdeepCity_GameCorner_1F_EventScript_ExplainPokemonJumpRequirements:: @ 8277E84

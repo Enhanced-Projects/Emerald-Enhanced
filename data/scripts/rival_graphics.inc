@@ -30,15 +30,6 @@ EventScript_SetupRivalOnBikeGfxIdMale:: @ 8271F19
 	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	return
 
-@ Unused
-Common_EventScript_SetupRivalGfxIdSameGender:: @ 8271F1F
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq EventScript_SetupRivalGfxIdMale2
-	compare VAR_RESULT, FEMALE
-	goto_if_eq EventScript_SetupRivalGfxIdFemale2
-	end
-
 EventScript_SetupRivalGfxIdMale2:: @ 8271F37
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	return

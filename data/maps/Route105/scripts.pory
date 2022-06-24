@@ -56,11 +56,6 @@ Route105_EventScript_AndresRegisterMatchCallAfterBattle:: @ 81EE300
 	release
 	end
 
-Route105_EventScript_AndresRematch:: @ 81EE31F
-	trainerbattle_rematch TRAINER_ANDRES_1, Route105_Text_AndresRematchIntro, Route105_Text_AndresRematchDefeated
-	msgbox Route105_Text_AndresRematchPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route104_Text_DadPokenavCall: @ 81EE336
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"

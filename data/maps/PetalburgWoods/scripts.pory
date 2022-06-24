@@ -306,22 +306,6 @@ PetalburgWoods_EventScript_RegisterJames:: @ 822E2D6
 	release
 	end
 
-PetalburgWoods_EventScript_TryRegisterJames2:: @ 822E2EF
-	msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
-	release
-	end
-
-PetalburgWoods_EventScript_RegisterJames2:: @ 822E302
-	msgbox PetalburgWoods_Text_IWantRematch2, MSGBOX_DEFAULT
-	@nop Trainer_JAMES_1
-	release
-	end
-
-PetalburgWoods_EventScript_JamesRematch:: @ 822E31B
-	trainerbattle_rematch TRAINER_JAMES_1, PetalburgWoods_Text_MyPokemonHaveGrown, PetalburgWoods_Text_CantBePopularIfLose
-	msgbox PetalburgWoods_Text_IveBeenTrainingHard, MSGBOX_AUTOCLOSE
-	end
-
 PetalburgWoods_Text_NotAOneToBeFound: @ 822E332
 	.string "Hmmm…\n"
 	.string "Not a one to be found…$"

@@ -2,10 +2,6 @@ raw `
 FallarborTown_CozmosHouse_MapScripts:: @ 8200F12
 	.byte 0
 
-FT_FixCozmo::
-	release
-	end
-
 FallarborTown_CozmosHouse_EventScript_ProfCozmo:: @ 8200F13
 	lock
 	faceplayer
@@ -43,15 +39,6 @@ FT_FinishedMission3Early:
 
 FT_Mission3EarlyMsg:
 	.string "Oh! you already have my meteorite!\nExcellent!$"
-	
-FT_DevonMission3::
-	lock
-	faceplayer
-	msgbox FT_OnMission3Msg MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
-	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
-	release
-	end
 	
 FT_Mission4::
 	lock

@@ -75,15 +75,6 @@ SootopolisCity_EventScript_KiriLikeSeasonBornIn:: @ 81E5FD8
 	release
 	end
 
-SootopolisCity_EventScript_Woman2:: @ 81E5FE2
-	lockall
-	applymovement 2, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement 2, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	releaseall
-	end
-
 EventScript_ClosedSootopolisDoor:: @ 81E615D
 	msgbox SootopolisCity_Text_DoorIsClosed, MSGBOX_SIGN
 	end
@@ -129,40 +120,6 @@ SootopolisCity_EventScript_GymSign:: @ 81E614B
 
 SootopolisCity_EventScript_CitySign:: @ 81E6154
 	msgbox SootopolisCity_Text_CitySign, MSGBOX_SIGN
-	end
-
-SootopolisCity_EventScript_Boy2:: @ 81E635D
-	lockall
-	applymovement 15, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement 15, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	releaseall
-	end
-
-SootopolisCity_EventScript_BlackBelt:: @ 81E6393
-	lockall
-	applymovement 14, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	releaseall
-	end
-
-SootopolisCity_EventScript_Girl:: @ 81E63DB
-	lockall
-	applymovement 13, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement 13, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	releaseall
-	end
-
-SootopolisCity_EventScript_Maniac:: @ 81E6411
-	lockall
-	applymovement 12, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement 12, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	releaseall
 	end
 
 SootopolisCity_Text_GymSign: @ 81E656F

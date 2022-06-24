@@ -74,11 +74,6 @@ Route123_EventScript_RegisterCameron:: @ 81F6236
 	release
 	end
 
-Route123_EventScript_RematchCameron:: @ 81F6255
-	trainerbattle_rematch TRAINER_CAMERON_1, Route123_Text_CameronRematchIntro, Route123_Text_CameronRematchDefeat
-	msgbox Route123_Text_CameronPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route123_EventScript_Jacki:: @ 81F626C
 	trainerbattle_single TRAINER_JACKI_1, Route123_Text_JackiIntro, Route123_Text_JackiDefeat, Route123_EventScript_RegisterJacki
 	msgbox Route123_Text_JackiPostBattle, MSGBOX_DEFAULT
@@ -91,11 +86,6 @@ Route123_EventScript_RegisterJacki:: @ 81F6298
 	msgbox Route123_Text_JackiRegister, MSGBOX_DEFAULT
 	@nop Trainer_JACKI_1
 	release
-	end
-
-Route123_EventScript_RematchJacki:: @ 81F62B7
-	trainerbattle_rematch TRAINER_JACKI_1, Route123_Text_JackiRematchIntro, Route123_Text_JackiRematchDefeat
-	msgbox Route123_Text_JackiPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Miu:: @ 81F62CE
@@ -160,11 +150,6 @@ Route123_EventScript_RegisterFernando:: @ 81F63E8
 	msgbox Route123_Text_FernandoRegister, MSGBOX_DEFAULT
 	@nop Trainer_FERNANDO_1
 	release
-	end
-
-Route123_EventScript_RematchFernando:: @ 81F6407
-	trainerbattle_rematch TRAINER_FERNANDO_1, Route123_Text_FernandoRematchIntro, Route123_Text_FernandoRematchDefeat
-	msgbox Route123_Text_FernandoPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route123_Text_LoveGrassMonsHaveAny: @ 81F641E

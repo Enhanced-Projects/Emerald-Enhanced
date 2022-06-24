@@ -27,10 +27,6 @@ RyuLegendary_CaughtCelebi::
 RyuLegendary_IntroCelebi: @put your intro here
 	.string "$"
 
-Route66_EventScript_HintSign::
-	msgbox Route66_Text_HintSign, MSGBOX_SIGN
-	end
-
 Route66_Text_HintSign:
 	.string "Did you know you can use the bike\n"
 	.string "anywhere, no matter the surface?$"

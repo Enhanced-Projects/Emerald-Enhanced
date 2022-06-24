@@ -189,15 +189,6 @@ SlateportCity_EventScript_Woman1:: @ 81DCF17
 	release
 	end
 
-SlateportCity_EventScript_Woman1AquaGone:: @ 81DCF2C
-	msgbox SlateportCity_Text_VisitedMuseumOften, MSGBOX_DEFAULT
-	release
-	end
-
-SlateportCity_EventScript_BattleTentSign:: @ 81DCF36
-	msgbox SlateportCity_Text_BattleTentSign, MSGBOX_SIGN
-	end
-
 SlateportCity_EventScript_SternsShipyardSign:: @ 81DCF3F
 	lockall
 	goto_if_set FLAG_SYS_GAME_CLEAR, SlateportCity_EventScript_SternsShipyardFerryComplete
@@ -283,137 +274,10 @@ SlateportCity_EventScript_Man2:: @ 81DD000
 	msgbox SlateportCity_Text_BattleTentBuiltRecently, MSGBOX_NPC
 	end
 
-SlateportCity_EventScript_AquaGrunt1:: @ 81DD009
-	lock
-	faceplayer
-	msgbox SlateportCity_Text_QuitPushing, MSGBOX_DEFAULT
-	closemessage
-	applymovement 5, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_AquaGrunt2:: @ 81DD020
-	lock
-	faceplayer
-	msgbox SlateportCity_Text_AquaHasPolicy, MSGBOX_DEFAULT
-	closemessage
-	applymovement 18, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_AquaGrunt3:: @ 81DD037
-	lock
-	faceplayer
-	msgbox SlateportCity_Text_BossIsBrilliant, MSGBOX_DEFAULT
-	closemessage
-	applymovement 19, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_AquaGrunt4:: @ 81DD04E
-	lock
-	faceplayer
-	msgbox SlateportCity_Text_WhatsNewSchemeIWonder, MSGBOX_DEFAULT
-	closemessage
-	applymovement 26, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_AquaGrunt5:: @ 81DD065
-	lock
-	faceplayer
-	msgbox SlateportCity_Text_ShouldTakeItAll, MSGBOX_DEFAULT
-	closemessage
-	applymovement 27, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_AquaGrunt6:: @ 81DD07C
-	lock
-	faceplayer
-	msgbox SlateportCity_Text_DontButtIn, MSGBOX_DEFAULT
-	closemessage
-	applymovement 28, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_AquaGrunt7:: @ 81DD093
-	lock
-	faceplayer
-	msgbox SlateportCity_Text_RemindsMeOfLongLineForGames, MSGBOX_DEFAULT
-	closemessage
-	applymovement 29, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_AquaGrunt8:: @ 81DD0AA
-	lock
-	faceplayer
-	msgbox SlateportCity_Text_WhyAreWeLiningUp, MSGBOX_DEFAULT
-	closemessage
-	applymovement 30, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_AquaGrunt9:: @ 81DD0C1
-	lock
-	faceplayer
-	playse SE_PIN
-	applymovement 31, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 31, Common_Movement_Delay48
-	waitmovement 0
-	msgbox SlateportCity_Text_WhatDoYouWant, MSGBOX_DEFAULT
-	closemessage
-	applymovement 31, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	applymovement 31, SlateportCity_Movement_DelayAquaGrunt
-	waitmovement 0
-	applymovement 31, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox SlateportCity_Text_IllReadSignForYou, MSGBOX_DEFAULT
-	closemessage
-	applymovement 31, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	applymovement 31, SlateportCity_Movement_DelayAquaGrunt
-	waitmovement 0
-	msgbox SlateportCity_Text_SaysSomethingLikeSeaIsEndless, MSGBOX_DEFAULT
-	closemessage
-	applymovement 31, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement 31, SlateportCity_Movement_DelayAquaGrunt
-	waitmovement 0
-	applymovement 31, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
 SlateportCity_Movement_DelayAquaGrunt: @ 81DD147
 	delay_16
 	delay_16
 	step_end
-
-SlateportCity_EventScript_AquaGrunt10:: @ 81DD14A
-	msgbox SlateportCity_Text_ShouldveBroughtMyGameBoy, MSGBOX_SIGN
-	end
-
-SlateportCity_EventScript_AquaGrunt11:: @ 81DD153
-	lock
-	faceplayer
-	msgbox SlateportCity_Text_HotSpringsAfterOperation, MSGBOX_DEFAULT
-	closemessage
-	applymovement 33, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
 
 SlateportCity_EventScript_DollClerk:: @ 81DD16A
 	lock
@@ -615,12 +479,6 @@ SlateportCity_Movement_TyExit: @ 81DD326
 	walk_left
 	step_end
 
-@ Unused
-SlateportCity_Movement_1DD334: @ 81DD334
-	walk_down
-	walk_in_place_fastest_up
-	step_end
-
 SlateportCity_Movement_SternEnterHarbor: @ 81DD337
 	walk_right
 	walk_up
@@ -683,52 +541,6 @@ SlateportCity_EventScript_BerryPowderClerk:: @ 81DD36E
 SlateportCity_EventScript_ReceivedPowderJar:: @ 81DD39A
 	end
 
-SlateportCity_EventScript_ExplainBerryPowder:: @ 81DD3C0
-	end
-
-SlateportCity_EventScript_ChooseBerryPowderItem:: @ 81DD3CA
-	message SlateportCity_Text_ExchangeWhatWithIt
-	waitmessage
-	setvar VAR_0x8004, SCROLL_MULTI_BERRY_POWDER_VENDOR
-	special ShowScrollableMultichoice
-	waitstate
-	end
-
-SlateportCity_EventScript_EnergyPowder:: @ 81DD46E
-	bufferitemname 0, ITEM_ENERGY_POWDER
-	setvar VAR_0x8008, ITEM_ENERGY_POWDER
-	setvar VAR_0x8009, 50
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
-SlateportCity_EventScript_EnergyRoot:: @ 81DD482
-	bufferitemname 0, ITEM_ENERGY_ROOT
-	setvar VAR_0x8008, ITEM_ENERGY_ROOT
-	setvar VAR_0x8009, 80
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
-SlateportCity_EventScript_HealPowder:: @ 81DD496
-	bufferitemname 0, ITEM_HEAL_POWDER
-	setvar VAR_0x8008, ITEM_HEAL_POWDER
-	setvar VAR_0x8009, 50
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
-SlateportCity_EventScript_RevivalHerb:: @ 81DD4AA
-	bufferitemname 0, ITEM_REVIVAL_HERB
-	setvar VAR_0x8008, ITEM_REVIVAL_HERB
-	setvar VAR_0x8009, 300
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
-SlateportCity_EventScript_Protein:: @ 81DD4BE
-	bufferitemname 0, ITEM_PROTEIN
-	setvar VAR_0x8008, ITEM_PROTEIN
-	setvar VAR_0x8009, 1000
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
 SlateportCity_EventScript_Iron:: @ 81DD4D2
 	bufferitemname 0, ITEM_IRON
 	setvar VAR_0x8008, ITEM_IRON
@@ -736,79 +548,8 @@ SlateportCity_EventScript_Iron:: @ 81DD4D2
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
 	end
 
-SlateportCity_EventScript_Carbos:: @ 81DD4E6
-	bufferitemname 0, ITEM_CARBOS
-	setvar VAR_0x8008, ITEM_CARBOS
-	setvar VAR_0x8009, 1000
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
-SlateportCity_EventScript_Calcium:: @ 81DD4FA
-	bufferitemname 0, ITEM_CALCIUM
-	setvar VAR_0x8008, ITEM_CALCIUM
-	setvar VAR_0x8009, 1000
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
-SlateportCity_EventScript_Zinc:: @ 81DD50E
-	bufferitemname 0, ITEM_ZINC
-	setvar VAR_0x8008, ITEM_ZINC
-	setvar VAR_0x8009, 1000
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
-SlateportCity_EventScript_HPUp:: @ 81DD522
-	bufferitemname 0, ITEM_HP_UP
-	setvar VAR_0x8008, ITEM_HP_UP
-	setvar VAR_0x8009, 1000
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
-SlateportCity_EventScript_PPUp:: @ 81DD536
-	bufferitemname 0, ITEM_PP_UP
-	setvar VAR_0x8008, ITEM_PP_UP
-	setvar VAR_0x8009, 3000
-	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-	end
-
-SlateportCity_EventScript_CancelPowderItemSelect:: @ 81DD54A
-	msgbox SlateportCity_Text_ComeBackToTradeBerryPowder, MSGBOX_DEFAULT
-	release
-	end
-
 SlateportCity_EventScript_TryBuyBerryPowderItem:: @ 81DD557
 	release
-	end
-
-SlateportCity_EventScript_NoRoomForBerryPowderItem:: @ 81DD5C1
-	msgbox gText_TheBagIsFull, MSGBOX_DEFAULT
-	release
-	end
-
-SlateportCity_EventScript_NotEnoughBerryPowder:: @ 81DD5CE
-	msgbox SlateportCity_Text_DontHaveEnoughBerryPowder, MSGBOX_DEFAULT
-	end
-
-SlateportCity_EventScript_ScottBattleTentScene:: @ 81DD5DC
-	lockall
-	applymovement PLAYER, Common_Movement_FaceUp
-	waitmovement 0
-	opendoor 10, 12
-	waitdooranim
-	addobject 35
-	applymovement PLAYER, SlateportCity_Movement_PushPlayerDown
-	applymovement 35, SlateportCity_Movement_ScottExitBattleTent
-	waitmovement 0
-	closedoor 10, 12
-	waitdooranim
-	msgbox SlateportCity_Text_TakingBattleTentChallenge, MSGBOX_DEFAULT
-	closemessage
-	applymovement PLAYER, SlateportCity_Movement_PlayerWatchScottExit
-	applymovement 35, SlateportCity_Movement_ScottExitAfterBattleTent
-	waitmovement 0
-	removeobject 35
-	setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 3
-	releaseall
 	end
 
 SlateportCity_Movement_PushPlayerDown: @ 81DD630

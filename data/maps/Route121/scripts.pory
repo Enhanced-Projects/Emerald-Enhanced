@@ -32,24 +32,6 @@ R121_CheckMagmaBan::
 Ryu_YouReallyDontWantToGoThere:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It would be a very bad idea\n to show your face here.\p You should probably go somewhere\n else.)$"
 
-Route121_EventScript_AquaGruntsMoveOut:: @ 81F5E18
-	lockall
-	playbgm MUS_AQA_0, 0
-	applymovement 13, Common_Movement_WalkInPlaceRight
-	waitmovement 0
-	msgbox Route121_Text_OkayMoveOutToMtPyre, MSGBOX_DEFAULT
-	closemessage
-	applymovement 12, Route121_Movement_Grunt1Exit
-	applymovement 13, Route121_Movement_Grunt2Exit
-	applymovement 14, Route121_Movement_Grunt3Exit
-	waitmovement 0
-	fadedefaultbgm
-	removeobject 12
-	removeobject 13
-	removeobject 14
-	releaseall
-	end
-
 Route121_Movement_Grunt1Exit: @ 81F5E59
 	walk_down
 	walk_down
@@ -102,11 +84,6 @@ Route121_EventScript_RegisterWalter:: @ 81F5EB7
 	release
 	end
 
-Route121_EventScript_RematchWalter:: @ 81F5ED6
-	trainerbattle_rematch TRAINER_WALTER_1, Route121_Text_WalterRematchIntro, Route121_Text_WalterRematchDefeat
-	msgbox Route121_Text_WalterPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route121_EventScript_Tammy:: @ 81F5EED
 	trainerbattle_single TRAINER_TAMMY, Route121_Text_TammyIntro, Route121_Text_TammyDefeat
 	msgbox Route121_Text_TammyPostBattle, MSGBOX_AUTOCLOSE
@@ -134,11 +111,6 @@ Route121_EventScript_RegisterJessica:: @ 81F5F66
 	msgbox Route121_Text_JessicaRegister, MSGBOX_DEFAULT
 	@nop Trainer_JESSICA_1
 	release
-	end
-
-Route121_EventScript_RematchJessica:: @ 81F5F85
-	trainerbattle_rematch TRAINER_JESSICA_1, Route121_Text_JessicaRematchIntro, Route121_Text_JessicaRematchDefeat
-	msgbox Route121_Text_JessicaPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route121_EventScript_Cale:: @ 81F5F9C
@@ -173,11 +145,6 @@ Route121_EventScript_RegisterCristin:: @ 81F6024
 	msgbox Route121_Text_CristinRegister, MSGBOX_DEFAULT
 	@nop Trainer_CRISTIN_1
 	release
-	end
-
-Route121_EventScript_RematchCristin:: @ 81F6043
-	trainerbattle_rematch TRAINER_CRISTIN_1, Route121_Text_CristinRematchIntro, Route121_Text_CristinRematchDefeat
-	msgbox Route121_Text_CristinPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route121_Text_OkayMoveOutToMtPyre: @ 81F605A

@@ -307,21 +307,25 @@ Ryu_CollisionOnMsg:
 
 DevModeDisabled:
 	.string "{PLAYER} is no longer a developer.$"
-	
-EGC_CLEARGAMECLEARFLAG::
-	clearflag FLAG_SYS_GAME_CLEAR
-	end
-
-RyuDebug_waystone::
-	additem ITEM_WAYSTONE, 1
-	goto RyuDebug_menu_nodevcheck
-	releaseall
-	end
 
 RyuDebug_EnableDexnav::
 	setflag FLAG_SYS_DEXNAV_GET
 	release
 	end
+
+RDB_AlchemyInfo::
+	callnative RyuDebug_CheckAlchemyStatus
+	msgbox RDB_AlchemyInfoMsg
+	closemessage
+	release
+	end
+
+RDB_AlchemyInfoMsg:
+	.string "Has Alchemy effect active? {STR_VAR_1}\n"
+	.string "Current effect is {STR_VAR_2},\l"
+	.string "with {STR_VAR_3} charges left.\p"
+	.string "Player's alchemy level is {RYU_STR_1}.\n"
+	.string "Player's Alchemy exp is {RYU_STR_2}.$"
 
 RDB_ToggleLevelCap::
 	msgbox RDB_LevelCapToggled
@@ -370,57 +374,10 @@ RyuDebug_ViewTempVars::
 
 RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
-@@clearflag FLAG_RYU_DEV_MODE
-@@clearflag FLAG_RYU_CHEATS_USED
-@@setvar VAR_RYU_NGPLUS_COUNT, 6
-
 
 RyuDebug_Utility1::
-	createfollower OBJ_EVENT_GFX_LUSAMINE, RyuFollowerSelectNPCScript, DIR_SOUTH
 	release
 	end
-
-RDB_DQT::
-	.string "{PLAYER}, can you go check out\nRoute 103?\pI want to know specifically if\nthere's a good place to camp\lthere or not.$"
-
-RDB_String1:
-	.string "Your name is {PLAYER}.\nYour rival is {RIVAL}.$"
-
-RDB_DoLittlerootLatiCheck::
-	buffernumberstring 0, VAR_ROAMER_POKEMON
-	buffernumberstring 1, VAR_LITTLEROOT_INTRO_STATE
-	msgbox RDBLRT2
-	closemessage
-	release
-	end
-
-RDBTeleport:
-	.string "Teleport?$"
-
-RDBResult:
-	.string "Result: {STR_VAR_1}$"
-
-RDBLRT2:
-	.string "Your roamer is {STR_VAR_1}\nYour Tutorial state is {STR_VAR_2}$"
-
-RDB_LifeSkills:
-	.string "Alchemy- EXP: {STR_VAR_1} Level: {STR_VAR_2}\n"
-	.string "Botany- EXP: {STR_VAR_3} Level: {RYU_STR_1}\l"
-	.string "Mining- EXP: {RYU_STR_2} Level: {RYU_STR_3}$"
-
-RDB_AlchemyInfo::
-	callnative RyuDebug_CheckAlchemyStatus
-	msgbox RDB_AlchemyInfoMsg
-	closemessage
-	release
-	end
-
-RDB_AlchemyInfoMsg:
-	.string "Has Alchemy effect active? {STR_VAR_1}\n"
-	.string "Current effect is {STR_VAR_2},\l"
-	.string "with {STR_VAR_3} charges left.\p"
-	.string "Player's alchemy level is {RYU_STR_1}.\n"
-	.string "Player's Alchemy exp is {RYU_STR_2}.$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
@@ -490,11 +447,6 @@ GiveRandomFrontiermonsEnd::
 
 RDB_GRFMD:
 	.string "Given 6 random frontier mons.$"
-
-RDB_u1_EnableRandomize::
-	setflag FLAG_RYU_RANDOMIZE_MUSIC
-	release
-	end
 
 RDB_Readout:
 	.string "It is currently: {STR_VAR_1}:{STR_VAR_2}::{STR_VAR_3}  $"

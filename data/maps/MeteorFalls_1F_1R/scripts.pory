@@ -177,15 +177,6 @@ MF_PlayerDevonContdSouth::
 	release
 	end
 
-MeteorFalls_1F_1R_EventScript_22BF25:: @ 822BF25
-	lock
-	faceplayer
-	goto_if_set FLAG_MET_PROF_COSMO, MeteorFalls_1F_1R_EventScript_22BF3D
-	setflag FLAG_MET_PROF_COSMO
-	msgbox MF_AquaCozmo, MSGBOX_DEFAULT
-	release
-	end
-
 MeteorFalls_1F_1R_EventScript_22BF3D:: @ 822BF3D
 	msgbox MF_AfterEventCozmo MSGBOX_DEFAULT
 	release

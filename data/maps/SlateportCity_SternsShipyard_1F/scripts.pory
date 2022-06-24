@@ -32,16 +32,6 @@ SlateportCity_SternsShipyard_1F_EventScript_BrineyJoined:: @ 8207FA6
 	releaseall
 	end
 
-SlateportCity_SternsShipyard_1F_EventScript_GoFindStern:: @ 8207FBA
-	applymovement 1, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox SlateportCity_SternsShipyard_1F_Text_CouldYouFindStern, MSGBOX_DEFAULT
-	closemessage
-	applymovement 1, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	releaseall
-	end
-
 SlateportCity_SternsShipyard_1F_EventScript_NeedVeteran:: @ 8207FD9
 	applymovement 1, Common_Movement_FacePlayer
 	waitmovement 0

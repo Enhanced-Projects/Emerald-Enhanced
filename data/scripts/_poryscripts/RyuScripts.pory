@@ -301,14 +301,6 @@ RyuTCDisabledChallenge::
 	release
 	end
 
-Ryu_YouHaveNoMons::
-	msgbox CantHealNoMons
-	release
-	end
-
-CantHealNoMons:
-	.string "You don't have any pokemon to heal.\nPlease return another time!$"
-
 RyuMartsDisabledChallengeMsg:
 	.string "{COLOR DARK_GREY}{SHADOW RED}Sorry, but you can't use this while\n"
 	.string "playing in challenge mode. Fight more\p"
@@ -882,11 +874,6 @@ RyuLegendary_GeneralLegendEncounter::
 	clearflag FLAG_RYU_BOSS_WILD
 	return
 	end
-
-
-RyuLegendary_SetBossFlag::
-	setflag FLAG_RYU_BOSS_WILD
-	return
 	
 RyuLegendary_SetMaxScale::
 	setvar VAR_TEMP_7, 110
@@ -1289,10 +1276,6 @@ Ryu_SootSackReadout:
 
 @=================================================================================================Global Scripts
 
-RyuGlobal_CheckMissionCallStatus::
-	setvar VAR_TEMP_A, 10
-	goto RyuGlobal_CheckMagmaStatus
-
 Ryu_FFTextSpeedWarning::
 	msgbox FFTextMsg
 	clearflag FLAG_SELECTED_FF_TEXT_OPTION
@@ -1663,20 +1646,6 @@ RyuScript_IncrementQuestsFinished::
 	call_if_eq RyuScript_GiveDejaVu
 	return
 
-RyuScript_CheckGivenGoldAch::
-	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
-	callnative BufferGivenAchievement
-	playse SE_EXPMAX
-	msgbox RS_GOLD_ACH_RECEIVED
-	closemessage
-	setvar VAR_RYU_LAST_ACH, 300
-	msgbox RS_GoldAchMsg
-	closemessage
-	giveitem ITEM_MASTER_BALL, 1
-	setvar VAR_RYU_LAST_ACH, 300
-	release
-	end
-
 RS_GoldAchMsg:
 	.string "You earned a GOLDEN achievement!\nAs a reward for your dedication\pYou are receiving one Master Ball!$"
 
@@ -1689,16 +1658,6 @@ RS_ACH_RECEIVED:
 
 RS_GOLD_ACH_RECEIVED:
 	.string "{COLOR LIGHT_RED}{SHADOW BLUE}GOLDEN ACHIEVEMENT GET!!!\n{RYU_STR_4}$"
-
-RyuScript_CheckFollowerFactionChanges::
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LASS
-	goto_if_ne ryu_end
-	checkfactionstanding FACTION_STUDENTS, 80
-	compare VAR_RESULT, FALSE
-	goto_if_eq ryu_end
-	changefactionstanding FACTION_STUDENTS, 1, FALSE
-	release
-	end
 
 @@GAME OVER========================================================================================
 
@@ -1775,15 +1734,6 @@ RS_GO_GameOverDesc::
 	.string "still do the pokemon league\n"
 	.string "and become champion, however\l"
 	.string "you cannot continue this quest.$"
-
-RS_PreventEntryNorth::
-	lockall
-	msgbox RS_DeniedEntry
-	closemessage
-	applymovement PLAYER, Common_Movement_StepDown
-	waitmovement PLAYER
-	release
-	end
 
 RS_DeniedEntry:
 	.string "You failed a questline, you\nmay not enter this quest area.$"

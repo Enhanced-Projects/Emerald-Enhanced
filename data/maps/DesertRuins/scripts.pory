@@ -197,10 +197,6 @@ DR_LeafEvent2::
 	release
 	end
 	
-DR_Warp::
-	release
-	end
-	
 DR_LeafOpenDoor::
 	setmetatile 7, 19, 554, 0
 	setmetatile 8, 19, 555, 0

@@ -32,11 +32,6 @@ Movement_CutTreeDown: @ 829071F
 	cut_tree
 	step_end
 
-EventScript_CheckTreeCantCut:: @ 8290721
-	msgbox Text_CantCut, MSGBOX_DEFAULT
-	releaseall
-	end
-
 EventScript_CancelCut:: @ 829072B
 	closemessage
 	releaseall
@@ -100,11 +95,6 @@ Movement_SmashRock: @ 829082B
 	rock_smash_break
 	step_end
 
-EventScript_CantSmashRock:: @ 829082D
-	msgbox Text_CantSmash, MSGBOX_DEFAULT
-	releaseall
-	end
-
 EventScript_CancelSmash:: @ 8290837
 	closemessage
 	releaseall
@@ -142,11 +132,6 @@ EventScript_ActivateStrength:: @ 8290908
 	releaseall
 	end
 
-EventScript_CantStrength:: @ 8290915
-	msgbox Text_CantStrength, MSGBOX_DEFAULT
-	releaseall
-	end
-
 EventScript_CheckActivatedBoulder:: @ 829091F
 	msgbox Text_StrengthActivated, MSGBOX_DEFAULT
 	releaseall
@@ -181,12 +166,6 @@ EventScript_UseWaterfall:: @ 8290A49
 	dofieldeffect FLDEFF_USE_WATERFALL
 	goto EventScript_EndWaterfall
 
-EventScript_CannotUseWaterfall:: @ 8290A83
-	lockall
-
-EventScript_CantWaterfall:: @ 8290A84
-	msgbox Text_CantWaterfall, MSGBOX_DEFAULT
-
 EventScript_EndWaterfall:: @ 8290A8C
 	releaseall
 	end
@@ -213,11 +192,6 @@ EventScript_UseDive:: @ 8290B0F
 	goto EventScript_EndDive
 	end
 
-EventScript_CantDive:: @ 8290B4E
-	msgbox Text_CantDive, MSGBOX_DEFAULT
-	releaseall
-	end
-
 EventScript_EndDive:: @ 8290B58
 	releaseall
 	end
@@ -230,12 +204,6 @@ EventScript_UseDiveUnderwater:: @ 8290B5A
 	goto_if_eq EventScript_EndSurface
 	msgbox Text_MonUsedDive, MSGBOX_DEFAULT
 	dofieldeffect FLDEFF_USE_DIVE
-	goto EventScript_EndSurface
-	end
-
-EventScript_CantSurface:: @ 8290B99
-	lockall
-	msgbox Text_CantSurface, MSGBOX_DEFAULT
 	goto EventScript_EndSurface
 	end
 

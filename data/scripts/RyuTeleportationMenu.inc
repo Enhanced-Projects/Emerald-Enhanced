@@ -190,11 +190,6 @@ RT_LCCDEPT::
     goto_if_unset FLAG_RYU_LANDMARK_LCCDEPTSTORE, RT_NoFlag
 	warpteleport MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP, 255, 4, 5
 	waitstate
-
-RT_LCAH::
-    goto_if_unset FLAG_RYU_PLAYER_HELPING_AQUA, RT_NoFlag
-	@warpteleport MAP_NEW_MAP4, 255, 7, 14
-	waitstate
 	
 RT_BerryFarm::
 	goto_if_unset FLAG_LANDMARK_BERRY_MASTERS_HOUSE, RT_NoFlag

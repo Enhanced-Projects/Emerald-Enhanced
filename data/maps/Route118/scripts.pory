@@ -62,11 +62,6 @@ Route118_EventScript_RegisterRose:: @ 81F3FB3
 	release
 	end
 
-Route118_EventScript_RematchRose:: @ 81F3FD2
-	trainerbattle_rematch TRAINER_ROSE_1, Route118_Text_RoseRematchIntro, Route118_Text_RoseRematchDefeat
-	msgbox Route118_Text_RosePostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route118_EventScript_Barny:: @ 81F3FE9
 	trainerbattle_single TRAINER_BARNY, Route118_Text_BarnyIntro, Route118_Text_BarnyDefeat
 	msgbox Route118_Text_BarnyPostBattle, MSGBOX_AUTOCLOSE
@@ -89,11 +84,6 @@ Route118_EventScript_RegisterDalton:: @ 81F4043
 	msgbox Route118_Text_DaltonRegister, MSGBOX_DEFAULT
 	@nop Trainer_DALTON_1
 	release
-	end
-
-Route118_EventScript_RematchDalton:: @ 81F4062
-	trainerbattle_rematch TRAINER_DALTON_1, Route118_Text_DaltonRematchIntro, Route118_Text_DaltonRematchDefeat
-	msgbox Route118_Text_DaltonPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route118_EventScript_Perry:: @ 81F4079

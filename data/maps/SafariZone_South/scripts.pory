@@ -37,10 +37,6 @@ SafariZone_South_Movement_ExitAttendantBlockDoor: @ 823D2C7
 	walk_in_place_fastest_down
 	step_end
 
-SafariZone_South_EventScript_Boy:: @ 823D2CA
-	msgbox SafariZone_South_Text_Boy, MSGBOX_NPC
-	end
-
 SafariZone_South_EventScript_Man:: @ 823D2D3
 	msgbox SafariZone_South_Text_Man, MSGBOX_NPC
 	end
@@ -49,20 +45,6 @@ SafariZone_South_EventScript_Youngster:: @ 823D2DC
 	msgbox SafariZone_South_Text_Youngster, MSGBOX_NPC
 	end
 
-SafariZone_South_EventScript_ExitAttendant:: @ 823D2E5
-	lock
-	faceplayer
-	msgbox SafariZone_South_Text_StillHaveTimeExit, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq SafariZone_South_EventScript_ExitEarly
-	msgbox SafariZone_South_Text_EnjoyTheRestOfYourAdventure, MSGBOX_DEFAULT
-	release
-	end
-
-SafariZone_South_EventScript_GoodLuck:: @ 823D30D
-	msgbox SafariZone_South_Text_GoodLuck, MSGBOX_DEFAULT
-	release
-	end
 
 SafariZone_South_EventScript_ExitEarly:: @ 823D31A
 	msgbox SafariZone_South_Text_ExitEarlyThankYouForPlaying, MSGBOX_DEFAULT

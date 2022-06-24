@@ -242,12 +242,6 @@ LNH_LanettePrepareFollower::
 	msgbox RF_LanetteSetupFollower
 	goto LNH_Follower
 	end
-
-
-LNH_Nothing::
-	msgbox LNH_DISPT
-	release
-	end
 	
 LNH_Staying:
 	msgbox LNH_Rel_Lanette_stayingScene

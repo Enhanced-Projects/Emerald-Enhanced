@@ -45,10 +45,6 @@ VerdanturfTown_EventScript_Man:: @ 81EB5A8
 	msgbox VerdanturfTown_Text_AirCleanHere, MSGBOX_NPC
 	end
 
-VerdanturfTown_EventScript_Camper:: @ 81EB5B1
-	msgbox VerdanturfTown_Text_MakeBattleTentDebut, MSGBOX_NPC
-	end
-
 VerdanturfTown_EventScript_Boy:: @ 81EB5BA
 	lock
 	faceplayer

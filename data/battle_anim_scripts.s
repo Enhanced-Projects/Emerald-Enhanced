@@ -14315,11 +14315,6 @@ Move_FLAME_WHEEL:
 	clearmonbg ANIM_DEF_PARTNER
 	end
 
-FlameWheel1: @ Unused
-	createsprite gFireSpiralOutwardSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 50
-	delay 4
-	return
-
 Move_PIN_MISSILE:
 	loadspritegfx ANIM_TAG_NEEDLE
 	loadspritegfx ANIM_TAG_IMPACT
@@ -23634,23 +23629,6 @@ IceCrystalEffectLong:
 	delay 4
 	createsprite gIceCrystalHitLargeSpriteTemplate, ANIM_TARGET, 2, 20, 2, 1
 	playsewithpan SE_M_ICY_WIND, SOUND_PAN_TARGET
-	return
-
-IceSpikesEffectShort: @ Unused
-	loopsewithpan SE_M_ICY_WIND, SOUND_PAN_TARGET, 6, 4
-	createsprite gIceGroundSpikeSpriteTemplate, ANIM_TARGET, 2, 0, 24, 0
-	delay 4
-	createsprite gIceGroundSpikeSpriteTemplate, ANIM_TARGET, 2, 8, 24, 0
-	createsprite gIceGroundSpikeSpriteTemplate, ANIM_TARGET, 2, -8, 24, 0
-	delay 4
-	createsprite gIceGroundSpikeSpriteTemplate, ANIM_TARGET, 2, 16, 24, 0
-	createsprite gIceGroundSpikeSpriteTemplate, ANIM_TARGET, 2, -16, 24, 0
-	delay 4
-	createsprite gIceGroundSpikeSpriteTemplate, ANIM_TARGET, 2, 24, 24, 0
-	createsprite gIceGroundSpikeSpriteTemplate, ANIM_TARGET, 2, -24, 24, 0
-	delay 4
-	createsprite gIceGroundSpikeSpriteTemplate, ANIM_TARGET, 2, 32, 24, 0
-	createsprite gIceGroundSpikeSpriteTemplate, ANIM_TARGET, 2, -32, 24, 0
 	return
 
 IceSpikesEffectLong:

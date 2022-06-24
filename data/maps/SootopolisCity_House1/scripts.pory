@@ -20,16 +20,6 @@ SootopolisCity_House1_EventScript_ReceivedBrickBreak:: @ 8226984
 	release
 	end
 
-SootopolisCity_House1_EventScript_Kecleon:: @ 822698E
-	lock
-	faceplayer
-	waitse
-	playmoncry SPECIES_KECLEON, 0
-	msgbox SootopolisCity_House1_Text_Kecleon, MSGBOX_DEFAULT
-	waitmoncry
-	release
-	end
-
 SootopolisCity_House1_Text_DevelopedThisTM: @ 82269A1
 	.string "For thirty years I've remained in\n"
 	.string "Sootopolis honing my skills.\p"

@@ -118,20 +118,6 @@ BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_MoveToElevator:: @ 8243EE
 	waitmovement 0
 	return
 
-@ Unused
-BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_MoveToElevatorEast: @ 8243EF6
-	applymovement 1, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_AttendantEnterElevator
-	applymovement PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEnterElevatorEast
-	waitmovement 0
-	return
-
-@ Unused
-BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_MoveToElevatorWest: @ 8243F08
-	applymovement 1, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_AttendantEnterElevator
-	applymovement PLAYER, BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEneterElevatorWest
-	waitmovement 0
-	return
-
 BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PlayerEnterElevator: @ 8243F1A
 	walk_up
 	walk_up

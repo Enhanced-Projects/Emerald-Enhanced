@@ -411,14 +411,6 @@ BattleFrontier_OutsideWest_EventScript_Man3:: @ 8249E19
 	msgbox BattleFrontier_OutsideWest_Text_24AB06, MSGBOX_NPC
 	end
 
-BattleFrontier_OutsideWest_EventScript_BattleDomeSign2:: @ 8249E22
-	msgbox BattleFrontier_OutsideWest_Text_BattleDomeSign2, MSGBOX_NPC
-	end
-
-BattleFrontier_OutsideWest_EventScript_UnderConstructionSign:: @ 8249E2B
-	msgbox BattleFrontier_OutsideWest_Text_QuestionMarkUnderConstruction, MSGBOX_NPC
-	end
-
 BattleFrontier_BattleDomeLobby_EventScript_249E34:: @ 8249E34
 	lockall
 	msgbox BattleFrontier_BattleDomeLobby_Text_24AE63, MSGBOX_DEFAULT
@@ -534,12 +526,6 @@ BattleFrontier_BattleDomeLobby_Text_24A51D: @ 824A51D
 BattleFrontier_BattleDomeLobby_Text_ReceivedPrize: @ 824A554
 	.string "{PLAYER} received the prize\n"
 	.string "{STR_VAR_1}.$"
-
-@ Unused
-BattleFrontier_BattleDomeLobby_Text_BagFullMakeRoom: @ 824A56E
-	.string "Oh, your Pack appears to be full.\p"
-	.string "Please make room in your Pack, then come\n"
-	.string "see me.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A5BF: @ 824A5BF
 	.string "Thank you for playing!$"

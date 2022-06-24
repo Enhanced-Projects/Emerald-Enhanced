@@ -175,11 +175,6 @@ LavaridgeTown_Gym_1F_EventScript_GiveOverheat:: @ 81FE841
 	setflag FLAG_RECEIVED_TM50
 	return
 
-LavaridgeTown_Gym_1F_EventScript_FlanneryRematch:: @ 81FE864
-	trainerbattle_rematch_double TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryPreRematch, LavaridgeTown_Gym_1F_Text_FlanneryRematchDefeat, LavaridgeTown_Gym_1F_Text_FlanneryRematchNeedTwoMons
-	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 LavaridgeTown_Gym_1F_EventScript_Cole:: @ 81FE87F
 	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, TRAINER_COLE, 2, LavaridgeTown_Gym_1F_Text_ColePreBattle, LavaridgeTown_Gym_1F_Text_ColeDefeat, LavaridgeTown_Gym_EventScript_CheckTrainerScript
 	msgbox LavaridgeTown_Gym_1F_Text_ColePostBattle MSGBOX_AUTOCLOSE

@@ -45,10 +45,6 @@ SCH_NoLanaSCMessage::
 	closemessage
 	return
 
-SealedChamber_InnerRoom_EventScript_NoEffect:: @ 8239253
-	releaseall
-	end
-
 SealedChamber_InnerRoom_EventScript_BrailleStoryPart1:: @ 8239255
 	lockall
 	msgbox SealedChamber_InnerRoom_Braille_InThisCaveWeHaveLived

@@ -15,24 +15,6 @@ RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos:: @ 822CE50
 	setobjectxyperm 6, 13, 5
 	return
 
-
-RusturfTunnel_EventScript_ClearTunnelScene:: @ 822CEAE
-	lockall
-	releaseall
-	end
-
-RusturfTunnel_EventScript_TunnelBlockagePos1:: @ 822D071
-	setvar VAR_TEMP_1, 1
-	end
-
-RusturfTunnel_EventScript_TunnelBlockagePos2:: @ 822D077
-	setvar VAR_TEMP_1, 2
-	end
-
-RusturfTunnel_EventScript_TunnelBlockagePos3:: @ 822D07D
-	setvar VAR_TEMP_1, 3
-	end
-
 RusturfTunnel_EventScript_AquaGruntBackUp:: @ 822D083
 	goto_if_set FLAG_RYU_PLAYER_NOOB, RT_SummonMagmaGruntBecausePlayerNoob
 	lockall
@@ -75,16 +57,6 @@ RusturfTunnel_Movement_GruntAndPeekoBackUp: @ 822D0AB
 	walk_right
 	unlock_facing_direction
 	step_end
-
-RusturfTunnel_EventScript_Peeko:: @ 822D0AF
-	lock
-	faceplayer
-	waitse
-	playmoncry SPECIES_WINGULL, 0
-	msgbox RusturfTunnel_Text_Peeko, MSGBOX_DEFAULT
-	waitmoncry
-	release
-	end
 
 RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	lock
@@ -443,11 +415,6 @@ RusturfTunnel_Movement_PeekoExit: @ 822D1A7
 	walk_left
 	walk_left
 	step_end
-
-RusturfTunnel_EventScript_Mike:: @ 822D1B1
-	trainerbattle_single TRAINER_MIKE_2, RusturfTunnel_Text_MikeIntro, RusturfTunnel_Text_MikeDefeat
-	msgbox RusturfTunnel_Text_MikePostBattle, MSGBOX_AUTOCLOSE
-	end
 
 RT_ThiefLeftMsg:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You read the label on the package.)\n"

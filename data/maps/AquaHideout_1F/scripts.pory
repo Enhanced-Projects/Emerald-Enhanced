@@ -29,17 +29,6 @@ AHQ_PlayerOwnsHideout::
 AHQ_PlayerOwnsHideoutMsg:
 	.string "I see you have the certificate.\nWelcome to your new hideout.\pWe'll see our way out.$"
 
-
-AquaHideout_1F_EventScript_MagmaHideoutHint1:: @ 82334B2
-	msgbox AquaHideout_1F_Text_WhereMightMagmaHideoutBe, MSGBOX_DEFAULT
-	release
-	end
-
-AquaHideout_1F_EventScript_SlateportHint1:: @ 82334BC
-	msgbox AquaHideout_1F_Text_BossWentToJackASubmarine, MSGBOX_DEFAULT
-	release
-	end
-
 AquaHideout_1F_EventScript_HideoutEntranceGrunt2:: @ 82334C6
 	lock
 	faceplayer
@@ -47,16 +36,6 @@ AquaHideout_1F_EventScript_HideoutEntranceGrunt2:: @ 82334C6
 	compare VAR_RESULT, 1
 	goto_if_eq AHQ_PlayerOwnsHideout
 	msgbox AquaHideout_1F_Text_OurBossIsSnatchingSomething, MSGBOX_DEFAULT
-	release
-	end
-
-AquaHideout_1F_EventScript_MagmaHideoutHint2:: @ 82334E4
-	msgbox AquaHideout_1F_Text_TeamMagmaAtMtChimney, MSGBOX_DEFAULT
-	release
-	end
-
-AquaHideout_1F_EventScript_SlateportHint2:: @ 82334EE
-	msgbox AquaHideout_1F_Text_BossIsInSlateportCity, MSGBOX_DEFAULT
 	release
 	end
 
