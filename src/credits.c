@@ -491,8 +491,8 @@ static const struct CreditsEntry gCreditsEntry_EEGraphics3[] = {0, FALSE, gCredi
 
 static const struct CreditsEntry gCreditsEntry_ExternalGraphics[] = {0, FALSE, gCreditsTextExternalGraphics};
 static const struct CreditsEntry gCreditsEntry_EEExtGraphics1[] = {0, FALSE, gCreditsText_EEExtGraphics1};
-static const struct CreditsEntry gCreditsEntry_EEExtGraphics2[] = {0, FALSE, gCreditsText_EEExtGraphics1};
-static const struct CreditsEntry gCreditsEntry_EEExtGraphics3[] = {0, FALSE, gCreditsText_EEExtGraphics1};
+static const struct CreditsEntry gCreditsEntry_EEExtGraphics2[] = {0, FALSE, gCreditsText_EEExtGraphics2};
+static const struct CreditsEntry gCreditsEntry_EEExtGraphics3[] = {0, FALSE, gCreditsText_EEExtGraphics3};
 //page
 static const struct CreditsEntry gCreditsEntry_DocumentationBy[] = {0, TRUE, gCreditsText_DocumentationBy};
 static const struct CreditsEntry gCreditsEntry_Toby[] = {0, FALSE, gCreditsText_Toby};
@@ -988,7 +988,7 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         gCreditsEntry_ErikJohnson,
         gCreditsEntry_MikaKurosawa,
         _,
-    },
+    }
 };
 #undef _
 
