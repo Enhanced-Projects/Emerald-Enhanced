@@ -6837,22 +6837,61 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Ernest3[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Ernest4[] = {
-    {
-    .iv = 30,
-    .lvl = 42,
-    .species = SPECIES_PELIPPER,
-    },
-    {
-    .iv = 30,
-    .lvl = 42,
-    .species = SPECIES_PALOSSAND,
-    },
-    {
-    .iv = 30,
-    .lvl = 42,
-    .species = SPECIES_MACHOKE,
-    }
+static const struct TrainerMonItemCustomMoves sParty_ChallengerYui[] = {
+	{
+	.iv = 255,
+	.lvl = 91,
+	.species = SPECIES_GENGAR,
+	.heldItem = ITEM_FOCUS_SASH,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_HEX, MOVE_WILL_O_WISP},
+	},
+	{
+	.iv = 255,
+	.lvl = 92,
+	.species = SPECIES_MISMAGIUS,
+	.heldItem = ITEM_LIFE_ORB,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_NASTY_PLOT, MOVE_MOONBLAST, MOVE_SHADOW_BALL, MOVE_POWER_GEM},
+	},
+	{
+	.iv = 255,
+	.lvl = 90,
+	.species = SPECIES_DECIDUEYE,
+	.heldItem = ITEM_SCOPE_LENS,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_SWORDS_DANCE, MOVE_LEAF_BLADE, MOVE_SPIRIT_SHACKLE, MOVE_SHADOW_SNEAK},
+	},
+	{
+	.iv = 255,
+	.lvl = 91,
+	.species = SPECIES_CHANDELURE,
+	.heldItem = ITEM_CHOICE_SCARF,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_FIRE_BLAST, MOVE_SHADOW_BALL, MOVE_ENERGY_BALL, MOVE_TRICK},
+	},
+	{
+	.iv = 250,
+	.lvl = 92,
+	.species = SPECIES_JELLICENT,
+	.heldItem = ITEM_LEFTOVERS,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_SCALD, MOVE_HEX, MOVE_TOXIC, MOVE_RECOVER},
+	},
+	{
+	.iv = 250,
+	.lvl = 90,
+	.species = SPECIES_MIMIKYU,
+	.heldItem = ITEM_LIFE_ORB,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_SWORDS_DANCE, MOVE_SHADOW_CLAW, MOVE_PLAY_ROUGH, MOVE_SHADOW_SNEAK},
+	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_ChallengerClay[] = {

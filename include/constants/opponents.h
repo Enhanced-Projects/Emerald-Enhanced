@@ -500,7 +500,7 @@
 #define TRAINER_DUNCAN                      496
 #define TRAINER_EMPTY_185                    497
 #define TRAINER_EMPTY_186                    498
-#define TRAINER_EMPTY_187                    499
+#define TRAINER_CHALLENGER_YUI                    499
 #define TRAINER_CHALLENGER_CLAY                    500
 #define TRAINER_ELI                         501
 #define TRAINER_ANNIKA                      502

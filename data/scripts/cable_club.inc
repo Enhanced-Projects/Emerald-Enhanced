@@ -1830,7 +1830,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_DUNCAN
 	cleartrainerflag TRAINER_EMPTY_185
 	cleartrainerflag TRAINER_EMPTY_186
-	cleartrainerflag TRAINER_EMPTY_187
+	cleartrainerflag TRAINER_CHALLENGER_YUI
 	cleartrainerflag TRAINER_CHALLENGER_CLAY
 	cleartrainerflag TRAINER_ELI
 	cleartrainerflag TRAINER_ANNIKA

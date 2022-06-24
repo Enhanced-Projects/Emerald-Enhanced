@@ -7983,20 +7983,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Ernest3},
     },
 
-    [TRAINER_EMPTY_187] =
+    [TRAINER_CHALLENGER_YUI] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_SAILOR,
-        .trainerFaction = FACTION_PROFESSIONALS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_SAILOR,
-        .trainerName = _("Ernest"),
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerName = _("Yui"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Ernest4),
-        .party = {.NoItemDefaultMoves = sParty_Ernest4},
+        .partySize = ARRAY_COUNT(sParty_ChallengerYui),
+        .party = {.ItemCustomMoves = sParty_ChallengerYui},
     },
 
     [TRAINER_CHALLENGER_CLAY] =

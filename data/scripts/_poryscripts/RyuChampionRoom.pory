@@ -112,6 +112,10 @@ script RyuChampionThroneStart { //For solo challenging
 				msgbox(RCR_Clay_Intro)
 				closemessage
 				trainerbattle_no_intro(TRAINER_CHALLENGER_CLAY, RCR_Clay_DefeatText)
+			case 22:
+				msgbox(RCR_Yui_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_YUI, RCR_Yui_DefeatText)
 	}
 	goto(RCR_FinishChallenge)
 }
@@ -188,7 +192,7 @@ text RCR_NumberDebug {
 }
 
 script RCR_RETURNRANDOM {
-	random(12)
+	random(13)
 	copyvar(VAR_0x8009, VAR_RESULT)
 	buffernumberstring(0, VAR_RESULT)
 	msgbox("Is {STR_VAR_1} ok?", MSGBOX_YESNO)
@@ -204,7 +208,7 @@ script RCR_ChooseOpponent { //randomly selects which challenger the player is ge
 	special(SpawnCameraObject)
 	applymovement(CAMERA, RCR_CameraMove)
 	waitmovement(CAMERA)
-	random(12)
+	random(13)
 	copyvar(VAR_0x8009, VAR_RESULT)
 	if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
 		buffernumberstring(3, VAR_RESULT)
@@ -243,6 +247,8 @@ script RCR_ChooseOpponent { //randomly selects which challenger the player is ge
 		setvar(VAR_TEMP_5, 20)
 	case 11:
 		setvar(VAR_TEMP_5, 21)
+	case 12:
+		setvar(VAR_TEMP_5, 22)
 	}
 	return
 }
@@ -261,7 +267,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 1:
 		msgbox(RCR_Steven_Intro)
 		closemessage
-		//special(SavePlayerParty) I don't remember if i still need this or not, so commented out for now.
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -270,7 +275,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 2:
 		msgbox(RCR_Norman_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -279,7 +283,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 7:
 		msgbox(RCR_Johnatan_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -288,7 +291,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 8:
 		msgbox(RCR_Robert_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -297,7 +299,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 9:
 		msgbox(RCR_Lance_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -306,7 +307,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 10:
 		msgbox(RCR_Zod_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -315,7 +315,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 11:
 		msgbox(RCR_Giovanni_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -324,7 +323,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 12:
 		msgbox(RCR_Sigma_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -333,7 +331,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 13:
 		msgbox(RCR_Juan_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -342,7 +339,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 19:
 		msgbox(RCR_Danny_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -351,7 +347,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 20:
 		msgbox(RCR_Lusamine_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -360,12 +355,19 @@ script RCR_SetUpBattle { //For follower matches
 	case 21:
 		msgbox(RCR_Clay_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_CLAY, RCR_Clay_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 22:
+		msgbox(RCR_Yui_Intro)
+		closemessage
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_YUI, RCR_Yui_DefeatText, VAR_0x8008, VAR_0x8009)
 	}
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
@@ -665,6 +667,12 @@ RCR_Clay_Intro:
 
 RCR_Clay_DefeatText:
 	.string "Dang, so the rumors were true...$"
+
+RCR_Yui_Intro:
+	.string "Just give up.\pI did.$"
+
+RCR_Yui_DefeatText:
+	.string "Whatever.\nSee if I care.$"
 
 RCR_Danny_Intro:
 	.string "Never thought Hoenn would be\n"
