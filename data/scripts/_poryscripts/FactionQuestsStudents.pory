@@ -75,7 +75,7 @@ script(global) RyuStudentsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS)
-    random(3)//increase this by the number of quests you add.
+    random(5)//increase this by the number of quests you add.
     switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
@@ -101,6 +101,11 @@ script(global) RyuStudentsDailyQuest  {
             msgbox(format("One of our younger members found this egg. You can have it, but you have to show us what it hatched into!"))
             closemessage
             msgbox(FactionsReceivedEggMsg)
+        case 4:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_PRETTY_WING)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 4)
+            msgbox(format("Hey {PLAYER}! Great to see you here. We learned about Wingulls today and we want to examine them further. Apparently sometimes they have loose wings but we can't find any! Can you help us?"))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     closemessage
