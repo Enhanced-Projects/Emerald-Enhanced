@@ -6898,7 +6898,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerClay[] = {
 	{
 	.iv = 255,
 	.lvl = 91,
-	.species = SPECIES_HIPPOPOTAS,
+	.species = SPECIES_HIPPOWDON,
 	.heldItem = ITEM_HARD_STONE,
 	.evspread = 0,
     .ability = 0,
