@@ -56,6 +56,7 @@
 #include "constants/party_menu.h"
 #include "constants/event_objects.h"
 #include "ach_atlas.h"
+#include "overworld_notif.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 extern bool8 gHasAmuletEffectActive;
@@ -1727,6 +1728,18 @@ static void Cmd_ppreduce(void)
                 ppToDeduct++;
             break;
         }
+        ConvertIntToDecimalStringN(gStringVar1, (FlagGet(FLAG_TEMP_E)), STR_CONV_MODE_LEFT_ALIGN, 1);
+        if (FlagGet(FLAG_TEMP_E) == TRUE)
+        {
+            DebugPrint(gStringVar1);
+        }
+        if ((FlagGet(FLAG_TEMP_E) == TRUE) &&
+            (gTrainerBattleOpponent_A == TRAINER_STEVEN) &&
+            (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT)) //Steven won't use PP during the aqua fight.
+        {
+            ppToDeduct = 0;
+        }
+        
     }
 
     if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING)) && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
