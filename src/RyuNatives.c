@@ -2829,7 +2829,7 @@ void RyuScriptDebugPrintTask(u8 taskId)
     }
 }
 
-bool8 ScrCmd_debugprint(struct ScriptContext *ctx)
+bool8 ScrCmd_debugprint(struct ScriptContext *ctx) //this will still only print a single string from script. no variable support.
 {
     unsigned taskId;
     unsigned tDebugWindow;

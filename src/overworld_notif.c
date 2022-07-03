@@ -19,8 +19,8 @@
 #include "constants/region_map_sections.h"
 #include "constants/weather.h"
 
-#include <stdio.h>
-#include <stdarg.h>
+#include <stdio.h>//added for DebugPrint
+#include <stdarg.h>//added for DebugPrint
 
 /*
     TODO List:
@@ -329,6 +329,8 @@ bool32 IsNotificationBusy(void)
 {
     return sNotification.state != NOTIF_STATE_IDLE;
 }
+
+//@PIDGEY You may want to check if something is being printed before showing a notification, and you may want to move the below code to its own file.
 
 void RyuTestNewPrint(void)
 {
