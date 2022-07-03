@@ -19,6 +19,9 @@
 #include "constants/region_map_sections.h"
 #include "constants/weather.h"
 
+#include <stdio.h>
+#include <stdarg.h>
+
 /*
     TODO List:
     add option for overriding diplay time
@@ -327,6 +330,18 @@ bool32 IsNotificationBusy(void)
     return sNotification.state != NOTIF_STATE_IDLE;
 }
 
+void RyuTestNewPrint(void)
+{
+    u8 v1 = 6;
+    u8 v2 = 9;
+    u8 v3 = 6;
+    u8 v4 = 7;
+    u8 v5 = 8;
+    u8 v6 = 9;
+    u8 v7 = 0;
+    DebugPrint((const u8[]) _("The values are:"), 7, v1, v2, v3, v4, v5, v6, v7);
+}
+
 
 #define tDebugFrames data[0]
 #define tDBWindowData data[1]
@@ -345,15 +360,32 @@ void RyuCodeDebugPrintTask(u8 taskId)
         DestroyTask(taskId);
     }
 }
-
-void DebugPrint(const u8 *buffer)
+const u8 gText_Comma[] = _(",");
+extern const u8 gText_Space[];
+void DebugPrint(const u8 *buffer, int count, ...)
 {
+    va_list args;
     unsigned taskId;
     unsigned tDebuggingWindow;
     struct WindowTemplate template;
+    u32 i;
 
     StringCopy(gRyuStringVar4, buffer);
     StringExpandPlaceholders(gStringVar4, gRyuStringVar4);
+    StringAppend(gRyuStringVar4, gText_Space);
+    va_start(args, count);
+    for (i = 0; i < count; i++)
+    {
+        ConvertIntToDecimalStringN(gRyuStringVar3, va_arg(args, u32), STR_CONV_MODE_LEFT_ALIGN, 4);
+        StringAppend(gStringVar4, gRyuStringVar3);
+        if (i != (count - 1))
+        {
+            StringAppend(gStringVar4, gText_Comma);
+            StringAppend(gStringVar4, gText_Space);
+        }
+    }
+    va_end(args);
+
 
     SetWindowTemplateFields(&template, 0, 1, 1, 20, 2, 15, 100);
     tDebuggingWindow = AddWindow(&template);
