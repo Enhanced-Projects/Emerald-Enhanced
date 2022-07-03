@@ -411,7 +411,7 @@ static void TrainerHillStartChallenge(void)
     VarSet(VAR_RYU_TH_RNG_VALUE, Random() % TRAINER_HILL_REWARDS_PER_TABLE);
     ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_TH_RNG_VALUE), 0, 3);
     if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
-        DebugPrint((const u8[]) _("Trainer Hill reward rolled. ({RYU_STR_1})"));
+        DebugPrint((const u8[]) _("Trainer Hill reward rolled. ({RYU_STR_1})"), 0);
 }
 
 static void GetOwnerState(void)

@@ -426,7 +426,7 @@ static void RemoveExtraStartMenuWindows(void)
     RemoveInfoBoxWindow();
     if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_RDM_MUSIC) == FALSE))
     {
-        DebugPrint((const u8[]) _("Random Music now enabled."));
+        DebugPrint((const u8[]) _("Random Music now enabled."), 0);
     }
 }
 
@@ -1351,7 +1351,7 @@ static bool8 HandleStartMenuInput(void)
         }
         if ((FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_JUKEBOX) == FALSE))
         {
-            DebugPrint((const u8[]) _("Jukebox enabled."));
+            DebugPrint((const u8[]) _("Jukebox enabled."), 0);
             FlagSet(FLAG_RYU_NOTIFIED_JUKEBOX);
         }
         return TRUE;

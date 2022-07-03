@@ -1959,7 +1959,7 @@ void RyuClearAlchemyEffect(void)
     gSaveBlock2Ptr->alchemyEffect = 0;
     gSaveBlock2Ptr->hasAlchemyEffectActive = 0;
     if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
-        DebugPrint((const u8[]) _("Cleared Alchemy Effects."));
+        DebugPrint((const u8[]) _("Cleared Alchemy Effects."), 0);
 }
 
 void RyuSetupAlchemicalRepel(void) //There's no need to assume there's an alchemy effect active with this.
@@ -2080,7 +2080,7 @@ void RyuDebug_CheckAlchemyStatus(void)
     ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
     ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 5);
     if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
-        DebugPrint((const u8[]) _("Checked Alchemy Effects."));
+        DebugPrint((const u8[]) _("Checked Alchemy Effects."), 0);
 }
 
 
@@ -2559,7 +2559,7 @@ void RyuSetupRandomForE4(void)
             StringAppend(gRyuStringVar3, gRyuStringVar1);
             StringAppend(gRyuStringVar3, gText_Space2);
             StringAppend(gRyuStringVar3, gRyuStringVar2);
-            DebugPrint((const u8[]) _("Rolled for elite four.({RYU_STR_3})"));
+            DebugPrint((const u8[]) _("Rolled for elite four.({RYU_STR_3})"), 0);
     }
 
     if (VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100) //special challenge active, always give rematch 2 parties on rematch.
@@ -2860,30 +2860,30 @@ void RyuDebug_ShowActiveFollower (void)
         switch (VarGet(VAR_RYU_FOLLOWER_ID))
         {
             case OBJ_EVENT_GFX_TWIN:
-                DebugPrint(((const u8[]) _("Minnie: 5% dmg reduction.")));
+                DebugPrint(((const u8[]) _("Minnie: 5% dmg reduction.")), 0);
                 break;
             case OBJ_EVENT_GFX_WOMAN_2:
-                DebugPrint(((const u8[]) _("Lanette: 5% capture boost.")));
+                DebugPrint(((const u8[]) _("Lanette: 5% capture boost.")), 0);
                 break;
             case OBJ_EVENT_GFX_AQUA_MEMBER_F:
-                DebugPrint(((const u8[]) _("Shelly: 10% DRK/WTR dmg boost.")));
+                DebugPrint(((const u8[]) _("Shelly: 10% DRK/WTR dmg boost.")), 0);
                 break;
             case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
-                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")));
+                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")), 0);
                 break;
             case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
-                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")));
+                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")), 0);
                 break;
             case OBJ_EVENT_GFX_LEAF:
-                DebugPrint(((const u8[]) _("Lana: -10% damage from FIR/WTR/GRS")));
+                DebugPrint(((const u8[]) _("Lana: -10% damage from FIR/WTR/GRS")), 0);
                 break;
             case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
-                DebugPrint(((const u8[]) _("Courtney: 10% DRK/FIR dmg boost.")));
+                DebugPrint(((const u8[]) _("Courtney: 10% DRK/FIR dmg boost.")), 0);
                 break;
             case OBJ_EVENT_GFX_NURSE:
                 break;
             case OBJ_EVENT_GFX_MAY:
-                DebugPrint(((const u8[]) _("May: 10% FRY/FIT dmg boost.")));
+                DebugPrint(((const u8[]) _("May: 10% FRY/FIT dmg boost.")), 0);
                 break;
         }
     }
@@ -2895,6 +2895,6 @@ void RyuDebug_ShowActiveAlchemy(void)
     {
         u8 effectid = gSaveBlock2Ptr->alchemyEffect;
         StringCopy(gStringVar3, gRyuAlchemyEffectItemToStringTable[effectid]);
-        DebugPrint(((const u8[]) _("Alchemy: {STR_VAR_3}.")));
+        DebugPrint(((const u8[]) _("Alchemy: {STR_VAR_3}.")), 0);
     }
 }
