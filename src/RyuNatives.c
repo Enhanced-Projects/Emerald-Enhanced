@@ -2900,14 +2900,3 @@ void RyuDebug_ShowActiveAlchemy(void)
         DebugPrint(((const u8[]) _("Alchemy: {STR_VAR_3}.")), 0);
     }
 }
-
-int RyuDynamicMovement_CheckCollision (void)
-{
-    u16 id = (VarGet(VAR_RYU_DYNAMIC_MOVEMENT_ID));
-    u16 currentX = gSpecialVar_0x8001;
-    u16 currentY = gSpecialVar_0x8002;
-    u16 direction = gSpecialVar_0x8003;
-    u8 ret = GetBaseCollisionAtCoords(&gObjectEvents[id], currentX, currentY, direction);
-    //DebugPrint((const u8 []) _("collision:"), 5, id, currentX, currentY, direction, ret);
-    return ret;
-}
