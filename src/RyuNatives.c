@@ -90,6 +90,8 @@
 #include "autoscale_tables.h"
 #include "overworld_notif.h"
 
+extern u8 GetObjectEventIdByLocalId(u8 id);
+
 
 void ApplyDaycareExperience(struct Pokemon *mon)
 {
@@ -992,13 +994,13 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)//this function draws eithe
     }
 }
 
-bool8 ScrCmd_getobjectxy(struct ScriptContext *ctx) //can no longer set happiness above 200. Affection must be earned the hard way
+bool8 ScrCmd_getobjectxy(struct ScriptContext *ctx)
 {
-    u16 index = VarGet(ScriptReadHalfword(ctx));
-    struct Coords16 objectCoords;
-    objectCoords = gObjectEvents[index].currentCoords;
-    gSpecialVar_0x8006 = objectCoords.x;
-    gSpecialVar_0x8007 = objectCoords.y;
+    u8 localId = VarGet(ScriptReadHalfword(ctx));
+    struct ObjectEvent *objectEvent = &gObjectEvents[GetObjectEventIdByLocalId(localId)];
+    gSpecialVar_0x8001 = objectEvent->currentCoords.x - 7;
+    gSpecialVar_0x8002 = objectEvent->currentCoords.y - 7;
+    DebugPrint((const u8 []) _("coords:"), 2, gSpecialVar_0x8001, gSpecialVar_0x8002);
 
     return FALSE;
 }
@@ -2897,4 +2899,15 @@ void RyuDebug_ShowActiveAlchemy(void)
         StringCopy(gStringVar3, gRyuAlchemyEffectItemToStringTable[effectid]);
         DebugPrint(((const u8[]) _("Alchemy: {STR_VAR_3}.")), 0);
     }
+}
+
+int RyuDynamicMovement_CheckCollision (void)
+{
+    u16 id = (VarGet(VAR_RYU_DYNAMIC_MOVEMENT_ID));
+    u16 currentX = gSpecialVar_0x8001;
+    u16 currentY = gSpecialVar_0x8002;
+    u16 direction = gSpecialVar_0x8003;
+    u8 ret = GetBaseCollisionAtCoords(&gObjectEvents[id], currentX, currentY, direction);
+    //DebugPrint((const u8 []) _("collision:"), 5, id, currentX, currentY, direction, ret);
+    return ret;
 }

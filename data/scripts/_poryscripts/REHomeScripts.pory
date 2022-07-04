@@ -23,7 +23,7 @@ script SetFollowerAsAttendant {
         setflag(FLAG_RYU_SAVED_ATTENDANT)
         getobjectxy(FOLLOWER)
         destroyfollower
-        setobjectxy(1, VAR_0x8006, VAR_0x8007)
+        setobjectxy(1, VAR_0x8001, VAR_0x8002)
         addobject(1)
         release
         end

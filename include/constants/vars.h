@@ -286,9 +286,12 @@
 #define VAR_RYU_SPECIAL_CHALLENGE_STATE      0x410A
 #define VAR_RYU_ATTENDANT_ID                 0x410B
 #define VAR_RYU_LOCAL_ENCOUNTERS             0x410C
+#define VAR_RYU_DYNAMIC_MOVEMENT_ID          0x410D
+#define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X    0x410E
+#define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y    0x410F
 
 
-//vars 4100 thru 417f are unused; total of 128.
+//vars 4100 thru 417f are new; total of 128.
 #define VARS_END                             0x417F
 #define VARS_COUNT                           (VARS_END - VARS_START + 1)
 

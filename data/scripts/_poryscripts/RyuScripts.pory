@@ -2689,3 +2689,53 @@ script RyuAdjustPokemonLeagueFaction {
 	changefactionstanding(FACTION_POKEMON_LEAGUE, 11, TRUE)
 	return
 }
+
+//uses VAR_RYU_DYNAMIC_MOVEMENT_ID, VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X, VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y
+//to automatically move a given object to location. Ignores Collision.
+script dynamicMovement { 
+	getobjectxy(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	if (var(VAR_0x8001) > VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X) {
+		call(RDM_MoveLeft1)
+		goto(dynamicMovement)
+	}
+	elif (var(VAR_0x8002) > VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y) {
+		call(RDM_MoveUp1)
+		goto(dynamicMovement)
+	}
+	elif (var(VAR_0x8001) < VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X) {
+		call(RDM_MoveRight1)
+		goto(dynamicMovement)
+	}
+	elif (var(VAR_0x8002) < VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y) {
+		call(RDM_MoveDown1)
+		goto(dynamicMovement)
+	}
+	else{
+		return
+	}
+
+}
+
+script RDM_MoveLeft1 {
+	applymovement(VAR_RYU_DYNAMIC_MOVEMENT_ID, Common_Movement_StepLeft)
+	waitmovement(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	return
+}
+
+script RDM_MoveRight1 {
+	applymovement(VAR_RYU_DYNAMIC_MOVEMENT_ID, Common_Movement_StepRight)
+	waitmovement(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	return
+}
+
+script RDM_MoveUp1 {
+	applymovement(VAR_RYU_DYNAMIC_MOVEMENT_ID, Common_Movement_StepUp)
+	waitmovement(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	return
+}
+
+script RDM_MoveDown1 {
+	applymovement(VAR_RYU_DYNAMIC_MOVEMENT_ID, Common_Movement_StepDown)
+	waitmovement(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	return
+}
