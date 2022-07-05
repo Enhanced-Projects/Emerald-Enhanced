@@ -2288,6 +2288,7 @@ void RyuGiveDevMon(void)
     u16 move3 = VarGet(VAR_TEMP_3);
     u16 move4 = VarGet(VAR_TEMP_4);
     u8 slot = (CalculatePlayerPartyCount());
+    u16 item = (VarGet(VAR_TEMP_E));
     u16 i = 0;
     u8 ev = 252;
     u8 ppmax = 255;
@@ -2298,8 +2299,6 @@ void RyuGiveDevMon(void)
 
 
     CreateMonWithGenderNatureLetter(&gPlayerParty[slot], species, lv, iv, gender, nature, what); 
-    for (i = 0; i < 6; i++)
-        SetMonData(&gPlayerParty[slot], (MON_DATA_HP_EV + i), &ev); // set ev's loop
     
     CalculateMonStats(&gPlayerParty[slot]);
 
@@ -2312,7 +2311,15 @@ void RyuGiveDevMon(void)
 
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
+    SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &ev);
+
     SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &ribbon); //make it a boss because why not
+    SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &item);
     CalculateMonStats(&gPlayerParty[slot]);
 }
 

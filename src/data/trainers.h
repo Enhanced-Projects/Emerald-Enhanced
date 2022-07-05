@@ -7987,7 +7987,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_HEX_MANIAC,
-        .trainerFaction = FACTION_OTHERS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_INTENSE,
         .trainerPic = TRAINER_PIC_HEX_MANIAC,
         .trainerName = _("Yui"),
@@ -8003,7 +8003,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_EXPERT,
-        .trainerFaction = FACTION_OTHERS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
         .trainerPic = TRAINER_PIC_EXPERT_M,
         .trainerName = _("Clay"),
@@ -8243,7 +8243,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_AETHER_FOUNDER,
-        .trainerFaction = FACTION_OTHERS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_LUSAMINE,
         .trainerName = _("Lusamine"),
@@ -8788,7 +8788,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-        .trainerFaction = FACTION_OTHERS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .trainerName = _("Danny"),
@@ -13011,7 +13011,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-        .trainerFaction = FACTION_NOBLES,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .trainerName = _("Sigma"),
@@ -13043,7 +13043,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
         .trainerPic = TRAINER_PIC_GIOVANNI,
         .trainerName = _("Giovanni"),
@@ -13059,7 +13059,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-        .trainerFaction = FACTION_OUTCASTS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_PSYCHIC_M,
         .trainerName = _("Zod"),
@@ -13075,7 +13075,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_DRAGON_TAMER,
-        .trainerFaction = FACTION_PROFESSIONALS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_LANCE,
         .trainerName = _("Lance"),
@@ -13091,7 +13091,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_EXPERT,
-        .trainerFaction = FACTION_PROFESSIONALS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
         .trainerPic = TRAINER_PIC_EXPERT_M,
         .trainerName = _("Robert"),
@@ -13107,7 +13107,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-        .trainerFaction = FACTION_STUDENTS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .trainerName = _("Johnatan"),

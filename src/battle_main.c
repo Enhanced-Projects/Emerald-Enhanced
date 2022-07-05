@@ -2056,7 +2056,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
-                if ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE))
+                if ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) || (VarGet(VAR_RYU_NGPLUS_COUNT) > 10))
                 {
                     SetMonData(&party[i], MON_DATA_HP_EV,    &evmax);
                     SetMonData(&party[i], MON_DATA_ATK_EV,   &evmax);
