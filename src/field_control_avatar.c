@@ -44,6 +44,7 @@
 #include "RyuRealEstate.h"
 #include "ach_atlas.h"
 #include "overworld_notif.h"
+#include "RyuDynDeliveries.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -268,7 +269,6 @@ void RyuDoNotifyTasks(void)
     {
         ScriptContext1_SetupScript(RyuGlobal_CheckAquaStatus);
     }
-
 }
 
 void RyuDoSpecialEncounterChecks(struct FieldInput *input)

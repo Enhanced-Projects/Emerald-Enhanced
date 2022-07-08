@@ -4067,6 +4067,137 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
+    [ITEM_COSMETIC_GOODS] =
+    {
+        .name = _("Cosmetics"),
+        .itemId = ITEM_COSMETIC_GOODS,
+        .price = 0,
+        .description = sCosmeticsDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_SPARE_PARTS] =
+    {
+        .name = _("Spare Parts"),
+        .itemId = ITEM_SPARE_PARTS,
+        .price = 0,
+        .description = sSparePartsDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_HOME_GOODS] =
+    {
+        .name = _("Home Goods"),
+        .itemId = ITEM_HOME_GOODS,
+        .price = 0,
+        .description = sHomeGoodsDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_GROCERIES] =
+    {
+        .name = _("Groceries"),
+        .itemId = ITEM_GROCERIES,
+        .price = 0,
+        .description = sGroceriesDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_MEDICAL_SUPPLIES] =
+    {
+        .name = _("Med Kit"),
+        .itemId = ITEM_MEDICAL_SUPPLIES,
+        .price = 0,
+        .description = sMedicalSuppliesDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_FLOWERS] =
+    {
+        .name = _("Bouquet"),
+        .itemId = ITEM_FLOWERS,
+        .price = 0,
+        .description = sFlowersDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_OFFICE_SUPPLIES] =
+    {
+        .name = _("Stationery"),
+        .itemId = ITEM_OFFICE_SUPPLIES,
+        .price = 0,
+        .description = sOfficeSuppliesDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_REFRESHMENTS] =
+    {
+        .name = _("Refreshments"),
+        .itemId = ITEM_REFRESHMENTS,
+        .price = 0,
+        .description = sRefreshmentsDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_ANTIQUE] =
+    {
+        .name = _("Antique"),
+        .itemId = ITEM_ANTIQUE,
+        .price = 0,
+        .description = sAntiqueDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+
+    [ITEM_ELECTRONICS] =
+    {
+        .name = _("Electronics"),
+        .itemId = ITEM_ELECTRONICS,
+        .price = 0,
+        .description = sElectronicsDesc,
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
     [ITEM_SOOT_SACK] =
     {
         .name = _("Soot Sack"),

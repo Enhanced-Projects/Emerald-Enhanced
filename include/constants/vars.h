@@ -289,6 +289,7 @@
 #define VAR_RYU_DYNAMIC_MOVEMENT_ID          0x410D
 #define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X    0x410E
 #define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y    0x410F
+#define VAR_RYU_NUM_DELIVERIES               0x4110
 
 
 //vars 4100 thru 417f are new; total of 128.

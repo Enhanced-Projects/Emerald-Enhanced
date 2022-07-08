@@ -1698,12 +1698,13 @@
 #define FLAG_RYU_PASSED_SAVE_VERSION_CHECK      (SPECIAL_FLAGS_START + 0xF) //prevents lag from checking save vs game version
 #define FLAG_RYU_TEMP_1                         (SPECIAL_FLAGS_START + 0x10)
 #define FLAG_RYU_TEMP_2                         (SPECIAL_FLAGS_START + 0x11)
-#define FLAG_RYU_TEMP_3                        (SPECIAL_FLAGS_START + 0x12)
+#define FLAG_RYU_TEMP_3                         (SPECIAL_FLAGS_START + 0x12)
 #define FLAG_RYU_TEMP_4                         (SPECIAL_FLAGS_START + 0x13)
 #define FLAG_RYU_TEMP_5                         (SPECIAL_FLAGS_START + 0x14)
 #define FLAG_RYU_TEMP_6                         (SPECIAL_FLAGS_START + 0x15)
 #define FLAG_RYU_TEMP_7                         (SPECIAL_FLAGS_START + 0x16)
 #define FLAG_RYU_TEMP_8                         (SPECIAL_FLAGS_START + 0x17)
+#define FLAG_RYU_ENABLE_DELIVERY_SPARKLE        (SPECIAL_FLAGS_START + 0x18)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 

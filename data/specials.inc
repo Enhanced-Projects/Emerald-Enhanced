@@ -573,3 +573,4 @@ gSpecials:: @ 81DBA64
 	def_special AreMonsRepelled
 	def_special CheckValidMonsForSpecialChallenge
 	def_special RyuBufferRepelItemCounts
+	def_special CheckDeliverySuccessful

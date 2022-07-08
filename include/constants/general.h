@@ -431,6 +431,8 @@
 #define NUM_MEDICINE_RECIPES 8
 #define NUM_RECIPES (BR_ICE_STONE + 1)
 
+#define NUM_MAX_QUEUED_DELIVERIES 4
+
 //Hack to make it so I only need one script command to perform all functions. Yes, i know, constants should be capsed, but this is for my sanity since i'll be the
 //one scripting in all the achievements.
 #define give 0

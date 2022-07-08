@@ -376,6 +376,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	callnative StartNewDeliveryQueue
+	goto ShowDeliveryData
 	release
 	end
 
@@ -415,7 +417,7 @@ RyuDebug_SaveFileDebug::
 	end
 
 SaveFileStructMsg:
-	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.$"
+	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.\psize3 is {STR_VAR_3}\nsize4 is {RYU_STR_1}$"
 
 exampletext:
 	.string "This is standard text.\p"

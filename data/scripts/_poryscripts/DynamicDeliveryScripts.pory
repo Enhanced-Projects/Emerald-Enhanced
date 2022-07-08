@@ -1,0 +1,46 @@
+
+script ShowDeliveryData {
+    callnative(RyuBufferCurrentJobs)
+    switch (var(VAR_RYU_NUM_DELIVERIES)) {
+        case 0:
+            msgbox("There are no jobs to\ndisplay.")
+        case 1:
+            msgbox("{STR_VAR_1}$")
+        case 2:
+            msgbox("{STR_VAR_1}\n{STR_VAR_2}$")
+        case 3:
+            msgbox("{STR_VAR_1}\n{STR_VAR_2}\p{STR_VAR_3}$")
+        case 4:
+            msgbox("{STR_VAR_1}\n{STR_VAR_2}\p{STR_VAR_3}\n{RYU_STR_1}$")
+    }
+    closemessage
+    release
+    end
+}
+
+script RyuChooseDeliveryTipAmount {
+    random(5000)
+    addvar(VAR_RESULT, 1500)
+    addmoney(VAR_RESULT)
+    return
+}
+
+script RyuDeliveryTargetScript {
+    specialvar(VAR_RESULT, CheckDeliverySuccessful)
+    if (var(VAR_RESULT) == 0) {
+        msgbox("Sorry... have to go!")
+        call(RyuChooseDeliveryTipAmount)
+    }
+    elif (var(VAR_RESULT) == 1) {
+        msgbox("Oh, thank you!\pRight on time!")
+    }
+    else {
+        msgbox("You're late for the delivery!")
+    }
+    fadescreen(FADE_TO_BLACK)
+    removeobject(0xDD)
+    fadescreen(FADE_FROM_BLACK)
+    closemessage
+    release
+    end
+}

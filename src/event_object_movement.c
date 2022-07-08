@@ -30,6 +30,7 @@
 #include "constants/mauville_old_man.h"
 #include "constants/trainer_types.h"
 #include "constants/union_room.h"
+#include "overworld_notif.h"
 
 // this file was known as evobjmv.c in Game Freak's original source
 
@@ -135,6 +136,8 @@ static bool8 AnimateSpriteInFigure8(struct Sprite *sprite);
 static void UpdateObjectEventSprite(struct Sprite *);
 static void FaceDirection(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction);
 static u8 GetDirectionToFace(s16 x1, s16 y1, s16 x2, s16 y2);
+
+extern const u8 RyuDeliveryTargetScript[];
 
 
 const struct SpriteTemplate gCameraSpriteTemplate = {0, 0xFFFF, &gDummyOamData, gDummySpriteAnimTable, NULL, gDummySpriteAffineAnimTable, ObjectCB_CameraObject};
@@ -1280,6 +1283,28 @@ u8 SpawnSpecialObjectEventParameterized(u16 graphicsId, u8 movementBehavior, u8 
     return SpawnSpecialObjectEvent(&objectEventTemplate);
 }
 
+void RyuSpawnDeliveryObject(u16 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 z)
+{
+    struct ObjectEventTemplate objectEventTemplate;
+    u8 id = 0;
+
+    x -= 7;
+    y -= 7;
+    objectEventTemplate.localId = localId;
+    objectEventTemplate.graphicsId = graphicsId;
+    objectEventTemplate.x = x;
+    objectEventTemplate.y = y;
+    objectEventTemplate.elevation = z;
+    objectEventTemplate.movementType = movementBehavior;
+    objectEventTemplate.movementRangeX = 0;
+    objectEventTemplate.movementRangeY = 0;
+    objectEventTemplate.trainerType = TRAINER_TYPE_NONE;
+    objectEventTemplate.trainerRange_berryTreeId = 0;
+    objectEventTemplate.script = RyuDeliveryTargetScript;
+    objectEventTemplate.flagId = 0;
+    id = SpawnSpecialObjectEvent(&objectEventTemplate);
+}
+
 u8 TrySpawnObjectEvent(u8 localId, u8 mapNum, u8 mapGroup)
 {
     struct ObjectEventTemplate *objectEventTemplate;
@@ -1506,6 +1531,7 @@ void DestroyFollowerObjectEvent(void)
     }
 }
 
+extern int RyuGetCurrentMapsec(void);
 void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
 {
     u8 i;
@@ -1540,6 +1566,24 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
             if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX
                 && !FlagGet(template->flagId))
                 TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
+        }
+        for (i = 0; i < 4; i++)
+        {
+            if ((gSaveBlock1Ptr->location.mapGroup == gSaveBlock2Ptr->Deliveries[i].mapgroup) && (gSaveBlock1Ptr->location.mapNum == gSaveBlock2Ptr->Deliveries[i].mapnum))
+            {
+                if (top <= gSaveBlock2Ptr->Deliveries[i].ypos && bottom >= gSaveBlock2Ptr->Deliveries[i].ypos && left <= gSaveBlock2Ptr->Deliveries[i].xpos && right >= gSaveBlock2Ptr->Deliveries[i].xpos)
+                {
+                    if ((gSaveBlock2Ptr->DeliveryTimer.active == TRUE) && ((gSaveBlock2Ptr->Deliveries[i].finished == FALSE)))
+                    {
+                        (RyuSpawnDeliveryObject(gSaveBlock2Ptr->Deliveries[i].GfxID,
+                                                MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN, 
+                                                0xDD, 
+                                                gSaveBlock2Ptr->Deliveries[i].xpos, 
+                                                gSaveBlock2Ptr->Deliveries[i].ypos,
+                                                3));
+                    }
+                }
+            }
         }
     }
 }
@@ -2219,6 +2263,8 @@ void SetObjectEventDirection(struct ObjectEvent *objectEvent, u8 direction)
 
 static const u8 *GetObjectEventScriptPointerByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 {
+    if (localId == 0xDD)
+        return RyuDeliveryTargetScript;
     return GetObjectEventTemplateByLocalIdAndMap(localId, mapNum, mapGroup)->script;
 }
 

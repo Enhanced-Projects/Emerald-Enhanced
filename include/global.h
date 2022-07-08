@@ -381,6 +381,29 @@ struct RankingHall2P
     u8 language;
 };
 
+struct DeliveryManifest
+{
+    u16 itemId:10;
+    u16 finished:1;
+    u16 mapNameId:5;
+    u8 GfxID;
+    u8 mapnum;
+    u8 mapgroup;
+    s8 xpos;
+    s8 ypos;
+};
+
+struct DeliveryTime
+{
+    u32 Timer:4;
+    u32 minutesGiven:4;
+    u32 saveBlockTimeStart:6;
+    u32 rtcTimeStart:6; 
+    u32 saveBlockTimeSanity:1;
+    u32 active:1;
+    u32 unusedDeliveryTimeBits:10;
+};
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -417,7 +440,7 @@ struct SaveBlock2
               u16 bossMonInGCMS:1;
               u16 playerIsRealtor:1;
               u16 trainerSlideEnabled:1;
-              u16 unusedSB2Flags:11; //remainer of unused sb2 flags
+              u16 unusedSB2Flags:11;
              u8 propertyFlags[NUM_PROPERTY_BYTES];
              u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
              u16 userInterfaceTextboxPalette[16];
@@ -427,6 +450,8 @@ struct SaveBlock2
              u32 challengeTimeBlockStartHours:6;
              u32 challengeTimeBlockStartMinutes:6;
              u32 unusedChallengeTimeBlockBits:2;
+             struct DeliveryManifest Deliveries[NUM_MAX_QUEUED_DELIVERIES];
+             struct DeliveryTime DeliveryTimer;
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

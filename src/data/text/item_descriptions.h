@@ -1473,6 +1473,55 @@ static const u8 sDevonGoodsDesc[] = _(
     "contains Devon's\n"
     "machine parts.");
 
+static const u8 sCosmeticsDesc[] = _(
+    "A parcel of\n"
+    "various cosmetic\n"
+    "supplies.");
+
+static const u8 sSparePartsDesc[] = _(
+    "A collection of\n"
+    "various parts\n"
+    "for repairs.");
+
+static const u8 sHomeGoodsDesc[] = _(
+    "A package that\n"
+    "contains various\n"
+    "household items.");
+
+static const u8 sGroceriesDesc[] = _(
+    "An assorted pack\n"
+    "of groceries.");
+
+static const u8 sMedicalSuppliesDesc[] = _(
+    "A first-aid\n"
+    "kit for treating\n"
+    "people.");
+
+static const u8 sOfficeSuppliesDesc[] = _(
+    "A box of various\n"
+    "types of\n"
+    "stationery.");
+
+static const u8 sRefreshmentsDesc[] = _(
+    "A package containing\n"
+    "ingredients for\n"
+    "various drinks.");
+
+static const u8 sAntiqueDesc[] = _(
+    "An old artifact\n"
+    "in nondescript\n"
+    "packaging.");
+
+static const u8 sFlowersDesc[] = _(
+    "A decorative\n"
+    "bouquet of pretty\n"
+    "flowers.");
+
+static const u8 sElectronicsDesc[] = _(
+    "A kit of various\n"
+    "small electronic\n"
+    "devices and parts.");
+
 static const u8 sSootSackDesc[] = _(
     "A sack used to\n"
     "gather and hold\n"

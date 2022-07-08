@@ -44,6 +44,7 @@
 #include "constants/map_groups.h"
 #include "factions.h"
 #include "RyuRealEstate.h"
+#include "RyuDynDeliveries.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -229,6 +230,7 @@ void NewGameInitData(void)
     ResetTrainerHillResults();
     ResetContestLinkResults();
     ClearMysteryEventFlags();
+    RyuClearDeliveryQueue();
 
     //flags
     FlagSet(FLAG_RYU_LT_RIVAL2);
