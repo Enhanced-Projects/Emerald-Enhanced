@@ -378,7 +378,6 @@ RDB_TempVarsViewMsg:
 RyuDebug_Utility1::
 	callnative StartNewDeliveryQueue
 	goto ShowDeliveryData
-	release
 	end
 
 RDB_GiveOrTakeAllAchievements::
