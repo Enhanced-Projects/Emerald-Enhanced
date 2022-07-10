@@ -5,30 +5,73 @@ script AW_Dispatcher {
     lock
     faceplayer
     if (flag(FLAG_RYU_PROF_SPECIAL_FINISHED) == TRUE) {//player completed the prerequisite quest
-        msgbox("Hi there!\pAre you here to accept a job?", MSGBOX_YESNO)
-        if (var(VAR_RESULT) == YES){
-            msgbox("Okay, let's see what we've got.")
-            closemessage
-            if (var(VAR_RYU_DELIVERY_SYSTEM_DATA) <= 4) {
-                callnative(StartNewDeliveryQueue)
-                msgbox("Okay! here's the job details:")
+        if (flag(FLAG_RYU_DELIVERY_IN_PROGRESS) == FALSE) {
+            msgbox("Hi there!\pAre you here to accept a job?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES){
+                msgbox("Okay, let's see what we've got.")
                 closemessage
-                call(ShowDeliveryData)
-                release
-                end
+                if (var(VAR_RYU_DELIVERY_SYSTEM_DATA) <= 4) {
+                    callnative(StartNewDeliveryQueue)
+                    msgbox("Okay! here's the job details:")
+                    closemessage
+                    call(ShowDeliveryData)
+                    setflag(FLAG_RYU_DELIVERY_IN_PROGRESS)
+                    release
+                    end
+                }
+                else {
+                    msgbox("You've completed your daily quota.\nWe can't give you any more\ljobs due to labor laws.\pSorry!")
+                    closemessage
+                    release
+                    end
+                }
             }
             else {
-                msgbox("You've completed your daily quota.\nWe can't give you any more\ljobs due to labor laws.\pSorry!")
+                msgbox("Okay, well come back when you are\nready for another job!")
                 closemessage
                 release
                 end
             }
         }
         else {
-            msgbox("Okay, well come back when you are\nready for another job!")
-            closemessage
-            release
-            end
+            specialvar(VAR_RESULT, CheckFullDeliveryQueueFinished)
+            if (!(var(VAR_RESULT) == 0)) {
+                msgbox("Great! The job is finished!")
+                if (var(VAR_0x8001) == FALSE) {
+                    additem(VAR_RESULT, 1)
+                    bufferitemname(0, VAR_RESULT)
+                    msgbox("Ah, but you were late.\nHow unfortunate.\pOh well, here's a {STR_VAR_1} for\nyour trouble.")
+                }
+                else {
+                    bufferitemname(0, VAR_RESULT)
+                    msgbox("Excellent work.\phere's your payment!")
+                    giveitem(VAR_RESULT, 1)
+                }
+                clearflag(FLAG_RYU_DELIVERY_IN_PROGRESS)
+                switch (var(VAR_RYU_DELIVERY_SYSTEM_DATA)) {
+                    case 0:
+                        msgbox("Error! quota not advanced!")
+                    case 1:
+                        msgbox("You can complete 4 more\njobs for us today.")
+                    case 2:
+                        msgbox("You can complete 3 more\njobs for us today.")
+                    case 3:
+                        msgbox("You can complete 2 more\njobs for us today.")
+                    case 4:
+                        msgbox("You can complete 1 more\njobs for us today.")
+                    case 5:
+                        msgbox("Your quota is finished for\nthe day.")
+                }
+                closemessage
+                release
+                end
+            }
+            else {
+                msgbox("You're currently working on a job.\pHere's the details:")
+                call(ShowDeliveryData)
+                release
+                end
+            }
         }
     }
     else { //assign the special quest to unlock the above feature.

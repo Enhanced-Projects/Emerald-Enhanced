@@ -364,7 +364,7 @@
 #define FLAG_ENTERED_CONTEST                 0x155
 #define FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN  0x156
 #define FLAG_MET_BATTLE_FRONTIER_GAMBLER     0x157
-#define FLAG_RYU_FAILED_PROF_SPECIAL_QUEST   0x158
+#define FLAG_UNUSED_0x158                    0x158
 #define FLAG_NURSE_MENTIONS_GOLD_CARD        0x159
 #define FLAG_MET_FRONTIER_BEAUTY_MOVE_TUTOR  0x15A
 #define FLAG_MET_FRONTIER_SWIMMER_MOVE_TUTOR 0x15B
@@ -778,7 +778,7 @@
 #define FLAG_HIDE_ROUTE_103_RIVAL                                   0x2D3
 #define FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE                    0x2D4
 #define FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT                        0x2D5
-#define FLAG_UNUSED_0x2D6                                           0x2D6
+#define FLAG_RYU_DELIVERY_IN_PROGRESS                               0x2D6
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7
 #define FLAG_RYU_DOING_RYU_CHALLENGE                                0x2D8
 
