@@ -302,3 +302,48 @@ script MauvilleCity_RealEstatePropertySign {
 	setvar(VAR_0x8009, PROPERTY_MAUVILLE)
 	goto(RyuRealEstateHouseSign)
 }
+
+
+script MC_DeliveryQuestTarget3 {
+	checkitem(ITEM_HOME_GOODS, 1)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("I'm waiting for a delivery\nfrom Adrasti.\pDo you have it?")
+		closemessage
+		release
+		end
+	}
+	removeitem(ITEM_ANTIQUE, 1)
+	msgbox("Ah! I was expecting this.\nThank you very much!")
+	closemessage
+	call(RyuChooseDeliveryTipAmount)
+	setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 106)//Player delivered the Home Goods. Return to Adrasti Foreman.
+	applymovement(PLAYER, Common_Movement_StepLeft)
+	waitmovement(PLAYER)
+	applymovement(PLAYER, Common_Movement_FaceRight)
+	waitmovement(PLAYER)
+	applymovement(8, ExitMauville)
+	waitmovement(8)
+	removeobject(8)
+	setflag(FLAG_RYU_HIDE_DELIVERY_NPC_3)
+	release
+	end
+}
+
+movement ExitMauville {
+	walk_down
+	walk_right * 7
+	walk_fast_down * 5
+	step_end
+}
+
+script MC_AdrastiWarehouseDoor {
+	lockall
+	if (flag(FLAG_RYU_PROF_SPECIAL_QUEST_AVAILABLE) == FALSE) {
+		msgbox(" (The door requires a security\n pass.)\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(ERROR! CLEARANCE NOT GRANTED)")
+		releaseall
+		end
+	}
+	msgbox("CLEARANCE GRANTED", MSGBOX_AUTOCLOSE)
+	warpsilent(MAP_MAUVILLE_CITY_ADRASTI_WAREHOUSE, 255, 10, 19)
+	waitstate
+}

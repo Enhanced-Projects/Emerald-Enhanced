@@ -376,8 +376,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative StartNewDeliveryQueue
-	goto ShowDeliveryData
+	clearflag FLAG_RYU_PROF_SPECIAL_FINISHED
 	release
 	end
 

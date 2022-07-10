@@ -6,7 +6,7 @@
 #include "constants/items.h"
 
 extern bool32 RyuGetSafeMapCoordsToPlaceDynamicObject(void);
-extern bool32 CheckRTCForDeliveryTime(void);
+extern bool32 CheckRTCHealth(void);
 extern void StartNewDeliveryQueue(void);
 extern void RyuClearDeliveryQueue(void);
 extern void RyuCountActiveJobs(void);

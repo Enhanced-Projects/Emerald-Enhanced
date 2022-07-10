@@ -93,13 +93,13 @@ static u8 sTextLanette[] = _("Lanette");
 static u8 sTextAqua[] = _("Aqua");
 static u8 sTextNurse[] = _("Nurse");
 static u8 sTextMay[] = _("May");
+static u8 sText_DeliverySystem[] = _("Delivery System");
 static u8 sText_DailyNaturalistss[] = _("Naturalists Daily");
 static u8 sText_DailyStudents[] = _("Students Daily");
 static u8 sText_DailyNobles[] = _("Nobles Daily");
 static u8 sText_DailyPokefans[] = _("Pokéfans Daily");
 static u8 sText_DailyOutcasts[] = _("Outcasts Daily");
 static u8 sText_DailyProfessionals[] = _("Professionals Daily");
-static u8 sText_DailyAthletes[] = _("Athletes Daily");
 
 struct QuestData {
     const struct QuestStageDesc * stageDescs;
@@ -192,7 +192,8 @@ static struct QuestData sQuests[] = {
     {gAquaQuestStages, sTextAqua, VAR_RYU_QUEST_AQUA},
     {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LANA},
     {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE},
-    {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY}
+    {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY},
+    {gDeliverySystemQuestStages, sText_DeliverySystem, VAR_RYU_DELIVERY_SYSTEM_DATA},
 };
 
 static u8 sColors[][3] = {

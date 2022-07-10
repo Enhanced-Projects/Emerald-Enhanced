@@ -12,6 +12,7 @@
 #include "overworld_notif.h"
 #include "item.h"
 #include "constants/maps.h"
+#include "lifeskill.h"
 
 const u8 sText_comma[] = _(", ");
 const u8 sText_locations[] = _("Delivery Locations:");
@@ -94,6 +95,8 @@ void StartNewDeliveryQueue(void)
     u32 i;
     u16 coordGroup = (Random() % 3);
     u16 mapsum = 0;
+    u16 lowReward = gRyuLowPickupTable[(Random() % NUM_PICKUP_TABLE_ENTRIES)];
+    u16 highReward = gRyuMaxPickupTable[(Random() % NUM_PICKUP_TABLE_ENTRIES)];
 
     RyuClearDeliveryQueue();
 
@@ -111,14 +114,19 @@ void StartNewDeliveryQueue(void)
         gSaveBlock2Ptr->Deliveries[i].ypos = sRyuDeliveryCoords[maplistnum][coordGroup][1];
         gSaveBlock2Ptr->Deliveries[i].mapNameId = maplistnum;
     }
-    gSaveBlock2Ptr->DeliveryTimer.minutesGiven = numJobs + 1;
+    gSaveBlock2Ptr->DeliveryTimer.minutesGiven = numJobs;
     gSaveBlock2Ptr->DeliveryTimer.Timer = numJobs + 1;
-    gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart = gSaveBlock2Ptr->playTimeMinutes;
-    if (gSaveBlock2Ptr->playTimeMinutes > 44)
+    gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart = gLocalTime.minutes;
+    gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeStart = gSaveBlock2Ptr->playTimeMinutes;
+    if ((gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart > 44) || (gSaveBlock2Ptr->playTimeMinutes > 44))
         gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeSanity = FALSE;//save block minutes are in an unsafe state to test.
     else
         gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeSanity = TRUE;//save block time can be safely compared with RTC time.
     gSaveBlock2Ptr->DeliveryTimer.active = TRUE;
+
+    //roll rewards wheng iving the job so that the player can't savescum the reward item.
+    VarSet(VAR_RYU_DELIVERY_SYSTEM_HIGH_REWARD_ROLL, highReward);
+    VarSet(VAR_RYU_DELIVERY_SYSTEM_LOW_REWARD_ROLL, lowReward);
 
 }
 //u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
@@ -150,63 +158,6 @@ void RyuBufferCurrentJobs(void)
         StringCopy(gStringVar1, gText_JobEmpty);
     }
 
-    //job 2
-    if (gSaveBlock2Ptr->Deliveries[1].finished == FALSE)
-    {
-        StringCopy(gStringVar2, deliverA);
-        CopyItemName(gSaveBlock2Ptr->Deliveries[0].itemId, gStringVar4);
-        StringAppend(gStringVar2, gStringVar4);
-        StringAppend(gStringVar2, deliverto);
-        StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[1].GfxID]);
-        StringAppend(gStringVar2, gStringVar4);
-        StringAppend(gStringVar2, deliverAt);
-        StringCopy(gStringVar4, mapNameList[(gSaveBlock2Ptr->Deliveries[0].mapNameId)]);
-        StringAppend(gStringVar2, gStringVar4);
-        StringAppend(gStringVar2, deliverperiod);
-    }
-    else
-    {
-        StringCopy(gStringVar2, gText_JobEmpty);
-    }
-
-    //job 3
-    if (gSaveBlock2Ptr->Deliveries[2].finished == FALSE)
-    {
-        StringCopy(gStringVar3, deliverA);
-        CopyItemName(gSaveBlock2Ptr->Deliveries[0].itemId, gStringVar4);
-        StringAppend(gStringVar3, gStringVar4);
-        StringAppend(gStringVar3, deliverto);
-        StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[2].GfxID]);
-        StringAppend(gStringVar3, gStringVar4);
-        StringAppend(gStringVar3, deliverAt);
-        StringCopy(gStringVar4, mapNameList[(gSaveBlock2Ptr->Deliveries[0].mapNameId)]);
-        StringAppend(gStringVar3, gStringVar4);
-        StringAppend(gStringVar3, deliverperiod);
-    }
-    else
-    {
-        StringCopy(gStringVar3, gText_JobEmpty);
-    }
- 
-    //job 4
-    if (gSaveBlock2Ptr->Deliveries[3].finished == FALSE)
-    {
-        StringCopy(gRyuStringVar2, deliverA);
-        CopyItemName(gSaveBlock2Ptr->Deliveries[0].itemId, gStringVar4);
-        StringAppend(gRyuStringVar2, gStringVar4);
-        StringAppend(gRyuStringVar2, deliverto);
-        StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[3].GfxID]);
-        StringAppend(gRyuStringVar2, gStringVar4);
-        StringAppend(gRyuStringVar2, deliverAt);
-        StringCopy(gStringVar4, mapNameList[(gSaveBlock2Ptr->Deliveries[0].mapNameId)]);
-        StringAppend(gRyuStringVar2, gStringVar4);
-        StringAppend(gRyuStringVar2, deliverperiod);
-    }
-    else
-    {
-        StringCopy(gRyuStringVar2, gText_JobEmpty);
-    }
-
 }
 
 
@@ -221,7 +172,7 @@ void RyuCountActiveJobs(void)
     gSpecialVar_Result = count;
 }
 
-bool32 CheckRTCForDeliveryTime(void)
+bool32 CheckRTCHealth(void)
 {
     s8 SBMins = gSaveBlock2Ptr->playTimeMinutes;
     s8 DTMins = gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeStart;
@@ -230,7 +181,7 @@ bool32 CheckRTCForDeliveryTime(void)
     if (gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeSanity == FALSE)//rtc mins was greater than 54, so hours would have to be checked.
         return TRUE; //passed check by default
 
-    if (SBMins == DTMins)//if SB time hasn't advanced, fail sanity check.
+    if (SBMins == DTMins)//if SB time hasn't advanced, fail test.
         return FALSE; //failed check
 
     if (gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart == RTCmins)//rtc didn't advance any since the delivery was started. Fail test.
@@ -246,38 +197,86 @@ void RyuClearDeliveryQueue(void)
     for (i = 0; i< 4; i++)
     {
         gSaveBlock2Ptr->Deliveries[i].finished = FALSE;
+        gSaveBlock2Ptr->Deliveries[i].mapNameId = 31;
         gSaveBlock2Ptr->Deliveries[i].GfxID = 255;
-        gSaveBlock2Ptr->Deliveries[i].itemId = 65535;
+        gSaveBlock2Ptr->Deliveries[i].itemId = 1024;
         gSaveBlock2Ptr->Deliveries[i].mapgroup = 0xFF;
         gSaveBlock2Ptr->Deliveries[i].mapnum = 0xFF;
-        gSaveBlock2Ptr->Deliveries[i].xpos = 255;
-        gSaveBlock2Ptr->Deliveries[i].ypos = 255;
+        gSaveBlock2Ptr->Deliveries[i].xpos = 0;
+        gSaveBlock2Ptr->Deliveries[i].ypos = 0;
     }
 
-    gSaveBlock2Ptr->DeliveryTimer.active = TRUE;
-    gSaveBlock2Ptr->DeliveryTimer.minutesGiven = 15;
-    gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart = 64;
+    gSaveBlock2Ptr->DeliveryTimer.active = FALSE;
+    gSaveBlock2Ptr->DeliveryTimer.minutesGiven = 0;
+    gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart = 0;
     gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeSanity = TRUE;
-    gSaveBlock2Ptr->DeliveryTimer.Timer = 15;
+    gSaveBlock2Ptr->DeliveryTimer.Timer = 0;
     gSaveBlock2Ptr->DeliveryTimer.unusedDeliveryTimeBits = 0;
-    gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart = 64;
+    gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart = 0;
+    gSaveBlock2Ptr->DeliveryTimer.quotaNum = 0;
+    gSaveBlock2Ptr->DeliveryTimer.timeRanOut = FALSE;
 
 }
 
 int CheckDeliverySuccessful(void)
 {
     u32 i;
+    bool32 ret = FALSE; //value defaults to false, so that if the job isn't found in the loop, it's not done.
+    u32 jobsDone = 0;
     for (i = 0;i<4;i++)
     {
         if ((gSaveBlock2Ptr->Deliveries[i].mapgroup == gSaveBlock1Ptr->location.mapGroup) &&
             (gSaveBlock2Ptr->Deliveries[i].mapnum == gSaveBlock1Ptr->location.mapNum) &&
-            (!(gSaveBlock2Ptr->Deliveries[i].finished) == TRUE) &&
-            (CheckRTCForDeliveryTime() == TRUE))
+            (!(gSaveBlock2Ptr->Deliveries[i].finished) == TRUE))
             {
                 RemoveBagItem(gSaveBlock2Ptr->Deliveries[i].itemId, 1);
-                gSaveBlock2Ptr->Deliveries[i].finished = TRUE;
-                return TRUE;
+                gSaveBlock2Ptr->Deliveries[i].finished = TRUE;             
+                ret = TRUE;
             }
     }
-    return FALSE;
+    for (i = 0;i < 4; i++)
+    {
+        if ((gSaveBlock2Ptr->Deliveries[i].finished) == TRUE)//check if any deliveries are unfinished
+        {
+            jobsDone++;
+        }
+    }
+
+    if (jobsDone == (VarGet(VAR_RYU_NUM_DELIVERIES)))//if the number of finished jobs is the same as the number of jobs given
+    {
+        gSaveBlock2Ptr->DeliveryTimer.active = FALSE; //stop timer
+        gSaveBlock2Ptr->DeliveryTimer.quotaNum = (VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA)); //copy the quota to struct so it can be adavanced
+        VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, 10);//change the quest tracker data to tell player to return for route reward
+    }
+    return ret;
+}
+
+int CheckFullDeliveryQueueFinished(void)
+{
+    u32 i;
+    u32 jobsDone = 0;
+    u16 highReward = VarGet(VAR_RYU_DELIVERY_SYSTEM_HIGH_REWARD_ROLL);
+    u16 lowReward = VarGet(VAR_RYU_DELIVERY_SYSTEM_LOW_REWARD_ROLL);
+    for (i = 0;i < 4; i++)
+    {
+        if ((gSaveBlock2Ptr->Deliveries[i].finished) == TRUE)//check if any deliveries are unfinished
+        {
+            jobsDone++;
+        }
+    }
+
+    if (jobsDone == (VarGet(VAR_RYU_NUM_DELIVERIES)))//if the number of finished jobs is the same as the number of jobs given
+    {
+        VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, (gSaveBlock2Ptr->DeliveryTimer.quotaNum + 1));//advance quota data.
+        if ((gSaveBlock2Ptr->DeliveryTimer.timeRanOut == FALSE) && (CheckRTCHealth() == TRUE))//check for broken/tampered RTC
+        {
+            return highReward;//player completed the queue in time
+        }
+        else
+        {
+            return lowReward;//player was late
+        }
+            
+    } 
+    return 0;//queue not done.
 }

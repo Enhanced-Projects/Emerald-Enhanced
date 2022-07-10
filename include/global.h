@@ -381,7 +381,7 @@ struct RankingHall2P
     u8 language;
 };
 
-struct DeliveryManifest
+struct DeliveryManifest //size 8
 {
     u16 itemId:10;
     u16 finished:1;
@@ -393,15 +393,17 @@ struct DeliveryManifest
     s8 ypos;
 };
 
-struct DeliveryTime
+struct DeliveryTime //size 4
 {
-    u32 Timer:4;
-    u32 minutesGiven:4;
+    u32 Timer:5;
+    u32 minutesGiven:5;
     u32 saveBlockTimeStart:6;
     u32 rtcTimeStart:6; 
     u32 saveBlockTimeSanity:1;
     u32 active:1;
-    u32 unusedDeliveryTimeBits:10;
+    u32 quotaNum:5;
+    u32 timeRanOut:1;
+    u32 unusedDeliveryTimeBits:2;
 };
 
 struct SaveBlock2

@@ -1,1 +1,192 @@
 mapscripts MauvilleCity_AdrastiWarehouse_MapScripts {}
+
+
+script AW_Dispatcher {
+    lock
+    faceplayer
+    if (flag(FLAG_RYU_PROF_SPECIAL_FINISHED) == TRUE) {//player completed the prerequisite quest
+        msgbox("Hi there!\pAre you here to accept a job?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            msgbox("Okay, let's see what we've got.")
+            closemessage
+            if (var(VAR_RYU_DELIVERY_SYSTEM_DATA) <= 4) {
+                callnative(StartNewDeliveryQueue)
+                msgbox("Okay! here's the job details:")
+                closemessage
+                call(ShowDeliveryData)
+                release
+                end
+            }
+            else {
+                msgbox("You've completed your daily quota.\nWe can't give you any more\ljobs due to labor laws.\pSorry!")
+                closemessage
+                release
+                end
+            }
+        }
+        else {
+            msgbox("Okay, well come back when you are\nready for another job!")
+            closemessage
+            release
+            end
+        }
+    }
+    else { //assign the special quest to unlock the above feature.
+        if (flag(FLAG_RYU_PROF_SPECIAL_IN_PROGRESS) == TRUE) {//player already started this quest
+                msgbox("Have you completed the special\ndelivery yet?\pWe need that really soon.")
+                closemessage
+                release
+                end
+        }
+        checkfactionstanding(FACTION_PROFESSIONALS, 175)
+        if (var(VAR_RESULT) == FALSE) { //player doesn't have enough standing to start the special quest.
+            msgbox("You don't have the clearance to\nbe in here.\pYou should probably leave.")
+            release
+            end
+        }
+        else {//actually give the quest.
+            setflag(FLAG_RYU_PROF_SPECIAL_IN_PROGRESS) //ensures the above code doesn't reactivate.
+            setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 100)//use this variable to track the quest.
+            msgbox("Go see the foreman in the back.\nhe has a special task\lfor you.")
+            release
+            end
+        }
+    }
+}
+
+script AW_WarehouseForeman {
+    lock
+    faceplayer
+    if (var(VAR_RYU_DELIVERY_SYSTEM_DATA) > 99 && var(VAR_RYU_DELIVERY_SYSTEM_DATA) < 110) {
+        switch(var(VAR_RYU_DELIVERY_SYSTEM_DATA)) {
+            case 100:
+                msgbox("Ah! Jean said you'd be coming\nand that you are here for our\lspecial request!")
+                closemessage
+                msgbox("I need you to deliver this antique\nto James in Fortree's Pokécenter.")
+                setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 101) //Player must deliver an item to an old man in fortee's pokemon center.
+                clearflag(FLAG_RYU_HIDE_DELIVERY_NPC_1)
+                additem(ITEM_ANTIQUE, 1)
+                closemessage
+                msgbox(RyuCheckQuestTrackerMsg)
+                closemessage
+            case 101:
+                msgbox("You should be delivering the\nAntique to Fortree.\pTime is money!")
+                closemessage
+            case 102:
+                msgbox("Ah! Excellent. Good work.\nNow, I need these Electronics\ptaken to a woman at the\nLilycove Pokécenter.")
+                closemessage
+                setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 103)//player must deliver an item to a woman in the Lilycove pokemon center
+                additem(ITEM_ELECTRONICS, 1)
+                clearflag(FLAG_RYU_HIDE_DELIVERY_NPC_2)
+            case 103:
+                msgbox("Hurry and get those electronics\nto that IT specialist in Lilycove.")
+                closemessage
+            case 104:
+                msgbox("Excellent work again!\nGot another one.\pTake these Home Goods to the\nsharp dressed man in Mauville.")
+                additem(ITEM_HOME_GOODS, 1)
+                clearflag(FLAG_RYU_HIDE_DELIVERY_NPC_3)
+                setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 105)//player must deliver some home goods to a gentleman in mauville city.
+                closemessage
+            case 105:
+                msgbox("The customer is still waiting\non his Home Goods.\pGet it done!")
+                closemessage
+            case 106:
+                msgbox("okay!\nYour job is almost complete!\pThere's just one more to go!\pTake this Bouquet to my\nwife!\pShe's usually strolling the\nbeach in Mossdeep.")
+                additem(ITEM_FLOWERS, 1)
+                clearflag(FLAG_RYU_HIDE_DELIVERY_NPC_4)
+                setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 107)//player must deliver flowers to a woman on a beach island in Mossdeep city
+                closemessage
+            case 107:
+                msgbox("If you're late delivering those\nflowers, my wife will kill me!\pHop to it!")
+                closemessage
+            case 108:
+                msgbox("Excellent work today.\nI'd be happy to hire you\pif you're looking for more\nwork like this!\pThe pay is good, and there\nare opportunities for\ladvancement!\pSo what do you think?\pWant to be a delivery\nspecialist?", MSGBOX_YESNO)
+                if (var(VAR_RESULT) == NO) {
+                    msgbox("Well the offer's on the table.\nReturn if you decide to change\lyour mind!")
+                    setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 109)//Adrasti Foremen wants to hire you to work as a delivery specialist. Return to him to accept.
+                    closemessage
+                }
+                else {
+                    msgbox("Excellent! I think this will\nbe a great opportunity for\lyou!")
+                    setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 0)//Player was hired to be a delivery specialist for the Adrasti Corporation
+                    setflag(FLAG_RYU_PROF_SPECIAL_FINISHED)
+                    closemessage
+                    msgbox("Go see the dispatcher to get\na delivery route!")
+                    closemessage
+                }
+            case 109:
+                msgbox("Have you changed your mind\nabout the job offer?", MSGBOX_YESNO)
+                if (var(VAR_RESULT) == YES) {
+                    msgbox("Great! Look forward to working with you!")
+                    setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 0)
+                    setflag(FLAG_RYU_PROF_SPECIAL_FINISHED)
+                    msgbox("Go see the dispatcher to get\na delivery route!")
+                    closemessage
+                }
+
+        }
+        release
+        end
+    }
+    msgbox("I'm the foreman here.")
+    release
+    end
+}
+
+script AW_Employee2 {
+    lock
+    faceplayer
+    msgbox("I've been working here for\n16 years!\pThey still haven't offered me a\npromotion.")
+    release
+    end
+}
+
+script AW_Employee1 {
+    lock
+    faceplayer
+    msgbox("I'm on break now, but I'm\nusually driving a forklift.")
+    release
+    end
+}
+
+script AW_Stocker1 {
+    lock
+    faceplayer
+    msgbox("Please don't bother me, I have to\nget these shelves sorted!")
+    release
+    end
+}
+
+script AW_Stocker2 {
+    random(12559)
+    addvar(VAR_RESULT, 10000)
+    buffernumberstring(0, VAR_RESULT)
+    random(12559)
+    addvar(VAR_RESULT, 10000)
+    buffernumberstring(1, VAR_RESULT)
+    random(12559)
+    addvar(VAR_RESULT, 10000)
+    buffernumberstring(2, VAR_RESULT)
+    msgbox("Let's see... I need packages {STR_VAR_1},\n{STR_VAR_2}, and {STR_VAR_3}...")
+    release
+    end
+}
+
+script AW_Receptionist {
+    lock
+    faceplayer
+    msgbox("Hi there! I'm Jean!\pI accept packages to be delivered.\pDid you have something to ship?")
+    release
+    end
+}
+
+script AW_ExitWarehouse {
+    lockall
+    warpsilent(MAP_MAUVILLE_CITY, 255, 33, 25)
+    waitstate
+}
+
+text RyuCheckQuestTrackerMsg {
+    "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Refer to your quest tracker for\n"
+    " details on this quest.)"
+}

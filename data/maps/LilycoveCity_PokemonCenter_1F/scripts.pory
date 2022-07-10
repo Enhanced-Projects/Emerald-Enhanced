@@ -69,3 +69,42 @@ LilycoveCity_PokemonCenter_1F_Text_HaventSeenRottenScoundrels: @ 821C6F6
 	.string "I haven't seen them around recently.$"
 
 `
+
+script LC_DeliveryQuestTarget2 {
+	checkitem(ITEM_ELECTRONICS, 1)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Do you have my parts?\nI need those to make repairs!")
+		closemessage
+		release
+		end
+	}
+	removeitem(ITEM_ANTIQUE, 1)
+	msgbox("Finally! my parts arrived.\nNeed to upgrade this pc.")
+	closemessage
+	call(RyuChooseDeliveryTipAmount)
+	setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 104)//Player delivered the Electronics. Return to Adrasti Foreman.
+	applymovement(6, InstallPart)
+	waitmovement(6)
+	msgbox("Okay! upgrade complete!\nBye!")
+	applymovement(6, LC_ExitPokeCenter)
+	waitmovement(6)
+	playse(SE_DOOR)
+	removeobject(6)
+	setflag(FLAG_RYU_HIDE_DELIVERY_NPC_2)
+	release
+	end
+}
+
+movement InstallPart {
+	walk_left
+	walk_in_place_slow_left
+	face_down
+	step_end
+}
+
+movement LC_ExitPokeCenter {
+	walk_down * 3
+	walk_left * 4
+	walk_down * 3
+	step_end
+}

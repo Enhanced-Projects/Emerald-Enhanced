@@ -173,6 +173,20 @@ static void UpdatePerMinute(struct Time *localTime)
         {
             BerryTreeTimeUpdate(minutes);
             gSaveBlock2Ptr->lastBerryTreeUpdate = *localTime;
+            if (gSaveBlock2Ptr->DeliveryTimer.active == TRUE)
+            {
+                gSaveBlock2Ptr->DeliveryTimer.Timer -= 1;
+                if (gSaveBlock2Ptr->DeliveryTimer.Timer == 0)
+                {
+                    gSaveBlock2Ptr->DeliveryTimer.active = FALSE;
+                    gSaveBlock2Ptr->DeliveryTimer.timeRanOut = TRUE;
+                    QueueNotification(((const u8 []) _("Delivery time limit expired.")), NOTIFY_GENERAL, 120);
+                }
+                else
+                {
+                    QueueNotification(((const u8 []) _("Delivery: {STR_VAR_1} min(s) left.")), NOTIFY_GENERAL, 120);
+                }
+            }
         }
     }
 }

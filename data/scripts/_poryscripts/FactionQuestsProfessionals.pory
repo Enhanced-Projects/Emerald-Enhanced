@@ -6,10 +6,17 @@ const CAPTURE_TYPE = 2
 const TRAVEL_TYPE = 3
 const HATCH_TYPE = 4
 
+
 script(global) RyuProfessionalsDailyQuest  {
     lock
     faceplayer
-     if (flag(FLAG_FINISHED_PROFESSIONAL_DAILY) == TRUE) { //quest done
+    checkfactionstanding(FACTION_PROFESSIONALS, 175)
+
+    if ((var(VAR_RESULT) == TRUE) && (flag(FLAG_RYU_PROF_SPECIAL_FINISHED) == FALSE)) {
+        goto(RyuProfessionalsFactionSpecialQuest)
+    }
+
+    if (flag(FLAG_FINISHED_PROFESSIONAL_DAILY) == TRUE) { //quest done
         msgbox("I'm currently working,\nPlease come back later.")
         release
         end
@@ -17,7 +24,7 @@ script(global) RyuProfessionalsDailyQuest  {
 
     checkfactionstanding(FACTION_PROFESSIONALS, 200)
 
-    if (var(VAR_RESULT) == TRUE) {
+    if ((var(VAR_RESULT) == TRUE) && (var(VAR_RYU_SUCCESSFUL_DELIVERIES) > 60)) { //do professionals final quest(NOT YET IMPLEMENTED.)
         msgbox("Heya Union Rep! All things\non this front appear to be\lgoing smoothly!")
         release
         end
@@ -120,12 +127,19 @@ script(global) RyuProfessionalsDailyQuest  {
 }
 
 script CommonProfessionalsRewardScript {
-    msgbox("The Board should be pleased.\nYou are dismissed.")
+    msgbox(format("Everything you do for the Union is noted!"))
     setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
     changefactionstanding(FACTION_PROFESSIONALS, 25, FALSE)
     addmoney(4000)
     buffernumberstring(0, 4000)
     goto(CommonDailyQuestEnd)
+}
+
+script RyuProfessionalsFactionSpecialQuest {
+    setflag(FLAG_RYU_PROF_SPECIAL_QUEST_AVAILABLE)
+    msgbox("The union president has let us\nknow that she's looking for\psomeone to perform a special\ntask.\pPlease go meet our union\npresident!\pYou can find her at Adrasti\nWarehouse in Mauville!")
+    release
+    end
 }
 
 //strings

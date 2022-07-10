@@ -6,39 +6,38 @@ script ShowDeliveryData {
             msgbox("There are no jobs to\ndisplay.")
         case 1:
             msgbox("{STR_VAR_1}$")
-        case 2:
-            msgbox("{STR_VAR_1}\n{STR_VAR_2}$")
-        case 3:
-            msgbox("{STR_VAR_1}\n{STR_VAR_2}\p{STR_VAR_3}$")
-        case 4:
-            msgbox("{STR_VAR_1}\n{STR_VAR_2}\p{STR_VAR_3}\n{RYU_STR_2}$")
     }
     closemessage
-    release
-    end
+    return
 }
 
 script RyuChooseDeliveryTipAmount {
     random(5000)
     addvar(VAR_RESULT, 1500)
     addmoney(VAR_RESULT)
+    buffernumberstring(0, VAR_RESULT)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Tipped ¥{STR_VAR_1}.)")
+    closemessage
     return
 }
 
 script RyuDeliveryTargetScript {
     specialvar(VAR_RESULT, CheckDeliverySuccessful)
     if (var(VAR_RESULT) == 0) {
-        msgbox("Sorry... have to go!")
-        call(RyuChooseDeliveryTipAmount)
+        msgbox("Sorry... have to go!")//this NPC shouldn't still be here if their delivery doesn't match the manifest. Remove.
     }
     elif (var(VAR_RESULT) == 1) {
         msgbox("Oh, thank you!\pRight on time!")
+        call(RyuChooseDeliveryTipAmount)
+        msgbox("There's a tip for you, Bye!")
+        addvar(VAR_RYU_SUCCESSFUL_DELIVERIES, 1)
     }
-    else {
-        msgbox("You're late for the delivery!")
+    elif(var(VAR_RESULT) == 2){//late
+        msgbox("You're late!\nYou're not getting a tip!")
+        addvar(VAR_RYU_FAILED_DELIVERIES, 1)
     }
     fadescreen(FADE_TO_BLACK)
-    removeobject(0xDD)
+    removeobject(VAR_LAST_TALKED)
     fadescreen(FADE_FROM_BLACK)
     closemessage
     release

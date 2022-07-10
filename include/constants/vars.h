@@ -276,8 +276,8 @@
 #define VAR_RYU_E42                          0x4101
 #define VAR_RYU_E43                          0x4102
 #define VAR_RYU_E44                          0x4103
-#define VAR_RYU_DELIVERY_5_GFX_ID            0x4104
-#define VAR_RYU_DELIVERY_6_GFX_ID            0x4105
+#define VAR_RYU_SUCCESSFUL_DELIVERIES        0x4104
+#define VAR_RYU_FAILED_DELIVERIES            0x4105
 #define VAR_HOURS                            0x4106
 //prize money
 #define VAR_RYU_MONEY_BASE_RANDOM_COMPONENT  0x4107
@@ -290,6 +290,9 @@
 #define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X    0x410E
 #define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y    0x410F
 #define VAR_RYU_NUM_DELIVERIES               0x4110
+#define VAR_RYU_DELIVERY_SYSTEM_DATA         0x4111
+#define VAR_RYU_DELIVERY_SYSTEM_HIGH_REWARD_ROLL        0x4112
+#define VAR_RYU_DELIVERY_SYSTEM_LOW_REWARD_ROLL         0x4113
 
 
 //vars 4100 thru 417f are new; total of 128.

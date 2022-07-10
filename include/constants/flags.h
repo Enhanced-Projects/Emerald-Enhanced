@@ -291,7 +291,7 @@
 #define FLAG_RYU_HIDE_MOSSDEEP_MATT          0x10F // Hides matt in mossdeep
 #define FLAG_RYU_ENTERING_RENTED_HOME        0x110 //set when player is entering a property they own. Used to show/hide tenants.
 #define FLAG_POKERUS_EXPLAINED               0x111
-#define FLAG_RYU_ONE_TIME_SAVE_FIX           0x112//make one time save fix actually one time
+#define FLAG_UNUSED_0x112                    0x112
 #define FLAG_RECEIVED_QUICK_CLAW             0x113
 #define FLAG_RECEIVED_KINGS_ROCK             0x114
 #define FLAG_RECEIVED_MACHO_BRACE            0x115
@@ -418,8 +418,8 @@
 #define FLAG_RYU_HIDE_DELIVERY_NPC_2         0x189
 #define FLAG_RYU_HIDE_DELIVERY_NPC_3         0x18A
 #define FLAG_RYU_HIDE_DELIVERY_NPC_4         0x18B
-#define FLAG_RYU_HIDE_DELIVERY_NPC_5         0x18C
-#define FLAG_RYU_HIDE_DELIVERY_NPC_6         0x18D
+#define FLAG_RYU_PROF_SPECIAL_FINISHED       0x18C
+#define FLAG_RYU_PROF_SPECIAL_QUEST_AVAILABLE      0x18D
 #define FLAG_RYU_RAYQUAZA_TRANSFORMED        0x18E
 #define FLAG_RYU_SPECIAL_RAYQUAZA_GIFT_AVAILABLE   0x18F
 #define FLAG_SHINY_CREATION                  0x190
@@ -522,7 +522,7 @@
 #define FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST     0x1EA // Nobles related.
 #define NOBLES_SPECIAL_MISSION_IN_PROGRESS        0x1EB // Nobles related.
 #define FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS   0x1EC // Nobles related.
-#define FLAG_UNUSED_0x1ED                         0x1ED
+#define FLAG_RYU_ONE_TIME_SAVE_FIX                0x1ED
 #define FLAG_UNUSED_0x1EE                         0x1EE
 #define FLAG_UNUSED_0x1EF                         0x1EF
 #define FLAG_UNUSED_0x1F0                         0x1F0

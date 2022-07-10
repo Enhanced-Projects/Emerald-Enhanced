@@ -1013,11 +1013,7 @@ void RyuDoOneTImeSaveFixes(void) {
     if (gSaveBlock2Ptr->optionsTextSpeed == 3)
         gSaveBlock2Ptr->optionsTextSpeed = 2;
 
-    if (FlagGet(FLAG_RYU_SAVED_ATTENDANT) == FALSE);
-        VarSet(VAR_RYU_ATTENDANT_ID, 0xFFFF);
-
-    if ((VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL > 0)) && (!(CheckBagHasItem(579, 1))))
-        AddBagItem(579, 1);
+    if ((FlagGet(FLAG_RYU_PROF_SPECIAL_FINISHED) == FALSE) && (!(VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) == 1000)))
 
     QueueNotification(OneTimeNotifyMsg, NOTIFY_GENERAL, 60);
     FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
