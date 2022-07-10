@@ -109,11 +109,12 @@ void StartNewDeliveryQueue(void)
         gSaveBlock2Ptr->Deliveries[i].mapnum =  sRyuDeliveryMapsList[maplistnum][1];
         gSaveBlock2Ptr->Deliveries[i].xpos = sRyuDeliveryCoords[maplistnum][coordGroup][0];
         gSaveBlock2Ptr->Deliveries[i].ypos = sRyuDeliveryCoords[maplistnum][coordGroup][1];
+        gSaveBlock2Ptr->Deliveries[i].mapNameId = maplistnum;
     }
     gSaveBlock2Ptr->DeliveryTimer.minutesGiven = numJobs + 1;
     gSaveBlock2Ptr->DeliveryTimer.Timer = numJobs + 1;
     gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart = gSaveBlock2Ptr->playTimeMinutes;
-    if (gSaveBlock2Ptr->playTimeMinutes > 54)
+    if (gSaveBlock2Ptr->playTimeMinutes > 44)
         gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeSanity = FALSE;//save block minutes are in an unsafe state to test.
     else
         gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeSanity = TRUE;//save block time can be safely compared with RTC time.
@@ -125,63 +126,86 @@ void StartNewDeliveryQueue(void)
 const u8 deliverA[] = _("Take ");
 const u8 deliverto[] = _(" to ");
 const u8 deliverAt[] = _(" at ");
-const u8 deliverperiod[] = _(".");
+const u8 deliverperiod[] = _(".$");
 const u8 sText_emptyString[] = _(" $");
+const u8 gText_JobEmpty[] = _("Job finished or empty. $");
 void RyuBufferCurrentJobs(void)
 {
-    StringCopy(gStringVar1, sText_emptyString);//clear buffers for good measure
-    StringCopy(gStringVar2, sText_emptyString);
-    StringCopy(gStringVar3, sText_emptyString);
-    StringCopy(gStringVar4, sText_emptyString);
-    StringCopy(gRyuStringVar1, sText_emptyString);
-
     //job 1
-    StringCopy(gStringVar1, deliverA);
-    CopyItemName(gSaveBlock2Ptr->Deliveries[0].itemId, gStringVar4);
-    StringAppend(gStringVar1, gStringVar4);
-    StringAppend(gStringVar1, deliverto);
-    StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[0].GfxID]);
-    StringAppend(gStringVar1, gStringVar4);
-    StringAppend(gStringVar1, deliverAt);
-    StringCopy(gStringVar4, mapNameList[gSaveBlock2Ptr->Deliveries[2].mapNameId]);
-    StringAppend(gStringVar1, gStringVar4);
-    StringAppend(gStringVar1, deliverperiod);
+    if (gSaveBlock2Ptr->Deliveries[0].finished == FALSE)
+    {
+            StringCopy(gStringVar1, deliverA);
+            CopyItemName(gSaveBlock2Ptr->Deliveries[0].itemId, gStringVar4);
+            StringAppend(gStringVar1, gStringVar4);
+            StringAppend(gStringVar1, deliverto);
+            StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[0].GfxID]);
+            StringAppend(gStringVar1, gStringVar4);
+            StringAppend(gStringVar1, deliverAt);
+            StringCopy(gStringVar4, mapNameList[(gSaveBlock2Ptr->Deliveries[0].mapNameId)]);
+            StringAppend(gStringVar1, gStringVar4);
+            StringAppend(gStringVar1, deliverperiod);
+    }
+    else
+    {
+        StringCopy(gStringVar1, gText_JobEmpty);
+    }
 
     //job 2
-    StringCopy(gStringVar2, deliverA);
-    CopyItemName(gSaveBlock2Ptr->Deliveries[1].itemId, gStringVar4);
-    StringAppend(gStringVar2, gStringVar4);
-    StringAppend(gStringVar2, deliverto);
-    StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[1].GfxID]);
-    StringAppend(gStringVar2, gStringVar4);
-    StringAppend(gStringVar2, deliverAt);
-    StringCopy(gStringVar4, mapNameList[gSaveBlock2Ptr->Deliveries[2].mapNameId]);
-    StringAppend(gStringVar2, gStringVar4);
-    StringAppend(gStringVar2, deliverperiod);
+    if (gSaveBlock2Ptr->Deliveries[1].finished == FALSE)
+    {
+        StringCopy(gStringVar2, deliverA);
+        CopyItemName(gSaveBlock2Ptr->Deliveries[0].itemId, gStringVar4);
+        StringAppend(gStringVar2, gStringVar4);
+        StringAppend(gStringVar2, deliverto);
+        StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[1].GfxID]);
+        StringAppend(gStringVar2, gStringVar4);
+        StringAppend(gStringVar2, deliverAt);
+        StringCopy(gStringVar4, mapNameList[(gSaveBlock2Ptr->Deliveries[0].mapNameId)]);
+        StringAppend(gStringVar2, gStringVar4);
+        StringAppend(gStringVar2, deliverperiod);
+    }
+    else
+    {
+        StringCopy(gStringVar2, gText_JobEmpty);
+    }
 
     //job 3
-    StringCopy(gStringVar3, deliverA);
-    CopyItemName(gSaveBlock2Ptr->Deliveries[2].itemId, gStringVar4);
-    StringAppend(gStringVar3, gStringVar4);
-    StringAppend(gStringVar3, deliverto);
-    StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[2].GfxID]);
-    StringAppend(gStringVar3, gStringVar4);
-    StringAppend(gStringVar3, deliverAt);
-    StringCopy(gStringVar4, mapNameList[gSaveBlock2Ptr->Deliveries[2].mapNameId]);
-    StringAppend(gStringVar3, gStringVar4);
-    StringAppend(gStringVar3, deliverperiod);
+    if (gSaveBlock2Ptr->Deliveries[2].finished == FALSE)
+    {
+        StringCopy(gStringVar3, deliverA);
+        CopyItemName(gSaveBlock2Ptr->Deliveries[0].itemId, gStringVar4);
+        StringAppend(gStringVar3, gStringVar4);
+        StringAppend(gStringVar3, deliverto);
+        StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[2].GfxID]);
+        StringAppend(gStringVar3, gStringVar4);
+        StringAppend(gStringVar3, deliverAt);
+        StringCopy(gStringVar4, mapNameList[(gSaveBlock2Ptr->Deliveries[0].mapNameId)]);
+        StringAppend(gStringVar3, gStringVar4);
+        StringAppend(gStringVar3, deliverperiod);
+    }
+    else
+    {
+        StringCopy(gStringVar3, gText_JobEmpty);
+    }
  
     //job 4
-    StringCopy(gRyuStringVar1, deliverA);
-    CopyItemName(gSaveBlock2Ptr->Deliveries[3].itemId, gStringVar4);
-    StringAppend(gRyuStringVar1, gStringVar4);
-    StringAppend(gRyuStringVar1, deliverto);
-    StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[3].GfxID]);
-    StringAppend(gRyuStringVar1, gStringVar4);
-    StringAppend(gRyuStringVar1, deliverAt);
-    StringCopy(gStringVar4, mapNameList[gSaveBlock2Ptr->Deliveries[3].mapNameId]);
-    StringAppend(gRyuStringVar1, gStringVar4);
-    StringAppend(gRyuStringVar1, deliverperiod);
+    if (gSaveBlock2Ptr->Deliveries[3].finished == FALSE)
+    {
+        StringCopy(gRyuStringVar2, deliverA);
+        CopyItemName(gSaveBlock2Ptr->Deliveries[0].itemId, gStringVar4);
+        StringAppend(gRyuStringVar2, gStringVar4);
+        StringAppend(gRyuStringVar2, deliverto);
+        StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[3].GfxID]);
+        StringAppend(gRyuStringVar2, gStringVar4);
+        StringAppend(gRyuStringVar2, deliverAt);
+        StringCopy(gStringVar4, mapNameList[(gSaveBlock2Ptr->Deliveries[0].mapNameId)]);
+        StringAppend(gRyuStringVar2, gStringVar4);
+        StringAppend(gRyuStringVar2, deliverperiod);
+    }
+    else
+    {
+        StringCopy(gRyuStringVar2, gText_JobEmpty);
+    }
 
 }
 

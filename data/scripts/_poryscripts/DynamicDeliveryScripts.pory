@@ -11,7 +11,7 @@ script ShowDeliveryData {
         case 3:
             msgbox("{STR_VAR_1}\n{STR_VAR_2}\p{STR_VAR_3}$")
         case 4:
-            msgbox("{STR_VAR_1}\n{STR_VAR_2}\p{STR_VAR_3}\n{RYU_STR_1}$")
+            msgbox("{STR_VAR_1}\n{STR_VAR_2}\p{STR_VAR_3}\n{RYU_STR_2}$")
     }
     closemessage
     release
