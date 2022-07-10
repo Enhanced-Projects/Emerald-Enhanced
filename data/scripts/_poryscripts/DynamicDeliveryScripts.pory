@@ -6,6 +6,12 @@ script ShowDeliveryData {
             msgbox("There are no jobs to\ndisplay.")
         case 1:
             msgbox("{STR_VAR_1}$")
+        case 2:
+            msgbox("{STR_VAR_1}\n{STR_VAR_2}$")
+        case 3:
+            msgbox("{STR_VAR_1}\n{STR_VAR_2}\p{STR_VAR_3}$")
+        case 4:
+            msgbox("{STR_VAR_1}\n{STR_VAR_2}\p{STR_VAR_3}\n{RYU_STR_1}$")
     }
     closemessage
     return

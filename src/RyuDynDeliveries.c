@@ -88,25 +88,39 @@ const u8 sRyuDeliveryCoords[][3][2] = {
     [6] = {{4, 2}, {17, 6}, {4, 16}},
     [7] = {{11, 14}, {26, 8}, {26, 3}},
 };
-
-void StartNewDeliveryQueue(void)
+void StartNewDeliveryQueue(void) 
 {
     u8 numJobs = (Random() % 4) + 1;
-    u32 i;
+    u8 i;
     u16 coordGroup = (Random() % 3);
-    u16 mapsum = 0;
     u16 lowReward = gRyuLowPickupTable[(Random() % NUM_PICKUP_TABLE_ENTRIES)];
     u16 highReward = gRyuMaxPickupTable[(Random() % NUM_PICKUP_TABLE_ENTRIES)];
-
+    u16 mapsum = 0, maplistnum = 0;
+    u16 seed = Random();
+    u16 value[3], gap[3], threshold[3] = { 0 };
     RyuClearDeliveryQueue();
 
     VarSet(VAR_RYU_NUM_DELIVERIES, numJobs);
     for (i = 0;i < numJobs;i++)
     {
-        u16 maplistnum = (Random() % ARRAY_COUNT(sRyuDeliveryMapsList));
+        gap[0] = 1 + (Random() % (ARRAY_COUNT(sRyuDeliveryMapsList) - threshold[0] - numJobs + i));
+        value[0] = (seed + threshold[0] + (i != 0 ? gap[0] : 0)) % ARRAY_COUNT(sRyuDeliveryMapsList);
+        threshold[0] = i != 0 ? threshold[0] + gap[0] : threshold[0];
+        maplistnum = value[0];
+
         gSaveBlock2Ptr->Deliveries[i].finished = FALSE;
-        gSaveBlock2Ptr->Deliveries[i].GfxID =   sRyuDeliveryObjEventIds[(Random() % ARRAY_COUNT(sRyuDeliveryObjEventIds))];
-        gSaveBlock2Ptr->Deliveries[i].itemId = sRyuDeliveryPackagesList[(Random() % ARRAY_COUNT(sRyuDeliveryPackagesList))];
+
+        gap[1] = 1 + (Random() % (ARRAY_COUNT(sRyuDeliveryObjEventIds) - threshold[1] - numJobs + i));
+        value[1] = (seed + threshold[1] + (i != 0 ? gap[1] : 0)) % ARRAY_COUNT(sRyuDeliveryObjEventIds);
+        threshold[1] = i != 0 ? threshold[1] + gap[1] : threshold[1];
+
+        gSaveBlock2Ptr->Deliveries[i].GfxID =   sRyuDeliveryObjEventIds[value[1]];
+
+        gap[2] = 1 + (Random() % (ARRAY_COUNT(sRyuDeliveryPackagesList) - threshold[2] - numJobs + i));
+        value[2] = (seed + threshold[2] + (i != 0 ? gap[2] : 0)) % ARRAY_COUNT(sRyuDeliveryPackagesList);
+        threshold[2] = i != 0 ? threshold[2] + gap[2] : threshold[1];
+
+        gSaveBlock2Ptr->Deliveries[i].itemId = sRyuDeliveryPackagesList[value[2]];
         AddBagItem(gSaveBlock2Ptr->Deliveries[i].itemId, 1);
         gSaveBlock2Ptr->Deliveries[i].mapgroup =  sRyuDeliveryMapsList[maplistnum][0];
         gSaveBlock2Ptr->Deliveries[i].mapnum =  sRyuDeliveryMapsList[maplistnum][1];
@@ -136,28 +150,28 @@ const u8 deliverto[] = _(" to ");
 const u8 deliverAt[] = _(" at ");
 const u8 deliverperiod[] = _(".$");
 const u8 sText_emptyString[] = _(" $");
-const u8 gText_JobEmpty[] = _("Job finished or empty. $");
+const u8 gText_JobEmpty[] = _("Job slot empty. $");
 void RyuBufferCurrentJobs(void)
 {
-    //job 1
-    if (gSaveBlock2Ptr->Deliveries[0].finished == FALSE)
-    {
-            StringCopy(gStringVar1, deliverA);
-            CopyItemName(gSaveBlock2Ptr->Deliveries[0].itemId, gStringVar4);
-            StringAppend(gStringVar1, gStringVar4);
-            StringAppend(gStringVar1, deliverto);
-            StringCopy(gStringVar4, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[0].GfxID]);
-            StringAppend(gStringVar1, gStringVar4);
-            StringAppend(gStringVar1, deliverAt);
-            StringCopy(gStringVar4, mapNameList[(gSaveBlock2Ptr->Deliveries[0].mapNameId)]);
-            StringAppend(gStringVar1, gStringVar4);
-            StringAppend(gStringVar1, deliverperiod);
+    u8 i;
+    for (i = 0; i < 4; ++i) {
+        u8* current = i == 0 ? gStringVar1 : i == 1 ? gStringVar2 : i == 2 ? gStringVar3 : gRyuStringVar1;
+        if (gSaveBlock2Ptr->Deliveries[i].finished == FALSE && gSaveBlock2Ptr->Deliveries[i].itemId != 1023)
+        {
+            StringCopy(current, deliverA);
+            CopyItemName(gSaveBlock2Ptr->Deliveries[i].itemId, gRyuStringVar2);
+            StringAppend(current, gRyuStringVar2);
+            StringAppend(current, deliverto);
+            StringAppend(current, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[i].GfxID]);
+            StringAppend(current, deliverAt);
+            StringAppend(current, mapNameList[(gSaveBlock2Ptr->Deliveries[i].mapNameId)]);
+            StringAppend(current, deliverperiod);
+        }
+        else
+        {
+            StringCopy(current, gText_JobEmpty);
+        }
     }
-    else
-    {
-        StringCopy(gStringVar1, gText_JobEmpty);
-    }
-
 }
 
 
@@ -196,10 +210,9 @@ void RyuClearDeliveryQueue(void)
     u32 i;
     for (i = 0; i< 4; i++)
     {
-        gSaveBlock2Ptr->Deliveries[i].finished = FALSE;
-        gSaveBlock2Ptr->Deliveries[i].mapNameId = 31;
+        gSaveBlock2Ptr->Deliveries[i].finished = TRUE;
         gSaveBlock2Ptr->Deliveries[i].GfxID = 255;
-        gSaveBlock2Ptr->Deliveries[i].itemId = 1024;
+        gSaveBlock2Ptr->Deliveries[i].itemId = 1023;
         gSaveBlock2Ptr->Deliveries[i].mapgroup = 0xFF;
         gSaveBlock2Ptr->Deliveries[i].mapnum = 0xFF;
         gSaveBlock2Ptr->Deliveries[i].xpos = 0;
