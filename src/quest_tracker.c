@@ -29,6 +29,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/items.h"
+#include "RyuDynDeliveries.h"
 
 #include "data/quest_stages.h"
 
@@ -494,6 +495,7 @@ static void Task_QuestMain(u8 taskId)
         case QUEST_ACTION_CHOOSE: 
         {
             const struct QuestStageDesc * questDesc = FindQuestDescFromStage(SELECTED_QUEST(taskId));
+            HatBuildDeliveryInfoString();
             FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
             StringExpandPlaceholders(gStringVar4, questDesc->description);
             AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, gStringVar4);
