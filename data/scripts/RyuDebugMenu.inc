@@ -375,8 +375,14 @@ RyuDebug_ViewTempVars::
 RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
-RyuDebug_Utility1::
+RyuDebug_Utility11::
 	clearflag FLAG_RYU_PROF_SPECIAL_FINISHED
+	release
+	end
+
+RyuDebug_Utility1::
+	callnative Hat_TestSprintf
+	msgbox gStringVar1, MSGBOX_DEFAULT
 	release
 	end
 

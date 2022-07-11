@@ -26,6 +26,7 @@
 #include "overworld_notif.h"
 #include "constants/items.h"
 #include "item.h"
+//#include "printf.h"
 
 static const u8 sAPMenuBackgroundTileset[] = INCBIN_U8("graphics/achievement_atlas/apscreen.8bpp");
 static const u16 sAPMenuBackgroundTilemap[] = INCBIN_U16("graphics/achievement_atlas/apscreen.bin");
@@ -1543,6 +1544,13 @@ static void AtlasCursorSpriteCB(struct Sprite *sprite)
             break;
     }
     sprite->data[0] = ACTION_NONE;
+}
+
+void Hat_TestSprintf(void)
+{
+    u8* buf = gStringVar1;
+    StringCopy(buf, (u8[])_("test %d test"));
+    //hat_printf(buf, 5);
 }
 
 void Ryu_GiveOrTakeAllAchievments(void)

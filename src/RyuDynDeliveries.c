@@ -153,6 +153,8 @@ void HatBuildDeliveryInfoString(void)
     StringCopy(current, (u8[]) _(""));
     StringAppend(current, (u8[]) _("Meet "));
     for (i = 0; i < 4; ++i) {
+        if (gSaveBlock2Ptr->Deliveries[i].finished == TRUE || gSaveBlock2Ptr->Deliveries[i].itemId == 1023)
+            continue;
         StringAppend(current, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[i].GfxID]);
         StringAppend(current, (u8[]) _(" in "));
         StringAppend(current, mapNameList[(gSaveBlock2Ptr->Deliveries[i].mapNameId)]);
