@@ -167,12 +167,16 @@ void HatBuildDeliveryInfoString(void)
             StringAppend(current, (u8[]) _("\n"));
         ++lines;
     }
-    if (lines != 2)
-        StringAppend(current, (u8[]) _("\n"));
-    StringAppend(current, (u8[])_("Delivery time: "));
-    ConvertIntToDecimalStringN(buf, gSaveBlock2Ptr->DeliveryTimer.Timer, STR_CONV_MODE_LEFT_ALIGN, 2);
-    StringAppend(current, buf);
-    StringAppend(current, (u8[])_(" minutes remaining"));
+    if (lines == 0)
+        StringCopy(current, (u8[]) _("No active deliveries."));
+    else {
+        if (lines != 2)
+            StringAppend(current, (u8[]) _("\n"));
+        StringAppend(current, (u8[])_("Delivery time: "));
+        ConvertIntToDecimalStringN(buf, gSaveBlock2Ptr->DeliveryTimer.Timer, STR_CONV_MODE_LEFT_ALIGN, 2);
+        StringAppend(current, buf);
+        StringAppend(current, (u8[])_(" minutes remaining"));
+    }
 }
 
 const u8 deliverA[] = _("Take ");
