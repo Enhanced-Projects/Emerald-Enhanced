@@ -505,7 +505,7 @@
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
 
-#define EE_GAME_VERSION 8403
+#define EE_GAME_VERSION 8500
 
 
 #endif

@@ -101,6 +101,7 @@ void StartNewDeliveryQueue(void)
     RyuClearDeliveryQueue();
 
     VarSet(VAR_RYU_NUM_DELIVERIES, numJobs);
+    mgba_open();
     for (i = 0;i < numJobs;i++)
     {
         gap[0] = 1 + (Random() % (ARRAY_COUNT(sRyuDeliveryMapsList) - threshold[0] - numJobs + i));
@@ -124,9 +125,10 @@ void StartNewDeliveryQueue(void)
         AddBagItem(gSaveBlock2Ptr->Deliveries[i].itemId, 1);
         gSaveBlock2Ptr->Deliveries[i].mapgroup =  sRyuDeliveryMapsList[maplistnum][0];
         gSaveBlock2Ptr->Deliveries[i].mapnum =  sRyuDeliveryMapsList[maplistnum][1];
-        gSaveBlock2Ptr->Deliveries[i].xpos = sRyuDeliveryCoords[maplistnum][coordGroup][0];
-        gSaveBlock2Ptr->Deliveries[i].ypos = sRyuDeliveryCoords[maplistnum][coordGroup][1];
+        gSaveBlock2Ptr->Deliveries[i].xpos = (sRyuDeliveryCoords[maplistnum][coordGroup][0] + 7);//game offsets npc coords by -7 , have to compensate.
+        gSaveBlock2Ptr->Deliveries[i].ypos = (sRyuDeliveryCoords[maplistnum][coordGroup][1] + 7);
         gSaveBlock2Ptr->Deliveries[i].mapNameId = maplistnum;
+        gSaveBlock2Ptr->Deliveries[i].finished = FALSE;
     }
     gSaveBlock2Ptr->DeliveryTimer.minutesGiven = numJobs;
     gSaveBlock2Ptr->DeliveryTimer.Timer = numJobs + 1;
@@ -235,11 +237,11 @@ void RyuClearDeliveryQueue(void)
     u32 i;
     for (i = 0; i< 4; i++)
     {
-        gSaveBlock2Ptr->Deliveries[i].finished = TRUE;
-        gSaveBlock2Ptr->Deliveries[i].GfxID = 255;
-        gSaveBlock2Ptr->Deliveries[i].itemId = 1023;
-        gSaveBlock2Ptr->Deliveries[i].mapgroup = 0xFF;
-        gSaveBlock2Ptr->Deliveries[i].mapnum = 0xFF;
+        gSaveBlock2Ptr->Deliveries[i].finished = FALSE;
+        gSaveBlock2Ptr->Deliveries[i].GfxID = 0;
+        gSaveBlock2Ptr->Deliveries[i].itemId = 0;
+        gSaveBlock2Ptr->Deliveries[i].mapgroup = 0;
+        gSaveBlock2Ptr->Deliveries[i].mapnum = 0;
         gSaveBlock2Ptr->Deliveries[i].xpos = 0;
         gSaveBlock2Ptr->Deliveries[i].ypos = 0;
     }
@@ -282,6 +284,10 @@ int CheckDeliverySuccessful(void)
 
     if (jobsDone == (VarGet(VAR_RYU_NUM_DELIVERIES)))//if the number of finished jobs is the same as the number of jobs given
     {
+        if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+        {
+            DebugPrint((const u8 []) _("Jobs are Done. Advancing data."), 0);
+        }
         gSaveBlock2Ptr->DeliveryTimer.active = FALSE; //stop timer
         gSaveBlock2Ptr->DeliveryTimer.quotaNum = (VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA)); //copy the quota to struct so it can be adavanced
         VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, 10);//change the quest tracker data to tell player to return for route reward
@@ -308,10 +314,12 @@ int CheckFullDeliveryQueueFinished(void)
         VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, (gSaveBlock2Ptr->DeliveryTimer.quotaNum + 1));//advance quota data.
         if ((gSaveBlock2Ptr->DeliveryTimer.timeRanOut == FALSE) && (CheckRTCHealth() == TRUE))//check for broken/tampered RTC
         {
+            gSpecialVar_0x8001 = TRUE;
             return highReward;//player completed the queue in time
         }
         else
         {
+            gSpecialVar_0x8001 = FALSE;
             return lowReward;//player was late
         }
             

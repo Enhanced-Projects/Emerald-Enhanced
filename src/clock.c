@@ -14,6 +14,7 @@
 #include "factions.h"
 #include "RyuRealEstate.h"
 #include "overworld_notif.h"
+#include "RyuDynDeliveries.h"
 
 static void UpdatePerDay(struct Time *localTime);
 void UpdatePerHour(struct Time *localTime);
@@ -154,8 +155,11 @@ static void UpdatePerDay(struct Time *localTime)
         UpdateFrontierGambler(daysSince);
         SetShoalItemFlag(daysSince);
         SetRandomLotteryNumber(daysSince);
-        FlagClear(FLAG_RYU_FAILED_PROF_SPECIAL_QUEST);
         *days = localTime->days;
+        FlagClear(FLAG_RYU_DELIVERY_IN_PROGRESS);
+        RyuClearDeliveryQueue();
+        if ((VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) > 0) && (VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) <= 10))//only reset delivery data if in quota range.
+            VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, 0);
         QueueNotification(gRyuText_DailyQuestsReset, NOTIFY_GENERAL, 60);
     }
 }
@@ -184,6 +188,7 @@ static void UpdatePerMinute(struct Time *localTime)
                 }
                 else
                 {
+                    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock2Ptr->DeliveryTimer.Timer, STR_CONV_MODE_LEFT_ALIGN, 2);
                     QueueNotification(((const u8 []) _("Delivery: {STR_VAR_1} min(s) left.")), NOTIFY_GENERAL, 120);
                 }
             }

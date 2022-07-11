@@ -880,6 +880,10 @@ const static struct QuestStageDesc gDeliverySystemQuestStages[] = { //only visib
       .questStage = 5,
     },
     {
+      .description = gDeliverySystemQuestStage10,
+      .questStage = 10,
+    },
+    {
       .description = gDeliverySystemQuestStage100,
       .questStage = 100,
     },
