@@ -89,6 +89,7 @@
 #include "data/lifeskill.h"
 #include "autoscale_tables.h"
 #include "overworld_notif.h"
+#include "factions.h"
 
 extern u8 GetObjectEventIdByLocalId(u8 id);
 
@@ -2910,4 +2911,55 @@ void RyuDebug_ShowActiveAlchemy(void)
         StringCopy(gStringVar3, gRyuAlchemyEffectItemToStringTable[effectid]);
         DebugPrint(((const u8[]) _("Alchemy: {STR_VAR_3}.")), 0);
     }
+}
+
+void RyuBuildDailyQuestInfoString(void)
+{
+    u8 temp[50];
+    u16 type = (VarGet(VAR_RYU_DAILY_QUEST_TYPE));
+    u16 target = (VarGet(VAR_RYU_DAILY_QUEST_TARGET));
+    u16 data = (VarGet(VAR_RYU_DAILY_QUEST_DATA));
+    u16 from = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
+    switch (type)
+    {
+        case FETCH_TYPE:
+            {
+                StringCopy(temp, gFactionDailyQuestTypeNames[type]);//collect
+                StringAppend(temp, (const u8[]) _(" "));//space
+                ConvertIntToDecimalStringN(gStringVar1, data, STR_CONV_MODE_LEFT_ALIGN, 2);//quantity
+                StringAppend(temp, gStringVar1);//space
+                StringAppend(temp, (const u8[]) _(" "));//space
+                CopyItemName(target, gStringVar1);//item name
+                StringAppend(temp, gStringVar1);
+                StringAppend(temp, (const u8 []) _("(s)."));//just in case plural.
+                //should look like     Faction Daily:/nNaturalists: Collect 3 Pretty Wing(s).
+                break;
+            }
+        case CAPTURE_TYPE:
+            {
+                StringCopy(temp, gFactionDailyQuestTypeNames[type]);//Capture
+                StringAppend(temp, (const u8[]) _(" a "));//space
+                StringAppend(temp, gSpeciesNames[target]);//species name
+                StringAppend(temp, (const u8[]) _("."));
+                //should look like     Faction Daily:/nStudents: Capture a Pikachu.
+                break;
+            }
+        case TRAVEL_TYPE:
+            {
+                StringCopy(temp, gFactionDailyQuestTypeNames[type]);//Travel
+                StringAppend(temp, (const u8[]) _(" to "));
+                GetMapName(gStringVar1, target, 0);
+                StringAppend(temp, gStringVar1);//mapsec name
+                //should look like     Faction Daily:\nNobles: Travel to Devon Corp.
+                break;
+            }
+        case HATCH_TYPE:
+            {
+                StringCopy(temp, gFactionDailyQuestTypeNames[type]);//Hatch
+                StringAppend(temp, (const u8[]) _(" the given Egg."));//space
+                //should look like     Faction Daily:/nProfessionals: Hatch the given Egg.
+                break;
+            }
+    }
+    StringCopy(gRyuStringVar2, temp);
 }

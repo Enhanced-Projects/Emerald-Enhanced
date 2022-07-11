@@ -1281,11 +1281,13 @@ u8 GetTrainerBattleMode(void)
 
 bool8 GetTrainerFlag(void)
 {
+    u8 enemyFaction = (GetFactionId(gTrainerBattleOpponent_A));
+    u8 enemyFactionStanding = (GetFactionStanding(enemyFaction));
     if (InBattlePyramid())
         return GetBattlePyramidTrainerFlag(gSelectedObjectEvent);
     else if (InTrainerHill())
         return GetHillTrainerFlag(gSelectedObjectEvent);
-    else if (GetFactionStanding(GetFactionId(gTrainerBattleOpponent_A)) < 20)
+    else if ((gSaveBlock1Ptr->gNPCTrainerFactionRelations[enemyFaction]) < 20)
         return FALSE;
     else
         return FlagGet(GetTrainerAFlag());

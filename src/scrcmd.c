@@ -2467,12 +2467,7 @@ extern u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength);
 bool8 ScrCmd_buffermapname(struct ScriptContext *ctx)
 {
     u8 bufferIndex = ScriptReadByte(ctx);
-    u16 mapData = VarGet(ScriptReadHalfword(ctx));
-    u16 targetMapNum = (mapData & 0xFF);
-    u16 targetMapGroup = (mapData >> 8) & 0xFF;
-    u16 mapSecId = 0;
-
-    mapSecId = Overworld_GetMapHeaderByGroupAndId(targetMapGroup, targetMapNum)->regionMapSectionId;
+    u16 mapSecId = VarGet(ScriptReadHalfword(ctx));
     GetMapName(sScriptStringVars[bufferIndex], mapSecId, 0);
     return FALSE;
 }

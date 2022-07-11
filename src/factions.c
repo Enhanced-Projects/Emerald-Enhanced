@@ -13,6 +13,7 @@
 #include "palette.h"
 #include "string_util.h"
 #include "ach_atlas.h"
+#include "overworld_notif.h"
 
 const u8 gFactionNames[8][15] = {
     [FACTION_NATURALISTS] = _("Naturalists"),
@@ -23,6 +24,13 @@ const u8 gFactionNames[8][15] = {
     [FACTION_PROFESSIONALS] = _("Professionals"),
     [FACTION_POKEMON_LEAGUE] = _("Pokémon League"),
     [FACTION_OTHERS] = _("Unaffiliated")
+};
+
+const u8 gFactionDailyQuestTypeNames[4][8] = {
+[0] = _("Collect"),
+[1]= _("Capture"),
+[2]= _("Travel"),
+[3]= _("Hatch")
 };
 
 extern const u8 RyuNaturalistsDailyQuest[];
@@ -70,7 +78,7 @@ u8 GetFactionId(u16 trainerId)
 
 u8 GetFactionStanding(u16 trainerId) //this should return the value of player's standing in trainerId's faction
 {
-    return gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)];
+    return (gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)]);
 }
 
 u32 ConvertFactionStandingToState(u32 standing)
@@ -93,34 +101,6 @@ u32 ConvertFactionStandingToState(u32 standing)
             return FACTION_STAND_HIGH;
         case 200: 
             return FACTION_STAND_BEST;
-    }
-}
-
-const u8 gText_RyuDailyNoneType[] = _("None");
-const u8 gText_RyuDailyFetchType[] = _("Fetch");
-const u8 gText_RyuDailyCaptureType[] = _("Capture");
-const u8 gText_RyuDailyTravelType[] = _("Travel");
-const u8 gText_RyuDailyHatchType[] = _("Hatch");
-
-void BufferDailyQuestType (void)
-{
-    switch (VarGet(VAR_RYU_DAILY_QUEST_TYPE))
-    {
-        case 0:
-            StringCopy(gStringVar2, gText_RyuDailyNoneType);
-            break;
-        case 1:
-            StringCopy(gStringVar2, gText_RyuDailyFetchType);
-            break;
-        case 2:
-            StringCopy(gStringVar2, gText_RyuDailyCaptureType);
-            break;
-        case 3:
-            StringCopy(gStringVar2, gText_RyuDailyTravelType);
-            break;
-        case 4:
-            StringCopy(gStringVar2, gText_RyuDailyHatchType);
-            break;
     }
 }
 
@@ -238,6 +218,7 @@ void ClearDailyQuestData(void)
     VarSet(VAR_RYU_DAILY_QUEST_DATA, 1000);
     FlagClear(FLAG_DAILY_QUEST_ACTIVE);
     VarSet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OTHERS);
+    FlagClear(FLAG_RYU_NOTIFIED_DAILY_CANCEL);
 }
 
 void RyuSetFactionStandingPokemonLeagueDebug(void)

@@ -808,7 +808,7 @@
 #define FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY                           0x2EF
 #define FLAG_UNUSED_0x2F0                                           0x2F0
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN              0x2F1
-#define FLAG_UNUSED_0x2F2                                           0x2F2
+#define FLAG_RYU_NOTIFIED_DAILY_CANCEL                              0x2F2
 #define FLAG_UNUSED_0x2F3                                           0x2F3
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA          0x2F4
 #define FLAG_HIDE_LITTLE_ROOT_TOWN_PLAYERS_BEDROOM_MOM              0x2F5
@@ -1696,7 +1696,7 @@
 #define FLAG_UNUSED_SPECIAL_0xd                 (SPECIAL_FLAGS_START + 0xD)
 #define FLAG_RYU_USED_COMPANION_E4              (SPECIAL_FLAGS_START + 0xE) //Used a companion for championship match
 #define FLAG_RYU_PASSED_SAVE_VERSION_CHECK      (SPECIAL_FLAGS_START + 0xF) //prevents lag from checking save vs game version
-#define FLAG_RYU_TEMP_1                         (SPECIAL_FLAGS_START + 0x10)
+#define FLAG_RYU_OPTIONAL_QT_ACTION                         (SPECIAL_FLAGS_START + 0x10)
 #define FLAG_RYU_TEMP_2                         (SPECIAL_FLAGS_START + 0x11)
 #define FLAG_RYU_TEMP_3                         (SPECIAL_FLAGS_START + 0x12)
 #define FLAG_RYU_TEMP_4                         (SPECIAL_FLAGS_START + 0x13)

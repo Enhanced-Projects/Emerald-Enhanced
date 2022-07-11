@@ -82,6 +82,7 @@ extern const u8 RyuScript_NotifySucceededChallenge[];
 extern const u8 RyuScript_Lv100FailMsg[];
 extern const u8 RyuScript_Lv100SwitchMsg[];
 extern const u8 RyuCheckForLNSUAch[];
+extern const u8 RyuGlobal_CancelDailyQuest[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -269,6 +270,12 @@ void RyuDoNotifyTasks(void)
     {
         ScriptContext1_SetupScript(RyuGlobal_CheckAquaStatus);
     }
+
+    if (FlagGet(FLAG_RYU_OPTIONAL_QT_ACTION) == TRUE)
+    {
+        FlagClear(FLAG_RYU_OPTIONAL_QT_ACTION);
+        ScriptContext1_SetupScript(RyuGlobal_CancelDailyQuest);
+    }
 }
 
 void RyuDoSpecialEncounterChecks(struct FieldInput *input)
@@ -445,24 +452,15 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
 
 void RyuDoDailyTravelQuestThings(void)
 {
-    if ((VarGet(VAR_RYU_DAILY_QUEST_DATA) > 0) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) < 15) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3))
-            {
-                VarSet(VAR_RYU_DAILY_QUEST_DATA, (VarGet(VAR_RYU_DAILY_QUEST_DATA) - 1));
-            }
-
-    if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 15))
+    u16 data = VarGet(VAR_RYU_DAILY_QUEST_DATA);
+    u16 type = VarGet(VAR_RYU_DAILY_QUEST_TYPE);
+    u16 target = VarGet(VAR_RYU_DAILY_QUEST_TARGET);
+    if ((data > 0) && (data < 15) && (type == 3))
         {
-            u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
-            if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
-            {
-                if (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 15)
-                {
-                    VarSet(VAR_RYU_DAILY_QUEST_DATA, 14);
-                }
-            }
+            VarSet(VAR_RYU_DAILY_QUEST_DATA, (data - 1));
         }
 
-    if (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 0)
+    if (data == 0)
         {
             u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
             VarSet(VAR_RYU_DAILY_QUEST_DATA, 4000);

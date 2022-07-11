@@ -53,10 +53,10 @@ script PBC_WH_CheckPlayerExit1 {
 
 script PBC_WH_Plant {
 	lock
-	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_TEMP_1) == FALSE)) {
+	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_OPTIONAL_QT_ACTION) == FALSE)) {
 		msgbox("This plant is quite dry.\nSeems like it hasn't been watered\nin a long time.")
 		closemessage
-		setflag(FLAG_RYU_TEMP_1)
+		setflag(FLAG_RYU_OPTIONAL_QT_ACTION)
 	}
 	else {
 		msgbox("It's a dry plant.")
@@ -160,7 +160,7 @@ script RyuFollower_MayReturnToWallyHouseNight {
 
 script CheckWHInvestigationStatus {
 	if ((var(VAR_RYU_QUEST_MAY) == 40) || (var(VAR_RYU_QUEST_MAY) == 41)) {
-		goto_if_unset(FLAG_RYU_TEMP_1, PBC_WH_InvestigationNotDone)
+		goto_if_unset(FLAG_RYU_OPTIONAL_QT_ACTION, PBC_WH_InvestigationNotDone)
 		goto_if_unset(FLAG_RYU_TEMP_2, PBC_WH_InvestigationNotDone)
 		goto_if_unset(FLAG_RYU_TEMP_3, PBC_WH_InvestigationNotDone)
 		goto_if_unset(FLAG_RYU_TEMP_4, PBC_WH_InvestigationNotDone)

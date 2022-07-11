@@ -742,7 +742,7 @@ script RyuFollower_CourtneyChatterSelector {
 }
 
 script RyuFollower_MinnieChatterSelector {
-	random(4)
+	random(5)
 	switch (var(VAR_RESULT)) {
 		case 0:
 			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Don't worry, I'm your personal bodyguard now."))
@@ -760,7 +760,7 @@ script RyuFollower_MinnieChatterSelector {
 }
 
 script RyuFollower_LanetteChatterSelector {
-	random(4)
+	random(6)
 	switch (var(VAR_RESULT)) {
 		case 0:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}...\n...\pOh! Sorry!, you caught me daydreaming!")
@@ -772,6 +772,8 @@ script RyuFollower_LanetteChatterSelector {
 			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I sure hope I don't miss any important tech support calls..."))
 		case 4:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Your wireless pc is weird?\pWhat do you mean?\nIt's not a bug, it's a feature!")
+		case 5:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}There's a lot more to Pokémon than what the textbooks say, now that I see them in person.")
 	}
 	closemessage
 	return

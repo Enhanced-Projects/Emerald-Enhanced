@@ -6916,7 +6916,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerClay[] = {
 	{
 	.iv = 255,
 	.lvl = 92,
-	.species = SPECIES_RHYPHERIOR,
+	.species = SPECIES_RHYPERIOR,
 	.heldItem = ITEM_CHOICE_BAND,
 	.evspread = 0,
     .ability = 1,
@@ -6935,7 +6935,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerClay[] = {
 	.iv = 255,
 	.lvl = 91,
 	.species = SPECIES_KROOKODILE,
-	.heldItem = ITEM_CHOICE_SCARF
+	.heldItem = ITEM_CHOICE_SCARF,
 	.evspread = 0,
     .ability = 1,
 	.moves = {MOVE_EARTHQUAKE, MOVE_KNOCK_OFF, MOVE_OUTRAGE, MOVE_THUNDER_FANG},

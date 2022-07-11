@@ -1,0 +1,54 @@
+//general scripts for daily quest system
+script CommonDailyQuestEnd {
+    clearflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, 0xFFFF)//don't buffer anything for quest log.
+    msgbox("You earned ¥{STR_VAR_1}.")
+    closemessage
+    release
+    end
+}
+
+script RyuGlobal_CancelDailyQuest {
+    if (var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == 6) {
+        release
+        end
+    }
+    if (flag(FLAG_RYU_NOTIFIED_DAILY_CANCEL) == TRUE) {
+        goto(ForceCancelDailyQuest)
+    }
+    msgbox ("Cancelling a daily quest won't\nlet you get a new quest from\lthe same faction.\pAre you sure you want to\ncancel the daily quest?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        setflag(FLAG_RYU_NOTIFIED_DAILY_CANCEL)
+        closemessage
+        ForceCancelDailyQuest:
+        switch(var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION)) {
+            case FACTION_NATURALISTS:
+                setflag(FLAG_FINISHED_NATURALIST_DAILY)
+            case FACTION_STUDENTS:
+                setflag(FLAG_FINISHED_STUDENT_DAILY)
+            case FACTION_NOBLES:
+                setflag(FLAG_FINISHED_NOBLE_DAILY)
+            case FACTION_POKEFANS:
+                setflag(FLAG_FINISHED_POKEFAN_DAILY)
+            case FACTION_OUTCASTS:
+                setflag(FLAG_FINISHED_OUTCAST_DAILY)
+            case FACTION_PROFESSIONALS:
+                setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
+        }
+        setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OTHERS)
+        setvar(VAR_RYU_DAILY_QUEST_TARGET, 0xFFFF)
+        setvar(VAR_RYU_DAILY_QUEST_DATA, 0xFFFF)
+        setvar(VAR_RYU_DAILY_QUEST_TYPE, 0xFFFF)
+        clearflag(FLAG_DAILY_QUEST_ACTIVE)
+        msgbox("Daily quest cancelled.")
+        closemessage
+        release
+        end
+    }
+    else {
+        msgbox("Daily quest not cancelled.")
+        closemessage
+        release
+        end
+    }
+}

@@ -373,9 +373,10 @@ RyuDebug_ViewTempVars::
 	goto RyuDebug_UtilitiesMenu
 
 RDB_TempVarsViewMsg:
-	.string "{STR_VAR_1}$"
+	.string "{RYU_STR_2}$"
 
 RyuDebug_Utility1::
+	goto ForceCancelDailyQuest
 	release
 	end
 

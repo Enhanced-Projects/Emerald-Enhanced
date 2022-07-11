@@ -1775,7 +1775,7 @@
 	.2byte \id
 	.endm
 
-	@Buffers the given map data(data) into (buffer)
+	@Buffers the given mapsec (data) into (buffer)
 	.macro buffermapname buffer:req, data:req
 	.byte 0xfc
 	.byte \buffer

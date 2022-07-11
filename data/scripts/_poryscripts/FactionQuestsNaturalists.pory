@@ -1,10 +1,5 @@
 //This is the scripts file for the procedural generation of mini-quests for factions
 
-//Procedural components
-const FETCH_TYPE = 1
-const CAPTURE_TYPE = 2
-const TRAVEL_TYPE = 3
-const HATCH_TYPE = 4
 
 script(global) RyuNaturalistsDailyQuest  {
     lock
@@ -77,7 +72,10 @@ script(global) RyuNaturalistsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
-    random(3)//increase this by the number of quests you add. 
+    random(5)//increase this by the number of quests you add.
+    if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
+        call(RyuDoDailyQuestVerbosePrint)
+    }
     switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
@@ -103,6 +101,11 @@ script(global) RyuNaturalistsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE103)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
             msgbox(format("{PLAYER}, can you go check out Route 103? I want to know specifically if there's a good place to camp there or not."))
+        case 4:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_ESCAPE_ROPE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
+            msgbox(format("A friend is about to go spelunking. He's kinda new to this so I want him to have a couple of Escape Ropes if something goes wrong."))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     closemessage
@@ -116,19 +119,9 @@ script CommonNaturalistRewardScript {
     msgbox("Thanks for getting the stuff!")
     setflag(FLAG_FINISHED_NATURALIST_DAILY)
     changefactionstanding(FACTION_NATURALISTS, 25, FALSE)
-    buffernumberstring(0, 5000)
-    addmoney(5000)
+    random(3500)
+    addvar(VAR_RESULT, 3000)
+    buffernumberstring(0, VAR_RESULT)
+    addmoney(VAR_RESULT)
     goto(CommonDailyQuestEnd)
-}
-
-script CommonDailyQuestEnd {
-    clearflag(FLAG_DAILY_QUEST_ACTIVE)
-    msgbox("You earned ¥{STR_VAR_1}.")
-    closemessage
-    release
-    end
-}
-
-text RDBNAT1 {
-    "VAR RESULT is {STR_VAR_1}\n QUEST DATA is {STR_VAR_2}"
 }

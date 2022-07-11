@@ -1,11 +1,5 @@
 //quests for Nobles
 
-//Procedural components
-const FETCH_TYPE = 1
-const CAPTURE_TYPE = 2
-const TRAVEL_TYPE = 3
-const HATCH_TYPE = 4
-
 
 script(global) RyuNoblesDailyQuest  {
     lock
@@ -90,7 +84,10 @@ script(global) RyuNoblesDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES)
-    random(3)//increase this by the number of quests you add. 
+    random(4)//increase this by the number of quests you add.
+    if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
+        call(RyuDoDailyQuestVerbosePrint)
+    }
     switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
@@ -104,7 +101,7 @@ script(global) RyuNoblesDailyQuest  {
             msgbox("The board is trying to expand it's\nportfolio of riches.\pPlease acquire some Big Pearls\nfor us to hold.\pWe need at least eight.")
         case 2:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_RUSTBORO_CITY_DEVON_CORP_2F)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_RUSTBORO_CITY)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             msgbox(format("The board needs you to go see what Devon Corp is up to. Head there to the second floor and see what their latest project is. Stocks are on the line here!"))
         case 3:
@@ -127,8 +124,10 @@ script CommonNobleRewardScript {
     msgbox("The Board should be pleased.\nYou are dismissed.")
     setflag(FLAG_FINISHED_NOBLE_DAILY)
     changefactionstanding(FACTION_NOBLES, 25, FALSE)
-    buffernumberstring(0, 10000)
-    addmoney(10000)
+    random(8500)
+    addvar(VAR_RESULT, 3000)
+    buffernumberstring(0, VAR_RESULT)
+    addmoney(VAR_RESULT)
     goto(CommonDailyQuestEnd)
 }
 

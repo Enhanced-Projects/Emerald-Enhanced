@@ -2739,3 +2739,12 @@ script RDM_MoveDown1 {
 	waitmovement(VAR_RYU_DYNAMIC_MOVEMENT_ID)
 	return
 }
+
+text DailyVerboseMsg {
+	"Rolled quest {STR_VAR_1}$"
+}
+script RyuDoDailyQuestVerbosePrint {
+	buffernumberstring(0, VAR_RESULT)
+    debugprint(DailyVerboseMsg, 60)
+	return
+}

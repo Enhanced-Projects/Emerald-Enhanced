@@ -21,5 +21,6 @@ void ClearDailyQuestData(void);//happens when daily events are done by rtc
 const u8 *RyuGetFactionDailyQuestScriptPtr(u8 factionId);
 
 extern const u8 gFactionNames[8][15];
+extern const u8 gFactionDailyQuestTypeNames[4][8];
 
 #endif //GUARD_FACTIONS_H

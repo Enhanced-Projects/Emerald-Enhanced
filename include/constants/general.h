@@ -458,6 +458,11 @@
 #define FACTION_STAND_HIGH 6
 #define FACTION_STAND_BEST 7
 
+#define FETCH_TYPE 0
+#define CAPTURE_TYPE 1
+#define TRAVEL_TYPE 2
+#define HATCH_TYPE 3
+
 //The questlines that have their own discrete quest stage tracking variable
 #define QUEST_ID_DEVON_SCIENTIST 0
 #define QUEST_ID_DEVON_CORPORATE 1

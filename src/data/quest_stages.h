@@ -202,6 +202,14 @@ const u8 gDeliverySystemQuestStage108[] = _("You delivered the Flowers to the Fo
 const u8 gDeliverySystemQuestStage109[] = _("The Warehouse Foreman has offered you a job.\nReturn to him to accept it.");
 const u8 gDeliverySystemQuestStage1000[] = _("You have not started the delivery\nspecial quest, nor can you accept\ndelivery routes.");
 
+const u8 sDailyQuestStageNaturalists[] = _("Daily quest for Naturalists:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageStudents[] = _("Daily quest for Students:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageNobles[] = _("Daily quest for Nobles:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStagePokefans[] = _("Daily quest for Pokéfans:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageOutcasts[] = _("Daily quest for Outcasts:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageProfessionals[] = _("Daily quest for Professionals:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageEmpty[] = _("No daily quest active.");
+
 struct QuestStageDesc
 {
   const u8 * description;
@@ -928,6 +936,39 @@ const static struct QuestStageDesc gDeliverySystemQuestStages[] = { //only visib
       .questStage = 1000,
     },
 };
+
+
+const static struct QuestStageDesc gDailyQuestStages[] = { //only visible when VAR_RYU_DAILY_QUEST_ASIGNEE_FACTION is NOT 0xFFFF
+  {
+    .description = sDailyQuestStageNaturalists,
+    .questStage = 0,
+  },
+  {
+    .description = sDailyQuestStageStudents,
+    .questStage = 1,
+  },
+  {
+    .description = sDailyQuestStageNobles,
+    .questStage = 2,
+  },
+  {
+    .description = sDailyQuestStagePokefans,
+    .questStage = 3,
+  },
+  {
+    .description = sDailyQuestStageOutcasts,
+    .questStage = 4,
+  },
+  {
+    .description = sDailyQuestStageProfessionals,
+    .questStage = 5,
+  },
+  {
+    .description = sDailyQuestStageEmpty,
+    .questStage = 7,
+  },
+};
+
 const static struct QuestStageDesc gMayQuestStages[] = { //only visible when stage is 5 or higher.
     {
       .description = sMayQuestStage0,

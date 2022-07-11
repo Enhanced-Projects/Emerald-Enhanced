@@ -1,11 +1,5 @@
 //professionals quests
 
-//Procedural components
-const FETCH_TYPE = 1
-const CAPTURE_TYPE = 2
-const TRAVEL_TYPE = 3
-const HATCH_TYPE = 4
-
 
 script(global) RyuProfessionalsDailyQuest  {
     lock
@@ -82,7 +76,10 @@ script(global) RyuProfessionalsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
-    random(4)//increase this by the number of quests you add.
+    random(6)//increase this by the number of quests you add.
+    if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
+        call(RyuDoDailyQuestVerbosePrint)
+    }
     switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
@@ -96,7 +93,7 @@ script(global) RyuProfessionalsDailyQuest  {
             msgbox("I'm too busy to travel to a\nPokemon Center.\pDo you happen to have a couple\nHyper Potions?\pI'll be able to continue my work.")
         case 2:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE110)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_ROUTE_110)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             msgbox(format("Can you go see what the population of Cycling Road looks like? I want to travel through there soon, so I want to know how busy it is. Thanks!"))
         case 3:
@@ -115,7 +112,7 @@ script(global) RyuProfessionalsDailyQuest  {
             msgbox(format("I need some smooth sand to polish and sharpen my tools with, could you bring me one? Thanks."))
         case 5:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_CRAGGY_COAST)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_CRAGGY_COAST)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
             msgbox(format("Hey there! We got word of some water-type Pokémon at Craggy Coast that would be useful transporting items north. Could you check out Craggy Coast and find which Pokémon can be found there?!"))
 
@@ -130,8 +127,10 @@ script CommonProfessionalsRewardScript {
     msgbox(format("Everything you do for the Union is noted!"))
     setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
     changefactionstanding(FACTION_PROFESSIONALS, 25, FALSE)
-    addmoney(4000)
-    buffernumberstring(0, 4000)
+    random(4500)
+    addvar(VAR_RESULT, 2000)
+    buffernumberstring(0, VAR_RESULT)
+    addmoney(VAR_RESULT)
     goto(CommonDailyQuestEnd)
 }
 
