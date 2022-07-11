@@ -867,7 +867,7 @@ static bool8 IntializeAP(u8 taskId)
             LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
         InitWindows(sAPMenuWindowTemplates);
         InitTextBoxGfxAndPrinters();
-        //LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
         DeactivateAllTextPrinters();
         for(i = 0; i <= WIN_AP_DESC; i++)
         {
@@ -882,7 +882,7 @@ static bool8 IntializeAP(u8 taskId)
         ResetSpriteData();
         FreeAllSpritePalettes();
         gReservedSpritePaletteCount = 0;
-        //LoadSpritePalette(&sAPSelectSpritePal);
+        LoadSpritePalette(&sAPSelectSpritePal);
         LoadSpriteSheet(&sAPSelectSpriteSheet);
         for(i = 0; i < 4; i++)
         {   
@@ -894,7 +894,7 @@ static bool8 IntializeAP(u8 taskId)
         gMain.state++;
         break;
     case 2: // redundant case didn't bother to delete
-        //LoadSpritePalette(&sAPTierSelectPal);
+        LoadSpritePalette(&sAPTierSelectPal);
         LoadSpriteSheet(&sAPTierSelectTile);
         // repurposed the cursorspriteid field for later use since we delete the cursor sprite anyways
         sAchAtlas.cursorSpriteId = CreateSprite(&sAPTierSelectSpriteTemplate, 12, 19, 0);
