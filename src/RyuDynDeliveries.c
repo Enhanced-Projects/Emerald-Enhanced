@@ -151,25 +151,28 @@ void HatBuildDeliveryInfoString(void)
 {
     u8* current = gRyuStringVar1;
     u32 i;
+    u32 lines = 0;
     u8 buf[1];
     StringCopy(current, (u8[]) _(""));
     StringAppend(current, (u8[]) _("Meet "));
     for (i = 0; i < 4; ++i) {
-        if (gSaveBlock2Ptr->Deliveries[i].finished == TRUE || gSaveBlock2Ptr->Deliveries[i].itemId == 1023)
+        if (gSaveBlock2Ptr->Deliveries[i].finished == TRUE || gSaveBlock2Ptr->Deliveries[i].itemId == 0)
             continue;
+        if (lines % 2)
+            StringAppend(current, (u8[]) _(", "));
         StringAppend(current, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[i].GfxID]);
         StringAppend(current, (u8[]) _(" in "));
         StringAppend(current, mapNameList[(gSaveBlock2Ptr->Deliveries[i].mapNameId)]);
-        if (i % 2)
+        if (lines == 1)
             StringAppend(current, (u8[]) _("\n"));
-        else
-            StringAppend(current, (u8[]) _(", "));
+        ++lines;
     }
+    if (lines != 2)
+        StringAppend(current, (u8[]) _("\n"));
     StringAppend(current, (u8[])_("Delivery time: "));
     ConvertIntToDecimalStringN(buf, gSaveBlock2Ptr->DeliveryTimer.Timer, STR_CONV_MODE_LEFT_ALIGN, 2);
     StringAppend(current, buf);
     StringAppend(current, (u8[])_(" minutes remaining"));
-
 }
 
 const u8 deliverA[] = _("Take ");
@@ -183,7 +186,7 @@ void RyuBufferCurrentJobs(void)
     u8 i;
     for (i = 0; i < 4; ++i) {
         u8* current = i == 0 ? gStringVar1 : i == 1 ? gStringVar2 : i == 2 ? gStringVar3 : gRyuStringVar1;
-        if (gSaveBlock2Ptr->Deliveries[i].finished == FALSE && gSaveBlock2Ptr->Deliveries[i].itemId != 1023)
+        if (gSaveBlock2Ptr->Deliveries[i].finished == FALSE && gSaveBlock2Ptr->Deliveries[i].itemId != 0)
         {
             StringCopy(current, deliverA);
             CopyItemName(gSaveBlock2Ptr->Deliveries[i].itemId, gRyuStringVar2);
