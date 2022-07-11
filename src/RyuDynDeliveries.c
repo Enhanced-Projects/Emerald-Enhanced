@@ -167,7 +167,8 @@ void HatBuildDeliveryInfoString(void)
             StringAppend(current, (u8[]) _("\n"));
         ++lines;
     }
-    StringAppend(current, (u8[]) _("\n"));
+    if (lines != 2)
+        StringAppend(current, (u8[]) _("\n"));
     StringAppend(current, (u8[])_("Delivery time: "));
     ConvertIntToDecimalStringN(buf, gSaveBlock2Ptr->DeliveryTimer.Timer, STR_CONV_MODE_LEFT_ALIGN, 2);
     StringAppend(current, buf);
