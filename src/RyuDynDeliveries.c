@@ -155,7 +155,7 @@ void HatBuildDeliveryInfoString(void)
     StringCopy(current, (u8[]) _(""));
     StringAppend(current, (u8[]) _("Meet "));
     for (i = 0; i < 4; ++i) {
-        if (gSaveBlock2Ptr->Deliveries[i].finished == TRUE || gSaveBlock2Ptr->Deliveries[i].itemId == 1023)
+        if (gSaveBlock2Ptr->Deliveries[i].finished == TRUE || gSaveBlock2Ptr->Deliveries[i].itemId == 0)
             continue;
         StringAppend(current, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[i].GfxID]);
         StringAppend(current, (u8[]) _(" in "));
@@ -183,7 +183,7 @@ void RyuBufferCurrentJobs(void)
     u8 i;
     for (i = 0; i < 4; ++i) {
         u8* current = i == 0 ? gStringVar1 : i == 1 ? gStringVar2 : i == 2 ? gStringVar3 : gRyuStringVar1;
-        if (gSaveBlock2Ptr->Deliveries[i].finished == FALSE && gSaveBlock2Ptr->Deliveries[i].itemId != 1023)
+        if (gSaveBlock2Ptr->Deliveries[i].finished == FALSE && gSaveBlock2Ptr->Deliveries[i].itemId != 0)
         {
             StringCopy(current, deliverA);
             CopyItemName(gSaveBlock2Ptr->Deliveries[i].itemId, gRyuStringVar2);
