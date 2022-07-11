@@ -10,6 +10,7 @@ extern bool32 CheckRTCHealth(void);
 extern void StartNewDeliveryQueue(void);
 extern void RyuClearDeliveryQueue(void);
 extern void RyuCountActiveJobs(void);
+void HatBuildDeliveryInfoString(void);
 
 
 #endif

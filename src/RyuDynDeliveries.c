@@ -147,6 +147,29 @@ void StartNewDeliveryQueue(void)
 }
 //u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
 
+void HatBuildDeliveryInfoString(void)
+{
+    u8* current = gRyuStringVar1;
+    u32 i;
+    u8 buf[1];
+    StringCopy(current, (u8[]) _(""));
+    StringAppend(current, (u8[]) _("Meet "));
+    for (i = 0; i < 4; ++i) {
+        StringAppend(current, sRyuDeliveryTargetToText[gSaveBlock2Ptr->Deliveries[i].GfxID]);
+        StringAppend(current, (u8[]) _(" in "));
+        StringAppend(current, mapNameList[(gSaveBlock2Ptr->Deliveries[i].mapNameId)]);
+        if (i % 2)
+            StringAppend(current, (u8[]) _("\n"));
+        else
+            StringAppend(current, (u8[]) _(", "));
+    }
+    StringAppend(current, (u8[])_("Delivery time: "));
+    ConvertIntToDecimalStringN(buf, gSaveBlock2Ptr->DeliveryTimer.Timer, STR_CONV_MODE_LEFT_ALIGN, 2);
+    StringAppend(current, buf);
+    StringAppend(current, (u8[])_(" minutes remaining"));
+
+}
+
 const u8 deliverA[] = _("Take ");
 const u8 deliverto[] = _(" to ");
 const u8 deliverAt[] = _(" at ");
