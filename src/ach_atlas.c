@@ -463,8 +463,10 @@ static void Task_OpenJournalAfterFade(u8 taskId)
     SetMainCallback2(CB2_OpenJournal);
 }
 
+// FULL_COLOR
 static bool8 IntializeAtlas(void)
 {
+    u16 buf[32];
     u16 * map;
     u16 tempColor;
     u32 i, j;
@@ -491,7 +493,14 @@ static bool8 IntializeAtlas(void)
         sAchAtlas.tilemapPosY = TILEMAP_START_Y;
         LoadPalette(sAchievementAtlasStarPalette, 0, 0x20);
         LoadPalette(sAchievementAtlasPointsPal, 0x10, 0x20);
-        LoadPalette(sAchievementAtlasBorderPal, 0x20, 0x20);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
+            CpuCopy16(sAchievementAtlasBorderPal, buf, 0x20);
+            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 1 = bg
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 2 = window border
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 13 = text color
+            LoadPalette(buf, 0x20, 0x20);
+        } else
+            LoadPalette(sAchievementAtlasBorderPal, 0x20, 0x20);
         InitWindows(sAtlasWindowTemplate);
         InitTextBoxGfxAndPrinters();
         DeactivateAllTextPrinters();
@@ -577,6 +586,7 @@ static bool8 IntializeAtlas(void)
     }
     return FALSE;
 }
+
 
 static void Task_HandleAtlasInput(u8 taskId)
 {
@@ -823,10 +833,12 @@ void CB2_OpenAPMenu(void)
     }
 }
 
+//FULL_COLOR
 static bool8 IntializeAP(u8 taskId)
 {
     static const u8 usedAP[] = _("{STR_VAR_1}AP");
     u16 * map;
+    u16 buf[sizeof(sAPMenuBackgroundPalette)];
     u32 i;
     u32 spriteId;
     switch (gMain.state)
@@ -843,10 +855,19 @@ static bool8 IntializeAP(u8 taskId)
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sAPMenuBackgroundTileset, BG_CHAR_ADDR(0), sizeof(sAPMenuBackgroundTileset));
         DmaCopy16(3, sAPMenuBackgroundTilemap, GetBgTilemapBuffer(2), sizeof(sAPMenuBackgroundTilemap));
-        LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
+            CpuCopy16(sAPMenuBackgroundPalette, buf, sizeof(sAPMenuBackgroundPalette));
+            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 1 = window highlight
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 2 = window border
+            buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];       // 13 = text color
+            buf[16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];       // 16 = text shadowx
+            buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 4 = bg
+            LoadPalette(buf, 0, sizeof(sAPMenuBackgroundPalette));
+        } else
+            LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
         InitWindows(sAPMenuWindowTemplates);
         InitTextBoxGfxAndPrinters();
-        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        //LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
         DeactivateAllTextPrinters();
         for(i = 0; i <= WIN_AP_DESC; i++)
         {
@@ -861,7 +882,7 @@ static bool8 IntializeAP(u8 taskId)
         ResetSpriteData();
         FreeAllSpritePalettes();
         gReservedSpritePaletteCount = 0;
-        LoadSpritePalette(&sAPSelectSpritePal);
+        //LoadSpritePalette(&sAPSelectSpritePal);
         LoadSpriteSheet(&sAPSelectSpriteSheet);
         for(i = 0; i < 4; i++)
         {   
@@ -873,7 +894,7 @@ static bool8 IntializeAP(u8 taskId)
         gMain.state++;
         break;
     case 2: // redundant case didn't bother to delete
-        LoadSpritePalette(&sAPTierSelectPal);
+        //LoadSpritePalette(&sAPTierSelectPal);
         LoadSpriteSheet(&sAPTierSelectTile);
         // repurposed the cursorspriteid field for later use since we delete the cursor sprite anyways
         sAchAtlas.cursorSpriteId = CreateSprite(&sAPTierSelectSpriteTemplate, 12, 19, 0);
