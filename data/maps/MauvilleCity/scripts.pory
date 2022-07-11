@@ -347,3 +347,9 @@ script MC_AdrastiWarehouseDoor {
 	warpsilent(MAP_MAUVILLE_CITY_ADRASTI_WAREHOUSE, 255, 10, 19)
 	waitstate
 }
+
+script AW_Sign {
+	msgbox("                Adrasti Corporation\n                     Main Warehouse", MSGBOX_SIGN)
+	release
+	end
+}
