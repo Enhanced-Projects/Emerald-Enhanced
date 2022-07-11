@@ -6895,41 +6895,50 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerYui[] = {
 };
 
 static const struct TrainerMonItemCustomMoves sParty_ChallengerClay[] = {
+    {
+	.iv = 250,
+	.lvl = 90,
+	.species = SPECIES_TYRANITAR,
+	.heldItem = ITEM_TYRANITARITE,
+	.evspread = 0,
+    .ability = 0,
+	.moves = {MOVE_STONE_EDGE, MOVE_CRUNCH, MOVE_ICE_PUNCH, MOVE_EARTHQUAKE},
+	},
 	{
 	.iv = 255,
 	.lvl = 91,
 	.species = SPECIES_HIPPOWDON,
-	.heldItem = ITEM_HARD_STONE,
+	.heldItem = ITEM_LEFTOVERS,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_STONE_EDGE, MOVE_STEALTH_ROCK, MOVE_EARTHQUAKE, MOVE_SLACK_OFF},
+	.moves = {MOVE_ROAR, MOVE_STEALTH_ROCK, MOVE_EARTHQUAKE, MOVE_SLACK_OFF},
 	},
 	{
 	.iv = 255,
 	.lvl = 92,
-	.species = SPECIES_GLISCOR,
-	.heldItem = ITEM_FLYING_GEM,
+	.species = SPECIES_RHYPHERIOR,
+	.heldItem = ITEM_CHOICE_BAND,
 	.evspread = 0,
     .ability = 1,
-	.moves = {MOVE_ACROBATICS, MOVE_KNOCK_OFF, MOVE_BULLDOZE, MOVE_U_TURN},
+	.moves = {MOVE_ROCK_WRECKER, MOVE_HAMMER_ARM, MOVE_DRILL_RUN, MOVE_MEGAHORN},
 	},
 	{
 	.iv = 255,
 	.lvl = 90,
-	.species = SPECIES_GASTRODON,
-	.heldItem = ITEM_RINDO_BERRY,
+	.species = SPECIES_SEISMITOAD,
+	.heldItem = ITEM_LIFE_ORB,
 	.evspread = 0,
     .ability = 1,
-	.moves = {MOVE_TOXIC, MOVE_RECOVER, MOVE_SCALD, MOVE_EARTH_POWER},
+	.moves = {MOVE_LIQUIDATION, MOVE_SLUDGE_WAVE, MOVE_DRAIN_PUNCH, MOVE_EARTH_POWER},
 	},
 	{
 	.iv = 255,
 	.lvl = 91,
-	.species = SPECIES_MAGNEZONE,
-	.heldItem = ITEM_ASSAULT_VEST,
+	.species = SPECIES_KROOKODILE,
+	.heldItem = ITEM_CHOICE_SCARF
 	.evspread = 0,
     .ability = 1,
-	.moves = {MOVE_FLASH_CANNON, MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_HIDDEN_POWER},
+	.moves = {MOVE_EARTHQUAKE, MOVE_KNOCK_OFF, MOVE_OUTRAGE, MOVE_THUNDER_FANG},
 	},
 	{
 	.iv = 250,
@@ -6938,16 +6947,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerClay[] = {
 	.heldItem = ITEM_LIFE_ORB,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE, MOVE_SANDSTORM},
-	},
-	{
-	.iv = 250,
-	.lvl = 90,
-	.species = SPECIES_LUCARIO,
-	.heldItem = ITEM_FOCUS_SASH,
-	.evspread = 0,
-    .ability = 0,
-	.moves = {MOVE_AURA_SPHERE, MOVE_DRAGON_PULSE, MOVE_FLASH_CANNON, MOVE_VACUUM_WAVE},
+	.moves = {MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE, MOVE_RAPID_SPIN},
 	}
 };
 

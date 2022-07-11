@@ -376,7 +376,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	clearflag FLAG_RYU_PROF_SPECIAL_FINISHED
 	release
 	end
 
