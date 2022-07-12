@@ -43,6 +43,25 @@ const u16 RoyalPurpleRGBTheme[16] = {
     RGB(9, 14, 20)
 };
 
+const u16 GlacierRGBTheme[16] = {
+    RGB(14, 25, 20),
+    RGB(31, 31, 31),
+    RGB(0, 10, 29),
+    RGB(0, 28, 31),
+    RGB(15, 2, 9),
+    RGB(31, 22, 28),
+    RGB(4, 19, 1),
+    RGB(18, 30, 18),
+    RGB(5, 9, 23),
+    RGB(25, 27, 30),
+    RGB(31, 31, 31),
+    RGB(31, 31, 31),
+    RGB(31, 31, 31),
+    RGB(0, 21, 31),
+    RGB(11, 27, 31),
+    RGB(9, 14, 20),
+};
+
 const u16 CustomInterfacePaletteSlots[] = {
     2, //standard text color
     3, //standard text shadow
@@ -54,6 +73,7 @@ const u16 CustomInterfacePaletteSlots[] = {
 const u16 *UserPresetThemes[] = {
     BlueSteelRGBTheme,
     RoyalPurpleRGBTheme,
+    GlacierRGBTheme,
 };
 
 void SetUserRGBValue(void)
@@ -80,6 +100,7 @@ void printThemeColors (void)
     u16 r;
     u16 g;
     u16 b;
+    mgba_open();
     for (i = 0; i < 16;i++)
     {
         r = (GET_R(gSaveBlock2Ptr->userInterfaceTextboxPalette[i]));
@@ -87,6 +108,7 @@ void printThemeColors (void)
         b = (GET_B(gSaveBlock2Ptr->userInterfaceTextboxPalette[i]));
         mgba_printf(LOGINFO, "index %d, RGB Colors: (%d, %d, %d)", i, r, g, b);
     }
+    mgba_close();
 }
 
 void ApplyPresetRGBUserTheme (void)

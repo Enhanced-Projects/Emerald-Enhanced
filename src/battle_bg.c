@@ -788,11 +788,11 @@ void LoadBattleMenuWindowGfx(void)
 
             //LZDecompressWram(gBattleWindowTextDarkPalette, buf);
             //CpuCopy16(gBattleWindowTextDarkPalette, buf, 0x20);
-            mgba_open();
-            for (i =0; i< 16; ++i) {
-                mgba_printf(LOGINFO, "entries %d", buf[i]);
-            }
-            mgba_close();
+            //mgba_open();
+            //for (i =0; i< 16; ++i) {
+            //    mgba_printf(LOGINFO, "entries %d", buf[i]);
+            //}
+            //mgba_close();
             CpuCopy16(buf, gPlttBufferUnfaded + 0x50, 0x20);
             CpuCopy16(buf, gPlttBufferFaded + 0x50, 0x20);
             break;

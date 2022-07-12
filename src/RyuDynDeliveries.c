@@ -101,7 +101,6 @@ void StartNewDeliveryQueue(void)
     RyuClearDeliveryQueue();
 
     VarSet(VAR_RYU_NUM_DELIVERIES, numJobs);
-    mgba_open();
     for (i = 0;i < numJobs;i++)
     {
         gap[0] = 1 + (Random() % (ARRAY_COUNT(sRyuDeliveryMapsList) - threshold[0] - numJobs + i));
