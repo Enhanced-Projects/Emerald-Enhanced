@@ -189,12 +189,8 @@ struct Pokedex
 {
     /*0x00*/ u8 order;
     /*0x01*/ u8 mode;
-    /*0x02*/ u8 unused; // previously required to show national dex, disabled.
-    /*0x03*/ u8 unknown2;
     /*0x04*/ u32 unownPersonality; // set when you first see Unown
     /*0x08*/ u32 spindaPersonality; // set when you first see Spinda
-    /*0x0C*/ u32 unknown3;
-    /*0x10*/ u8 filler[0x68]; // Previously Dex Flags, feel free to remove.
 };
 
 
@@ -292,6 +288,7 @@ struct BattleFrontier
     /*0xCA9*/ u8 lvlMode:2;
     /*0xCA9*/ u8 challengePaused:1;
     /*0xCA9*/ u8 disableRecordBattle:1;
+              u8 savedGame:1;
     /*0xCAA*/ u16 selectedPartyMons[MAX_FRONTIER_PARTY_SIZE];
     /*0xCB2*/ u16 curChallengeBattleNum; // Battle number / room number (Pike) / floor number (Pyramid)
     /*0xCB4*/ u16 trainerIds[20];
@@ -311,7 +308,6 @@ struct BattleFrontier
     /*0xD08*/ u8 domeAttemptedDoublesOpen:1;
     /*0xD08*/ u8 domeHasWonDoubles50:1;
     /*0xD08*/ u8 domeHasWonDoublesOpen:1;
-    /*0xD09*/ u8 domeUnused;
     /*0xD0A*/ u8 domeLvlMode;
     /*0xD0B*/ u8 domeBattleMode;
     /*0xD0C*/ u16 domeWinStreaks[2][2];
@@ -319,7 +315,6 @@ struct BattleFrontier
     /*0xD1C*/ u16 domeTotalChampionships[2][2];
     /*0xD24*/ struct BattleDomeTrainer domeTrainers[DOME_TOURNAMENT_TRAINERS_COUNT];
     /*0xD64*/ u16 domeMonIds[DOME_TOURNAMENT_TRAINERS_COUNT][FRONTIER_PARTY_SIZE];
-    /*0xDC4*/ u16 unused_DC4;
     /*0xDC6*/ u16 palacePrize;
     /*0xDC8*/ u16 palaceWinStreaks[2][2];
     /*0xDD0*/ u16 palaceRecordWinStreaks[2][2];
@@ -356,10 +351,6 @@ struct BattleFrontier
     /*0xEE0*/ u8 trainerFlags;
     /*0xEE1*/ u8 opponentNames[2][PLAYER_NAME_LENGTH + 1];
     /*0xEF1*/ u8 opponentTrainerIds[2][TRAINER_ID_LENGTH];
-    /*0xEF9*/ u8 unk_EF9:7; // Never read
-    /*0xEF9*/ u8 savedGame:1;
-    /*0xEFA*/ u8 unused_EFA;
-    /*0xEFB*/ u8 unused_EFB;
     /*0xEFC*/ struct DomeMonData domePlayerPartyData[FRONTIER_PARTY_SIZE];
 };
 
@@ -416,7 +407,6 @@ struct SaveBlock2
     /*0x10*/ u8 playTimeMinutes;
     /*0x11*/ u8 playTimeSeconds;
     /*0x12*/ u8 playTimeVBlanks;
-    /*0x13*/ u8 unused;  // previously button mode
     /*0x14*/ u16 optionsTextSpeed:3; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST]
              u16 optionsWindowFrameType:5; // Specifies one of the 20 decorative borders for text boxes
              u16 optionsSound:1; // OPTIONS_SOUND_[MONO/STEREO]
@@ -425,10 +415,11 @@ struct SaveBlock2
              u16 regionMapZoom:1; // whether the map is zoomed in
              u16 expShare:1;
              u16 forceSetBattleType:1; // should battles always be Set.
+             u16 trainerSlideEnabled:1;
+             u16 unusedOption:1;
     /*0x18*/ struct Pokedex pokedex;
     /*0x98*/ struct Time localTimeOffset;
     /*0xA0*/ struct Time lastBerryTreeUpdate;
-    /*0xA8*/ u32 gcnLinkFlags; // Read by Pokemon Colosseum/XD
     /*0xAC*/ u32 encryptionKey;
     /*0x21C*/ struct RankingHall1P hallRecords1P[HALL_FACILITIES_COUNT][2][3]; // From record mixing.
     /*0x57C*/ struct RankingHall2P hallRecords2P[2][3]; // From record mixing.
@@ -438,11 +429,10 @@ struct SaveBlock2
               u8 achievementPowerFlags[NUM_ACH_PWR_BYTES];
               u8 alchemyEffect; //Which alchemy effect is currently active.
               u8 alchemyCharges; //how many charges, if any, are left for the currently active alchemy effect.
-              u16 hasAlchemyEffectActive:1; //a block of 16 utility-use flags in save block. This one is used to tell if player has an effect active or not.
-              u16 bossMonInGCMS:1;
-              u16 playerIsRealtor:1;
-              u16 trainerSlideEnabled:1;
-              u16 unusedSB2Flags:11;
+              u8 hasAlchemyEffectActive:1; //is alchemy effect active
+              u8 bossMonInGCMS:1; //does the GCMS have a boss in it
+              u8 playerIsRealtor:1; //has the player unlocked property management
+              u8 unusedSB2Flags:5; //unused flags
              u8 propertyFlags[NUM_PROPERTY_BYTES];
              u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
              u16 userInterfaceTextboxPalette[16];
@@ -454,6 +444,7 @@ struct SaveBlock2
              u32 unusedChallengeTimeBlockBits:2;
              struct DeliveryManifest Deliveries[NUM_MAX_QUEUED_DELIVERIES];
              struct DeliveryTime DeliveryTimer;
+             u8 gNPCTrainerFactionRelations[NUM_NPC_FACTIONS];
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -646,20 +637,6 @@ struct LinkBattleRecords
     u8 languages[LINK_B_RECORDS_COUNT];
 };
 
-struct RecordMixingGiftData
-{
-    u8 unk0;
-    u8 quantity;
-    u16 itemId;
-    u8 filler4[8];
-};
-
-struct RecordMixingGift
-{
-    int checksum;
-    struct RecordMixingGiftData data;
-};
-
 struct ContestWinner
 {
     u32 personality;
@@ -770,15 +747,12 @@ struct SaveTrainerHill
 {
     /*0x3D64*/ u32 timer;
     /*0x3D68*/ u32 bestTime;
-    /*0x3D6C*/ u8 unk_3D6C;
-    /*0x3D6D*/ u8 unused;
-    /*0x3D6E*/ u16 receivedPrize:1;
-    /*0x3D6E*/ u16 checkedFinalTime:1;
-    /*0x3D6E*/ u16 spokeToOwner:1;
-    /*0x3D6E*/ u16 hasLost:1;
-    /*0x3D6E*/ u16 maybeECardScanDuringChallenge:1;
-    /*0x3D6E*/ u16 field_3D6E_0f:1;
-    /*0x3D6E*/ u16 tag:2;
+    /*0x3D6E*/ u8 receivedPrize:1;
+    /*0x3D6E*/ u8 checkedFinalTime:1;
+    /*0x3D6E*/ u8 spokeToOwner:1;
+    /*0x3D6E*/ u8 hasLost:1;
+    /*0x3D6E*/ u8 maybeECardScanDuringChallenge:1;
+    /*0x3D6E*/ u8 tag:2;
 };
 
 struct SaveBlock1
@@ -810,7 +784,6 @@ struct SaveBlock1
     /*0x790*/ struct ItemSlot bagPocket_Berries[BAG_BERRIES_COUNT];
     /*0x848*/ struct Pokeblock pokeblocks[POKEBLOCKS_COUNT];
     /*0x9BC*/ u16 berryBlenderRecords[3];
-    /*0x9C2*/ u8 unusedData[8];
     /*0xA30*/ struct ObjectEvent objectEvents[OBJECT_EVENTS_COUNT];
     /*0xC70*/ struct ObjectEventTemplate objectEventTemplates[OBJECT_EVENT_TEMPLATES_COUNT];
     /*0x1270*/ u8 flags[NUM_FLAG_BYTES];
@@ -843,14 +816,11 @@ struct SaveBlock1
     /*0x3030*/ struct DayCare daycare;
     /*0x3150*/ struct LinkBattleRecords linkBattleRecords;
     /*0x31A8*/ u8 giftRibbons[52];
-    /*0x31DC*/ u8 unusedRoamerData[28];
     /*0x31F8*/ struct EnigmaBerry enigmaBerry;
     /*0x3???*/ u8 dexSeen[DEX_FLAGS_NO];
     /*0x3???*/ u8 dexCaught[DEX_FLAGS_NO];
     /*0x3???*/ u32 trainerHillTimes[4];
     /*0x3???*/ struct RamScript ramScript;
-    /*0x3???*/ struct RecordMixingGift recordMixingGift;
-               u8 unusedPokedexData[101];
     /*0x3???*/ LilycoveLady lilycoveLady;
     /*0x3???*/ struct TrainerNameRecord trainerNameRecords[20];
     /*0x3???*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
@@ -858,8 +828,6 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
                u8 dexNavSearchLevels[SPECIES_MELMETAL];
                u8 dexNavChain;
-               u8 gNPCTrainerFactionRelations[NUM_NPC_FACTIONS];
-               u8 unusedDexNavData[100]; //had to put this in otherwise the save file gets erased for corruption.
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;
