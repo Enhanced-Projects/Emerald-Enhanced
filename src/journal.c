@@ -872,9 +872,10 @@ static void Task_InitJournal(u8 taskId)
         //gKeyRepeatStartDelay = -1;
     }
 }
-
+//FULL_COLOR
 static bool8 IntializeJournal(void)
 {
+    u16 buf[32];
     u32 i;
     switch (gMain.state)
     {
@@ -891,7 +892,17 @@ static bool8 IntializeJournal(void)
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sJournalBGTiles, BG_CHAR_ADDR(2), sizeof(sJournalBGTiles));
         DmaCopy16(3, sJournalBGMap, GetBgTilemapBuffer(1), sizeof(sJournalBGMap));
-        LoadPalette(sJournalBGPalette, 0, 0x20);
+        if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
+            LoadPalette(sJournalBGPalette, 0, 0x20);
+        else {
+            CpuCopy16(sJournalBGPalette, buf, 0x20);
+            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];        // 1 = text
+            buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 6 = window highlight
+            buf[8] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];        // 8 = text shadow
+            buf[10] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];      // 10 = window border
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 14 = background
+            LoadPalette(buf, 0, 0x20);
+        }
         InitWindows(sJournalWindowTemplate);
         InitTextBoxGfxAndPrinters();
         LoadPalette(gMessageBox_Pal, 0xC0, 0x20);

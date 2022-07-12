@@ -267,8 +267,10 @@ static void Task_InitQuestTracker(u8 taskId)
         gTasks[taskId].func = Task_QuestMain;
 }
 
+//FULL_COLOR
 static bool8 IntializeQuest(u8 taskId)
 {
+    u16 buf[32];
     u32 i;
     switch (gMain.state)
     {
@@ -285,7 +287,15 @@ static bool8 IntializeQuest(u8 taskId)
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sQuestTrackerBGTiles, BG_CHAR_ADDR(2), sizeof(sQuestTrackerBGTiles));
         DmaCopy16(3, sQuestTrackerBGMap, GetBgTilemapBuffer(1), sizeof(sQuestTrackerBGMap));
-        LoadPalette(sQuestTrackerBGPalette, 0, 0x20);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
+            CpuCopy16(sQuestTrackerBGPalette, buf, 0x20);
+            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];       // 1 = text color
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 2 = text shadow & window highlight
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 3 = window border
+            buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 4 = bg
+            LoadPalette(buf, 0, 0x20);
+        } else
+            LoadPalette(sQuestTrackerBGPalette, 0, 0x20);
         InitWindows(sQuestWindowTemplate);
         InitTextBoxGfxAndPrinters();
         LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);

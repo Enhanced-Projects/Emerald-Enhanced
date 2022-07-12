@@ -12,6 +12,7 @@
 #include "scanline_effect.h"
 #include "pidgey_ui_sys.h"
 #include "constants/rgb.h"
+#include "event_data.h"
 
 static EWRAM_DATA const struct UIData * sUIDataPtr = NULL;
 
@@ -91,10 +92,12 @@ void Task_InitPidgeyUI(u8 taskId)
         gTasks[taskId].func = sUIDataPtr->taskFunc;
 }
 
+//FULL_COLOR
 static bool8 IntializePidgeyUI(u8 taskId)
 {
     const u16 tilemapBufferSizes[4] = {BG_SCREEN_SIZE, BG_SCREEN_SIZE*2, BG_SCREEN_SIZE*2, BG_SCREEN_SIZE*4};
     u32 i;
+    u16 buf[64];
     switch (gMain.state)
     {
     case 0:
@@ -114,7 +117,26 @@ static bool8 IntializePidgeyUI(u8 taskId)
             SetBgTilemapBuffer(i+1, mapBuf);
             RequestDma3Copy(sUIDataPtr->bgData[i].tilemap, mapBuf, sUIDataPtr->bgData[i].mapSize, 0);
             RequestDma3Copy(sUIDataPtr->bgData[i].tiles, (void*)BG_CHAR_ADDR(sUIDataPtr->bgTemplates[i+1].charBaseIndex), sUIDataPtr->bgData[i].tileSize, 0);
-            LoadPalette(sUIDataPtr->bgData[i].palette, sUIDataPtr->bgData[i].palSlot*16, sUIDataPtr->bgData[i].palCount*2);
+            if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
+                CpuCopy16(sUIDataPtr->bgData[i].palette, buf, 16);
+                switch (i) {
+                    case 0:
+                        buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];       // 1 = text color
+                        buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 2 = text shadow & window highlight
+                        buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 3 = window border
+                        buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 4 = bg
+                        break;
+                    case 1:
+                        buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 1 = window highlight
+                        buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 2 = window border
+                        buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 3 = bg
+                        break;
+                    case 2:
+                        break;
+                }
+                LoadPalette(buf, sUIDataPtr->bgData[i].palSlot*16, sUIDataPtr->bgData[i].palCount*2);
+            } else
+                LoadPalette(sUIDataPtr->bgData[i].palette, sUIDataPtr->bgData[i].palSlot*16, sUIDataPtr->bgData[i].palCount*2);
         }
         InitWindows(sUIDataPtr->windowTemplates);
         InitTextBoxGfxAndPrinters();
