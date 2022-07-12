@@ -208,8 +208,6 @@ void NewGameInitData(void)
     InitLotadSizeRecord();
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();
-    ClearRoamerData();
-    ClearRoamerLocationData();
     gSaveBlock1Ptr->registeredItem = 0;
     gSaveBlock2Ptr->expShare = 0;
     ClearBag();

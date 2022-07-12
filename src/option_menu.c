@@ -32,7 +32,6 @@ enum
     MENUITEM_THEME,
     MENUITEM_FRAMETYPE,
     MENUITEM_RDM_MUSIC,
-    MENUITEM_BUTTONMODE,
     MENUITEM_BAR_SPEED,
     MENUITEM_TRANSITION,
     MENUITEM_VANILLACAP,
@@ -74,7 +73,6 @@ static void HpBar_DrawChoices(int selection, int y, u8 textSpeed);
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed);
 static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed);
 static void FrameType_DrawChoices(int selection, int y, u8 textSpeed);
-static void ButtonMode_DrawChoices(int selection, int y, u8 textSpeed);
 static void ForceBattleSet_DrawChoices(int selection, int y, u8 textSpeed);
 static int FrameType_ProcessInput(int selection);
 static int FourOptions_ProcessInput(int selection);
@@ -96,13 +94,12 @@ struct
 
 static const sItemFunctions[MENUITEM_COUNT] =
 {
-    [MENUITEM_TEXTSPEED] = {TextSpeed_DrawChoices, FourOptions_ProcessInput},
+    [MENUITEM_TEXTSPEED] = {TextSpeed_DrawChoices, ThreeOptions_ProcessInput},
     [MENUITEM_BATTLESCENE] = {BattleScene_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_FORCESETBATTLE] = {ForceBattleSet_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_THEME] = {ThemeSelection_DrawChoices, Theme_ProcessInput},
     [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
     [MENUITEM_RDM_MUSIC] = {RandomMusic_DrawChoices, TwoOptions_ProcessInput},
-    [MENUITEM_BUTTONMODE] = {ButtonMode_DrawChoices, ThreeOptions_ProcessInput},
     [MENUITEM_BAR_SPEED] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
     [MENUITEM_TRANSITION] = {Transition_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_VANILLACAP] = {VanillaCap_DrawChoices, TwoOptions_ProcessInput},
@@ -137,7 +134,6 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_THEME]       = gText_ThemeSelector,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
     [MENUITEM_RDM_MUSIC]   = gText_RandomRouteMusic,
-    [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_BAR_SPEED]   = sTextBarSpeed,
     [MENUITEM_TRANSITION]  = sText_Transition,
     [MENUITEM_VANILLACAP]  = sText_VanillaLevelCap,
@@ -148,7 +144,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 
 static const u8 sText_Instant[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Instant");
 
-static const u8 *const sTextSpeedStrings[] = {gText_TextSpeedSlow, gText_TextSpeedMid, gText_TextSpeedFast, sText_Instant};
+static const u8 *const sTextSpeedStrings[] = {gText_TextSpeedSlow, gText_TextSpeedMid, gText_TextSpeedFast};
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
 {
@@ -316,7 +312,6 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_FORCESETBATTLE] = gSaveBlock2Ptr->forceSetBattleType;
         sOptions->sel[MENUITEM_THEME] = VarGet(VAR_RYU_THEME_NUMBER);
         sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
-        sOptions->sel[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
         sOptions->sel[MENUITEM_BAR_SPEED] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
         sOptions->sel[MENUITEM_TRANSITION] = FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION);
@@ -1061,8 +1056,6 @@ static void Task_OptionMenuSave(u8 taskId)
         FlagSet(FLAG_RYU_NOTIFIED_RDM_MUSIC);
     }
 
-    gSaveBlock2Ptr->optionsButtonMode = sOptions->sel[MENUITEM_BUTTONMODE];
-
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
     if (sOptions->sel[MENUITEM_THEME] == 2)
         gSaveBlock2Ptr->optionsWindowFrameType = 0;
@@ -1372,7 +1365,13 @@ static void FourOptions_DrawChoices(const u8 *const *const strings, int selectio
 
 static void TextSpeed_DrawChoices(int selection, int y, u8 textSpeed)
 {
-    FourOptions_DrawChoices(sTextSpeedStrings, selection, y, textSpeed);
+    u8 styles[3] = {0};
+    int xMid = GetMiddleX(gText_TextSpeedSlow, gText_TextSpeedMid, gText_TextSpeedFast);
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_TextSpeedSlow, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_TextSpeedMid, xMid, y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_TextSpeedFast, GetStringRightAlignXOffset(1, gText_TextSpeedFast, 198), y, styles[2], textSpeed);
 }
 
 
@@ -1414,17 +1413,6 @@ static void FrameType_DrawChoices(int selection, int y, u8 textSpeed)
 
     DrawOptionMenuChoice(gText_FrameType, 104, y, 0, textSpeed);
     DrawOptionMenuChoice(text, 128, y, 1, textSpeed);
-}
-
-static void ButtonMode_DrawChoices(int selection, int y, u8 textSpeed)
-{
-    u8 styles[3] = {0};
-    int xMid = GetMiddleX(gText_ButtonTypeNormal, gText_ButtonTypeLR, gText_ButtonTypeLEqualsA);
-
-    styles[selection] = 1;
-    DrawOptionMenuChoice(gText_ButtonTypeNormal, 104, y, styles[0], textSpeed);
-    DrawOptionMenuChoice(gText_ButtonTypeLR, xMid, y, styles[1], textSpeed);
-    DrawOptionMenuChoice(gText_ButtonTypeLEqualsA, GetStringRightAlignXOffset(1, gText_ButtonTypeLEqualsA, 198), y, styles[2], textSpeed);
 }
 
 static void DrawTextOption(void)
