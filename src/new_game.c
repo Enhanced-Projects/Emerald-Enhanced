@@ -190,7 +190,6 @@ void NewGameInitData(void)
     ZeroEnemyPartyMons();
     ClearFrontierRecord();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
-    gSaveBlock2Ptr->gcnLinkFlags = 0;
     InitPlayerTrainerId();
     PlayTimeCounter_Reset();
     InitEventData();
