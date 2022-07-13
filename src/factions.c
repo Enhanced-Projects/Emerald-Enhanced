@@ -46,26 +46,26 @@ void RyuFactions_ResetAllStanding(void)
     u8 i = 0;
     for (i = 0; i < 7; i++)
         {
-            gSaveBlock1Ptr->gNPCTrainerFactionRelations[i] = 100;//new default/neutral standing is 100
+            gSaveBlock2Ptr->gNPCTrainerFactionRelations[i] = 100;//new default/neutral standing is 100
         }
 }
 
 
 void RyuDebug_ViewFactionRelations(void)
 {
-    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_OUTCASTS], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NOBLES], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_OUTCASTS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_NOBLES], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS], STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
 bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
 {
     u16 trainerToCheck = (VarGet(ScriptReadHalfword(ctx)));
     u8 targetTrainerFaction = gTrainers[trainerToCheck].trainerFaction;
-    u8 currentStanding = gSaveBlock1Ptr->gNPCTrainerFactionRelations[targetTrainerFaction];
+    u8 currentStanding = gSaveBlock2Ptr->gNPCTrainerFactionRelations[targetTrainerFaction];
 
     gSpecialVar_Result = targetTrainerFaction;
     ConvertIntToDecimalStringN(gRyuStringVar4, currentStanding, STR_CONV_MODE_LEFT_ALIGN, 3);
@@ -78,7 +78,7 @@ u8 GetFactionId(u16 trainerId)
 
 u8 GetFactionStanding(u16 trainerId) //this should return the value of player's standing in trainerId's faction
 {
-    return (gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)]);
+    return (gSaveBlock2Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)]);
 }
 
 u32 ConvertFactionStandingToState(u32 standing)
@@ -106,20 +106,20 @@ u32 ConvertFactionStandingToState(u32 standing)
 
 void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative)
 {
-    s16 currentStanding = gSaveBlock1Ptr->gNPCTrainerFactionRelations[id]; //i need this to be able to hold values larger than 255 and lower than 0, just in case.
+    s16 currentStanding = gSaveBlock2Ptr->gNPCTrainerFactionRelations[id]; //i need this to be able to hold values larger than 255 and lower than 0, just in case.
     if (negative)
     {
         if (currentStanding - amount >= 0)//new minimum value is 0.
-            gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] -= amount;
+            gSaveBlock2Ptr->gNPCTrainerFactionRelations[id] -= amount;
         else
-            gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] = 0;
+            gSaveBlock2Ptr->gNPCTrainerFactionRelations[id] = 0;
     }
     else
     {
         if (currentStanding + amount <= 200)//new maximum value is 200.
-            gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] += amount;
+            gSaveBlock2Ptr->gNPCTrainerFactionRelations[id] += amount;
         else
-            gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] = 200;
+            gSaveBlock2Ptr->gNPCTrainerFactionRelations[id] = 200;
     }
 }
 
@@ -166,11 +166,11 @@ void RyuCheckForFactionAchievements(void)
 
     for(i = 0; i < FACTION_OTHERS; i++)
     {
-        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[i] > 174)
+        if (gSaveBlock2Ptr->gNPCTrainerFactionRelations[i] > 174)
             if (CheckAchievement(42 + i) == FALSE)
                 GiveAchievement(42 + i);
     }
-    if ((gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEMON_LEAGUE] < 13) && CheckAchievement(ACH_THE_WARRIOR) == FALSE)
+    if ((gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_POKEMON_LEAGUE] < 13) && CheckAchievement(ACH_THE_WARRIOR) == FALSE)
         GiveAchievement(ACH_THE_WARRIOR);
 }
 
@@ -179,7 +179,7 @@ bool8 ScrCmd_checkfactionstanding(struct ScriptContext *ctx)
     u8 factionId = ScriptReadByte(ctx);
     u8 amount = ScriptReadByte(ctx); //no longer doing negatives, script logic doesn't like it.
 
-    if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= amount)//just see if factionid's standing is at or above amount
+    if (gSaveBlock2Ptr->gNPCTrainerFactionRelations[factionId] >= amount)//just see if factionid's standing is at or above amount
         gSpecialVar_Result = TRUE;
     else
         gSpecialVar_Result = FALSE;
@@ -223,7 +223,7 @@ void ClearDailyQuestData(void)
 
 void RyuSetFactionStandingPokemonLeagueDebug(void)
 {
-    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEMON_LEAGUE] = 12;
+    gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_POKEMON_LEAGUE] = 12;
 }
 
  /* FACTION STANDING UI CODE */ 
@@ -414,7 +414,7 @@ static void DrawFactionStandingText(u8 taskId)
     AddTextPrinterParameterized3(WIN_FACTION_BUTTON_INFO, 1, 0, 0, (u8[]){TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY}, 0xFF, (u8[])_("{L_BUTTON}{R_BUTTON}: Info"));
     for(i = 0; i < FACTION_OTHERS; i++)
     {
-        u32 standing = gSaveBlock1Ptr->gNPCTrainerFactionRelations[i];
+        u32 standing = gSaveBlock2Ptr->gNPCTrainerFactionRelations[i];
         u32 factionState = ConvertFactionStandingToState(standing);
         ConvertIntToDecimalStringN(gStringVar4, standing, STR_CONV_MODE_RIGHT_ALIGN, 3);
         AddTextPrinterParameterized3(WIN_FACTION_STANDING, 0, 0, i * 14, sStandingColors[factionState], 0xFF, gStringVar4);

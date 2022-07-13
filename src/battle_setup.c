@@ -1287,7 +1287,7 @@ bool8 GetTrainerFlag(void)
         return GetBattlePyramidTrainerFlag(gSelectedObjectEvent);
     else if (InTrainerHill())
         return GetHillTrainerFlag(gSelectedObjectEvent);
-    else if ((gSaveBlock1Ptr->gNPCTrainerFactionRelations[enemyFaction]) < 20)
+    else if ((gSaveBlock2Ptr->gNPCTrainerFactionRelations[enemyFaction]) < 20)
         return FALSE;
     else
         return FlagGet(GetTrainerAFlag());
@@ -1414,7 +1414,7 @@ static void CB2_EndTrainerBattle(void)
 
     if ((FlagGet(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LASS))
     {
-        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS] < 140)//this is intended to make it so that the lass following 
+        if (gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS] < 140)//this is intended to make it so that the lass following 
             {                                                                   //you gains 1 faction standing every battle until player
                 RyuAdjustFactionValueInternal(FACTION_STUDENTS, 1, FALSE);      //reached 80 standing gained from thhe mentorship, but i forgot
                 RyuAdjustOpposingFactionValues(FACTION_STUDENTS, 1, TRUE);      //to address this when i changed how standing works.  

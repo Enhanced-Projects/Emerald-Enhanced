@@ -2234,7 +2234,7 @@ void RyuMaxFactionStanding(void)
 {
     u8 i;
     for(i = 0; i < FACTION_OTHERS; i++)
-        gSaveBlock1Ptr->gNPCTrainerFactionRelations[i] = 200;
+        gSaveBlock2Ptr->gNPCTrainerFactionRelations[i] = 200;
 }
 
 void SetAlchemyEffect(void)
