@@ -55,6 +55,7 @@ extern const u8 gText_TMs_Hms[];
 extern const u8 gText_MedicinesPocket[];
 extern const u8 gText_CollectiblesPocket[];
 extern const u8 gText_Berries2[];
+extern const u8 gText_MegaStones[];
 
 extern const u8 gText_Single2[];
 extern const u8 gText_Double2[];

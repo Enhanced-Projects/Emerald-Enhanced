@@ -293,7 +293,8 @@ const u8 *const gPocketNamesStringsTable[] =
     gText_PokeBallsPocket,
     gText_TMHMPocket,
     gText_BerriesPocket,
-    gText_KeyItemsPocket
+    gText_KeyItemsPocket,
+    gText_MegaStones
 };
 
 const u8 gText_NumberVar1Clear7Var2[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
@@ -732,6 +733,7 @@ const u8 gText_TMs_Hms[] = _("TMs");
 const u8 gText_Berries2[] = _("Berries");
 const u8 gText_MedicinesPocket[] = _("Medicine");
 const u8 gText_CollectiblesPocket[] = _("Valuables");
+const u8 gText_MegaStones[] = _("Mega Stones");
 const u8 gText_SomeonesPC[] = _("{PKMN} Storage");
 const u8 gText_LanettesPC[] = _("{PKMN} Storage");
 const u8 gText_PlayersPC[] = _("{PLAYER}'s PC");

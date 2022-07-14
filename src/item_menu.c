@@ -265,6 +265,9 @@ static const u8 sContextMenuItems_BerriesPocket[] = {
     ITEMMENUACTION_USE,         ITEMMENUACTION_GIVE,
     ITEMMENUACTION_TOSS,        ITEMMENUACTION_CANCEL
 };
+static const u8 sContextMenuItems_MegaStones[] = {
+    ITEMMENUACTION_GIVE,         ITEMMENUACTION_CANCEL,
+};
 
 static const u8 sContextMenuItems_BattleUse[] = {
     ITEMMENUACTION_BATTLE_USE,  ITEMMENUACTION_CANCEL
@@ -1621,6 +1624,10 @@ void OpenContextMenu(u8 unused)
                     case BERRIES_POCKET:
                         gBagMenu->contextMenuItemsPtr = sContextMenuItems_BerriesPocket;
                         gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_BerriesPocket);
+                        break;
+                    case MEGASTONES_POCKET:
+                        gBagMenu->contextMenuItemsPtr = sContextMenuItems_MegaStones;
+                        gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_MegaStones);
                         break;
                 }
             }

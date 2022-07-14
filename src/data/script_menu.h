@@ -1546,6 +1546,7 @@ const u8 *const gStdStrings[] =
     [STDSTRING_BATTLE_PYRAMID] = gText_BattlePyramid,
     [STDSTRING_MEDICINES] = gText_MedicinesPocket,
     [STDSTRING_COLLECTIBLES] = gText_CollectiblesPocket,
+    [STDSTRING_MEGASTONES] = gText_MegaStones
     
 };
 

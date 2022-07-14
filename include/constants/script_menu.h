@@ -223,6 +223,7 @@
 #define STDSTRING_BATTLE_PYRAMID   29
 #define STDSTRING_MEDICINES        30
 #define STDSTRING_COLLECTIBLES     31
+#define STDSTRING_MEGASTONES        32
 
 
 //Scrolling multichoice id's
