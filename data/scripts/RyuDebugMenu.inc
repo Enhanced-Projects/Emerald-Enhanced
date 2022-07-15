@@ -375,11 +375,6 @@ RyuDebug_ViewTempVars::
 RDB_TempVarsViewMsg:
 	.string "{RYU_STR_2}$"
 
-RyuDebug_Utility1::
-	goto ForceCancelDailyQuest
-	release
-	end
-
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
 	compare VAR_RESULT, YES

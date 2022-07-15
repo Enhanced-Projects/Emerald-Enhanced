@@ -1803,6 +1803,12 @@ RyuCheckForLNSUAch::
 
 `
 
+script RyuDebug_Utility1 {
+	release
+	end
+}
+
+
 //prevent oob writes with bufferdynamicmulti
 text(global) RyuEmptyTextPtr {
 	" $"
