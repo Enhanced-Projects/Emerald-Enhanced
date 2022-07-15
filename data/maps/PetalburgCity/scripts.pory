@@ -744,11 +744,11 @@ script PBC_CheckPreventEntry {
 	if (var(VAR_RYU_QUEST_MAY) >= 150) {
 		goto(PBC_FinalMayEvent)
 	}
-	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
-		if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY) {
+	elif  ((flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) &&  (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY)){
 			release
 			end
 		}
+	elif (var(VAR_RYU_QUEST_MAY > 20)){
 		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (I should grab May before\n entering.)")
 		closemessage
 		applymovement(PLAYER, Common_Movement_StepDown)
@@ -757,13 +757,11 @@ script PBC_CheckPreventEntry {
 		release
 		end
 	}
-		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (I should grab May before\n entering.)")
-		closemessage
-		applymovement(PLAYER, Common_Movement_StepDown)
-		applymovement(FOLLOWER, Common_Movement_StepDown)
-		waitmovement(PLAYER)
+	else{
+		msgbox("The door is locked, and the house\nlooks empty.\pWonder if it's for sale?")
 		release
 		end
+	}
 }
 
 script PBC_May {
