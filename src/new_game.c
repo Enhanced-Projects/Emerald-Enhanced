@@ -177,10 +177,11 @@ void NewGameInitData(void)
         memset(gSaveBlock2Ptr->achievementPowerFlags, 0, (sizeof(gSaveBlock2Ptr->achievementPowerFlags)));//disable all AP's on raw new game.
         RyuResetRealEstateData(); //only initialize real estate data if there's not a previous file.
         RyuResetUserPaletteData(); //same as above
+        NewGameInitPCItems();
     }
     else //hacky, I know but it's the only way I could get it to work :shrug:
     {
-        ClearSav1_SkipDex();
+        ClearSav1_NewGamePlus();
     }
     
     RyuFactions_ResetAllStanding();
@@ -210,7 +211,6 @@ void NewGameInitData(void)
     gSaveBlock1Ptr->registeredItem = 0;
     gSaveBlock2Ptr->expShare = 0;
     ClearBag();
-    NewGameInitPCItems();
     ClearPokeblocks();
     ClearDecorationInventories();
     InitEasyChatPhrases();

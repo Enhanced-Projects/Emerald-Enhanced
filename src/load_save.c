@@ -78,17 +78,24 @@ void ClearSav1(void)
     CpuFill16(0, &gSaveblock1, sizeof(struct SaveBlock1) + sizeof(gSaveblock1_DMA));
 }
 
-void ClearSav1_SkipDex(void)
+void ClearSav1_NewGamePlus(void)
 {
     // There isn’t enough space on the stack for this, so we heap allocate
     u8* oldDex = malloc(DEX_FLAGS_NO * 2);
     int i;
+    struct ItemSlot *newItems = malloc(400);//is this legal?
 
     //Copy dex information temporarily
     for (i = 0; i < DEX_FLAGS_NO; i++)
     {
         oldDex[i] = gSaveBlock1Ptr->dexSeen[i];
         oldDex[i + DEX_FLAGS_NO] = gSaveBlock1Ptr->dexCaught[i];
+    }
+    
+    //copy PC items to memory temporarily?
+    for (i = 0;i < PC_ITEMS_COUNT; i++)
+    {
+        newItems[i] = gSaveBlock1Ptr->pcItems[i];
     }
 
     //Zero out the entirety of SaveBlock1
@@ -101,6 +108,13 @@ void ClearSav1_SkipDex(void)
         gSaveBlock1Ptr->dexCaught[i] = oldDex[i + DEX_FLAGS_NO];
     }
     free(oldDex);
+
+    //return items to pc storage
+    for (i = 0;i < PC_ITEMS_COUNT; i++)
+    {
+        gSaveBlock1Ptr->pcItems[i] = newItems[i];
+    }
+    free(newItems);
 }
 
 void SetSaveBlocksPointers(u16 offset)
