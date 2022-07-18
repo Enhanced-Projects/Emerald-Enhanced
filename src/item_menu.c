@@ -575,7 +575,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 8,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 0x21D,
+        .baseBlock = 0x21D  + 0x1E,
     },
     {
         .bg = 1,
@@ -584,7 +584,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 8,
         .height = 4,
         .paletteNum = 15,
-        .baseBlock = 0x21D,
+        .baseBlock = 0x21D  + 0x1E,
     },
     {
         .bg = 1,
@@ -593,7 +593,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 14,
         .height = 4,
         .paletteNum = 15,
-        .baseBlock = 0x21D,
+        .baseBlock = 0x21D  + 0x1E,
     },
     {
         .bg = 1,
@@ -602,7 +602,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 14,
         .height = 6,
         .paletteNum = 15,
-        .baseBlock = 0x21D,
+        .baseBlock = 0x21D  + 0x1E,
     },
     {
         .bg = 1,
@@ -620,7 +620,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 5,
         .height = 4,
         .paletteNum = 15,
-        .baseBlock = 0x21D,
+        .baseBlock = 0x21D  + 0x1E,
     },
     {
         .bg = 1,
@@ -629,7 +629,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 5,
         .height = 4,
         .paletteNum = 15,
-        .baseBlock = 0x21D,
+        .baseBlock = 0x21D  + 0x1E,
     },
     {
         .bg = 1,
@@ -638,7 +638,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 5,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 0x21D,
+        .baseBlock = 0x21D  + 0x1E,
     },
     {
         .bg = 1,
@@ -647,7 +647,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 12,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 0x245,
+        .baseBlock = 0x245  + 0x1E,
     },
     {
         .bg = 1,
@@ -656,7 +656,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 10,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 0x231,
+        .baseBlock = 0x231  + 0x1E,
     },
 };
 
