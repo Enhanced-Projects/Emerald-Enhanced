@@ -1507,6 +1507,9 @@ const u8 gText_ABtnTitleScreen[] = _("A Button: Title Screen");
 const u8 gText_Option[] = _("Options");
 const u8 gText_TextSpeed[] = _("Text Speed");
 const u8 gText_BattleScene[] = _("Battle Anims");
+//FULL_COLOR
+const u8 gText_ThemeUISelector[] = _("Theme UI");
+
 const u8 gText_ThemeSelector[] = _("UI Theme");
 const u8 gText_RandomRouteMusic[] = _("Rdm Music");
 const u8 gText_Frame[] = _("Frame type");
@@ -1520,6 +1523,11 @@ const u8 gText_BattleSceneOff[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 const u8 gText_UiThemeLight[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Light");
 const u8 gText_UiThemeDark[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dark");
 const u8 gText_UiThemeUser[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}User");
+//FULL_COLOR
+const u8 gText_UiThemeModern[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Modern");
+const u8 gText_UiThemeClassic[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Classic");
+const u8 gText_UiThemeVanilla[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Vanilla");
+
 const u8 gText_TransitionStyleNormal[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
 const u8 gText_TransitionStyleInstant[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Instant");
 const u8 gText_SoundMono[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");

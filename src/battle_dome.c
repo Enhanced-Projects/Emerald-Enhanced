@@ -3020,6 +3020,25 @@ static void Task_ShowTourneyInfoCard(u8 taskId)
         {
             LoadCompressedPalette(gBattleWindowTextPalette, 0xF0, 0x20);
         }
+        /* to be tested first
+        switch (VarGet(VAR_RYU_THEME_NUMBER))
+        {
+            case 0:
+                LoadCompressedPalette(gBattleWindowTextPalette, 0xF0, 0x20);
+                break;
+            case 1:
+                LoadCompressedPalette(gBattleWindowTextDarkPalette, 0xF0, 0x20);
+                break;
+            case 2:
+                CpuCopy16(gBattleWindowTextDarkPalette, buf, 0x20);
+                buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+                buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                buf[15] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+                LoadPalette(buf, 0xF0, 0x20);
+                break;
+        }
+        */
+
         
         if (mode == INFOCARD_MATCH)
             LoadCompressedPalette(gDomeTourneyMatchCardBg_Pal, 0x50, 0x20); // Changes the moving info card bg to orange when in match card mode

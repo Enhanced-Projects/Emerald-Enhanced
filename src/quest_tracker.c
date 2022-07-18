@@ -287,7 +287,33 @@ static bool8 IntializeQuest(u8 taskId)
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sQuestTrackerBGTiles, BG_CHAR_ADDR(2), sizeof(sQuestTrackerBGTiles));
         DmaCopy16(3, sQuestTrackerBGMap, GetBgTilemapBuffer(1), sizeof(sQuestTrackerBGMap));
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) 
+        {
+            case THEME_COLOR_LIGHT:
+                CpuCopy16(sQuestTrackerBGPalette, buf, 0x20);
+                buf[1] = COLOR_LIGHT_THEME_TEXT;       // 1 = text color
+                buf[2] = COLOR_NEON_BORDER_1;       // 2 = text shadow & window highlight
+                buf[3] = COLOR_NEON_BORDER_2;       // 3 = window border
+                buf[4] = COLOR_LIGHT_THEME_BG_LIGHT;               // 4 = bg
+                LoadPalette(buf, 0, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(sQuestTrackerBGPalette, 0, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(sQuestTrackerBGPalette, buf, 0x20);
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];       // 1 = text color
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 2 = text shadow & window highlight
+                buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // 3 = window border
+                buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 4 = bg
+                LoadPalette(buf, 0, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                //FULL_COLOR TODO impl vanilla pal
+                LoadPalette(gMessageBox_Pal, 0, 0x20);
+                break;
+        }
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
             CpuCopy16(sQuestTrackerBGPalette, buf, 0x20);
             buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];       // 1 = text color
             buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 2 = text shadow & window highlight
@@ -295,10 +321,37 @@ static bool8 IntializeQuest(u8 taskId)
             buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 4 = bg
             LoadPalette(buf, 0, 0x20);
         } else
-            LoadPalette(sQuestTrackerBGPalette, 0, 0x20);
+            LoadPalette(sQuestTrackerBGPalette, 0, 0x20);*/
         InitWindows(sQuestWindowTemplate);
         InitTextBoxGfxAndPrinters();
-        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) 
+        {
+            case THEME_COLOR_LIGHT:
+                LoadPalette(gHatLightTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+                buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         // L R button background
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];             //actual text
+                buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       //actual text shadow
+                LoadPalette(buf, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                LoadPalette(gMessageBox_Pal, 0xF0, 0x20);
+                break;
+        }
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
+            LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        else {
+            CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+            buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         // L R button background
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];             //actual text
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       //actual text shadow
+            LoadPalette(buf, 0xF0, 0x20);
+        }*/
         DeactivateAllTextPrinters();
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);

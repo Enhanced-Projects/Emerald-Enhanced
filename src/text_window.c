@@ -216,6 +216,7 @@ void LoadUserWindowBorderGfx_(u8 windowId, u16 destOffset, u8 palOffset)
     LoadUserWindowBorderGfx(windowId, destOffset, palOffset);
 }
 
+//FULL_COLOR TODO - user frames
 void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
 {
     if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
@@ -331,7 +332,7 @@ const u16 *GetOverworldTextboxPalettePtr(void)
     switch (palette)
     {
         case 0:
-            return gMessageBox_Pal;
+            return gHatLightTheme_Pal;
         case 1:
             return gRyuDarkTheme_Pal;
         case 2:

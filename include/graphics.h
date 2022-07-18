@@ -5,7 +5,9 @@
 extern const u32 gMessageBox_Gfx[];
 extern const u16 gMessageBox_Pal[];
 extern const u16 gRyuDarkTheme_Pal[];
+extern const u16 gHatLightTheme_Pal[];
 extern const u32 gBattleWindowTextDarkPalette[];
+extern const u32 gBattleWindowTextLightPalette[];
 
 // interface pokeballs
 extern const u32 gInterfaceGfx_PokeBall[];
@@ -5741,9 +5743,11 @@ extern const u16 gBerryFixWindow_Pal[];
 
 extern const u32 gBattleTextboxTiles[];
 extern const u32 gBattleDarkTextboxTiles[];
+extern const u32 gBattleLightTextboxTiles[];
 extern const u32 gBattleTextboxTilemap[];
 extern const u32 gBattleTextboxPalette[];
 extern const u32 gBattleTextboxDarkPalette[];
+extern const u32 gBattleTextboxLightPalette[];
 extern const u32 gUnknown_08D778F0[];
 extern const u32 gVsLettersGfx[];
 extern const u32 gUnknown_08D77AE4[];
@@ -6983,12 +6987,19 @@ extern const u32 gBagScreenFemale_Pal[];
 extern const u32 gBagScreenMale_Pal[];
 extern const u32 gBagScreenDarkTheme[];
 extern const u8 gBagMenuHMIcon_Gfx[];
+//FULL_COLOR
+extern const u32 gBagScreenModern_Gfx[];
+extern const u32 gBagScreenThemeLight_Pal[];
+extern const u32 gBagScreenThemeDark_Pal[];
 
 // item menu icons graphics
 extern const u32 gBagMaleTiles[];
 extern const u32 gBagFemaleTiles[];
 extern const u32 gBagPalette[];
 extern const u32 gBerryCheckCircle_Gfx[];
+//FULL_COLOR
+extern const u32 gBagIconsSelectedPalette[];
+extern const u32 gBagIconsUnselectedPalette[];
 
 //intro graphics
 extern const u32 gIntro1SparkleGfx[];
@@ -7259,6 +7270,8 @@ extern const u32 gHealthboxSafariGfx[];
 extern const u32 gBlankGfxCompressed[];
 extern const u16 gBattleInterface_BallStatusBarPal[];
 extern const u16 gBattleInterface_BallDisplayPal[];
+extern const u16 gHealthboxLightPal[];
+
 
 extern const u32 gBagSwapLineGfx[];
 extern const u32 gBagSwapLinePal[];

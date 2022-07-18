@@ -1654,11 +1654,12 @@ bool8 RyuFillStatsBuffers(void)
     StringAppend(gTextBuffer1, gTextBuffer4);
     StringCopy(gRyuStringVar3, gTextBuffer1);
 }
-
+//FULL_COLOR
 void RyuSetUpSaveBlockStuff(void)
 {
     gSaveBlock1Ptr->registeredItem = ITEM_WAYSTONE;
     VarSet(VAR_RYU_THEME_NUMBER, 1);
+    VarSet(VAR_HAT_THEME_UI_NUMBER, 0);
 }
 
 void Ryu_ClearAquaSFCTrainerFlags(void)

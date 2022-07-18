@@ -2,7 +2,9 @@
 
 const u32 gBattleTextboxTiles[] = INCBIN_U32("graphics/battle_interface/textbox.4bpp.lz");
 const u32 gBattleDarkTextboxTiles[] = INCBIN_U32("graphics/battle_interface/darktextbox.4bpp.lz");
+const u32 gBattleLightTextboxTiles[] = INCBIN_U32("graphics/battle_interface/lighttextbox.4bpp.lz");
 const u32 gBattleTextboxPalette[] = INCBIN_U32("graphics/battle_interface/textbox.gbapal.lz");
+const u32 gBattleTextboxLightPalette[] = INCBIN_U32("graphics/battle_interface/lighttextbox.gbapal.lz");
 const u32 gBattleTextboxDarkPalette[] = INCBIN_U32("graphics/battle_interface/darktextbox.gbapal.lz");
 const u32 gBattleTextboxTilemap[] = INCBIN_U32("graphics/battle_interface/textbox_map.bin.lz");
 
@@ -962,13 +964,15 @@ const u32 gBattleAnimSpriteGfx_Tendrils[] = INCBIN_U32("graphics/battle_anims/sp
 const u32 gBattleAnimSpritePal_Tendrils[] = INCBIN_U32("graphics/battle_anims/sprites/tendrils.gbapal.lz");
 
 const u32 gHealthboxSinglesPlayerGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player.4bpp.lz");
-const u32 gHealthboxSinglesPlayerDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player_dark.4bpp");
+const u32 gHealthboxSinglesPlayerDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player_dark.4bpp.lz");
 const u32 gHealthboxSinglesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_opponent.4bpp.lz");
 const u32 gHealthboxDoublesPlayerGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player.4bpp.lz");
 const u32 gHealthboxDoublesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_doubles_opponent.4bpp.lz");
 const u32 gHealthboxSinglesOpponentDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_opponent_dark.4bpp.lz");
-const u32 gHealthboxDoublesPlayerDarkGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player_dark.4bpp");
+const u32 gHealthboxDoublesPlayerDarkGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player_dark.4bpp.lz");
 const u32 gHealthboxDoublesOpponentDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_doubles_opponent_dark.4bpp.lz");
+const u16 gHealthboxLightPal[] = INCBIN_U16("graphics/battle_interface/healthbox_light.gbapal.lz");
+
 const u32 gHealthboxSafariGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_safari.4bpp.lz");
 
 const u32 gUnusedGfx_Shadow[] = INCBIN_U32("graphics/unused/shadow.4bpp.lz");
@@ -1302,6 +1306,7 @@ const u32 gBattleArenaJudgementSymbolsPalette[] = INCBIN_U32("graphics/battle_fr
 
 const u32 gBattleWindowTextPalette[] = INCBIN_U32("graphics/battle_interface/text.gbapal.lz");
 const u32 gBattleWindowTextDarkPalette[] = INCBIN_U32("graphics/battle_interface/text_dark.gbapal.lz");
+const u32 gBattleWindowTextLightPalette[] = INCBIN_U32("graphics/battle_interface/text_light.gbapal.lz");
 const u16 gUnknown_08D85620[] = INCBIN_U16("graphics/battle_frontier/text_pp.gbapal");
 
 const u16 gTilesetAnims_BattleDomePals0_0[] = INCBIN_U16("graphics/battle_frontier/dome_anim1.gbapal");
@@ -1682,6 +1687,9 @@ const u32 gUnknown_08D98CC8[] = INCBIN_U32("graphics/interface/status_tilemap0.b
 const u32 gBagMaleTiles[] = INCBIN_U32("graphics/misc/bag_male.4bpp.lz");
 const u32 gBagFemaleTiles[] = INCBIN_U32("graphics/misc/bag_female.4bpp.lz");
 const u32 gBagPalette[] = INCBIN_U32("graphics/misc/bag.gbapal.lz");
+//FULL_COLOR
+const u32 gBagIconsSelectedPalette[] = INCBIN_U32("graphics/interface/bag_icons_selected.gbapal");
+const u32 gBagIconsUnselectedPalette[] = INCBIN_U32("graphics/interface/bag_icons_unselected.gbapal");
 
 const u32 gBagScreenMale_Pal[] = INCBIN_U32("graphics/interface/bag_screen_male.gbapal.lz");
 const u32 gBagScreenFemale_Pal[] = INCBIN_U32("graphics/interface/bag_screen_female.gbapal.lz");
@@ -1689,6 +1697,10 @@ const u32 gBagScreenDarkTheme[] = INCBIN_U32("graphics/interface/ryubagscreendar
 
 const u32 gBagScreen_Gfx[] = INCBIN_U32("graphics/interface/bag_screen.4bpp.lz");
 const u32 gBagScreen_GfxTileMap[] = INCBIN_U32("graphics/interface/bag_screen_tilemap.bin.lz");
+//FULL_COLOR
+const u32 gBagScreenModern_Gfx[] = INCBIN_U32("graphics/interface/bag_screen_modern.4bpp.lz");
+const u32 gBagScreenThemeLight_Pal[] = INCBIN_U32("graphics/interface/bag_theme_light.gbapal.lz");
+const u32 gBagScreenThemeDark_Pal[] = INCBIN_U32("graphics/interface/bag_theme_dark.gbapal.lz");
 
 const u32 gBattleFrontierGfx_PyramidBag[] = INCBIN_U32("graphics/interface/bag_pyramid.4bpp.lz");
 const u32 gBattleFrontierGfx_PyramidBag_Pal[] = INCBIN_U32("graphics/interface/bag_pyramid.gbapal.lz"); // female palette is first and male is second.
@@ -2015,6 +2027,7 @@ const u16 gMessageBox_Pal[] = INCBIN_U16("graphics/text_window/message_box.gbapa
 const u8 gMessageBox_Gfx[] = INCBIN_U8("graphics/text_window/message_box.4bpp");
 
 const u16 gRyuDarkTheme_Pal[] = INCBIN_U16("graphics/text_window/ryudarktheme.gbapal");
+const u16 gHatLightTheme_Pal[] = INCBIN_U16("graphics/text_window/hatlighttheme.gbapal");
 
 const u32 gWallpaperIcon_Cross[] = INCBIN_U32("graphics/pokemon_storage/cross_icon.4bpp.lz");
 const u32 gWallpaperIcon_Bolt[] = INCBIN_U32("graphics/pokemon_storage/bolt_icon.4bpp.lz");

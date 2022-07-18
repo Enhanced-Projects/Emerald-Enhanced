@@ -11,6 +11,7 @@
 #include "constants/vars.h"
 #include "constants/species.h"
 #include "constants/general.h"
+#include "theme_color_factory.h"
 
 //remove special case defines for when NOT using Item Expansion
 #define ITEM_EXPANSION 1

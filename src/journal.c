@@ -892,21 +892,94 @@ static bool8 IntializeJournal(void)
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sJournalBGTiles, BG_CHAR_ADDR(2), sizeof(sJournalBGTiles));
         DmaCopy16(3, sJournalBGMap, GetBgTilemapBuffer(1), sizeof(sJournalBGMap));
-        if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) 
+        {
+            case THEME_COLOR_LIGHT:
+                CpuCopy16(sJournalBGPalette, buf, 0x20);
+                buf[14] = COLOR_LIGHT_THEME_BG_LIGHT;       // 14 = background
+                LoadPalette(buf, 0, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(sJournalBGPalette, 0, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(sJournalBGPalette, buf, 0x20);
+                //Shifting r -> b, g -> r, b -> g   <==>   0.3 0.59 0.11 -> 0.59, 0.11, 0.3
+                //So in the worst case 31, 15, 0 which is 9.3 + 8.85 + 0 = 18 turns into 15, 1, 31 which is 4.5 + 0 + 3.41 = 7 a reasonable gap for worst case
+                buf[1] = COLOR_AUTO_SHADE_CONTRAST_INVERSE(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_HIGH);        // 1 = text Name: Id:
+                buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 6 = window highlight
+                //Shifting r -> b...
+                //see comment above
+                buf[8] = COLOR_AUTO_SHADE(COLOR_AUTO_SHADE_COND(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), COMPARE_SKIP_COLOR_1, COMPARE_SKIP_COLOR_2, COLOR_GET_AS_CONTRAST_INVERSE_ACTION(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT), THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);        // 8 = text shadow Name: Id: 
+                buf[10] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];      // 10 = window border
+
+                // Using conditional shading if background contrast with Red table color and Green table color
+                buf[12] = COLOR_AUTO_SHADE_COND(buf[12], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], GREYSCALE_TO_COLOR(10), SHADE_ACTION_LIGHT, THRESHOLD_DEFAULT);   // UI ELEMENT red table (p1-8)
+                buf[13] = COLOR_AUTO_SHADE_COND(buf[13], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], GREYSCALE_TO_COLOR(10), SHADE_ACTION_LIGHT, THRESHOLD_DEFAULT);   // UI ELEMENT green table (f1-7)
+
+                buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 14 = background
+                LoadPalette(buf, 0, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                //TODO impl vanilla colors
+                LoadPalette(gMessageBox_Pal, 0, 0x20);
+                break;
+
+        }
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
             LoadPalette(sJournalBGPalette, 0, 0x20);
         else {
             CpuCopy16(sJournalBGPalette, buf, 0x20);
-            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];        // 1 = text
-            buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 6 = window highlight
-            buf[8] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];        // 8 = text shadow
-            buf[10] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];      // 10 = window border
-            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 14 = background
+            //Shifting r -> b, g -> r, b -> g   <==>   0.3 0.59 0.11 -> 0.59, 0.11, 0.3
+            //So in the worst case 31, 15, 0 which is 9.3 + 8.85 + 0 = 18 turns into 15, 1, 31 which is 4.5 + 0 + 3.41 = 7 a reasonable gap for worst case
+            buf[1] = COLOR_AUTO_SHADE_CONTRAST_INVERSE(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_HIGH);        // 1 = text Name: Id:
+            buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 6 = window highlight
+            
+            //Shifting r -> b, g -> r, b -> g
+            //see comment above
+            buf[8] = COLOR_AUTO_SHADE(COLOR_AUTO_SHADE_COND(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), COMPARE_SKIP_COLOR_1, COMPARE_SKIP_COLOR_2, COLOR_GET_AS_CONTRAST_INVERSE_ACTION(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT), THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);        // 8 = text shadow Name: Id: 
+            buf[10] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];      // 10 = window border
+            
+            // Using conditional shading if background contrast with Red table color and Green table color
+            buf[12] = COLOR_AUTO_SHADE_COND(buf[12], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], GREYSCALE_TO_COLOR(10), SHADE_ACTION_LIGHT, THRESHOLD_DEFAULT);   // fixed color UI ELEMENT green table (b1-8)
+            buf[13] = COLOR_AUTO_SHADE_COND(buf[13], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], GREYSCALE_TO_COLOR(10), SHADE_ACTION_LIGHT, THRESHOLD_DEFAULT);   // fixed color UI ELEMENT red table (f1-7)
+            
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 14 = background
+            
             LoadPalette(buf, 0, 0x20);
-        }
+        }*/
         InitWindows(sJournalWindowTemplate);
         InitTextBoxGfxAndPrinters();
         LoadPalette(gMessageBox_Pal, 0xC0, 0x20);
-        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+                LoadPalette(gHatLightTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_USER:            
+                CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+                buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+                buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+                LoadPalette(buf, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                LoadPalette(gMessageBox_Pal, 0xF0, 0x20);
+                break;
+        }
+
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
+            LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        else {
+            CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+            buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+            LoadPalette(buf, 0xF0, 0x20);
+        }*/
+
         DeactivateAllTextPrinters();
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);
