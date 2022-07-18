@@ -1148,6 +1148,7 @@ void InitBattlerHealthboxCoords(u8 battler)
     UpdateSpritePos(gHealthboxSpriteIds[battler], x, y);
 }
 
+//FULL_COLOR
 static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
 {
     u32 windowId, spriteTileNum;
@@ -1158,7 +1159,7 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     u8 battler = gSprites[healthboxSpriteId].hMain_Battler;
     u8 bgThemeColor = 2;
 
-    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
+    if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
         bgThemeColor = 0;
 
     // Don't print Lv char if mon is mega evolved.
@@ -1196,6 +1197,7 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     RemoveWindowOnHealthbox(windowId);
 }
 
+//FULL_COLOR
 void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
 {
     u32 windowId, spriteTileNum;
@@ -1204,7 +1206,7 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
     u8 bgThemeColor = 2;
     void *objVram;
 
-    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
+    if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
         bgThemeColor = 2;
 
     if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) == B_SIDE_PLAYER && !IsDoubleBattle())
@@ -2255,6 +2257,7 @@ static void SpriteCB_StatusSummaryBallsOnSwitchout(struct Sprite *sprite)
     sprite->pos2.y = gSprites[barSpriteId].pos2.y;
 }
 
+//FULL_COLOR
 static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 {
     u8 nickname[POKEMON_NAME_LENGTH + 1];
@@ -2268,23 +2271,23 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     if (illusionMon != NULL)
         mon = illusionMon;
 
-    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
+    if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
         bgThemeColor = 0;
 
     if (GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_OPPONENT)
     {
-    StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
-    StringGetEnd10(nickname);
-    ptr = StringAppend(gDisplayedStringBattle, nickname);
+        StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
+        GetMonData(mon, MON_DATA_NICKNAME, nickname);
+        StringGetEnd10(nickname);
+        ptr = StringAppend(gDisplayedStringBattle, nickname);
     }
 
     if ((GetMonData(mon, MON_DATA_BOSS_STATUS, NULL) == TRUE))
     {
-    StringCopy(gDisplayedStringBattle, gText_ColorShadowRedLightRed);
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
-    StringGetEnd10(nickname);
-    ptr = StringAppend(gDisplayedStringBattle, nickname);
+        StringCopy(gDisplayedStringBattle, gText_ColorShadowRedLightRed);
+        GetMonData(mon, MON_DATA_NICKNAME, nickname);
+        StringGetEnd10(nickname);
+        ptr = StringAppend(gDisplayedStringBattle, nickname);
     }
 
     if ((GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_PLAYER))
@@ -2298,9 +2301,9 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
         {
             StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
         }
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
-    StringGetEnd10(nickname);
-    ptr = StringAppend(gDisplayedStringBattle, nickname);
+        GetMonData(mon, MON_DATA_NICKNAME, nickname);
+        StringGetEnd10(nickname);
+        ptr = StringAppend(gDisplayedStringBattle, nickname);
     }
 
 
@@ -2314,18 +2317,18 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     // It's possible they may have been different in early development phases.
     switch (gender)
     {
-    default:
-        StringCopy(ptr, gText_DynColor2);
-        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
-        break;
-    case MON_MALE:
-        StringCopy(ptr, gText_DynColor2Male);
-        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
-        break;
-    case MON_FEMALE:
-        StringCopy(ptr, gText_DynColor1Female);
-        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
-        break;
+        default:
+            StringCopy(ptr, gText_DynColor2);
+            windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
+            break;
+        case MON_MALE:
+            StringCopy(ptr, gText_DynColor2Male);
+            windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
+            break;
+        case MON_FEMALE:
+            StringCopy(ptr, gText_DynColor1Female);
+            windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
+            break;
     }
 
     spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
@@ -2512,13 +2515,15 @@ static u8 GetStatusIconForBattlerId(u8 statusElementId, u8 battlerId)
     return ret;
 }
 
+//FULL_COLOR
 static void UpdateSafariBallsTextOnHealthbox(u8 healthboxSpriteId)
 {
     u32 windowId, spriteTileNum;
     u8 *windowTileData;
     u8 bgThemeColor = 2;
 
-    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
+
+    if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
         bgThemeColor = 1;
 
     windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gText_SafariBalls, 0, 3, bgThemeColor, &windowId);
@@ -2528,6 +2533,8 @@ static void UpdateSafariBallsTextOnHealthbox(u8 healthboxSpriteId)
     RemoveWindowOnHealthbox(windowId);
 }
 
+
+//FULL_COLOR
 static void UpdateLeftNoOfBallsTextOnHealthbox(u8 healthboxSpriteId)
 {
     u8 text[16];
@@ -2536,7 +2543,7 @@ static void UpdateLeftNoOfBallsTextOnHealthbox(u8 healthboxSpriteId)
     u8 *windowTileData;
     u8 bgThemeColor = 2;
 
-    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
+    if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
         bgThemeColor = 1;
 
     txtPtr = StringCopy(text, gText_SafariBallLeft);

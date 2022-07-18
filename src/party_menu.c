@@ -639,58 +639,197 @@ static bool8 AllocPartyMenuBg(void)
     return TRUE;
 }
 
+//FULL_COLOR
 static bool8 AllocPartyMenuBgGfx(void)
 {
     u32 sizeout;
-
+    u16 t;
+    u16 buf[0x160];
+    u16 bufShadesLight[4];
+    u16 bufShadesDark[4];
+    u16 offset;
     switch (sPartyMenuInternal->data[0])
     {
-    case 0:
-        sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBg_Gfx, &sizeout);
-        LoadBgTiles(1, sPartyBgGfxTilemap, sizeout, 0);
-        sPartyMenuInternal->data[0]++;
-        break;
-    case 1:
-        if (!IsDma3ManagerBusyWithBgCopy())
-        {
-            LZDecompressWram(gPartyMenuBg_Tilemap, sPartyBgTilemapBuffer);
+        case 0:
+            sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBg_Gfx, &sizeout);
+            LoadBgTiles(1, sPartyBgGfxTilemap, sizeout, 0);
             sPartyMenuInternal->data[0]++;
-        }
-        break;
-    case 2:
-        if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
-        {
-            LoadCompressedPalette(gPartyMenu_dark_Pal, 0, 0x160);
-        }
-        else
-        {
-            LoadCompressedPalette(gPartyMenuBg_Pal, 0, 0x160);
-        }
-        CpuCopy16(gPlttBufferUnfaded, sPartyMenuInternal->palBuffer, 0x160);
-        sPartyMenuInternal->data[0]++;
-        break;
-    case 3:
-        PartyPaletteBufferCopy(4);
-        sPartyMenuInternal->data[0]++;
-        break;
-    case 4:
-        PartyPaletteBufferCopy(5);
-        sPartyMenuInternal->data[0]++;
-        break;
-    case 5:
-        PartyPaletteBufferCopy(6);
-        sPartyMenuInternal->data[0]++;
-        break;
-    case 6:
-        PartyPaletteBufferCopy(7);
-        sPartyMenuInternal->data[0]++;
-        break;
-    case 7:
-        PartyPaletteBufferCopy(8);
-        sPartyMenuInternal->data[0]++;
-        break;
-    default:
-        return TRUE;
+            break;
+        case 1:
+            if (!IsDma3ManagerBusyWithBgCopy())
+            {
+                LZDecompressWram(gPartyMenuBg_Tilemap, sPartyBgTilemapBuffer);
+                sPartyMenuInternal->data[0]++;
+            }
+            break;
+        case 2:
+            switch (VarGet(VAR_RYU_THEME_NUMBER))
+            {
+                case THEME_COLOR_LIGHT:   
+                    LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
+
+                    // GENERATE EXTRA SHADES NEEDED
+                    COLOR_SHADES(COLOR_LIGHT_THEME_TEXT, SHADER_LIGHT, bufShadesLight, 4, 12);
+                    COLOR_SHADES(COLOR_LIGHT_THEME_TEXT, SHADER_DARK, bufShadesDark, 4, 8);
+                    
+                    //cancelborder
+                    buf[17] = COLOR_NEON_BORDER_3;
+                    
+                    // bg corner
+                    buf[19] = COLOR_LIGHT_THEME_CONTRAST;
+                    
+                    //bg stripes (2colors)
+                    buf[20] = COLOR_LIGHT_THEME_BG_DARK;
+                    buf[21] = COLOR_LIGHT_THEME_BG_DARK;
+                    
+                    //empty slot inner border top and bot (2 colors)
+                    buf[27] = COLOR_AUTO_SHADE(COLOR_NEON_BORDER_1, THRESHOLD_DEFAULT);
+                    buf[28] = COLOR_AUTO_SHADE(COLOR_AUTO_SHADE(COLOR_NEON_BORDER_1, THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);
+                    
+                    //cancel bg
+                    buf[31] = COLOR_NEON_BORDER_2;
+                    
+                    //unselected border outer top and bottom (2colors)
+                    buf[48] = COLOR_NEON_BORDER_2;
+                    buf[49] = COLOR_NEON_BORDER_2;
+
+                    //unselected & hp number text shadow
+                    buf[50] = bufShadesDark[3];
+                    //leveltext, hptext, hp border inner
+                    buf[51] = bufShadesLight[3];
+
+                    //unselected bg (2 colors)
+                    buf[52] = bufShadesDark[1];
+                    buf[53] = bufShadesLight[1];
+                    
+                    //unselected border bottom internal
+                    buf[54] = bufShadesLight[1];
+
+                    // unselected border inner top and bottom (2 colors)
+                    buf[55] = COLOR_AUTO_SHADE(COLOR_NEON_BORDER_1, THRESHOLD_DEFAULT);
+                    buf[56] = COLOR_AUTO_SHADE(COLOR_NEON_BORDER_1, THRESHOLD_DEFAULT);
+                    
+                    //hp bar top (2colors)
+                    //buf[57] = 0x53ED;
+                    //buf[58] = 0x3F2A;
+
+                    // unselected first pkm border bottom internal
+                    buf[97] = bufShadesLight[2];
+
+                    // selected (not first pklm) border top and bottom (2colors)
+                    buf[103] = COLOR_NEON_BORDER_2;//~bufShadesLight[2];
+                    buf[104] = COLOR_NEON_BORDER_1;//~bufShadesLight[0];
+
+                    //selected bg lower and selected border top internal
+                    buf[116] = COLOR_NEON_BORDER_2;//~bufShadesLight[2];
+
+                    //selected bg upper  
+                    buf[117] = COLOR_NEON_BORDER_1;//~bufShadesLight[0]; 
+
+                    //selected first pkm border bottom internal
+                    buf[118] = COLOR_NEON_BORDER_1;//~bufShadesLight[0];
+
+                    LoadPalette(buf, 0, 0x160);
+                    break;
+                case THEME_COLOR_DARK:
+                    LoadCompressedPalette(gPartyMenu_dark_Pal, 0, 0x160);
+                    break;
+                case THEME_COLOR_USER:
+                    LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
+
+                    // GENERATE EXTRA SHADES NEEDED
+                    COLOR_SHADES(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], SHADER_LIGHT, bufShadesLight, 4, 12);
+                    COLOR_SHADES(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], SHADER_DARK, bufShadesDark, 4, 8);
+                    
+                    //cancelborder
+                    buf[17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+                    
+                    // bg corner
+                    buf[19] = COLOR_CREATE_DARK_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
+                    
+                    //bg stripes (2colors)
+                    buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                    buf[21] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                    
+                    //empty slot inner border top and bot (2 colors)
+                    buf[27] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+                    buf[28] = COLOR_AUTO_SHADE(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);
+                    
+                    //cancel bg
+                    buf[31] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+                    
+                    //unselected border outer top and bottom (2colors)
+                    buf[48] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+                    buf[49] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+
+                    //unselected & hp number text shadow
+                    buf[50] = bufShadesDark[3];
+                    //leveltext, hptext, hp border inner
+                    buf[51] = bufShadesLight[3];
+
+                    //unselected bg (2 colors)
+                    buf[52] = bufShadesDark[1];
+                    buf[53] = bufShadesLight[1];
+                    
+                    //unselected border bottom internal
+                    buf[54] = bufShadesLight[1];
+
+                    // unselected border inner top and bottom (2 colors)
+                    buf[55] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+                    buf[56] = COLOR_AUTO_SHADE(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);
+                    
+                    //hp bar top (2colors)
+                    buf[57] = 0x53ED;
+                    buf[58] = 0x3F2A;
+
+                    // unselected first pkm border bottom internal
+                    buf[97] = bufShadesLight[2];
+
+                    // selected (not first pklm) border top and bottom (2colors)
+                    buf[103] = ~bufShadesLight[2];
+                    buf[104] = ~bufShadesLight[0];
+
+                    //selected bg lower and selected border top internal
+                    buf[116] = ~bufShadesLight[2];
+
+                    //selected bg upper  
+                    buf[117] = ~bufShadesLight[0]; 
+
+                    //selected first pkm border bottom internal
+                    buf[118] = ~bufShadesLight[0];
+
+                    LoadPalette(buf, 0, 0x160);
+                    break;
+                case THEME_COLOR_VANILLA:
+                    LoadCompressedPalette(gPartyMenuBg_Pal, 0, 0x160);
+                    break;
+            }
+        
+            CpuCopy16(gPlttBufferUnfaded, sPartyMenuInternal->palBuffer, 0x160);
+            sPartyMenuInternal->data[0]++;
+            break;
+        case 3:
+            PartyPaletteBufferCopy(4);
+            sPartyMenuInternal->data[0]++;
+            break;
+        case 4:
+            PartyPaletteBufferCopy(5);
+            sPartyMenuInternal->data[0]++;
+            break;
+        case 5:
+            PartyPaletteBufferCopy(6);
+            sPartyMenuInternal->data[0]++;
+            break;
+        case 6:
+            PartyPaletteBufferCopy(7);
+            sPartyMenuInternal->data[0]++;
+            break;
+        case 7:
+            PartyPaletteBufferCopy(8);
+            sPartyMenuInternal->data[0]++;
+            break;
+        default:
+            return TRUE;
     }
     return FALSE;
 }
@@ -1948,10 +2087,11 @@ static bool8 CanLearnTutorMove(u16 species, u8 tutor)
         return FALSE;
 }
 
+//FULL_COLOR
 static void InitPartyMenuWindows(u8 layout)
 {
-    u8 i;
-
+    u32 i;
+    u16 buf[0x20];
     switch (layout)
     {
     case PARTY_LAYOUT_SINGLE:
@@ -1972,7 +2112,34 @@ static void InitPartyMenuWindows(u8 layout)
         FillWindowPixelBuffer(i, PIXEL_FILL(0));
     LoadUserWindowBorderGfx(0, 0x4F, 0xD0);
     LoadPalette(GetOverworldTextboxPalettePtr(), 0xE0, 0x20);
-    LoadPalette(gUnknown_0860F074, 0xF0, 0x20);
+    switch (VarGet(VAR_RYU_THEME_NUMBER)) 
+    {
+        case THEME_COLOR_LIGHT:
+            CpuCopy16(gUnknown_0860F074, buf, 0x20);
+            buf[1] = COLOR_LIGHT_THEME_BG_LIGHT;
+            buf[2] = COLOR_LIGHT_THEME_TEXT;
+            buf[3] = COLOR_LIGHT_THEME_TEXT_SHADOW;
+            LoadPalette(buf, 0xF0, 0x20);
+            break;
+        case THEME_COLOR_DARK:
+            CpuCopy16(gUnknown_0860F074, buf, 0x20);
+            buf[1] = COLOR_DARK_THEME_BG_LIGHT;
+            buf[2] = COLOR_DARK_THEME_TEXT;
+            buf[3] = COLOR_DARK_THEME_TEXT_SHADOW;
+            LoadPalette(buf, 0xF0, 0x20);
+            break;
+        case THEME_COLOR_USER:
+            CpuCopy16(gUnknown_0860F074, buf, 0x20);
+            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+            LoadPalette(buf, 0xF0, 0x20);
+            break;
+        case THEME_COLOR_VANILLA:
+            LoadPalette(gUnknown_0860F074, 0xF0, 0x20);
+            break;
+    }
+    
 }
 
 static void CreateCancelConfirmWindows(bool8 chooseHalf)

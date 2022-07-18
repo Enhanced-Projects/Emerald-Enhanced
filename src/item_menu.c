@@ -50,6 +50,7 @@
 #include "battle_pike.h"
 #include "overworld_notif.h"
 #include "constants/rgb.h"
+#include "theme_ui_manager.h"
 
 enum
 {
@@ -68,7 +69,10 @@ void AllocateBagItemListBuffers(void);
 void LoadBagItemListBuffers(u8);
 void BagMenu_PrintPocketNames(const u8*, const u8*);
 void BagMenu_CopyPocketNameToWindow(u32);
+//FULL_COLOR
 static void DrawPocketIndicatorSquare(u8 x, bool8 isCurrentPocket);
+static void InitPocketIndicatorIcons();
+
 void CreatePocketScrollArrowPair(void);
 void CreatePocketSwitchArrowPair(void);
 void BagMenu_PrepareTMHMMoveWindow(void);
@@ -317,7 +321,38 @@ static const struct YesNoFuncTable sYesNoTossFunctions = {BagMenu_ConfirmToss, B
 
 static const struct YesNoFuncTable sYesNoSellItemFunctions = {BagMenu_ConfirmSell, BagMenu_CancelSell};
 
-static const struct ScrollArrowsTemplate sBagScrollArrowsTemplate = {
+//FULL_COLOR
+static const struct ScrollArrowsTemplate sClassicBagScrollArrowsTemplate = {
+    .firstArrowType = SCROLL_ARROW_LEFT,
+    .firstX = 24,
+    .firstY = 8,
+    .secondArrowType = SCROLL_ARROW_RIGHT,
+    .secondX = 96,
+    .secondY = 8,
+    .fullyUpThreshold = -1,
+    .fullyDownThreshold = -1,
+    .tileTag = 111,
+    .palTag = 111,
+    .palNum = 0,
+};
+
+//FULL_COLOR
+static const struct ScrollArrowsTemplate sModernBagScrollArrowsTemplate = {
+    .firstArrowType = SCROLL_ARROW_LEFT,
+    .firstX = 24,
+    .firstY = 8,
+    .secondArrowType = SCROLL_ARROW_RIGHT,
+    .secondX = 96,
+    .secondY = 8,
+    .fullyUpThreshold = -1,
+    .fullyDownThreshold = -1,
+    .tileTag = 111,
+    .palTag = 111,
+    .palNum = 0,
+};
+
+//FULL_COLOR
+static const struct ScrollArrowsTemplate sVanillaBagScrollArrowsTemplate = {
     .firstArrowType = SCROLL_ARROW_LEFT,
     .firstX = 28,
     .firstY = 16,
@@ -329,6 +364,12 @@ static const struct ScrollArrowsTemplate sBagScrollArrowsTemplate = {
     .tileTag = 111,
     .palTag = 111,
     .palNum = 0,
+};
+
+static const struct ScrollArrowsTemplate * sBagScrollArrowsTemplates[THEME_UI_MAX] = {
+    &sModernBagScrollArrowsTemplate,
+    &sClassicBagScrollArrowsTemplate,
+    &sVanillaBagScrollArrowsTemplate,
 };
 
 static const u8 sRegisteredSelect_Gfx[] = INCBIN_U8("graphics/interface/select_button.4bpp");
@@ -347,9 +388,9 @@ const struct WindowTemplate sDefaultBagWindows[] =
     { // Item names
         .bg = 0,
         .tilemapLeft = 14,
-        .tilemapTop = 2,
+        .tilemapTop = 1,
         .width = 15,
-        .height = 16,
+        .height = 18,
         .paletteNum = 1,
         .baseBlock = 0x27,
     },
@@ -360,7 +401,7 @@ const struct WindowTemplate sDefaultBagWindows[] =
         .width = 14,
         .height = 6,
         .paletteNum = 1,
-        .baseBlock = 0x117,
+        .baseBlock = 0x117 + 0x1E, // 0x1E beign the size of 2 height on Items Names
     },
     { // Pocket name
         .bg = 0,
@@ -369,7 +410,7 @@ const struct WindowTemplate sDefaultBagWindows[] =
         .width = 8,
         .height = 2,
         .paletteNum = 1,
-        .baseBlock = 0x1A1,
+        .baseBlock = 0x1A1 + 0x1E,
     },
     { // TM/HM info icons
         .bg = 0,
@@ -378,7 +419,7 @@ const struct WindowTemplate sDefaultBagWindows[] =
         .width = 5,
         .height = 6,
         .paletteNum = 12,
-        .baseBlock = 0x16B,
+        .baseBlock = 0x16B + 0x1E,
     },
     {// TM/HM info
         .bg = 0,
@@ -387,7 +428,7 @@ const struct WindowTemplate sDefaultBagWindows[] =
         .width = 4,
         .height = 6,
         .paletteNum = 12,
-        .baseBlock = 0x189,
+        .baseBlock = 0x189 + 0x1E,
     },
     { // Field message box
         .bg = 1,
@@ -396,9 +437,133 @@ const struct WindowTemplate sDefaultBagWindows[] =
         .width = 27,
         .height = 4,
         .paletteNum = 15,
-        .baseBlock = 0x1B1,
+        .baseBlock = 0x1B1 + 0x1E,
     },
     DUMMY_WIN_TEMPLATE,
+};
+//FULL_COLOR
+const struct WindowTemplate sClassicBagWindows[] =
+{
+    { // Item names
+        .bg = 0,
+        .tilemapLeft = 14,
+        .tilemapTop = 1,
+        .width = 15,
+        .height = 18,
+        .paletteNum = 1,
+        .baseBlock = 0x27,
+    },
+    { // Description
+        .bg = 0,
+        .tilemapLeft = 0,
+        .tilemapTop = 14,
+        .width = 14,
+        .height = 6,
+        .paletteNum = 1,
+        .baseBlock = 0x117 + 0x1E,
+    },
+    { // Pocket name
+        .bg = 0,
+        .tilemapLeft = 3,
+        .tilemapTop = 0,
+        .width = 8,
+        .height = 2,
+        .paletteNum = 1,
+        .baseBlock = 0x1A1 + 0x1E,
+    },
+    { // TM/HM icons
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 13,
+        .width = 5,
+        .height = 6,
+        .paletteNum = 12,
+        .baseBlock = 0x16B + 0x1E,
+    },
+    {// TM/HM info
+        .bg = 0,
+        .tilemapLeft = 7,
+        .tilemapTop = 13,
+        .width = 4,
+        .height = 6,
+        .paletteNum = 12,
+        .baseBlock = 0x189 + 0x1E,
+    },
+    { // Field message box
+        .bg = 1,
+        .tilemapLeft = 2,
+        .tilemapTop = 15,
+        .width = 27,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 0x1B1 + 0x1E,
+    },
+    DUMMY_WIN_TEMPLATE,
+};
+
+const struct WindowTemplate sModernBagWindows[] =
+{
+    { // Item names
+        .bg = 0,
+        .tilemapLeft = 14,
+        .tilemapTop = 1,
+        .width = 15,
+        .height = 18,
+        .paletteNum = 1,
+        .baseBlock = 0x27,
+    },
+    { // Description
+        .bg = 0,
+        .tilemapLeft = 0,
+        .tilemapTop = 13,
+        .width = 14,
+        .height = 6,
+        .paletteNum = 1,
+        .baseBlock = 0x117 + 0x1E,
+    },
+    { // Pocket name
+        .bg = 0,
+        .tilemapLeft = 4,
+        .tilemapTop = 0,
+        .width = 8,
+        .height = 2,
+        .paletteNum = 1,
+        .baseBlock = 0x1A1 + 0x1E,
+    },
+    { // TM/HM icons
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 13,
+        .width = 5,
+        .height = 6,
+        .paletteNum = 12,
+        .baseBlock = 0x16B + 0x1E,
+    },
+    {// TM/HM info
+        .bg = 0,
+        .tilemapLeft = 7,
+        .tilemapTop = 13,
+        .width = 4,
+        .height = 6,
+        .paletteNum = 12,
+        .baseBlock = 0x189 + 0x1E,
+    },
+    { // Field message box
+        .bg = 1,
+        .tilemapLeft = 2,
+        .tilemapTop = 15,
+        .width = 27,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 0x1B1 + 0x1E,
+    },
+    DUMMY_WIN_TEMPLATE,
+};
+
+const struct WindowTemplate* sBagWindowTemplates[THEME_UI_MAX] = {
+    sModernBagWindows,
+    sClassicBagWindows,
+    sDefaultBagWindows
 };
 
 const struct WindowTemplate sContextMenuWindowTemplates[] =
@@ -446,7 +611,7 @@ const struct WindowTemplate sContextMenuWindowTemplates[] =
         .width = 27,
         .height = 4,
         .paletteNum = 15,
-        .baseBlock = 0x1B1,
+        .baseBlock = 0x1B1  + 0x1E,
     },
     {
         .bg = 1,
@@ -789,42 +954,107 @@ void BagMenu_InitBGs(void)
     SetGpuReg(REG_OFFSET_BLDCNT, 0);
 }
 
+//FULL_COLOR
 bool8 LoadBagMenu_Graphics(void)
 {
+    //u16 buf[2048];//[0x40];
+    u16 buf[64];
+    u32 i, j;
     switch (gBagMenu->graphicsLoadState)
     {
         case 0:
             ResetTempTileDataBuffers();
-            DecompressAndCopyTileDataToVram(2, gBagScreen_Gfx, 0, 0, 0);
+            switch (VarGet(VAR_HAT_THEME_UI_NUMBER)){
+                case THEME_UI_MODERN:
+                    DecompressAndCopyTileDataToVram(2, gBagScreenModern_Gfx, 0, 0, 0);
+                    break;
+                case THEME_UI_CLASSIC:
+                case THEME_UI_VANILLA:
+                    DecompressAndCopyTileDataToVram(2, gBagScreen_Gfx, 0, 0, 0);
+                    break;
+            
+            }
             gBagMenu->graphicsLoadState++;
             break;
         case 1:
             if (FreeTempTileDataBuffersIfPossible() != TRUE)
             {
                 LZDecompressWram(gBagScreen_GfxTileMap, gBagMenu->tilemapBuffer);
+                switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+                    case THEME_UI_MODERN:
+                    case THEME_UI_CLASSIC:
+                        CpuCopy16(GetUITemplate(UI_TEMPLATE_BAG), gBagMenu->tilemapBuffer, 2048);
+                        break;
+                    case THEME_UI_VANILLA:
+                        LZDecompressWram(gBagScreen_GfxTileMap, gBagMenu->tilemapBuffer);
+                        break;
+                }    
+                InitPocketIndicatorIcons();
                 gBagMenu->graphicsLoadState++;
             }
             break;
         case 2:
-            if (!IsWallysBag() && gSaveBlock2Ptr->playerGender != MALE)
-                if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
-                    {
-                        LoadCompressedPalette(gBagScreenDarkTheme, 0, 0x40);
-                    }
-                    else
-                    {
-                        LoadCompressedPalette(gBagScreenFemale_Pal, 0, 0x40);
-                    }
-            else
+            switch (VarGet(VAR_RYU_THEME_NUMBER))
             {
-                if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
-                    {
-                        LoadCompressedPalette(gBagScreenDarkTheme, 0, 0x40);
+                case THEME_COLOR_LIGHT:                     //to change in case 3
+                    LoadCompressedPalette(gBagScreenThemeLight_Pal, 0, 0x40);
+                    break;
+                case THEME_COLOR_DARK:
+                    //LoadCompressedPalette(gBagScreenDarkTheme, 0, 0x40);
+                    LoadCompressedPalette(gBagScreenThemeDark_Pal, 0, 0x40);
+                    break;
+                case THEME_COLOR_USER:
+                    LoadCompressedPaletteTo(gBagScreenDarkTheme, buf, 0, 0x40);
+                    //item icon bg, item desc bg
+                    buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                    //item bg border, item desc border
+                    buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT], THRESHOLD_DEFAULT);
+                    buf[4] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT], THRESHOLD_DEFAULT);
+                    // small inner border item board (color 1  inner pixel, color2 outer pixel)
+                    buf[5] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT], THRESHOLD_DEFAULT);
+                    buf[6] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT], THRESHOLD_DEFAULT);
+                    // small external border item board (striped, needs 2 colors)
+                    buf[7] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT); // o 
+                    buf[8] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT); // o 
+                    //item list bg
+                    buf[9] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                    // wide border internal
+                    buf[10] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+                    //buf[11] = COLOR_CHANGE_HUE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
+                    // bottom background (striped, needs 2 colors)
+                    buf[12] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
+                    buf[13] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
+                    //small pokeball icon inner color
+                    buf[14] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT);
+                    //text, Title
+                    buf[17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+                    //text shadow
+                    buf[19] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+                    //title shadow
+                    buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+                    //select bg
+                    buf[21] = COLOR_CHANGE_HUE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
+                    //select square bg
+                    buf[22] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                    // dot color unselected && background select
+                    buf[26] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                    //topbar bg (striped, needs 2 colors)
+                    buf[28] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER]; // o
+                    buf[29] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER]; // o
+                    //selected dot color
+                    buf[30] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+                    LoadPalette(buf, 0, 0x40);
+                    break;
+                case THEME_COLOR_VANILLA:                     //to change in case 3
+                    if (!IsWallysBag() && gSaveBlock2Ptr->playerGender != MALE)
+                        LoadCompressedPalette(gBagScreenFemale_Pal, 0, 0x40);
+                    else {
+                        LoadCompressedPaletteTo(gBagScreenMale_Pal, buf, 0, 0x40);
+                        buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_BAG_BG_MALE;
+                        buf[BAG_COLOR_BOTTOM_BACKGROUND_SHADOW] = COLOR_BAG_BG_SHADOW_MALE;
+                        LoadPalette(buf, 0, 0x40);
                     }
-                    else
-                    {
-                        LoadCompressedPalette(gBagScreenMale_Pal, 0, 0x40);
-                    }
+                    break;
             }
             gBagMenu->graphicsLoadState++;
             break;
@@ -1017,15 +1247,15 @@ void BagMenu_PrintCursor(u8 y, u8 colorIndex)
         BagMenu_Print(0, 1, gText_SelectorArrow2, 0, y, 0, 0, 0, colorIndex);
 
 }
-
+//FULL_COLOR
 void CreatePocketScrollArrowPair(void)
 {
     if (gBagMenu->pocketScrollArrowsTask == 0xFF)
         gBagMenu->pocketScrollArrowsTask = AddScrollIndicatorArrowPairParameterized(
             SCROLL_ARROW_UP,
             172,
-            12,
-            148,
+            8,
+            152,
             gBagMenu->numItemStacks[gBagPositionStruct.pocket] - gBagMenu->numShownItems[gBagPositionStruct.pocket],
             110,
             110,
@@ -1042,10 +1272,13 @@ void BagDestroyPocketScrollArrowPair(void)
     BagDestroyPocketSwitchArrowPair();
 }
 
+//FULL_COLOR
 void CreatePocketSwitchArrowPair(void)
 {
     if (gBagMenu->pocketSwitchDisabled != TRUE && gBagMenu->pocketSwitchArrowsTask == 0xFF)
-        gBagMenu->pocketSwitchArrowsTask = AddScrollIndicatorArrowPair(&sBagScrollArrowsTemplate, &gBagPositionStruct.unk6);
+    {
+        gBagMenu->pocketSwitchArrowsTask = AddScrollIndicatorArrowPair(sBagScrollArrowsTemplates[VarGet(VAR_HAT_THEME_UI_NUMBER)], &gBagPositionStruct.unk6);
+    }
 }
 
 void BagDestroyPocketSwitchArrowPair(void)
@@ -1112,8 +1345,8 @@ void UpdatePocketItemList(u8 pocketId)
     if (!gBagMenu->hideCloseBagText)
         gBagMenu->numItemStacks[pocketId]++;
 
-    if (gBagMenu->numItemStacks[pocketId] > 8)
-        gBagMenu->numShownItems[pocketId] = 8;
+    if (gBagMenu->numItemStacks[pocketId] > 9)
+        gBagMenu->numShownItems[pocketId] = 9;
     else
         gBagMenu->numShownItems[pocketId] = gBagMenu->numItemStacks[pocketId];
 }
@@ -1391,14 +1624,94 @@ void sub_81AC23C(u8 a)
     ScheduleBgCopyTilemapToVram(2);
 }
 
+//FULL_COLOR
+static void InitPocketIndicatorIcons() {
+    u32 i;
+    u16 buf[0x20];
+    CpuCopy16(gBagIconsUnselectedPalette, buf, 0x20);
+    switch(VarGet(VAR_RYU_THEME_NUMBER)) {
+        case THEME_COLOR_LIGHT:
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = 0x7B37;
+            break;
+        case THEME_COLOR_DARK:
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = 0x0;
+            break;
+        case THEME_COLOR_USER:
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
+            break;
+        case THEME_COLOR_VANILLA:
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_BAG_BG_MALE;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND_SHADOW] = COLOR_BAG_BG_SHADOW_MALE;
+            buf[BAG_COLOR_POCKET_UNSLECTED] = COLOR_BAG_POCKET_UNSELECTED;
+            buf[BAG_COLOR_POCKET_SELECTED] = COLOR_BAG_POCKET_SELECTED;
+            break;
+    }
+    LoadPalette(buf, 0x20, 0x20);
+    switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+        case THEME_UI_MODERN:
+        case THEME_UI_CLASSIC:
+            for (i = 0; i < 8; ++i) {     
+                FillBgTilemapBufferRect(2, 0x38 + i, i + 3, 2, 1, 1, 2);
+            }
+            break;
+        case THEME_UI_VANILLA:
+            for (i = 0; i < 8; ++i) {     
+                FillBgTilemapBufferRect(2, 0x38 + i, i + 4, 3, 1, 1, 2);
+            }
+            break;
+    }
+}
+
+//FULL_COLOR
 static void DrawPocketIndicatorSquare(u8 x, bool8 isCurrentPocket)
 {
-    if (!isCurrentPocket)
-        FillBgTilemapBufferRect_Palette0(2, 0x1017, x + 5, 3, 1, 1);
-    else
-        FillBgTilemapBufferRect_Palette0(2, 0x102B, x + 5, 3, 1, 1);
+    u16 buf[0x40];
+    CpuCopy16(gBagIconsUnselectedPalette, buf, 0x20);
+    CpuCopy16(gBagIconsSelectedPalette, buf+0x20, 0x20);
+    switch(VarGet(VAR_RYU_THEME_NUMBER)) {
+        case THEME_COLOR_LIGHT:
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = 0x7B37;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = 0x7B37;
+            break;
+        case THEME_COLOR_DARK:
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = 0x0;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = 0x0;
+            break;
+        case THEME_COLOR_USER:
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
+            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
+            break;
+        case THEME_COLOR_VANILLA:
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_BAG_BG_MALE;
+            buf[BAG_COLOR_POCKET_UNSLECTED] = COLOR_BAG_POCKET_UNSELECTED;
+            buf[BAG_COLOR_POCKET_SELECTED] = COLOR_BAG_POCKET_SELECTED;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = COLOR_BAG_BG_MALE;
+            buf[BAG_COLOR_POCKET_UNSLECTED+0x20] = COLOR_BAG_POCKET_UNSELECTED;
+            buf[BAG_COLOR_POCKET_SELECTED+0x20] = COLOR_BAG_POCKET_SELECTED;
+            break;
+    }
+    LoadPalette(buf, 0x20, 0x20);
+    LoadPalette(buf+0x20, 0x40, 0x20);
+    switch(VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+        case THEME_UI_MODERN:
+        case THEME_UI_CLASSIC:
+            if (!isCurrentPocket) {
+                FillBgTilemapBufferRect(2, 0x38+x, x + 3, 2, 1, 1, 2);
+            }
+            else {
+                FillBgTilemapBufferRect(2, 0x38+x, x + 3, 2, 1, 1, 4);
+            }
+            break;
+        case THEME_UI_VANILLA:
+            if (!isCurrentPocket)
+                FillBgTilemapBufferRect(2, 0x38+x, x + 4, 3, 1, 1, 2);
+            else
+                FillBgTilemapBufferRect(2, 0x38+x, x + 4, 3, 1, 1, 4);
+            break;
+    }
     ScheduleBgCopyTilemapToVram(2);
 }
+
 
 static bool8 CanSwapItems(void)
 {
@@ -2416,11 +2729,11 @@ void BagMenu_CopyPocketNameToWindow(u32 a)
     CopyWindowToVram(2, 2);
 }
 
+//FULL_COLOR
 void SetupBagMenu_Textboxes(void)
 {
     u8 i;
-
-    InitWindows(sDefaultBagWindows);
+    InitWindows(sBagWindowTemplates[VarGet(VAR_HAT_THEME_UI_NUMBER)]);
     DeactivateAllTextPrinters();
     LoadUserWindowBorderGfx(0, 1, 0xE0);
     LoadMessageBoxGfx(0, 10, 0xD0);
@@ -2563,3 +2876,4 @@ void PrintTMHMMoveData(u16 itemId)
         CopyWindowToVram(4, 2);
     }
 }
+

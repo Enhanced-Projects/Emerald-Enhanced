@@ -10,6 +10,7 @@
 #include "sprite.h"
 #include "window.h"
 #include "constants/items.h"
+#include "event_data.h"
 
 struct CompressedTilesPal
 {
@@ -471,19 +472,21 @@ void AddBagVisualSprite(u8 bagPocketId)
     SetBagVisualPocketId(bagPocketId, FALSE);
 }
 
+//FULL_COLOR
 void SetBagVisualPocketId(u8 bagPocketId, bool8 isSwitchingPockets)
 {
     struct Sprite *sprite = &gSprites[gBagMenu->spriteId[0]];
+
     if (isSwitchingPockets)
     {
         sprite->pos2.y = -5;
         sprite->callback = SpriteCB_BagVisualSwitchingPockets;
-        sprite->data[0] = bagPocketId + 1;
+        sprite->data[0] = ((3 - 2 *(bagPocketId >> 2)  * ((bagPocketId >> 1)^3))*(1 - (bagPocketId % 2))) + (1 + (bagPocketId % 4)) * (bagPocketId % 2);
         StartSpriteAnim(sprite, 0);
     }
     else
     {
-        StartSpriteAnim(sprite, bagPocketId + 1);
+        StartSpriteAnim(sprite, ((3 - 2 *(bagPocketId >> 2)  * ((bagPocketId >> 1)^3))*(1 - (bagPocketId % 2))) + (1 + (bagPocketId % 4)) * (bagPocketId % 2));
     }
 }
 
@@ -519,15 +522,32 @@ static void SpriteCB_ShakeBagSprite(struct Sprite *sprite)
     }
 }
 
+//FULL_COLOR
 void AddSwitchPocketRotatingBallSprite(s16 rotationDirection)
 {
+    int x, y;
     u8 *spriteId = &gBagMenu->spriteId[1];
     LoadSpriteSheet(&gRotatingBallTable);
     LoadSpritePalette(&gRotatingBallPaletteTable);
-    *spriteId = CreateSprite(&gRotatingBallSpriteTemplate, 16, 16, 0);
+    
+    switch(VarGet(VAR_HAT_THEME_UI_NUMBER))
+    {
+        case THEME_UI_MODERN:
+        case THEME_UI_CLASSIC:
+            x = 8;
+            y = 8;
+            break;
+
+        default:
+        case THEME_UI_VANILLA:
+            x = 16;
+            y = 16;
+            break;
+    }
+
+    *spriteId = CreateSprite(&gRotatingBallSpriteTemplate, x, y, 0);
     gSprites[*spriteId].data[0] = rotationDirection;
 }
-
 static void UpdateSwitchPocketRotatingBallCoords(struct Sprite *sprite)
 {
     sprite->centerToCornerVecX = sprite->data[1] - ((sprite->data[3] + 1) & 1);
@@ -557,21 +577,26 @@ static void SpriteCB_SwitchPocketRotatingBallContinue(struct Sprite *sprite)
         RemoveBagSprite(1);
 }
 
+//FULL_COLOR
 void AddBagItemIconSprite(u16 itemId, u8 id)
 {
     u8 *spriteId = &gBagMenu->spriteId[id + 2];
     if (*spriteId == 0xFF)
     {
         u8 iconSpriteId;
-
         FreeSpriteTilesByTag(id + 102);
         FreeSpritePaletteByTag(id + 102);
         iconSpriteId = AddItemIconSprite(id + 102, id + 102, itemId);
         if (iconSpriteId != MAX_SPRITES)
-        {
+        {          
             *spriteId = iconSpriteId;
-            gSprites[iconSpriteId].pos2.x = 24;
-            gSprites[iconSpriteId].pos2.y = 88;
+            if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_CLASSIC) {
+                    gSprites[iconSpriteId].pos2.x = 24;
+                    gSprites[iconSpriteId].pos2.y = 88;
+            } else {
+                    gSprites[iconSpriteId].pos2.x = 20;
+                    gSprites[iconSpriteId].pos2.y = 100;
+            }
         }
     }
 }

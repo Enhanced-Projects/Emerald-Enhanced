@@ -306,6 +306,11 @@ extern const u8 gText_BattleSceneOff[];
 extern const u8 gText_UiThemeLight[];
 extern const u8 gText_UiThemeDark[];
 extern const u8 gText_UiThemeUser[];
+// FULL_COLORS
+extern const u8 gText_UiThemeModern[];
+extern const u8 gText_UiThemeClassic[];
+extern const u8 gText_UiThemeVanilla[];
+
 extern const u8 gText_TransitionStyleNormal[];
 extern const u8 gText_TransitionStyleInstant[];
 extern const u8 gText_SoundMono[];
@@ -320,6 +325,9 @@ extern const u8 gText_OptionMenu[];
 extern const u8 gText_TextSpeed[];
 extern const u8 gText_BattleScene[];
 extern const u8 gText_ThemeSelector[];
+//FULL_COLORS
+extern const u8 gText_ThemeUISelector[];
+
 extern const u8 gText_RandomRouteMusic[];
 extern const u8 gText_Frame[];
 extern const u8 gText_OptionMenuSave[];

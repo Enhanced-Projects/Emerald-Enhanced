@@ -493,6 +493,7 @@ static bool8 IntializeAtlas(void)
         sAchAtlas.tilemapPosY = TILEMAP_START_Y;
         LoadPalette(sAchievementAtlasStarPalette, 0, 0x20);
         LoadPalette(sAchievementAtlasPointsPal, 0x10, 0x20);
+        //FULL_COLOR TODO impl vanilla and switch(VAR)
         if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
             CpuCopy16(sAchievementAtlasBorderPal, buf, 0x20);
             buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 1 = bg
@@ -855,7 +856,34 @@ static bool8 IntializeAP(u8 taskId)
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sAPMenuBackgroundTileset, BG_CHAR_ADDR(0), sizeof(sAPMenuBackgroundTileset));
         DmaCopy16(3, sAPMenuBackgroundTilemap, GetBgTilemapBuffer(2), sizeof(sAPMenuBackgroundTilemap));
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+                CpuCopy16(sAPMenuBackgroundPalette, buf, sizeof(sAPMenuBackgroundPalette));
+                buf[1] = COLOR_NEON_BORDER_1;       // 1 = window highlight
+                buf[2] = COLOR_NEON_BORDER_2;       // 2 = window border
+                buf[13] = COLOR_LIGHT_THEME_TEXT;       // 13 = text color
+                buf[16] = COLOR_LIGHT_THEME_TEXT_SHADOW;       // 16 = text shadowx
+                buf[20] = COLOR_LIGHT_THEME_BG_LIGHT;       // 4 = bg
+                LoadPalette(buf, 0, sizeof(sAPMenuBackgroundPalette));
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(sAPMenuBackgroundPalette, buf, sizeof(sAPMenuBackgroundPalette));
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 1 = window highlight
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // 2 = window border
+                buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];       // 13 = text color
+                buf[16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       // 16 = text shadowx
+                buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 4 = bg
+                LoadPalette(buf, 0, sizeof(sAPMenuBackgroundPalette));
+                break;
+            case THEME_COLOR_VANILLA:
+                //FULL_COLOR TODO impl vanilla palette
+                LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
+                break;
+        }
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
             CpuCopy16(sAPMenuBackgroundPalette, buf, sizeof(sAPMenuBackgroundPalette));
             buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 1 = window highlight
             buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 2 = window border
@@ -864,10 +892,36 @@ static bool8 IntializeAP(u8 taskId)
             buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 4 = bg
             LoadPalette(buf, 0, sizeof(sAPMenuBackgroundPalette));
         } else
-            LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
+            LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));*/
         InitWindows(sAPMenuWindowTemplates);
         InitTextBoxGfxAndPrinters();
-        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+                LoadPalette(gHatLightTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_USER:            
+                CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+                buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         // L R button background
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];             //actual text
+                buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       //actual text shadow
+                LoadPalette(buf, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                LoadPalette(gMessageBox_Pal, 0xF0, 0x20);
+                break;
+        }
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
+            LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        else {
+            CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+            buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         // L R button background
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];             //actual text
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       //actual text shadow
+            LoadPalette(buf, 0xF0, 0x20);
+        }*/
         DeactivateAllTextPrinters();
         for(i = 0; i <= WIN_AP_DESC; i++)
         {

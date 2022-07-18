@@ -12647,21 +12647,29 @@ void HandleBattleWindow(u8 xStart, u8 yStart, u8 xEnd, u8 yEnd, u8 flags)
     }
 }
 
+
+//FULL_COLOR
 void BattleCreateYesNoCursorAt(u8 cursorPosition)
 {
     u16 src[2];
+    u16 src2[2];
     src[0] = 1;
     src[1] = 2;
+    src2[0] = 0x20;
+    src2[1] = 0x20;
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 0x11);
+    CopyToBgTilemapBufferRect_ChangePalette(0, src2, 0x19, 9 + (2 * !cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
 }
 
+
+//FULL_COLOR
 void BattleDestroyYesNoCursorAt(u8 cursorPosition)
 {
     u16 src[2];
-    src[0] = 0x1016;
-    src[1] = 0x1016;
+    src[0] = 0x20;
+    src[1] = 0x20;
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);

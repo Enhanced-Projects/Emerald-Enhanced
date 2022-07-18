@@ -29,6 +29,8 @@ enum
     MENUITEM_TEXTSPEED,
     MENUITEM_BATTLESCENE,
     MENUITEM_FORCESETBATTLE,
+    //FULL_COLOR
+    MENUITEM_THEME_UI,
     MENUITEM_THEME,
     MENUITEM_FRAMETYPE,
     MENUITEM_RDM_MUSIC,
@@ -69,6 +71,10 @@ static void VanillaCap_DrawChoices(int selection, int y, u8 textSpeed);
 static void TrainerSlide_DrawChoices(int selection, int y, u8 textSpeed);
 static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed);
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed);
+//FULL_COLOR
+static void ThemeUISelection_DrawChoices(int selection, int y, u8 textSpeed);
+static int ThemeUI_ProcessInput(int selection);
+
 static void HpBar_DrawChoices(int selection, int y, u8 textSpeed);
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed);
 static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed);
@@ -97,6 +103,8 @@ static const sItemFunctions[MENUITEM_COUNT] =
     [MENUITEM_TEXTSPEED] = {TextSpeed_DrawChoices, ThreeOptions_ProcessInput},
     [MENUITEM_BATTLESCENE] = {BattleScene_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_FORCESETBATTLE] = {ForceBattleSet_DrawChoices, TwoOptions_ProcessInput},
+    //FULL_COLOR
+    [MENUITEM_THEME_UI] = {ThemeUISelection_DrawChoices, ThemeUI_ProcessInput},
     [MENUITEM_THEME] = {ThemeSelection_DrawChoices, Theme_ProcessInput},
     [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
     [MENUITEM_RDM_MUSIC] = {RandomMusic_DrawChoices, TwoOptions_ProcessInput},
@@ -125,12 +133,14 @@ static const u8 sText_VanillaLevelCap[] = _("Lv cap 100");
 static const u8 sText_ToggleAutoRun[] = _("Auto Run");
 static const u8 sText_TrainerSlideOption[] = _("Slide in msg");
 
-
+//FULL_COLOR
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED]   = gText_TextSpeed,
     [MENUITEM_BATTLESCENE] = gText_BattleScene,
     [MENUITEM_FORCESETBATTLE]     = sText_ForceSetBattleMode,
+    //FULL_COLOR
+    [MENUITEM_THEME_UI]    = gText_ThemeUISelector,
     [MENUITEM_THEME]       = gText_ThemeSelector,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
     [MENUITEM_RDM_MUSIC]   = gText_RandomRouteMusic,
@@ -310,6 +320,9 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
         sOptions->sel[MENUITEM_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
         sOptions->sel[MENUITEM_FORCESETBATTLE] = gSaveBlock2Ptr->forceSetBattleType;
+        //FULL_COLOR
+        sOptions->sel[MENUITEM_THEME_UI] = VarGet(VAR_HAT_THEME_UI_NUMBER);
+
         sOptions->sel[MENUITEM_THEME] = VarGet(VAR_RYU_THEME_NUMBER);
         sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
@@ -1057,6 +1070,9 @@ static void Task_OptionMenuSave(u8 taskId)
     }
 
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
+    //FULL_COLOR
+    VarSet(VAR_HAT_THEME_UI_NUMBER, sOptions->sel[MENUITEM_THEME_UI]);
+    
     if (sOptions->sel[MENUITEM_THEME] == 2)
         gSaveBlock2Ptr->optionsWindowFrameType = 0;
     else
@@ -1166,7 +1182,8 @@ static int Sound_ProcessInput(int selection)
     return selection;
 }
 
-static int Theme_ProcessInput(int selection)
+//FULL_COLOR
+static int ThemeUI_ProcessInput(int selection)
 {
     if (gMain.newKeys & DPAD_RIGHT)
     {
@@ -1182,6 +1199,28 @@ static int Theme_ProcessInput(int selection)
             selection--;
         else
             selection = 2;
+
+    }
+    return selection;
+}
+
+//FULL_COLOR
+static int Theme_ProcessInput(int selection)
+{
+    if (gMain.newKeys & DPAD_RIGHT)
+    {
+        if (selection < 3)
+            selection++;
+        else
+            selection = 0;
+
+    }
+    if (gMain.newKeys & DPAD_LEFT)
+    {
+        if (selection != 0)
+            selection--;
+        else
+            selection = 3;
 
     }
     if(selection == 2) {
@@ -1258,6 +1297,20 @@ static int GetMiddleX(const u8 *txt1, const u8 *txt2, const u8 *txt3)
     return xMid;
 }
 
+//FULL_COLOR
+static void GetMiddleX1X2(const u8 *txt1, const u8 *txt2, const u8 *txt3, const u8 *txt4, u8* x1, u8* x2)
+{
+    int xMid;
+    int widthLeft = GetStringWidth(1, txt1, 0);
+    int widthMid1 = GetStringWidth(1, txt2, 0);
+    int widthMid2 = GetStringWidth(1, txt3, 0);
+    int widthRight = GetStringWidth(1, txt4, 0);
+    
+    xMid = (198 - widthRight - widthLeft - 78) / 2 + 78 + widthLeft;
+    *x1 = (xMid - widthLeft - 78 - widthMid1) * 2 / 3 + 78 + widthLeft;
+    *x2 = (198 - widthRight - xMid - widthMid2) / 3 + xMid;
+}
+
 // Draw Choices functions
 static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style, u8 textSpeed)
 {
@@ -1318,15 +1371,28 @@ static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed)
     DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOn, 198), y, styles[1], textSpeed);
 }
 
+//FULL_COLOR
+static void ThemeUISelection_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[3] = {0};    
+    int xMid = GetMiddleX(gText_UiThemeModern, gText_UiThemeClassic, gText_UiThemeVanilla);
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_UiThemeModern, 78, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeClassic, xMid-(104-78)/2, y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeVanilla, GetStringRightAlignXOffset(1, gText_UiThemeVanilla, 198), y, styles[2], textSpeed);
+}
+//FULL_COLOR
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed)
 {
-    u8 styles[3] = {0};
-    int xMid = GetMiddleX(gText_UiThemeLight, gText_UiThemeDark, gText_UiThemeUser);
+    u8 styles[4] = {0};
+    u8 x1, x2;
+    GetMiddleX1X2(gText_UiThemeLight, gText_UiThemeDark, gText_UiThemeUser, gText_UiThemeVanilla, &x1, &x2);
 
     styles[selection] = 1;
-    DrawOptionMenuChoice(gText_UiThemeLight, 104, y, styles[0], textSpeed);
-    DrawOptionMenuChoice(gText_UiThemeDark, xMid, y, styles[1], textSpeed);
-    DrawOptionMenuChoice(gText_UiThemeUser, GetStringRightAlignXOffset(1, gText_UiThemeUser, 198), y, styles[2], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeLight, 78, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeDark, x1, y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeUser, x2, y, styles[2], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeVanilla, GetStringRightAlignXOffset(1, gText_UiThemeVanilla, 198), y, styles[3], textSpeed);
 }
 
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed)
