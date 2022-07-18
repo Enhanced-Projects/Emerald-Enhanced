@@ -18,6 +18,7 @@
 //Base color decomp definitions
 #define __min(a, b) (((a) < (b) ? (a) : (b)))
 #define __max(a, b) (((a) >= (b) ? (a) : (b)))
+#define __abs(x) (((x) < 0) ? -(x) : (x))
 
 #define R(color) (color%32)
 #define G(color) ((color>>5)%32)
@@ -53,7 +54,7 @@
 #define GREYSCALE_TO_COLOR(color) GS_TO_C(color)
 #define COLOR_CHANGE_HUE(color) HatColorChangeHue(color) //(C_IS_GS(color) ? ~color : RGB_SHIFT(color)) 
 #define COLOR_CHANGE_HUE_KEEP_GS(color) (RGB_TO_C(C_RTOG(color), C_GTOB(color), C_BTOR(color)))
-
+#define COLOR_PICK_HIGHER_CONTRAST(color1, color2, compareColor) HatPickHigherContrast(color1, color2, compareColor)
 // Shade Alterations
 /*
 COLOR_AUTO_SHADE(colorToShade, thresholdShadeToDarkOrLight)
@@ -164,6 +165,13 @@ eg COLOR_AUTO_SHADE_COND(
 #define COLOR_DARK_THEME_TEXT               0x6B5A
 #define COLOR_DARK_THEME_TEXT_SHADOW        0x39CE
 
+
+#define COLOR_SPECIES_TEXT_DARK             0x739C
+#define COLOR_SPECIES_TEXT_DARK_SHADOW      0x318C
+
+#define COLOR_SPECIES_TEXT_LIGHT            0x2108
+#define COLOR_SPECIES_TEXT_LIGHT_SHADOW     0x5EF7
+
 #define BAG_COLOR_BOTTOM_BACKGROUND_SHADOW  7
 #define BAG_COLOR_BOTTOM_BACKGROUND         12
 #define BAG_COLOR_POCKET_SELECTED           10
@@ -172,6 +180,7 @@ eg COLOR_AUTO_SHADE_COND(
 // Wrapper Functions
 // need a func to prevent buffer overflow -> compiler segfault
 u16 HatColorChangeHue(u16 color);
+u16 HatPickHigherContrast(u16 color1, u16 color2, u16 compareColor);
 u16 HatAutoShade(u16 color, u16 threshold);
 u16 HatAutoShadeInverse(u16 color, u16 threshold);
 u16 HatAutoShadeContrast(u16 colorToShade, u16 compareColor, u16 threshold);

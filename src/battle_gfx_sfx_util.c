@@ -747,9 +747,9 @@ void LoadHealthBoxesPalettte() {
             //border 4-8
             //text shadow 2-4
             //text 0-2
-            buf[1] = COLOR_LIGHT_THEME_TEXT;         
+            buf[1] = COLOR_SPECIES_TEXT_LIGHT;//COLOR_LIGHT_THEME_TEXT;         
             buf[2] = COLOR_LIGHT_THEME_BG_LIGHT;     
-            buf[3] = COLOR_LIGHT_THEME_TEXT_SHADOW;         
+            buf[3] = COLOR_NEON_BORDER_1;         
             buf[4] = COLOR_NEON_BORDER_1;
             buf[5] = COLOR_NEON_BORDER_3;
             buf[6] = COLOR_NEON_BORDER_2;
@@ -769,13 +769,13 @@ void LoadHealthBoxesPalettte() {
             tmp.data = malloc(sizeof(u16)*0x20);
             tmp.tag = sSpritePalettes_HealthBoxHealthBar[2].tag;
             CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[2].data, buf, 0x20);
-            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];         
+            buf[1] = COLOR_PICK_HIGHER_CONTRAST(COLOR_SPECIES_TEXT_DARK, COLOR_SPECIES_TEXT_LIGHT, gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
             buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];         
-            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];         
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];         
             buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
             buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
             buf[6] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT]);
-            buf[7] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER]);
+            buf[7] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
             buf[11] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
             CpuCopy16(buf, (u16*)tmp.data, 0x20);
             LoadSpritePalette(&tmp);
@@ -956,8 +956,6 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
 
     return retVal;
 }*/
-
-
 
 
 void LoadBattleBarGfx(u8 arg0)

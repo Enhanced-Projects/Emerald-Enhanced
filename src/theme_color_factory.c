@@ -25,6 +25,10 @@ u16 HatAutoShadeCond(u16 colorToShade, u16 compareColor1, u16 compareColor2, s16
     return C_TO_GS(compareColor1) < C_TO_GS(compareColor2) ? (SHADE_ACTION_AUTO == action ? COLOR_AUTO_SHADE(colorToShade, threshold) : SHADE_ACTION_AUTO_INVERSE == action ? COLOR_AUTO_SHADE_INVERSE(colorToShade, threshold) : SHADE_ACTION_LIGHT == action ? COLOR_CREATE_LIGHT_SHADE(colorToShade) : SHADE_ACTION_DARK == action ? COLOR_CREATE_DARK_SHADE(colorToShade) : colorToShade) : colorToShade;
 }
 
+u16 HatPickHigherContrast(u16 color1, u16 color2, u16 compareColor) {
+    return __abs(C_TO_GS(color1) - C_TO_GS(compareColor)) > __abs(C_TO_GS(color2) - C_TO_GS(compareColor)) ? color1 : color2;
+}
+
 void LightShader(u16* color, u16 step) {
     *color = COLOR_CREATE_LIGHT_SHADE_STEP(*color, step);
 }
