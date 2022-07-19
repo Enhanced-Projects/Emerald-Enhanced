@@ -1335,6 +1335,7 @@ Ryu_initializeAquaStage1::
 	closemessage
 	setvar VAR_RYU_QUEST_AQUA, 25 @received instructions to go to aqua at museum
 	setflag FLAG_RYU_AQUA_1_NOTIFY
+	setflag FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
 	release
 	end

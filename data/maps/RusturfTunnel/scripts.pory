@@ -154,6 +154,12 @@ RT_ADIntro:
 	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 1 @Tell quest tracker to display scientist specific message.
 	setvar VAR_RYU_QUESTLINE_ID, 0
 	setflag FLAG_RYU_PLAYER_HELPING_DEVON
+	setvar VAR_RYU_QUEST_MAGMA, 60000
+	setvar VAR_RYU_QUEST_AQUA, 60000
+	changefactionstanding FACTION_STUDENTS, 10, FALSE
+	changefactionstanding FACTION_PROFESSIONALS, 20, FALSE
+	changefactionstanding FACTION_POKEFANS, 20, FALSE
+	ach give ACH_ADVENTURE_TIME
 	msgbox RT_IsEverything
 	playse SE_PIN
 	applymovement 4, Common_Movement_ExclamationMark
