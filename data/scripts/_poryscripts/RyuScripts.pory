@@ -1805,6 +1805,12 @@ RyuCheckForLNSUAch::
 `
 
 script RyuDebug_Utility1 {
+	setflag(FLAG_RYU_DS_DAWN_PARTNERS)
+	setflag(FLAG_RYU_DS_SHELLY_PARTNERS)
+	setflag(FLAG_RYU_DS_LEAF_PARTNERS)
+	setflag(FLAG_RYU_DS_LANETTE_PARTNERS)
+	setflag(FLAG_RYU_DS_COURTNEY_PARTNERS)
+	setflag(FLAG_RYU_DS_JOY_PARTNERS)
 	release
 	end
 }
@@ -2750,8 +2756,9 @@ script RDM_MoveDown1 {
 text DailyVerboseMsg {
 	"Rolled quest {STR_VAR_1}$"
 }
+
 script RyuDoDailyQuestVerbosePrint {
 	buffernumberstring(0, VAR_RESULT)
-    debugprint(DailyVerboseMsg, 60)
+    //debugprint(DailyVerboseMsg, 60)
 	return
 }

@@ -95,6 +95,7 @@ script(global) RyuProfessionalsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_ROUTE_110)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
+            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
             msgbox(format("Can you go see what the population of Cycling Road looks like? I want to travel through there soon, so I want to know how busy it is. Thanks!"))
         case 3:
             random(4)
@@ -114,6 +115,7 @@ script(global) RyuProfessionalsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_CRAGGY_COAST)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
+            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
             msgbox(format("Hey there! We got word of some water-type Pokémon at Craggy Coast that would be useful transporting items north. Could you check out Craggy Coast and find which Pokémon can be found there?!"))
 
     }

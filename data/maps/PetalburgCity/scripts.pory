@@ -842,13 +842,13 @@ script PBC_DoWallyChaseScene {
 }
 
 movement PBC_ChaseWally0 {
-	walk_fastest_down * 3
+	walk_fastest_down * 2
 	face_down
 	step_end
 }
 
 movement PBC_ChaseWally1 {
-	walk_fastest_down * 3
+	walk_fastest_down * 2
 	face_left
 	step_end
 }

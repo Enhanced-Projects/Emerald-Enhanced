@@ -103,6 +103,7 @@ script(global) RyuNoblesDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_RUSTBORO_CITY)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
+            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
             msgbox(format("The board needs you to go see what Devon Corp is up to. Head there to the second floor and see what their latest project is. Stocks are on the line here!"))
         case 3:
             random(4)

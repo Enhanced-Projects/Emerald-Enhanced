@@ -1704,7 +1704,7 @@
 #define FLAG_RYU_TEMP_6                         (SPECIAL_FLAGS_START + 0x15)
 #define FLAG_RYU_TEMP_7                         (SPECIAL_FLAGS_START + 0x16)
 #define FLAG_RYU_TEMP_8                         (SPECIAL_FLAGS_START + 0x17)
-#define FLAG_RYU_ENABLE_DELIVERY_SPARKLE        (SPECIAL_FLAGS_START + 0x18)
+#define FLAG_RYU_STARTED_TRAVEL_TIMER           (SPECIAL_FLAGS_START + 0x18)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 

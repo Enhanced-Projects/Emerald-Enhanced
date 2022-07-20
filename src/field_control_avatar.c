@@ -450,25 +450,7 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
     }
 }
 
-void RyuDoDailyTravelQuestThings(void)
-{
-    u16 data = VarGet(VAR_RYU_DAILY_QUEST_DATA);
-    u16 type = VarGet(VAR_RYU_DAILY_QUEST_TYPE);
-    u16 target = VarGet(VAR_RYU_DAILY_QUEST_TARGET);
-    if ((data > 0) && (data < 15) && (type == 3))
-        {
-            VarSet(VAR_RYU_DAILY_QUEST_DATA, (data - 1));
-        }
-
-    if (data == 0)
-        {
-            u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
-            VarSet(VAR_RYU_DAILY_QUEST_DATA, 4000);
-            StringCopy(gStringVar1, gFactionNames[factionId]);
-            QueueNotification(gRyuReachedDailyTargetLocationString, NOTIFY_QUEST, 180);
-        }
-
-}
+extern void Ryu_RunTravelQuestTimer();
 
 int ProcessPlayerFieldInput(struct FieldInput *input)
 {
@@ -505,8 +487,14 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
         RyuDoSpecialEncounterChecks(input);
 
-        if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3))
-            RyuDoDailyTravelQuestThings();
+        if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) &&
+            (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == TRAVEL_TYPE) &&
+            (!(VarGet(VAR_RYU_DAILY_QUEST_DATA) == 4000)) &&
+            (FlagGet(FLAG_RYU_STARTED_TRAVEL_TIMER) == FALSE))
+            {
+                FlagSet(FLAG_RYU_STARTED_TRAVEL_TIMER);
+                Ryu_RunTravelQuestTimer();
+            }
     }
 
     if (input->checkStandardWildEncounter && CheckStandardWildEncounter(metatileBehavior) == TRUE)
@@ -545,9 +533,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     }
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
-    
-    //if (input->tookStep && TryFindHiddenPokemon())  //dont think this works anyway
-        //return TRUE;
     
     if (input->pressedRButton && TryStartDexnavSearch())
         return TRUE;
