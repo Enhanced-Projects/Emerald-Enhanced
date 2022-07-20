@@ -2,13 +2,7 @@ raw `
 LilycoveCity_MapScripts:: @ 81E2B3C
 	map_script ON_TRANSITION, LilycoveCity_OnTransition
 	map_script ON_LOAD , LilycoveCity_OnLoad
-	map_script ON_FRAME, LeafScene
 	.byte 0
-
-LeafScene::
-    map_script_2 VAR_RYU_QUEST_LANA, 1, LeafSceneResume
-	map_script_2 VAR_TEMP_A, 0, LCC_SetUpMagma
-    .2byte 0
 	
 LCC_SetUpMagma::
 	setvar VAR_TEMP_A, 100
@@ -18,7 +12,7 @@ LCC_SetUpMagma::
 	setobjectxy 22, 27, 0
 	copyobjectxytoperm 21
 	copyobjectxytoperm 22
-	end
+	return
 	
 	
 @================================================================================================== Follower Shelly interaction
@@ -93,6 +87,7 @@ LeafSceneResume::
 	goto_if_unset FLAG_RYU_ON_DATE ryu_end
 	call RyuResetFollowerPositionAR
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	turnobject PLAYER, DIR_SOUTH
 	fadenewbgm MUS_THANKFOR
 	msgbox LCL_Story1 MSGBOX_DEFAULT
 	closemessage
@@ -161,6 +156,7 @@ LilycoveCity_OnTransition: @ 81E2B47
 	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	call Common_EventScript_SetupRivalGfxId
+	call LCC_SetUpMagma
 	end
 
 LilycoveCity_OnLoad: @ 81E2B61

@@ -365,6 +365,33 @@
       "var": "VAR_TEMP_6",
       "var_value": "0",
       "script": "PBC_FinalMayEvent"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_MAY",
+      "var_value": "50",
+      "script": "PBC_DoWallyChaseScene2"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_MAY",
+      "var_value": "50",
+      "script": "PBC_DoWallyChaseScene"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_MAY",
+      "var_value": "50",
+      "script": "PBC_DoWallyChaseScene3"
     }
   ],
   "bg_events": [

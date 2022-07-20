@@ -1508,9 +1508,9 @@ const u8 gText_Option[] = _("Options");
 const u8 gText_TextSpeed[] = _("Text Speed");
 const u8 gText_BattleScene[] = _("Battle Anims");
 //FULL_COLOR
-const u8 gText_ThemeUISelector[] = _("Theme UI");
+const u8 gText_ThemeUISelector[] = _("UI Style");
 
-const u8 gText_ThemeSelector[] = _("UI Theme");
+const u8 gText_ThemeSelector[] = _("UI Color Mode");
 const u8 gText_RandomRouteMusic[] = _("Rdm Music");
 const u8 gText_Frame[] = _("Frame type");
 const u8 gText_OptionMenuSave[] = _("Save");

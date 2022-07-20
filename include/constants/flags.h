@@ -1692,11 +1692,11 @@
 #define FLAG_RYU_FACING_FACTION_BOSS            (SPECIAL_FLAGS_START + 0x9)
 #define FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS     (SPECIAL_FLAGS_START + 0xA)
 #define FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS    (SPECIAL_FLAGS_START + 0xB)
-#define FLAG_UNUSED_SPECIAL_0xc                 (SPECIAL_FLAGS_START + 0xC)
+#define FLAG_RYU_OPTIONAL_QT_ACTION             (SPECIAL_FLAGS_START + 0xC)
 #define FLAG_UNUSED_SPECIAL_0xd                 (SPECIAL_FLAGS_START + 0xD)
 #define FLAG_RYU_USED_COMPANION_E4              (SPECIAL_FLAGS_START + 0xE) //Used a companion for championship match
 #define FLAG_RYU_PASSED_SAVE_VERSION_CHECK      (SPECIAL_FLAGS_START + 0xF) //prevents lag from checking save vs game version
-#define FLAG_RYU_OPTIONAL_QT_ACTION                         (SPECIAL_FLAGS_START + 0x10)
+#define FLAG_RYU_TEMP_1                         (SPECIAL_FLAGS_START + 0x10)
 #define FLAG_RYU_TEMP_2                         (SPECIAL_FLAGS_START + 0x11)
 #define FLAG_RYU_TEMP_3                         (SPECIAL_FLAGS_START + 0x12)
 #define FLAG_RYU_TEMP_4                         (SPECIAL_FLAGS_START + 0x13)

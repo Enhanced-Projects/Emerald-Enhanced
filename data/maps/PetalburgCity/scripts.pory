@@ -8,7 +8,6 @@ raw `
 
 PetalburgCity_MapScripts::
 	map_script ON_TRANSITION, PetalburgCity_OnTransition
-	map_script ON_FRAME, PetalburgCity_OnFrame
 	.byte 0
 
 PetalburgCity_OnTransition: @ 81DC2D7
@@ -20,6 +19,7 @@ PetalburgCity_OnTransition: @ 81DC2D7
 	call_if_eq PetalburgCity_EventScript_DisableMapNameAndMusic
 	compare VAR_PETALBURG_CITY_STATE, 4
 	call_if_eq PetalburgCity_EventScript_DisableMapNameAndMusic
+	call PC_EnableMayObject
 	end
 
 PetalburgCity_EventScript_MoveBoyToWestEntrance:: @ 81DC307
@@ -30,12 +30,6 @@ PetalburgCity_EventScript_DisableMapNameAndMusic:: @ 81DC30F
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	savebgm MUS_TSURETEK
 	return
-
-PetalburgCity_OnFrame: @ 81DC31C
-	map_script_2 VAR_RYU_QUEST_MAGMA, 245, PC_DoMagmaStuffAfterHeist
-	map_script_2 VAR_TEMP_2, 0, PC_EnableMayObject
-	map_script_2 VAR_TEMP_3, 0, PBC_DoWallyChaseScene
-	.2byte 0
 
 PetalburgCity_EventScript_Boy1:: @ 81DC3E6
 	lock
@@ -431,10 +425,11 @@ PetalburgCity_Text_ImLookingForTalentedTrainers: @ 81DCC09
 @==================================================================================================Mamga post-heist
 
 PC_DoMagmaStuffAfterHeist::
+	compare VAR_RYU_QUEST_MAGMA, 245
+	goto_if_eq ryu_return
 	setvar VAR_RYU_QUEST_MAGMA, 250
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
-	release
-	end
+	return
 	
 PC_CheckForPlayerInWrongDirection::
 	specialvar VAR_RESULT, GetPlayerFacingDirection
@@ -726,7 +721,7 @@ script PC_EnableMayObject {
 		removeobject(12)
 		setflag(FLAG_RYU_HIDE_REL_OBJECTS)
 	}
-	end
+	return
 }
 
 script CheckDismissRivalLeaf { //this is long, i know, but rival as well as leaf share a palette slot with RS MAY, so the palettes clash.
@@ -800,8 +795,19 @@ script PBC_May {
 	waitstate
 }
 
+script PBC_DoWallyChaseScene2 {
+	applymovement(PLAYER, Common_Movement_StepRight)
+	applymovement(FOLLOWER, Common_Movement_StepRight)
+	goto(PBC_DoWallyChaseScene)
+}
+
+script PBC_DoWallyChaseScene3 {
+	applymovement(PLAYER, Common_Movement_StepLeft)
+	applymovement(FOLLOWER, Common_Movement_StepLeft)
+	goto(PBC_DoWallyChaseScene)
+}
+
 script PBC_DoWallyChaseScene {
-	setvar(VAR_TEMP_3, 100)
 	if (var(VAR_RYU_QUEST_MAY) == 50) {
 		applymovement(PLAYER, PBC_ChaseWally0)
 		applymovement(FOLLOWER, PBC_ChaseWally0)
