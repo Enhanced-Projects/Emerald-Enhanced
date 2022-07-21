@@ -93,6 +93,7 @@ script(global) RyuOutcastsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_MT_PYRE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
+            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
             msgbox(format("Please travel to Mt. Pyre's summit and check the leylines. We're waiting for the right ones to perform a ritual."))
         case 3:
             random(4)

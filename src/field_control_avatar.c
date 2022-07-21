@@ -209,10 +209,21 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
     return FALSE;
 }
 
+void RyuCheckForLNSU (void)
+{
+    int count = 0, slot;
+    for (slot = FLAG_LANDMARK_FLOWER_SHOP; slot <= FLAG_LANDMARK_SNOWY_SHORE; slot++)
+        count += FlagGet(slot);
+    if (count >= 27)
+        GiveAchievement(ACH_LEAVE_NO_STONE_UNTURNED);
+}
+
 extern int CountBadges(void);
 extern void RyuCheckForFactionAchievements(void);
 
 const u8 gRyuReachedDailyTargetLocationString[] = _("Reached target area for the {STR_VAR_1}.");
+
+
 
 void RyuDoNotifyTasks(void)
 {
@@ -232,7 +243,7 @@ void RyuDoNotifyTasks(void)
     if ((CheckAchievement(ACH_LEAVE_NO_STONE_UNTURNED) == FALSE) && (VarGet(VAR_TEMP_E) == 0))
     {
         VarSet(VAR_TEMP_E, 100);
-        ScriptContext1_SetupScript(RyuCheckForLNSUAch);
+        RyuCheckForLNSU();//no longer a script, should be faster
     }
 
     if ((FlagGet(FLAG_RYU_FAILED_RYU_CHALLENGE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE) == FALSE))
@@ -450,25 +461,7 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
     }
 }
 
-void RyuDoDailyTravelQuestThings(void)
-{
-    u16 data = VarGet(VAR_RYU_DAILY_QUEST_DATA);
-    u16 type = VarGet(VAR_RYU_DAILY_QUEST_TYPE);
-    u16 target = VarGet(VAR_RYU_DAILY_QUEST_TARGET);
-    if ((data > 0) && (data < 15) && (type == 3))
-        {
-            VarSet(VAR_RYU_DAILY_QUEST_DATA, (data - 1));
-        }
-
-    if (data == 0)
-        {
-            u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
-            VarSet(VAR_RYU_DAILY_QUEST_DATA, 4000);
-            StringCopy(gStringVar1, gFactionNames[factionId]);
-            QueueNotification(gRyuReachedDailyTargetLocationString, NOTIFY_QUEST, 180);
-        }
-
-}
+extern void Ryu_RunTravelQuestTimer();
 
 int ProcessPlayerFieldInput(struct FieldInput *input)
 {
@@ -505,8 +498,14 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
         RyuDoSpecialEncounterChecks(input);
 
-        if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3))
-            RyuDoDailyTravelQuestThings();
+        if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) &&
+            (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == TRAVEL_TYPE) &&
+            (!(VarGet(VAR_RYU_DAILY_QUEST_DATA) == 4000)) &&
+            (FlagGet(FLAG_RYU_STARTED_TRAVEL_TIMER) == FALSE))
+            {
+                FlagSet(FLAG_RYU_STARTED_TRAVEL_TIMER);
+                Ryu_RunTravelQuestTimer();
+            }
     }
 
     if (input->checkStandardWildEncounter && CheckStandardWildEncounter(metatileBehavior) == TRUE)
@@ -545,9 +544,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     }
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
-    
-    //if (input->tookStep && TryFindHiddenPokemon())  //dont think this works anyway
-        //return TRUE;
     
     if (input->pressedRButton && TryStartDexnavSearch())
         return TRUE;

@@ -321,7 +321,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "LeafSceneResume",
       "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL"
     },
     {
@@ -540,6 +540,15 @@
       "var": "VAR_TEMP_3",
       "var_value": "0",
       "script": "RyuNoblesSpecialFactionQuestTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 58,
+      "y": 36,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_LANA",
+      "var_value": "1",
+      "script": "LCC_PreventPlayerExitLanaScene"
     }
   ],
   "bg_events": [

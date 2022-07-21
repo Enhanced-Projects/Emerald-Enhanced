@@ -88,6 +88,7 @@ script(global) RyuStudentsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_ROUTE_114)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
+            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
             msgbox(format("{PLAYER}! I need you to go to Route 114 and check out our competition there."))
         case 3:
             random(4)

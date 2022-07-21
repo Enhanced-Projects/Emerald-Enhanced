@@ -2750,8 +2750,9 @@ script RDM_MoveDown1 {
 text DailyVerboseMsg {
 	"Rolled quest {STR_VAR_1}$"
 }
+
 script RyuDoDailyQuestVerbosePrint {
 	buffernumberstring(0, VAR_RESULT)
-    debugprint(DailyVerboseMsg, 60)
+    //debugprint(DailyVerboseMsg, 60)
 	return
 }

@@ -100,6 +100,7 @@ script(global) RyuNaturalistsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE103)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
             msgbox(format("{PLAYER}, can you go check out Route 103? I want to know specifically if there's a good place to camp there or not."))
         case 4:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)

@@ -93,6 +93,8 @@
 
 extern u8 GetObjectEventIdByLocalId(u8 id);
 
+extern u8 RyuScript_CheckCompleteDailyQuest[];
+
 
 void ApplyDaycareExperience(struct Pokemon *mon)
 {
@@ -254,6 +256,11 @@ int CheckValidMonsForSpecialChallenge (void)
             if (gChallengeBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
                 return 666;
         }
+        if IS_MEGA_EVOLVED((GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2)) == TRUE)
+                return 666;
+
+        if IS_ULTRA_BEAST((GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2)) == TRUE)
+                return 666;
     }
 }
 
@@ -2963,4 +2970,33 @@ void RyuBuildDailyQuestInfoString(void)
             }
     }
     StringCopy(gRyuStringVar2, temp);
+}
+
+#define tQuestFrames data[0]
+
+void RyuTravelQuestTask(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    if ((tFrames < 1200) && (RyuGetCurrentMapsec() == (VarGet(VAR_RYU_DAILY_QUEST_TARGET))) && (!(VarGet(VAR_RYU_DAILY_QUEST_DATA) == 4000)))
+    {
+        tFrames++;
+    }
+    else
+    {
+        u8 buf[40];
+        u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
+        DestroyTask(taskId);
+        StringCopy(buf, gFactionNames[VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION)]);
+        StringAppend(buf, (const u8[]) _(" travel quest completed."));
+        QueueNotification(buf, NOTIFY_MISSION, 120); 
+        VarSet(VAR_RYU_DAILY_QUEST_DATA, 4000);
+    }
+}
+
+void Ryu_RunTravelQuestTimer(void) 
+{
+    unsigned taskId;
+
+    taskId = CreateTask(RyuTravelQuestTask, 0xFF);
+
 }
