@@ -393,6 +393,11 @@ static bool8 SetUpFieldMove_Fly(void);
 static bool8 SetUpFieldMove_Waterfall(void);
 static bool8 SetUpFieldMove_Dive(void);
 
+//FULL_COLOR SCROLLING_BG
+static void CreateMovingBgTask(void);
+static void DestroyMovingBgTask(void);
+static void Task_MoveBg(u8 taskId);
+
 // static const data
 #include "data/pokemon/tutor_learnsets.h"
 #include "data/party_menu.h"
@@ -518,8 +523,15 @@ static bool8 ShowPartyMenu(void)
         }
         break;
     case 8:
-        if (AllocPartyMenuBgGfx())
+        if (AllocPartyMenuBgGfx()) {
             gMain.state++;
+            switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+                case THEME_UI_MODERN:
+                case THEME_UI_CLASSIC:
+                    CreateMovingBgTask();
+                    break;
+            }
+        }
         break;
     case 9:
         InitPartyMenuWindows(gPartyMenu.layout);
@@ -596,6 +608,12 @@ static bool8 ShowPartyMenu(void)
 static void ExitPartyMenu(void)
 {
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+    switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+        case THEME_UI_MODERN:
+        case THEME_UI_CLASSIC:
+            DestroyMovingBgTask();
+            break;
+    }
     CreateTask(Task_ExitPartyMenu, 0);
     SetVBlankCallback(VBlankCB_PartyMenu);
     SetMainCallback2(CB2_UpdatePartyMenu);
@@ -651,14 +669,30 @@ static bool8 AllocPartyMenuBgGfx(void)
     switch (sPartyMenuInternal->data[0])
     {
         case 0:
-            sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBg_Gfx, &sizeout);
+            switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+                case THEME_UI_MODERN:
+                case THEME_UI_CLASSIC:
+                    sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBgModern_Gfx, &sizeout);
+                    break;
+                case THEME_UI_VANILLA:
+                    sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBg_Gfx, &sizeout);
+                    break;
+            }
             LoadBgTiles(1, sPartyBgGfxTilemap, sizeout, 0);
             sPartyMenuInternal->data[0]++;
             break;
         case 1:
             if (!IsDma3ManagerBusyWithBgCopy())
             {
-                LZDecompressWram(gPartyMenuBg_Tilemap, sPartyBgTilemapBuffer);
+                switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+                    case THEME_UI_MODERN:
+                    case THEME_UI_CLASSIC:
+                        LZDecompressWram(gPartyMenuBgModern_Tilemap, sPartyBgTilemapBuffer);
+                        break;
+                    case THEME_UI_VANILLA:
+                        LZDecompressWram(gPartyMenuBg_Tilemap, sPartyBgTilemapBuffer);
+                        break;
+                }
                 sPartyMenuInternal->data[0]++;
             }
             break;
@@ -678,7 +712,8 @@ static bool8 AllocPartyMenuBgGfx(void)
                     // bg corner
                     buf[19] = COLOR_LIGHT_THEME_CONTRAST;
                     
-                    //bg stripes (2colors)
+                    //bg stripes (3 colors)
+                    buf[0] = COLOR_LIGHT_THEME_BG_DARK;
                     buf[20] = COLOR_LIGHT_THEME_BG_DARK;
                     buf[21] = COLOR_LIGHT_THEME_BG_DARK;
                     
@@ -728,11 +763,9 @@ static bool8 AllocPartyMenuBgGfx(void)
 
                     //selected first pkm border bottom internal
                     buf[118] = COLOR_NEON_BORDER_1;//~bufShadesLight[0];
-
-                    LoadPalette(buf, 0, 0x160);
                     break;
                 case THEME_COLOR_DARK:
-                    LoadCompressedPalette(gPartyMenu_dark_Pal, 0, 0x160);
+                    LoadCompressedPaletteTo(gPartyMenu_dark_Pal, buf, 0, 0x160);
                     break;
                 case THEME_COLOR_USER:
                     LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
@@ -747,7 +780,8 @@ static bool8 AllocPartyMenuBgGfx(void)
                     // bg corner
                     buf[19] = COLOR_CREATE_DARK_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
                     
-                    //bg stripes (2colors)
+                    //bg stripes (3colors)
+                    buf[0] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
                     buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
                     buf[21] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
                     
@@ -798,13 +832,21 @@ static bool8 AllocPartyMenuBgGfx(void)
                     //selected first pkm border bottom internal
                     buf[118] = ~bufShadesLight[0];
 
-                    LoadPalette(buf, 0, 0x160);
                     break;
                 case THEME_COLOR_VANILLA:
-                    LoadCompressedPalette(gPartyMenuBg_Pal, 0, 0x160);
+                    LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
                     break;
             }
-        
+            switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+                case THEME_UI_MODERN:
+                case THEME_UI_CLASSIC:
+                    buf[26] = COLOR_RED; //pokeball 20-60
+                    buf[28] = COLOR_DARK_RED; //pokeball 20-60
+                    buf[17] = COLOR_WHITE; //pokeball white
+                    buf[19] = COLOR_BLACK; //pokeball black
+                    break;
+            }
+            LoadPalette(buf, 0, 0x160);
             CpuCopy16(gPlttBufferUnfaded, sPartyMenuInternal->palBuffer, 0x160);
             sPartyMenuInternal->data[0]++;
             break;
@@ -6309,4 +6351,27 @@ void IsLastMonThatKnowsSurf(void)
         if (AnyStorageMonWithMove(move) != TRUE)
             gSpecialVar_Result = TRUE;
     }
+}
+
+
+
+//FULL_COLOR
+
+static u8* ScrollTask;
+
+static void CreateMovingBgTask(void)
+{
+    ScrollTask = malloc(sizeof(u8));
+    *ScrollTask = CreateTask(Task_MoveBg, 2);
+}
+
+static void DestroyMovingBgTask(void)
+{
+    DestroyTask(*ScrollTask);
+    free(ScrollTask);
+}
+
+static void Task_MoveBg(u8 taskId)
+{
+    ChangeBgX(1, 0x80, 1);
 }

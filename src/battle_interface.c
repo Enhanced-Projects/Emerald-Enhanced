@@ -784,6 +784,46 @@ static const struct SpriteTemplate sSpriteTemplate_OmegaIndicator =
     .callback = SpriteCb_MegaIndicator,
 };
 
+const u8 gBossIconTiles[] = INCBIN_U8("graphics/interface/bossicon.4bpp");
+const u16 gBossIconTilesPal[] = INCBIN_U16("graphics/interface/bossicon.gbapal");
+
+
+static const struct SpriteSheet sSpriteSheet_BossIcon =
+{
+    gBossIconTiles, sizeof(gBossIconTiles), TAG_BOSS_ICON
+};
+static const struct SpritePalette sSpritePalette_BossIcon =
+{
+    gBossIconTilesPal, TAG_BOSS_ICON_PAL
+};
+
+static const struct OamData sBossIconSpriteOamData =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = 0,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(8x8),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(8x8),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const struct SpriteTemplate sBossIconSpriteTemplate =
+{
+    .tileTag = TAG_BOSS_ICON,
+    .paletteTag = TAG_BOSS_ICON_PAL,
+    .oam = &sBossIconSpriteOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCb_MegaIndicator
+};
 
 // code
 
@@ -801,6 +841,7 @@ static const struct SpriteTemplate sSpriteTemplate_OmegaIndicator =
 // data fields for healthboxRight
 #define hOther_HealthBoxSpriteId    data[5]
 #define hOther_IndicatorSpriteId    data[6] // For Mega Evo
+#define hOther_BossIndicatorSpriteId data[7]
 
 // data fields for healthbar
 #define hBar_HealthBoxSpriteId      data[5]
@@ -814,11 +855,19 @@ u8 GetMegaIndicatorSpriteId(u32 healthboxSpriteId)
     return gSprites[spriteId].hOther_IndicatorSpriteId;
 }
 
+u8 GetBossIndicatorSpriteId(u32 healthboxSpriteId)
+{
+    u8 spriteId = gSprites[healthboxSpriteId].oam.affineParam;
+    if (spriteId >= MAX_SPRITES)
+        return 0xFF;
+    return gSprites[spriteId].hOther_BossIndicatorSpriteId;
+}
+
 u8 CreateBattlerHealthboxSprites(u8 battlerId)
 {
     s16 data6 = 0;
     u8 healthboxLeftSpriteId, healthboxRightSpriteId;
-    u8 healthbarSpriteId, megaIndicatorSpriteId;
+    u8 healthbarSpriteId, megaIndicatorSpriteId, bossIndicatorSpriteId;
     struct Sprite *healthBarSpritePtr;
 
     if (!IsDoubleBattle())
@@ -891,11 +940,15 @@ u8 CreateBattlerHealthboxSprites(u8 battlerId)
 
     gSprites[healthboxRightSpriteId].invisible = TRUE;
     gSprites[healthboxRightSpriteId].hOther_IndicatorSpriteId = 0xFF;
+    gSprites[healthboxRightSpriteId].hOther_BossIndicatorSpriteId = 0xFF;
 
     healthBarSpritePtr->hBar_HealthBoxSpriteId = healthboxLeftSpriteId;
     healthBarSpritePtr->hBar_Data6 = data6;
     healthBarSpritePtr->invisible = TRUE;
 
+    bossIndicatorSpriteId = CreateBossIndicatorSprite(battlerId, 0);
+    if (bossIndicatorSpriteId != MAX_SPRITES)
+        gSprites[bossIndicatorSpriteId].invisible = TRUE;
     // Create mega indicator sprite if is a mega evolved mon.
     if (gBattleStruct->mega.evolvedPartyIds[GetBattlerSide(battlerId)] & gBitTable[gBattlerPartyIndexes[battlerId]])
     {
@@ -963,6 +1016,7 @@ static void SpriteCB_HealthBoxOther(struct Sprite *sprite)
 {
     u8 healthboxMainSpriteId = sprite->hOther_HealthBoxSpriteId;
     u8 megaSpriteId = sprite->hOther_IndicatorSpriteId;
+    u8 bossSpriteId = sprite->hOther_BossIndicatorSpriteId;
 
     sprite->pos1.x = gSprites[healthboxMainSpriteId].pos1.x + 64;
     sprite->pos1.y = gSprites[healthboxMainSpriteId].pos1.y;
@@ -974,6 +1028,10 @@ static void SpriteCB_HealthBoxOther(struct Sprite *sprite)
     {
         gSprites[megaSpriteId].pos2.x = sprite->pos2.x;
         gSprites[megaSpriteId].pos2.y = sprite->pos2.y;
+    }
+    if (bossSpriteId != 0xFF && bossSpriteId != MAX_SPRITES) {
+        gSprites[bossSpriteId].pos2.x = sprite->pos2.x;
+        gSprites[bossSpriteId].pos2.y = sprite->pos2.y;
     }
 }
 
@@ -988,6 +1046,7 @@ void SetBattleBarStruct(u8 battlerId, u8 healthboxSpriteId, s32 maxVal, s32 oldV
 
 void SetHealthboxSpriteInvisible(u8 healthboxSpriteId)
 {
+    DestroyBossIndicatorSprite(healthboxSpriteId);
     DestroyMegaIndicatorSprite(healthboxSpriteId);
     gSprites[healthboxSpriteId].invisible = TRUE;
     gSprites[gSprites[healthboxSpriteId].hMain_HealthBarSpriteId].invisible = TRUE;
@@ -997,10 +1056,16 @@ void SetHealthboxSpriteInvisible(u8 healthboxSpriteId)
 void SetHealthboxSpriteVisible(u8 healthboxSpriteId)
 {
     u8 battlerId = gSprites[healthboxSpriteId].hMain_Battler;
+    u8 bossSpriteId;
 
     gSprites[healthboxSpriteId].invisible = FALSE;
     gSprites[gSprites[healthboxSpriteId].hMain_HealthBarSpriteId].invisible = FALSE;
     gSprites[gSprites[healthboxSpriteId].oam.affineParam].invisible = FALSE;
+    bossSpriteId = GetBossIndicatorSpriteId(battlerId);
+    if (bossSpriteId != 0xFF)
+        gSprites[bossSpriteId].invisible = TRUE;
+    //else
+    //    CreateBossIndicatorSprite(battlerId, 0);
     if (gBattleStruct->mega.evolvedPartyIds[GetBattlerSide(battlerId)] & gBitTable[gBattlerPartyIndexes[battlerId]])
     {
         u8 spriteId = GetMegaIndicatorSpriteId(healthboxSpriteId);
@@ -1019,6 +1084,7 @@ static void UpdateSpritePos(u8 spriteId, s16 x, s16 y)
 
 void DestoryHealthboxSprite(u8 healthboxSpriteId)
 {
+    DestroyBossIndicatorSprite(healthboxSpriteId);
     DestroyMegaIndicatorSprite(healthboxSpriteId);
     DestroySprite(&gSprites[gSprites[healthboxSpriteId].oam.affineParam]);
     DestroySprite(&gSprites[gSprites[healthboxSpriteId].hMain_HealthBarSpriteId]);
@@ -1710,6 +1776,41 @@ static const s8 sIndicatorPositions[][2] =
     [B_POSITION_OPPONENT_RIGHT] = {44, -9},
 };
 
+u32 CreateBossIndicatorSprite(u32 battlerId, u32 which) {
+    u32 spriteId, position;
+    s16 x, y;
+    u32 side = GetBattlerSide(battlerId);
+    struct Pokemon *party = (side == B_SIDE_PLAYER) ? gPlayerParty : gEnemyParty;
+    u16 monId = gBattlerPartyIndexes[battlerId];
+    //if (GetMonData(&party[monId], MON_DATA_BOSS_STATUS, NULL) == TRUE)
+    //{
+
+        LoadSpritePalette(&sSpritePalette_BossIcon);
+        LoadSpriteSheet(&sSpriteSheet_BossIcon);
+
+        position = GetBattlerPosition(battlerId);
+        GetBattlerHealthboxCoords(battlerId, &x, &y);
+
+        x += sIndicatorPositions[position][0] - 5;
+        y += sIndicatorPositions[position][1] + 5;
+        if (gBattleMons[battlerId].level >= 100)
+            x -= 4;
+        else if (gBattleMons[battlerId].level < 10)
+            x += 5;
+
+        spriteId = CreateSpriteAtEnd(&sBossIconSpriteTemplate, x, y, 0);
+        if (spriteId != MAX_SPRITES) {
+            gSprites[gSprites[gHealthboxSpriteIds[battlerId]].oam.affineParam].hOther_BossIndicatorSpriteId = spriteId;
+
+            gSprites[spriteId].tBattler = battlerId;
+        } else
+            gSprites[gSprites[gHealthboxSpriteIds[battlerId]].oam.affineParam].hOther_BossIndicatorSpriteId = 0xFF;
+        return spriteId;
+
+    //}
+    //return MAX_SPRITES;
+}
+
 u32 CreateMegaIndicatorSprite(u32 battlerId, u32 which)
 {
     u32 spriteId, position;
@@ -1778,6 +1879,30 @@ void DestroyMegaIndicatorSprite(u32 healthboxSpriteId)
     {
         FreeSpritePaletteByTag(TAG_MEGA_INDICATOR_PAL);
         FreeSpriteTilesByTag(TAG_MEGA_INDICATOR_TILE);
+    }
+}
+
+void DestroyBossIndicatorSprite(u32 healthboxSpriteId)
+{
+    u32 i;
+    s16 *spriteId = &gSprites[gSprites[healthboxSpriteId].oam.affineParam].hOther_BossIndicatorSpriteId;
+
+    if (*spriteId != 0xFF)
+    {
+        DestroySprite(&gSprites[*spriteId]);
+        *spriteId = 0xFF;
+    }
+
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    {
+        if (gSprites[gSprites[gHealthboxSpriteIds[i]].oam.affineParam].hOther_BossIndicatorSpriteId != 0xFF)
+            break;
+    }
+    // Free Sprite pal/tiles only if no indicator sprite is active for all battlers.
+    if (i == MAX_BATTLERS_COUNT)
+    {
+        FreeSpritePaletteByTag(TAG_BOSS_ICON_PAL);
+        FreeSpriteTilesByTag(TAG_BOSS_ICON);
     }
 }
 
@@ -2282,25 +2407,26 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
         ptr = StringAppend(gDisplayedStringBattle, nickname);
     }
 
-    if ((GetMonData(mon, MON_DATA_BOSS_STATUS, NULL) == TRUE))
+    /*if ((GetMonData(mon, MON_DATA_BOSS_STATUS, NULL) == TRUE))
     {
         StringCopy(gDisplayedStringBattle, gText_ColorShadowRedLightRed);
         GetMonData(mon, MON_DATA_NICKNAME, nickname);
         StringGetEnd10(nickname);
         ptr = StringAppend(gDisplayedStringBattle, nickname);
-    }
+
+    }*/
 
     if ((GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_PLAYER))
     {
-        if ((GetMonData(mon, MON_DATA_BOSS_STATUS, NULL) == TRUE))
+        /*if ((GetMonData(mon, MON_DATA_BOSS_STATUS, NULL) == TRUE))
         {
             StringCopy(gDisplayedStringBattle, gText_ColorShadowRedLightRed);
             StringAppend(gDisplayedStringBattle, gText_HighlightTransparent);
         }
         else
-        {
+        {*/
             StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
-        }
+        //}
         GetMonData(mon, MON_DATA_NICKNAME, nickname);
         StringGetEnd10(nickname);
         ptr = StringAppend(gDisplayedStringBattle, nickname);

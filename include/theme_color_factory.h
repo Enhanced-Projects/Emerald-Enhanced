@@ -177,6 +177,13 @@ eg COLOR_AUTO_SHADE_COND(
 #define BAG_COLOR_POCKET_SELECTED           10
 #define BAG_COLOR_POCKET_UNSLECTED          14
 
+#define COLOR_WHITE                         0x7FFF
+#define COLOR_BLACK                         0x0
+#define COLOR_RED                           0x1f
+#define COLOR_GREEN                         0x3e0
+#define COLOR_BLUE                          0x7c00
+#define COLOR_DARK_RED                      0xE
+
 // Wrapper Functions
 // need a func to prevent buffer overflow -> compiler segfault
 u16 HatColorChangeHue(u16 color);

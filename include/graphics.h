@@ -7049,6 +7049,10 @@ extern const u32 gPartyMenuBg_Tilemap[];
 extern const u32 gPartyMenuBg_Pal[];
 extern const u32 gPartyMenu_dark_Pal[];
 
+//FULL_COLOR
+extern const u32 gPartyMenuBgModern_Gfx[];
+extern const u32 gPartyMenuBgModern_Tilemap[];
+
 // berry pics
 extern const u32 gBerryPic_Cheri[];
 extern const u32 gBerryPalette_Cheri[];

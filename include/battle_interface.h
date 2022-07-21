@@ -57,6 +57,10 @@ enum
 #define TAG_ALPHA_INDICATOR_PAL         0xD77A
 #define TAG_OMEGA_TRIGGER_PAL           0xD77B
 #define TAG_OMEGA_INDICATOR_PAL         0xD77C
+#define TAG_BOSS_ICON                   0xD77D
+#define TAG_BOSS_ICON_PAL               0xD77E
+
+
 
 enum
 {
@@ -74,6 +78,7 @@ enum
     HEALTHBOX_SAFARI_BALLS_TEXT
 };
 
+u8 GetBossIndicatorSpriteId(u32 healthboxSpriteId);
 u8 GetMegaIndicatorSpriteId(u32 healthboxSpriteId);
 u8 CreateBattlerHealthboxSprites(u8 battler);
 u8 CreateSafariPlayerHealthboxSprites(void);
@@ -92,7 +97,9 @@ bool32 IsMegaTriggerSpriteActive(void);
 void HideMegaTriggerSprite(void);
 void DestroyMegaTriggerSprite(void);
 u32 CreateMegaIndicatorSprite(u32 battlerId, u32 which);
+u32 CreateBossIndicatorSprite(u32 battlerId, u32 which);
 void DestroyMegaIndicatorSprite(u32 healthboxSpriteId);
+void DestroyBossIndicatorSprite(u32 healthboxSpriteId);
 u8 CreatePartyStatusSummarySprites(u8 battler, struct HpAndStatus *partyInfo, u8 arg2, bool8 isBattleStart);
 void Task_HidePartyStatusSummary(u8 taskId);
 void UpdateHealthboxAttribute(u8 healthboxSpriteId, struct Pokemon *mon, u8 elementId);
