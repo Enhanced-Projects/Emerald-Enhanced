@@ -209,10 +209,21 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
     return FALSE;
 }
 
+void RyuCheckForLNSU (void)
+{
+    int count = 0, slot;
+    for (slot = FLAG_LANDMARK_FLOWER_SHOP; slot <= FLAG_LANDMARK_SNOWY_SHORE; slot++)
+        count += FlagGet(slot);
+    if (count >= 27)
+        GiveAchievement(ACH_LEAVE_NO_STONE_UNTURNED);
+}
+
 extern int CountBadges(void);
 extern void RyuCheckForFactionAchievements(void);
 
 const u8 gRyuReachedDailyTargetLocationString[] = _("Reached target area for the {STR_VAR_1}.");
+
+
 
 void RyuDoNotifyTasks(void)
 {
@@ -232,7 +243,7 @@ void RyuDoNotifyTasks(void)
     if ((CheckAchievement(ACH_LEAVE_NO_STONE_UNTURNED) == FALSE) && (VarGet(VAR_TEMP_E) == 0))
     {
         VarSet(VAR_TEMP_E, 100);
-        ScriptContext1_SetupScript(RyuCheckForLNSUAch);
+        RyuCheckForLNSU();//no longer a script, should be faster
     }
 
     if ((FlagGet(FLAG_RYU_FAILED_RYU_CHALLENGE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE) == FALSE))

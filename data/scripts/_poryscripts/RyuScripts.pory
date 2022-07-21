@@ -1805,12 +1805,6 @@ RyuCheckForLNSUAch::
 `
 
 script RyuDebug_Utility1 {
-	setflag(FLAG_RYU_DS_DAWN_PARTNERS)
-	setflag(FLAG_RYU_DS_SHELLY_PARTNERS)
-	setflag(FLAG_RYU_DS_LEAF_PARTNERS)
-	setflag(FLAG_RYU_DS_LANETTE_PARTNERS)
-	setflag(FLAG_RYU_DS_COURTNEY_PARTNERS)
-	setflag(FLAG_RYU_DS_JOY_PARTNERS)
 	release
 	end
 }
