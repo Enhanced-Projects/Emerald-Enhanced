@@ -2971,32 +2971,3 @@ void RyuBuildDailyQuestInfoString(void)
     }
     StringCopy(gRyuStringVar2, temp);
 }
-
-#define tQuestFrames data[0]
-
-void RyuTravelQuestTask(u8 taskId)
-{
-    s16 *data = gTasks[taskId].data;
-    if ((tFrames < 1200) && (RyuGetCurrentMapsec() == (VarGet(VAR_RYU_DAILY_QUEST_TARGET))) && (!(VarGet(VAR_RYU_DAILY_QUEST_DATA) == 4000)))
-    {
-        tFrames++;
-    }
-    else
-    {
-        u8 buf[40];
-        u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
-        DestroyTask(taskId);
-        StringCopy(buf, gFactionNames[VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION)]);
-        StringAppend(buf, (const u8[]) _(" travel quest completed."));
-        QueueNotification(buf, NOTIFY_MISSION, 120); 
-        VarSet(VAR_RYU_DAILY_QUEST_DATA, 4000);
-    }
-}
-
-void Ryu_RunTravelQuestTimer(void) 
-{
-    unsigned taskId;
-
-    taskId = CreateTask(RyuTravelQuestTask, 0xFF);
-
-}
