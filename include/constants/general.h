@@ -511,7 +511,7 @@
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
 
 //uncomment for winter mode.
-#define EE_WINTER_MODE
+//#define EE_WINTER_MODE
 
 #define EE_GAME_VERSION 9004
 

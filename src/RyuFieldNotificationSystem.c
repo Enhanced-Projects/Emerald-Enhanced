@@ -157,8 +157,10 @@ void RyuCheckMagmaQuestNotifications(void)
                 {
                     break;
                 }
-                ShowPokenavFieldMessage("Report to the Mountain Ridge\nnorth of the desert for further\ninstructions.");
+                ShowPokenavFieldMessage((const u8[]) _("Report to the Mountain Ridge\nnorth of the desert for further\linstructions."));
                 FlagClear(FLAG_RYU_HIDE_103_MAGMA_MEETING);
+                FlagClear(FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1);
+                FlagClear(FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE);
                 FlagSet(FLAG_RYU_MAGMA_4_NOTIFY);
                 break;
             }
@@ -174,6 +176,7 @@ void RyuCheckMagmaQuestNotifications(void)
                 FlagSet(FLAG_RYU_HIDE_111_MAGMA_MEETING);
                 FlagSet(FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1);
                 FlagSet(FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE);
+                FlagClear(FLAG_RYU_HIDE_103_MAGMA_MEETING);
                 break;
             }
             case 350:
@@ -184,6 +187,7 @@ void RyuCheckMagmaQuestNotifications(void)
                     break;
                 }
                 FlagSet(FLAG_RYU_MAGMA_8_NOTIFY);
+                VarSet(VAR_RYU_QUEST_MAGMA, 400);
                 ShowFieldMessage((const u8[]) _("I suppose it's time to head back to\nbase and see what's happened so far."));
                 CreateTask(RyuMessageTimerTask, 0xFF);
                 break;

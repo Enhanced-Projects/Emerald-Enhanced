@@ -1458,8 +1458,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	ach(take, ACH_LOST_GIRL)
-	ach(take, ACH_DE_ORPHANED)
+	setvar(VAR_ASH_GATHER_COUNT, 8000)
 	release
 	end
 }

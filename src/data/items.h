@@ -270,7 +270,7 @@ const struct Item gItems[] =
     {
         .name = _("Fast Ball"),
         .itemId = ITEM_FAST_BALL,
-        .price = 2000,
+        .price = 8000,
         .description = sFastBallDesc,
         .pocket = POCKET_POKE_BALLS,
         .type = 11,
@@ -284,7 +284,7 @@ const struct Item gItems[] =
     {
         .name = _("Chill Ball"),
         .itemId = ITEM_CHILL_BALL,
-        .price = 1000,
+        .price = 8000,
         .description = sChillBallDesc,
         .pocket = POCKET_POKE_BALLS,
         .type = 11,
@@ -298,7 +298,7 @@ const struct Item gItems[] =
     {
         .name = _("Quick Ball"),
         .itemId = ITEM_QUICK_BALL,
-        .price = 3000,
+        .price = 8000,
         .description = sQuickBallDesc,
         .pocket = POCKET_POKE_BALLS,
         .type = 11,
@@ -312,7 +312,7 @@ const struct Item gItems[] =
     {
         .name = _("Dusk Ball"),
         .itemId = ITEM_DUSK_BALL,
-        .price = 3000,
+        .price = 8000,
         .description = sDuskBallDesc,
         .pocket = POCKET_POKE_BALLS,
         .type = 11,
