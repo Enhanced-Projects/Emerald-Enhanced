@@ -965,7 +965,7 @@ static bool8 IntializeAP(u8 taskId)
             const u8 * color = sTextColors[2];
             if(CheckAPFlag(gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].apId))
                 color = sTextColors[3];
-            else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP >= (GetPlayerAPMax()-GetCurrentAPUsed())) // oh jesus christ
+            else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP > (GetPlayerAPMax()-GetCurrentAPUsed())) // oh jesus christ
                 color = sTextColors[1];
             AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 4, i * 12, color, 0xFF, gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].name);
             ConvertUIntToDecimalStringN(gStringVar1, gAP_Info[gTasks[taskId].tSelectedTier].requiredAP, STR_CONV_MODE_LEFT_ALIGN, 2);
@@ -1124,7 +1124,7 @@ static void Task_HandleAPInput(u8 taskId)
                     gTasks[taskId].tDisEnaAP = 0;
                     gTasks[taskId].func = Task_ActivateAPYesNoChoice; 
                 }
-                else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP >= (GetPlayerAPMax()-GetCurrentAPUsed()))
+                else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP > (GetPlayerAPMax()-GetCurrentAPUsed()))
                 {
                     FillWindowPixelBuffer(WIN_AP_DESC, 0);
                     AddTextPrinterParameterized3(WIN_AP_DESC, 0, 4, 2, sTextColors[1], 0xFF, gText_NotEnoughAP);
@@ -1303,7 +1303,7 @@ static void Task_UpdateTierSelections(u8 taskId)
         const u8 * color = sTextColors[2];
         if(CheckAPFlag(gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].apId))
             color = sTextColors[3];
-        else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP >= (GetPlayerAPMax()-GetCurrentAPUsed())) // oh jesus christ
+        else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP > (GetPlayerAPMax()-GetCurrentAPUsed())) // oh jesus christ
             color = sTextColors[1];
         AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 4, i * 12, color, 0xFF, gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].name);
         ConvertUIntToDecimalStringN(gStringVar1, gAP_Info[gTasks[taskId].tSelectedTier].requiredAP, STR_CONV_MODE_LEFT_ALIGN, 2);
@@ -1335,7 +1335,7 @@ static void Task_UpdateAPSelections(u8 taskId)
             const u8 * color = sTextColors[2];
             if(CheckAPFlag(gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].apId))
                 color = sTextColors[3];
-            else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP >= (GetPlayerAPMax()-GetCurrentAPUsed())) // oh jesus christ
+            else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP > (GetPlayerAPMax()-GetCurrentAPUsed())) // oh jesus christ
                 color = sTextColors[1];
             AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 4, i * 12, color, 0xFF, gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i+gTasks[taskId].tSelectedAPOffset].name);
             ConvertUIntToDecimalStringN(gStringVar1, gAP_Info[gTasks[taskId].tSelectedTier].requiredAP, STR_CONV_MODE_LEFT_ALIGN, 2);
