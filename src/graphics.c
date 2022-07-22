@@ -1987,7 +1987,13 @@ const u16 gTilesetPalettes_General[][16] =
 {
     INCBIN_U16("data/tilesets/primary/general/palettes/00.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/01.gbapal"),
+    #ifdef EE_WINTER_MODE
+    INCBIN_U16("data/tilesets/primary/general/palettes/02-w.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/03-w.gbapal"),
+    #else
     INCBIN_U16("data/tilesets/primary/general/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/03.gbapal"),
+    #endif
     INCBIN_U16("data/tilesets/primary/general/palettes/03.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/04.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/05.gbapal"),
