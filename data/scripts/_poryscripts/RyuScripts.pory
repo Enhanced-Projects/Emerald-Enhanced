@@ -1458,6 +1458,8 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	ach(take, ACH_LOST_GIRL)
+	ach(take, ACH_DE_ORPHANED)
 	release
 	end
 }

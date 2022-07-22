@@ -1983,17 +1983,33 @@ const u32 gUnionRoomChat_Border_Gfx[] = INCBIN_U32("graphics/union_room_chat/bor
 const u32 gUnionRoomChat_Border_Tilemap[] = INCBIN_U32("graphics/union_room_chat/border.bin.lz");
 const u32 gUnionRoomChat_RButtonLabels[] = INCBIN_U32("graphics/union_room_chat/r_button_labels.4bpp.lz");
 
+
+#ifdef EE_WINTER_MODE
 const u16 gTilesetPalettes_General[][16] =
 {
     INCBIN_U16("data/tilesets/primary/general/palettes/00.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/01.gbapal"),
-    #ifdef EE_WINTER_MODE
     INCBIN_U16("data/tilesets/primary/general/palettes/02-w.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/03-w.gbapal"),
-    #else
+    INCBIN_U16("data/tilesets/primary/general/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/05-w.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/12.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/13.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/14.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/15.gbapal"),
+};
+#else
+const u16 gTilesetPalettes_General[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/general/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/01.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/02.gbapal"),
-    INCBIN_U16("data/tilesets/primary/general/palettes/03.gbapal"),
-    #endif
     INCBIN_U16("data/tilesets/primary/general/palettes/03.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/04.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/05.gbapal"),
@@ -2008,6 +2024,7 @@ const u16 gTilesetPalettes_General[][16] =
     INCBIN_U16("data/tilesets/primary/general/palettes/14.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/15.gbapal"),
 };
+#endif
 
 const u32 gTilesetTiles_General[] = INCBIN_U32("data/tilesets/primary/general/tiles.4bpp.lz");
 
