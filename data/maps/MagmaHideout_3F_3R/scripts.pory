@@ -164,8 +164,6 @@ MH_GruntsDefeated::
 	end
 
 MH_GruntsNotDefeated::
-	multvar VAR_TEMP_6, 100
-	divvar VAR_TEMP_6, 9
 	buffernumberstring 0, VAR_TEMP_6
 	msgbox MH3_CheckPercent
 	clearfullscreenimage
@@ -173,5 +171,5 @@ MH_GruntsNotDefeated::
 	end
 
 MH3_CheckPercent:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Orders... {STR_VAR_1}% complete.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Orders... {STR_VAR_1} of 9 erased.$"
 `
