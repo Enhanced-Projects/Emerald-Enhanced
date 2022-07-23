@@ -404,10 +404,24 @@ const static u8 sTextColor[] =
 static void DrawFactionStandingText(u8 taskId)
 {
     u32 i;
+    u16 buf[0x20];
     //u8 * ptr;
     //ptr = gStringVar1;
-    //ptr = 
-    LoadPalette(sFactionTextPal, 13*16, 32);
+    //ptr =
+    CpuCopy16(sFactionTextPal, buf, 0x20);
+    switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+        case THEME_COLOR_LIGHT:
+            buf[7] = COLOR_LIGHT_THEME_TEXT;
+        case THEME_COLOR_DARK:
+            break;
+        case THEME_COLOR_USER:
+            buf[7] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[8] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+            break;
+        case THEME_COLOR_VANILLA:
+            break;
+    }
+    LoadPalette(buf, 13*16, 0x20);
     PutWindowTilemap(WIN_FACTION_BUTTON_INFO);
     PutWindowTilemap(WIN_FACTION_STANDING);
     PutWindowTilemap(WIN_FACTION_NAMES);

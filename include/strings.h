@@ -335,6 +335,7 @@ extern const u8 gText_ButtonMode[];
 
 extern const u8 gText_MaleSymbol[];
 extern const u8 gText_FemaleSymbol[];
+extern const u8 gText_BossSymbol[];
 
 extern const u8 gText_SelectorArrow3[];
 extern const u8 gText_YesNo[];

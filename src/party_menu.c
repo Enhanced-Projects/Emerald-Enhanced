@@ -393,6 +393,16 @@ static bool8 SetUpFieldMove_Fly(void);
 static bool8 SetUpFieldMove_Waterfall(void);
 static bool8 SetUpFieldMove_Dive(void);
 
+//FULL_COLOR SCROLLING_BG
+static void CreateMovingBgTask(void);
+static void DestroyMovingBgTask(void);
+static void Task_MoveBg(u8 taskId);
+
+
+extern const u8 gText_DynColorBossMale[];
+extern const u8 gText_DynColorBossFemale[];
+extern const u8 gText_DynColorBoss[];
+
 // static const data
 #include "data/pokemon/tutor_learnsets.h"
 #include "data/party_menu.h"
@@ -518,8 +528,9 @@ static bool8 ShowPartyMenu(void)
         }
         break;
     case 8:
-        if (AllocPartyMenuBgGfx())
+        if (AllocPartyMenuBgGfx()) {
             gMain.state++;
+        }
         break;
     case 9:
         InitPartyMenuWindows(gPartyMenu.layout);
@@ -569,6 +580,12 @@ static bool8 ShowPartyMenu(void)
         gMain.state++;
         break;
     case 19:
+        switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+            case THEME_UI_MODERN:
+            case THEME_UI_CLASSIC:
+                CreateMovingBgTask();
+                break;
+        }
         gMain.state++;
         break;
     case 20:
@@ -651,14 +668,30 @@ static bool8 AllocPartyMenuBgGfx(void)
     switch (sPartyMenuInternal->data[0])
     {
         case 0:
-            sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBg_Gfx, &sizeout);
+            switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+                case THEME_UI_MODERN:
+                case THEME_UI_CLASSIC:
+                    sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBgModern_Gfx, &sizeout);
+                    break;
+                case THEME_UI_VANILLA:
+                    sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBg_Gfx, &sizeout);
+                    break;
+            }
             LoadBgTiles(1, sPartyBgGfxTilemap, sizeout, 0);
             sPartyMenuInternal->data[0]++;
             break;
         case 1:
             if (!IsDma3ManagerBusyWithBgCopy())
             {
-                LZDecompressWram(gPartyMenuBg_Tilemap, sPartyBgTilemapBuffer);
+                switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+                    case THEME_UI_MODERN:
+                    case THEME_UI_CLASSIC:
+                        LZDecompressWram(gPartyMenuBgModern_Tilemap, sPartyBgTilemapBuffer);
+                        break;
+                    case THEME_UI_VANILLA:
+                        LZDecompressWram(gPartyMenuBg_Tilemap, sPartyBgTilemapBuffer);
+                        break;
+                }
                 sPartyMenuInternal->data[0]++;
             }
             break;
@@ -669,8 +702,8 @@ static bool8 AllocPartyMenuBgGfx(void)
                     LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
 
                     // GENERATE EXTRA SHADES NEEDED
-                    COLOR_SHADES(COLOR_LIGHT_THEME_TEXT, SHADER_LIGHT, bufShadesLight, 4, 12);
-                    COLOR_SHADES(COLOR_LIGHT_THEME_TEXT, SHADER_DARK, bufShadesDark, 4, 8);
+                    COLOR_SHADES(COLOR_NEON_BORDER_2, SHADER_LIGHT, bufShadesLight, 4, 12);
+                    COLOR_SHADES(COLOR_NEON_BORDER_2, SHADER_DARK, bufShadesDark, 4, 8);
                     
                     //cancelborder
                     buf[17] = COLOR_NEON_BORDER_3;
@@ -678,9 +711,10 @@ static bool8 AllocPartyMenuBgGfx(void)
                     // bg corner
                     buf[19] = COLOR_LIGHT_THEME_CONTRAST;
                     
-                    //bg stripes (2colors)
-                    buf[20] = COLOR_LIGHT_THEME_BG_DARK;
-                    buf[21] = COLOR_LIGHT_THEME_BG_DARK;
+                    //bg stripes (3 colors)
+                    buf[0] = COLOR_LIGHT_THEME_BG_LIGHT;//COLOR_LIGHT_THEME_BG;
+                    buf[20] = COLOR_LIGHT_THEME_BG;
+                    buf[21] = COLOR_LIGHT_THEME_BG;
                     
                     //empty slot inner border top and bot (2 colors)
                     buf[27] = COLOR_AUTO_SHADE(COLOR_NEON_BORDER_1, THRESHOLD_DEFAULT);
@@ -694,16 +728,16 @@ static bool8 AllocPartyMenuBgGfx(void)
                     buf[49] = COLOR_NEON_BORDER_2;
 
                     //unselected & hp number text shadow
-                    buf[50] = bufShadesDark[3];
+                    buf[50] = RGB(4, 4, 4);//bufShadesDark[3];
                     //leveltext, hptext, hp border inner
-                    buf[51] = bufShadesLight[3];
+                    buf[51] = COLOR_WHITE;//bufShadesLight[3];
 
                     //unselected bg (2 colors)
                     buf[52] = bufShadesDark[1];
-                    buf[53] = bufShadesLight[1];
+                    buf[53] = 0x5E30;//bufShadesLight[1];
                     
                     //unselected border bottom internal
-                    buf[54] = bufShadesLight[1];
+                    buf[54] = 0x5E30;
 
                     // unselected border inner top and bottom (2 colors)
                     buf[55] = COLOR_AUTO_SHADE(COLOR_NEON_BORDER_1, THRESHOLD_DEFAULT);
@@ -714,97 +748,88 @@ static bool8 AllocPartyMenuBgGfx(void)
                     //buf[58] = 0x3F2A;
 
                     // unselected first pkm border bottom internal
-                    buf[97] = bufShadesLight[2];
+                    buf[97] = COLOR_NEON_BORDER_2;//bufShadesLight[2];
 
                     // selected (not first pklm) border top and bottom (2colors)
                     buf[103] = COLOR_NEON_BORDER_2;//~bufShadesLight[2];
                     buf[104] = COLOR_NEON_BORDER_1;//~bufShadesLight[0];
 
                     //selected bg lower and selected border top internal
-                    buf[116] = COLOR_NEON_BORDER_2;//~bufShadesLight[2];
+                    buf[116] = RGB(1, 8, 20);//~bufShadesLight[2];
 
                     //selected bg upper  
                     buf[117] = COLOR_NEON_BORDER_1;//~bufShadesLight[0]; 
 
                     //selected first pkm border bottom internal
                     buf[118] = COLOR_NEON_BORDER_1;//~bufShadesLight[0];
-
-                    LoadPalette(buf, 0, 0x160);
                     break;
                 case THEME_COLOR_DARK:
-                    LoadCompressedPalette(gPartyMenu_dark_Pal, 0, 0x160);
+                    LoadCompressedPaletteTo(gPartyMenu_dark_Pal, buf, 0, 0x160);
+                    buf[0] = RGB(4, 4, 4);
                     break;
                 case THEME_COLOR_USER:
                     LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
-
                     // GENERATE EXTRA SHADES NEEDED
                     COLOR_SHADES(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], SHADER_LIGHT, bufShadesLight, 4, 12);
                     COLOR_SHADES(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], SHADER_DARK, bufShadesDark, 4, 8);
-                    
                     //cancelborder
                     buf[17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
-                    
                     // bg corner
                     buf[19] = COLOR_CREATE_DARK_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
-                    
-                    //bg stripes (2colors)
+                    //bg stripes (3colors)
+                    buf[0] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
                     buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
                     buf[21] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
-                    
                     //empty slot inner border top and bot (2 colors)
                     buf[27] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
                     buf[28] = COLOR_AUTO_SHADE(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);
-                    
                     //cancel bg
                     buf[31] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
-                    
                     //unselected border outer top and bottom (2colors)
                     buf[48] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
                     buf[49] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
-
                     //unselected & hp number text shadow
                     buf[50] = bufShadesDark[3];
                     //leveltext, hptext, hp border inner
                     buf[51] = bufShadesLight[3];
-
                     //unselected bg (2 colors)
                     buf[52] = bufShadesDark[1];
                     buf[53] = bufShadesLight[1];
-                    
                     //unselected border bottom internal
                     buf[54] = bufShadesLight[1];
-
                     // unselected border inner top and bottom (2 colors)
                     buf[55] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
                     buf[56] = COLOR_AUTO_SHADE(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);
-                    
                     //hp bar top (2colors)
-                    buf[57] = 0x53ED;
-                    buf[58] = 0x3F2A;
-
+                    //buf[57] = 0x53ED;
+                    //buf[58] = 0x3F2A;
                     // unselected first pkm border bottom internal
                     buf[97] = bufShadesLight[2];
-
                     // selected (not first pklm) border top and bottom (2colors)
                     buf[103] = ~bufShadesLight[2];
                     buf[104] = ~bufShadesLight[0];
-
                     //selected bg lower and selected border top internal
                     buf[116] = ~bufShadesLight[2];
-
                     //selected bg upper  
                     buf[117] = ~bufShadesLight[0]; 
-
                     //selected first pkm border bottom internal
                     buf[118] = ~bufShadesLight[0];
 
-                    LoadPalette(buf, 0, 0x160);
                     break;
                 case THEME_COLOR_VANILLA:
-                    LoadCompressedPalette(gPartyMenuBg_Pal, 0, 0x160);
+                    LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
                     break;
             }
-        
+            switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+                case THEME_UI_MODERN:
+                case THEME_UI_CLASSIC:
+                    buf[26] = COLOR_RED; //pokeball 20-60
+                    buf[28] = COLOR_DARK_RED; //pokeball 20-60
+                    buf[17] = COLOR_WHITE; //pokeball white
+                    buf[19] = COLOR_BLACK; //pokeball black
+                    break;
+            }
+            LoadPalette(buf, 0, 0x160);
             CpuCopy16(gPlttBufferUnfaded, sPartyMenuInternal->palBuffer, 0x160);
             sPartyMenuInternal->data[0]++;
             break;
@@ -1282,6 +1307,7 @@ static void SwapPartyPokemon(struct Pokemon *mon1, struct Pokemon *mon2)
 
 static void Task_ClosePartyMenu(u8 taskId)
 {
+    DestroyMovingBgTask();
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_ClosePartyMenuAndSetCB2;
 }
@@ -2123,7 +2149,7 @@ static void InitPartyMenuWindows(u8 layout)
             break;
         case THEME_COLOR_DARK:
             CpuCopy16(gUnknown_0860F074, buf, 0x20);
-            buf[1] = COLOR_DARK_THEME_BG_LIGHT;
+            buf[1] = RGB(3, 3, 3);//COLOR_DARK_THEME_BG_LIGHT;
             buf[2] = COLOR_DARK_THEME_TEXT;
             buf[3] = COLOR_DARK_THEME_TEXT_SHADOW;
             LoadPalette(buf, 0xF0, 0x20);
@@ -2337,18 +2363,9 @@ static void DisplayPartyPokemonNickname(struct Pokemon *mon, struct PartyMenuBox
     {
         if (c == 1)
             menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->dimensions[0] >> 3, menuBox->infoRects->dimensions[1] >> 3, menuBox->infoRects->dimensions[2] >> 3, menuBox->infoRects->dimensions[3] >> 3, FALSE);
-        if (GetMonData(mon, MON_DATA_BOSS_STATUS) == 1)
-        {
-            StringCopy(gStringVar4, gText_ColorRedShadowLightRed);
-            GetMonNickname(mon, gRyuStringVar1);
-            StringAppend(gStringVar4, gRyuStringVar1);
-            DisplayPartyPokemonBarDetail(menuBox->windowId, gStringVar4, 0, menuBox->infoRects->dimensions);
-        }
-        else
-        {
-            GetMonNickname(mon, nickname);
-            DisplayPartyPokemonBarDetail(menuBox->windowId, nickname, 0, menuBox->infoRects->dimensions);
-        }
+        
+        GetMonNickname(mon, nickname);
+        DisplayPartyPokemonBarDetail(menuBox->windowId, nickname, 0, menuBox->infoRects->dimensions);
     }
 }
 
@@ -2378,34 +2395,54 @@ static void DisplayPartyPokemonLevel(u8 level, struct PartyMenuBox *menuBox)
 static void DisplayPartyPokemonGenderNidoranCheck(struct Pokemon *mon, struct PartyMenuBox *menuBox, u8 c)
 {
     u8 nickname[POKEMON_NAME_LENGTH + 1];
+    u16 species;
 
     if (c == 1)
         menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->dimensions[8] >> 3, (menuBox->infoRects->dimensions[9] >> 3) + 1, menuBox->infoRects->dimensions[10] >> 3, menuBox->infoRects->dimensions[11] >> 3, FALSE);
     GetMonNickname(mon, nickname);
-    DisplayPartyPokemonGender(GetMonGender(mon), GetMonData(mon, MON_DATA_SPECIES), nickname, menuBox);
+    species = GetMonData(mon, MON_DATA_SPECIES);
+    if (GetMonData(mon, MON_DATA_BOSS_STATUS, NULL) == TRUE) {
+        species = GetMonData(mon, MON_DATA_SPECIES) | (1 << 15);
+    }
+    
+    DisplayPartyPokemonGender(GetMonGender(mon), species, nickname, menuBox);
 }
 
 static void DisplayPartyPokemonGender(u8 gender, u16 species, u8 *nickname, struct PartyMenuBox *menuBox)
 {
+    const u8* text;
+    u16 buf[4] = { COLOR_LIGHT_GREY, COLOR_LIGHT_GREY, COLOR_DARK_GREY, COLOR_DARK_GREY };
+    u32 i;
     u8 palNum = GetWindowAttribute(menuBox->windowId, WINDOW_PALETTE_NUM) * 16;
-
+    u8 boss = species >> 15;
+    species = species & 0x7FFF;
+    
     if (species == SPECIES_NONE)
         return;
-    if ((species == SPECIES_NIDORAN_M || species == SPECIES_NIDORAN_F) && StringCompare(nickname, gSpeciesNames[species]) == 0)
+    if ((species == SPECIES_NIDORAN_M || species == SPECIES_NIDORAN_F) && StringCompare(nickname, gSpeciesNames[species]) == 0 && !boss)
         return;
     switch (gender)
     {
     case MON_MALE:
         LoadPalette(GetPartyMenuPalBufferPtr(sGenderMalePalIds[0]), sGenderPalOffsets[0] + palNum, 2);
         LoadPalette(GetPartyMenuPalBufferPtr(sGenderMalePalIds[1]), sGenderPalOffsets[1] + palNum, 2);
-        DisplayPartyPokemonBarDetail(menuBox->windowId, gText_MaleSymbol, 2, &menuBox->infoRects->dimensions[8]);
+        text = gText_MaleSymbol;
         break;
     case MON_FEMALE:
         LoadPalette(GetPartyMenuPalBufferPtr(sGenderFemalePalIds[0]), sGenderPalOffsets[0] + palNum, 2);
         LoadPalette(GetPartyMenuPalBufferPtr(sGenderFemalePalIds[1]), sGenderPalOffsets[1] + palNum, 2);
-        DisplayPartyPokemonBarDetail(menuBox->windowId, gText_FemaleSymbol, 2, &menuBox->infoRects->dimensions[8]);
+        text = gText_FemaleSymbol;
+        break;
+    case MON_GENDERLESS:
+        LoadPalette(buf, sGenderPalOffsets[0] + palNum, 2);
+        LoadPalette(buf+2, sGenderPalOffsets[1] + palNum, 2);
+        text = gText_GenderlessSymbol;
         break;
     }
+    if (boss)
+        text = gText_BossSymbol;
+
+    DisplayPartyPokemonBarDetail(menuBox->windowId, text, 2, &menuBox->infoRects->dimensions[8]);
 }
 
 static void DisplayPartyPokemonHPCheck(struct Pokemon *mon, struct PartyMenuBox *menuBox, u8 c)
@@ -2823,8 +2860,8 @@ static void Task_HandleSelectionMenuInput(u8 taskId)
 static void CursorCb_Summary(u8 taskId)
 {
     PlaySE(SE_SELECT);
-    sPartyMenuInternal->exitCallback = CB2_ShowPokemonSummaryScreen;
     Task_ClosePartyMenu(taskId);
+    sPartyMenuInternal->exitCallback = CB2_ShowPokemonSummaryScreen;
 }
 
 static void CB2_ShowPokemonSummaryScreen(void)
@@ -6309,4 +6346,25 @@ void IsLastMonThatKnowsSurf(void)
         if (AnyStorageMonWithMove(move) != TRUE)
             gSpecialVar_Result = TRUE;
     }
+}
+
+
+
+//FULL_COLOR
+static u8* PartyBgScrollTask;
+static void CreateMovingBgTask(void)
+{
+    PartyBgScrollTask = malloc(sizeof(u8));
+    *PartyBgScrollTask = CreateTask(Task_MoveBg, 2);
+}
+
+static void DestroyMovingBgTask(void)
+{
+    DestroyTask(*PartyBgScrollTask);
+    free(PartyBgScrollTask);
+}
+
+static void Task_MoveBg(u8 taskId)
+{
+    ChangeBgX(1, 0x80, 1);
 }

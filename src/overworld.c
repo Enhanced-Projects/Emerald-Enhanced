@@ -1485,7 +1485,7 @@ static void OverworldBasic(void)
     AnimateSprites();
     CameraUpdate();
     UpdateCameraPanning();
-    BuildOamBuffer();
+    BuildOamBufferNoOrder();
     UpdatePaletteFade();
     UpdateTilesetAnimations();
     DoScheduledBgTilemapCopiesToVram();

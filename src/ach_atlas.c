@@ -493,15 +493,25 @@ static bool8 IntializeAtlas(void)
         sAchAtlas.tilemapPosY = TILEMAP_START_Y;
         LoadPalette(sAchievementAtlasStarPalette, 0, 0x20);
         LoadPalette(sAchievementAtlasPointsPal, 0x10, 0x20);
-        //FULL_COLOR TODO impl vanilla and switch(VAR)
-        if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
-            CpuCopy16(sAchievementAtlasBorderPal, buf, 0x20);
-            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 1 = bg
-            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 2 = window border
-            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 13 = text color
-            LoadPalette(buf, 0x20, 0x20);
-        } else
-            LoadPalette(sAchievementAtlasBorderPal, 0x20, 0x20);
+
+        CpuCopy16(sAchievementAtlasBorderPal, buf, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+                buf[1] = COLOR_NEON_BORDER_2;       // 1 = bg
+                buf[2] = COLOR_LIGHT_THEME_BG_DARK;       // 2 = window border
+                buf[3] = COLOR_NEON_BORDER_2;       // 13 = text color
+                break;
+            case THEME_COLOR_DARK:
+                break;
+            case THEME_COLOR_USER:
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 1 = bg
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // 2 = window border
+                buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 13 = text color
+                break;
+            case THEME_COLOR_VANILLA: //FULL_COLOR TODO impl vanilla
+                break;
+        }
+        LoadPalette(buf, 0x20, 0x20);
         InitWindows(sAtlasWindowTemplate);
         InitTextBoxGfxAndPrinters();
         DeactivateAllTextPrinters();
@@ -859,11 +869,12 @@ static bool8 IntializeAP(u8 taskId)
         switch (VarGet(VAR_RYU_THEME_NUMBER)) {
             case THEME_COLOR_LIGHT:
                 CpuCopy16(sAPMenuBackgroundPalette, buf, sizeof(sAPMenuBackgroundPalette));
-                buf[1] = COLOR_NEON_BORDER_1;       // 1 = window highlight
-                buf[2] = COLOR_NEON_BORDER_2;       // 2 = window border
-                buf[13] = COLOR_LIGHT_THEME_TEXT;       // 13 = text color
-                buf[16] = COLOR_LIGHT_THEME_TEXT_SHADOW;       // 16 = text shadowx
-                buf[20] = COLOR_LIGHT_THEME_BG_LIGHT;       // 4 = bg
+                buf[1] = COLOR_NEON_BORDER_2;       // 1 = window highlight
+                buf[2] = COLOR_LIGHT_THEME_BG_DARK;       // 2 = window border
+                buf[13] = COLOR_WHITE;       // 13 = text color
+                buf[16] = COLOR_DARK_GREY;       // 16 = text shadowx
+                buf[20] = COLOR_LIGHT_THEME_BG_LIGHT;       // bg
+                buf[21] = COLOR_NEON_BORDER_2;       // external pixel border before end color
                 LoadPalette(buf, 0, sizeof(sAPMenuBackgroundPalette));
                 break;
             case THEME_COLOR_DARK:
@@ -871,11 +882,12 @@ static bool8 IntializeAP(u8 taskId)
                 break;
             case THEME_COLOR_USER:
                 CpuCopy16(sAPMenuBackgroundPalette, buf, sizeof(sAPMenuBackgroundPalette));
-                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 1 = window highlight
-                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // 2 = window border
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // 1 = window highlight
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 2 = window border
                 buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];       // 13 = text color
                 buf[16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       // 16 = text shadowx
-                buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 4 = bg
+                buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 20 = bg
+                buf[21] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // external pixel border before end color
                 LoadPalette(buf, 0, sizeof(sAPMenuBackgroundPalette));
                 break;
             case THEME_COLOR_VANILLA:

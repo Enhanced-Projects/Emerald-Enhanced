@@ -1631,10 +1631,10 @@ static void InitPocketIndicatorIcons() {
     CpuCopy16(gBagIconsUnselectedPalette, buf, 0x20);
     switch(VarGet(VAR_RYU_THEME_NUMBER)) {
         case THEME_COLOR_LIGHT:
-            buf[BAG_COLOR_BOTTOM_BACKGROUND] = 0x7B37;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_LIGHT_THEME_BG_DARK;
             break;
         case THEME_COLOR_DARK:
-            buf[BAG_COLOR_BOTTOM_BACKGROUND] = 0x0;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_BLACK;
             break;
         case THEME_COLOR_USER:
             buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
@@ -1670,24 +1670,20 @@ static void DrawPocketIndicatorSquare(u8 x, bool8 isCurrentPocket)
     CpuCopy16(gBagIconsSelectedPalette, buf+0x20, 0x20);
     switch(VarGet(VAR_RYU_THEME_NUMBER)) {
         case THEME_COLOR_LIGHT:
-            buf[BAG_COLOR_BOTTOM_BACKGROUND] = 0x7B37;
-            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = 0x7B37;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_LIGHT_THEME_BG_DARK;//0x7B37;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = COLOR_LIGHT_THEME_BG_DARK;//0x7B37;
             break;
         case THEME_COLOR_DARK:
-            buf[BAG_COLOR_BOTTOM_BACKGROUND] = 0x0;
-            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = 0x0;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_BLACK;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = COLOR_BLACK;
             break;
         case THEME_COLOR_USER:
             buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
             buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
             break;
         case THEME_COLOR_VANILLA:
-            buf[BAG_COLOR_BOTTOM_BACKGROUND] = COLOR_BAG_BG_MALE;
-            buf[BAG_COLOR_POCKET_UNSLECTED] = COLOR_BAG_POCKET_UNSELECTED;
-            buf[BAG_COLOR_POCKET_SELECTED] = COLOR_BAG_POCKET_SELECTED;
-            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = COLOR_BAG_BG_MALE;
-            buf[BAG_COLOR_POCKET_UNSLECTED+0x20] = COLOR_BAG_POCKET_UNSELECTED;
-            buf[BAG_COLOR_POCKET_SELECTED+0x20] = COLOR_BAG_POCKET_SELECTED;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND] = gSaveBlock2Ptr->playerGender == MALE ? COLOR_BAG_BG_MALE : COLOR_BAG_BG_FEMALE;
+            buf[BAG_COLOR_BOTTOM_BACKGROUND+0x20] = gSaveBlock2Ptr->playerGender == MALE ? COLOR_BAG_BG_MALE : COLOR_BAG_BG_FEMALE;
             break;
     }
     LoadPalette(buf, 0x20, 0x20);

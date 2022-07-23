@@ -2,6 +2,7 @@
 #include "sprite.h"
 #include "main.h"
 #include "palette.h"
+#include "random.h"
 
 #define MAX_SPRITE_COPY_REQUESTS 64
 
@@ -87,6 +88,8 @@ static void AllocSpriteTileRange(u16 tag, u16 start, u16 count);
 static void DoLoadSpritePalette(const u16 *src, u16 paletteOffset);
 static void obj_update_pos2(struct Sprite* sprite, s32 a1, s32 a2);
 
+u8 CreateSpriteFast(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
+
 typedef void (*AnimFunc)(struct Sprite *);
 typedef void (*AnimCmdFunc)(struct Sprite *);
 typedef void (*AffineAnimCmdFunc)(u8 matrixNum, struct Sprite *);
@@ -168,7 +171,7 @@ static const struct Sprite sDummySprite =
     .animPaused = 0,
     .affineAnimPaused = 0,
     .animLoopCounter = 0,
-    .data = {0, 0, 0, 0, 0, 0, 0},
+    .data = {0, 0, 0, 0, 0, 0, 0, 0},
     .inUse = 0,
     .coordOffsetEnabled = 0,
     .invisible = FALSE,
@@ -188,7 +191,8 @@ static const struct Sprite sDummySprite =
     .sheetTileStart = 0,
     .subspriteTableNum = 0,
     .subspriteMode = 0,
-    .subpriority = 0xFF
+    .subpriority = 0xFF,
+    .index = MAX_SPRITES
 };
 
 const struct OamData gDummyOamData = DUMMY_OAM_DATA;
@@ -311,8 +315,94 @@ EWRAM_DATA s16 gSpriteCoordOffsetY = 0;
 EWRAM_DATA struct OamMatrix gOamMatrices[OAM_MATRIX_COUNT] = {0};
 EWRAM_DATA bool8 gAffineAnimsDisabled = FALSE;
 
+static u32 OamSortOrdernCount;
+
+
+struct FastSpriteQueue {
+    struct FastSpriteQueue* next;
+    struct FastSpriteQueue* prev;
+    u8 val;
+};
+
+static struct FastSpriteQueue fastSpriteQueue_free[65];
+static struct FastSpriteQueue* sq_head_free;
+
+static void InitFastSpriteQueue() {
+    u32 i;
+    struct FastSpriteQueue* current_free = NULL;
+    sq_head_free = NULL;
+    for (i = 0; i < 65; ++i) {
+        if (!gSprites[i].inUse) {
+            if (sq_head_free == NULL) {
+                sq_head_free = &fastSpriteQueue_free[i];
+                sq_head_free->next = NULL;
+                sq_head_free->prev = NULL;
+                current_free = sq_head_free;
+            } else {
+                current_free->next = &fastSpriteQueue_free[i];
+                fastSpriteQueue_free[i].prev = current_free;
+                fastSpriteQueue_free[i].next = NULL;
+                current_free = &fastSpriteQueue_free[i];
+            }
+        }
+        fastSpriteQueue_free[i].val = i;
+    }
+}
+
+static void RemoveFromFastQueue(u8 index) {
+    if (index == sq_head_free->val) {
+        sq_head_free = sq_head_free->next;
+        if (sq_head_free != NULL)
+            sq_head_free->prev = NULL;
+    } else {
+        if (fastSpriteQueue_free[index].prev != NULL)
+            fastSpriteQueue_free[index].prev->next = fastSpriteQueue_free[index].next;
+
+        
+        if (fastSpriteQueue_free[index].next != NULL)
+            fastSpriteQueue_free[index].next->prev = fastSpriteQueue_free[index].prev;
+    }
+
+    fastSpriteQueue_free[index].prev = NULL;
+    fastSpriteQueue_free[index].next = NULL;
+}
+
+static void AddToFastQueue(u8 index) {
+    struct FastSpriteQueue* current = sq_head_free;
+    if (fastSpriteQueue_free[index].prev != NULL || fastSpriteQueue_free[index].next != NULL) {
+        return;
+    }
+    sq_head_free = &fastSpriteQueue_free[index];
+    if (current != NULL) {
+        sq_head_free->next = current;
+        current->prev = sq_head_free;
+    } else {
+        sq_head_free->next = NULL;
+    }
+    sq_head_free->prev = NULL;
+}
+
+u8 CreateSpriteFast(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority)
+{
+    if (sq_head_free == NULL)
+        InitFastSpriteQueue();
+
+    if (sq_head_free != NULL)
+    {
+        while (gSprites[sq_head_free->val].inUse) {
+            RemoveFromFastQueue(sq_head_free->val);
+        }
+        if (sq_head_free != NULL)
+            return CreateSpriteAt(sq_head_free->val, template, x, y, subpriority);
+    }
+
+    return MAX_SPRITES;
+}
+
+
 void ResetSpriteData(void)
 {
+    OamSortOrdernCount = 0;
     ResetOamRange(0, 128);
     ResetAllSprites();
     ClearSpriteCopyRequests();
@@ -323,6 +413,7 @@ void ResetSpriteData(void)
     AllocSpriteTiles(0);
     gSpriteCoordOffsetX = 0;
     gSpriteCoordOffsetY = 0;
+    InitFastSpriteQueue();
 }
 
 void AnimateSprites(void)
@@ -348,6 +439,23 @@ void BuildOamBuffer(void)
     UpdateOamCoords();
     BuildSpritePriorities();
     SortSprites();
+    temp = gMain.oamLoadDisabled;
+    gMain.oamLoadDisabled = TRUE;
+    AddSpritesToOamBuffer();
+    CopyMatricesToOamBuffer();
+    gMain.oamLoadDisabled = temp;
+    sShouldProcessSpriteCopyRequests = TRUE;
+}
+
+void BuildOamBufferNoOrder(void)
+{
+    
+    u8 temp;
+    UpdateOamCoords();
+    if ((OamSortOrdernCount++ & 0x7FFFFFFF) % 10 == 0) {
+        BuildSpritePriorities();
+        SortSprites();
+    }
     temp = gMain.oamLoadDisabled;
     gMain.oamLoadDisabled = TRUE;
     AddSpritesToOamBuffer();
@@ -442,12 +550,12 @@ void SortSprites(void)
             // Then, sSpriteOrder[-1] gets accessed below.
             // Although this doesn't result in a bug in the ROM,
             // the behavior is undefined.
-            j--;
 
             sprite1 = &gSprites[sSpriteOrder[j - 1]];
             sprite2 = &gSprites[sSpriteOrder[j]];
             sprite1Priority = sSpritePriorities[sSpriteOrder[j - 1]];
             sprite2Priority = sSpritePriorities[sSpriteOrder[j]];
+            j--;
             sprite1Y = sprite1->oam.y;
             sprite2Y = sprite2->oam.y;
 
@@ -517,24 +625,27 @@ void AddSpritesToOamBuffer(void)
 
 u8 CreateSprite(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority)
 {
-    u8 i;
+    return CreateSpriteFast(template, x, y, subpriority);
+    /*u8 i;
 
     for (i = 0; i < MAX_SPRITES; i++)
         if (!gSprites[i].inUse)
             return CreateSpriteAt(i, template, x, y, subpriority);
 
-    return MAX_SPRITES;
+    return MAX_SPRITES;*/
 }
 
 u8 CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority)
 {
-    s16 i;
+    return CreateSpriteFast(template, x, y, subpriority);
+
+    /*s16 i;
 
     for (i = MAX_SPRITES - 1; i > -1; i--)
         if (!gSprites[i].inUse)
             return CreateSpriteAt(i, template, x, y, subpriority);
 
-    return MAX_SPRITES;
+    return MAX_SPRITES;*/
 }
 
 u8 CreateInvisibleSprite(void (*callback)(struct Sprite *))
@@ -558,7 +669,7 @@ u8 CreateSpriteAt(u8 index, const struct SpriteTemplate *template, s16 x, s16 y,
     struct Sprite *sprite = &gSprites[index];
 
     ResetSprite(sprite);
-
+    sprite->index = index;
     sprite->inUse = TRUE;
     sprite->animBeginning = TRUE;
     sprite->affineAnimBeginning = TRUE;
@@ -601,6 +712,7 @@ u8 CreateSpriteAt(u8 index, const struct SpriteTemplate *template, s16 x, s16 y,
     if (template->paletteTag != 0xFFFF)
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(template->paletteTag);
 
+    RemoveFromFastQueue(index);
     return index;
 }
 
@@ -633,6 +745,7 @@ u8 CreateSpriteAndAnimate(const struct SpriteTemplate *template, s16 x, s16 y, u
 
 void DestroySprite(struct Sprite *sprite)
 {
+    AddToFastQueue(sprite->index);
     if (sprite->inUse)
     {
         if (!sprite->usingSheet)

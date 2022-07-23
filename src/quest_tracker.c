@@ -292,9 +292,11 @@ static bool8 IntializeQuest(u8 taskId)
             case THEME_COLOR_LIGHT:
                 CpuCopy16(sQuestTrackerBGPalette, buf, 0x20);
                 buf[1] = COLOR_LIGHT_THEME_TEXT;       // 1 = text color
-                buf[2] = COLOR_NEON_BORDER_1;       // 2 = text shadow & window highlight
-                buf[3] = COLOR_NEON_BORDER_2;       // 3 = window border
+                buf[2] = COLOR_NEON_BORDER_2;       // 2 = text shadow & window highlight
+                buf[3] = COLOR_LIGHT_THEME_BG_DARK;       // 3 = window border
                 buf[4] = COLOR_LIGHT_THEME_BG_LIGHT;               // 4 = bg
+                buf[5] = COLOR_NEON_BORDER_2;           //pixel border before last color in the window [[  ]]
+                buf[6] = COLOR_LIGHT_THEME_TEXT_SHADOW;           //title shadow
                 LoadPalette(buf, 0, 0x20);
                 break;
             case THEME_COLOR_DARK:
@@ -306,6 +308,9 @@ static bool8 IntializeQuest(u8 taskId)
                 buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 2 = text shadow & window highlight
                 buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // 3 = window border
                 buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 4 = bg
+                buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 1 = text color
+                buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       // 1 = text color
+
                 LoadPalette(buf, 0, 0x20);
                 break;
             case THEME_COLOR_VANILLA:

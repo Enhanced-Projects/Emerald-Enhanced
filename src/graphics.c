@@ -677,6 +677,12 @@ const u16 gBattleInterface_BallStatusBarDarkPal[] = INCBIN_U16("graphics/battle_
 const u16 gBattleInterface_BallDisplayPal[] = INCBIN_U16("graphics/battle_interface/ball_display.gbapal");
 const u16 gBattleInterface_BallDisplayDarkPal[] = INCBIN_U16("graphics/battle_interface/ball_display_dark.gbapal");
 
+
+const u8 gHealthboxElementsGfxTableModern[] = INCBIN_U8("graphics/battle_interface/status1_modern.4bpp",
+                                                        "graphics/battle_interface/status2_modern.4bpp",
+                                                        "graphics/battle_interface/status3_modern.4bpp",
+                                                        "graphics/battle_interface/status4_modern.4bpp");
+
 //Originally an array?
 const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpbar.4bpp",
                                                   "graphics/battle_interface/expbar.4bpp",
@@ -688,7 +694,6 @@ const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpb
                                                   "graphics/battle_interface/misc.4bpp",
                                                   "graphics/battle_interface/hpbar_anim.4bpp",
                                                   "graphics/battle_interface/misc_frameend.4bpp");
-
 const u8 gBattleInterface_BallDisplayGfx[] = INCBIN_U8("graphics/battle_interface/ball_display.4bpp");
 
 //Originally an array?
@@ -1719,6 +1724,10 @@ const u32 gBuyMenuFrame_Tilemap[] = INCBIN_U32("graphics/interface/mart_frame.bi
 const u32 gBuyMenuDarkFrame_Gfx[] = INCBIN_U32("graphics/interface/mart_frame_dark.4bpp.lz");
 
 const u32 gMenuMoneyGfx[] = INCBIN_U32("graphics/interface/money.4bpp.lz");
+
+//FULL_COLOR
+const u32 gPartyMenuBgModern_Gfx[] = INCBIN_U32("graphics/interface/party_menu_bg_modern.4bpp.lz");
+const u32 gPartyMenuBgModern_Tilemap[] = INCBIN_U32("graphics/interface/party_menu_bg_modern.bin.lz");
 
 // Pokeblock
 

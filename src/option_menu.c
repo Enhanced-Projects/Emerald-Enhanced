@@ -236,6 +236,7 @@ static void DrawChoices(u32 id, int y, u8 textSpeed)
 
 void CB2_InitOptionMenu(void)
 {
+    u16 buf[0x20];
     u32 i, taskId;
     switch (gMain.state)
     {
@@ -277,24 +278,56 @@ void CB2_InitOptionMenu(void)
         gMain.state++;
         break;
     case 3:
-        LoadBgTiles(1, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_VANILLA:
+            case THEME_COLOR_LIGHT:
+                LoadBgTiles(1, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+                break;
+            case THEME_COLOR_DARK:
+                LoadBgTiles(1, GetWindowFrameDarkTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+                break;
+            case THEME_COLOR_USER:
+                LoadBgTiles(1, GetWindowFrameUserTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+                break;
+        }
         gMain.state++;
         break;
     case 4:
         LoadPalette(sUnknown_0855C6A0, 0, sizeof(sUnknown_0855C6A0));
-        LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 0x70, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_VANILLA:
+            case THEME_COLOR_LIGHT:
+                LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 0x70, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(GetWindowFrameDarkTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 0x70, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(GetWindowFrameUserTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, buf, 0x20);
+                buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                if (gSaveBlock2Ptr->optionsWindowFrameType == 0) {
+                    buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+                    buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+                    buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+                }
+                LoadPalette(buf, 0x70, 0x20);
+                break;
+        }
         gMain.state++;
         break;
     case 5:
-        LoadPalette(sUnknown_0855C604, 0x10, sizeof(sUnknown_0855C604));
-        if (VarGet(VAR_RYU_THEME_NUMBER)) {
-            u16 pal = RGB(3, 3, 3);
-            LoadPalette(&pal, 0x11, 0x2);
-            pal = RGB(26, 26, 25);
-            LoadPalette(&pal, 0x16, 0x2);
-            pal = RGB(9, 9, 9);
-            LoadPalette(&pal, 0x17, 0x2);
+        CpuCopy16(sUnknown_0855C604, buf, sizeof(sUnknown_0855C604));
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_DARK:
+                buf[1] = RGB(3, 3, 3);
+                buf[6] = RGB(26, 26, 25);
+                buf[7] = RGB(9, 9, 9);
+                break;
+            case THEME_COLOR_USER:
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                break;
         }
+        LoadPalette(buf, 0x10, sizeof(sUnknown_0855C604));
         gMain.state++;
         break;
     case 6:
@@ -1073,10 +1106,10 @@ static void Task_OptionMenuSave(u8 taskId)
     //FULL_COLOR
     VarSet(VAR_HAT_THEME_UI_NUMBER, sOptions->sel[MENUITEM_THEME_UI]);
     
-    if (sOptions->sel[MENUITEM_THEME] == 2)
-        gSaveBlock2Ptr->optionsWindowFrameType = 0;
-    else
-        gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
+    //if (sOptions->sel[MENUITEM_THEME] == 2)
+    //    gSaveBlock2Ptr->optionsWindowFrameType = 0;
+    //else
+    gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
 
     VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_BAR_SPEED]);
     if ((VarGet(VAR_OPTIONS_EXP_BAR_SPEED) > 7) || (VarGet(VAR_OPTIONS_HP_BAR_SPEED) > 7))
@@ -1207,6 +1240,8 @@ static int ThemeUI_ProcessInput(int selection)
 //FULL_COLOR
 static int Theme_ProcessInput(int selection)
 {
+    u16 pal;
+    u16 buf[0x20];
     if (gMain.newKeys & DPAD_RIGHT)
     {
         if (selection < 3)
@@ -1223,48 +1258,46 @@ static int Theme_ProcessInput(int selection)
             selection = 3;
 
     }
-    if(selection == 2) {
-        LoadBgTiles(1, GetWindowFrameDarkTilesPal(0)->tiles, 0x120, 0x1A2);
-        LoadPalette(gSaveBlock2Ptr->userInterfaceTextboxPalette, 0x70, 0x20);
-        gPlttBufferUnfaded[0x11] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];
-        gPlttBufferFaded[0x11] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];
-        gPlttBufferUnfaded[0x16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];
-        gPlttBufferFaded[0x16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];
-        gPlttBufferUnfaded[0x17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];
-        gPlttBufferFaded[0x17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];
-        //LoadPalette(GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
-        sOptions->sel[MENUITEM_FRAMETYPE] = 0;
-        DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
-        //DrawChoices(MENUITEM_FRAMETYPE, 0, 0xFF);
-        //AddTextPrinterParameterized(WIN_OPTIONS, 1, sOptionMenuItemsNames[MENUITEM_FRAMETYPE], 8, 1, 0xFF, NULL);
-        //CopyWindowToVram(WIN_OPTIONS, 2);
-    } else if (selection == 1) {
-        u16 pal = RGB(3, 3, 3);
-        LoadPalette(&pal, 0x11, 0x2);
-        pal = RGB(26, 26, 25);
-        LoadPalette(&pal, 0x16, 0x2);
-        pal = RGB(9, 9, 9);
-        LoadPalette(&pal, 0x17, 0x2);
-        LoadBgTiles(1, GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
-        LoadPalette(GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
-    } else {
-        u16 pal = RGB(31, 31, 31);
-        LoadPalette(&pal, 0x11, 0x2);
-        pal = RGB(9, 9, 9);
-        LoadPalette(&pal, 0x16, 0x2);
-        pal = RGB(26, 26, 25);
-        LoadPalette(&pal, 0x17, 0x2);
-        LoadBgTiles(1, GetWindowFrameLightTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
-        LoadPalette(GetWindowFrameLightTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
-        //LoadPalette(gMessageBox_Pal, 0xC0, 0x20);
+    switch (selection) {
+        case THEME_COLOR_LIGHT:
+        case THEME_COLOR_VANILLA:
+            LoadPalette(sUnknown_0855C604, 0x10, sizeof(sUnknown_0855C604));
+            LoadBgTiles(1, GetWindowFrameLightTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
+            LoadPalette(GetWindowFrameLightTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
+            break;
+        case THEME_COLOR_DARK:
+            CpuCopy16(sUnknown_0855C604, buf, sizeof(sUnknown_0855C604));
+            buf[1] = RGB(3, 3, 3);
+            buf[6] = RGB(26, 26, 25);
+            buf[7] = RGB(9, 9, 9);
+            LoadPalette(buf, 0x10, sizeof(sUnknown_0855C604));
+            LoadBgTiles(1, GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
+            LoadPalette(GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
+            break;
+        case THEME_COLOR_USER:
+            CpuCopy16(sUnknown_0855C604, buf, sizeof(sUnknown_0855C604));
+            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            LoadPalette(buf, 0x10, sizeof(sUnknown_0855C604));
+            LoadBgTiles(1, GetWindowFrameUserTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
+            CpuCopy16(GetWindowFrameUserTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, buf, 0x20);
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            if (sOptions->sel[MENUITEM_FRAMETYPE] == 0) {
+                buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+                buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+                buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+            }
+            LoadPalette(buf, 0x70, 0x20);
+            DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
+            break;
     }
     return selection;
 }
 
 static int FrameType_ProcessInput(int selection)
 {
+    u16 buf[0x20];
     const struct TilesPal * frame;
-    if(sOptions->sel[MENUITEM_THEME] == 2) return selection;
+    //if(sOptions->sel[MENUITEM_THEME] == 2) return selection;
     if (gMain.newKeys & DPAD_RIGHT)
     {
         if (selection < WINDOW_FRAMES_COUNT - 1)
@@ -1279,9 +1312,29 @@ static int FrameType_ProcessInput(int selection)
         else
             selection = WINDOW_FRAMES_COUNT - 1;
     }
-    frame = sOptions->sel[MENUITEM_THEME] ? GetWindowFrameDarkTilesPal(selection) : GetWindowFrameLightTilesPal(selection);
+    switch (sOptions->sel[MENUITEM_THEME]) {
+        case THEME_COLOR_LIGHT:
+        case THEME_COLOR_VANILLA:
+            frame = GetWindowFrameLightTilesPal(selection);
+            CpuCopy16(frame->pal, buf, 0x20);
+            break;
+        case THEME_COLOR_DARK:
+            frame = GetWindowFrameDarkTilesPal(selection);
+            CpuCopy16(frame->pal, buf, 0x20);
+            break;
+        case THEME_COLOR_USER:
+            frame = GetWindowFrameUserTilesPal(selection);
+            CpuCopy16(frame->pal, buf, 0x20);
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            if (selection == 0) {
+                buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+                buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+                buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+            }
+            break;
+    }
     LoadBgTiles(1, frame->tiles, 0x120, 0x1A2);
-    LoadPalette(frame->pal, 0x70, 0x20);
+    LoadPalette(buf, 0x70, 0x20);
     return selection;
 }
 

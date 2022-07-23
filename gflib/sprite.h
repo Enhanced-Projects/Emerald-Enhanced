@@ -234,6 +234,7 @@ struct Sprite
              u8 subspriteMode:2;
 
     /*0x43*/ u8 subpriority;
+             u8 index;
 };
 
 struct OamMatrix
@@ -261,6 +262,7 @@ extern bool8 gAffineAnimsDisabled;
 void ResetSpriteData(void);
 void AnimateSprites(void);
 void BuildOamBuffer(void);
+void BuildOamBufferNoOrder(void);
 u8 CreateSprite(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
 u8 CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
 u8 CreateInvisibleSprite(void (*callback)(struct Sprite *));

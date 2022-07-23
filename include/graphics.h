@@ -7049,6 +7049,10 @@ extern const u32 gPartyMenuBg_Tilemap[];
 extern const u32 gPartyMenuBg_Pal[];
 extern const u32 gPartyMenu_dark_Pal[];
 
+//FULL_COLOR
+extern const u32 gPartyMenuBgModern_Gfx[];
+extern const u32 gPartyMenuBgModern_Tilemap[];
+
 // berry pics
 extern const u32 gBerryPic_Cheri[];
 extern const u32 gBerryPalette_Cheri[];
@@ -7235,6 +7239,7 @@ extern const u8 gBattleInterface_BallDisplayGfx[];
 extern const u16 gBattleInterface_BallStatusBarPal[];
 extern const u16 gBattleInterface_BallDisplayPal[];
 extern const u8 gHealthboxElementsGfxTable[][32];
+extern const u8 gHealthboxElementsGfxTableModern[][32];
 
 extern const u16 gNamingScreenMenu_Pal[];
 extern const u32 gNamingScreenMenu_Gfx[];
