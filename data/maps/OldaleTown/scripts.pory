@@ -561,6 +561,7 @@ OT_ContinueHeist::
 	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_MAGMA, 245@Player left oldale after heist
 	setflag FLAG_RYU_BANNED_FROM_OLDALE
+	setvar VAR_PETALBURG_CITY_STATE, 4
 	release
 	end
 	

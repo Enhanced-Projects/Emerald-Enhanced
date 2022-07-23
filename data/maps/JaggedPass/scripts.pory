@@ -273,6 +273,11 @@ JP_CheckFinishedMagmaHideout1::
 	
 JP_MagmaBlaiseEvent::
 	applymovement PLAYER, Common_Movement_StepDown
+	applymovement FOLLOWER, Common_Movement_StepDown
+	waitmovement FOLLOWER
+	applymovement PLAYER, Common_Movement_StepDown
+	applymovement FOLLOWER, Common_Movement_StepDown
+	waitmovement FOLLOWER
 	applymovement FOLLOWER, Common_Movement_StepLeft
 	waitmovement FOLLOWER
 	applymovement FOLLOWER, Common_Movement_FaceRight
@@ -371,6 +376,7 @@ JP_BlaiseEntersHideout:
 	step_end
 
 JP_BlaiseEnters:
+	walk_down
 	walk_down
 	walk_down
 	walk_down
