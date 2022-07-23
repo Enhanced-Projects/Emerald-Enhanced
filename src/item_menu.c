@@ -2388,8 +2388,10 @@ void Task_ItemContext_Sell(u8 taskId)
 static void DisplaySellItemPriceAndConfirm(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
-
-    ConvertIntToDecimalStringN(gStringVar1, (ItemId_GetPrice(gSpecialVar_ItemId) / 2) * tItemCount, STR_CONV_MODE_LEFT_ALIGN, 6);
+    u16 price = ItemId_GetPrice(gSpecialVar_ItemId);
+    if (FlagGet(FLAG_RYU_SELLING_TO_FENCE) == TRUE)
+        price /= 2;
+    ConvertIntToDecimalStringN(gStringVar1, (price / 2) * tItemCount, STR_CONV_MODE_LEFT_ALIGN, 6);
     StringExpandPlaceholders(gStringVar4, gText_ICanPayVar1);
     DisplayItemMessage(taskId, 1, gStringVar4, sub_81AD6E4);
 }
@@ -2413,8 +2415,10 @@ void sub_81AD730(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
     u8 windowId = BagMenu_AddWindow(8);
-
-    PrintItemSoldAmount(windowId, 1, (ItemId_GetPrice(gSpecialVar_ItemId) / 2) * tItemCount);
+    u16 price = ItemId_GetPrice(gSpecialVar_ItemId);
+    if (FlagGet(FLAG_RYU_SELLING_TO_FENCE) == TRUE)
+        price /= 2;
+    PrintItemSoldAmount(windowId, 1, (price / 2) * tItemCount);
     DisplayCurrentMoneyWindow();
     gTasks[taskId].func = Task_SellHowManyDialogueHandleInput;
 }
@@ -2422,10 +2426,13 @@ void sub_81AD730(u8 taskId)
 static void Task_SellHowManyDialogueHandleInput(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
+    u16 price = ItemId_GetPrice(gSpecialVar_ItemId);
+    if (FlagGet(FLAG_RYU_SELLING_TO_FENCE) == TRUE)
+        price /= 2;
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, data[2]) == TRUE)
     {
-        PrintItemSoldAmount(gBagMenu->windowPointers[8], tItemCount, (ItemId_GetPrice(gSpecialVar_ItemId) / 2) * tItemCount);
+        PrintItemSoldAmount(gBagMenu->windowPointers[8], tItemCount, (price / 2) * tItemCount);
     }
     else if (JOY_NEW(A_BUTTON))
     {
@@ -2447,9 +2454,11 @@ static void Task_SellHowManyDialogueHandleInput(u8 taskId)
 void BagMenu_ConfirmSell(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
-
+    u16 price = ItemId_GetPrice(gSpecialVar_ItemId);
+    if (FlagGet(FLAG_RYU_SELLING_TO_FENCE) == TRUE)
+        price /= 2;
     CopyItemName(gSpecialVar_ItemId, gStringVar2);
-    ConvertIntToDecimalStringN(gStringVar1, (ItemId_GetPrice(gSpecialVar_ItemId) / 2) * data[8], STR_CONV_MODE_LEFT_ALIGN, 8);
+    ConvertIntToDecimalStringN(gStringVar1, (price / 2) * data[8], STR_CONV_MODE_LEFT_ALIGN, 8);
     StringExpandPlaceholders(gStringVar4, gText_TurnedOverVar1ForVar2);
     DisplayItemMessage(taskId, 1, gStringVar4, BagMenu_Sell_UpdateItemListAndMoney);
 }
@@ -2459,10 +2468,12 @@ static void BagMenu_Sell_UpdateItemListAndMoney(u8 taskId)
     s16* data = gTasks[taskId].data;
     u16* scrollPos = &gBagPositionStruct.scrollPosition[gBagPositionStruct.pocket];
     u16* cursorPos = &gBagPositionStruct.cursorPosition[gBagPositionStruct.pocket];
-
+    u16 price = ItemId_GetPrice(gSpecialVar_ItemId);
+    if (FlagGet(FLAG_RYU_SELLING_TO_FENCE) == TRUE)
+        price /= 2;
     PlaySE(SE_SHOP);
     RemoveBagItem(gSpecialVar_ItemId, tItemCount);
-    AddMoney(&gSaveBlock1Ptr->money, (ItemId_GetPrice(gSpecialVar_ItemId) / 2) * tItemCount);
+    AddMoney(&gSaveBlock1Ptr->money, (price / 2) * tItemCount);
     DestroyListMenuTask(data[0], scrollPos, cursorPos);
     UpdatePocketItemList(gBagPositionStruct.pocket);
     SetInitialScrollAndCursorPositions(gBagPositionStruct.pocket);

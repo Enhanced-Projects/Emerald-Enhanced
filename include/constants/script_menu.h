@@ -164,7 +164,7 @@
 #define MULTI_FRONTIERMODE_STARTER3        153
 #define MULTI_MAGMA_CHOICE                 154
 #define MULTI_MAGMA_MACHINE                155
-#define MULTI_MAGMA_MACHINE_KITS           156
+#define MULTI_UNUSED_156           156
 #define MULTI_BOTANY_CHAPTER_SELECT        157
 #define MULTI_PBG_TRICK_QUESTION           158
 #define MULTI_BOTANY_APRICORN_MENU         159

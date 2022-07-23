@@ -3245,14 +3245,6 @@ extern const u8 gText_RyuBufferedString6[];
 
 extern const u8 gText_RyuMHM_Main[];
 extern const u8 gText_RyuMHM_Kits[];
-extern const u8 gText_RyuMHM_Kits_1[];
-extern const u8 gText_RyuMHM_Kits_2[];
-extern const u8 gText_RyuMHM_Kits_3[];
-extern const u8 gText_RyuMHM_Kits_4[];
-extern const u8 gText_RyuMHM_Kits_5[];
-extern const u8 gText_RyuMHM_Kits_6[];
-extern const u8 gText_RyuMHM_Kits_7[];
-extern const u8 gText_RyuMHM_Kits_8[];
 // Berry Blender
 extern const u8 gText_SavingDontTurnOff2[];
 extern const u8 gText_BlenderMaxSpeedRecord[];

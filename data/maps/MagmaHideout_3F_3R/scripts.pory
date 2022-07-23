@@ -130,15 +130,25 @@ MH_AquaGruntDefeated::
 	end
 
 MH_CheckGruntsDefeated::
+	setvar VAR_TEMP_6, 0
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_4), MH_GruntsNotDefeated
+	addvar VAR_TEMP_6, 1
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_2), MH_GruntsNotDefeated
+	addvar VAR_TEMP_6, 1
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_1), MH_GruntsNotDefeated
+	addvar VAR_TEMP_6, 1
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_25), MH_GruntsNotDefeated
+	addvar VAR_TEMP_6, 1
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_3), MH_GruntsNotDefeated
+	addvar VAR_TEMP_6, 1
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_AQUA_HIDEOUT_3), MH_GruntsNotDefeated
+	addvar VAR_TEMP_6, 1
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_21), MH_GruntsNotDefeated
+	addvar VAR_TEMP_6, 1
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_4), MH_GruntsNotDefeated
+	addvar VAR_TEMP_6, 1
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_26), MH_GruntsNotDefeated
+	addvar VAR_TEMP_6, 1
 	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_22), MH_GruntsNotDefeated
 	goto MH_GruntsDefeated
 
@@ -149,12 +159,17 @@ MH_GruntsDefeated::
 	msgbox MH_CortneyConfirmsDone
 	closemessage
 	setflag FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS
+	clearfullscreenimage
 	release
 	end
 
 MH_GruntsNotDefeated::
-	playse SE_BIDORO
-	waitse
-	release
+	buffernumberstring 0, VAR_TEMP_6
+	msgbox MH3_CheckPercent
+	clearfullscreenimage
+	return
 	end
+
+MH3_CheckPercent:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Orders... {STR_VAR_1} of 9 erased.$"
 `

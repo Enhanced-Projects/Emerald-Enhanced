@@ -41,7 +41,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 60
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 61
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -510,7 +510,10 @@
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
 
-#define EE_GAME_VERSION 9003
+//uncomment for winter mode.
+//#define EE_WINTER_MODE
+
+#define EE_GAME_VERSION 9004
 
 
 #endif

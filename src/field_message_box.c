@@ -97,7 +97,7 @@ bool8 ShowFieldMessageOneLine(const u8 *message)
     return TRUE;
 }
 
-static void Task_HidePokenavMessageWhenDone(u8 taskId)
+void Task_HidePokenavMessageWhenDone(u8 taskId)
 {
     if (!IsMatchCallTaskActive())
     {

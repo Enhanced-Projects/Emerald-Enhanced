@@ -8,18 +8,27 @@ raw `
 
 PetalburgCity_MapScripts::
 	map_script ON_TRANSITION, PetalburgCity_OnTransition
+	map_script ON_FRAME, PBC_FrameScripts
 	.byte 0
+
+PBC_FrameScripts::
+	map_script_2 VAR_RYU_QUEST_MAGMA, 245, DoPostHeistStuff
+	.2byte 0
 
 PetalburgCity_OnTransition: @ 81DC2D7
 	setflag FLAG_VISITED_PETALBURG_CITY
 	call RyuCheckForWellTravelledAch
-	compare VAR_PETALBURG_CITY_STATE, 0
-	call_if_eq PetalburgCity_EventScript_MoveBoyToWestEntrance
-	compare VAR_PETALBURG_CITY_STATE, 2
 	call_if_eq PetalburgCity_EventScript_DisableMapNameAndMusic
 	compare VAR_PETALBURG_CITY_STATE, 4
 	call_if_eq PetalburgCity_EventScript_DisableMapNameAndMusic
 	call PC_EnableMayObject
+	compare VAR_RYU_QUEST_MAGMA, 245
+	goto_if_eq ryu_end
+	end
+
+DoPostHeistStuff::
+	setvar VAR_RYU_QUEST_MAGMA, 250
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	end
 
 PetalburgCity_EventScript_MoveBoyToWestEntrance:: @ 81DC307
@@ -424,12 +433,6 @@ PetalburgCity_Text_ImLookingForTalentedTrainers: @ 81DCC09
 	
 @==================================================================================================Mamga post-heist
 
-PC_DoMagmaStuffAfterHeist::
-	compare VAR_RYU_QUEST_MAGMA, 245
-	goto_if_eq ryu_return
-	setvar VAR_RYU_QUEST_MAGMA, 250
-	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
-	return
 	
 PC_CheckForPlayerInWrongDirection::
 	specialvar VAR_RESULT, GetPlayerFacingDirection
@@ -470,13 +473,11 @@ PC_StopPlayerForDad::
 	applymovement 7, Common_Movement_ExclamationMark
 	waitmovement 7
 	addobject 10
-	addobject 11
+	addobject 9
 	applymovement PLAYER, Common_Movement_FaceUp
 	waitmovement PLAYER
 	msgbox PC_PlayerElipsis
 	closemessage
-	applymovement PLAYER, PC_ContinueEscapingLeft@6 left
-	waitmovement PLAYER
 	getplayerxy VAR_TEMP_D, VAR_TEMP_E
 	compare VAR_TEMP_E, 10
 	call_if_eq PC_AdjustPlayerTop
@@ -484,6 +485,10 @@ PC_StopPlayerForDad::
 	call_if_eq PC_AdjustPlayerMid
 	compare VAR_TEMP_E, 13
 	call_if_eq PC_AdjustPlayerBottom
+	applymovement PLAYER, PC_ContinueEscapingLeft@6 left
+	waitmovement PLAYER
+	turnobject 9, DIR_NORTH
+	turnobject 8, DIR_SOUTH
 	msgbox PC_WeWontLet
 	closemessage
 	setvar VAR_RYU_QUEST_MAGMA, 258@Player is about to fight enforcer
@@ -630,6 +635,7 @@ PC_ContinueEscapingLeft:
 	walk_fast_left
 	walk_fast_left
 	walk_fast_left
+	walk_fast_left
 	step_end
 	
 PC_MoveGuard:@up face left
@@ -652,7 +658,7 @@ PC_MagmaGruntEscape:
 
 PC_PlayerAttemptEscape:@down 1, left 1
 	walk_down
-	walk_left
+	face_left
 	step_end
 	
 PC_PlayerStruggle:@in place 4
