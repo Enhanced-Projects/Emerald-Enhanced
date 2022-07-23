@@ -1458,7 +1458,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	setvar(VAR_ASH_GATHER_COUNT, 8000)
 	release
 	end
 }

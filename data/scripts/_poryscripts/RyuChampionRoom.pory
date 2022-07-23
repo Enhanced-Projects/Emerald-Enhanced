@@ -209,7 +209,7 @@ script RCR_ChooseOpponent { //randomly selects which challenger the player is ge
 	applymovement(CAMERA, RCR_CameraMove)
 	waitmovement(CAMERA)
 	random(13)
-	copyvar(VAR_0x8009, VAR_RESULT)
+	copyvar(VAR_0x8002, VAR_RESULT)
 	if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
 		buffernumberstring(3, VAR_RESULT)
 		debugprint(RCR_NumberDebug, 120)
@@ -221,7 +221,7 @@ script RCR_ChooseOpponent { //randomly selects which challenger the player is ge
 		}
 	}
 	closemessage
-	copyvar(VAR_RESULT, VAR_0x8009)
+	copyvar(VAR_RESULT, VAR_0x8002)
 	switch (var(VAR_RESULT)) {
 	case 0:
 		setvar(VAR_TEMP_5, 1)
@@ -263,6 +263,7 @@ script RCR_SetUpBattle { //For follower matches
 	waitmovement(CAMERA)
 	waitmovement(VAR_TEMP_5)
 	addvar(VAR_RYU_FOLLOWER_BATTLES, 1)
+	RedoBattleStartCheck:
 	switch(var(VAR_TEMP_5)) {
 	case 1:
 		msgbox(RCR_Steven_Intro)
@@ -379,7 +380,7 @@ script RCR_SetUpBattle { //For follower matches
 script RCR_ChooseValidMons{ //player didn't select valid mons or pressed B at party selection
 	msgbox(EGC_NeedToChoose)
 	closemessage
-	return
+	goto(RedoBattleStartCheck)
 }
 
 script RCR_ChallengerStevenAggroniteReward { //special reward for steven
