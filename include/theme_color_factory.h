@@ -151,14 +151,15 @@ eg COLOR_AUTO_SHADE_COND(
 #define COLOR_BAG_POCKET_SELECTED           0x2A56
 #define COLOR_BAG_POCKET_UNSELECTED         0x437F
 
-#define COLOR_LIGHT_THEME_BG_DARK           0x7B37
-#define COLOR_LIGHT_THEME_BG_LIGHT          0x77F7
-#define COLOR_LIGHT_THEME_TEXT              0x44A0
-#define COLOR_LIGHT_THEME_TEXT_SHADOW       0x7E83
+#define COLOR_LIGHT_THEME_BG_DARK           0x1C82
+#define COLOR_LIGHT_THEME_BG                0x6AF7
+#define COLOR_LIGHT_THEME_BG_LIGHT          0x7FFF
+#define COLOR_LIGHT_THEME_TEXT              0x0000
+#define COLOR_LIGHT_THEME_TEXT_SHADOW       0x5AD6
 #define COLOR_LIGHT_THEME_TEXT_SHADOW_N     0x7E7A
 #define COLOR_LIGHT_THEME_CONTRAST          0x3546
 #define COLOR_NEON_BORDER_1                 0x7EA2
-#define COLOR_NEON_BORDER_2                 0x61A8
+#define COLOR_NEON_BORDER_2                 0x698C
 #define COLOR_NEON_BORDER_3                 0x6B2A
 
 #define COLOR_DARK_THEME_BG_LIGHT           0x842
@@ -179,10 +180,13 @@ eg COLOR_AUTO_SHADE_COND(
 
 #define COLOR_WHITE                         0x7FFF
 #define COLOR_BLACK                         0x0
-#define COLOR_RED                           0x1f
-#define COLOR_GREEN                         0x3e0
-#define COLOR_BLUE                          0x7c00
+#define COLOR_RED                           0x1F
+#define COLOR_GREEN                         0x3E0
+#define COLOR_BLUE                          0x7C00
 #define COLOR_DARK_RED                      0xE
+#define COLOR_DARK_GREY                     0x2108
+#define COLOR_LIGHT_GREY                    0x6739
+#define COLOR_LIGHT_GREY_1                  0x5294
 
 // Wrapper Functions
 // need a func to prevent buffer overflow -> compiler segfault

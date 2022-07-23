@@ -465,6 +465,8 @@ $(BATTRANSGFXDIR)/vs_frame.4bpp: %.4bpp: %.png
 $(INTERFACEGFXDIR)/party_menu_bg.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 62
 
+
+
 $(TYPESGFXDIR)/move_types.4bpp: $(types:%=$(TYPESGFXDIR)/%.4bpp) $(contest_types:%=$(TYPESGFXDIR)/contest_%.4bpp)
 	@cat $^ >$@
 

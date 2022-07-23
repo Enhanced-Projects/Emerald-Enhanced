@@ -896,7 +896,10 @@ static bool8 IntializeJournal(void)
         {
             case THEME_COLOR_LIGHT:
                 CpuCopy16(sJournalBGPalette, buf, 0x20);
+                buf[6] = COLOR_NEON_BORDER_2;
+                buf[10] = COLOR_LIGHT_THEME_BG_DARK;
                 buf[14] = COLOR_LIGHT_THEME_BG_LIGHT;       // 14 = background
+                buf[15] = COLOR_NEON_BORDER_2;       // 15 = pixel border before end color
                 LoadPalette(buf, 0, 0x20);
                 break;
             case THEME_COLOR_DARK:
@@ -918,6 +921,7 @@ static bool8 IntializeJournal(void)
                 buf[13] = COLOR_AUTO_SHADE_COND(buf[13], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], GREYSCALE_TO_COLOR(10), SHADE_ACTION_LIGHT, THRESHOLD_DEFAULT);   // UI ELEMENT green table (f1-7)
 
                 buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 14 = background
+                buf[15] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 15 = pixel border before end color
                 LoadPalette(buf, 0, 0x20);
                 break;
             case THEME_COLOR_VANILLA:
@@ -1002,7 +1006,41 @@ static bool8 IntializeJournal(void)
             sButtonSpriteIds[i] = CreateSprite(&spriteTemplate, 32 + buttonXPos[i], 42, 0);
             gSprites[sButtonSpriteIds[i]].data[0] = !i;
         }
-        LoadPalette(sJounralButtons[0].palette, 0x100, 0x20);
+        
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+                CpuCopy16(sJounralButtons[0].palette, buf, 0x20);
+                //bg
+                buf[1] = COLOR_LIGHT_THEME_BG_LIGHT;         
+                //selected shadow
+                buf[2] = COLOR_LIGHT_THEME_BG_DARK;
+                //unselected shadow
+                buf[3] = COLOR_LIGHT_THEME_TEXT_SHADOW;
+                //text shadow
+                buf[4] = COLOR_NEON_BORDER_2;
+                //external border
+                buf[5] = COLOR_NEON_BORDER_2;
+                //text
+                buf[6] = COLOR_LIGHT_THEME_TEXT;
+                LoadPalette(buf, 0x100, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(sJounralButtons[0].palette, 0x100, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(sJounralButtons[0].palette, buf, 0x20);
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];         
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+                buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+                buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+                buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+                buf[6] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT);
+                LoadPalette(buf, 0x100, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                LoadPalette(gMessageBox_Pal, 0x100, 0x20); //FULL_COLOR TODO impl vanilla pal
+                break;
+        }
         spriteTemplate = s8x8IconSpriteTemplate;
         spriteTemplate.images = sGymFrontierIconImages;
         for (i = 0; i < NUM_BADGES; i++)
@@ -1030,7 +1068,20 @@ static bool8 IntializeJournal(void)
                 StartSpriteAnimIfDifferent(&gSprites[spriteId], badgeType);
             }
         }
-        LoadPalette(sGymFrontierIconPalette, 0x110, 0x20);
+        
+        CpuCopy16(sGymFrontierIconPalette, buf, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+            case THEME_COLOR_VANILLA:
+                buf[1] = COLOR_LIGHT_THEME_BG_LIGHT;
+                break;
+            case THEME_COLOR_DARK:
+                break;
+            case THEME_COLOR_USER:
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                break;
+        }
+        LoadPalette(buf, 0x110, 0x20);
         gMain.state++;
         break;
         

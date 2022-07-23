@@ -117,26 +117,53 @@ static bool8 IntializePidgeyUI(u8 taskId)
             SetBgTilemapBuffer(i+1, mapBuf);
             RequestDma3Copy(sUIDataPtr->bgData[i].tilemap, mapBuf, sUIDataPtr->bgData[i].mapSize, 0);
             RequestDma3Copy(sUIDataPtr->bgData[i].tiles, (void*)BG_CHAR_ADDR(sUIDataPtr->bgTemplates[i+1].charBaseIndex), sUIDataPtr->bgData[i].tileSize, 0);
-            if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
-                CpuCopy16(sUIDataPtr->bgData[i].palette, buf, 16);
-                switch (i) {
-                    case 0:
-                        buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];       // 1 = text color
-                        buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 2 = text shadow & window highlight
-                        buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 3 = window border
-                        buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 4 = bg
-                        break;
-                    case 1:
-                        buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 1 = window highlight
-                        buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 2 = window border
-                        buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 3 = bg
-                        break;
-                    case 2:
-                        break;
-                }
-                LoadPalette(buf, sUIDataPtr->bgData[i].palSlot*16, sUIDataPtr->bgData[i].palCount*2);
-            } else
-                LoadPalette(sUIDataPtr->bgData[i].palette, sUIDataPtr->bgData[i].palSlot*16, sUIDataPtr->bgData[i].palCount*2);
+            CpuCopy16(sUIDataPtr->bgData[i].palette, buf, 0x20);
+            switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+                case THEME_COLOR_LIGHT:
+                    switch (i) {
+                        case 0:
+                            buf[1] = COLOR_LIGHT_THEME_TEXT;       // 1 = text color
+                            buf[2] = COLOR_NEON_BORDER_2;       // 2 = window highlight
+                            buf[3] = COLOR_LIGHT_THEME_BG_DARK;       // 3 = window border
+                            buf[4] = COLOR_LIGHT_THEME_BG_LIGHT;       // 4 = bg
+                            buf[5] = COLOR_NEON_BORDER_2;       // 5 = external pixel border before last color
+                            buf[6] = COLOR_LIGHT_THEME_TEXT_SHADOW;       // 1 = text color
+                            break;
+                        case 1:
+                            buf[1] = COLOR_NEON_BORDER_2;       // 1 = window highlight
+                            buf[2] = COLOR_LIGHT_THEME_BG_DARK;       // 2 = window border
+                            buf[3] = COLOR_LIGHT_THEME_BG_LIGHT;       // 3 = bg
+                            break;
+                        case 2:
+                            break;
+                    }
+                    break;
+                case THEME_COLOR_DARK:
+                    break;
+                case THEME_COLOR_USER:
+                    switch (i) {
+                        case 0:
+                            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];       // 1 = text color
+                            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // window highlight
+                            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // 3 = window border
+                            buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 4 = bg
+                            buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];            // 5 = external pixel border before last color
+                            buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       // 2 = text shadow & window highlight
+                            break;
+                        case 1:
+                            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 1 = window highlight
+                            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // 2 = window border
+                            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 3 = bg
+                            break;
+                        case 2:
+                            break;
+                    }
+                    break;
+                case THEME_COLOR_VANILLA:
+                    break;
+                
+            }
+            LoadPalette(buf, sUIDataPtr->bgData[i].palSlot*16, sUIDataPtr->bgData[i].palCount*2);
         }
         InitWindows(sUIDataPtr->windowTemplates);
         InitTextBoxGfxAndPrinters();

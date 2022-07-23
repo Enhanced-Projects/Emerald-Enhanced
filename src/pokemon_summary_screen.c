@@ -690,11 +690,12 @@ static const u8 sTextColors[][3] =
     {0, 11, 12},
     {0, 13, 14},
     {0, 7, 8},
-    {13, 15, 14},
+    {13, 1, 14},
     {0, 1, 2},
     {0, 3, 4},
     {0, 5, 6},
-    {0, 7, 8}
+    {0, 7, 8},
+    {0, 15, 4}
 };
 
 static const u8 sSummaryAButtonBitmap[] = INCBIN_U8("graphics/interface/summary_a_button.4bpp");
@@ -1410,7 +1411,7 @@ static bool8 DecompressGraphics(void)
     case 6:
         if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
-            LoadCompressedPalette(gStatusScreenDarkPalette, 0, 0x100);
+            LoadCompressedPalette(gStatusScreenDarkPalette, 0, 0x100); //copy male and female text and shadow color from here and add lgrey - dgrey for genderless boss 
         }
         else
         {
@@ -2757,7 +2758,7 @@ static void PrintNotEggInfo(void)
     ConvertIntToDecimalStringN(gStringVar2, summary->level, STR_CONV_MODE_LEFT_ALIGN, 3);
     StringAppend(gStringVar1, gStringVar2);
     PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, gStringVar1, 24, 17, 0, 1);
-    if (GetMonData(mon, MON_DATA_BOSS_STATUS) == 1)
+    /*if (GetMonData(mon, MON_DATA_BOSS_STATUS) == 1)
     {
         GetMonNickname(mon, gRyuStringVar1);
         StringCopy(gRyuStringVar2, Text_ColorRed);
@@ -2769,13 +2770,13 @@ static void PrintNotEggInfo(void)
         PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, strArray, 0, 1, 0, 1);
     }
     else
-    {
-        GetMonNickname(mon, gStringVar1);
-        PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME, gStringVar1, 0, 1, 0, 1);
-        strArray[0] = CHAR_SLASH;
-        StringCopy(&strArray[1], &gSpeciesNames[summary->species2][0]);
-        PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, strArray, 0, 1, 0, 1);
-    }
+    {*/
+    GetMonNickname(mon, gStringVar1);
+    PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME, gStringVar1, 0, 1, 0, 1);
+    strArray[0] = CHAR_SLASH;
+    StringCopy(&strArray[1], &gSpeciesNames[summary->species2][0]);
+    PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, strArray, 0, 1, 0, 1);
+    //}
     PrintGenderSymbol(mon, summary->species2);
     PutWindowTilemap(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME);
     PutWindowTilemap(PSS_LABEL_WINDOW_PORTRAIT_SPECIES);
@@ -2792,18 +2793,34 @@ static void PrintEggInfo(void)
 
 static void PrintGenderSymbol(struct Pokemon *mon, u16 species)
 {
-    if (species != SPECIES_NIDORAN_M && species != SPECIES_NIDORAN_F)
+    //add boss color to color palette see above at line 1413
+    u32 boss;
+    const u8 *text = gText_GenderlessSymbol;
+    u8 color;
+    
+    boss = GetMonData(mon, MON_DATA_BOSS_STATUS, NULL);
+    
+    if (boss || (species != SPECIES_NIDORAN_M && species != SPECIES_NIDORAN_F))
     {
         switch (GetMonGender(mon))
         {
         case MON_MALE:
-            PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, gText_MaleSymbol, 57, 17, 0, 3);
+            text = gText_MaleSymbol;
+            color = 3;
             break;
         case MON_FEMALE:
-            PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, gText_FemaleSymbol, 57, 17, 0, 4);
+            color = 4;
+            text = gText_FemaleSymbol;
             break;
+        case MON_GENDERLESS:
+            color = 13;
+            break;
+
         }
+        if (boss)
+            text = gText_BossSymbol;
     }
+    PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, text, 57, 17, 0, color);
 }
 
 static void PrintAOrBButtonIcon(u8 windowId, bool8 bButton, u32 x)

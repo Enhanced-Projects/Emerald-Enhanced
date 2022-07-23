@@ -1805,6 +1805,7 @@ RyuCheckForLNSUAch::
 `
 
 script RyuDebug_Utility1 {
+	msgbox("Indicator: {BOSS_INDI}")
 	release
 	end
 }

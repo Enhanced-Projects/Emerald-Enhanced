@@ -159,6 +159,9 @@ extern const u8 gText_ColorShadowRedLightRed[];
 extern const u8 gText_DynColor2[];
 extern const u8 gText_DynColor2Male[];
 extern const u8 gText_DynColor1Female[];
+extern const u8 gText_DynColorBossMale[];
+extern const u8 gText_DynColorBossFemale[];
+extern const u8 gText_DynColorBoss[];
 extern const u8 gText_HighlightTransparent[];
 
 // this file's functions
@@ -784,7 +787,7 @@ static const struct SpriteTemplate sSpriteTemplate_OmegaIndicator =
     .callback = SpriteCb_MegaIndicator,
 };
 
-const u8 gBossIconTiles[] = INCBIN_U8("graphics/interface/bossicon.4bpp");
+/*const u8 gBossIconTiles[] = INCBIN_U8("graphics/interface/bossicon.4bpp");
 const u16 gBossIconTilesPal[] = INCBIN_U16("graphics/interface/bossicon.gbapal");
 
 
@@ -823,7 +826,7 @@ static const struct SpriteTemplate sBossIconSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCb_MegaIndicator
-};
+};*/
 
 // code
 
@@ -841,8 +844,6 @@ static const struct SpriteTemplate sBossIconSpriteTemplate =
 // data fields for healthboxRight
 #define hOther_HealthBoxSpriteId    data[5]
 #define hOther_IndicatorSpriteId    data[6] // For Mega Evo
-#define hOther_BossIndicatorSpriteId data[7]
-
 // data fields for healthbar
 #define hBar_HealthBoxSpriteId      data[5]
 #define hBar_Data6                  data[6]
@@ -855,19 +856,11 @@ u8 GetMegaIndicatorSpriteId(u32 healthboxSpriteId)
     return gSprites[spriteId].hOther_IndicatorSpriteId;
 }
 
-u8 GetBossIndicatorSpriteId(u32 healthboxSpriteId)
-{
-    u8 spriteId = gSprites[healthboxSpriteId].oam.affineParam;
-    if (spriteId >= MAX_SPRITES)
-        return 0xFF;
-    return gSprites[spriteId].hOther_BossIndicatorSpriteId;
-}
-
 u8 CreateBattlerHealthboxSprites(u8 battlerId)
 {
     s16 data6 = 0;
     u8 healthboxLeftSpriteId, healthboxRightSpriteId;
-    u8 healthbarSpriteId, megaIndicatorSpriteId, bossIndicatorSpriteId;
+    u8 healthbarSpriteId, megaIndicatorSpriteId;
     struct Sprite *healthBarSpritePtr;
 
     if (!IsDoubleBattle())
@@ -940,15 +933,11 @@ u8 CreateBattlerHealthboxSprites(u8 battlerId)
 
     gSprites[healthboxRightSpriteId].invisible = TRUE;
     gSprites[healthboxRightSpriteId].hOther_IndicatorSpriteId = 0xFF;
-    gSprites[healthboxRightSpriteId].hOther_BossIndicatorSpriteId = 0xFF;
 
     healthBarSpritePtr->hBar_HealthBoxSpriteId = healthboxLeftSpriteId;
     healthBarSpritePtr->hBar_Data6 = data6;
     healthBarSpritePtr->invisible = TRUE;
 
-    bossIndicatorSpriteId = CreateBossIndicatorSprite(battlerId, 0);
-    if (bossIndicatorSpriteId != MAX_SPRITES)
-        gSprites[bossIndicatorSpriteId].invisible = TRUE;
     // Create mega indicator sprite if is a mega evolved mon.
     if (gBattleStruct->mega.evolvedPartyIds[GetBattlerSide(battlerId)] & gBitTable[gBattlerPartyIndexes[battlerId]])
     {
@@ -973,9 +962,6 @@ u8 CreateSafariPlayerHealthboxSprites(void)
 
     gSprites[healthboxLeftSpriteId].oam.affineParam = healthboxRightSpriteId;
     gSprites[healthboxRightSpriteId].hOther_HealthBoxSpriteId = healthboxLeftSpriteId;
-
-    gSprites[healthboxRightSpriteId].hOther_IndicatorSpriteId = 0xFF;
-
     gSprites[healthboxRightSpriteId].callback = SpriteCB_HealthBoxOther;
 
     return healthboxLeftSpriteId;
@@ -1016,7 +1002,6 @@ static void SpriteCB_HealthBoxOther(struct Sprite *sprite)
 {
     u8 healthboxMainSpriteId = sprite->hOther_HealthBoxSpriteId;
     u8 megaSpriteId = sprite->hOther_IndicatorSpriteId;
-    u8 bossSpriteId = sprite->hOther_BossIndicatorSpriteId;
 
     sprite->pos1.x = gSprites[healthboxMainSpriteId].pos1.x + 64;
     sprite->pos1.y = gSprites[healthboxMainSpriteId].pos1.y;
@@ -1028,10 +1013,6 @@ static void SpriteCB_HealthBoxOther(struct Sprite *sprite)
     {
         gSprites[megaSpriteId].pos2.x = sprite->pos2.x;
         gSprites[megaSpriteId].pos2.y = sprite->pos2.y;
-    }
-    if (bossSpriteId != 0xFF && bossSpriteId != MAX_SPRITES) {
-        gSprites[bossSpriteId].pos2.x = sprite->pos2.x;
-        gSprites[bossSpriteId].pos2.y = sprite->pos2.y;
     }
 }
 
@@ -1046,7 +1027,6 @@ void SetBattleBarStruct(u8 battlerId, u8 healthboxSpriteId, s32 maxVal, s32 oldV
 
 void SetHealthboxSpriteInvisible(u8 healthboxSpriteId)
 {
-    DestroyBossIndicatorSprite(healthboxSpriteId);
     DestroyMegaIndicatorSprite(healthboxSpriteId);
     gSprites[healthboxSpriteId].invisible = TRUE;
     gSprites[gSprites[healthboxSpriteId].hMain_HealthBarSpriteId].invisible = TRUE;
@@ -1061,11 +1041,6 @@ void SetHealthboxSpriteVisible(u8 healthboxSpriteId)
     gSprites[healthboxSpriteId].invisible = FALSE;
     gSprites[gSprites[healthboxSpriteId].hMain_HealthBarSpriteId].invisible = FALSE;
     gSprites[gSprites[healthboxSpriteId].oam.affineParam].invisible = FALSE;
-    bossSpriteId = GetBossIndicatorSpriteId(battlerId);
-    if (bossSpriteId != 0xFF)
-        gSprites[bossSpriteId].invisible = TRUE;
-    //else
-    //    CreateBossIndicatorSprite(battlerId, 0);
     if (gBattleStruct->mega.evolvedPartyIds[GetBattlerSide(battlerId)] & gBitTable[gBattlerPartyIndexes[battlerId]])
     {
         u8 spriteId = GetMegaIndicatorSpriteId(healthboxSpriteId);
@@ -1084,7 +1059,6 @@ static void UpdateSpritePos(u8 spriteId, s16 x, s16 y)
 
 void DestoryHealthboxSprite(u8 healthboxSpriteId)
 {
-    DestroyBossIndicatorSprite(healthboxSpriteId);
     DestroyMegaIndicatorSprite(healthboxSpriteId);
     DestroySprite(&gSprites[gSprites[healthboxSpriteId].oam.affineParam]);
     DestroySprite(&gSprites[gSprites[healthboxSpriteId].hMain_HealthBarSpriteId]);
@@ -1776,41 +1750,6 @@ static const s8 sIndicatorPositions[][2] =
     [B_POSITION_OPPONENT_RIGHT] = {44, -9},
 };
 
-u32 CreateBossIndicatorSprite(u32 battlerId, u32 which) {
-    u32 spriteId, position;
-    s16 x, y;
-    u32 side = GetBattlerSide(battlerId);
-    struct Pokemon *party = (side == B_SIDE_PLAYER) ? gPlayerParty : gEnemyParty;
-    u16 monId = gBattlerPartyIndexes[battlerId];
-    //if (GetMonData(&party[monId], MON_DATA_BOSS_STATUS, NULL) == TRUE)
-    //{
-
-        LoadSpritePalette(&sSpritePalette_BossIcon);
-        LoadSpriteSheet(&sSpriteSheet_BossIcon);
-
-        position = GetBattlerPosition(battlerId);
-        GetBattlerHealthboxCoords(battlerId, &x, &y);
-
-        x += sIndicatorPositions[position][0] - 5;
-        y += sIndicatorPositions[position][1] + 5;
-        if (gBattleMons[battlerId].level >= 100)
-            x -= 4;
-        else if (gBattleMons[battlerId].level < 10)
-            x += 5;
-
-        spriteId = CreateSpriteAtEnd(&sBossIconSpriteTemplate, x, y, 0);
-        if (spriteId != MAX_SPRITES) {
-            gSprites[gSprites[gHealthboxSpriteIds[battlerId]].oam.affineParam].hOther_BossIndicatorSpriteId = spriteId;
-
-            gSprites[spriteId].tBattler = battlerId;
-        } else
-            gSprites[gSprites[gHealthboxSpriteIds[battlerId]].oam.affineParam].hOther_BossIndicatorSpriteId = 0xFF;
-        return spriteId;
-
-    //}
-    //return MAX_SPRITES;
-}
-
 u32 CreateMegaIndicatorSprite(u32 battlerId, u32 which)
 {
     u32 spriteId, position;
@@ -1879,30 +1818,6 @@ void DestroyMegaIndicatorSprite(u32 healthboxSpriteId)
     {
         FreeSpritePaletteByTag(TAG_MEGA_INDICATOR_PAL);
         FreeSpriteTilesByTag(TAG_MEGA_INDICATOR_TILE);
-    }
-}
-
-void DestroyBossIndicatorSprite(u32 healthboxSpriteId)
-{
-    u32 i;
-    s16 *spriteId = &gSprites[gSprites[healthboxSpriteId].oam.affineParam].hOther_BossIndicatorSpriteId;
-
-    if (*spriteId != 0xFF)
-    {
-        DestroySprite(&gSprites[*spriteId]);
-        *spriteId = 0xFF;
-    }
-
-    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
-    {
-        if (gSprites[gSprites[gHealthboxSpriteIds[i]].oam.affineParam].hOther_BossIndicatorSpriteId != 0xFF)
-            break;
-    }
-    // Free Sprite pal/tiles only if no indicator sprite is active for all battlers.
-    if (i == MAX_BATTLERS_COUNT)
-    {
-        FreeSpritePaletteByTag(TAG_BOSS_ICON_PAL);
-        FreeSpriteTilesByTag(TAG_BOSS_ICON);
     }
 }
 
@@ -2390,6 +2305,7 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     const u8 *genderTxt;
     u32 windowId, spriteTileNum, species;
     u8 *windowTileData;
+    const u8 *colorMale = gText_DynColor2Male, *colorFemale = gText_DynColor1Female, *colorGenderless = gText_DynColor2;
     u8 gender;
     u8 bgThemeColor = 2;
     struct Pokemon *illusionMon = GetIllusionMonPtr(gSprites[healthboxSpriteId].hMain_Battler);
@@ -2425,7 +2341,7 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
         }
         else
         {*/
-            StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
+        StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
         //}
         GetMonData(mon, MON_DATA_NICKNAME, nickname);
         StringGetEnd10(nickname);
@@ -2441,18 +2357,23 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 
     // AddTextPrinterAndCreateWindowOnHealthbox's arguments are the same in all 3 cases.
     // It's possible they may have been different in early development phases.
+    if (GetMonData(mon, MON_DATA_BOSS_STATUS, NULL) == TRUE) {
+        colorMale = gText_DynColorBossMale;
+        colorFemale = gText_DynColorBossFemale;
+        colorGenderless = gText_DynColorBoss;
+    }
     switch (gender)
     {
         default:
-            StringCopy(ptr, gText_DynColor2);
+            StringCopy(ptr, colorGenderless);
             windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
             break;
         case MON_MALE:
-            StringCopy(ptr, gText_DynColor2Male);
+            StringCopy(ptr, colorMale);
             windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
             break;
         case MON_FEMALE:
-            StringCopy(ptr, gText_DynColor1Female);
+            StringCopy(ptr, colorFemale);
             windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
             break;
     }
@@ -2509,6 +2430,7 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     s16 tileNumAdder;
     u8 statusPalId;
 
+    statusPalId = 0;
     battlerId = gSprites[healthboxSpriteId].hMain_Battler;
     healthBarSpriteId = gSprites[healthboxSpriteId].hMain_HealthBarSpriteId;
     if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
@@ -2552,8 +2474,10 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     }
     else
     {
-        statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_39);
-
+        if (((GetBattlerSide(battlerId) != B_SIDE_PLAYER && !IsDoubleBattle()) || IsDoubleBattle()) && (VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_MODERN || VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_CLASSIC))
+            statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_40);
+        else
+            statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_39);
         for (i = 0; i < 3; i++)
             CpuCopy32(statusGfxPtr, (void*)(OBJ_VRAM0 + (gSprites[healthboxSpriteId].oam.tileNum + tileNumAdder + i) * TILE_SIZE_4BPP), 32);
 
@@ -2567,6 +2491,9 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     pltAdder = gSprites[healthboxSpriteId].oam.paletteNum * 16;
     pltAdder += battlerId + 12;
 
+    if (((GetBattlerSide(battlerId) != B_SIDE_PLAYER && !IsDoubleBattle()) || IsDoubleBattle()) && (VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_MODERN || VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_CLASSIC)) {
+        statusGfxPtr = gHealthboxElementsGfxTableModern[15*battlerId + statusPalId*3];
+    }
     FillPalette(sStatusIconColors[statusPalId], pltAdder + 0x100, 2);
     CpuCopy16(gPlttBufferUnfaded + 0x100 + pltAdder, (void*)(OBJ_PLTT + pltAdder * 2), 2);
     CpuCopy32(statusGfxPtr, (void*)(OBJ_VRAM0 + (gSprites[healthboxSpriteId].oam.tileNum + tileNumAdder) * TILE_SIZE_4BPP), 96);
