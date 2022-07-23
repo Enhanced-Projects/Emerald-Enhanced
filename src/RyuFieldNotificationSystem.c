@@ -13,6 +13,8 @@
 #include "overworld.h"
 #include "overworld_notif.h"
 #include "factions.h"
+#include "RyuRealEstate.h"
+#include "RyuDynDeliveries.h"
 
 
 
@@ -285,6 +287,21 @@ void RyuCheckAquaQuestNotifications(void)
         }
     }
 }
+extern void RyuClearAlchemyEffect(void);
+
+void RyuResetTimeBasedEvents(void)
+{
+    FlagClear(FLAG_RYU_VERBOSE_MODE);
+    RyuClearAlchemyEffect();
+    RyuResetRealEstateData();
+    VarSet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, 7);
+    VarSet(VAR_RYU_DAILY_QUEST_DATA, 0);
+    VarSet(VAR_RYU_DAILY_QUEST_TARGET, 0);
+    VarSet(VAR_RYU_DAILY_QUEST_TYPE, 0);
+    RyuClearDeliveryQueue();
+    SetWarpDestination(MAP_GROUP(PETALBURG_CITY), MAP_NUM(PETALBURG_CITY), 255, 10, 15);
+    CreateTask(RyuDelayTimerTask, 255);
+}
 
 extern void RyuSavePlayTimeChallenge(void);
 void RyuDoNotifyTasks(void)
@@ -292,7 +309,7 @@ void RyuDoNotifyTasks(void)
     if (FlagGet(FLAG_RYU_ENTERING_OWNED_HOME) == FALSE)
         FlagSet(FLAG_RYU_HIDE_HOME_ATTENDANT);
 
-    if ((FlagGet(FLAG_TEMP_B) == TRUE/*gPlayerPartyCount == 0*/) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for challenge/hardcore
+    if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for challenge/hardcore
     {
         if (FlagGet(FLAG_RYU_LIMBO) == FALSE)
         {
@@ -344,6 +361,14 @@ void RyuDoNotifyTasks(void)
         ShowFieldMessage((const u8[]) _("100 cap has been activated."));
         CreateTask(RyuMessageTimerTask, 0xFF);
         FlagClear(FLAG_RYU_NOTIFY_LV100_SWITCH);
+    }
+
+    if (FlagGet(FLAG_RYU_RTC_RESET_NOTIFY) == TRUE)
+    {
+        FlagClear(FLAG_RYU_RTC_RESET_NOTIFY);
+        ShowFieldMessage((const u8[]) _("NOTICE: The RTC has been reset.\nAs a result, ALL Time-Based events\lwill be reset.\pYou will be teleported to\nPetalburg City for safety."));
+        CreateTask(RyuMessageTimerTask, 0xFF);
+        RyuResetTimeBasedEvents();
     }
 
     if (!(FlagGet(FLAG_SYS_DEXNAV_GET)) && (!(FlagGet(FLAG_TEMP_F)))) //notify and give Dexnav

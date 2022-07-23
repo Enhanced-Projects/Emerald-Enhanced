@@ -23,11 +23,30 @@ script RDB_BetaMenuStandalone{
         case 6:
             goto(RDBM_TeleportHome)
         case 7:
-            goto(RDBM_ShowActiveEffects)
+            goto(RDBM_ResetRTC)
         case 8:
             goto(RDBM_ExitResetMenu)
     }
     goto(RDBM_ExitResetMenu)
+}
+
+script RDBM_ResetRTC {
+    msgbox("Resetting the RTC can result in save\nfile damage.\pIf you continue, all current time based\nevents will also be reset to prevent\lexploits.\pAre you sure you wish to reset\nthe RTC?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox("Please enter the current Real Life time.")
+        special(StartWallClock)
+        waitstate
+        msgbox("Time set...\pWe will now save and then restart\nthe game.\pPlease wait. . .", MSGBOX_AUTOCLOSE)
+        callnative(RyuForceSaveTheGame)
+        msgbox("The RTC was successfully reset.")
+        callnative(ForceSoftReset)
+    }
+    else {
+        msgbox("The RTC will not be reset.")
+    }
+    closemessage
+    release
+    end
 }
 
 script RDBM_ViewSaveVersion{
