@@ -370,14 +370,6 @@ void RyuDoNotifyTasks(void)
         FlagClear(FLAG_RYU_NOTIFY_LV100_SWITCH);
     }
 
-    if (FlagGet(FLAG_RYU_RTC_RESET_NOTIFY) == TRUE)
-    {
-        FlagClear(FLAG_RYU_RTC_RESET_NOTIFY);
-        ShowFieldMessage((const u8[]) _("NOTICE: The RTC has been reset.\nAs a result, ALL Time-Based events\lwill be reset.\pYou will be teleported to\nPetalburg City for safety."));
-        CreateTask(RyuMessageTimerTask, 0xFF);
-        RyuResetTimeBasedEvents();
-    }
-
     if (!(FlagGet(FLAG_SYS_DEXNAV_GET)) && (!(FlagGet(FLAG_TEMP_F)))) //notify and give Dexnav
         if (CountBadges() >= 6)
             {
