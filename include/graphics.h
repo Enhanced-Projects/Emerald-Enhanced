@@ -5757,6 +5757,7 @@ extern const u32 gUnknown_08D85A1C[];
 
 extern const u16 gBattleInterface_BallStatusBarDarkPal[];
 extern const u16 gBattleInterface_BallDisplayDarkPal[];
+extern const u16 gBattleInterface_BallDisplayLightPal[];
 
 // battle terrains
 extern const u32 gBattleTerrainTiles_TallGrass[];
@@ -7238,6 +7239,7 @@ extern const u32 gBattleInterface_BallStatusBarGfx[];
 extern const u8 gBattleInterface_BallDisplayGfx[];
 extern const u16 gBattleInterface_BallStatusBarPal[];
 extern const u16 gBattleInterface_BallDisplayPal[];
+extern const u8 gExpBar_Modern[];
 extern const u8 gHealthboxElementsGfxTable[][32];
 extern const u8 gHealthboxElementsGfxTableModern[][32];
 

@@ -29,6 +29,10 @@ u16 HatPickHigherContrast(u16 color1, u16 color2, u16 compareColor) {
     return __abs(C_TO_GS(color1) - C_TO_GS(compareColor)) > __abs(C_TO_GS(color2) - C_TO_GS(compareColor)) ? color1 : color2;
 }
 
+u16 HatPickLowerContrast(u16 color1, u16 color2, u16 compareColor) {
+    return __abs(C_TO_GS(color1) - C_TO_GS(compareColor)) > __abs(C_TO_GS(color2) - C_TO_GS(compareColor)) ? color2 : color1;
+}
+
 void LightShader(u16* color, u16 step) {
     *color = COLOR_CREATE_LIGHT_SHADE_STEP(*color, step);
 }

@@ -55,6 +55,7 @@
 #define COLOR_CHANGE_HUE(color) HatColorChangeHue(color) //(C_IS_GS(color) ? ~color : RGB_SHIFT(color)) 
 #define COLOR_CHANGE_HUE_KEEP_GS(color) (RGB_TO_C(C_RTOG(color), C_GTOB(color), C_BTOR(color)))
 #define COLOR_PICK_HIGHER_CONTRAST(color1, color2, compareColor) HatPickHigherContrast(color1, color2, compareColor)
+#define COLOR_PICK_LOWER_CONTRAST(color1, color2, compareColor) HatPickLowerContrast(color1, color2, compareColor)
 // Shade Alterations
 /*
 COLOR_AUTO_SHADE(colorToShade, thresholdShadeToDarkOrLight)
@@ -192,6 +193,7 @@ eg COLOR_AUTO_SHADE_COND(
 // need a func to prevent buffer overflow -> compiler segfault
 u16 HatColorChangeHue(u16 color);
 u16 HatPickHigherContrast(u16 color1, u16 color2, u16 compareColor);
+u16 HatPickLowerContrast(u16 color1, u16 color2, u16 compareColor);
 u16 HatAutoShade(u16 color, u16 threshold);
 u16 HatAutoShadeInverse(u16 color, u16 threshold);
 u16 HatAutoShadeContrast(u16 colorToShade, u16 compareColor, u16 threshold);

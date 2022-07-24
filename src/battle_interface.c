@@ -2783,6 +2783,7 @@ static void MoveBattleBarGraphically(u8 battlerId, u8 whichBar)
     u8 filledPixelsCount, level;
     u8 barElementId;
     u8 i;
+    const u8 *gfx;
 
     switch (whichBar)
     {
@@ -2823,13 +2824,24 @@ static void MoveBattleBarGraphically(u8 battlerId, u8 whichBar)
             for (i = 0; i < 8; i++)
                 array[i] = 0;
         }
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+            case THEME_COLOR_DARK:
+            case THEME_COLOR_USER:
+                gfx = gExpBar_Modern;
+                break;
+            case THEME_COLOR_VANILLA:
+                gfx = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_12);
+                break;
+        }
         for (i = 0; i < 8; i++)
         {
+            gfx += array[i] * 32;
             if (i < 4)
-                CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_12) + array[i] * 32,
+                CpuCopy32(gfx,
                           (void*)(OBJ_VRAM0 + (gSprites[gBattleSpritesDataPtr->battleBars[battlerId].healthboxSpriteId].oam.tileNum + 0x24 + i) * TILE_SIZE_4BPP), 32);
             else
-                CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_12) + array[i] * 32,
+                CpuCopy32(gfx,
                           (void*)(OBJ_VRAM0 + 0xB80 + (i + gSprites[gBattleSpritesDataPtr->battleBars[battlerId].healthboxSpriteId].oam.tileNum) * TILE_SIZE_4BPP), 32);
         }
         break;
