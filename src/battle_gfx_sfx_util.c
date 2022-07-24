@@ -740,16 +740,12 @@ void LoadHealthBoxesPalettte() {
     u16 buf[0x20] = {0};
     u16 bufShadesLight[4];
     u16 bufShadesDark[4];
-    int i = 0;
     struct SpritePalette tmp;
     tmp.data = malloc(sizeof(u16)*0x20);
     switch (VarGet(VAR_RYU_THEME_NUMBER)) {
         case THEME_COLOR_LIGHT:
             tmp.tag = sSpritePalettes_HealthBoxHealthBar[2].tag;
             CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[2].data, buf, 0x20);
-            for (i = 0; i < 0x20; ++i) {
-                //buf[i] =0x3e0;
-            }
             buf[1] = COLOR_LIGHT_THEME_BG_LIGHT; //text
             buf[2] = COLOR_LIGHT_THEME_BG_LIGHT;
             buf[3] = COLOR_DARK_GREY;  // text shadow
