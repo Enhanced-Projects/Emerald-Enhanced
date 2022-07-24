@@ -1458,7 +1458,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	msgbox("Indicator: {BOSS_INDI}")
+	msgbox("Indicator: {DPAD_LEFT} {DPAD_RIGHT} {DPAD_UP} {DPAD_DOWN}")
 	release
 	end
 }
