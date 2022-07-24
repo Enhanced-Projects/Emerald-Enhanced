@@ -1189,7 +1189,8 @@ static void CreateCancelConfirmPokeballSprites(void)
         if (sPartyMenuInternal->chooseHalf)
         {
             sPartyMenuInternal->spriteIdConfirmPokeball = CreateSmallPokeballButtonSprite(0xBF, 0x88);
-            DrawCancelConfirmButtons();
+            if (VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA)
+                DrawCancelConfirmButtons();
             sPartyMenuInternal->spriteIdCancelPokeball = CreateSmallPokeballButtonSprite(0xBF, 0x98);
         }
         else
@@ -1215,28 +1216,33 @@ void AnimatePartySlot(u8 slot, u8 animNum)
         }
         return;
     case PARTY_SIZE: // Confirm
-        if (animNum == 0)
-            SetBgTilemapPalette(1, 23, 16, 7, 2, 1);
-        else
-            SetBgTilemapPalette(1, 23, 16, 7, 2, 2);
+        if (VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA) {
+            if (animNum == 0)
+                SetBgTilemapPalette(1, 23, 16, 7, 2, 1);
+            else
+                SetBgTilemapPalette(1, 23, 16, 7, 2, 2);
+        }
         spriteId = sPartyMenuInternal->spriteIdConfirmPokeball;
         break;
     case PARTY_SIZE + 1: // Cancel
         // The position of the Cancel button changes if Confirm is present
-        if (!sPartyMenuInternal->chooseHalf)
-        {
-            if (animNum == 0)
-                SetBgTilemapPalette(1, 23, 17, 7, 2, 1);
+
+        if (VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA) {
+            if (!sPartyMenuInternal->chooseHalf)
+            {
+                if (animNum == 0)
+                    SetBgTilemapPalette(1, 23, 17, 7, 2, 1);
+                else
+                    SetBgTilemapPalette(1, 23, 17, 7, 2, 2);
+            }
+            else if (animNum == 0)
+            {
+                SetBgTilemapPalette(1, 23, 18, 7, 2, 1);
+            }
             else
-                SetBgTilemapPalette(1, 23, 17, 7, 2, 2);
-        }
-        else if (animNum == 0)
-        {
-            SetBgTilemapPalette(1, 23, 18, 7, 2, 1);
-        }
-        else
-        {
-            SetBgTilemapPalette(1, 23, 18, 7, 2, 2);
+            {
+                SetBgTilemapPalette(1, 23, 18, 7, 2, 2);
+            }
         }
         spriteId = sPartyMenuInternal->spriteIdCancelPokeball;
         break;

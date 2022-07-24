@@ -892,6 +892,7 @@ static bool8 IntializeJournal(void)
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sJournalBGTiles, BG_CHAR_ADDR(2), sizeof(sJournalBGTiles));
         DmaCopy16(3, sJournalBGMap, GetBgTilemapBuffer(1), sizeof(sJournalBGMap));
+        
         switch (VarGet(VAR_RYU_THEME_NUMBER)) 
         {
             case THEME_COLOR_LIGHT:

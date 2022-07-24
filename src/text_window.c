@@ -52,7 +52,7 @@ static const u16 sTextWindowFrame20_Pal[] = INCBIN_U16("graphics/text_window/20.
 
 
 //dark theme windowframes
-static const u16 gTextWindowFrame1d_Pal[] = INCBIN_U16("graphics/text_window/1d.gbapal");
+static const u16 gTextWindowFrame1d_Pal[] = INCBIN_U16("graphics/text_window/13d.gbapal");
 static const u16 sTextWindowFrame2d_Pal[] = INCBIN_U16("graphics/text_window/2d.gbapal");
 static const u16 sTextWindowFrame3d_Pal[] = INCBIN_U16("graphics/text_window/3d.gbapal");
 static const u16 sTextWindowFrame4d_Pal[] = INCBIN_U16("graphics/text_window/4d.gbapal");
@@ -64,7 +64,7 @@ static const u16 sTextWindowFrame9d_Pal[] = INCBIN_U16("graphics/text_window/9d.
 static const u16 sTextWindowFrame10d_Pal[] = INCBIN_U16("graphics/text_window/10d.gbapal");
 static const u16 sTextWindowFrame11d_Pal[] = INCBIN_U16("graphics/text_window/11d.gbapal");
 static const u16 sTextWindowFrame12d_Pal[] = INCBIN_U16("graphics/text_window/12d.gbapal");
-static const u16 sTextWindowFrame13d_Pal[] = INCBIN_U16("graphics/text_window/13d.gbapal");
+static const u16 sTextWindowFrame13d_Pal[] = INCBIN_U16("graphics/text_window/1d.gbapal");
 static const u16 sTextWindowFrame14d_Pal[] = INCBIN_U16("graphics/text_window/14d.gbapal");
 static const u16 sTextWindowFrame15d_Pal[] = INCBIN_U16("graphics/text_window/15d.gbapal");
 static const u16 sTextWindowFrame16d_Pal[] = INCBIN_U16("graphics/text_window/16d.gbapal");
@@ -73,7 +73,7 @@ static const u16 sTextWindowFrame18d_Pal[] = INCBIN_U16("graphics/text_window/18
 static const u16 sTextWindowFrame19d_Pal[] = INCBIN_U16("graphics/text_window/19d.gbapal");
 static const u16 sTextWindowFrame20d_Pal[] = INCBIN_U16("graphics/text_window/20d.gbapal");
 
-static const u8 gTextWindowFrame1d_Gfx[] = INCBIN_U8("graphics/text_window/1d.4bpp");
+static const u8 gTextWindowFrame1d_Gfx[] = INCBIN_U8("graphics/text_window/13d.4bpp");
 static const u8 sTextWindowFrame2d_Gfx[] = INCBIN_U8("graphics/text_window/2d.4bpp");
 static const u8 sTextWindowFrame3d_Gfx[] = INCBIN_U8("graphics/text_window/3d.4bpp");
 static const u8 sTextWindowFrame4d_Gfx[] = INCBIN_U8("graphics/text_window/4d.4bpp");
@@ -85,7 +85,7 @@ static const u8 sTextWindowFrame9d_Gfx[] = INCBIN_U8("graphics/text_window/9d.4b
 static const u8 sTextWindowFrame10d_Gfx[] = INCBIN_U8("graphics/text_window/10d.4bpp");
 static const u8 sTextWindowFrame11d_Gfx[] = INCBIN_U8("graphics/text_window/11d.4bpp");
 static const u8 sTextWindowFrame12d_Gfx[] = INCBIN_U8("graphics/text_window/12d.4bpp");
-static const u8 sTextWindowFrame13d_Gfx[] = INCBIN_U8("graphics/text_window/13d.4bpp");
+static const u8 sTextWindowFrame13d_Gfx[] = INCBIN_U8("graphics/text_window/1d.4bpp");
 static const u8 sTextWindowFrame14d_Gfx[] = INCBIN_U8("graphics/text_window/14d.4bpp");
 static const u8 sTextWindowFrame15d_Gfx[] = INCBIN_U8("graphics/text_window/15d.4bpp");
 static const u8 sTextWindowFrame16d_Gfx[] = INCBIN_U8("graphics/text_window/16d.4bpp");

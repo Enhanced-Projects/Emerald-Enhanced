@@ -844,12 +844,13 @@ void CB2_OpenAPMenu(void)
     }
 }
 
+
 //FULL_COLOR
 static bool8 IntializeAP(u8 taskId)
 {
     static const u8 usedAP[] = _("{STR_VAR_1}AP");
     u16 * map;
-    u16 buf[sizeof(sAPMenuBackgroundPalette)];
+    u16 buf[0x100];
     u32 i;
     u32 spriteId;
     switch (gMain.state)
@@ -895,16 +896,6 @@ static bool8 IntializeAP(u8 taskId)
                 LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
                 break;
         }
-        /*if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
-            CpuCopy16(sAPMenuBackgroundPalette, buf, sizeof(sAPMenuBackgroundPalette));
-            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 1 = window highlight
-            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 2 = window border
-            buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];       // 13 = text color
-            buf[16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];       // 16 = text shadowx
-            buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 4 = bg
-            LoadPalette(buf, 0, sizeof(sAPMenuBackgroundPalette));
-        } else
-            LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));*/
         InitWindows(sAPMenuWindowTemplates);
         InitTextBoxGfxAndPrinters();
         switch (VarGet(VAR_RYU_THEME_NUMBER)) {
@@ -925,15 +916,6 @@ static bool8 IntializeAP(u8 taskId)
                 LoadPalette(gMessageBox_Pal, 0xF0, 0x20);
                 break;
         }
-        /*if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
-            LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
-        else {
-            CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
-            buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         // L R button background
-            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];             //actual text
-            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       //actual text shadow
-            LoadPalette(buf, 0xF0, 0x20);
-        }*/
         DeactivateAllTextPrinters();
         for(i = 0; i <= WIN_AP_DESC; i++)
         {
