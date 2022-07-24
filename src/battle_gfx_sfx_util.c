@@ -107,12 +107,13 @@ static const struct CompressedSpriteSheet sSpriteSheets_HealthBar[MAX_BATTLERS_C
     {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_OPPONENT2_TILE}
 };
 
-static const struct SpritePalette sSpritePalettes_HealthBoxHealthBar[4] =
+static const struct SpritePalette sSpritePalettes_HealthBoxHealthBar[5] =
 {
     {gBattleInterface_BallStatusBarPal, TAG_HEALTHBOX_PAL},
     {gBattleInterface_BallDisplayPal, TAG_HEALTHBAR_PAL},
     {gBattleInterface_BallStatusBarDarkPal, TAG_HEALTHBOX_PAL},
-    {gBattleInterface_BallDisplayDarkPal, TAG_HEALTHBAR_PAL}
+    {gBattleInterface_BallDisplayDarkPal, TAG_HEALTHBAR_PAL},
+    {gBattleInterface_BallDisplayLightPal, TAG_HEALTHBAR_PAL}
 };
 
 // code
@@ -687,7 +688,7 @@ void FreeTrainerFrontPicPalette(u16 frontPicId)
 }
 
 // Unused.
-void BattleLoadAllHealthBoxesGfxAtOnce(void)
+/*void BattleLoadAllHealthBoxesGfxAtOnce(void)
 {
     u8 numberOfBattlers = 0;
     u8 i;
@@ -732,57 +733,82 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     }
     for (i = 0; i < numberOfBattlers; i++)
         LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[i]]);
-}
+}*/
 
 //FULL_COLOR
 void LoadHealthBoxesPalettte() {
     u16 buf[0x20] = {0};
-    int i = 0;
+    u16 bufShadesLight[4];
+    u16 bufShadesDark[4];
     struct SpritePalette tmp;
     tmp.data = malloc(sizeof(u16)*0x20);
     switch (VarGet(VAR_RYU_THEME_NUMBER)) {
         case THEME_COLOR_LIGHT:
             tmp.tag = sSpritePalettes_HealthBoxHealthBar[2].tag;
             CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[2].data, buf, 0x20);
-            buf[1] = COLOR_WHITE;
+            buf[1] = COLOR_LIGHT_THEME_BG_LIGHT; //text
             buf[2] = COLOR_LIGHT_THEME_BG_LIGHT;
-            buf[3] = COLOR_DARK_GREY;
-            buf[4] = COLOR_NEON_BORDER_2;
-            buf[5] = COLOR_NEON_BORDER_2;
-            buf[6] = COLOR_LIGHT_THEME_BG;
-            buf[7] = COLOR_NEON_BORDER_2;
-            buf[12] = COLOR_LIGHT_GREY;
-            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+            buf[3] = COLOR_DARK_GREY;  // text shadow
+            buf[4] = COLOR_LIGHT_THEME_BG_DARK; //border opponent and player 1
+            buf[5] = COLOR_LIGHT_THEME_BG_DARK; // border opponent 2
+            buf[6] = COLOR_NEON_BORDER_2; //"EXP" text
+            buf[7] = COLOR_LIGHT_THEME_BG_DARK; // border player 2
+            buf[8] = COLOR_NEON_BORDER_2; 
+            buf[9] = COLOR_LIGHT_THEME_BG; //empty bar 1
+            buf[14] = COLOR_NEON_BORDER_2; // "exp" text pixels and exp bar top and bottom border
+            buf[15] = RGB(0, 26, 31); //COLOR_NEON_BORDER_2; //full bar
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[4]);
             break;
         case THEME_COLOR_DARK:
             tmp.tag = sSpritePalettes_HealthBoxHealthBar[2].tag;
             CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[2].data, buf, 0x20);
             buf[12] = COLOR_LIGHT_GREY;
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
             LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[3]);
             break;
         case THEME_COLOR_USER:
             tmp.tag = sSpritePalettes_HealthBoxHealthBar[2].tag;
             CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[2].data, buf, 0x20);
-            //buf[1] = COLOR_PICK_HIGHER_CONTRAST(COLOR_SPECIES_TEXT_DARK, COLOR_SPECIES_TEXT_LIGHT, gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
+
+            COLOR_SHADES(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], SHADER_LIGHT, bufShadesLight, 4, 12);
+            COLOR_SHADES(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], SHADER_DARK, bufShadesDark, 4, 12);
+                    
+
             buf[1] = COLOR_WHITE;//gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
-            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];         
+            buf[2] = COLOR_PICK_HIGHER_CONTRAST(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], COLOR_WHITE);         
             buf[3] = COLOR_DARK_GREY;//gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];         
-            buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
-            buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
-            buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
-            buf[7] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
-            buf[12] = COLOR_LIGHT_GREY;
-            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+            buf[4] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+            buf[5] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+            buf[6] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT);
+            buf[7] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+            buf[8] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[3], bufShadesLight[3], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
+            buf[9] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT);
+            buf[14] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[3], bufShadesLight[3], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
+            buf[15] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]; //extra
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
+
+            //add user colors to healthbar palette
+            tmp.tag = sSpritePalettes_HealthBoxHealthBar[4].tag;
+            CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[4].data, buf, 0x20);
+            buf[6] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+            buf[8] = bufShadesLight[1];
+            buf[9] = bufShadesDark[1];
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
             break;
         case THEME_COLOR_VANILLA:
             tmp.tag = sSpritePalettes_HealthBoxHealthBar[0].tag;
             CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[0].data, buf, 0x20);
             buf[12] = COLOR_LIGHT_GREY;        
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
             LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
             break;
     }
-    CpuCopy16(buf, (u16*)tmp.data, 0x20);
-    LoadSpritePalette(&tmp);
     free((u16*)tmp.data);
 }
 

@@ -791,7 +791,7 @@ void LoadBattleMenuWindowGfx(void)
 {
     // 0 = dark blue, 1 = yellow, 2 = red, 3 = green, 4 == darkred, 5 = pinklight, 6 = darkgreen, 7 = lightgreen, 8 = blue, 9 = grey, 10 = white, 11 = lightyellow, 13 = darkpink, 12 = darkyellow,  14 = darkblue, 15 turquoise
     //text = red, textshadow = green, windowhighlight = blue, window border = pink, windowbg = yellow
-    u16 buf[32];
+    u16 buf[0x20];
     switch ( VarGet (VAR_RYU_THEME_NUMBER) )
     {
         case THEME_COLOR_LIGHT:
@@ -960,9 +960,10 @@ void LoadBattleTextboxAndBackground(void)
             break;
         case THEME_COLOR_USER:
             CpuCopy16(gBattleTextboxDarkPalette, buf, 0x40);
+            
             buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
             buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
-            buf[9] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+            buf[9] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT], THRESHOLD_DEFAULT);
             buf[10] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
             buf[11] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
             buf[12] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];

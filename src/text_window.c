@@ -301,12 +301,14 @@ void LoadUserWindowBorderGfx_(u8 windowId, u16 destOffset, u8 palOffset)
 //FULL_COLOR TODO - user frames
 void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
 {
+    u32 i;
     u16 buf[0x20];
     switch(VarGet(VAR_RYU_THEME_NUMBER)) {
         case THEME_COLOR_LIGHT:
-        case THEME_COLOR_VANILLA:
             LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFrames[frameId].tiles, 0x120, destOffset);
-            LoadPalette(sWindowFrames[frameId].pal, palOffset, 0x20);
+            CpuCopy16(sWindowFrames[frameId].pal, buf, 0x20);
+            buf [15] = COLOR_LIGHT_THEME_BG;
+            LoadPalette(buf, palOffset, 0x20);
             break;
         case THEME_COLOR_DARK:
             LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFramesDark[frameId].tiles, 0x120, destOffset);
@@ -316,6 +318,7 @@ void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
             LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFramesUser[frameId].tiles, 0x120, destOffset);
             CpuCopy16(sWindowFramesUser[frameId].pal, buf, 0x20);
             buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            buf [15] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT], THRESHOLD_DEFAULT);
             if (frameId == 0)
             {
                 buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
@@ -323,6 +326,10 @@ void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
                 buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
             }
             LoadPalette(buf, palOffset, 0x20);
+            break;
+        case THEME_COLOR_VANILLA:
+            LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFrames[frameId].tiles, 0x120, destOffset);
+            LoadPalette(sWindowFrames[frameId].pal, palOffset, 0x20);
             break;
     }
 }
