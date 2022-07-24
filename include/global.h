@@ -446,6 +446,7 @@ struct SaveBlock2
              struct DeliveryManifest Deliveries[NUM_MAX_QUEUED_DELIVERIES];
              struct DeliveryTime DeliveryTimer;
              u8 gNPCTrainerFactionRelations[NUM_NPC_FACTIONS];
+             u8 UIBallSelection;
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
