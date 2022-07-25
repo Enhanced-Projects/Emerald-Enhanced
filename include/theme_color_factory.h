@@ -50,6 +50,7 @@
 //// EXTERNAL DEFINITIONS
 
 // Hue Alterations
+#define RGB255(red, green, blue) (RGB_TO_C((red*31/255), (green*31/255), (blue*31/255)))
 #define COLOR_TO_GREYSCALE(color) C_TO_GS(color)
 #define GREYSCALE_TO_COLOR(color) GS_TO_C(color)
 #define COLOR_CHANGE_HUE(color) HatColorChangeHue(color) //(C_IS_GS(color) ? ~color : RGB_SHIFT(color)) 

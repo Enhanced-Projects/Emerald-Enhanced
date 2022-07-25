@@ -656,6 +656,11 @@ static bool8 AllocPartyMenuBg(void)
     return TRUE;
 }
 
+
+static void LoadThemeBall(u16* dest, u16 offset) {
+    CpuCopy16(gThemeBalls_Pal[gSaveBlock2Ptr->UIBallSelection], dest + offset, 24);
+}
+
 //FULL_COLOR
 static bool8 AllocPartyMenuBgGfx(void)
 {
@@ -671,7 +676,7 @@ static bool8 AllocPartyMenuBgGfx(void)
             switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
                 case THEME_UI_MODERN:
                 case THEME_UI_CLASSIC:
-                    sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBgModern_Gfx, &sizeout);
+                    sPartyBgGfxTilemap = malloc_and_decompress(gThemeBalls_Gfx[gSaveBlock2Ptr->UIBallSelection], &sizeout);//gPartyMenuBgModern_Gfx, &sizeout);
                     break;
                 case THEME_UI_VANILLA:
                     sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBg_Gfx, &sizeout);
@@ -709,6 +714,7 @@ static bool8 AllocPartyMenuBgGfx(void)
                     buf[17] = COLOR_NEON_BORDER_3;
                     
                     // bg corner
+                    buf[3] = COLOR_LIGHT_THEME_CONTRAST;
                     buf[19] = COLOR_LIGHT_THEME_CONTRAST;
                     
                     //bg stripes (3 colors)
@@ -766,6 +772,7 @@ static bool8 AllocPartyMenuBgGfx(void)
                 case THEME_COLOR_DARK:
                     LoadCompressedPaletteTo(gPartyMenu_dark_Pal, buf, 0, 0x160);
                     buf[0] = RGB(4, 4, 4);
+                    buf[3] = RGB(4, 4, 4);
                     break;
                 case THEME_COLOR_USER:
                     LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
@@ -776,6 +783,7 @@ static bool8 AllocPartyMenuBgGfx(void)
                     buf[17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
                     // bg corner
                     buf[19] = COLOR_CREATE_DARK_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
+                    buf[3] = COLOR_CREATE_DARK_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
                     //bg stripes (3colors)
                     buf[0] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
                     buf[20] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
@@ -818,15 +826,14 @@ static bool8 AllocPartyMenuBgGfx(void)
                     break;
                 case THEME_COLOR_VANILLA:
                     LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
+                    buf[19] = RGB(4, 4, 4);
+                    buf[3] = RGB(4, 4, 4);
                     break;
             }
             switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
                 case THEME_UI_MODERN:
                 case THEME_UI_CLASSIC:
-                    buf[26] = COLOR_RED; //pokeball 20-60
-                    buf[28] = COLOR_DARK_RED; //pokeball 20-60
-                    buf[17] = COLOR_WHITE; //pokeball white
-                    buf[19] = COLOR_BLACK; //pokeball black
+                    LoadThemeBall(buf, 20);
                     break;
             }
             LoadPalette(buf, 0, 0x160);

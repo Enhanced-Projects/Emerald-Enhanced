@@ -1515,6 +1515,7 @@ const u8 gText_BattleScene[] = _("Battle Anims");
 const u8 gText_ThemeUISelector[] = _("UI Style");
 
 const u8 gText_ThemeSelector[] = _("UI Color Mode");
+const u8 gText_ThemeBallSelector[] = _("Theme Ball");
 const u8 gText_RandomRouteMusic[] = _("Rdm Music");
 const u8 gText_Frame[] = _("Frame type");
 const u8 gText_OptionMenuSave[] = _("Save");
@@ -2256,3 +2257,25 @@ const u8 gText_RyuAttendantNameShelly[] = _("Shelly");
 const u8 gText_RyuAttendantNameJoy[] = _("Joy");
 const u8 gText_RyuAttendantNameMay[] = _("May");
 const u8 gText_RyuAttendantNameNone[] = _("None");
+
+const u8* gText_ThemePokeballNames[] = {    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None           "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Poke Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mega Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Ultra Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Master Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Premier Ball   "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dive Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Net Ball       "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Timer Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Luxury Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Safari Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Nest Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Repeat Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Quick Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Fast Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Heavy Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Moon Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Level Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Green Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Blue Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Yellow Ball    ") };

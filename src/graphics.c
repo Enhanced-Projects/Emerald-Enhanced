@@ -679,6 +679,7 @@ const u16 gBattleInterface_BallDisplayDarkPal[] = INCBIN_U16("graphics/battle_in
 const u16 gBattleInterface_BallDisplayLightPal[] = INCBIN_U16("graphics/battle_interface/ball_display_light.gbapal");
 
 
+
 const u8 gExpBar_Modern[] = INCBIN_U8("graphics/battle_interface/expbar_modern.4bpp");
 const u8 gHealthboxElementsGfxTableModern[] = INCBIN_U8("graphics/battle_interface/status1_modern.4bpp",
                                                         "graphics/battle_interface/status2_modern.4bpp",
@@ -1731,6 +1732,7 @@ const u32 gMenuMoneyGfx[] = INCBIN_U32("graphics/interface/money.4bpp.lz");
 const u32 gPartyMenuBgModern_Gfx[] = INCBIN_U32("graphics/interface/party_menu_bg_modern.4bpp.lz");
 const u32 gPartyMenuBgModern_Tilemap[] = INCBIN_U32("graphics/interface/party_menu_bg_modern.bin.lz");
 
+
 // Pokeblock
 
 const u32 gMenuPokeblock_Gfx[] = INCBIN_U32("graphics/interface/pokeblock_case_frame.4bpp.lz");
@@ -2134,3 +2136,93 @@ static const u8 sUnused2[]       = {0x02};
 static const u8 sEmpty5[0x3242]  = {0};
 static const u8 sUnused3[]       = {0x40};
 static const u8 sEmpty6[0x13]    = {0};
+
+
+static const u8 gThemeBallPoke_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/poke_ball_gfx.4bpp.lz");
+static const u8 gThemeBallMega_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/mega_ball_gfx.4bpp.lz");
+static const u8 gThemeBallUltra_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/ultra_ball_gfx.4bpp.lz");
+static const u8 gThemeBallMaster_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/master_ball_gfx.4bpp.lz");
+static const u8 gThemeBallPremier_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/premier_ball_gfx.4bpp.lz");
+static const u8 gThemeBallRepeat_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/repeat_ball_gfx.4bpp.lz");
+static const u8 gThemeBallDive_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/dive_ball_gfx.4bpp.lz");
+static const u8 gThemeBallNet_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/net_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLuxury_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/luxury_ball_gfx.4bpp.lz");
+static const u8 gThemeBallNest_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/nest_ball_gfx.4bpp.lz");
+static const u8 gThemeBallTimer_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/timer_ball_gfx.4bpp.lz");
+static const u8 gThemeBallSafari_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/safari_ball_gfx.4bpp.lz");
+static const u8 gThemeBallQuick_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/quick_ball_gfx.4bpp.lz");
+static const u8 gThemeBallFast_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/fast_ball_gfx.4bpp.lz");
+static const u8 gThemeBallHeavy_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/heavy_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLevel_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/level_ball_gfx.4bpp.lz");
+static const u8 gThemeBallMoon_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/moon_ball_gfx.4bpp.lz");
+static const u8 gThemeBallGreen_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/green_ball_gfx.4bpp.lz");
+static const u8 gThemeBallBlue_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/blue_ball_gfx.4bpp.lz");
+static const u8 gThemeBallYellow_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/yellow_ball_gfx.4bpp.lz");
+
+
+static const u16 gThemeBallPoke_Pal[] = INCBIN_U16("graphics/interface/theme_balls/poke_ball_pal.gbapal");
+static const u16 gThemeBallMega_Pal[] = INCBIN_U16("graphics/interface/theme_balls/mega_ball_pal.gbapal");
+static const u16 gThemeBallUltra_Pal[] = INCBIN_U16("graphics/interface/theme_balls/ultra_ball_pal.gbapal");
+static const u16 gThemeBallMaster_Pal[] = INCBIN_U16("graphics/interface/theme_balls/master_ball_pal.gbapal");
+static const u16 gThemeBallPremier_Pal[] = INCBIN_U16("graphics/interface/theme_balls/premier_ball_pal.gbapal");
+static const u16 gThemeBallRepeat_Pal[] = INCBIN_U16("graphics/interface/theme_balls/repeat_ball_pal.gbapal");
+static const u16 gThemeBallDive_Pal[] = INCBIN_U16("graphics/interface/theme_balls/dive_ball_pal.gbapal");
+static const u16 gThemeBallNet_Pal[] = INCBIN_U16("graphics/interface/theme_balls/net_ball_pal.gbapal");
+static const u16 gThemeBallLuxury_Pal[] = INCBIN_U16("graphics/interface/theme_balls/luxury_ball_pal.gbapal");
+static const u16 gThemeBallNest_Pal[] = INCBIN_U16("graphics/interface/theme_balls/nest_ball_pal.gbapal");
+static const u16 gThemeBallTimer_Pal[] = INCBIN_U16("graphics/interface/theme_balls/timer_ball_pal.gbapal");
+static const u16 gThemeBallSafari_Pal[] = INCBIN_U16("graphics/interface/theme_balls/safari_ball_pal.gbapal");
+static const u16 gThemeBallQuick_Pal[] = INCBIN_U16("graphics/interface/theme_balls/quick_ball_pal.gbapal");
+static const u16 gThemeBallFast_Pal[] = INCBIN_U16("graphics/interface/theme_balls/fast_ball_pal.gbapal");
+static const u16 gThemeBallHeavy_Pal[] = INCBIN_U16("graphics/interface/theme_balls/heavy_ball_pal.gbapal");
+static const u16 gThemeBallLevel_Pal[] = INCBIN_U16("graphics/interface/theme_balls/level_ball_pal.gbapal");
+static const u16 gThemeBallMoon_Pal[] = INCBIN_U16("graphics/interface/theme_balls/moon_ball_pal.gbapal");
+static const u16 gThemeBallGreen_Pal[] = INCBIN_U16("graphics/interface/theme_balls/green_ball_pal.gbapal");
+static const u16 gThemeBallBlue_Pal[] = INCBIN_U16("graphics/interface/theme_balls/blue_ball_pal.gbapal");
+static const u16 gThemeBallYellow_Pal[] = INCBIN_U16("graphics/interface/theme_balls/yellow_ball_pal.gbapal");
+
+const u8* gThemeBalls_Gfx[] = {
+    gThemeBallPoke_Gfx,
+    gThemeBallMega_Gfx,
+    gThemeBallUltra_Gfx,
+    gThemeBallMaster_Gfx,
+    gThemeBallPremier_Gfx,
+    gThemeBallDive_Gfx,
+    gThemeBallNet_Gfx,
+    gThemeBallTimer_Gfx,
+    gThemeBallLuxury_Gfx,
+    gThemeBallSafari_Gfx,
+    gThemeBallNest_Gfx,
+    gThemeBallRepeat_Gfx,
+    gThemeBallQuick_Gfx,
+    gThemeBallFast_Gfx,
+    gThemeBallHeavy_Gfx,
+    gThemeBallMoon_Gfx,
+    gThemeBallLevel_Gfx,
+    gThemeBallGreen_Gfx,
+    gThemeBallBlue_Gfx,
+    gThemeBallYellow_Gfx
+};
+
+const u16* gThemeBalls_Pal[] = {
+    gThemeBallPoke_Pal,
+    gThemeBallMega_Pal,
+    gThemeBallUltra_Pal,
+    gThemeBallMaster_Pal,
+    gThemeBallPremier_Pal,
+    gThemeBallDive_Pal,
+    gThemeBallNet_Pal,
+    gThemeBallTimer_Pal,
+    gThemeBallLuxury_Pal,
+    gThemeBallSafari_Pal,
+    gThemeBallNest_Pal,
+    gThemeBallRepeat_Pal,
+    gThemeBallQuick_Pal,
+    gThemeBallFast_Pal,
+    gThemeBallHeavy_Pal,
+    gThemeBallMoon_Pal,
+    gThemeBallLevel_Pal,
+    gThemeBallGreen_Pal,
+    gThemeBallBlue_Pal,
+    gThemeBallYellow_Pal
+};
