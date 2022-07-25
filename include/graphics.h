@@ -7055,8 +7055,8 @@ extern const u32 gPartyMenuBgModern_Gfx[];
 extern const u32 gPartyMenuBgModern_Tilemap[];
 
 //THEME BALLS
-extern const u8 *gThemeBalls_Gfx[20];
-extern const u16 *gThemeBalls_Pal[20];
+extern const u8 *gThemeBalls_Gfx[];
+extern const u16 *gThemeBalls_Pal[];
 
 
 // berry pics
