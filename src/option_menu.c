@@ -33,6 +33,7 @@ enum
     MENUITEM_THEME_UI,
     MENUITEM_THEME,
     MENUITEM_FRAMETYPE,
+    MENUITEM_THEME_BALL,
     MENUITEM_RDM_MUSIC,
     MENUITEM_BAR_SPEED,
     MENUITEM_TRANSITION,
@@ -75,6 +76,9 @@ static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed);
 static void ThemeUISelection_DrawChoices(int selection, int y, u8 textSpeed);
 static int ThemeUI_ProcessInput(int selection);
 
+static void ThemeBallSelection_DrawChoices(int selection, int y, u8 textSpeed);
+static int ThemeBall_ProcessInput(int selection);
+
 static void HpBar_DrawChoices(int selection, int y, u8 textSpeed);
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed);
 static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed);
@@ -107,6 +111,7 @@ static const sItemFunctions[MENUITEM_COUNT] =
     [MENUITEM_THEME_UI] = {ThemeUISelection_DrawChoices, ThemeUI_ProcessInput},
     [MENUITEM_THEME] = {ThemeSelection_DrawChoices, Theme_ProcessInput},
     [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
+    [MENUITEM_THEME_BALL] = {ThemeBallSelection_DrawChoices, ThemeBall_ProcessInput},
     [MENUITEM_RDM_MUSIC] = {RandomMusic_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_BAR_SPEED] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
     [MENUITEM_TRANSITION] = {Transition_DrawChoices, TwoOptions_ProcessInput},
@@ -143,6 +148,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_THEME_UI]    = gText_ThemeUISelector,
     [MENUITEM_THEME]       = gText_ThemeSelector,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
+    [MENUITEM_THEME_BALL]  = gText_ThemeBallSelector,
     [MENUITEM_RDM_MUSIC]   = gText_RandomRouteMusic,
     [MENUITEM_BAR_SPEED]   = sTextBarSpeed,
     [MENUITEM_TRANSITION]  = sText_Transition,
@@ -355,7 +361,7 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_FORCESETBATTLE] = gSaveBlock2Ptr->forceSetBattleType;
         //FULL_COLOR
         sOptions->sel[MENUITEM_THEME_UI] = VarGet(VAR_HAT_THEME_UI_NUMBER);
-
+        sOptions->sel[MENUITEM_THEME_BALL] = gSaveBlock2Ptr->UIBallSelection + 1;
         sOptions->sel[MENUITEM_THEME] = VarGet(VAR_RYU_THEME_NUMBER);
         sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
@@ -1105,6 +1111,7 @@ static void Task_OptionMenuSave(u8 taskId)
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
     //FULL_COLOR
     VarSet(VAR_HAT_THEME_UI_NUMBER, sOptions->sel[MENUITEM_THEME_UI]);
+    gSaveBlock2Ptr->UIBallSelection = max(0, sOptions->sel[MENUITEM_THEME_BALL] - 1);
     
     //if (sOptions->sel[MENUITEM_THEME] == 2)
     //    gSaveBlock2Ptr->optionsWindowFrameType = 0;
@@ -1216,6 +1223,31 @@ static int Sound_ProcessInput(int selection)
 }
 
 //FULL_COLOR
+static int ThemeBall_ProcessInput(int selection)
+{
+    if (sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA)
+        return 0;
+
+    if (gMain.newKeys & DPAD_RIGHT)
+    {
+        if (selection < 20)
+            selection++;
+        else
+            selection = 1;
+
+    }
+    if (gMain.newKeys & DPAD_LEFT)
+    {
+        if (selection > 1)
+            selection--;
+        else
+            selection = 20;
+
+    }
+    return selection;
+}
+
+//FULL_COLOR
 static int ThemeUI_ProcessInput(int selection)
 {
     if (gMain.newKeys & DPAD_RIGHT)
@@ -1234,6 +1266,12 @@ static int ThemeUI_ProcessInput(int selection)
             selection = 2;
 
     }
+    if (selection == THEME_UI_VANILLA) {
+        gSaveBlock2Ptr->UIBallSelection = max(0, sOptions->sel[MENUITEM_THEME_BALL] - 1);
+        sOptions->sel[MENUITEM_THEME_BALL] = 0;
+    } else if (sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA)
+        sOptions->sel[MENUITEM_THEME_BALL] = gSaveBlock2Ptr->UIBallSelection + 1;
+    DrawChoices(sOptions->menuCursor+3, (sOptions->visibleCursor + 3) * Y_DIFF, 0);
     return selection;
 }
 
@@ -1383,6 +1421,25 @@ static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style, u8 textSp
     AddTextPrinterParameterized(WIN_OPTIONS, 1, dst, x, y + 1, textSpeed, NULL);
 }
 
+// Draw Choices functions
+static void DrawOptionMenuChoiceLong(const u8 *text, u8 x, u8 y, u8 style, u8 textSpeed)
+{
+    u8 dst[16];
+    u32 i;
+
+    for (i = 0; *text != EOS && i <= 20; i++)
+        dst[i] = *(text++);
+
+    if (style != 0)
+    {
+        dst[2] = 4;
+        dst[5] = 5;
+    }
+
+    dst[i] = EOS;
+    AddTextPrinterParameterized(WIN_OPTIONS, 1, dst, x, y + 1, textSpeed, NULL);
+}
+
 static void HpBar_DrawChoices(int selection, int y, u8 textSpeed)
 {
     if (selection < 10)
@@ -1423,7 +1480,15 @@ static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed)
     DrawOptionMenuChoice(gText_BattleSceneOff, 104, y, styles[0], textSpeed);
     DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOn, 198), y, styles[1], textSpeed);
 }
-
+//FULL_COLOR
+static void ThemeBallSelection_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    DrawOptionMenuChoiceLong(gText_ThemePokeballNames[selection], 104, y, 1, textSpeed);
+    //if (sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA)
+    //    DrawOptionMenuChoiceLong(gText_ThemePokeballNames[0], 104, y, 1, textSpeed);
+    //else
+    //    DrawOptionMenuChoiceLong(gText_ThemePokeballNames[selection], 104, y, 1, textSpeed);
+}
 //FULL_COLOR
 static void ThemeUISelection_DrawChoices(int selection, int y, u8 textSpeed)
 {

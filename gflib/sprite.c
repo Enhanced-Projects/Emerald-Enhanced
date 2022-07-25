@@ -452,7 +452,7 @@ void BuildOamBufferNoOrder(void)
     
     u8 temp;
     UpdateOamCoords();
-    if ((OamSortOrdernCount++ & 0x7FFFFFFF) % 10 == 0) {
+    if ((OamSortOrdernCount++ & 0x7FFFFFFF) % 4 == 0) {
         BuildSpritePriorities();
         SortSprites();
     }
