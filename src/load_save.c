@@ -27,7 +27,7 @@ struct LoadedSaveData
  /*0x0130*/ struct ItemSlot TMsHMs[BAG_TMHM_COUNT];
  /*0x0230*/ struct ItemSlot berries[BAG_BERRIES_COUNT];
  /*0x0230*/ struct ItemSlot megaStones[BAG_MEGASTONES_COUNT];
- /*0x02E8*/ struct MailStruct mail[MAIL_COUNT];
+ /*0x02E8 struct MailStruct mail[MAIL_COUNT];*/
 };
 
 // EWRAM DATA

@@ -33,13 +33,30 @@ script RDB_BetaMenuStandalone{
 script RDBM_ResetRTC {
     msgbox("Resetting the RTC can result in save\nfile damage.\pIf you continue, all current time based\nevents will also be reset to prevent\lexploits.\pAre you sure you wish to reset\nthe RTC?", MSGBOX_YESNO)
     if (var(VAR_RESULT) == TRUE) {
+        msgbox(format("We're now resetting time based events."))
+        setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, 7)
+        setvar(VAR_RYU_DAILY_QUEST_DATA, 0xFFFF)
+        setvar(VAR_RYU_DAILY_QUEST_TARGET, 0xFFFF)
+        setvar(VAR_RYU_DAILY_QUEST_TYPE, 0xFFFF)
+        clearflag(FLAG_RYU_VERBOSE_MODE)
+        clearflag(FLAG_DAILY_QUEST_ACTIVE)
+        setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
+        setflag(FLAG_FINISHED_STUDENT_DAILY)
+        setflag(FLAG_FINISHED_POKEFAN_DAILY)
+        setflag(FLAG_FINISHED_NOBLE_DAILY)
+        setflag(FLAG_FINISHED_OUTCAST_DAILY)
+        setflag(FLAG_FINISHED_NATURALIST_DAILY)
+        callnative(RyuClearDeliveryQueue)
+        callnative(RyuClearAlchemyEffect)
+        callnative(RyuResetRealEstateData)
+        msgbox("Successfully reset time based events.")
+        closemessage
         msgbox("Please enter the current Real Life time.")
         special(StartWallClock)
         waitstate
-        msgbox("Time set...\pWe will now save and then restart\nthe game.\pPlease wait. . .", MSGBOX_AUTOCLOSE)
+        msgbox("Time set...\pWe will now save the game.\pPlease wait. . .")
         callnative(RyuForceSaveTheGame)
         msgbox("The RTC was successfully reset.")
-        callnative(ForceSoftReset)
     }
     else {
         msgbox("The RTC will not be reset.")
