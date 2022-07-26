@@ -657,8 +657,10 @@ static bool8 AllocPartyMenuBg(void)
 }
 
 
+#define THEME_BALL_MAX 30 //using define here at the moment but will be changed later on
+static u16 ballSelection;
 static void LoadThemeBall(u16* dest, u16 offset) {
-    CpuCopy16(gThemeBalls_Pal[gSaveBlock2Ptr->UIBallSelection], dest + offset, 24);
+    CpuCopy16(gThemeBalls_Pal[ballSelection], dest + offset, 24);
 }
 
 //FULL_COLOR
@@ -670,13 +672,15 @@ static bool8 AllocPartyMenuBgGfx(void)
     u16 bufShadesLight[4];
     u16 bufShadesDark[4];
     u16 offset;
+
     switch (sPartyMenuInternal->data[0])
     {
         case 0:
+            ballSelection = gSaveBlock2Ptr->UIBallSelection >= THEME_BALL_MAX ? Random() % THEME_BALL_MAX : gSaveBlock2Ptr->UIBallSelection;
             switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
                 case THEME_UI_MODERN:
                 case THEME_UI_CLASSIC:
-                    sPartyBgGfxTilemap = malloc_and_decompress(gThemeBalls_Gfx[gSaveBlock2Ptr->UIBallSelection], &sizeout);//gPartyMenuBgModern_Gfx, &sizeout);
+                    sPartyBgGfxTilemap = malloc_and_decompress(gThemeBalls_Gfx[ballSelection], &sizeout);
                     break;
                 case THEME_UI_VANILLA:
                     sPartyBgGfxTilemap = malloc_and_decompress(gPartyMenuBg_Gfx, &sizeout);

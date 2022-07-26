@@ -361,7 +361,7 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_FORCESETBATTLE] = gSaveBlock2Ptr->forceSetBattleType;
         //FULL_COLOR
         sOptions->sel[MENUITEM_THEME_UI] = VarGet(VAR_HAT_THEME_UI_NUMBER);
-        sOptions->sel[MENUITEM_THEME_BALL] = gSaveBlock2Ptr->UIBallSelection + 1;
+        sOptions->sel[MENUITEM_THEME_BALL] = sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA ? 0 : gSaveBlock2Ptr->UIBallSelection + 1;
         sOptions->sel[MENUITEM_THEME] = VarGet(VAR_RYU_THEME_NUMBER);
         sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
@@ -1230,7 +1230,7 @@ static int ThemeBall_ProcessInput(int selection)
 
     if (gMain.newKeys & DPAD_RIGHT)
     {
-        if (selection < 20)
+        if (selection < 31)
             selection++;
         else
             selection = 1;
@@ -1241,7 +1241,7 @@ static int ThemeBall_ProcessInput(int selection)
         if (selection > 1)
             selection--;
         else
-            selection = 20;
+            selection = 31;
 
     }
     return selection;
@@ -1484,10 +1484,6 @@ static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed)
 static void ThemeBallSelection_DrawChoices(int selection, int y, u8 textSpeed)
 {
     DrawOptionMenuChoiceLong(gText_ThemePokeballNames[selection], 104, y, 1, textSpeed);
-    //if (sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA)
-    //    DrawOptionMenuChoiceLong(gText_ThemePokeballNames[0], 104, y, 1, textSpeed);
-    //else
-    //    DrawOptionMenuChoiceLong(gText_ThemePokeballNames[selection], 104, y, 1, textSpeed);
 }
 //FULL_COLOR
 static void ThemeUISelection_DrawChoices(int selection, int y, u8 textSpeed)
