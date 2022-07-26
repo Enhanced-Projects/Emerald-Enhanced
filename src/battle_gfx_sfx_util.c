@@ -746,14 +746,14 @@ void LoadHealthBoxesPalettte() {
         case THEME_COLOR_LIGHT:
             tmp.tag = sSpritePalettes_HealthBoxHealthBar[2].tag;
             CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[2].data, buf, 0x20);
-            buf[1] = COLOR_LIGHT_THEME_BG_LIGHT; //text
+            buf[1] = VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA ? COLOR_BLACK : COLOR_LIGHT_THEME_BG_LIGHT; //text
             buf[2] = COLOR_LIGHT_THEME_BG_LIGHT;
-            buf[3] = COLOR_DARK_GREY;  // text shadow
+            buf[3] = VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA ? COLOR_LIGHT_GREY : COLOR_DARK_GREY;  // text shadow
             buf[4] = COLOR_LIGHT_THEME_BG_DARK; //border opponent and player 1
-            buf[5] = COLOR_LIGHT_THEME_BG_DARK; // border opponent 2
+            buf[5] = COLOR_WHITE; // white pixel healthbar fix
             buf[6] = COLOR_NEON_BORDER_2; //"EXP" text
             buf[7] = COLOR_LIGHT_THEME_BG_DARK; // border player 2
-            buf[8] = COLOR_NEON_BORDER_2; 
+            buf[8] = VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA ? COLOR_LIGHT_THEME_BG : COLOR_NEON_BORDER_2; 
             buf[9] = COLOR_LIGHT_THEME_BG; //empty bar 1
             buf[14] = COLOR_NEON_BORDER_2; // "exp" text pixels and exp bar top and bottom border
             buf[15] = RGB(0, 26, 31); //COLOR_NEON_BORDER_2; //full bar
@@ -781,7 +781,7 @@ void LoadHealthBoxesPalettte() {
             buf[2] = COLOR_PICK_HIGHER_CONTRAST(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], COLOR_WHITE);         
             buf[3] = COLOR_DARK_GREY;//gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];         
             buf[4] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
-            buf[5] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+            buf[5] = COLOR_WHITE; // white pixel healthbar fix
             buf[6] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[2], bufShadesLight[2], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
             buf[7] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
             buf[8] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[3], bufShadesLight[3], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);

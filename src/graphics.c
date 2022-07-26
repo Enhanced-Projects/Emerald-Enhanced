@@ -678,8 +678,8 @@ const u16 gBattleInterface_BallDisplayPal[] = INCBIN_U16("graphics/battle_interf
 const u16 gBattleInterface_BallDisplayDarkPal[] = INCBIN_U16("graphics/battle_interface/ball_display_dark.gbapal");
 const u16 gBattleInterface_BallDisplayLightPal[] = INCBIN_U16("graphics/battle_interface/ball_display_light.gbapal");
 
-
-
+const u8 gHealthBoxEnding_Modern[] = INCBIN_U8("graphics/battle_interface/doubles_healthbox_ending_modern.4bpp");
+const u8 gHealthBoxBarEnding_Modern[] = INCBIN_U8("graphics/battle_interface/doubles_healthbox_bar_ending_modern.4bpp");
 const u8 gExpBar_Modern[] = INCBIN_U8("graphics/battle_interface/expbar_modern.4bpp");
 const u8 gHealthboxElementsGfxTableModern[] = INCBIN_U8("graphics/battle_interface/status1_modern.4bpp",
                                                         "graphics/battle_interface/status2_modern.4bpp",

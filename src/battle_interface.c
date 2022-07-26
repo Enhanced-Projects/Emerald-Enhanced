@@ -1339,9 +1339,14 @@ static void UpdateHpTextInHealthboxInDoubles(u8 healthboxSpriteId, s16 value, u8
                 windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 0, 5, 0, &windowId);
                 HpTextIntoHealthboxObject((void*)(OBJ_VRAM0) + spriteTileNum + 0xA0, windowTileData, 3);
                 RemoveWindowOnHealthbox(windowId);
-                CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_116),
-                          (void*)(OBJ_VRAM0 + 0x680) + (gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP),
-                           0x20);
+                if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
+                    CpuCopy32(gHealthBoxEnding_Modern,
+                        (void*)(OBJ_VRAM0 + 0x680) + (gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP),
+                        0x20);
+                else
+                    CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_116),
+                        (void*)(OBJ_VRAM0 + 0x680) + (gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP),
+                        0x20);
             }
             else
             {
@@ -1349,7 +1354,7 @@ static void UpdateHpTextInHealthboxInDoubles(u8 healthboxSpriteId, s16 value, u8
                 text[4] = CHAR_SLASH;
                 text[5] = EOS;
                 windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 4, 5, 0, &windowId);
-                //FillHealthboxObject(objVram, 0, 3); // Erases HP bar leftover.
+                FillHealthboxObject(objVram, 0, 3); // Erases HP bar leftover.
                 HpTextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0x20) + spriteTileNum, windowTileData, 4);
                 RemoveWindowOnHealthbox(windowId);
             }
@@ -1515,7 +1520,12 @@ void SwapHpBarsWithHpText(void)
                     gSprites[healthBarSpriteId].oam.paletteNum = 5;
                     UpdateStatusIconInHealthbox(gHealthboxSpriteIds[i]);
                     UpdateHealthboxAttribute(gHealthboxSpriteIds[i], &gPlayerParty[gBattlerPartyIndexes[i]], HEALTHBOX_HEALTH_BAR);
-                    CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_117), (void*)(OBJ_VRAM0 + 0x680 + gSprites[gHealthboxSpriteIds[i]].oam.tileNum * TILE_SIZE_4BPP), 32);
+                    // TODO add modern frameend
+                    if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
+                        CpuCopy32(gHealthBoxBarEnding_Modern,
+                            (void*)(OBJ_VRAM0 + 0x680 + gSprites[gHealthboxSpriteIds[i]].oam.tileNum * TILE_SIZE_4BPP), 32);
+                    else
+                        CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_117), (void*)(OBJ_VRAM0 + 0x680 + gSprites[gHealthboxSpriteIds[i]].oam.tileNum * TILE_SIZE_4BPP), 32);
                 }
             }
             else
