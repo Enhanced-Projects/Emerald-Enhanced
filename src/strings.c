@@ -2276,6 +2276,17 @@ const u8* gText_ThemePokeballNames[] = {    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Heavy Ball     "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Moon Ball      "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Level Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dusk Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Friend Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Love Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Heal Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Lure Ball (B)    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Lure Ball (G)    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Cherish Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Beast Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Magma Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Aqua Ball     "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Green Ball     "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Blue Ball      "),
-                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Yellow Ball    ") };
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Yellow Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Random      ") };

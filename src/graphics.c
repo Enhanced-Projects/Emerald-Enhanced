@@ -2155,6 +2155,16 @@ static const u8 gThemeBallFast_Gfx[] = INCBIN_U8("graphics/interface/theme_balls
 static const u8 gThemeBallHeavy_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/heavy_ball_gfx.4bpp.lz");
 static const u8 gThemeBallLevel_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/level_ball_gfx.4bpp.lz");
 static const u8 gThemeBallMoon_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/moon_ball_gfx.4bpp.lz");
+static const u8 gThemeBallDusk_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/dusk_ball_gfx.4bpp.lz");
+static const u8 gThemeBallFriend_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/friend_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLove_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/love_ball_gfx.4bpp.lz");
+static const u8 gThemeBallHeal_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/heal_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLureB_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/lureb_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLureG_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/lureg_ball_gfx.4bpp.lz");
+static const u8 gThemeBallCherish_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/cherish_ball_gfx.4bpp.lz");
+static const u8 gThemeBallBeast_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/beast_ball_gfx.4bpp.lz");
+static const u8 gThemeBallMagma_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/magma_ball_gfx.4bpp.lz");
+static const u8 gThemeBallAqua_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/aqua_ball_gfx.4bpp.lz");
 static const u8 gThemeBallGreen_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/green_ball_gfx.4bpp.lz");
 static const u8 gThemeBallBlue_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/blue_ball_gfx.4bpp.lz");
 static const u8 gThemeBallYellow_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/yellow_ball_gfx.4bpp.lz");
@@ -2177,6 +2187,16 @@ static const u16 gThemeBallFast_Pal[] = INCBIN_U16("graphics/interface/theme_bal
 static const u16 gThemeBallHeavy_Pal[] = INCBIN_U16("graphics/interface/theme_balls/heavy_ball_pal.gbapal");
 static const u16 gThemeBallLevel_Pal[] = INCBIN_U16("graphics/interface/theme_balls/level_ball_pal.gbapal");
 static const u16 gThemeBallMoon_Pal[] = INCBIN_U16("graphics/interface/theme_balls/moon_ball_pal.gbapal");
+static const u16 gThemeBallDusk_Pal[] = INCBIN_U16("graphics/interface/theme_balls/dusk_ball_pal.gbapal");
+static const u16 gThemeBallFriend_Pal[] = INCBIN_U16("graphics/interface/theme_balls/friend_ball_pal.gbapal");
+static const u16 gThemeBallLove_Pal[] = INCBIN_U16("graphics/interface/theme_balls/love_ball_pal.gbapal");
+static const u16 gThemeBallHeal_Pal[] = INCBIN_U16("graphics/interface/theme_balls/heal_ball_pal.gbapal");
+static const u16 gThemeBallLureB_Pal[] = INCBIN_U16("graphics/interface/theme_balls/lureb_ball_pal.gbapal");
+static const u16 gThemeBallLureG_Pal[] = INCBIN_U16("graphics/interface/theme_balls/lureg_ball_pal.gbapal");
+static const u16 gThemeBallCherish_Pal[] = INCBIN_U16("graphics/interface/theme_balls/cherish_ball_pal.gbapal");
+static const u16 gThemeBallBeast_Pal[] = INCBIN_U16("graphics/interface/theme_balls/beast_ball_pal.gbapal");
+static const u16 gThemeBallMagma_Pal[] = INCBIN_U16("graphics/interface/theme_balls/magma_ball_pal.gbapal");
+static const u16 gThemeBallAqua_Pal[] = INCBIN_U16("graphics/interface/theme_balls/aqua_ball_pal.gbapal");
 static const u16 gThemeBallGreen_Pal[] = INCBIN_U16("graphics/interface/theme_balls/green_ball_pal.gbapal");
 static const u16 gThemeBallBlue_Pal[] = INCBIN_U16("graphics/interface/theme_balls/blue_ball_pal.gbapal");
 static const u16 gThemeBallYellow_Pal[] = INCBIN_U16("graphics/interface/theme_balls/yellow_ball_pal.gbapal");
@@ -2199,9 +2219,20 @@ const u8* gThemeBalls_Gfx[] = {
     gThemeBallHeavy_Gfx,
     gThemeBallMoon_Gfx,
     gThemeBallLevel_Gfx,
+    gThemeBallDusk_Gfx,
+    gThemeBallFriend_Gfx,
+    gThemeBallLove_Gfx,
+    gThemeBallHeal_Gfx,
+    gThemeBallLureB_Gfx,
+    gThemeBallLureG_Gfx,
+    gThemeBallCherish_Gfx,
+    gThemeBallBeast_Gfx,
+    gThemeBallMagma_Gfx,
+    gThemeBallAqua_Gfx,
     gThemeBallGreen_Gfx,
     gThemeBallBlue_Gfx,
-    gThemeBallYellow_Gfx
+    gThemeBallYellow_Gfx,
+
 };
 
 const u16* gThemeBalls_Pal[] = {
@@ -2222,6 +2253,16 @@ const u16* gThemeBalls_Pal[] = {
     gThemeBallHeavy_Pal,
     gThemeBallMoon_Pal,
     gThemeBallLevel_Pal,
+    gThemeBallDusk_Pal,
+    gThemeBallFriend_Pal,
+    gThemeBallLove_Pal,
+    gThemeBallHeal_Pal,
+    gThemeBallLureB_Pal,
+    gThemeBallLureG_Pal,
+    gThemeBallCherish_Pal,
+    gThemeBallBeast_Pal,
+    gThemeBallMagma_Pal,
+    gThemeBallAqua_Pal,
     gThemeBallGreen_Pal,
     gThemeBallBlue_Pal,
     gThemeBallYellow_Pal
