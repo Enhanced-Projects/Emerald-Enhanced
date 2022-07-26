@@ -1246,8 +1246,8 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
     u8 bgThemeColor = 2;
     void *objVram;
 
-    if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
-        bgThemeColor = 2;
+    //if (VarGet(VAR_RYU_THEME_NUMBER) == THEME_COLOR_LIGHT)
+        bgThemeColor = 8;
 
     if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) == B_SIDE_PLAYER && !IsDoubleBattle())
     {
@@ -1349,7 +1349,7 @@ static void UpdateHpTextInHealthboxInDoubles(u8 healthboxSpriteId, s16 value, u8
                 text[4] = CHAR_SLASH;
                 text[5] = EOS;
                 windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 4, 5, 0, &windowId);
-                FillHealthboxObject(objVram, 0, 3); // Erases HP bar leftover.
+                //FillHealthboxObject(objVram, 0, 3); // Erases HP bar leftover.
                 HpTextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0x20) + spriteTileNum, windowTileData, 4);
                 RemoveWindowOnHealthbox(windowId);
             }

@@ -782,7 +782,7 @@ void LoadHealthBoxesPalettte() {
             buf[3] = COLOR_DARK_GREY;//gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];         
             buf[4] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
             buf[5] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
-            buf[6] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT);
+            buf[6] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[2], bufShadesLight[2], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
             buf[7] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
             buf[8] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[3], bufShadesLight[3], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
             buf[9] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT);
