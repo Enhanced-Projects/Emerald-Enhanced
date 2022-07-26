@@ -751,7 +751,7 @@ void LoadHealthBoxesPalettte() {
             buf[3] = VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA ? COLOR_LIGHT_GREY : COLOR_DARK_GREY;  // text shadow
             buf[4] = COLOR_LIGHT_THEME_BG_DARK; //border opponent and player 1
             buf[5] = COLOR_WHITE; // white pixel healthbar fix
-            buf[6] = COLOR_NEON_BORDER_2; //"EXP" text
+            //buf[6] = COLOR_NEON_BORDER_2; //"EXP" text
             buf[7] = COLOR_LIGHT_THEME_BG_DARK; // border player 2
             buf[8] = VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA ? COLOR_LIGHT_THEME_BG : COLOR_NEON_BORDER_2; 
             buf[9] = COLOR_LIGHT_THEME_BG; //empty bar 1
@@ -782,7 +782,7 @@ void LoadHealthBoxesPalettte() {
             buf[3] = COLOR_DARK_GREY;//gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];         
             buf[4] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
             buf[5] = COLOR_WHITE; // white pixel healthbar fix
-            buf[6] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[2], bufShadesLight[2], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
+            //buf[6] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[2], bufShadesLight[2], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
             buf[7] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
             buf[8] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[3], bufShadesLight[3], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
             buf[9] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT);

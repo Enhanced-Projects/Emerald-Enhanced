@@ -648,6 +648,30 @@ u8 CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 sub
     return MAX_SPRITES;*/
 }
 
+u8 CreateSpriteSlowAtStart(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority)
+{
+    u8 i;
+
+    for (i = 0; i < MAX_SPRITES; i++)
+        if (!gSprites[i].inUse)
+            return CreateSpriteAt(i, template, x, y, subpriority);
+
+    return MAX_SPRITES;
+}
+
+u8 CreateSpriteSlowAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority)
+{
+    s16 i;
+
+    for (i = MAX_SPRITES - 1; i > -1; i--)
+        if (!gSprites[i].inUse)
+            return CreateSpriteAt(i, template, x, y, subpriority);
+
+    return MAX_SPRITES;
+}
+
+
+
 u8 CreateInvisibleSprite(void (*callback)(struct Sprite *))
 {
     u8 index = CreateSprite(&gDummySpriteTemplate, 0, 0, 31);
