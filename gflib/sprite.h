@@ -265,6 +265,8 @@ void BuildOamBuffer(void);
 void BuildOamBufferNoOrder(void);
 u8 CreateSprite(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
 u8 CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
+u8 CreateSpriteSlowAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
+u8 CreateSpriteSlowAtStart(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
 u8 CreateInvisibleSprite(void (*callback)(struct Sprite *));
 u8 CreateSpriteAndAnimate(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
 void DestroySprite(struct Sprite *sprite);

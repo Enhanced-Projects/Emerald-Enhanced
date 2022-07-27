@@ -7244,6 +7244,8 @@ extern const u32 gBattleInterface_BallStatusBarGfx[];
 extern const u8 gBattleInterface_BallDisplayGfx[];
 extern const u16 gBattleInterface_BallStatusBarPal[];
 extern const u16 gBattleInterface_BallDisplayPal[];
+extern const u8 gHealthBoxEnding_Modern[];
+extern const u8 gHealthBoxBarEnding_Modern[];
 extern const u8 gExpBar_Modern[];
 extern const u8 gHealthboxElementsGfxTable[][32];
 extern const u8 gHealthboxElementsGfxTableModern[][32];
