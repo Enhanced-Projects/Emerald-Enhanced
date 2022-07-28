@@ -39,8 +39,14 @@ MHC_MaxieFinalEvent::
 	msgbox THC_FoundYou
 	closemessage
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_STORY_MAXIE, MHC_MaxieDefeated, TRAINER_REL_COURTNEY_2, TRAINER_BACK_PIC_COURTNEY
-	special LoadPlayerParty
+	goto MHC_StartMulti
+
+MHC_StartMulti::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHC_ChooseValidMons
+	multi_2_vs_1 TRAINER_STORY_MAXIE, MHC_MaxieDefeated, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
@@ -77,6 +83,14 @@ MHC_MaxieFinalEvent::
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	warpsilent MAP_ROUTE124, 255, 51, 24
 	waitstate
+
+MHC_ChooseValidMons::
+	msgbox MHC_CVMText
+	closemessage
+	goto MHC_StartMulti
+
+MHC_CVMText:
+	.string "Choose 1 to 3 Pokémon for this\nbattle."
 	
 MHC_MaxieDefeated:
 	.string "No... This can't be the end...$"

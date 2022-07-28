@@ -7,7 +7,12 @@ MagmaHideout_3F_3R_MapScripts:: @ 823ACFF
 MH_AquaGrunt1::@F
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_4), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_SEAFLOOR_CAVERN_4, SeafloorCavern_Room4_Text_Grunt4Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG1B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG1_ChooseValidMons
+	multi_2_vs_1 TRAINER_GRUNT_SEAFLOOR_CAVERN_4, SeafloorCavern_Room4_Text_Grunt4Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -17,10 +22,20 @@ MH_AquaGrunt1::@F
 	release
 	end
 
+MHAG1_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG1B
+
 MH_AquaGrunt2::@M
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_2), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_SEAFLOOR_CAVERN_2, SeafloorCavern_Room1_Text_Grunt2Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG2B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG2_ChooseValidMons
+	multi_2_vs_1  TRAINER_GRUNT_SEAFLOOR_CAVERN_2, SeafloorCavern_Room1_Text_Grunt2Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -29,11 +44,21 @@ MH_AquaGrunt2::@M
 	goto MH_CheckGruntsDefeated
 	release
 	end
+
+MHAG2_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG2B
 	
 MH_AquaGrunt3::@M
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_1), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_SEAFLOOR_CAVERN_1, SeafloorCavern_Room1_Text_Grunt1Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG3B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG3_ChooseValidMons
+	multi_2_vs_1  TRAINER_GRUNT_SEAFLOOR_CAVERN_1, SeafloorCavern_Room1_Text_Grunt1Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -42,11 +67,21 @@ MH_AquaGrunt3::@M
 	goto MH_CheckGruntsDefeated
 	release
 	end
+
+MHAG3_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG3B
 	
 MH_AquaGrunt4::@F
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_25), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_25, AquaHideout_B1F_Text_Grunt7Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG4B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG4_ChooseValidMons
+	multi_2_vs_1  TRAINER_GRUNT_25, AquaHideout_B1F_Text_Grunt7Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -55,11 +90,21 @@ MH_AquaGrunt4::@F
 	goto MH_CheckGruntsDefeated
 	release
 	end
+
+MHAG4_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG4B
 	
 MH_AquaGrunt5::@M
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_3), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_SEAFLOOR_CAVERN_3, SeafloorCavern_Room4_Text_Grunt3Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG5B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG5_ChooseValidMons
+	multi_2_vs_1  TRAINER_GRUNT_SEAFLOOR_CAVERN_3, SeafloorCavern_Room4_Text_Grunt3Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -68,11 +113,21 @@ MH_AquaGrunt5::@M
 	goto MH_CheckGruntsDefeated
 	release
 	end
+
+MHAG5_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG5B
 	
 MH_AquaGrunt6::@m
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_AQUA_HIDEOUT_3), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_AQUA_HIDEOUT_3, AquaHideout_B1F_Text_Grunt3Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG6B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG6_ChooseValidMons
+	multi_2_vs_1  TRAINER_GRUNT_AQUA_HIDEOUT_3, AquaHideout_B1F_Text_Grunt3Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -81,11 +136,21 @@ MH_AquaGrunt6::@m
 	goto MH_CheckGruntsDefeated
 	release
 	end
+
+MHAG6_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG6B
 	
 MH_AquaGrunt7::@F
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_21), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_21, AquaHideout_B1F_Text_Grunt5Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG7B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG7_ChooseValidMons
+	multi_2_vs_1  TRAINER_GRUNT_21, AquaHideout_B1F_Text_Grunt5Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -94,11 +159,21 @@ MH_AquaGrunt7::@F
 	goto MH_CheckGruntsDefeated
 	release
 	end
+
+MHAG7_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG7B
 	
 MH_AquaGrunt8::@m
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_4), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_4, AquaHideout_B2F_Text_Grunt4Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG8B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG8_ChooseValidMons
+	multi_2_vs_1  TRAINER_GRUNT_4, AquaHideout_B2F_Text_Grunt4Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -107,11 +182,21 @@ MH_AquaGrunt8::@m
 	goto MH_CheckGruntsDefeated
 	release
 	end
+
+MHAG8_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG8B
 	
 MH_AquaGrunt9::@m
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_26), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_26, AquaHideout_B2F_Text_Grunt8Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG9B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG9_ChooseValidMons
+	multi_2_vs_1  TRAINER_GRUNT_26, AquaHideout_B2F_Text_Grunt8Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -120,11 +205,21 @@ MH_AquaGrunt9::@m
 	goto MH_CheckGruntsDefeated
 	release
 	end
+
+MHAG9_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG9B
 	
 MH_AquaGrunt10::@F
 	goto_if_set (TRAINER_FLAGS_START + TRAINER_GRUNT_22), MH_AquaGruntDefeated
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
-	multi_fixed_2_vs_1 TRAINER_GRUNT_22, AquaHideout_B2F_Text_Grunt6Defeat, TRAINER_REL_COURTNEY_1, TRAINER_BACK_PIC_COURTNEY
+MH_AG10B::
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MHAG10_ChooseValidMons
+	multi_2_vs_1  TRAINER_GRUNT_22, AquaHideout_B2F_Text_Grunt6Defeat, VAR_0x8008, VAR_0x8009
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -134,33 +229,15 @@ MH_AquaGrunt10::@F
 	release
 	end
 
+MHAG10_ChooseValidMons::
+	msgbox MH33_ChooseValidMons
+	closemessage
+	goto MH_AG10B
+
 MH_AquaGruntDefeated::
 	goto MH_CheckGruntsDefeated
 	release
 	end
-
-MH_CheckGruntsDefeated::
-	setvar VAR_TEMP_6, 0
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_4), MH_GruntsNotDefeated
-	addvar VAR_TEMP_6, 1
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_2), MH_GruntsNotDefeated
-	addvar VAR_TEMP_6, 1
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_1), MH_GruntsNotDefeated
-	addvar VAR_TEMP_6, 1
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_25), MH_GruntsNotDefeated
-	addvar VAR_TEMP_6, 1
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_3), MH_GruntsNotDefeated
-	addvar VAR_TEMP_6, 1
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_AQUA_HIDEOUT_3), MH_GruntsNotDefeated
-	addvar VAR_TEMP_6, 1
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_21), MH_GruntsNotDefeated
-	addvar VAR_TEMP_6, 1
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_4), MH_GruntsNotDefeated
-	addvar VAR_TEMP_6, 1
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_26), MH_GruntsNotDefeated
-	addvar VAR_TEMP_6, 1
-	goto_if_unset (TRAINER_FLAGS_START + TRAINER_GRUNT_22), MH_GruntsNotDefeated
-	goto MH_GruntsDefeated
 
 MH_GruntsDefeated::
 	setvar VAR_RYU_QUEST_MAGMA, 320
@@ -181,5 +258,46 @@ MH_GruntsNotDefeated::
 	end
 
 MH3_CheckPercent:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Orders... {STR_VAR_1} of 9 erased.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Orders... {STR_VAR_1} of 10 erased.$"
+
+MH33_ChooseValidMons:
+	.string "Make a valid selection of 1 to 3\nPokémon to fight.$"
 `
+
+script MH_CheckGruntsDefeated {
+	setvar(VAR_TEMP_6, 0)
+	if (defeated(TRAINER_GRUNT_SEAFLOOR_CAVERN_4)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (defeated(TRAINER_GRUNT_SEAFLOOR_CAVERN_2)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (defeated(TRAINER_GRUNT_SEAFLOOR_CAVERN_1)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (defeated(TRAINER_GRUNT_25)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (defeated(TRAINER_GRUNT_SEAFLOOR_CAVERN_3)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (defeated(TRAINER_GRUNT_AQUA_HIDEOUT_3)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (defeated(TRAINER_GRUNT_21)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (defeated(TRAINER_GRUNT_4)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (defeated(TRAINER_GRUNT_26)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (defeated(TRAINER_GRUNT_22)) {
+		addvar(VAR_TEMP_6, 1)
+	}
+	if (var(VAR_TEMP_6) == 10) {
+		goto(MH_GruntsDefeated)
+	}
+	goto(MH_GruntsNotDefeated) 
+}
