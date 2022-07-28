@@ -776,7 +776,7 @@ static bool8 AllocPartyMenuBgGfx(void)
                 case THEME_COLOR_DARK:
                     LoadCompressedPaletteTo(gPartyMenu_dark_Pal, buf, 0, 0x160);
                     buf[0] = RGB(4, 4, 4);
-                    buf[3] = RGB(4, 4, 4);
+                    buf[3] = RGB(0, 0, 0);
                     break;
                 case THEME_COLOR_USER:
                     LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
@@ -1147,6 +1147,11 @@ static bool8 RenderPartyMenuBoxes(void)
 static u8* GetPartyMenuBgTile(u16 tileId)
 {
     return &sPartyBgGfxTilemap[tileId << 5];
+}
+
+const u8* GetPartyMenuModernBgTile(u16 tileId)
+{
+    return &gPartyThemeBoxElementsModern_Gfx[tileId << 5];
 }
 
 static void CreatePartyMonSprites(u8 slot)
@@ -2234,6 +2239,7 @@ static u16* GetPartyMenuPalBufferPtr(u8 paletteId)
     return &sPartyMenuInternal->palBuffer[paletteId];
 }
 
+//FULL_COLOR
 static void BlitBitmapToPartyWindow(u8 windowId, const u8 *b, u8 c, u8 x, u8 y, u8 width, u8 height)
 {
     u8 *pixels = AllocZeroed(height * width * 32);
@@ -2244,7 +2250,11 @@ static void BlitBitmapToPartyWindow(u8 windowId, const u8 *b, u8 c, u8 x, u8 y, 
         for (i = 0; i < height; i++)
         {
             for (j = 0; j < width; j++)
-                CpuCopy16(GetPartyMenuBgTile(b[x + j + ((y + i) * c)]), &pixels[(i * width + j) * 32], 32);
+                if (VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_MODERN)
+                    CpuCopy16(GetPartyMenuModernBgTile(b[x + j + ((y + i) * c)]), &pixels[(i * width + j) * 32], 32);
+
+                else
+                    CpuCopy16(GetPartyMenuBgTile(b[x + j + ((y + i) * c)]), &pixels[(i * width + j) * 32], 32);
         }
         BlitBitmapToWindow(windowId, pixels, x * 8, y * 8, width * 8, height * 8);
         Free(pixels);
@@ -2253,33 +2263,60 @@ static void BlitBitmapToPartyWindow(u8 windowId, const u8 *b, u8 c, u8 x, u8 y, 
 
 static void BlitBitmapToPartyWindow_LeftColumn(u8 windowId, u8 x, u8 y, u8 width, u8 height, u8 isEgg)
 {
+    const u8* mainSlotTiles;
+    const u8* mainSlotEggTiles;
+    switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+        case THEME_UI_MODERN:
+            mainSlotTiles = sMainSlotTileNumsModern;
+            mainSlotEggTiles = sMainSlotTileNumsModern_Egg;
+            break;
+        default:
+            mainSlotTiles = sMainSlotTileNums;
+            mainSlotEggTiles = sMainSlotTileNums_Egg;
+            break;
+    }
     if (width == 0 && height == 0)
     {
         width = 10;
         height = 7;
     }
     if (isEgg == FALSE)
-        BlitBitmapToPartyWindow(windowId, sMainSlotTileNums, 10, x, y, width, height);
+        BlitBitmapToPartyWindow(windowId, mainSlotTiles, 10, x, y, width, height);
     else
-        BlitBitmapToPartyWindow(windowId, sMainSlotTileNums_Egg, 10, x, y, width, height);
+        BlitBitmapToPartyWindow(windowId, mainSlotEggTiles, 10, x, y, width, height);
 }
 
 static void BlitBitmapToPartyWindow_RightColumn(u8 windowId, u8 x, u8 y, u8 width, u8 height, u8 isEgg)
 {
+    const u8* otherSlotTiles;
+    const u8* otherSlotEggTiles;
+    switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+        case THEME_UI_MODERN:
+            otherSlotTiles = sOtherSlotsTileNumsModern;
+            otherSlotEggTiles = sOtherSlotsTileNumsModern_Egg;
+            break;
+        default:
+            otherSlotTiles = sOtherSlotsTileNums;
+            otherSlotEggTiles = sOtherSlotsTileNums_Egg;
+            break;
+    }
     if (width == 0 && height == 0)
     {
         width = 18;
         height = 3;
     }
     if (isEgg == FALSE)
-        BlitBitmapToPartyWindow(windowId, sOtherSlotsTileNums, 18, x, y, width, height);
+        BlitBitmapToPartyWindow(windowId, otherSlotTiles, 18, x, y, width, height);
     else
-        BlitBitmapToPartyWindow(windowId, sOtherSlotsTileNums_Egg, 18, x, y, width, height);
+        BlitBitmapToPartyWindow(windowId, otherSlotEggTiles, 18, x, y, width, height);
 }
 
 static void DrawEmptySlot(u8 windowId)
 {
-    BlitBitmapToPartyWindow(windowId, sEmptySlotTileNums, 18, 0, 0, 18, 3);
+    if (VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_MODERN)
+        BlitBitmapToPartyWindow(windowId, sEmptySlotTileNumsModern, 18, 0, 0, 18, 3);
+    else
+        BlitBitmapToPartyWindow(windowId, sEmptySlotTileNums, 18, 0, 0, 18, 3);
 }
 
 #define LOAD_PARTY_BOX_PAL(paletteIds, paletteOffsets)                                    \
@@ -6368,17 +6405,17 @@ void IsLastMonThatKnowsSurf(void)
 
 
 //FULL_COLOR
-static u8* PartyBgScrollTask;
+static u8 PartyBgScrollTask;
 static void CreateMovingBgTask(void)
 {
-    PartyBgScrollTask = malloc(sizeof(u8));
-    *PartyBgScrollTask = CreateTask(Task_MoveBg, 2);
+    //PartyBgScrollTask = malloc(sizeof(u8));
+    PartyBgScrollTask = CreateTask(Task_MoveBg, 2);
 }
 
 static void DestroyMovingBgTask(void)
 {
-    DestroyTask(*PartyBgScrollTask);
-    free(PartyBgScrollTask);
+    DestroyTask(PartyBgScrollTask);
+    //free(PartyBgScrollTask);
 }
 
 static void Task_MoveBg(u8 taskId)

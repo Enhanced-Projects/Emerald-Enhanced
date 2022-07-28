@@ -7051,8 +7051,9 @@ extern const u32 gPartyMenuBg_Pal[];
 extern const u32 gPartyMenu_dark_Pal[];
 
 //FULL_COLOR
-extern const u32 gPartyMenuBgModern_Gfx[];
+//extern const u32 gPartyMenuBgModern_Gfx[];
 extern const u32 gPartyMenuBgModern_Tilemap[];
+extern const u8 gPartyThemeBoxElementsModern_Gfx[];
 
 //THEME BALLS
 extern const u8 *gThemeBalls_Gfx[];
