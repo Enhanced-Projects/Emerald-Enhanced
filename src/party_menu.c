@@ -73,6 +73,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "random.h"
+#include "blit.h"
 
 #define PARTY_PAL_SELECTED     (1 << 0)
 #define PARTY_PAL_FAINTED      (1 << 1)
@@ -2584,13 +2585,60 @@ static void DisplayPartyPokemonHPBar(u16 hp, u16 maxhp, struct PartyMenuBox *men
     CopyWindowToVram(menuBox->windowId, 2);
 }
 
+
+//FULL_COLOR
+static void TransparentBlitPartyWindow(u8 windowId, u8 x, u8 y, u8 width, u8 height) {
+    
+    const u8* otherSlotTiles;
+    const u8* otherSlotEggTiles;
+    u8 *pixels = AllocZeroed(height * width * 32);
+    u8 i, j, c = 18;
+    
+    struct Bitmap sourceRect;
+    struct Bitmap destRect;
+    
+    if (width == 0 && height == 0)
+    {
+        width = 18;
+        height = 3;
+    }
+    if (pixels != NULL)
+    {
+        for (i = 0; i < height; i++)
+        {
+            for (j = 0; j < width; j++)
+                CpuCopy16(GetPartyMenuModernBgTile(sOtherSlotsTileNumsModern_Egg[x + j + ((y + i) * c)]), &pixels[(i * width + j) * 32], 32);
+        }
+        sourceRect.pixels = (u8*)pixels;
+        sourceRect.width = width * 8;
+        sourceRect.height = height * 8;
+
+        destRect.pixels = gWindows[windowId].tileData;
+        destRect.width = 8 * gWindows[windowId].window.width;
+        destRect.height = 8 * gWindows[windowId].window.height;
+
+        BlitBitmapRect4Bit(&sourceRect, &destRect, 0, 0, x * 8, y * 8, width * 8, height * 8, 0xFE);
+
+
+        Free(pixels);
+    }
+}
+
 static void DisplayPartyPokemonDescriptionText(u8 stringID, struct PartyMenuBox *menuBox, u8 c)
 {
     if (c)
     {
         int width = ((menuBox->infoRects->descTextLeft % 8) + menuBox->infoRects->descTextWidth + 7) / 8;
         int height = ((menuBox->infoRects->descTextTop % 8) + menuBox->infoRects->descTextHeight + 7) / 8;
-        menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->descTextLeft >> 3, menuBox->infoRects->descTextTop >> 3, width, height, TRUE);
+        switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
+            case THEME_UI_MODERN:
+                TransparentBlitPartyWindow(menuBox->windowId, menuBox->infoRects->descTextLeft >> 3, menuBox->infoRects->descTextTop >> 3, width, height);
+                break;
+            case THEME_UI_CLASSIC:
+            case THEME_UI_VANILLA:
+                menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->descTextLeft >> 3, menuBox->infoRects->descTextTop >> 3, width, height, TRUE);
+                break;
+        }
     }
     if (c != 2)
         AddTextPrinterParameterized3(menuBox->windowId, 1, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, sFontColorTable[0], 0, sDescriptionStringTable[stringID]);
