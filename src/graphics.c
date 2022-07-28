@@ -1729,7 +1729,7 @@ const u32 gBuyMenuDarkFrame_Gfx[] = INCBIN_U32("graphics/interface/mart_frame_da
 const u32 gMenuMoneyGfx[] = INCBIN_U32("graphics/interface/money.4bpp.lz");
 
 //FULL_COLOR
-const u32 gPartyMenuBgModern_Gfx[] = INCBIN_U32("graphics/interface/party_menu_bg_modern.4bpp.lz");
+//const u32 gPartyMenuBgModern_Gfx[] = INCBIN_U32("graphics/interface/party_menu_bg_modern.4bpp.lz");
 const u32 gPartyMenuBgModern_Tilemap[] = INCBIN_U32("graphics/interface/party_menu_bg_modern.bin.lz");
 
 
@@ -2137,6 +2137,7 @@ static const u8 sEmpty5[0x3242]  = {0};
 static const u8 sUnused3[]       = {0x40};
 static const u8 sEmpty6[0x13]    = {0};
 
+const u8 gPartyThemeBoxElementsModern_Gfx[] = INCBIN_U8("graphics/interface/party_menu_bg_modern.4bpp");
 
 static const u8 gThemeBallPoke_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/poke_ball_gfx.4bpp.lz");
 static const u8 gThemeBallMega_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/mega_ball_gfx.4bpp.lz");
