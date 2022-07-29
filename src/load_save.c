@@ -141,8 +141,6 @@ void MoveSaveBlocks_ResetHeap(void)
     struct SaveBlock1 *saveBlock1Copy;
     struct PokemonStorage *pokemonStorageCopy;
 
-    //vbaprintf("b2%d b1%d storage%d \n", sizeof(struct SaveBlock2), sizeof(struct SaveBlock1), sizeof(struct PokemonStorage));
-
     // save interrupt functions and turn them off
     vblankCB = gMain.vblankCallback;
     hblankCB = gMain.hblankCallback;
@@ -153,10 +151,6 @@ void MoveSaveBlocks_ResetHeap(void)
     saveBlock2Copy = (struct SaveBlock2 *)(gHeap);
     saveBlock1Copy = (struct SaveBlock1 *)(gHeap + sizeof(struct SaveBlock2));
     pokemonStorageCopy = (struct PokemonStorage *)(gHeap + sizeof(struct SaveBlock2) + sizeof(struct SaveBlock1));
-
-    /*saveBlock2Copy = (struct SaveBlock2 *)(gHeap + 20000);
-    saveBlock1Copy = (struct SaveBlock1 *)(gHeap + 30000 + 3968);
-    pokemonStorageCopy = (struct PokemonStorage *)(gHeap + 40000 + 3968 + 15872);*/
 
     // backup the saves.
     //*saveBlock2Copy = *gSaveBlock2Ptr;
