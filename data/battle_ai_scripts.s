@@ -74,6 +74,7 @@ AI_CBM_CheckIfNegatesType:
 	if_equal ABILITY_LEVITATE, CheckIfLevitateCancelsGroundMove
 	if_equal ABILITY_SOUNDPROOF, CheckIfSoundproofCancelsMove
 	if_equal ABILITY_HEATPROOF, CheckIfHeatproofCancelsFireMove
+	if_equal ABILITY_SAP_SIPPER, CheckIfSapSipperCancelsGrassMove
 	goto AI_CheckBadMove_CheckEffect
 	
 CheckIfSoundproofCancelsMove:
@@ -107,6 +108,10 @@ CheckIfLevitateCancelsGroundMove: @ 82DBFEF
 CheckIfHeatproofCancelsFireMove:
 	get_curr_move_type
 	if_equal TYPE_FIRE, Score_Minus10
+
+CheckIfSapSipperCancelsGrassMove:
+	get_curr_move_type
+	if_equal TYPE_GRASS, Score_Minus10
 
 AI_CheckBadMove_CheckEffect: @ 82DC045
 	if_effect EFFECT_SLEEP, AI_CBM_Sleep
