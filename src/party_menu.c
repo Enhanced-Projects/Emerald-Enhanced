@@ -2632,7 +2632,10 @@ static void DisplayPartyPokemonDescriptionText(u8 stringID, struct PartyMenuBox 
         int height = ((menuBox->infoRects->descTextTop % 8) + menuBox->infoRects->descTextHeight + 7) / 8;
         switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
             case THEME_UI_MODERN:
-                TransparentBlitPartyWindow(menuBox->windowId, menuBox->infoRects->descTextLeft >> 3, menuBox->infoRects->descTextTop >> 3, width, height);
+                if (menuBox->infoRects->blitFunc == BlitBitmapToPartyWindow_RightColumn)
+                    TransparentBlitPartyWindow(menuBox->windowId, menuBox->infoRects->descTextLeft >> 3, menuBox->infoRects->descTextTop >> 3, width, height);
+                else
+                    menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->descTextLeft >> 3, menuBox->infoRects->descTextTop >> 3, width, height, TRUE);
                 break;
             case THEME_UI_CLASSIC:
             case THEME_UI_VANILLA:
