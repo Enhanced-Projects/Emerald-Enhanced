@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "gba/gba.h"
 #include "config.h"
-
+#include "printf.h"
 #define AGB_PRINT_FLUSH_ADDR 0x9FE209D
 #define AGB_PRINT_STRUCT_ADDR 0x9FE20F8
 #define AGB_PRINT_PROTECT_ADDR 0x9FE2FFE
@@ -24,6 +24,23 @@ struct AGBPrintStruct
 
 typedef void (*LPFN_PRINT_FLUSH)(void);
 
+
+//VBA vbaprint && vbaprintf
+//
+//DO NOT USE OUTSIDE VBA-M (debug build) environment as it will cause crashes
+//REMEMBER TO REMOVE ANY CALL AFTER TESTING
+
+//definition here for now but might be moved later on
+extern void vbaprint(const char* message);
+void vbaprintf(const char *pBuf, ...)
+{
+    char bufPrint[0x100];
+    va_list vArgv;
+    va_start(vArgv, pBuf);
+    vsnprintf(bufPrint, 0x100, pBuf, vArgv);
+    va_end(vArgv);
+    vbaprint(bufPrint);
+}
 #ifndef NDEBUG
 
 void AGBPrintFlush1Block(void);

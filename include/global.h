@@ -852,4 +852,7 @@ struct TradeRoomPlayer
     u16 field_C;
 };
 
+extern void vbaprint(const char* message);
+extern void vbaprintf(const char *pBuf, ...);
+
 #endif // GUARD_GLOBAL_H
