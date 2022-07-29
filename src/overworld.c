@@ -2145,6 +2145,7 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
 
 static bool32 ReturnToFieldLocal(u8 *state)
 {
+    //vbaprintf("ReturnToFieldLocal\n");
     if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
         RyuKillMon();
 
@@ -2154,6 +2155,7 @@ static bool32 ReturnToFieldLocal(u8 *state)
     switch (*state)
     {
     case 0:
+        //vbaprintf("ReturnToFieldLocal case 0\n");
         ResetMirageTowerAndSaveBlockPtrs();
         sub_80867D8();
         ResumeMap(FALSE);
@@ -2162,14 +2164,17 @@ static bool32 ReturnToFieldLocal(u8 *state)
         (*state)++;
         break;
     case 1:
+    //vbaprintf("ReturnToFieldLocal case 1\n");
         InitViewGraphics();
         (*state)++;
         break;
     case 2:
+    //vbaprintf("ReturnToFieldLocal case 2\n");
         if (RunFieldCallback())
             (*state)++;
         break;
     case 3:
+    //vbaprintf("ReturnToFieldLocal case 3\n");
         return TRUE;
     }
 
@@ -2261,10 +2266,7 @@ static void DoMapLoadLoop(u8 *state)
 static void ResetMirageTowerAndSaveBlockPtrs(void)
 {
     ClearMirageTowerPulseBlend();
-    //VBA crashes cause of this pointer repositioning, as it resulted after testing it seems useless called here
-    //it is just needed in battle
-    
-    //MoveSaveBlocks_ResetHeap();
+    MoveSaveBlocks_ResetHeap();
 }
 
 static void sub_80867D8(void)
