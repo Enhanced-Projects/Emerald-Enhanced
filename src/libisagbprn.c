@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "gba/gba.h"
 #include "config.h"
-
+#include "printf.h"
 #define AGB_PRINT_FLUSH_ADDR 0x9FE209D
 #define AGB_PRINT_STRUCT_ADDR 0x9FE20F8
 #define AGB_PRINT_PROTECT_ADDR 0x9FE2FFE
@@ -37,7 +37,7 @@ void vbaprintf(const char *pBuf, ...)
     char bufPrint[0x100];
     va_list vArgv;
     va_start(vArgv, pBuf);
-    vsprintf(bufPrint, pBuf, vArgv);
+    vsnprintf(bufPrint, 0x100, pBuf, vArgv);
     va_end(vArgv);
     vbaprint(bufPrint);
 }

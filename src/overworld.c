@@ -2261,7 +2261,10 @@ static void DoMapLoadLoop(u8 *state)
 static void ResetMirageTowerAndSaveBlockPtrs(void)
 {
     ClearMirageTowerPulseBlend();
-    MoveSaveBlocks_ResetHeap();
+    //VBA crashes cause of this pointer repositioning, as it resulted after testing it seems useless called here
+    //it is just needed in battle
+    
+    //MoveSaveBlocks_ResetHeap();
 }
 
 static void sub_80867D8(void)
