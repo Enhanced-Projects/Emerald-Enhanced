@@ -1692,6 +1692,12 @@ const u32 gPageBattleMovesTilemap[] = INCBIN_U32("graphics/interface/status_tile
 const u32 gPageContestMovesTilemap[] = INCBIN_U32("graphics/interface/status_tilemap3.bin.lz");
 const u32 gUnknown_08D98CC8[] = INCBIN_U32("graphics/interface/status_tilemap0.bin.lz");
 
+const u32 gPageSummaryMainModern[] = INCBIN_U32("graphics/interface/status_screen_modern.bin.lz");
+const u32 gPageSkillsTilemapModern[] = INCBIN_U32("graphics/interface/status_tilemap1_modern.bin.lz");
+const u32 gPageBattleMovesTilemapModern[] = INCBIN_U32("graphics/interface/status_tilemap2_modern.bin.lz");
+const u32 gPageContestMovesTilemapModern[] = INCBIN_U32("graphics/interface/status_tilemap3_modern.bin.lz");
+const u32 gUnknown_08D98CC8Modern[] = INCBIN_U32("graphics/interface/status_tilemap0_modern.bin.lz");
+
 const u32 gBagMaleTiles[] = INCBIN_U32("graphics/misc/bag_male.4bpp.lz");
 const u32 gBagFemaleTiles[] = INCBIN_U32("graphics/misc/bag_female.4bpp.lz");
 const u32 gBagPalette[] = INCBIN_U32("graphics/misc/bag.gbapal.lz");
@@ -1832,6 +1838,10 @@ const u32 gPokedexSearchMenuHoenn_Tilemap[] = INCBIN_U32("graphics/pokedex/searc
 const u16 gSummaryScreenPowAcc_Tilemap[] = INCBIN_U16("graphics/interface/powacc_tilemap.bin");
 const u16 gSummaryScreenAppealJam_Tilemap[] = INCBIN_U16("graphics/interface/appealjam_tilemap.bin");
 const u16 gSummaryScreenWindow_Tilemap[] = INCBIN_U16("graphics/interface/summary.bin");
+const u16 gSummaryScreenPowAccModern_Tilemap[] = INCBIN_U16("graphics/interface/powacc_tilemap_modern.bin");
+const u16 gSummaryScreenAppealJamModern_Tilemap[] = INCBIN_U16("graphics/interface/appealjam_tilemap_modern.bin");
+const u16 gSummaryScreenWindowModern_Tilemap[] = INCBIN_U16("graphics/interface/summary_modern.bin");
+
 
 const u16 gIntroCopyright_Pal[] = INCBIN_U16("graphics/intro/copyright.gbapal");
 const u32 gIntroCopyright_Gfx[] = INCBIN_U32("graphics/intro/copyright.4bpp.lz");

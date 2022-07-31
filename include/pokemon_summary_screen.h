@@ -16,6 +16,7 @@ void ShowPokemonSummaryScreenSet40EF(u8 mode, struct BoxPokemon *mons, u8 monInd
 u8 GetMoveSlotToReplace(void);
 void SummaryScreen_SetUnknownTaskId(u8 taskId);
 void SummaryScreen_DestroyUnknownTask(void);
+u8 smallSpritemModernId;
 
 // The Pokemon Summary Screen can operate in different modes. Certain features,
 // such as move re-ordering, are available in the different modes.
