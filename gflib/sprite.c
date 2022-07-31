@@ -384,7 +384,6 @@ static void AddToFastQueue(u8 index) {
 
 u8 CreateSpriteFast(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority)
 {
-    u8 free_index;
     if (sq_head_free == NULL) {
         InitFastSpriteQueue();
     }
@@ -395,8 +394,7 @@ u8 CreateSpriteFast(const struct SpriteTemplate *template, s16 x, s16 y, u8 subp
             RemoveFromFastQueue(sq_head_free->val);
         }
         if (sq_head_free != NULL) {
-            free_index = sq_head_free->val;
-            return CreateSpriteAt(free_index, template, x, y, subpriority);
+            return CreateSpriteAt(sq_head_free->val, template, x, y, subpriority);
         }
     }
     return MAX_SPRITES;
