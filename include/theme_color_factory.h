@@ -85,8 +85,8 @@ eg COLOR_AUTO_SHADE_COND(
 #define COLOR_PICK_DARK(color1, color2) (C_TO_GS(color1) < C_TO_GS(color2) ? color1 : color2)
 #define COLOR_PICK_DARK3(color1, color2, color3) (COLOR_PICK_DARK(COLOR_PICK_DARK(color1, color2), color3))
 #define COLOR_CHANGE_SHADE_AVG(color) (C_CHANNEL_SUM(color) > 46 ? (COLOR_SUB(color, GS_TO_C((C_CHANNEL_LOW(color) / 2 + 16)))) : (COLOR_SUM(color, GS_TO_C((C_CHANNEL_LOW(color) / 2 + 16)))))
-#define COLOR_CREATE_DARK_SHADE(color) (COLOR_SUB(color,GS_TO_C((1 + C_CHANNEL_HIGH(color) / 6 + C_CHANNEL_HIGH(color) / 10))))
-#define COLOR_CREATE_LIGHT_SHADE(color) (COLOR_SUM(color, GS_TO_C((C_CHANNEL_HIGH(color) / 2 + C_CHANNEL_HIGH(color) / 8 + (C_CLOSE_GS(color) ? 0 : 32 - C_CHANNEL_HIGH(color)) / 3))))
+#define COLOR_CREATE_DARK_SHADE(color) HatCreateDarkShade(color) //(COLOR_SUB(color,GS_TO_C((1 + C_CHANNEL_HIGH(color) / 6 + C_CHANNEL_HIGH(color) / 10))))
+#define COLOR_CREATE_LIGHT_SHADE(color) HatCreateLightShade(color) //(COLOR_SUM(color, GS_TO_C((C_CHANNEL_HIGH(color) / 2 + C_CHANNEL_HIGH(color) / 8 + (C_CLOSE_GS(color) ? 0 : 32 - C_CHANNEL_HIGH(color)) / 3))))
 #define COLOR_CREATE_LIGHT_SHADE_STEP(color, step) (COLOR_SUM(color, GS_TO_C((1 + step))))
 #define COLOR_CREATE_DARK_SHADE_STEP(color, step) (COLOR_SUB(color, GS_TO_C((1 + step))))
 
@@ -197,6 +197,8 @@ eg COLOR_AUTO_SHADE_COND(
 
 // Wrapper Functions
 // need a func to prevent buffer overflow -> compiler segfault
+u16 HatCreateLightShade(u16 color);
+u16 HatCreateDarkShade(u16 color);
 u16 HatColorChangeHue(u16 color);
 u16 HatPickHigherContrast(u16 color1, u16 color2, u16 compareColor);
 u16 HatPickLowerContrast(u16 color1, u16 color2, u16 compareColor);

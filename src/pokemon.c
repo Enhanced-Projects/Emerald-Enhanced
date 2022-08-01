@@ -3940,6 +3940,42 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
     }
 }
 
+void ChangeBoxMonDataPersonality(struct BoxPokemon *boxMon, const void *dataArg) {
+    const u8 *data = dataArg;
+
+    struct PokemonSubstruct0 *substruct0 = NULL;
+    struct PokemonSubstruct1 *substruct1 = NULL;
+    struct PokemonSubstruct2 *substruct2 = NULL;
+    struct PokemonSubstruct3 *substruct3 = NULL;
+
+    struct PokemonSubstruct0 substruct0tmp;
+    struct PokemonSubstruct1 substruct1tmp;
+    struct PokemonSubstruct2 substruct2tmp;
+    struct PokemonSubstruct3 substruct3tmp;
+
+    DecryptBoxMon(boxMon);
+
+    substruct0tmp = (GetSubstruct(boxMon, boxMon->personality, 0)->type0);
+    substruct1tmp = (GetSubstruct(boxMon, boxMon->personality, 1)->type1);
+    substruct2tmp = (GetSubstruct(boxMon, boxMon->personality, 2)->type2);
+    substruct3tmp = (GetSubstruct(boxMon, boxMon->personality, 3)->type3);
+
+    SET32(boxMon->personality);
+
+    substruct0 = &(GetSubstruct(boxMon, boxMon->personality, 0)->type0);
+    substruct1 = &(GetSubstruct(boxMon, boxMon->personality, 1)->type1);
+    substruct2 = &(GetSubstruct(boxMon, boxMon->personality, 2)->type2);
+    substruct3 = &(GetSubstruct(boxMon, boxMon->personality, 3)->type3);
+
+    *substruct0 = substruct0tmp;
+    *substruct1 = substruct1tmp;
+    *substruct2 = substruct2tmp;
+    *substruct3 = substruct3tmp;
+
+    boxMon->checksum = CalculateBoxMonChecksum(boxMon);
+    EncryptBoxMon(boxMon);
+}
+
 void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
 {
     const u8 *data = dataArg;

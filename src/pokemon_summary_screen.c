@@ -1813,18 +1813,39 @@ static bool8 DecompressGraphics(void)
                     buf[16*i + 15] = COLOR_LIGHT_THEME_BG;
                 }
                 LoadPalette(buf, 0, 0x100);
+
+                CpuCopy16(gUnknown_08D85620, buf, 0x1E);
+                buf[6] = COLOR_BLACK;
+                buf[7] = COLOR_LIGHT_GREY;
+                LoadPalette(buf, 0x81, 0x1E);
                 break;
             case THEME_COLOR_DARK:
                 LoadCompressedPalette(gStatusScreenDarkPalette, 0, 0x100);
+                LoadPalette(&gUnknown_08D85620, 0x81, 0x1E);
                 break;
             case THEME_COLOR_USER:
                 LoadCompressedPaletteTo(gStatusScreenPalette, buf, 0, 0x100);
+                for (i = 105; i < 108; i++) {
+                    //buf[i] = 0x3e0;
+                }
                 COLOR_SHADES(COLOR_CHANGE_HUE_KEEP_GS(COLOR_PICK_HIGHER_CONTRAST(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], COLOR_BLACK)), SHADER_DARK, bufShadesDark, 5, 5);
+                
+                buf[64+1] = COLOR_CREATE_DARK_SHADE(COLOR_CREATE_DARK_SHADE(COLOR_PICK_LOWER_CONTRAST(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], COLOR_BLACK)));
+                buf[64+2] = COLOR_CREATE_DARK_SHADE(COLOR_PICK_LOWER_CONTRAST(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], COLOR_BLACK));
+                buf[64+3] = COLOR_PICK_LOWER_CONTRAST(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], COLOR_BLACK);
+                buf[64+4] = COLOR_CREATE_LIGHT_SHADE(COLOR_PICK_HIGHER_CONTRAST(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], COLOR_BLACK));
+                buf[64+6] = COLOR_PICK_HIGHER_CONTRAST(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], COLOR_BLACK);
+                buf[64+7] = COLOR_PICK_LOWER_CONTRAST(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], COLOR_BLACK);
+                buf[64+9] = COLOR_WHITE;
+
+
                 buf[97] = COLOR_PICK_HIGHER_CONTRAST(COLOR_BLACK, COLOR_WHITE, gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);//gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
                 buf[98] = COLOR_PICK_LOWER_CONTRAST(COLOR_DARK_GREY, COLOR_LIGHT_GREY, gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);//gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
 
                 buf[102] = COLOR_PICK_LOWER_CONTRAST(buf[102], COLOR_DARK_RED, gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
 
+                buf[107] = COLOR_PICK_HIGHER_CONTRAST(buf[107], COLOR_AUTO_SHADE(buf[107], THRESHOLD_DEFAULT), buf[64+6]);
+                buf[108] = COLOR_PICK_HIGHER_CONTRAST(buf[108], COLOR_AUTO_SHADE(buf[108], THRESHOLD_DEFAULT), buf[64+6]);
                 buf[16 + 4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
                 for (i = 0; i < 4; i++) {
                     buf[16*i + 1] = 0x18E8;//COLOR_AUTO_SHADE(COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);
@@ -1839,15 +1860,18 @@ static bool8 DecompressGraphics(void)
                     buf[16*i + 14] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
                     buf[16*i + 15] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT);
                 }
-                   
+                
                 LoadPalette(buf, 0, 0x100);
+                CpuCopy16(gUnknown_08D85620, buf, 0x1E);
+                buf[6] = COLOR_PICK_HIGHER_CONTRAST(COLOR_WHITE, COLOR_BLACK, gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
+                buf[7] = COLOR_PICK_LOWER_CONTRAST(COLOR_DARK_GREY, COLOR_LIGHT_GREY, gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);
+                LoadPalette(buf, 0x81, 0x1E);
                 break;
             case THEME_COLOR_VANILLA:
                 LoadCompressedPalette(gStatusScreenPalette, 0, 0x100);
+                LoadPalette(&gUnknown_08D85620, 0x81, 0x1E);
                 break;
         }
-        
-        LoadPalette(&gUnknown_08D85620, 0x81, 0x1E);
         sMonSummaryScreen->switchCounter++;
         break;
     case 7:
@@ -3947,6 +3971,10 @@ static void Task_PrintSkillsPage(u8 taskId)
         PrintExpPointsNextLevel();
         break;
     case 8:
+        if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
+            gSprites[smallSpritemModernId].invisible = FALSE;
+        break;
+    case 9:
         DestroyTask(taskId);
         return;
     }
@@ -4531,8 +4559,6 @@ static void HidePageSpecificSprites(void)
     if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA) {
         if (sMonSummaryScreen->currPageIndex != PSS_PAGE_SKILLS)
             gSprites[smallSpritemModernId].invisible = TRUE;
-        else
-            gSprites[smallSpritemModernId].invisible = FALSE;
     }
 }
 

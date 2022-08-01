@@ -1946,6 +1946,13 @@ const u8 gText_DevMonGiveAbility1[] = _("Ability 1");
 const u8 gText_DevMonGiveAbility2[] = _("Ability 2");
 const u8 gText_DevMonGiveAbility3[] = _("Hidden Ability");
 
+const u8 gText_DevMonGiveGender1[] = _("Any");;
+const u8 gText_DevMonGiveGender2[] = _("Male");;
+const u8 gText_DevMonGiveGender3[] = _("Female");;
+
+const u8 gText_DevMonGiveShiny1[] = _("Not Shiny");;
+const u8 gText_DevMonGiveShiny2[] = _("Shiny");;
+
 const u8 gText_RLSGM_Common[] = _("Common ({RYU_STR_1})");
 const u8 gText_RLSGM_Uncommon[] = _("Uncommon ({RYU_STR_2})");
 const u8 gText_RLSGM_Rare[] = _("Rare ({RYU_STR_3})");

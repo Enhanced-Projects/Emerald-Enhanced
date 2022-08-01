@@ -194,6 +194,63 @@ void SetMonAbility(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 }
 
+
+void SetMonPid(void)
+{
+    u8 slot = (VarGet(VAR_TEMP_8));
+    u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
+    u8 nature = GetNature(&gPlayerParty[slot]);
+    u8 gender = (VarGet(VAR_TEMP_9));
+    u16 range = 25657;
+    u16 start1 = range + 1;
+    u32 start2 = 0;
+    u32 a[128];
+    u32 i;
+    while (start1 != range) {
+        for (i = 0; i < 128; ++i) {
+            a[i] = (start2++)*25+nature;
+        }
+        for (i = 0; i < 128; ++i) {
+            if ((a[i] % 3 == ability) && (gender == MON_GENDERLESS || (gender == MON_MALE && (a[i] % 256) > 225) || (gender == MON_FEMALE && a[i] % 256 < 31)) && (a[i] % 25 == nature)) {
+                ChangeBoxMonDataPersonality(&gPlayerParty[slot].box, &a[i]);
+                return;
+            }
+        }
+    }
+}
+
+
+void SetMonShinyPid(void)
+{
+    u8 slot = (VarGet(VAR_TEMP_8));
+    u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
+    u8 nature = GetNature(&gPlayerParty[slot]);
+    u8 gender = (VarGet(VAR_TEMP_9));
+    u32 OTID = GetMonData(&gPlayerParty[slot], MON_DATA_OT_ID);
+    u16 tid = OTID % 65536;
+    u16 sid = OTID >> 16;
+    u16 calcID = (tid ^ sid) >> 3;
+    u16 range = 25657;
+    u16 start1 = range + 1;
+    u32 p1, p2;
+    u32 a[128];
+    u32 i;
+    while (start1 != range) {
+        p1 = start1++;
+        p2 = p1 ^ calcID;
+        for (i = 0; i < 128; ++i) {
+            a[i] = (((p1 << 3) | (i % 8)) << ((i < 64) ? 16 : 0)) | (((p2 << 3) | ((i / 8) % 8)) << (i < 64 ? 0 : 16));
+        }
+        for (i = 0; i < 128; ++i) {
+            if ((a[i] % 3 == ability) && (gender == MON_GENDERLESS || (gender == MON_MALE && (a[i] % 256) > 225) || (gender == MON_FEMALE && a[i] % 256 < 31)) && (a[i] % 25 == nature)) {
+                ChangeBoxMonDataPersonality(&gPlayerParty[slot].box, &a[i]);
+                return;
+            }
+        }
+    }
+    
+}
+
 bool8 RyuGiveMewtwo(void)
 {
     u8 ev = 252;
