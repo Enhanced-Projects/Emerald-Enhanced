@@ -211,7 +211,7 @@ void SetMonPid(void)
             a[i] = (start2++)*25+nature;
         }
         for (i = 0; i < 128; ++i) {
-            if ((a[i] % 3 == ability) && (gender == MON_GENDERLESS || (gender == MON_MALE && (a[i] % 256) > 225) || (gender == MON_FEMALE && a[i] % 256 < 31)) && (a[i] % 25 == nature)) {
+            if ((gender == MON_GENDERLESS || (gender == MON_MALE && (a[i] % 256) > 225) || (gender == MON_FEMALE && a[i] % 256 < 31)) && (a[i] % 25 == nature)) {
                 ChangeBoxMonDataPersonality(&gPlayerParty[slot].box, &a[i]);
                 return;
             }
@@ -242,7 +242,7 @@ void SetMonShinyPid(void)
             a[i] = (((p1 << 3) | (i % 8)) << ((i < 64) ? 16 : 0)) | (((p2 << 3) | ((i / 8) % 8)) << (i < 64 ? 0 : 16));
         }
         for (i = 0; i < 128; ++i) {
-            if ((a[i] % 3 == ability) && (gender == MON_GENDERLESS || (gender == MON_MALE && (a[i] % 256) > 225) || (gender == MON_FEMALE && a[i] % 256 < 31)) && (a[i] % 25 == nature)) {
+            if ((gender == MON_GENDERLESS || (gender == MON_MALE && (a[i] % 256) > 225) || (gender == MON_FEMALE && a[i] % 256 < 31)) && (a[i] % 25 == nature)) {
                 ChangeBoxMonDataPersonality(&gPlayerParty[slot].box, &a[i]);
                 return;
             }
