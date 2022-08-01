@@ -7216,8 +7216,13 @@ extern const u32 gUnknown_08DDE12C[];
 extern const u32 gPageInfoTilemap[];
 extern const u32 gUnknown_08D98CC8[];
 extern const u32 gPageSkillsTilemap[];
+extern const u32 gUnknown_08D98CC8Modern[];
+extern const u32 gPageSummaryMainModern[];
+extern const u32 gPageSkillsTilemapModern[];
 extern const u32 gPageBattleMovesTilemap[];
 extern const u32 gPageContestMovesTilemap[];
+extern const u32 gPageBattleMovesTilemapModern[];
+extern const u32 gPageContestMovesTilemapModern[];
 extern const u32 gStatusScreenPalette[];
 extern const u32 gStatusScreenDarkPalette[];
 extern const u16 gUnknown_08D85620[];
@@ -7227,6 +7232,9 @@ extern const u32 gStatusScreenBitmap[];
 
 extern const u16 gSummaryScreenPowAcc_Tilemap[];
 extern const u16 gSummaryScreenAppealJam_Tilemap[];
+extern const u16 gSummaryScreenPowAccModern_Tilemap[];
+extern const u16 gSummaryScreenAppealJamModern_Tilemap[];
+extern const u16 gSummaryScreenWindowModern_Tilemap[];
 
 extern const u32 gMoveTypes_Gfx[];
 extern const u32 gSummaryMoveSelect_Gfx[];

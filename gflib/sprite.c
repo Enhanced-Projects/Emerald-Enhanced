@@ -384,18 +384,19 @@ static void AddToFastQueue(u8 index) {
 
 u8 CreateSpriteFast(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority)
 {
-    if (sq_head_free == NULL)
+    if (sq_head_free == NULL) {
         InitFastSpriteQueue();
+    }
 
     if (sq_head_free != NULL)
     {
         while (gSprites[sq_head_free->val].inUse) {
             RemoveFromFastQueue(sq_head_free->val);
         }
-        if (sq_head_free != NULL)
+        if (sq_head_free != NULL) {
             return CreateSpriteAt(sq_head_free->val, template, x, y, subpriority);
+        }
     }
-
     return MAX_SPRITES;
 }
 
@@ -1045,6 +1046,14 @@ void DestroySpriteAndFreeResources(struct Sprite *sprite)
     DestroySprite(sprite);
 }
 
+void DestroySummaryMonSpriteAndFreeResources(struct Sprite *sprite)
+{
+    FreeSummaryMonSprite(sprite->oam.tileNum);
+    FreeSpritePalette(sprite);
+    FreeSpriteOamMatrix(sprite);
+    DestroySprite(sprite);
+}
+
 void AnimateSprite(struct Sprite *sprite)
 {
     sAnimFuncs[sprite->animBeginning](sprite);
@@ -1646,6 +1655,15 @@ void LoadSpriteSheets(const struct SpriteSheet *sheets)
     for (i = 0; sheets[i].data != NULL; i++)
         LoadSpriteSheet(&sheets[i]);
 }
+
+
+void FreeSummaryMonSprite(u16 start)
+{
+    u32 i;
+    for (i = start; i < start + 16; i++)
+        FREE_SPRITE_TILE(i);
+}
+
 
 void FreeSpriteTilesByTag(u16 tag)
 {

@@ -163,6 +163,11 @@ eg COLOR_AUTO_SHADE_COND(
 #define COLOR_NEON_BORDER_1                 0x7EA2
 #define COLOR_NEON_BORDER_2                 0x698C
 #define COLOR_NEON_BORDER_3                 0x6B2A
+#define COLOR_ALTERNATIVE_BORDER_1          0x319A
+#define COLOR_ALTERNATIVE_BORDER_2          0x2534
+#define COLOR_ALTERNATIVE_BORDER_3          0x1CF0
+#define COLOR_ALTERNATIVE_BORDER_4          0x14AD
+#define COLOR_ALTERNATIVE_BORDER_5          0x108A
 
 #define COLOR_DARK_THEME_BG_LIGHT           0x842
 #define COLOR_DARK_THEME_TEXT               0x6B5A

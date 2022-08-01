@@ -831,8 +831,9 @@ static bool8 AllocPartyMenuBgGfx(void)
                     break;
                 case THEME_COLOR_VANILLA:
                     LoadCompressedPaletteTo(gPartyMenuBg_Pal, buf, 0, 0x160);
-                    buf[19] = RGB(4, 4, 4);
-                    buf[3] = RGB(4, 4, 4);
+                    //buf[19] = RGB(4, 4, 4);
+                    //buf[3] = RGB(4, 4, 4);
+                    buf[3] = buf[19];
                     break;
             }
             switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
