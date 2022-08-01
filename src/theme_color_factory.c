@@ -5,6 +5,14 @@ u16 HatColorChangeHue(u16 color) {
     return C_CLOSE_GS(color) ? ((C_TO_GS(color) > 0x4 && C_TO_GS(color) < 0xB) ? (C_TO_GS(color) > 0x6 ? 0x1 : 0xD ) : (~color)) : (RGB_SHIFT(color));
 }
 
+u16 HatCreateLightShade(u16 color) {
+    return (COLOR_SUM(color, GS_TO_C((C_CHANNEL_HIGH(color) / 2 + C_CHANNEL_HIGH(color) / 8 + (C_CLOSE_GS(color) ? 0 : 32 - C_CHANNEL_HIGH(color)) / 3))));
+}
+
+u16 HatCreateDarkShade(u16 color) {
+    return (COLOR_SUB(color,GS_TO_C((1 + C_CHANNEL_HIGH(color) / 6 + C_CHANNEL_HIGH(color) / 10))));
+}
+
 u16 HatAutoShade(u16 color, u16 threshold) { 
     return (COLOR_TO_GREYSCALE(color) < threshold) ? (COLOR_CREATE_LIGHT_SHADE(color)) :(COLOR_CREATE_DARK_SHADE(color)); 
 }

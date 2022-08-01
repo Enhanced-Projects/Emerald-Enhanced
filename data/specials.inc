@@ -534,6 +534,8 @@ gSpecials:: @ 81DBA64
 	def_special PasscodeGiveMonWithNature
 	def_special SetMonAbility
 	def_special RyuCheckContestMastery
+	def_special SetMonShinyPid
+	def_special SetMonPid
 	def_special checksymbolcount
 	def_special resetSoundGameStat
 	def_special ForceSoftReset

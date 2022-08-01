@@ -3071,6 +3071,14 @@ extern const u8 gText_DevMonGiveAbility1[];
 extern const u8 gText_DevMonGiveAbility2[];
 extern const u8 gText_DevMonGiveAbility3[];
 
+extern const u8 gText_DevMonGiveGender1[];
+extern const u8 gText_DevMonGiveGender2[];
+extern const u8 gText_DevMonGiveGender3[];
+
+extern const u8 gText_DevMonGiveShiny1[];
+extern const u8 gText_DevMonGiveShiny2[];
+
+
 extern const u8 gText_RLSGM_Common[];
 extern const u8 gText_RLSGM_Uncommon[];
 extern const u8 gText_RLSGM_Rare[];

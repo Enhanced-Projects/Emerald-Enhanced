@@ -325,6 +325,7 @@ u32 GetBoxMonData();
 
 void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg);
 void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg);
+void ChangeBoxMonDataPersonality(struct BoxPokemon *boxMon, const void *dataArg);
 void CopyMon(void *dest, void *src, size_t size);
 u8 GiveMonToPlayer(struct Pokemon *mon);
 u8 SendMonToPC(struct Pokemon* mon);

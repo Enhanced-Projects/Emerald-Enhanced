@@ -1142,6 +1142,19 @@ static const struct MenuAction MultichoiceList_DevMonGiveAbilityMenu[]=
     {gText_DevMonGiveAbility3},
 };
 
+static const struct MenuAction MultichoiceList_DevMonGiveGenderMenu[]=
+{
+    {gText_DevMonGiveGender1},
+    {gText_DevMonGiveGender2},
+    {gText_DevMonGiveGender3},
+};
+
+static const struct MenuAction MultichoiceList_DevMonGiveShinyMenu[]=
+{
+    {gText_DevMonGiveShiny1},
+    {gText_DevMonGiveShiny2},
+};
+
 static const struct MenuAction MultichoiceList_RyuLifeskillGemRefinerQualitySelect[]=
 {
     {gText_RLSGM_Common},
@@ -1450,7 +1463,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_DEV_MENU_MAIN]              = MULTICHOICE(MultichoiceList_RyuDebugMulti),
     [MULTI_DEV_EV_MENU]                = MULTICHOICE(MultichoiceList_116),
     [MULTI_UNUSED_REL_MENU]            = MULTICHOICE(MultichoiceList_117),
-    [MULTI_DYNAMIC_6]          = MULTICHOICE(MultichoiceList_6BufferedOptions),
+    [MULTI_DYNAMIC_6]                  = MULTICHOICE(MultichoiceList_6BufferedOptions),
     [MULTI_SELECT_MOVE_SLOT]           = MULTICHOICE(MultichoiceList_119),
     [MULTI_LTC_MOVE_TUTOR_MOVES]       = MULTICHOICE(MultichoiceList_120),
     [MULTI_UNUSED_JUKEBOX]             = MULTICHOICE(MultichoiceList_121),
@@ -1488,7 +1501,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FRONTIERMODE_STARTER3]      = MULTICHOICE(MultichoiceList_FrontierStarter3),
     [MULTI_MAGMA_CHOICE]               = MULTICHOICE(MultichoiceList_MagmaIntroChoice),
     [MULTI_MAGMA_MACHINE]              = MULTICHOICE(MultiChoiceList_MagmaMachineMenu),
-    [MULTI_UNUSED_156]         = MULTICHOICE(MultiChoiceList_Unused156),
+    [MULTI_UNUSED_156]                 = MULTICHOICE(MultiChoiceList_Unused156),
     [MULTI_BOTANY_CHAPTER_SELECT]      = MULTICHOICE(MultiChoiceList_BotanyBookChapterSelect),
     [MULTI_PBG_TRICK_QUESTION]         = MULTICHOICE(MultiChoiceList_PetalburgGymTrickQuestion),
     [MULTI_BOTANY_APRICORN_MENU]       = MULTICHOICE(MultiChoiceList_BotanyRefineApricornMenu),
@@ -1502,6 +1515,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_DYNAMIC_4]                  = MULTICHOICE(MultichoiceList_4BufferedOptions),
     [MULTI_DYNAMIC_3]                  = MULTICHOICE(MultichoiceList_3BufferedOptions),
     [MULTI_DYNAMIC_2]                  = MULTICHOICE(MultichoiceList_2BufferedOptions),
+    [MULTI_DEV_GIVE_MON_GENDER]        = MULTICHOICE(MultichoiceList_DevMonGiveGenderMenu),
+    [MULTI_DEV_GIVE_MON_SHINY]         = MULTICHOICE(MultichoiceList_DevMonGiveShinyMenu),
 };
 
 const u8 *const gStdStrings[] =

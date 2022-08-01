@@ -178,6 +178,8 @@
 #define MULTI_DYNAMIC_3                    167
 #define MULTI_DYNAMIC_4                    168
 #define MULTI_DYNAMIC_5                    169
+#define MULTI_DEV_GIVE_MON_GENDER          170
+#define MULTI_DEV_GIVE_MON_SHINY           171
 
 
 // Lilycove SS Tidal Multichoice Selections
