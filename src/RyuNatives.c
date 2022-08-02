@@ -90,6 +90,7 @@
 #include "autoscale_tables.h"
 #include "overworld_notif.h"
 #include "factions.h"
+#include "scripted_encounters.h"
 
 extern u8 GetObjectEventIdByLocalId(u8 id);
 
@@ -404,6 +405,11 @@ void RyuBrendanGiftPoke(void)
 
 void RyuDevCheck(void)
 {
+    if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)) && (JOY_HELD(START_BUTTON)) && (JOY_HELD(SELECT_BUTTON)))
+    {
+        gSpecialVar_Result = 777;
+        return;
+    }
     if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)))
     {
         gSpecialVar_Result = 69;
@@ -2543,6 +2549,10 @@ bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at
             return FALSE;
     }
     return TRUE;
+}
+
+void HatTest(void) {
+    CreateTask(Task_HatEncounter_Mimikyu, 1);
 }
 
 void RyuLegendaryDoBossRoll(void)

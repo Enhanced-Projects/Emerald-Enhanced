@@ -1707,6 +1707,7 @@
 #define FLAG_RYU_STARTED_TRAVEL_TIMER           (SPECIAL_FLAGS_START + 0x18)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
+#define FLAG_HAT_TEST_MODE                      0x40FF
 
 
 #endif // GUARD_CONSTANTS_FLAGS_H

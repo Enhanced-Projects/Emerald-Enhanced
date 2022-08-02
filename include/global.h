@@ -82,6 +82,7 @@
 
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) >= (b) ? (a) : (b))
+#define _clamp(x, minVal, maxVal) (max(minVal, min(maxVal, x)))
 
 #if MODERN
 #define abs(x) (((x) < 0) ? -(x) : (x))
