@@ -9,6 +9,7 @@ RyuDevSwitch::
 	case 69, Ryu_enableDevMode
 	case 666, Ryu_SpecialChallengeActive
 	case 420, RyuChallengeQuery
+	case 777, Hat_enableTestMode
 	release
 	end
 
@@ -18,6 +19,15 @@ Ryu_enableDevMode::
 	msgbox RyuNowDeveloper MSGBOX_SIGN
 	setvar VAR_TEMP_9, 100
 	end
+
+Hat_enableTestMode::
+	setflag FLAG_HAT_TEST_MODE
+	msgbox HatNowTestmode MSGBOX_SIGN
+	end
+
+HatNowTestmode:
+	.string "{PLAYER} has activated test mode.$"
+	
 
 Ryu_SpecialChallengeActive::
 	msgbox RyuCantEnableDevBecauseChallenge

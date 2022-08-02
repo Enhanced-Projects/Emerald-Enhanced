@@ -19,10 +19,15 @@
 #define __min(a, b) (((a) < (b) ? (a) : (b)))
 #define __max(a, b) (((a) >= (b) ? (a) : (b)))
 #define __abs(x) (((x) < 0) ? -(x) : (x))
+#define __clamp(x, min, max) (__min(max, __max(min, x)))
 
 #define R(color) (color%32)
 #define G(color) ((color>>5)%32)
 #define B(color) ((color>>10)%32)
+
+#define H(color) (color%32)
+#define S(color) ((color>>5)%32)
+#define V(color) ((color>>10)%32)
 
 //Internal Definitions
 #define GS_TO_C(grey) (grey | (grey << 5) | (grey << 10))
@@ -101,6 +106,7 @@ eg COLOR_AUTO_SHADE_COND(
 #define COLOR_GET_AS_CONTRAST_INVERSE_ACTION(colorToShade, compareColor, threshold) (abs(C_TO_GS(colorToShade) - C_TO_GS(compareColor)) < threshold ? (C_TO_GS(colorToShade) - C_TO_GS(compareColor) > 0 ? SHADE_ACTION_DARK : SHADE_ACTION_LIGHT) : SHADE_ACTION_NONE)
 #define COLOR_SHADES(srcColor, func, dest, size, stepLimit) HatGenerateShades(srcColor, func, dest, size, stepLimit)
 
+#define GENERATE_PALETTE(srcPalette, size, seed) HatMakeNewPaletteFromTemplate(srcPalette, size, seed)
 
 //// Value Naming
 
@@ -195,6 +201,11 @@ eg COLOR_AUTO_SHADE_COND(
 #define COLOR_LIGHT_GREY                    0x6739
 #define COLOR_LIGHT_GREY_1                  0x5294
 
+struct HSVColor{
+    u16 h;
+    u16 s;
+    u16 v;
+};
 // Wrapper Functions
 // need a func to prevent buffer overflow -> compiler segfault
 u16 HatCreateLightShade(u16 color);
@@ -208,4 +219,5 @@ u16 HatAutoShadeContrast(u16 colorToShade, u16 compareColor, u16 threshold);
 u16 HatAutoShadeContrastInverse(u16 colorToShade, u16 compareColor, u16 threshold);
 u16 HatAutoShadeCond(u16 colorToShade, u16 compareColor1, u16 compareColor2, s16 action, u16 threshold);
 void HatGenerateShades(u16 srcColor, u16 func, u16* dest, u16 size, u16 stepLimit);
+void HatMakeNewPaletteFromTemplate(u16* palette, u16 size, u32 seed);
 #endif

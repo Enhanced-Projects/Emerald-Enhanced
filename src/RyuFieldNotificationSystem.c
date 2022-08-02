@@ -15,6 +15,8 @@
 #include "factions.h"
 #include "RyuRealEstate.h"
 #include "RyuDynDeliveries.h"
+#include "wild_encounter.h"
+#include "scripted_encounters.h"
 
 
 
@@ -380,9 +382,10 @@ void RyuDoSpecialEncounterChecks(void)
             if (!(locSum == MAP_ROUTE111))
             {
                 rand = (Random() % 256);
-                if ((rand == 69) || (rand == 169))
+                if (!AreMonsRepelled() && ((rand == 69) || (rand == 169)))
                 {
-                    ScriptContext1_SetupScript(SB_SetupRandomSteppedOnEncounter);
+                    CreateTask(Task_HatEncounter_SteppedOn, 1);
+                    //ScriptContext1_SetupScript(SB_SetupRandomSteppedOnEncounter);
                 }
             }
         }
@@ -390,10 +393,10 @@ void RyuDoSpecialEncounterChecks(void)
         {
             if (RyuCheckPlayerisInMtPyreAndHasPikachu() == TRUE)
             {
-                rand = (Random() % 256);
-                if (rand == 128)
+                if (!AreMonsRepelled() && Random() % 256 == 128)
                 {
-                    ScriptContext1_SetupScript(SB_SetupRandomMimikyuEncounter);
+                    CreateTask(Task_HatEncounter_Mimikyu, 1);
+                    //ScriptContext1_SetupScript(SB_SetupRandomMimikyuEncounter);
                 }
             }
         }
@@ -437,7 +440,8 @@ void RyuDoSpecialEncounterChecks(void)
                 locSum == MAP_GRANITE_CAVE_B2F)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterBuzzwole);
+                CreateTask(Task_HatEncounter_Buzzwole, 1);
+                //ScriptContext1_SetupScript(RyuScript_EncounterBuzzwole);
             }
         }
 
@@ -446,7 +450,8 @@ void RyuDoSpecialEncounterChecks(void)
             if (locSum == MAP_ROUTE119)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterPheromosa);
+                CreateTask(Task_HatEncounter_Pheromosa, 1);
+                //ScriptContext1_SetupScript(RyuScript_EncounterPheromosa);
             }
         }
 
@@ -455,7 +460,8 @@ void RyuDoSpecialEncounterChecks(void)
             if (gSaveBlock1Ptr->location.mapNum == MAP_ROUTE120)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterKartana);
+                CreateTask(Task_HatEncounter_Kartana, 1);
+                //ScriptContext1_SetupScript(RyuScript_EncounterKartana);
             }
         }
 
@@ -464,7 +470,8 @@ void RyuDoSpecialEncounterChecks(void)
             if (locSum == MAP_NEW_MAUVILLE_INSIDE)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterXurkitree);
+                CreateTask(Task_HatEncounter_Xurkitree, 1);
+                //ScriptContext1_SetupScript(RyuScript_EncounterXurkitree);
             }
         }
 
@@ -480,7 +487,8 @@ void RyuDoSpecialEncounterChecks(void)
                 locSum == MAP_METEOR_FALLS_3F)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterNihilego);
+                //ScriptContext1_SetupScript(RyuScript_EncounterNihilego);
+                CreateTask(Task_HatEncounter_Nihilego, 1);
             }
         }
 
@@ -489,7 +497,8 @@ void RyuDoSpecialEncounterChecks(void)
             if (locSum == MAP_FROSTY_GROTTO)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterGuzzlord);
+                //ScriptContext1_SetupScript(RyuScript_EncounterGuzzlord);
+                CreateTask(Task_HatEncounter_Guzzlord, 1);
             }
         }
 
@@ -502,7 +511,8 @@ void RyuDoSpecialEncounterChecks(void)
                 locSum == MAP_MT_PYRE_6F)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterStakataka);
+                //ScriptContext1_SetupScript(RyuScript_EncounterStakataka);
+                CreateTask(Task_HatEncounter_Stakataka, 1);
             }
         }
 
@@ -511,7 +521,8 @@ void RyuDoSpecialEncounterChecks(void)
             if (locSum == MAP_ROUTE66)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterCelesteela);
+                CreateTask(Task_HatEncounter_Celesteela, 1);
+                //ScriptContext1_SetupScript(RyuScript_EncounterCelesteela);
             }
         }
     
@@ -527,6 +538,7 @@ void RyuDoSpecialEncounterChecks(void)
          (FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER) == FALSE))
     {
         FlagSet(FLAG_RYU_PAUSE_UB_ENCOUNTER);
-        ScriptContext1_SetupScript(RyuScript_EncounterKeldeo);
+        CreateTask(Task_HatEncounter_Keldeo, 1);
+        //ScriptContext1_SetupScript(RyuScript_EncounterKeldeo);
     }
 }

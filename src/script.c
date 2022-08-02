@@ -180,6 +180,11 @@ bool8 ScriptContext2_IsEnabled(void)
     return sScriptContext2Enabled;
 }
 
+bool8 ScriptContext1_IsEnabled(void)
+{
+    return !sScriptContext1Status;
+}
+
 bool8 ScriptContext1_IsScriptSetUp(void)
 {
     if (sScriptContext1Status == 0)

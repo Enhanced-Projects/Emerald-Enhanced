@@ -1458,7 +1458,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	msgbox("Indicator: {DPAD_LEFT} {DPAD_RIGHT} {DPAD_UP} {DPAD_DOWN}")
+	callnative(HatTest)
 	release
 	end
 }

@@ -31,6 +31,7 @@ typedef void (*LPFN_PRINT_FLUSH)(void);
 //REMEMBER TO REMOVE ANY CALL AFTER TESTING
 
 //definition here for now but might be moved later on
+
 extern void vbaprint(const char* message);
 void vbaprintf(const char *pBuf, ...)
 {
