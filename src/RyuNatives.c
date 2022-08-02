@@ -2552,7 +2552,7 @@ bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at
 }
 
 void HatTest(void) {
-    CreateTask(Task_HatEncounter_Mimikyu, 1);
+    SET_DYNAMIC_ENCOUNTER(SPECIES_GIRATINA, (u8[])_("I think it-s a Wurmple!!"));
 }
 
 void RyuLegendaryDoBossRoll(void)

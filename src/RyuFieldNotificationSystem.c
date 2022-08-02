@@ -15,8 +15,8 @@
 #include "factions.h"
 #include "RyuRealEstate.h"
 #include "RyuDynDeliveries.h"
-#include "scripted_encounters.h"
 #include "wild_encounter.h"
+#include "scripted_encounters.h"
 
 
 
@@ -538,6 +538,7 @@ void RyuDoSpecialEncounterChecks(void)
          (FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER) == FALSE))
     {
         FlagSet(FLAG_RYU_PAUSE_UB_ENCOUNTER);
-        ScriptContext1_SetupScript(RyuScript_EncounterKeldeo);
+        CreateTask(Task_HatEncounter_Keldeo, 1);
+        //ScriptContext1_SetupScript(RyuScript_EncounterKeldeo);
     }
 }

@@ -1,13 +1,5 @@
-#include "global.h"
-#include "task.h"
 #include "scripted_encounters.h"
-#include "event_data.h"
-#include "field_message_box.h"
-#include "script_pokemon_util.h"
-#include "battle_setup.h"
-#include "script.h"
-#include "battle.h"
-#include "ach_atlas.h"
+#include "global.h"
 #include "random.h"
 #include "sound.h"
 #include "data.h"
@@ -15,7 +7,15 @@
 #include "script_movement.h"
 #include "constants/event_objects.h"
 #include "constants/event_object_movement.h"
-#include "songs.h"
+#include "task.h"
+#include "event_data.h"
+#include "field_message_box.h"
+#include "script_pokemon_util.h"
+#include "battle_setup.h"
+#include "script.h"
+#include "battle.h"
+#include "ach_atlas.h"
+//#include "songs.h"
 
 void LegendaryDoBossRoll(void)
 {
@@ -359,7 +359,8 @@ void Task_HatEncounter_Celesteela(u8 taskId) {
 }
 
 
-u16 SteppedOnSpecies[] = {
+
+static const u16 SteppedOnSpecies[] = {
     SPECIES_PYUKUMUKU, 
     SPECIES_SANDYGAST, 
     SPECIES_SHELLDER,
@@ -420,7 +421,8 @@ void Task_HatEncounter_Mimikyu(u8 taskId) {
                 gTasks[taskId].data[0]++;
             break;
         case 2:
-            PlaySE(SE_PIN);
+            PlaySE(21);//SE_PIN);
+            //PLAYER 0xFF FOLLOWER 0x8F
             ScriptMovement_StartObjectMovementScript(PLAYER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, sMovement_ExclamationMark);
             ScriptMovement_StartObjectMovementScript(FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, sMovement_ExclamationMark);
             gTasks[taskId].data[0]++;
@@ -448,41 +450,140 @@ void Task_HatEncounter_Mimikyu(u8 taskId) {
             break;
     }
 }
+;
 
-
-/*
-bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
-{
-    u16 localId = VarGet(ScriptReadHalfword(ctx));
-    const void *movementScript = (const void *)ScriptReadWord(ctx);
-
-    ScriptMovement_StartObjectMovementScript(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, movementScript);
-    sMovingNpcId = localId;
-    return FALSE;
+void Task_HatEncounter_Keldeo(u8 taskId) {
+    switch (gTasks[taskId].data[0]) {
+        case ENC_MESSAGE:
+            ScriptContext2_Enable();
+            ShowFieldMessageOneLine((u8[])_("You hear trotting from the sky..."));
+	        VarSet(VAR_TEMP_5, SPECIES_KELDEO);
+            PlayCry5(VarGet(VAR_TEMP_5), 0);
+            gTasks[taskId].data[0]++;
+            break;
+        case ENC_CRY:
+            if (IsCryFinished())
+                gTasks[taskId].data[0]++;
+            break;
+        case ENC_BATTLE_START:
+            VarSet(VAR_TEMP_7, _clamp(CountBadges()*12, 20, 110));
+            CreateScriptedWildMon(VarGet(VAR_TEMP_5), VarGet(VAR_TEMP_7), VarGet(VAR_TEMP_9));
+            LegendaryDoBossRoll();
+            BattleSetup_StartLegendaryBattle();
+            ScriptContext1_Stop();
+            gTasks[taskId].data[0]++;
+            break;
+        case ENC_BATTLE:
+            if (ScriptContext1_IsEnabled())
+                gTasks[taskId].data[0]++;
+            break;
+        case ENC_BATTLE_END:
+            FlagClear(FLAG_RYU_BOSS_WILD);
+            if (B_OUTCOME_CAUGHT == gBattleOutcome) {
+                FlagSet(FLAG_RYU_CAUGHT_KELDEO);
+            }
+            FlagSet(FLAG_RYU_PAUSE_UB_ENCOUNTER);
+            FlagClear(FLAG_RYU_ENCOUNTERED_UB);
+            DestroyTask(taskId);
+            break;
+    }
 }
 
+void Task_HatEncounter_Generic(u8 taskId) {
+    
+    switch (gTasks[taskId].data[0]) {
+        case ENC_MESSAGE:
+            ScriptContext2_Enable();
+	        VarSet(VAR_TEMP_5, gTasks[taskId].data[1]);
+            StringCopy(gStringVar1, gSpeciesNames[VarGet(VAR_TEMP_5)]);
+            ShowFieldMessage((u8[])_("{RYU_STR_4}$"));
+            PlayCry5(VarGet(VAR_TEMP_5), 0);
+            gTasks[taskId].data[0]++;
+            break;
+        case ENC_CRY:
+            if (IsCryFinished())
+                gTasks[taskId].data[0]++;
+            break;
+        case ENC_BATTLE_START:
+            VarSet(VAR_TEMP_7, _clamp(CountBadges()*12, 20, 110));
+            CreateScriptedWildMon(VarGet(VAR_TEMP_5), VarGet(VAR_TEMP_7), VarGet(VAR_TEMP_9));
+            LegendaryDoBossRoll();
+            BattleSetup_StartScriptedWildBattle();
+            ScriptContext1_Stop();
+            gTasks[taskId].data[0]++;
+            break;
+        case ENC_BATTLE:
+            if (ScriptContext1_IsEnabled())
+                gTasks[taskId].data[0]++;
+            break;
+        case ENC_BATTLE_END:
+            FlagClear(FLAG_RYU_BOSS_WILD);
+            if (gTasks[taskId].encounterEndFlag)
+                FlagSet(gTasks[taskId].encounterEndFlag);
+            if (gTasks[taskId].encounterOutcomeCheck == gBattleOutcome && gTasks[taskId].encounterOutcomeCheck && gTasks[taskId].encounterOutcomeFlag) {
+                FlagSet(gTasks[taskId].encounterOutcomeFlag);
+            }
+            DestroyTask(taskId);
+            break;
+    }
+}
 
-SB_SetupRandomMimikyuEncounter::
-	lock
-	clearflag FLAG_TEMP_A
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_MIMIKYU, VAR_TEMP_7, ITEM_NONE
-	playmoncry SPECIES_MIMIKYU, 0
-	waitmoncry
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	applymovement FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement PLAYER
-	msgbox StumbledOnMimikyu
-	closemessage
-	dowildbattle
-	release
-	end
+void Task_HatEncounter_Legendary(u8 taskId) {
+    switch (gTasks[taskId].data[0]) {
+        case ENC_MESSAGE:
+            ScriptContext2_Enable();
+	        VarSet(VAR_TEMP_5, gTasks[taskId].data[1]);
+            StringCopy(gStringVar1, gSpeciesNames[VarGet(VAR_TEMP_5)]);
+            ShowFieldMessage((u8[])_("{RYU_STR_4}$"));
+            PlayCry5(VarGet(VAR_TEMP_5), 0);
+            gTasks[taskId].data[0]++;
+            break;
+        case ENC_CRY:
+            if (IsCryFinished())
+                gTasks[taskId].data[0]++;
+            break;
+        case ENC_BATTLE_START:
+            VarSet(VAR_TEMP_7, _clamp(CountBadges()*12, 20, 110));
+            CreateScriptedWildMon(VarGet(VAR_TEMP_5), VarGet(VAR_TEMP_7), VarGet(VAR_TEMP_9));
+            LegendaryDoBossRoll();
+            BattleSetup_StartLegendaryBattle();
+            ScriptContext1_Stop();
+            gTasks[taskId].data[0]++;
+            break;
+        case ENC_BATTLE:
+            if (ScriptContext1_IsEnabled())
+                gTasks[taskId].data[0]++;
+            break;
+        case ENC_BATTLE_END:
+            FlagClear(FLAG_RYU_BOSS_WILD);
+            if (gTasks[taskId].encounterEndFlag)
+                FlagSet(gTasks[taskId].encounterEndFlag);
+            if (gTasks[taskId].encounterOutcomeCheck == gBattleOutcome && gTasks[taskId].encounterOutcomeCheck && gTasks[taskId].encounterOutcomeFlag) {
+                FlagSet(gTasks[taskId].encounterOutcomeFlag);
+            }
+            DestroyTask(taskId);
+            break;
+    }
+}
 
-StumbledOnMimikyu:
-	.string "You stumbled across\na wild Mimikyu!$"*/
+void HatSetDynamicEncounter(u16 speciesId, u8* msg, s16 endFlag, s16 outcomeCheck, s16 outcomeFlag)
+{
+    u8 taskId = CreateTask(Task_HatEncounter_Generic, 10);
+    gTasks[taskId].encounterSpecies = speciesId;
+    gTasks[taskId].encounterEndFlag = endFlag;
+    gTasks[taskId].encounterOutcomeCheck = outcomeCheck;
+    gTasks[taskId].encounterOutcomeFlag = outcomeFlag;
+    StringCopy(gRyuStringVar4, msg);
+    return;
+}
+
+void HatSetDynamicLegendaryEncounter(u16 speciesId, u8* msg, s16 endFlag, s16 outcomeCheck, s16 outcomeFlag)
+{
+    u8 taskId = CreateTask(Task_HatEncounter_Legendary, 10);
+    gTasks[taskId].encounterSpecies = speciesId;
+    gTasks[taskId].encounterEndFlag = endFlag;
+    gTasks[taskId].encounterOutcomeCheck = outcomeCheck;
+    gTasks[taskId].encounterOutcomeFlag = outcomeFlag;
+    StringCopy(gRyuStringVar4, msg);
+    return;
+}
