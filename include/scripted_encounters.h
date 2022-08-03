@@ -22,20 +22,14 @@
 #define SET_DYNAMIC_LEG_ENCOUNTER_W_END_FLAG_AND_OUTCOME_FLAG(speciesId, msg, endFlag, outcomeCheck, outcomeFlag) HatSetDynamicLegendaryEncounter(speciesId, msg, endFlag, outcomeCheck, outcomeFlag)
 
 
-void Task_HatEncounter_Buzzwole(u8 taskId);
-void Task_HatEncounter_Celesteela(u8 taskId);
-void Task_HatEncounter_Stakataka(u8 taskId);
-void Task_HatEncounter_Pheromosa(u8 taskId);
-void Task_HatEncounter_Guzzlord(u8 taskId);
-void Task_HatEncounter_Nihilego(u8 taskId);
-void Task_HatEncounter_Xurkitree(u8 taskId);
-void Task_HatEncounter_Kartana(u8 taskId);
 void Task_HatEncounter_SteppedOn(u8 taskId);
 void Task_HatEncounter_Mimikyu(u8 taskId);
 void Task_HatEncounter_Keldeo(u8 taskId);
 
 void Task_HatEncounter_Generic(u8 taskId);
 void Task_HatEncounter_Legendary(u8 taskId);
+void Task_HatEncounter_UltraBeast(u8 taskId);
 
 void HatSetDynamicEncounter(u16 speciesId, u8* msg, s16 endFlag, s16 outcomeCheck, s16 outcomeFlag);
 void HatSetDynamicLegendaryEncounter(u16 speciesId, u8* msg, s16 endFlag, s16 outcomeCheck, s16 outcomeFlag);
+int RyuGetSpecialEncounterScale(void);

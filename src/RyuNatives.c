@@ -2519,27 +2519,6 @@ void RyuNotifyPickupItemBufferValues (void)
     StringExpandPlaceholders(gStringVar3, gStringVar4);
 }
 
-void RyuCheckHasFighterDogs(void)
-{
-    u8 k;
-
-    for (k = 0; k < CalculatePlayerPartyCount(); k++)
-    {
-        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_TERRAKION)
-            VarSet(VAR_TEMP_D, (VarGet(VAR_TEMP_D) + 100));
-    }
-    for (k = 0; k < CalculatePlayerPartyCount(); k++)
-    {
-        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_VIRIZION)
-            VarSet(VAR_TEMP_D, (VarGet(VAR_TEMP_D) + 100));
-    }
-    for (k = 0; k < CalculatePlayerPartyCount(); k++)
-    {
-        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_COBALION)
-            VarSet(VAR_TEMP_D, (VarGet(VAR_TEMP_D) + 100));
-    }
-}
-
 bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at or below.
 {
     u8 k;

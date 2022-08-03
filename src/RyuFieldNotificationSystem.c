@@ -364,12 +364,55 @@ void RyuDoNotifyTasks(void)
     }
 }
 
+bool32 RyuCheckHasFighterDogs(void)
+{
+    u32 k;
+    u32 count = 0;
+
+    for (k = 0; k < CalculatePlayerPartyCount(); k++)
+    {
+        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_TERRAKION)
+            count++;
+        else
+            return FALSE;
+    }
+    for (k = 0; k < CalculatePlayerPartyCount(); k++)
+    {
+        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_VIRIZION)
+            count++;
+        else
+            return FALSE;
+    }
+    for (k = 0; k < CalculatePlayerPartyCount(); k++)
+    {
+        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_COBALION)
+            count++;
+        else
+            return FALSE;
+    }
+    if (count >= 3)
+        return TRUE;
+    
+    return FALSE;
+}
+
+static const u16 SteppedOnSpecies[] = {
+    SPECIES_PYUKUMUKU, 
+    SPECIES_SANDYGAST, 
+    SPECIES_SHELLDER,
+    SPECIES_MAREANIE,
+    SPECIES_SKRELP
+};
+
+extern void Task_MapNamePopUpWindow(u8 taskId);
+
 void RyuDoSpecialEncounterChecks(void)
 {
     struct MapPosition position;
     u8 playerDirection;
     u16 metatileBehavior;
     u16 rand = (Random() % 99);
+    u16 rand2 = (Random() % 5);
     u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
     u16 UBRotation = (VarGet(VAR_RYU_UB_EVENT_TIMER));//which UB group the player currently can encounter
 
@@ -377,14 +420,15 @@ void RyuDoSpecialEncounterChecks(void)
     GetPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
 
-    if (MetatileBehavior_IsSandOrDeepSand(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)))
+    if (MetatileBehavior_IsSandOrDeepSand(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)) && (!FuncIsActiveTask(Task_MapNamePopUpWindow)))
         {
             if (!(locSum == MAP_ROUTE111))
             {
                 rand = (Random() % 256);
                 if (!AreMonsRepelled() && ((rand == 69) || (rand == 169)))
                 {
-                    CreateTask(Task_HatEncounter_SteppedOn, 1);
+                    gSpecialVar_0x8009 = SteppedOnSpecies[rand2];//store species id.
+                    CreateTask(Task_HatEncounter_SteppedOn, 0x80);
                     //ScriptContext1_SetupScript(SB_SetupRandomSteppedOnEncounter);
                 }
             }
@@ -425,10 +469,7 @@ void RyuDoSpecialEncounterChecks(void)
             }
 
     //Ultra beast encounter checks
-    //I don't think this can be made much cleaner, but it shouldn't really cause lag, even if player is at the right locations
-    //FLAG_TEMP_D is set after an encounter with a UB when it wasn't caught, so player has to leave map and come back for it to respawn
-    //I wanted to also make it play the cries of the relevant UB once in a while in the correct area, but i'm not sure how without vastly
-    //complicating this furtner.
+    //now, extra-lewd!
 
     if ((FlagGet(FLAG_RYU_ULTRA_BEASTS_ESCAPED) == TRUE) && (FlagGet(FLAG_RYU_CAUGHT_ALL_UBS) == FALSE) && (rand < 5))//5% chance to find the UB here.
     {
@@ -440,8 +481,9 @@ void RyuDoSpecialEncounterChecks(void)
                 locSum == MAP_GRANITE_CAVE_B2F)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                CreateTask(Task_HatEncounter_Buzzwole, 1);
-                //ScriptContext1_SetupScript(RyuScript_EncounterBuzzwole);
+                gSpecialVar_0x8009 = SPECIES_BUZZWOLE;
+                StringCopy(gRyuStringVar4, (u8[])_("A mysterious Bug Pokémon attacks!"));
+                CreateTask(Task_HatEncounter_UltraBeast, 1);
             }
         }
 
@@ -450,8 +492,9 @@ void RyuDoSpecialEncounterChecks(void)
             if (locSum == MAP_ROUTE119)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                CreateTask(Task_HatEncounter_Pheromosa, 1);
-                //ScriptContext1_SetupScript(RyuScript_EncounterPheromosa);
+                gSpecialVar_0x8009 = SPECIES_PHEROMOSA;
+                StringCopy(gRyuStringVar4, (u8[])_("A feminine Bug Pokémon attacks!"));
+                CreateTask(Task_HatEncounter_UltraBeast, 1);
             }
         }
 
@@ -460,8 +503,9 @@ void RyuDoSpecialEncounterChecks(void)
             if (gSaveBlock1Ptr->location.mapNum == MAP_ROUTE120)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                CreateTask(Task_HatEncounter_Kartana, 1);
-                //ScriptContext1_SetupScript(RyuScript_EncounterKartana);
+                gSpecialVar_0x8009 = SPECIES_KARTANA;
+                StringCopy(gRyuStringVar4, (u8[])_("Some animated origami attacks!"));
+                CreateTask(Task_HatEncounter_UltraBeast, 1);
             }
         }
 
@@ -470,8 +514,9 @@ void RyuDoSpecialEncounterChecks(void)
             if (locSum == MAP_NEW_MAUVILLE_INSIDE)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                CreateTask(Task_HatEncounter_Xurkitree, 1);
-                //ScriptContext1_SetupScript(RyuScript_EncounterXurkitree);
+                gSpecialVar_0x8009 = SPECIES_XURKITREE;
+                StringCopy(gRyuStringVar4, (u8[])_("Some living power lines attack!"));
+                CreateTask(Task_HatEncounter_UltraBeast, 1);
             }
         }
 
@@ -487,8 +532,9 @@ void RyuDoSpecialEncounterChecks(void)
                 locSum == MAP_METEOR_FALLS_3F)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                //ScriptContext1_SetupScript(RyuScript_EncounterNihilego);
-                CreateTask(Task_HatEncounter_Nihilego, 1);
+                gSpecialVar_0x8009 = SPECIES_NIHILEGO;
+                StringCopy(gRyuStringVar4, (u8[])_("An odd wig-shaped jellyfish attacks!"));
+                CreateTask(Task_HatEncounter_UltraBeast, 1);
             }
         }
 
@@ -497,8 +543,9 @@ void RyuDoSpecialEncounterChecks(void)
             if (locSum == MAP_FROSTY_GROTTO)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                //ScriptContext1_SetupScript(RyuScript_EncounterGuzzlord);
-                CreateTask(Task_HatEncounter_Guzzlord, 1);
+                gSpecialVar_0x8009 = SPECIES_GUZZLORD;
+                StringCopy(gRyuStringVar4, (u8[])_("A Pokémon with a gaping maw attacks!"));
+                CreateTask(Task_HatEncounter_UltraBeast, 1);
             }
         }
 
@@ -511,8 +558,9 @@ void RyuDoSpecialEncounterChecks(void)
                 locSum == MAP_MT_PYRE_6F)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                //ScriptContext1_SetupScript(RyuScript_EncounterStakataka);
-                CreateTask(Task_HatEncounter_Stakataka, 1);
+                gSpecialVar_0x8009 = SPECIES_STAKATAKA;
+                StringCopy(gRyuStringVar4, (u8[])_("A giant living box attacks!"));
+                CreateTask(Task_HatEncounter_UltraBeast, 1);
             }
         }
 
@@ -521,24 +569,23 @@ void RyuDoSpecialEncounterChecks(void)
             if (locSum == MAP_ROUTE66)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                CreateTask(Task_HatEncounter_Celesteela, 1);
-                //ScriptContext1_SetupScript(RyuScript_EncounterCelesteela);
+                gSpecialVar_0x8009 = SPECIES_CELESTEELA;
+                StringCopy(gRyuStringVar4, (u8[])_("A magical statue attacks!"));
+                CreateTask(Task_HatEncounter_UltraBeast, 1);
             }
         }
     
 
     }
 
-    if ((VarGet(VAR_TEMP_D) == 400) &&
-         FlagGet(FLAG_SYS_GAME_CLEAR) &&
-         FlagGet(FLAG_RYU_CAUGHT_KELDEO) == FALSE &&
-         gSaveBlock1Ptr->location.mapGroup == (MAP_GROUP(PETALBURG_WOODS)) &&
-         gSaveBlock1Ptr->location.mapNum == MAP_NUM(PETALBURG_WOODS) &&
-         (Random() % 100 < 5) &&
+    if ( (rand < 5) &&
+         (locSum ==MAP_PETALBURG_WOODS) &&
+         (RyuCheckHasFighterDogs() == TRUE) &&
+         (FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE) &&
+         (FlagGet(FLAG_RYU_CAUGHT_KELDEO) == FALSE) &&
          (FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER) == FALSE))
     {
         FlagSet(FLAG_RYU_PAUSE_UB_ENCOUNTER);
         CreateTask(Task_HatEncounter_Keldeo, 1);
-        //ScriptContext1_SetupScript(RyuScript_EncounterKeldeo);
     }
 }
