@@ -1728,11 +1728,6 @@ static void Cmd_ppreduce(void)
                 ppToDeduct++;
             break;
         }
-        ConvertIntToDecimalStringN(gStringVar1, (FlagGet(FLAG_TEMP_E)), STR_CONV_MODE_LEFT_ALIGN, 1);
-        if (FlagGet(FLAG_TEMP_E) == TRUE)
-        {
-            DebugPrint(gStringVar1, 0);
-        }
         if ((FlagGet(FLAG_TEMP_E) == TRUE) &&
             (gTrainerBattleOpponent_A == TRAINER_STEVEN) &&
             (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT)) //Steven won't use PP during the aqua fight.
