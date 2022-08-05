@@ -765,18 +765,6 @@ void RyuChangeUsedPokeball(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_POKEBALL, &newBall);
 }
 
-void SwapPlayerGender(void)//only used by debug menu sometimes to check graphics.
-{
-    if (gSaveBlock2Ptr->playerGender == 1)
-    {
-        gSaveBlock2Ptr->playerGender = 0;
-    }
-    else
-    {
-        gSaveBlock2Ptr->playerGender = 1;
-    }
-}
-
 bool8 RyuSwapAbility(void)//ability switcher, which requires a big pearl in the script.
 {
     u8 currentAbility = (GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM));
@@ -797,39 +785,6 @@ bool8 RyuSwapAbility(void)//ability switcher, which requires a big pearl in the 
     {
         return FALSE;
     }
-}
-
-void resetSoundGameStat(void)
-{
-    SetGameStat(GAME_STAT_USED_SOUND_MOVE, 200);
-}
-
-bool8 RyuCheckContestMastery(void)
-{
-    u8 i = 0;
-
-    if (FlagGet(FLAG_RYU_CLEARED_COOL) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_CLEARED_BEAUTY) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_CLEARED_TOUGH) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_CLEARED_SMART) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_CLEARED_CUTE) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_GIVEN_DIANCIE) == 1)
-        i += 10;
-
-    if (i == 5)
-        return TRUE;
-
-    return FALSE;
 }
 
 int RyuNumberOfFullBoxes(void)//used by lanette to determine how many full boxes player has for her quest. She requires 4.
@@ -1728,8 +1683,6 @@ bool8 RyuFillStatsBuffers(void)
 void RyuSetUpSaveBlockStuff(void)
 {
     gSaveBlock1Ptr->registeredItem = ITEM_WAYSTONE;
-    VarSet(VAR_RYU_THEME_NUMBER, 1);
-    VarSet(VAR_HAT_THEME_UI_NUMBER, 0);
 }
 
 void Ryu_ClearAquaSFCTrainerFlags(void)
@@ -2024,13 +1977,6 @@ void TryGiveFitnessGuruAch(void)
         GiveAchievement(ACH_FITNESS_GURU);
 }
 
-void RyuDebug_Plant49Berries(void)
-{
-    u8 i;
-    for (i = 0; i < 50; i++)
-        IncrementGameStat(GAME_STAT_PLANTED_BERRIES);
-}
-
 void RyuClearAlchemyEffect(void)
 {
     gSaveBlock2Ptr->alchemyCharges = 0;
@@ -2220,12 +2166,6 @@ void RyuSummonOriginalNPCscript(void)
     const u8 *script = NULL;
     script = GetRamScript(gSpecialVar_LastTalked, gOriginalNPCScript);
     ScriptContext1_SetupScript(script);
-}
-
-void RyuFixCorruptedBoxMons(void)
-{
-    ZeroBoxMonAt(2, 5);
-    ZeroBoxMonAt(2, 6);
 }
 
 void RyuBufferSkillLevels(void)
@@ -2476,13 +2416,6 @@ void RyuExpDriveOperation(void)
 
 }
 
-void RyuCheckDataSize(void)//used to check the size of whatever struct i want to check, only need to change the 'data =' part
-{
-    u32 data = sizeof(struct FacilityMon);
-    data *= 999;
-    ConvertIntToDecimalStringN(gStringVar1, data, STR_CONV_MODE_LEFT_ALIGN, 10);
-}
-
 void RyuForceUpdateTime(void)
 {
     u16 hours = (VarGet(VAR_TEMP_1));
@@ -2530,10 +2463,6 @@ bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at
     return TRUE;
 }
 
-void HatTest(void) {
-    SET_DYNAMIC_ENCOUNTER(SPECIES_GIRATINA, (u8[])_("I think it-s a Wurmple!!"));
-}
-
 void RyuLegendaryDoBossRoll(void)
 {
     u32 randomvalue = (Random() % 99);
@@ -2568,25 +2497,6 @@ void RDB_DevModeGiveMoney(void)
     u32 Amt = gSpecialVar_32bit;
     AddMoney(&gSaveBlock1Ptr->money, Amt);
     ConvertIntToDecimalStringN(gStringVar1, Amt, STR_CONV_MODE_LEFT_ALIGN, 9);
-}
-
-bool16 CheckOwnedRayquaza(void)
-{
-    if (!GetSetPokedexFlag((SpeciesToNationalPokedexNum(SPECIES_RAYQUAZA)), FLAG_GET_CAUGHT))
-    {
-        gSpecialVar_Result = FALSE;
-    }
-    else
-    {
-        gSpecialVar_Result = TRUE;
-    }
-}
-
-void RyuTransformRayquaza(void)
-{
-    u16 id = SPECIES_MEGA_RAYQUAZA;
-    SetMonData(&gPlayerParty[(VarGet(VAR_TEMP_F))], MON_DATA_SPECIES, &id);
-    SetMonData(&gPlayerParty[(VarGet(VAR_TEMP_F))], MON_DATA_SPECIES2, &id);
 }
 
 void RyuGiveHolidayModdedMon(void)
@@ -2774,23 +2684,6 @@ void RyuBufferLongPlayTimeString (void)
     StringAppend(gStringVar1, gRyuStringVar4);    
 }
 
-void SetArbitraryplayTime (void)
-{
-    gSaveBlock2Ptr->playTimeHours = 39;
-    gSaveBlock2Ptr->playTimeMinutes = 15;
-    gSaveBlock2Ptr->playTimeSeconds = 55;
-}
-
-void temporarysetskills (void) 
-{
-    VarSet(VAR_RYU_PLAYER_MINING_SKILL, 3 );
-    VarSet(VAR_RYU_PLAYER_MINING_SKILL_EXP, 1024);
-    VarSet(VAR_RYU_PLAYER_BOTANY_SKILL, 3);
-    VarSet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 1000);
-    VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL, 5);
-    VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 2000);
-}
-
 void RyuToggleBossStatus (void)
 {
     u8 slot = gSpecialVar_0x8001;
@@ -2802,7 +2695,6 @@ void RyuToggleBossStatus (void)
     else
         SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &tru);
 }
-
 
 void RyuCalcPartyStats (void)
 {
@@ -2850,13 +2742,6 @@ void RyuBufferAttendantName (void)
                 break;
     }
 
-}
-
-void ryuSetPlayTime(void)
-{
-    gSaveBlock2Ptr->playTimeHours = 105;
-    gSaveBlock2Ptr->playTimeMinutes = 5;
-    gSaveBlock2Ptr->playTimeSeconds = 0;
 }
 
 const u8 sRepelNotifyMsg[] = _("Repel Used. {STR_VAR_1}% reduction for {STR_VAR_2} steps.");

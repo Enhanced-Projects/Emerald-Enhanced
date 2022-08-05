@@ -660,6 +660,12 @@ static void CB2_EndWildBattle(void)
                     }
             }
         }
+
+        if ((gBattleOutcome == B_OUTCOME_CAUGHT) && FlagGet(FLAG_RYU_ENCOUNTERED_MELOETTA) == TRUE)//special case for finishing a battle with Meloetta.
+        {
+            FlagSet(FLAG_RYU_CAPTURED_MELOETTA);
+        }
+        FlagSet(FLAG_TEMP_C);
         SetMainCallback2(CB2_ReturnToField);
         gFieldCallback = sub_80AF6F0;
     }

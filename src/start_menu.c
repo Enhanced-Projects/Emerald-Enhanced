@@ -59,8 +59,6 @@ static EWRAM_DATA u8 MenuSpriteId2 = 0;
 extern u8 RyuDebugMenuScript[];
 extern u8 RyuStartMenuConfigInfoScript[];
 extern const u8 gText_RyuVersion[];
-extern const u8 Ryu_FFTextSpeedWarning[];
-extern const u8 RyuScript_Lv100FailMsg[];
 
 // Menu actions
 enum

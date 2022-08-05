@@ -544,214 +544,6 @@ Ryu_CantUsePcCharging::
 RyuCantUsePCCHARGING:
 	.string "The Wireless PC needs to recharge.\nPlease try again later.$"
 
-@========================================================================Random "Stepped On" encounter
-
-Ryu_MeloettaWatchingMsg::
-	goto_if_set FLAG_RYU_SECOND_MELOETTA_MSG, ryu_end
-	playmoncry SPECIES_MELOETTA, 0
-	msgbox Ryu_HearAMelodyFromSomewhere
-	setflag FLAG_RYU_SECOND_MELOETTA_MSG
-	waitmoncry
-	closemessage
-	release
-	end
-
-Ryu_HearAMelodyFromSomewhere:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You hear a delightful melody from\n"
-	.string " somewhere nearby...)$"
-
-Ryu_BeingWatched::
-	goto_if_set FLAG_RYU_FIRST_MELOETTA_MSG, ryu_end
-	msgbox Ryu_Feelslikebeingwatchedmsg
-	setflag FLAG_RYU_FIRST_MELOETTA_MSG
-	closemessage
-	release
-	end
-
-Ryu_Feelslikebeingwatchedmsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You get the strangest feeling...\n"
-	.string " as if someone or something is\l"
-	.string " watching over you...)$"
-
-Ryu_DoMeloettaRoll::
-	random 9
-	compare VAR_RESULT, 1
-	goto_if_eq Ryu_DoMeloettaEncounter
-	release
-	end
-
-Ryu_DoMeloettaEncounter::
-	playse SE_PIN
-	applymovement FOLLOWER, Common_Movement_ExclamationMark
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	waitmovement PLAYER
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGMELOETTA
-	msgbox Ryu_MeloettaApproaches
-	closemessage
-	playmoncry SPECIES_MELOETTA, 0
-	msgbox Ryu_ItsSingingBeautifully
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	setwildbattle SPECIES_MELOETTA, VAR_RESULT, ITEM_STAR_PIECE
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	call RyuCheckSetupBoss
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	special GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_CAUGHT
-	goto_if_ne Ryu_MeloettaNotCaught
-	setflag FLAG_RYU_CAPTURED_MELOETTA
-	release
-	end
-
-Ryu_MeloettaNotCaught::
-	special resetSoundGameStat
-	release
-	end
-
-Ryu_MeloettaApproaches:
-	.string "A cute looking Pokemon approaches!$"
-
-Ryu_ItsSingingBeautifully::
-	.string "It starts singing a nice tune...\p"
-	.string "It finishes its tune and attacks!$"
-
-SB_SetupRandomSteppedOnEncounter::
-	specialvar VAR_RESULT, AreMonsRepelled
-	compare VAR_RESULT, TRUE
-	goto_if_eq ryu_end
-	random 5
-	switch VAR_RESULT
-	case 0, SB_Random0
-	case 1, SB_Random1
-	case 2, SB_Random2
-	case 3, SB_Random3
-	case 4, SB_Random4
-	goto  ryu_end
-
-SB_SetupRandomMimikyuEncounter::
-	lock
-	clearflag FLAG_TEMP_A
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_MIMIKYU, VAR_TEMP_7, ITEM_NONE
-	playmoncry SPECIES_MIMIKYU, 0
-	waitmoncry
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	applymovement FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement PLAYER
-	msgbox StumbledOnMimikyu
-	closemessage
-	dowildbattle
-	release
-	end
-
-StumbledOnMimikyu:
-	.string "You stumbled across\na wild Mimikyu!$"
-
-
-SB_Random0::
-	playmoncry SPECIES_PYUKUMUKU, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_PYUKUMUKU, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_PYUKUMUKU
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-SB_Random1::
-	playmoncry SPECIES_SANDYGAST, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_SANDYGAST, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_SANDYGAST
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-SB_Random2::
-	playmoncry SPECIES_SHELLDER, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_SHELLDER, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_SHELLDER
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-SB_Random3::
-	playmoncry SPECIES_MAREANIE, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_MAREANIE, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_MAREANIE
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-SB_Random4::
-	playmoncry SPECIES_SKRELP, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_SKRELP, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_SKRELP
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-Ryu_YouSteppedOn:
-	.string "You stepped on a wild {STR_VAR_1}!$"
-
 @==================================================================================================MEGA STONE REWARDS
 
 
@@ -898,6 +690,11 @@ RyuLegendary_GameClearResetLegends::
 	call_if_set FLAG_RYU_VICTINI_RAN, RL_ResetVictini
 	call_if_set FLAG_RYU_LATIOS_RAN, RL_ResetLatios
 	call_if_set FLAG_RYU_LATIAS_RAN, RL_ResetLatias
+	call_if_unset FLAG_RYU_CAPTURED_MELOETTA, RL_ResetMeloetta
+	return
+
+RL_ResetMeloetta::
+	clearflag FLAG_RYU_ENCOUNTERED_MELOETTA
 	return
 
 RL_ResetLatias::
@@ -1458,7 +1255,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	callnative(HatTest)
 	release
 	end
 }
@@ -1472,13 +1268,6 @@ text(global) RyuEmptyTextPtr {
 script RyuCheckSetupBoss {
 	callnative(RyuLegendaryDoBossRoll)
 	return
-}
-
-
-script RyuScript_GoToLimbo{
-    lockall
-    warpsilent(MAP_LIMBO, 255, 3, 3)
-    waitstate
 }
 
 script RyuScript_EndChallengeMode{
@@ -1820,25 +1609,6 @@ text NGMO2 {
 
 text NGMO3 {
 	"Safe: More consistent, less potential."
-}
-
-script SB_CheckMeloettaEncounter {
-	goto_if_set(FLAG_RYU_CAPTURED_MELOETTA, ryu_end)
-	readgamestat(GAME_STAT_USED_SOUND_MOVE)
-	if (var(VAR_RESULT) >= 255) {
-		goto(Ryu_DoMeloettaRoll)
-	}
-	elif((var(VAR_RESULT) > 199) && (var(VAR_RESULT) < 256)) {
-		goto(Ryu_MeloettaWatchingMsg)
-	}
-	elif(var(VAR_RESULT) >= 100){
-		goto(Ryu_BeingWatched)
-	}
-	else {
-		goto(ryu_end)
-	}
-	release
-	end
 }
 
 script gRyuWarpFemaleHomeScript {

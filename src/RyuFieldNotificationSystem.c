@@ -17,31 +17,10 @@
 #include "RyuDynDeliveries.h"
 #include "wild_encounter.h"
 #include "scripted_encounters.h"
+#include "sound.h"
+#include "cutscene.h"
 
-
-
-extern const u8 SB_SetupRandomSteppedOnEncounter[];
-extern const u8 SB_SetupRandomMimikyuEncounter[];
-extern const u8 SB_CheckMeloettaEncounter[];
-extern const u8 Ryu_BeingWatched[];
-extern const u8 Ryu_MeloettaWatchingMsg[];
-extern const u8 RyuScript_CheckGivenAchievement[];
-extern const u8 RyuScript_GoToLimbo[];
-extern const u8 RyuScript_EncounterBuzzwole[];
-extern const u8 RyuScript_EncounterPheromosa[];
-extern const u8 RyuScript_EncounterKartana[];
-extern const u8 RyuScript_EncounterXurkitree[];
-extern const u8 RyuScript_EncounterNihilego[];
-extern const u8 RyuScript_EncounterGuzzlord[];
-extern const u8 RyuScript_EncounterStakataka[];
-extern const u8 RyuScript_EncounterCelesteela[];
-extern const u8 RyuScript_EncounterKeldeo[];
-extern const u8 RyuScript_NotifyFailedChallenge[];
-extern const u8 RyuScript_NotifySucceededChallenge[];
-extern const u8 RyuScript_Lv100FailMsg[];
-extern const u8 RyuScript_Lv100SwitchMsg[];
 extern const u8 RyuGlobal_CancelDailyQuest[];
-
 extern void GetPlayerPosition(struct MapPosition *);
 extern u16 GetPlayerCurMetatileBehavior(int);
 
@@ -404,7 +383,10 @@ static const u16 SteppedOnSpecies[] = {
     SPECIES_SKRELP
 };
 
+const u8 gText_Empty69[] = _("A cute Pokémon attacks!$");
+
 extern void Task_MapNamePopUpWindow(u8 taskId);
+extern void VBCB_FullscreenCutscene(void);
 
 void RyuDoSpecialEncounterChecks(void)
 {
@@ -429,7 +411,6 @@ void RyuDoSpecialEncounterChecks(void)
                 {
                     gSpecialVar_0x8009 = SteppedOnSpecies[rand2];//store species id.
                     CreateTask(Task_HatEncounter_SteppedOn, 0x80);
-                    //ScriptContext1_SetupScript(SB_SetupRandomSteppedOnEncounter);
                 }
             }
         }
@@ -440,26 +421,38 @@ void RyuDoSpecialEncounterChecks(void)
                 if (!AreMonsRepelled() && Random() % 256 == 128)
                 {
                     CreateTask(Task_HatEncounter_Mimikyu, 1);
-                    //ScriptContext1_SetupScript(SB_SetupRandomMimikyuEncounter);
                 }
             }
         }
         
-        if (FlagGet(FLAG_TEMP_C) == 0)
+        if (FlagGet(FLAG_RYU_ENCOUNTERED_MELOETTA) == FALSE)
             {
-                if (MetatileBehavior_IsTallGrass(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)))
+                if (MetatileBehavior_IsTallGrass(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)) && (FlagGet(FLAG_RYU_CAPTURED_MELOETTA) == FALSE))
                 {
-                    if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 255 && (FlagGet(FLAG_RYU_CAPTURED_MELOETTA) == 0))
+                    if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 255)
                     {
-                        ScriptContext1_SetupScript(SB_CheckMeloettaEncounter);
+                        u16 rand = (Random() % 100);
+                        if (rand < 20)
+                        {
+                            FlagSet(FLAG_RYU_ENCOUNTERED_MELOETTA);
+                            PlaySE(21);
+                            StartBGCutscene(SCENEBGMELOETTA);
+                            SetVBlankCallback(VBCB_FullscreenCutscene);
+                            SET_DYNAMIC_LEG_ENCOUNTER(SPECIES_MELOETTA, (u8[])_("A cute Pokémon attacks!"));
+                        }
                     }
-                    else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 200)
+                    else if ((GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 200) && (FlagGet(FLAG_RYU_SECOND_MELOETTA_MSG) == FALSE))
                     {
-                        ScriptContext1_SetupScript(Ryu_MeloettaWatchingMsg);
+                        ShowFieldMessage((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You hear a delightful melody from\nsomewhere nearby...)$"));
+                        PlayCry1(SPECIES_MELOETTA, 0);
+                        FlagSet(FLAG_RYU_SECOND_MELOETTA_MSG);
+                        CreateTask(RyuMessageTimerTask, 0xFF);
                     }
-                    else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 100)
+                    else if ((GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 100) && (FlagGet(FLAG_RYU_FIRST_MELOETTA_MSG) == FALSE))
                     {
-                        ScriptContext1_SetupScript(Ryu_BeingWatched);
+                        ShowFieldMessage((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You get the strangest feeling...\nas if someone or something is\lwatching over you...)$"));
+                        FlagSet(FLAG_RYU_FIRST_MELOETTA_MSG);
+                        CreateTask(RyuMessageTimerTask, 0xFF);
                     }
                     else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) < 50)
                     {

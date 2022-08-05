@@ -46,15 +46,6 @@
       "var": "VAR_RYU_QUEST_DEVON_CORPORATE",
       "var_value": "69",
       "script": "SP_RyuRayEnc"
-    },
-    {
-      "type": "trigger",
-      "x": 14,
-      "y": 6,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "SP_TransformRayquaza"
     }
   ],
   "bg_events": [

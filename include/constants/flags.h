@@ -291,7 +291,7 @@
 #define FLAG_RYU_HIDE_MOSSDEEP_MATT          0x10F // Hides matt in mossdeep
 #define FLAG_RYU_ENTERING_RENTED_HOME        0x110 //set when player is entering a property they own. Used to show/hide tenants.
 #define FLAG_POKERUS_EXPLAINED               0x111
-#define FLAG_UNUSED_0x112                    0x112
+#define FLAG_RYU_ENCOUNTERED_MELOETTA        0x112
 #define FLAG_RECEIVED_QUICK_CLAW             0x113
 #define FLAG_RECEIVED_KINGS_ROCK             0x114
 #define FLAG_RECEIVED_MACHO_BRACE            0x115
