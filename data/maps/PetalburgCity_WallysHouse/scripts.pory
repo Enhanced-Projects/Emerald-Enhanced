@@ -54,7 +54,7 @@ script PBC_WH_CheckPlayerExit1 {
 script PBC_WH_Plant {
 	lock
 	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_TEMP_1) == FALSE)) {
-		msgbox("This plant is quite dry.\nSeems like it hasn't been watered\nin a long time.")
+		msgbox("This plant is quite dry.\nSeems like it hasn't been watered\lin a long time.")
 		closemessage
 		setflag(FLAG_RYU_TEMP_1)
 	}
@@ -84,7 +84,7 @@ script PBC_WH_Fridge {
 script PBC_WH_Counter {
 	lock
 	if ((var(VAR_RYU_QUEST_MAY) == 40) && (flag(FLAG_RYU_TEMP_3) == FALSE)) {
-		msgbox("The counter appears pretty dusty.\pSeems like it hasn't been\ldisturbed.")
+		msgbox("The counter appears pretty dusty.\pSeems like it hasn't been\ndisturbed.")
 		closemessage
 		setflag(FLAG_RYU_TEMP_3)
 	}
@@ -142,12 +142,12 @@ script PBC_WH_Table {
 }
 
 script RyuFollower_MayReturnToWallyHouseNight {
+	specialvar(VAR_0x8009, RyuGetTimeOfDay)
 	callnative(RyuCheckIfInWallysHouse)
-	if (var(VAR_RESULT) == TRUE) {
+	if ((var(VAR_RESULT) == TRUE) && (var(VAR_0x8009) == RTC_TIME_NIGHT)){
 		goto(RyuDoWHNightScene)
 	}
-	gettime
-	if ((var(VAR_0x8000) > 20) || (var(VAR_0x8000) < 4)) {
+	if (var(VAR_RESULT) == 2) {
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Let's go back to Wally's house\nand see if we can catch\lthe intruder.")
 	}
 	else{
@@ -183,8 +183,8 @@ script PBC_WH_MayInvestigationComplete {
 		waitmovement(FOLLOWER)
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Someone's definitely been here recently!\nLooks like they only drink\lwater, though.")
 		closemessage
-		gettime
-		if ((var(VAR_0x8000) > 20) || (var(VAR_0x8000) < 4)) {
+		specialvar(VAR_0x8009, RyuGetTimeOfDay)
+		if ((var(VAR_0x8009) == 2) ) {
 			goto(RyuDoWHNightScene)
 		}
 		else {

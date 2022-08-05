@@ -935,6 +935,7 @@ const static struct QuestStageDesc gDeliverySystemQuestStages[] = { //only visib
       .description = gDeliverySystemQuestStage1000,
       .questStage = 1000,
     },
+    QUEST_STAGE_END
 };
 
 
@@ -967,6 +968,7 @@ const static struct QuestStageDesc gDailyQuestStages[] = { //only visible when V
     .description = sDailyQuestStageEmpty,
     .questStage = 7,
   },
+  QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gMayQuestStages[] = { //only visible when stage is 5 or higher.

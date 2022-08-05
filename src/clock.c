@@ -98,28 +98,31 @@ void UpdatePerHour(struct Time *localTime)
             }
         }
     }
-    if (((gLocalTime.hours >= 17) || (gLocalTime.hours <= 8)) && (VarGet(VAR_RYU_QUEST_MAY) > 10)) //birch is at the lab between 8am and 5pm if player unlocked May.
-    {
-        FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
-        if (gSaveBlock2Ptr->playerGender == MALE)
+    if (VarGet(VAR_RYU_QUEST_MAY) > 10)
+    {//birch is at the lab between 8am and 5pm if player unlocked May.
+        if ((gLocalTime.hours >= 17) || (gLocalTime.hours <= 8))
         {
-            FlagSet(FLAG_HIDE_LRT_DH_BIRCH); //hide birch in Dawn's house
+            FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
+            if (gSaveBlock2Ptr->playerGender == MALE)
+            {
+                FlagSet(FLAG_HIDE_LRT_DH_BIRCH); //hide birch in Dawn's house
+            }
+            else
+            {
+                FlagSet(FLAG_HIDE_LRT_BH_BIRCH); //hide birch in Brendan's house
+            }
         }
         else
-        {
-            FlagSet(FLAG_HIDE_LRT_BH_BIRCH); //hide birch in Brendan's house
-        }
-    }
-    else if (((gLocalTime.hours > 8) && (gLocalTime.hours < 17)) && (VarGet(VAR_RYU_QUEST_MAY) > 10)) //birch is at home from 6pm to 7am if player unlocked May.
-    {
-        FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
-        if (gSaveBlock2Ptr->playerGender == MALE)
-        {
-            FlagClear(FLAG_HIDE_LRT_DH_BIRCH); //show birch in Dawn's house
-        }
-        else
-        {
-            FlagClear(FLAG_HIDE_LRT_BH_BIRCH); //show birch in Brendan's house
+        {//birch is at home between 6pm and 7am if player unlocked may.
+            FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
+            if (gSaveBlock2Ptr->playerGender == MALE)
+            {
+                FlagClear(FLAG_HIDE_LRT_DH_BIRCH); //show birch in Dawn's house
+            }
+            else
+            {
+                FlagClear(FLAG_HIDE_LRT_BH_BIRCH); //show birch in Brendan's house
+            }
         }
     }
     else //default to having birch in the lab if above requirements aren't met.

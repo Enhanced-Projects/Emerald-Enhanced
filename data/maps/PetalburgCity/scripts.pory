@@ -815,12 +815,12 @@ script PBC_DoWallyChaseScene3 {
 
 script PBC_DoWallyChaseScene {
 	if (var(VAR_RYU_QUEST_MAY) == 50) {
+		addobject(WALLY)
 		applymovement(PLAYER, PBC_ChaseWally0)
 		applymovement(FOLLOWER, PBC_ChaseWally0)
 		waitmovement(FOLLOWER)
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}There he is! Go!")
 		closemessage
-		addobject(WALLY)
 		applymovement(PLAYER, PBC_ChaseWally1)
 		applymovement(FOLLOWER, PBC_ChaseWally1)
 		waitmovement(FOLLOWER)
@@ -888,6 +888,8 @@ script PBC_FinalMayEvent {
 	turnobject(PLAYER, DIR_WEST)
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}That's all settled.\pThanks for picking me up!\pI'm tired.\nWe should go home and take\la rest.")
 	setvar(VAR_RYU_QUEST_MAY, 180) //Player finished may quest with good end.
+	setflag(FLAG_RYU_DH_HIDE_MAY)
+	setflag(FLAG_RYU_BH_HIDE_MAY)
 	closemessage
 	release
 	end

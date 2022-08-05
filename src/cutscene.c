@@ -76,6 +76,10 @@ static const u8 sShellyNightBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscen
 static const u8 sShellyNightBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_night_map.bin");
 static const u8 sShellyNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_night_tiles.gbapal");
 
+static const u8 sMayBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/may/may_tiles.8bpp");
+static const u8 sMayBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/may/may_map.bin");
+static const u8 sMayBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/may/may_palette.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -264,6 +268,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .map = sShellyNightBgMap,
 		.mapSize = sizeof(sShellyNightBgMap),
         .palette = sShellyNightBgPalette,
+		.palIdxCnt = 224
+	},
+	[SCENEBGMAY] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sMayBgTiles,
+		.tileSize = sizeof(sMayBgTiles),
+        .map = sMayBgMap,
+		.mapSize = sizeof(sMayBgMap),
+        .palette = sMayBgPalette,
 		.palIdxCnt = 224
 	}
 };

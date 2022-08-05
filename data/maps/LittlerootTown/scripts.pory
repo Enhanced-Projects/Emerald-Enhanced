@@ -6,7 +6,6 @@ LittlerootTown_MapScripts:: @ 81E7DCB
 
 Ryu_HaremEventCheck::
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, Ryu_HaremEvent
-	map_script_2 VAR_TEMP_4, 0, Ryu_MayEventCheck
 	.2byte 0
 
 LRT_CheckMagmaWarp::
@@ -20,6 +19,8 @@ LittlerootTown_MapScript1_1E7DDB: @ 81E7DDB
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
 	call RyuCheckForWellTravelledAch
+	compare VAR_TEMP_4, 0
+	goto_if_eq Ryu_MayEventCheck
 	end
 	
 LRT_FollowerTest::
