@@ -514,7 +514,7 @@
 //uncomment for winter mode.
 //#define EE_WINTER_MODE
 
-#define EE_GAME_VERSION 9015
+#define EE_GAME_VERSION 9016
 
 
 #endif
