@@ -12227,6 +12227,12 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_MonTooPowerfulForBall;
     }
+    else if (FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE)
+    {
+        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_MonTooPowerfulForBall;
+    }
     else
     {
         u32 odds, i;

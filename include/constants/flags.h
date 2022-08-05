@@ -798,7 +798,7 @@
 #define FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS                         0x2E5
 #define FLAG_RYU_HIDE_HOME_ATTENDANT                                0x2E6
 #define FLAG_RYU_SPAWN_KINGPIN                                      0x2E7
-#define FLAG_UNUSED_0x2E8                                           0x2E8
+#define FLAG_RYU_SAVE_STATE_DETECTED                                0x2E8
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN            0x2E9
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_DAWN                  0x2EA
 #define FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION                  0x2EB
