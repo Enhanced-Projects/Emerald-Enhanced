@@ -1255,7 +1255,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	subvar(VAR_HOURS, 1) 
+	setflag(FLAG_RYU_CAUGHT_ALL_UBS)
 	release
 	end
 }

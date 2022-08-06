@@ -47,7 +47,7 @@ void LegendaryDoBossRoll(void)
 
 void CheckIfAllBeastsCaught()
 {
-    if (FlagGet(FLAG_RYU_CAUGHT_ALL_UBS) ||
+    if ( FlagGet(FLAG_RYU_CAUGHT_ALL_UBS) ||
         !FlagGet(FLAG_RYU_NIHILEGO_CAUGHT) ||
         !FlagGet(FLAG_RYU_BUZZWOLE_CAUGHT) ||
         !FlagGet(FLAG_RYU_PHEROMOSA_CAUGHT) ||
@@ -56,7 +56,11 @@ void CheckIfAllBeastsCaught()
         !FlagGet(FLAG_RYU_KARTANA_CAUGHT) ||
         !FlagGet(FLAG_RYU_GUZZLORD_CAUGHT) ||
         !FlagGet(FLAG_RYU_STAKATAKA_CAUGHT))
-        return;
+        {
+            if (CheckAchievement(ACH_ULTRA_BEASTLY) == FALSE)
+                GiveAchievement(ACH_ULTRA_BEASTLY);
+            return;
+        }
     FlagSet(FLAG_RYU_CAUGHT_ALL_UBS);
 }
 

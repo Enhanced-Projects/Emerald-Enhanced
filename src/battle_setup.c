@@ -626,6 +626,8 @@ void RyuDebugDoPickupTestRoll(void)
     RyuDoPickupLootRoll(200, 2);
 }
 
+extern void CheckIfAllBeastsCaught();
+
 static void CB2_EndWildBattle(void)
 {
     u32 i;
@@ -640,6 +642,7 @@ static void CB2_EndWildBattle(void)
     {
         if (!(gBattleOutcome == B_OUTCOME_RAN))
         {
+            CheckIfAllBeastsCaught();
             for (i = 0; i < PARTY_SIZE; i++)
             {   
                 u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
