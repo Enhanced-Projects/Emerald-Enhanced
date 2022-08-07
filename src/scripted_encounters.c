@@ -185,12 +185,10 @@ static const u8 sMovement_ExclamationMark[] =
 };
 
 void Task_HatEncounter_Mimikyu(u8 taskId) {
-    u16 speciesId;
     switch (gTasks[taskId].data[0]) {
         case 0:
             ScriptContext2_Enable();
-	        speciesId = SPECIES_MIMIKYU;
-            PlayCry5(speciesId, 0);
+            PlayCry5(SPECIES_MIMIKYU, 0);
             gTasks[taskId].data[0]++;
             break;
         case 1:
@@ -209,7 +207,7 @@ void Task_HatEncounter_Mimikyu(u8 taskId) {
             break;
         case 4:
             ShowFieldMessage((u8[])_("You stumbled across\na wild Mimikyu!$"));
-            CreateScriptedWildMon(speciesId, ENCOUNTER_SCALE, gBaseStats[speciesId].item1);
+            CreateScriptedWildMon(SPECIES_MIMIKYU, ENCOUNTER_SCALE, gBaseStats[SPECIES_MIMIKYU].item1);
             LegendaryDoBossRoll();
             BattleSetup_StartScriptedWildBattle();
             ScriptContext1_Stop();
@@ -223,13 +221,11 @@ void Task_HatEncounter_Mimikyu(u8 taskId) {
 }
 
 void Task_HatEncounter_Keldeo(u8 taskId) {
-    u16 speciesId;
     switch (gTasks[taskId].data[0]) {
         case ENC_MESSAGE:
             ScriptContext2_Enable();
-            ShowFieldMessageOneLine((u8[])_("You hear trotting from the sky..."));
-	        speciesId = SPECIES_KELDEO;
-            PlayCry5(speciesId, 0);
+            ShowFieldMessage((u8[])_("You hear trotting from the sky..."));
+            PlayCry5(SPECIES_KELDEO, 0);
             gTasks[taskId].data[0]++;
             break;
         case ENC_CRY:
@@ -237,18 +233,15 @@ void Task_HatEncounter_Keldeo(u8 taskId) {
                 gTasks[taskId].data[0]++;
             break;
         case ENC_BATTLE_START:
-            CreateScriptedWildMon(speciesId, ENCOUNTER_SCALE, gBaseStats[speciesId].item1);
+            CreateScriptedWildMon(SPECIES_KELDEO, ENCOUNTER_SCALE, gBaseStats[SPECIES_KELDEO].item1);
             LegendaryDoBossRoll();
             BattleSetup_StartLegendaryBattle();
             ScriptContext1_Stop();
             gTasks[taskId].data[0]++;
             break;
         case ENC_BATTLE:
-            if (ScriptContext1_IsEnabled())
-                gTasks[taskId].data[0]++;
-            break;
-        case ENC_BATTLE_END:
             gMain.callback1 = HatEncounterEndKeldeoCallback;
+            gTasks[taskId].data[0]++;
             DestroyTask(taskId);
             return;
     }
