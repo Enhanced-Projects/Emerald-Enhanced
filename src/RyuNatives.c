@@ -2902,3 +2902,9 @@ void RyuBuildDailyQuestInfoString(void)
     }
     StringCopy(gRyuStringVar2, temp);
 }
+
+void RyuDisableTrainerRepelAp (void)
+{
+    ClearAPFlag(AP_TRAINER_REPEL);
+    QueueNotification((const u8[])_("Trainer Repel was disabled."), NOTIFY_GENERAL, 120);
+}

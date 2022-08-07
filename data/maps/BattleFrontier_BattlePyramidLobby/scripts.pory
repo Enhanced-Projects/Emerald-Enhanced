@@ -162,6 +162,7 @@ BattleFrontier_BattlePyramidLobby_EventScript_EnterChallenge:: @ 8250A21
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	msgbox BattleFrontier_BattlePyramidLobby_Text_ShowYouIntoPyramid, MSGBOX_DEFAULT
 	closemessage
+	callnative RyuDisableTrainerRepelAp
 	call BattleFrontier_BattlePyramidLobby_EventScript_WalkToPanelAndReceiveBag
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, 0
 	setvar VAR_RESULT, 0
