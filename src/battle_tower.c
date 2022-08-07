@@ -1072,7 +1072,13 @@ u16 GetBattleFacilityTrainerGfxId(u16 trainerId)
     u16 trainerObjectGfxId;
 
     SetFacilityPtrsGetLevel();
-    if (trainerId < FRONTIER_TRAINERS_COUNT)
+    if (trainerId == TRAINER_EREADER)
+    {
+        return OBJ_EVENT_GFX_BOY_1;
+        //facilityClass = gSaveBlock2Ptr->frontier.ereaderTrainer.facilityClass;
+        //I think this will cause similar problem in future, don't remove this commented line
+    }
+    else if (trainerId < FRONTIER_TRAINERS_COUNT)
     {
         facilityClass = gFacilityTrainers[trainerId].facilityClass;
     }
@@ -1081,6 +1087,11 @@ u16 GetBattleFacilityTrainerGfxId(u16 trainerId)
         facilityClass = gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].facilityClass;
     }
     else
+    {
+        return OBJ_EVENT_GFX_BOY_1;
+        //facilityClass = gApprentices[gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].id].facilityClass;
+        //I think this will cause similar problem in future, don't remove this commented line
+    }
 
     // Search male classes.
     for (i = 0; i < ARRAY_COUNT(gTowerMaleFacilityClasses); i++)

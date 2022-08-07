@@ -1514,7 +1514,7 @@ static u16 GetUniqueTrainerId(u8 objectEventId)
             }
         } while (i != objectEventId);
     }
-
+    vbaprintf("current id %d", trainerId);
     return trainerId;
 }
 
@@ -1881,6 +1881,7 @@ static bool8 TrySetPyramidObjectEventPositionAtCoords(u8 objType, u8 x, u8 y, u8
             {
                 i = GetUniqueTrainerId(objectEventId);
                 floorEvents[objectEventId].graphicsId = GetBattleFacilityTrainerGfxId(i);
+                vbaprintf("double check %d %d\n", floorEvents[objectEventId].graphicsId, GetBattleFacilityTrainerGfxId(i));
                 gSaveBlock2Ptr->frontier.trainerIds[objectEventId] = i;
             }
             return FALSE;
