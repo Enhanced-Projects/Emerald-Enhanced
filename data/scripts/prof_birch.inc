@@ -8,14 +8,6 @@ ProfBirch_EventScript_UpdateLocation:: @ 82720AD
 	call_if_eq ProfBirch_EventScript_MoveToRoute101
 	compare VAR_BIRCH_STATE, 3
 	call_if_eq ProfBirch_EventScript_MoveToRoute101
-	compare VAR_BIRCH_STATE, 4
-	call_if_eq ProfBirch_EventScript_MoveToRoute103
-	compare VAR_BIRCH_STATE, 5
-	call_if_eq ProfBirch_EventScript_MoveToRoute103
-	compare VAR_BIRCH_STATE, 6
-	call_if_eq ProfBirch_EventScript_MoveToLab
-	compare VAR_BIRCH_STATE, 7
-	call_if_eq ProfBirch_EventScript_MoveToLab
 	return
 
 ProfBirch_EventScript_MoveToLab:: @ 827211A

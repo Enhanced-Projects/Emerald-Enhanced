@@ -350,24 +350,14 @@ bool32 RyuCheckHasFighterDogs(void)
 
     for (k = 0; k < CalculatePlayerPartyCount(); k++)
     {
-        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_TERRAKION)
+        if ((GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_TERRAKION) && (!(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_VIRIZION)) && (!(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_COBALION)))
             count++;
-        else
-            return FALSE;
-    }
-    for (k = 0; k < CalculatePlayerPartyCount(); k++)
-    {
-        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_VIRIZION)
+        else if ((GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_VIRIZION) && (!(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_TERRAKION)) && (!(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_COBALION)))
             count++;
-        else
-            return FALSE;
-    }
-    for (k = 0; k < CalculatePlayerPartyCount(); k++)
-    {
-        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_COBALION)
+        else if ((GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_COBALION) && (!(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_VIRIZION)) && (!(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_TERRAKION)))
             count++;
-        else
-            return FALSE;
+        if (count >= 3)
+            break;
     }
     if (count >= 3)
         return TRUE;
