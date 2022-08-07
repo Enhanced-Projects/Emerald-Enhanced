@@ -2908,3 +2908,9 @@ void RyuDisableTrainerRepelAp (void)
     ClearAPFlag(AP_TRAINER_REPEL);
     QueueNotification((const u8[])_("Trainer Repel was disabled."), NOTIFY_GENERAL, 120);
 }
+
+void HatUtility1(void)
+{
+    CreateTask(Task_HatEncounter_Mimikyu, 1);
+    //SET_DYNAMIC_LEG_ENCOUNTER(SPECIES_KELDEO, (u8[])_("keldeo"));
+}
