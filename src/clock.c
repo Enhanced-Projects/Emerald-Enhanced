@@ -164,6 +164,7 @@ static void UpdatePerDay(struct Time *localTime)
         if ((VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) > 0) && (VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) <= 10))//only reset delivery data if in quota range.
             VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, 0);
         QueueNotification(gRyuText_DailyQuestsReset, NOTIFY_GENERAL, 60);
+        VarSet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES, 0); //reset daily purchase quota
     }
 }
 

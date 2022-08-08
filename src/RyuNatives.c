@@ -2914,3 +2914,48 @@ void HatUtility1(void)
     CreateTask(Task_HatEncounter_Mimikyu, 1);
     //SET_DYNAMIC_LEG_ENCOUNTER(SPECIES_KELDEO, (u8[])_("keldeo"));
 }
+
+void Ryu_SVM_CheckQuantityCost(void)
+{
+    u32 baseCost = gSpecialVar_0x8002;
+    u32 quantity = gSpecialVar_0x8003;
+    baseCost *= quantity;
+    if (baseCost > (GetMoney(&gSaveBlock1Ptr->money)))
+        gSpecialVar_Result = FALSE;
+    else
+        gSpecialVar_Result = TRUE;
+    gSpecialVar_32bit = baseCost;
+    ConvertUIntToDecimalStringN(gStringVar3, baseCost, STR_CONV_MODE_LEFT_ALIGN, 10);
+}
+
+void Ryu_SVM_TakeMoney(void)
+{
+    u8 currentDailyPurchases = (VarGet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES));
+    currentDailyPurchases += gSpecialVar_0x8003;
+    RemoveMoney(&gSaveBlock1Ptr->money, gSpecialVar_32bit);
+    VarSet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES, currentDailyPurchases);
+}
+
+void RyuResetMoney(void)
+{
+    SetMoney(&gSaveBlock1Ptr->money, 0);
+}
+
+void Ryu_SVM_CheckDailyQuota(void)
+{
+    u16 currentPurchased = (VarGet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES));
+    u16 max = 50;
+    u16 newvalue = 0;
+    newvalue = (max - currentPurchased);
+    ConvertIntToDecimalStringN(gRyuStringVar1, newvalue, STR_CONV_MODE_LEFT_ALIGN, 2);
+}
+
+void Ryu_SVM_CheckQuantityExceedsQuota(void)
+{
+    u16 currentPurchased = (VarGet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES));
+    u16 max = 50;
+    u16 newvalue = 0;
+    newvalue = (max - currentPurchased);
+    if (newvalue < gSpecialVar_0x8003)
+        gSpecialVar_0x8004 = 666;
+}

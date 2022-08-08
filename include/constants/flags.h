@@ -1366,13 +1366,13 @@
 #define FLAG_RYU_DISABLED_ANIMS                                   0x509
 #define FLAG_RYU_FACING_ATTENDANT                                 0x50A
 #define FLAG_RYU_VERBOSE_MODE                                     0x50B
-#define FLAG_RYU_NOTIFIED_RDM_MUSIC                               0x50C
-#define FLAG_RYU_NOTIFIED_JUKEBOX                                 0x50D
+#define FLAG_UNUSED_0x50C                                         0x50C
+#define FLAG_UNUSED_0x50D                                         0x50D
 
 
 #define NEW_FLAGS_END                                             0x5FF
 // Trainer Flags
-// Trainer flags occupy 0x500 - 0x85F, the last 9 of which are unused
+// Trainer flags occupy 0x5FF - 0x95F, the last 9 of which are unused
 // See constants/opponents.h. The values there + FLAG_TRAINER_FLAG_START are the flag IDs
 
 #define TRAINER_FLAGS_START                                         (NEW_FLAGS_END)
