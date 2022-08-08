@@ -422,18 +422,13 @@ static void RemoveExtraStartMenuWindows(void)
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
     RemoveInfoBoxWindow();
-    if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_RDM_MUSIC) == FALSE))
-    {
-        FlagSet(FLAG_RYU_NOTIFIED_RDM_MUSIC);
-        DebugPrint((const u8[]) _("Random Music now enabled."), 0);
-    }
 }
 
 EWRAM_DATA static u8 sPrintNumberWindowId = 1;
 EWRAM_DATA static u8 sPrintNumberWindow2Id = 2;
 const u8 gText_RyuLifeSkills[] = _("Skills    ");
 const u8 gText_RyuMiningSkillPrefix[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE} M:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
-const u8 gText_RyuBotanySkillPrefix[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}  B:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+const u8 gText_RyuBotanySkillPrefix[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN} B:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
 const u8 gText_RyuAlchemySkillPrefix[] = _("{COLOR LIGHT_RED}{SHADOW RED} A:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
 const u8 gText_SomeSpaces[] = _("  ");
 
@@ -443,7 +438,7 @@ void AddInfoBoxWindow(void)
     int Time = (RyuGetTimeOfDay());
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 1, 1, 13, 7, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 15, 7, 15, 8);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
@@ -459,8 +454,19 @@ void PrintNumberToScreen(s32 num)
     //song readout
     StringCopy(gStringVar1, gText_HighlightTransparent);
     StringAppend(gStringVar1, gText_ryuJukeboxLabel);
-    ConvertIntToDecimalStringN(gStringVar2, num, 0, 3);
-    StringAppend(gStringVar1, gStringVar2);
+    if (gSaveBlock2Ptr->disableBGM == TRUE)
+    {
+        StringAppend(gStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW RED}BGM Off"));
+    }
+    else
+    {
+        ConvertIntToDecimalStringN(gStringVar2, num, 0, 3);
+        StringAppend(gStringVar1, gStringVar2);
+    }
+    if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (gSaveBlock2Ptr->disableBGM == FALSE))
+        StringAppend(gStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW BLUE}(R)"));
+    if ((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == TRUE) && (gSaveBlock2Ptr->disableBGM == FALSE))
+        StringAppend(gStringVar1, (const u8[])_("{COLOR LIGHT_GREEN}{SHADOW BLUE}(J)"));
 
     //playtime readout
     StringCopy(gRyuStringVar1, sText_PlayTime);
@@ -516,9 +522,9 @@ void PrintNumberToScreen(s32 num)
 
     //print all text
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 62, 0, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 12, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 0, 38, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 78, 0, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 8, 12, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 8, 38, 0xFF, NULL);
 
     //print skill levels
     StringCopy(gStringVar1, gText_RyuLifeSkills);
@@ -531,7 +537,7 @@ void PrintNumberToScreen(s32 num)
     StringAppend(gStringVar1, gText_RyuAlchemySkillPrefix);
     ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL)), STR_CONV_MODE_LEFT_ALIGN, 1);
     StringAppend(gStringVar1, gStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 24, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 8, 24, 0xFF, NULL);
 }
 
 void RemoveInfoBoxWindow(void)
@@ -1332,11 +1338,6 @@ static bool8 HandleStartMenuInput(void)
             DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
             MenuSpriteId1 = 0;
         }
-        if ((FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_JUKEBOX) == FALSE))
-        {
-            DebugPrint((const u8[]) _("Jukebox enabled."), 0);
-            FlagSet(FLAG_RYU_NOTIFIED_JUKEBOX);
-        }
         return TRUE;
     }
 
@@ -1348,7 +1349,6 @@ static bool8 HandleStartMenuInput(void)
             {
                 case 0:
                     FlagSet(FLAG_RYU_JUKEBOX_ENABLED);
-                    FlagClear(FLAG_RYU_NOTIFIED_JUKEBOX);
                     PlaySE(SE_PC_ON);
                     
                     if (VarGet(VAR_RYU_SAVED_BGM) > 350 && (VarGet(VAR_RYU_SAVED_BGM) < 558))
@@ -1363,7 +1363,6 @@ static bool8 HandleStartMenuInput(void)
                     break;
                 case 1:
                     FlagClear(FLAG_RYU_JUKEBOX_ENABLED);
-                    FlagSet(FLAG_RYU_NOTIFIED_JUKEBOX);
                     VarSet(VAR_RYU_SAVED_BGM, VarGet(VAR_RYU_JUKEBOX));
                     ResetMapMusic();
                     Overworld_ChangeMusicToDefault();

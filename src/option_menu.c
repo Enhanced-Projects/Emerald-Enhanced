@@ -1104,19 +1104,12 @@ static void Task_OptionMenuSave(u8 taskId)
     
     gSaveBlock2Ptr->forceSetBattleType = sOptions->sel[MENUITEM_FORCESETBATTLE];
     if ((gSaveBlock2Ptr->optionsBattleSceneOff) == TRUE)
-    {
         FlagSet(FLAG_RYU_DISABLED_ANIMS);
-    }
+
     if (sOptions->sel[MENUITEM_RDM_MUSIC])
-    {
         FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
-        FlagClear(FLAG_RYU_NOTIFIED_RDM_MUSIC);
-    }
     else
-    {
         FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
-        FlagSet(FLAG_RYU_NOTIFIED_RDM_MUSIC);
-    }
 
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
     //FULL_COLOR
@@ -1145,6 +1138,8 @@ static void Task_OptionMenuSave(u8 taskId)
     {
         gSaveBlock2Ptr->disableBGM = 1;
         StopMapMusic();
+        FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
+        VarSet(VAR_RYU_JUKEBOX, 0);
     }
     else
     {
