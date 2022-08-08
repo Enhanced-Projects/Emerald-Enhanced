@@ -512,7 +512,6 @@ LRT_Mom_base::
 	compare VAR_RESULT, YES
 	goto_if_eq LRT_Mom_Heal
 	msgbox MomGoGetThem
-
 LRT_MOM_Restricted::
 	msgbox Mom_IBelieveInYou
 	release

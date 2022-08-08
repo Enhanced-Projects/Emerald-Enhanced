@@ -1255,12 +1255,12 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	//	specialvar(VAR_RESULT, RyuGetCurrentMapsec)
-	// buffernumberstring(0, VAR_RESULT)
-	// msgbox("{STR_VAR_1}")
-	callnative(HatUtility1)
 	release
 	end
+}
+
+text utilityText {
+	"{STR_VAR_1}"
 }
 
 
