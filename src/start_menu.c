@@ -543,13 +543,8 @@ void RemoveInfoBoxWindow(void)
         ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
         RemoveWindow(sPrintNumberWindow2Id);
     }
-/*
-    if (FlagGet(FLAG_SELECTED_FF_TEXT_OPTION) == 0)
-        ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
-    else
-        ScriptContext1_SetupScript(ryu_end);//For some reason, this fixes the start menu info window border from sticking around, i call it a win.
-*/
-}                                           //EDIT: Now the border gets cut off for no reason. lmao. 
+
+}
 
 void PrintSongNumber(u16 song)
 {
@@ -562,13 +557,6 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 
     do
     {
-        /*
-        if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuPlayerNameCallback)
-        {
-            PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, (index << 4) + 9);
-        }
-        else
-        */
         {
             StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
             AddTextPrinterParameterized(GetStartMenuWindowId(), 1, gStringVar4, 8, (index << 4) + 9, 0xFF, NULL);
@@ -1238,7 +1226,7 @@ static bool8 HandleStartMenuInput(void)
     {
         song = 350;
     }
-    if ((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1) && gMain.newKeys & R_BUTTON)
+    if (((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1) && gMain.newKeys & R_BUTTON) && (!(gSaveBlock2Ptr->disableBGM == 1)))
     {
         PlaySE(SE_PIN);
         while (gSongTable[song].me != 0 && song != 0) song++;

@@ -35,6 +35,7 @@ enum
     MENUITEM_FRAMETYPE,
     MENUITEM_THEME_BALL,
     MENUITEM_RDM_MUSIC,
+    MENUITEM_DISABLEMUSIC,
     MENUITEM_BAR_SPEED,
     MENUITEM_TRANSITION,
     MENUITEM_VANILLACAP,
@@ -82,6 +83,7 @@ static int ThemeBall_ProcessInput(int selection);
 static void HpBar_DrawChoices(int selection, int y, u8 textSpeed);
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed);
 static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed);
+static void DisableBgm_DrawChoices(int selection, int y, u8 textSpeed);
 static void FrameType_DrawChoices(int selection, int y, u8 textSpeed);
 static void ForceBattleSet_DrawChoices(int selection, int y, u8 textSpeed);
 static int FrameType_ProcessInput(int selection);
@@ -113,6 +115,7 @@ static const sItemFunctions[MENUITEM_COUNT] =
     [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
     [MENUITEM_THEME_BALL] = {ThemeBallSelection_DrawChoices, ThemeBall_ProcessInput},
     [MENUITEM_RDM_MUSIC] = {RandomMusic_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_DISABLEMUSIC] = {DisableBgm_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_BAR_SPEED] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
     [MENUITEM_TRANSITION] = {Transition_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_VANILLACAP] = {VanillaCap_DrawChoices, TwoOptions_ProcessInput},
@@ -137,6 +140,9 @@ static const u8 sText_Set[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Set");
 static const u8 sText_VanillaLevelCap[] = _("Lv cap 100");
 static const u8 sText_ToggleAutoRun[] = _("Auto Run");
 static const u8 sText_TrainerSlideOption[] = _("Slide in msg");
+static const u8 sTextDisableMusic[] = _("Disable Music");
+static const u8 OptionText_Yes[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Yes");
+static const u8 OptionText_No[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}No");
 
 //FULL_COLOR
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
@@ -151,6 +157,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_THEME_BALL]  = gText_ThemeBallSelector,
     [MENUITEM_RDM_MUSIC]   = gText_RandomRouteMusic,
     [MENUITEM_BAR_SPEED]   = sTextBarSpeed,
+    [MENUITEM_DISABLEMUSIC]= sTextDisableMusic,
     [MENUITEM_TRANSITION]  = sText_Transition,
     [MENUITEM_VANILLACAP]  = sText_VanillaLevelCap,
     [MENUITEM_AUTORUN]  = sText_ToggleAutoRun,
@@ -366,6 +373,7 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
         sOptions->sel[MENUITEM_BAR_SPEED] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
+        sOptions->sel[MENUITEM_DISABLEMUSIC] = gSaveBlock2Ptr->disableBGM;
         sOptions->sel[MENUITEM_TRANSITION] = FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION);
         sOptions->sel[MENUITEM_VANILLACAP] = FlagGet(FLAG_RYU_VANILLA_CAP);
         sOptions->sel[MENUITEM_TRAINERSLIDE] = gSaveBlock2Ptr->trainerSlideEnabled;
@@ -1081,6 +1089,8 @@ static void Task_OptionColorPicker(u8 taskId)
 }
 
 extern bool32 RyuCheckFor100Lv(void);
+extern void StopMapMusic(void);
+extern void LoadMapMusic(void);
 
 static void Task_OptionMenuSave(u8 taskId)
 {
@@ -1130,6 +1140,17 @@ static void Task_OptionMenuSave(u8 taskId)
     }
     else
         FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
+
+    if (sOptions->sel[MENUITEM_DISABLEMUSIC])
+    {
+        gSaveBlock2Ptr->disableBGM = 1;
+        StopMapMusic();
+    }
+    else
+    {
+        gSaveBlock2Ptr->disableBGM = 0;
+        LoadMapMusic();
+    }
 
     if (sOptions->sel[MENUITEM_AUTORUN])
         FlagSet(FLAG_RYU_AUTORUN);
@@ -1562,6 +1583,15 @@ static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed)
     styles[selection] = 1;
     DrawOptionMenuChoice(gText_SoundMono, 104, y, styles[0], textSpeed);
     DrawOptionMenuChoice(gText_SoundStereo, GetStringRightAlignXOffset(1, gText_SoundStereo, 198), y, styles[1], textSpeed);
+}
+
+static void DisableBgm_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[2] = {0, 0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(OptionText_No, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(OptionText_Yes, GetStringRightAlignXOffset(1, gText_No, 198), y, styles[1], textSpeed);
 }
 
 static void FrameType_DrawChoices(int selection, int y, u8 textSpeed)

@@ -418,7 +418,7 @@ struct SaveBlock2
              u16 expShare:1;
              u16 forceSetBattleType:1; // should battles always be Set.
              u16 trainerSlideEnabled:1;
-             u16 unusedOption:1;
+             u16 disableBGM:1;
     /*0x18*/ struct Pokedex pokedex;
     /*0x98*/ struct Time localTimeOffset;
     /*0xA0*/ struct Time lastBerryTreeUpdate;

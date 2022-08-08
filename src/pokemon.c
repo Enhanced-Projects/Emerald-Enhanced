@@ -6347,6 +6347,8 @@ const u16 sBattleThemes[] = {
 
 u16 GetBattleBGM(void)
 {
+    if (gSaveBlock2Ptr->disableBGM == TRUE)
+        return MUS_DUMMY;
     if (FlagGet(FLAG_RYU_ENCOUNTERED_UB) == TRUE)
         return MUS_VS_MEW;
     if (gBattleTypeFlags & BATTLE_TYPE_KYOGRE_GROUDON)

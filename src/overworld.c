@@ -1200,6 +1200,10 @@ void LoadMapMusic(void)
         step = 5;
         newMusic = GetCurrLocationDefaultMusic();
     }
+    if (gSaveBlock2Ptr->disableBGM == TRUE)
+    {
+        step = 6;
+    }
     if (newMusic != currentMusic)
     {
         switch (step)
@@ -1219,6 +1223,11 @@ void LoadMapMusic(void)
             case 4:
             {
                 FadeOutAndPlayNewMapMusic((VarGet(VAR_RYU_JUKEBOX)), 4);
+                break;
+            }
+            case 6:
+            {
+                StopMapMusic();
                 break;
             }
             default:
