@@ -423,7 +423,7 @@ static void ScrollMenu(int direction)
 static void ScrollAll(int direction) // to bottom or top
 {
     int i, y, menuItem, pos;
-    int scrollCount = MENUITEM_COUNT - 7;
+    int scrollCount = min(7, MENUITEM_COUNT - 7);
     // Move items up/down
     ScrollWindow(WIN_OPTIONS, direction, Y_DIFF * scrollCount, PIXEL_FILL(0));
 
