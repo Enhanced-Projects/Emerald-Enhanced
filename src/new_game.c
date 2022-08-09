@@ -94,7 +94,7 @@ static void InitPlayerTrainerId(void)
 static void SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
-    gSaveBlock2Ptr->optionsWindowFrameType = 12;
+    gSaveBlock2Ptr->optionsWindowFrameType = 0;
     gSaveBlock2Ptr->optionsThemeNumber = OPTIONS_THEME_DARK;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
@@ -316,6 +316,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_PETALBURG_MAY);
     FlagClear(FLAG_RYU_SAVED_ATTENDANT);
     FlagClear(FLAG_RYU_HIDE_HOME_ATTENDANT);
+    FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);

@@ -448,6 +448,9 @@ struct SaveBlock2
              struct DeliveryTime DeliveryTimer;
              u8 gNPCTrainerFactionRelations[NUM_NPC_FACTIONS];
              u8 UIBallSelection;
+             u8 RtcTimeSecondRAW;
+             u32 RtcTimeSecond;
+             u32 SaveStateLastDetection;
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

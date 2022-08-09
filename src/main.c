@@ -82,6 +82,8 @@ static void ReadKeys(void);
 void InitIntrHandlers(void);
 static void WaitForVBlank(void);
 void EnableVCountIntrAtLine150(void);
+bool8 IsRtcSynched(u32 rtcSec, u32 rtcSecRaw);
+void RtcCheckCallback(void);
 
 #define B_START_SELECT (B_BUTTON | START_BUTTON | SELECT_BUTTON)
 
@@ -89,6 +91,7 @@ extern u32 GetBoxMonData();
 
 void AgbMain()
 {
+    u32 i;
     // Modern compilers are liberal with the stack on entry to this function,
     // so RegisterRamReset may crash if it resets IWRAM.
 #if !MODERN
@@ -119,10 +122,14 @@ void AgbMain()
 
     gLinkTransferringData = FALSE;
     gUnknown_03000000 = 0xFC0;
+    gSaveBlock2Ptr->RtcTimeSecond = RtcGetSecondCount();
+    gSaveBlock2Ptr->RtcTimeSecondRAW = RtcGetSecondCountRAW();
 
-    for (;;)
+    for (i = 0; ; ++i)
     {
         ReadKeys();
+        if (!(i % 5))
+            RtcCheckCallback();
 
         if (gSoftResetDisabled == FALSE
          && (gMain.heldKeysRaw & A_BUTTON)
@@ -444,4 +451,48 @@ void DoSoftReset(void)
 void ClearPokemonCrySongs(void)
 {
     CpuFill16(0, gPokemonCrySongs, MAX_POKEMON_CRIES * sizeof(struct PokemonCrySong));
+}
+
+u8 RtcFrequenciesOffsets[90] =
+{
+    [9] = 16,
+    [25] = 32,
+    [41] = 48,
+    [57] = 64,
+    [73] = 80,
+    [89] = 0
+};
+
+bool8 IsRtcSynched(u32 rtcSec, u32 rtcSecRaw)
+{
+    if (gSaveBlock2Ptr->RtcTimeSecond + 10 >= rtcSec)
+        return TRUE;
+    
+    if ((gSaveBlock2Ptr->RtcTimeSecondRAW == 89 || RtcFrequenciesOffsets[gSaveBlock2Ptr->RtcTimeSecondRAW]) && RtcFrequenciesOffsets[gSaveBlock2Ptr->RtcTimeSecondRAW] == rtcSecRaw)
+        return TRUE;
+
+    return FALSE;
+}
+
+void RtcCheckCallback(void)
+{
+    u32 rtcSec;
+    u32 rtcSecRaw;
+    if ((RtcGetErrorStatus() & RTC_ERR_FLAG_MASK)) {
+        FlagSet(FLAG_RYU_SAVE_STATE_DETECTED);
+        return;
+    }
+    rtcSec = RtcGetSecondCount();
+    rtcSecRaw = RtcGetSecondCountRAW();
+    if (!IsRtcSynched(rtcSec, rtcSecRaw))
+    {
+        FlagSet(FLAG_RYU_SAVE_STATE_DETECTED);
+        gSaveBlock2Ptr->SaveStateLastDetection = rtcSec;
+    }
+
+    if (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) // remove punishment after 1 hour
+        FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
+
+    gSaveBlock2Ptr->RtcTimeSecondRAW = rtcSecRaw;
+    gSaveBlock2Ptr->RtcTimeSecond = rtcSec;
 }
