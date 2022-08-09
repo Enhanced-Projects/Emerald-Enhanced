@@ -41,7 +41,7 @@ endif
 endif
 
 
-TITLE       := $(version) EM-ENH     
+TITLE       := $(CURRENT_VERSION) EM-ENH     
 GAME_CODE   := BPEE
 MAKER_CODE  := 01
 REVISION    := 0
