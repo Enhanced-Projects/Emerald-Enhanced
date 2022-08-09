@@ -809,7 +809,7 @@
 #define FLAG_UNUSED_0x2F0                                           0x2F0
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN              0x2F1
 #define FLAG_RYU_NOTIFIED_DAILY_CANCEL                              0x2F2
-#define FLAG_UNUSED_0x2F3                                           0x2F3
+#define FLAG_RYU_NOTIFIED_SAVE_STATE                                0x2F3
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA          0x2F4
 #define FLAG_HIDE_LITTLE_ROOT_TOWN_PLAYERS_BEDROOM_MOM              0x2F5
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM                0x2F6

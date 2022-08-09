@@ -307,6 +307,13 @@ void RyuDoNotifyTasks(void)
             ShowPokenavFieldMessage((const u8[]) _("You have failed Ryu's Challenge.\nYou can try again in another\lNew Game Plus.\pWe look forward to you trying\nagain!"));
         }
 
+    if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_SAVE_STATE) == FALSE))
+        {
+            FlagSet(FLAG_RYU_NOTIFIED_SAVE_STATE);
+            ShowFieldMessage((const u8[]) _("A save state has been detected.\nYou will be punished for one hour.\pThis penalty will refresh each time\na state is detected."));
+            CreateTask(RyuMessageTimerTask, 0xFF);
+        }
+
     if ((VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 69) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS) == FALSE))
     {
         ShowPokenavFieldMessage((const u8[]) _("You have completed\nRyu's Challenge.\pPing Ryu in discord to get your\nsave checked and score posted!"));

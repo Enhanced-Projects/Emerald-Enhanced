@@ -612,8 +612,9 @@
 #define STRINGID_DOTSANDTOMB                          608
 #define STRINGID_DOTINFESTATION                       609
 #define STRINGID_DOTCLING                             610
+#define STRINGID_ITDOESNTLIKECHEATERS                 611
 
-#define BATTLESTRINGS_COUNT                611
+#define BATTLESTRINGS_COUNT                612
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

@@ -25,6 +25,7 @@
 #include "trainer_hill.h"
 #include "event_data.h"
 #include "pokemon_storage_system.h"
+#include "overworld_notif.h"
 
 static void VBlankIntr(void);
 static void HBlankIntr(void);
@@ -491,7 +492,10 @@ void RtcCheckCallback(void)
     }
 
     if (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) // remove punishment after 1 hour
+    {
         FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
+        QueueNotification((const u8[])_("Save State penalty Lifted."), NOTIFY_GENERAL, 120);
+    }
 
     gSaveBlock2Ptr->RtcTimeSecondRAW = rtcSecRaw;
     gSaveBlock2Ptr->RtcTimeSecond = rtcSec;

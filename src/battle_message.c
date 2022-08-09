@@ -375,7 +375,7 @@ static const u8 sText_PkmnIgnoresAsleep[] = _("{B_ATK_NAME_WITH_PREFIX} ignored\
 static const u8 sText_PkmnIgnoredOrders[] = _("{B_ATK_NAME_WITH_PREFIX} ignored\norders!");
 static const u8 sText_PkmnBeganToNap[] = _("{B_ATK_NAME_WITH_PREFIX} began to nap!");
 static const u8 sText_PkmnLoafing[] = _("{B_ATK_NAME_WITH_PREFIX} is\nloafing around!");
-static const u8 sText_PkmnWontObey[] = _("{B_ATK_NAME_WITH_PREFIX} won't\nobey!");
+static const u8 sText_PkmnWontObey[] = _("{B_ATK_NAME_WITH_PREFIX} won't obey cheaters!");
 static const u8 sText_PkmnTurnedAway[] = _("{B_ATK_NAME_WITH_PREFIX} turned away!");
 static const u8 sText_PkmnPretendNotNotice[] = _("{B_ATK_NAME_WITH_PREFIX} pretended\nnot to notice!");
 static const u8 sText_EnemyAboutToSwitchPkmn[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_NAME} is\nabout to use {B_BUFF2}.\pWill {B_PLAYER_NAME} change\nPokémon?");
@@ -740,7 +740,8 @@ static const u8 sText_RyuDoTClamp[] = _("{B_ATK_NAME_WITH_PREFIX} is getting cla
 static const u8 sText_RyuDoTWhirlpool[] = _("{B_ATK_NAME_WITH_PREFIX} is getting lost in\nthe vortex!");
 static const u8 sText_RyuDoTSandTomb[] = _("{B_ATK_NAME_WITH_PREFIX} is being buried alive!");
 static const u8 sText_RyuDoTInfestation[] = _("The infestation continues to eat\nat {B_ATK_NAME_WITH_PREFIX}!");
-static const u8 sText_RyuDoTCling[] = _("{B_ATK_NAME_WITH_PREFIX} is still being hugged\ntightly by {B_DEF_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTCling[] = _("{B_ATK_NAME_WITH_PREFIX} is still being hugged\ntightly by {B_DEF_NAME_WITH_PREFIX}!"); 
+static const u8 sText_RyuItDoesntLikeCheaters[] = _("The wild pokémon doesn't\nlike cheaters!"); 
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1342,7 +1343,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_DOTWHIRLPOOL - 12] = sText_RyuDoTWhirlpool,
     [STRINGID_DOTSANDTOMB - 12] = sText_RyuDoTSandTomb,
     [STRINGID_DOTINFESTATION - 12] = sText_RyuDoTInfestation,
-    [STRINGID_DOTCLING - 12] = sText_RyuDoTCling
+    [STRINGID_DOTCLING - 12] = sText_RyuDoTCling,
+    [STRINGID_ITDOESNTLIKECHEATERS - 12] = sText_RyuItDoesntLikeCheaters
 };
 
 const u16 gTerrainStringIds[] =

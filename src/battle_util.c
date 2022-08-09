@@ -6284,7 +6284,15 @@ static bool32 HasObedientBitSet(u8 battlerId)
 
 u8 IsMonDisobedient(void)
 {
-    return 0;   
+    if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER))
+    {
+            gBattleMoveDamage = CalculateMoveDamage(MOVE_NONE, gBattlerAttacker, gBattlerAttacker, TYPE_MYSTERY, 40, FALSE, FALSE, TRUE);
+            gBattlerTarget = gBattlerAttacker;
+            gBattlescriptCurrInstr = BattleScript_IgnoresAndHitsItself;
+            gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
+            return 2;
+    }
+    return 0;
 }
 
 u32 GetBattlerHoldEffect(u8 battlerId, bool32 checkNegating)

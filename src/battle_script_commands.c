@@ -12231,7 +12231,7 @@ static void Cmd_handleballthrow(void)
     {
         BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
         MarkBattlerForControllerExec(gActiveBattler);
-        gBattlescriptCurrInstr = BattleScript_MonTooPowerfulForBall;
+        gBattlescriptCurrInstr = BattleScript_MonDoesntLikeCheaters;
     }
     else
     {
