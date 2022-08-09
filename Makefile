@@ -31,17 +31,18 @@ else
 EXE :=
 endif
 
-VERSION_FILE := include/constants/general.h
-CURRENT_VERSION := $(shell expr $$(awk '/#define EE_GAME_VERSION/' $(VERSION_FILE) | tr -cd "[0-9]"))
-
-ifneq (, $(version))
-ifneq (CURRENT_VERSION, $(version))
-CURRENT_VERSION := $(version)
-endif
-endif
-
-
-TITLE       := $(version) EM-ENH     
+#VERSION_FILE := include/constants/general.h
+#CURRENT_VERSION := $(shell expr $$(awk '/#define EE_GAME_VERSION/' $(VERSION_FILE) | tr -cd "[0-9]"))
+#
+#ifneq (, $(version))
+#ifneq (CURRENT_VERSION, $(version))
+#CURRENT_VERSION := $(version)
+#endif
+#endif
+#
+#
+#TITLE       := $(version) EM-ENH
+TITLE       := POKEMON EMER     
 GAME_CODE   := BPEE
 MAKER_CODE  := 01
 REVISION    := 0
@@ -263,7 +264,7 @@ override CFLAGS += -g
 endif
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
-	@sed -i "s/#define EE_GAME_VERSION .*/#define EE_GAME_VERSION $(CURRENT_VERSION)/" $(VERSION_FILE)
+#	@sed -i "s/#define EE_GAME_VERSION .*/#define EE_GAME_VERSION $(CURRENT_VERSION)/" $(VERSION_FILE)
 	@$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
 	@$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CFLAGS) -o $(C_BUILDDIR)/$*.s
 	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
