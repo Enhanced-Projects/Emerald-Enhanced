@@ -438,7 +438,7 @@ void AddInfoBoxWindow(void)
     int Time = (RyuGetTimeOfDay());
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 1, 1, 15, 7, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 15, 7, 15, 106);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
