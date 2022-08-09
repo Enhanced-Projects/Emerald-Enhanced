@@ -491,7 +491,7 @@ void RtcCheckCallback(void)
         gSaveBlock2Ptr->SaveStateLastDetection = rtcSec;
     }
 
-    if (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) // remove punishment after 1 hour
+    if (FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) && gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) // remove punishment after 1 hour
     {
         FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
         FlagClear(FLAG_RYU_NOTIFIED_SAVE_STATE);
