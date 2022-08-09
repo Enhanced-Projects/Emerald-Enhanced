@@ -205,7 +205,7 @@ static const struct WindowTemplate sUnknown_085105AC[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const struct WindowTemplate sSaveInfoWindowTemplate = {0, 1, 1, 0xE, 0xA, 0xF, 8};
+static const struct WindowTemplate sSaveInfoWindowTemplate = {0, 1, 1, 0xF, 0xA, 0xF, 8};
 
 // Local functions
 static void BuildStartMenuActions(void);
