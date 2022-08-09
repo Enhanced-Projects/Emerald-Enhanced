@@ -494,6 +494,7 @@ void RtcCheckCallback(void)
     if (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) // remove punishment after 1 hour
     {
         FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
+        FlagClear(FLAG_RYU_NOTIFIED_SAVE_STATE);
         QueueNotification((const u8[])_("Save State penalty Lifted."), NOTIFY_GENERAL, 120);
     }
 
