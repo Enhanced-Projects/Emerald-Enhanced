@@ -466,7 +466,7 @@ u8 RtcFrequenciesOffsets[90] =
 
 bool8 IsRtcSynched(u32 rtcSec, u32 rtcSecRaw)
 {
-    if (gSaveBlock2Ptr->RtcTimeSecond + 10 >= rtcSec)
+    if (gSaveBlock2Ptr->RtcTimeSecond + 5 >= rtcSec)
         return TRUE;
     
     if ((gSaveBlock2Ptr->RtcTimeSecondRAW == 89 || RtcFrequenciesOffsets[gSaveBlock2Ptr->RtcTimeSecondRAW]) && RtcFrequenciesOffsets[gSaveBlock2Ptr->RtcTimeSecondRAW] == rtcSecRaw)
