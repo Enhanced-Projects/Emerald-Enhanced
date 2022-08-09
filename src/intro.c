@@ -26,6 +26,7 @@
 #include "rhh_copyright.h"
 #include "constants/rgb.h"
 #include "constants/battle_anim.h"
+#include "rtc.h"
 
 /*
  * Intro animation sequence state machine
@@ -1120,6 +1121,8 @@ void CB2_InitCopyrightScreenAfterBootup(void)
             Sav2_ClearSetDefault();
         SetPokemonCryStereo();
         InitHeap(gHeap, HEAP_SIZE);
+        gSaveBlock2Ptr->RtcTimeSecondRAW = RtcGetSecondCountRAW();
+        gSaveBlock2Ptr->RtcTimeSecond = RtcGetSecondCount();
     }
 }
 
