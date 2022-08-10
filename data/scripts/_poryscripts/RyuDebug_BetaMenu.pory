@@ -67,8 +67,11 @@ script RDBM_ResetRTC {
 }
 
 script RDBM_ViewSaveVersion{
-    buffernumberstring(0, VAR_SAVE_FILE_CREATED_ON_VERSION)
-	msgbox(RDBM_ShowSaveFileOriginalVersion)
+    callnative(RyuBetaMenuDynamicInfoBox)
+    drawinfobox(INFOBOX_DYNAMIC)
+    msgbox(RDBM_ShowSaveFileOriginalVersion)
+    waitbuttonpress
+    removeinfobox
 	release
 	end
 }
@@ -226,7 +229,7 @@ text BetaMenuIntro{
 }
 
 text RDBM_ShowSaveFileOriginalVersion{
-	"The save file was created on\nversion number {STR_VAR_1}.$"
+	"Please include this information\nwith your bug report on discord.$"
 }
 
 text RDBM_DisplayQuestVarsMsg{

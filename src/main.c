@@ -466,7 +466,7 @@ u8 RtcFrequenciesOffsets[90] =
 
 bool8 IsRtcSynched(u32 rtcSec, u32 rtcSecRaw)
 {
-    if (gSaveBlock2Ptr->RtcTimeSecond + 5 >= rtcSec)
+    if (gSaveBlock2Ptr->RtcTimeSecond + 10 >= rtcSec)
         return TRUE;
     
     if ((gSaveBlock2Ptr->RtcTimeSecondRAW == 89 || RtcFrequenciesOffsets[gSaveBlock2Ptr->RtcTimeSecondRAW]) && RtcFrequenciesOffsets[gSaveBlock2Ptr->RtcTimeSecondRAW] == rtcSecRaw)
@@ -488,10 +488,12 @@ void RtcCheckCallback(void)
     if (!IsRtcSynched(rtcSec, rtcSecRaw))
     {
         FlagSet(FLAG_RYU_SAVE_STATE_DETECTED);
+        FlagClear(FLAG_RYU_NOTIFIED_SAVE_STATE);
         gSaveBlock2Ptr->SaveStateLastDetection = rtcSec;
     }
 
-    if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec)) // remove punishment after 1 hour
+    //remove punishment after an hour if the user is in hardcore/challenge mode.
+    if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000))
     {
         FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
         FlagClear(FLAG_RYU_NOTIFIED_SAVE_STATE);

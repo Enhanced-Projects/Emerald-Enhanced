@@ -1887,7 +1887,7 @@ const u8 gText_ItemsKit[] = _("Give Items Kit");
 const u8 gText_DisableDevMode[] = _("Disable Dev Mode");
 const u8 gText_DebugCancel[] = _("Close Menu");
 const u8 gText_ShowBetaMenu[] = _("Show Beta Menu");
-const u8 gText_BetaMenuShowSaveVersion[] = _("Save Version");
+const u8 gText_BetaMenuShowSaveVersion[] = _("Bug Report");
 
 const u8 gText_HpEvMenu252[] = _("252 HP");
 const u8 gText_HpEvMenu126[] = _("126 HP");

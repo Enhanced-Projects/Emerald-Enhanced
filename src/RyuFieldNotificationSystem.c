@@ -310,7 +310,7 @@ void RyuDoNotifyTasks(void)
     if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_SAVE_STATE) == FALSE))
         {
             FlagSet(FLAG_RYU_NOTIFIED_SAVE_STATE);
-            ShowFieldMessage((const u8[]) _("A save state has been detected.\nYou will be punished for one hour.\pThis penalty will refresh each time\na state is detected."));
+            ShowFieldMessage((const u8[]) _("A save state has been detected.\nYou should be aware that these\lcan cause issues.\pContinue at own risk."));
             CreateTask(RyuMessageTimerTask, 0xFF);
         }
 

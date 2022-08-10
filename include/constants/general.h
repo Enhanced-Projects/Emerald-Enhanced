@@ -409,6 +409,7 @@
 #define INFOBOX_PROF_SPECIAL_DELIVERY_MANIFEST 23
 #define INFOBOX_DYNAMIC 24
 
+
 //Times
 #define RTC_TIME_DAY 0
 #define RTC_TIME_EVENING 1
@@ -514,7 +515,7 @@
 //uncomment for winter mode.
 //#define EE_WINTER_MODE
 
-#define EE_GAME_VERSION 9017
+#define EE_GAME_VERSION 9018
 
 
 #endif
