@@ -443,7 +443,8 @@ struct SaveBlock2
              u32 challengeTimeBlockSeconds:6;
              u32 challengeTimeBlockStartHours:6;
              u32 challengeTimeBlockStartMinutes:6;
-             u32 unusedChallengeTimeBlockBits:2;
+             u32 unusedChallengeTimeBlockBits:1;
+             u32 notifiedSaveState:1;
              struct DeliveryManifest Deliveries[NUM_MAX_QUEUED_DELIVERIES];
              struct DeliveryTime DeliveryTimer;
              u8 gNPCTrainerFactionRelations[NUM_NPC_FACTIONS];

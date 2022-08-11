@@ -45,23 +45,22 @@ void LegendaryDoBossRoll(void)
     }
 }
 
-void CheckIfAllBeastsCaught()
+void CheckIfAllBeastsCaught(void)
 {
-    if ( FlagGet(FLAG_RYU_CAUGHT_ALL_UBS) ||
-        !FlagGet(FLAG_RYU_NIHILEGO_CAUGHT) ||
-        !FlagGet(FLAG_RYU_BUZZWOLE_CAUGHT) ||
-        !FlagGet(FLAG_RYU_PHEROMOSA_CAUGHT) ||
-        !FlagGet(FLAG_RYU_XURKITREE_CAUGHT) ||
-        !FlagGet(FLAG_RYU_CELESTEELA_CAUGHT) ||
-        !FlagGet(FLAG_RYU_KARTANA_CAUGHT) ||
-        !FlagGet(FLAG_RYU_GUZZLORD_CAUGHT) ||
-        !FlagGet(FLAG_RYU_STAKATAKA_CAUGHT))
+    if    ((FlagGet(FLAG_RYU_NIHILEGO_CAUGHT) == TRUE) &&
+           (FlagGet(FLAG_RYU_BUZZWOLE_CAUGHT) == TRUE) &&
+          (FlagGet(FLAG_RYU_PHEROMOSA_CAUGHT) == TRUE) &&
+          (FlagGet(FLAG_RYU_XURKITREE_CAUGHT) == TRUE) &&
+         (FlagGet(FLAG_RYU_CELESTEELA_CAUGHT) == TRUE) &&
+            (FlagGet(FLAG_RYU_KARTANA_CAUGHT) == TRUE) &&
+           (FlagGet(FLAG_RYU_GUZZLORD_CAUGHT) == TRUE) &&
+          (FlagGet(FLAG_RYU_STAKATAKA_CAUGHT) == TRUE))
         {
             if (CheckAchievement(ACH_ULTRA_BEASTLY) == FALSE)
                 GiveAchievement(ACH_ULTRA_BEASTLY);
+            FlagSet(FLAG_RYU_CAUGHT_ALL_UBS);
             return;
         }
-    FlagSet(FLAG_RYU_CAUGHT_ALL_UBS);
 }
 
 extern int CountBadges();

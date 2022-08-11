@@ -496,7 +496,7 @@ void RtcCheckCallback(void)
     if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000))
     {
         FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
-        FlagClear(FLAG_RYU_NOTIFIED_SAVE_STATE);
+        gSaveBlock2Ptr->notifiedSaveState = TRUE;
         QueueNotification((const u8[])_("Save State penalty Lifted."), NOTIFY_GENERAL, 120);
     }
 

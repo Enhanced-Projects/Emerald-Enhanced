@@ -228,6 +228,7 @@ void NewGameInitData(void)
     ResetContestLinkResults();
     ClearMysteryEventFlags();
     RyuClearDeliveryQueue();
+    gSaveBlock2Ptr->notifiedSaveState = FALSE;
 
     //flags
     FlagSet(FLAG_RYU_LT_RIVAL2);
@@ -317,7 +318,6 @@ void NewGameInitData(void)
     FlagClear(FLAG_RYU_SAVED_ATTENDANT);
     FlagClear(FLAG_RYU_HIDE_HOME_ATTENDANT);
     FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
-    FlagSet(FLAG_RYU_NOTIFIED_SAVE_STATE);
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);
