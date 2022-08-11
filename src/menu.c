@@ -1693,7 +1693,10 @@ void PrintMenuGridTable(u8 windowId, u8 optionWidth, u8 columns, u8 rows, const 
     for (i = 0; i < rows; i++)
     {
         for (j = 0; j < columns; j++)
-            AddTextPrinterParameterized(windowId, 1, strs[(i * columns) + j].text, (optionWidth * j) + 8, (i * 16) + 1, 0xFF, NULL);
+        {
+            StringExpandPlaceholders(gStringVar4, strs[(i * columns) + j].text);
+            AddTextPrinterParameterized(windowId, 1, gStringVar4, (optionWidth * j) + 8, (i * 16) + 1, 0xFF, NULL);
+        }
     }
     CopyWindowToVram(windowId, 2);
 }
