@@ -32,6 +32,7 @@ enum
     //FULL_COLOR
     MENUITEM_THEME_UI,
     MENUITEM_THEME,
+    MENUITEM_THEMEPRESETS,
     MENUITEM_FRAMETYPE,
     MENUITEM_THEME_BALL,
     MENUITEM_RDM_MUSIC,
@@ -73,6 +74,7 @@ static void VanillaCap_DrawChoices(int selection, int y, u8 textSpeed);
 static void TrainerSlide_DrawChoices(int selection, int y, u8 textSpeed);
 static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed);
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed);
+static void PresetThemeSelection_DrawChoices(int selection, int y, u8 textSpeed);
 //FULL_COLOR
 static void ThemeUISelection_DrawChoices(int selection, int y, u8 textSpeed);
 static int ThemeUI_ProcessInput(int selection);
@@ -91,6 +93,7 @@ static int FourOptions_ProcessInput(int selection);
 static int ThreeOptions_ProcessInput(int selection);
 static int TwoOptions_ProcessInput(int selection);
 static int ElevenOptions_ProcessInput(int selection);
+static int PresetThemeSelection_ProcessInput(int selection);
 static int Theme_ProcessInput(int selection);
 static int Sound_ProcessInput(int selection);
 static void DrawTextOption(void);
@@ -112,6 +115,7 @@ static const sItemFunctions[MENUITEM_COUNT] =
     //FULL_COLOR
     [MENUITEM_THEME_UI] = {ThemeUISelection_DrawChoices, ThemeUI_ProcessInput},
     [MENUITEM_THEME] = {ThemeSelection_DrawChoices, Theme_ProcessInput},
+    [MENUITEM_THEMEPRESETS] = {PresetThemeSelection_DrawChoices, PresetThemeSelection_ProcessInput},
     [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
     [MENUITEM_THEME_BALL] = {ThemeBallSelection_DrawChoices, ThemeBall_ProcessInput},
     [MENUITEM_RDM_MUSIC] = {RandomMusic_DrawChoices, TwoOptions_ProcessInput},
@@ -133,6 +137,7 @@ static const u16 sUnknown_0855C604[] = INCBIN_U16("graphics/misc/option_menu_tex
 static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/misc/option_menu_equals_sign.4bpp");
 static const u8 sTextBarSpeed[] = _("Bar Anim Spe");
 static const u8 sText_ExpBar[] = _("EXP BAR");
+static const u8 gText_ThemePresets[] = _("Preset Theme");
 static const u8 sText_Transition[] = _("B. Transition");
 static const u8 sText_ForceSetBattleMode[] = _("Battle Style");
 static const u8 sText_Dynamic[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dynamic");
@@ -153,6 +158,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     //FULL_COLOR
     [MENUITEM_THEME_UI]    = gText_ThemeUISelector,
     [MENUITEM_THEME]       = gText_ThemeSelector,
+    [MENUITEM_THEMEPRESETS]  = gText_ThemePresets,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
     [MENUITEM_THEME_BALL]  = gText_ThemeBallSelector,
     [MENUITEM_RDM_MUSIC]   = gText_RandomRouteMusic,
@@ -370,6 +376,7 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_THEME_UI] = VarGet(VAR_HAT_THEME_UI_NUMBER);
         sOptions->sel[MENUITEM_THEME_BALL] = sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA ? 0 : gSaveBlock2Ptr->UIBallSelection + 1;
         sOptions->sel[MENUITEM_THEME] = VarGet(VAR_RYU_THEME_NUMBER);
+        sOptions->sel[MENUITEM_THEMEPRESETS] = gSaveBlock2Ptr->userPresetThemeSelectionChoice;
         sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
         sOptions->sel[MENUITEM_BAR_SPEED] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
@@ -965,6 +972,8 @@ static void Task_OptionColorPicker(u8 taskId)
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[12] = taskData->colorBuffer[4];
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[13] = taskData->colorBuffer[3];
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[14] = taskData->colorBuffer[2];
+                    gSaveBlock2Ptr->userPresetThemeSelectionChoice = NUM_PRESET_THEMES; //if the user is applying a user customization, don't use a preset.
+                    sOptions->sel[MENUITEM_THEMEPRESETS] = NUM_PRESET_THEMES; //hopefully set the selected preset option to None.
                     taskData->state++;
                     break;
                 case INPUT_PREV_ELEM:
@@ -1091,6 +1100,7 @@ static void Task_OptionColorPicker(u8 taskId)
 extern bool32 RyuCheckFor100Lv(void);
 extern void StopMapMusic(void);
 extern void LoadMapMusic(void);
+extern void ApplyPresetRGBUserTheme(void);
 
 static void Task_OptionMenuSave(u8 taskId)
 {
@@ -1111,14 +1121,16 @@ static void Task_OptionMenuSave(u8 taskId)
     else
         FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
 
+
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
+    if (!(sOptions->sel[MENUITEM_THEME] == THEME_COLOR_USER))
+        sOptions->sel[MENUITEM_THEMEPRESETS] = NUM_PRESET_THEMES;//sets theme preset to NONE if not on user mode.
+
+    gSaveBlock2Ptr->userPresetThemeSelectionChoice = sOptions->sel[MENUITEM_THEMEPRESETS];//automatically set to none if user isn't selected
     //FULL_COLOR
     VarSet(VAR_HAT_THEME_UI_NUMBER, sOptions->sel[MENUITEM_THEME_UI]);
     gSaveBlock2Ptr->UIBallSelection = max(0, sOptions->sel[MENUITEM_THEME_BALL] - 1);
-    
-    //if (sOptions->sel[MENUITEM_THEME] == 2)
-    //    gSaveBlock2Ptr->optionsWindowFrameType = 0;
-    //else
+
     gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
 
     VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_BAR_SPEED]);
@@ -1288,6 +1300,33 @@ static int ThemeUI_ProcessInput(int selection)
     } else if (sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA)
         sOptions->sel[MENUITEM_THEME_BALL] = gSaveBlock2Ptr->UIBallSelection + 1;
     DrawChoices(sOptions->menuCursor+3, (sOptions->visibleCursor + 3) * Y_DIFF, 0);
+    return selection;
+}
+
+static int PresetThemeSelection_ProcessInput(int selection)
+{
+    if (gMain.newKeys & DPAD_RIGHT)
+    {
+        if (selection < NUM_PRESET_THEMES)
+            selection++;
+        else
+            selection = 0;
+
+    }
+    if (gMain.newKeys & DPAD_LEFT)
+    {
+        if (selection > 1)
+            selection--;
+        else
+            selection = NUM_PRESET_THEMES;
+
+    }
+    if (selection == NUM_PRESET_THEMES)
+        sOptions->sel[MENUITEM_FRAMETYPE] == 12;
+    else
+        sOptions->sel[MENUITEM_FRAMETYPE] = 0;
+    gSpecialVar_0x8001 = selection;//load the preset theme number into this var to be read by the following function
+    ApplyPresetRGBUserTheme();
     return selection;
 }
 
@@ -1500,6 +1539,11 @@ static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed)
 static void ThemeBallSelection_DrawChoices(int selection, int y, u8 textSpeed)
 {
     DrawOptionMenuChoiceLong(gText_ThemePokeballNames[selection], 104, y, 1, textSpeed);
+}
+//FULL_COLOR
+static void PresetThemeSelection_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    DrawOptionMenuChoiceLong(gText_PresetThemeNames[selection], 104, y, 1, textSpeed);
 }
 //FULL_COLOR
 static void ThemeUISelection_DrawChoices(int selection, int y, u8 textSpeed)

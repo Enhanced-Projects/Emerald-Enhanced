@@ -14,6 +14,14 @@
 #define THEME_COLOR_VANILLA         3
 #define THEME_COLOR_MAX             4
 
+#define PRESETTHEME_BLUESTEEL       0
+#define PRESETTHEME_ROYALPURPLE     1
+#define PRESETTHEME_GLACIER         2
+#define PRESETTHEME_MOCHA           3
+#define PRESETTHEME_NONE            4
+
+#define NUM_PRESET_THEMES           5
+
 //   #### COLOR DEFINITIONS #########
 //Base color decomp definitions
 #define __min(a, b) (((a) < (b) ? (a) : (b)))

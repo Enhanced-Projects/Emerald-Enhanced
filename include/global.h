@@ -434,7 +434,7 @@ struct SaveBlock2
               u8 hasAlchemyEffectActive:1; //is alchemy effect active
               u8 bossMonInGCMS:1; //does the GCMS have a boss in it
               u8 playerIsRealtor:1; //has the player unlocked property management
-              u8 unusedSB2Flags:5; //unused flags
+              u8 userPresetThemeSelectionChoice:5; //theme preset options
              u8 propertyFlags[NUM_PROPERTY_BYTES];
              u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
              u16 userInterfaceTextboxPalette[16];

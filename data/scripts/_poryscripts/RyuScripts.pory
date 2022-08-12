@@ -1255,14 +1255,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	setflag(FLAG_RYU_NIHILEGO_CAUGHT)
-	setflag(FLAG_RYU_BUZZWOLE_CAUGHT)
-	setflag(FLAG_RYU_PHEROMOSA_CAUGHT)
-	setflag(FLAG_RYU_XURKITREE_CAUGHT)
-	setflag(FLAG_RYU_CELESTEELA_CAUGHT)
-	setflag(FLAG_RYU_KARTANA_CAUGHT)
-	setflag(FLAG_RYU_GUZZLORD_CAUGHT)
-	setflag(FLAG_RYU_STAKATAKA_CAUGHT)
 	release
 	end
 }

@@ -62,6 +62,25 @@ const u16 GlacierRGBTheme[16] = {
     RGB(9, 14, 20),
 };
 
+const u16 MochaRGBTheme[16] = {
+    RGB(14, 25, 20),
+    RGB(6, 5, 0),
+    RGB(31, 29, 26),
+    RGB(14, 14, 10),
+    RGB(15, 2, 9),
+    RGB(31, 22, 28),
+    RGB(4, 19, 1),
+    RGB(18, 30, 18),
+    RGB(5, 9, 23),
+    RGB(25, 27, 30),
+    RGB(31, 31, 31),
+    RGB(6, 5, 0),
+    RGB(6, 5, 0),
+    RGB(11, 11, 8),
+    RGB(8, 7, 7),
+    RGB(9, 14, 20),
+};
+
 const u16 CustomInterfacePaletteSlots[] = {
     2, //standard text color
     3, //standard text shadow
@@ -74,6 +93,7 @@ const u16 *UserPresetThemes[] = {
     BlueSteelRGBTheme,
     RoyalPurpleRGBTheme,
     GlacierRGBTheme,
+    MochaRGBTheme,
 };
 
 void SetUserRGBValue(void)

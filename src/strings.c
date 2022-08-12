@@ -2265,6 +2265,14 @@ const u8 gText_RyuAttendantNameJoy[] = _("Joy");
 const u8 gText_RyuAttendantNameMay[] = _("May");
 const u8 gText_RyuAttendantNameNone[] = _("None");
 
+const u8* gText_PresetThemeNames[] = {
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Blue Steel"),
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Royal Purple"),
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Glacier"),
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mocha"),
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None"),
+};
+
 const u8* gText_ThemePokeballNames[] = {    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None           "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Poke Ball      "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mega Ball      "),

@@ -3325,6 +3325,7 @@ extern const u8 gText_RyuAttendantNameShelly[];
 extern const u8 gText_RyuAttendantNameJoy[];
 extern const u8 gText_RyuAttendantNameMay[];
 extern const u8 gText_RyuAttendantNameNone[];
+extern const u8* gText_PresetThemeNames[];
 
 
 extern const u8 sText_DebugMainUtilityItem1[];
