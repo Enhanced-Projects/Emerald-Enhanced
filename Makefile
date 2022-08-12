@@ -37,6 +37,8 @@ CURRENT_VERSION := $(shell expr $$(awk '/\#define EE_GAME_VERSION/' $(VERSION_FI
 ifneq (, $(version))
 ifneq (CURRENT_VERSION, $(version))
 CURRENT_VERSION := $(version)
+else
+version :=
 endif
 endif
 
@@ -263,7 +265,9 @@ override CFLAGS += -g
 endif
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
+ifneq (, $(version))
 	@sed -i "s/#define EE_GAME_VERSION .*/#define EE_GAME_VERSION $(CURRENT_VERSION)/" $(VERSION_FILE)
+endif
 	@$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
 	@$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CFLAGS) -o $(C_BUILDDIR)/$*.s
 	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
