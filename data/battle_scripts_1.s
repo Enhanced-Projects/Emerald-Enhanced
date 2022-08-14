@@ -5095,8 +5095,10 @@ BattleScript_FaintTarget2x::
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED2X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -5107,8 +5109,10 @@ BattleScript_FaintTarget4x::
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED4X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -5119,8 +5123,10 @@ BattleScript_FaintTarget10x::
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED10X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -5131,8 +5137,10 @@ BattleScript_FaintTarget20x::
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED20X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 

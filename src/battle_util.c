@@ -2135,7 +2135,7 @@ enum
 	ENDTURN_THROAT_CHOP,
 	ENDTURN_SLOW_START,
     ENDTURN_BOSSMODEHEAL,
-    ENDTURN_BOSSMODERAISESTAT,
+    //ENDTURN_BOSSMODERAISESTAT,
     ENDTURN_ALCHEMYHEALEFFECT,
     ENDTURN_FACTIONBOSSMODIFIER,
 	ENDTURN_BATTLER_COUNT
@@ -2666,7 +2666,7 @@ u8 DoBattlerEndTurnEffects(void)
                             }
             gBattleStruct->turnEffectsTracker++;
             break;
-        case ENDTURN_BOSSMODERAISESTAT:
+        /*case ENDTURN_BOSSMODERAISESTAT:
         {
             if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(FlagGet(FLAG_RYU_FACING_ATTENDANT) == TRUE)))
                 {
@@ -2686,7 +2686,7 @@ u8 DoBattlerEndTurnEffects(void)
                 }
         }
             gBattleStruct->turnEffectsTracker++;
-            break;
+            break;*/
         case ENDTURN_ALCHEMYHEALEFFECT:
         {
             if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_HEALING_FACTOR)
@@ -8283,4 +8283,55 @@ bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags)
         return TRUE;
     }
     return FALSE;
+}
+
+bool32 CompareStat(u8 battlerId, u8 statId, u8 cmpTo, u8 cmpKind)
+{
+    bool8 ret = FALSE;
+    u8 statValue = gBattleMons[battlerId].statStages[statId];
+
+    // Because this command is used as a way of checking if a stat can be lowered/raised,
+    // we need to do some modification at run-time.
+    if (GetBattlerAbility(battlerId) == ABILITY_CONTRARY)
+    {
+        if (cmpKind == CMP_GREATER_THAN)
+            cmpKind = CMP_LESS_THAN;
+        else if (cmpKind == CMP_LESS_THAN)
+            cmpKind = CMP_GREATER_THAN;
+
+        if (cmpTo == MIN_STAT_STAGE)
+            cmpTo = MAX_STAT_STAGE;
+        else if (cmpTo == MAX_STAT_STAGE)
+            cmpTo = MIN_STAT_STAGE;
+    }
+
+    switch (cmpKind)
+    {
+    case CMP_EQUAL:
+        if (statValue == cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_NOT_EQUAL:
+        if (statValue != cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_GREATER_THAN:
+        if (statValue > cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_LESS_THAN:
+        if (statValue < cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_COMMON_BITS:
+        if (statValue & cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_NO_COMMON_BITS:
+        if (!(statValue & cmpTo))
+            ret = TRUE;
+        break;
+    }
+
+    return ret;
 }
