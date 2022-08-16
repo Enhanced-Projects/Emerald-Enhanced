@@ -90,10 +90,63 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
 
 void RyuCheckForLNSU (void)
 {
-    int count = 0, slot;
-    for (slot = FLAG_LANDMARK_FLOWER_SHOP; slot <= FLAG_LANDMARK_SNOWY_SHORE; slot++)
-        count += FlagGet(slot);
-    if (count >= 27)
+    int count = 0;
+    if (FlagGet(FLAG_LANDMARK_FLOWER_SHOP) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_MR_BRINEY_HOUSE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_ABANDONED_SHIP) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_SEASHORE_HOUSE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_NEW_MAUVILLE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_OLD_LADY_REST_SHOP) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_TRICK_HOUSE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_WINSTRATE_FAMILY) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_GLASS_WORKSHOP) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_LANETTES_HOUSE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_POKEMON_DAYCARE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_BATTLE_FRONTIER) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_SOUTHERN_ISLAND) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_FIERY_PATH) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_POKEMON_LEAGUE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_ISLAND_CAVE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_SCORCHED_SLAB) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_TUNNELERS_REST_HOUSE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_HUNTERS_HOUSE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_BERRY_MASTERS_HOUSE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_ALTERING_CAVE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_DESERT_UNDERPASS) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_ARTISAN_CAVE) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_TRAINER_HILL) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_MIRAGE_TOWER) == TRUE)
+        count++;
+    if (FlagGet(FLAG_LANDMARK_SNOWY_SHORE) == TRUE)
+        count++;
+
+    if (count == 27)
         GiveAchievement(ACH_LEAVE_NO_STONE_UNTURNED);
 }
 
