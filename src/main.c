@@ -488,10 +488,9 @@ void RtcCheckCallback(void)
     if (!IsRtcSynched(rtcSec, rtcSecRaw))
     {
         FlagSet(FLAG_RYU_SAVE_STATE_DETECTED);
-        FlagClear(FLAG_RYU_NOTIFIED_SAVE_STATE);
         gSaveBlock2Ptr->SaveStateLastDetection = rtcSec;
     }
-
+#ifdef RYU_PUNISH_SAVE_STATE
     //remove punishment after an hour if the user is in hardcore/challenge mode.
     if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000))
     {
@@ -499,6 +498,7 @@ void RtcCheckCallback(void)
         gSaveBlock2Ptr->notifiedSaveState = TRUE;
         QueueNotification((const u8[])_("Save State penalty Lifted."), NOTIFY_GENERAL, 120);
     }
+#endif
 
     gSaveBlock2Ptr->RtcTimeSecondRAW = rtcSecRaw;
     gSaveBlock2Ptr->RtcTimeSecond = rtcSec;

@@ -52,6 +52,7 @@
 #include "gba/m4a_internal.h"
 #include "RyuRealEstate.h"
 #include "overworld_notif.h"
+#include "wild_encounter.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
 static EWRAM_DATA u8 MenuSpriteId2 = 0;
@@ -1214,6 +1215,20 @@ void PlayNextTrack(void)
 
 extern u8 RyuFollowerSelectNPCScript[];
 
+bool8 DoesCurrentMapHaveEncounters(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if (headerId != 0xFFFF
+     && (gWildMonHeaders[headerId].landMonsInfo != NULL
+     || gWildMonHeaders[headerId].waterMonsInfo != NULL
+     || gWildMonHeaders[headerId].fishingMonsInfo != NULL
+     || gWildMonHeaders[headerId].rockSmashMonsInfo != NULL))
+        return TRUE;
+    else
+        return FALSE;
+}
+
 static bool8 HandleStartMenuInput(void)
 {
     u16 song = VarGet(VAR_RYU_JUKEBOX);
@@ -1318,6 +1333,9 @@ static bool8 HandleStartMenuInput(void)
         
         if(JOY_HELD(L_BUTTON) && gMenuCallback == StartMenuPlayerNameCallback)
             gMenuCallback = StartMenuAtlasCallback;
+
+        if ((DoesCurrentMapHaveEncounters()) == FALSE)
+            gMenuCallback = StartMenuExitCallback;
 
         if (gMenuCallback != StartMenuSaveCallback
             && gMenuCallback != StartMenuExitCallback

@@ -515,7 +515,10 @@
 //uncomment for winter mode.
 //#define EE_WINTER_MODE
 
-#define EE_GAME_VERSION 9019
+//uncomment to punish save states. Otherwise detections are just logged.
+//#define RYU_PUNISH_SAVE_STATE 1
+
+#define EE_GAME_VERSION 9020
 
 
 #endif

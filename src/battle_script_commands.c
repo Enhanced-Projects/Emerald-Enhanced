@@ -1829,8 +1829,12 @@ static void Cmd_critcalc(void)
         gIsCriticalHit = TRUE;
     else if (Random() % sCriticalHitChance[critChance] == 0)
         gIsCriticalHit = TRUE;
-    else if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
+#ifdef RYU_PUNISH_SAVE_STATE
+    else if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && 
+            ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE)) && 
+             (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
         gIsCriticalHit = TRUE;//opponents always crit if save state detected.
+#endif
     else if ((Random() % sCriticalHitChance[critChance] == 0) && //roll another crit check if mon is max happiness
             (gBattleMons[gBattlerAttacker].friendship == 255) &&
             (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER) &&
@@ -12352,9 +12356,10 @@ static void Cmd_handleballthrow(void)
         
         if (CheckAPFlag(AP_CAPTURE_BOOST) == TRUE)
             odds = ((odds * 105) /100);
-
+#ifdef RYU_PUNISH_SAVE_STATE
         if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000))
             odds = ((odds * 50) / 100); //reduces capture rate by half if save states are detected.
+#endif
 
         if (gBattleMons[gBattlerTarget].status1 & (STATUS1_POISON | STATUS1_BURN | STATUS1_TOXIC_POISON))
             odds = (odds * 15) / 10;
