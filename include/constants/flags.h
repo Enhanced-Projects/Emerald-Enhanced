@@ -522,8 +522,8 @@
 #define FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST     0x1EA // Nobles related.
 #define NOBLES_SPECIAL_MISSION_IN_PROGRESS        0x1EB // Nobles related.
 #define FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS   0x1EC // Nobles related.
-#define FLAG_RYU_ONE_TIME_SAVE_FIX                0x1ED
-#define FLAG_UNUSED_0x1EE                         0x1EE
+#define FLAG_UNUSED_0x1ED                         0x1ED
+#define FLAG_RYU_ONE_TIME_SAVE_FIX                0x1EE
 #define FLAG_UNUSED_0x1EF                         0x1EF
 #define FLAG_UNUSED_0x1F0                         0x1F0
 #define FLAG_UNUSED_0x1F1                         0x1F1
@@ -716,7 +716,7 @@
 #define FLAG_RYU_MAX_SCALE                                          0x297
 #define FLAG_RYU_R119_RIVAL                                         0x298
 #define FLAG_RYU_INTERACTED_RIVAL_R110                              0x299
-#define FLAG_RYU_INTERACTED_LAVARIDGE                               0x29A
+#define FLAG_RYU_LAVARIDGE_GIFT_PENDING                               0x29A
 #define FLAG_RYU_TC_ENTERED                                         0x29B
 #define FLAG_HAS_ENTERED_BATTLE_FRONTIER                            0x29C
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2                      0x29D
@@ -803,7 +803,7 @@
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_DAWN                  0x2EA
 #define FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION                  0x2EB
 #define FLAG_HIDE_LILYCOVE_HARBOR_EVENT_TICKET_TAKER                0x2EC
-#define FLAG_UNUSED_0x2ED                                           0x2ED
+#define FLAG_RYU_HIDE_LAVARIDGE_RIVAL                               0x2ED
 #define FLAG_HIDE_ROUTE_101_ZIGZAGOON                               0x2EE
 #define FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY                           0x2EF
 #define FLAG_UNUSED_0x2F0                                           0x2F0
@@ -815,7 +815,7 @@
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM                0x2F6
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM                   0x2F7
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM      0x2F8
-#define FLAG_UNUSED_0x2F9                                           0x2F9
+#define FLAG_RYU_COMPLETED_LAVARIDGE_EVENT                          0x2F9
 #define FLAG_UNUSED_0x2FA                                           0x2FA
 #define FLAG_HIDE_DEOXYS                                            0x2FB
 #define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC

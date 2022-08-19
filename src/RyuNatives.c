@@ -383,8 +383,9 @@ void RyuDawnGiftPoke(void)
     u8 iv = 126;
     u8 partycount = (CalculatePlayerPartyCount());
     u8 friendship = 70;
+    u8 level = (RyuChooseLevel(CountBadges(), FALSE, SCALING_TYPE_TRAINER, CalculatePlayerPartyStrength()));
 
-    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNEASEL, 24, 31, MON_FEMALE, NATURE_ADAMANT, 0);
+    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNEASEL, level, 31, MON_FEMALE, NATURE_ADAMANT, 0);
     SetMonData(&gPlayerParty[partycount], MON_DATA_ATK_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPEED_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);
@@ -395,9 +396,10 @@ void RyuBrendanGiftPoke(void)
     u8 iv = 126;
     u8 partycount = (CalculatePlayerPartyCount());
     u8 friendship = 70;
+    u8 level = (RyuChooseLevel(CountBadges(), FALSE, SCALING_TYPE_TRAINER, CalculatePlayerPartyStrength()));
 
     partycount = VarGet(gSpecialVar_Result);
-    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNORUNT, 24, 31, MON_FEMALE, NATURE_MODEST, 0);
+    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNORUNT, level, 31, MON_FEMALE, NATURE_MODEST, 0);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPATK_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPEED_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);

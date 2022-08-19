@@ -1002,14 +1002,10 @@ static void StartMenuTask(u8 taskId)
     if (InitStartMenuStep() == TRUE)
         SwitchTaskToFollowupFunc(taskId);
 }
-const u8 OneTimeNotifyMsg[] = _("Applied One Time Save Fixes.");
+
 void RyuDoOneTImeSaveFixes(void) {
-    if (gSaveBlock2Ptr->optionsTextSpeed == 3)
-        gSaveBlock2Ptr->optionsTextSpeed = 2;
-
-    if ((FlagGet(FLAG_RYU_PROF_SPECIAL_FINISHED) == FALSE) && (!(VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) == 1000)))
-
-    QueueNotification(OneTimeNotifyMsg, NOTIFY_GENERAL, 60);
+    FlagSet(FLAG_RYU_HIDE_LAVARIDGE_RIVAL);
+    QueueNotification((const u8[])_("Applied One Time Save Fixes."), NOTIFY_GENERAL, 60);
     FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
 }
 
@@ -1070,7 +1066,10 @@ bool32 RyuCheckForAllQuestAchievements(void)
     if (CheckAchievement(ACH_SILENT_STRONG_TYPE) == TRUE)
         count++;
 
-    if (count >= 4)
+    if (CheckAchievement(ACH_LOST_GIRL) == TRUE)
+        count++;
+
+    if (count >= 5)
         return TRUE;
     
     return FALSE;
@@ -1334,7 +1333,7 @@ static bool8 HandleStartMenuInput(void)
         if(JOY_HELD(L_BUTTON) && gMenuCallback == StartMenuPlayerNameCallback)
             gMenuCallback = StartMenuAtlasCallback;
 
-        if ((DoesCurrentMapHaveEncounters()) == FALSE)
+        if (((DoesCurrentMapHaveEncounters()) == FALSE) && (gMenuCallback == StartMenuDexNavCallback))
             gMenuCallback = StartMenuExitCallback;
 
         if (gMenuCallback != StartMenuSaveCallback

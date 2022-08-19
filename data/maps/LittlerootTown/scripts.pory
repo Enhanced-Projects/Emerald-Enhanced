@@ -117,7 +117,7 @@ LRT_LittleGirlChatter::
 	end
 	
 LRT_LittleGirl:
-	.string "Cute Girl: {COLOR LIGHT_RED}{SHADOW RED}Hi! I'm on guard duty!\nDon't go outside without friends, okay?$"
+	.string " {COLOR LIGHT_RED}{SHADOW RED}Hi! I'm on guard duty!\nDon't go outside without friends, okay?$"
 
 LRT_PreventLeave::
 	goto_if_set FLAG_RYU_MET_RIVAL_LITTLEROOT, ryu_end
@@ -147,7 +147,7 @@ LRT_cantLeaveFemale:
 	end
 	
 LRT_Girl_PreventLeaveFemale:
-	.string "Cute Girl: {COLOR LIGHT_RED}{SHADOW RED}Um! Lady!\pIt's dangerous to go out there\nwithout Pokémon to protect you!$"
+	.string " {COLOR LIGHT_RED}{SHADOW RED}Um! Lady!\pIt's dangerous to go out there\nwithout Pokémon to protect you!$"
 	
 	
 LRT_StepLeft:
@@ -161,7 +161,7 @@ LRT_StepRight:
 	step_end
 
 LRT_Girl_PreventLeave:
-	.string "Cute Girl: {COLOR LIGHT_RED}{SHADOW RED}Um! Mister!\pIt's dangerous to go out there\nwithout Pokémon to protect you!$"
+	.string " {COLOR LIGHT_RED}{SHADOW RED}Um! Mister!\pIt's dangerous to go out there\nwithout Pokémon to protect you!$"
 	
 LRT_CantLeave:
 	walk_down
