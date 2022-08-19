@@ -199,8 +199,7 @@ void SetMonAbility(void)
 void SetMonPid(void)
 {
     u8 slot = (VarGet(VAR_TEMP_8));
-    u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
-    u8 nature = GetNature(&gPlayerParty[slot]);
+    u8 nature = (VarGet(VAR_TEMP_C));
     u8 gender = (VarGet(VAR_TEMP_9));
     u16 range = 25657;
     u16 start1 = range + 1;
@@ -224,8 +223,7 @@ void SetMonPid(void)
 void SetMonShinyPid(void)
 {
     u8 slot = (VarGet(VAR_TEMP_8));
-    u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
-    u8 nature = GetNature(&gPlayerParty[slot]);
+    u8 nature = (VarGet(VAR_TEMP_C));
     u8 gender = (VarGet(VAR_TEMP_9));
     u32 OTID = GetMonData(&gPlayerParty[slot], MON_DATA_OT_ID);
     u16 tid = OTID % 65536;
