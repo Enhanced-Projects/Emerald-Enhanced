@@ -1255,6 +1255,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	callnative(ClearDailyQuestData)
 	release
 	end
 }

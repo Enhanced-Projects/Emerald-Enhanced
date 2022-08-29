@@ -481,7 +481,7 @@ script MDC_DeliveryQuestTarget4 {
 		release
 		end
 	}
-	removeitem(ITEM_ANTIQUE, 1)
+	removeitem(ITEM_FLOWERS, 1)
 	msgbox("Hm? From my husband?")
 	closemessage
 	applymovement(16, Common_Movement_HeartEmote)

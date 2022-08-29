@@ -312,7 +312,7 @@ script MC_DeliveryQuestTarget3 {
 		release
 		end
 	}
-	removeitem(ITEM_ANTIQUE, 1)
+	removeitem(ITEM_HOME_GOODS, 1)
 	msgbox("Ah! I was expecting this.\nThank you very much!")
 	closemessage
 	call(RyuChooseDeliveryTipAmount)

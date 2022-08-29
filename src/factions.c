@@ -14,6 +14,8 @@
 #include "string_util.h"
 #include "ach_atlas.h"
 #include "overworld_notif.h"
+#include "constants/items.h"
+#include "item.h"
 
 const u8 gFactionNames[8][15] = {
     [FACTION_NATURALISTS] = _("Naturalists"),
@@ -210,6 +212,27 @@ const u8 *RyuGetFactionDailyQuestScriptPtr(u8 factionId)
     }
 }
 
+const u16 sRyuDeliveryItems[] =  {
+    ITEM_COSMETIC_GOODS,
+    ITEM_SPARE_PARTS,
+    ITEM_HOME_GOODS,
+    ITEM_GROCERIES,
+    ITEM_MEDICAL_SUPPLIES,
+    ITEM_FLOWERS,
+    ITEM_OFFICE_SUPPLIES,
+    ITEM_REFRESHMENTS,
+    ITEM_ANTIQUE,
+    ITEM_ELECTRONICS,
+    ITEM_NONE
+};
+
+void RyuRemoveDeliveryItems(void)
+{
+    u32 i;
+    for (i = 0; i < 10; i++)
+        RemoveBagItem(sRyuDeliveryItems[i], 1);
+}
+
 
 void ClearDailyQuestData(void)
 {
@@ -218,6 +241,7 @@ void ClearDailyQuestData(void)
     VarSet(VAR_RYU_DAILY_QUEST_DATA, 1000);
     FlagClear(FLAG_DAILY_QUEST_ACTIVE);
     VarSet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OTHERS);
+    RyuRemoveDeliveryItems();
     FlagClear(FLAG_RYU_NOTIFIED_DAILY_CANCEL);
 }
 

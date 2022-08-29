@@ -78,7 +78,7 @@ script LC_DeliveryQuestTarget2 {
 		release
 		end
 	}
-	removeitem(ITEM_ANTIQUE, 1)
+	removeitem(ITEM_ELECTRONICS, 1)
 	msgbox("Finally! my parts arrived.\nNeed to upgrade this pc.")
 	closemessage
 	call(RyuChooseDeliveryTipAmount)
