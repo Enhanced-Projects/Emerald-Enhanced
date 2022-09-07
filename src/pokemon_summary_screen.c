@@ -3768,8 +3768,6 @@ static void BufferNatureString(void)
 {
     struct PokemonSummaryScreenData *sumStruct = sMonSummaryScreen;
     u8 customNatureId = sumStruct->currentMon.box.customNatureID;
-    mgba_open();
-    mgba_printf(LOGINFO, "Has custom nature? %d, nature ID = %d", sumStruct->currentMon.box.hasCustomNature, sumStruct->currentMon.box.customNatureID);
     if (sumStruct->currentMon.box.hasCustomNature == 1)
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gModifiedNatureNamePointers[customNatureId]);
     else
