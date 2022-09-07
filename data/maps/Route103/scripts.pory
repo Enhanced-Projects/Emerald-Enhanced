@@ -57,20 +57,19 @@ Route103_EventScript_RivalBrendan:: @ 81EC434
 	applymovement 2, Common_Movement_Delay48
 	waitmovement 0	
 	drawfullscreenimage SCENEBGBRENDAN
-	msgbox r103_maleRivalIntro, MSGBOX_DEFAULT
-	closemessage
+	msgbox r103_maleRivalIntro
 	clearfullscreenimage
-	goto r103_maleRivalBattle
+	trainerbattle_no_intro TRAINER_BRENDAN_1, r103_maleRivalDefeatText
+	waitstate
+	drawfullscreenimage SCENEBGBRENDAN
+	msgbox r103_maleRivalChat, MSGBOX_DEFAULT
+	goto Route103_EventScript_RivalExit
 	end
 
 r103_femaleRivalBattle:: @ 81EC48E
 	trainerbattle_no_intro TRAINER_DAWN_1, r103_femaleRivalDefeat
+	waitstate
 	goto Route103_EventScript_AfterMayBattle
-	end
-
-r103_maleRivalBattle:: @ 81EC49E
-	trainerbattle_no_intro TRAINER_BRENDAN_1, r103_maleRivalDefeatText
-	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_AfterMayBattle:: @ 81EC4EE
@@ -79,12 +78,6 @@ Route103_EventScript_AfterMayBattle:: @ 81EC4EE
 	msgbox r103_femaleRivalChat, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	closemessage
-	end
-
-Route103_EventScript_AfterBrendanBattle:: @ 81EC4FC	
-	drawfullscreenimage SCENEBGBRENDAN
-	msgbox r103_maleRivalChat, MSGBOX_DEFAULT
-	goto Route103_EventScript_RivalExit
 	end
 
 Route103_EventScript_RivalExit:: @ 81EC50A
