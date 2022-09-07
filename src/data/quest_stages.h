@@ -209,6 +209,7 @@ const u8 sDailyQuestStagePokefans[] = _("Daily quest for Pokéfans:\n{RYU_STR_2}
 const u8 sDailyQuestStageOutcasts[] = _("Daily quest for Outcasts:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
 const u8 sDailyQuestStageProfessionals[] = _("Daily quest for Professionals:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
 const u8 sDailyQuestStageEmpty[] = _("No daily quest active.");
+const u8 sDailyQuestStageFinished[] = _("Daily Quest finished.\nReturn to the asignee faction.");
 
 struct QuestStageDesc
 {
@@ -963,6 +964,10 @@ const static struct QuestStageDesc gDailyQuestStages[] = { //only visible when V
   {
     .description = sDailyQuestStageProfessionals,
     .questStage = 5,
+  },
+  {
+    .description = sDailyQuestStageFinished,
+    .questStage = 6,
   },
   {
     .description = sDailyQuestStageEmpty,

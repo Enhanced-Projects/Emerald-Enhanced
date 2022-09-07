@@ -40,7 +40,7 @@ script(global) RyuOutcastsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
                     msgbox(format("I see... The leylines are not yet aligned. Thank you for checking."))
                     goto(CommonOutcastRewardScript)
                 }

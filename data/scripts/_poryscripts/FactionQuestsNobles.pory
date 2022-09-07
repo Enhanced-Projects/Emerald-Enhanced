@@ -49,7 +49,7 @@ script(global) RyuNoblesDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if(var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
+                if(var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
                     msgbox(format("So that's what they're up to. All right, you are dismissed."))
                     goto(CommonNobleRewardScript)
                 }

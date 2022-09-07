@@ -9,10 +9,6 @@ script CommonDailyQuestEnd {
 }
 
 script RyuGlobal_CancelDailyQuest {
-    if (var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == 6) {
-        release
-        end
-    }
     if (flag(FLAG_RYU_NOTIFIED_DAILY_CANCEL) == TRUE) {
         goto(ForceCancelDailyQuest)
     }

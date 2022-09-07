@@ -42,7 +42,7 @@ script(global) RyuProfessionalsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
                     msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}. . .\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see. Thanks for the effort!"))
                     goto(CommonProfessionalsRewardScript)
                 }
