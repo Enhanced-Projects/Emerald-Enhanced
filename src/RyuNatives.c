@@ -2801,7 +2801,7 @@ bool8 ScrCmd_debugprint(struct ScriptContext *ctx) //this will still only print 
     PutWindowTilemap(tDebugWindow);
     CopyWindowToVram(tDebugWindow, 1);
     AddTextPrinterParameterized(tDebugWindow, 1, gStringVar4, 0, 0, 0, NULL);
-    taskId = CreateTask(RyuScriptDebugPrintTask, 0xFF);
+    taskId = CreateTask(RyuScriptDebugPrintTask, 0x64);
     gTasks[taskId].tScriptDBWindowData = tDebugWindow;
     return FALSE;
 }

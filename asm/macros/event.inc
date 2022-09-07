@@ -1676,7 +1676,6 @@
 	.macro debugprint buffer:req, frames=120
 	.byte 0xeb
 	.4byte \buffer
-	.2byte \frames
 	.endm
 
 	@multiplies var by value.
