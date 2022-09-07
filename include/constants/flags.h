@@ -524,7 +524,7 @@
 #define FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS   0x1EC // Nobles related.
 #define FLAG_UNUSED_0x1ED                         0x1ED
 #define FLAG_RYU_ONE_TIME_SAVE_FIX                0x1EE
-#define FLAG_UNUSED_0x1EF                         0x1EF
+#define FLAG_RYU_OLDCOIN_PASSCODE                 0x1EF
 #define FLAG_UNUSED_0x1F0                         0x1F0
 #define FLAG_UNUSED_0x1F1                         0x1F1
 #define FLAG_UNUSED_0x1F2                         0x1F2

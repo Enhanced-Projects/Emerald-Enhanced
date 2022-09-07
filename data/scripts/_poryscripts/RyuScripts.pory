@@ -1255,7 +1255,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	callnative(ClearDailyQuestData)
+	goto(RyuNatureSwapperMenu)
 	release
 	end
 }

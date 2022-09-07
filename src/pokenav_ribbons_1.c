@@ -259,7 +259,7 @@ static u32 BuildPartyMonRibbonList(s32 state)
         struct Pokemon * pokemon = &gPlayerParty[i];
         if (!GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES))
             return LT_INC_AND_CONTINUE;
-        if (!GetMonData(pokemon, MON_DATA_SANITY_IS_EGG) && !GetMonData(pokemon, MON_DATA_SANITY_IS_BAD_EGG))
+        if (!GetMonData(pokemon, MON_DATA_SANITY_IS_EGG))
         {
             u32 ribbonCount = GetMonData(pokemon, MON_DATA_RIBBON_COUNT);
             if (ribbonCount != 0)

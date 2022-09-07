@@ -198,9 +198,11 @@ const u16 gInsideMiningTier1[] = {//level 1
     ITEM_SHARD_ORE,
     ITEM_COMMON_GEM_ORE,
     ITEM_COMMON_GEM_ORE,
+    ITEM_COMMON_GEM_ORE,
     ITEM_COPPER_ORE,
     ITEM_COPPER_ORE,
     ITEM_COPPER_ORE,
+    ITEM_SILVER_ORE,
     ITEM_SILVER_ORE,
 };
 
@@ -208,6 +210,7 @@ const u16 gInsideMiningTier2[] = {//level 2
     ITEM_NONE,
     ITEM_NONE,
     ITEM_NONE,
+    ITEM_ANCIENT_COIN,
     ITEM_SHARD_ORE,
     ITEM_SHARD_ORE,
     ITEM_COMMON_GEM_ORE,
@@ -215,6 +218,7 @@ const u16 gInsideMiningTier2[] = {//level 2
     ITEM_UNCOMMON_GEM_ORE,
     ITEM_UNCOMMON_GEM_ORE,
     ITEM_UNCOMMON_GEM_ORE,
+    ITEM_COPPER_ORE,
     ITEM_COPPER_ORE,
     ITEM_COPPER_ORE,
     ITEM_SILVER_ORE,
@@ -235,7 +239,9 @@ const u16 gInsideMiningTier3[] = {//level 3
     ITEM_SHARD_ORE,
     ITEM_SILVER_ORE,
     ITEM_GOLD_ORE,
-    ITEM_GOLD_ORE
+    ITEM_GOLD_ORE,
+    ITEM_ANCIENT_COIN,
+    ITEM_ANCIENT_COIN,
 };
 
 //Mining table for list of 'outside' maps. 

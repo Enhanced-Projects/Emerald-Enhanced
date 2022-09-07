@@ -1955,10 +1955,10 @@ static const u8 sBikeVoucherDesc[] = _(
     "obtaining a bicycle\n"
     "from the Bike Shop.");
 
-static const u8 sGoldTeethDesc[] = _(
-    "Gold dentures lost\n"
-    "by the Safari\n"
-    "Zone's warden.");
+static const u8 sAncientCoinDesc[] = _(
+    "An ancient coin\n"
+    "unearthed via\n"
+    "Mining.");
 
 static const u8 sOldAmberDesc[] = _(
     "A stone containing\n"

@@ -12,6 +12,7 @@ MC_GC_MENU::
 	switch VAR_RESULT
 	case 649, MasterBallReward
 	case 622, KoutaMawileReward
+	case 550, OldCoinReward
 	goto MC_GC_NOREWARDSCCR
 
 MC_GC_NOREWARDSCCR::
@@ -60,6 +61,14 @@ KoutaMawileReward::
 	release
 	end
 
+OldCoinReward::
+	goto_if_set FLAG_RYU_OLDCOIN_PASSCODE, MC_GC_Received
+	additem ITEM_ANCIENT_COIN, 1
+	msgbox MC_GC_OldCoinMsg
+	setflag FLAG_RYU_OLDCOIN_PASSCODE
+	release
+	end
+
 MSG_KOUTA_GIFT:
 	.string "A level 80 Adamant Mawile with\ncustom moves, as well as an Expert Belt.\pIt's in slot {STR_VAR_1} of your party!\nCongrats on doing the contest challenge!\pThere's a message attached:\nRyuhouji: Thanks for playing\l{COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced!$"
 	
@@ -80,6 +89,9 @@ MC_GC_ReceivedMsg:
 	
 MC_GC_RewardReceived:
 	.string "You entered {STR_VAR_1}.\pYour Reward is: $"
+
+MC_GC_OldCoinMsg:
+	.string "An Old Coin!\pUse this item at the Pokémon\nTemperament trainer on Route 117!$"
 	
 MC_GC_GiftIntro:
 	.string "Welcome to the Redemption Corner.\pEnter the passcode you were given,\nand I'll tell you what you won.$"

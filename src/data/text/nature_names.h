@@ -23,6 +23,32 @@ static const u8 sGentleNatureName[] = _("Gentle");
 static const u8 sSassyNatureName[] = _("Sassy");
 static const u8 sCarefulNatureName[] = _("Careful");
 static const u8 sQuirkyNatureName[] = _("Quirky");
+//modified
+static const u8 sModifiedHardyNatureName[] = _("Hardy (M)");
+static const u8 sModifiedLonelyNatureName[] = _("Lonely (M)");
+static const u8 sModifiedBraveNatureName[] = _("Brave (M)");
+static const u8 sModifiedAdamantNatureName[] = _("Adamant (M)");
+static const u8 sModifiedNaughtyNatureName[] = _("Naughty (M)");
+static const u8 sModifiedBoldNatureName[] = _("Bold (M)");
+static const u8 sModifiedDocileNatureName[] = _("Docile (M)");
+static const u8 sModifiedRelaxedNatureName[] = _("Relaxed (M)");
+static const u8 sModifiedImpishNatureName[] = _("Impish (M)");
+static const u8 sModifiedLaxNatureName[] = _("Lax (M)");
+static const u8 sModifiedTimidNatureName[] = _("Timid (M)");
+static const u8 sModifiedHastyNatureName[] = _("Hasty (M)");
+static const u8 sModifiedSeriousNatureName[] = _("Serious (M)");
+static const u8 sModifiedJollyNatureName[] = _("Jolly (M)");
+static const u8 sModifiedNaiveNatureName[] = _("Naive (M)");
+static const u8 sModifiedModestNatureName[] = _("Modest (M)");
+static const u8 sModifiedMildNatureName[] = _("Mild (M)");
+static const u8 sModifiedQuietNatureName[] = _("Quiet (M)");
+static const u8 sModifiedBashfulNatureName[] = _("Bashful (M)");
+static const u8 sModifiedRashNatureName[] = _("Rash (M)");
+static const u8 sModifiedCalmNatureName[] = _("Calm (M)");
+static const u8 sModifiedGentleNatureName[] = _("Gentle (M)");
+static const u8 sModifiedSassyNatureName[] = _("Sassy (M)");
+static const u8 sModifiedCarefulNatureName[] = _("Careful (M)");
+static const u8 sModifiedQuirkyNatureName[] = _("Quirky (M)");
 
 const u8 *const gNatureNamePointers[NUM_NATURES] = 
 {
@@ -51,4 +77,34 @@ const u8 *const gNatureNamePointers[NUM_NATURES] =
     [NATURE_SASSY] = sSassyNatureName,
     [NATURE_CAREFUL] = sCarefulNatureName,
     [NATURE_QUIRKY] = sQuirkyNatureName,
+};
+
+//modified
+const u8 *const gModifiedNatureNamePointers[NUM_NATURES] = 
+{
+    [NATURE_HARDY]   = sModifiedHardyNatureName,
+    [NATURE_LONELY]  = sModifiedLonelyNatureName,
+    [NATURE_BRAVE]   = sModifiedBraveNatureName,
+    [NATURE_ADAMANT] = sModifiedAdamantNatureName,
+    [NATURE_NAUGHTY] = sModifiedNaughtyNatureName,
+    [NATURE_BOLD]    = sModifiedBoldNatureName,
+    [NATURE_DOCILE]  = sModifiedDocileNatureName,
+    [NATURE_RELAXED] = sModifiedRelaxedNatureName,
+    [NATURE_IMPISH]  = sModifiedImpishNatureName,
+    [NATURE_LAX]     = sModifiedLaxNatureName,
+    [NATURE_TIMID]   = sModifiedTimidNatureName,
+    [NATURE_HASTY]   = sModifiedHastyNatureName,
+    [NATURE_SERIOUS] = sModifiedSeriousNatureName,
+    [NATURE_JOLLY]   = sModifiedJollyNatureName,
+    [NATURE_NAIVE]   = sModifiedNaiveNatureName,
+    [NATURE_MODEST]  = sModifiedModestNatureName,
+    [NATURE_MILD]    = sModifiedMildNatureName,
+    [NATURE_QUIET]   = sModifiedQuietNatureName,
+    [NATURE_BASHFUL] = sModifiedBashfulNatureName,
+    [NATURE_RASH]    = sModifiedRashNatureName,
+    [NATURE_CALM]    = sModifiedCalmNatureName,
+    [NATURE_GENTLE]  = sModifiedGentleNatureName,
+    [NATURE_SASSY]   = sModifiedSassyNatureName,
+    [NATURE_CAREFUL] = sModifiedCarefulNatureName,
+    [NATURE_QUIRKY]  = sModifiedQuirkyNatureName,
 };

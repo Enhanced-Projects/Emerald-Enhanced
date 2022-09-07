@@ -5316,14 +5316,14 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_GOLD_TEETH] =
+    [ITEM_ANCIENT_COIN] =
     {
-        .name = _("Gold Teeth"),
-        .itemId = ITEM_GOLD_TEETH,
-        .price = 0,
-        .description = sGoldTeethDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
+        .name = _("Old Coin"),
+        .itemId = ITEM_ANCIENT_COIN,
+        .price = 20000,
+        .description = sAncientCoinDesc,
+        .importance = 0,
+        .pocket = POCKET_COLLECTIBLES,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,

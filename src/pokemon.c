@@ -3561,13 +3561,6 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         substruct3 = &(GetSubstruct(boxMon, boxMon->personality, 3)->type3);
 
         DecryptBoxMon(boxMon);
-
-        if (CalculateBoxMonChecksum(boxMon) != boxMon->checksum)
-        {
-            //boxMon->isBadEgg = 1;
-            //boxMon->isEgg = 1;
-            //substruct3->isEgg = 1;
-        }
     }
 
     switch (field)
@@ -3578,17 +3571,15 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
     case MON_DATA_OT_ID:
         retVal = boxMon->otId;
         break;
+    case MON_DATA_HAS_CUSTOM_NATURE:
+        retVal = boxMon->hasCustomNature;
+        break;
+    case MON_DATA_CUSTOM_NATURE:
+        retVal = boxMon->customNatureID;
+        break;
     case MON_DATA_NICKNAME:
     {
-        if (boxMon->isBadEgg)
-        {
-            for (retVal = 0;
-                retVal < POKEMON_NAME_LENGTH && gText_BadEgg[retVal] != EOS;
-                data[retVal] = gText_BadEgg[retVal], retVal++) {}
-
-            data[retVal] = EOS;
-        }
-        else if (boxMon->isEgg)
+        if (boxMon->isEgg)
         {
             StringCopy(data, gText_EggNickname);
             retVal = StringLength(data);
@@ -3619,9 +3610,6 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
     case MON_DATA_LANGUAGE:
         retVal = boxMon->language;
         break;
-    //case MON_DATA_SANITY_IS_BAD_EGG:
-        //retVal = boxMon->isBadEgg;
-        //break;
     case MON_DATA_SANITY_HAS_SPECIES:
         retVal = boxMon->hasSpecies;
         break;
@@ -3814,7 +3802,7 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         break;
     case MON_DATA_SPECIES2:
         retVal = substruct0->species;
-        if (substruct0->species && (substruct3->isEgg || boxMon->isBadEgg))
+        if (substruct0->species && substruct3->isEgg)
             retVal = SPECIES_EGG;
         break;
     case MON_DATA_IVS:
@@ -3993,15 +3981,6 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         substruct3 = &(GetSubstruct(boxMon, boxMon->personality, 3)->type3);
 
         DecryptBoxMon(boxMon);
-
-        if (CalculateBoxMonChecksum(boxMon) != boxMon->checksum)
-        {
-            //boxMon->isBadEgg = 1;
-            //boxMon->isEgg = 1;
-            //substruct3->isEgg = 1;
-            //EncryptBoxMon(boxMon);
-            //return;
-        }
     }
 
     switch (field)
@@ -4022,9 +4001,12 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
     case MON_DATA_LANGUAGE:
         SET8(boxMon->language);
         break;
-    //case MON_DATA_SANITY_IS_BAD_EGG:
-        //SET8(boxMon->isBadEgg);
-        //break;
+    case MON_DATA_HAS_CUSTOM_NATURE:
+        SET8(boxMon->hasCustomNature);
+        break;
+    case MON_DATA_CUSTOM_NATURE:
+        SET8(boxMon->customNatureID);
+        break;
     case MON_DATA_SANITY_HAS_SPECIES:
         SET8(boxMon->hasSpecies);
         break;
@@ -5348,7 +5330,14 @@ u8 *UseStatIncreaseItem(u16 itemId)
 
 u8 GetNature(struct Pokemon *mon)
 {
-    return GetMonData(mon, MON_DATA_PERSONALITY, 0) % NUM_NATURES;
+    if (GetMonData(mon, MON_DATA_HAS_CUSTOM_NATURE, NULL) == FALSE)
+    {
+        return GetMonData(mon, MON_DATA_PERSONALITY, 0) % NUM_NATURES;
+    }
+    else
+    {
+        return (GetMonData(mon, MON_DATA_CUSTOM_NATURE, NULL));
+    }
 }
 
 u8 GetNatureFromPersonality(u32 personality)

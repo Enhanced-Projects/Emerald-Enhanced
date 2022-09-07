@@ -139,6 +139,7 @@ Std_FindItem:: @ 8271BFD
 
 EventScript_PickUpItem:: @ 8271C3A
 	removeobject VAR_LAST_TALKED
+	call_if_set FLAG_RYU_VERBOSE_MODE, EVT_PrintPickedUpItem
 	additem VAR_0x8004, VAR_0x8005
 	specialvar VAR_RESULT, BufferTMHMMoveName
 	copyvar VAR_0x8008, VAR_RESULT
@@ -153,6 +154,14 @@ EventScript_PickUpItem:: @ 8271C3A
 	compare VAR_RESULT, 1
 	goto_if_eq EventScript_PutBattlePyramidItemInBag
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	return
+
+EVT_VerbosePrint:
+	.string "Removed {RYU_STR_3}.$"
+	
+EVT_PrintPickedUpItem::
+	buffernumberstring 5, VAR_LAST_TALKED
+	debugprint EVT_VerbosePrint, 60
 	return
 
 EventScript_PutBattlePyramidItemInBag:: @ 8271C86

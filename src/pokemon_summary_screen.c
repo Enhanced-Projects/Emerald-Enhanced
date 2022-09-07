@@ -1933,7 +1933,6 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->abilityNum = GetMonData(mon, MON_DATA_ABILITY_NUM);
         sum->item = GetMonData(mon, MON_DATA_HELD_ITEM);
         sum->pid = GetMonData(mon, MON_DATA_PERSONALITY);
-        sum->sanity = GetMonData(mon, MON_DATA_SANITY_IS_BAD_EGG);
 
         if (sum->sanity)
             sum->isEgg = TRUE;
@@ -3768,7 +3767,13 @@ static void PrintMonTrainerMemo(void)
 static void BufferNatureString(void)
 {
     struct PokemonSummaryScreenData *sumStruct = sMonSummaryScreen;
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gNatureNamePointers[sumStruct->summary.nature]);
+    u8 customNatureId = sumStruct->currentMon.box.customNatureID;
+    mgba_open();
+    mgba_printf(LOGINFO, "Has custom nature? %d, nature ID = %d", sumStruct->currentMon.box.hasCustomNature, sumStruct->currentMon.box.customNatureID);
+    if (sumStruct->currentMon.box.hasCustomNature == 1)
+        DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gModifiedNatureNamePointers[customNatureId]);
+    else
+        DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gNatureNamePointers[sumStruct->summary.nature]);
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(5, gText_EmptyString5);
 }
 

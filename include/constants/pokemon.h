@@ -98,7 +98,7 @@
 #define MON_DATA_OT_ID              1
 #define MON_DATA_NICKNAME           2
 #define MON_DATA_LANGUAGE           3
-#define MON_DATA_SANITY_IS_BAD_EGG  4
+#define MON_DATA_HAS_CUSTOM_NATURE  4
 #define MON_DATA_SANITY_HAS_SPECIES 5
 #define MON_DATA_SANITY_IS_EGG      6
 #define MON_DATA_OT_NAME            7
@@ -183,6 +183,7 @@
 #define MON_DATA_SPEED2            86
 #define MON_DATA_SPATK2            87
 #define MON_DATA_SPDEF2            88
+#define MON_DATA_CUSTOM_NATURE     89
 
 #define MIN_LEVEL 1
 #define VANILLA_MAX_LEVEL 100

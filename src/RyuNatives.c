@@ -2981,3 +2981,13 @@ void RyuBetaMenuDynamicInfoBox(void)
     StringCopy(gRyuStringVar2, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}Detailed steps on how to reproduce"));
     StringCopy(gRyuStringVar3, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}your bug."));
 }
+
+void RyuSetCustomNature (void)
+{
+    bool8 tru = TRUE;
+    bool8 fals = FALSE;
+    u8 nature = gSpecialVar_0x8005;
+    SetMonData(&gPlayerParty[0], MON_DATA_HAS_CUSTOM_NATURE, &tru);
+    SetMonData(&gPlayerParty[0], MON_DATA_CUSTOM_NATURE, &nature);
+    CalculateMonStats(&gPlayerParty[0]);
+}
