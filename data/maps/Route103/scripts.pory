@@ -68,7 +68,6 @@ Route103_EventScript_RivalBrendan:: @ 81EC434
 
 r103_femaleRivalBattle:: @ 81EC48E
 	trainerbattle_no_intro TRAINER_DAWN_1, r103_femaleRivalDefeat
-	waitstate
 	goto Route103_EventScript_AfterMayBattle
 	end
 
