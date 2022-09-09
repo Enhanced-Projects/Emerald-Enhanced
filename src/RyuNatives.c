@@ -2987,7 +2987,8 @@ void RyuSetCustomNature (void)
     bool8 tru = TRUE;
     bool8 fals = FALSE;
     u8 nature = gSpecialVar_0x8005;
-    SetMonData(&gPlayerParty[0], MON_DATA_HAS_CUSTOM_NATURE, &tru);
-    SetMonData(&gPlayerParty[0], MON_DATA_CUSTOM_NATURE, &nature);
-    CalculateMonStats(&gPlayerParty[0]);
+    u8 slot = gSpecialVar_0x8001;
+    SetMonData(&gPlayerParty[slot], MON_DATA_HAS_CUSTOM_NATURE, &tru);
+    SetMonData(&gPlayerParty[slot], MON_DATA_CUSTOM_NATURE, &nature);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
