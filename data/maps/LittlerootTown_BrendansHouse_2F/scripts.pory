@@ -8,6 +8,7 @@ GameIntroSequenceCheck::
 	map_script_2 VAR_TEMP_E, 0, LRT_CheckGameOver
 	map_script_2 VAR_RYU_QUEST_LANA, 75, LRT_LeafEvent
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, LRT_BeginHaremSequence
+	map_script_2 VAR_RYU_PARTNER_COUNT, 6, LRT_BeginHaremSequence
 	.2byte 0
 	
 LRT_BrendanAfterLilycoveScene::
