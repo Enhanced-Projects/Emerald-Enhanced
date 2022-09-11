@@ -18,10 +18,9 @@ script(global) RyuProfessionalsDailyQuest  {
 
     checkfactionstanding(FACTION_PROFESSIONALS, 200)
 
-    if ((var(VAR_RESULT) == TRUE) && (var(VAR_RYU_SUCCESSFUL_DELIVERIES) > 60)) { //do professionals final quest(NOT YET IMPLEMENTED.)
+    if ((var(VAR_RESULT) == TRUE) && (var(VAR_RYU_SUCCESSFUL_DELIVERIES) > 60)) { //do professionals final quest
         msgbox("Heya Union Rep! All things\non this front appear to be\lgoing smoothly!")
-        release
-        end
+        closemessage
     }
 
     if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_PROFESSIONALS) { //currently doing a daily quest for this faction
