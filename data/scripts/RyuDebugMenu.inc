@@ -383,7 +383,7 @@ RyuDebug_ViewTempVars::
 	goto RyuDebug_UtilitiesMenu
 
 RDB_TempVarsViewMsg:
-	.string "{RYU_STR_2}$"
+	.string "{STR_VAR_1}$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO

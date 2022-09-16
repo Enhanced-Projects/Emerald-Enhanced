@@ -518,7 +518,7 @@
 #define FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE       0x1E6
 #define FLAG_HIDE_114_MAXIE                       0x1E7
 #define FLAG_RYU_MAGMA_INTENSE_SUN_ENABLED        0x1E8
-#define FLAG_RYU_COMPLETED_NOBLES_SPECIAL_QUEST   0x1E9 // Nobles related.
+#define FLAG_RYU_COMPLETED_NOBLES_SPECIAL_QUEST   0x1E9 // Nobles related. 
 #define FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST     0x1EA // Nobles related.
 #define NOBLES_SPECIAL_MISSION_IN_PROGRESS        0x1EB // Nobles related.
 #define FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS   0x1EC // Nobles related.
@@ -753,7 +753,7 @@
 
 // Event Flags
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
-#define FLAG_UNUSED_0x2BD                                           0x2BD
+#define FLAG_RYU_CHOSE_MAGMA_PATH                                   0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
 #define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0
@@ -806,7 +806,7 @@
 #define FLAG_RYU_HIDE_LAVARIDGE_RIVAL                               0x2ED
 #define FLAG_HIDE_ROUTE_101_ZIGZAGOON                               0x2EE
 #define FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY                           0x2EF
-#define FLAG_UNUSED_0x2F0                                           0x2F0
+#define FLAG_RYU_MAGMA_SOOTOPOLIS_EVENT                             0x2F0
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN              0x2F1
 #define FLAG_RYU_NOTIFIED_DAILY_CANCEL                              0x2F2
 #define FLAG_RYU_NOTIFIED_SAVE_STATE                                0x2F3
