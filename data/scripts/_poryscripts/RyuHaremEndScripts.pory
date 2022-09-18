@@ -16,15 +16,19 @@ script Ryu_HaremEvent {
 	}
 	call(RyuRivalHaremIntro)
 	if (flag(FLAG_RYU_DS_SHELLY_PARTNERS) == TRUE) {
+		addobject(SHELLY)
 		call(RyuHaremEventShelly)
 	}
 	if (flag(FLAG_RYU_DS_JOY_PARTNERS) == TRUE) {
+		addobject(JOY)
 		call(RyuHaremEventJoy)
 	}
 	if (flag(FLAG_RYU_DS_LANETTE_PARTNERS) == TRUE) {
+		addobject(LANETTE)
 		call(RyuHaremEventLanette)
 	}
 	if (flag(FLAG_RYU_DS_LEAF_PARTNERS) == TRUE) {
+		addobject(LEAF)
 		call(RyuHaremEventLeaf)
 	}
 	if (flag(FLAG_RYU_DS_MAY_PARTNERS) == TRUE) {
@@ -34,6 +38,7 @@ script Ryu_HaremEvent {
 		call(RyuHaremEventMinnie)
 	}
 	if (flag(FLAG_RYU_DS_COURTNEY_PARTNERS) == TRUE) {
+		addobject(COURTNEY)
 		call(RyuHaremEventCourtney)
 	}
 	call(RyuHaremEventRivalOutro)

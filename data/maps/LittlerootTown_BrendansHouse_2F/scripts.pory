@@ -569,8 +569,6 @@ HaremBegin:
 	waitmovement 4
 	msgbox LRT_HaremBeginRivalMsg
 	closemessage
-	clearflag FLAG_RYU_HIDE_HAREM_EVENT_NPCS
-	fadescreen FADE_TO_BLACK
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq HaremBeginFemale
