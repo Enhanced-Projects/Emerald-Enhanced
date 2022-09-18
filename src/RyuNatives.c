@@ -2142,16 +2142,16 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
         GiveAchievement(ACH_FWB);
     }
 
-    if ((partners == 5) && (FlagGet(FLAG_RYU_FIRST_GAME_CLEAR) == 1))
-    {
-        GiveAchievement(ACH_TRUE_ENDING);
-        VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
-    }
-
     if (FlagGet(FLAG_RYU_DS_MAY_PARTNERS) == 1) //may doesn't count for the true ending.
     {
         partners++;
         GiveAchievement(ACH_LOST_GIRL);
+    }
+
+    if ((partners >= 5) && (FlagGet(FLAG_RYU_FIRST_GAME_CLEAR) == 1))
+    {
+        GiveAchievement(ACH_TRUE_ENDING);
+        VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
     }
 
     VarSet(VAR_RYU_PARTNER_COUNT, partners);
@@ -2985,4 +2985,12 @@ void RyuSetCustomNature (void)
     SetMonData(&gPlayerParty[slot], MON_DATA_HAS_CUSTOM_NATURE, &tru);
     SetMonData(&gPlayerParty[slot], MON_DATA_CUSTOM_NATURE, &nature);
     CalculateMonStats(&gPlayerParty[slot]);
+}
+
+void SwapPlayerGender (void)
+{
+    if ((gSaveBlock2Ptr->playerGender) == 0)
+        gSaveBlock2Ptr->playerGender = 1;
+    else
+        gSaveBlock2Ptr->playerGender = 0;
 }

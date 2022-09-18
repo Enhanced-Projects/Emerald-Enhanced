@@ -381,6 +381,7 @@ LRT_DH_Unchanged:
 @======================================================If player has romanced courtney, she will sabotage relationships with rival=======
 
 LRT_CheckCourtneyForRivalNight::
+	goto_if_set FLAG_RYU_HAREM_EVENT_COURTNEY_SPECIAL, ryu_return
 	addobject 5
 	playse SE_DOOR
 	call LRT_MoveCourtneyToPlayer

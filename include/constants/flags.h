@@ -933,7 +933,7 @@
 #define FLAG_UNUSED_0x36C                                           0x36C
 #define FLAG_HIDE_MT_CHIMNEY_TRAINERS                               0x36D
 #define FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT                         0x36E
-#define FLAG_UNUSED_0x36F                                           0x36F
+#define FLAG_RYU_HAREM_EVENT_COURTNEY_SPECIAL                       0x36F
 #define FLAG_UNUSED_0x370                                           0x370
 #define FLAG_UNUSED_0x371                                           0x371
 #define FLAG_UNUSED_0x372                                           0x372

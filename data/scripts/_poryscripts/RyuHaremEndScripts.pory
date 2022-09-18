@@ -1,0 +1,415 @@
+const SHELLY = 8
+const DAWN = 6
+const BRENDAN = 9
+const MAY = 13
+const LANETTE = 5
+const LEAF = 7
+const JOY = 11
+const MINNIE = 4
+const COURTNEY = 14
+
+script Ryu_HaremEvent {
+	fadenewbgm(MUS_THANKFOR)
+	setvar(VAR_TEMP_2, 100)
+	if (flag(FLAG_RYU_HAREM_EVENT_COMPLETED) == TRUE) {
+		end
+	}
+	call(RyuRivalHaremIntro)
+	if (flag(FLAG_RYU_DS_SHELLY_PARTNERS) == TRUE) {
+		call(RyuHaremEventShelly)
+	}
+	if (flag(FLAG_RYU_DS_JOY_PARTNERS) == TRUE) {
+		call(RyuHaremEventJoy)
+	}
+	if (flag(FLAG_RYU_DS_LANETTE_PARTNERS) == TRUE) {
+		call(RyuHaremEventLanette)
+	}
+	if (flag(FLAG_RYU_DS_LEAF_PARTNERS) == TRUE) {
+		call(RyuHaremEventLeaf)
+	}
+	if (flag(FLAG_RYU_DS_MAY_PARTNERS) == TRUE) {
+		call(RyuHaremEventMay)
+	}
+	if ((flag(FLAG_RYU_MINNIE_GAME_CLEAR) == TRUE) && (flag(FLAG_RYU_MINNIE_POKEMON_SCHOOL) == TRUE)) {
+		call(RyuHaremEventMinnie)
+	}
+	if (flag(FLAG_RYU_DS_COURTNEY_PARTNERS) == TRUE) {
+		call(RyuHaremEventCourtney)
+	}
+	call(RyuHaremEventRivalOutro)
+	goto(RyuEndHaremEvent)
+}
+
+//Rival introduces the harem clique
+script RyuRivalHaremIntro {
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) {
+		turnobject(PLAYER, DIR_EAST)
+		turnobject(DAWN, DIR_WEST)
+	}
+	else {
+		turnobject(PLAYER, DIR_WEST)
+		turnobject(BRENDAN, DIR_EAST)
+	}
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}So the reason I called you here is that you've touched the hearts of so many people. All of these people, including myself, got together to get you a gift!"))
+	closemessage
+	turnobject(PLAYER, DIR_SOUTH)
+	turnobject(DAWN, DIR_SOUTH)
+	turnobject(BRENDAN, DIR_SOUTH)
+	return
+}
+
+//moves the current object to the left one space because the player is female.
+script RyuHaremEventIntroMoveOverForFemalePlayer {
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		return
+	}
+	applymovement(VAR_TEMP_3, Common_Movement_StepLeft)
+	waitmovement(VAR_TEMP_3)
+	return
+}
+
+//player recruited shelly
+script RyuHaremEventShelly {
+	setvar(VAR_TEMP_3, SHELLY)
+	applymovement(SHELLY, LRT_HE_PartnerMove)
+	waitmovement(SHELLY)
+	call(RyuHaremEventIntroMoveOverForFemalePlayer)
+	turnobject(SHELLY, DIR_NORTH)
+	applymovement(SHELLY, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You swept me off my feet like a strong wave..."))
+	closemessage
+	return
+}
+
+//player recruited courtney
+script RyuHaremEventCourtney {
+	setvar(VAR_TEMP_3, COURTNEY)
+	applymovement(COURTNEY, LRT_HE_PartnerMove)
+	waitmovement(COURTNEY)
+	call(RyuHaremEventIntroMoveOverForFemalePlayer)
+	turnobject(COURTNEY, DIR_NORTH)
+	applymovement(COURTNEY, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You ignited my fiery passion..."))
+	closemessage
+	setflag(FLAG_RYU_HAREM_EVENT_COURTNEY_SPECIAL)
+	return
+}
+
+//player recruited joy
+script RyuHaremEventJoy {
+	setvar(VAR_TEMP_3, JOY)
+	call(RyuHaremEventIntroMoveOverForFemalePlayer)
+	applymovement(JOY, LRT_HE_PartnerMove)
+	waitmovement(JOY)
+	turnobject(JOY, DIR_NORTH)
+	applymovement(JOY, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You made me find a new joy in life..."))
+	closemessage
+	return
+}
+
+//player recruited lanette
+script RyuHaremEventLanette {
+	applymovement(LANETTE, LRT_HE_PartnerMoveLanette1)
+	waitmovement(LANETTE)
+	setvar(VAR_TEMP_3, LANETTE)
+	call(RyuHaremEventIntroMoveOverForFemalePlayer)
+	applymovement(LANETTE, LRT_HE_PartnerMoveLanette2)
+	waitmovement(LANETTE)
+	applymovement(LANETTE, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You pushed my expectations SO far out of the box..."))
+	closemessage
+	return
+}
+
+//player recruited leaf
+script RyuHaremEventLeaf {
+	setvar(VAR_TEMP_3, LEAF)
+	applymovement(LEAF, LRT_HE_PartnerMoveLeaf1)
+	waitmovement(LEAF)
+	call(RyuHaremEventIntroMoveOverForFemalePlayer)
+	applymovement(LEAF, LRT_HE_PartnerMoveLeaf2)
+	waitmovement(LEAF)
+	applymovement(LEAF, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You shattered my shell like a wine glass on concrete..."))
+	closemessage
+	return
+}
+
+//player recruited may
+script RyuHaremEventMay {
+	addobject(MAY)
+	setvar(VAR_TEMP_3, MAY)
+	call(RyuHaremEventIntroMoveOverForFemalePlayer)
+	applymovement(MAY, LRT_HE_MayMove)
+	waitmovement(MAY)
+	turnobject(PLAYER, DIR_NORTH)
+	turnobject(DAWN, DIR_NORTH)
+	turnobject(BRENDAN, DIR_NORTH)
+	applymovement(MAY, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	if ((flag(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN) == TRUE) && (flag(FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS) == TRUE)) {
+		//Player completed May's optionals
+		checkplayergender
+		if (var(VAR_RESULT) == MALE) {
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You're such a stud... I totally get why they all like you so much!\pand also..."))
+		}
+		else {
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You're so sly... no small wonder they all fell for your trap!\pand also..."))
+		}
+		closemessage
+	}
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You helped me find my purpose again!"))
+	closemessage
+	return
+}
+
+//player completed minnie's optionals
+script RyuHaremEventMinnie {
+	setvar(VAR_TEMP_3, MINNIE)
+	applymovement(MAY, Common_Movement_StepRight)
+	waitmovement(MAY)
+	turnobject(MAY, DIR_SOUTH)
+	applymovement(MINNIE, LRT_HE_MinnieMove)
+	waitmovement(MINNIE)
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		applymovement(MINNIE, Common_Movement_StepRight)
+		waitmovement(MINNIE)
+		turnobject(MINNIE, DIR_SOUTH)
+	}
+	turnobject(PLAYER, DIR_NORTH)
+	turnobject(DAWN, DIR_NORTH)
+	turnobject(BRENDAN, DIR_NORTH)
+	applymovement(MINNIE, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}You're so popular!\pI hope I can stand next to you\nlike they do some day!")
+	closemessage
+	turnobject(PLAYER, DIR_SOUTH)
+	turnobject(DAWN, DIR_SOUTH)
+	turnobject(BRENDAN, DIR_SOUTH)
+	return
+}
+
+script RyuHaremEventRivalOutro {//finish harem event
+	checkplayergender
+	if (var(VAR_RESULT) == MALE){
+		turnobject(PLAYER, DIR_EAST)
+		turnobject(DAWN, DIR_WEST)
+	}
+	else {
+		turnobject(PLAYER, DIR_WEST)
+		turnobject(BRENDAN, DIR_EAST)
+	}
+	msgbox(format("So the thing we got for you is a Shiny Charm! It's an irreplacable artifact that has a mysterious blessing of luck! We all lucked out by meeting you, now you get some good luck too!"))
+	closemessage
+	return
+}
+
+script RyuHaremEventOutroMoveOverForFemalePlayer {
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		return
+	}
+	applymovement(VAR_TEMP_3, Common_Movement_StepRight)
+	waitmovement(VAR_TEMP_3)
+	turnobject(VAR_TEMP_3, DIR_NORTH)
+	return
+}
+
+script RyuEndHaremEvent { //move objects offscreen and disappear them
+	giveitem(ITEM_SHINY_CHARM, 1)
+	waitfanfare
+	closemessage
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		applymovement(LANETTE, Common_Movement_StepLeft)
+		waitmovement(LANETTE)
+	}
+	applymovement(LANETTE, LRT_HE_LanetteExit)
+	delay(30)
+	applymovement(LEAF, LRT_HE_LeafExit)
+	delay(30)
+	applymovement(JOY, LRT_HE_JoyExit)
+	delay(35)
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		applymovement(COURTNEY, Common_Movement_StepLeft)
+		waitmovement(COURTNEY)
+	}
+	applymovement(COURTNEY, LRT_HE_CourtneyExit)
+	delay(30)
+	applymovement(SHELLY, LRT_HE_ShellyExit)
+	delay(30)
+	applymovement(MINNIE, LRT_HE_MinnieReturnToPost)
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		applymovement(DAWN, Common_Movement_StepDown)
+		applymovement(BRENDAN, Common_Movement_StepDown)
+		waitmovement(DAWN)
+		waitmovement(BRENDAN)
+		applymovement(DAWN, Common_Movement_StepRight)
+		applymovement(BRENDAN, Common_Movement_StepRight)
+		waitmovement(DAWN)
+		waitmovement(BRENDAN)
+	}
+	applymovement(DAWN, LRT_HE_RivalExit)
+	applymovement(BRENDAN, LRT_HE_RivalExit)
+	delay(30)
+	applymovement(MAY, LRT_HE_MayExit)
+	waitmovement(MAY)
+	setvar(VAR_RYU_PARTNER_COUNT, 10)
+	setflag(FLAG_RYU_HAREM_EVENT_COMPLETED)
+	removeobject(DAWN)
+	removeobject(BRENDAN)
+	removeobject(SHELLY)
+	removeobject(MAY)
+	removeobject(JOY)
+	removeobject(LANETTE)
+	removeobject(LEAF)
+	removeobject(COURTNEY)
+	setflag(FLAG_RYU_HIDE_HAREM_EVENT_NPCS)
+	setflag(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN)
+	setflag(FLAG_RYU_HIDE_HAREM_EVENT_DAWN)
+	fadenewbgm(MUS_TETSUJI)
+	release
+	end
+}
+
+//movements
+
+movement LRT_HE_JoyExit {
+	walk_right * 3
+	walk_down * 5
+	step_end
+}
+
+movement LRT_HE_RivalExit {
+	walk_down * 7
+	step_end
+}
+
+movement LRT_HE_MayExit {
+	walk_up * 6
+	step_end
+}
+
+movement LRT_HE_MinnieReturnToPost {
+	walk_left * 2
+	walk_up * 5
+	step_end
+}
+
+movement LRT_HE_LanetteExit {
+	walk_up * 8
+	step_end
+}
+
+movement LRT_HE_LeafExit {
+	walk_left * 2
+	walk_up * 8
+	step_end
+}
+
+movement LRT_HE_ShellyExit {
+	walk_left * 9
+	walk_down * 2
+	step_end
+}
+
+movement LRT_HE_PartnerMove {
+	walk_up * 4
+	walk_left
+	step_end
+}
+
+movement LRT_HE_PartnerMoveLeaf1 {
+	walk_up * 3
+	walk_left
+	step_end
+}
+
+movement LRT_HE_PartnerMoveLeaf2 {
+	walk_up
+	step_end
+}
+
+movement LRT_HE_PartnerMoveLanette1 {
+	walk_up * 3
+	step_end
+}
+
+movement LRT_HE_PartnerMoveLanette2 {
+	walk_left
+	walk_up
+	step_end
+}
+
+movement LRT_HE_MayMove {
+	walk_left
+	walk_down * 5
+	step_end
+}
+
+movement LRT_HE_CourtneyExit {
+	walk_up * 9
+	step_end
+}
+
+movement LRT_HE_MinnieMove {
+	walk_right * 2
+	walk_down * 5
+	face_down
+	step_end
+}
+//=============================================May's part of the harem event
+
+script RyuHaremEventMaySection {
+	if ((flag(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN) == TRUE) && (flag(FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS) == TRUE)) {
+		addobject(13)
+		applymovement(13, LRT_HaremEvent_MaySectionMovement1)
+		waitmovement(13)
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hoo boy, you sure are popular with\nthe ladies, huh!?\pWell, I'm okay with all of them\nas long as they don't try to\lkeep you from me.\pI wish I could have participated\nin getting your gift, but, I came around\ltoo late. It's fine!\pI just have to be extra loving\nwhen I'm travelling with you, huh?")
+		closemessage
+		getplayerxy(VAR_0x8008, VAR_0x8009)
+		if (var(VAR_0x8008) == 9) { //player is female, X coord is 9
+			applymovement(13, Common_Movement_StepLeft)
+			waitmovement(13)
+		}
+		turnobject(13, DIR_WEST)
+		applymovement(13, Common_Movement_HeartEmote)
+		playse(SE_M_CHARM)
+		waitse
+		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (May blushes and hesitates for a little\n and then kisses you.)")
+		playse(SE_PIN)
+		applymovement(PLAYER, Common_Movement_ExclamationMark)
+		waitmovement(PLAYER)
+		waitse
+		waitmessage
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}There's my gift for you.\nHope you enjoyed it!")
+		closemessage
+		applymovement(13, LRT_HaremEvent_MayMovement2)
+		waitmovement(13)
+		removeobject(13)
+		return
+	}
+	return
+}
+
+movement LRT_HaremEvent_MaySectionMovement1 {
+	walk_down * 6
+	face_left
+	step_end
+}
+
+movement LRT_HaremEvent_MayMovement2 {
+	walk_up * 6
+	step_end
+}

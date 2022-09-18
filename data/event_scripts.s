@@ -608,6 +608,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/REHomeScripts.inc"
 	.include "data/scripts/_poryscripts/DynamicDeliveryScripts.inc"
 	.include "data/scripts/_poryscripts/RyuNatureSwap.inc"
+	.include "data/scripts/_poryscripts/RyuHaremEndScripts.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
