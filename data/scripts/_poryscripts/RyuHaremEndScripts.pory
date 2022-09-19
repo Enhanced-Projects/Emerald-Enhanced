@@ -9,8 +9,14 @@ const MINNIE = 4
 const COURTNEY = 14
 
 script Ryu_HaremEvent {
-	fadenewbgm(MUS_THANKFOR)
 	setvar(VAR_TEMP_2, 100)
+	if ((var(VAR_RYU_PARTNER_COUNT) < 5) || (flag(FLAG_RYU_HAREM_EVENT_COMPLETED) == TRUE)){
+		goto(ryu_end)
+	}
+	if (flag(FLAG_RYU_HAREM_EVENT_STARTED) == FALSE){
+		goto(ryu_end)
+	}
+	fadenewbgm(MUS_THANKFOR)
 	if (flag(FLAG_RYU_HAREM_EVENT_COMPLETED) == TRUE) {
 		end
 	}
@@ -283,6 +289,7 @@ script RyuEndHaremEvent { //move objects offscreen and disappear them
 	setflag(FLAG_RYU_HIDE_HAREM_EVENT_NPCS)
 	setflag(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN)
 	setflag(FLAG_RYU_HIDE_HAREM_EVENT_DAWN)
+	clearflag(FLAG_RYU_HAREM_EVENT_STARTED)
 	fadenewbgm(MUS_TETSUJI)
 	release
 	end

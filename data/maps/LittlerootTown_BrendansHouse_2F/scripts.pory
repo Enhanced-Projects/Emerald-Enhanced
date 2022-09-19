@@ -567,6 +567,7 @@ HaremBegin:
 	turnobject PLAYER, DIR_EAST
 	applymovement 4, LRT_Harem_RivalMove
 	waitmovement 4
+	setflag FLAG_RYU_HAREM_EVENT_STARTED
 	msgbox LRT_HaremBeginRivalMsg
 	closemessage
 	checkplayergender
