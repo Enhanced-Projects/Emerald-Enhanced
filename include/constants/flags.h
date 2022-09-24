@@ -935,7 +935,7 @@
 #define FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT                         0x36E
 #define FLAG_RYU_HAREM_EVENT_COURTNEY_SPECIAL                       0x36F
 #define FLAG_RYU_HAREM_EVENT_STARTED                                0x370
-#define FLAG_UNUSED_0x371                                           0x371
+#define FLAG_RYU_STARTED_MAY_QUEST                                  0x371
 #define FLAG_UNUSED_0x372                                           0x372
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS         0x373
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1     0x374

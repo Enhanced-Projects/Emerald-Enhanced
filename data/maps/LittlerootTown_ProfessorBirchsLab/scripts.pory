@@ -728,3 +728,34 @@ script RyuChallengeFailedRequisite7 {
 	release
 	end
 }
+
+
+script RyuMewtwoMegaGift {
+	if (flag(FLAG_RYU_GIVEN_MEWTWO_MEGAS) == FALSE){
+			msgbox(format("Hey there, {PLAYER}! It seems like you're well on your way to becoming a pokemon master! Accept these gifts, they should come in handy."))
+			giveitem(ITEM_MEWTWONITE_Y, 1)
+			giveitem(ITEM_MEWTWONITE_X, 1)
+			ach(give, ACH_POKEMON_TRAINER)
+			setflag(FLAG_RYU_GIVEN_MEWTWO_MEGAS)
+			release
+			end
+		}
+	else{
+			return
+		}
+}
+
+script RyuCheckForMayQuest{
+		if ((var(VAR_RYU_QUEST_MAY) >= 5) && (flag(FLAG_RYU_STARTED_MAY_QUEST) == FALSE)){
+			msgbox("Birch: My word!\nYou have caught {STR_VAR_1}\ldifferent species of Pokémon!\pThis is incredible!\pI... don't have to work\nso hard anymore!\pThanks a ton, {PLAYER}!\pI knew you'd be the right\nperson for the job!")
+			setvar(VAR_RYU_QUEST_MAY, 5) //player has enabled the may event.
+			setflag(FLAG_RYU_STARTED_MAY_QUEST)//don't repeat this script
+			closemessage
+			msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You can now recruit May\n as a follower once the\l intro is completed.)")
+			closemessage
+			return
+		}
+		else {
+			return
+		}
+}
