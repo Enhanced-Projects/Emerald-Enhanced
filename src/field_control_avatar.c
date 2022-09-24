@@ -371,7 +371,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
                     else
                     {
                         currentTrainerFaction = gTrainers[currentTrainer].trainerFaction;
-                        if (currentTrainerFaction < FACTION_OTHERS)
+                        if (currentTrainerFaction < FACTION_POKEMON_LEAGUE)
                             {
                                 gOriginalNPCScript = script;
                                 script = RyuGetFactionDailyQuestScriptPtr(currentTrainerFaction);
