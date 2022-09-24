@@ -430,18 +430,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanPreferCollectingSlowly: @ 81FBC2D
 `
 
 script LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting {
-	specialvar(VAR_RESULT, RyuGetTotalCaughtMons)
-	if (var(VAR_RESULT) >= 151){
-		if (flag(FLAG_RYU_GIVEN_MEWTWO_MEGAS) == FALSE){
-			msgbox(format("Hey there, {PLAYER}! It seems like you're well on your way to becoming a pokemon master! Accept these gifts, they should come in handy."))
-			giveitem(ITEM_MEWTWONITE_Y, 1)
-			giveitem(ITEM_MEWTWONITE_X, 1)
-			ach(give, ACH_POKEMON_TRAINER)
-			setflag(FLAG_RYU_GIVEN_MEWTWO_MEGAS)
-			release
-			end
-		}
-	}
+	msgbox("There's a grassy patch waiting\nfor you somewhere!")
 	return
 }
 
@@ -603,7 +592,7 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_Birch{
 	lock
 	faceplayer
 	delay(60)
-	special(RyuDevCheck)
+	special(RyuChallengeCheck)
 	if (var(VAR_RESULT) == 420) {
 		goto(RyuChallengeQuery)
 	}

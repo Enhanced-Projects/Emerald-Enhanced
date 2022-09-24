@@ -573,3 +573,4 @@ gSpecials:: @ 81DBA64
 	def_special RyuBufferRepelItemCounts
 	def_special CheckDeliverySuccessful
 	def_special CheckFullDeliveryQueueFinished
+	def_special RyuChallengeCheck

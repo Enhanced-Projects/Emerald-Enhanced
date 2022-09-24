@@ -8,7 +8,6 @@ RyuDevSwitch::
 	switch VAR_RESULT
 	case 69, Ryu_enableDevMode
 	case 666, Ryu_SpecialChallengeActive
-	case 420, RyuChallengeQuery
 	case 777, Hat_enableTestMode
 	release
 	end

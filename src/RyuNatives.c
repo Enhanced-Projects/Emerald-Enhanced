@@ -403,6 +403,15 @@ void RyuBrendanGiftPoke(void)
     SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);
 }
 
+void RyuChallengeCheck (void)
+{
+    if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)))
+    {
+        gSpecialVar_Result = 420;
+        return;
+    }
+}
+
 void RyuDevCheck(void)
 {
     if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)) && (JOY_HELD(START_BUTTON)) && (JOY_HELD(SELECT_BUTTON)))
@@ -413,11 +422,6 @@ void RyuDevCheck(void)
     if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)))
     {
         gSpecialVar_Result = 69;
-        return;
-    }
-    else if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)))
-    {
-        gSpecialVar_Result = 420;
         return;
     }
 }
