@@ -221,6 +221,7 @@ void RyuCountActiveJobs(void)
 
 bool32 CheckRTCHealth(void)
 {
+#ifdef RYU_PUNISH_SAVE_STATE
     s8 SBMins = gSaveBlock2Ptr->playTimeMinutes;
     s8 DTMins = gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeStart;
     s8 RTCmins = gLocalTime.minutes;
@@ -233,6 +234,7 @@ bool32 CheckRTCHealth(void)
 
     if (gSaveBlock2Ptr->DeliveryTimer.rtcTimeStart == RTCmins)//rtc didn't advance any since the delivery was started. Fail test.
         return FALSE;
+#endif
 
     return TRUE;//all checks passed
     
@@ -318,7 +320,7 @@ int CheckFullDeliveryQueueFinished(void)
     if (jobsDone == (VarGet(VAR_RYU_NUM_DELIVERIES)))//if the number of finished jobs is the same as the number of jobs given
     {
         VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, (gSaveBlock2Ptr->DeliveryTimer.quotaNum + 1));//advance quota data.
-        if ((gSaveBlock2Ptr->DeliveryTimer.timeRanOut == FALSE) && (CheckRTCHealth() == TRUE))//check for broken/tampered RTC
+        if ((gSaveBlock2Ptr->DeliveryTimer.timeRanOut == FALSE) && (() == TRUE))//check for broken/tampered RTC
         {
             gSpecialVar_0x8001 = TRUE;
             return highReward;//player completed the queue in time
