@@ -5196,12 +5196,12 @@ const struct PokedexEntry gPokedexEntries[] =
 	//	.trainerOffset = 0,
 	//},
 
-	[NATIONAL_DEX_CHINGLING] =
+	[NATIONAL_DEX_LUNALA] =
 	{
-		.categoryName = _("Bell"),
-		.height = 2,
-		.weight = 6,
-		.description = gChinglingPokedexText,
+		.categoryName = _("Moone"),
+		.height = 40,
+		.weight = 1200,
+		.description = gLunalaPokedexText,
 		.pokemonScale = 356,
 		.pokemonOffset = 17,
 		.trainerScale = 256,
