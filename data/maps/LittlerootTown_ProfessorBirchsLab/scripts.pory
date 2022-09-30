@@ -594,12 +594,15 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_Birch{
 	delay(60)
 	special(RyuChallengeCheck)
 	if (var(VAR_RESULT) == 420) {
-		goto(RyuChallengeQuery)
+		call(RyuChallengeQuery)
 	}
 	goto(LRT_StandardBirch)
 }
 
 script RyuChallengeQuery {
+	if (var(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 69){
+		goto(RyuSpecialChallengeComplete)
+	}
 	if (flag(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) {
 		msgbox("You have already started the challenge.\pCheck status?", MSGBOX_YESNO)
 		if (var(VAR_RESULT) == YES) {
@@ -629,6 +632,8 @@ script RyuChallengeQuery {
 				clearflag(FLAG_RYU_DOING_RYU_CHALLENGE)
 				setvar(VAR_RYU_SPECIAL_CHALLENGE_STATE, 666)
 				setflag(FLAG_RYU_FAILED_RYU_CHALLENGE)
+				release
+				end
 			}
 		}
 		msgbox("Exiting Challenge Status.")
@@ -639,10 +644,10 @@ script RyuChallengeQuery {
 	closemessage
 	msgbox("You have entered the key combo\nfor Ryu's Challenge.\pDo you want to attempt the\nChallenge?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == NO) {
+		closemessage
 		goto(ryu_return)
 	}
 	msgbox("I will now see if you\nmeet the requirements.\pPlease Wait.")
-	delay(60)
 	if (flag(FLAG_RYU_ISNGPLUS) == FALSE) {
 		goto(RyuChallengeFailedRequisite1)
 	}
@@ -660,8 +665,13 @@ script RyuChallengeQuery {
 		goto(RyuChallengeFailedRequisite5)
 	}
 	specialvar(VAR_RESULT, CheckValidMonsForSpecialChallenge)
-	if (var(VAR_RESULT) == 666) {
-		goto(RyuChallengeFailedRequisite6)
+	switch (var(VAR_RESULT)) {
+		case 666:
+			goto(RyuChallengeFailedRequisite6)
+		case 667:
+			goto(RyuChallengeFailedRequisite67)
+		case 668:
+			goto(RyuChallengeFailedRequisite68)
 	}
 	if (flag(FLAG_RYU_FAILED_RYU_CHALLENGE) == TRUE) {
 		goto(RyuChallengeFailedRequisite7)
@@ -686,45 +696,81 @@ script RyuChallengeQuery {
 	end
 }
 
+script RyuSpecialChallengeComplete {
+	if (flag(FLAG_RYU_MAGEARNA_GIVEN) == TRUE) {
+		msgbox("Good job on completing the\nchallenge.\pMaybe you should try for a faster\ntime?")
+		release
+		end
+	}
+	msgbox("Congratulations on completing the\nspecial challenge!\pPost in the Discord Server\nif you think your completion\ltime is leaderboard material!")
+	closemessage
+	msgbox("Please accept this Pokémon as\na reward for your efforts!")
+	closemessage
+	special(CalculatePlayerPartyCount)
+	if (var(VAR_RESULT) < 6){
+		givemon(SPECIES_MAGEARNA, 100, ITEM_EXPERT_BELT)
+		msgbox("You've been given a Magearna\nfor a reward. Enjoy!")
+		setflag(FLAG_RYU_MAGEARNA_GIVEN)
+		release
+		end
+	}
+	msgbox("Go clear out a space in your\nparty to receive the gift\lPokémon!")
+	closemessage
+	release
+	end
+}
+
 
 script RyuChallengeFailedRequisite1 {
-	msgbox("You do not meed the requirements.\pYou must be on a New Game Plus.")
+	msgbox("You do not meet the requirements.\pYou must be on a New Game Plus.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite2 {
-	msgbox("You do not meed the requirements.\pYou may not use cheats.")
+	msgbox("You do not meet the requirements.\pYou may not use cheats.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite3 {
-	msgbox("You do not meed the requirements.\pYou must be at prestige 6 or higher.")
+	msgbox("You do not meet the requirements.\pYou must be at prestige 6 or higher.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite4 {
-	msgbox("You do not meed the requirements.\pYou may not have any badges.")
+	msgbox("You do not meet the requirements.\pYou may not have any badges.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite5 {
-	msgbox("You do not meed the requirements.\pYou must complete the tutorial.")
+	msgbox("You do not meet the requirements.\pYou must complete the tutorial.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite6 {
-	msgbox("You do not meed the requirements.\pYou may not use legendaries.")
+	msgbox("You do not meet the requirements.\pYou may not use Legendaries.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite67 {
+	msgbox("You do not meet the requirements.\pYou may not use permanent Megas.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite68 {
+	msgbox("You do not meet the requirements.\pYou may not use Ultra Beasts.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite7 {
-	msgbox("You do not meed the requirements.\pYou have already failed the\nchallenge.")
+	msgbox("You do not meet the requirements.\pYou have already failed the\nchallenge.")
 	release
 	end
 }

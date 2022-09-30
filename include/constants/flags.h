@@ -816,7 +816,7 @@
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM                   0x2F7
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM      0x2F8
 #define FLAG_RYU_COMPLETED_LAVARIDGE_EVENT                          0x2F9
-#define FLAG_UNUSED_0x2FA                                           0x2FA
+#define FLAG_RYU_MAGEARNA_GIVEN                                     0x2FA
 #define FLAG_HIDE_DEOXYS                                            0x2FB
 #define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC
 #define FLAG_UNUSED_0x2FD                                           0x2FD

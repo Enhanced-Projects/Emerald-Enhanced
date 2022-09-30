@@ -297,26 +297,43 @@ void RyuKillMon(void)
         FlagSet(FLAG_RYU_CHALLENGEFAILED);
 }
 
+bool32 isMonLegendaryID (u16 speciesid)
+{
+    if ((gBaseStats[speciesid].isLegendary) == TRUE)
+        return TRUE;
+    return FALSE;
+}
+
+bool32 isMonUltraBeastID (u16 speciesid)
+{
+    if ((speciesid > 792) && (speciesid < 800))
+        return TRUE;
+    return FALSE;
+}
+
+bool32 isMonMegaID (u16 speciesid)
+{
+    if ((speciesid >= 809) && (speciesid < 858))
+        return TRUE;
+    return FALSE;
+}
+
 extern const u16 gFrontierBannedSpecies[27];
 extern const u16 gChallengeBannedSpecies[69];
 
 int CheckValidMonsForSpecialChallenge (void)
 {
-    u8 slot = 8;
-    s32 i = 0;
     s32 k = 0;
-    for (k = 0; k < 5; k++)
+    for (k = 0; k < 6; k++)
     {
-        for (; gChallengeBannedSpecies[i] != 0xFFFF; i++)
-        {
-            if (gChallengeBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
+        mgba_open();
+        mgba_printf(LOGINFO, "Checking Slot %d, species is %d", k, (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)));
+        if ((isMonLegendaryID(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)) == TRUE))
                 return 666;
-        }
-        if IS_MEGA_EVOLVED((GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2)) == TRUE)
-                return 666;
-
-        if IS_ULTRA_BEAST((GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2)) == TRUE)
-                return 666;
+        if ((isMonUltraBeastID(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)) == TRUE))
+                return 668;
+        if ((isMonMegaID(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)) == TRUE))
+                return 667;
     }
 }
 

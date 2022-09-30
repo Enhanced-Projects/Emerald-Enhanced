@@ -378,7 +378,7 @@ void RyuDoNotifyTasks(void)
 
     if ((VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 69) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS) == FALSE))
     {
-        ShowPokenavFieldMessage((const u8[]) _("You have completed\nRyu's Challenge.\pPing Ryu in discord to get your\nsave checked and score posted!"));
+        ShowPokenavFieldMessage((const u8[]) _("You have completed\nRyu's Challenge."));
         FlagClear(FLAG_RYU_DOING_RYU_CHALLENGE);
         FlagSet(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS);
         RyuSavePlayTimeChallenge();
