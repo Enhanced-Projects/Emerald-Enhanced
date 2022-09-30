@@ -1228,6 +1228,22 @@ bool8 DoesCurrentMapHaveEncounters(void)
         return FALSE;
 }
 
+bool8 RyuMapIsValidForDexnav(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if ((headerId == 0xFFFF) && (gWildMonHeaders[headerId].landMonsInfo == NULL) && (gWildMonHeaders[headerId].waterMonsInfo == NULL))
+    {
+        if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+        {
+            DebugPrint((const u8[])_("No Encounters."), 0);
+        }
+        return FALSE;
+    }
+    else
+        return TRUE;
+}
+
 static bool8 HandleStartMenuInput(void)
 {
     u16 song = VarGet(VAR_RYU_JUKEBOX);

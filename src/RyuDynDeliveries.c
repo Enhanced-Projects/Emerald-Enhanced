@@ -320,7 +320,7 @@ int CheckFullDeliveryQueueFinished(void)
     if (jobsDone == (VarGet(VAR_RYU_NUM_DELIVERIES)))//if the number of finished jobs is the same as the number of jobs given
     {
         VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, (gSaveBlock2Ptr->DeliveryTimer.quotaNum + 1));//advance quota data.
-        if ((gSaveBlock2Ptr->DeliveryTimer.timeRanOut == FALSE) && (() == TRUE))//check for broken/tampered RTC
+        if ((gSaveBlock2Ptr->DeliveryTimer.timeRanOut == FALSE))//check for broken/tampered RTC
         {
             gSpecialVar_0x8001 = TRUE;
             return highReward;//player completed the queue in time

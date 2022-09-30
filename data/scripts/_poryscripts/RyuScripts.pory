@@ -1255,6 +1255,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	setvar(VAR_LITTLEROOT_INTRO_STATE, 100)
 	release
 	end
 }
