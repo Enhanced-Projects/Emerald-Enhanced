@@ -742,6 +742,7 @@ static const u8 sText_RyuDoTSandTomb[] = _("{B_ATK_NAME_WITH_PREFIX} is being bu
 static const u8 sText_RyuDoTInfestation[] = _("The infestation continues to eat\nat {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_RyuDoTCling[] = _("{B_ATK_NAME_WITH_PREFIX} is still being hugged\ntightly by {B_DEF_NAME_WITH_PREFIX}!"); 
 static const u8 sText_RyuItDoesntLikeCheaters[] = _("The wild pokémon doesn't\nlike cheaters!"); 
+static const u8 sText_RyuBurnedByMagma[] = _("{B_ATK_NAME_WITH_PREFIX} was burned by the\nswirling magma!"); 
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1344,7 +1345,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_DOTSANDTOMB - 12] = sText_RyuDoTSandTomb,
     [STRINGID_DOTINFESTATION - 12] = sText_RyuDoTInfestation,
     [STRINGID_DOTCLING - 12] = sText_RyuDoTCling,
-    [STRINGID_ITDOESNTLIKECHEATERS - 12] = sText_RyuItDoesntLikeCheaters
+    [STRINGID_ITDOESNTLIKECHEATERS - 12] = sText_RyuItDoesntLikeCheaters,
+    [STRINGID_DOTMS - 12] = sText_RyuBurnedByMagma
 };
 
 const u16 gTerrainStringIds[] =
@@ -1504,6 +1506,7 @@ const u16 gWrappedStringIds[] =
     STRINGID_PKMNTRAPPEDBYSANDTOMB,// MOVE_SAND_TOMB
     STRINGID_INFESTATION,          // MOVE_INFESTATION
     STRINGID_WASHUGGEDBY,          // MOVE_CLING
+    STRINGID_TRAPPERBYSWIRLINGMAGMA,// MOVE_MAGMA_STORM
 };
 
 const u16 gWrappedDoTIds[] = 
@@ -1516,6 +1519,7 @@ const u16 gWrappedDoTIds[] =
     STRINGID_DOTSANDTOMB,
     STRINGID_DOTINFESTATION,
     STRINGID_DOTCLING,
+    STRINGID_DOTMS,
 };
 
 const u16 gMistUsedStringIds[] =
@@ -1685,7 +1689,7 @@ const u16 gCaughtMonStringIds[] =
 
 const u16 gTrappingMoves[] =
 {
-    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_INFESTATION, MOVE_CLING, 0xFFFF
+    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_INFESTATION, MOVE_CLING, MOVE_MAGMA_STORM, 0xFFFF
 };
 
 const u16 gRoomsStringIds[] =
