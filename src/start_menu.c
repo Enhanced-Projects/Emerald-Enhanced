@@ -181,7 +181,7 @@ const u16 gStartMenuButton_Pokedex[] = INCBIN_U16("graphics/start_menu/start_ico
 const u16 gStartMenuButton_Pokemon[] = INCBIN_U16("graphics/start_menu/start_icon_pokemon.4bpp");
 const u16 gStartMenuButton_Pokenav[] = INCBIN_U16("graphics/start_menu/start_icon_pokenav.4bpp");
 const u16 gStartMenuButton_Save[] = INCBIN_U16("graphics/start_menu/start_icon_save.4bpp");
-const u16 gStartMenuButtonPal[] = INCBIN_U16("graphics/start_menu/start_icon_empty.gbapal");
+const u16 gStartMenuButtonPal[] = INCBIN_U16("graphics/start_menu/start_icon.gbapal");
 
 const struct SpriteFrameImage gStartMenuButtonImages_Bag[] = 
 {
