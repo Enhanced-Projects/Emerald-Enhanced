@@ -678,6 +678,7 @@ static void CB2_EndScriptedWildBattle(void)
 {
     CpuFill16(0, (void*)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
+    FlagClear(FLAG_RYU_BOSS_WILD);
 
     if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {

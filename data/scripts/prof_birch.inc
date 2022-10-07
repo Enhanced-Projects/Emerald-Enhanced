@@ -49,17 +49,6 @@ ProfBirch_EventScript_ShowRatingMessage:: @ 8272179
 	return
 
 ProfBirch_EventScript_RatePokedex:: @ 8272184
-	setvar VAR_0x8004, 0
-	specialvar VAR_RESULT, ScriptGetPokedexInfo
-	copyvar VAR_0x8008, VAR_0x8005
-	copyvar VAR_0x8009, VAR_0x8006
-	copyvar VAR_0x800A, VAR_RESULT
-	buffernumberstring 0, VAR_0x8008  @ Num Hoenn seen
-	buffernumberstring 1, VAR_0x8009  @ Num Hoenn caught
-	msgbox gBirchDexRatingText_SoYouveSeenAndCaught, MSGBOX_DEFAULT
-	call ProfBirch_EventScript_ShowRatingMessage
-	compare VAR_0x800A, 0
-	goto_if_eq Common_EventScript_NopReturn  @ National dex not enabled
 	setvar VAR_0x8004, 1
 	specialvar VAR_RESULT, ScriptGetPokedexInfo
 	copyvar VAR_0x8008, VAR_0x8005
@@ -67,8 +56,8 @@ ProfBirch_EventScript_RatePokedex:: @ 8272184
 	buffernumberstring 0, VAR_0x8008  @ Num National seen
 	buffernumberstring 1, VAR_0x8009  @ Num National caught
 	msgbox gBirchDexRatingText_OnANationwideBasis, MSGBOX_DEFAULT
-	compare VAR_0x8009, 151
+	compare VAR_0x8006, 151
 	call_if_ge RyuMewtwoMegaGift
-	compare VAR_0x8009, 211
+	compare VAR_0x8006, 211
 	call_if_ge RyuCheckForMayQuest
 	return

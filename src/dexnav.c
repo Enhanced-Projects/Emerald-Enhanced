@@ -1911,6 +1911,7 @@ static void DexNavGuiFreeResources(void)
 static void CB1_InitDexNavSearch(void)
 {
     u8 taskId;
+    FlagClear(FLAG_RYU_BOSS_WILD);
     
     if (!gPaletteFade.active && !ScriptContext2_IsEnabled() && gMain.callback2 == CB2_Overworld)
     {
@@ -2089,6 +2090,7 @@ static void DrawSpeciesIcons(void)
 static u16 DexNavGetSpecies(void)
 {
     u16 species;
+    FlagClear(FLAG_RYU_BOSS_WILD);
     
     switch (sDexNavUiDataPtr->cursorRow)
     {
