@@ -3015,3 +3015,15 @@ void SwapPlayerGender (void)
     else
         gSaveBlock2Ptr->playerGender = 0;
 }
+
+void RetroPokedexRegister (void)
+{
+    int i, k;
+    for (i = 0;i < TOTAL_BOXES_COUNT;i++)
+        for(k = 0;k < IN_BOX_COUNT;k++)
+            if(GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_GET_CAUGHT) == FALSE);
+            {
+                GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_SET_CAUGHT);
+                GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_SET_SEEN);
+            }
+}

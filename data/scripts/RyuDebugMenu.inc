@@ -654,7 +654,7 @@ RyuDebug_msg:
 	.string "What would you like to activate?$"
 	
 RyuDebug_Init_GiveAll::
-	setvar VAR_TEMP_0, 1
+	setvar VAR_TEMP_0, 265
 	msgbox RyuDebug_GiveAllBeginMsg MSGBOX_DEFAULT
 	goto RyuDebug_GiveAllMons
 	
@@ -664,7 +664,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 152
+	compare VAR_TEMP_0, 686
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	

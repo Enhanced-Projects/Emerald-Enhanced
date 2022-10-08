@@ -6,24 +6,28 @@ script StartBetaMenu{
 }
 
 script RDB_BetaMenuStandalone{
-    multichoicedefault(30, 0, MULTI_BETA_MENU, 8, 0)
+    buffernumberstring(0, VAR_LAST_KNOWN_GAME_VERSION)
+    buffernumberstring(1, VAR_SAVE_FILE_CREATED_ON_VERSION)
+    msgbox("      EE: v{STR_VAR_1} / Save: v{STR_VAR_2}\nChoose an option or Exit.")
+    scrollingmultichoice(SMC_RYUBETAMENU, 30, 0, 6, 1)
+    closemessage
     switch(var(VAR_RESULT)){
         case 0:
             goto(RDBM_ViewSaveVersion)
         case 1:
             goto(RDBM_CheckWaystone)
         case 2:
-            goto(RyuUserInterfaceMainMenu)
-        case 3:
             goto(RDBM_ResetTemporaryBattleFlags)
-        case 4:
+        case 3:
             goto(RDBM_ResetBadges)
-        case 5:
+        case 4:
             goto(RDBM_ResetGCMS)
-        case 6:
+        case 5:
             goto(RDBM_TeleportHome)
-        case 7:
+        case 6:
             goto(RDBM_ResetRTC)
+        case 7:
+            goto(RDBM_RetroFillDex)
         case 8:
             goto(RDBM_ExitResetMenu)
     }
@@ -217,6 +221,13 @@ script RDBM_ShowActiveEffects {
 script RDBM_ScriptDelay2s {
     delay(120)
     return
+}
+
+script RDBM_RetroFillDex {
+    callnative(RetroPokedexRegister)
+    msgbox(format("Successfully scanned boxes for unregistered Pokémon."))
+    release
+    end
 }
 
 text RDBM_RepelCount {
