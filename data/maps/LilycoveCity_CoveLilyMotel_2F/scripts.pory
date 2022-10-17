@@ -1,11 +1,6 @@
 raw `
 LilycoveCity_CoveLilyMotel_2F_MapScripts:: @ 82186D2
-	map_script ON_FRAME, LCC_CLM_OnFrame
 	.byte 0
-
-LCC_CLM_OnFrame::
-	map_script_2 VAR_TEMP_C, 69, LCC_DoRayquazaStuff
-	.2byte 0
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner:: @ 82186D3
 	lock
@@ -143,20 +138,3 @@ LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy: @ 8218C33
 	.string "of becoming a better Trainer, I'd say.$"
 
 `
-
-script LCC_DoRayquazaStuff {
-	setvar(VAR_TEMP_C, 10)
-	goto(ryu_end)
-	goto_if_set(FLAG_RYU_SPECIAL_RAYQUAZA_GIFT_AVAILABLE, ryu_end)
-	specialvar(VAR_RESULT, CheckOwnedRayquaza)
-	if (var(VAR_RESULT) == TRUE) {
-		msgbox(LCC_CLM_SpecialGift)
-		setflag(FLAG_RYU_SPECIAL_RAYQUAZA_GIFT_AVAILABLE)
-		release
-		end
-	}
-	msgbox(LCC_BringRayquaza)
-	closemessage
-	release
-	end
-}

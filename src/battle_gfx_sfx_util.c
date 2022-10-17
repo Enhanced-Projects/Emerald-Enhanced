@@ -53,7 +53,8 @@ static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthbox =
     gHealthboxSinglesPlayerGfx, 0x1000, TAG_HEALTHBOX_PLAYER1_TILE
 };
 
-static const struct SpriteSheet sSpriteSheet_SinglesPlayerHealthboxDark =  
+//FULL_COLOR
+static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthboxDark =  
 {
     gHealthboxSinglesPlayerDarkGfx, 0x1000, TAG_HEALTHBOX_PLAYER1_TILE
 };
@@ -79,7 +80,9 @@ static const struct CompressedSpriteSheet sSpriteSheets_DoublesOpponentHealthbox
     {gHealthboxDoublesOpponentGfx, 0x800, TAG_HEALTHBOX_OPPONENT1_TILE},
     {gHealthboxDoublesOpponentGfx, 0x800, TAG_HEALTHBOX_OPPONENT2_TILE}
 };
-static const struct SpriteSheet sSpriteSheets_DoublesPlayerHealthboxDark[2] =
+
+//FULL_COLOR
+static const struct CompressedSpriteSheet sSpriteSheets_DoublesPlayerHealthboxDark[2] =
 {
     {gHealthboxDoublesPlayerDarkGfx, 0x800, TAG_HEALTHBOX_PLAYER1_TILE},
     {gHealthboxDoublesPlayerDarkGfx, 0x800, TAG_HEALTHBOX_PLAYER2_TILE}
@@ -104,12 +107,13 @@ static const struct CompressedSpriteSheet sSpriteSheets_HealthBar[MAX_BATTLERS_C
     {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_OPPONENT2_TILE}
 };
 
-static const struct SpritePalette sSpritePalettes_HealthBoxHealthBar[4] =
+static const struct SpritePalette sSpritePalettes_HealthBoxHealthBar[5] =
 {
     {gBattleInterface_BallStatusBarPal, TAG_HEALTHBOX_PAL},
     {gBattleInterface_BallDisplayPal, TAG_HEALTHBAR_PAL},
     {gBattleInterface_BallStatusBarDarkPal, TAG_HEALTHBOX_PAL},
-    {gBattleInterface_BallDisplayDarkPal, TAG_HEALTHBAR_PAL}
+    {gBattleInterface_BallDisplayDarkPal, TAG_HEALTHBAR_PAL},
+    {gBattleInterface_BallDisplayLightPal, TAG_HEALTHBAR_PAL}
 };
 
 // code
@@ -622,6 +626,7 @@ static void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battlerId, bool32 op
         lzPaletteData = GetMonSpritePalFromSpeciesAndPersonality(species, otId, monsPersonality);
 
     LZDecompressWram(lzPaletteData, gDecompressionBuffer);
+    GENERATE_PALETTE((u16*)gDecompressionBuffer, 0x20, monsPersonality);
     LoadPalette(gDecompressionBuffer, paletteOffset, 0x20);
     LoadPalette(gDecompressionBuffer, 0x80 + battlerId * 16, 0x20);
 
@@ -684,13 +689,10 @@ void FreeTrainerFrontPicPalette(u16 frontPicId)
 }
 
 // Unused.
-void BattleLoadAllHealthBoxesGfxAtOnce(void)
+/*void BattleLoadAllHealthBoxesGfxAtOnce(void)
 {
     u8 numberOfBattlers = 0;
     u8 i;
-
-
-
     
     if (!IsDoubleBattle())
     {
@@ -698,7 +700,7 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
         {
             LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[2]);
             LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[3]);
-            LoadSpriteSheet(&sSpriteSheet_SinglesPlayerHealthboxDark);
+            LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthboxDark);
             LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthboxDark);
         }
         else
@@ -715,8 +717,8 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     {
         if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
         {
-            LoadSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[0]);
-            LoadSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[1]);
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[0]);
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[1]);
             LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthboxDark[0]);
             LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthboxDark[1]);
         }
@@ -732,12 +734,153 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     }
     for (i = 0; i < numberOfBattlers; i++)
         LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[i]]);
+}*/
+
+//FULL_COLOR
+void LoadHealthBoxesPalettte() {
+    u16 buf[0x20] = {0};
+    u16 bufShadesLight[4];
+    u16 bufShadesDark[4];
+    struct SpritePalette tmp;
+    tmp.data = malloc(sizeof(u16)*0x20);
+    switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+        case THEME_COLOR_LIGHT:
+            tmp.tag = sSpritePalettes_HealthBoxHealthBar[2].tag;
+            CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[2].data, buf, 0x20);
+            buf[1] = VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA ? COLOR_BLACK : COLOR_LIGHT_THEME_BG_LIGHT; //text
+            buf[2] = COLOR_LIGHT_THEME_BG_LIGHT;
+            buf[3] = VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA ? COLOR_LIGHT_GREY : COLOR_DARK_GREY;  // text shadow
+            buf[4] = COLOR_LIGHT_THEME_BG_DARK; //border opponent and player 1
+            buf[5] = COLOR_WHITE; // white pixel healthbar fix
+            //buf[6] = COLOR_NEON_BORDER_2; //"EXP" text
+            buf[7] = COLOR_LIGHT_THEME_BG_DARK; // border player 2
+            buf[8] = VarGet(VAR_HAT_THEME_UI_NUMBER) == THEME_UI_VANILLA ? COLOR_LIGHT_THEME_BG : COLOR_NEON_BORDER_2; 
+            buf[9] = COLOR_LIGHT_THEME_BG; //empty bar 1
+            buf[14] = COLOR_NEON_BORDER_2; // "exp" text pixels and exp bar top and bottom border
+            buf[15] = RGB(0, 26, 31); //COLOR_NEON_BORDER_2; //full bar
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[4]);
+            break;
+        case THEME_COLOR_DARK:
+            tmp.tag = sSpritePalettes_HealthBoxHealthBar[2].tag;
+            CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[2].data, buf, 0x20);
+            buf[12] = COLOR_LIGHT_GREY;
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[3]);
+            break;
+        case THEME_COLOR_USER:
+            tmp.tag = sSpritePalettes_HealthBoxHealthBar[2].tag;
+            CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[2].data, buf, 0x20);
+
+            COLOR_SHADES(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], SHADER_LIGHT, bufShadesLight, 4, 12);
+            COLOR_SHADES(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], SHADER_DARK, bufShadesDark, 4, 12);
+                    
+
+            buf[1] = COLOR_WHITE;//gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[2] = COLOR_PICK_HIGHER_CONTRAST(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], COLOR_WHITE);         
+            buf[3] = COLOR_DARK_GREY;//gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];         
+            buf[4] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+            buf[5] = COLOR_WHITE; // white pixel healthbar fix
+            //buf[6] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[2], bufShadesLight[2], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
+            buf[7] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+            buf[8] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[3], bufShadesLight[3], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
+            buf[9] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT);
+            buf[14] = COLOR_PICK_HIGHER_CONTRAST(bufShadesDark[3], bufShadesLight[3], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]);
+            buf[15] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT]; //extra
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
+
+            //add user colors to healthbar palette
+            tmp.tag = sSpritePalettes_HealthBoxHealthBar[4].tag;
+            CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[4].data, buf, 0x20);
+            buf[6] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+            buf[8] = bufShadesLight[1];
+            buf[9] = bufShadesDark[1];
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
+            break;
+        case THEME_COLOR_VANILLA:
+            tmp.tag = sSpritePalettes_HealthBoxHealthBar[0].tag;
+            CpuCopy16((u16*)sSpritePalettes_HealthBoxHealthBar[0].data, buf, 0x20);
+            buf[12] = COLOR_LIGHT_GREY;        
+            CpuCopy16(buf, (u16*)tmp.data, 0x20);
+            LoadSpritePalette(&tmp);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+            break;
+    }
+    free((u16*)tmp.data);
 }
+
+//FULL_COLOR
+static const struct CompressedSpriteSheet* healthBoxSpritesheets[THEME_UI_MAX][4][2] = {
+    {//THEME MODERN
+        {&sSpriteSheet_SinglesPlayerHealthboxDark, &sSpriteSheets_DoublesPlayerHealthboxDark[0]}, //step 2 {singles, doubles}
+        {&sSpriteSheet_SinglesOpponentHealthboxDark, &sSpriteSheets_DoublesPlayerHealthboxDark[1]}, //step 3 {singles, doubles}
+        {NULL, &sSpriteSheets_DoublesOpponentHealthboxDark[0]}, //step 4 {singles, doubles}
+        {NULL, &sSpriteSheets_DoublesOpponentHealthboxDark[1]}, //step 5 {singles, doubles}
+    },
+    {//FULL_COLOR TODO impl classic template
+        {&sSpriteSheet_SinglesPlayerHealthboxDark, &sSpriteSheets_DoublesPlayerHealthboxDark[0]}, //step 2 {singles, doubles}
+        {&sSpriteSheet_SinglesOpponentHealthboxDark, &sSpriteSheets_DoublesPlayerHealthboxDark[1]}, //step 3 {singles, doubles}
+        {NULL, &sSpriteSheets_DoublesOpponentHealthboxDark[0]}, //step 4 {singles, doubles}
+        {NULL, &sSpriteSheets_DoublesOpponentHealthboxDark[1]}, //step 5 {singles, doubles}
+    },
+    {//THEME VANILLA
+        {&sSpriteSheet_SinglesPlayerHealthbox, &sSpriteSheets_DoublesPlayerHealthbox[0]}, //step 2 {singles, doubles}
+        {&sSpriteSheet_SinglesOpponentHealthbox, &sSpriteSheets_DoublesPlayerHealthbox[1]}, //step 3 {singles, doubles}
+        {NULL, &sSpriteSheets_DoublesOpponentHealthbox[0]}, //step 4 {singles, doubles}
+        {NULL, &sSpriteSheets_DoublesOpponentHealthbox[1]}, //step 5 {singles, doubles}
+    }
+};
 
 bool8 BattleLoadAllHealthBoxesGfx(u8 state)
 {
-    bool8 retVal = FALSE;
+    if (state > 9)
+        return TRUE;
+    
+    if (!IsDoubleBattle()) {
+        if (state >= 6)
+            return TRUE;
+        if (state >= 4)
+            state += 2;
+    }
+    switch (state) 
+    {
+        case 0:
+            break;
+        case 1:
+            LoadHealthBoxesPalettte();
+            break;
+        case 2:
+            if (!IsDoubleBattle() && gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+            {
+                LoadCompressedSpriteSheet(&sSpriteSheet_SafariHealthbox);
+                break;
+            }
+        case 3:
+        case 4:
+        case 5:
+            LoadCompressedSpriteSheet(healthBoxSpritesheets[VarGet(VAR_HAT_THEME_UI_NUMBER)][state - 2][IsDoubleBattle()]);
+            break;
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[state-6]]);
+            break;
+    }
+    return FALSE;
+}
 
+// wtf was this, needed to change (see above^)
+/*bool8 BattleLoadAllHealthBoxesGfx(u8 state)
+{
+    bool8 retVal = FALSE;
+    u16 buf[0x20] = {0};
+    u32 i = 0;
+    struct SpritePalette tmp;
     if (state != 0)
     {
         if (state == 1)
@@ -836,7 +979,8 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
     }
 
     return retVal;
-}
+}*/
+
 
 void LoadBattleBarGfx(u8 arg0)
 {

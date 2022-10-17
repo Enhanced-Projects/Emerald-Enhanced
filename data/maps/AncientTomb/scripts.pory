@@ -46,7 +46,6 @@ AncientTomb_EventScript_CaveEntranceMiddle:: @ 8239033
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall
 	closemessage
-	setflag FLAG_SYS_REGIROCK_PUZZLE_COMPLETED
 	playse SE_W088
 	waitse
 	delay 25
@@ -67,8 +66,7 @@ AncientTomb_EventScript_BigHoleInWall:: @ 8239046
 
 AncientTomb_EventScript_CaveEntranceSide:: @ 8239050
 	lockall
-	msgbox AncientTomb_Braille_ShineInTheMiddle
-	waitbuttonpress
+	msgbox IC_RGWALLSIDE
 	closemessage
 	releaseall
 	end

@@ -1,15 +1,16 @@
 //professionals quests
 
-//Procedural components
-const FETCH_TYPE = 1
-const CAPTURE_TYPE = 2
-const TRAVEL_TYPE = 3
-const HATCH_TYPE = 4
 
 script(global) RyuProfessionalsDailyQuest  {
     lock
     faceplayer
-     if (flag(FLAG_FINISHED_PROFESSIONAL_DAILY) == TRUE) { //quest done
+    checkfactionstanding(FACTION_PROFESSIONALS, 175)
+
+    if ((var(VAR_RESULT) == TRUE) && (flag(FLAG_RYU_PROF_SPECIAL_FINISHED) == FALSE)) {
+        goto(RyuProfessionalsFactionSpecialQuest)
+    }
+
+    if (flag(FLAG_FINISHED_PROFESSIONAL_DAILY) == TRUE) { //quest done
         msgbox("I'm currently working,\nPlease come back later.")
         release
         end
@@ -17,10 +18,9 @@ script(global) RyuProfessionalsDailyQuest  {
 
     checkfactionstanding(FACTION_PROFESSIONALS, 200)
 
-    if (var(VAR_RESULT) == TRUE) {
+    if ((var(VAR_RESULT) == TRUE) && (var(VAR_RYU_SUCCESSFUL_DELIVERIES) > 60)) { //do professionals final quest
         msgbox("Heya Union Rep! All things\non this front appear to be\lgoing smoothly!")
-        release
-        end
+        closemessage
     }
 
     if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_PROFESSIONALS) { //currently doing a daily quest for this faction
@@ -41,7 +41,7 @@ script(global) RyuProfessionalsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
                     msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}. . .\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see. Thanks for the effort!"))
                     goto(CommonProfessionalsRewardScript)
                 }
@@ -75,7 +75,10 @@ script(global) RyuProfessionalsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
-    random(4)//increase this by the number of quests you add.
+    random(6)//increase this by the number of quests you add.
+    if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
+        call(RyuDoDailyQuestVerbosePrint)
+    }
     switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
@@ -89,8 +92,9 @@ script(global) RyuProfessionalsDailyQuest  {
             msgbox("I'm too busy to travel to a\nPokemon Center.\pDo you happen to have a couple\nHyper Potions?\pI'll be able to continue my work.")
         case 2:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE110)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_ROUTE_110)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
+            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
             msgbox(format("Can you go see what the population of Cycling Road looks like? I want to travel through there soon, so I want to know how busy it is. Thanks!"))
         case 3:
             random(4)
@@ -108,8 +112,9 @@ script(global) RyuProfessionalsDailyQuest  {
             msgbox(format("I need some smooth sand to polish and sharpen my tools with, could you bring me one? Thanks."))
         case 5:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_CRAGGY_COAST)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_CRAGGY_COAST)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
+            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
             msgbox(format("Hey there! We got word of some water-type Pokémon at Craggy Coast that would be useful transporting items north. Could you check out Craggy Coast and find which Pokémon can be found there?!"))
 
     }
@@ -120,12 +125,21 @@ script(global) RyuProfessionalsDailyQuest  {
 }
 
 script CommonProfessionalsRewardScript {
-    msgbox("The Board should be pleased.\nYou are dismissed.")
+    msgbox(format("Everything you do for the Union is noted!"))
     setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
     changefactionstanding(FACTION_PROFESSIONALS, 25, FALSE)
-    addmoney(4000)
-    buffernumberstring(0, 4000)
+    random(4500)
+    addvar(VAR_RESULT, 2000)
+    buffernumberstring(0, VAR_RESULT)
+    addmoney(VAR_RESULT)
     goto(CommonDailyQuestEnd)
+}
+
+script RyuProfessionalsFactionSpecialQuest {
+    setflag(FLAG_RYU_PROF_SPECIAL_QUEST_AVAILABLE)
+    msgbox("The union president has let us\nknow that she's looking for\psomeone to perform a special\ntask.\pPlease go meet our union\npresident!\pYou can find her at Adrasti\nWarehouse in Mauville!")
+    release
+    end
 }
 
 //strings

@@ -167,7 +167,7 @@ MtPyre_Summit_Text_WillYouHearOutMyTale: @ 8232E0C
 	.string "see all of Hoenn…\p"
 	.string "The disembodied spirits of Pokémon\n"
 	.string "must find solace here…\p"
-	.string "Is it coincidence that you are here…\p"
+	.string "Is it coincidence that you are here?\p"
 	.string "Will you hear out my tale? A tale long\n"
 	.string "told in the Hoenn region?$"
 

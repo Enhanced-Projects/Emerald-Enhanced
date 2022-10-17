@@ -74,6 +74,7 @@ AI_CBM_CheckIfNegatesType:
 	if_equal ABILITY_LEVITATE, CheckIfLevitateCancelsGroundMove
 	if_equal ABILITY_SOUNDPROOF, CheckIfSoundproofCancelsMove
 	if_equal ABILITY_HEATPROOF, CheckIfHeatproofCancelsFireMove
+	if_equal ABILITY_SAP_SIPPER, CheckIfSapSipperCancelsGrassMove
 	goto AI_CheckBadMove_CheckEffect
 	
 CheckIfSoundproofCancelsMove:
@@ -107,6 +108,10 @@ CheckIfLevitateCancelsGroundMove: @ 82DBFEF
 CheckIfHeatproofCancelsFireMove:
 	get_curr_move_type
 	if_equal TYPE_FIRE, Score_Minus10
+
+CheckIfSapSipperCancelsGrassMove:
+	get_curr_move_type
+	if_equal TYPE_GRASS, Score_Minus10
 
 AI_CheckBadMove_CheckEffect: @ 82DC045
 	if_effect EFFECT_SLEEP, AI_CBM_Sleep
@@ -196,6 +201,7 @@ AI_CheckBadMove_CheckEffect: @ 82DC045
 	if_effect EFFECT_SPIT_UP, AI_CBM_SpitUpAndSwallow
 	if_effect EFFECT_SWALLOW, AI_CBM_SpitUpAndSwallow
 	if_effect EFFECT_HAIL, AI_CBM_Hail
+	if_effect EFFECT_OMEN, AI_CBM_Eclipse
 	if_effect EFFECT_TORMENT, AI_CBM_Torment
 	if_effect EFFECT_FLATTER, AI_CBM_Confuse
 	if_effect EFFECT_WILL_O_WISP, AI_CBM_WillOWisp
@@ -866,6 +872,11 @@ AI_CBM_SpitUpAndSwallow: @ 82DC692
 AI_CBM_Hail: @ 82DC6A1
 	get_weather
 	if_equal AI_WEATHER_HAIL, Score_Minus8
+	end
+
+AI_CBM_Eclipse: @ 82DC6A1
+	get_weather
+	if_equal AI_WEATHER_ECLIPSE, Score_Minus8
 	end
 
 AI_CBM_Torment: @ 82DC6A9
@@ -2805,6 +2816,33 @@ AI_CV_SunnyDay_Opponent2:
 AI_CV_SunnyDay_Opponent2Plus:
 	score +1
 AI_CV_SunnyDay_End:
+	end
+
+AI_CV_Eclipse:
+	get_weather
+	if_equal AI_WEATHER_ECLIPSE, AI_CV_Eclipse_End
+	if_hp_less_than AI_USER, 40, AI_CV_Eclipse_ScoreDown1
+	get_weather
+	if_equal AI_WEATHER_HAIL, AI_CV_Eclipse2
+	if_equal AI_WEATHER_RAIN, AI_CV_Eclipse2
+	if_equal AI_WEATHER_SANDSTORM, AI_CV_Eclipse2
+	if_type AI_USER, TYPE_GHOST, AI_CV_Eclipse3
+	if_type AI_USER, TYPE_DARK, AI_CV_Eclipse4
+AI_CV_Eclipse2:
+	score +1
+AI_CV_Eclipse_ScoreDown1:
+	score -1
+	goto AI_CV_Eclipse_End
+AI_CV_Eclipse_ScoreDown2:
+	score -2
+	goto AI_CV_Eclipse_End
+AI_CV_Eclipse4:
+	if_equal AI_WEATHER_ECLIPSE, AI_CV_Eclipse_ScoreDown2
+	score +2
+AI_CV_Eclipse3:
+	if_equal AI_WEATHER_ECLIPSE, AI_CV_Eclipse_ScoreDown2
+	score +1
+AI_CV_Eclipse_End:
 	end
 
 AI_CV_BellyDrum:

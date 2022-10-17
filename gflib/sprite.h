@@ -234,6 +234,7 @@ struct Sprite
              u8 subspriteMode:2;
 
     /*0x43*/ u8 subpriority;
+             u8 index;
 };
 
 struct OamMatrix
@@ -261,8 +262,11 @@ extern bool8 gAffineAnimsDisabled;
 void ResetSpriteData(void);
 void AnimateSprites(void);
 void BuildOamBuffer(void);
+void BuildOamBufferNoOrder(void);
 u8 CreateSprite(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
 u8 CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
+u8 CreateSpriteSlowAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
+u8 CreateSpriteSlowAtStart(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
 u8 CreateInvisibleSprite(void (*callback)(struct Sprite *));
 u8 CreateSpriteAndAnimate(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
 void DestroySprite(struct Sprite *sprite);
@@ -277,6 +281,7 @@ void FreeSpriteTiles(struct Sprite *sprite);
 void FreeSpritePalette(struct Sprite *sprite);
 void FreeSpriteOamMatrix(struct Sprite *sprite);
 void DestroySpriteAndFreeResources(struct Sprite *sprite);
+void DestroySummaryMonSpriteAndFreeResources(struct Sprite *sprite);
 void sub_800142C(u32 a1, u32 a2, u16 *a3, u16 a4, u32 a5);
 void AnimateSprite(struct Sprite *sprite);
 void sub_8007E18(struct Sprite* sprite, s16 a2, s16 a3);
@@ -298,6 +303,7 @@ u16 AllocTilesForSpriteSheet(struct SpriteSheet *sheet);
 void AllocTilesForSpriteSheets(struct SpriteSheet *sheets);
 void LoadTilesForSpriteSheet(const struct SpriteSheet *sheet);
 void LoadTilesForSpriteSheets(struct SpriteSheet *sheets);
+void FreeSummaryMonSprite(u16 start);
 void FreeSpriteTilesByTag(u16 tag);
 void FreeSpriteTileRanges(void);
 u16 GetSpriteTileStartByTag(u16 tag);

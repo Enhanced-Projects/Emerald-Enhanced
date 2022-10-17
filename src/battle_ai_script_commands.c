@@ -1872,6 +1872,8 @@ static void Cmd_get_weather(void)
         AI_THINKING_STRUCT->funcResult = AI_WEATHER_SUN;
     else if (gBattleWeather & WEATHER_HAIL_ANY)
         AI_THINKING_STRUCT->funcResult = AI_WEATHER_HAIL;
+    else if (gBattleWeather & WEATHER_ECLIPSE_ANY)
+        AI_THINKING_STRUCT->funcResult = AI_WEATHER_ECLIPSE;
     else
         AI_THINKING_STRUCT->funcResult = AI_WEATHER_NONE;
 

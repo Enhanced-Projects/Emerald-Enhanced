@@ -183,6 +183,34 @@ const u8 sMayQuestStage250[] = _("You completed May's quest line.\nBEST End.");
 const u8 sMayQuestStage666[] = _("You declined helping may in Littleroot.\nBAD END.");
 const u8 sMayQuestStage999[] = _("You didn't help may locate her lost friend.\nBAD END.");
 
+const u8 gDeliverySystemQuestStage0[] = _("Delivery Quota: 5 remaining.\n{RYU_STR_1}");
+const u8 gDeliverySystemQuestStage1[] = _("Delivery Quota: 4 remaining.\n{RYU_STR_1}");
+const u8 gDeliverySystemQuestStage2[] = _("Delivery Quota: 3 remaining.\n{RYU_STR_1}");
+const u8 gDeliverySystemQuestStage3[] = _("Delivery Quota: 2 remaining.\n{RYU_STR_1}");
+const u8 gDeliverySystemQuestStage4[] = _("Delivery Quota: 1 remaining.\n{RYU_STR_1}");
+const u8 gDeliverySystemQuestStage5[] = _("You've completed your daily quota\nof delivery requests from\nAdrasti Warehouse.");
+const u8 gDeliverySystemQuestStage10[] = _("You've completed your delivery route.\nReturn to Adrasti Warehouse's dispatcher\nfor your reward.");
+const u8 gDeliverySystemQuestStage100[] = _("You've been given a quest by the Dispatcher.\nReport to the foreman for details.");
+const u8 gDeliverySystemQuestStage101[] = _("Deliver the Antique to an old man\nin Fortree's Pokemon Center.");
+const u8 gDeliverySystemQuestStage102[] = _("You succesfully delivered an Antique.\nReport back to the Foreman.");
+const u8 gDeliverySystemQuestStage103[] = _("Deliver the Electronics to a lady in \nLilycove's Pokemon Center.");
+const u8 gDeliverySystemQuestStage104[] = _("You got the repair parts to the lady\nin Lilycove. Return to the Foreman.");
+const u8 gDeliverySystemQuestStage105[] = _("Deliver the Home Goods package to a gentleman\nin Mauville City.");
+const u8 gDeliverySystemQuestStage106[] = _("You delivered the Home Goods.\nReport back to the Foreman.");
+const u8 gDeliverySystemQuestStage107[] = _("Deliver the Flowers to the Foreman's Wife\non an island in Mossdeep City.");
+const u8 gDeliverySystemQuestStage108[] = _("You delivered the Flowers to the Foreman's\nwife. Report back to the Foreman.");
+const u8 gDeliverySystemQuestStage109[] = _("The Warehouse Foreman has offered you a job.\nReturn to him to accept it.");
+const u8 gDeliverySystemQuestStage1000[] = _("You have not started the delivery\nspecial quest, nor can you accept\ndelivery routes.");
+
+const u8 sDailyQuestStageNaturalists[] = _("Daily quest for Naturalists:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageStudents[] = _("Daily quest for Students:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageNobles[] = _("Daily quest for Nobles:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStagePokefans[] = _("Daily quest for Pokéfans:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageOutcasts[] = _("Daily quest for Outcasts:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageProfessionals[] = _("Daily quest for Professionals:\n{RYU_STR_2}\nPress {SELECT_BUTTON} and then return to\nthe overworld to cancel this quest.");
+const u8 sDailyQuestStageEmpty[] = _("No daily quest active.");
+const u8 sDailyQuestStageFinished[] = _("Daily Quest finished.\nReturn to the asignee faction.");
+
 struct QuestStageDesc
 {
   const u8 * description;
@@ -831,6 +859,119 @@ const static struct QuestStageDesc gNurseQuestStages[] = { //only visible when s
   {
     .description = sNurseQuestStage11Desc,
     .questStage = 11,
+  },
+  QUEST_STAGE_END
+};
+
+const static struct QuestStageDesc gDeliverySystemQuestStages[] = { //only visible when stage is not 1000.
+    {
+      .description = gDeliverySystemQuestStage0,
+      .questStage = 0,
+    },
+    {
+      .description = gDeliverySystemQuestStage1,
+      .questStage = 1,
+    },
+    {
+      .description = gDeliverySystemQuestStage2,
+      .questStage = 2,
+    },
+    {
+      .description = gDeliverySystemQuestStage3,
+      .questStage = 3,
+    },
+    {
+      .description = gDeliverySystemQuestStage4,
+      .questStage = 4,
+    },
+    {
+      .description = gDeliverySystemQuestStage5,
+      .questStage = 5,
+    },
+    {
+      .description = gDeliverySystemQuestStage10,
+      .questStage = 10,
+    },
+    {
+      .description = gDeliverySystemQuestStage100,
+      .questStage = 100,
+    },
+    {
+      .description = gDeliverySystemQuestStage101,
+      .questStage = 101,
+    },
+    {
+      .description = gDeliverySystemQuestStage102,
+      .questStage = 102,
+    },
+    {
+      .description = gDeliverySystemQuestStage103,
+      .questStage = 103,
+    },
+    {
+      .description = gDeliverySystemQuestStage104,
+      .questStage = 104,
+    },
+    {
+      .description = gDeliverySystemQuestStage105,
+      .questStage = 105,
+    },
+    {
+      .description = gDeliverySystemQuestStage106,
+      .questStage = 106,
+    },
+    {
+      .description = gDeliverySystemQuestStage107,
+      .questStage = 107,
+    },
+    {
+      .description = gDeliverySystemQuestStage108,
+      .questStage = 108,
+    },
+    {
+      .description = gDeliverySystemQuestStage109,
+      .questStage = 109,
+    },
+    {
+      .description = gDeliverySystemQuestStage1000,
+      .questStage = 1000,
+    },
+    QUEST_STAGE_END
+};
+
+
+const static struct QuestStageDesc gDailyQuestStages[] = { //only visible when VAR_RYU_DAILY_QUEST_ASIGNEE_FACTION is NOT 0xFFFF
+  {
+    .description = sDailyQuestStageNaturalists,
+    .questStage = 0,
+  },
+  {
+    .description = sDailyQuestStageStudents,
+    .questStage = 1,
+  },
+  {
+    .description = sDailyQuestStageNobles,
+    .questStage = 2,
+  },
+  {
+    .description = sDailyQuestStagePokefans,
+    .questStage = 3,
+  },
+  {
+    .description = sDailyQuestStageOutcasts,
+    .questStage = 4,
+  },
+  {
+    .description = sDailyQuestStageProfessionals,
+    .questStage = 5,
+  },
+  {
+    .description = sDailyQuestStageFinished,
+    .questStage = 6,
+  },
+  {
+    .description = sDailyQuestStageEmpty,
+    .questStage = 7,
   },
   QUEST_STAGE_END
 };

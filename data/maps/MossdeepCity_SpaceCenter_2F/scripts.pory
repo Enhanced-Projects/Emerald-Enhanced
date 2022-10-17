@@ -31,7 +31,7 @@ spc_cantleavemsg:
 MossdeepCity_SpaceCenter_2F_OnTransition: @ 8223D63
 	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 106
 	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieCourtney
-	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 106
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 107
 	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedGrunts
 	end
 
@@ -57,6 +57,12 @@ MossdeepCity_SpaceCenter_2F_OnFrame: @ 8223DB5
 	.2byte 0
 
 MossdeepCity_SpaceCenter_2F_EventScript_ThreeMagmaGrunts:: @ 8223DBF
+	addobject 5
+	setobjectxyperm 5, 20, 2
+	addobject 6
+	setobjectxyperm 6, 21, 3
+	addobject 7
+	setobjectxyperm 7, 22, 2
 	playse SE_PIN
 	applymovement PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -286,6 +292,7 @@ SPC_AfterMaxie::
 	setobjectxy 3, 16, 6
 	applymovement 3 SPC_ScientistToRight
 	waitmovement 3
+	turnobject PLAYER, DIR_NORTH
 	msgbox SPC_ScientistIntro
 	closemessage
 	playse SE_DOOR

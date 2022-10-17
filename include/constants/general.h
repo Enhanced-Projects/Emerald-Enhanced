@@ -41,7 +41,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 60
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 61
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -375,6 +375,7 @@
 #define SCENEBGCOURTNEYNEUTRAL 14
 #define SCENEBGSHELLY 15
 #define SCENEBGSHELLYNIGHT 16
+#define SCENEBGMAY 17
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0
@@ -408,6 +409,7 @@
 #define INFOBOX_PROF_SPECIAL_DELIVERY_MANIFEST 23
 #define INFOBOX_DYNAMIC 24
 
+
 //Times
 #define RTC_TIME_DAY 0
 #define RTC_TIME_EVENING 1
@@ -430,6 +432,8 @@
 #define NUM_CONSUMABLE_RECIPES 12
 #define NUM_MEDICINE_RECIPES 8
 #define NUM_RECIPES (BR_ICE_STONE + 1)
+
+#define NUM_MAX_QUEUED_DELIVERIES 4
 
 //Hack to make it so I only need one script command to perform all functions. Yes, i know, constants should be capsed, but this is for my sanity since i'll be the
 //one scripting in all the achievements.
@@ -455,6 +459,11 @@
 #define FACTION_STAND_GOOD 5
 #define FACTION_STAND_HIGH 6
 #define FACTION_STAND_BEST 7
+
+#define FETCH_TYPE 0
+#define CAPTURE_TYPE 1
+#define TRAVEL_TYPE 2
+#define HATCH_TYPE 3
 
 //The questlines that have their own discrete quest stage tracking variable
 #define QUEST_ID_DEVON_SCIENTIST 0
@@ -503,7 +512,12 @@
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
 
-#define EE_GAME_VERSION 8402
+//uncomment for winter mode.
+//#define EE_WINTER_MODE
 
+//uncomment to punish save states. Otherwise detections are just logged.
+//#define RYU_PUNISH_SAVE_STATE 1
 
-#endif
+#define EE_GAME_VERSION 9053
+
+#endif 

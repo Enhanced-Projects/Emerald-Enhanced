@@ -972,6 +972,16 @@ static const u8 sFollowerTiana[] = _("Spawn Tiana");
 static const u8 sFollowerHexer[] = _("Spawn Hexer");
 static const u8 sReturnPrevious[] = _("Return");
 
+static const u8 sBetaMenuBugReport[] = _("Bug Report");
+static const u8 sBetaMenuWaystone[] = _ ("Check Waystone");
+static const u8 sBetaMenuBattleFlags[] = _ ("Reset Battle Flags");
+static const u8 sBetaMenuBadges[] = _ ("Reset Badges");
+static const u8 sBetaMenuGCMS[] = _ ("Clear GCMS");
+static const u8 sBetaMenuHome[] = _ ("Teleport Home");
+static const u8 sBetaMenuRTC[] = _ ("Reset RTC");
+static const u8 sBetaMenuRetroDex[] = _ ("Fill Dex from Boxes");
+static const u8 sBetaMenuExit[] = _ ("Exit Menu");
+
 static const struct ListMenuItem sBotanyConsumablesSet[] =
     {
         {sText_BotanyConsumableItem1, 0},
@@ -1083,6 +1093,19 @@ static const struct ListMenuItem sRyuFollowerDebugSet[] =
         {sReturnPrevious, 13},
 };
 
+static const struct ListMenuItem sRyuBetaMenuSet[] =
+    {
+    {sBetaMenuBugReport, 0},
+    {sBetaMenuWaystone, 1},
+    {sBetaMenuBattleFlags, 2},
+    {sBetaMenuBadges, 3},
+    {sBetaMenuGCMS, 4},
+    {sBetaMenuHome, 5},
+    {sBetaMenuRTC, 6},
+    {sBetaMenuRetroDex, 7},
+    {sBetaMenuExit, 8}
+};
+
 
 struct
 {
@@ -1096,6 +1119,7 @@ struct
         {sBotanyEvolutionSet, ARRAY_COUNT(sBotanyEvolutionSet)},
         {sAlchemyMenu, ARRAY_COUNT(sAlchemyMenu)},
         {sRyuFollowerDebugSet, ARRAY_COUNT(sRyuFollowerDebugSet)},
+        {sRyuBetaMenuSet, ARRAY_COUNT(sRyuBetaMenuSet)},
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);

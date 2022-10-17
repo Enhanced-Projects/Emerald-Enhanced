@@ -313,6 +313,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_Grunt2:: @ 822321F
 
 MossdeepCity_SpaceCenter_1F_EventScript_Grunt2Defeated:: @ 822326E
 	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt2PostBattle, MSGBOX_DEFAULT
+	call RyuCheckSPC1ObjectsDefeated
 	release
 	end
 
@@ -501,3 +502,19 @@ MossdeepCity_SpaceCenter_1F_Text_MagmaIntentToStealNotice: @ 8223C2C
 	.string "“Let there be more land!\n"
 	.string "                                          Team Magma”$"
 `
+script RyuCheckSPC1ObjectsDefeated {
+	if (!(defeated(TRAINER_GRUNT_SPACE_CENTER_2))) {
+		goto(ryu_end)
+	}
+	if (!(defeated(TRAINER_GRUNT_SPACE_CENTER_4))) {
+		goto(ryu_end)
+	}
+	if (!(defeated(TRAINER_GRUNT_16))) {
+		goto(ryu_end)
+	}
+	if (!(defeated(TRAINER_GRUNT_SPACE_CENTER_3))) {
+		goto(ryu_end)
+	}
+	warpsilent(MAP_MOSSDEEP_CITY_SPACE_CENTER_2F, 255, 21, 2)
+	waitstate
+}

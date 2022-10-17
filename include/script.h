@@ -35,6 +35,7 @@ u16 ScriptReadHalfword(struct ScriptContext *ctx);
 u32 ScriptReadWord(struct ScriptContext *ctx);
 void ScriptContext2_Enable(void);
 void ScriptContext2_Disable(void);
+bool8 ScriptContext1_IsEnabled(void);
 bool8 ScriptContext2_IsEnabled(void);
 void ScriptContext1_Init(void);
 bool8 ScriptContext1_IsScriptSetUp(void);

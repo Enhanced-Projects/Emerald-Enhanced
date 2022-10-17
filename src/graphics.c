@@ -2,7 +2,9 @@
 
 const u32 gBattleTextboxTiles[] = INCBIN_U32("graphics/battle_interface/textbox.4bpp.lz");
 const u32 gBattleDarkTextboxTiles[] = INCBIN_U32("graphics/battle_interface/darktextbox.4bpp.lz");
+const u32 gBattleLightTextboxTiles[] = INCBIN_U32("graphics/battle_interface/lighttextbox.4bpp.lz");
 const u32 gBattleTextboxPalette[] = INCBIN_U32("graphics/battle_interface/textbox.gbapal.lz");
+const u32 gBattleTextboxLightPalette[] = INCBIN_U32("graphics/battle_interface/lighttextbox.gbapal.lz");
 const u32 gBattleTextboxDarkPalette[] = INCBIN_U32("graphics/battle_interface/darktextbox.gbapal.lz");
 const u32 gBattleTextboxTilemap[] = INCBIN_U32("graphics/battle_interface/textbox_map.bin.lz");
 
@@ -674,6 +676,15 @@ const u16 gBattleInterface_BallStatusBarDarkPal[] = INCBIN_U16("graphics/battle_
 
 const u16 gBattleInterface_BallDisplayPal[] = INCBIN_U16("graphics/battle_interface/ball_display.gbapal");
 const u16 gBattleInterface_BallDisplayDarkPal[] = INCBIN_U16("graphics/battle_interface/ball_display_dark.gbapal");
+const u16 gBattleInterface_BallDisplayLightPal[] = INCBIN_U16("graphics/battle_interface/ball_display_light.gbapal");
+
+const u8 gHealthBoxEnding_Modern[] = INCBIN_U8("graphics/battle_interface/doubles_healthbox_ending_modern.4bpp");
+const u8 gHealthBoxBarEnding_Modern[] = INCBIN_U8("graphics/battle_interface/doubles_healthbox_bar_ending_modern.4bpp");
+const u8 gExpBar_Modern[] = INCBIN_U8("graphics/battle_interface/expbar_modern.4bpp");
+const u8 gHealthboxElementsGfxTableModern[] = INCBIN_U8("graphics/battle_interface/status1_modern.4bpp",
+                                                        "graphics/battle_interface/status2_modern.4bpp",
+                                                        "graphics/battle_interface/status3_modern.4bpp",
+                                                        "graphics/battle_interface/status4_modern.4bpp");
 
 //Originally an array?
 const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpbar.4bpp",
@@ -686,7 +697,6 @@ const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpb
                                                   "graphics/battle_interface/misc.4bpp",
                                                   "graphics/battle_interface/hpbar_anim.4bpp",
                                                   "graphics/battle_interface/misc_frameend.4bpp");
-
 const u8 gBattleInterface_BallDisplayGfx[] = INCBIN_U8("graphics/battle_interface/ball_display.4bpp");
 
 //Originally an array?
@@ -962,13 +972,15 @@ const u32 gBattleAnimSpriteGfx_Tendrils[] = INCBIN_U32("graphics/battle_anims/sp
 const u32 gBattleAnimSpritePal_Tendrils[] = INCBIN_U32("graphics/battle_anims/sprites/tendrils.gbapal.lz");
 
 const u32 gHealthboxSinglesPlayerGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player.4bpp.lz");
-const u32 gHealthboxSinglesPlayerDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player_dark.4bpp");
+const u32 gHealthboxSinglesPlayerDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player_dark.4bpp.lz");
 const u32 gHealthboxSinglesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_opponent.4bpp.lz");
 const u32 gHealthboxDoublesPlayerGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player.4bpp.lz");
 const u32 gHealthboxDoublesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_doubles_opponent.4bpp.lz");
 const u32 gHealthboxSinglesOpponentDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_opponent_dark.4bpp.lz");
-const u32 gHealthboxDoublesPlayerDarkGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player_dark.4bpp");
+const u32 gHealthboxDoublesPlayerDarkGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player_dark.4bpp.lz");
 const u32 gHealthboxDoublesOpponentDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_doubles_opponent_dark.4bpp.lz");
+const u16 gHealthboxLightPal[] = INCBIN_U16("graphics/battle_interface/healthbox_light.gbapal.lz");
+
 const u32 gHealthboxSafariGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_safari.4bpp.lz");
 
 const u32 gUnusedGfx_Shadow[] = INCBIN_U32("graphics/unused/shadow.4bpp.lz");
@@ -1302,6 +1314,7 @@ const u32 gBattleArenaJudgementSymbolsPalette[] = INCBIN_U32("graphics/battle_fr
 
 const u32 gBattleWindowTextPalette[] = INCBIN_U32("graphics/battle_interface/text.gbapal.lz");
 const u32 gBattleWindowTextDarkPalette[] = INCBIN_U32("graphics/battle_interface/text_dark.gbapal.lz");
+const u32 gBattleWindowTextLightPalette[] = INCBIN_U32("graphics/battle_interface/text_light.gbapal.lz");
 const u16 gUnknown_08D85620[] = INCBIN_U16("graphics/battle_frontier/text_pp.gbapal");
 
 const u16 gTilesetAnims_BattleDomePals0_0[] = INCBIN_U16("graphics/battle_frontier/dome_anim1.gbapal");
@@ -1679,9 +1692,18 @@ const u32 gPageBattleMovesTilemap[] = INCBIN_U32("graphics/interface/status_tile
 const u32 gPageContestMovesTilemap[] = INCBIN_U32("graphics/interface/status_tilemap3.bin.lz");
 const u32 gUnknown_08D98CC8[] = INCBIN_U32("graphics/interface/status_tilemap0.bin.lz");
 
+const u32 gPageSummaryMainModern[] = INCBIN_U32("graphics/interface/status_screen_modern.bin.lz");
+const u32 gPageSkillsTilemapModern[] = INCBIN_U32("graphics/interface/status_tilemap1_modern.bin.lz");
+const u32 gPageBattleMovesTilemapModern[] = INCBIN_U32("graphics/interface/status_tilemap2_modern.bin.lz");
+const u32 gPageContestMovesTilemapModern[] = INCBIN_U32("graphics/interface/status_tilemap3_modern.bin.lz");
+const u32 gUnknown_08D98CC8Modern[] = INCBIN_U32("graphics/interface/status_tilemap0_modern.bin.lz");
+
 const u32 gBagMaleTiles[] = INCBIN_U32("graphics/misc/bag_male.4bpp.lz");
 const u32 gBagFemaleTiles[] = INCBIN_U32("graphics/misc/bag_female.4bpp.lz");
 const u32 gBagPalette[] = INCBIN_U32("graphics/misc/bag.gbapal.lz");
+//FULL_COLOR
+const u32 gBagIconsSelectedPalette[] = INCBIN_U32("graphics/interface/bag_icons_selected.gbapal");
+const u32 gBagIconsUnselectedPalette[] = INCBIN_U32("graphics/interface/bag_icons_unselected.gbapal");
 
 const u32 gBagScreenMale_Pal[] = INCBIN_U32("graphics/interface/bag_screen_male.gbapal.lz");
 const u32 gBagScreenFemale_Pal[] = INCBIN_U32("graphics/interface/bag_screen_female.gbapal.lz");
@@ -1689,6 +1711,10 @@ const u32 gBagScreenDarkTheme[] = INCBIN_U32("graphics/interface/ryubagscreendar
 
 const u32 gBagScreen_Gfx[] = INCBIN_U32("graphics/interface/bag_screen.4bpp.lz");
 const u32 gBagScreen_GfxTileMap[] = INCBIN_U32("graphics/interface/bag_screen_tilemap.bin.lz");
+//FULL_COLOR
+const u32 gBagScreenModern_Gfx[] = INCBIN_U32("graphics/interface/bag_screen_modern.4bpp.lz");
+const u32 gBagScreenThemeLight_Pal[] = INCBIN_U32("graphics/interface/bag_theme_light.gbapal.lz");
+const u32 gBagScreenThemeDark_Pal[] = INCBIN_U32("graphics/interface/bag_theme_dark.gbapal.lz");
 
 const u32 gBattleFrontierGfx_PyramidBag[] = INCBIN_U32("graphics/interface/bag_pyramid.4bpp.lz");
 const u32 gBattleFrontierGfx_PyramidBag_Pal[] = INCBIN_U32("graphics/interface/bag_pyramid.gbapal.lz"); // female palette is first and male is second.
@@ -1707,6 +1733,11 @@ const u32 gBuyMenuFrame_Tilemap[] = INCBIN_U32("graphics/interface/mart_frame.bi
 const u32 gBuyMenuDarkFrame_Gfx[] = INCBIN_U32("graphics/interface/mart_frame_dark.4bpp.lz");
 
 const u32 gMenuMoneyGfx[] = INCBIN_U32("graphics/interface/money.4bpp.lz");
+
+//FULL_COLOR
+//const u32 gPartyMenuBgModern_Gfx[] = INCBIN_U32("graphics/interface/party_menu_bg_modern.4bpp.lz");
+const u32 gPartyMenuBgModern_Tilemap[] = INCBIN_U32("graphics/interface/party_menu_bg_modern.bin.lz");
+
 
 // Pokeblock
 
@@ -1807,6 +1838,10 @@ const u32 gPokedexSearchMenuHoenn_Tilemap[] = INCBIN_U32("graphics/pokedex/searc
 const u16 gSummaryScreenPowAcc_Tilemap[] = INCBIN_U16("graphics/interface/powacc_tilemap.bin");
 const u16 gSummaryScreenAppealJam_Tilemap[] = INCBIN_U16("graphics/interface/appealjam_tilemap.bin");
 const u16 gSummaryScreenWindow_Tilemap[] = INCBIN_U16("graphics/interface/summary.bin");
+const u16 gSummaryScreenPowAccModern_Tilemap[] = INCBIN_U16("graphics/interface/powacc_tilemap_modern.bin");
+const u16 gSummaryScreenAppealJamModern_Tilemap[] = INCBIN_U16("graphics/interface/appealjam_tilemap_modern.bin");
+const u16 gSummaryScreenWindowModern_Tilemap[] = INCBIN_U16("graphics/interface/summary_modern.bin");
+
 
 const u16 gIntroCopyright_Pal[] = INCBIN_U16("graphics/intro/copyright.gbapal");
 const u32 gIntroCopyright_Gfx[] = INCBIN_U32("graphics/intro/copyright.4bpp.lz");
@@ -1971,6 +2006,28 @@ const u32 gUnionRoomChat_Border_Gfx[] = INCBIN_U32("graphics/union_room_chat/bor
 const u32 gUnionRoomChat_Border_Tilemap[] = INCBIN_U32("graphics/union_room_chat/border.bin.lz");
 const u32 gUnionRoomChat_RButtonLabels[] = INCBIN_U32("graphics/union_room_chat/r_button_labels.4bpp.lz");
 
+
+#ifdef EE_WINTER_MODE
+const u16 gTilesetPalettes_General[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/general/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/02-w.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/03-w.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/05-w.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/12.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/13.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/14.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general/palettes/15.gbapal"),
+};
+#else
 const u16 gTilesetPalettes_General[][16] =
 {
     INCBIN_U16("data/tilesets/primary/general/palettes/00.gbapal"),
@@ -1990,6 +2047,7 @@ const u16 gTilesetPalettes_General[][16] =
     INCBIN_U16("data/tilesets/primary/general/palettes/14.gbapal"),
     INCBIN_U16("data/tilesets/primary/general/palettes/15.gbapal"),
 };
+#endif
 
 const u32 gTilesetTiles_General[] = INCBIN_U32("data/tilesets/primary/general/tiles.4bpp.lz");
 
@@ -2015,6 +2073,7 @@ const u16 gMessageBox_Pal[] = INCBIN_U16("graphics/text_window/message_box.gbapa
 const u8 gMessageBox_Gfx[] = INCBIN_U8("graphics/text_window/message_box.4bpp");
 
 const u16 gRyuDarkTheme_Pal[] = INCBIN_U16("graphics/text_window/ryudarktheme.gbapal");
+const u16 gHatLightTheme_Pal[] = INCBIN_U16("graphics/text_window/hatlighttheme.gbapal");
 
 const u32 gWallpaperIcon_Cross[] = INCBIN_U32("graphics/pokemon_storage/cross_icon.4bpp.lz");
 const u32 gWallpaperIcon_Bolt[] = INCBIN_U32("graphics/pokemon_storage/bolt_icon.4bpp.lz");
@@ -2087,3 +2146,135 @@ static const u8 sUnused2[]       = {0x02};
 static const u8 sEmpty5[0x3242]  = {0};
 static const u8 sUnused3[]       = {0x40};
 static const u8 sEmpty6[0x13]    = {0};
+
+const u8 gPartyThemeBoxElementsModern_Gfx[] = INCBIN_U8("graphics/interface/party_menu_bg_modern.4bpp");
+
+static const u8 gThemeBallPoke_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/poke_ball_gfx.4bpp.lz");
+static const u8 gThemeBallMega_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/mega_ball_gfx.4bpp.lz");
+static const u8 gThemeBallUltra_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/ultra_ball_gfx.4bpp.lz");
+static const u8 gThemeBallMaster_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/master_ball_gfx.4bpp.lz");
+static const u8 gThemeBallPremier_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/premier_ball_gfx.4bpp.lz");
+static const u8 gThemeBallRepeat_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/repeat_ball_gfx.4bpp.lz");
+static const u8 gThemeBallDive_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/dive_ball_gfx.4bpp.lz");
+static const u8 gThemeBallNet_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/net_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLuxury_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/luxury_ball_gfx.4bpp.lz");
+static const u8 gThemeBallNest_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/nest_ball_gfx.4bpp.lz");
+static const u8 gThemeBallTimer_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/timer_ball_gfx.4bpp.lz");
+static const u8 gThemeBallSafari_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/safari_ball_gfx.4bpp.lz");
+static const u8 gThemeBallQuick_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/quick_ball_gfx.4bpp.lz");
+static const u8 gThemeBallFast_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/fast_ball_gfx.4bpp.lz");
+static const u8 gThemeBallHeavy_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/heavy_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLevel_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/level_ball_gfx.4bpp.lz");
+static const u8 gThemeBallMoon_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/moon_ball_gfx.4bpp.lz");
+static const u8 gThemeBallDusk_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/dusk_ball_gfx.4bpp.lz");
+static const u8 gThemeBallFriend_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/friend_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLove_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/love_ball_gfx.4bpp.lz");
+static const u8 gThemeBallHeal_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/heal_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLureB_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/lureb_ball_gfx.4bpp.lz");
+static const u8 gThemeBallLureG_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/lureg_ball_gfx.4bpp.lz");
+static const u8 gThemeBallCherish_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/cherish_ball_gfx.4bpp.lz");
+static const u8 gThemeBallBeast_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/beast_ball_gfx.4bpp.lz");
+static const u8 gThemeBallMagma_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/magma_ball_gfx.4bpp.lz");
+static const u8 gThemeBallAqua_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/aqua_ball_gfx.4bpp.lz");
+static const u8 gThemeBallGreen_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/green_ball_gfx.4bpp.lz");
+static const u8 gThemeBallBlue_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/blue_ball_gfx.4bpp.lz");
+static const u8 gThemeBallYellow_Gfx[] = INCBIN_U8("graphics/interface/theme_balls/yellow_ball_gfx.4bpp.lz");
+
+
+static const u16 gThemeBallPoke_Pal[] = INCBIN_U16("graphics/interface/theme_balls/poke_ball_pal.gbapal");
+static const u16 gThemeBallMega_Pal[] = INCBIN_U16("graphics/interface/theme_balls/mega_ball_pal.gbapal");
+static const u16 gThemeBallUltra_Pal[] = INCBIN_U16("graphics/interface/theme_balls/ultra_ball_pal.gbapal");
+static const u16 gThemeBallMaster_Pal[] = INCBIN_U16("graphics/interface/theme_balls/master_ball_pal.gbapal");
+static const u16 gThemeBallPremier_Pal[] = INCBIN_U16("graphics/interface/theme_balls/premier_ball_pal.gbapal");
+static const u16 gThemeBallRepeat_Pal[] = INCBIN_U16("graphics/interface/theme_balls/repeat_ball_pal.gbapal");
+static const u16 gThemeBallDive_Pal[] = INCBIN_U16("graphics/interface/theme_balls/dive_ball_pal.gbapal");
+static const u16 gThemeBallNet_Pal[] = INCBIN_U16("graphics/interface/theme_balls/net_ball_pal.gbapal");
+static const u16 gThemeBallLuxury_Pal[] = INCBIN_U16("graphics/interface/theme_balls/luxury_ball_pal.gbapal");
+static const u16 gThemeBallNest_Pal[] = INCBIN_U16("graphics/interface/theme_balls/nest_ball_pal.gbapal");
+static const u16 gThemeBallTimer_Pal[] = INCBIN_U16("graphics/interface/theme_balls/timer_ball_pal.gbapal");
+static const u16 gThemeBallSafari_Pal[] = INCBIN_U16("graphics/interface/theme_balls/safari_ball_pal.gbapal");
+static const u16 gThemeBallQuick_Pal[] = INCBIN_U16("graphics/interface/theme_balls/quick_ball_pal.gbapal");
+static const u16 gThemeBallFast_Pal[] = INCBIN_U16("graphics/interface/theme_balls/fast_ball_pal.gbapal");
+static const u16 gThemeBallHeavy_Pal[] = INCBIN_U16("graphics/interface/theme_balls/heavy_ball_pal.gbapal");
+static const u16 gThemeBallLevel_Pal[] = INCBIN_U16("graphics/interface/theme_balls/level_ball_pal.gbapal");
+static const u16 gThemeBallMoon_Pal[] = INCBIN_U16("graphics/interface/theme_balls/moon_ball_pal.gbapal");
+static const u16 gThemeBallDusk_Pal[] = INCBIN_U16("graphics/interface/theme_balls/dusk_ball_pal.gbapal");
+static const u16 gThemeBallFriend_Pal[] = INCBIN_U16("graphics/interface/theme_balls/friend_ball_pal.gbapal");
+static const u16 gThemeBallLove_Pal[] = INCBIN_U16("graphics/interface/theme_balls/love_ball_pal.gbapal");
+static const u16 gThemeBallHeal_Pal[] = INCBIN_U16("graphics/interface/theme_balls/heal_ball_pal.gbapal");
+static const u16 gThemeBallLureB_Pal[] = INCBIN_U16("graphics/interface/theme_balls/lureb_ball_pal.gbapal");
+static const u16 gThemeBallLureG_Pal[] = INCBIN_U16("graphics/interface/theme_balls/lureg_ball_pal.gbapal");
+static const u16 gThemeBallCherish_Pal[] = INCBIN_U16("graphics/interface/theme_balls/cherish_ball_pal.gbapal");
+static const u16 gThemeBallBeast_Pal[] = INCBIN_U16("graphics/interface/theme_balls/beast_ball_pal.gbapal");
+static const u16 gThemeBallMagma_Pal[] = INCBIN_U16("graphics/interface/theme_balls/magma_ball_pal.gbapal");
+static const u16 gThemeBallAqua_Pal[] = INCBIN_U16("graphics/interface/theme_balls/aqua_ball_pal.gbapal");
+static const u16 gThemeBallGreen_Pal[] = INCBIN_U16("graphics/interface/theme_balls/green_ball_pal.gbapal");
+static const u16 gThemeBallBlue_Pal[] = INCBIN_U16("graphics/interface/theme_balls/blue_ball_pal.gbapal");
+static const u16 gThemeBallYellow_Pal[] = INCBIN_U16("graphics/interface/theme_balls/yellow_ball_pal.gbapal");
+
+const u8* gThemeBalls_Gfx[] = {
+    gThemeBallPoke_Gfx,
+    gThemeBallMega_Gfx,
+    gThemeBallUltra_Gfx,
+    gThemeBallMaster_Gfx,
+    gThemeBallPremier_Gfx,
+    gThemeBallDive_Gfx,
+    gThemeBallNet_Gfx,
+    gThemeBallTimer_Gfx,
+    gThemeBallLuxury_Gfx,
+    gThemeBallSafari_Gfx,
+    gThemeBallNest_Gfx,
+    gThemeBallRepeat_Gfx,
+    gThemeBallQuick_Gfx,
+    gThemeBallFast_Gfx,
+    gThemeBallHeavy_Gfx,
+    gThemeBallMoon_Gfx,
+    gThemeBallLevel_Gfx,
+    gThemeBallDusk_Gfx,
+    gThemeBallFriend_Gfx,
+    gThemeBallLove_Gfx,
+    gThemeBallHeal_Gfx,
+    gThemeBallLureB_Gfx,
+    gThemeBallLureG_Gfx,
+    gThemeBallCherish_Gfx,
+    gThemeBallBeast_Gfx,
+    gThemeBallMagma_Gfx,
+    gThemeBallAqua_Gfx,
+    gThemeBallGreen_Gfx,
+    gThemeBallBlue_Gfx,
+    gThemeBallYellow_Gfx,
+
+};
+
+const u16* gThemeBalls_Pal[] = {
+    gThemeBallPoke_Pal,
+    gThemeBallMega_Pal,
+    gThemeBallUltra_Pal,
+    gThemeBallMaster_Pal,
+    gThemeBallPremier_Pal,
+    gThemeBallDive_Pal,
+    gThemeBallNet_Pal,
+    gThemeBallTimer_Pal,
+    gThemeBallLuxury_Pal,
+    gThemeBallSafari_Pal,
+    gThemeBallNest_Pal,
+    gThemeBallRepeat_Pal,
+    gThemeBallQuick_Pal,
+    gThemeBallFast_Pal,
+    gThemeBallHeavy_Pal,
+    gThemeBallMoon_Pal,
+    gThemeBallLevel_Pal,
+    gThemeBallDusk_Pal,
+    gThemeBallFriend_Pal,
+    gThemeBallLove_Pal,
+    gThemeBallHeal_Pal,
+    gThemeBallLureB_Pal,
+    gThemeBallLureG_Pal,
+    gThemeBallCherish_Pal,
+    gThemeBallBeast_Pal,
+    gThemeBallMagma_Pal,
+    gThemeBallAqua_Pal,
+    gThemeBallGreen_Pal,
+    gThemeBallBlue_Pal,
+    gThemeBallYellow_Pal
+};

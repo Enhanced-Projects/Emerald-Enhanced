@@ -55,6 +55,7 @@ extern const u8 gText_TMs_Hms[];
 extern const u8 gText_MedicinesPocket[];
 extern const u8 gText_CollectiblesPocket[];
 extern const u8 gText_Berries2[];
+extern const u8 gText_MegaStones[];
 
 extern const u8 gText_Single2[];
 extern const u8 gText_Double2[];
@@ -305,6 +306,13 @@ extern const u8 gText_BattleSceneOff[];
 extern const u8 gText_UiThemeLight[];
 extern const u8 gText_UiThemeDark[];
 extern const u8 gText_UiThemeUser[];
+// FULL_COLORS
+extern const u8 gText_UiThemeModern[];
+extern const u8 gText_UiThemeClassic[];
+extern const u8 gText_UiThemeVanilla[];
+
+extern const u8* gText_ThemePokeballNames[];
+
 extern const u8 gText_TransitionStyleNormal[];
 extern const u8 gText_TransitionStyleInstant[];
 extern const u8 gText_SoundMono[];
@@ -319,6 +327,10 @@ extern const u8 gText_OptionMenu[];
 extern const u8 gText_TextSpeed[];
 extern const u8 gText_BattleScene[];
 extern const u8 gText_ThemeSelector[];
+extern const u8 gText_ThemeBallSelector[];
+//FULL_COLORS
+extern const u8 gText_ThemeUISelector[];
+
 extern const u8 gText_RandomRouteMusic[];
 extern const u8 gText_Frame[];
 extern const u8 gText_OptionMenuSave[];
@@ -326,6 +338,7 @@ extern const u8 gText_ButtonMode[];
 
 extern const u8 gText_MaleSymbol[];
 extern const u8 gText_FemaleSymbol[];
+extern const u8 gText_BossSymbol[];
 
 extern const u8 gText_SelectorArrow3[];
 extern const u8 gText_YesNo[];
@@ -3058,6 +3071,14 @@ extern const u8 gText_DevMonGiveAbility1[];
 extern const u8 gText_DevMonGiveAbility2[];
 extern const u8 gText_DevMonGiveAbility3[];
 
+extern const u8 gText_DevMonGiveGender1[];
+extern const u8 gText_DevMonGiveGender2[];
+extern const u8 gText_DevMonGiveGender3[];
+
+extern const u8 gText_DevMonGiveShiny1[];
+extern const u8 gText_DevMonGiveShiny2[];
+
+
 extern const u8 gText_RLSGM_Common[];
 extern const u8 gText_RLSGM_Uncommon[];
 extern const u8 gText_RLSGM_Rare[];
@@ -3235,14 +3256,6 @@ extern const u8 gText_RyuBufferedString6[];
 
 extern const u8 gText_RyuMHM_Main[];
 extern const u8 gText_RyuMHM_Kits[];
-extern const u8 gText_RyuMHM_Kits_1[];
-extern const u8 gText_RyuMHM_Kits_2[];
-extern const u8 gText_RyuMHM_Kits_3[];
-extern const u8 gText_RyuMHM_Kits_4[];
-extern const u8 gText_RyuMHM_Kits_5[];
-extern const u8 gText_RyuMHM_Kits_6[];
-extern const u8 gText_RyuMHM_Kits_7[];
-extern const u8 gText_RyuMHM_Kits_8[];
 // Berry Blender
 extern const u8 gText_SavingDontTurnOff2[];
 extern const u8 gText_BlenderMaxSpeedRecord[];
@@ -3312,6 +3325,7 @@ extern const u8 gText_RyuAttendantNameShelly[];
 extern const u8 gText_RyuAttendantNameJoy[];
 extern const u8 gText_RyuAttendantNameMay[];
 extern const u8 gText_RyuAttendantNameNone[];
+extern const u8* gText_PresetThemeNames[];
 
 
 extern const u8 sText_DebugMainUtilityItem1[];

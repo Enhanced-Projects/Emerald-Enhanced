@@ -52,6 +52,7 @@
 #include "gba/m4a_internal.h"
 #include "RyuRealEstate.h"
 #include "overworld_notif.h"
+#include "wild_encounter.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
 static EWRAM_DATA u8 MenuSpriteId2 = 0;
@@ -59,8 +60,6 @@ static EWRAM_DATA u8 MenuSpriteId2 = 0;
 extern u8 RyuDebugMenuScript[];
 extern u8 RyuStartMenuConfigInfoScript[];
 extern const u8 gText_RyuVersion[];
-extern const u8 Ryu_FFTextSpeedWarning[];
-extern const u8 RyuScript_Lv100FailMsg[];
 
 // Menu actions
 enum
@@ -275,7 +274,7 @@ static const struct WindowTemplate sUnknown_085105AC[] =
         {0, 2, 0xF, 0x1A, 4, 0xF, 0x194},
         DUMMY_WIN_TEMPLATE};
 
-static const struct WindowTemplate sSaveInfoWindowTemplate = {0, 1, 1, 0xE, 0xA, 0xF, 8};
+static const struct WindowTemplate sSaveInfoWindowTemplate = {0, 1, 1, 0xF, 0xA, 0xF, 8};
 
 // Local functions
 static void BuildStartMenuActions(void);
@@ -493,10 +492,6 @@ static void RemoveExtraStartMenuWindows(void)
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
     //RemoveInfoBoxWindow();
-    if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_RDM_MUSIC) == FALSE))
-    {
-        DebugPrint((const u8[])_("Random Music now enabled."));
-    }
 }
 
 EWRAM_DATA static u8 sPrintNumberWindowId = 1;
@@ -504,7 +499,7 @@ EWRAM_DATA static u8 sPrintNumberWindow2Id = 2;
 EWRAM_DATA static u8 sActionNameWindowId = 0;
 const u8 gText_RyuLifeSkills[] = _("Skills    ");
 const u8 gText_RyuMiningSkillPrefix[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE} M:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
-const u8 gText_RyuBotanySkillPrefix[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}  B:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+const u8 gText_RyuBotanySkillPrefix[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN} B:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
 const u8 gText_RyuAlchemySkillPrefix[] = _("{COLOR LIGHT_RED}{SHADOW RED} A:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
 const u8 gText_SomeSpaces[] = _("  ");
 
@@ -530,8 +525,19 @@ void PrintNumberToScreen(s32 num)
     // song readout
     StringCopy(gStringVar1, gText_HighlightTransparent);
     StringAppend(gStringVar1, gText_ryuJukeboxLabel);
-    ConvertIntToDecimalStringN(gStringVar2, num, 0, 3);
-    StringAppend(gStringVar1, gStringVar2);
+    if (gSaveBlock2Ptr->disableBGM == TRUE)
+    {
+        StringAppend(gStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW RED}BGM Off"));
+    }
+    else
+    {
+        ConvertIntToDecimalStringN(gStringVar2, num, 0, 3);
+        StringAppend(gStringVar1, gStringVar2);
+    }
+    if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (gSaveBlock2Ptr->disableBGM == FALSE))
+        StringAppend(gStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW BLUE}(R)"));
+    if ((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == TRUE) && (gSaveBlock2Ptr->disableBGM == FALSE))
+        StringAppend(gStringVar1, (const u8[])_("{COLOR LIGHT_GREEN}{SHADOW BLUE}(J)"));
 
     // playtime readout
     StringCopy(gRyuStringVar1, sText_PlayTime);
@@ -586,9 +592,9 @@ void PrintNumberToScreen(s32 num)
 
     // print all text
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 62, 0, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 12, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 0, 38, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 78, 0, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 8, 12, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 8, 38, 0xFF, NULL);
 
     // print skill levels
     StringCopy(gStringVar1, gText_RyuLifeSkills);
@@ -601,7 +607,7 @@ void PrintNumberToScreen(s32 num)
     StringAppend(gStringVar1, gText_RyuAlchemySkillPrefix);
     ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL)), STR_CONV_MODE_LEFT_ALIGN, 1);
     StringAppend(gStringVar1, gStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 24, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 8, 24, 0xFF, NULL);
 }
 
 void RemoveInfoBoxWindow(void)
@@ -613,13 +619,8 @@ void RemoveInfoBoxWindow(void)
         ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
         RemoveWindow(sPrintNumberWindow2Id);
     }
-    /*
-        if (FlagGet(FLAG_SELECTED_FF_TEXT_OPTION) == 0)
-            ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
-        else
-            ScriptContext1_SetupScript(ryu_end);//For some reason, this fixes the start menu info window border from sticking around, i call it a win.
-    */
-} // EDIT: Now the border gets cut off for no reason. lmao.
+
+}
 
 void PrintSongNumber(u16 song)
 {
@@ -632,13 +633,6 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 
     do
     {
-        /*
-        if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuPlayerNameCallback)
-        {
-            PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, (index << 4) + 9);
-        }
-        else
-        */
         {
             StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
             AddTextPrinterParameterized(GetStartMenuWindowId(), 1, gStringVar4, 8, (index << 4) + 9, 0xFF, NULL);
@@ -885,20 +879,10 @@ static void StartMenuTask(u8 taskId)
     if (InitStartMenuStep() == TRUE)
         SwitchTaskToFollowupFunc(taskId);
 }
-const u8 OneTimeNotifyMsg[] = _("Applied One Time Save Fixes.");
-void RyuDoOneTImeSaveFixes(void)
-{
-    if (gSaveBlock2Ptr->optionsTextSpeed == 3)
-        gSaveBlock2Ptr->optionsTextSpeed = 2;
 
-    if (FlagGet(FLAG_RYU_SAVED_ATTENDANT) == FALSE)
-        ;
-    VarSet(VAR_RYU_ATTENDANT_ID, 0xFFFF);
-
-    if ((VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL > 0)) && (!(CheckBagHasItem(579, 1))))
-        AddBagItem(579, 1);
-
-    QueueNotification(OneTimeNotifyMsg, NOTIFY_GENERAL, 60);
+void RyuDoOneTImeSaveFixes(void) {
+    FlagSet(FLAG_RYU_HIDE_LAVARIDGE_RIVAL);
+    QueueNotification((const u8[])_("Applied One Time Save Fixes."), NOTIFY_GENERAL, 60);
     FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
 }
 
@@ -958,7 +942,10 @@ bool32 RyuCheckForAllQuestAchievements(void)
     if (CheckAchievement(ACH_SILENT_STRONG_TYPE) == TRUE)
         count++;
 
-    if (count >= 4)
+    if (CheckAchievement(ACH_LOST_GIRL) == TRUE)
+        count++;
+
+    if (count >= 5)
         return TRUE;
 
     return FALSE;
@@ -1145,6 +1132,36 @@ static s32 MainMenu_MoveSelectedAction(s32 delta)
     return newPos;
 }
 
+bool8 DoesCurrentMapHaveEncounters(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if (headerId != 0xFFFF
+     && (gWildMonHeaders[headerId].landMonsInfo != NULL
+     || gWildMonHeaders[headerId].waterMonsInfo != NULL
+     || gWildMonHeaders[headerId].fishingMonsInfo != NULL
+     || gWildMonHeaders[headerId].rockSmashMonsInfo != NULL))
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 RyuMapIsValidForDexnav(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if ((headerId == 0xFFFF) && (gWildMonHeaders[headerId].landMonsInfo == NULL) && (gWildMonHeaders[headerId].waterMonsInfo == NULL))
+    {
+        if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+        {
+            DebugPrint((const u8[])_("No Encounters."), 0);
+        }
+        return FALSE;
+    }
+    else
+        return TRUE;
+}
+
 static bool8 HandleStartMenuInput(void)
 {
     u16 song = VarGet(VAR_RYU_JUKEBOX);
@@ -1163,7 +1180,7 @@ static bool8 HandleStartMenuInput(void)
     {
         song = 350;
     }
-    if ((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1) && gMain.newKeys & R_BUTTON)
+    if (((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1) && gMain.newKeys & R_BUTTON) && (!(gSaveBlock2Ptr->disableBGM == 1)))
     {
         PlaySE(SE_PIN);
         while (gSongTable[song].me != 0 && song != 0)
@@ -1247,7 +1264,12 @@ static bool8 HandleStartMenuInput(void)
 
         gMenuCallback = sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void;
 
-        if (gMenuCallback != StartMenuSaveCallback && gMenuCallback != StartMenuExitCallback && gMenuCallback != StartMenuBattlePyramidRetireCallback)
+        if (((DoesCurrentMapHaveEncounters()) == FALSE) && (gMenuCallback == StartMenuDexNavCallback))
+            gMenuCallback = StartMenuExitCallback;
+
+        if (gMenuCallback != StartMenuSaveCallback
+            && gMenuCallback != StartMenuExitCallback
+            && gMenuCallback != StartMenuBattlePyramidRetireCallback)
         {
             FadeScreen(FADE_TO_BLACK, 0);
         }
@@ -1264,48 +1286,41 @@ static bool8 HandleStartMenuInput(void)
             DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
             MenuSpriteId1 = 0;
         }
-        if ((FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_JUKEBOX) == FALSE))
-        {
-            DebugPrint((const u8[])_("Jukebox enabled."));
-            FlagSet(FLAG_RYU_NOTIFIED_JUKEBOX);
-        }
         return TRUE;
     }
 
-    if (gMain.heldKeys & L_BUTTON && gMain.newKeys & R_BUTTON)
-    {
-        u16 curmusic = 0;
-        u16 song = 350;
-        switch (FlagGet(FLAG_RYU_JUKEBOX_ENABLED)) // 0 for unset, 1 for set
-        {
-        case 0:
-            FlagSet(FLAG_RYU_JUKEBOX_ENABLED);
-            FlagClear(FLAG_RYU_NOTIFIED_JUKEBOX);
-            PlaySE(SE_PC_ON);
-
-            if (VarGet(VAR_RYU_SAVED_BGM) > 350 && (VarGet(VAR_RYU_SAVED_BGM) < 558))
+        if (gMain.heldKeys & L_BUTTON && gMain.newKeys & R_BUTTON)
+        {   
+            u16 curmusic = 0;
+            u16 song = 350;
+            switch (FlagGet(FLAG_RYU_JUKEBOX_ENABLED))//0 for unset, 1 for set
             {
-                song = VarGet(VAR_RYU_SAVED_BGM);
-                song--;
-            }
+                case 0:
+                    FlagSet(FLAG_RYU_JUKEBOX_ENABLED);
+                    PlaySE(SE_PC_ON);
+                    
+                    if (VarGet(VAR_RYU_SAVED_BGM) > 350 && (VarGet(VAR_RYU_SAVED_BGM) < 558))
+                    {
+                        song = VarGet(VAR_RYU_SAVED_BGM);
+                        song --;
+                    }
 
-            VarSet(VAR_RYU_JUKEBOX, song);
-            PlayBGM(song);
-            PlayNextTrack();
-            break;
-        case 1:
-            FlagClear(FLAG_RYU_JUKEBOX_ENABLED);
-            FlagSet(FLAG_RYU_NOTIFIED_JUKEBOX);
-            VarSet(VAR_RYU_SAVED_BGM, VarGet(VAR_RYU_JUKEBOX));
-            ResetMapMusic();
-            Overworld_ChangeMusicToDefault();
-            VarSet(VAR_RYU_JUKEBOX, 998);
-            PlaySE(SE_PC_OFF);
-            break;
-        default:
-            break;
+                    VarSet(VAR_RYU_JUKEBOX, song);
+                    PlayBGM(song);
+                    PlayNextTrack();
+                    break;
+                case 1:
+                    FlagClear(FLAG_RYU_JUKEBOX_ENABLED);
+                    VarSet(VAR_RYU_SAVED_BGM, VarGet(VAR_RYU_JUKEBOX));
+                    ResetMapMusic();
+                    Overworld_ChangeMusicToDefault();
+                    VarSet(VAR_RYU_JUKEBOX, 998);
+                    PlaySE(SE_PC_OFF);
+                    break;
+                default:
+                    break;
+            }
         }
-    }
 
     return FALSE;
 }

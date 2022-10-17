@@ -164,7 +164,7 @@
 #define MULTI_FRONTIERMODE_STARTER3        153
 #define MULTI_MAGMA_CHOICE                 154
 #define MULTI_MAGMA_MACHINE                155
-#define MULTI_MAGMA_MACHINE_KITS           156
+#define MULTI_UNUSED_156           156
 #define MULTI_BOTANY_CHAPTER_SELECT        157
 #define MULTI_PBG_TRICK_QUESTION           158
 #define MULTI_BOTANY_APRICORN_MENU         159
@@ -178,6 +178,8 @@
 #define MULTI_DYNAMIC_3                    167
 #define MULTI_DYNAMIC_4                    168
 #define MULTI_DYNAMIC_5                    169
+#define MULTI_DEV_GIVE_MON_GENDER          170
+#define MULTI_DEV_GIVE_MON_SHINY           171
 
 
 // Lilycove SS Tidal Multichoice Selections
@@ -223,6 +225,7 @@
 #define STDSTRING_BATTLE_PYRAMID   29
 #define STDSTRING_MEDICINES        30
 #define STDSTRING_COLLECTIBLES     31
+#define STDSTRING_MEGASTONES        32
 
 
 //Scrolling multichoice id's
@@ -232,5 +235,6 @@
 #define SCROLLINGMULTICHOICE_BOTANYEVOLUTIONCHAPTER 3
 #define SCROLLINGMULTICHOICE_RYUALCHEMYMENU 4
 #define SMC_RYUFOLLOWERDEBUGSUBMENU 5
+#define SMC_RYUBETAMENU 6
 
 #endif //GUARD_SCRIPT_MENU_CONSTANTS_H

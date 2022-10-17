@@ -61,7 +61,7 @@
 #define VAR_POISON_STEP_COUNTER              0x402B
 #define VAR_RESET_RTC_ENABLE                 0x402C
 #define VAR_ENIGMA_BERRY_AVAILABLE           0x402D
-#define VAR_0x402E                           0x402E
+#define VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES 0x402E
 
 #define VAR_FRONTIER_MANIAC_FACILITY         0x402F
 #define VAR_FRONTIER_GAMBLER_CHALLENGE       0x4030
@@ -276,8 +276,8 @@
 #define VAR_RYU_E42                          0x4101
 #define VAR_RYU_E43                          0x4102
 #define VAR_RYU_E44                          0x4103
-#define VAR_RYU_DELIVERY_5_GFX_ID            0x4104
-#define VAR_RYU_DELIVERY_6_GFX_ID            0x4105
+#define VAR_RYU_SUCCESSFUL_DELIVERIES        0x4104
+#define VAR_RYU_FAILED_DELIVERIES            0x4105
 #define VAR_HOURS                            0x4106
 //prize money
 #define VAR_RYU_MONEY_BASE_RANDOM_COMPONENT  0x4107
@@ -286,9 +286,18 @@
 #define VAR_RYU_SPECIAL_CHALLENGE_STATE      0x410A
 #define VAR_RYU_ATTENDANT_ID                 0x410B
 #define VAR_RYU_LOCAL_ENCOUNTERS             0x410C
+#define VAR_RYU_DYNAMIC_MOVEMENT_ID          0x410D
+#define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X    0x410E
+#define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y    0x410F
+#define VAR_RYU_NUM_DELIVERIES               0x4110
+#define VAR_RYU_DELIVERY_SYSTEM_DATA         0x4111
+#define VAR_RYU_DELIVERY_SYSTEM_HIGH_REWARD_ROLL        0x4112
+#define VAR_RYU_DELIVERY_SYSTEM_LOW_REWARD_ROLL         0x4113
+//FULL_COLOR
+#define VAR_HAT_THEME_UI_NUMBER              0x411F // Which theme UI is selected
 
 
-//vars 4100 thru 417f are unused; total of 128.
+//vars 4100 thru 417f are new; total of 128.
 #define VARS_END                             0x417F
 #define VARS_COUNT                           (VARS_END - VARS_START + 1)
 

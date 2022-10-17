@@ -5,8 +5,7 @@ SlateportCity_OceanicMuseum_2F_MapScripts:: @ 820BAFF
 
 OM_OnFrameScript::
 	map_script_2 VAR_RYU_QUEST_AQUA, 30, OM_AquaEvent2
-	map_script_2 VAR_TEMP_5, 0, OM_ReEnableStern
-	map_script_2 VAR_RYU_QUEST_DEVON_CORPORATE, 16, OM_SetupSternForDevon
+	map_script_2 VAR_RYU_QUEST_DEVON_CORPORATE, 16, OM_addStern
 	.2byte 0
 
 SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1:: @ 820BD0A
@@ -198,6 +197,7 @@ OM_PlayerLostTheFight::
 	closemessage
 	setvar VAR_RYU_QUEST_AQUA, 45 @player lost to steven, teleporting to aqua office
 	clearflag FLAG_TEMP_E
+	clearflag FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
 	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 30, 2
 	waitstate
 
@@ -252,13 +252,11 @@ OM_CameraToStern:
 	walk_diag_southeast
 	walk_diag_southeast
 	walk_diag_southeast
-	walk_diag_southeast
 	walk_down
 	step_end
 	
 OM_CameraToPlayer:
 	walk_up
-	walk_diag_northwest
 	walk_diag_northwest
 	walk_diag_northwest
 	walk_diag_northwest
@@ -268,9 +266,6 @@ OM_PlayerToSteven:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
-	walk_right
-	walk_right
 	walk_right
 	walk_right
 	step_end
@@ -281,11 +276,6 @@ OM_SternExit:
 	walk_left
 	walk_left
 	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
 	walk_up
 	walk_up
 	walk_up
@@ -294,15 +284,25 @@ OM_SternExit:
 	
 @==================================================================================================Devon Events
 
-OM_SetupSternForDevon::
-OM_ReEnableStern::
-	setvar VAR_TEMP_5, 10
-	goto_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
-	goto_if_set FLAG_RYU_DEVON_STERN_EVENT_DONE, ryu_end
+CheckSternState::
+	goto_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, OM_removeStern
+	goto_if_set FLAG_RYU_DEVON_STERN_EVENT_DONE, OM_removeStern
+	compare VAR_RYU_QUEST_DEVON_CORPORATE, 16
+	goto_if_lt OM_removeStern
+	goto OM_addStern
+
+OM_addStern::
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 17 @Player is on second floor to speak with Stern.
 	addobject 4
 	end
-	
+
+OM_removeStern::
+	removeobject 4
+	end
+
+om_removingstern:
+	.string "Removing stern.$"
+
 OM_CaptainStern::
 	compare VAR_RYU_QUEST_DEVON_CORPORATE, 18
 	goto_if_ge OM_AlreadyDoneScene
@@ -334,6 +334,8 @@ OM_ArchieSceneEnd::
 	waitmovement 4
 	msgbox OM_IllLetYouGetAway
 	closemessage
+	applymovement 6, OM_ArchieExit
+	waitmovement 6
 	removeobject 6
 	playse SE_KAIDAN
 	turnobject PLAYER, DIR_EAST
@@ -341,6 +343,7 @@ OM_ArchieSceneEnd::
 	removeitem ITEM_DEVON_GOODS, 1
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 18 @player spoke with stern and protected him from archie. Return to Devon.
 	setflag FLAG_RYU_DEVON_STERN_EVENT_DONE
+	clearflag FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
 	release
 	end
 
@@ -375,32 +378,22 @@ OM_IllLetYouGetAway:
 	.string "Grr... I'll let you get away\nthis time.$"
 
 OM_ThanksForProtecting:
-	.string "Oh, wow, am I fortunate.\nThank you so much for protecting\lme!$"
+	.string "Oh, wow, am I fortunate.\nThank you so much for protecting\lme!\pYou can head back to the Devon\noffice now.\lThanks again!$"
 
 OM_ArchieToPlayer:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
 	walk_right
 	walk_right
 	step_end
-	
 
-
-
-
-
-
-
-
-
-
-
-
+OM_ArchieExit:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 `

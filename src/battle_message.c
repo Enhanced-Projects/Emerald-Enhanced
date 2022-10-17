@@ -375,7 +375,7 @@ static const u8 sText_PkmnIgnoresAsleep[] = _("{B_ATK_NAME_WITH_PREFIX} ignored\
 static const u8 sText_PkmnIgnoredOrders[] = _("{B_ATK_NAME_WITH_PREFIX} ignored\norders!");
 static const u8 sText_PkmnBeganToNap[] = _("{B_ATK_NAME_WITH_PREFIX} began to nap!");
 static const u8 sText_PkmnLoafing[] = _("{B_ATK_NAME_WITH_PREFIX} is\nloafing around!");
-static const u8 sText_PkmnWontObey[] = _("{B_ATK_NAME_WITH_PREFIX} won't\nobey!");
+static const u8 sText_PkmnWontObey[] = _("{B_ATK_NAME_WITH_PREFIX} won't obey cheaters!");
 static const u8 sText_PkmnTurnedAway[] = _("{B_ATK_NAME_WITH_PREFIX} turned away!");
 static const u8 sText_PkmnPretendNotNotice[] = _("{B_ATK_NAME_WITH_PREFIX} pretended\nnot to notice!");
 static const u8 sText_EnemyAboutToSwitchPkmn[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_NAME} is\nabout to use {B_BUFF2}.\pWill {B_PLAYER_NAME} change\nPokémon?");
@@ -681,8 +681,8 @@ static const u8 sText_RyuItDealtDamageCrit[] = _("{B_ATK_NAME_WITH_PREFIX} dealt
 static const u8 sText_RyuItDealtOverkillDamageCrit[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_2}\ncritical overkill damage!");
 static const u8 sText_RyuItDealtSEDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} damage!\nIt was super effective!");
 static const u8 sText_RyuItDealtSEOverkillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_2} overkill damage!\nIt was super effective!");
-static const u8 sText_RyuItDealtNVEDamage[] = _("Its move wasn't very effective,\nbut it still dealt {STR_VAR_3} damage!");
-static const u8 sText_RyuItDealtNVEOverkillDamage[] = _("Its move wasn't very effective,\nbut it still dealt {STR_VAR_2} overkill damage!");
+static const u8 sText_RyuItDealtNVEDamage[] = _("Its move wasn't very effective, but\nit still dealt {STR_VAR_3} damage!");
+static const u8 sText_RyuItDealtNVEOverkillDamage[] = _("Its move wasn't very effective, but\nit still dealt {STR_VAR_2} overkill damage!");
 static const u8 sText_RyuItDealtOHKOOverkillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} executed {B_DEF_NAME_WITH_PREFIX}\nfor {STR_VAR_3} damage!");
 static const u8 sText_RyuItDealtDamageHungOn[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} damage but\n{B_DEF_NAME_WITH_PREFIX} barely clung to life anyway!");
 static const u8 sText_RyuItDealtNoDamage[] = _("{B_ATK_NAME_WITH_PREFIX} didn't do any damage.");
@@ -740,7 +740,9 @@ static const u8 sText_RyuDoTClamp[] = _("{B_ATK_NAME_WITH_PREFIX} is getting cla
 static const u8 sText_RyuDoTWhirlpool[] = _("{B_ATK_NAME_WITH_PREFIX} is getting lost in\nthe vortex!");
 static const u8 sText_RyuDoTSandTomb[] = _("{B_ATK_NAME_WITH_PREFIX} is being buried alive!");
 static const u8 sText_RyuDoTInfestation[] = _("The infestation continues to eat\nat {B_ATK_NAME_WITH_PREFIX}!");
-static const u8 sText_RyuDoTCling[] = _("{B_ATK_NAME_WITH_PREFIX} is still being hugged\ntightly by {B_DEF_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTCling[] = _("{B_ATK_NAME_WITH_PREFIX} is still being hugged\ntightly by {B_DEF_NAME_WITH_PREFIX}!"); 
+static const u8 sText_RyuItDoesntLikeCheaters[] = _("The wild pokémon doesn't\nlike cheaters!"); 
+static const u8 sText_RyuBurnedByMagma[] = _("{B_ATK_NAME_WITH_PREFIX} was burned by the\nswirling magma!"); 
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1342,7 +1344,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_DOTWHIRLPOOL - 12] = sText_RyuDoTWhirlpool,
     [STRINGID_DOTSANDTOMB - 12] = sText_RyuDoTSandTomb,
     [STRINGID_DOTINFESTATION - 12] = sText_RyuDoTInfestation,
-    [STRINGID_DOTCLING - 12] = sText_RyuDoTCling
+    [STRINGID_DOTCLING - 12] = sText_RyuDoTCling,
+    [STRINGID_ITDOESNTLIKECHEATERS - 12] = sText_RyuItDoesntLikeCheaters,
+    [STRINGID_DOTMS - 12] = sText_RyuBurnedByMagma
 };
 
 const u16 gTerrainStringIds[] =
@@ -1502,6 +1506,7 @@ const u16 gWrappedStringIds[] =
     STRINGID_PKMNTRAPPEDBYSANDTOMB,// MOVE_SAND_TOMB
     STRINGID_INFESTATION,          // MOVE_INFESTATION
     STRINGID_WASHUGGEDBY,          // MOVE_CLING
+    STRINGID_TRAPPERBYSWIRLINGMAGMA,// MOVE_MAGMA_STORM
 };
 
 const u16 gWrappedDoTIds[] = 
@@ -1514,6 +1519,7 @@ const u16 gWrappedDoTIds[] =
     STRINGID_DOTSANDTOMB,
     STRINGID_DOTINFESTATION,
     STRINGID_DOTCLING,
+    STRINGID_DOTMS,
 };
 
 const u16 gMistUsedStringIds[] =
@@ -1683,7 +1689,7 @@ const u16 gCaughtMonStringIds[] =
 
 const u16 gTrappingMoves[] =
 {
-    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_INFESTATION, MOVE_CLING, 0xFFFF
+    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_INFESTATION, MOVE_CLING, MOVE_MAGMA_STORM, 0xFFFF
 };
 
 const u16 gRoomsStringIds[] =

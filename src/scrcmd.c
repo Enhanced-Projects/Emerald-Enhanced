@@ -508,36 +508,36 @@ bool8 ScrCmd_random(struct ScriptContext *ctx)
 bool8 ScrCmd_additem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = AddBagItem(itemId, (u8)quantity);
+    gSpecialVar_Result = AddBagItem(itemId, quantity);
     return FALSE;
 }
 
 bool8 ScrCmd_removeitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = RemoveBagItem(itemId, (u8)quantity);
+    gSpecialVar_Result = RemoveBagItem(itemId, quantity);
     return FALSE;
 }
 
 bool8 ScrCmd_checkitemspace(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = CheckBagHasSpace(itemId, (u8)quantity);
+    gSpecialVar_Result = CheckBagHasSpace(itemId, quantity);
     return FALSE;
 }
 
 bool8 ScrCmd_checkitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = CheckBagHasItem(itemId, (u8)quantity);
+    gSpecialVar_Result = CheckBagHasItem(itemId, quantity);
     return FALSE;
 }
 
@@ -2467,12 +2467,7 @@ extern u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength);
 bool8 ScrCmd_buffermapname(struct ScriptContext *ctx)
 {
     u8 bufferIndex = ScriptReadByte(ctx);
-    u16 mapData = VarGet(ScriptReadHalfword(ctx));
-    u16 targetMapNum = (mapData & 0xFF);
-    u16 targetMapGroup = (mapData >> 8) & 0xFF;
-    u16 mapSecId = 0;
-
-    mapSecId = Overworld_GetMapHeaderByGroupAndId(targetMapGroup, targetMapNum)->regionMapSectionId;
+    u16 mapSecId = VarGet(ScriptReadHalfword(ctx));
     GetMapName(sScriptStringVars[bufferIndex], mapSecId, 0);
     return FALSE;
 }

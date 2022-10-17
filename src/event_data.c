@@ -101,8 +101,8 @@ void ClearMysteryEventFlags(void)
     FlagClear(NOBLES_SPECIAL_MISSION_IN_PROGRESS);
     FlagClear(FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS);
     FlagClear(FLAG_UNUSED_0x1ED);
-    FlagClear(FLAG_UNUSED_0x1EE);
-    FlagClear(FLAG_UNUSED_0x1EF);
+    FlagClear(FLAG_RYU_ONE_TIME_SAVE_FIX);
+    FlagClear(FLAG_RYU_OLDCOIN_PASSCODE);
     FlagClear(FLAG_UNUSED_0x1F0);
     FlagClear(FLAG_UNUSED_0x1F1);
     FlagClear(FLAG_UNUSED_0x1F2);

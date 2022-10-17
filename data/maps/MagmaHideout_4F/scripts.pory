@@ -512,6 +512,10 @@ MH4_MagmaMaxieEvent::
 	applymovement PLAYER, Common_Movement_StepDown
 	applymovement 11, MH4_MaxieToPlayer@left 3 up 1 left 2, up 3
 	waitmovement 11
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
+	turnobject 1, DIR_SOUTH
 	msgbox MH4_SoItSeems
 	closemessage
 	applymovement 11, MH4_MaxieToCourtney@down 3, right 2, down1, right 3, down 2, right 2
@@ -615,8 +619,8 @@ MH4_CourtneyScript::
 	goto_if_ge MH4_PostR114CourtneyFollower
 	compare VAR_RYU_QUEST_MAGMA, 560
 	goto_if_ge MH4_PostGroudonCourtneyFollower
+	call MH_CheckGruntsDefeated
 	msgbox MH4_CourtneyChatter
-	clearfullscreenimage
 	goto ryu_end
 	
 MH4_PostLabCourtneyFollower::

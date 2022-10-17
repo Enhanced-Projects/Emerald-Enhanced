@@ -8,7 +8,7 @@ RyuDevSwitch::
 	switch VAR_RESULT
 	case 69, Ryu_enableDevMode
 	case 666, Ryu_SpecialChallengeActive
-	case 420, RyuChallengeQuery
+	case 777, Hat_enableTestMode
 	release
 	end
 
@@ -18,6 +18,15 @@ Ryu_enableDevMode::
 	msgbox RyuNowDeveloper MSGBOX_SIGN
 	setvar VAR_TEMP_9, 100
 	end
+
+Hat_enableTestMode::
+	setflag FLAG_HAT_TEST_MODE
+	msgbox HatNowTestmode MSGBOX_SIGN
+	end
+
+HatNowTestmode:
+	.string "{PLAYER} has activated test mode.$"
+	
 
 Ryu_SpecialChallengeActive::
 	msgbox RyuCantEnableDevBecauseChallenge
@@ -375,10 +384,6 @@ RyuDebug_ViewTempVars::
 RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
-RyuDebug_Utility1::
-	release
-	end
-
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
 	compare VAR_RESULT, YES
@@ -415,7 +420,7 @@ RyuDebug_SaveFileDebug::
 	end
 
 SaveFileStructMsg:
-	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.$"
+	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.\psize3 is {STR_VAR_3}\nsize4 is {RYU_STR_1}$"
 
 exampletext:
 	.string "This is standard text.\p"
@@ -649,7 +654,7 @@ RyuDebug_msg:
 	.string "What would you like to activate?$"
 	
 RyuDebug_Init_GiveAll::
-	setvar VAR_TEMP_0, 1
+	setvar VAR_TEMP_0, 265
 	msgbox RyuDebug_GiveAllBeginMsg MSGBOX_DEFAULT
 	goto RyuDebug_GiveAllMons
 	
@@ -659,7 +664,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 152
+	compare VAR_TEMP_0, 686
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	
@@ -675,15 +680,15 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_DevMonQuickStart::
-	setflag FLAG_RYU_IGNORE_CAP @@why not just max lv
+	setflag FLAG_RYU_IGNORE_CAP
 	clearflag FLAG_RYU_VANILLA_CAP
 	setvar VAR_TEMP_A, NATURE_MODEST     
-	setvar VAR_TEMP_B, SPECIES_NAGANADEL
-	setvar VAR_TEMP_C, HIDDEN_ABILITY
+	setvar VAR_TEMP_B, SPECIES_MEGA_MEWTWO_Y
+	setvar VAR_TEMP_C, 0
 	setvar VAR_TEMP_D, MON_FEMALE @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS.
 	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
-	setvar VAR_TEMP_1, MOVE_SLUDGE_BOMB
-	setvar VAR_TEMP_2, MOVE_DRAGON_PULSE
+	setvar VAR_TEMP_1, MOVE_PSYCHIC
+	setvar VAR_TEMP_2, MOVE_SHADOW_BALL
 	setvar VAR_TEMP_3, MOVE_FLAMETHROWER
 	setvar VAR_TEMP_4, MOVE_THUNDERBOLT
 	callnative RyuGiveDevMon
@@ -693,14 +698,14 @@ RyuDebug_DevMonQuickStart::
 	@@
 	@@
 	setvar VAR_TEMP_A, NATURE_ADAMANT
-	setvar VAR_TEMP_B, SPECIES_KINGLER
-	setvar VAR_TEMP_C, HIDDEN_ABILITY
-	setvar VAR_TEMP_D, MON_FEMALE
+	setvar VAR_TEMP_B, SPECIES_MEGA_RAYQUAZA
+	setvar VAR_TEMP_C, 0
+	setvar VAR_TEMP_D, MON_GENDERLESS
 	setvar VAR_TEMP_E, ITEM_SCOPE_LENS
-	setvar VAR_TEMP_1, MOVE_EARTHQUAKE
-	setvar VAR_TEMP_2, MOVE_TRIPLE_KICK
-	setvar VAR_TEMP_3, MOVE_ICE_SHARD
-	setvar VAR_TEMP_4, MOVE_CRABHAMMER
+	setvar VAR_TEMP_1, MOVE_OUTRAGE
+	setvar VAR_TEMP_2, MOVE_EARTHQUAKE
+	setvar VAR_TEMP_3, MOVE_IRON_HEAD
+	setvar VAR_TEMP_4, MOVE_FLY
 	callnative RyuGiveDevMon
 	special HealPlayerParty
 	goto RyuDebug_QuickItemFlagStart

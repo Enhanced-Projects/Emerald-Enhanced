@@ -78,6 +78,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "LilycoveCity_PokemonCenter_1F_EventScript_ContestLadyMon",
       "flag": "FLAG_HIDE_LILYCOVE_POKEMON_CENTER_CONTEST_LADY_MON"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "x": 12,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LC_DeliveryQuestTarget2",
+      "flag": "FLAG_RYU_HIDE_DELIVERY_NPC_2"
     }
   ],
   "warp_events": [

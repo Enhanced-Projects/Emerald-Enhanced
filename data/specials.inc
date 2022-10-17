@@ -533,12 +533,11 @@ gSpecials:: @ 81DBA64
 	def_special CheckSaveFileSize
 	def_special PasscodeGiveMonWithNature
 	def_special SetMonAbility
-	def_special RyuCheckContestMastery
+	def_special SetMonShinyPid
+	def_special SetMonPid
 	def_special checksymbolcount
-	def_special resetSoundGameStat
 	def_special ForceSoftReset
 	def_special RyuMeloettaFormSwitcher
-	def_special SwapPlayerGender
 	def_special ChangeDarmanitanForm
 	def_special RyuGetTrainerHillReward
 	def_special RyuCountGemOres
@@ -569,7 +568,9 @@ gSpecials:: @ 81DBA64
 	def_special RyuCheckMoney
 	def_special RyuGetContestRewards
 	def_special CheckIfSelectedSlotIsValid
-	def_special CheckOwnedRayquaza
 	def_special AreMonsRepelled
 	def_special CheckValidMonsForSpecialChallenge
 	def_special RyuBufferRepelItemCounts
+	def_special CheckDeliverySuccessful
+	def_special CheckFullDeliveryQueueFinished
+	def_special RyuChallengeCheck

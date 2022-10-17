@@ -291,7 +291,7 @@
 #define FLAG_RYU_HIDE_MOSSDEEP_MATT          0x10F // Hides matt in mossdeep
 #define FLAG_RYU_ENTERING_RENTED_HOME        0x110 //set when player is entering a property they own. Used to show/hide tenants.
 #define FLAG_POKERUS_EXPLAINED               0x111
-#define FLAG_RYU_ONE_TIME_SAVE_FIX           0x112//make one time save fix actually one time
+#define FLAG_RYU_ENCOUNTERED_MELOETTA        0x112
 #define FLAG_RECEIVED_QUICK_CLAW             0x113
 #define FLAG_RECEIVED_KINGS_ROCK             0x114
 #define FLAG_RECEIVED_MACHO_BRACE            0x115
@@ -364,7 +364,7 @@
 #define FLAG_ENTERED_CONTEST                 0x155
 #define FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN  0x156
 #define FLAG_MET_BATTLE_FRONTIER_GAMBLER     0x157
-#define FLAG_RYU_FAILED_PROF_SPECIAL_QUEST   0x158
+#define FLAG_RYU_BROUGHT_MAY_HOME            0x158
 #define FLAG_NURSE_MENTIONS_GOLD_CARD        0x159
 #define FLAG_MET_FRONTIER_BEAUTY_MOVE_TUTOR  0x15A
 #define FLAG_MET_FRONTIER_SWIMMER_MOVE_TUTOR 0x15B
@@ -418,8 +418,8 @@
 #define FLAG_RYU_HIDE_DELIVERY_NPC_2         0x189
 #define FLAG_RYU_HIDE_DELIVERY_NPC_3         0x18A
 #define FLAG_RYU_HIDE_DELIVERY_NPC_4         0x18B
-#define FLAG_RYU_HIDE_DELIVERY_NPC_5         0x18C
-#define FLAG_RYU_HIDE_DELIVERY_NPC_6         0x18D
+#define FLAG_RYU_PROF_SPECIAL_FINISHED       0x18C
+#define FLAG_RYU_PROF_SPECIAL_QUEST_AVAILABLE      0x18D
 #define FLAG_RYU_RAYQUAZA_TRANSFORMED        0x18E
 #define FLAG_RYU_SPECIAL_RAYQUAZA_GIFT_AVAILABLE   0x18F
 #define FLAG_SHINY_CREATION                  0x190
@@ -518,13 +518,13 @@
 #define FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE       0x1E6
 #define FLAG_HIDE_114_MAXIE                       0x1E7
 #define FLAG_RYU_MAGMA_INTENSE_SUN_ENABLED        0x1E8
-#define FLAG_RYU_COMPLETED_NOBLES_SPECIAL_QUEST   0x1E9 // Nobles related.
+#define FLAG_RYU_COMPLETED_NOBLES_SPECIAL_QUEST   0x1E9 // Nobles related. 
 #define FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST     0x1EA // Nobles related.
 #define NOBLES_SPECIAL_MISSION_IN_PROGRESS        0x1EB // Nobles related.
 #define FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS   0x1EC // Nobles related.
 #define FLAG_UNUSED_0x1ED                         0x1ED
-#define FLAG_UNUSED_0x1EE                         0x1EE
-#define FLAG_UNUSED_0x1EF                         0x1EF
+#define FLAG_RYU_ONE_TIME_SAVE_FIX                0x1EE
+#define FLAG_RYU_OLDCOIN_PASSCODE                 0x1EF
 #define FLAG_UNUSED_0x1F0                         0x1F0
 #define FLAG_UNUSED_0x1F1                         0x1F1
 #define FLAG_UNUSED_0x1F2                         0x1F2
@@ -716,7 +716,7 @@
 #define FLAG_RYU_MAX_SCALE                                          0x297
 #define FLAG_RYU_R119_RIVAL                                         0x298
 #define FLAG_RYU_INTERACTED_RIVAL_R110                              0x299
-#define FLAG_RYU_INTERACTED_LAVARIDGE                               0x29A
+#define FLAG_RYU_LAVARIDGE_GIFT_PENDING                               0x29A
 #define FLAG_RYU_TC_ENTERED                                         0x29B
 #define FLAG_HAS_ENTERED_BATTLE_FRONTIER                            0x29C
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2                      0x29D
@@ -753,7 +753,7 @@
 
 // Event Flags
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
-#define FLAG_UNUSED_0x2BD                                           0x2BD
+#define FLAG_RYU_CHOSE_MAGMA_PATH                                   0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
 #define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0
@@ -778,7 +778,7 @@
 #define FLAG_HIDE_ROUTE_103_RIVAL                                   0x2D3
 #define FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE                    0x2D4
 #define FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT                        0x2D5
-#define FLAG_UNUSED_0x2D6                                           0x2D6
+#define FLAG_RYU_DELIVERY_IN_PROGRESS                               0x2D6
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7
 #define FLAG_RYU_DOING_RYU_CHALLENGE                                0x2D8
 
@@ -798,25 +798,25 @@
 #define FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS                         0x2E5
 #define FLAG_RYU_HIDE_HOME_ATTENDANT                                0x2E6
 #define FLAG_RYU_SPAWN_KINGPIN                                      0x2E7
-#define FLAG_UNUSED_0x2E8                                           0x2E8
+#define FLAG_RYU_SAVE_STATE_DETECTED                                0x2E8
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN            0x2E9
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_DAWN                  0x2EA
 #define FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION                  0x2EB
 #define FLAG_HIDE_LILYCOVE_HARBOR_EVENT_TICKET_TAKER                0x2EC
-#define FLAG_UNUSED_0x2ED                                           0x2ED
+#define FLAG_RYU_HIDE_LAVARIDGE_RIVAL                               0x2ED
 #define FLAG_HIDE_ROUTE_101_ZIGZAGOON                               0x2EE
 #define FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY                           0x2EF
-#define FLAG_UNUSED_0x2F0                                           0x2F0
+#define FLAG_RYU_MAGMA_SOOTOPOLIS_EVENT                             0x2F0
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN              0x2F1
-#define FLAG_UNUSED_0x2F2                                           0x2F2
-#define FLAG_UNUSED_0x2F3                                           0x2F3
+#define FLAG_RYU_NOTIFIED_DAILY_CANCEL                              0x2F2
+#define FLAG_RYU_NOTIFIED_SAVE_STATE                                0x2F3
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA          0x2F4
 #define FLAG_HIDE_LITTLE_ROOT_TOWN_PLAYERS_BEDROOM_MOM              0x2F5
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM                0x2F6
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM                   0x2F7
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM      0x2F8
-#define FLAG_UNUSED_0x2F9                                           0x2F9
-#define FLAG_UNUSED_0x2FA                                           0x2FA
+#define FLAG_RYU_COMPLETED_LAVARIDGE_EVENT                          0x2F9
+#define FLAG_RYU_MAGEARNA_GIVEN                                     0x2FA
 #define FLAG_HIDE_DEOXYS                                            0x2FB
 #define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC
 #define FLAG_UNUSED_0x2FD                                           0x2FD
@@ -933,9 +933,9 @@
 #define FLAG_UNUSED_0x36C                                           0x36C
 #define FLAG_HIDE_MT_CHIMNEY_TRAINERS                               0x36D
 #define FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT                         0x36E
-#define FLAG_UNUSED_0x36F                                           0x36F
-#define FLAG_UNUSED_0x370                                           0x370
-#define FLAG_UNUSED_0x371                                           0x371
+#define FLAG_RYU_HAREM_EVENT_COURTNEY_SPECIAL                       0x36F
+#define FLAG_RYU_HAREM_EVENT_STARTED                                0x370
+#define FLAG_RYU_STARTED_MAY_QUEST                                  0x371
 #define FLAG_UNUSED_0x372                                           0x372
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS         0x373
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1     0x374
@@ -1366,13 +1366,13 @@
 #define FLAG_RYU_DISABLED_ANIMS                                   0x509
 #define FLAG_RYU_FACING_ATTENDANT                                 0x50A
 #define FLAG_RYU_VERBOSE_MODE                                     0x50B
-#define FLAG_RYU_NOTIFIED_RDM_MUSIC                               0x50C
-#define FLAG_RYU_NOTIFIED_JUKEBOX                                 0x50D
+#define FLAG_UNUSED_0x50C                                         0x50C
+#define FLAG_UNUSED_0x50D                                         0x50D
 
 
 #define NEW_FLAGS_END                                             0x5FF
 // Trainer Flags
-// Trainer flags occupy 0x500 - 0x85F, the last 9 of which are unused
+// Trainer flags occupy 0x5FF - 0x95F, the last 9 of which are unused
 // See constants/opponents.h. The values there + FLAG_TRAINER_FLAG_START are the flag IDs
 
 #define TRAINER_FLAGS_START                                         (NEW_FLAGS_END)
@@ -1692,20 +1692,22 @@
 #define FLAG_RYU_FACING_FACTION_BOSS            (SPECIAL_FLAGS_START + 0x9)
 #define FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS     (SPECIAL_FLAGS_START + 0xA)
 #define FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS    (SPECIAL_FLAGS_START + 0xB)
-#define FLAG_UNUSED_SPECIAL_0xc                 (SPECIAL_FLAGS_START + 0xC)
+#define FLAG_RYU_OPTIONAL_QT_ACTION             (SPECIAL_FLAGS_START + 0xC)
 #define FLAG_UNUSED_SPECIAL_0xd                 (SPECIAL_FLAGS_START + 0xD)
 #define FLAG_RYU_USED_COMPANION_E4              (SPECIAL_FLAGS_START + 0xE) //Used a companion for championship match
 #define FLAG_RYU_PASSED_SAVE_VERSION_CHECK      (SPECIAL_FLAGS_START + 0xF) //prevents lag from checking save vs game version
 #define FLAG_RYU_TEMP_1                         (SPECIAL_FLAGS_START + 0x10)
 #define FLAG_RYU_TEMP_2                         (SPECIAL_FLAGS_START + 0x11)
-#define FLAG_RYU_TEMP_3                        (SPECIAL_FLAGS_START + 0x12)
+#define FLAG_RYU_TEMP_3                         (SPECIAL_FLAGS_START + 0x12)
 #define FLAG_RYU_TEMP_4                         (SPECIAL_FLAGS_START + 0x13)
 #define FLAG_RYU_TEMP_5                         (SPECIAL_FLAGS_START + 0x14)
 #define FLAG_RYU_TEMP_6                         (SPECIAL_FLAGS_START + 0x15)
 #define FLAG_RYU_TEMP_7                         (SPECIAL_FLAGS_START + 0x16)
 #define FLAG_RYU_TEMP_8                         (SPECIAL_FLAGS_START + 0x17)
+#define FLAG_RYU_STARTED_TRAVEL_TIMER           (SPECIAL_FLAGS_START + 0x18)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
+#define FLAG_HAT_TEST_MODE                      0x40FF
 
 
 #endif // GUARD_CONSTANTS_FLAGS_H

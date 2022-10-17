@@ -25,6 +25,7 @@
 #include "trainer_hill.h"
 #include "event_data.h"
 #include "pokemon_storage_system.h"
+#include "overworld_notif.h"
 
 static void VBlankIntr(void);
 static void HBlankIntr(void);
@@ -82,6 +83,8 @@ static void ReadKeys(void);
 void InitIntrHandlers(void);
 static void WaitForVBlank(void);
 void EnableVCountIntrAtLine150(void);
+bool8 IsRtcSynched(u32 rtcSec, u32 rtcSecRaw);
+void RtcCheckCallback(void);
 
 #define B_START_SELECT (B_BUTTON | START_BUTTON | SELECT_BUTTON)
 
@@ -89,6 +92,7 @@ extern u32 GetBoxMonData();
 
 void AgbMain()
 {
+    u32 i;
     // Modern compilers are liberal with the stack on entry to this function,
     // so RegisterRamReset may crash if it resets IWRAM.
 #if !MODERN
@@ -119,11 +123,14 @@ void AgbMain()
 
     gLinkTransferringData = FALSE;
     gUnknown_03000000 = 0xFC0;
+    gSaveBlock2Ptr->RtcTimeSecond = RtcGetSecondCount();
+    gSaveBlock2Ptr->RtcTimeSecondRAW = RtcGetSecondCountRAW();
 
-    //mgba_open();
-    for (;;)
+    for (i = 0; ; ++i)
     {
         ReadKeys();
+        if (!(i % 5))
+            RtcCheckCallback();
 
         if (gSoftResetDisabled == FALSE
          && (gMain.heldKeysRaw & A_BUTTON)
@@ -267,16 +274,6 @@ static void ReadKeys(void)
 
     gMain.heldKeysRaw = keyInput;
     gMain.heldKeys = gMain.heldKeysRaw;
-
-    // Remap L to A if the L=A option is enabled.
-    if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
-    {
-        if (JOY_NEW(L_BUTTON))
-            gMain.newKeys |= A_BUTTON;
-
-        if (JOY_HELD(L_BUTTON))
-            gMain.heldKeys |= A_BUTTON;
-    }
 
     if (gMain.newKeys & gMain.watchedKeysMask)
         gMain.watchedKeysPressed = TRUE;
@@ -455,4 +452,54 @@ void DoSoftReset(void)
 void ClearPokemonCrySongs(void)
 {
     CpuFill16(0, gPokemonCrySongs, MAX_POKEMON_CRIES * sizeof(struct PokemonCrySong));
+}
+
+u8 RtcFrequenciesOffsets[90] =
+{
+    [9] = 16,
+    [25] = 32,
+    [41] = 48,
+    [57] = 64,
+    [73] = 80,
+    [89] = 0
+};
+
+bool8 IsRtcSynched(u32 rtcSec, u32 rtcSecRaw)
+{
+    if (gSaveBlock2Ptr->RtcTimeSecond + 10 >= rtcSec)
+        return TRUE;
+    
+    if ((gSaveBlock2Ptr->RtcTimeSecondRAW == 89 || RtcFrequenciesOffsets[gSaveBlock2Ptr->RtcTimeSecondRAW]) && RtcFrequenciesOffsets[gSaveBlock2Ptr->RtcTimeSecondRAW] == rtcSecRaw)
+        return TRUE;
+
+    return FALSE;
+}
+
+void RtcCheckCallback(void)
+{
+    u32 rtcSec;
+    u32 rtcSecRaw;
+    if ((RtcGetErrorStatus() & RTC_ERR_FLAG_MASK)) {
+        FlagSet(FLAG_RYU_SAVE_STATE_DETECTED);
+        return;
+    }
+    rtcSec = RtcGetSecondCount();
+    rtcSecRaw = RtcGetSecondCountRAW();
+    if (!IsRtcSynched(rtcSec, rtcSecRaw))
+    {
+        FlagSet(FLAG_RYU_SAVE_STATE_DETECTED);
+        gSaveBlock2Ptr->SaveStateLastDetection = rtcSec;
+    }
+#ifdef RYU_PUNISH_SAVE_STATE
+    //remove punishment after an hour if the user is in hardcore/challenge mode.
+    if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000))
+    {
+        FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
+        gSaveBlock2Ptr->notifiedSaveState = TRUE;
+        QueueNotification((const u8[])_("Save State penalty Lifted."), NOTIFY_GENERAL, 120);
+    }
+#endif
+
+    gSaveBlock2Ptr->RtcTimeSecondRAW = rtcSecRaw;
+    gSaveBlock2Ptr->RtcTimeSecond = rtcSec;
 }

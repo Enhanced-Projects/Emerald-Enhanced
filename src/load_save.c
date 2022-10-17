@@ -26,7 +26,8 @@ struct LoadedSaveData
  /*0x00F0*/ struct ItemSlot pokeBalls[BAG_POKEBALLS_COUNT];
  /*0x0130*/ struct ItemSlot TMsHMs[BAG_TMHM_COUNT];
  /*0x0230*/ struct ItemSlot berries[BAG_BERRIES_COUNT];
- /*0x02E8*/ struct MailStruct mail[MAIL_COUNT];
+ /*0x0230*/ struct ItemSlot megaStones[BAG_MEGASTONES_COUNT];
+ /*0x02E8 struct MailStruct mail[MAIL_COUNT];*/
 };
 
 // EWRAM DATA
@@ -77,17 +78,24 @@ void ClearSav1(void)
     CpuFill16(0, &gSaveblock1, sizeof(struct SaveBlock1) + sizeof(gSaveblock1_DMA));
 }
 
-void ClearSav1_SkipDex(void)
+void ClearSav1_NewGamePlus(void)
 {
     // There isn’t enough space on the stack for this, so we heap allocate
     u8* oldDex = malloc(DEX_FLAGS_NO * 2);
     int i;
+    struct ItemSlot *newItems = malloc(400);//is this legal?
 
     //Copy dex information temporarily
     for (i = 0; i < DEX_FLAGS_NO; i++)
     {
         oldDex[i] = gSaveBlock1Ptr->dexSeen[i];
         oldDex[i + DEX_FLAGS_NO] = gSaveBlock1Ptr->dexCaught[i];
+    }
+    
+    //copy PC items to memory temporarily?
+    for (i = 0;i < PC_ITEMS_COUNT; i++)
+    {
+        newItems[i] = gSaveBlock1Ptr->pcItems[i];
     }
 
     //Zero out the entirety of SaveBlock1
@@ -100,6 +108,13 @@ void ClearSav1_SkipDex(void)
         gSaveBlock1Ptr->dexCaught[i] = oldDex[i + DEX_FLAGS_NO];
     }
     free(oldDex);
+
+    //return items to pc storage
+    for (i = 0;i < PC_ITEMS_COUNT; i++)
+    {
+        gSaveBlock1Ptr->pcItems[i] = newItems[i];
+    }
+    free(newItems);
 }
 
 void SetSaveBlocksPointers(u16 offset)
@@ -115,6 +130,8 @@ void SetSaveBlocksPointers(u16 offset)
     SetBagItemsPointers();
     SetDecorationInventoriesPointers();
 }
+
+//Okay I think I found out what this is for and what was wrong, needed CpuCopy32 instead of shallow copy and size+1 when to buffer
 
 void MoveSaveBlocks_ResetHeap(void)
 {
@@ -136,9 +153,12 @@ void MoveSaveBlocks_ResetHeap(void)
     pokemonStorageCopy = (struct PokemonStorage *)(gHeap + sizeof(struct SaveBlock2) + sizeof(struct SaveBlock1));
 
     // backup the saves.
-    *saveBlock2Copy = *gSaveBlock2Ptr;
-    *saveBlock1Copy = *gSaveBlock1Ptr;
-    *pokemonStorageCopy = *gPokemonStoragePtr;
+    //*saveBlock2Copy = *gSaveBlock2Ptr;
+    //*saveBlock1Copy = *gSaveBlock1Ptr;
+    //*pokemonStorageCopy = *gPokemonStoragePtr;
+    CpuCopy32(gSaveBlock2Ptr, saveBlock2Copy, sizeof(struct SaveBlock2)+1);
+    CpuCopy32(gSaveBlock1Ptr, saveBlock1Copy, sizeof(struct SaveBlock1)+1);
+    CpuCopy32(gPokemonStoragePtr, pokemonStorageCopy, sizeof(struct PokemonStorage)+1);
 
     // change saveblocks' pointers
     // argument is a sum of the individual trainerId bytes
@@ -149,9 +169,12 @@ void MoveSaveBlocks_ResetHeap(void)
       saveBlock2Copy->playerTrainerId[3]);
 
     // restore saveblock data since the pointers changed
-    *gSaveBlock2Ptr = *saveBlock2Copy;
-    *gSaveBlock1Ptr = *saveBlock1Copy;
-    *gPokemonStoragePtr = *pokemonStorageCopy;
+    //*gSaveBlock2Ptr = *saveBlock2Copy;
+    //*gSaveBlock1Ptr = *saveBlock1Copy;
+    //*gPokemonStoragePtr = *pokemonStorageCopy;
+    CpuCopy32(saveBlock2Copy, gSaveBlock2Ptr, sizeof(struct SaveBlock2));
+    CpuCopy32(saveBlock1Copy, gSaveBlock1Ptr, sizeof(struct SaveBlock1));
+    CpuCopy32(pokemonStorageCopy, gPokemonStoragePtr, sizeof(struct PokemonStorage));
 
     // heap was destroyed in the copying process, so reset it
     InitHeap(gHeap, HEAP_SIZE);
@@ -272,6 +295,10 @@ void LoadPlayerBag(void)
     for (i = 0; i < BAG_BERRIES_COUNT; i++)
         gLoadedSaveData.berries[i] = gSaveBlock1Ptr->bagPocket_Berries[i];
 
+    // load player mega stones.
+    for (i = 0; i < BAG_MEGASTONES_COUNT; i++)
+        gLoadedSaveData.megaStones[i] = gSaveBlock1Ptr->bagPocket_MegaStones[i];
+
     gLastEncryptionKey = gSaveBlock2Ptr->encryptionKey;
 }
 
@@ -307,6 +334,10 @@ void SavePlayerBag(void)
     // save player berries.
     for (i = 0; i < BAG_BERRIES_COUNT; i++)
         gSaveBlock1Ptr->bagPocket_Berries[i] = gLoadedSaveData.berries[i];
+
+    // save player mega stones
+    for (i = 0; i < BAG_MEGASTONES_COUNT; i++)
+        gSaveBlock1Ptr->bagPocket_MegaStones[i] = gLoadedSaveData.megaStones[i];
 
     encryptionKeyBackup = gSaveBlock2Ptr->encryptionKey;
     gSaveBlock2Ptr->encryptionKey = gLastEncryptionKey;

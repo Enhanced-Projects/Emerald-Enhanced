@@ -626,21 +626,11 @@ DC_YouAreScientist:
 	.string "I heard you became Cozmo's\nunderstudy. Congratulations!$"
 	
 DC_BeginQuest::
-	goto_if_eq DC_HelpingDevon
-
-DC_HelpingDevon::
 	applymovement 2, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox DC_TalkToCEO MSGBOX_DEFAULT
 	clearflag FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON
 	setflag FLAG_RYU_PLAYER_HELPING_DEVON
-	setvar VAR_RYU_QUEST_MAGMA, 60000
-	setvar VAR_RYU_QUEST_AQUA, 60000
-	changefactionstanding FACTION_STUDENTS, 10, FALSE
-	changefactionstanding FACTION_PROFESSIONALS, 20, FALSE
-	changefactionstanding FACTION_POKEFANS, 20, FALSE
-	setvar VAR_RYU_QUESTLINE_ID, 0
-	ach give ACH_ADVENTURE_TIME
 	clearflag FLAG_HIDE_GRANITE_CAVE_STEVEN
 	release
 	end
@@ -855,7 +845,7 @@ DC_NRYMsg:
 	.string "You've been very valuable to us as\nan employee of Devon.\pWhen you amass more power, I\nwill give you access to a special\pplace that we have been researching.$"
 	
 DC_CEOIntro: @ 8212609
-	.string "I'm MR. Stone, the President of\n"
+	.string "I'm Mr. Stone, the President of\n"
 	.string "the Devon Corporation.\p"
 	.string "I'd just got word about you!\p"
 	.string "You saved our staff not just once,\n"
@@ -870,7 +860,7 @@ DC_CEOIntro: @ 8212609
 	.string "Letter to Steven in Dewford.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis: @ 821277C
-	.string "MR. Stone: Now, you should know that\n"
+	.string "Mr. Stone: Now, you should know that\n"
 	.string "I am a great President.\p"
 	.string "So, I'd never be so cheap as to ask\n"
 	.string "a favor for nothing in return.\p"
@@ -895,14 +885,14 @@ RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp: @ 8212837
 	.string "up before you go on your way.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare: @ 82129D2
-	.string "MR. Stone: Well, then, {PLAYER},\n"
+	.string "Mr. Stone: Well, then, {PLAYER},\n"
 	.string "go with caution and care!$"
 
 RustboroCity_DevonCorp_3F_Text_CountingOnYou: @ 8212A09
-	.string "MR. Stone: I'm counting on you!$"
+	.string "Mr. Stone: I'm counting on you!$"
 
 RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter: @ 8212A29
-	.string "MR. Stone: You delivered my Letter?\n"
+	.string "Mr. Stone: You delivered my Letter?\n"
 	.string "And the package for Stern as well?\p"
 	.string "Excellent work!\p"
 	.string "This is my way of thanking you.\n"
@@ -914,7 +904,7 @@ DC_CEO_ExpShareDesc: @ 8212A9E
 	.string "pokémon without fail.$"
 
 RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends: @ 8212B78
-	.string "MR. Stone: Since my youth, I've immersed\n"
+	.string "Mr. Stone: Since my youth, I've immersed\n"
 	.string "myself in work.\p"
 	.string "Consequently, I'm not familiar with\n"
 	.string "trends and that sort of thing.\p"

@@ -344,3 +344,15 @@ u32 RtcGetLocalDayCount(void)
 {
     return RtcGetDayCount(&sRtc);
 }
+
+u8 RtcGetSecondCountRAW(void)
+{
+    RtcGetInfo(&sRtc);
+    return sRtc.second;
+}
+
+u32 RtcGetSecondCount(void)
+{
+    RtcGetInfo(&sRtc);
+    return RtcGetMinuteCount() * 60 + sRtc.second % 60;
+}

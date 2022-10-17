@@ -757,22 +757,69 @@ void InitBattleBgsVideo(void)
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON | DISPCNT_WIN0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
 }
 
+// FULL_COLOR BATTLE UPDATE
+/*void LoadBattleMenuWindowGfx(void)
+{
+    // 0 = dark blue, 1 = yellow, 2 = red, 3 = green, 4 == darkred, 5 = pinklight, 6 = darkgreen, 7 = lightgreen, 8 = blue, 9 = grey, 10 = white, 11 = lightyellow, 13 = darkpink, 12 = darkyellow,  14 = darkblue, 15 turquoise
+    //text = red, textshadow = green, windowhighlight = blue, window border = pink, windowbg = yellow
+    u16 buf[32];
+    switch (VarGet(VAR_RYU_THEME_NUMBER))
+    {
+        case 0:   
+            LoadUserWindowBorderGfx(2, 0x12, 0x10);
+            LoadUserWindowBorderGfx(2, 0x22, 0x10);
+            LoadCompressedPalette(gBattleWindowTextPalette, 0x50, 0x20);
+            break;
+        case 1:
+            LoadUserDarkWindowBorderGfx(2, 0x12, 0x10);
+            LoadUserDarkWindowBorderGfx(2, 0x22, 0x10);
+            LoadCompressedPalette(gBattleWindowTextDarkPalette, 0x50, 0x20);
+            break;
+        case 2:
+            CpuCopy16(gBattleWindowTextDarkPalette, buf, 0x20);
+            buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            buf[15] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+            LoadUserWindowBorderGfx(2, 0x12, 0x10);
+            LoadUserWindowBorderGfx(2, 0x22, 0x10);
+            LoadPalette(buf, 0x50, 0x20);
+            break;
+    }
+}*/
+// FULL_COLOR BATTLE UPDATE
 void LoadBattleMenuWindowGfx(void)
 {
-    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
-    {   
-        LoadUserWindowBorderGfx(2, 0x12, 0x10);
-        LoadUserWindowBorderGfx(2, 0x22, 0x10);
-        LoadCompressedPalette(gBattleWindowTextDarkPalette, 0x50, 0x20);
+    // 0 = dark blue, 1 = yellow, 2 = red, 3 = green, 4 == darkred, 5 = pinklight, 6 = darkgreen, 7 = lightgreen, 8 = blue, 9 = grey, 10 = white, 11 = lightyellow, 13 = darkpink, 12 = darkyellow,  14 = darkblue, 15 turquoise
+    //text = red, textshadow = green, windowhighlight = blue, window border = pink, windowbg = yellow
+    u16 buf[0x20];
+    switch ( VarGet (VAR_RYU_THEME_NUMBER) )
+    {
+        case THEME_COLOR_LIGHT:
+            LoadUserWindowBorderGfx(2, 0x12, 0x10);
+            LoadUserWindowBorderGfx(2, 0x22, 0x10);
+            LoadCompressedPalette(gBattleWindowTextLightPalette, 0x50, 0x20);
+            break;
+        case THEME_COLOR_DARK:
+            LoadUserDarkWindowBorderGfx(2, 0x12, 0x10);
+            LoadUserDarkWindowBorderGfx(2, 0x22, 0x10);
+            LoadCompressedPalette(gBattleWindowTextDarkPalette, 0x50, 0x20);
+            break;
+        case THEME_COLOR_USER:
+            CpuCopy16(gBattleWindowTextDarkPalette, buf, 0x20);
+            buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            buf[15] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+            LoadUserWindowBorderGfx(2, 0x12, 0x10);
+            LoadUserWindowBorderGfx(2, 0x22, 0x10);
+            LoadPalette(buf, 0x50, 0x20);
+            break;
+        case THEME_COLOR_VANILLA:
+            LoadUserWindowBorderGfx(2, 0x12, 0x10);
+            LoadUserWindowBorderGfx(2, 0x22, 0x10);
+            LoadCompressedPalette(gBattleWindowTextPalette, 0x50, 0x20);
+            break;
     }
-    else
-    {   LoadUserDarkWindowBorderGfx(2, 0x12, 0x10);
-        LoadUserDarkWindowBorderGfx(2, 0x22, 0x10);
-        LoadCompressedPalette(gBattleWindowTextPalette, 0x50, 0x20);
-    }
-    
 }
-
 void DrawMainBattleBackground(void)
 {
 
@@ -879,32 +926,62 @@ void DrawMainBattleBackground(void)
     }
 }
 
+//FULL_COLOR_BATTLE_UPDATE
 void LoadBattleTextboxAndBackground(void)
 {
-    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
-    {
-        LZDecompressVram(gBattleDarkTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
-    }
-    else
-    {
-        LZDecompressVram(gBattleTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+    // 0 = dark blue, 1 = yellow, 2 = red, 3 = green, 4 == darkred, 5 = pinklight, 6 = darkgreen, 7 = lightgreen, 8 = LIGHTblue, 9 = grey, 10 = white, 11 = lightyellow, 13 = darkpink, 12 = darkyellow,  14 = blue, 15 turquoise
+    //text = red, textshadow = green, windowhighlight = blue, window border = pink, windowbg = yellow
+    u16 buf[64];
+    u32 i;
+    switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+        case THEME_COLOR_LIGHT:
+            LZDecompressVram(gBattleLightTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+            break;
+        case THEME_COLOR_DARK:
+        case THEME_COLOR_USER:
+            LZDecompressVram(gBattleDarkTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+            break;
+        case THEME_COLOR_VANILLA:
+            LZDecompressVram(gBattleTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+            break;
     }
     
     CopyToBgTilemapBuffer(0, gBattleTextboxTilemap, 0, 0);
     CopyBgTilemapBufferToVram(0);
-
-    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1) || (VarGet(VAR_RYU_THEME_NUMBER) == 2))
-    {
-        LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x40);
-    }
-    else
-    {
-        LoadCompressedPalette(gBattleTextboxPalette, 0, 0x40);
-    }
     
+
+    switch (VarGet(VAR_RYU_THEME_NUMBER)) 
+    {
+        case THEME_COLOR_LIGHT:
+            LoadCompressedPalette(gBattleTextboxLightPalette, 0, 0x40);
+            break;
+        case THEME_COLOR_DARK:
+            LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x40);
+            break;
+        case THEME_COLOR_USER:
+            CpuCopy16(gBattleTextboxDarkPalette, buf, 0x40);
+            
+            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+            buf[9] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT], THRESHOLD_DEFAULT);
+            buf[10] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[11] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+            buf[12] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+            buf[15] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            LoadPalette(buf, 0, 0x40);
+            //CpuCopy16(buf, ((u16*)gPlttBufferFaded), 32);
+            //CpuCopy16(buf, ((u16*)gPlttBufferUnfaded), 32);
+            break;
+        case THEME_COLOR_VANILLA:
+            LoadCompressedPalette(gBattleTextboxPalette, 0, 0x40);
+
+    }
     LoadBattleMenuWindowGfx();
     DrawMainBattleBackground();
 }
+
 
 static void DrawLinkBattleParticipantPokeballs(u8 taskId, u8 multiplayerId, u8 bgId, u8 destX, u8 destY)
 {

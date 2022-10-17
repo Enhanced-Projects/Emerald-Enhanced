@@ -286,7 +286,6 @@ void ResetTrainerHillResults(void)
     s32 i;
 
     gSaveBlock2Ptr->frontier.savedGame = 0;
-    gSaveBlock2Ptr->frontier.unk_EF9 = 0;
     gSaveBlock1Ptr->trainerHill.bestTime = 0;
     for (i = 0; i < 4; i++)
         SetTimerValue(&gSaveBlock1Ptr->trainerHillTimes[i], HILL_MAX_TIME);
@@ -397,9 +396,6 @@ void CopyTrainerHillTrainerText(u8 which, u16 trainerId)
 static void TrainerHillStartChallenge(void)
 {
     nullsub_2();
-    gSaveBlock1Ptr->trainerHill.field_3D6E_0f = 1;
-
-    gSaveBlock1Ptr->trainerHill.unk_3D6C = 0;
     SetTrainerHillVBlankCounter(&gSaveBlock1Ptr->trainerHill.timer);
     gSaveBlock1Ptr->trainerHill.timer = 0;
     gSaveBlock1Ptr->trainerHill.spokeToOwner = 0;
@@ -411,7 +407,7 @@ static void TrainerHillStartChallenge(void)
     VarSet(VAR_RYU_TH_RNG_VALUE, Random() % TRAINER_HILL_REWARDS_PER_TABLE);
     ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_TH_RNG_VALUE), 0, 3);
     if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
-        DebugPrint((const u8[]) _("Trainer Hill reward rolled. ({RYU_STR_1})"));
+        DebugPrint((const u8[]) _("Trainer Hill reward rolled. ({RYU_STR_1})"), 0);
 }
 
 static void GetOwnerState(void)
@@ -438,7 +434,6 @@ static void GiveChallengePrize(void)
     {
         CopyItemName(itemId, gStringVar2);
         gSaveBlock1Ptr->trainerHill.receivedPrize = TRUE;
-        gSaveBlock2Ptr->frontier.unk_EF9 = 0;
         gSpecialVar_Result = 0;
     }
     else

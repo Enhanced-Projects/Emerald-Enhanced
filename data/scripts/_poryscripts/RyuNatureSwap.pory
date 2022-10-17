@@ -1,0 +1,51 @@
+//Menu for changing the nature of party mons
+
+script RyuNatureSwapperMenu {
+    msgbox("Hello, Stranger!\nI provide Pokémon temperament\ltraining!\pIn exchange for this service,\nI require 1 Old Coin.")
+    closemessage
+    msgbox("Would you like me to adjust\nyour Pokémon's temperament?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox("Ah, shame.\nSome other time perhaps?")
+        goto(ryu_end)
+    }
+    closemessage
+    checkitem(ITEM_ANCIENT_COIN, 1)
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox("You don't have the coin\nI'm looking for!")
+        goto(ryu_end)
+    }
+	msgbox("Select a party member.")
+    closemessage
+	call(RyuBufferPartyMonNames)
+	multichoice(0, 0, MULTI_DYNAMIC_6, 1)
+	copyvar(VAR_0x8001, VAR_RESULT) //slot
+	if (var(VAR_RESULT) == 127) {
+		goto(RyuNatureChangeInvalidSlot)
+	}
+	bufferpartymonnick(2, VAR_0x8001)
+	msgbox("Select {STR_VAR_3}'s new nature.")
+    closemessage
+	multichoicegrid(0, 0, 139, 4, 1)
+    if (var(VAR_RESULT) == 127) {
+        msgbox("You made an invalid selection.\nYou must select a nature!")
+        closemessage
+        goto(RyuNatureSwapperMenu)
+    }
+	copyvar(VAR_0x8005, VAR_RESULT)
+	callnative(RyuSetCustomNature)
+    removeitem(ITEM_ANCIENT_COIN, 1)
+    msgbox("Please give me a few moments\nwith your Pokémon!")
+    fadescreen(FADE_TO_BLACK)
+    closemessage
+    delay(60)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("All Done! Your pokémon's temperament\nhas been adjusted!")
+	release
+	end
+}
+
+script RyuNatureChangeInvalidSlot {
+	msgbox("You didn't select a valid\nslot.")
+    closemessage
+	goto(RyuNatureSwapperMenu)
+}

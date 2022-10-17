@@ -338,16 +338,59 @@ GCMS_DMPG_Ability:
 DevModeMonAbility1::
 	setvar VAR_TEMP_7, 0
 	special SetMonAbility 
-	goto ryu_return
+	goto DevModeMonGender
 
 DevModeMonAbility2::
 	setvar VAR_TEMP_7, 1
 	special SetMonAbility 
-	goto ryu_return
+	goto DevModeMonGender
 
 DevModeMonAbility3::
 	setvar VAR_TEMP_7, 2
 	special SetMonAbility 
+	goto DevModeMonGender
+
+DevModeMonGender::
+	msgbox GCMS_DMPG_GENDER
+	multichoicedefault 0, 6, MULTI_DEV_GIVE_MON_GENDER, 0, 1
+	switch VAR_RESULT
+	case 0, DevModeMonGender1
+	case 1, DevModeMonGender2
+	case 2, DevModeMonGender3
+	goto ryu_return
+
+DevModeMonGender1::
+	setvar VAR_TEMP_9, 255
+	goto DevModeMonShiny
+
+DevModeMonGender2::
+	setvar VAR_TEMP_9, 0
+	goto DevModeMonShiny
+
+DevModeMonGender3::
+	setvar VAR_TEMP_9, 254
+	goto DevModeMonShiny
+
+GCMS_DMPG_GENDER:
+	.string "Please choose a Gender.$"
+
+DevModeMonShiny::
+	msgbox GCMS_DMPG_SHINY
+	multichoicedefault 0, 6, MULTI_DEV_GIVE_MON_SHINY, 0, 1
+	switch VAR_RESULT
+	case 0, DevModeMonPid
+	case 1, DevModeMonPidShiny
+	goto ryu_return
+
+GCMS_DMPG_SHINY:
+	.string "Please choose shiny status.$"
+
+DevModeMonPidShiny::
+	special SetMonShinyPid
+	goto ryu_return
+
+DevModeMonPid::
+	special SetMonPid
 	goto ryu_return
 	
 GCMS_Consignment::

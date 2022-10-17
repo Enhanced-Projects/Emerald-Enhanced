@@ -19,6 +19,7 @@ struct MonIconSpriteTemplate
 
 // static functions
 static u8 CreateMonIconSprite(struct MonIconSpriteTemplate *, s16, s16, u8);
+static u8 CreateMonIconSpriteWithTileTag(struct MonIconSpriteTemplate *iconTemplate, s16 x, s16 y, u8 subpriority, u16 tileTag);
 
 // .rodata
 
@@ -2023,6 +2024,31 @@ u8 CreateMonIcon(u16 species, void (*callback)(struct Sprite *), s16 x, s16 y, u
     return spriteId;
 }
 
+u8 CreateMonIconWithTileTag(u16 species, void (*callback)(struct Sprite *), s16 x, s16 y, u8 subpriority, u32 personality, u16 tileTag)
+{
+    u8 spriteId;
+    struct MonIconSpriteTemplate iconTemplate =
+    {
+        .oam = &sMonIconOamData,
+        .image = GetMonIconPtr(species, personality),
+        .anims = sMonIconAnims,
+        .affineAnims = sMonIconAffineAnims,
+        .callback = callback,
+        .paletteTag = POKE_ICON_BASE_PAL_TAG + gMonIconPaletteIndices[species],
+    };
+
+    if (species > NUM_SPECIES)
+        iconTemplate.paletteTag = POKE_ICON_BASE_PAL_TAG;
+    else if (SpeciesHasGenderDifference[species] && GetGenderFromSpeciesAndPersonality(species, personality) == MON_FEMALE)
+        iconTemplate.paletteTag = POKE_ICON_BASE_PAL_TAG + gMonIconPaletteIndicesFemale[species];
+
+    spriteId = CreateMonIconSpriteWithTileTag(&iconTemplate, x, y, subpriority, tileTag);
+
+    UpdateMonIconFrame(&gSprites[spriteId]);
+
+    return spriteId;
+}
+
 u8 sub_80D2D78(u16 species, void (*callback)(struct Sprite *), s16 x, s16 y, u8 subpriority)
 {
     u8 spriteId;
@@ -2235,6 +2261,30 @@ static u8 CreateMonIconSprite(struct MonIconSpriteTemplate *iconTemplate, s16 x,
     struct SpriteTemplate spriteTemplate =
     {
         .tileTag = 0xFFFF,
+        .paletteTag = iconTemplate->paletteTag,
+        .oam = iconTemplate->oam,
+        .anims = iconTemplate->anims,
+        .images = &image,
+        .affineAnims = iconTemplate->affineAnims,
+        .callback = iconTemplate->callback,
+    };
+
+    spriteId = CreateSprite(&spriteTemplate, x, y, subpriority);
+    gSprites[spriteId].animPaused = TRUE;
+    gSprites[spriteId].animBeginning = FALSE;
+    gSprites[spriteId].images = (const struct SpriteFrameImage *)iconTemplate->image;
+    return spriteId;
+}
+
+static u8 CreateMonIconSpriteWithTileTag(struct MonIconSpriteTemplate *iconTemplate, s16 x, s16 y, u8 subpriority, u16 tileTag)
+{
+    u8 spriteId;
+
+    struct SpriteFrameImage image = { NULL, sSpriteImageSizes[iconTemplate->oam->shape][iconTemplate->oam->size] };
+
+    struct SpriteTemplate spriteTemplate =
+    {
+        .tileTag = tileTag,
         .paletteTag = iconTemplate->paletteTag,
         .oam = iconTemplate->oam,
         .anims = iconTemplate->anims,

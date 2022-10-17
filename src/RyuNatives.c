@@ -89,6 +89,12 @@
 #include "data/lifeskill.h"
 #include "autoscale_tables.h"
 #include "overworld_notif.h"
+#include "factions.h"
+#include "scripted_encounters.h"
+
+extern u8 GetObjectEventIdByLocalId(u8 id);
+
+extern u8 RyuScript_CheckCompleteDailyQuest[];
 
 
 void ApplyDaycareExperience(struct Pokemon *mon)
@@ -189,6 +195,61 @@ void SetMonAbility(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 }
 
+
+void SetMonPid(void)
+{
+    u8 slot = (VarGet(VAR_TEMP_8));
+    u8 nature = (VarGet(VAR_TEMP_C));
+    u8 gender = (VarGet(VAR_TEMP_9));
+    u16 range = 25657;
+    u16 start1 = range + 1;
+    u32 start2 = 0;
+    u32 a[128];
+    u32 i;
+    while (start1 != range) {
+        for (i = 0; i < 128; ++i) {
+            a[i] = (start2++)*25+nature;
+        }
+        for (i = 0; i < 128; ++i) {
+            if ((gender == MON_GENDERLESS || (gender == MON_MALE && (a[i] % 256) > 225) || (gender == MON_FEMALE && a[i] % 256 < 31)) && (a[i] % 25 == nature)) {
+                ChangeBoxMonDataPersonality(&gPlayerParty[slot].box, &a[i]);
+                return;
+            }
+        }
+    }
+}
+
+
+void SetMonShinyPid(void)
+{
+    u8 slot = (VarGet(VAR_TEMP_8));
+    u8 nature = (VarGet(VAR_TEMP_C));
+    u8 gender = (VarGet(VAR_TEMP_9));
+    u32 OTID = GetMonData(&gPlayerParty[slot], MON_DATA_OT_ID);
+    u16 tid = OTID % 65536;
+    u16 sid = OTID >> 16;
+    u16 calcID = (tid ^ sid) >> 3;
+    u16 range = 25657;
+    u16 start1 = range + 1;
+    u32 p1, p2;
+    u32 a[128];
+    u32 i;
+    while (start1 != range) {
+        p1 = start1++;
+        p2 = p1 ^ calcID;
+        for (i = 0; i < 128; ++i) {
+            a[i] = (((p1 << 3) | (i % 8)) << ((i < 64) ? 16 : 0)) | (((p2 << 3) | ((i / 8) % 8)) << (i < 64 ? 0 : 16));
+        }
+        for (i = 0; i < 128; ++i) {
+            if ((gender == MON_GENDERLESS || (gender == MON_MALE && (a[i] % 256) > 225) || (gender == MON_FEMALE && a[i] % 256 < 31)) && (a[i] % 25 == nature)) {
+                ChangeBoxMonDataPersonality(&gPlayerParty[slot].box, &a[i]);
+                return;
+            }
+        }
+    }
+    
+}
+
 bool8 RyuGiveMewtwo(void)
 {
     u8 ev = 252;
@@ -236,21 +297,43 @@ void RyuKillMon(void)
         FlagSet(FLAG_RYU_CHALLENGEFAILED);
 }
 
+bool32 isMonLegendaryID (u16 speciesid)
+{
+    if ((gBaseStats[speciesid].isLegendary) == TRUE)
+        return TRUE;
+    return FALSE;
+}
+
+bool32 isMonUltraBeastID (u16 speciesid)
+{
+    if ((speciesid > 792) && (speciesid < 800))
+        return TRUE;
+    return FALSE;
+}
+
+bool32 isMonMegaID (u16 speciesid)
+{
+    if ((speciesid >= 809) && (speciesid < 858))
+        return TRUE;
+    return FALSE;
+}
+
 extern const u16 gFrontierBannedSpecies[27];
 extern const u16 gChallengeBannedSpecies[69];
 
 int CheckValidMonsForSpecialChallenge (void)
 {
-    u8 slot = 8;
-    s32 i = 0;
     s32 k = 0;
-    for (k = 0; k < 5; k++)
+    for (k = 0; k < 6; k++)
     {
-        for (; gChallengeBannedSpecies[i] != 0xFFFF; i++)
-        {
-            if (gChallengeBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
+        mgba_open();
+        mgba_printf(LOGINFO, "Checking Slot %d, species is %d", k, (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)));
+        if ((isMonLegendaryID(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)) == TRUE))
                 return 666;
-        }
+        if ((isMonUltraBeastID(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)) == TRUE))
+                return 668;
+        if ((isMonMegaID(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)) == TRUE))
+                return 667;
     }
 }
 
@@ -315,8 +398,9 @@ void RyuDawnGiftPoke(void)
     u8 iv = 126;
     u8 partycount = (CalculatePlayerPartyCount());
     u8 friendship = 70;
+    u8 level = (RyuChooseLevel(CountBadges(), FALSE, SCALING_TYPE_TRAINER, CalculatePlayerPartyStrength()));
 
-    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNEASEL, 24, 31, MON_FEMALE, NATURE_ADAMANT, 0);
+    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNEASEL, level, 31, MON_FEMALE, NATURE_ADAMANT, 0);
     SetMonData(&gPlayerParty[partycount], MON_DATA_ATK_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPEED_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);
@@ -327,24 +411,34 @@ void RyuBrendanGiftPoke(void)
     u8 iv = 126;
     u8 partycount = (CalculatePlayerPartyCount());
     u8 friendship = 70;
+    u8 level = (RyuChooseLevel(CountBadges(), FALSE, SCALING_TYPE_TRAINER, CalculatePlayerPartyStrength()));
 
     partycount = VarGet(gSpecialVar_Result);
-    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNORUNT, 24, 31, MON_FEMALE, NATURE_MODEST, 0);
+    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNORUNT, level, 31, MON_FEMALE, NATURE_MODEST, 0);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPATK_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPEED_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);
 }
 
+void RyuChallengeCheck (void)
+{
+    if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)))
+    {
+        gSpecialVar_Result = 420;
+        return;
+    }
+}
+
 void RyuDevCheck(void)
 {
+    if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)) && (JOY_HELD(START_BUTTON)) && (JOY_HELD(SELECT_BUTTON)))
+    {
+        gSpecialVar_Result = 777;
+        return;
+    }
     if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)))
     {
         gSpecialVar_Result = 69;
-        return;
-    }
-    else if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)))
-    {
-        gSpecialVar_Result = 420;
         return;
     }
 }
@@ -692,18 +786,6 @@ void RyuChangeUsedPokeball(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_POKEBALL, &newBall);
 }
 
-void SwapPlayerGender(void)//only used by debug menu sometimes to check graphics.
-{
-    if (gSaveBlock2Ptr->playerGender == 1)
-    {
-        gSaveBlock2Ptr->playerGender = 0;
-    }
-    else
-    {
-        gSaveBlock2Ptr->playerGender = 1;
-    }
-}
-
 bool8 RyuSwapAbility(void)//ability switcher, which requires a big pearl in the script.
 {
     u8 currentAbility = (GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM));
@@ -724,39 +806,6 @@ bool8 RyuSwapAbility(void)//ability switcher, which requires a big pearl in the 
     {
         return FALSE;
     }
-}
-
-void resetSoundGameStat(void)
-{
-    SetGameStat(GAME_STAT_USED_SOUND_MOVE, 200);
-}
-
-bool8 RyuCheckContestMastery(void)
-{
-    u8 i = 0;
-
-    if (FlagGet(FLAG_RYU_CLEARED_COOL) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_CLEARED_BEAUTY) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_CLEARED_TOUGH) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_CLEARED_SMART) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_CLEARED_CUTE) == 1)
-        i++;
-
-    if (FlagGet(FLAG_RYU_GIVEN_DIANCIE) == 1)
-        i += 10;
-
-    if (i == 5)
-        return TRUE;
-
-    return FALSE;
 }
 
 int RyuNumberOfFullBoxes(void)//used by lanette to determine how many full boxes player has for her quest. She requires 4.
@@ -867,8 +916,12 @@ void CheckSaveFileSize(void)//used in debug menu from time to time as a special 
 {
     u32 size = (sizeof(struct SaveBlock1));
     u32 size2 = (sizeof(struct SaveBlock2));
+    u32 size3 = (sizeof(struct DeliveryManifest) * 4);
+    u32 size4 = (sizeof(struct DeliveryTime));
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar2, size2, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar3, size3, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gRyuStringVar1, size4, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
 
 void ForceSoftReset(void)//only used when you use Random Battle from the main menu. Otherwise, the player would lose their party and/or keep their random mons.
@@ -992,13 +1045,13 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)//this function draws eithe
     }
 }
 
-bool8 ScrCmd_getobjectxy(struct ScriptContext *ctx) //can no longer set happiness above 200. Affection must be earned the hard way
+bool8 ScrCmd_getobjectxy(struct ScriptContext *ctx)
 {
-    u16 index = VarGet(ScriptReadHalfword(ctx));
-    struct Coords16 objectCoords;
-    objectCoords = gObjectEvents[index].currentCoords;
-    gSpecialVar_0x8006 = objectCoords.x;
-    gSpecialVar_0x8007 = objectCoords.y;
+    u8 localId = VarGet(ScriptReadHalfword(ctx));
+    struct ObjectEvent *objectEvent = &gObjectEvents[GetObjectEventIdByLocalId(localId)];
+    gSpecialVar_0x8001 = objectEvent->currentCoords.x - 7;
+    gSpecialVar_0x8002 = objectEvent->currentCoords.y - 7;
+    DebugPrint((const u8 []) _("coords:"), 2, gSpecialVar_0x8001, gSpecialVar_0x8002);
 
     return FALSE;
 }
@@ -1647,11 +1700,10 @@ bool8 RyuFillStatsBuffers(void)
     StringAppend(gTextBuffer1, gTextBuffer4);
     StringCopy(gRyuStringVar3, gTextBuffer1);
 }
-
+//FULL_COLOR
 void RyuSetUpSaveBlockStuff(void)
 {
     gSaveBlock1Ptr->registeredItem = ITEM_WAYSTONE;
-    VarSet(VAR_RYU_THEME_NUMBER, 1);
 }
 
 void Ryu_ClearAquaSFCTrainerFlags(void)
@@ -1946,20 +1998,13 @@ void TryGiveFitnessGuruAch(void)
         GiveAchievement(ACH_FITNESS_GURU);
 }
 
-void RyuDebug_Plant49Berries(void)
-{
-    u8 i;
-    for (i = 0; i < 50; i++)
-        IncrementGameStat(GAME_STAT_PLANTED_BERRIES);
-}
-
 void RyuClearAlchemyEffect(void)
 {
     gSaveBlock2Ptr->alchemyCharges = 0;
     gSaveBlock2Ptr->alchemyEffect = 0;
     gSaveBlock2Ptr->hasAlchemyEffectActive = 0;
     if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
-        DebugPrint((const u8[]) _("Cleared Alchemy Effects."));
+        DebugPrint((const u8[]) _("Cleared Alchemy Effects."), 0);
 }
 
 void RyuSetupAlchemicalRepel(void) //There's no need to assume there's an alchemy effect active with this.
@@ -2080,7 +2125,7 @@ void RyuDebug_CheckAlchemyStatus(void)
     ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
     ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 5);
     if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
-        DebugPrint((const u8[]) _("Checked Alchemy Effects."));
+        DebugPrint((const u8[]) _("Checked Alchemy Effects."), 0);
 }
 
 
@@ -2118,18 +2163,19 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
         GiveAchievement(ACH_FWB);
     }
 
-    if ((partners == 5) && (FlagGet(FLAG_RYU_FIRST_GAME_CLEAR) == 1))
-    {
-        GiveAchievement(ACH_TRUE_ENDING);
-        VarSet(VAR_RYU_PARTNER_COUNT, partners);
-        VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
-    }
-
     if (FlagGet(FLAG_RYU_DS_MAY_PARTNERS) == 1) //may doesn't count for the true ending.
     {
         partners++;
         GiveAchievement(ACH_LOST_GIRL);
     }
+
+    if ((partners >= 5) && (FlagGet(FLAG_RYU_FIRST_GAME_CLEAR) == 1))
+    {
+        GiveAchievement(ACH_TRUE_ENDING);
+        VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
+    }
+
+    VarSet(VAR_RYU_PARTNER_COUNT, partners);
 
     return partners;
 }
@@ -2142,12 +2188,6 @@ void RyuSummonOriginalNPCscript(void)
     const u8 *script = NULL;
     script = GetRamScript(gSpecialVar_LastTalked, gOriginalNPCScript);
     ScriptContext1_SetupScript(script);
-}
-
-void RyuFixCorruptedBoxMons(void)
-{
-    ZeroBoxMonAt(2, 5);
-    ZeroBoxMonAt(2, 6);
 }
 
 void RyuBufferSkillLevels(void)
@@ -2227,7 +2267,7 @@ void RyuMaxFactionStanding(void)
 {
     u8 i;
     for(i = 0; i < FACTION_OTHERS; i++)
-        gSaveBlock1Ptr->gNPCTrainerFactionRelations[i] = 200;
+        gSaveBlock2Ptr->gNPCTrainerFactionRelations[i] = 200;
 }
 
 void SetAlchemyEffect(void)
@@ -2286,6 +2326,7 @@ void RyuGiveDevMon(void)
     u16 move3 = VarGet(VAR_TEMP_3);
     u16 move4 = VarGet(VAR_TEMP_4);
     u8 slot = (CalculatePlayerPartyCount());
+    u16 item = (VarGet(VAR_TEMP_E));
     u16 i = 0;
     u8 ev = 252;
     u8 ppmax = 255;
@@ -2296,8 +2337,6 @@ void RyuGiveDevMon(void)
 
 
     CreateMonWithGenderNatureLetter(&gPlayerParty[slot], species, lv, iv, gender, nature, what); 
-    for (i = 0; i < 6; i++)
-        SetMonData(&gPlayerParty[slot], (MON_DATA_HP_EV + i), &ev); // set ev's loop
     
     CalculateMonStats(&gPlayerParty[slot]);
 
@@ -2310,7 +2349,15 @@ void RyuGiveDevMon(void)
 
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
+    SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &ev);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &ev);
+
     SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &ribbon); //make it a boss because why not
+    SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &item);
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
@@ -2391,13 +2438,6 @@ void RyuExpDriveOperation(void)
 
 }
 
-void RyuCheckDataSize(void)//used to check the size of whatever struct i want to check, only need to change the 'data =' part
-{
-    u32 data = sizeof(struct FacilityMon);
-    data *= 999;
-    ConvertIntToDecimalStringN(gStringVar1, data, STR_CONV_MODE_LEFT_ALIGN, 10);
-}
-
 void RyuForceUpdateTime(void)
 {
     u16 hours = (VarGet(VAR_TEMP_1));
@@ -2432,27 +2472,6 @@ void RyuNotifyPickupItemBufferValues (void)
             break;
     }
     StringExpandPlaceholders(gStringVar3, gStringVar4);
-}
-
-void RyuCheckHasFighterDogs(void)
-{
-    u8 k;
-
-    for (k = 0; k < CalculatePlayerPartyCount(); k++)
-    {
-        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_TERRAKION)
-            VarSet(VAR_TEMP_D, (VarGet(VAR_TEMP_D) + 100));
-    }
-    for (k = 0; k < CalculatePlayerPartyCount(); k++)
-    {
-        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_VIRIZION)
-            VarSet(VAR_TEMP_D, (VarGet(VAR_TEMP_D) + 100));
-    }
-    for (k = 0; k < CalculatePlayerPartyCount(); k++)
-    {
-        if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_COBALION)
-            VarSet(VAR_TEMP_D, (VarGet(VAR_TEMP_D) + 100));
-    }
 }
 
 bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at or below.
@@ -2502,25 +2521,6 @@ void RDB_DevModeGiveMoney(void)
     ConvertIntToDecimalStringN(gStringVar1, Amt, STR_CONV_MODE_LEFT_ALIGN, 9);
 }
 
-bool16 CheckOwnedRayquaza(void)
-{
-    if (!GetSetPokedexFlag((SpeciesToNationalPokedexNum(SPECIES_RAYQUAZA)), FLAG_GET_CAUGHT))
-    {
-        gSpecialVar_Result = FALSE;
-    }
-    else
-    {
-        gSpecialVar_Result = TRUE;
-    }
-}
-
-void RyuTransformRayquaza(void)
-{
-    u16 id = SPECIES_MEGA_RAYQUAZA;
-    SetMonData(&gPlayerParty[(VarGet(VAR_TEMP_F))], MON_DATA_SPECIES, &id);
-    SetMonData(&gPlayerParty[(VarGet(VAR_TEMP_F))], MON_DATA_SPECIES2, &id);
-}
-
 void RyuGiveHolidayModdedMon(void)
 {   u16 slot = (VarGet(VAR_TEMP_E));
     u16 species = (VarGet(VAR_TEMP_D));
@@ -2559,7 +2559,7 @@ void RyuSetupRandomForE4(void)
             StringAppend(gRyuStringVar3, gRyuStringVar1);
             StringAppend(gRyuStringVar3, gText_Space2);
             StringAppend(gRyuStringVar3, gRyuStringVar2);
-            DebugPrint((const u8[]) _("Rolled for elite four.({RYU_STR_3})"));
+            DebugPrint((const u8[]) _("Rolled for elite four.({RYU_STR_3})"), 0);
     }
 
     if (VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100) //special challenge active, always give rematch 2 parties on rematch.
@@ -2706,23 +2706,6 @@ void RyuBufferLongPlayTimeString (void)
     StringAppend(gStringVar1, gRyuStringVar4);    
 }
 
-void SetArbitraryplayTime (void)
-{
-    gSaveBlock2Ptr->playTimeHours = 39;
-    gSaveBlock2Ptr->playTimeMinutes = 15;
-    gSaveBlock2Ptr->playTimeSeconds = 55;
-}
-
-void temporarysetskills (void) 
-{
-    VarSet(VAR_RYU_PLAYER_MINING_SKILL, 3 );
-    VarSet(VAR_RYU_PLAYER_MINING_SKILL_EXP, 1024);
-    VarSet(VAR_RYU_PLAYER_BOTANY_SKILL, 3);
-    VarSet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 1000);
-    VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL, 5);
-    VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 2000);
-}
-
 void RyuToggleBossStatus (void)
 {
     u8 slot = gSpecialVar_0x8001;
@@ -2734,7 +2717,6 @@ void RyuToggleBossStatus (void)
     else
         SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &tru);
 }
-
 
 void RyuCalcPartyStats (void)
 {
@@ -2784,13 +2766,6 @@ void RyuBufferAttendantName (void)
 
 }
 
-void ryuSetPlayTime(void)
-{
-    gSaveBlock2Ptr->playTimeHours = 105;
-    gSaveBlock2Ptr->playTimeMinutes = 5;
-    gSaveBlock2Ptr->playTimeSeconds = 0;
-}
-
 const u8 sRepelNotifyMsg[] = _("Repel Used. {STR_VAR_1}% reduction for {STR_VAR_2} steps.");
 void RyuSetUpRepelNotify (void)
 {
@@ -2829,7 +2804,7 @@ void RyuScriptDebugPrintTask(u8 taskId)
     }
 }
 
-bool8 ScrCmd_debugprint(struct ScriptContext *ctx)
+bool8 ScrCmd_debugprint(struct ScriptContext *ctx) //this will still only print a single string from script. no variable support.
 {
     unsigned taskId;
     unsigned tDebugWindow;
@@ -2847,7 +2822,7 @@ bool8 ScrCmd_debugprint(struct ScriptContext *ctx)
     PutWindowTilemap(tDebugWindow);
     CopyWindowToVram(tDebugWindow, 1);
     AddTextPrinterParameterized(tDebugWindow, 1, gStringVar4, 0, 0, 0, NULL);
-    taskId = CreateTask(RyuScriptDebugPrintTask, 0xFF);
+    taskId = CreateTask(RyuScriptDebugPrintTask, 0x64);
     gTasks[taskId].tScriptDBWindowData = tDebugWindow;
     return FALSE;
 }
@@ -2860,30 +2835,30 @@ void RyuDebug_ShowActiveFollower (void)
         switch (VarGet(VAR_RYU_FOLLOWER_ID))
         {
             case OBJ_EVENT_GFX_TWIN:
-                DebugPrint(((const u8[]) _("Minnie: 5% dmg reduction.")));
+                DebugPrint(((const u8[]) _("Minnie: 5% dmg reduction.")), 0);
                 break;
             case OBJ_EVENT_GFX_WOMAN_2:
-                DebugPrint(((const u8[]) _("Lanette: 5% capture boost.")));
+                DebugPrint(((const u8[]) _("Lanette: 5% capture boost.")), 0);
                 break;
             case OBJ_EVENT_GFX_AQUA_MEMBER_F:
-                DebugPrint(((const u8[]) _("Shelly: 10% DRK/WTR dmg boost.")));
+                DebugPrint(((const u8[]) _("Shelly: 10% DRK/WTR dmg boost.")), 0);
                 break;
             case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
-                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")));
+                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")), 0);
                 break;
             case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
-                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")));
+                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")), 0);
                 break;
             case OBJ_EVENT_GFX_LEAF:
-                DebugPrint(((const u8[]) _("Lana: -10% damage from FIR/WTR/GRS")));
+                DebugPrint(((const u8[]) _("Lana: -10% damage from FIR/WTR/GRS")), 0);
                 break;
             case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
-                DebugPrint(((const u8[]) _("Courtney: 10% DRK/FIR dmg boost.")));
+                DebugPrint(((const u8[]) _("Courtney: 10% DRK/FIR dmg boost.")), 0);
                 break;
             case OBJ_EVENT_GFX_NURSE:
                 break;
             case OBJ_EVENT_GFX_MAY:
-                DebugPrint(((const u8[]) _("May: 10% FRY/FIT dmg boost.")));
+                DebugPrint(((const u8[]) _("May: 10% FRY/FIT dmg boost.")), 0);
                 break;
         }
     }
@@ -2895,6 +2870,160 @@ void RyuDebug_ShowActiveAlchemy(void)
     {
         u8 effectid = gSaveBlock2Ptr->alchemyEffect;
         StringCopy(gStringVar3, gRyuAlchemyEffectItemToStringTable[effectid]);
-        DebugPrint(((const u8[]) _("Alchemy: {STR_VAR_3}.")));
+        DebugPrint(((const u8[]) _("Alchemy: {STR_VAR_3}.")), 0);
     }
+}
+
+void RyuBuildDailyQuestInfoString(void)
+{
+    u8 temp[50];
+    u16 type = (VarGet(VAR_RYU_DAILY_QUEST_TYPE));
+    u16 target = (VarGet(VAR_RYU_DAILY_QUEST_TARGET));
+    u16 data = (VarGet(VAR_RYU_DAILY_QUEST_DATA));
+    u16 from = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
+    switch (type)
+    {
+        case FETCH_TYPE:
+            {
+                StringCopy(temp, gFactionDailyQuestTypeNames[type]);//collect
+                StringAppend(temp, (const u8[]) _(" "));//space
+                ConvertIntToDecimalStringN(gStringVar1, data, STR_CONV_MODE_LEFT_ALIGN, 2);//quantity
+                StringAppend(temp, gStringVar1);//space
+                StringAppend(temp, (const u8[]) _(" "));//space
+                CopyItemName(target, gStringVar1);//item name
+                StringAppend(temp, gStringVar1);
+                StringAppend(temp, (const u8 []) _("(s)."));//just in case plural.
+                //should look like     Faction Daily:/nNaturalists: Collect 3 Pretty Wing(s).
+                break;
+            }
+        case CAPTURE_TYPE:
+            {
+                StringCopy(temp, gFactionDailyQuestTypeNames[type]);//Capture
+                StringAppend(temp, (const u8[]) _(" a "));//space
+                StringAppend(temp, gSpeciesNames[target]);//species name
+                StringAppend(temp, (const u8[]) _("."));
+                //should look like     Faction Daily:/nStudents: Capture a Pikachu.
+                break;
+            }
+        case TRAVEL_TYPE:
+            {
+                StringCopy(temp, gFactionDailyQuestTypeNames[type]);//Travel
+                StringAppend(temp, (const u8[]) _(" to "));
+                GetMapName(gStringVar1, target, 0);
+                StringAppend(temp, gStringVar1);//mapsec name
+                //should look like     Faction Daily:\nNobles: Travel to Devon Corp.
+                break;
+            }
+        case HATCH_TYPE:
+            {
+                StringCopy(temp, gFactionDailyQuestTypeNames[type]);//Hatch
+                StringAppend(temp, (const u8[]) _(" the given Egg."));//space
+                //should look like     Faction Daily:/nProfessionals: Hatch the given Egg.
+                break;
+            }
+    }
+    StringCopy(gRyuStringVar2, temp);
+}
+
+void RyuDisableTrainerRepelAp (void)
+{
+    ClearAPFlag(AP_TRAINER_REPEL);
+    QueueNotification((const u8[])_("Trainer Repel was disabled."), NOTIFY_GENERAL, 120);
+}
+
+void Ryu_SVM_CheckQuantityCost(void)
+{
+    u32 baseCost = gSpecialVar_0x8002;
+    u32 quantity = gSpecialVar_0x8003;
+    baseCost *= quantity;
+    if (baseCost > (GetMoney(&gSaveBlock1Ptr->money)))
+        gSpecialVar_Result = FALSE;
+    else
+        gSpecialVar_Result = TRUE;
+    gSpecialVar_32bit = baseCost;
+    ConvertUIntToDecimalStringN(gStringVar3, baseCost, STR_CONV_MODE_LEFT_ALIGN, 10);
+}
+
+void Ryu_SVM_TakeMoney(void)
+{
+    u8 currentDailyPurchases = (VarGet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES));
+    currentDailyPurchases += gSpecialVar_0x8003;
+    RemoveMoney(&gSaveBlock1Ptr->money, gSpecialVar_32bit);
+    VarSet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES, currentDailyPurchases);
+}
+
+void RyuResetMoney(void)
+{
+    SetMoney(&gSaveBlock1Ptr->money, 0);
+}
+
+void Ryu_SVM_CheckDailyQuota(void)
+{
+    u16 currentPurchased = (VarGet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES));
+    u16 max = 50;
+    u16 newvalue = 0;
+    newvalue = (max - currentPurchased);
+    ConvertIntToDecimalStringN(gRyuStringVar1, newvalue, STR_CONV_MODE_LEFT_ALIGN, 2);
+}
+
+void Ryu_SVM_CheckQuantityExceedsQuota(void)
+{
+    u16 currentPurchased = (VarGet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES));
+    u16 max = 50;
+    u16 newvalue = 0;
+    newvalue = (max - currentPurchased);
+    if (newvalue < gSpecialVar_0x8003)
+        gSpecialVar_0x8004 = 666;
+}
+
+void RyuBetaMenuDynamicInfoBox(void)
+{
+    u8 buffer1[20];
+    u8 savestateDetected = (FlagGet(FLAG_RYU_SAVE_STATE_DETECTED));
+    u8 devModeon = (FlagGet(FLAG_RYU_DEV_MODE));
+    ConvertIntToDecimalStringN(buffer1, (VarGet(VAR_LAST_KNOWN_GAME_VERSION)), STR_CONV_MODE_LEFT_ALIGN, 4);
+    StringCopy(gStringVar1, (const u8[])_("The last known game version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
+    StringAppend(gStringVar1, buffer1);
+    ConvertIntToDecimalStringN(buffer1, (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION)), STR_CONV_MODE_LEFT_ALIGN, 4);
+    StringCopy(gStringVar2, (const u8[])_("Save file created on version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
+    StringAppend(gStringVar2, buffer1);
+    ConvertIntToDecimalStringN(buffer1, savestateDetected, STR_CONV_MODE_LEFT_ALIGN, 4);
+    StringCopy(gStringVar3, (const u8[])_("Save state detection: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
+    StringAppend(gStringVar3, buffer1);
+    ConvertIntToDecimalStringN(buffer1, devModeon, STR_CONV_MODE_LEFT_ALIGN, 4);
+    StringCopy(gRyuStringVar1, (const u8[])_("Dev mode enabled: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
+    StringAppend(gRyuStringVar1, buffer1);
+    StringCopy(gRyuStringVar2, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}Detailed steps on how to reproduce"));
+    StringCopy(gRyuStringVar3, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}your bug."));
+}
+
+void RyuSetCustomNature (void)
+{
+    bool8 tru = TRUE;
+    bool8 fals = FALSE;
+    u8 nature = gSpecialVar_0x8005;
+    u8 slot = gSpecialVar_0x8001;
+    SetMonData(&gPlayerParty[slot], MON_DATA_HAS_CUSTOM_NATURE, &tru);
+    SetMonData(&gPlayerParty[slot], MON_DATA_CUSTOM_NATURE, &nature);
+    CalculateMonStats(&gPlayerParty[slot]);
+}
+
+void SwapPlayerGender (void)
+{
+    if ((gSaveBlock2Ptr->playerGender) == 0)
+        gSaveBlock2Ptr->playerGender = 1;
+    else
+        gSaveBlock2Ptr->playerGender = 0;
+}
+
+void RetroPokedexRegister (void)
+{
+    int i, k;
+    for (i = 0;i < TOTAL_BOXES_COUNT;i++)
+        for(k = 0;k < IN_BOX_COUNT;k++)
+            if(GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_GET_CAUGHT) == FALSE);
+            {
+                GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_SET_CAUGHT);
+                GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_SET_SEEN);
+            }
 }

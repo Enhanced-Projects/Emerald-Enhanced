@@ -1142,6 +1142,19 @@ static const struct MenuAction MultichoiceList_DevMonGiveAbilityMenu[]=
     {gText_DevMonGiveAbility3},
 };
 
+static const struct MenuAction MultichoiceList_DevMonGiveGenderMenu[]=
+{
+    {gText_DevMonGiveGender1},
+    {gText_DevMonGiveGender2},
+    {gText_DevMonGiveGender3},
+};
+
+static const struct MenuAction MultichoiceList_DevMonGiveShinyMenu[]=
+{
+    {gText_DevMonGiveShiny1},
+    {gText_DevMonGiveShiny2},
+};
+
 static const struct MenuAction MultichoiceList_RyuLifeskillGemRefinerQualitySelect[]=
 {
     {gText_RLSGM_Common},
@@ -1234,16 +1247,8 @@ static const struct MenuAction MultiChoiceList_MagmaMachineMenu[]=
     {gText_RyuMHM_Kits}
 };
 
-static const struct MenuAction MultiChoiceList_MagmaMachineKitMenu[]=
+static const struct MenuAction MultiChoiceList_Unused156[]=
 {
-    {gText_RyuMHM_Kits_1},
-    {gText_RyuMHM_Kits_2},
-    {gText_RyuMHM_Kits_3},
-    {gText_RyuMHM_Kits_4},
-    {gText_RyuMHM_Kits_5},
-    {gText_RyuMHM_Kits_6},
-    {gText_RyuMHM_Kits_7},
-    {gText_RyuMHM_Kits_8},
     {gText_Exit}
 };
 
@@ -1458,7 +1463,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_DEV_MENU_MAIN]              = MULTICHOICE(MultichoiceList_RyuDebugMulti),
     [MULTI_DEV_EV_MENU]                = MULTICHOICE(MultichoiceList_116),
     [MULTI_UNUSED_REL_MENU]            = MULTICHOICE(MultichoiceList_117),
-    [MULTI_DYNAMIC_6]          = MULTICHOICE(MultichoiceList_6BufferedOptions),
+    [MULTI_DYNAMIC_6]                  = MULTICHOICE(MultichoiceList_6BufferedOptions),
     [MULTI_SELECT_MOVE_SLOT]           = MULTICHOICE(MultichoiceList_119),
     [MULTI_LTC_MOVE_TUTOR_MOVES]       = MULTICHOICE(MultichoiceList_120),
     [MULTI_UNUSED_JUKEBOX]             = MULTICHOICE(MultichoiceList_121),
@@ -1496,7 +1501,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FRONTIERMODE_STARTER3]      = MULTICHOICE(MultichoiceList_FrontierStarter3),
     [MULTI_MAGMA_CHOICE]               = MULTICHOICE(MultichoiceList_MagmaIntroChoice),
     [MULTI_MAGMA_MACHINE]              = MULTICHOICE(MultiChoiceList_MagmaMachineMenu),
-    [MULTI_MAGMA_MACHINE_KITS]         = MULTICHOICE(MultiChoiceList_MagmaMachineKitMenu),
+    [MULTI_UNUSED_156]                 = MULTICHOICE(MultiChoiceList_Unused156),
     [MULTI_BOTANY_CHAPTER_SELECT]      = MULTICHOICE(MultiChoiceList_BotanyBookChapterSelect),
     [MULTI_PBG_TRICK_QUESTION]         = MULTICHOICE(MultiChoiceList_PetalburgGymTrickQuestion),
     [MULTI_BOTANY_APRICORN_MENU]       = MULTICHOICE(MultiChoiceList_BotanyRefineApricornMenu),
@@ -1510,6 +1515,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_DYNAMIC_4]                  = MULTICHOICE(MultichoiceList_4BufferedOptions),
     [MULTI_DYNAMIC_3]                  = MULTICHOICE(MultichoiceList_3BufferedOptions),
     [MULTI_DYNAMIC_2]                  = MULTICHOICE(MultichoiceList_2BufferedOptions),
+    [MULTI_DEV_GIVE_MON_GENDER]        = MULTICHOICE(MultichoiceList_DevMonGiveGenderMenu),
+    [MULTI_DEV_GIVE_MON_SHINY]         = MULTICHOICE(MultichoiceList_DevMonGiveShinyMenu),
 };
 
 const u8 *const gStdStrings[] =
@@ -1546,6 +1553,7 @@ const u8 *const gStdStrings[] =
     [STDSTRING_BATTLE_PYRAMID] = gText_BattlePyramid,
     [STDSTRING_MEDICINES] = gText_MedicinesPocket,
     [STDSTRING_COLLECTIBLES] = gText_CollectiblesPocket,
+    [STDSTRING_MEGASTONES] = gText_MegaStones
     
 };
 

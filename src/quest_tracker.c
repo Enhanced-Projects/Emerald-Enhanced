@@ -29,6 +29,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/items.h"
+#include "RyuDynDeliveries.h"
 
 #include "data/quest_stages.h"
 
@@ -41,6 +42,7 @@ const u8 sText_NA[] = _("N/A");
 
 static void Task_InitQuestTracker(u8 taskId);
 static void Task_QuestMain(u8 taskId);
+extern void RyuBuildDailyQuestInfoString(void);
 
 enum
 {
@@ -93,13 +95,14 @@ static u8 sTextLanette[] = _("Lanette");
 static u8 sTextAqua[] = _("Aqua");
 static u8 sTextNurse[] = _("Nurse");
 static u8 sTextMay[] = _("May");
+static u8 sText_DeliverySystem[] = _("Delivery System");
+static u8 sText_Daily[] = _("Faction Daily Quest");
 static u8 sText_DailyNaturalistss[] = _("Naturalists Daily");
 static u8 sText_DailyStudents[] = _("Students Daily");
 static u8 sText_DailyNobles[] = _("Nobles Daily");
 static u8 sText_DailyPokefans[] = _("Pokéfans Daily");
 static u8 sText_DailyOutcasts[] = _("Outcasts Daily");
 static u8 sText_DailyProfessionals[] = _("Professionals Daily");
-static u8 sText_DailyAthletes[] = _("Athletes Daily");
 
 struct QuestData {
     const struct QuestStageDesc * stageDescs;
@@ -192,7 +195,9 @@ static struct QuestData sQuests[] = {
     {gAquaQuestStages, sTextAqua, VAR_RYU_QUEST_AQUA},
     {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LANA},
     {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE},
-    {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY}
+    {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY},
+    {gDeliverySystemQuestStages, sText_DeliverySystem, VAR_RYU_DELIVERY_SYSTEM_DATA},
+    {gDailyQuestStages, sText_Daily, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION},
 };
 
 static u8 sColors[][3] = {
@@ -262,8 +267,10 @@ static void Task_InitQuestTracker(u8 taskId)
         gTasks[taskId].func = Task_QuestMain;
 }
 
+//FULL_COLOR
 static bool8 IntializeQuest(u8 taskId)
 {
+    u16 buf[32];
     u32 i;
     switch (gMain.state)
     {
@@ -280,10 +287,76 @@ static bool8 IntializeQuest(u8 taskId)
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sQuestTrackerBGTiles, BG_CHAR_ADDR(2), sizeof(sQuestTrackerBGTiles));
         DmaCopy16(3, sQuestTrackerBGMap, GetBgTilemapBuffer(1), sizeof(sQuestTrackerBGMap));
-        LoadPalette(sQuestTrackerBGPalette, 0, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) 
+        {
+            case THEME_COLOR_LIGHT:
+                CpuCopy16(sQuestTrackerBGPalette, buf, 0x20);
+                buf[1] = COLOR_LIGHT_THEME_TEXT;       // 1 = text color
+                buf[2] = COLOR_NEON_BORDER_2;       // 2 = text shadow & window highlight
+                buf[3] = COLOR_LIGHT_THEME_BG_DARK;       // 3 = window border
+                buf[4] = COLOR_LIGHT_THEME_BG_LIGHT;               // 4 = bg
+                buf[5] = COLOR_NEON_BORDER_2;           //pixel border before last color in the window [[  ]]
+                buf[6] = COLOR_LIGHT_THEME_TEXT_SHADOW;           //title shadow
+                LoadPalette(buf, 0, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(sQuestTrackerBGPalette, 0, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(sQuestTrackerBGPalette, buf, 0x20);
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];       // 1 = text color
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 2 = text shadow & window highlight
+                buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];       // 3 = window border
+                buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 4 = bg
+                buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 1 = text color
+                buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       // 1 = text color
+
+                LoadPalette(buf, 0, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                //FULL_COLOR TODO impl vanilla pal
+                LoadPalette(gMessageBox_Pal, 0, 0x20);
+                break;
+        }
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) == 2) {
+            CpuCopy16(sQuestTrackerBGPalette, buf, 0x20);
+            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];       // 1 = text color
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[14];       // 2 = text shadow & window highlight
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[13];       // 3 = window border
+            buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];       // 4 = bg
+            LoadPalette(buf, 0, 0x20);
+        } else
+            LoadPalette(sQuestTrackerBGPalette, 0, 0x20);*/
         InitWindows(sQuestWindowTemplate);
         InitTextBoxGfxAndPrinters();
-        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) 
+        {
+            case THEME_COLOR_LIGHT:
+                LoadPalette(gHatLightTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+                buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         // L R button background
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];             //actual text
+                buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       //actual text shadow
+                LoadPalette(buf, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                LoadPalette(gMessageBox_Pal, 0xF0, 0x20);
+                break;
+        }
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
+            LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        else {
+            CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+            buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         // L R button background
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];             //actual text
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];       //actual text shadow
+            LoadPalette(buf, 0xF0, 0x20);
+        }*/
         DeactivateAllTextPrinters();
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);
@@ -369,18 +442,21 @@ static bool8 IntializeQuest(u8 taskId)
 #define QUEST_ACTION_CHOOSE (1 << 3)
 #define QUEST_ACTION_DBG_DECSTGVAR (1 << 4)
 #define QUEST_ACTION_DBG_INCSTGVAR (1 << 5)
+#define QUEST_ACTION_OPTIONAL (1 << 6)
 
 // This is a pretty bad excuse for a function 
 // since i wanted to do something more useful but failed 
 static u32 InputToQuestAction(void) 
 {
     u32 finalAction = QUEST_ACTION_NONE;
-    switch(gMain.newKeys & (DPAD_UP | DPAD_DOWN | R_BUTTON | L_BUTTON))
+    switch(gMain.newKeys & (DPAD_UP | DPAD_DOWN | R_BUTTON | L_BUTTON | SELECT_BUTTON))
     {
         case DPAD_UP:
             return QUEST_ACTION_UP;
         case DPAD_DOWN:
             return QUEST_ACTION_DOWN;
+        case SELECT_BUTTON:
+            return QUEST_ACTION_OPTIONAL;
         case R_BUTTON:
             if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
                 return QUEST_ACTION_DBG_INCSTGVAR;
@@ -399,30 +475,6 @@ static u32 InputToQuestAction(void)
     return finalAction;
 }
 
-/* Daily quest data
-@PIDGEY here's the data for daily quests
-Assignee faction is who gave the quest to the player. This data can be found here:
-extern const u8 gFactionNames[8];
-gStringVar1 = gFactionNames[VarGet(VAR_RYU_DAILY_QUEST_ASIGNEE_FACTION)];
-
-Type of daily quest is one of 4 types, Fetch, Capture, Travel, or Hatch
-extern void BufferDailyQuestType();
-will buffer "None", "Fetch", "Capture", "Travel", "Hatch" to gStringVar2
-
-Target of daily quest is the item player needs to get, the map id they need to go to, species they need to hatch, etc.
-This can be buffered as a number string.
-The value of this depends on the value of VAR_RYU_DAILY_QUEST_TYPE
-
-For fetch types, it's an item ID, Capture types is a Species ID, travel is a map/group hash, Hatch type is also a Species ID.
-
-Data is used for quantities of things
-for Fetch type, it's quantity of items,  for capture and hatch, it's empty.
-for fetch it can be buffered as a numberstring
-
-for Travel types, it's used a a step counter in RyuDoDailyTravelQuestThings() and is usually amount of steps required in a map.
-you want to get the group and map id from the variable and buffer the name of the map that way.
-
-*/
 
 static void UpdateQuestSelections(u32 offset)
 {
@@ -493,6 +545,8 @@ static void Task_QuestMain(u8 taskId)
         case QUEST_ACTION_CHOOSE: 
         {
             const struct QuestStageDesc * questDesc = FindQuestDescFromStage(SELECTED_QUEST(taskId));
+            HatBuildDeliveryInfoString();
+            RyuBuildDailyQuestInfoString();
             FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
             StringExpandPlaceholders(gStringVar4, questDesc->description);
             AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, gStringVar4);
@@ -530,9 +584,19 @@ static void Task_QuestMain(u8 taskId)
             break;
         }
         case QUEST_ACTION_BACK:
+        {
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
             gTasks[taskId].func = Task_CloseQuestTracker;
             break;
+        }
+        case QUEST_ACTION_OPTIONAL:
+        {
+            FlagSet(FLAG_RYU_OPTIONAL_QT_ACTION);
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+            gTasks[taskId].func = Task_CloseQuestTracker;
+            break;
+        }
+
     }
     gSprites[gTasks[taskId].tQuestSpriteId].pos1.y = 32 + 12 * gTasks[taskId].tSelectPos;
 }

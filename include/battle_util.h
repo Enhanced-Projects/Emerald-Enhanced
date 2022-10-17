@@ -133,5 +133,6 @@ bool8 ShouldGetStatBadgeBoost(u16 flagId, u8 battlerId);
 u8 GetBattleMoveSplit(u32 moveId);
 extern bool8 RyuAffectionStatusHealCheck(u8 battlerId);
 bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags);
+bool32 CompareStat(u8 battlerId, u8 statId, u8 cmpTo, u8 cmpKind);
 
 #endif // GUARD_BATTLE_UTIL_H

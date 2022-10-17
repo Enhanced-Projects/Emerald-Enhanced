@@ -5,6 +5,7 @@
 #include "constants/items.h"
 #include "item.h"
 #include "overworld_notif.h"
+#include "battle_pyramid.h"
 
 //platinum powers
 const u8 sPlatinumLabel[] = _("Platinum");
@@ -155,19 +156,23 @@ static void DummyFunc(void)
 
 }
 
-const u8 sTextFailedToActivate[] = _("Trainer Repel disabled for challenge.");
-
 bool8 CheckCanIgnoreTrainers(void)//Check if can ignore trainer sight
 {
     if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
     {
-        if (CheckAPFlag(AP_TRAINER_REPEL) == TRUE)
+        if ((CheckAPFlag(AP_TRAINER_REPEL) == TRUE))
         {
-            QueueNotification(sTextFailedToActivate, NOTIFY_GENERAL, 120);
+            QueueNotification((const u8[])_("Trainer Repel was disabled."), NOTIFY_GENERAL, 120);
             ClearAPFlag(AP_TRAINER_REPEL);
             return FALSE;
         }
 
+    }
+    if (((InBattlePyramid() == TRUE) && CheckAPFlag(AP_TRAINER_REPEL) == TRUE))
+    {
+        QueueNotification((const u8[])_("You can't use Trainer Repel here."), NOTIFY_GENERAL, 120);
+        ClearAPFlag(AP_TRAINER_REPEL);
+        return FALSE;
     }
     if ((FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1) || (CheckAPFlag(AP_TRAINER_REPEL) == TRUE))
         return TRUE;

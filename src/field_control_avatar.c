@@ -44,6 +44,8 @@
 #include "RyuRealEstate.h"
 #include "ach_atlas.h"
 #include "overworld_notif.h"
+#include "RyuDynDeliveries.h"
+#include "RyuFieldNotificationSystem.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -51,40 +53,9 @@ EWRAM_DATA const u8 *gOriginalNPCScript = NULL;
 
 u8 gSelectedObjectEvent;
 
-extern const u8 SB_SetupRandomSteppedOnEncounter[];
-extern const u8 SB_SetupRandomMimikyuEncounter[];
-extern const u8 SB_CheckMeloettaEncounter[];
-extern const u8 Ryu_BeingWatched[];
-extern const u8 Ryu_MeloettaWatchingMsg[];
-extern const u8 RyuScript_CheckGivenAchievement[];
-extern const u8 RyuScript_GoToLimbo[];
-extern const u8 RyuScript_CompleteTravelDailyQuestType[];
-extern const u8 RyuScript_NotifyPropertyDamage[];
-extern const u8 RyuScript_PlayerReceivedInterest[];
-extern const u8 RyuScript_NotifyRent[]; 
-extern const u8 RyuScript_NotifyPickedUpItem[]; 
-extern const u8 RyuGlobal_EnableNormalDexnav[];
-extern const u8 RyuGlobal_CheckMagmaStatus[];
-extern const u8 RyuGlobal_CheckAquaStatus[];
-extern const u8 RyuScript_EncounterBuzzwole[];
-extern const u8 RyuScript_EncounterPheromosa[];
-extern const u8 RyuScript_EncounterKartana[];
-extern const u8 RyuScript_EncounterXurkitree[];
-extern const u8 RyuScript_EncounterNihilego[];
-extern const u8 RyuScript_EncounterGuzzlord[];
-extern const u8 RyuScript_EncounterStakataka[];
-extern const u8 RyuScript_EncounterCelesteela[];
-extern const u8 RyuScript_EncounterKeldeo[];
-extern const u8 Ryu_FFTextSpeedWarning[];
-extern const u8 RyuScript_NotifyFailedChallenge[];
-extern const u8 RyuScript_NotifySucceededChallenge[];
-extern const u8 RyuScript_Lv100FailMsg[];
-extern const u8 RyuScript_Lv100SwitchMsg[];
-extern const u8 RyuCheckForLNSUAch[];
-
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
-static u16 GetPlayerCurMetatileBehavior(int);
+u16 GetPlayerCurMetatileBehavior(int);
 static bool8 TryStartInteractionScript(struct MapPosition*, u16, u8);
 static const u8 *GetInteractionScript(struct MapPosition*, u8, u8);
 static const u8 *GetInteractedObjectEventScript(struct MapPosition *, u8, u8);
@@ -178,300 +149,6 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
         input->dpadDirection = DIR_EAST;
 }
 
-bool8 RyuCheckPlayerHasPika(void)
-{
-    u8 i;
-    bool8 hasPika = FALSE;
-    for (i = 0; i < 6; i++)
-    {
-        if ((GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_PIKACHU))
-            return TRUE;
-    }
-
-    return FALSE;
-}
-
-bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
-{
-    u16 locGroup = gSaveBlock1Ptr->location.mapGroup;
-    u16 locMap = gSaveBlock1Ptr->location.mapNum;
-    if (locGroup == 24)
-    {
-        if ((locMap > 15) && (locMap < 21))
-        {
-            if (RyuCheckPlayerHasPika() == TRUE)
-                return TRUE;
-        }
-    }
-    FlagSet(FLAG_TEMP_D);
-    return FALSE;
-}
-
-extern int CountBadges(void);
-extern void RyuCheckForFactionAchievements(void);
-
-const u8 gRyuReachedDailyTargetLocationString[] = _("Reached target area for the {STR_VAR_1}.");
-
-void RyuDoNotifyTasks(void)
-{
-    if (FlagGet(FLAG_RYU_ENTERING_OWNED_HOME) == FALSE)
-        FlagSet(FLAG_RYU_HIDE_HOME_ATTENDANT);
-    if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for challenge/hardcore
-    {
-        if (!(FlagGet(FLAG_RYU_LIMBO) == 1))
-        {
-            if ((FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
-                ScriptContext1_SetupScript(RyuScript_GoToLimbo);
-        }
-    }
-
-    RyuCheckForFactionAchievements();
-
-    if ((CheckAchievement(ACH_LEAVE_NO_STONE_UNTURNED) == FALSE) && (VarGet(VAR_TEMP_E) == 0))
-    {
-        VarSet(VAR_TEMP_E, 100);
-        ScriptContext1_SetupScript(RyuCheckForLNSUAch);
-    }
-
-    if ((FlagGet(FLAG_RYU_FAILED_RYU_CHALLENGE) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE) == FALSE))
-        ScriptContext1_SetupScript(RyuScript_NotifyFailedChallenge);
-
-    if ((VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 69) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS) == FALSE))
-        ScriptContext1_SetupScript(RyuScript_NotifySucceededChallenge);
-
-    if (FlagGet(FLAG_RYU_FAILED_100_CAP_SWITCH) == TRUE)//Player attempted to switch to 100cap and failed.
-        ScriptContext1_SetupScript(RyuScript_Lv100FailMsg);
-
-    if (FlagGet(FLAG_RYU_NOTIFY_LV100_SWITCH) == TRUE)//Player switched to 100cap, warn about side effects.
-        ScriptContext1_SetupScript(RyuScript_Lv100SwitchMsg);
-
-    if (!(FlagGet(FLAG_SYS_DEXNAV_GET)) && (!(FlagGet(FLAG_TEMP_F)))) //notify and give Dexnav
-        if (CountBadges() >= 6)
-            ScriptContext1_SetupScript(RyuGlobal_EnableNormalDexnav);
-
-    if ((FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA)) //Mission notifications from Magma
-        && ((VarGet(VAR_RYU_QUEST_MAGMA) == 130) 
-        || (VarGet(VAR_RYU_QUEST_MAGMA) == 210)
-        || (VarGet(VAR_RYU_QUEST_MAGMA) == 350))
-        && (!(FlagGet(FLAG_TEMP_F))))//prevents the notification from showing up as soon as the player is assigned the task.
-    {
-        ScriptContext1_SetupScript(RyuGlobal_CheckMagmaStatus);
-    }
-
-    if ((FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA)) //Mission notifications from Aqua
-        && ((VarGet(VAR_RYU_QUEST_AQUA) == 10) 
-        || (VarGet(VAR_RYU_QUEST_AQUA) == 55) 
-        || (VarGet(VAR_RYU_QUEST_AQUA) == 80) 
-        || (VarGet(VAR_RYU_QUEST_AQUA) == 91) 
-        || (VarGet(VAR_RYU_QUEST_AQUA) == 123))
-        && (!(FlagGet(FLAG_TEMP_F))))
-    {
-        ScriptContext1_SetupScript(RyuGlobal_CheckAquaStatus);
-    }
-
-}
-
-void RyuDoSpecialEncounterChecks(struct FieldInput *input)
-{
-    struct MapPosition position;
-    u8 playerDirection;
-    u16 metatileBehavior;
-    u16 rand = (Random() % 99);
-    u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
-    u16 UBRotation = (VarGet(VAR_RYU_UB_EVENT_TIMER));//which UB group the player currently can encounter
-
-    playerDirection = GetPlayerFacingDirection();
-    GetPlayerPosition(&position);
-    metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
-
-    if (MetatileBehavior_IsSandOrDeepSand(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)))
-        {
-            if (!(locSum == MAP_ROUTE111))
-            {
-                rand = (Random() % 256);
-                if ((rand == 69) || (rand == 169))
-                {
-                    ScriptContext1_SetupScript(SB_SetupRandomSteppedOnEncounter);
-                }
-            }
-        }
-        if (FlagGet(FLAG_TEMP_D) == 0)
-        {
-            if (RyuCheckPlayerisInMtPyreAndHasPikachu() == TRUE)
-            {
-                rand = (Random() % 256);
-                if (rand == 128)
-                {
-                    ScriptContext1_SetupScript(SB_SetupRandomMimikyuEncounter);
-                }
-            }
-        }
-
-        if (input->tookStep && (FlagGet(FLAG_TEMP_E) == TRUE))
-            VarSet(VAR_TEMP_E, (VarGet(VAR_TEMP_E) - 1));
-        
-        if (FlagGet(FLAG_TEMP_C) == 0)
-            {
-                if (MetatileBehavior_IsTallGrass(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)))
-                {
-                    if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 255 && (FlagGet(FLAG_RYU_CAPTURED_MELOETTA) == 0))
-                    {
-                        ScriptContext1_SetupScript(SB_CheckMeloettaEncounter);
-                    }
-                    else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 200)
-                    {
-                        ScriptContext1_SetupScript(Ryu_MeloettaWatchingMsg);
-                    }
-                    else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 100)
-                    {
-                        ScriptContext1_SetupScript(Ryu_BeingWatched);
-                    }
-                    else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) < 50)
-                    {
-                        FlagSet(FLAG_TEMP_C);
-                    }
-                }
-            }
-
-    //Ultra beast encounter checks
-    //I don't think this can be made much cleaner, but it shouldn't really cause lag, even if player is at the right locations
-    //FLAG_TEMP_D is set after an encounter with a UB when it wasn't caught, so player has to leave map and come back for it to respawn
-    //I wanted to also make it play the cries of the relevant UB once in a while in the correct area, but i'm not sure how without vastly
-    //complicating this furtner.
-
-    if ((FlagGet(FLAG_RYU_ULTRA_BEASTS_ESCAPED) == TRUE) && (FlagGet(FLAG_RYU_CAUGHT_ALL_UBS) == FALSE) && (rand < 5))//5% chance to find the UB here.
-    {
-
-        if ((FlagGet(FLAG_RYU_BUZZWOLE_CAUGHT) == FALSE) && (FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER) == FALSE) && (UBRotation == 0))
-        {
-            if (locSum == MAP_GRANITE_CAVE_1F ||
-                locSum == MAP_GRANITE_CAVE_B1F ||
-                locSum == MAP_GRANITE_CAVE_B2F)
-            {
-                FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterBuzzwole);
-            }
-        }
-
-        if (!(FlagGet(FLAG_RYU_PHEROMOSA_CAUGHT)) && (!(FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER))) && (UBRotation == 0))
-        {
-            if (locSum == MAP_ROUTE119)
-            {
-                FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterPheromosa);
-            }
-        }
-
-        if (!(FlagGet(FLAG_RYU_KARTANA_CAUGHT)) && (!(FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER))) && (UBRotation == 1))
-        {
-            if (gSaveBlock1Ptr->location.mapNum == MAP_ROUTE120)
-            {
-                FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterKartana);
-            }
-        }
-
-        if (!(FlagGet(FLAG_RYU_XURKITREE_CAUGHT)) && (!(FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER))) && (UBRotation == 1))
-        {
-            if (locSum == MAP_NEW_MAUVILLE_INSIDE)
-            {
-                FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterXurkitree);
-            }
-        }
-
-        if (!(FlagGet(FLAG_RYU_NIHILEGO_CAUGHT)) && (!(FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER))) && (UBRotation == 2))
-        {
-            if (locSum == MAP_METEOR_FALLS_2F ||
-                locSum == MAP_METEOR_FALLS_1F_1R ||
-                locSum == MAP_METEOR_FALLS_1F_2R ||
-                locSum == MAP_METEOR_FALLS_1F_3R ||
-                locSum == MAP_METEOR_FALLS_B1F_1R ||
-                locSum == MAP_METEOR_FALLS_B1F_2R ||
-                locSum == MAP_METEOR_FALLS_2F ||
-                locSum == MAP_METEOR_FALLS_3F)
-            {
-                FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterNihilego);
-            }
-        }
-
-        if (!(FlagGet(FLAG_RYU_GUZZLORD_CAUGHT)) && (!(FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER))) && (UBRotation == 2))
-        {
-            if (locSum == MAP_FROSTY_GROTTO)
-            {
-                FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterGuzzlord);
-            }
-        }
-
-        if (!(FlagGet(FLAG_RYU_STAKATAKA_CAUGHT)) && (!(FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER))) && (UBRotation == 3))
-        {
-            if (locSum == MAP_MT_PYRE_2F ||
-                locSum == MAP_MT_PYRE_3F ||
-                locSum == MAP_MT_PYRE_4F ||
-                locSum == MAP_MT_PYRE_5F ||
-                locSum == MAP_MT_PYRE_6F)
-            {
-                FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterStakataka);
-            }
-        }
-
-        if (!(FlagGet(FLAG_RYU_CELESTEELA_CAUGHT)) && (!(FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER))) && (UBRotation == 3))
-        {
-            if (locSum == MAP_ROUTE66)
-            {
-                FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                ScriptContext1_SetupScript(RyuScript_EncounterCelesteela);
-            }
-        }
-    
-
-    }
-
-    if ((VarGet(VAR_TEMP_D) == 400) &&
-         FlagGet(FLAG_SYS_GAME_CLEAR) &&
-         FlagGet(FLAG_RYU_CAUGHT_KELDEO) == FALSE &&
-         gSaveBlock1Ptr->location.mapGroup == (MAP_GROUP(PETALBURG_WOODS)) &&
-         gSaveBlock1Ptr->location.mapNum == MAP_NUM(PETALBURG_WOODS) &&
-         (Random() % 100 < 5) &&
-         (FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER) == FALSE))
-    {
-        FlagSet(FLAG_RYU_PAUSE_UB_ENCOUNTER);
-        ScriptContext1_SetupScript(RyuScript_EncounterKeldeo);
-    }
-}
-
-void RyuDoDailyTravelQuestThings(void)
-{
-    if ((VarGet(VAR_RYU_DAILY_QUEST_DATA) > 0) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) < 15) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3))
-            {
-                VarSet(VAR_RYU_DAILY_QUEST_DATA, (VarGet(VAR_RYU_DAILY_QUEST_DATA) - 1));
-            }
-
-    if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 15))
-        {
-            u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
-            if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
-            {
-                if (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 15)
-                {
-                    VarSet(VAR_RYU_DAILY_QUEST_DATA, 14);
-                }
-            }
-        }
-
-    if (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 0)
-        {
-            u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
-            VarSet(VAR_RYU_DAILY_QUEST_DATA, 4000);
-            StringCopy(gStringVar1, gFactionNames[factionId]);
-            QueueNotification(gRyuReachedDailyTargetLocationString, NOTIFY_QUEST, 180);
-        }
-
-}
-
 int ProcessPlayerFieldInput(struct FieldInput *input)
 {
     struct MapPosition position;
@@ -505,10 +182,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         if (TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE)
             return TRUE;
 
-        RyuDoSpecialEncounterChecks(input);
-
-        if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3))
-            RyuDoDailyTravelQuestThings();
+        RyuDoSpecialEncounterChecks();
+        RyuCheckTravelTypeDaily();
     }
 
     if (input->checkStandardWildEncounter && CheckStandardWildEncounter(metatileBehavior) == TRUE)
@@ -548,9 +223,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
     
-    //if (input->tookStep && TryFindHiddenPokemon())  //dont think this works anyway
-        //return TRUE;
-    
     if (input->pressedRButton && TryStartDexnavSearch())
         return TRUE;
 
@@ -575,7 +247,7 @@ static void GetInFrontOfPlayerPosition(struct MapPosition *position)
         position->height = 0;
 }
 
-static u16 GetPlayerCurMetatileBehavior(int runningState)
+u16 GetPlayerCurMetatileBehavior(int runningState)
 {
     s16 x, y;
 
@@ -699,7 +371,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
                     else
                     {
                         currentTrainerFaction = gTrainers[currentTrainer].trainerFaction;
-                        if (currentTrainerFaction < FACTION_OTHERS)
+                        if (currentTrainerFaction < FACTION_POKEMON_LEAGUE)
                             {
                                 gOriginalNPCScript = script;
                                 script = RyuGetFactionDailyQuestScriptPtr(currentTrainerFaction);

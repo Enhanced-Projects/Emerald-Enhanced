@@ -3793,8 +3793,8 @@ BattleScript_FuryCutterHit:
 BattleScript_TryDestinyKnotTarget:
 	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_DESTINY_KNOT, BattleScript_TryDestinyKnotTargetRet
 	infatuatewithbattler BS_TARGET, BS_ATTACKER
-	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, NULL
-	waitanimation
+	//playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//waitanimation
 	status2animation BS_TARGET, STATUS2_INFATUATION
 	waitanimation
 	printstring STRINGID_DESTINYKNOTACTIVATES
@@ -3805,8 +3805,8 @@ BattleScript_TryDestinyKnotTargetRet:
 BattleScript_TryDestinyKnotAttacker:
 	jumpifnoholdeffect BS_TARGET, HOLD_EFFECT_DESTINY_KNOT, BattleScript_TryDestinyKnotAttackerRet
 	infatuatewithbattler BS_ATTACKER, BS_TARGET
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
-	waitanimation
+	//playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//waitanimation
 	status2animation BS_ATTACKER, STATUS2_INFATUATION
 	waitanimation
 	printstring STRINGID_DESTINYKNOTACTIVATES
@@ -5095,8 +5095,10 @@ BattleScript_FaintTarget2x::
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED2X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -5107,8 +5109,10 @@ BattleScript_FaintTarget4x::
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED4X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -5119,8 +5123,10 @@ BattleScript_FaintTarget10x::
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED10X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -5131,8 +5137,10 @@ BattleScript_FaintTarget20x::
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED20X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -5758,8 +5766,8 @@ BattleScript_WeaknessPolicy::
 	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, 0xC, BattleScript_WeaknessPolicyAtk
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPATK, 0xC, BattleScript_WeaknessPolicyEnd
 BattleScript_WeaknessPolicyAtk:
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
-	waitanimation
+	//playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//waitanimation
 	setbyte sSTAT_ANIM_PLAYED, FALSE
 	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPATK, STAT_CHANGE_BY_TWO
 	setstatchanger STAT_ATK, 2, FALSE
@@ -7051,7 +7059,7 @@ BattleScript_TryAdrenalineOrb:
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPEED, 12, BattleScript_TryAdrenalineOrbRet
 	setstatchanger STAT_SPEED, 1, FALSE
 	statbuffchange STAT_BUFF_NOT_PROTECT_AFFECTED | MOVE_EFFECT_CERTAIN | STAT_BUFF_ALLOW_PTR, BattleScript_TryAdrenalineOrbRet
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	copybyte sBATTLER, gBattlerTarget
@@ -7573,8 +7581,8 @@ BattleScript_RoughSkinActivates::
 BattleScript_RockyHelmetActivates::
 	@ don't play the animation for a fainted mon
 	jumpifabsent BS_TARGET, BattleScript_RockyHelmetActivatesDmg
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
-	waitanimation
+	//playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//waitanimation
 BattleScript_RockyHelmetActivatesDmg:
 	call BattleScript_HurtAttacker
 	return

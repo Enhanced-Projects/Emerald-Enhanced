@@ -14,6 +14,7 @@ SootopolisCity_MagmaEvent_OnTransition::
 	
 SCME_StartEvent::
 	map_script_2 VAR_RYU_QUEST_MAGMA, 550, SCME_MainEvent
+	map_script_2 VAR_TEMP_9, 0, SCME_CancelInvalidState
 	.2byte 0
 	
 SCME_MainEvent::
@@ -92,6 +93,7 @@ SCME_MainEvent_Part2::
 	setmetatile 31, 43, 656, 0
 	setmetatile 31, 44, 656, 0
 	setmetatile 31, 45, 656, 0
+	setvar VAR_TEMP_9, 100
 	release
 	end
 	
@@ -152,6 +154,7 @@ SC_Groudon_PostEvent::
 	applymovement CAMERA, SCME_CamToPlayerAgain
 	waitmovement CAMERA
 	special RemoveCameraObject
+	setflag FLAG_RYU_MAGMA_SOOTOPOLIS_EVENT
 	release
 	end
 	
@@ -571,3 +574,14 @@ SCME_PanToPlayerFromMaxie:
 	
 
 `
+
+script SCME_CancelInvalidState {
+	if (flag(FLAG_RYU_MAGMA_SOOTOPOLIS_EVENT) == TRUE){
+		msgbox("Mission is in Invalid State.\nTake a screenshot now\land post it in discord followed\pby a screenshot of the bug report\npage in the beta menu.")
+		closemessage
+		warpsilent(MAP_LITTLEROOT_TOWN, 255, 10, 10)
+		waitstate
+	}
+	setvar(VAR_TEMP_9, 100)
+	end
+}

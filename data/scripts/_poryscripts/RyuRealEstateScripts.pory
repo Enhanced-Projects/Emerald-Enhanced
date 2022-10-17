@@ -36,7 +36,7 @@ script RyuScript_HouseDoorLocks{
             if (var(VAR_RESULT) == TRUE) {
                 msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} {PLAYER} knocked on the door.")
                 delay(120)
-                random(2)
+                random(3)
                 switch (var(VAR_RESULT)) {
                     case 0:
                     case 1:

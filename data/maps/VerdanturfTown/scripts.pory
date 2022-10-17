@@ -3,25 +3,20 @@ raw `
 
 VerdanturfTown_MapScripts:: @ 81EB566
 	map_script ON_TRANSITION, VerdanturfTown_OnTransition
-	map_script ON_FRAME, VT_OnFrame
 	.byte 0
 
-VT_OnFrame::
-	map_script_2 VAR_TEMP_4, 0, VT_SetupWally
-	.2byte 0
-
 VT_SetupWally::
-	setvar VAR_TEMP_4, 100
 	compare VAR_RYU_QUEST_MAY, 60
-	goto_if_ne ryu_end
+	goto_if_ne ryu_return
 	clearflag FLAG_RYU_HIDE_VERDANTURF_WALLY
 	addobject WALLY
-	end
+	return
 
 VerdanturfTown_OnTransition: @ 81EB56C
 	setflag FLAG_VISITED_VERDANTURF_TOWN
 	call RyuCheckForWellTravelledAch
 	setvar VAR_CONTEST_HALL_STATE, 0
+	call VT_SetupWally
 	end
 
 VerdanturfTown_EventScript_Twin:: @ 81EB575

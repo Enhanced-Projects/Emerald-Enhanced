@@ -109,7 +109,5 @@ gBirchDexRatingText_DexCompleted:: @ 82A6312
 	.string "Your Pokédex is complete!$"
 
 gBirchDexRatingText_OnANationwideBasis:: @ 82A633D
-	.string "Hmhm…\n"
-	.string "On a nationwide basis…\p"
 	.string "You've seen {STR_VAR_1} Pokémon,\n"
 	.string "and you've caught {STR_VAR_2} Pokémon…$"

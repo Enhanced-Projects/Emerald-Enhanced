@@ -203,6 +203,7 @@ const u8 gText_TwoDashes[] = _("--");
 const u8 gText_ThreeDashes[] = _("---");
 const u8 gText_MaleSymbol[] = _("♂");
 const u8 gText_FemaleSymbol[] = _("♀");
+const u8 gText_BossSymbol[] = _("{BOSS_INDI}");
 const u8 gText_LevelSymbol[] = _("{LV}");
 const u8 gText_NumberClear01[] = _("{NO}{CLEAR 0x01}");
 const u8 gText_PlusSymbol[] = _("+"); // Unused
@@ -293,7 +294,8 @@ const u8 *const gPocketNamesStringsTable[] =
     gText_PokeBallsPocket,
     gText_TMHMPocket,
     gText_BerriesPocket,
-    gText_KeyItemsPocket
+    gText_KeyItemsPocket,
+    gText_MegaStones
 };
 
 const u8 gText_NumberVar1Clear7Var2[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
@@ -732,6 +734,7 @@ const u8 gText_TMs_Hms[] = _("TMs");
 const u8 gText_Berries2[] = _("Berries");
 const u8 gText_MedicinesPocket[] = _("Medicine");
 const u8 gText_CollectiblesPocket[] = _("Valuables");
+const u8 gText_MegaStones[] = _("Mega Stones");
 const u8 gText_SomeonesPC[] = _("{PKMN} Storage");
 const u8 gText_LanettesPC[] = _("{PKMN} Storage");
 const u8 gText_PlayersPC[] = _("{PLAYER}'s PC");
@@ -1277,6 +1280,9 @@ const u8 gText_EmptySpace2[] = _(" "); // Unused
 const u8 gText_DynColor2Male[] = _("{COLOR DYNAMIC_COLOR2}♂");
 const u8 gText_DynColor1Female[] = _("{COLOR DYNAMIC_COLOR1}♀");
 const u8 gText_DynColor2[] = _("{COLOR DYNAMIC_COLOR2}");
+const u8 gText_DynColorBossMale[] = _("{COLOR DYNAMIC_COLOR2}{BOSS_INDI}");
+const u8 gText_DynColorBossFemale[] = _("{COLOR DYNAMIC_COLOR1}{BOSS_INDI}");
+const u8 gText_DynColorBoss[] = _("{COLOR WHITE}{BOSS_INDI}");
 const u8 gText_Upper[] = _("upper");
 const u8 gText_Lower[] = _("lower");
 const u8 gText_Others[] = _("Others");
@@ -1505,7 +1511,11 @@ const u8 gText_ABtnTitleScreen[] = _("A Button: Title Screen");
 const u8 gText_Option[] = _("Options");
 const u8 gText_TextSpeed[] = _("Text Speed");
 const u8 gText_BattleScene[] = _("Battle Anims");
-const u8 gText_ThemeSelector[] = _("UI Theme");
+//FULL_COLOR
+const u8 gText_ThemeUISelector[] = _("UI Style");
+
+const u8 gText_ThemeSelector[] = _("UI Color Mode");
+const u8 gText_ThemeBallSelector[] = _("Theme Ball");
 const u8 gText_RandomRouteMusic[] = _("Rdm Music");
 const u8 gText_Frame[] = _("Frame type");
 const u8 gText_OptionMenuSave[] = _("Save");
@@ -1518,6 +1528,11 @@ const u8 gText_BattleSceneOff[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 const u8 gText_UiThemeLight[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Light");
 const u8 gText_UiThemeDark[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dark");
 const u8 gText_UiThemeUser[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}User");
+//FULL_COLOR
+const u8 gText_UiThemeModern[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Modern");
+const u8 gText_UiThemeClassic[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Classic");
+const u8 gText_UiThemeVanilla[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Vanilla");
+
 const u8 gText_TransitionStyleNormal[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
 const u8 gText_TransitionStyleInstant[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Instant");
 const u8 gText_SoundMono[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
@@ -1807,7 +1822,7 @@ const u8 gText_IsThisTheCorrectTime[] = _("Is this the correct time?");
 const u8 gText_Confirm3[] = _("Confirm");
 const u8 gText_Cancel4[] = _("Cancel");
 const u8 gText_MrStoneMatchCallDesc[] = _("DEVON PRES");
-const u8 gText_MrStoneMatchCallName[] = _("MR. STONE");
+const u8 gText_MrStoneMatchCallName[] = _("Mr. STONE");
 const u8 gText_StevenMatchCallDesc[] = _("HARD AS ROCK");
 const u8 gText_StevenMatchCallName[] = _("STEVEN");
 const u8 gText_MayBrendanMatchCallDesc[] = _("RAD NEIGHBOR");
@@ -1872,7 +1887,7 @@ const u8 gText_ItemsKit[] = _("Give Items Kit");
 const u8 gText_DisableDevMode[] = _("Disable Dev Mode");
 const u8 gText_DebugCancel[] = _("Close Menu");
 const u8 gText_ShowBetaMenu[] = _("Show Beta Menu");
-const u8 gText_BetaMenuShowSaveVersion[] = _("Save Version");
+const u8 gText_BetaMenuShowSaveVersion[] = _("Bug Report");
 
 const u8 gText_HpEvMenu252[] = _("252 HP");
 const u8 gText_HpEvMenu126[] = _("126 HP");
@@ -1930,6 +1945,13 @@ const u8 sText_DebugMainUtilityItem1[] = _("Utility 1");
 const u8 gText_DevMonGiveAbility1[] = _("Ability 1");
 const u8 gText_DevMonGiveAbility2[] = _("Ability 2");
 const u8 gText_DevMonGiveAbility3[] = _("Hidden Ability");
+
+const u8 gText_DevMonGiveGender1[] = _("Any");;
+const u8 gText_DevMonGiveGender2[] = _("Male");;
+const u8 gText_DevMonGiveGender3[] = _("Female");;
+
+const u8 gText_DevMonGiveShiny1[] = _("Not Shiny");;
+const u8 gText_DevMonGiveShiny2[] = _("Shiny");;
 
 const u8 gText_RLSGM_Common[] = _("Common ({RYU_STR_1})");
 const u8 gText_RLSGM_Uncommon[] = _("Uncommon ({RYU_STR_2})");
@@ -2022,7 +2044,7 @@ const u8 gText_RyuBetaMenuResetTempBattleFlags[] = _("Reset Battle Flags");
 const u8 gText_RyuBetaMenuResetBadges[] = _("Reset Badges");
 const u8 gText_RyuBetaMenuResetGCMS[] = _("Reset GCMS");
 const u8 gText_RyuBetaMenuGoHome[] = _("Teleport Home");
-const u8 gText_RyuBetaMenuViewEffects[] = _("View Active Effects");
+const u8 gText_RyuBetaMenuViewEffects[] = _("Reset RTC");
 const u8 gText_RyuBetaMenuExit[] = _("Exit Menu");
 
 const u8 gText_RyuForecasterClear[] = _("Clear");
@@ -2176,15 +2198,7 @@ const u8 gText_RyuBufferedString6[] = _("{RYU_STR_3}");
 const u8 gText_RyuBufferedString7[] = _("{RYU_STR_4}");
 
 const u8 gText_RyuMHM_Main[] = _("Heal Party");
-const u8 gText_RyuMHM_Kits[] = _("Magma Kits Shop");
-const u8 gText_RyuMHM_Kits_1[] = _("Basic Healing (¥1500)");
-const u8 gText_RyuMHM_Kits_2[] = _("Better Healing (¥3500)");
-const u8 gText_RyuMHM_Kits_3[] = _("Premium Healing (¥6250)");
-const u8 gText_RyuMHM_Kits_4[] = _("Deluxe Healing (¥12000)");
-const u8 gText_RyuMHM_Kits_5[] = _("Basic Capture (¥500)");
-const u8 gText_RyuMHM_Kits_6[] = _("Advanced Capture (¥2500)");
-const u8 gText_RyuMHM_Kits_7[] = _("Performance Boost (¥25000)");
-const u8 gText_RyuMHM_Kits_8[] = _("Master Kit (¥30000)");
+const u8 gText_RyuMHM_Kits[] = _("Magma Items Shop");
 
 const u8 gText_RyuBotanyConsumableChapter[] = _("Consumables");
 const u8 gText_RyuBotanyMedicinesChapter[] = _("Medicines");
@@ -2250,3 +2264,44 @@ const u8 gText_RyuAttendantNameShelly[] = _("Shelly");
 const u8 gText_RyuAttendantNameJoy[] = _("Joy");
 const u8 gText_RyuAttendantNameMay[] = _("May");
 const u8 gText_RyuAttendantNameNone[] = _("None");
+
+const u8* gText_PresetThemeNames[] = {
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Blue Steel"),
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Royal Purple"),
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Glacier"),
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mocha"),
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None"),
+};
+
+const u8* gText_ThemePokeballNames[] = {    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None           "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Poke Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mega Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Ultra Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Master Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Premier Ball   "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dive Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Net Ball       "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Timer Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Luxury Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Safari Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Nest Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Repeat Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Quick Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Fast Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Heavy Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Moon Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Level Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dusk Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Friend Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Love Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Heal Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Lure Ball (B)    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Lure Ball (G)    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Cherish Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Beast Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Magma Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Aqua Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Green Ball     "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Blue Ball      "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Yellow Ball    "),
+                                            (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Random      ") };

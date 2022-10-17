@@ -779,7 +779,7 @@ void Snow_InitVars(void)
     gWeatherPtr->weatherGfxLoaded = FALSE;
     gWeatherPtr->gammaTargetIndex = 3;
     gWeatherPtr->gammaStepDelay = 20;
-    gWeatherPtr->targetSnowflakeSpriteCount = 30;
+    gWeatherPtr->targetSnowflakeSpriteCount = 24;
     gWeatherPtr->snowflakeVisibleCounter = 0;
 }
 

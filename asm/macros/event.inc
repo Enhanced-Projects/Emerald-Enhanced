@@ -1676,7 +1676,6 @@
 	.macro debugprint buffer:req, frames=120
 	.byte 0xeb
 	.4byte \buffer
-	.2byte \frames
 	.endm
 
 	@multiplies var by value.
@@ -1775,7 +1774,7 @@
 	.2byte \id
 	.endm
 
-	@Buffers the given map data(data) into (buffer)
+	@Buffers the given mapsec (data) into (buffer)
 	.macro buffermapname buffer:req, data:req
 	.byte 0xfc
 	.byte \buffer

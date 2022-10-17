@@ -3,3 +3,89 @@ Route122_MapScripts:: @ 81F6146
 	.byte 0
 
 `
+
+script MP_FerryMan {
+	checkmoney(2000)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Hey there!\nI'm offering ferry serviced!\pOh, you can't afford it.\nBummer.$")
+		goto(ryu_end)
+	}
+	msgbox("Would you like me to Ferry you?\nIt'll cost ¥2000.")
+	bufferdynamicmulti(MP_1, MP_2, MP_3)
+	multichoicegrid(0, 10, MULTI_DYNAMIC_3, 3, 1)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			warpsilent(MAP_ROUTE122, 255, 21, 31)
+			waitstate
+		case 1:
+			warpsilent(MAP_ROUTE121, 255, 32, 18)
+			waitstate
+		case 2:
+			msgbox("Oh! Okay. Well I'll be here!")
+	}
+	closemessage
+	goto(ryu_end)
+}
+
+script MP_FerryWoman2 {
+	checkmoney(2000)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Hey there!\nI'm offering ferry serviced!\pOh, you can't afford it.\nBummer.$")
+		goto(ryu_end)
+	}
+	msgbox("Would you like me to Ferry you?\nIt'll cost ¥2000.")
+	bufferdynamicmulti(MP_1, MP_4, MP_3)
+	multichoicegrid(0, 10, MULTI_DYNAMIC_3, 3, 1)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			warpsilent(MAP_ROUTE121, 255, 32, 18)
+			waitstate
+		case 1:
+			warpsilent(MAP_ROUTE122, 255, 19, 37)
+			waitstate
+		case 2:
+			msgbox("Oh! Okay. Well I'll be here!")
+	}
+	closemessage
+	goto(ryu_end)
+}
+
+script MP_FerryWoman {
+	checkmoney(2000)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Hey there!\nI'm offering ferry serviced!\pOh, you can't afford it.\nBummer.$")
+		goto(ryu_end)
+	}
+	msgbox("Would you like me to Ferry you?\nIt'll cost ¥2000.")
+	bufferdynamicmulti(MP_2, MP_4, MP_3)
+	multichoicegrid(0, 10, MULTI_DYNAMIC_3, 3, 1)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			warpsilent(MAP_ROUTE121, 255, 32, 18)
+			waitstate
+		case 1:
+			warpsilent(MAP_ROUTE122, 255, 19, 37)
+			waitstate
+		case 2:
+			msgbox("Oh! Okay. Well I'll be here!")
+	}
+	closemessage
+	goto(ryu_end)
+}
+
+
+text MP_1 {
+	"Mt. Pyre$"
+}
+
+text MP_2 {
+	"North Exit$"
+}
+
+text MP_3 {
+	"Never Mind$"
+}
+
+text MP_4 {
+	"South Exit$"
+}
