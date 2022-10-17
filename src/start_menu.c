@@ -705,16 +705,26 @@ static const union AnimCmd *const sButtonAnims[] =
 static const union AffineAnimCmd sUnselectAffineAnim[] =
 {
     AFFINEANIMCMD_FRAME(0x100, 0x100, 0, 0),
-    AFFINEANIMCMD_FRAME(-0x8, -0x8, 0, 4),
-    AFFINEANIMCMD_FRAME(-0x10, -0x10, 0, 2),
+    //AFFINEANIMCMD_FRAME(-0x8, -0x8, 0, 4),
+    //AFFINEANIMCMD_FRAME(-0x10, -0x10, 0, 2),
     AFFINEANIMCMD_END,
 };
 
 static const union AffineAnimCmd sSelectAffineAnim[] =
 {
-    AFFINEANIMCMD_FRAME(0xC0, 0xC0, 0, 0),
-    AFFINEANIMCMD_FRAME(0x8, 0x8, 0, 4),
-    AFFINEANIMCMD_FRAME(0x10, 0x10, 0, 2),
+    AFFINEANIMCMD_FRAME(0x100, 0x100, -2, 0),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, -4, 3),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, 4, 3),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, 2, 1),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd sSelectLeftAffineAnim[] =
+{
+    AFFINEANIMCMD_FRAME(0x100, 0x100, 2, 0),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, 4, 3),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, -4, 3),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, -2, 1),
     AFFINEANIMCMD_END,
 };
 
@@ -726,7 +736,7 @@ static const union AffineAnimCmd sSelectedAffineAnim[] =
 
 static const union AffineAnimCmd sNotSelectedAffineAnim[] =
 {
-    AFFINEANIMCMD_FRAME(0xC0, 0xC0, 0, 0),
+    AFFINEANIMCMD_FRAME(0x100, 0x100, 0, 0),
     AFFINEANIMCMD_END,
 };
 
@@ -736,6 +746,7 @@ static const union AffineAnimCmd *const sButtonAffineAnims[] =
     sUnselectAffineAnim,
     sSelectAffineAnim,
     sSelectedAffineAnim,
+    sSelectLeftAffineAnim,
 };
 
 const struct SpriteTemplate sStartMenuButtonTemplate =
@@ -766,6 +777,8 @@ static void CleanupStartMenuElements(void)
     RemoveWindow(sActionNameWindowId);
     sActionNameWindowId = 0xFF;
 }
+
+void WindowFunc_DrawStartMenuFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum);
 
 static bool32 InitStartMenuStep(void)
 {
@@ -798,8 +811,11 @@ static bool32 InitStartMenuStep(void)
         //PutWindowTilemap(sActionNameWindowId);
         //FillWindowPixelBuffer(sActionNameWindowId, PIXEL_FILL(1));
         //DrawStdFrameWithCustomTileAndPalette(sActionNameWindowId, FALSE, 0x214, 14);
-        DrawStdWindowFrame(sActionNameWindowId, FALSE);
-        CopyWindowToVram(sActionNameWindowId, 1);
+        //DrawStdWindowFrame(sActionNameWindowId, FALSE);
+        CallWindowFunction(sActionNameWindowId, WindowFunc_DrawStartMenuFrame);
+        FillWindowPixelBuffer(sActionNameWindowId, PIXEL_FILL(1));
+        PutWindowTilemap(sActionNameWindowId);
+        CopyWindowToVram(sActionNameWindowId, 3);
         sInitStartMenuData[0]++;
         break;
     }
@@ -1087,17 +1103,21 @@ void PlayNextTrack(void)
 
 extern u8 RyuFollowerSelectNPCScript[];
 
+#define WIN_ACTION_TEXT_MARGIN 2
+
 static void PrintActionName(u32 pos)
 {
     struct Sprite * sprite = gSprites + sStartMenuActionSpriteIds[pos];
     u32 action = sCurrentStartMenuActions[pos];
     u32 width = GetStringWidth(1, sStartMenuItems[action].text, 0);
-    u32 x = sprite->pos1.x - width/2;
-    u32 y = 4 * 8;
-    if(x + width/2 > DISPLAY_WIDTH - 2) {
-        x -= x + width/2 - DISPLAY_WIDTH - 2;
-    } else if(x - width/2 < 2){
-        x = 2;
+    s32 left = WIN_ACTION_TEXT_MARGIN;
+    s32 right = DISPLAY_WIDTH - WIN_ACTION_TEXT_MARGIN;
+    s32 x = (right - width)/2;
+    s32 y = 4 * 8;
+    if(x + width > right) {
+        x = right - width;
+    } else if(x < left){
+        x = left;
     }
     FillWindowPixelBuffer(sActionNameWindowId, PIXEL_FILL(1));
     AddTextPrinterParameterized(sActionNameWindowId, 1, sStartMenuItems[action].text, x, y, 0xFF, NULL);
@@ -1120,7 +1140,7 @@ static s32 MainMenu_MoveSelectedAction(s32 delta)
     StartSpriteAnim(oldSprite, 0);
     StartSpriteAffineAnim(oldSprite, 1);
     StartSpriteAnim(newSprite, 1);
-    StartSpriteAffineAnim(newSprite, 2);
+    StartSpriteAffineAnim(newSprite, delta > 0 ? 2 : 4); // If going to the right play right shake otherwise left shake
     PrintActionName(newPos);
     return newPos;
 }
