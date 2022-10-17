@@ -95,6 +95,7 @@ static void SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     gSaveBlock2Ptr->optionsWindowFrameType = 0;
+    gSaveBlock2Ptr->userPresetThemeSelectionChoice = PRESETTHEME_NONE;
     gSaveBlock2Ptr->optionsThemeNumber = OPTIONS_THEME_DARK;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;

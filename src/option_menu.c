@@ -972,8 +972,8 @@ static void Task_OptionColorPicker(u8 taskId)
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[12] = taskData->colorBuffer[4];
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[13] = taskData->colorBuffer[3];
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[14] = taskData->colorBuffer[2];
-                    gSaveBlock2Ptr->userPresetThemeSelectionChoice = NUM_PRESET_THEMES; //if the user is applying a user customization, don't use a preset.
-                    sOptions->sel[MENUITEM_THEMEPRESETS] = NUM_PRESET_THEMES; //hopefully set the selected preset option to None.
+                    gSaveBlock2Ptr->userPresetThemeSelectionChoice = PRESETTHEME_NONE; //if the user is applying a user customization, don't use a preset.
+                    sOptions->sel[MENUITEM_THEMEPRESETS] = PRESETTHEME_NONE; //hopefully set the selected preset option to None.
                     taskData->state++;
                     break;
                 case INPUT_PREV_ELEM:
@@ -1092,6 +1092,7 @@ static void Task_OptionColorPicker(u8 taskId)
             HighlightOptionMenuItem(3);
             ClearStdWindowAndFrameToTransparent(WIN_COLOR_PICKER, TRUE);
             CpuFill32(0, gTasks[taskId].data, sizeof(gTasks[taskId].data));
+            DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
             gTasks[taskId].func = Task_OptionMenuProcessInput;
             break;
     }
@@ -1124,7 +1125,7 @@ static void Task_OptionMenuSave(u8 taskId)
 
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
     if (!(sOptions->sel[MENUITEM_THEME] == THEME_COLOR_USER))
-        sOptions->sel[MENUITEM_THEMEPRESETS] = NUM_PRESET_THEMES;//sets theme preset to NONE if not on user mode.
+        sOptions->sel[MENUITEM_THEMEPRESETS] = PRESETTHEME_NONE;//sets theme preset to NONE if not on user mode.
 
     gSaveBlock2Ptr->userPresetThemeSelectionChoice = sOptions->sel[MENUITEM_THEMEPRESETS];//automatically set to none if user isn't selected
     //FULL_COLOR
@@ -1254,7 +1255,7 @@ static int Sound_ProcessInput(int selection)
 static int ThemeBall_ProcessInput(int selection)
 {
     if (sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA)
-        return 0;
+        return selection;
 
     if (gMain.newKeys & DPAD_RIGHT)
     {
@@ -1305,9 +1306,14 @@ static int ThemeUI_ProcessInput(int selection)
 
 static int PresetThemeSelection_ProcessInput(int selection)
 {
+    u16 buf[16];
+
+    if (sOptions->sel[MENUITEM_THEME] != THEME_COLOR_USER)
+        return selection;
+
     if (gMain.newKeys & DPAD_RIGHT)
     {
-        if (selection < NUM_PRESET_THEMES)
+        if (selection < NUM_PRESET_THEMES-1)
             selection++;
         else
             selection = 0;
@@ -1315,18 +1321,27 @@ static int PresetThemeSelection_ProcessInput(int selection)
     }
     if (gMain.newKeys & DPAD_LEFT)
     {
-        if (selection > 1)
+        if (selection > 0)
             selection--;
         else
-            selection = NUM_PRESET_THEMES;
+            selection = NUM_PRESET_THEMES-1;
 
     }
-    if (selection == NUM_PRESET_THEMES)
-        sOptions->sel[MENUITEM_FRAMETYPE] == 12;
-    else
-        sOptions->sel[MENUITEM_FRAMETYPE] = 0;
+    
     gSpecialVar_0x8001 = selection;//load the preset theme number into this var to be read by the following function
     ApplyPresetRGBUserTheme();
+    CpuCopy16(sUnknown_0855C604, buf, sizeof(sUnknown_0855C604));
+    buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+    LoadPalette(buf, 0x10, sizeof(sUnknown_0855C604));
+    LoadBgTiles(1, GetWindowFrameUserTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
+    CpuCopy16(GetWindowFrameUserTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, buf, 0x20);
+    buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+    if (sOptions->sel[MENUITEM_FRAMETYPE] == 0) {
+        buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+        buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+        buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+    }
+    LoadPalette(buf, 0x70, 0x20);
     return selection;
 }
 
@@ -1335,6 +1350,7 @@ static int Theme_ProcessInput(int selection)
 {
     u16 pal;
     u16 buf[0x20];
+    const struct TilesPal * frame;
     if (gMain.newKeys & DPAD_RIGHT)
     {
         if (selection < 3)
@@ -1380,8 +1396,12 @@ static int Theme_ProcessInput(int selection)
                 buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
             }
             LoadPalette(buf, 0x70, 0x20);
-            DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
+            //DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
             break;
+    }
+    if (sOptions->sel[MENUITEM_THEME] != THEME_COLOR_USER) {
+        sOptions->sel[MENUITEM_THEMEPRESETS] = PRESETTHEME_NONE;
+        DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
     }
     return selection;
 }
@@ -1479,11 +1499,14 @@ static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style, u8 textSp
 // Draw Choices functions
 static void DrawOptionMenuChoiceLong(const u8 *text, u8 x, u8 y, u8 style, u8 textSpeed)
 {
-    u8 dst[16];
+    u8 dst[21];
     u32 i;
 
-    for (i = 0; *text != EOS && i <= 20; i++)
-        dst[i] = *(text++);
+    for (i = 0; i <= 20; i++)
+        if(*text != EOS)
+            dst[i] = *(text++);
+        else
+            dst[i] = 0x77;
 
     if (style != 0)
     {
