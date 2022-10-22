@@ -328,8 +328,6 @@ int CheckValidMonsForSpecialChallenge (void)
     s32 k = 0;
     for (k = 0; k < 6; k++)
     {
-        mgba_open();
-        mgba_printf(LOGINFO, "Checking Slot %d, species is %d", k, (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)));
         if ((isMonLegendaryID(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)) == TRUE))
                 return 666;
         if ((isMonUltraBeastID(GetMonData(&gPlayerParty[k], MON_DATA_SPECIES)) == TRUE))
@@ -2121,13 +2119,11 @@ u16 RyuAlchemy_TryCraftingItem(void)
 
 void RyuDebug_CheckAlchemyStatus(void)
 {
-    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock2Ptr->alchemyEffect, STR_CONV_MODE_LEFT_ALIGN, 2);
-    ConvertIntToDecimalStringN(gStringVar2, gSaveBlock2Ptr->hasAlchemyEffectActive, STR_CONV_MODE_LEFT_ALIGN, 1);
+    ConvertIntToDecimalStringN(gStringVar2, gSaveBlock2Ptr->alchemyEffect, STR_CONV_MODE_LEFT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock2Ptr->hasAlchemyEffectActive, STR_CONV_MODE_LEFT_ALIGN, 1);
     ConvertIntToDecimalStringN(gStringVar3, gSaveBlock2Ptr->alchemyCharges, STR_CONV_MODE_LEFT_ALIGN, 2);
     ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
     ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 5);
-    if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
-        DebugPrint((const u8[]) _("Checked Alchemy Effects."), 0);
 }
 
 

@@ -1448,12 +1448,20 @@ static void CB2_EndTrainerBattle(void)
         FlagClear(FLAG_USED_THIEF);
     }
 
-    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_HEALING_FACTOR && gSaveBlock2Ptr->alchemyCharges > 0)
+    if (gSaveBlock2Ptr->hasAlchemyEffectActive == TRUE)
     {
-        gSaveBlock2Ptr->alchemyCharges -= 1;
-        if (gSaveBlock2Ptr->alchemyCharges == 0)
+        for (i = 0;i < NUM_ALCHEMY_EFFECTS;i++)
         {
-            RyuClearAlchemyEffect();
+            if ((gSaveBlock2Ptr->alchemyEffect < 11) && (gSaveBlock2Ptr->alchemyEffect > 0))
+                {
+                    gSaveBlock2Ptr->alchemyCharges -= 1;
+                    if (gSaveBlock2Ptr->alchemyCharges == 0)
+                    {
+                        RyuClearAlchemyEffect();
+                        break;
+                    }
+                    break;
+                }
         }
     }
 

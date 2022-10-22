@@ -1613,6 +1613,7 @@ void CB2_NewGame(void)
     bool8 hasMegaBracelet = FALSE;
     bool8 hasRecipeBook = FALSE;
     u16 playerLifeSkills[3][2] = {0};
+    bool8 hasRealEstate = gSaveBlock2Ptr->playerIsRealtor;
 
     playerLifeSkills[0][0] = VarGet(VAR_RYU_PLAYER_MINING_SKILL);
     playerLifeSkills[0][1] = VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP);
@@ -1710,6 +1711,9 @@ void CB2_NewGame(void)
 
         if (hasRecipeBook == TRUE)
             FlagSet(FLAG_RYU_HAS_RECIPE_BOOK);
+
+        if (hasRealEstate == TRUE)
+            gSaveBlock2Ptr->playerIsRealtor = 1;
 
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);

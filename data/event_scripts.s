@@ -1223,3 +1223,4 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/LittlerootTown_DawnsHouse_UpperHallway/scripts.inc"
 
 	.include "data/maps/LittlerootTown_DawnsHouse_MayBedroom/scripts.inc"
+

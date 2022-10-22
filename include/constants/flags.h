@@ -523,7 +523,7 @@
 #define NOBLES_SPECIAL_MISSION_IN_PROGRESS        0x1EB // Nobles related.
 #define FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS   0x1EC // Nobles related.
 #define FLAG_UNUSED_0x1ED                         0x1ED
-#define FLAG_RYU_ONE_TIME_SAVE_FIX                0x1EE
+#define FLAG_UNUSED_0x1EE                         0x1EE
 #define FLAG_RYU_OLDCOIN_PASSCODE                 0x1EF
 #define FLAG_UNUSED_0x1F0                         0x1F0
 #define FLAG_UNUSED_0x1F1                         0x1F1
@@ -1366,7 +1366,7 @@
 #define FLAG_RYU_DISABLED_ANIMS                                   0x509
 #define FLAG_RYU_FACING_ATTENDANT                                 0x50A
 #define FLAG_RYU_VERBOSE_MODE                                     0x50B
-#define FLAG_UNUSED_0x50C                                         0x50C
+#define FLAG_RYU_ONE_TIME_SAVE_FIX                                0x50C
 #define FLAG_UNUSED_0x50D                                         0x50D
 
 

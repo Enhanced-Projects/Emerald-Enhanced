@@ -316,12 +316,12 @@
 #define ALCHEMY_EFFECT_EXP_BOOST_T1        7 // for ten battles, your experience is increased by 20%
 #define ALCHEMY_EFFECT_EXP_BOOST_T2        8 // for ten battles, your experience is increased by 50%
 #define ALCHEMY_EFFECT_EXP_BOOST_T3        9 // for ten battles, your experience is increased by 100%
-#define ALCHEMY_EFFECT_REPEL_T1            10 // adds 500 to repel step counter
-#define ALCHEMY_EFFECT_REPEL_T2            11 // adds 1000 to repel step counter
-#define ALCHEMY_EFFECT_SUPER_CAPTURE       12 // for one battle, you have a 25% chance of a capture succeeding regardless of ball used.
-#define ALCHEMY_EFFECT_ULTRA_CAPTURE       13 // for one battle, you have a 50% chance of a capture succeeding regardless of ball used.
-#define ALCHEMY_EFFECT_MASTER_CAPTURE      14 // For one battle, you are garunteed to capture regardelss of ball used.
-#define ALCHEMY_EFFECT_HEALING_FACTOR      15 // for five battles, you regain 10% health per turn. 
+#define ALCHEMY_EFFECT_HEALING_FACTOR      10 // for five battles, you regain 10% health per turn. 
+#define ALCHEMY_EFFECT_REPEL_T1            11 // adds 500 to repel step counter
+#define ALCHEMY_EFFECT_REPEL_T2            12 // adds 1000 to repel step counter
+#define ALCHEMY_EFFECT_SUPER_CAPTURE       13 // for one battle, you have a 25% chance of a capture succeeding regardless of ball used.
+#define ALCHEMY_EFFECT_ULTRA_CAPTURE       14 // for one battle, you have a 50% chance of a capture succeeding regardless of ball used.
+#define ALCHEMY_EFFECT_MASTER_CAPTURE      15 // For one battle, you are garunteed to capture regardelss of ball used.
 #define ALCHEMY_ITEM_RECIPE_STARDUST       16 // creates Stardust from Soft Sand and Gem Powder
 #define ALCHEMY_ITEM_RECIPE_FRESH_WATER    17 // creates Fresh Water from Snowball and Fire Stone
 #define ALCHEMY_ITEM_RECIPE_TONIC_WATER    18 // creates Tonic Water from Charcoal and Fresh Water

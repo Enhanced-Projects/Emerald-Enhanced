@@ -816,6 +816,18 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_RECIPES] = {
         .requiredLevel = 2,
         .givenCharges = 10,
     },
+    [ALCHEMY_EFFECT_HEALING_FACTOR] = {
+          .expGiven = 10,
+          .ingredients = {
+            {ITEM_HEAL_POWDER, 3},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_ORAN_BERRY, 1},
+        },
+        .metal = 0,
+        .metalDustAmt = 200,
+        .requiredLevel = 2,
+        .givenCharges = 5,
+    },
     [ALCHEMY_EFFECT_REPEL_T1] = {
           .expGiven = 7,
           .ingredients = {
@@ -875,18 +887,6 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_RECIPES] = {
         .metalDustAmt = 250,
         .requiredLevel = 5,
         .givenCharges = 1,
-    },
-    [ALCHEMY_EFFECT_HEALING_FACTOR] = {
-          .expGiven = 10,
-          .ingredients = {
-            {ITEM_HEAL_POWDER, 3},
-            {ITEM_MINERAL_WATER, 1},
-            {ITEM_ORAN_BERRY, 1},
-        },
-        .metal = 0,
-        .metalDustAmt = 200,
-        .requiredLevel = 2,
-        .givenCharges = 5,
     },
 
     //Alchemy Item Recipes Below.
@@ -997,12 +997,12 @@ const u8 * const gRyuAlchemyEffectItemToStringTable[16] = {
     sRAEffectEXPBoost1,
     sRAEffectEXPBoost2,
     sRAEffectEXPBoost3,
+    sRAEffectHealingFactor,
     sRAEffectRepelT1,
     sRAEffectRepelT2,
     sRAEffectSuperCapture1,
     sRAEffectSuperCapture2,
-    sRAEffectSuperCapture3,
-    sRAEffectHealingFactor
+    sRAEffectSuperCapture3
 };
 
 

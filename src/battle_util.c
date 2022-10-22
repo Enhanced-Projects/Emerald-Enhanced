@@ -2651,19 +2651,19 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BOSSMODEHEAL:
-            if ((FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(FlagGet(FLAG_RYU_FACING_ATTENDANT))))
-                if(!(BATTLER_MAX_HP(gActiveBattler)))
-                    if(gBattleMons[gActiveBattler].hp != 0)
-                        if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT)
-                            {
-                                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
-                                if (gBattleMoveDamage == 0)
-                                    gBattleMoveDamage = 1;
-                                gBattleMoveDamage *= -1;
-                                StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
-                                StringCopy(gStringVar2, gText_PokemonStringBuffer);
-                                BattleScriptExecute(BattleScript_BossModeHeal);
-                            }
+            if ((FlagGet(FLAG_IS_FIGHTING_RYU) == 1) && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
+                    if ((!(BATTLER_MAX_HP(gActiveBattler))) && (!(gBattleMons[gActiveBattler].hp == 0)))
+                        if(gBattleMons[gActiveBattler].hp != 0)
+                        {
+                            gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 4;
+                            if (gBattleMoveDamage == 0)
+                                gBattleMoveDamage = 1;
+                            gBattleMoveDamage *= -1;
+                            StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+                            StringCopy(gStringVar2, gText_PokemonStringBuffer);
+                            BattleScriptExecute(BattleScript_BossModeHeal);
+                            effect++;
+                        }
             gBattleStruct->turnEffectsTracker++;
             break;
         /*case ENDTURN_BOSSMODERAISESTAT:
@@ -7640,11 +7640,6 @@ int RyuCalculateAlchemyModifiers(s32 damage)
                 damage = ((damage * 50) / 100);
                 break;
         }
-    }
-    gSaveBlock2Ptr->alchemyCharges -= 1;
-    if (gSaveBlock2Ptr->alchemyCharges == 0)
-    {
-        RyuClearAlchemyEffect();
     }
     return damage;
 

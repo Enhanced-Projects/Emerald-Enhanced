@@ -1003,8 +1003,10 @@ static void StartMenuTask(u8 taskId)
         SwitchTaskToFollowupFunc(taskId);
 }
 
+extern void RyuClearAlchemyEffect(void);
+
 void RyuDoOneTImeSaveFixes(void) {
-    FlagSet(FLAG_RYU_HIDE_LAVARIDGE_RIVAL);
+    RyuClearAlchemyEffect();
     QueueNotification((const u8[])_("Applied One Time Save Fixes."), NOTIFY_GENERAL, 60);
     FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
 }

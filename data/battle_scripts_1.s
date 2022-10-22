@@ -6197,7 +6197,11 @@ BattleScript_AquaRingHeal::
 BattleScript_BossModeHeal::
 	playanimation BS_ATTACKER, B_ANIM_INGRAIN_HEAL, NULL
 	printstring STRINGID_BOSSMODEHEAL
-	goto BattleScript_TurnHeal
+	waitmessage 0x40
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	end2
 
 BattleScript_AlchemyHealingFactor::
 	playanimation BS_ATTACKER, B_ANIM_INGRAIN_HEAL, NULL

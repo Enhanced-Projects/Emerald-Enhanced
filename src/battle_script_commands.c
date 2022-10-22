@@ -3858,11 +3858,6 @@ int RyuCalculateAlchemyExpModifier(s32 exp)
     else if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_EXP_BOOST_T3)
         exp = ((exp * 200) / 100);
 
-    gSaveBlock2Ptr->alchemyCharges -= 1;
-    if (gSaveBlock2Ptr->alchemyCharges == 0)//make sure to clear effect when charges are gone.
-    {
-        RyuClearAlchemyEffect();
-    }
     return exp;
 }
 

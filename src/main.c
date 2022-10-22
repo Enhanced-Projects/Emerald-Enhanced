@@ -115,6 +115,7 @@ void AgbMain()
     ResetBgs();
     SetDefaultFontsPointer();
     InitHeap(gHeap, HEAP_SIZE);
+    mgba_open();
 
     gSoftResetDisabled = FALSE;
 
