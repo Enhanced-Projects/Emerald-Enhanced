@@ -491,7 +491,7 @@ static void RemoveExtraStartMenuWindows(void)
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
-    //RemoveInfoBoxWindow();
+    RemoveInfoBoxWindow();
 }
 
 EWRAM_DATA static u8 sPrintNumberWindowId = 1;
@@ -509,7 +509,7 @@ void AddInfoBoxWindow(void)
     int Time = (RyuGetTimeOfDay());
 
     // prepare window
-    SetWindowTemplateFields(&template, 0, 1, 1, 13, 7, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 12, 13, 7, 15, 8);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
@@ -800,7 +800,9 @@ static bool32 InitStartMenuStep(void)
         sInitStartMenuData[0]++;
         break;
     case 4:{
-        struct WindowTemplate * actionNameTemplate = &(struct WindowTemplate){0, 0, 1, 30, 6, 15, 8};
+        // TODO: having a window this big is wasteful but it works right now
+        // change it so that it just adds a proper backdrop and border or something later
+        struct WindowTemplate * actionNameTemplate = &(struct WindowTemplate){0, 0, 1, 30, 6, 15, 0x114};
         sActionNameWindowId = AddWindow(actionNameTemplate);
         //PutWindowTilemap(sActionNameWindowId);
         //FillWindowPixelBuffer(sActionNameWindowId, PIXEL_FILL(1));
@@ -832,18 +834,19 @@ static bool32 InitStartMenuStep(void)
             sStartMenuActionSpriteIds[i] = spriteId;
         }
         PrintActionName(sStartMenuCursorPos);
-        //sInitStartMenuData[0]++;
-        return TRUE;
+        sInitStartMenuData[0]++;
+        return FALSE;
     }
+    case 6:
         //sStartMenuCursorPos = Menu_InitCursor(GetStartMenuWindowId(), 1, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
         //CopyWindowToVram(GetStartMenuWindowId(), TRUE);
-        //AddInfoBoxWindow();
-        //if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
-        //    PrintSongNumber(VarGet(VAR_RYU_JUKEBOX));
-        //else
-        //    PrintSongNumber(GetCurrentMapMusic());
-        //CopyWindowToVram(sPrintNumberWindowId, 3);
-
+        AddInfoBoxWindow();
+        if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
+            PrintSongNumber(VarGet(VAR_RYU_JUKEBOX));
+        else
+            PrintSongNumber(GetCurrentMapMusic());
+        CopyWindowToVram(sPrintNumberWindowId, 3);
+        return TRUE;
         /*if (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == 1)
         {
             DrawDevonLogo();

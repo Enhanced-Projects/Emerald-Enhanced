@@ -3,6 +3,7 @@
 #include "main.h"
 #include "menu.h"
 #include "scanline_effect.h"
+#include "sound.h"
 #include "palette.h"
 #include "sprite.h"
 #include "task.h"
@@ -1149,14 +1150,16 @@ static void Task_OptionMenuSave(u8 taskId)
 
     if (sOptions->sel[MENUITEM_DISABLEMUSIC])
     {
-        gSaveBlock2Ptr->disableBGM = 1;
+        gSaveBlock2Ptr->disableBGM = TRUE;
+        gDisableMusic = TRUE;
         StopMapMusic();
         FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
         VarSet(VAR_RYU_JUKEBOX, 0);
     }
     else
     {
-        gSaveBlock2Ptr->disableBGM = 0;
+        gSaveBlock2Ptr->disableBGM = FALSE;
+        gDisableMusic = FALSE;
         LoadMapMusic();
     }
 

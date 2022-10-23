@@ -1200,10 +1200,10 @@ void LoadMapMusic(void)
         step = 5;
         newMusic = GetCurrLocationDefaultMusic();
     }
-    if (gSaveBlock2Ptr->disableBGM == TRUE)
-    {
-        step = 6;
-    }
+    //if (gSaveBlock2Ptr->disableBGM == TRUE)
+    //{
+    //    step = 6;
+    //}
     if (newMusic != currentMusic)
     {
         switch (step)
