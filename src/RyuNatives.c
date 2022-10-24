@@ -146,11 +146,13 @@ void GivePlayerModdedMon(void)
     u16 move4 =  (VarGet(VAR_RYU_GCMS_MOVE4));
     bool8 isBoss = (FlagGet(FLAG_RYU_BOSS_IN_GCMS));
     u8 ability = (VarGet(VAR_RYU_GCMS_ABILITY));
+    u32 otid = gSaveBlock2Ptr->GCMSShinyStats[0];
+    u32 personality = gSaveBlock2Ptr->GCMSShinyStats[1];
 
     if (fixedIv > 31)
         fixedIv = 31;
 
-    CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
+    CreateMonWithIVsPersonality(&gPlayerParty[slot], species, level, fixedIv, personality);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     SetMonData(&gPlayerParty[slot], MON_DATA_POKEBALL, &ball);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &move1);
@@ -159,6 +161,8 @@ void GivePlayerModdedMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &move4);
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
     SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &isBoss);
+    SetMonData(&gPlayerParty[slot], MON_DATA_OT_ID, &otid);
+    //SetMonData(&gPlayerParty[slot], MON_DATA_PERSONALITY, &personality);
 
     CalculateMonStats(&gPlayerParty[slot]);
 }
@@ -348,6 +352,8 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
     u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
     u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
     bool8 bossFlag = (GetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS));
+    u32 otid = GetMonData(&gPlayerParty[slot], MON_DATA_OT_ID);
+    u32 personality = GetMonData(&gPlayerParty[slot], MON_DATA_PERSONALITY);
     u8 i;
 
 
@@ -368,6 +374,8 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
         VarSet(VAR_RYU_GCMS_MOVE3, move3);
         VarSet(VAR_RYU_GCMS_MOVE4, move4);
         VarSet(VAR_RYU_GCMS_ABILITY, ability);
+        gSaveBlock2Ptr->GCMSShinyStats[0] = otid;
+        gSaveBlock2Ptr->GCMSShinyStats[1] = personality;
         FlagClear(FLAG_TEMP_5);
         if (bossFlag == TRUE)
             FlagSet(FLAG_RYU_BOSS_IN_GCMS);

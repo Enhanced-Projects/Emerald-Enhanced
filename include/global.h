@@ -452,6 +452,7 @@ struct SaveBlock2
              u8 RtcTimeSecondRAW;
              u32 RtcTimeSecond;
              u32 SaveStateLastDetection;
+             u32 GCMSShinyStats[2]; //0: otid, 1:personality
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
