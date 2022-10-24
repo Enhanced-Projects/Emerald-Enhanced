@@ -509,7 +509,7 @@ void AddInfoBoxWindow(void)
     int Time = (RyuGetTimeOfDay());
 
     // prepare window
-    SetWindowTemplateFields(&template, 0, 1, 12, 13, 7, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 12, 15, 7, 15, 106);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
@@ -1441,8 +1441,9 @@ static bool8 StartMenuPlayerNameCallback(void)
 
 static bool8 StartMenuSaveCallback(void)
 {
-    if (InBattlePyramid())
-        RemoveExtraStartMenuWindows();
+    // this check was completely redundant lol
+    //if (InBattlePyramid())
+    RemoveExtraStartMenuWindows();
 
     if (!(MenuSpriteId1 == 0))
     {
