@@ -551,12 +551,12 @@ void SortSprites(void)
             // Then, sSpriteOrder[-1] gets accessed below.
             // Although this doesn't result in a bug in the ROM,
             // the behavior is undefined.
+            j--;
 
             sprite1 = &gSprites[sSpriteOrder[j - 1]];
             sprite2 = &gSprites[sSpriteOrder[j]];
             sprite1Priority = sSpritePriorities[sSpriteOrder[j - 1]];
             sprite2Priority = sSpritePriorities[sSpriteOrder[j]];
-            j--;
             sprite1Y = sprite1->oam.y;
             sprite2Y = sprite2->oam.y;
 

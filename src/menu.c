@@ -411,6 +411,75 @@ void WindowFunc_DrawDialogueFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width
                             DLG_WINDOW_PALETTE_NUM);
 }
 
+#define ACTION_NAME_BOX_WIDTH 4
+
+void WindowFunc_DrawStartMenuFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum) // TODO: implement a better border for the start menu
+{
+    int i;
+
+    FillBgTilemapBufferRect(bg,
+                            STD_WINDOW_BASE_TILE_NUM + 0,
+                            tilemapLeft - 1,
+                            tilemapTop - 1,
+                            1,
+                            1,
+                            STD_WINDOW_PALETTE_NUM);
+    FillBgTilemapBufferRect(bg,
+                            STD_WINDOW_BASE_TILE_NUM + 1,
+                            tilemapLeft,
+                            tilemapTop - 1,
+                            width,
+                            1,
+                            STD_WINDOW_PALETTE_NUM);
+    FillBgTilemapBufferRect(bg,
+                            STD_WINDOW_BASE_TILE_NUM + 2,
+                            tilemapLeft + width,
+                            tilemapTop - 1,
+                            1,
+                            1,
+                            STD_WINDOW_PALETTE_NUM);
+
+    for (i = tilemapTop; i < tilemapTop + height; i++)
+    {
+        FillBgTilemapBufferRect(bg,
+                                STD_WINDOW_BASE_TILE_NUM + 3,
+                                tilemapLeft - 1,
+                                i,
+                                1,
+                                1,
+                                STD_WINDOW_PALETTE_NUM);
+        FillBgTilemapBufferRect(bg,
+                                STD_WINDOW_BASE_TILE_NUM + 5,
+                                tilemapLeft + width,
+                                i,
+                                1,
+                                1,
+                                STD_WINDOW_PALETTE_NUM);
+    }
+
+    FillBgTilemapBufferRect(bg,
+                            STD_WINDOW_BASE_TILE_NUM + 6,
+                            tilemapLeft - 1,
+                            tilemapTop + height,
+                            1,
+                            1,
+                            STD_WINDOW_PALETTE_NUM);
+    FillBgTilemapBufferRect(bg,
+                            STD_WINDOW_BASE_TILE_NUM + 7,
+                            tilemapLeft,
+                            tilemapTop + height,
+                            width,
+                            1,
+                            STD_WINDOW_PALETTE_NUM);
+   FillBgTilemapBufferRect(bg,
+                            STD_WINDOW_BASE_TILE_NUM + 8,
+                            tilemapLeft + width,
+                            tilemapTop + height,
+                            1,
+                            1,
+                            STD_WINDOW_PALETTE_NUM);
+}
+
 void WindowFunc_ClearStdWindowAndFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
 {
     FillBgTilemapBufferRect(bg, 0, tilemapLeft - 1, tilemapTop - 1, width + 2, height + 2, STD_WINDOW_PALETTE_NUM);
