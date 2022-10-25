@@ -165,8 +165,8 @@ static const u8 *const sPyramindFloorNames[] =
         gText_Floor7,
         gText_Peak};
 
-static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 1, 0xA, 4, 0xF, 8};
-static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC, 4, 0xF, 8};
+static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 15, 0xA, 4, 0xF, 8};
+static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 15, 0xC, 4, 0xF, 8};
 
 const u8 sText_PlayTime[] = _("Play Time: ");
 
@@ -612,12 +612,16 @@ void PrintNumberToScreen(s32 num)
 
 void RemoveInfoBoxWindow(void)
 {
-    ClearStdWindowAndFrameToTransparent(sPrintNumberWindowId, FALSE);
-    RemoveWindow(sPrintNumberWindowId);
+    if(sPrintNumberWindowId != 0xFF) {
+        ClearStdWindowAndFrameToTransparent(sPrintNumberWindowId, FALSE);
+        RemoveWindow(sPrintNumberWindowId);
+        sPrintNumberWindowId = 0xFF;
+    }
     if (sPrintNumberWindow2Id != 0xFF)
     {
         ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
         RemoveWindow(sPrintNumberWindow2Id);
+        sPrintNumberWindow2Id = 0xFF;
     }
 
 }
@@ -754,7 +758,8 @@ const struct SpriteTemplate sStartMenuButtonTemplate =
     .callback = SpriteCallbackDummy
 };
 
-static void CleanupStartMenuElements(void)
+// ! Don't call this before window id variables are initialized or whatever
+static void CleanupStartMenuElements(void) 
 {
     int i;
     for(i = 0; i < sNumStartMenuActions; i++) 
@@ -764,6 +769,8 @@ static void CleanupStartMenuElements(void)
         LoadOam();
         //sStartMenuActionSpriteIds[i] = 0xFF;
     }
+    SetGpuReg(REG_OFFSET_WIN1H, 0xFFFF);
+    SetGpuReg(REG_OFFSET_WIN1V, 0xFFFF);
     ClearStdWindowAndFrameToTransparent(sActionNameWindowId, TRUE);
     //ClearWindowTilemap(sActionNameWindowId);
     //FillWindowPixelBuffer(sActionNameWindowId, 0);
@@ -795,8 +802,19 @@ static bool32 InitStartMenuStep(void)
         sInitStartMenuData[0]++;
         break;
     case 3:
-        //if (InBattlePyramid())
-        //    ShowPyramidFloorWindow();
+        sPrintNumberWindowId = 0xFF;
+        sPrintNumberWindow2Id = 0xFF;
+        if (InBattlePyramid()) {
+            ShowPyramidFloorWindow();
+        }
+        else {
+            AddInfoBoxWindow();
+            if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
+                PrintSongNumber(VarGet(VAR_RYU_JUKEBOX));
+            else
+                PrintSongNumber(GetCurrentMapMusic());
+            CopyWindowToVram(sPrintNumberWindowId, 3);
+        }
         sInitStartMenuData[0]++;
         break;
     case 4:{
@@ -812,6 +830,8 @@ static bool32 InitStartMenuStep(void)
         FillWindowPixelBuffer(sActionNameWindowId, PIXEL_FILL(1));
         PutWindowTilemap(sActionNameWindowId);
         CopyWindowToVram(sActionNameWindowId, 3);
+        SetGpuReg(REG_OFFSET_WIN1H, 0xFF);
+        SetGpuReg(REG_OFFSET_WIN1V, 0x23C);
         sInitStartMenuData[0]++;
         break;
     }
@@ -833,19 +853,14 @@ static bool32 InitStartMenuStep(void)
             }
             sStartMenuActionSpriteIds[i] = spriteId;
         }
+        BuildOamBuffer(); // Force resort sprites to mitigate the object priority bug
         PrintActionName(sStartMenuCursorPos);
         sInitStartMenuData[0]++;
-        return FALSE;
+        return TRUE;
     }
     case 6:
         //sStartMenuCursorPos = Menu_InitCursor(GetStartMenuWindowId(), 1, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
         //CopyWindowToVram(GetStartMenuWindowId(), TRUE);
-        AddInfoBoxWindow();
-        if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
-            PrintSongNumber(VarGet(VAR_RYU_JUKEBOX));
-        else
-            PrintSongNumber(GetCurrentMapMusic());
-        CopyWindowToVram(sPrintNumberWindowId, 3);
         return TRUE;
         /*if (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == 1)
         {
@@ -1444,7 +1459,7 @@ static bool8 StartMenuSaveCallback(void)
     // this check was completely redundant lol
     //if (InBattlePyramid())
     RemoveExtraStartMenuWindows();
-
+    CleanupStartMenuElements();
     if (!(MenuSpriteId1 == 0))
     {
         DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
@@ -1595,7 +1610,6 @@ static bool8 BattlePyramidRetireCallback(void)
 static void InitSave(void)
 {
     save_serialize_map();
-    CleanupStartMenuElements();
     sSaveDialogCallback = SaveConfirmSaveCallback;
     sSavingComplete = FALSE;
 }
@@ -1887,8 +1901,10 @@ static void InitBattlePyramidRetire(void)
 
 static u8 BattlePyramidConfirmRetireCallback(void)
 {
-    ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
-    RemoveStartMenuWindow();
+    //ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
+    //RemoveStartMenuWindow();
+    RemoveExtraStartMenuWindows();
+    CleanupStartMenuElements();
     ShowSaveMessage(gText_BattlePyramidConfirmRetire, BattlePyramidRetireYesNoCallback);
 
     return SAVE_IN_PROGRESS;
