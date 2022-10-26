@@ -1008,7 +1008,9 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     if (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION) == 0)
         VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, EE_GAME_VERSION);
     VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
-    //FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
+    if (FlagGet(FLAG_SYS_MYSTERY_GIFT_ENABLE) == TRUE)
+        FlagClear(FLAG_SYS_MYSTERY_GIFT_ENABLE);
+
     if (CheckAchievement(ACH_POKEMON_MASTER) == FALSE)
         if (RyuGetTotalCaughtMons() >= 386)
             GiveAchievement(ACH_POKEMON_MASTER);
