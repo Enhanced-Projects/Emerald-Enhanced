@@ -55,12 +55,6 @@ static const u16 sFactionsIconPalette[] = INCBIN_U16("graphics/journal/factions_
 static const u8 sGymFrontierIconTiles[] = INCBIN_U8("graphics/journal/frontier_gym_badge_tiles.4bpp");
 static const u16 sGymFrontierIconPalette[] = INCBIN_U16("graphics/journal/frontier_gym_badge_tiles.gbapal");
 
-const u8 sTextRyuEasyMode[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Easy Mode");
-const u8 sTextRyuNormalMode[] = _("Normal Mode");
-const u8 sTextRyuChallengeMode[] = _("{COLOR LIGHT_RED}{SHADOW RED}Challenge Mode");
-const u8 sTextRyuHardcoreMode[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}HARDCORE Mode");
-const u8 sTextRyuFrontierMode[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier Mode");
-const u8 sTextRyuSpecialChallenge[] = _("NM/Ryu's Challenge");
 extern const u8 sText_Colon[];
 extern const u8 sText_Space[];
 
@@ -831,35 +825,6 @@ static void DrawJournalStatText(void)
     ConvertIntToDecimalStringN(textBuffer, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_RIGHT_ALIGN, 10);
     AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_MONEY, 0, 4, 4, sColors[0], 0, gStringVar4);
 
-    switch(VarGet(VAR_RYU_GAME_MODE))
-    {
-        case 0:
-            StringCopy(gRyuStringVar1, sTextRyuEasyMode);
-            break;
-        case 1:
-        {
-            if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
-            {
-                StringCopy(gRyuStringVar1, sTextRyuSpecialChallenge);
-                break;
-            }
-            else
-            {
-                StringCopy(gRyuStringVar1, sTextRyuNormalMode);
-                break;
-            }
-        }
-        case 2:
-            StringCopy(gRyuStringVar1, sTextRyuChallengeMode);
-            break;
-        case 3:
-            StringCopy(gRyuStringVar1, sTextRyuHardcoreMode);
-            break;
-        case 4:
-            StringCopy(gRyuStringVar1, sTextRyuFrontierMode);
-            break;
-    }
-    AddTextPrinterParameterized3(WIN_JOURNAL_GAME_MODE, 0, 0, 4, sColors[0], 0, gRyuStringVar1);
 }
 
 static void Task_InitJournal(u8 taskId)

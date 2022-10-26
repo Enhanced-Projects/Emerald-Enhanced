@@ -1366,7 +1366,7 @@
 #define FLAG_RYU_DISABLED_ANIMS                                   0x509
 #define FLAG_RYU_FACING_ATTENDANT                                 0x50A
 #define FLAG_RYU_VERBOSE_MODE                                     0x50B
-#define FLAG_RYU_ONE_TIME_SAVE_FIX                                0x50C
+#define FLAG_UNUSED_0x50C                                         0x50C
 #define FLAG_UNUSED_0x50D                                         0x50D
 
 

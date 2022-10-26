@@ -1255,6 +1255,8 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	buffernumberstring(0, VAR_RYU_GAME_MODE)
+	msgbox(utilityText)
 	release
 	end
 }

@@ -53,9 +53,7 @@
 #include "RyuRealEstate.h"
 #include "overworld_notif.h"
 #include "wild_encounter.h"
-
-static EWRAM_DATA u8 MenuSpriteId1 = 0;
-static EWRAM_DATA u8 MenuSpriteId2 = 0;
+#include "start_menu_helper.h"
 
 extern u8 RyuDebugMenuScript[];
 extern u8 RyuStartMenuConfigInfoScript[];
@@ -509,7 +507,7 @@ void AddInfoBoxWindow(void)
     int Time = (RyuGetTimeOfDay());
 
     // prepare window
-    SetWindowTemplateFields(&template, 0, 1, 12, 15, 7, 15, 106);
+    SetWindowTemplateFields(&template, 0, -1, 15, 32, 3, 15, 106);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
@@ -549,6 +547,7 @@ void PrintNumberToScreen(s32 num)
     StringAppend(gRyuStringVar1, sText_Colon);
     ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeSeconds, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringAppend(gRyuStringVar1, gRyuStringVar2);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 106, 12, 0xFF, NULL);//play time
 
     // time readout
     RtcCalcLocalTime();
@@ -585,29 +584,46 @@ void PrintNumberToScreen(s32 num)
         StringAppend(gStringVar3, gText_RyuDay);
     }
 
+    switch(VarGet(VAR_RYU_GAME_MODE))
+    {
+        case 0:
+            StringCopy(gRyuStringVar1, (const u8[])_("Easy Mode"));
+            break;
+        case 1:
+        {
+            if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
+            {
+                StringCopy(gRyuStringVar1, (const u8[])_("Normal{COLOR LIGHT_RED}{SHADOW RED}(RC)"));
+                break;
+            }
+            else
+            {
+                StringCopy(gRyuStringVar1, (const u8[])_("Normal Mode"));
+                break;
+            }
+        }
+        case 2:
+            StringCopy(gRyuStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW RED}Challenge Mode"));
+            break;
+        case 3:
+            StringCopy(gRyuStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}HARDCORE Mode"));
+            break;
+        case 4:
+            StringCopy(gRyuStringVar1, (const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier Mode"));
+            break;
+    }
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 152, 0, 0xFF, NULL);
+
     // print version number
     StringCopy(gStringVar2, gText_RyuVersion);
     ConvertIntToDecimalStringN(gStringVar4, VarGet(VAR_LAST_KNOWN_GAME_VERSION), STR_CONV_MODE_LEFT_ALIGN, 4);
     StringAppend(gStringVar2, gStringVar4);
 
     // print all text
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 78, 0, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 8, 12, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 8, 38, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 10, 0, 0xFF, NULL); // song data
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 106, 0, 0xFF, NULL); //version number
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 10, 12, 0xFF, NULL); //rtc time
 
-    // print skill levels
-    StringCopy(gStringVar1, gText_RyuLifeSkills);
-    StringAppend(gStringVar1, gText_RyuMiningSkillPrefix);
-    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PLAYER_MINING_SKILL)), STR_CONV_MODE_LEFT_ALIGN, 1);
-    StringAppend(gStringVar1, gStringVar2);
-    StringAppend(gStringVar1, gText_RyuBotanySkillPrefix);
-    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL)), STR_CONV_MODE_LEFT_ALIGN, 1);
-    StringAppend(gStringVar1, gStringVar2);
-    StringAppend(gStringVar1, gText_RyuAlchemySkillPrefix);
-    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL)), STR_CONV_MODE_LEFT_ALIGN, 1);
-    StringAppend(gStringVar1, gStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 8, 24, 0xFF, NULL);
 }
 
 void RemoveInfoBoxWindow(void)
@@ -655,19 +671,6 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
     *pIndex = index;
     return FALSE;
 }
-
-static const u32 DevonLogoGfx[] = INCBIN_U32("graphics/cutscene/devonLogo.4bpp");
-static const u16 DevonLogoPal[] = INCBIN_U16("graphics/cutscene/devonLogo.gbapal");
-static const u32 DevonScientistLogoGfx[] = INCBIN_U32("graphics/cutscene/devonScientistLogo.4bpp");
-static const u32 AquaLogoGfx[] = INCBIN_U32("graphics/cutscene/aquaLogo.4bpp");
-static const u16 AquaLogoPal[] = INCBIN_U16("graphics/cutscene/aquaLogo.gbapal");
-static const u32 AquaShellyLogoGfx[] = INCBIN_U32("graphics/cutscene/aquaShellyLogo.4bpp");
-static const u32 MagmaMainLogoGfx[] = INCBIN_U32("graphics/cutscene/magmaMainLogo.4bpp");
-static const u16 MagmaMainLogoPal[] = INCBIN_U16("graphics/cutscene/magmaMainLogo.gbapal");
-static const u32 MagmaAltLogoGfx[] = INCBIN_U32("graphics/cutscene/magmaAltLogo.4bpp");
-static const u16 MagmaAltLogoPal[] = INCBIN_U16("graphics/cutscene/magmaAltLogo.gbapal");
-static const u32 PokeballLogoGfx[] = INCBIN_U32("graphics/cutscene/pokeballLogo.4bpp");
-static const u16 PokeballLogoPal[] = INCBIN_U16("graphics/cutscene/pokeballLogo.gbapal");
 
 const struct SpritePalette sStartMenuButtonPalette =
 {
@@ -814,6 +817,7 @@ static bool32 InitStartMenuStep(void)
             else
                 PrintSongNumber(GetCurrentMapMusic());
             CopyWindowToVram(sPrintNumberWindowId, 3);
+            DrawTeamLogo();
         }
         sInitStartMenuData[0]++;
         break;
@@ -834,54 +838,38 @@ static bool32 InitStartMenuStep(void)
         SetGpuReg(REG_OFFSET_WIN1V, 0x23C);
         sInitStartMenuData[0]++;
         break;
-    }
-    case 5:{
-        int spacingX = 30;
-        int width = sNumStartMenuActions * spacingX;
-        int offsetY = 16 + 6;
-        int offsetX = 16 + (DISPLAY_WIDTH - width) / 2;
-        for(i = 0; i < sNumStartMenuActions; i++) {
-            u32 spriteId;
-            const struct StartMenuAction * item = &sStartMenuItems[sCurrentStartMenuActions[i]];
-            struct SpriteTemplate spriteTemplate = sStartMenuButtonTemplate;
-            spriteTemplate.images = item->image;
-            LoadSpritePalette(&sStartMenuButtonPalette);
-            spriteId = CreateSprite(&spriteTemplate, offsetX + spacingX * i, offsetY, 0);
-            if(sStartMenuCursorPos == i) {
-                StartSpriteAnim(&gSprites[spriteId], 1);
-                StartSpriteAffineAnim(&gSprites[spriteId], 3);
+        }
+    case 5:
+        {
+            int spacingX = 30;
+            int width = sNumStartMenuActions * spacingX;
+            int offsetY = 16 + 6;
+            int offsetX = 16 + (DISPLAY_WIDTH - width) / 2;
+            for(i = 0; i < sNumStartMenuActions; i++) 
+            {
+                u32 spriteId;
+                const struct StartMenuAction * item = &sStartMenuItems[sCurrentStartMenuActions[i]];
+                struct SpriteTemplate spriteTemplate = sStartMenuButtonTemplate;
+                spriteTemplate.images = item->image;
+                LoadSpritePalette(&sStartMenuButtonPalette);
+                spriteId = CreateSprite(&spriteTemplate, offsetX + spacingX * i, offsetY, 0);
+                if(sStartMenuCursorPos == i) {
+                    StartSpriteAnim(&gSprites[spriteId], 1);
+                    StartSpriteAffineAnim(&gSprites[spriteId], 3);
+                }
+                sStartMenuActionSpriteIds[i] = spriteId;
             }
-            sStartMenuActionSpriteIds[i] = spriteId;
+            BuildOamBuffer(); // Force resort sprites to mitigate the object priority bug
+            PrintActionName(sStartMenuCursorPos);
+            sInitStartMenuData[0]++;
+            return TRUE;
         }
-        BuildOamBuffer(); // Force resort sprites to mitigate the object priority bug
-        PrintActionName(sStartMenuCursorPos);
-        sInitStartMenuData[0]++;
-        return TRUE;
+        case 6:
+        {
+            return TRUE;
+        }
     }
-    case 6:
-        //sStartMenuCursorPos = Menu_InitCursor(GetStartMenuWindowId(), 1, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
-        //CopyWindowToVram(GetStartMenuWindowId(), TRUE);
-        return TRUE;
-        /*if (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == 1)
-        {
-            DrawDevonLogo();
-        }
-        else if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == 1)
-        {
-            DrawAquaLogo();
-        }
-        else if (FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA) == 1)
-        {
-            DrawMagmaLogo();
-        }
-        else
-        {
-            DrawNeutralLogo();
-        }*/
-
-    }
-
-    return FALSE;
+return FALSE;
 }
 
 static void InitStartMenu(void)
@@ -900,11 +888,7 @@ static void StartMenuTask(u8 taskId)
 
 extern void RyuClearAlchemyEffect(void);
 
-void RyuDoOneTImeSaveFixes(void) {
-    RyuClearAlchemyEffect();
-    QueueNotification((const u8[])_("Applied One Time Save Fixes."), NOTIFY_GENERAL, 60);
-    FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
-}
+void RyuDoOneTImeSaveFixes(void) {}
 
 bool32 RyuCheckFactionAchievements(void)
 {
@@ -1025,8 +1009,6 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
         VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, EE_GAME_VERSION);
     VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
     FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
-    if (FlagGet(FLAG_RYU_ONE_TIME_SAVE_FIX) == FALSE)
-        RyuDoOneTImeSaveFixes();
     if (CheckAchievement(ACH_POKEMON_MASTER) == FALSE)
         if (RyuGetTotalCaughtMons() >= 386)
             GiveAchievement(ACH_POKEMON_MASTER);
@@ -1264,7 +1246,7 @@ static bool8 HandleStartMenuInput(void)
         sStartMenuCursorPos = MainMenu_MoveSelectedAction(1);
     }
 
-    /*if (JOY_NEW(DPAD_LEFT))
+    if (JOY_NEW(DPAD_DOWN))
     {
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
         {
@@ -1272,7 +1254,6 @@ static bool8 HandleStartMenuInput(void)
             CreateFollowerObjectEvent((VarGet(VAR_RYU_FOLLOWER_ID)), RyuFollowerSelectNPCScript, (GetPlayerFacingDirection()));
         }
     }
-    */
     if (gMain.newKeys & A_BUTTON)
     {
         PlaySE(SE_SELECT);
