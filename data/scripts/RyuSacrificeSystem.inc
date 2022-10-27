@@ -138,6 +138,7 @@ GCMS_ShinyCharmWarningMsg:
 	.string "attempting to create your mon.$"
 
 GCMS_NatureMenu::
+	goto_if_set FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS, GCMS_GiveModdedMon
 	msgbox GCMS_ChooseNatureMsg
 	closemessage
 	multichoicegrid 0, 0, 139, 4, 1
@@ -307,6 +308,7 @@ GCMS_GiveModdedMon::
 	setvar VAR_RYU_GCMS_VALUE, 0
 	setvar VAR_RYU_GCMS_SPECIES, 0
 	msgbox GCMS_Successful
+	clearflag FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS
 	closemessage
 	release
 	end
@@ -399,6 +401,7 @@ GCMS_Consignment::
 	goto_if_eq GCMS_NotEnoughPartyMons
 	compare VAR_RYU_GCMS_SPECIES, 0
 	goto_if_eq GCMS_ChooseInitialSpecies
+	goto_if_unset FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS, GCMS_SetGCV
 	buffernumberstring 1, VAR_RYU_GCMS_VALUE
 	msgbox GCMS_PickSlot
 	call RyuBufferPartyMonNames
@@ -416,6 +419,21 @@ GCMS_Consignment::
 	goto GCMS_CancelPartySlot
 	releaseall
 	end
+
+GCMS_SetGCV::
+	msgbox GCMS_NoSacrifice
+	numberentry 0, 9, 2
+	compare VAR_RESULT, 31
+	call_if_gt GCMS_SetMaxIV
+	copyvar VAR_RYU_GCMS_VALUE, VAR_RESULT
+	goto GCMS_CreateMon
+
+GCMS_NoSacrifice::
+	.string "Since you are generating a new mon,\nyou can simply choose the desired\lIV value.$"
+
+GCMS_SetMaxIV::
+	setvar VAR_RYU_GCMS_VALUE, 31
+	return
 	
 GCMS_ChooseInitialSpecies:
 	getpartysize
@@ -428,7 +446,13 @@ GCMS_ChooseInitialSpecies:
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq GCMS_CancelPartySlot
-	switch VAR_RESULT
+	copyvar VAR_0x8000, VAR_RESULT
+	msgbox GCMS_PersonalitySaveQuery
+	bufferdynamicmulti GCMS_Personalityquery1, GCMS_Personalityquery2
+	multichoice 0, 100, MULTI_DYNAMIC_2, 1
+	compare VAR_RESULT, 0
+	call_if_eq GCMS_DisableNatureSelect
+	switch VAR_0x8000
 	case 0, GCMS_Slot1Selected
 	case 1, GCMS_Slot2Selected
 	case 2, GCMS_Slot3Selected
@@ -436,6 +460,24 @@ GCMS_ChooseInitialSpecies:
 	case 4, GCMS_Slot5Selected
 	case 5, GCMS_Slot6Selected
 	goto GCMS_CancelPartySlot
+
+GCMS_DisableNatureSelect:
+	msgbox GCMS_NatureDisabled
+	closemessage
+	setflag FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS
+	return
+
+GCMS_NatureDisabled:
+	.string "When you create the result Pokémon,\nIt will have the source mon's\ldata with new IV's.\pYou will not be able to select a\nnature at that time.$"
+
+GCMS_PersonalitySaveQuery:
+	.string "Keeping personality will also\nkeep Gender, Nature, Level, EV's,\lNickname, and shinyness.\pKeep or Discard personality?$"
+
+GCMS_Personalityquery1:
+	.string "Keep Personality$"
+
+GCMS_Personalityquery2:
+	.string "Discard Personality$"
 	
 	
 GCMS_Slot1Selected::

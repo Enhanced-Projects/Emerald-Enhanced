@@ -432,7 +432,7 @@ struct SaveBlock2
               u8 alchemyEffect; //Which alchemy effect is currently active.
               u8 alchemyCharges; //how many charges, if any, are left for the currently active alchemy effect.
               u8 hasAlchemyEffectActive:1; //is alchemy effect active
-              u8 bossMonInGCMS:1; //does the GCMS have a boss in it
+              u8 unused:1; //does the GCMS have a boss in it
               u8 playerIsRealtor:1; //has the player unlocked property management
               u8 userPresetThemeSelectionChoice:5; //theme preset options
              u8 propertyFlags[NUM_PROPERTY_BYTES];
@@ -452,7 +452,6 @@ struct SaveBlock2
              u8 RtcTimeSecondRAW;
              u32 RtcTimeSecond;
              u32 SaveStateLastDetection;
-             u32 GCMSShinyStats[2]; //0: otid, 1:personality
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -837,6 +836,7 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
                u8 dexNavSearchLevels[SPECIES_MELMETAL];
                u8 dexNavChain;
+               struct Pokemon GCMS;
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

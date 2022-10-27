@@ -137,34 +137,28 @@ void GivePlayerModdedMon(void)
     u16 species = (VarGet(VAR_RYU_GCMS_SPECIES));
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = (VarGet(VAR_RYU_GCMS_VALUE));
-    u8 level = 1;
     u8 slot = (VarGet(VAR_TEMP_8));
-    u8 ball = ITEM_LUXURY_BALL;
-    u16 move1 =  (VarGet(VAR_RYU_GCMS_MOVE1));
-    u16 move2 =  (VarGet(VAR_RYU_GCMS_MOVE2));
-    u16 move3 =  (VarGet(VAR_RYU_GCMS_MOVE3));
-    u16 move4 =  (VarGet(VAR_RYU_GCMS_MOVE4));
-    bool8 isBoss = (FlagGet(FLAG_RYU_BOSS_IN_GCMS));
-    u8 ability = (VarGet(VAR_RYU_GCMS_ABILITY));
-    u32 otid = gSaveBlock2Ptr->GCMSShinyStats[0];
-    u32 personality = gSaveBlock2Ptr->GCMSShinyStats[1];
+    u8 level = 1;
 
     if (fixedIv > 31)
         fixedIv = 31;
+    if ((FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS) == TRUE)
+    {
+        gPlayerParty[slot] = gSaveBlock1Ptr->GCMS;
+        SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV, &fixedIv);
+        SetMonData(&gPlayerParty[slot], MON_DATA_ATK_IV, &fixedIv);
+        SetMonData(&gPlayerParty[slot], MON_DATA_DEF_IV, &fixedIv);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_IV, &fixedIv);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_IV, &fixedIv);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_IV, &fixedIv);
+    }
+    else
+    {
+        CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
+        SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
+    }
 
-    CreateMonWithIVsPersonality(&gPlayerParty[slot], species, level, fixedIv, personality);
-    SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
-    SetMonData(&gPlayerParty[slot], MON_DATA_POKEBALL, &ball);
-    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &move1);
-    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &move2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &move3);
-    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &move4);
-    SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
-    SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &isBoss);
-    SetMonData(&gPlayerParty[slot], MON_DATA_OT_ID, &otid);
-    //SetMonData(&gPlayerParty[slot], MON_DATA_PERSONALITY, &personality);
-
-    CalculateMonStats(&gPlayerParty[slot]);
+    //CalculateMonStats(&gPlayerParty[slot]);
 }
 
 extern int CountBadges();
@@ -345,17 +339,8 @@ int CheckValidMonsForSpecialChallenge (void)
 int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be used by gcms.
 {
     u8 slot = (VarGet(VAR_TEMP_9));
-    u16 species = 0;
-    u16 move1 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE1);
-    u16 move2 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE2);
-    u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
-    u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
-    u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
-    bool8 bossFlag = (GetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS));
-    u32 otid = GetMonData(&gPlayerParty[slot], MON_DATA_OT_ID);
-    u32 personality = GetMonData(&gPlayerParty[slot], MON_DATA_PERSONALITY);
+    u16 species = (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL));
     u8 i;
-
 
     for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
         {
@@ -365,20 +350,11 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
 
     if (FlagGet(FLAG_TEMP_5) == 1)
     {
-        species = (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL));
+        VarSet(VAR_RYU_GCMS_SPECIES, species);
+        gSaveBlock1Ptr->GCMS = gPlayerParty[slot];
         ZeroMonData(&gPlayerParty[slot]);
         CompactPartySlots();
-        VarSet(VAR_RYU_GCMS_SPECIES, species);
-        VarSet(VAR_RYU_GCMS_MOVE1, move1);
-        VarSet(VAR_RYU_GCMS_MOVE2, move2);
-        VarSet(VAR_RYU_GCMS_MOVE3, move3);
-        VarSet(VAR_RYU_GCMS_MOVE4, move4);
-        VarSet(VAR_RYU_GCMS_ABILITY, ability);
-        gSaveBlock2Ptr->GCMSShinyStats[0] = otid;
-        gSaveBlock2Ptr->GCMSShinyStats[1] = personality;
         FlagClear(FLAG_TEMP_5);
-        if (bossFlag == TRUE)
-            FlagSet(FLAG_RYU_BOSS_IN_GCMS);
         return 1;
     }
     else if (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL) == (VarGet(VAR_RYU_GCMS_SPECIES)))

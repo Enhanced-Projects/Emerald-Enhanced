@@ -1368,6 +1368,7 @@
 #define FLAG_RYU_VERBOSE_MODE                                     0x50B
 #define FLAG_UNUSED_0x50C                                         0x50C
 #define FLAG_UNUSED_0x50D                                         0x50D
+#define FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS                 0x50E
 
 
 #define NEW_FLAGS_END                                             0x5FF

@@ -324,10 +324,6 @@ void NewGameInitData(void)
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);
-    VarSet(VAR_RYU_GCMS_MOVE1, 0);
-    VarSet(VAR_RYU_GCMS_MOVE2, 0);
-    VarSet(VAR_RYU_GCMS_MOVE3, 0);
-    VarSet(VAR_RYU_GCMS_MOVE4, 0);
     VarSet(VAR_WEATHER_INSTITUTE_STATE, 1);
     VarSet(VAR_CONTEST_HALL_STATE, 0);
     VarSet(VAR_JAGGED_PASS_STATE, 0);
