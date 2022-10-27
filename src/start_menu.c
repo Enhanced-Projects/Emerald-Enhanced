@@ -519,7 +519,7 @@ extern const u8 sText_Colon[];
 void PrintNumberToScreen(s32 num)
 {
     int Time = (RyuGetTimeOfDay());
-
+    DrawTeamLogo();
     // song readout
     StringCopy(gStringVar1, gText_HighlightTransparent);
     StringAppend(gStringVar1, gText_ryuJukeboxLabel);
@@ -587,29 +587,29 @@ void PrintNumberToScreen(s32 num)
     switch(VarGet(VAR_RYU_GAME_MODE))
     {
         case 0:
-            StringCopy(gRyuStringVar1, (const u8[])_("Easy Mode"));
+            StringCopy(gRyuStringVar1, (const u8[])_("/ Easy"));
             break;
         case 1:
         {
             if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
             {
-                StringCopy(gRyuStringVar1, (const u8[])_("Normal{COLOR LIGHT_RED}{SHADOW RED}(RC)"));
+                StringCopy(gRyuStringVar1, (const u8[])_("/ Normal{COLOR LIGHT_RED}{SHADOW RED}(RC)"));
                 break;
             }
             else
             {
-                StringCopy(gRyuStringVar1, (const u8[])_("Normal Mode"));
+                StringCopy(gRyuStringVar1, (const u8[])_("/ Normal"));
                 break;
             }
         }
         case 2:
-            StringCopy(gRyuStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW RED}Challenge Mode"));
+            StringCopy(gRyuStringVar1, (const u8[])_("/ {COLOR LIGHT_RED}{SHADOW RED}Challenge"));
             break;
         case 3:
-            StringCopy(gRyuStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}HARDCORE Mode"));
+            StringCopy(gRyuStringVar1, (const u8[])_("/ {COLOR LIGHT_RED}{SHADOW LIGHT_GREY}HARDCORE"));
             break;
         case 4:
-            StringCopy(gRyuStringVar1, (const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier Mode"));
+            StringCopy(gRyuStringVar1, (const u8[])_("/ {COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier"));
             break;
     }
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 152, 0, 0xFF, NULL);
@@ -638,6 +638,11 @@ void RemoveInfoBoxWindow(void)
         ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
         RemoveWindow(sPrintNumberWindow2Id);
         sPrintNumberWindow2Id = 0xFF;
+    }
+    if (MenuSpriteId1 != 0xFF)
+    {
+        DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+        MenuSpriteId1 = 0xFF;
     }
 
 }
@@ -817,7 +822,6 @@ static bool32 InitStartMenuStep(void)
             else
                 PrintSongNumber(GetCurrentMapMusic());
             CopyWindowToVram(sPrintNumberWindowId, 3);
-            DrawTeamLogo();
         }
         sInitStartMenuData[0]++;
         break;
@@ -1207,11 +1211,6 @@ static bool8 HandleStartMenuInput(void)
         if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
         {
             RemoveExtraStartMenuWindows();
-            if (!(MenuSpriteId1 == 0))
-            {
-                DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
-                MenuSpriteId1 = 0;
-            }
 
             HideStartMenu();
             HideFieldMessageBox();
@@ -1222,12 +1221,6 @@ static bool8 HandleStartMenuInput(void)
         else
         {
             RemoveExtraStartMenuWindows();
-            if (!(MenuSpriteId1 == 0))
-            {
-                DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
-                MenuSpriteId1 = 0;
-            }
-
             HideStartMenu();
             HideFieldMessageBox();
             ScriptContext2_Enable();
@@ -1284,11 +1277,6 @@ static bool8 HandleStartMenuInput(void)
     {
         RemoveExtraStartMenuWindows();
         HideStartMenu();
-        if (!(MenuSpriteId1 == 0))
-        {
-            DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
-            MenuSpriteId1 = 0;
-        }
         return TRUE;
     }
 
@@ -1445,11 +1433,6 @@ static bool8 StartMenuSaveCallback(void)
     //if (InBattlePyramid())
     RemoveExtraStartMenuWindows();
     CleanupStartMenuElements();
-    if (!(MenuSpriteId1 == 0))
-    {
-        DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
-        MenuSpriteId1 = 0;
-    }
     gMenuCallback = SaveStartCallback; // Display save menu
 
     return FALSE;
@@ -2148,11 +2131,6 @@ static void HideStartMenuWindow(void)
     RemoveStartMenuWindow();
     */
     CleanupStartMenuElements();
-    if (!(MenuSpriteId1 == 0))
-    {
-        DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
-        MenuSpriteId1 = 0;
-    }
     ScriptUnfreezeObjectEvents();
     ScriptContext2_Disable();
 }
