@@ -138,11 +138,14 @@ void GivePlayerModdedMon(void)
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = (VarGet(VAR_RYU_GCMS_VALUE));
     u8 slot = (VarGet(VAR_TEMP_8));
+    u8 ability = (Random() % 3);
     u8 level = 1;
+    if (ability == 3)
+        ability = 2;
 
     if (fixedIv > 31)
         fixedIv = 31;
-    if ((FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS) == TRUE)
+    if (FlagGet(FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS) == TRUE)
     {
         gPlayerParty[slot] = gSaveBlock1Ptr->GCMS;
         SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV, &fixedIv);
@@ -156,9 +159,10 @@ void GivePlayerModdedMon(void)
     {
         CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
         SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
+        SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
     }
 
-    //CalculateMonStats(&gPlayerParty[slot]);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 extern int CountBadges();
@@ -338,7 +342,7 @@ int CheckValidMonsForSpecialChallenge (void)
 
 int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be used by gcms.
 {
-    u8 slot = (VarGet(VAR_TEMP_9));
+    u8 slot = gSpecialVar_0x8000;
     u16 species = (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL));
     u8 i;
 
@@ -348,7 +352,7 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
                 return 2;
         }
 
-    if (FlagGet(FLAG_TEMP_5) == 1)
+    if (FlagGet(FLAG_TEMP_5) == 1)//is initial species
     {
         VarSet(VAR_RYU_GCMS_SPECIES, species);
         gSaveBlock1Ptr->GCMS = gPlayerParty[slot];
