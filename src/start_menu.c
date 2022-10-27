@@ -490,6 +490,7 @@ static void RemoveExtraStartMenuWindows(void)
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
     RemoveInfoBoxWindow();
+    RemoveTeamLogo();
 }
 
 EWRAM_DATA static u8 sPrintNumberWindowId = 1;
@@ -639,12 +640,6 @@ void RemoveInfoBoxWindow(void)
         RemoveWindow(sPrintNumberWindow2Id);
         sPrintNumberWindow2Id = 0xFF;
     }
-    if (MenuSpriteId1 != 0xFF)
-    {
-        DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
-        MenuSpriteId1 = 0xFF;
-    }
-
 }
 
 void PrintSongNumber(u16 song)

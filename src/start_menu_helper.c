@@ -173,5 +173,12 @@ void DrawTeamLogo(void)
         LoadSpritePalette(&PokeballLogoPalette);
         MenuSpriteId1 = (CreateSprite(&PokeballLogoSpriteTemplate, 224, 132, 0));
     }
+}
 
+void RemoveTeamLogo(void) {
+    if (MenuSpriteId1 != 0xFF)
+    {
+        DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+        MenuSpriteId1 = 0xFF;
+    }
 }

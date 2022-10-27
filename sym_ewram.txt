@@ -147,3 +147,4 @@
 	.include "src/overworld_notif.o"
 	.include "src/custom_interface.o"
 	.include "src/rhh_copyright.o"
+	.include "src/start_menu_helper.o"
