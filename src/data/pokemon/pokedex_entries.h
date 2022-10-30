@@ -5892,17 +5892,17 @@ const struct PokedexEntry gPokedexEntries[] =
 		.trainerOffset = 0,
 	},
 
-	//[NATIONAL_DEX_DARKRAI] =
-	//{
-	//	.categoryName = _("Pitch-Black"),
-	//	.height = 15,
-	//	.weight = 505,
-	//	.description = gDarkraiPokedexText,
-	//	.pokemonScale = 356,
-	//	.pokemonOffset = 17,
-	//	.trainerScale = 256,
-	//	.trainerOffset = 0,
-	//},
+	[NATIONAL_DEX_DARKRAI] =
+	{
+		.categoryName = _("Pitch-Black"),
+		.height = 15,
+		.weight = 505,
+		.description = gDarkraiPokedexText,
+		.pokemonScale = 356,
+		.pokemonOffset = 17,
+		.trainerScale = 256,
+		.trainerOffset = 0,
+	},
 
 	//[NATIONAL_DEX_SHAYMIN] =
 	//{

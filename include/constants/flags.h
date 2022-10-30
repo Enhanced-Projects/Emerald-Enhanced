@@ -1369,6 +1369,7 @@
 #define FLAG_UNUSED_0x50C                                         0x50C
 #define FLAG_UNUSED_0x50D                                         0x50D
 #define FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS                 0x50E
+#define FLAG_RYU_HALOWEEN_2022                                    0x50F
 
 
 #define NEW_FLAGS_END                                             0x5FF

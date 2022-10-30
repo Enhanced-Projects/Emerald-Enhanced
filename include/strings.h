@@ -3279,13 +3279,6 @@ extern const u8 gText_RyuBotanyApricornLine5[];
 extern const u8 gText_RyuBotanyApricornLine6[];
 extern const u8 gText_RyuBotanyApricornLine7[];
 
-extern const u8 gText_RyuHolidayKyuremWhite[];
-extern const u8 gText_RyuHolidayKyuremBlack[];
-extern const u8 gText_RyuHolidayMagearna[];
-extern const u8 gText_RyuHolidayVictini[];
-extern const u8 gText_RyuHolidayMarshadow[];
-extern const u8 gText_RyuHolidayShaymin[];
-
 extern const u8 gText_RyuBotanyLabel[];
 extern const u8 gText_RyuAlchemyLabel[];
 

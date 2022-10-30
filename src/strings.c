@@ -2218,13 +2218,6 @@ const u8 gText_RyuBotanyApricornLine5[] = _("Pink Apricorn ({RYU_STR_2})");
 const u8 gText_RyuBotanyApricornLine6[] = _("White Apricorn ({RYU_STR_3})");
 const u8 gText_RyuBotanyApricornLine7[] = _("Black Apricorn ({RYU_STR_4})");
 
-const u8 gText_RyuHolidayKyuremWhite[] = _("Kyurem White");
-const u8 gText_RyuHolidayKyuremBlack[] = _("Kyurem Black");
-const u8 gText_RyuHolidayMagearna[] = _("Magearna");
-const u8 gText_RyuHolidayVictini[] = _("Victini");
-const u8 gText_RyuHolidayMarshadow[] = _("Marshadow");
-const u8 gText_RyuHolidayShaymin[] = _("Shaymin");
-
 const u8 gText_RyuBotanyLabel[] = _("Botany");
 const u8 gText_RyuAlchemyLabel[] = _("Alchemy");
 
