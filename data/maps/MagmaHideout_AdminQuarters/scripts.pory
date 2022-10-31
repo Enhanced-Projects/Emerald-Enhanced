@@ -106,7 +106,7 @@ MHAQ_CourtneyFollowerActivate::
 	msgbox MHAQ_ComeWithPlayer
 	closemessage
 	removeobject 1
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_NORTH
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
 	clearfullscreenimage
 	release
@@ -121,7 +121,7 @@ MHAQ_PartnerCourtney::
 	msgbox MHAQ_ComeWithPlayer2
 	closemessage
 	removeobject 1
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_NORTH
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
 	setvar VAR_TEMP_0, 100
 	release

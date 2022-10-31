@@ -1044,58 +1044,6 @@ bool8 ScrCmd_getobjectxy(struct ScriptContext *ctx)
     return FALSE;
 }
 
-//////////////////////
-// Follower related //
-//////////////////////
-
-// This function fills in the necessary temporary variables for setting up partner multibattles
-bool8 RyuFollowerToTrainerID(void)
-{
-    if (FlagGet(FLAG_RYU_HAS_FOLLOWER))
-    {
-        switch (VarGet(VAR_RYU_FOLLOWER_ID))
-        {
-        case OBJ_EVENT_GFX_TWIN:
-            gSpecialVar_0x8008 = TRAINER_REL_MINNIE;
-            gSpecialVar_0x8009 = TRAINER_BACK_PIC_MINNIE;
-            return TRUE;
-        case OBJ_EVENT_GFX_WOMAN_2:
-            gSpecialVar_0x8008 = TRAINER_REL_LANETTE;
-            gSpecialVar_0x8009 = TRAINER_BACK_PIC_LANETTE; 
-            return TRUE;
-        case OBJ_EVENT_GFX_AQUA_MEMBER_F:
-            gSpecialVar_0x8008 = TRAINER_REL_SHELLY;
-            gSpecialVar_0x8009 = TRAINER_BACK_PIC_SHELLY;
-            return TRUE;
-        case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
-            gSpecialVar_0x8008 = TRAINER_REL_DAWN;
-            gSpecialVar_0x8009 = TRAINER_BACK_PIC_DAWN;
-            return TRUE;
-        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
-            gSpecialVar_0x8008 = TRAINER_REL_BRENDAN;
-            gSpecialVar_0x8009 = TRAINER_BACK_PIC_BRENDAN;
-            return TRUE;
-        case OBJ_EVENT_GFX_LEAF:
-            gSpecialVar_0x8008 = TRAINER_REL_LANA;
-            gSpecialVar_0x8009 = TRAINER_BACK_PIC_LEAF;
-            return TRUE;
-        case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
-            gSpecialVar_0x8008 = TRAINER_REL_COURTNEY_2;
-            gSpecialVar_0x8009 = TRAINER_BACK_PIC_COURTNEY;
-            return TRUE;
-        case OBJ_EVENT_GFX_NURSE:
-            gSpecialVar_0x8008 = TRAINER_REL_NURSE;
-            gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
-            return TRUE;
-        case OBJ_EVENT_GFX_MAY:
-            gSpecialVar_0x8008 = TRAINER_REL_MAY;
-            gSpecialVar_0x8009 = TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY;
-            return TRUE;
-        }
-        return FALSE;
-    }
-}
-
 void FillTheDex(void)
 {
     u16 i = 0;
@@ -2712,46 +2660,6 @@ void RyuCalcPartyStats (void)
         CalculateMonStats(&gPlayerParty[i]);
 }
 
-void RyuBufferAttendantName (void)
-{
-    u16 attendant = VarGet(VAR_RYU_ATTENDANT_ID);
-
-    switch(attendant)
-    {
-            case OBJ_EVENT_GFX_WOMAN_2:
-                StringCopy(gStringVar1, gText_RyuAttendantNameLanette);
-                break;
-	        case OBJ_EVENT_GFX_TWIN:
-                StringCopy(gStringVar1, gText_RyuAttendantNameMinnie);
-                break;
-	        case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
-                StringCopy(gStringVar1, gText_RyuAttendantNameDawn);
-                break;
-	        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
-                StringCopy(gStringVar1, gText_RyuAttendantNameBrendan);
-                break;
-	        case OBJ_EVENT_GFX_LEAF:
-                StringCopy(gStringVar1, gText_RyuAttendantNameLana);
-                break;
-	        case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
-                StringCopy(gStringVar1, gText_RyuAttendantNameCourtney);
-                break;
-	        case OBJ_EVENT_GFX_AQUA_MEMBER_F:
-                StringCopy(gStringVar1, gText_RyuAttendantNameShelly);
-                break;
-	        case OBJ_EVENT_GFX_NURSE:
-                StringCopy(gStringVar1, gText_RyuAttendantNameJoy);
-                break;
-	        case OBJ_EVENT_GFX_MAY:
-                StringCopy(gStringVar1, gText_RyuAttendantNameMay);
-                break;
-	        case 0xFFFF:
-                StringCopy(gStringVar1, gText_RyuAttendantNameNone);
-                break;
-    }
-
-}
-
 const u8 sRepelNotifyMsg[] = _("Repel Used. {STR_VAR_1}% reduction for {STR_VAR_2} steps.");
 void RyuSetUpRepelNotify (void)
 {
@@ -2814,41 +2722,7 @@ bool8 ScrCmd_debugprint(struct ScriptContext *ctx) //this will still only print 
 }
 
 extern u8 RDBM_ScriptDelay2s[];
-void RyuDebug_ShowActiveFollower (void)
-{
-    if (FlagGet(FLAG_RYU_HAS_FOLLOWER))
-    {
-        switch (VarGet(VAR_RYU_FOLLOWER_ID))
-        {
-            case OBJ_EVENT_GFX_TWIN:
-                DebugPrint(((const u8[]) _("Minnie: 5% dmg reduction.")), 0);
-                break;
-            case OBJ_EVENT_GFX_WOMAN_2:
-                DebugPrint(((const u8[]) _("Lanette: 5% capture boost.")), 0);
-                break;
-            case OBJ_EVENT_GFX_AQUA_MEMBER_F:
-                DebugPrint(((const u8[]) _("Shelly: 10% DRK/WTR dmg boost.")), 0);
-                break;
-            case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
-                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")), 0);
-                break;
-            case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
-                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")), 0);
-                break;
-            case OBJ_EVENT_GFX_LEAF:
-                DebugPrint(((const u8[]) _("Lana: -10% damage from FIR/WTR/GRS")), 0);
-                break;
-            case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
-                DebugPrint(((const u8[]) _("Courtney: 10% DRK/FIR dmg boost.")), 0);
-                break;
-            case OBJ_EVENT_GFX_NURSE:
-                break;
-            case OBJ_EVENT_GFX_MAY:
-                DebugPrint(((const u8[]) _("May: 10% FRY/FIT dmg boost.")), 0);
-                break;
-        }
-    }
-}
+
 
 void RyuDebug_ShowActiveAlchemy(void)
 {

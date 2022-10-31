@@ -57,7 +57,7 @@ EGC_FollowerMinnieFlagSet::
 
 EGC_AltWallaceFollower::
 	call RyuFollowerAllySelector
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_MINNIE
 	call_if_eq EGC_FollowerMinnieFlagSet
 	choose_mons
 	compare VAR_RESULT, FALSE

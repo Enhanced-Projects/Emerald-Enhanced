@@ -509,6 +509,16 @@
 #define NOTIFY_QUEST       5
 #define NOTIFY_GENERAL     6
 
+#define FOLLOWER_MINNIE 6
+#define FOLLOWER_SHELLY 118
+#define FOLLOWER_COURTNEY 120
+#define FOLLOWER_JOY 58
+#define FOLLOWER_DAWN 105
+#define FOLLOWER_BRENDAN 100
+#define FOLLOWER_LANETTE 20
+#define FOLLOWER_LEAF 231
+#define FOLLOWER_MAY 236
+
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
 

@@ -188,7 +188,7 @@ RF_MayIntroMsg:
 
 FollowerDawnSetup::
 	removeobject 2
-	createfollower OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_EAST
+	createfollower FOLLOWER_DAWN, RyuFollowerSelectNPCScript, DIR_EAST
 	applymovement FOLLOWER, Common_Movement_FaceLeft
 	waitmovement 0
 	clearfullscreenimage
@@ -199,7 +199,7 @@ FollowerDawnSetup::
 
 FollowerBrendanSetup::
 	removeobject 2
-	createfollower OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RyuFollowerSelectNPCScript, DIR_WEST
+	createfollower FOLLOWER_BRENDAN, RyuFollowerSelectNPCScript, DIR_WEST
 	applymovement FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
 	clearfullscreenimage
@@ -210,7 +210,7 @@ FollowerBrendanSetup::
 
 FollowerLeafSetup::
 	removeobject 2
-	createfollower OBJ_EVENT_GFX_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
 	applymovement FOLLOWER, Common_Movement_FaceUp
 	waitmovement 0
 	setflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
@@ -222,7 +222,7 @@ FollowerShellySetup::
 	applymovement 1, ACO_ShellyWalkAroundDesk
 	waitmovement 1
 	removeobject 1
-	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_EAST
+	createfollower FOLLOWER_SHELLY, RyuFollowerSelectNPCScript, DIR_EAST
 	setflag FLAG_HIDE_AQUAHQ_SHELLY
 	release
 	end
@@ -240,7 +240,7 @@ FollowerNurseSetup::
 	applymovement 1, Common_Movement_StepDown
 	waitmovement 1
 	removeobject 1
-	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_NORTH
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	applymovement PLAYER, Common_Movement_StepRight
 	waitmovement PLAYER
 	applymovement PLAYER, Common_Movement_FaceLeft
@@ -268,18 +268,18 @@ RF_FollowerLeaveCall::
 	closemessage
 RF_RemoveFollowerSilent::
 	switch VAR_RYU_FOLLOWER_ID
-	case OBJ_EVENT_GFX_WOMAN_2, Ryu_RestoreLanetteAtHouse
-	case OBJ_EVENT_GFX_TWIN, Ryu_RestoreMinnie
-	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_RestoreDawn
-	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, Ryu_RestoreBrendan
-	case OBJ_EVENT_GFX_LEAF, Ryu_RestoreLeaf
-	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, Ryu_RestoreCourtney
-	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_RestoreShelly
-	case OBJ_EVENT_GFX_NURSE, Ryu_RestoreNurse
+	case FOLLOWER_LANETTE, Ryu_RestoreLanetteAtHouse
+	case FOLLOWER_MINNIE, Ryu_RestoreMinnie
+	case FOLLOWER_DAWN, Ryu_RestoreDawn
+	case FOLLOWER_BRENDAN, Ryu_RestoreBrendan
+	case FOLLOWER_LEAF, Ryu_RestoreLeaf
+	case FOLLOWER_COURTNEY, Ryu_RestoreCourtney
+	case FOLLOWER_SHELLY, Ryu_RestoreShelly
+	case FOLLOWER_JOY, Ryu_RestoreNurse
 	case OBJ_EVENT_GFX_LASS, Ryu_RestoreTiana
 	case OBJ_EVENT_GFX_HEX_MANIAC, Ryu_DestroyWithoutPrejudice
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, ryu_end
-	case OBJ_EVENT_GFX_MAY, Ryu_ReturnMayToHome
+	case FOLLOWER_MAY, Ryu_ReturnMayToHome
 	return
 
 Ryu_DestroyWithoutPrejudice::
@@ -438,7 +438,7 @@ RF_SetupNurseSpawnEvent:: @Generates a nurse NPC to interact with.
 	applymovement PLAYER, Common_Movement_FaceUp
 	waitmovement PLAYER
 	drawfullscreenimage SCENEBGNURSE
-	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_NORTH
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	return
 
 RF_NurseQuestStage1::
@@ -506,7 +506,7 @@ RF_NurseQuestStage4::
 	waitstate
 
 VT_FinishNurseQuest1::
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_JOY
 	goto_if_ne ryu_end
 	lockall
 	msgbox VT_NurseStage1Done
@@ -524,7 +524,7 @@ VT_FinishNurseQuest1::
 	end
 
 FT_FinishNurseQuest2::
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_JOY
 	goto_if_ne ryu_end
 	lockall
 	msgbox FT_NurseStage2Done
@@ -547,7 +547,7 @@ FT_FinishNurseQuest2::
 OT_FinishNurseQuest3::
 	compare VAR_RYU_QUEST_NURSE, 6
 	goto_if_ne ryu_end
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_JOY
 	goto_if_ne ryu_end
 	lockall
 	msgbox RC_NurseStage3Done
@@ -566,7 +566,7 @@ OT_FinishNurseQuest3::
 
 
 RF_FinishNurseQuest4:: @Will take player to lilycove city as that is Hoenn's capital.
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_JOY
 	goto_if_ne ryu_end
 	lockall
 	msgbox RF_NurseStage4Done
@@ -892,29 +892,29 @@ script RyuFollowerSelectNPCScript{
 		call(SetFollowerAsAttendant)
 	}
 	switch (var(VAR_RYU_FOLLOWER_ID)) {
-		case OBJ_EVENT_GFX_TWIN:
+		case FOLLOWER_MINNIE:
 			goto(LRT_MinnieScript)
-		case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+		case FOLLOWER_SHELLY:
 			goto(RyuFollower_ShellyScript)
-		case OBJ_EVENT_GFX_WOMAN_2:
+		case FOLLOWER_LANETTE:
 			goto(RyuFollower_LanetteScript)
-		case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+		case FOLLOWER_DAWN:
 			goto(RyuFollower_DawnScript)
-		case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+		case FOLLOWER_BRENDAN:
 			goto(RyuFollower_BrendanScript)
-		case OBJ_EVENT_GFX_LEAF:
+		case FOLLOWER_LEAF:
 			goto(RyuFollower_LeafScript)
 		case OBJ_EVENT_GFX_MAGMA_MEMBER_M:
 			goto(GC_BlaiseScript)
-		case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+		case FOLLOWER_COURTNEY:
 			goto(MH4_CourtneyScript)
-		case OBJ_EVENT_GFX_NURSE:
+		case FOLLOWER_JOY:
 			goto(RyuFollower_NurseJoy)
 		case OBJ_EVENT_GFX_LASS:
 			goto(r102_FollowerTianaScript)
 		case OBJ_EVENT_GFX_HEX_MANIAC:
 			goto(MP_FQ_HexerFollowerScript)
-		case OBJ_EVENT_GFX_MAY:
+		case FOLLOWER_MAY:
 			goto(RyuFollower_MaySelector)
 	}
 	end

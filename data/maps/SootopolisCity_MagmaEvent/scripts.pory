@@ -206,7 +206,7 @@ SCME_PostEventPart2::
 	waitmovement 16
 	goto_if_unset FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, SCME_CourtneyAlone
 	msgbox SCME_CourtneyChasesMaxie
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	removeobject 4
 	setflag FLAG_RYU_DS_COURTNEY_LOVERS
 	setvar VAR_RYU_QUEST_MAGMA, 560

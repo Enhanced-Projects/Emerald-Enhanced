@@ -84,7 +84,7 @@ script RyuRE_UseBed {
         getplayerxy(VAR_0x8003, VAR_0x8004)
         setobjectxy(1, VAR_0x8003, VAR_0x8004)
         switch (var(VAR_RYU_ATTENDANT_ID)) {
-            case OBJ_EVENT_GFX_WOMAN_2:
+            case FOLLOWER_LANETTE:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aw! But it's still so early!\nI'm used to being up much later than\lthis.\pOh well, guess I'll enjoy the extra\nsleep.")
                 closemessage
                 msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {STR_VAR_1} spend the night\n together . . .)")
@@ -97,7 +97,7 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
-	        case OBJ_EVENT_GFX_TWIN:
+	        case FOLLOWER_MINNIE:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I'm tired and ready for bed!")
                 closemessage
                 msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} tucks Minnie in and then\n lays down on the bed next to her)")
@@ -110,7 +110,7 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
-	        case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+	        case FOLLOWER_DAWN:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm ready for whatever you can\nthrow at me!")
                 closemessage
                 msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL} roll around on the bed\n wrestling with each other\l until they rest for the night.)")
@@ -123,7 +123,7 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
-	        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+	        case FOLLOWER_BRENDAN:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}You're not going to let me sleep\nare you?")
                 closemessage
                 msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL} spend a restless night\n together.)")
@@ -136,7 +136,7 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
-	        case OBJ_EVENT_GFX_LEAF:
+	        case FOLLOWER_LEAF:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}I was just craving a good snuggle!")
                 closemessage
                 msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Lana snuggle tightly and rest\n together.)")
@@ -149,7 +149,7 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
-	        case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+	        case FOLLOWER_COURTNEY:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Sleep is for the weak...")
                 closemessage
                 msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(Courtney holds {PLAYER} extremely\n tight and nods off...)")
@@ -162,7 +162,7 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
-	        case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+	        case FOLLOWER_SHELLY:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}You read my mind!\nLet's snuggle for a while first...")
                 closemessage
                 msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly and {PLAYER} enjoy a\n long night's rest in\l each other's arms.)")
@@ -175,7 +175,7 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
-	        case OBJ_EVENT_GFX_NURSE:
+	        case FOLLOWER_JOY:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}I could use a good rest.")
                 closemessage
                 msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Joy have a nice, comfy\n night together..)")
@@ -188,7 +188,7 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
-	        case OBJ_EVENT_GFX_MAY:
+	        case FOLLOWER_MAY:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hmm... I'm not very tired,\nbut I could rest, I guess.")
                 closemessage
                 msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(May and {PLAYER} sleep restlessly\n for the night...)")
@@ -223,23 +223,23 @@ script RyuAttendantScript {
             goto(Ryu_ClearBadAttendant)
         case 65535:
             goto(Ryu_ClearBadAttendant)
-        case OBJ_EVENT_GFX_WOMAN_2:
+        case FOLLOWER_LANETTE:
             goto(Ryu_AttendantLanette)
-	    case OBJ_EVENT_GFX_TWIN:
+	    case FOLLOWER_MINNIE:
             call(Ryu_AttendantMinnie)
-	    case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+	    case FOLLOWER_DAWN:
             call(Ryu_AttendantDawn)
-	    case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+	    case FOLLOWER_BRENDAN:
             call(Ryu_AttendantBrendan)
-	    case OBJ_EVENT_GFX_LEAF:
+	    case FOLLOWER_LEAF:
             call(Ryu_AttendantLeaf)
-	    case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+	    case FOLLOWER_COURTNEY:
             call(Ryu_AttendantCourtney)
-	    case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+	    case FOLLOWER_SHELLY:
             call(Ryu_AttendantShelly)
-	    case OBJ_EVENT_GFX_NURSE:
+	    case FOLLOWER_JOY:
             call(Ryu_AttendantJoy)
-	    case OBJ_EVENT_GFX_MAY:
+	    case FOLLOWER_MAY:
             call(Ryu_AttendantMay)
     }
     release
@@ -259,7 +259,7 @@ script Ryu_AttendantLanette {
             closemessage
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_WOMAN_2, RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(FOLLOWER_LANETTE, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}I really like this house.\nI should bring a laptop so\lthat I can be more productive...")
             closemessage
@@ -289,7 +289,7 @@ script Ryu_AttendantMinnie {
             end
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(FOLLOWER_MINNIE, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}This place is waay better than\nstanding around in town!")
     }
@@ -319,7 +319,7 @@ script Ryu_AttendantDawn {
             end
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(FOLLOWER_DAWN, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}This makes for a great love shack!")
     }
@@ -349,7 +349,7 @@ script Ryu_AttendantBrendan {
             end
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(FOLLOWER_BRENDAN, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}This makes for a great love shack!")
     }
@@ -379,7 +379,7 @@ script Ryu_AttendantLeaf {
             end
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(FOLLOWER_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}It's so peaceful here.\nI like it!")
     }
@@ -409,7 +409,7 @@ script Ryu_AttendantCourtney {
             end
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}This is acceptable... I guess.\pToo much light, though.")
     }
@@ -439,7 +439,7 @@ script Ryu_AttendantShelly {
             end
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(FOLLOWER_SHELLY, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}We've got a nice place here.\nIt's quaint. I love it!")
     }
@@ -469,7 +469,7 @@ script Ryu_AttendantJoy {
             end
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}I hope things are going well at the\nPokecenters...")
     }
@@ -499,7 +499,7 @@ script Ryu_AttendantMay {
             end
         case 2:
             call(RyuDismissAttendant)
-            createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+            createfollower(FOLLOWER_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}There's still a lot of things\nI want to see.")
     }
@@ -525,31 +525,31 @@ script RyuDismissAttendant {
     clearflag(FLAG_RYU_SAVED_ATTENDANT)
     removeobject(1)
     switch (var(VAR_RYU_ATTENDANT_ID)) {
-        case OBJ_EVENT_GFX_WOMAN_2:
+        case FOLLOWER_LANETTE:
             setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
             call(Ryu_RestoreLanetteAtHouse)
-	    case OBJ_EVENT_GFX_TWIN:
+	    case FOLLOWER_MINNIE:
             setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
             call(Ryu_RestoreMinnie)
-	    case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+	    case FOLLOWER_DAWN:
             setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
             call(Ryu_RestoreDawn)
-	    case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+	    case FOLLOWER_BRENDAN:
             setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
             call(Ryu_RestoreBrendan)
-	    case OBJ_EVENT_GFX_LEAF:
+	    case FOLLOWER_LEAF:
             setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
             call(Ryu_RestoreLeaf)
-	    case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+	    case FOLLOWER_COURTNEY:
             setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
             call(Ryu_RestoreCourtney)
-	    case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+	    case FOLLOWER_SHELLY:
             setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
             call(Ryu_RestoreShelly)
-	    case OBJ_EVENT_GFX_NURSE:
+	    case FOLLOWER_JOY:
             setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
             call(Ryu_RestoreNurse)
-	    case OBJ_EVENT_GFX_MAY:
+	    case FOLLOWER_MAY:
             setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
             call(Ryu_ReturnMayToHome)
     }

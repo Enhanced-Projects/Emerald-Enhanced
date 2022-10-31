@@ -172,7 +172,7 @@ RF_LanetteSetupFollower:
 LNH_Follower::
 	call RyuForceCancelFollowerForQuest
 	removeobject 1
-	createfollower OBJ_EVENT_GFX_WOMAN_2, RyuFollowerSelectNPCScript, DIR_NORTH
+	createfollower FOLLOWER_LANETTE, RyuFollowerSelectNPCScript, DIR_NORTH
 	applymovement FOLLOWER, Common_Movement_FaceDown
 	setflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
 	setflag FLAG_RYU_HIDE_LANETTE_BASEMENT

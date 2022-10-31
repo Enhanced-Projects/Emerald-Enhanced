@@ -129,49 +129,49 @@ RDB_SpawnWhichFollower:
 
 RDB_SpawnMinnie::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_MINNIE, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
 RDB_SpawnShelly::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_SHELLY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
 RDB_SpawnLanette::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_WOMAN_2, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_LANETTE, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnDawn::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_DAWN, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnBrendan::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_BRENDAN, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnLeaf::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnCourtney::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnJoy::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
@@ -195,7 +195,7 @@ RDB_SpawnHexer::
 
 RDB_SpawnMay::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 

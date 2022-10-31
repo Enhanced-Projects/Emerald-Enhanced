@@ -470,7 +470,7 @@ MH4_CourtneySetUpChaseMaxie::
 	setvar VAR_RYU_QUEST_MAGMA, 565@Player is chasing down maxie with robot courtney
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	removeobject 24
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_WEST
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_WEST
 	release
 	end
 
@@ -602,7 +602,7 @@ MH4_Maxie2Event::
 	msgbox MH4_Analyzing
 	closemessage
 	removeobject 12
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, 1
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, 1
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	clearflag FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS
@@ -1388,7 +1388,7 @@ MH4_CourtneyEnd3::
 	call RyuScript_IncrementQuestsFinished
 	ach give ACH_THROUGH_THE_FIRE
 	removeobject 21
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_NORTH
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY

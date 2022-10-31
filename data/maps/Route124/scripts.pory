@@ -12,14 +12,14 @@ R124_SetFollowerCourtneyEndEvent_R::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end
 	compare VAR_RYU_QUEST_MAGMA, 580
 	goto_if_ne ryu_end
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	end
 	
 R124_SetFollowerCourtneyEndEvent_NR::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end
 	compare VAR_RYU_QUEST_MAGMA, 575
 	goto_if_ne ryu_end
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	end
 	
 	

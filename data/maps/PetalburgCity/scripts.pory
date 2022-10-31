@@ -775,7 +775,7 @@ script PBC_May {
 		if (var(VAR_RESULT) == YES) {
 			removeobject(12)
 			setflag(FLAG_RYU_HIDE_PETALBURG_MAY)
-			createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+			createfollower(FOLLOWER_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH)
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Ready when you are!")
 			release
 			end

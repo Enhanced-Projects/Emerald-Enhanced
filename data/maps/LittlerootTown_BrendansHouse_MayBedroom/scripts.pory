@@ -214,7 +214,7 @@ script LRT_May_nightTime {
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}Yay! I was really stuck on this\ngame, anyways.\pI need some fresh air.")
             closemessage
             removeobject(MAY)
-            createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_EAST)
+            createfollower(FOLLOWER_MAY, RyuFollowerSelectNPCScript, DIR_EAST)
             setflag(FLAG_RYU_BH_HIDE_MAY)
             setflag(FLAG_RYU_DH_HIDE_MAY)
             release

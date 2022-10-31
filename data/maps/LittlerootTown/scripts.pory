@@ -42,7 +42,7 @@ LRT_FollowerTest::
 	setflag FLAG_RYU_RECRUITED_MINNIE
 	ach give ACH_NEW_REGION_WHO_DIS
 	removeobject 4
-	createfollower OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, 1
+	createfollower FOLLOWER_MINNIE, RyuFollowerSelectNPCScript, 1
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	release
@@ -331,7 +331,7 @@ script LRT_MayEvent {
 		removeobject(13)
 		setflag(FLAG_RYU_HIDE_LRT_MAY)
 		clearflag(FLAG_RYU_DS_MAY_ACQ)
-		createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_NORTH)
+		createfollower(FOLLOWER_MAY, RyuFollowerSelectNPCScript, DIR_NORTH)
 		release
 		end
 	}
