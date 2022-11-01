@@ -4,6 +4,7 @@
 #include "event_data.h"
 #include "string_util.h"
 #include "overworld_notif.h"
+#include "constants/trainers.h"
 
 void RyuBufferAttendantName (void)
 {
@@ -12,34 +13,37 @@ void RyuBufferAttendantName (void)
     switch(attendant)
     {
             case FOLLOWER_LANETTE:
-                StringCopy(gStringVar1, gText_RyuAttendantNameLanette);
+                StringCopy(gStringVar1, (const u8[])_("Lanette"));
                 break;
 	        case FOLLOWER_MINNIE:
-                StringCopy(gStringVar1, gText_RyuAttendantNameMinnie);
+                StringCopy(gStringVar1, (const u8[])_("Minnie"));
                 break;
 	        case FOLLOWER_DAWN:
-                StringCopy(gStringVar1, gText_RyuAttendantNameDawn);
+                StringCopy(gStringVar1, (const u8[])_("Dawn"));
                 break;
 	        case FOLLOWER_BRENDAN:
-                StringCopy(gStringVar1, gText_RyuAttendantNameBrendan);
+                StringCopy(gStringVar1, (const u8[])_("Brendan"));
                 break;
 	        case FOLLOWER_LEAF:
-                StringCopy(gStringVar1, gText_RyuAttendantNameLana);
+                StringCopy(gStringVar1, (const u8[])_("Lana"));
                 break;
 	        case FOLLOWER_COURTNEY:
-                StringCopy(gStringVar1, gText_RyuAttendantNameCourtney);
+                StringCopy(gStringVar1, (const u8[])_("Courtney"));
                 break;
 	        case FOLLOWER_SHELLY:
-                StringCopy(gStringVar1, gText_RyuAttendantNameShelly);
+                StringCopy(gStringVar1, (const u8[])_("Shelly"));
                 break;
 	        case FOLLOWER_JOY:
-                StringCopy(gStringVar1, gText_RyuAttendantNameJoy);
+                StringCopy(gStringVar1, (const u8[])_("Joy"));
                 break;
 	        case FOLLOWER_MAY:
-                StringCopy(gStringVar1, gText_RyuAttendantNameMay);
+                StringCopy(gStringVar1, (const u8[])_("May"));
+                break;
+	        case FOLLOWER_LUCY:
+                StringCopy(gStringVar1, (const u8[])_("Lucy"));
                 break;
 	        case 0xFFFF:
-                StringCopy(gStringVar1, gText_RyuAttendantNameNone);
+                StringCopy(gStringVar1, (const u8[])_("None"));
                 break;
     }
 
@@ -76,6 +80,9 @@ void RyuDebug_ShowActiveFollower (void)
                 break;
             case FOLLOWER_MAY:
                 DebugPrint(((const u8[]) _("May: 10% FRY/FIT dmg boost.")), 0);
+                break;
+            case FOLLOWER_LUCY:
+                DebugPrint(((const u8[]) _("Lucy: 10% PSN/DRG dmg boost.")), 0);
                 break;
         }
     }
@@ -123,6 +130,10 @@ bool8 RyuFollowerToTrainerID(void)
         case FOLLOWER_MAY:
             gSpecialVar_0x8008 = TRAINER_REL_MAY;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY;
+            return TRUE;
+        case FOLLOWER_LUCY:
+            gSpecialVar_0x8008 = TRAINER_REL_LUCY;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_LUCY;
             return TRUE;
         }
         return FALSE;

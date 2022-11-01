@@ -6819,22 +6819,34 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Ernest2[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Ernest3[] = {
-    {
-    .iv = 20,
-    .lvl = 39,
-    .species = SPECIES_PELIPPER,
-    },
-    {
-    .iv = 20,
-    .lvl = 39,
-    .species = SPECIES_PALOSSAND,
-    },
-    {
-    .iv = 20,
-    .lvl = 39,
-    .species = SPECIES_MACHOKE,
-    }
+static const struct TrainerMonItemCustomMoves sParty_RelLucy[] = {
+	{
+	.iv = 255,
+	.lvl = 91,
+	.species = SPECIES_SEVIPER,
+	.heldItem = ITEM_POISON_BARB,
+	.evspread = 0,
+    .ability = 2,
+	.moves = {MOVE_SLUDGE_BOMB, MOVE_FLAMETHROWER, MOVE_GLARE, MOVE_CLING},
+	},
+	{
+	.iv = 255,
+	.lvl = 92,
+	.species = SPECIES_MILOTIC,
+	.heldItem = ITEM_MYSTIC_WATER,
+	.evspread = 0,
+    .ability = 2,
+	.moves = {MOVE_SURF, MOVE_DRAGON_BREATH, MOVE_AURORA_BEAM, MOVE_POWER_GEM},
+	},
+	{
+	.iv = 255,
+	.lvl = 90,
+	.species = SPECIES_ARBOK,
+	.heldItem = ITEM_SCOPE_LENS,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_GUNK_SHOT, MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
+	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_ChallengerYui[] = {

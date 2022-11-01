@@ -7690,21 +7690,27 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         {
             switch (VarGet(VAR_RYU_FOLLOWER_ID))
             {
-                case OBJ_EVENT_GFX_AQUA_MEMBER_F://Shelly grants increase to dark and water type moves
+                case FOLLOWER_SHELLY://Shelly grants increase to dark and water type moves
                     {
                         if ((moveType == TYPE_WATER) || (moveType == TYPE_DARK))
                             dmg = ((dmg * 110) / 100);
                             break;
                     }
-                case OBJ_EVENT_GFX_MAGMA_MEMBER_F://courtney grants increase to dark and fire type moves
+                case FOLLOWER_COURTNEY://courtney grants increase to dark and fire type moves
                     {
                         if ((moveType == TYPE_FIRE) || (moveType == TYPE_DARK))
                             dmg = ((dmg * 110) / 100);
                             break;
                     }
-                case OBJ_EVENT_GFX_MAY://May grants increase to fairy and fighting type moves
+                case FOLLOWER_MAY://May grants increase to fairy and fighting type moves
                     {
                         if ((moveType == TYPE_FAIRY) || (moveType == TYPE_FIGHTING))
+                            dmg = ((dmg * 110) / 100);
+                            break;
+                    }
+                case FOLLOWER_LUCY://Lucy gives a bonus to poison and dragon type damage
+                    {
+                        if ((moveType == TYPE_POISON) || (moveType == TYPE_DRAGON))
                             dmg = ((dmg * 110) / 100);
                             break;
                     }
@@ -7714,12 +7720,12 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         {
             switch (VarGet(VAR_RYU_FOLLOWER_ID))
             {
-                case OBJ_EVENT_GFX_TWIN:
+                case FOLLOWER_MINNIE:
                     {
                         dmg = ((dmg * 95) / 100); //5% damage decrease from all sources
                         break;
                     }
-                case OBJ_EVENT_GFX_LEAF:
+                case FOLLOWER_LEAF:
                     {
                         if ((moveType == TYPE_FIRE) || (moveType == TYPE_WATER) || (moveType == TYPE_GRASS))
                         {

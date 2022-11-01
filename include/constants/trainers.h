@@ -134,6 +134,7 @@
 #define TRAINER_BACK_PIC_NURSE                  12
 #define TRAINER_BACK_PIC_GOLD                   13
 #define TRAINER_BACK_PIC_KRYSTAL                14
+#define TRAINER_BACK_PIC_LUCY                   15
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1

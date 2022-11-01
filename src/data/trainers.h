@@ -7967,20 +7967,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Ernest2},
     },
 
-    [TRAINER_EMPTY_186] =
+    [TRAINER_REL_LUCY] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_SAILOR,
-        .trainerFaction = FACTION_PROFESSIONALS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_SAILOR,
-        .trainerName = _("Ernest"),
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_PIKE_QUEEN,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_PIKE_QUEEN_LUCY,
+        .trainerName = _("Lucy"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_Ernest3),
-        .party = {.NoItemDefaultMoves = sParty_Ernest3},
+        .partySize = ARRAY_COUNT(sParty_RelLucy),
+        .party = {.ItemCustomMoves = sParty_RelLucy},
     },
 
     [TRAINER_CHALLENGER_YUI] =

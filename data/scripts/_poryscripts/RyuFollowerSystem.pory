@@ -31,6 +31,14 @@ RyuFollower_ShellyScript::
 	goto_if_eq RF_FollowerLeave
 	release
 	end
+
+RyuFollower_LucyScript::
+	call RyuFollower_LucyChatterSelector
+	msgbox RF_LucyDismissQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq RF_FollowerLeave
+	release
+	end
 	
 RyuFollower_LanetteScript::
 	call RyuFollower_LanetteChatterSelector
@@ -186,6 +194,9 @@ RF_OkayAllBetter:
 RF_MayIntroMsg:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}So, Where's the Professor live?$"
 
+RF_LucyDismissQuery:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Aww, do I really have to go?\nMy job is so boring...$"
+
 FollowerDawnSetup::
 	removeobject 2
 	createfollower FOLLOWER_DAWN, RyuFollowerSelectNPCScript, DIR_EAST
@@ -280,6 +291,12 @@ RF_RemoveFollowerSilent::
 	case OBJ_EVENT_GFX_HEX_MANIAC, Ryu_DestroyWithoutPrejudice
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, ryu_end
 	case FOLLOWER_MAY, Ryu_ReturnMayToHome
+	case FOLLOWER_LUCY, Ryu_ReturnLucyPike
+	return
+
+Ryu_ReturnLucyPike::
+	clearflag FLAG_RYU_DISABLE_PIKE
+	destroyfollower
 	return
 
 Ryu_DestroyWithoutPrejudice::
@@ -870,6 +887,24 @@ script RyuFollower_MayChatterSelector {
 	return
 }
 
+script RyuFollower_LucyChatterSelector {
+	random(5)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Ugh... Hoenn's climate is terrible\nfor my skin..."))
+		case 1:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I should have brought my sun hat."))
+		case 2:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Can we stop at a boutique some\ntime?\pI'm running low on moisturizer."))
+		case 3:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Maybe you can rub some lotion\non me later..."))
+		case 4:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}hey... {PLAYER}, do you think I'm...\ncute?"))
+	}
+	closemessage
+	return
+}
+
 script RF_MayStage70 {
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Let's go meet wally in Rusturf\nTunnel.\pI'm really curious as to why\nhe disappeared.")
 	closemessage
@@ -916,6 +951,8 @@ script RyuFollowerSelectNPCScript{
 			goto(MP_FQ_HexerFollowerScript)
 		case FOLLOWER_MAY:
 			goto(RyuFollower_MaySelector)
+		case FOLLOWER_LUCY:
+			goto(RyuFollower_LucyScript)
 	}
 	end
 }

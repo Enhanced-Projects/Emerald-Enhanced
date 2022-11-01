@@ -6489,7 +6489,7 @@ static void Cmd_getmoneyreward(void)
     }
 
     //if player has their rival following them, they get a bonus to money earned.
-    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL) || (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)))
+    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_BRENDAN) || (VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_DAWN)))
         moneyReward = ((moneyReward * 115) / 100);
 
     //if player has the winnings boost AP active, they get 10% more money
@@ -12346,7 +12346,7 @@ static void Cmd_handleballthrow(void)
             * (gBattleMons[gBattlerTarget].maxHP * 3 - gBattleMons[gBattlerTarget].hp * 2)
             / (3 * gBattleMons[gBattlerTarget].maxHP);
 
-        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_WOMAN_2))//If Lanette is following player, catch rate gets an additional 5% boost.
+        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && (VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_LANETTE))//If Lanette is following player, catch rate gets an additional 5% boost.
             odds = ((odds * 105) / 100);
         
         if (CheckAPFlag(AP_CAPTURE_BOOST) == TRUE)

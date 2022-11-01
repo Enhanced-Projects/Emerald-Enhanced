@@ -819,7 +819,7 @@
 #define FLAG_RYU_MAGEARNA_GIVEN                                     0x2FA
 #define FLAG_HIDE_DEOXYS                                            0x2FB
 #define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC
-#define FLAG_UNUSED_0x2FD                                           0x2FD
+#define FLAG_RYU_DISABLE_PIKE                                       0x2FD //set to disable pike when Lucy is with player or at their house.
 #define FLAG_HIDE_VERDANTURF_TOWN_SCOTT                             0x2FE
 #define FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT                  0x2FF
 #define FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE                        0x300

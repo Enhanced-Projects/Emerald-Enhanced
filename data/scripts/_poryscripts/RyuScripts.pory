@@ -895,11 +895,11 @@ Ryu_CheckForPartnerReward::
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_return
 	switch VAR_RYU_FOLLOWER_ID
-	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_GiveShellyMegaAndReturn
-	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_GiveDawnMegaAndReturn
-	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, Ryu_GiveBrendanMegaAndReturn
-	case OBJ_EVENT_GFX_LEAF, Ryu_GiveLeafMegaAndReturn
-	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, Ryu_GiveCourtneyMegaAndReturn
+	case FOLLOWER_SHELLY, Ryu_GiveShellyMegaAndReturn
+	case FOLLOWER_DAWN, Ryu_GiveDawnMegaAndReturn
+	case FOLLOWER_BRENDAN, Ryu_GiveBrendanMegaAndReturn
+	case FOLLOWER_LEAF, Ryu_GiveLeafMegaAndReturn
+	case FOLLOWER_COURTNEY, Ryu_GiveCourtneyMegaAndReturn
 	goto ryu_return
 
 Ryu_GiveShellyMegaAndReturn::

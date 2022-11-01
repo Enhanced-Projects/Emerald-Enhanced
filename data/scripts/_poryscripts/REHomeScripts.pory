@@ -201,6 +201,19 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
+	        case FOLLOWER_LUCY:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}I have to rest pretty often to\nkeep my skin silky smooth.")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lucy and {PLAYER} get tangled up and\nfall asleep for the night.)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (She appears to glow as\n she awakens and stretches.)\p{COLOR LIGHT_RED}{SHADOW RED}hey there, {PLAYER}... did you sleep well?")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
             case 0xFFFF:
                 fadescreen(FADE_FROM_BLACK)
                 special(HealPlayerParty)
@@ -241,6 +254,8 @@ script RyuAttendantScript {
             call(Ryu_AttendantJoy)
 	    case FOLLOWER_MAY:
             call(Ryu_AttendantMay)
+	    case FOLLOWER_LUCY:
+            call(Ryu_AttendantLucy)
     }
     release
     end
@@ -508,6 +523,36 @@ script Ryu_AttendantMay {
     end
 }
 
+script Ryu_AttendantLucy {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}I can hear whispers of\ndaring trainers calling me back.\pShould I leave?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Alright, I'll head back to the Pike.")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_LUCY)
+            trainerbattle_single(TRAINER_REL_LUCY, RyuRE_LucyBattleIntro, RyuRE_LucyBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}I pay really close attention\nto my skin care regimen...")
+    }
+    closemessage
+    releaseall
+    end
+}
+
 script Ryu_ClearBadAttendant {
     msgbox("{COLOR LIGHT_RED}{SHADOW RED}ERROR! Bad Attendant ID!\nReport this on discord!")
     setflag(FLAG_RYU_HIDE_HOME_ATTENDANT)
@@ -642,4 +687,12 @@ text RyuRE_MayBattleIntro {
 
 text RyuRE_MayBattleOutro {
     "Well, this wasn't very suprising."
+}
+
+text RyuRE_LucyBattleIntro {
+    "Oh? You dare challenge\nPike Queen Lucy?"
+}
+
+text RyuRE_LucyBattleOutro {
+    "Hah! Beginner's luck!"
 }

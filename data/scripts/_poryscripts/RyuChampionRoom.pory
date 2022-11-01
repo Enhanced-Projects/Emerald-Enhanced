@@ -20,24 +20,26 @@ script RCR_FollowerIntroSetup {//Dynamically chooses which follower text to disp
 	addvar(VAR_RYU_FOLLOWER_ELITE_MATCHES, 1)
 	addvar(VAR_RYU_FOLLOWER_BATTLES, 1)
 	switch (var(VAR_RYU_FOLLOWER_ID)) {
-		case OBJ_EVENT_GFX_TWIN:
+		case FOLLOWER_MINNIE:
 			msgbox(FMinnieMsg)
-		case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+		case FOLLOWER_SHELLY:
 			msgbox(FShellyMsg)
-		case OBJ_EVENT_GFX_WOMAN_2:
+		case FOLLOWER_LANETTE:
 			msgbox(FLanetteMsg)
-		case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+		case FOLLOWER_DAWN:
 			msgbox(FDawnMsg)
-		case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+		case FOLLOWER_BRENDAN:
 			msgbox(FBrendanMsg)
-		case OBJ_EVENT_GFX_LEAF:
+		case FOLLOWER_LEAF:
 			msgbox(FLeafMsg)
-		case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+		case FOLLOWER_COURTNEY:
 			msgbox(FCourtneyMsg)
-		case OBJ_EVENT_GFX_NURSE:
+		case FOLLOWER_JOY:
 			msgbox(FJoyMsg)
-		case OBJ_EVENT_GFX_MAY:
+		case FOLLOWER_MAY:
 			msgbox(FMayMsg)
+		case FOLLOWER_LUCY:
+			msgbox(FLucyMsg)
 	}
 	closemessage
 	return
@@ -733,7 +735,7 @@ FLeafMsg:
     .string "repertoire!$"
 
 FCourtneyMsg:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}You know, I didn't fancy mself a\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}You know, I didn't fancy myself a\n"
     .string "voyeur... But hurting people in\p"
     .string "such a public way really excites me.\p"
     .string "My pupper is hungry!$"
@@ -748,5 +750,8 @@ FMayMsg:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}At last... Championship.\n"
 	.string "I can finally have an all-out\l"
 	.string "battle!"
+
+FLucyMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Huh. I feel like I've been here\nbefore.\pTrainers at the frontier\nare far scarier.\pThis will be easy.$"
 
 `
