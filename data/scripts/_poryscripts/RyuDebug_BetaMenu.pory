@@ -5,6 +5,11 @@ script StartBetaMenu{
     goto(RDB_BetaMenuStandalone)
 }
 
+script RDB_StartMenuBetaOptionBootstrap{
+    fadescreenspeed(FADE_FROM_BLACK, 0)
+    goto(RDB_BetaMenuStandalone)
+}
+
 script RDB_BetaMenuStandalone{
     buffernumberstring(0, VAR_LAST_KNOWN_GAME_VERSION)
     buffernumberstring(1, VAR_SAVE_FILE_CREATED_ON_VERSION)

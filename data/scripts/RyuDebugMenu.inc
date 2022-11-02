@@ -38,8 +38,13 @@ RyuCantEnableDevBecauseChallenge:
 	
 RyuNowDeveloper:
 	.string "{PLAYER} is now a developer.$"
+
+RyuDebugMenuBootstrap::
+	fadescreenspeed FADE_FROM_BLACK, 0
+	goto RyuDebugMenuScript
 	
 RyuDebugMenuScript::
+	msgbox RyuDebug_msg, MSGBOX_SIGN
 	multichoicedefault 0, 0, MULTI_DEV_MENU_MAIN, 8, 0
 	switch VAR_RESULT
 	case 0, RyuDebug_UtilitiesMenu

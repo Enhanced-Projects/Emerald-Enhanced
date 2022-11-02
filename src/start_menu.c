@@ -55,8 +55,9 @@
 #include "wild_encounter.h"
 #include "start_menu_helper.h"
 
-extern u8 RyuDebugMenuScript[];
-extern u8 RyuStartMenuConfigInfoScript[];
+extern u8 RDB_StartMenuBetaOptionBootstrap[];
+extern u8 RyuDebugMenuBootstrap[];
+
 extern const u8 gText_RyuVersion[];
 
 // Menu actions
@@ -70,6 +71,8 @@ enum
     MENU_ACTION_PLAYER,
     MENU_ACTION_SAVE,
     MENU_ACTION_OPTION,
+    MENU_ACTION_BETA_MENU,
+    MENU_ACTION_DEV_MENU,
     MENU_ACTION_EXIT,
     MENU_ACTION_PLAYER_LINK,
     MENU_ACTION_REST_FRONTIER,
@@ -111,6 +114,8 @@ static bool8 StartMenuJournalCallback(void);
 static bool8 StartMenuPlayerNameCallback(void);
 static bool8 StartMenuSaveCallback(void);
 static bool8 StartMenuOptionCallback(void);
+static bool8 StartMenuBetaMenuCallback(void);
+static bool8 StartMenuDevMenuCallback(void);
 static bool8 StartMenuExitCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
 static bool8 StartMenuBattlePyramidRetireCallback(void);
@@ -167,6 +172,8 @@ static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 15, 0x
 static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 15, 0xC, 4, 0xF, 8};
 
 const u8 sText_PlayTime[] = _("Play Time: ");
+const u8 gText_BetaMenu[] = _("Beta Menu");
+const u8 gText_DevMenu[] = _("Dev Menu");
 
 const u16 gStartMenuButton_Bag[] = INCBIN_U16("graphics/start_menu/start_icon_bag.4bpp");
 const u16 gStartMenuButton_Dexnav[] = INCBIN_U16("graphics/start_menu/start_icon_dexnav.4bpp");
@@ -177,6 +184,8 @@ const u16 gStartMenuButton_Options[] = INCBIN_U16("graphics/start_menu/start_ico
 const u16 gStartMenuButton_Pokedex[] = INCBIN_U16("graphics/start_menu/start_icon_pokedex.4bpp");
 const u16 gStartMenuButton_Pokemon[] = INCBIN_U16("graphics/start_menu/start_icon_pokemon.4bpp");
 const u16 gStartMenuButton_Pokenav[] = INCBIN_U16("graphics/start_menu/start_icon_pokenav.4bpp");
+const u16 gStartMenuButton_Beta[] = INCBIN_U16("graphics/start_menu/start_icon_beta_menu.4bpp");
+const u16 gStartMenuButton_Dev[] = INCBIN_U16("graphics/start_menu/start_icon_dev_menu.4bpp");
 const u16 gStartMenuButton_Save[] = INCBIN_U16("graphics/start_menu/start_icon_save.4bpp");
 const u16 gStartMenuButtonPal[] = INCBIN_U16("graphics/start_menu/start_icon.gbapal");
 
@@ -231,6 +240,16 @@ const struct SpriteFrameImage gStartMenuButtonImages_Save[] =
     {gStartMenuButton_Save, 0x200},
     {gStartMenuButton_Save+0x100, 0x200},
 };
+const struct SpriteFrameImage gStartMenuButtonImages_Beta[] = 
+{
+    {gStartMenuButton_Beta, 0x200},
+    {gStartMenuButton_Beta+0x100, 0x200},
+};
+const struct SpriteFrameImage gStartMenuButtonImages_Dev[] = 
+{
+    {gStartMenuButton_Dev, 0x200},
+    {gStartMenuButton_Dev+0x100, 0x200},
+};
 struct StartMenuAction
 {
     const struct SpriteFrameImage *image;
@@ -251,6 +270,8 @@ static const struct StartMenuAction sStartMenuItems[] =
         {gStartMenuButtonImages_Journal, gText_MenuJournal, {.u8_void = StartMenuJournalCallback}},
         {gStartMenuButtonImages_Save, gText_MenuSave, {.u8_void = StartMenuSaveCallback}},
         {gStartMenuButtonImages_Options, gText_MenuOption, {.u8_void = StartMenuOptionCallback}},
+        {gStartMenuButtonImages_Beta, gText_BetaMenu, {.u8_void = StartMenuBetaMenuCallback}},
+        {gStartMenuButtonImages_Dev, gText_DevMenu, {.u8_void = StartMenuDevMenuCallback}},
         {gStartMenuButtonImages_Empty, gText_MenuExit, {.u8_void = StartMenuExitCallback}},
         {gStartMenuButtonImages_Empty, gText_MenuPlayer, {.u8_void = StartMenuLinkModePlayerNameCallback}},
         {gStartMenuButtonImages_Empty, gText_MenuRest, {.u8_void = StartMenuSaveCallback}},
@@ -384,6 +405,11 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
+    AddStartMenuAction(MENU_ACTION_BETA_MENU);
+    if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
+    {
+        AddStartMenuAction(MENU_ACTION_DEV_MENU);
+    }
 }
 
 static void BuildDexnavStartMenu(void)
@@ -412,6 +438,11 @@ static void BuildDexnavStartMenu(void)
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
+    AddStartMenuAction(MENU_ACTION_BETA_MENU);
+    if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
+        {
+            AddStartMenuAction(MENU_ACTION_DEV_MENU);
+        }
 }
 
 static void BuildLinkModeStartMenu(void)
@@ -1210,16 +1241,7 @@ static bool8 HandleStartMenuInput(void)
             HideStartMenu();
             HideFieldMessageBox();
             ScriptContext2_Enable();
-            ScriptContext1_SetupScript(RyuDebugMenuScript);
-            return TRUE;
-        }
-        else
-        {
-            RemoveExtraStartMenuWindows();
-            HideStartMenu();
-            HideFieldMessageBox();
-            ScriptContext2_Enable();
-            ScriptContext1_SetupScript(RyuStartMenuConfigInfoScript);
+            ScriptContext1_SetupScript(RyuDebugMenuBootstrap);
             return TRUE;
         }
     }
@@ -1447,6 +1469,28 @@ static bool8 StartMenuOptionCallback(void)
     }
 
     return FALSE;
+}
+
+static bool8 StartMenuBetaMenuCallback(void)
+{
+    RemoveExtraStartMenuWindows();
+    HideStartMenu();
+    if (!gPaletteFade.active)
+    {
+        ScriptContext1_SetupScript(RDB_StartMenuBetaOptionBootstrap);
+        return TRUE;
+    }
+}
+
+static bool8 StartMenuDevMenuCallback(void)
+{
+    RemoveExtraStartMenuWindows();
+    HideStartMenu();
+    if (!gPaletteFade.active)
+    {
+        ScriptContext1_SetupScript(RyuDebugMenuBootstrap);
+        return TRUE;
+    }
 }
 
 static bool8 StartMenuExitCallback(void)
