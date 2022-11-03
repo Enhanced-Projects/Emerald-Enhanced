@@ -7667,15 +7667,11 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
           dmg *= 5;
       }
 
-    if ((gBattleMons[gBattlerAttacker].ability == ABILITY_ILLUSION) && (GetBattleMoveSplit(move) == SPLIT_SPECIAL))
+    if ((gBattleMons[gBattlerAttacker].ability == ABILITY_ILLUSIONIST) && (GetBattleMoveSplit(move) == SPLIT_SPECIAL))
     {
         if ((moveType == gBattleMons[gBattlerAttacker].type1) || (moveType == gBattleMons[gBattlerAttacker].type2))
-        { 
             dmg *= 2;
-            mgba_open();
-            mgba_printf(LOGINFO, "Type match for illusion");
-            mgba_close();
-        }
+
     }
 
     //Steven is meant to defeat player in slateport museum

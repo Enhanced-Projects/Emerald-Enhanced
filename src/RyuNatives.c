@@ -1734,7 +1734,6 @@ void BotanyCheck(void)
 
 void BotanyTreeChop(void)
 {
-    u16 treeTableSize = (sizeof(gBotanyTreeRewards));
     u16 rewardItem = gBotanyTreeRewards[Random() % (ARRAY_COUNT(gBotanyTreeRewards))];
     VarSet(VAR_TEMP_0, rewardItem);
 }
