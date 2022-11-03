@@ -778,7 +778,7 @@ script RyuFollower_MinnieChatterSelector {
 }
 
 script RyuFollower_LanetteChatterSelector {
-	random(6)
+	random(7)
 	switch (var(VAR_RESULT)) {
 		case 0:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}...\n...\pOh! Sorry!, you caught me daydreaming!")
@@ -791,7 +791,9 @@ script RyuFollower_LanetteChatterSelector {
 		case 4:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Your wireless pc is weird?\pWhat do you mean?\nIt's not a bug, it's a feature!")
 		case 5:
-			msgbox("{COLOR LIGHT_RED}{SHADOW RED}There's a lot more to Pokémon than what the textbooks say, now that I see them in person.")
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}There's a lot more to Pokémon than what the textbooks say, now that I see them in person."))
+		case 6:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh, don't mind me.\nI'm just taking notes for the field.")
 	}
 	closemessage
 	return
@@ -864,6 +866,9 @@ script RyuFollower_NurseChatterSelector {
 			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Seeing you taking care of your Pokémon makes me happy, thanks for traveling with me!"))
 		case 4:
 			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Did you know that humans and Pokémon used to be equals? Some people even married some Pokémon. But that was a very long time ago. Some people even evolved from Pokémon.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Joy winks at you...)"))
+		case 5:
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}There's nothing wrong with taking a break. I'm here for you if you ever get tired."))
+
 	}
 	closemessage
 	return
