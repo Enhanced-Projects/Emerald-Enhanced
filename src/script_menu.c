@@ -982,6 +982,7 @@ static const u8 sBetaMenuHome[] = _ ("Teleport Home");
 static const u8 sBetaMenuRTC[] = _ ("Reset RTC");
 static const u8 sBetaMenuRetroDex[] = _ ("Fill Dex from Boxes");
 static const u8 sBetaMenuExit[] = _ ("Exit Menu");
+static const u8 sBetaMenuFixFollowers[] = _("Restore Followers");
 
 static const struct ListMenuItem sBotanyConsumablesSet[] =
     {
@@ -1105,7 +1106,8 @@ static const struct ListMenuItem sRyuBetaMenuSet[] =
     {sBetaMenuHome, 5},
     {sBetaMenuRTC, 6},
     {sBetaMenuRetroDex, 7},
-    {sBetaMenuExit, 8}
+    {sBetaMenuFixFollowers, 9},
+    {sBetaMenuExit, 9}
 };
 
 

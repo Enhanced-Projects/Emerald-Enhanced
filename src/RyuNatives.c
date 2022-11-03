@@ -2886,3 +2886,69 @@ void RetroPokedexRegister (void)
                 GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_SET_SEEN);
             }
 }
+
+void Ryu_Restorefollowers(void)
+{
+    u8 count = 0;
+    if (FlagGet(FLAG_RYU_DS_DAWN_PARTNERS) == TRUE) 
+    {
+        FlagClear(FLAG_HIDE_DAWNS_HOUSE_DAWN);
+        count++;
+    }
+    
+    if (FlagGet(FLAG_RYU_DS_BRENDAN_PARTNERS) == TRUE)
+    {
+        FlagClear(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
+        count++;
+    }
+    
+    if (FlagGet(FLAG_RYU_DS_LEAF_PARTNERS) == TRUE)
+    {
+        FlagClear(FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO);
+        count++;
+    }
+
+    if (FlagGet(FLAG_RYU_DS_LANETTE_PARTNERS) == TRUE)
+    {
+        FlagClear(FLAG_HIDE_LANETTES_HOUSE_LANETTE);
+        count++;
+    }
+
+    if (FlagGet(FLAG_RYU_DS_SHELLY_PARTNERS) == TRUE)
+    {
+        FlagClear(FLAG_HIDE_AQUAHQ_SHELLY);
+        count++;
+    }
+
+    if (FlagGet(FLAG_RYU_DS_COURTNEY_PARTNERS) == TRUE)
+    {
+        FlagClear(FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY);
+        count++;
+    }
+
+    if (FlagGet(FLAG_RYU_DS_JOY_PARTNERS) == TRUE)
+    {
+        FlagClear(FLAG_RYU_HIDE_JOY);
+        count++;
+    }
+
+    if (FlagGet(FLAG_RYU_DS_MAY_PARTNERS) == TRUE)
+    {
+        if (gSaveBlock2Ptr->playerGender == MALE)
+        {
+            FlagClear(FLAG_RYU_DH_HIDE_MAY);
+            count++;
+        }    
+        else
+        {
+            FlagClear(FLAG_RYU_DH_HIDE_MAY);
+            count++;
+        }    
+    }
+
+    FlagClear(FLAG_RYU_HIDE_MINNIE);
+    count++;
+
+    gSpecialVar_Result = count;
+    
+}

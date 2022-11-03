@@ -34,6 +34,8 @@ script RDB_BetaMenuStandalone{
         case 7:
             goto(RDBM_RetroFillDex)
         case 8:
+            goto(RDBM_FixFollowers)
+        case 9:
             goto(RDBM_ExitResetMenu)
     }
     goto(RDBM_ExitResetMenu)
@@ -231,6 +233,18 @@ script RDBM_ScriptDelay2s {
 script RDBM_RetroFillDex {
     callnative(RetroPokedexRegister)
     msgbox(format("Successfully scanned boxes for unregistered Pokémon."))
+    release
+    end
+}
+
+script RDBM_FixFollowers{
+    msgbox("Restoring all eligible followers\nto their home location...")
+    delay(60)
+    closemessage
+    callnative(Ryu_Restorefollowers)
+    buffernumberstring(0, VAR_RESULT)
+    msgbox("{STR_VAR_1} followers were restored home.")
+    closemessage
     release
     end
 }
