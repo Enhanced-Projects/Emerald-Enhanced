@@ -1106,7 +1106,7 @@ static const struct ListMenuItem sRyuBetaMenuSet[] =
     {sBetaMenuHome, 5},
     {sBetaMenuRTC, 6},
     {sBetaMenuRetroDex, 7},
-    {sBetaMenuFixFollowers, 9},
+    {sBetaMenuFixFollowers, 8},
     {sBetaMenuExit, 9}
 };
 
