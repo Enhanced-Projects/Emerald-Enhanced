@@ -405,11 +405,10 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_BETA_MENU);
     if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
-    {
         AddStartMenuAction(MENU_ACTION_DEV_MENU);
-    }
+    else
+        AddStartMenuAction(MENU_ACTION_BETA_MENU);
 }
 
 static void BuildDexnavStartMenu(void)
