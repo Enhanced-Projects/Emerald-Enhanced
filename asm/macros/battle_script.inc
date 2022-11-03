@@ -1681,10 +1681,6 @@
 	various \battler, VARIOUS_UPDATE_NICK
 	.endm
 	
-	.macro tryillusionoff battler:req
-	various \battler, VARIOUS_TRY_ILLUSION_OFF
-	.endm
-	
 	.macro spriteignore0hp val:req
 	various BS_ATTACKER, VARIOUS_SET_SPRITEIGNORE0HP
 	.byte \val

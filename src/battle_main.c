@@ -3149,7 +3149,6 @@ void SwitchInClearSetData(void)
     s32 i;
     struct DisableStruct disableStructCopy = gDisableStructs[gActiveBattler];
 
-    ClearIllusionMon(gActiveBattler);
     if (gBattleMoves[gCurrentMove].effect != EFFECT_BATON_PASS)
     {
         for (i = 0; i < NUM_BATTLE_STATS; i++)

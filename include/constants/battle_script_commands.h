@@ -146,7 +146,7 @@
 #define VARIOUS_JUMP_IF_NOT_BERRY               80
 #define VARIOUS_TRACE_ABILITY                   81
 #define VARIOUS_UPDATE_NICK                     82
-#define VARIOUS_TRY_ILLUSION_OFF                83
+#define VARIOUS_UNUSED                          83
 #define VARIOUS_SET_SPRITEIGNORE0HP             84
 #define VARIOUS_HANDLE_FORM_CHANGE              85
 #define VARIOUS_GET_STAT_VALUE                  86

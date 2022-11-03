@@ -1663,7 +1663,7 @@ RS_HolidayNoSpace::
 `
 
 script RyuScript_NoEventNPCScript{
-	msgbox{"There's no event going on.\nWhy are you here?"}
+	msgbox("There's no event going on.\nWhy are you here?")
 	closemessage
 	release
 	end

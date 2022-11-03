@@ -825,7 +825,6 @@ static void SetBattlerData(u8 battlerId)
 {
     if (!IsBattlerAIControlled(battlerId))
     {
-        struct Pokemon *illusionMon;
         u32 i;
 
         // Use the known battler's ability.
@@ -847,10 +846,6 @@ static void SetBattlerData(u8 battlerId)
             if (BATTLE_HISTORY->usedMoves[battlerId][i] == 0)
                 gBattleMons[battlerId].moves[i] = 0;
         }
-
-        // Simulate Illusion
-        if ((illusionMon = GetIllusionMonPtr(battlerId)) != NULL)
-            gBattleMons[battlerId].species = GetMonData(illusionMon, MON_DATA_SPECIES2);
     }
 }
 

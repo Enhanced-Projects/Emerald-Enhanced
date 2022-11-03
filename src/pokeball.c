@@ -915,7 +915,7 @@ static void SpriteCB_ReleaseMonFromBall(struct Sprite *sprite)
 
     if (gMain.inBattle)
     {
-        struct Pokemon *mon, *illusionMon;
+        struct Pokemon *mon;
         s8 pan;
         u16 wantedCryCase;
         u8 taskId;
@@ -955,11 +955,7 @@ static void SpriteCB_ReleaseMonFromBall(struct Sprite *sprite)
         gBattleSpritesDataPtr->healthBoxesData[battlerId].field_1_x40 = 1;
         taskId = CreateTask(Task_PlayCryWhenReleasedFromBall, 3);
 
-        illusionMon = GetIllusionMonPtr(battlerId);
-        if (illusionMon != NULL)
-            gTasks[taskId].tCryTaskSpecies = GetMonData(illusionMon, MON_DATA_SPECIES);
-        else
-            gTasks[taskId].tCryTaskSpecies = GetMonData(mon, MON_DATA_SPECIES);
+        gTasks[taskId].tCryTaskSpecies = GetMonData(mon, MON_DATA_SPECIES);
 
         gTasks[taskId].tCryTaskPan = pan;
         gTasks[taskId].tCryTaskWantedCry = wantedCryCase;
@@ -1446,16 +1442,12 @@ void FreeBallGfx(u8 ballId)
 
 static u16 GetBattlerPokeballItemId(u8 battlerId)
 {
-    struct Pokemon *mon, *illusionMon;
+    struct Pokemon *mon;
 
     if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
         mon = &gPlayerParty[gBattlerPartyIndexes[battlerId]];
     else
         mon = &gEnemyParty[gBattlerPartyIndexes[battlerId]];
-
-    illusionMon = GetIllusionMonPtr(battlerId);
-    if (illusionMon != NULL)
-        mon = illusionMon;
 
     return GetMonData(mon, MON_DATA_POKEBALL);
 }

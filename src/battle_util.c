@@ -781,7 +781,6 @@ static const u8 sAbilitiesNotTraced[ABILITIES_COUNT] =
     [ABILITY_DISGUISE] = 1,
     [ABILITY_FLOWER_GIFT] = 1,
     [ABILITY_FORECAST] = 1,
-    [ABILITY_ILLUSION] = 1,
     [ABILITY_IMPOSTER] = 1,
     [ABILITY_MULTITYPE] = 1,
     [ABILITY_NONE] = 1,
@@ -3882,7 +3881,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             if (IsBattlerAlive(BATTLE_OPPOSITE(battler))
                 && !(gBattleMons[BATTLE_OPPOSITE(battler)].status2 & (STATUS2_TRANSFORMED | STATUS2_SUBSTITUTE))
                 && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED)
-                && !(gBattleStruct->illusion[BATTLE_OPPOSITE(battler)].on)
                 && !(gStatuses3[BATTLE_OPPOSITE(battler)] & STATUS3_SEMI_INVULNERABLE))
             {
                 gBattlerTarget = BATTLE_OPPOSITE(battler);
@@ -4814,14 +4812,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 gBattleMons[gBattlerAttacker].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_CuteCharmActivates;
-                effect++;
-            }
-            break;
-        case ABILITY_ILLUSION:
-            if (gBattleStruct->illusion[gBattlerTarget].on && !gBattleStruct->illusion[gBattlerTarget].broken && TARGET_TURN_DAMAGED)
-            {
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_IllusionOff;
                 effect++;
             }
             break;
@@ -7677,6 +7667,17 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
           dmg *= 5;
       }
 
+    if ((gBattleMons[gBattlerAttacker].ability == ABILITY_ILLUSION) && (GetBattleMoveSplit(move) == SPLIT_SPECIAL))
+    {
+        if ((moveType == gBattleMons[gBattlerAttacker].type1) || (moveType == gBattleMons[gBattlerAttacker].type2))
+        { 
+            dmg *= 2;
+            mgba_open();
+            mgba_printf(LOGINFO, "Type match for illusion");
+            mgba_close();
+        }
+    }
+
     //Steven is meant to defeat player in slateport museum
     if ((VarGet(VAR_RYU_QUEST_AQUA) == 40) && (FlagGet(FLAG_TEMP_E) == 1) && GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT)
         dmg /= 10;
@@ -8176,67 +8177,6 @@ bool32 CanBattlerGetOrLoseItem(u8 battlerId, u16 itemId)
         return FALSE;
     else
         return TRUE;
-}
-
-struct Pokemon *GetIllusionMonPtr(u32 battlerId)
-{
-    if (gBattleStruct->illusion[battlerId].broken)
-        return NULL;
-    if (!gBattleStruct->illusion[battlerId].set)
-    {
-        if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
-            SetIllusionMon(&gPlayerParty[gBattlerPartyIndexes[battlerId]], battlerId);
-        else
-            SetIllusionMon(&gEnemyParty[gBattlerPartyIndexes[battlerId]], battlerId);
-    }
-    if (!gBattleStruct->illusion[battlerId].on)
-        return NULL;
-
-    return gBattleStruct->illusion[battlerId].mon;
-}
-
-void ClearIllusionMon(u32 battlerId)
-{
-    memset(&gBattleStruct->illusion[battlerId], 0, sizeof(gBattleStruct->illusion[battlerId]));
-}
-
-bool32 SetIllusionMon(struct Pokemon *mon, u32 battlerId)
-{
-    struct Pokemon *party, *partnerMon;
-    s32 i, id;
-
-    gBattleStruct->illusion[battlerId].set = 1;
-    if (GetMonAbility(mon) != ABILITY_ILLUSION)
-        return FALSE;
-
-    if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
-        party = gPlayerParty;
-    else
-        party = gEnemyParty;
-
-    if (IsBattlerAlive(BATTLE_PARTNER(battlerId)))
-        partnerMon = &party[gBattlerPartyIndexes[BATTLE_PARTNER(battlerId)]];
-    else
-        partnerMon = mon;
-
-    // Find last alive non-egg pokemon.
-    for (i = PARTY_SIZE - 1; i >= 0; i--)
-    {
-        id = i;
-        if (GetMonData(&party[id], MON_DATA_SANITY_HAS_SPECIES)
-            && GetMonData(&party[id], MON_DATA_HP)
-            && &party[id] != mon
-            && &party[id] != partnerMon)
-        {
-            gBattleStruct->illusion[battlerId].on = 1;
-            gBattleStruct->illusion[battlerId].broken = 0;
-            gBattleStruct->illusion[battlerId].partyId = id;
-            gBattleStruct->illusion[battlerId].mon = &party[id];
-            return TRUE;
-        }
-    }
-
-    return FALSE;
 }
 
 bool8 ShouldGetStatBadgeBoost(u16 badgeFlag, u8 battlerId)

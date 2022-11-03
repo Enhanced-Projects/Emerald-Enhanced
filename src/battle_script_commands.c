@@ -4686,7 +4686,7 @@ static void Cmd_playanimation(void)
     if (gBattlescriptCurrInstr[2] == B_ANIM_STATS_CHANGE
         || gBattlescriptCurrInstr[2] == B_ANIM_SNATCH_MOVE
         || gBattlescriptCurrInstr[2] == B_ANIM_MEGA_EVOLUTION
-        || gBattlescriptCurrInstr[2] == B_ANIM_ILLUSION_OFF
+        || gBattlescriptCurrInstr[2] == B_ANIM_UNUSED
         || gBattlescriptCurrInstr[2] == B_ANIM_FORM_CHANGE
         || gBattlescriptCurrInstr[2] == B_ANIM_SUBSTITUTE_FADE)
     {
@@ -4733,7 +4733,7 @@ static void Cmd_playanimation2(void) // animation Id is stored in the first poin
     if (*animationIdPtr == B_ANIM_STATS_CHANGE
         || *animationIdPtr == B_ANIM_SNATCH_MOVE
         || *animationIdPtr == B_ANIM_MEGA_EVOLUTION
-        || *animationIdPtr == B_ANIM_ILLUSION_OFF
+        || *animationIdPtr == B_ANIM_UNUSED
         || *animationIdPtr == B_ANIM_FORM_CHANGE
         || *animationIdPtr == B_ANIM_SUBSTITUTE_FADE)
     {
@@ -7486,15 +7486,6 @@ static void Cmd_various(void)
         gBattleMons[gActiveBattler].ability = gBattleStruct->tracedAbility[gActiveBattler];
         RecordAbilityBattle(gActiveBattler, gBattleMons[gActiveBattler].ability);
         break;
-    case VARIOUS_TRY_ILLUSION_OFF:
-        if (GetIllusionMonPtr(gActiveBattler) != NULL)
-        {
-            gBattlescriptCurrInstr += 3;
-            BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_IllusionOff;
-            return;
-        }
-        break;
     case VARIOUS_SET_SPRITEIGNORE0HP:
         gBattleStruct->spriteIgnore0Hp = gBattlescriptCurrInstr[3];
         gBattlescriptCurrInstr += 4;
@@ -7814,7 +7805,7 @@ static void Cmd_various(void)
             { // Can't copy these abilities.
             case ABILITY_POWER_OF_ALCHEMY:  case ABILITY_RECEIVER:
             case ABILITY_FORECAST:          case ABILITY_MULTITYPE:
-            case ABILITY_FLOWER_GIFT:       case ABILITY_ILLUSION:
+            case ABILITY_FLOWER_GIFT:
             case ABILITY_WONDER_GUARD:      case ABILITY_ZEN_MODE:
             case ABILITY_STANCE_CHANGE:     case ABILITY_IMPOSTER:
             case ABILITY_POWER_CONSTRUCT:   case ABILITY_BATTLE_BOND:
@@ -10033,7 +10024,6 @@ static void Cmd_transformdataexecution(void)
     gChosenMove = 0xFFFF;
     gBattlescriptCurrInstr++;
     if (gBattleMons[gBattlerTarget].status2 & STATUS2_TRANSFORMED
-        || gBattleStruct->illusion[gBattlerTarget].on
         || gStatuses3[gBattlerTarget] & STATUS3_SEMI_INVULNERABLE)
     {
         gMoveResultFlags |= MOVE_RESULT_FAILED;

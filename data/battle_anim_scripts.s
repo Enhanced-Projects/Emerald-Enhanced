@@ -783,7 +783,6 @@ gBattleAnims_General::
 	.4byte General_TerrainGrassy
 	.4byte General_TerrainElectric
 	.4byte General_TerrainPsychic
-	.4byte General_IllusionOff
 	.4byte General_FormChange
 	.4byte General_SlideOffScreen
 	.4byte General_RyuAffectionBoostHeartAnim
@@ -24339,13 +24338,6 @@ General_WishHeal:
 	call HealingEffect
 	waitforvisualfinish
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 3, 10, 0, RGB_BLACK
-	end
-	
-General_IllusionOff:
-	monbg ANIM_TARGET
-	createvisualtask AnimTask_TransformMon, 2, 0, 1
-	waitforvisualfinish
-	clearmonbg ANIM_TARGET
 	end
 	
 General_FormChange:

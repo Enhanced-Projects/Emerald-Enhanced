@@ -2319,9 +2319,6 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     const u8 *colorMale = gText_DynColor2Male, *colorFemale = gText_DynColor1Female, *colorGenderless = gText_DynColor2;
     u8 gender;
     u8 bgThemeColor = 2;
-    struct Pokemon *illusionMon = GetIllusionMonPtr(gSprites[healthboxSpriteId].hMain_Battler);
-    if (illusionMon != NULL)
-        mon = illusionMon;
 
     if (VarGet(VAR_HAT_THEME_UI_NUMBER) != THEME_UI_VANILLA)
         bgThemeColor = 0;

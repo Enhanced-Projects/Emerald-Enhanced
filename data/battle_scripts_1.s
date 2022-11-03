@@ -5062,7 +5062,6 @@ BattleScript_EffectCamouflage::
 	goto BattleScript_MoveEnd
 
 BattleScript_FaintAttacker::
-	tryillusionoff BS_ATTACKER
 	playfaintcry BS_ATTACKER
 	pause 0x40
 	dofaintanimation BS_ATTACKER
@@ -5074,7 +5073,6 @@ BattleScript_FaintAttacker::
 	return
 
 BattleScript_FaintTarget::@If something gets added here, add to the 4 below!
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
@@ -5089,7 +5087,6 @@ BattleScript_FaintTarget::@If something gets added here, add to the 4 below!
 	return
 
 BattleScript_FaintTarget2x::
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
@@ -5103,7 +5100,6 @@ BattleScript_FaintTarget2x::
 	return
 
 BattleScript_FaintTarget4x::
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
@@ -5117,7 +5113,6 @@ BattleScript_FaintTarget4x::
 	return
 
 BattleScript_FaintTarget10x::
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
@@ -5131,7 +5126,6 @@ BattleScript_FaintTarget10x::
 	return
 
 BattleScript_FaintTarget20x::
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
@@ -5172,7 +5166,6 @@ BattleScript_FaintedMonTryChooseAnother:
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_x400000, BattleScript_FaintedMonChooseAnother
 	jumpifbyte CMP_EQUAL, sBATTLE_STYLE, 0x1, BattleScript_FaintedMonChooseAnother
 	jumpifcantswitch BS_PLAYER1, BattleScript_FaintedMonChooseAnother
-	setbyte sILLUSION_NICK_HACK, 1
 	printstring STRINGID_ENEMYABOUTTOSWITCHPKMN
 	setbyte gBattleCommunication, 0x0
 	yesnobox
@@ -6449,17 +6442,6 @@ BattleScript_TargetFormChange::
 	playanimation BS_TARGET, B_ANIM_FORM_CHANGE, NULL
 	waitanimation
 	handleformchange BS_TARGET, 2 
-	return
-
-BattleScript_IllusionOff::
-	spriteignore0hp TRUE
-	playanimation BS_TARGET, B_ANIM_ILLUSION_OFF, NULL
-	waitanimation
-	updatenick BS_TARGET
-	waitstate
-	spriteignore0hp FALSE
-	printstring STRINGID_ILLUSIONWOREOFF
-	waitmessage 0x40
 	return
 
 BattleScript_AnticipationActivates::

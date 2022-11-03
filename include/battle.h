@@ -418,15 +418,6 @@ struct MegaEvolutionData
     bool8 isWishMegaEvo;
 };
 
-struct Illusion
-{
-    u8 on;
-    u8 set;
-    u8 broken;
-    u8 partyId;
-    struct Pokemon *mon;
-};
-
 struct BattleStruct
 {
     u8 turnEffectsTracker;
@@ -533,7 +524,6 @@ struct BattleStruct
     u8 tracedAbility[MAX_BATTLERS_COUNT];
     u16 hpBefore[MAX_BATTLERS_COUNT]; // Hp of battlers before using a move. For Berserk
     bool8 spriteIgnore0Hp;
-    struct Illusion illusion[MAX_BATTLERS_COUNT];
     s8 aiFinalScore[MAX_BATTLERS_COUNT][MAX_BATTLERS_COUNT][MAX_MON_MOVES]; // AI, target, moves to make debugging easier
     u8 soulheartBattlerId;
     u8 friskedBattler; // Frisk needs to identify 2 battlers in double battles.
@@ -610,7 +600,6 @@ struct BattleScripting
     u16 savedMoveEffect; // For moves hitting multiple targets.
     u16 moveEffect;
     u16 multihitMoveEffect;
-    u8 illusionNickHack; // To properly display nick in STRINGID_ENEMYABOUTTOSWITCHPKMN.
 };
 
 // rom_80A5C6C
