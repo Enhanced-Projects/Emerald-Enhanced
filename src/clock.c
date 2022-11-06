@@ -59,16 +59,16 @@ void UpdatePerHour(struct Time *localTime)
             if ((gLocalTime.hours >= 14) && (gLocalTime.hours <= 20)) //betwen 2pm and 8pm rival hangs out at lab. Different dialogue.
             {
                 if (gSaveBlock2Ptr->playerGender == MALE)
-                {                                     //OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
-                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 105))// 3a. don't bother if they are currently following player.|No constant here because it's undefined in this context
+                {                                     
+                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_DAWN))// 3a. don't bother if they are currently following player.
                        {
                            FlagSet(FLAG_HIDE_DAWNS_HOUSE_DAWN);
                            FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
                        }
                 }
                 else
-                {                                     //OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
-                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 100))//see 3a
+                {                                     
+                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_BRENDAN))//see 3a
                        {
                            FlagSet(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
                            FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
@@ -80,7 +80,7 @@ void UpdatePerHour(struct Time *localTime)
             {
                if (gSaveBlock2Ptr->playerGender == FEMALE)
                {
-                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 100))//see 3a
+                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_BRENDAN))//see 3a
                        {
                            FlagClear(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
                            FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
@@ -88,7 +88,7 @@ void UpdatePerHour(struct Time *localTime)
                }
                else
                {
-                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 105)) //see 3a
+                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_DAWN)) //see 3a
                        {
                            FlagClear(FLAG_HIDE_DAWNS_HOUSE_DAWN);
                            FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
