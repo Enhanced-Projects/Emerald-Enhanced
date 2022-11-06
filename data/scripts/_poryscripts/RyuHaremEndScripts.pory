@@ -62,7 +62,7 @@ script RyuRivalHaremIntro {
 		turnobject(PLAYER, DIR_WEST)
 		turnobject(BRENDAN, DIR_EAST)
 	}
-	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}So the reason I called you here is that you've touched the hearts of so many people. All of these people, including myself, got together to get you a gift!"))
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}So the reason I called you here is\nthat you've touched the hearts of\lso many people.\pAll of these people, including me,\ngot together to get you a gift!")
 	closemessage
 	turnobject(PLAYER, DIR_SOUTH)
 	turnobject(DAWN, DIR_SOUTH)
