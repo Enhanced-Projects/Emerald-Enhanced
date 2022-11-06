@@ -32,6 +32,18 @@ const u16 gRyuPropertyData[NUM_PROPERTIES][7] = { //property id, property value,
     [PROPERTY_MOSSDEEP  ] = {30000, 1500, 13, 14, 255, 3, 8},
 };
 
+int CheckIfInPlayerHome(void)
+{
+    u32 i;
+    for (i = 0;i < NUM_PROPERTIES;i++)
+        {
+            if (gSaveBlock1Ptr->location.mapGroup == gRyuPropertyData[i][2])
+                if (gSaveBlock1Ptr->location.mapNum == gRyuPropertyData[i][3])
+                    return i;
+        }
+        return 0xFFFF;
+}
+
 const u8 gRyuPropertyNames[NUM_PROPERTIES][22] = {
     [PROPERTY_DEWFORD]    = _("Dewford Island Home"),
     [PROPERTY_FALLARBOR]  = _("Fallarbor Town House"),
@@ -77,28 +89,22 @@ const u8 gRyuDamageTypeNamesTable[NUM_DAMAGE_TYPES][26] = { //will be buffered w
 
 u8 const gRyuInterestNotifyString[] = _("You earned ¥{STR_VAR_1} in interest.");
 
-void RyuCheckIfFollowerCanStay (void)
+bool32 RyuCheckIfFollowerCanStay (void)
 {
     u16 follower = (VarGet(VAR_RYU_FOLLOWER_ID));
-    gSpecialVar_0x8004 = TRUE;
-    switch (follower) 
+
+    if ((follower == 0) || 
+        (follower == OBJ_EVENT_GFX_LASS ) || 
+        (follower == OBJ_EVENT_GFX_MAGMA_MEMBER_M) || 
+        (follower == OBJ_EVENT_GFX_HEX_MANIAC) || 
+        (FlagGet(FLAG_RYU_HAS_FOLLOWER) == FALSE))
     {
-        case OBJ_EVENT_GFX_LASS:
-            gSpecialVar_0x8004 = FALSE;
-            break;
-        case OBJ_EVENT_GFX_MAGMA_MEMBER_M:
-            gSpecialVar_0x8004 = FALSE;
-            break;
-        case OBJ_EVENT_GFX_HEX_MANIAC:
-            gSpecialVar_0x8004 = FALSE;
-            break;
+        return FALSE;
     }
-
-    if (follower == 0)
-        gSpecialVar_0x8004 = FALSE;
-
-    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == FALSE)
-            gSpecialVar_0x8004 = FALSE;
+    else
+    {
+        return TRUE;
+    }
 }
 
 //DAILY TASKS

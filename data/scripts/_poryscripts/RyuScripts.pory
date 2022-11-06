@@ -1255,13 +1255,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	goto_if_set(FLAG_RYU_HALOWEEN_2022, DBt1)
 	release
-	end
-}
-script DBt1{
-	msgbox("nope")
-	closemessage
 	end
 }
 

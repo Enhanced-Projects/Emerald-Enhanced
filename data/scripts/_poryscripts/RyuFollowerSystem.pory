@@ -926,9 +926,9 @@ script RF_NurseChallenge {
 }
 
 script RyuFollowerSelectNPCScript{
-	specialvar(VAR_0x8003, CheckIfPlayerOwnsCurrentProperty)
-	callnative(RyuCheckIfFollowerCanStay)
-	if ((var(VAR_0x8003) == 1) && (flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) && (var(VAR_0x8004) == TRUE)) {
+	specialvar(VAR_0x8003, CheckIfInPlayerHome)
+	specialvar(VAR_0x8004, RyuCheckIfFollowerCanStay)
+	if ((var(VAR_0x8003) == TRUE) && (flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) && (var(VAR_0x8004) == TRUE)) {
 		call(SetFollowerAsAttendant)
 	}
 	switch (var(VAR_RYU_FOLLOWER_ID)) {

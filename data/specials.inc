@@ -574,3 +574,5 @@ gSpecials:: @ 81DBA64
 	def_special CheckDeliverySuccessful
 	def_special CheckFullDeliveryQueueFinished
 	def_special RyuChallengeCheck
+	def_special RyuCheckIfFollowerCanStay
+	def_special CheckIfInPlayerHome
