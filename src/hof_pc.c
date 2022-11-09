@@ -9,7 +9,7 @@
 #include "constants/rgb.h"
 
 static void ReshowPCMenuAfterHallOfFamePC(void);
-void Task_WaitForPaletteFade(u8);
+static void Task_WaitForPaletteFade(u8);
 
 void AccessHallOfFamePC(void)
 {
@@ -33,7 +33,7 @@ static void ReshowPCMenuAfterHallOfFamePC(void)
     CreateTask(Task_WaitForPaletteFade, 10);
 }
 
-void Task_WaitForPaletteFade(u8 taskId)
+static void Task_WaitForPaletteFade(u8 taskId)
 {
     if (!gPaletteFade.active)
         DestroyTask(taskId);

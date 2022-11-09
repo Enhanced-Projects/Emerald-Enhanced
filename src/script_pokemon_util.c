@@ -160,7 +160,7 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
     ZeroEnemyPartyMons();
     if ((gSaveBlock1Ptr->location.mapGroup == 33) && (gSaveBlock1Ptr->location.mapNum = 4))
     {
-        level = 250;
+        level = MAX_LEVEL;
     }
     CreateMon(&gEnemyParty[0], species, level, 32, 0, 0, OT_ID_PLAYER_ID, 0);
     if (item)

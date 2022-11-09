@@ -19,9 +19,6 @@
 #include "scripted_encounters.h"
 #include "sound.h"
 #include "cutscene.h"
-#include "palette.h"
-#include "field_weather.h"
-#include "constants/rgb.h"
 
 extern const u8 RyuGlobal_CancelDailyQuest[];
 extern void GetPlayerPosition(struct MapPosition *);
@@ -346,7 +343,6 @@ void RyuCheckAquaQuestNotifications(void)
 }
 
 extern void RyuSavePlayTimeChallenge(void);
-extern void Task_WaitForPaletteFade(u8 taskId);
 
 void RyuDoNotifyTasks(void)
 {
@@ -371,7 +367,6 @@ void RyuDoNotifyTasks(void)
 
     if ((FlagGet(FLAG_RYU_UNDERWORLD) == TRUE) && (CheckAchievement(ACH_THE_PHOENIX) == FALSE) && (FlagGet(FLAG_RYU_NOTIFIED_UNDERWORLD) == FALSE))
     {
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB(10, 0, 0));
         PlaySE(79);
         ShowFieldMessage((const u8[]) _(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(A voice echoes in your head)\n{COLOR RED}{SHADOW BLUE}WHY DO YOU DENY FATE?!\pWE WILL NOT ABIDE DISOBEDIENCE!!"));
         FlagSet(FLAG_RYU_NOTIFIED_UNDERWORLD);

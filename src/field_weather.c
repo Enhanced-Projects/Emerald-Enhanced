@@ -755,10 +755,6 @@ void FadeScreen(u8 mode, s8 delay)
         fadeColor = RGB_WHITEALPHA;
         fadeOut = TRUE;
         break;
-    case FADE_TO_RED:
-        fadeColor = RGB(10, 0, 0);
-        fadeOut = FALSE;
-        break;
     default:
         return;
     }
