@@ -1,0 +1,169 @@
+//mapscripts Underworld_MapScripts {}
+raw`
+Underworld_MapScripts::
+    map_script ON_FRAME, UnderworldOnFrameScript
+    .byte 0
+
+UnderworldOnFrameScript::
+map_script_2 VAR_TEMP_A, 0, UW_Start4Horsemen
+.2byte 0
+`
+
+script UW_Start4Horsemen {
+    lock
+    setvar(VAR_TEMP_A, 100)
+    msgbox("{COLOR RED}{SHADOW BLUE}You who denies fate...\nYou will be tested...\pDefeat the 4 horsemen...\nor perish...")
+    callnative(RyuForceSaveTheGame)
+    closemessage
+    msgbox(format("You may not leave this place until you have proven yourself... or perished."))
+    release
+    end
+}
+
+script RyuScript_Reaper {
+    lock
+    playbgm(MUS_REKKUU_KOURIN)
+    goto_if_unset(FLAG_RYU_WAR, RyuScript_Reaper_NotReady)
+    goto_if_unset(FLAG_RYU_FAMINE, RyuScript_Reaper_NotReady)
+    goto_if_unset(FLAG_RYU_PLAGUE, RyuScript_Reaper_NotReady)
+    goto_if_unset(FLAG_RYU_DEATH, RyuScript_Reaper_NotReady)
+    clearflag(FLAG_RYU_FACING_HORSEMAN)
+    setflag(FLAG_RYU_FACING_REAPER)
+    msgbox("Thou hast passed the tribulations\nbefore thee.\pNow, prepare thyself for oblivion!")
+    closemessage
+    setwildbattle(SPECIES_ARCEUS, 250, ITEM_NONE)
+    special(BattleSetup_StartLegendaryBattle)
+    waitstate
+    clearflag(FLAG_RYU_FACING_REAPER)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    switch (var(VAR_RESULT)){
+        case B_OUTCOME_WON:
+            msgbox("Thou hast proven thyself... Formidable.")
+            closemessage
+            release
+            end
+        case B_OUTCOME_CAUGHT:
+            msgbox("Thou hast proven thyself... Worthy.")
+            closemessage
+            setflag(FLAG_RYU_REAPER)
+            ach(give, ACH_THE_PHOENIX)
+            clearflag(FLAG_RYU_WAYSTONE_DISABLED)
+            warpsilent(MAP_LITTLEROOT_TOWN, 255, 12, 9)
+            release
+            end
+        case B_OUTCOME_LOST:
+            msgbox("Thy punishment shall be oblivion...")
+            closemessage
+            setflag(FLAG_RYU_LIMBO)
+            warpsilent(MAP_LIMBO, 255, 3, 3)
+            waitstate
+    }
+    release
+    end
+}
+
+script RyuScript_Reaper_NotReady {
+    msgbox("Complete the trials before you.\nOnly then will your true test\lbegin.")
+    closemessage
+    release
+    end
+}
+
+script RyuScript_HorsemanOfWar {
+    if (flag(FLAG_RYU_WAR) == TRUE){
+        msgbox("Thou hast prevailed in war.")
+        closemessage
+        release
+        end
+    }
+    setflag(FLAG_RYU_FACING_HORSEMAN)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Some of Your Pokémon have perished...)")
+    callnative(RyuApplyWarEffects)
+    playse(SE_FAINT)
+    waitse
+    setwildbattle(SPECIES_KABUTOPS, 250, ITEM_NONE)
+    special(BattleSetup_StartLegendaryBattle)
+    waitstate
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_WON){
+        setflag(FLAG_RYU_WAR)
+    }
+    msgbox("War harms all...")
+    clearflag(FLAG_RYU_FACING_HORSEMAN)
+    release
+    end
+}
+
+script RyuScript_HorsemanPlague {
+    if (flag(FLAG_RYU_PLAGUE) == TRUE){
+        msgbox("Thou hast surpassed Plague.")
+        closemessage
+        release
+        end
+    }
+    setflag(FLAG_RYU_FACING_HORSEMAN)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your Pokémon suffer grave\nsickness...)")
+    callnative(RyuApplyPlagueEffects)
+    playse(SE_DOKU)
+    waitse
+    setwildbattle(SPECIES_WEEZING, 250, ITEM_NONE)
+    special(BattleSetup_StartLegendaryBattle)
+    waitstate
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_WON){
+        setflag(FLAG_RYU_PLAGUE)
+    }
+    msgbox("The Plague does not slow...")
+    clearflag(FLAG_RYU_FACING_HORSEMAN)
+    release
+    end
+}
+
+script RyuScript_HorsemanDeath {
+    if (flag(FLAG_RYU_DEATH) == TRUE){
+        msgbox("Thou hast proven thyself through\nDeath.")
+        closemessage
+        release
+        end
+    }
+    setflag(FLAG_RYU_FACING_HORSEMAN)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Some of your Pokémon have\nperished...)")
+    callnative(RyuApplyDeathEffects)
+    playse(SE_FAINT)
+    waitse
+    setwildbattle(SPECIES_GENGAR, 250, ITEM_NONE)
+    special(BattleSetup_StartLegendaryBattle)
+    waitstate
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_WON){
+        setflag(FLAG_RYU_DEATH)
+    }
+    msgbox("Death comes for all... eventually...")
+    clearflag(FLAG_RYU_FACING_HORSEMAN)
+    release
+    end
+}
+
+script RyuScript_HorsemanFamine {
+    if (flag(FLAG_RYU_FAMINE) == TRUE){
+        msgbox("Thou hast staved hunger...")
+        closemessage
+        release
+        end
+    }
+    setflag(FLAG_RYU_FACING_HORSEMAN)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your Pokémon suffer a\ngreat hunger...)")
+    callnative(RyuApplyFamineEffects)
+    playse(SE_W071)
+    setwildbattle(SPECIES_SNORLAX, 250, ITEM_NONE)
+    special(BattleSetup_StartLegendaryBattle)
+    waitstate
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_WON){
+        setflag(FLAG_RYU_FAMINE)
+    }
+    msgbox("Famine culls the herd...")
+    clearflag(FLAG_RYU_FACING_HORSEMAN)
+    release
+    end
+}

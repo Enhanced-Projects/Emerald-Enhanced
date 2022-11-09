@@ -513,7 +513,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuCalculateCurrentExpCoefficient
 	def_special RyuGenerateReward
 	def_special RyuGiveKoutaMawile
-	def_special RyuSetIVs
 	def_special RyuWarp
 	def_special RyuWarp2
 	def_special RyuCheckTempVars

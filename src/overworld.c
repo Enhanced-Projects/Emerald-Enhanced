@@ -411,6 +411,11 @@ void SetWarpDestinationToLimbo(void) //challenge over
         SetWarpDestination(33, 3, 255, 2, 1);
 }
 
+void SetWarpDestinationToUnderworld(void) //face death
+{
+        SetWarpDestination(33, 4, 255, 5, 10);
+}
+
 
 // code
 void DoWhiteOut(void)
@@ -433,6 +438,9 @@ void DoWhiteOut(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuWipeParty();
+
+    if (FlagGet(FLAG_RYU_UNDERWORLD) == FALSE)
+        FlagSet(FLAG_RYU_PREMATURE_DEATH);
 
     FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
 

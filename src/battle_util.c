@@ -3090,7 +3090,10 @@ u8 AtkCanceller_UnableToUseMove(void)
                 gBattleMons[gBattlerAttacker].status2 &= ~(STATUS2_RECHARGE);
                 gDisableStructs[gBattlerAttacker].rechargeTimer = 0;
                 CancelMultiTurnMoves(gBattlerAttacker);
-                gBattlescriptCurrInstr = BattleScript_MoveUsedMustRecharge;
+                if ((IsPlayerInUnderworld() == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
+                    gBattlescriptCurrInstr = BattleScript_JudgingYou;
+                else
+                    gBattlescriptCurrInstr = BattleScript_MoveUsedMustRecharge;
                 gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
                 effect = 1;
             }
@@ -5108,6 +5111,13 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
         gBattlerAbility = battler;
 
     return effect;
+}
+
+bool32 IsPlayerInUnderworld(void)
+{
+    if ((gSaveBlock1Ptr->location.mapGroup == 33) && (gSaveBlock1Ptr->location.mapNum == 4))
+        return TRUE;
+    return FALSE;
 }
 
 u32 GetBattlerAbility(u8 battlerId)
@@ -7758,6 +7768,8 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         }
     }
 
+    if (((FlagGet(FLAG_RYU_FACING_REAPER) == TRUE) || (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
+        dmg = 333;
 
     if (dmg == 0)
         dmg = 1;

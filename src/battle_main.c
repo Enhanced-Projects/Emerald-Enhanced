@@ -3718,6 +3718,14 @@ static void TryDoEventsBeforeFirstTurn(void)
 
 }
 
+extern bool32 IsPlayerInUnderworld(void);
+
+const u16 bossMovePoolSwaps[3][3] = {
+    [0] = {MOVE_TORMENT, MOVE_SIMPLE_BEAM, MOVE_MOONBLAST},
+    [1] = {MOVE_KNOCK_OFF, MOVE_EE_PROTECT, MOVE_METEOR_MASH},
+    [2] = {MOVE_GLARE, MOVE_SPORE, MOVE_FLASH_CANNON}
+};
+
 static void HandleEndTurn_ContinueBattle(void)
 {
     s32 i;
@@ -3739,6 +3747,30 @@ static void HandleEndTurn_ContinueBattle(void)
         gBattleStruct->wishPerishSongBattlerId = 0;
         gBattleStruct->turnCountersTracker = 0;
         gMoveResultFlags = 0;
+    }
+    if (((IsPlayerInUnderworld()) == TRUE) && (FlagGet(FLAG_RYU_FACING_HORSEMAN)))
+        {
+            gBattleMons[1].ability = ABILITY_MAGIC_GUARD;
+            gBattleMons[1].type3 == TYPE_GHOST;
+        if ((Random() % 100) > 75)//25% chance to recharge between turns to make fight a little more fair.
+            {
+                gDisableStructs[gBattlerAttacker].rechargeTimer = 1;
+                gBattleMons[gBattlerAttacker].status2 |= STATUS2_RECHARGE;
+            }
+        }
+
+    if (((IsPlayerInUnderworld()) == TRUE) && (FlagGet(FLAG_RYU_FACING_REAPER)))
+    {
+        gBattleMons[1].ability = ABILITY_MAGIC_GUARD;
+        gBattleMons[1].moves[1] = bossMovePoolSwaps[0][(Random() % 3)];
+        gBattleMons[1].moves[2] = bossMovePoolSwaps[1][(Random() % 3)];
+        gBattleMons[1].moves[3] = bossMovePoolSwaps[2][(Random() % 3)];
+        gBattleMons[1].type3 == TYPE_GHOST;
+        if ((Random() % 100) > 61)//40% chance to recharge between turns to make fight a little more fair.
+            {
+                gDisableStructs[gBattlerAttacker].rechargeTimer = 1;
+                gBattleMons[gBattlerAttacker].status2 |= STATUS2_RECHARGE;
+            }
     }
 }
 

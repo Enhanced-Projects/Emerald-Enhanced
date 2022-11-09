@@ -9589,7 +9589,7 @@ Move_HOLD_BACK::
 	blendoff
 	end
 
-
+Status_Infestation::
 Move_INFESTATION::
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET @black color
 	loadspritegfx ANIM_TAG_SMALL_BUBBLES @circle particles
@@ -23986,6 +23986,7 @@ General_TurnTrap:
 	jumpargeq 0, TRAP_ANIM_SAND_TOMB, Status_SandTomb
 	jumpargeq 0, TRAP_ANIM_CLING,     Status_Cling
 	jumpargeq 0, TRAP_ANIM_MAGMA_STORM, Status_MagmaStorm
+	jumpargeq 0, TRAP_ANIM_INFESTATION, Status_Infestation
 	goto Status_BindWrap
 Status_BindWrap:
 	loadspritegfx ANIM_TAG_TENDRILS

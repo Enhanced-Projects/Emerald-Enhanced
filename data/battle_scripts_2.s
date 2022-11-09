@@ -138,6 +138,18 @@ BattleScript_MonTooPowerfulForBall::
 	waitmessage 0x40
 	finishaction
 
+BattleScript_BallBlockedHorseman::
+	waitmessage 0x40
+	printstring STRINGID_BALLBLOCKEDHORSEMAN
+	waitmessage 0x40
+	finishaction
+
+BattleScript_BallBlockedReaper::
+	waitmessage 0x40
+	printstring STRINGID_BALLBLOCKEDREAPER
+	waitmessage 0x40
+	finishaction
+
 BattleScript_MonDoesntLikeCheaters::
 	waitmessage 0x40
 	printstring STRINGID_ITDOESNTLIKECHEATERS

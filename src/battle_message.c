@@ -194,6 +194,7 @@ static const u8 sText_PkmnHasSubstitute[] = _("{B_ATK_NAME_WITH_PREFIX} already\
 static const u8 sText_SubstituteDamaged[] = _("The Substitute took damage\nfor {B_DEF_NAME_WITH_PREFIX}!\p");
 static const u8 sText_PkmnSubstituteFaded[] = _("{B_DEF_NAME_WITH_PREFIX}'s\nSubstitute faded!\p");
 static const u8 sText_PkmnMustRecharge[] = _("{B_ATK_NAME_WITH_PREFIX} must\nrecharge!");
+static const u8 sText_PkmnIsJudgingYou[] = _("You're being silently judged.");
 static const u8 sText_PkmnRageBuilding[] = _("{B_DEF_NAME_WITH_PREFIX}'s Rage\nis building!");
 static const u8 sText_PkmnMoveWasDisabled[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\nwas disabled!");
 static const u8 sText_PkmnMoveDisabledNoMore[] = _("{B_ATK_NAME_WITH_PREFIX} is disabled\nno more!");
@@ -391,6 +392,7 @@ static const u8 sText_ThrewPokeblockAtPkmn[] = _("{B_PLAYER_NAME} threw a {POKEB
 static const u8 sText_OutOfSafariBalls[] = _("{PLAY_SE SE_DING_DONG}ANNOUNCER: You're out of\nSAFARI BALLS! Game over!\p");
 static const u8 sText_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppeared[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!\p");
+static const u8 sText_ReaperAppeared[] = _("{B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppeared2[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppearedPause[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!{PAUSE 127}");
 static const u8 sText_TwoWildPkmnAppeared[] = _("Wild {B_OPPONENT_MON1_NAME} and\n{B_OPPONENT_MON2_NAME} appeared!\p");
@@ -430,6 +432,7 @@ static const u8 sText_AllyPkmnPrefix2[] = _("Ally");
 static const u8 sText_FoePkmnPrefix4[] = _("Foe");
 static const u8 sText_AllyPkmnPrefix3[] = _("Ally");
 static const u8 sText_AttackerUsedX[] = _("{B_ATK_NAME_WITH_PREFIX} used\n{B_BUFF3}!");
+static const u8 sText_ReaperUsedX[] = _("The being used\n{B_BUFF3}!");
 static const u8 sText_ExclamationMark[] = _("!");
 static const u8 sText_ExclamationMark2[] = _("!");
 static const u8 sText_ExclamationMark3[] = _("!");
@@ -742,6 +745,8 @@ static const u8 sText_RyuDoTInfestation[] = _("The infestation continues to eat\
 static const u8 sText_RyuDoTCling[] = _("{B_ATK_NAME_WITH_PREFIX} is still being hugged\ntightly by {B_DEF_NAME_WITH_PREFIX}!"); 
 static const u8 sText_RyuItDoesntLikeCheaters[] = _("The wild pokémon doesn't\nlike cheaters!"); 
 static const u8 sText_RyuBurnedByMagma[] = _("{B_ATK_NAME_WITH_PREFIX} was burned by the\nswirling magma!"); 
+static const u8 sText_RyuBallBlockedReaper[] = _("YOU ARE NOT WORTHY!"); 
+static const u8 sText_RyuBallBlockedHorseman[] = _("A strange forcefield blocked\nthe ball."); 
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -914,6 +919,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_SUBSTITUTEDAMAGED - 12] = sText_SubstituteDamaged,
     [STRINGID_PKMNSUBSTITUTEFADED - 12] = sText_PkmnSubstituteFaded,
     [STRINGID_PKMNMUSTRECHARGE - 12] = sText_PkmnMustRecharge,
+    [STRINGID_PKMNJUDGING - 12] = sText_PkmnIsJudgingYou,
     [STRINGID_PKMNRAGEBUILDING - 12] = sText_PkmnRageBuilding,
     [STRINGID_PKMNMOVEWASDISABLED - 12] = sText_PkmnMoveWasDisabled,
     [STRINGID_PKMNMOVEISDISABLED - 12] = sText_PkmnMoveIsDisabled,
@@ -1345,7 +1351,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_DOTINFESTATION - 12] = sText_RyuDoTInfestation,
     [STRINGID_DOTCLING - 12] = sText_RyuDoTCling,
     [STRINGID_ITDOESNTLIKECHEATERS - 12] = sText_RyuItDoesntLikeCheaters,
-    [STRINGID_DOTMS - 12] = sText_RyuBurnedByMagma
+    [STRINGID_DOTMS - 12] = sText_RyuBurnedByMagma,
+    [STRINGID_BALLBLOCKEDREAPER - 12] = sText_RyuBallBlockedReaper,
+    [STRINGID_BALLBLOCKEDHORSEMAN - 12] = sText_RyuBallBlockedHorseman
 };
 
 const u16 gTerrainStringIds[] =
@@ -2572,6 +2580,8 @@ void BufferStringBattle(u16 stringID)
                 stringPtr = sText_TwoWildPkmnAppeared;
             else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL)
                 stringPtr = sText_WildPkmnAppearedPause;
+            else if (IsPlayerInUnderworld() == TRUE)
+                stringPtr = sText_ReaperAppeared;
             else
                 stringPtr = sText_WildPkmnAppeared;
         }
@@ -2720,6 +2730,14 @@ void BufferStringBattle(u16 stringID)
             StringCopy(gBattleTextBuff3, gMoveNames[gBattleMsgDataPtr->currentMove]);
 
         stringPtr = sText_AttackerUsedX;
+        break;
+    case STRINGID_REAPERUSEDMOVE: // pokemon used a move msg
+        if (gBattleMsgDataPtr->currentMove >= MOVES_COUNT)
+            StringCopy(gBattleTextBuff3, sATypeMove_Table[*(&gBattleStruct->stringMoveType)]);
+        else
+            StringCopy(gBattleTextBuff3, gMoveNames[gBattleMsgDataPtr->currentMove]);
+
+        stringPtr = sText_ReaperUsedX;
         break;
     case STRINGID_BATTLEEND: // battle end
         if (gBattleTextBuff1[0] & B_OUTCOME_LINK_BATTLE_RAN)

@@ -639,27 +639,6 @@ void RyuGiveKoutaMawile(void)
     VarSet(VAR_TEMP_3, 2);
 }
 
-void RyuSetIVs(void)//used in quickstart for devmons.
-{
-    u8 iv = 31;
-    u8 ab = 0; 
-    SetMonData(&gPlayerParty[0], MON_DATA_HP_IV, &iv);
-    SetMonData(&gPlayerParty[0], MON_DATA_ATK_IV, &iv);
-    SetMonData(&gPlayerParty[0], MON_DATA_DEF_IV, &iv);
-    SetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV, &iv);
-    SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV, &iv);
-    SetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV, &iv);
-    SetMonData(&gPlayerParty[1], MON_DATA_HP_IV, &iv);
-    SetMonData(&gPlayerParty[1], MON_DATA_ATK_IV, &iv);
-    SetMonData(&gPlayerParty[1], MON_DATA_DEF_IV, &iv);
-    SetMonData(&gPlayerParty[1], MON_DATA_SPATK_IV, &iv);
-    SetMonData(&gPlayerParty[1], MON_DATA_SPDEF_IV, &iv);
-    SetMonData(&gPlayerParty[1], MON_DATA_SPEED_IV, &iv);
-    SetMonData(&gPlayerParty[1], MON_DATA_ABILITY_NUM, &ab);
-    CalculateMonStats(&gPlayerParty[1]);
-    CalculateMonStats(&gPlayerParty[0]);
-}
-
 void RyuWarp()//this and the function below were added because lana's quest script was so complicated, it overwrote other bits of RAM causing random crashes on
 {             //warp. I have since avoided making such long scripts, but for now these are still necessary until they can be fixed.
     u8 mapGroup = 1;
@@ -2192,6 +2171,9 @@ int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game
     
     if (VarGet(VAR_RYU_QUEST_MAY) == 50) //Player is investigating wally's house with May
         return 130;
+    
+    if (FlagGet(FLAG_RYU_UNDERWORLD) == TRUE)
+        return 140;
 
     return 0;
 }
@@ -2957,4 +2939,52 @@ void Ryu_Restorefollowers(void)
 
     gSpecialVar_Result = count;
     
+}
+
+void RyuApplyWarEffects(void)
+{
+    int i;
+    for (i = 0;i < 6;i++)
+    {
+        u16 newHp = (GetMonData(&gPlayerParty[i], MON_DATA_HP));
+        if (newHp == 0)
+            newHp = 0;
+        else
+            newHp /=2;
+        SetMonData(&gPlayerParty[i], MON_DATA_HP, &newHp);
+    }
+    VarSet(VAR_RYU_HORSEMAN_ID, 1);
+}
+
+void RyuApplyFamineEffects(void)
+{
+    int i, k;
+    for (i = 0;i < 6;i++)
+    {
+        u16 newPp = 4;
+        for (k = 0; k < 4; k++)
+            SetMonData(&gPlayerParty[i], MON_DATA_PP1 + k, &newPp);
+    }
+    VarSet(VAR_RYU_HORSEMAN_ID, 4);
+}
+
+void RyuApplyDeathEffects(void)
+{
+    int i;
+    for (i = 0;i < 6;i++)
+    {
+        u16 newHp = 0;
+        i++;
+        SetMonData(&gPlayerParty[i], MON_DATA_HP, &newHp);
+    }
+    VarSet(VAR_RYU_HORSEMAN_ID, 3);
+}
+
+void RyuApplyPlagueEffects(void)
+{
+    int i;
+    u8 one = (1 << 3);
+    for (i = 0;i < 6;i++)
+        SetMonData(&gPlayerParty[i], MON_DATA_STATUS, &one);
+    VarSet(VAR_RYU_HORSEMAN_ID, 2);
 }

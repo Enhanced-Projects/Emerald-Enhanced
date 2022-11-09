@@ -5916,17 +5916,17 @@ const struct PokedexEntry gPokedexEntries[] =
 	//	.trainerOffset = 0,
 	//},
 
-	//[NATIONAL_DEX_ARCEUS] =
-	//{
-	//	.categoryName = _("Alpha"),
-	//	.height = 32,
-	//	.weight = 3200,
-	//	.description = gArceusPokedexText,
-	//	.pokemonScale = 356,
-	//	.pokemonOffset = 17,
-	//	.trainerScale = 256,
-	//	.trainerOffset = 0,
-	//},
+	[NATIONAL_DEX_ARCEUS] =
+	{
+		.categoryName = _("Alpha"),
+		.height = 32,
+		.weight = 3200,
+		.description = gArceusPokedexText,
+		.pokemonScale = 356,
+		.pokemonOffset = 17,
+		.trainerScale = 256,
+		.trainerOffset = 0,
+	},
 
 	[NATIONAL_DEX_VICTINI] =
 	{

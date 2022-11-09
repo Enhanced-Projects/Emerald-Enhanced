@@ -134,6 +134,9 @@ script RDBM_CheckWaystone{
         case 130:
             msgbox(format("You should be chasing Wally down\nwith May."))
             goto(RDBM_WaystoneDisabled)
+        case 140:
+            msgbox(format("The gods of this world have laid claim to your soul."))
+            goto(RDBM_WaystoneDisabled)
     }
     msgbox(WaystoneEnabled)
     clearflag(FLAG_RYU_WAYSTONE_DISABLED)

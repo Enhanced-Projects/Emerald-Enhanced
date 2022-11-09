@@ -695,13 +695,13 @@ RyuDebug_DevMonQuickStart::
 	setflag FLAG_RYU_IGNORE_CAP
 	clearflag FLAG_RYU_VANILLA_CAP
 	setvar VAR_TEMP_A, NATURE_MODEST     
-	setvar VAR_TEMP_B, SPECIES_MEGA_MEWTWO_Y
+	setvar VAR_TEMP_B, SPECIES_MAGEARNA
 	setvar VAR_TEMP_C, 0
-	setvar VAR_TEMP_D, MON_FEMALE @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS.
+	setvar VAR_TEMP_D, MON_GENDERLESS @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS.
 	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
-	setvar VAR_TEMP_1, MOVE_PSYCHIC
+	setvar VAR_TEMP_1, MOVE_MOONBLAST
 	setvar VAR_TEMP_2, MOVE_SHADOW_BALL
-	setvar VAR_TEMP_3, MOVE_FLAMETHROWER
+	setvar VAR_TEMP_3, MOVE_FLASH_CANNON
 	setvar VAR_TEMP_4, MOVE_THUNDERBOLT
 	callnative RyuGiveDevMon
 	@@
@@ -710,14 +710,14 @@ RyuDebug_DevMonQuickStart::
 	@@
 	@@
 	setvar VAR_TEMP_A, NATURE_ADAMANT
-	setvar VAR_TEMP_B, SPECIES_MEGA_RAYQUAZA
+	setvar VAR_TEMP_B, SPECIES_MEGA_ABSOL
 	setvar VAR_TEMP_C, 0
-	setvar VAR_TEMP_D, MON_GENDERLESS
+	setvar VAR_TEMP_D, MON_FEMALE
 	setvar VAR_TEMP_E, ITEM_SCOPE_LENS
-	setvar VAR_TEMP_1, MOVE_OUTRAGE
-	setvar VAR_TEMP_2, MOVE_EARTHQUAKE
-	setvar VAR_TEMP_3, MOVE_IRON_HEAD
-	setvar VAR_TEMP_4, MOVE_FLY
+	setvar VAR_TEMP_1, MOVE_SLASH
+	setvar VAR_TEMP_2, MOVE_NIGHT_SLASH
+	setvar VAR_TEMP_3, MOVE_PSYCHO_CUT
+	setvar VAR_TEMP_4, MOVE_STONE_EDGE
 	callnative RyuGiveDevMon
 	special HealPlayerParty
 	goto RyuDebug_QuickItemFlagStart

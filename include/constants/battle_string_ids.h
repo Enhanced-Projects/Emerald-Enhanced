@@ -613,9 +613,14 @@
 #define STRINGID_DOTINFESTATION                       609
 #define STRINGID_DOTCLING                             610
 #define STRINGID_ITDOESNTLIKECHEATERS                 611
-#define STRINGID_DOTMS                         612
+#define STRINGID_DOTMS                                612
+#define STRINGID_PKMNJUDGING                          613
+#define STRINGID_REAPERUSEDMOVE                       614
+#define STRINGID_REAPERDEALTDAMAGE                    615
+#define STRINGID_BALLBLOCKEDREAPER                    616
+#define STRINGID_BALLBLOCKEDHORSEMAN                  617
 
-#define BATTLESTRINGS_COUNT                613
+#define BATTLESTRINGS_COUNT                618
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

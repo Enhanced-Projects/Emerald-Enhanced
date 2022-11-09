@@ -246,6 +246,14 @@ static const u8 sLostGirlLabel[] = _("Lost Girl");
 static const u8 sLostGirlHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Recruit an orphan");
 static const u8 sLostGirlDesc[] = _("With no expectations, she's super loyal!\n(Romanced May)");
 
+static const u8 sMarkedForDeathLabel[] = _("Marked For Death");
+static const u8 sMarkedForDeathHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}be immortal");
+static const u8 sMarkedForDeathDesc[] = _("You have angered the gods that be by\ndefeating your fate.");
+
+static const u8 sThePhoenixLabel[] = _("The Phoenix");
+static const u8 sThePhoenixHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}defeat the reaper");
+static const u8 sThePhoenixDesc[] = _("Even the gods cannot stop you!");
+
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
     [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, sWholeNewWorldAchHint}, //started exploring enhanced hoenn
@@ -310,4 +318,6 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_WANTED] = {12, 47, CATEGORY_EXPLORATION, ACH_WANTED, sWantedLabel, sWantedDesc, sWantedHint}, //bounty of greater than 100000
     [ACH_DE_ORPHANED] = {37, 35, CATEGORY_QUESTING, ACH_DE_ORPHANED, sDeOrphanedLabel, sDeOrphanedDesc, sDeOrphanedHint}, //Unlocked May quest
     [ACH_LOST_GIRL] = {55, 35, CATEGORY_COMPANIONS, ACH_LOST_GIRL, sLostGirlLabel, sLostGirlDesc, sLostGirlHint}, //recruited May
+    [ACH_MARKED_FOR_DEATH] = {12, 49, CATEGORY_EXPLORATION, ACH_MARKED_FOR_DEATH, sMarkedForDeathLabel, sMarkedForDeathDesc, sMarkedForDeathHint}, //defeat overlord ryu with zero blackouts
+    [ACH_THE_PHOENIX] = {12, 51, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_MARKED_FOR_DEATH, sThePhoenixLabel, sThePhoenixDesc, sThePhoenixHint}, //defeat the four horsemen and arceus
 };

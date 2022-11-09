@@ -403,6 +403,13 @@ script MawileMegaReward { //overlord ryu's mawilite reward
 	msgbox(RyuGivesMawilite)
 	additem(ITEM_MAWILITE)
 	setflag(FLAG_RYU_DEFEATED_OVERLORD)
+	if (flag(FLAG_RYU_PREMATURE_DEATH) == FALSE){
+		ach(query, ACH_MARKED_FOR_DEATH)
+		if (var(VAR_RESULT) == FALSE){
+			ach(give, ACH_MARKED_FOR_DEATH)
+			setflag(FLAG_RYU_UNDERWORLD)
+		}
+	}
 	return
 }
 	

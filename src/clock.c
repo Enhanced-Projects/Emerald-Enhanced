@@ -15,6 +15,7 @@
 #include "RyuRealEstate.h"
 #include "overworld_notif.h"
 #include "RyuDynDeliveries.h"
+#include "ach_atlas.h"
 
 static void UpdatePerDay(struct Time *localTime);
 void UpdatePerHour(struct Time *localTime);
@@ -165,6 +166,8 @@ static void UpdatePerDay(struct Time *localTime)
             VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, 0);
         QueueNotification(gRyuText_DailyQuestsReset, NOTIFY_GENERAL, 60);
         VarSet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES, 0); //reset daily purchase quota
+        if ((CheckAchievement(ACH_THE_PHOENIX) == FALSE) && (CheckAchievement(ACH_MARKED_FOR_DEATH) == TRUE))
+            FlagClear(FLAG_RYU_NOTIFIED_UNDERWORLD);
     }
 }
 

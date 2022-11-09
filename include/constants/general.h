@@ -108,8 +108,8 @@
 #define ACH_WANTED  59
 #define ACH_DE_ORPHANED 60// gave may a place to live
 #define ACH_LOST_GIRL  61
-#define ACH_UNUSED_63  62
-#define ACH_UNUSED_64  63
+#define ACH_MARKED_FOR_DEATH  62// beat overlord ryu first time without any blackouts
+#define ACH_THE_PHOENIX  63
 #define ACH_UNUSED_65  64
 #define ACH_UNUSED_66  65
 #define ACH_UNUSED_67  66
@@ -529,6 +529,6 @@
 //uncomment to punish save states. Otherwise detections are just logged.
 //#define RYU_PUNISH_SAVE_STATE 1
 
-#define EE_GAME_VERSION 9202
+#define EE_GAME_VERSION 9250
 
 #endif 

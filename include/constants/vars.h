@@ -116,8 +116,8 @@
 #define VAR_SAVE_FILE_CREATED_ON_VERSION     0x4061 // Unused Var
 #define VAR_RYU_TIMES_STAYED_WITH_COMPANION  0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                   0x4063
-#define VAR_UNUSED_0x4064                    0x4064 
-#define VAR_UNUSED_0x4065                    0x4065
+#define VAR_RYU_BOSS_RECHARGE                0x4064 //used only when facing the horsemen or reaper
+#define VAR_RYU_HORSEMAN_ID                  0x4065
 #define VAR_UNUSED_0x4066                    0x4066
 #define VAR_UNUSED_0x4067                    0x4067
 #define VAR_UNUSED_0x4068                    0x4068 

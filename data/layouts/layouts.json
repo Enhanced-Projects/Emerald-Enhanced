@@ -5590,6 +5590,16 @@
       "secondary_tileset": "gTileset_BrendansDawnsHouse",
       "border_filepath": "data/layouts/LittlerootTown_DawnsHouse_MayBedroom/border.bin",
       "blockdata_filepath": "data/layouts/LittlerootTown_DawnsHouse_MayBedroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNDERWORLD",
+      "name": "Underworld_Layout",
+      "width": 11,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused2",
+      "border_filepath": "data/layouts/Underworld/border.bin",
+      "blockdata_filepath": "data/layouts/Underworld/map.bin"
     }
   ]
 }

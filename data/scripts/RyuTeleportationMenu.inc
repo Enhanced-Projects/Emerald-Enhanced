@@ -5,6 +5,7 @@ RyuTeleport::
 	compare VAR_RESULT, FALSE
 	goto_if_eq RT_NoWaystone
 	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, RyuTeleportDisabled
+	goto_if_set FLAG_RYU_UNDERWORLD, RyuTeleportDisabled
 	call_if_set FLAG_RYU_CHALLENGEMODE, RyuTeleportUseCheck
 	call_if_set FLAG_RYU_HARDCORE_MODE, RyuTeleportUseCheck
 	msgbox MSG_Teleport MSGBOX_SIGN

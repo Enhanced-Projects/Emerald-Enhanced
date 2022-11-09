@@ -2753,6 +2753,8 @@ void AnimTask_GetTrappedMoveAnimId(u8 taskId)
         gBattleAnimArgs[0] = TRAP_ANIM_CLING;
     else if (gBattleSpritesDataPtr->animationData->animArg == MOVE_MAGMA_STORM)
         gBattleAnimArgs[0] = TRAP_ANIM_MAGMA_STORM;
+    else if (gBattleSpritesDataPtr->animationData->animArg == MOVE_INFESTATION)
+        gBattleAnimArgs[0] = TRAP_ANIM_INFESTATION;
     else
         gBattleAnimArgs[0] = TRAP_ANIM_BIND;
 

@@ -1280,6 +1280,8 @@ static bool32 TryAegiFormChange(void)
     return TRUE;
 }
 
+extern bool32 IsPlayerInUnderworld(void);
+
 static void Cmd_attackcanceler(void)
 {
     s32 i, moveType;
@@ -1391,7 +1393,7 @@ static void Cmd_attackcanceler(void)
         gBattlescriptCurrInstr = BattleScript_MagicCoatBounce;
         return;
     }
-    else if (GetBattlerAbility(gBattlerTarget) == ABILITY_MAGIC_BOUNCE
+    else if (((GetBattlerAbility(gBattlerTarget) == ABILITY_MAGIC_BOUNCE) || (((IsPlayerInUnderworld() == TRUE) && ((GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT)))))
              && gBattleMoves[gCurrentMove].flags & FLAG_MAGICCOAT_AFFECTED
              && !gProtectStructs[gBattlerAttacker].usesBouncedMove)
     {
@@ -1538,6 +1540,11 @@ static bool32 AccuracyCalcHelper(u16 move)
     else if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_PRIMAL) &&
     ((gBattleMons[gBattlerAttacker].type1 == TYPE_ICE ||(gBattleMons[gBattlerAttacker].type1 == TYPE_FIRE) || (gBattleMons[gBattlerAttacker].type1 == TYPE_ELECTRIC))) &&
     (gBattleMons[gBattlerAttacker].type2 == TYPE_FLYING))
+    {
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
+    else if ((IsPlayerInUnderworld() == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
     {
         JumpIfMoveFailed(7, move);
         return TRUE;
@@ -1691,7 +1698,10 @@ static void Cmd_attackstring(void)
          return;
     if (!(gHitMarker & (HITMARKER_NO_ATTACKSTRING | HITMARKER_ATTACKSTRING_PRINTED)))
     {
-        PrepareStringBattle(STRINGID_USEDMOVE, gBattlerAttacker);
+        if ((IsPlayerInUnderworld() == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
+            PrepareStringBattle(STRINGID_REAPERUSEDMOVE, gBattlerAttacker);
+        else
+            PrepareStringBattle(STRINGID_USEDMOVE, gBattlerAttacker);
         gHitMarker |= HITMARKER_ATTACKSTRING_PRINTED;
     }
     gBattlescriptCurrInstr++;
@@ -10711,8 +10721,9 @@ static void Cmd_trysetperishsong(void)
 
     for (i = 0; i < gBattlersCount; i++)
     {
-        if (gStatuses3[i] & STATUS3_PERISH_SONG
+        if ((gStatuses3[i] & STATUS3_PERISH_SONG
             || gBattleMons[i].ability == ABILITY_SOUNDPROOF)
+            || ((IsPlayerInUnderworld() == TRUE) && gBattleMons[i].ability == ABILITY_MAGIC_GUARD))
         {
             notAffectedCount++;
         }
@@ -12183,11 +12194,23 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_TrainerBallBlock;
     }
-    else if (FlagGet(FLAG_RYU_SPAWN_KINGPIN))
+    else if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE)
     {
         BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_MonTooPowerfulForBall;
+    }
+    else if (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)//block ball, horsemen can't be caught
+    {
+        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_BallBlockedHorseman;
+    }
+    else if ((FlagGet(FLAG_RYU_FACING_REAPER) == TRUE) && gBattleMons[1].hp > (gBattleMons[1].maxHP / 100))//block ball if arceus is greater than 600 health.
+    {
+        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_BallBlockedReaper;
     }
     else
     {

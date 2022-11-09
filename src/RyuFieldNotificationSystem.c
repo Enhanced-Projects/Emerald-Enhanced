@@ -19,6 +19,9 @@
 #include "scripted_encounters.h"
 #include "sound.h"
 #include "cutscene.h"
+#include "palette.h"
+#include "field_weather.h"
+#include "constants/rgb.h"
 
 extern const u8 RyuGlobal_CancelDailyQuest[];
 extern void GetPlayerPosition(struct MapPosition *);
@@ -187,6 +190,19 @@ void RyuDelayTimerTask(u8 taskId)
     }
 }
 
+void RyuDelayTeleportTask(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    if (tRyuTimerFrames < 240)
+        tRyuTimerFrames++;
+    else
+    {
+        WarpIntoMap();
+        SetMainCallback2(CB2_LoadMap);
+        DestroyTask(taskId);
+    }
+}
+
 void RyuCheckMagmaQuestNotifications(void)
 {
     if ((FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA)) && (!(FlagGet(FLAG_TEMP_F))))//prevents the notification from showing up as soon as the player is assigned the task.
@@ -330,6 +346,8 @@ void RyuCheckAquaQuestNotifications(void)
 }
 
 extern void RyuSavePlayTimeChallenge(void);
+extern void Task_WaitForPaletteFade(u8 taskId);
+
 void RyuDoNotifyTasks(void)
 {
     if (FlagGet(FLAG_RYU_ENTERING_OWNED_HOME) == FALSE)
@@ -346,6 +364,21 @@ void RyuDoNotifyTasks(void)
                     CreateTask(RyuDelayTimerTask, 255);
                 }
         }
+    }
+
+    if ((FlagGet(FLAG_RYU_UNDERWORLD) == TRUE) && (FlagGet(FLAG_TEMP_14) == FALSE) && (FlagGet(FLAG_RYU_REAPER) == FALSE) && (!(gSaveBlock1Ptr->location.mapGroup == 33)))
+        FlagClear(FLAG_RYU_NOTIFIED_UNDERWORLD);
+
+    if ((FlagGet(FLAG_RYU_UNDERWORLD) == TRUE) && (CheckAchievement(ACH_THE_PHOENIX) == FALSE) && (FlagGet(FLAG_RYU_NOTIFIED_UNDERWORLD) == FALSE))
+    {
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB(10, 0, 0));
+        PlaySE(79);
+        ShowFieldMessage((const u8[]) _(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(A voice echoes in your head)\n{COLOR RED}{SHADOW BLUE}WHY DO YOU DENY FATE?!\pWE WILL NOT ABIDE DISOBEDIENCE!!"));
+        FlagSet(FLAG_RYU_NOTIFIED_UNDERWORLD);
+        SetWarpDestination(MAP_GROUP(UNDERWORLD), MAP_NUM(UNDERWORLD), 255, 5, 5);
+        FlagClear(FLAG_RYU_UNDERWORLD);
+        FlagSet(FLAG_TEMP_14);
+        CreateTask(RyuDelayTeleportTask, 255);
     }
 
     RyuCheckForFactionAchievements();

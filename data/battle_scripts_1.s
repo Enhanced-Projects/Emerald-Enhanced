@@ -3238,6 +3238,11 @@ BattleScript_MoveUsedMustRecharge::
 	waitmessage 0x40
 	goto BattleScript_MoveEnd
 
+BattleScript_JudgingYou::
+	printstring STRINGID_PKMNJUDGING
+	waitmessage 0x40
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectRage::
 	attackcanceler
 	accuracycheck BattleScript_RageMiss, ACC_CURR_MOVE

@@ -1255,6 +1255,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	warpsilent(MAP_UNDERWORLD, 255, 5, 5)
 	release
 	end
 }

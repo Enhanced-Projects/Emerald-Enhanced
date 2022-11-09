@@ -511,6 +511,11 @@ void BattleSetup_StartLegendaryBattle(void)
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
         break;
     case SPECIES_LATIAS:
+    case SPECIES_WEEZING:
+    case SPECIES_GENGAR:
+    case SPECIES_KABUTOPS:
+    case SPECIES_SNORLAX:
+    case SPECIES_ARCEUS:
         CreateBattleStartTask(B_TRANSITION_WHITEFADE, MUS_VS_RAYQUAZA);
         break;
     case SPECIES_LATIOS:
@@ -1401,6 +1406,8 @@ static void CB2_EndTrainerBattle(void)
     FlagClear(FLAG_RYU_BOSS_SCALE);
     FlagClear(FLAG_RYU_MAX_SCALE);
     FlagClear(FLAG_RYU_FACING_FACTION_BOSS);
+    FlagClear(FLAG_RYU_FACING_HORSEMAN);
+    FlagClear(FLAG_RYU_FACING_REAPER);
     
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
     {
