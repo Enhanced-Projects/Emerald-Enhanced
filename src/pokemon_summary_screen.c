@@ -3620,7 +3620,7 @@ static void Task_PrintInfoPage(u8 taskId)
 static void PrintMonOTName(void)
 {
     int x, windowId;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
 
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
@@ -3646,7 +3646,7 @@ static void PrintMonOTName(void)
 static void PrintMonOTID(void)
 {
     int xPos;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
 
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
@@ -3667,7 +3667,7 @@ static void PrintMonOTID(void)
 
 static void PrintMonAbilityName(void)
 {
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     u8 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
@@ -3683,7 +3683,7 @@ static void PrintMonAbilityName(void)
 
 static void PrintMonAbilityDescription(void)
 {
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     u8 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
@@ -3751,7 +3751,7 @@ static void BufferMonTrainerMemo(void)
 
 static void PrintMonTrainerMemo(void)
 {
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -3840,7 +3840,7 @@ static void PrintEggOTName(void)
 {
     u32 windowId;
     u32 width = GetStringWidth(1, gText_OTSlash, 0);
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -3858,7 +3858,7 @@ static void PrintEggOTName(void)
 static void PrintEggOTID(void)
 {
     int x;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -3878,7 +3878,7 @@ static void PrintEggState(void)
 {
     const u8 *text;
     struct PokeSummary *sum = &sMonSummaryScreen->summary;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -3906,7 +3906,7 @@ static void PrintEggMemo(void)
 {
     const u8 *text;
     struct PokeSummary *sum = &sMonSummaryScreen->summary;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -4098,7 +4098,7 @@ static void PrintLeftColumnStats(void)
 {
     static const u8 sTextNatureNeutral[] = _("{COLOR}{01}");
     u8 * txtPtr;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
 
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
@@ -4133,7 +4133,7 @@ static void BufferRightColumnStats(void)
 
 static void PrintRightColumnStats(void)
 {
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
 
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
@@ -4153,7 +4153,7 @@ static void PrintExpPointsNextLevel(void)
     u8 windowId, windowId2;
     int x, y = 17;
     u32 expToNextLevel;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
 
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
@@ -4260,7 +4260,7 @@ static void PrintMoveNameAndPP(u8 moveIndex)
     u8 ppValueWindowId;
     u16 move = summary->moves[moveIndex];
 
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -4384,7 +4384,7 @@ static void Task_PrintContestMoves(u8 taskId)
 static void PrintContestMoveDescription(u8 moveSlot)
 {
     u16 move;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -4409,7 +4409,7 @@ static void PrintContestMoveDescription(u8 moveSlot)
 static void PrintMoveDetails(u16 move)
 {
     u8 windowId;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -4448,7 +4448,7 @@ static void PrintNewMoveDetailsOrCancelText(void)
 {
     u8 windowId1;
     u8 windowId2;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -4485,7 +4485,7 @@ static void PrintNewMoveDetailsOrCancelText(void)
 static void AddAndFillMoveNamesWindow(void)
 {
     u8 windowId;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
@@ -4504,7 +4504,7 @@ static void SwapMovesNamesPP(u8 moveIndex1, u8 moveIndex2)
 {
     u8 windowId1;
     u8 windowId2;
-    static const struct WindowTemplate* template;
+    const struct WindowTemplate* template;
     switch (VarGet(VAR_HAT_THEME_UI_NUMBER)) {
         case THEME_UI_MODERN:
         case THEME_UI_CLASSIC:
