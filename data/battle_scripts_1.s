@@ -6041,7 +6041,7 @@ BattleScript_FutureAttackEnd::
 	end2
 BattleScript_FutureAttackMiss::
 	pause 0x20
-	sethword gMoveResultFlags, MOVE_RESULT_SPIKES_ALREADY_THERE
+	sethword gMoveResultFlags, MOVE_RESULT_FAILED
 	resultmessage
 	waitmessage 0x40
 	sethword gMoveResultFlags, 0
