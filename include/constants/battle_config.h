@@ -132,6 +132,8 @@
 #define B_PARALYZE_ELECTRIC         GEN_7 // In Gen6+, Electric type Pokémon can't be paralyzed.
 #define B_POWDER_GRASS              GEN_7 // In Gen6+, Grass type Pokémon are immune to powder and spore moves.
 
+#define B_BLIZZARD_HAIL             GEN_7 // In Gen4+, Blizzard bypasses accuracy checks if it's hailing.
+
 // Animation Settings
 #define B_NEW_SWORD_PARTICLE            TRUE    // update swords dance particle
 #define B_NEW_LEECH_SEED_PARTICLE       TRUE    //update leech seed's animation particle

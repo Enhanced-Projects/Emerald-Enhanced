@@ -1565,17 +1565,24 @@ static bool32 AccuracyCalcHelper(u16 move)
         return TRUE;
     }
 
-    if ((WEATHER_HAS_EFFECT &&
-            ((IsBattlerWeatherAffected(gBattlerTarget, WEATHER_RAIN_ANY) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))))
-     || (gBattleMoves[move].effect == EFFECT_VITAL_THROW)
-     || (gBattleMoves[move].accuracy == 0)
-     || ((B_MINIMIZE_DMG_ACC >= GEN_6) && (gStatuses3[gBattlerTarget] & STATUS3_MINIMIZED) && (gBattleMoves[move].flags & FLAG_DMG_MINIMIZE)))
+    if (WEATHER_HAS_EFFECT)
     {
-        JumpIfMoveFailed(7, move);
-        return TRUE;
-    }
+        if ((IsBattlerWeatherAffected(gBattlerTarget, WEATHER_RAIN_ANY) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE)))
+        {
+            // thunder/hurricane ignore acc checks in rain unless target is holding utility umbrella
+            JumpIfMoveFailed(7, move);
+            return TRUE;
+        }
+    #if B_BLIZZARD_HAIL >= GEN_4
+        else if ((gBattleWeather & WEATHER_HAIL_ANY) && (move == MOVE_BLIZZARD))
+        {
+            JumpIfMoveFailed(7, move);
+            return TRUE;
+        }
+    #endif
 
     return FALSE;
+    }
 }
 
 u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move)
