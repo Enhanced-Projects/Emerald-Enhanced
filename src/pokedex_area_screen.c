@@ -332,16 +332,11 @@ static bool8 DrawAreaGlow(void)
 static void FindMapsWithMon(u16 species)
 {
     u16 i;
-    struct Roamer *roamer;
 
     sPokedexAreaScreen->unk6E2 = 0;
     sPokedexAreaScreen->unk6E4 = VarGet(VAR_ALTERING_CAVE_WILD_SET);
     if (sPokedexAreaScreen->unk6E4 > 8)
         sPokedexAreaScreen->unk6E4 = 0;
-
-    roamer = &gSaveBlock1Ptr->roamer;
-    if (species != roamer->species)
-    {
         sPokedexAreaScreen->numOverworldAreas = 0;
         sPokedexAreaScreen->numSpecialAreas = 0;
         for (i = 0; i < ARRAY_COUNT(sSpeciesHiddenFromAreaScreen); i++)
@@ -383,21 +378,6 @@ static void FindMapsWithMon(u16 species)
                 }
             }
         }
-    }
-    else
-    {
-        sPokedexAreaScreen->numSpecialAreas = 0;
-        if (roamer->active)
-        {
-            GetRoamerLocation(&sPokedexAreaScreen->overworldAreasWithMons[0].mapGroup, &sPokedexAreaScreen->overworldAreasWithMons[0].mapNum);
-            sPokedexAreaScreen->overworldAreasWithMons[0].regionMapSectionId = Overworld_GetMapHeaderByGroupAndId(sPokedexAreaScreen->overworldAreasWithMons[0].mapGroup, sPokedexAreaScreen->overworldAreasWithMons[0].mapNum)->regionMapSectionId;
-            sPokedexAreaScreen->numOverworldAreas = 1;
-        }
-        else
-        {
-            sPokedexAreaScreen->numOverworldAreas = 0;
-        }
-    }
 }
 
 static void SetAreaHasMon(u16 mapGroup, u16 mapNum)
@@ -728,7 +708,7 @@ static void Task_HandlePokedexAreaScreenInput(u8 taskId)
             gTasks[taskId].data[1] = 1;
             PlaySE(SE_PC_OFF);
         }
-        else if (JOY_NEW(DPAD_RIGHT) || (JOY_NEW(R_BUTTON) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR))
+        else if (JOY_NEW(DPAD_RIGHT))
         {
             gTasks[taskId].data[1] = 2;
             PlaySE(SE_DEX_PAGE);

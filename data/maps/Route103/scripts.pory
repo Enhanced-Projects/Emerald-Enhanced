@@ -57,20 +57,18 @@ Route103_EventScript_RivalBrendan:: @ 81EC434
 	applymovement 2, Common_Movement_Delay48
 	waitmovement 0	
 	drawfullscreenimage SCENEBGBRENDAN
-	msgbox r103_maleRivalIntro, MSGBOX_DEFAULT
-	closemessage
+	msgbox r103_maleRivalIntro
 	clearfullscreenimage
-	goto r103_maleRivalBattle
+	trainerbattle_no_intro TRAINER_BRENDAN_1, r103_maleRivalDefeatText
+	waitstate
+	drawfullscreenimage SCENEBGBRENDAN
+	msgbox r103_maleRivalChat, MSGBOX_DEFAULT
+	goto Route103_EventScript_RivalExit
 	end
 
 r103_femaleRivalBattle:: @ 81EC48E
 	trainerbattle_no_intro TRAINER_DAWN_1, r103_femaleRivalDefeat
 	goto Route103_EventScript_AfterMayBattle
-	end
-
-r103_maleRivalBattle:: @ 81EC49E
-	trainerbattle_no_intro TRAINER_BRENDAN_1, r103_maleRivalDefeatText
-	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_AfterMayBattle:: @ 81EC4EE
@@ -79,12 +77,6 @@ Route103_EventScript_AfterMayBattle:: @ 81EC4EE
 	msgbox r103_femaleRivalChat, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	closemessage
-	end
-
-Route103_EventScript_AfterBrendanBattle:: @ 81EC4FC	
-	drawfullscreenimage SCENEBGBRENDAN
-	msgbox r103_maleRivalChat, MSGBOX_DEFAULT
-	goto Route103_EventScript_RivalExit
 	end
 
 Route103_EventScript_RivalExit:: @ 81EC50A
@@ -203,11 +195,6 @@ Route102_EventScript_AmyRegisterMatchCallAfterBattle:: @ 81EC63A
 	release
 	end
 
-Route102_EventScript_AmyRematch:: @ 81EC653
-	trainerbattle_rematch_double TRAINER_AMY_AND_LIV_1, Route103_Text_AmyRematchIntro, Route103_Text_AmyRematchDefeated, Route103_Text_AmyRematchNotEnoughPokemon
-	msgbox Route103_Text_AmyRematchPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route103_EventScript_Liv:: @ 81EC66E
 	trainerbattle_double TRAINER_AMY_AND_LIV_1, Route103_Text_LivIntro, Route103_Text_LivDefeated, Route103_Text_LivNotEnoughPokemon, Route102_EventScript_LivRegisterMatchCallAfterBattle
 	msgbox Route103_Text_LivPostBattle, MSGBOX_AUTOCLOSE
@@ -217,11 +204,6 @@ Route102_EventScript_LivRegisterMatchCallAfterBattle:: @ 81EC69D
 	msgbox Route103_Text_AmyLivRegister, MSGBOX_DEFAULT
 	@nop Trainer_AMY_AND_LIV_1
 	release
-	end
-
-Route102_EventScript_LivRematch:: @ 81EC6B6
-	trainerbattle_rematch_double TRAINER_AMY_AND_LIV_1, Route103_Text_LivRematchIntro, Route103_Text_LivRematchDefeated, Route103_Text_LivRematchNotEnoughPokemon
-	msgbox Route103_Text_LivRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Andrew:: @ 81EC6D1
@@ -241,11 +223,6 @@ Route102_EventScript_MiguelRegisterMatchCallAfterBattle:: @ 81EC714
 	msgbox Route103_Text_MiguelRegister, MSGBOX_DEFAULT
 	@nop Trainer_MIGUEL_1
 	release
-	end
-
-Route103_EventScript_MiguelRematch:: @ 81EC733
-	trainerbattle_rematch TRAINER_MIGUEL_1, Route103_Text_MiguelRematchIntro, Route103_Text_MiguelRematchDefeated
-	msgbox Route103_Text_MiguelRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Marcos:: @ 81EC74A

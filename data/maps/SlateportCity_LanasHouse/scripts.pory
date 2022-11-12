@@ -152,6 +152,7 @@ LH_LeafNight:
 	end
 	
 LH_CourtneyCaughtPlayer::
+	goto_if_set FLAG_RYU_HAREM_EVENT_COURTNEY_SPECIAL, ryu_return
 	playse SE_DOOR
 	waitse
 	addobject 3

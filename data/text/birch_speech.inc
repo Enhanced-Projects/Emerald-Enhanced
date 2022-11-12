@@ -1,9 +1,6 @@
 gText_Birch_Welcome:: @ 82C897B
 	.string "  $"
 
-gText_Birch_Pokemon:: @ 82C89FB
-	.string " $"
-
 @         I don't know why, but the game is not clearing out the textbox after each line, so i filled in the extra space with... whitespace.
 
 

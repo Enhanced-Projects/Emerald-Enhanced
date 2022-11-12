@@ -17,7 +17,7 @@ script TrainerHill_Roof_EventScript_Owner {
 	msgbox(TrainerHill_Roof_Text_HaveTheMostMarvelousGift)
 	specialvar(VAR_TEMP_4, RyuGetTrainerHillReward)
 	if (var(VAR_TEMP_4) == ITEM_BEAST_BALL) {//should give between 2 and 5 beast balls.
-		random(3)
+		random(4)
 		copyvar(VAR_TEMP_3, VAR_RESULT)
 		addvar(VAR_TEMP_3, 2)
 	}

@@ -6753,11 +6753,7 @@ static void SetCursorMonData(void *pokemon, u8 mode)
         sPSSData->cursorMonSpecies = GetMonData(mon, MON_DATA_SPECIES2);
         if (sPSSData->cursorMonSpecies != SPECIES_NONE)
         {
-            //sanityIsBagEgg = GetMonData(mon, MON_DATA_SANITY_IS_BAD_EGG);
-            //if (sanityIsBagEgg)
-            //    sPSSData->cursorMonIsEgg = TRUE;
-            //else
-                sPSSData->cursorMonIsEgg = GetMonData(mon, MON_DATA_IS_EGG);
+            sPSSData->cursorMonIsEgg = GetMonData(mon, MON_DATA_IS_EGG);
 
             GetMonData(mon, MON_DATA_NICKNAME, sPSSData->cursorMonNick);
             StringGetEnd10(sPSSData->cursorMonNick);
@@ -6777,11 +6773,8 @@ static void SetCursorMonData(void *pokemon, u8 mode)
         if (sPSSData->cursorMonSpecies != SPECIES_NONE)
         {
             u32 otId = GetBoxMonData(boxMon, MON_DATA_OT_ID);
-            sanityIsBagEgg = GetBoxMonData(boxMon, MON_DATA_SANITY_IS_BAD_EGG);
-            if (sanityIsBagEgg)
-                sPSSData->cursorMonIsEgg = TRUE;
-            else
-                sPSSData->cursorMonIsEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG);
+
+            sPSSData->cursorMonIsEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG);
 
 
             GetBoxMonData(boxMon, MON_DATA_NICKNAME, sPSSData->cursorMonNick);
@@ -7004,14 +6997,6 @@ static u8 InBoxInput_Normal(void)
         if (JOY_NEW(B_BUTTON))
             return 19;
 
-        if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR)
-        {
-            if (JOY_HELD(L_BUTTON))
-                return 10;
-            if (JOY_HELD(R_BUTTON))
-                return 9;
-        }
-
         if (JOY_NEW(SELECT_BUTTON))
         {
             sub_80CFDC4();
@@ -7172,14 +7157,6 @@ static u8 InBoxInput_MovingMultiple(void)
     }
     else
     {
-        if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR)
-        {
-            if (JOY_HELD(L_BUTTON))
-                return 10;
-            if (JOY_HELD(R_BUTTON))
-                return 9;
-        }
-
         return 0;
     }
 }
@@ -7339,14 +7316,6 @@ static u8 HandleInput_OnBox(void)
             return 10;
         if (JOY_HELD(DPAD_RIGHT))
             return 9;
-
-        if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR)
-        {
-            if (JOY_HELD(L_BUTTON))
-                return 10;
-            if (JOY_HELD(R_BUTTON))
-                return 9;
-        }
 
         if (JOY_NEW(A_BUTTON))
         {
@@ -9442,7 +9411,6 @@ bool32 CheckBoxMonSanityAt(u32 boxId, u32 boxPosition)
         && boxPosition < IN_BOX_COUNT
         && GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_HAS_SPECIES)
         && !GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_IS_EGG))
-        //&& !GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_IS_BAD_EGG))
         return TRUE;
     else
         return FALSE;

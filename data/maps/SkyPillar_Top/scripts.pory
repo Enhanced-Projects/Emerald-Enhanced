@@ -117,51 +117,6 @@ SkyPillar_Top_EventScript_RanFromRayquaza2:: @ 8239785
 	releaseall
 	end
 
-SkyPillar_Top_EventScript_AwakenRayquaza:: @ 823979A
-	lockall
-	fadeoutbgm 1
-	applymovement PLAYER, Common_Movement_FaceUp
-	waitmovement 0
-	special SpawnCameraObject
-	applymovement CAMERA, SkyPillar_Top_Movement_CameraPanUp
-	waitmovement 0
-	special RemoveCameraObject
-	applymovement 1, SkyPillar_Top_Movement_RayquazaStir
-	waitmovement 0
-	waitse
-	playmoncry SPECIES_RAYQUAZA, 2
-	setvar VAR_0x8004, 1  @ vertical pan
-	setvar VAR_0x8005, 1  @ horizontal pan
-	setvar VAR_0x8006, 8  @ num shakes
-	setvar VAR_0x8007, 3  @ shake delay
-	special ShakeCamera
-	waitstate
-	waitse
-	playmoncry SPECIES_RAYQUAZA, 2
-	setvar VAR_0x8004, 1  @ vertical pan
-	setvar VAR_0x8005, 2  @ horizontal pan
-	setvar VAR_0x8006, 8  @ num shakes
-	setvar VAR_0x8007, 5  @ shake delay
-	special ShakeCamera
-	waitstate
-	waitmoncry
-	applymovement 1, SkyPillar_Top_Movement_RayquazaFlyOff
-	waitmovement 0
-	removeobject 1
-	msgbox SkyPillar_Top_Text_RayquazaFlewOff, MSGBOX_DEFAULT
-	closemessage
-	delay 20
-	fadeinbgm 1
-	special SpawnCameraObject
-	applymovement CAMERA, SkyPillar_Top_Movement_CameraPanDown
-	waitmovement 0
-	special RemoveCameraObject
-	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
-	setvar VAR_SKY_PILLAR_STATE, 1
-	setvar VAR_SKY_PILLAR_RAQUAZA_CRY_DONE, 1
-	releaseall
-	end
-
 SkyPillar_Top_Movement_RayquazaStir: @ 823983A
 	delay_16
 	walk_in_place_fast_left
@@ -213,43 +168,3 @@ SkyPillar_Top_Text_RayquazaFlewOff: @ 8239860
 
 `
 
-script SP_TransformRayquaza {
-	setvar(VAR_TEMP_4, 100)
-	end
-	checkspecies(SPECIES_RAYQUAZA)
-	if (var(VAR_RESULT) == TRUE) {
-		playmoncry(SPECIES_RAYQUAZA, 0)
-		msgbox("Rayquaza is reacting strangely to being\nhere.\pLet it out?", MSGBOX_YESNO)
-		closemessage
-		waitmoncry
-		if (var(VAR_RESULT) == YES) {
-			fadescreen(FADE_TO_BLACK)
-			delay(20)
-			fadescreen(FADE_FROM_BLACK)
-			showmonpic(SPECIES_MEGA_RAYQUAZA, 10, 3)
-			playmoncry(SPECIES_MEGA_RAYQUAZA, 0)
-			waitmoncry
-			hidemonpic
-			copyvar(VAR_0x8004, VAR_TEMP_F)
-			special(BufferMonNickname)
-			msgbox("{STR_VAR_1} transformed into\nMega Rayquaza!")
-			playfanfare(MUS_FANFA5)
-			waitfanfare
-			closemessage
-			msgbox("It emits an aura of obscene\npower!")
-			setflag(FLAG_RYU_RAYQUAZA_TRANSFORMED)
-			closemessage
-			callnative(RyuTransformRayquaza)
-			release
-			end
-		}
-		else {
-			goto(ryu_end)
-		}
-	}
-	else {
-		msgbox("There's a strange power manifesting\nhere...")
-		release
-		end
-	}
-}

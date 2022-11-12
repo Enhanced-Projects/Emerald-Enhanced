@@ -61,7 +61,7 @@
 #define VAR_POISON_STEP_COUNTER              0x402B
 #define VAR_RESET_RTC_ENABLE                 0x402C
 #define VAR_ENIGMA_BERRY_AVAILABLE           0x402D
-#define VAR_0x402E                           0x402E
+#define VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES 0x402E
 
 #define VAR_FRONTIER_MANIAC_FACILITY         0x402F
 #define VAR_FRONTIER_GAMBLER_CHALLENGE       0x4030
@@ -116,11 +116,11 @@
 #define VAR_SAVE_FILE_CREATED_ON_VERSION     0x4061 // Unused Var
 #define VAR_RYU_TIMES_STAYED_WITH_COMPANION  0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                   0x4063
-#define VAR_RYU_GCMS_MOVE1                   0x4064 //GCMS
-#define VAR_RYU_GCMS_MOVE2                   0x4065 // GCMS
-#define VAR_RYU_GCMS_MOVE3                   0x4066 // GCMS
-#define VAR_RYU_GCMS_MOVE4                   0x4067 // GCMS
-#define VAR_RYU_GCMS_ABILITY                 0x4068 // GCMS
+#define VAR_RYU_BOSS_RECHARGE                0x4064 //used only when facing the horsemen or reaper
+#define VAR_RYU_HORSEMAN_ID                  0x4065
+#define VAR_UNUSED_0x4066                    0x4066
+#define VAR_UNUSED_0x4067                    0x4067
+#define VAR_UNUSED_0x4068                    0x4068 
 #define VAR_ROUTE110_STATE                   0x4069
 #define VAR_RYU_TH_RNG_VALUE                 0x406A
 #define VAR_RYU_TRAINER_HILL_MODE            0x406B
@@ -128,7 +128,7 @@
 #define VAR_RYU_PLAYER_BOTANY_SKILL          0x406D
 #define VAR_RYU_PLAYER_ALCHEMY_SKILL         0x406E
 #define VAR_ROUTE116_STATE                   0x406F
-#define VAR_RYU_PLAYER_MINING_EXP            0x4070
+#define VAR_RYU_PLAYER_MINING_SKILL_EXP            0x4070
 #define VAR_ROUTE118_STATE                   0x4071
 #define VAR_ROUTE119_STATE                   0x4072
 #define VAR_RYU_PLAYER_BOTANY_SKILL_EXP      0x4073
@@ -136,8 +136,8 @@
 #define VAR_RYU_LEGENDARIES_CAUGHT           0x4075 // Number of legendaries caught.
 #define VAR_ROUTE123_STATE                   0x4076 // Unused Var
 #define VAR_RYU_AUTOLEVEL_MODIFIER           0x4077 // level modifier for autolevel
-#define VAR_RYU_QUESTS_FINISHED                   0x4078 // Unused Var
-#define VAR_ROUTE126_STATE                   0x4079 // Unused Var
+#define VAR_RYU_QUESTS_FINISHED              0x4078 //
+#define VAR_DO_NOT_USE_0x4079                0x4079 // DO NOT USE, SETS ITSELF FOR NO REASON
 #define VAR_ROUTE127_STATE                   0x407A // Unused Var
 #define VAR_ROUTE128_STATE                   0x407B
 #define VAR_ROUTE129_STATE                   0x407C // Unused Var
@@ -244,7 +244,7 @@
 #define VAR_RYU_ALCHEMY_COPPER               0x40E1 // Player's copper dust count
 #define VAR_RYU_ALCHEMY_SILVER               0x40E2 // Player's silver dust count
 #define VAR_RYU_ALCHEMY_GOLD                 0x40E3 // Player's gold dust count
-#define VAR_RYU_ALCHEMY_EXP                  0x40E4 // var is written to, but never read
+#define VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP                  0x40E4 // var is written to, but never read
 #define VAR_RYU_QUEST_AQUA                         0x40E5 // Aqua quest stages
 #define VAR_DAILY_SLOTS                      0x40E6
 #define VAR_DAILY_WILDS                      0x40E7
@@ -276,17 +276,28 @@
 #define VAR_RYU_E42                          0x4101
 #define VAR_RYU_E43                          0x4102
 #define VAR_RYU_E44                          0x4103
-#define VAR_RYU_DELIVERY_5_GFX_ID            0x4104
-#define VAR_RYU_DELIVERY_6_GFX_ID            0x4105
+#define VAR_RYU_SUCCESSFUL_DELIVERIES        0x4104
+#define VAR_RYU_FAILED_DELIVERIES            0x4105
 #define VAR_HOURS                            0x4106
 //prize money
 #define VAR_RYU_MONEY_BASE_RANDOM_COMPONENT  0x4107
 #define VAR_RYU_MONEY_BASE_VALUE             0x4108
 #define VAR_RYU_MONEY_BASE_COEFFICIENT       0x4109
 #define VAR_RYU_SPECIAL_CHALLENGE_STATE      0x410A
+#define VAR_RYU_ATTENDANT_ID                 0x410B
+#define VAR_RYU_LOCAL_ENCOUNTERS             0x410C
+#define VAR_RYU_DYNAMIC_MOVEMENT_ID          0x410D
+#define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X    0x410E
+#define VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y    0x410F
+#define VAR_RYU_NUM_DELIVERIES               0x4110
+#define VAR_RYU_DELIVERY_SYSTEM_DATA         0x4111
+#define VAR_RYU_DELIVERY_SYSTEM_HIGH_REWARD_ROLL        0x4112
+#define VAR_RYU_DELIVERY_SYSTEM_LOW_REWARD_ROLL         0x4113
+//FULL_COLOR
+#define VAR_HAT_THEME_UI_NUMBER              0x411F // Which theme UI is selected
 
 
-//vars 4100 thru 417f are unused; total of 128.
+//vars 4100 thru 417f are new; total of 128.
 #define VARS_END                             0x417F
 #define VARS_COUNT                           (VARS_END - VARS_START + 1)
 

@@ -539,7 +539,7 @@
 #define STRINGID_AIRBALLOONPOP 535
 #define STRINGID_INCINERATEBURN 536
 #define STRINGID_BUGBITE 537
-#define STRINGID_ILLUSIONWOREOFF 538
+#define STRINGID_UNUSED_538 538
 #define STRINGID_ATTACKERCUREDTARGETSTATUS 539
 #define STRINGID_ATTACKERLOSTFIRETYPE 540
 #define STRINGID_HEALERCURE 541
@@ -603,8 +603,24 @@
 #define STRINGID_FERVENTWISHREACHED                   599
 #define STRINGID_PKMNAURAISGROWINGEXPLOSIVELY         600
 #define STRINGID_PKMNREVERTEDTOPRIMAL                 601
+#define STRINGID_RYUMONTOOPOWERFULLFORBALL            602
+#define STRINGID_DOTBIND                              603
+#define STRINGID_DOTWRAP                              604
+#define STRINGID_DOTFIRESPIN                          605
+#define STRINGID_DOTCLAMP                             606
+#define STRINGID_DOTWHIRLPOOL                         607
+#define STRINGID_DOTSANDTOMB                          608
+#define STRINGID_DOTINFESTATION                       609
+#define STRINGID_DOTCLING                             610
+#define STRINGID_ITDOESNTLIKECHEATERS                 611
+#define STRINGID_DOTMS                                612
+#define STRINGID_PKMNJUDGING                          613
+#define STRINGID_REAPERUSEDMOVE                       614
+#define STRINGID_REAPERDEALTDAMAGE                    615
+#define STRINGID_BALLBLOCKEDREAPER                    616
+#define STRINGID_BALLBLOCKEDHORSEMAN                  617
 
-#define BATTLESTRINGS_COUNT                602
+#define BATTLESTRINGS_COUNT                618
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

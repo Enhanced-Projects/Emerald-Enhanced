@@ -141,11 +141,27 @@ bool8 DoesPartyHaveEnigmaBerry(void)
     return hasItem;
 }
 
+const u16 gRyuHorsemenMoves[4][4] = {
+    [0] = {MOVE_STONE_EDGE, MOVE_SLASH, MOVE_BULLET_PUNCH, MOVE_BULLDOZE},//war
+    [1] = {MOVE_VENOSHOCK, MOVE_INFESTATION, MOVE_GIGA_DRAIN, MOVE_WILL_O_WISP},//plague
+    [2] = {MOVE_REAPING_BLOW, MOVE_SLUDGE_BOMB, MOVE_DARK_VOID, MOVE_DISABLE},//death
+    [3] = {MOVE_SPITE, MOVE_FLAMETHROWER, MOVE_THIEF, MOVE_DYNAMIC_PUNCH},//famine
+};
+
+const u8 horsemanWarName[] = _("War");
+const u8 horsemanPlagueName[] = _("Pestilence");
+const u8 horsemanDeathName[] = _("Death");
+const u8 horsemanFamineName[] = _("Famine");
+
 void CreateScriptedWildMon(u16 species, u8 level, u16 item)
 {
     u8 heldItem[2];
 
     ZeroEnemyPartyMons();
+    if ((gSaveBlock1Ptr->location.mapGroup == 33) && (gSaveBlock1Ptr->location.mapNum = 4))
+    {
+        level = MAX_LEVEL;
+    }
     CreateMon(&gEnemyParty[0], species, level, 32, 0, 0, OT_ID_PLAYER_ID, 0);
     if (item)
     {
@@ -153,6 +169,66 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
         heldItem[1] = item >> 8;
         SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, heldItem);
     }
+
+     if ((gSaveBlock1Ptr->location.mapGroup == 33) && (gSaveBlock1Ptr->location.mapNum = 4))
+        {
+            VarSet(VAR_OPTIONS_HP_BAR_SPEED, 0xFFFF);
+            if (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)
+            {
+                u16 maxhp = 10000;
+                u32 i, k;
+                SetMonData(&gEnemyParty[0], MON_DATA_MAX_HP, &maxhp);
+                SetMonData(&gEnemyParty[0], MON_DATA_HP, &maxhp);
+                for (i = 0;i<4;i++)
+                {
+                    SetMonData(&gEnemyParty[0], (MON_DATA_MOVE1 + i), &gRyuHorsemenMoves[VarGet(VAR_RYU_HORSEMAN_ID) - 1][i]);
+                }
+                switch (VarGet(VAR_RYU_HORSEMAN_ID))
+                {
+                    case 1:
+                        SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, horsemanWarName);
+                        break;
+                    case 2:
+                        SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, horsemanPlagueName);
+                        break;
+                    case 3:
+                        SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, horsemanDeathName);
+                        break;
+                    case 4:
+                        SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, horsemanFamineName);
+                        break;
+                }
+            }
+            else if (FlagGet(FLAG_RYU_FACING_REAPER) == TRUE)
+            {
+                u16 maxhp = 60000;
+                u16 maxdef = 1500;
+                u16 m1 = 245;
+                u16 m2 = 585;
+                u16 m3 = 309;
+                u16 m4 = 429;
+                u8 maxiv = 31;
+                bool8 yes = TRUE;
+                const u8 nick[] = (const u8[])_("Reaper");
+                SetMonData(&gEnemyParty[0], MON_DATA_MAX_HP, &maxhp);
+                SetMonData(&gEnemyParty[0], MON_DATA_HP, &maxhp);
+                SetMonData(&gEnemyParty[0], MON_DATA_DEF, &maxdef);
+                SetMonData(&gEnemyParty[0], MON_DATA_SPDEF, &maxdef);
+                SetMonData(&gEnemyParty[0], MON_DATA_SPEED, &maxdef);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &m1);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &m2);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &m3);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &m4);
+                SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, &nick);
+                SetMonData(&gEnemyParty[0], MON_DATA_ATK_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_DEF_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_SPATK_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_SPEED_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_BOSS_STATUS, &yes);
+            }
+        }
 }
 
 void ScriptSetMonMoveSlot(u8 monIndex, u16 move, u8 slot)

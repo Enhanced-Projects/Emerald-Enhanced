@@ -170,14 +170,6 @@ LilycoveCity_ContestLobby_EventScript_CantEnterLowRank:: @ 8279F12
 	release
 	end
 
-@ Unused
-LilycoveCity_ContestLobby_EventScript_ConfirmEntry:: @ 8279F21
-	msgbox LilycoveCity_ContestLobby_Text_ConfirmContestMon, MSGBOX_YESNO
-	switch VAR_RESULT
-	case NO, LilycoveCity_ContestLobby_EventScript_ChooseContestMon
-	case YES, LilycoveCity_ContestLobby_EventScript_EnterMon
-	end
-
 LilycoveCity_ContestLobby_EventScript_ConfirmEntryAlreadyWon:: @ 8279F45
 	msgbox LilycoveCity_ContestLobby_Text_AlreadyWonEnterAnyway, MSGBOX_YESNO
 	switch VAR_RESULT
@@ -327,9 +319,6 @@ ContestHall_EventScript_ShowContestMons:: @ 827A0F5
 ContestHall_EventScript_TryWaitForLink:: @ 827A133
 	return
 
-ContestHall_EventScript_WaitForLink:: @ 827A144
-	return
-
 ContestHall_EventScript_ContestantWalkToCenter:: @ 827A149
 	compare VAR_0x8006, 0
 	goto_if_eq ContestHall_EventScript_Player1WalkToCenter
@@ -426,17 +415,8 @@ ContestHall_EventScript_AudienceWillVote:: @ 827A26C
 	msgbox ContestHall_Text_SeenContestantsAudienceWillVote, MSGBOX_DEFAULT
 	return
 
-ContestHall_EventScript_AudienceWillVoteLink:: @ 827A280
-	return
-
-ContestHall_EventScript_AudienceWillVoteWireless:: @ 827A297
-	return
-
 ContestHall_EventScript_VotingUnderWay:: @ 827A2B9
 	msgbox ContestHall_Text_VotingUnderWay
-	return
-
-ContestHall_EventScript_VotingUnderWayLink:: @ 827A2CA
 	return
 
 ContestHall_EventScript_AudienceReactToContestant:: @ 827A2D5
@@ -1084,10 +1064,6 @@ ContestHall_EventScript_CheckRankIsMaster:: @ 827ABBE
 ContestHall_EventScript_DontSkipPrize:: @ 827ABCD
 	return
 
-@ This flag is never read
-ContestHall_EventScript_SetSketchFlag:: @ 827ABCE
-	return
-
 ContestHall_EventScript_SetReadyForContestArtist:: @ 827ABD2
 	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1
 	return
@@ -1104,10 +1080,6 @@ ContestHall_EventScript_EndLinkContest:: @ 827ABD8
 
 ContestHall_EventScript_SetReadyForLinkContestArtist:: @ 827ABF1
 	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 2
-	return
-
-@ Unused
-ContestHall_EventScript_Ret:: @ 827ABF7
 	return
 
 ContestHall_EventScript_WinnerApproachForPrize:: @ 827ABF8
@@ -1235,26 +1207,6 @@ ContestHall_EventScript_NoRoomForReward:: @ 827ACA8
 	msgbox ContestHall_Text_PickUpPrizeAtCounterLater, MSGBOX_DEFAULT
 	releaseall
 	setvar VAR_CONTEST_PRIZE_PICKUP, 4
-	return
-
-SetMasterRankClearedCool::
-	setflag FLAG_RYU_CLEARED_COOL
-	return
-
-SetMasterRankClearedBeauty::
-	setflag FLAG_RYU_CLEARED_BEAUTY
-	return
-	
-SetMasterRankClearedTough::
-	setflag FLAG_RYU_CLEARED_TOUGH
-	return
-	
-SetMasterRankClearedSmart::
-	setflag FLAG_RYU_CLEARED_SMART
-	return
-	
-SetMasterRankClearedCute::
-	setflag FLAG_RYU_CLEARED_CUTE
 	return
 
 ContestHall_EventScript_ReceiveContestRibbon:: @ 827ACDF
@@ -1497,12 +1449,6 @@ LilycoveCity_ContestLobby_Text_ContestReception: @ 827AEA8
 	.string "This is the reception counter for\n"
 	.string "Pokémon Contests.$"
 
-@ Unused
-LilycoveCity_ContestLobby_Text_CounterOnlyFor4PlayerContests: @ 827AEE3
-	.string "Hello!\p"
-	.string "This reception counter is only\n"
-	.string "for 4-player Pokémon Contests.$"
-
 LilycoveCity_ContestLobby_Text_EnterContest1: @ 827AF28
 	.string "Would you like to enter your Pokémon\n"
 	.string "in our Contests?$"
@@ -1694,14 +1640,6 @@ ContestHall_Text_PickUpPrizeAtCounterLater: @ 827BC2F
 	.string "the reception counter later.\l"
 	.string "Please do compete again!$"
 
-@ Unused
-ContestHall_Text_OnlyRegister4Players: @ 827BC82
-	.string "I only register four players for\n"
-	.string "Pokémon Contests.\p"
-	.string "If three other players link up, all\n"
-	.string "four may enter the same Contest.\p"
-	.string "Would you like to take part?$"
-
 LilycoveCity_ContestLobby_Text_ProgressWillBeSaved: @ 827BD17
 	.string "Before entering a Contest, your\n"
 	.string "progress will be saved.$"
@@ -1709,30 +1647,6 @@ LilycoveCity_ContestLobby_Text_ProgressWillBeSaved: @ 827BD17
 LilycoveCity_ContestLobby_Text_ParticipateAnotherTime: @ 827BD4F
 	.string "We hope you will participate another\n"
 	.string "time.$"
-
-@ Unused
-LilycoveCity_ContestLobby_Text_EnterContest2: @ 827BD7A
-	.string "Would you like to enter a Contest?$"
-
-@ Unused
-LilycoveCity_ContestLobby_Text_Explain4PlayerContest: @ 827BD9D
-	.string "When four players are ready, connect\n"
-	.string "over a Game Link cable, and register\l"
-	.string "with me, please.\p"
-	.string "Please choose the same Contest\n"
-	.string "as your fellow contestants.\p"
-	.string "The Contest begins as soon as all\n"
-	.string "players register their entry.\p"
-	.string "After that, the usual Contest rules\n"
-	.string "apply.$"
-
-@ Unused
-LilycoveCity_ContestLobby_Text_EnterWhichContest2: @ 827BE9E
-	.string "Which Contest would you like to enter?$"
-
-@ Unused
-LilycoveCity_ContestLobby_Text_EnterWhichPokemon2: @ 827BEC5
-	.string "Which Pokémon would you like to enter?$"
 
 LilycoveCity_ContestLobby_Text_Transmitting: @ 827BEEC
 	.string "Transmitting…$"
@@ -1751,16 +1665,6 @@ LilycoveCity_ContestLobby_Text_PlayersMadeDifferentChoice: @ 827BF4B
 LilycoveCity_ContestLobby_Text_PleaseWaitBButtonCancel: @ 827BF85
 	.string "Please wait.\n"
 	.string "… … B Button: Cancel$"
-
-@ Unused
-LilycoveCity_ContestLobby_Text_ParticipateAnotherTime2: @ 827BFA7
-	.string "We hope you will participate another\n"
-	.string "time.$"
-
-@ Unused
-LilycoveCity_ContestLobby_Text_TransmissionErrorTryAgain: @ 827BFD2
-	.string "Transmission error.\n"
-	.string "Please try again.$"
 
 LilycoveCity_ContestLobby_Text_YourMonIsEntryNumX: @ 827BFF8
 	.string "Your Pokémon will be entered in\n"

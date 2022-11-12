@@ -5,6 +5,7 @@ SlateportCity_OceanicMuseum_1F_MapScripts:: @ 820AD95
 
 OM_FirstFloorOnFrameScript::
 	map_script_2 VAR_RYU_QUEST_AQUA, 25, OM_FirstFloorDevonEmployee
+	map_script_2 VAR_RYU_QUEST_DEVON_CORPORATE, 17, OM_FF_FixDevon
 	.2byte 0
 
 SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant:: @ 820AD96
@@ -56,13 +57,6 @@ SlateportCity_OceanicMuseum_1F_EventScript_NotEnoughMoney:: @ 820AE18
 	hidemoneybox
 	applymovement PLAYER, SlateportCity_OceanicMuseum_1F_Movement_PushPlayerBackFromCounter
 	waitmovement 0
-	releaseall
-	end
-
-SlateportCity_OceanicMuseum_1F_EventScript_AllowEntranceAnyway:: @ 820AE39
-	msgbox SlateportCity_OceanicMuseum_1F_Text_CatchUpWithYourGroup, MSGBOX_DEFAULT
-	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 1
-	hidemoneybox
 	releaseall
 	end
 
@@ -209,6 +203,10 @@ SlateportCity_OceanicMuseum_1F_Movement_FamiliarGruntExitNorth: @ 820AFCE
 	walk_fast_down
 	delay_8
 	step_end
+
+OM_FF_FixDevon::
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 16
+	end
 
 SlateportCity_OceanicMuseum_1F_Text_WouldYouLikeToEnter: @ 820AFD5
 	.string "Welcome to the Oceanic Museum.\p"

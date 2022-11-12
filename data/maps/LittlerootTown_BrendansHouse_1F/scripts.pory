@@ -280,8 +280,6 @@ script LRT_MayIntroEvent {
 	setvar(VAR_RYU_QUEST_MAY, 25) //Player completed may event in rival's house.
 	applymovement(FOLLOWER, LRT_BH_MayToStairs)
 	waitmovement(FOLLOWER)
-	applymovement(7, Common_Movement_StepLeft)
-	waitmovement(7)
 	applymovement(7, Common_Movement_FaceDown)
 	waitmovement(7)
 	checkplayergender
@@ -342,12 +340,13 @@ script LRT_BH_DawnEnter {
 	closemessage
 	applymovement(FOLLOWER, Common_Movement_FaceUp)
 	waitmovement(FOLLOWER)
+	turnobject(7, DIR_SOUTH)
 	applymovement(8, Common_Movement_FaceRight)
 	waitmovement(8)
 	applymovement(8, Common_Movement_FaceDown)
 	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({RIVAL} chuckles...)")
 	closemessage
-	msgbox("Rival's Mom: Well anyways,\nWelcome home, dear!\pI'm guessing Birch already set\nup your new room.")
+	msgbox("{RIVAL}'s Mom: Well anyways,\nWelcome home, dear!\pI'm guessing Birch already set\nup your new room.")
 	closemessage
 	msgbox("Birch: Ahem. Yes, that's what I was\ndoing.\pIt's all good to go!")
 	setflag(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN) //to be used later for a special scene if player romanced dawn before may.

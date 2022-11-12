@@ -95,8 +95,8 @@ static void GetPyramidEntranceAndExitSquareIds(u8 *, u8 *);
 static void SetPyramidObjectPositionsUniformly(u8);
 static bool8 SetPyramidObjectPositionsInAndNearSquare(u8, u8);
 static bool8 SetPyramidObjectPositionsNearSquare(u8, u8);
-static bool8 TrySetPyramidObjectEventPositionInSquare(u8 arg0, u8 *floorLayoutOffsets, u8 squareId, u8 objectEventId);
-static bool8 TrySetPyramidObjectEventPositionAtCoords(bool8 objType, u8 x, u8 y, u8 *floorLayoutOffsets, u8 squareId, u8 objectEventId);
+static bool8 TrySetPyramidObjectEventPositionInSquare(u8 arg0, u8 *floorLayoutOffsets, u8 squareId, u16 objectEventId);
+static bool8 TrySetPyramidObjectEventPositionAtCoords(bool8 objType, u8 x, u8 y, u8 *floorLayoutOffsets, u8 squareId, u16 objectEventId);
 
 // Const rom data.
 #define ABILITY_RANDOM 2 // For wild mons data.
@@ -410,7 +410,7 @@ static const u8 sPickupItemSlots[][2] =
 
 static const u8 sPickupItemOffsets[] = {0, 9, 18, 27, 36, 45, 54};
 
-static const struct PyramidTrainerEncounterMusic sTrainerClassEncounterMusic[55] =
+static const struct PyramidTrainerEncounterMusic sTrainerClassEncounterMusic[56] =
 {
     {TRAINER_CLASS_TEAM_AQUA, TRAINER_ENCOUNTER_MUSIC_AQUA},
     {TRAINER_CLASS_AQUA_ADMIN, TRAINER_ENCOUNTER_MUSIC_AQUA},
@@ -467,6 +467,7 @@ static const struct PyramidTrainerEncounterMusic sTrainerClassEncounterMusic[55]
     {TRAINER_CLASS_LEADER, TRAINER_ENCOUNTER_MUSIC_FEMALE},
     {TRAINER_CLASS_SCHOOL_KID, TRAINER_ENCOUNTER_MUSIC_MALE},
     {TRAINER_CLASS_DEVON_ENFORCER, TRAINER_ENCOUNTER_MUSIC_RICH},
+    {TRAINER_CLASS_AETHER_FOUNDER, TRAINER_ENCOUNTER_MUSIC_FEMALE},
 };
 
 static const u8 sTrainerTextGroups[50][2] =
@@ -1513,7 +1514,7 @@ static u16 GetUniqueTrainerId(u8 objectEventId)
             }
         } while (i != objectEventId);
     }
-
+    vbaprintf("current id %d", trainerId);
     return trainerId;
 }
 
@@ -1573,7 +1574,7 @@ void GenerateBattlePyramidFloorLayout(u16 *backupMapData, bool8 setPlayerPositio
 void LoadBattlePyramidObjectEventTemplates(void)
 {
     int i;
-    u8 id;
+    u16 id;
     u8 entranceSquareId, exitSquareId;
 
     for (i = 0; i < 8; i++)
@@ -1815,7 +1816,7 @@ static bool8 SetPyramidObjectPositionsNearSquare(u8 objType, u8 squareId)
     return (numObjects / 2) > numPlacedObjects;
 }
 
-static bool8 TrySetPyramidObjectEventPositionInSquare(u8 objType, u8 *floorLayoutOffsets, u8 squareId, u8 objectEventId)
+static bool8 TrySetPyramidObjectEventPositionInSquare(u8 objType, u8 *floorLayoutOffsets, u8 squareId, u16 objectEventId)
 {
     int x, y;
 
@@ -1845,7 +1846,7 @@ static bool8 TrySetPyramidObjectEventPositionInSquare(u8 objType, u8 *floorLayou
     return TRUE;
 }
 
-static bool8 TrySetPyramidObjectEventPositionAtCoords(u8 objType, u8 x, u8 y, u8 *floorLayoutOffsets, u8 squareId, u8 objectEventId)
+static bool8 TrySetPyramidObjectEventPositionAtCoords(u8 objType, u8 x, u8 y, u8 *floorLayoutOffsets, u8 squareId, u16 objectEventId)
 {
     int i, j;
     const struct MapHeader *mapHeader;
@@ -1880,6 +1881,7 @@ static bool8 TrySetPyramidObjectEventPositionAtCoords(u8 objType, u8 x, u8 y, u8
             {
                 i = GetUniqueTrainerId(objectEventId);
                 floorEvents[objectEventId].graphicsId = GetBattleFacilityTrainerGfxId(i);
+                vbaprintf("double check %d %d\n", floorEvents[objectEventId].graphicsId, GetBattleFacilityTrainerGfxId(i));
                 gSaveBlock2Ptr->frontier.trainerIds[objectEventId] = i;
             }
             return FALSE;

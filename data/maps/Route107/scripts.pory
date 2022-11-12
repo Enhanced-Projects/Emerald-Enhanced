@@ -21,11 +21,6 @@ Route107_EventScript_TonyRegisterMatchCallAfterBattle:: @ 81EE5D8
 	release
 	end
 
-Route107_EventScript_TonyRematch:: @ 81EE5F7
-	trainerbattle_rematch TRAINER_TONY_1, Route107_Text_TonyRematchIntro, Route107_Text_TonyRematchDefeated
-	msgbox Route107_Text_TonyRematchPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route107_EventScript_Denise:: @ 81EE60E
 	trainerbattle_single TRAINER_DENISE, Route107_Text_DeniseIntro, Route107_Text_DeniseDefeated
 	msgbox Route107_Text_DenisePostBattle, MSGBOX_AUTOCLOSE

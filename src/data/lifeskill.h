@@ -198,9 +198,11 @@ const u16 gInsideMiningTier1[] = {//level 1
     ITEM_SHARD_ORE,
     ITEM_COMMON_GEM_ORE,
     ITEM_COMMON_GEM_ORE,
+    ITEM_COMMON_GEM_ORE,
     ITEM_COPPER_ORE,
     ITEM_COPPER_ORE,
     ITEM_COPPER_ORE,
+    ITEM_SILVER_ORE,
     ITEM_SILVER_ORE,
 };
 
@@ -208,6 +210,7 @@ const u16 gInsideMiningTier2[] = {//level 2
     ITEM_NONE,
     ITEM_NONE,
     ITEM_NONE,
+    ITEM_ANCIENT_COIN,
     ITEM_SHARD_ORE,
     ITEM_SHARD_ORE,
     ITEM_COMMON_GEM_ORE,
@@ -215,6 +218,7 @@ const u16 gInsideMiningTier2[] = {//level 2
     ITEM_UNCOMMON_GEM_ORE,
     ITEM_UNCOMMON_GEM_ORE,
     ITEM_UNCOMMON_GEM_ORE,
+    ITEM_COPPER_ORE,
     ITEM_COPPER_ORE,
     ITEM_COPPER_ORE,
     ITEM_SILVER_ORE,
@@ -235,7 +239,9 @@ const u16 gInsideMiningTier3[] = {//level 3
     ITEM_SHARD_ORE,
     ITEM_SILVER_ORE,
     ITEM_GOLD_ORE,
-    ITEM_GOLD_ORE
+    ITEM_GOLD_ORE,
+    ITEM_ANCIENT_COIN,
+    ITEM_ANCIENT_COIN,
 };
 
 //Mining table for list of 'outside' maps. 
@@ -313,9 +319,11 @@ const u16 gOutsideMiningTier3[] = {//level 3
 
 // reward tables
 // These tables can be any size, as long as they're all the same size
-const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
+const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][12] = {
     [BOTANY_MAP_CATEGORY_JUNGLE] = {
-        ITEM_JUNGLE_BEANS,
+        ITEM_JUNGLE_BEANS, 
+        ITEM_JUNGLE_BEANS, 
+        ITEM_LUMINOUS_MOSS,
         ITEM_LUMINOUS_MOSS,
         ITEM_BIG_ROOT,
         ITEM_GRASSY_SEED,
@@ -329,6 +337,8 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_COLD] = {
         ITEM_FROST_MINT,
+        ITEM_FROST_MINT,
+        ITEM_SNOWBALL,
         ITEM_SNOWBALL,
         ITEM_NEVER_MELT_ICE,
         ITEM_MISTY_SEED,
@@ -342,7 +352,9 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_VOLCANIC] = {
         ITEM_CHIMNEY_PEPPER,
+        ITEM_CHIMNEY_PEPPER,
         ITEM_HARD_STONE,
+        ITEM_CHARCOAL,
         ITEM_CHARCOAL,
         ITEM_SOFT_SAND,
         //Shared items:
@@ -355,7 +367,9 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_SEASIDE] = {
         ITEM_SEASIDE_ALMOND,
+        ITEM_SEASIDE_ALMOND,
         ITEM_SOFT_SAND,
+        ITEM_SHOAL_SALT,
         ITEM_SHOAL_SALT,
         ITEM_SHOAL_SHELL,
         //Shared items:
@@ -368,6 +382,8 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_AQUATIC] = {
         ITEM_DEEPSEA_KELP,
+        ITEM_DEEPSEA_KELP,
+        ITEM_HEART_SCALE,
         ITEM_HEART_SCALE,
         ITEM_PEARL,
         ITEM_PSYCHIC_SEED,
@@ -381,7 +397,9 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_SAVANNA] = {
         ITEM_SAVANNA_MELON,
+        ITEM_SAVANNA_MELON,
         ITEM_SOFT_SAND,
+        ITEM_RARE_BONE,
         ITEM_RARE_BONE,
         ITEM_ELECTRIC_SEED,
         //Shared items:
@@ -394,6 +412,8 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     },
     [BOTANY_MAP_CATEGORY_GENERAL] = {
         ITEM_ABSORB_BULB,
+        ITEM_ABSORB_BULB,
+        ITEM_LEEK,
         ITEM_LEEK,
         ITEM_TINY_MUSHROOM,
         ITEM_BIG_MUSHROOM,
@@ -796,6 +816,18 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_RECIPES] = {
         .requiredLevel = 2,
         .givenCharges = 10,
     },
+    [ALCHEMY_EFFECT_HEALING_FACTOR] = {
+          .expGiven = 10,
+          .ingredients = {
+            {ITEM_HEAL_POWDER, 3},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_ORAN_BERRY, 1},
+        },
+        .metal = 0,
+        .metalDustAmt = 200,
+        .requiredLevel = 2,
+        .givenCharges = 5,
+    },
     [ALCHEMY_EFFECT_REPEL_T1] = {
           .expGiven = 7,
           .ingredients = {
@@ -855,18 +887,6 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_RECIPES] = {
         .metalDustAmt = 250,
         .requiredLevel = 5,
         .givenCharges = 1,
-    },
-    [ALCHEMY_EFFECT_HEALING_FACTOR] = {
-          .expGiven = 10,
-          .ingredients = {
-            {ITEM_HEAL_POWDER, 3},
-            {ITEM_MINERAL_WATER, 1},
-            {ITEM_ORAN_BERRY, 1},
-        },
-        .metal = 0,
-        .metalDustAmt = 200,
-        .requiredLevel = 2,
-        .givenCharges = 5,
     },
 
     //Alchemy Item Recipes Below.
@@ -977,12 +997,12 @@ const u8 * const gRyuAlchemyEffectItemToStringTable[16] = {
     sRAEffectEXPBoost1,
     sRAEffectEXPBoost2,
     sRAEffectEXPBoost3,
+    sRAEffectHealingFactor,
     sRAEffectRepelT1,
     sRAEffectRepelT2,
     sRAEffectSuperCapture1,
     sRAEffectSuperCapture2,
-    sRAEffectSuperCapture3,
-    sRAEffectHealingFactor
+    sRAEffectSuperCapture3
 };
 
 

@@ -402,7 +402,7 @@
 #define TRAINER_PERRY                       398
 #define TRAINER_HUGH                        399
 #define TRAINER_PHIL                        400
-#define TRAINER_JARED                       401
+#define TRAINER_JULIE2                       401
 #define TRAINER_HUMBERTO                    402
 #define TRAINER_PRESLEY                     403
 #define TRAINER_EDWARDO                     404
@@ -499,9 +499,9 @@
 #define TRAINER_LEONARD                     495
 #define TRAINER_DUNCAN                      496
 #define TRAINER_EMPTY_185                    497
-#define TRAINER_EMPTY_186                    498
-#define TRAINER_EMPTY_187                    499
-#define TRAINER_EMPTY_188                    500
+#define TRAINER_REL_LUCY                    498
+#define TRAINER_CHALLENGER_YUI                    499
+#define TRAINER_CHALLENGER_CLAY                    500
 #define TRAINER_ELI                         501
 #define TRAINER_ANNIKA                      502
 #define TRAINER_JAZMYN                      503
@@ -516,7 +516,7 @@
 #define TRAINER_EDWIN_1                     512
 #define TRAINER_HECTOR                      513
 #define TRAINER_COURTNEY_MOSSDEEP           514
-#define TRAINER_EMPTY_193                     515
+#define TRAINER_CHALLENGER_LUSAMINE                     515
 #define TRAINER_REL_MAY                     516
 #define TRAINER_DRAKE_REMATCH_2                     517
 #define TRAINER_GLACIA_REMATCH_2                     518

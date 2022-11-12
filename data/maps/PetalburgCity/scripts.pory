@@ -8,18 +8,27 @@ raw `
 
 PetalburgCity_MapScripts::
 	map_script ON_TRANSITION, PetalburgCity_OnTransition
-	map_script ON_FRAME, PetalburgCity_OnFrame
+	map_script ON_FRAME, PBC_FrameScripts
 	.byte 0
+
+PBC_FrameScripts::
+	map_script_2 VAR_RYU_QUEST_MAGMA, 245, DoPostHeistStuff
+	.2byte 0
 
 PetalburgCity_OnTransition: @ 81DC2D7
 	setflag FLAG_VISITED_PETALBURG_CITY
 	call RyuCheckForWellTravelledAch
-	compare VAR_PETALBURG_CITY_STATE, 0
-	call_if_eq PetalburgCity_EventScript_MoveBoyToWestEntrance
-	compare VAR_PETALBURG_CITY_STATE, 2
 	call_if_eq PetalburgCity_EventScript_DisableMapNameAndMusic
 	compare VAR_PETALBURG_CITY_STATE, 4
 	call_if_eq PetalburgCity_EventScript_DisableMapNameAndMusic
+	call PC_EnableMayObject
+	compare VAR_RYU_QUEST_MAGMA, 245
+	goto_if_eq ryu_end
+	end
+
+DoPostHeistStuff::
+	setvar VAR_RYU_QUEST_MAGMA, 250
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	end
 
 PetalburgCity_EventScript_MoveBoyToWestEntrance:: @ 81DC307
@@ -30,15 +39,6 @@ PetalburgCity_EventScript_DisableMapNameAndMusic:: @ 81DC30F
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	savebgm MUS_TSURETEK
 	return
-
-PetalburgCity_EventScript_SetGymDoorsUnlocked:: @ 81DC316
-	return
-
-PetalburgCity_OnFrame: @ 81DC31C
-	map_script_2 VAR_RYU_QUEST_MAGMA, 245, PC_DoMagmaStuffAfterHeist
-	map_script_2 VAR_TEMP_2, 0, PC_EnableMayObject
-	map_script_2 VAR_TEMP_3, 0, PBC_DoWallyChaseScene
-	.2byte 0
 
 PetalburgCity_EventScript_Boy1:: @ 81DC3E6
 	lock
@@ -60,69 +60,6 @@ PetalburgCity_EventScript_CitySign:: @ 81DC47F
 
 PetalburgCity_EventScript_Gentleman:: @ 81DC488
 	msgbox PetalburgCity_Text_FullPartyExplanation, MSGBOX_NPC
-	end
-
-PetalburgCity_EventScript_ShowGymToPlayer0:: @ 81DC49A
-	lockall
-	setvar VAR_0x8008, 0
-	goto PetalburgCity_EventScript_ShowGymToPlayer
-	end
-
-PetalburgCity_EventScript_ShowGymToPlayer1:: @ 81DC4A6
-	lockall
-	setvar VAR_0x8008, 1
-	goto PetalburgCity_EventScript_ShowGymToPlayer
-	end
-
-PetalburgCity_EventScript_ShowGymToPlayer2:: @ 81DC4B2
-	lockall
-	setvar VAR_0x8008, 2
-	goto PetalburgCity_EventScript_ShowGymToPlayer
-	end
-
-PetalburgCity_EventScript_ShowGymToPlayer3:: @ 81DC4BE
-	lockall
-	setvar VAR_0x8008, 3
-	goto PetalburgCity_EventScript_ShowGymToPlayer
-	end
-
-PetalburgCity_EventScript_ShowGymToPlayer:: @ 81DC4CA
-	applymovement 8, Common_Movement_FacePlayer
-	waitmovement 0
-	playbgm MUS_TSURETEK, 0
-	playse SE_PIN
-	applymovement 8, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 8, Common_Movement_Delay48
-	waitmovement 0
-	compare VAR_0x8008, 0
-	call_if_eq PetalburgCity_EventScript_BoyApproachPlayer0
-	compare VAR_0x8008, 1
-	call_if_eq PetalburgCity_EventScript_BoyApproachPlayer1
-	compare VAR_0x8008, 2
-	call_if_eq PetalburgCity_EventScript_BoyApproachPlayer2
-	compare VAR_0x8008, 3
-	call_if_eq PetalburgCity_EventScript_BoyApproachPlayer3
-	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_DEFAULT
-	closemessage
-	compare VAR_0x8008, 0
-	call_if_eq PetalburgCity_EventScript_LeadPlayerToGym0
-	compare VAR_0x8008, 1
-	call_if_eq PetalburgCity_EventScript_LeadPlayerToGym1
-	compare VAR_0x8008, 2
-	call_if_eq PetalburgCity_EventScript_LeadPlayerToGym2
-	compare VAR_0x8008, 3
-	call_if_eq PetalburgCity_EventScript_LeadPlayerToGym3
-	msgbox PetalburgCity_Text_ThisIsPetalburgGym, MSGBOX_DEFAULT
-	applymovement 8, Common_Movement_WalkInPlaceFastestRight
-	applymovement PLAYER, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	msgbox PetalburgCity_Text_ThisIsGymSign, MSGBOX_DEFAULT
-	closemessage
-	applymovement 8, PetalburgCity_Movement_BoyWalkAway
-	waitmovement 0
-	fadedefaultbgm
-	releaseall
 	end
 
 PetalburgCity_EventScript_BoyApproachPlayer0:: @ 81DC57F
@@ -174,13 +111,7 @@ PetalburgCity_EventScript_LeadPlayerToGym3:: @ 81DC5FF
 	applymovement PLAYER, PetalburgCity_Movement_PlayerWalkToGym3
 	waitmovement 0
 	return
-
-PetalburgCity_Movement_1DC611:: @ 81DC611
-	delay_16
-	delay_16
-	delay_16
-	step_end
-
+	
 PetalburgCity_Movement_BoyApproachPlayer0: @ 81DC615
 	walk_right
 	walk_right
@@ -330,50 +261,6 @@ PetalburgCity_Movement_PlayerWalkToGym3: @ 81DC686
 	walk_up
 	walk_up
 	step_end
-
-PetalburgCity_EventScript_Scott0:: @ 81DC691
-	goto PetalburgCity_EventScript_Scott
-	end
-
-PetalburgCity_EventScript_Scott1:: @ 81DC6A7
-	releaseall
-	end
-
-PetalburgCity_EventScript_Scott2:: @ 81DC6BD
-	releaseall
-	end
-
-PetalburgCity_EventScript_Scott3:: @ 81DC6D3
-	releaseall
-	end
-
-PetalburgCity_EventScript_Scott:: @ 81DC6E9
-	releaseall
-	end
-
-PetalburgCity_EventScript_ScottExit0:: @ 81DC78E
-	applymovement PLAYER, PetalburgCity_Movement_PlayerWatchScottExit0
-	applymovement 9, PetalburgCity_Movement_ScottExit0
-	waitmovement 0
-	return
-
-PetalburgCity_EventScript_ScottExit1:: @ 81DC7A0
-	applymovement PLAYER, PetalburgCity_Movement_PlayerWatchScottExit1
-	applymovement 9, PetalburgCity_Movement_ScottExit1
-	waitmovement 0
-	return
-
-PetalburgCity_EventScript_ScottExit2:: @ 81DC7B2
-	applymovement PLAYER, PetalburgCity_Movement_PlayerWatchScottExit2
-	applymovement 9, PetalburgCity_Movement_ScottExit2
-	waitmovement 0
-	return
-
-PetalburgCity_EventScript_ScottExit3:: @ 81DC7C4
-	applymovement PLAYER, PetalburgCity_Movement_PlayerWatchScottExit3
-	applymovement 9, PetalburgCity_Movement_ScottExit3
-	waitmovement 0
-	return
 
 PetalburgCity_Movement_ScottStartWalkLeft: @ 81DC7D6
 	walk_left
@@ -546,11 +433,6 @@ PetalburgCity_Text_ImLookingForTalentedTrainers: @ 81DCC09
 	
 @==================================================================================================Mamga post-heist
 
-PC_DoMagmaStuffAfterHeist::
-	setvar VAR_RYU_QUEST_MAGMA, 250
-	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
-	release
-	end
 	
 PC_CheckForPlayerInWrongDirection::
 	specialvar VAR_RESULT, GetPlayerFacingDirection
@@ -591,13 +473,11 @@ PC_StopPlayerForDad::
 	applymovement 7, Common_Movement_ExclamationMark
 	waitmovement 7
 	addobject 10
-	addobject 11
+	addobject 9
 	applymovement PLAYER, Common_Movement_FaceUp
 	waitmovement PLAYER
 	msgbox PC_PlayerElipsis
 	closemessage
-	applymovement PLAYER, PC_ContinueEscapingLeft@6 left
-	waitmovement PLAYER
 	getplayerxy VAR_TEMP_D, VAR_TEMP_E
 	compare VAR_TEMP_E, 10
 	call_if_eq PC_AdjustPlayerTop
@@ -605,6 +485,10 @@ PC_StopPlayerForDad::
 	call_if_eq PC_AdjustPlayerMid
 	compare VAR_TEMP_E, 13
 	call_if_eq PC_AdjustPlayerBottom
+	applymovement PLAYER, PC_ContinueEscapingLeft@6 left
+	waitmovement PLAYER
+	turnobject 9, DIR_NORTH
+	turnobject 8, DIR_SOUTH
 	msgbox PC_WeWontLet
 	closemessage
 	setvar VAR_RYU_QUEST_MAGMA, 258@Player is about to fight enforcer
@@ -751,6 +635,7 @@ PC_ContinueEscapingLeft:
 	walk_fast_left
 	walk_fast_left
 	walk_fast_left
+	walk_fast_left
 	step_end
 	
 PC_MoveGuard:@up face left
@@ -773,7 +658,7 @@ PC_MagmaGruntEscape:
 
 PC_PlayerAttemptEscape:@down 1, left 1
 	walk_down
-	walk_left
+	face_left
 	step_end
 	
 PC_PlayerStruggle:@in place 4
@@ -842,7 +727,7 @@ script PC_EnableMayObject {
 		removeobject(12)
 		setflag(FLAG_RYU_HIDE_REL_OBJECTS)
 	}
-	end
+	return
 }
 
 script CheckDismissRivalLeaf { //this is long, i know, but rival as well as leaf share a palette slot with RS MAY, so the palettes clash.
@@ -860,11 +745,11 @@ script PBC_CheckPreventEntry {
 	if (var(VAR_RYU_QUEST_MAY) >= 150) {
 		goto(PBC_FinalMayEvent)
 	}
-	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
-		if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY) {
+	elif  ((flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) &&  (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY)){
 			release
 			end
 		}
+	elif (var(VAR_RYU_QUEST_MAY > 20)){
 		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (I should grab May before\n entering.)")
 		closemessage
 		applymovement(PLAYER, Common_Movement_StepDown)
@@ -873,13 +758,11 @@ script PBC_CheckPreventEntry {
 		release
 		end
 	}
-		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (I should grab May before\n entering.)")
-		closemessage
-		applymovement(PLAYER, Common_Movement_StepDown)
-		applymovement(FOLLOWER, Common_Movement_StepDown)
-		waitmovement(PLAYER)
+	else{
+		msgbox("The door is locked, and the house\nlooks empty.\pWonder if it's for sale?")
 		release
 		end
+	}
 }
 
 script PBC_May {
@@ -892,7 +775,7 @@ script PBC_May {
 		if (var(VAR_RESULT) == YES) {
 			removeobject(12)
 			setflag(FLAG_RYU_HIDE_PETALBURG_MAY)
-			createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+			createfollower(FOLLOWER_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH)
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Ready when you are!")
 			release
 			end
@@ -918,15 +801,26 @@ script PBC_May {
 	waitstate
 }
 
+script PBC_DoWallyChaseScene2 {
+	applymovement(PLAYER, Common_Movement_StepRight)
+	applymovement(FOLLOWER, Common_Movement_StepRight)
+	goto(PBC_DoWallyChaseScene)
+}
+
+script PBC_DoWallyChaseScene3 {
+	applymovement(PLAYER, Common_Movement_StepLeft)
+	applymovement(FOLLOWER, Common_Movement_StepLeft)
+	goto(PBC_DoWallyChaseScene)
+}
+
 script PBC_DoWallyChaseScene {
-	setvar(VAR_TEMP_3, 100)
 	if (var(VAR_RYU_QUEST_MAY) == 50) {
+		addobject(WALLY)
 		applymovement(PLAYER, PBC_ChaseWally0)
 		applymovement(FOLLOWER, PBC_ChaseWally0)
 		waitmovement(FOLLOWER)
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}There he is! Go!")
 		closemessage
-		addobject(WALLY)
 		applymovement(PLAYER, PBC_ChaseWally1)
 		applymovement(FOLLOWER, PBC_ChaseWally1)
 		waitmovement(FOLLOWER)
@@ -954,13 +848,13 @@ script PBC_DoWallyChaseScene {
 }
 
 movement PBC_ChaseWally0 {
-	walk_fastest_down * 3
+	walk_fastest_down * 2
 	face_down
 	step_end
 }
 
 movement PBC_ChaseWally1 {
-	walk_fastest_down * 3
+	walk_fastest_down * 2
 	face_left
 	step_end
 }
@@ -979,7 +873,7 @@ movement PBC_ChaseWally3 {
 script PBC_FinalMayEvent {
 	lockall
 	setvar(VAR_TEMP_6, 100)
-	if (var(VAR_RYU_QUEST_MAY) < 150) {
+	if ((var(VAR_RYU_QUEST_MAY) < 150) || (var(VAR_RYU_QUEST_MAY) >= 180)) {
 		goto(ryu_end)
 	}
 	playse(SE_PIN)
@@ -994,6 +888,8 @@ script PBC_FinalMayEvent {
 	turnobject(PLAYER, DIR_WEST)
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}That's all settled.\pThanks for picking me up!\pI'm tired.\nWe should go home and take\la rest.")
 	setvar(VAR_RYU_QUEST_MAY, 180) //Player finished may quest with good end.
+	setflag(FLAG_RYU_DH_HIDE_MAY)
+	setflag(FLAG_RYU_BH_HIDE_MAY)
 	closemessage
 	release
 	end

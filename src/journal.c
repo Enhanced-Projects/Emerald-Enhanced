@@ -55,12 +55,6 @@ static const u16 sFactionsIconPalette[] = INCBIN_U16("graphics/journal/factions_
 static const u8 sGymFrontierIconTiles[] = INCBIN_U8("graphics/journal/frontier_gym_badge_tiles.4bpp");
 static const u16 sGymFrontierIconPalette[] = INCBIN_U16("graphics/journal/frontier_gym_badge_tiles.gbapal");
 
-const u8 sTextRyuEasyMode[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Easy Mode");
-const u8 sTextRyuNormalMode[] = _("Normal Mode");
-const u8 sTextRyuChallengeMode[] = _("{COLOR LIGHT_RED}{SHADOW RED}Challenge Mode");
-const u8 sTextRyuHardcoreMode[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}HARDCORE Mode");
-const u8 sTextRyuFrontierMode[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier Mode");
-const u8 sTextRyuSpecialChallenge[] = _("NM/Ryu's Challenge");
 extern const u8 sText_Colon[];
 extern const u8 sText_Space[];
 
@@ -590,7 +584,7 @@ u8 * GetMiningSkill(u8 * buffer)
 
 u8 * GetMiningExp(u8 * buffer)
 {
-    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
 u8 * GetBotanySkill(u8 * buffer)
@@ -610,7 +604,7 @@ u8 * GetAlchemySkill(u8 * buffer)
 
 u8 * GetAlchemyExp(u8 * buffer)
 {
-    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_ALCHEMY_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
 u8 * GetTotalKOs(u8 * buffer)
@@ -698,9 +692,9 @@ static const struct JournalStatData sJournalLifeSkillsPage[] =
     JOURNAL_STAT("Botany Lv", NULL, VAR_RYU_PLAYER_BOTANY_SKILL, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Botany exp", NULL, VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Mining Lv", NULL, VAR_RYU_PLAYER_MINING_SKILL, 5, JOURNALSTAT_VARIABLE),
-    JOURNAL_STAT("Mining exp", NULL, VAR_RYU_PLAYER_MINING_EXP, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Mining exp", NULL, VAR_RYU_PLAYER_MINING_SKILL_EXP, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Alchemy Lv", NULL, VAR_RYU_PLAYER_ALCHEMY_SKILL, 5, JOURNALSTAT_VARIABLE),
-    JOURNAL_STAT("Alchemy exp", NULL, VAR_RYU_ALCHEMY_EXP, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Alchemy exp", NULL, VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT_END
 };
 
@@ -831,35 +825,6 @@ static void DrawJournalStatText(void)
     ConvertIntToDecimalStringN(textBuffer, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_RIGHT_ALIGN, 10);
     AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_MONEY, 0, 4, 4, sColors[0], 0, gStringVar4);
 
-    switch(VarGet(VAR_RYU_GAME_MODE))
-    {
-        case 0:
-            StringCopy(gRyuStringVar1, sTextRyuEasyMode);
-            break;
-        case 1:
-        {
-            if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
-            {
-                StringCopy(gRyuStringVar1, sTextRyuSpecialChallenge);
-                break;
-            }
-            else
-            {
-                StringCopy(gRyuStringVar1, sTextRyuNormalMode);
-                break;
-            }
-        }
-        case 2:
-            StringCopy(gRyuStringVar1, sTextRyuChallengeMode);
-            break;
-        case 3:
-            StringCopy(gRyuStringVar1, sTextRyuHardcoreMode);
-            break;
-        case 4:
-            StringCopy(gRyuStringVar1, sTextRyuFrontierMode);
-            break;
-    }
-    AddTextPrinterParameterized3(WIN_JOURNAL_GAME_MODE, 0, 0, 4, sColors[0], 0, gRyuStringVar1);
 }
 
 static void Task_InitJournal(u8 taskId)
@@ -872,9 +837,10 @@ static void Task_InitJournal(u8 taskId)
         //gKeyRepeatStartDelay = -1;
     }
 }
-
+//FULL_COLOR
 static bool8 IntializeJournal(void)
 {
+    u16 buf[32];
     u32 i;
     switch (gMain.state)
     {
@@ -891,11 +857,99 @@ static bool8 IntializeJournal(void)
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sJournalBGTiles, BG_CHAR_ADDR(2), sizeof(sJournalBGTiles));
         DmaCopy16(3, sJournalBGMap, GetBgTilemapBuffer(1), sizeof(sJournalBGMap));
-        LoadPalette(sJournalBGPalette, 0, 0x20);
+        
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) 
+        {
+            case THEME_COLOR_LIGHT:
+                CpuCopy16(sJournalBGPalette, buf, 0x20);
+                buf[6] = COLOR_NEON_BORDER_2;
+                buf[10] = COLOR_LIGHT_THEME_BG_DARK;
+                buf[14] = COLOR_LIGHT_THEME_BG_LIGHT;       // 14 = background
+                buf[15] = COLOR_NEON_BORDER_2;       // 15 = pixel border before end color
+                LoadPalette(buf, 0, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(sJournalBGPalette, 0, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(sJournalBGPalette, buf, 0x20);
+                //Shifting r -> b, g -> r, b -> g   <==>   0.3 0.59 0.11 -> 0.59, 0.11, 0.3
+                //So in the worst case 31, 15, 0 which is 9.3 + 8.85 + 0 = 18 turns into 15, 1, 31 which is 4.5 + 0 + 3.41 = 7 a reasonable gap for worst case
+                buf[1] = COLOR_AUTO_SHADE_CONTRAST_INVERSE(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_HIGH);        // 1 = text Name: Id:
+                buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 6 = window highlight
+                //Shifting r -> b...
+                //see comment above
+                buf[8] = COLOR_AUTO_SHADE(COLOR_AUTO_SHADE_COND(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), COMPARE_SKIP_COLOR_1, COMPARE_SKIP_COLOR_2, COLOR_GET_AS_CONTRAST_INVERSE_ACTION(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT), THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);        // 8 = text shadow Name: Id: 
+                buf[10] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];      // 10 = window border
+
+                // Using conditional shading if background contrast with Red table color and Green table color
+                buf[12] = COLOR_AUTO_SHADE_COND(buf[12], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], GREYSCALE_TO_COLOR(10), SHADE_ACTION_LIGHT, THRESHOLD_DEFAULT);   // UI ELEMENT red table (p1-8)
+                buf[13] = COLOR_AUTO_SHADE_COND(buf[13], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], GREYSCALE_TO_COLOR(10), SHADE_ACTION_LIGHT, THRESHOLD_DEFAULT);   // UI ELEMENT green table (f1-7)
+
+                buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 14 = background
+                buf[15] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 15 = pixel border before end color
+                LoadPalette(buf, 0, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                //TODO impl vanilla colors
+                LoadPalette(gMessageBox_Pal, 0, 0x20);
+                break;
+
+        }
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
+            LoadPalette(sJournalBGPalette, 0, 0x20);
+        else {
+            CpuCopy16(sJournalBGPalette, buf, 0x20);
+            //Shifting r -> b, g -> r, b -> g   <==>   0.3 0.59 0.11 -> 0.59, 0.11, 0.3
+            //So in the worst case 31, 15, 0 which is 9.3 + 8.85 + 0 = 18 turns into 15, 1, 31 which is 4.5 + 0 + 3.41 = 7 a reasonable gap for worst case
+            buf[1] = COLOR_AUTO_SHADE_CONTRAST_INVERSE(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_HIGH);        // 1 = text Name: Id:
+            buf[6] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];       // 6 = window highlight
+            
+            //Shifting r -> b, g -> r, b -> g
+            //see comment above
+            buf[8] = COLOR_AUTO_SHADE(COLOR_AUTO_SHADE_COND(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), COMPARE_SKIP_COLOR_1, COMPARE_SKIP_COLOR_2, COLOR_GET_AS_CONTRAST_INVERSE_ACTION(COLOR_CHANGE_HUE_KEEP_GS(COLOR_CHANGE_HUE_KEEP_GS(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT])), gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], THRESHOLD_DEFAULT), THRESHOLD_DEFAULT), THRESHOLD_DEFAULT);        // 8 = text shadow Name: Id: 
+            buf[10] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];      // 10 = window border
+            
+            // Using conditional shading if background contrast with Red table color and Green table color
+            buf[12] = COLOR_AUTO_SHADE_COND(buf[12], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], GREYSCALE_TO_COLOR(10), SHADE_ACTION_LIGHT, THRESHOLD_DEFAULT);   // fixed color UI ELEMENT green table (b1-8)
+            buf[13] = COLOR_AUTO_SHADE_COND(buf[13], gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG], GREYSCALE_TO_COLOR(10), SHADE_ACTION_LIGHT, THRESHOLD_DEFAULT);   // fixed color UI ELEMENT red table (f1-7)
+            
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];       // 14 = background
+            
+            LoadPalette(buf, 0, 0x20);
+        }*/
         InitWindows(sJournalWindowTemplate);
         InitTextBoxGfxAndPrinters();
         LoadPalette(gMessageBox_Pal, 0xC0, 0x20);
-        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+                LoadPalette(gHatLightTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_USER:            
+                CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+                buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+                buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+                LoadPalette(buf, 0xF0, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                LoadPalette(gMessageBox_Pal, 0xF0, 0x20);
+                break;
+        }
+
+        /*if (VarGet(VAR_RYU_THEME_NUMBER) != 2)
+            LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        else {
+            CpuCopy16(gRyuDarkTheme_Pal, buf, 0x20);
+            buf[1] = COLOR_CREATE_LIGHT_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG]);         
+            buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+            buf[3] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+            LoadPalette(buf, 0xF0, 0x20);
+        }*/
+
         DeactivateAllTextPrinters();
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);
@@ -918,7 +972,41 @@ static bool8 IntializeJournal(void)
             sButtonSpriteIds[i] = CreateSprite(&spriteTemplate, 32 + buttonXPos[i], 42, 0);
             gSprites[sButtonSpriteIds[i]].data[0] = !i;
         }
-        LoadPalette(sJounralButtons[0].palette, 0x100, 0x20);
+        
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+                CpuCopy16(sJounralButtons[0].palette, buf, 0x20);
+                //bg
+                buf[1] = COLOR_LIGHT_THEME_BG_LIGHT;         
+                //selected shadow
+                buf[2] = COLOR_LIGHT_THEME_BG_DARK;
+                //unselected shadow
+                buf[3] = COLOR_LIGHT_THEME_TEXT_SHADOW;
+                //text shadow
+                buf[4] = COLOR_NEON_BORDER_2;
+                //external border
+                buf[5] = COLOR_NEON_BORDER_2;
+                //text
+                buf[6] = COLOR_LIGHT_THEME_TEXT;
+                LoadPalette(buf, 0x100, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(sJounralButtons[0].palette, 0x100, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(sJounralButtons[0].palette, buf, 0x20);
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];         
+                buf[2] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW];
+                buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT_SHADOW], THRESHOLD_DEFAULT);
+                buf[4] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+                buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT];
+                buf[6] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_TEXT], THRESHOLD_DEFAULT);
+                LoadPalette(buf, 0x100, 0x20);
+                break;
+            case THEME_COLOR_VANILLA:
+                LoadPalette(gMessageBox_Pal, 0x100, 0x20); //FULL_COLOR TODO impl vanilla pal
+                break;
+        }
         spriteTemplate = s8x8IconSpriteTemplate;
         spriteTemplate.images = sGymFrontierIconImages;
         for (i = 0; i < NUM_BADGES; i++)
@@ -946,7 +1034,20 @@ static bool8 IntializeJournal(void)
                 StartSpriteAnimIfDifferent(&gSprites[spriteId], badgeType);
             }
         }
-        LoadPalette(sGymFrontierIconPalette, 0x110, 0x20);
+        
+        CpuCopy16(sGymFrontierIconPalette, buf, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_LIGHT:
+            case THEME_COLOR_VANILLA:
+                buf[1] = COLOR_LIGHT_THEME_BG_LIGHT;
+                break;
+            case THEME_COLOR_DARK:
+                break;
+            case THEME_COLOR_USER:
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                break;
+        }
+        LoadPalette(buf, 0x110, 0x20);
         gMain.state++;
         break;
         

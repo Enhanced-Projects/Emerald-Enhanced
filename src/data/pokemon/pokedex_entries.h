@@ -5196,12 +5196,12 @@ const struct PokedexEntry gPokedexEntries[] =
 	//	.trainerOffset = 0,
 	//},
 
-	[NATIONAL_DEX_CHINGLING] =
+	[NATIONAL_DEX_LUNALA] =
 	{
-		.categoryName = _("Bell"),
-		.height = 2,
-		.weight = 6,
-		.description = gChinglingPokedexText,
+		.categoryName = _("Moone"),
+		.height = 40,
+		.weight = 1200,
+		.description = gLunalaPokedexText,
 		.pokemonScale = 356,
 		.pokemonOffset = 17,
 		.trainerScale = 256,
@@ -5892,17 +5892,17 @@ const struct PokedexEntry gPokedexEntries[] =
 		.trainerOffset = 0,
 	},
 
-	//[NATIONAL_DEX_DARKRAI] =
-	//{
-	//	.categoryName = _("Pitch-Black"),
-	//	.height = 15,
-	//	.weight = 505,
-	//	.description = gDarkraiPokedexText,
-	//	.pokemonScale = 356,
-	//	.pokemonOffset = 17,
-	//	.trainerScale = 256,
-	//	.trainerOffset = 0,
-	//},
+	[NATIONAL_DEX_DARKRAI] =
+	{
+		.categoryName = _("Pitch-Black"),
+		.height = 15,
+		.weight = 505,
+		.description = gDarkraiPokedexText,
+		.pokemonScale = 356,
+		.pokemonOffset = 17,
+		.trainerScale = 256,
+		.trainerOffset = 0,
+	},
 
 	//[NATIONAL_DEX_SHAYMIN] =
 	//{
@@ -5916,17 +5916,17 @@ const struct PokedexEntry gPokedexEntries[] =
 	//	.trainerOffset = 0,
 	//},
 
-	//[NATIONAL_DEX_ARCEUS] =
-	//{
-	//	.categoryName = _("Alpha"),
-	//	.height = 32,
-	//	.weight = 3200,
-	//	.description = gArceusPokedexText,
-	//	.pokemonScale = 356,
-	//	.pokemonOffset = 17,
-	//	.trainerScale = 256,
-	//	.trainerOffset = 0,
-	//},
+	[NATIONAL_DEX_ARCEUS] =
+	{
+		.categoryName = _("Alpha"),
+		.height = 32,
+		.weight = 3200,
+		.description = gArceusPokedexText,
+		.pokemonScale = 356,
+		.pokemonOffset = 17,
+		.trainerScale = 256,
+		.trainerOffset = 0,
+	},
 
 	[NATIONAL_DEX_VICTINI] =
 	{
@@ -9718,6 +9718,42 @@ const struct PokedexEntry gPokedexEntries[] =
 		.pokemonOffset = 17,
 		.trainerScale = 256,
 		.trainerOffset = 0,
+	},
+
+	[NATIONAL_DEX_DEOXYS_ATTACK] =
+	{
+		.categoryName = _("Offensive"),
+        .height = 17,
+        .weight = 608,
+        .description = gDeoxysPokedexText,
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 290,
+        .trainerOffset = 2,
+	},
+
+	[NATIONAL_DEX_DEOXYS_DEFENSE] =
+	{
+		.categoryName = _("Defensive"),
+        .height = 17,
+        .weight = 608,
+        .description = gDeoxysPokedexText,
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 290,
+        .trainerOffset = 2,
+	},
+
+	[NATIONAL_DEX_DEOXYS_SPEED] =
+	{
+		.categoryName = _("Preemptive"),
+        .height = 17,
+        .weight = 608,
+        .description = gDeoxysPokedexText,
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 290,
+        .trainerOffset = 2,
 	},
 
 	/*[NATIONAL_DEX_MELTAN] =

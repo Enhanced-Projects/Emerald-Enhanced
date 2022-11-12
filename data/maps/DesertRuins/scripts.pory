@@ -68,9 +68,8 @@ DesertRuins_EventScript_BigHoleInWall:: @ 822D9EE
 
 DesertRuins_EventScript_CaveEntranceSide:: @ 822D9F8
 	lockall
-	braillemessage DesertRuins_Braille_UseRockSmash
-	waitbuttonpress
-	closebraillemessage
+	msgbox IC_RGWALLSIDE
+	closemessage
 	releaseall
 	end
 
@@ -194,10 +193,6 @@ DR_LeafEvent2::
 	waitse
 	setvar VAR_RYU_QUEST_LANA, 55
 	setflag FLAG_HIDE_DR_LANA
-	release
-	end
-	
-DR_Warp::
 	release
 	end
 	

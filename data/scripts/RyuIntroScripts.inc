@@ -30,29 +30,6 @@ NGNormalMode::
 RI_ConfirmDifficulty:
 	.string "You have been set to the\nrecommended mode.$"
 
-GameModeSelectLati::
-	msgbox GMS_WhichColor
-	multichoice 22, 8, MULTI_TV_LATI, 1
-	compare VAR_RESULT, 0
-	call_if_eq RyuIntro_SetLatiGenderMale
-	compare VAR_RESULT, 1
-	call_if_eq RYuIntro_SetLatiGenderFemale
-	return
-
-RyuIntro_SetLatiGenderMale::
-	setvar VAR_ROAMER_POKEMON, 0 @should make it so that the roamer is latios
-	clearflag FLAG_SYS_TV_LATIAS_LATIOS
-	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
-	special InitRoamer
-	return
-
-RYuIntro_SetLatiGenderFemale::
-	setvar VAR_ROAMER_POKEMON, 0 @should make it so that the roamer is latias
-	clearflag FLAG_SYS_TV_LATIAS_LATIOS
-	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
-	special InitRoamer
-	return
-
 GMS_WhichColor:
 	.string "Which color is your favorite?$"
 
@@ -74,6 +51,7 @@ Ryu_NewGamePlus::
 	call_if_set FLAG_RYU_HAS_MEGA_BRACELET, Ryu_NGP_MegaBracelet
 	call_if_set FLAG_RYU_HAS_SHINY_CHARM, Ryu_NGP_ShinyCharm
 	call_if_set FLAG_RYU_HAS_OVAL_CHARM, Ryu_NGP_OvalCharm
+	call_if_set FLAG_RYU_HAS_RECIPE_BOOK, Ryu_NGP_RecipeBook
 	setflag FLAG_SYS_POKEDEX_GET
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
@@ -133,6 +111,10 @@ Ryu_NGP_ShinyCharm::
 	additem ITEM_SHINY_CHARM, 1
 	return
 
+Ryu_NGP_RecipeBook::
+	additem ITEM_RECIPE_BOOK, 1
+	return
+
 RyuNGPInfo:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Welcome to New Game +.\p"
 	.string "In this mode, you get to keep any\n"
@@ -161,7 +143,7 @@ IT_EasyMode::
 IT_NormalMode::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
-	setvar VAR_RYU_GAME_MODE, 0
+	setvar VAR_RYU_GAME_MODE, 1
 	call_if_set FLAG_RYU_ISNGPLUS, Normalmode_NGP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -338,9 +320,6 @@ SetFemaleStartingVariables:: @ 823BF46
 
 Ryu_FrontierModeBegin::
 	call RyuSetRTCFrontier
-	end
-
-InsideOfTruck_EventScript_23BF6C:: @ 823BF6C
 	end
 
 RyuSetRTC::
@@ -533,7 +512,6 @@ LRT_Mom_base::
 	compare VAR_RESULT, YES
 	goto_if_eq LRT_Mom_Heal
 	msgbox MomGoGetThem
-
 LRT_MOM_Restricted::
 	msgbox Mom_IBelieveInYou
 	release

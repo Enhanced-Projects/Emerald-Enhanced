@@ -153,6 +153,20 @@ r102_TianaMsg8::
 	call r102_DismissTianaQuery
 	release
 	end
+	
+r102_TianaMsg9::
+	msgbox r102_tm9
+	closemessage
+	call r102_DismissTianaQuery
+	release
+	end
+	
+r102_TianaMsg10::
+	msgbox r102_tm10
+	closemessage
+	call r102_DismissTianaQuery
+	release
+	end
 
 r102_DismissTianaQuery::
 	msgbox r102_ShouldDismissTiana, MSGBOX_YESNO
@@ -194,7 +208,13 @@ r102_tm7::
 	
 r102_tm8::
 	.string "So how long have you been a\ntrainer?\p{COLOR LIGHT_BLUE}{SHADOW BLUE}...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Oh wow, not much longer\nthan me!\pYou're already so strong though!$"
-	
+
+r102_tm9::
+	.string "Hurry up, I want to learn more\nabout fights.\pMaybe we can visit the trainer\nschool later as well?$"
+
+r102_tm10::
+	.string "I'm not sure if I'm ready to fight\na Gym Leader yet!$"
+
 r102_InitialTianaMsg::
 	msgbox r102_FollowerTianaFirstMsg
 	closemessage

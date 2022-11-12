@@ -73,12 +73,6 @@ NM10_BigPearl::@@
 	setflag FLAG_RYU_NM8_BIGPEARL
 	releaseall
 	end
-
-
-NM8_Gatekeeper::
-	@trainerbattle_single TRAINER_GATEKEEPER, NM8_GK_Intro, NM8_GK_Defeat
-	msgbox NM8_GK_Chat, MSGBOX_AUTOCLOSE
-	end
 	
 NM8_GK_Intro:
     .string "I found this cave first, It will\n"

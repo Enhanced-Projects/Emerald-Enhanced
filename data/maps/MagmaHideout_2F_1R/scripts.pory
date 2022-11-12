@@ -293,12 +293,14 @@ MH2_Fence::
 	compare VAR_RYU_QUEST_MAGMA, 320
 	goto_if_lt MH2_CantAccessFence
 	setflag FLAG_RYU_SELLING_TO_FENCE
-	setvar VAR_RYU_PRICE_MULTIPLIER, 250
+	copyvar VAR_0x8000, VAR_RYU_PRICE_MULTIPLIER @@temporarily jack up prices. Code also makes items worth one quarter.
+	setvar VAR_RYU_PRICE_MULTIPLIER, 2000
 	msgbox MH2_FenceIntro
 	closemessage
 	pokemart MH2_FenceMart
 	msgbox MH2_FenceOutro
 	clearflag FLAG_RYU_SELLING_TO_FENCE
+	copyvar VAR_RYU_PRICE_MULTIPLIER,  VAR_0x8000
 	release
 	end
 	
@@ -339,170 +341,6 @@ MH2_Machine_HealParty::
 MH2_MachineHealed:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(Your team has been healed\nby the machine.)$"
 	
-MH2_Machine_KitShop::
-	multichoice  0, 0, MULTI_MAGMA_MACHINE_KITS, 1
-	switch VAR_RESULT
-	case 0, MHM_BasicHealing
-	case 1, MHM_BetterHealing
-	case 2, MHM_PremiumHealing
-	case 3, MHM_DeluxeHealing
-	case 4, MHM_BasicCapture
-	case 5, MHM_AdvancedCapture
-	case 6, MHM_PerformanceBoost
-	case 7, MHM_MasterKit
-	case 8, MHM_Exit
-	goto MHM_Exit
-	
-MHM_BasicHealing::
-	msgbox BasicHealingKit, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne ryu_end
-	checkmoney 1500
-	compare VAR_RESULT, 1
-	goto_if_ne MHM_CantAfford
-	additem ITEM_POTION, 5
-	additem ITEM_FULL_HEAL, 2
-	removemoney 1500
-	msgbox MHM_Success
-	closemessage
-	release
-	end
-
-MHM_BetterHealing::
-	msgbox BetterHealingKit, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne ryu_end
-	checkmoney 3500
-	compare VAR_RESULT, 1
-	goto_if_ne MHM_CantAfford
-	additem ITEM_SUPER_POTION, 10
-	additem ITEM_FULL_HEAL, 4
-	additem ITEM_ETHER, 2
-	additem ITEM_REVIVAL_HERB, 1
-	removemoney 3500
-	msgbox MHM_Success
-	closemessage
-	release
-	end
-
-MHM_PremiumHealing::
-	msgbox PremiumHealingKit, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne ryu_end
-	checkmoney 6250
-	compare VAR_RESULT, 1
-	goto_if_ne MHM_CantAfford
-	additem ITEM_HYPER_POTION, 10
-	additem ITEM_FULL_HEAL, 2
-	additem ITEM_ELIXIR, 5
-	additem ITEM_REVIVE, 2
-	removemoney 6250
-	msgbox MHM_Success
-	closemessage
-	release
-	end
-	
-MHM_DeluxeHealing::
-	msgbox DeluxeHealingKit, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne ryu_end
-	checkmoney 12000
-	compare VAR_RESULT, 1
-	goto_if_ne MHM_CantAfford
-	additem ITEM_FULL_RESTORE, 12
-	additem ITEM_MAX_ELIXIR, 10
-	additem ITEM_MAX_REVIVE, 3
-	msgbox MHM_Success
-	removemoney 12000
-	closemessage
-	release
-	end
-
-MHM_BasicCapture::
-	msgbox BasicCaptureKit, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne ryu_end
-	checkmoney 500
-	compare VAR_RESULT, 1
-	goto_if_ne MHM_CantAfford
-	additem ITEM_POKE_BALL, 10
-	additem ITEM_PREMIER_BALL, 2
-	removemoney 500
-	msgbox MHM_Success
-	closemessage
-	release
-	end
-	
-MHM_AdvancedCapture::
-	msgbox AdvancedCaptureKit, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne ryu_end
-	checkmoney 2500
-	compare VAR_RESULT, 1
-	goto_if_ne MHM_CantAfford
-	additem ITEM_PREMIER_BALL, 20
-	additem ITEM_ULTRA_BALL, 10
-	removemoney 3500
-	msgbox MHM_Success
-	closemessage
-	release
-	end
-	
-
-MHM_PerformanceBoost::
-	msgbox PerformanceBoostKit, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne ryu_end
-	checkmoney 25000
-	compare VAR_RESULT, 1
-	goto_if_ne MHM_CantAfford
-	additem ITEM_PROTEIN, 2
-	additem ITEM_CALCIUM, 2
-	additem ITEM_CARBOS, 2
-	additem ITEM_ZINC, 2
-	additem ITEM_HP_UP, 2
-	additem ITEM_IRON, 2
-	removemoney 25000
-	msgbox MHM_Success
-	closemessage
-	release
-	end
-	
-MHM_MasterKit::
-	msgbox MasterKit, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne ryu_end
-	checkmoney 30000
-	compare VAR_RESULT, 1
-	goto_if_ne MHM_CantAfford
-	additem ITEM_FULL_RESTORE, 5
-	additem ITEM_PP_MAX, 4
-	additem ITEM_RARE_CANDY, 10
-	additem ITEM_LUXURY_BALL, 10
-	additem ITEM_MAX_REVIVE, 10
-	additem ITEM_HYPER_POTION, 4
-	removemoney 30000
-	msgbox MHM_Success
-	closemessage
-	release
-	end
-	
-MHM_Exit::
-	msgbox MHM_Exiting
-	release
-	end
-	
-MH2_NoAccessToMachine::
-	msgbox MHM_AccessDenied
-	release
-	end
-
-MHM_CantAfford::
-	msgbox MHM_CantAffordMsg
-	closemessage
-	release
-	end
-	
 MH2_FenceIntro:
 	.string "Hey! Sell your illicit goods\nhere to get clean money!$"
 	
@@ -520,82 +358,80 @@ MH2_WelcomeToMachine:
 	.string "Welcome to Magmatic Enterprises\n"
 	.string "Please make a selection.$"
 	
-BasicHealingKit:
-	.string "This kit contains 5 potions and\n2 Full Heals.\pDo you want this kit?$"
-	
-BetterHealingKit:
-	.string "This kit has 10 Super Potions,\n"
-	.string "4 Full Heals, 2 Ethers,\l"
-	.string "and one Revival Herb.\p"
-	.string "Do you want this kit?$"
-	
-PremiumHealingKit:
-	.string "This kit has 10 Hyper Potions,\n"
-	.string "2 Full Heals, 5 Elixirs,\l"
-	.string "and two Revives.\p"
-	.string "Do you want this kit?$"
-	
-DeluxeHealingKit:
-	.string "This kit has 12 Full Restores,\n"
-	.string "2 Max Elixir, and three\l"
-	.string "Max Revives.\p"
-	.string "Do you want this kit?$"
-	
-BasicCaptureKit:
-	.string "This kit has 10 Poke Balls\n"
-	.string "and two Premier Balls.\p"
-	.string "Do you want this kit?$"
-	
-AdvancedCaptureKit:
-	.string "This kit has 20 Premier Balls\n"
-	.string "and 10 Ultra Balls.\p"
-	.string "Do you want this kit?$"
-	
-PerformanceBoostKit:
-	.string "This kit contains 2 each of\n"
-	.string "each performance enhancing drug.\p"
-	.string "Do you want this kit?$"
-	
-MasterKit:
-	.string "The master kit is the VIP\n"
-	.string "package. It contains:\p"
-	.string "Full Restore: 5\n"
-	.string "PP Max and Hyper Potion: 2\p"
-	.string "Rare Candy, Luxury Ball,\n"
-	.string "Max Revive: 10.\p"
-	.string "Do you want this kit?$"
-	
-MHM_Success:
-	.string "The purchase was successful.\n"
-	.string "Exiting...$"
-	
-MHM_CantAffordMsg:
-	.string "The user does not have enough\n"
-	.string "currency to purchase the chosen\l"
-	.string "kit. Exiting...$"
-	
 MHM_Exiting:
 	.string "Exiting the Magmatic Enterprises\n"
 	.string "interface. $"
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 `
+
+script MH2_NoAccessToMachine {
+	msgbox("You do not have dispensary\npermissions. Report to an Admin\lif you think this is in error.")
+	closemessage
+	release
+	end
+}
+
+script MH2_Machine_KitShop {
+	if (var(VAR_RYU_QUEST_MAGMA) < 360) {
+		pokemart(MH2Mart1)
+	}
+	elif (var(VAR_RYU_QUEST_MAGMA) < 460) {
+		pokemart(MH2Mart2)
+	}
+	elif (var(VAR_RYU_QUEST_MAGMA) < 515) {
+		pokemart(MH2Mart3)
+	}
+	elif (var(VAR_RYU_QUEST_MAGMA) < 595) {
+		pokemart(MH2Mart4)
+	}
+	else {
+		pokemart(MH2Mart5)
+	}
+	msgbox("Items logged as dispensed to {PLAYER}.")
+	closemessage
+	release
+	end
+}
+
+
+mart MH2Mart1 {
+	ITEM_POTION
+	ITEM_GREAT_BALL
+	ITEM_LEPPA_BERRY
+}
+
+mart MH2Mart2 {
+	ITEM_SUPER_POTION
+	ITEM_GREAT_BALL
+	ITEM_ETHER
+}
+
+mart MH2Mart3 {
+	ITEM_HYPER_POTION
+	ITEM_ULTRA_BALL
+	ITEM_MAX_ETHER
+}
+
+mart MH2Mart4 {
+	ITEM_HYPER_POTION
+	ITEM_DUSK_BALL
+	ITEM_QUICK_BALL
+	ITEM_FAST_BALL
+	ITEM_NET_BALL
+	ITEM_CHILL_BALL
+	ITEM_ELIXIR
+	ITEM_PP_UP
+}
+
+mart MH2Mart5 {
+	ITEM_HYPER_POTION
+	ITEM_ULTRA_BALL
+	ITEM_MAX_ELIXIR
+	ITEM_HEAVY_BALL
+	ITEM_HP_UP
+	ITEM_PROTEIN
+	ITEM_CARBOS
+	ITEM_CALCIUM
+	ITEM_IRON
+	ITEM_ZINC
+}

@@ -138,35 +138,13 @@ GCMS_ShinyCharmWarningMsg:
 	.string "attempting to create your mon.$"
 
 GCMS_NatureMenu::
+	goto_if_set FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS, GCMS_GiveModdedMon
 	msgbox GCMS_ChooseNatureMsg
 	closemessage
 	multichoicegrid 0, 0, 139, 4, 1
-	switch VAR_RESULT
-	case 0, GCMS_ChooseNature0
-	case 1, GCMS_ChooseNature1
-	case 2, GCMS_ChooseNature2
-	case 3, GCMS_ChooseNature3
-	case 4, GCMS_ChooseNature4
-	case 5, GCMS_ChooseNature5
-	case 6, GCMS_ChooseNature6
-	case 7, GCMS_ChooseNature7
-	case 8, GCMS_ChooseNature8
-	case 9, GCMS_ChooseNature9
-	case 10, GCMS_ChooseNature10
-	case 11, GCMS_ChooseNature11
-	case 12, GCMS_ChooseNature12
-	case 13, GCMS_ChooseNature13
-	case 14, GCMS_ChooseNature14
-	case 15, GCMS_ChooseNature15
-	case 16, GCMS_ChooseNature16
-	case 17, GCMS_ChooseNature17
-	case 18, GCMS_ChooseNature18
-	case 19, GCMS_ChooseNature19
-	case 20, GCMS_ChooseNature20
-	case 21, GCMS_ChooseNature21
-	case 22, GCMS_ChooseNature22
-	case 23, GCMS_ChooseNature23
-	end
+	copyvar VAR_TEMP_C, VAR_RESULT
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
+	goto GCMS_GiveModdedMon
 	
 GCMS_CancelCreate:
 	msgbox GCMS_CreationCancelled
@@ -180,131 +158,6 @@ GCMS_NoSpace::
 	closemessage
 	release
 	end
-	
-GCMS_ChooseNature0::
-	setvar VAR_TEMP_C, 0
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature1::
-	setvar VAR_TEMP_C, 1
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-
-GCMS_ChooseNature2::
-	setvar VAR_TEMP_C, 2
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature3::
-	setvar VAR_TEMP_C, 3
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-
-GCMS_ChooseNature4::
-	setvar VAR_TEMP_C, 4
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature5::
-	setvar VAR_TEMP_C, 5
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature6::
-	setvar VAR_TEMP_C, 6
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature7::
-	setvar VAR_TEMP_C, 7
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature8::
-	setvar VAR_TEMP_C, 8
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature9::
-	setvar VAR_TEMP_C, 9
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature10::
-	setvar VAR_TEMP_C, 10
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature11::
-	setvar VAR_TEMP_C, 11
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature12::
-	setvar VAR_TEMP_C, 12
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature13::
-	setvar VAR_TEMP_C, 13
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature14::
-	setvar VAR_TEMP_C, 14
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature15::
-	setvar VAR_TEMP_C, 15
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature16::
-	setvar VAR_TEMP_C, 16
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature17:
-	setvar VAR_TEMP_C, 17
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature18::
-	setvar VAR_TEMP_C, 18
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature19::
-	setvar VAR_TEMP_C, 19
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature20::
-	setvar VAR_TEMP_C, 20
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature21::
-	setvar VAR_TEMP_C, 21
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature22::
-	setvar VAR_TEMP_C, 22
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature23::
-	setvar VAR_TEMP_C, 23
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
-	
-GCMS_ChooseNature24::
-	setvar VAR_TEMP_C, 24
-	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
-	goto GCMS_GiveModdedMon
 
 GCMS_GiveModdedMon::
 	special GivePlayerModdedMon
@@ -312,6 +165,7 @@ GCMS_GiveModdedMon::
 	setvar VAR_RYU_GCMS_VALUE, 0
 	setvar VAR_RYU_GCMS_SPECIES, 0
 	msgbox GCMS_Successful
+	clearflag FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS
 	closemessage
 	release
 	end
@@ -343,16 +197,59 @@ GCMS_DMPG_Ability:
 DevModeMonAbility1::
 	setvar VAR_TEMP_7, 0
 	special SetMonAbility 
-	goto ryu_return
+	goto DevModeMonGender
 
 DevModeMonAbility2::
 	setvar VAR_TEMP_7, 1
 	special SetMonAbility 
-	goto ryu_return
+	goto DevModeMonGender
 
 DevModeMonAbility3::
 	setvar VAR_TEMP_7, 2
 	special SetMonAbility 
+	goto DevModeMonGender
+
+DevModeMonGender::
+	msgbox GCMS_DMPG_GENDER
+	multichoicedefault 0, 6, MULTI_DEV_GIVE_MON_GENDER, 0, 1
+	switch VAR_RESULT
+	case 0, DevModeMonGender1
+	case 1, DevModeMonGender2
+	case 2, DevModeMonGender3
+	goto ryu_return
+
+DevModeMonGender1::
+	setvar VAR_TEMP_9, 255
+	goto DevModeMonShiny
+
+DevModeMonGender2::
+	setvar VAR_TEMP_9, 0
+	goto DevModeMonShiny
+
+DevModeMonGender3::
+	setvar VAR_TEMP_9, 254
+	goto DevModeMonShiny
+
+GCMS_DMPG_GENDER:
+	.string "Please choose a Gender.$"
+
+DevModeMonShiny::
+	msgbox GCMS_DMPG_SHINY
+	multichoicedefault 0, 6, MULTI_DEV_GIVE_MON_SHINY, 0, 1
+	switch VAR_RESULT
+	case 0, DevModeMonPid
+	case 1, DevModeMonPidShiny
+	goto ryu_return
+
+GCMS_DMPG_SHINY:
+	.string "Please choose shiny status.$"
+
+DevModeMonPidShiny::
+	special SetMonShinyPid
+	goto ryu_return
+
+DevModeMonPid::
+	special SetMonPid
 	goto ryu_return
 	
 GCMS_Consignment::
@@ -361,6 +258,7 @@ GCMS_Consignment::
 	goto_if_eq GCMS_NotEnoughPartyMons
 	compare VAR_RYU_GCMS_SPECIES, 0
 	goto_if_eq GCMS_ChooseInitialSpecies
+	goto_if_unset FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS, GCMS_SetGCV
 	buffernumberstring 1, VAR_RYU_GCMS_VALUE
 	msgbox GCMS_PickSlot
 	call RyuBufferPartyMonNames
@@ -378,6 +276,21 @@ GCMS_Consignment::
 	goto GCMS_CancelPartySlot
 	releaseall
 	end
+
+GCMS_SetGCV::
+	msgbox GCMS_NoSacrifice
+	numberentry 0, 9, 2
+	compare VAR_RESULT, 31
+	call_if_gt GCMS_SetMaxIV
+	copyvar VAR_RYU_GCMS_VALUE, VAR_RESULT
+	goto GCMS_CreateMon
+
+GCMS_NoSacrifice::
+	.string "Since you are generating a new mon,\nyou can simply choose the desired\lIV value.$"
+
+GCMS_SetMaxIV::
+	setvar VAR_RYU_GCMS_VALUE, 31
+	return
 	
 GCMS_ChooseInitialSpecies:
 	getpartysize
@@ -390,7 +303,13 @@ GCMS_ChooseInitialSpecies:
 	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq GCMS_CancelPartySlot
-	switch VAR_RESULT
+	copyvar VAR_0x8000, VAR_RESULT
+	msgbox GCMS_PersonalitySaveQuery
+	bufferdynamicmulti GCMS_Personalityquery1, GCMS_Personalityquery2
+	multichoice 0, 100, MULTI_DYNAMIC_2, 1
+	compare VAR_RESULT, 0
+	call_if_eq GCMS_DisableNatureSelect
+	switch VAR_0x8000
 	case 0, GCMS_Slot1Selected
 	case 1, GCMS_Slot2Selected
 	case 2, GCMS_Slot3Selected
@@ -398,6 +317,24 @@ GCMS_ChooseInitialSpecies:
 	case 4, GCMS_Slot5Selected
 	case 5, GCMS_Slot6Selected
 	goto GCMS_CancelPartySlot
+
+GCMS_DisableNatureSelect:
+	msgbox GCMS_NatureDisabled
+	closemessage
+	setflag FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS
+	return
+
+GCMS_NatureDisabled:
+	.string "When you create the result Pokémon,\nIt will have the source mon's\ldata with new IV's.\pYou will not be able to select a\nnature at that time.$"
+
+GCMS_PersonalitySaveQuery:
+	.string "Keeping personality will also\nkeep Gender, Nature, Level, EV's,\lNickname, and shinyness.\pKeep or Discard personality?$"
+
+GCMS_Personalityquery1:
+	.string "Keep Personality$"
+
+GCMS_Personalityquery2:
+	.string "Discard Personality$"
 	
 	
 GCMS_Slot1Selected::

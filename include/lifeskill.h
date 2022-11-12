@@ -73,7 +73,7 @@ extern const u16 gOutsideMapSecs[];
 extern const u16 gOutsideMiningTier1[];
 extern const u16 gOutsideMiningTier2[];
 extern const u16 gOutsideMiningTier3[];
-extern const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10];
+extern const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][12];
 extern const u16 gBotanyTreeRewards[];
 extern const u16 sBotanyRecipeToItemId[NUM_RECIPES];
 extern const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2];

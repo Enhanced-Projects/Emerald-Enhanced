@@ -1,57 +1,7 @@
 raw `
 SouthernIsland_Interior_MapScripts:: @ 8242A45
-	map_script ON_RESUME, SouthernIsland_Interior_OnResume
-	map_script ON_TRANSITION, SouthernIsland_Interior_OnTransition
 	.byte 0
 
-SouthernIsland_Interior_OnResume: @ 8242A50
-	end
-
-SouthernIsland_Interior_EventScript_TryRemoveLati:: @ 8242A5A
-	return
-
-SouthernIsland_Interior_OnTransition: @ 8242A6E
-	end
-
-SouthernIsland_Interior_EventScript_SetUpLatios:: @ 8242A8A
-	return
-
-SouthernIsland_Interior_EventScript_SetUpLatias:: @ 8242A95
-	return
-
-SouthernIsland_Interior_EventScript_SetUpPlayerGfx:: @ 8242AA0
-	end
-
-SouthernIsland_Interior_EventScript_SetBrendanGfx:: @ 8242AB8
-	return
-
-SouthernIsland_Interior_EventScript_SetMayGfx:: @ 8242ABE
-	return
-
-SouthernIsland_Interior_EventScript_TryLatiEncounter:: @ 8242AC4
-	end
-
-SouthernIsland_Interior_EventScript_Lati:: @ 8242AD0
-	end
-
-SouthernIsland_Interior_EventScript_LatiDefeated:: @ 8242B81
-	goto Common_EventScript_LegendaryFlewAway
-	end
-
-SouthernIsland_Interior_EventScript_RanFromLati:: @ 8242B8F
-	goto Common_EventScript_LegendaryFlewAway
-	end
-
-SouthernIsland_Interior_EventScript_Sign:: @ 8242B9A
-	msgbox SouthernIsland_Interior_Text_Sign, MSGBOX_DEFAULT
-	releaseall
-	end
-
-SouthernIsland_Interior_EventScript_SetLatiosBattleVars:: @ 8242BA4
-	return
-
-SouthernIsland_Interior_EventScript_SetLatiasBattleVars:: @ 8242BB7
-	return
 `
 
 script RyuLegendary_Latios {

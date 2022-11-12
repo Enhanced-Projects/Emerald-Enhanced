@@ -175,12 +175,6 @@ MH_observation:
 	.string " is fiddling with it)\p"
     .string "{COLOR LIGHT_RED}{SHADOW RED}I'll save my strength for when\nwe take on Maxie and his crone.$"
 	
-MH_Declined::
-	.string "Oh... okay.\p"
-	.string "Well, I'll leave it in your capable\n"
-	.string "hands.....\p"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She seems a little disappointed.)$"
-	
 MH_ShellyIntro:
 	.string "I see you made it, {PLAYER}.\n"
 	.string "I've done some pre-emptive\p"

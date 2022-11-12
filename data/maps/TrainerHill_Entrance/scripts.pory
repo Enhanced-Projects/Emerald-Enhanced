@@ -12,22 +12,11 @@ TrainerHill_Entrance_OnTransition: @ 82680C6
 	getplayerxy VAR_TEMP_D, VAR_RESULT
 	end
 
-@ Unused
-TrainerHill_Entrance_OnWarp: @ 82680CF
-	end
-
 TrainerHill_Entrance_OnResume: @ 82680D0
 	trainerhill_resumetimer
 	setvar VAR_TEMP_0, 0
 	@setobjectxy PLAYER, 9, 6
 	@applymovement PLAYER, TrainerHill_Entrance_Movement_PlayerFaceAttendant
-	end
-
-TrainerHill_Entrance_EventScript_TryFaceAttendant:: @ 82680FF
-	trainerhill_getwon
-	compare VAR_RESULT, TRUE
-	goto_if_eq TrainerHill_Entrance_EventScript_PlayerDontFaceAttendant
-	applymovement PLAYER, TrainerHill_Entrance_Movement_PlayerFaceAttendant
 	end
 
 TrainerHill_Entrance_EventScript_PlayerDontFaceAttendant:: @ 826811A
@@ -242,11 +231,6 @@ TrainerHill_Entrance_Movement_PushPlayerBackFromCounter: @ 8268381
 	walk_down
 	step_end
 
-@ Unused
-TrainerHill_Entrance_Movement_FaceUp: @ 8268383
-	face_up
-	step_end
-
 TrainerHill_Entrance_Movement_PlayerExitElevator: @ 8268385
 	walk_down
 	step_end
@@ -402,13 +386,6 @@ TrainerHill_Entrance_Text_ExplainTrainerHill: @ 82687C3
 	.string "neither Exp. Points nor money will\l"
 	.string "be awarded.$"
 
-@ Unused
-TrainerHill_Entrance_Text_NeedAtLeastTwoPokemon: @ 826890D
-	.string "Oh, I'm sorry, but you appear to have\n"
-	.string "only one Pokémon with you.\p"
-	.string "You will need at least two Pokémon\n"
-	.string "to enter this facility.$"
-
 TrainerHill_Roof_Text_YouFinallyCameBravo: @ 8268986
 	.string "Hm! Hm!\p"
 	.string "You finally came!\n"
@@ -443,13 +420,6 @@ TrainerHill_Roof_Text_YouWerentVeryQuick: @ 8268C03
 
 TrainerHill_Roof_Text_ArriveZippierNextTime: @ 8268C31
 	.string "Until we meet again, amigo!$"
-
-@ Unused
-TrainerHill_Roof_Text_BuiltTrainerHillToFindPartner: @ 8268CC6
-	.string "I had the Trainer Hill built for but\n"
-	.string "one reason and one only!\p"
-	.string "To find the most suitable partner\n"
-	.string "with whom I may form a tag team!$"
 
 TrainerHill_Entrance_Text_ChallengeTime: @ 8268D47
 	.string "{STR_VAR_1} min. {STR_VAR_2}.{STR_VAR_3} sec.$"

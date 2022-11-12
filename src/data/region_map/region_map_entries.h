@@ -210,6 +210,7 @@ static const u8 sMapName_PolarPillar[] = _("Polar Pillar");
 static const u8 sMapName_MirageCave[] = _("Mirage Cave");
 static const u8 sMapName_BananaSlakothGarden[] = _("Banana Garden");
 static const u8 sMapName_FrostyGrotto[] = _("Frosty Grotto");
+static const u8 sMapName_CraggyCoastUnderwater[] = _("");
 
 const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_ABANDONED_SHIP]             = {6, 14, 1, 1, sMapName_AbandonedShip},
@@ -231,6 +232,7 @@ const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_CERULEAN_CITY]              = {0, 0, 1, 1, sMapName_CeruleanCity},
     [MAPSEC_CINNABAR_ISLAND]            = {0, 0, 1, 1, sMapName_CinnabarIsland},
     [MAPSEC_CRAGGY_COAST]               = {23, 1, 1, 2, sMapName_CraggyCoast},
+    [MAPSEC_CRAGGY_COAST_UNDERWATER]    = {23, 1, 1, 2, sMapName_CraggyCoastUnderwater},
     [MAPSEC_DESERT_RUINS]               = {8, 3, 1, 1, sMapName_DesertRuins},
     [MAPSEC_DESERT_UNDERPASS]           = {2, 0, 1, 1, sMapName_DesertUnderpass},
     [MAPSEC_DEWFORD_TOWN]               = {1, 14, 2, 1, sMapName_DewfordTown},

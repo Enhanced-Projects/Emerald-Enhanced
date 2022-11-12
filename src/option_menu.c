@@ -3,6 +3,7 @@
 #include "main.h"
 #include "menu.h"
 #include "scanline_effect.h"
+#include "sound.h"
 #include "palette.h"
 #include "sprite.h"
 #include "task.h"
@@ -29,14 +30,19 @@ enum
     MENUITEM_TEXTSPEED,
     MENUITEM_BATTLESCENE,
     MENUITEM_FORCESETBATTLE,
+    //FULL_COLOR
+    MENUITEM_THEME_UI,
     MENUITEM_THEME,
+    MENUITEM_THEMEPRESETS,
     MENUITEM_FRAMETYPE,
+    MENUITEM_THEME_BALL,
     MENUITEM_RDM_MUSIC,
-    MENUITEM_BUTTONMODE,
+    MENUITEM_DISABLEMUSIC,
     MENUITEM_BAR_SPEED,
     MENUITEM_TRANSITION,
     MENUITEM_VANILLACAP,
     MENUITEM_AUTORUN,
+    MENUITEM_TRAINERSLIDE,
     MENUITEM_SAVE,
     MENUITEM_COUNT,
 };
@@ -66,19 +72,29 @@ static void HighlightOptionMenuItem(int cursor);
 static void TextSpeed_DrawChoices(int selection, int y, u8 textSpeed);
 static void BattleScene_DrawChoices(int selection, int y, u8 textSpeed);
 static void VanillaCap_DrawChoices(int selection, int y, u8 textSpeed);
+static void TrainerSlide_DrawChoices(int selection, int y, u8 textSpeed);
 static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed);
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed);
+static void PresetThemeSelection_DrawChoices(int selection, int y, u8 textSpeed);
+//FULL_COLOR
+static void ThemeUISelection_DrawChoices(int selection, int y, u8 textSpeed);
+static int ThemeUI_ProcessInput(int selection);
+
+static void ThemeBallSelection_DrawChoices(int selection, int y, u8 textSpeed);
+static int ThemeBall_ProcessInput(int selection);
+
 static void HpBar_DrawChoices(int selection, int y, u8 textSpeed);
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed);
 static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed);
+static void DisableBgm_DrawChoices(int selection, int y, u8 textSpeed);
 static void FrameType_DrawChoices(int selection, int y, u8 textSpeed);
-static void ButtonMode_DrawChoices(int selection, int y, u8 textSpeed);
 static void ForceBattleSet_DrawChoices(int selection, int y, u8 textSpeed);
 static int FrameType_ProcessInput(int selection);
 static int FourOptions_ProcessInput(int selection);
 static int ThreeOptions_ProcessInput(int selection);
 static int TwoOptions_ProcessInput(int selection);
 static int ElevenOptions_ProcessInput(int selection);
+static int PresetThemeSelection_ProcessInput(int selection);
 static int Theme_ProcessInput(int selection);
 static int Sound_ProcessInput(int selection);
 static void DrawTextOption(void);
@@ -94,17 +110,22 @@ struct
 
 static const sItemFunctions[MENUITEM_COUNT] =
 {
-    [MENUITEM_TEXTSPEED] = {TextSpeed_DrawChoices, FourOptions_ProcessInput},
+    [MENUITEM_TEXTSPEED] = {TextSpeed_DrawChoices, ThreeOptions_ProcessInput},
     [MENUITEM_BATTLESCENE] = {BattleScene_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_FORCESETBATTLE] = {ForceBattleSet_DrawChoices, TwoOptions_ProcessInput},
+    //FULL_COLOR
+    [MENUITEM_THEME_UI] = {ThemeUISelection_DrawChoices, ThemeUI_ProcessInput},
     [MENUITEM_THEME] = {ThemeSelection_DrawChoices, Theme_ProcessInput},
+    [MENUITEM_THEMEPRESETS] = {PresetThemeSelection_DrawChoices, PresetThemeSelection_ProcessInput},
     [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
+    [MENUITEM_THEME_BALL] = {ThemeBallSelection_DrawChoices, ThemeBall_ProcessInput},
     [MENUITEM_RDM_MUSIC] = {RandomMusic_DrawChoices, TwoOptions_ProcessInput},
-    [MENUITEM_BUTTONMODE] = {ButtonMode_DrawChoices, ThreeOptions_ProcessInput},
+    [MENUITEM_DISABLEMUSIC] = {DisableBgm_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_BAR_SPEED] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
     [MENUITEM_TRANSITION] = {Transition_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_VANILLACAP] = {VanillaCap_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_AUTORUN] = {ToggleAutoRun_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_TRAINERSLIDE] = {TrainerSlide_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_SAVE] = {NULL, NULL},
 };
 
@@ -117,33 +138,43 @@ static const u16 sUnknown_0855C604[] = INCBIN_U16("graphics/misc/option_menu_tex
 static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/misc/option_menu_equals_sign.4bpp");
 static const u8 sTextBarSpeed[] = _("Bar Anim Spe");
 static const u8 sText_ExpBar[] = _("EXP BAR");
+static const u8 gText_ThemePresets[] = _("Preset Theme");
 static const u8 sText_Transition[] = _("B. Transition");
 static const u8 sText_ForceSetBattleMode[] = _("Battle Style");
 static const u8 sText_Dynamic[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dynamic");
 static const u8 sText_Set[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Set");
 static const u8 sText_VanillaLevelCap[] = _("Lv cap 100");
 static const u8 sText_ToggleAutoRun[] = _("Auto Run");
+static const u8 sText_TrainerSlideOption[] = _("Slide in msg");
+static const u8 sTextDisableMusic[] = _("Disable Music");
+static const u8 OptionText_Yes[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Yes");
+static const u8 OptionText_No[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}No");
 
-
+//FULL_COLOR
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED]   = gText_TextSpeed,
     [MENUITEM_BATTLESCENE] = gText_BattleScene,
     [MENUITEM_FORCESETBATTLE]     = sText_ForceSetBattleMode,
+    //FULL_COLOR
+    [MENUITEM_THEME_UI]    = gText_ThemeUISelector,
     [MENUITEM_THEME]       = gText_ThemeSelector,
+    [MENUITEM_THEMEPRESETS]  = gText_ThemePresets,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
+    [MENUITEM_THEME_BALL]  = gText_ThemeBallSelector,
     [MENUITEM_RDM_MUSIC]   = gText_RandomRouteMusic,
-    [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_BAR_SPEED]   = sTextBarSpeed,
+    [MENUITEM_DISABLEMUSIC]= sTextDisableMusic,
     [MENUITEM_TRANSITION]  = sText_Transition,
     [MENUITEM_VANILLACAP]  = sText_VanillaLevelCap,
     [MENUITEM_AUTORUN]  = sText_ToggleAutoRun,
+    [MENUITEM_TRAINERSLIDE]  = sText_TrainerSlideOption,
     [MENUITEM_SAVE]        = gText_OptionMenuSave,
 };
 
 static const u8 sText_Instant[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Instant");
 
-static const u8 *const sTextSpeedStrings[] = {gText_TextSpeedSlow, gText_TextSpeedMid, gText_TextSpeedFast, sText_Instant};
+static const u8 *const sTextSpeedStrings[] = {gText_TextSpeedSlow, gText_TextSpeedMid, gText_TextSpeedFast};
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
 {
@@ -225,6 +256,7 @@ static void DrawChoices(u32 id, int y, u8 textSpeed)
 
 void CB2_InitOptionMenu(void)
 {
+    u16 buf[0x20];
     u32 i, taskId;
     switch (gMain.state)
     {
@@ -266,24 +298,56 @@ void CB2_InitOptionMenu(void)
         gMain.state++;
         break;
     case 3:
-        LoadBgTiles(1, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_VANILLA:
+            case THEME_COLOR_LIGHT:
+                LoadBgTiles(1, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+                break;
+            case THEME_COLOR_DARK:
+                LoadBgTiles(1, GetWindowFrameDarkTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+                break;
+            case THEME_COLOR_USER:
+                LoadBgTiles(1, GetWindowFrameUserTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+                break;
+        }
         gMain.state++;
         break;
     case 4:
         LoadPalette(sUnknown_0855C6A0, 0, sizeof(sUnknown_0855C6A0));
-        LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 0x70, 0x20);
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_VANILLA:
+            case THEME_COLOR_LIGHT:
+                LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 0x70, 0x20);
+                break;
+            case THEME_COLOR_DARK:
+                LoadPalette(GetWindowFrameDarkTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 0x70, 0x20);
+                break;
+            case THEME_COLOR_USER:
+                CpuCopy16(GetWindowFrameUserTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, buf, 0x20);
+                buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                if (gSaveBlock2Ptr->optionsWindowFrameType == 0) {
+                    buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+                    buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+                    buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+                }
+                LoadPalette(buf, 0x70, 0x20);
+                break;
+        }
         gMain.state++;
         break;
     case 5:
-        LoadPalette(sUnknown_0855C604, 0x10, sizeof(sUnknown_0855C604));
-        if (VarGet(VAR_RYU_THEME_NUMBER)) {
-            u16 pal = RGB(3, 3, 3);
-            LoadPalette(&pal, 0x11, 0x2);
-            pal = RGB(26, 26, 25);
-            LoadPalette(&pal, 0x16, 0x2);
-            pal = RGB(9, 9, 9);
-            LoadPalette(&pal, 0x17, 0x2);
+        CpuCopy16(sUnknown_0855C604, buf, sizeof(sUnknown_0855C604));
+        switch (VarGet(VAR_RYU_THEME_NUMBER)) {
+            case THEME_COLOR_DARK:
+                buf[1] = RGB(3, 3, 3);
+                buf[6] = RGB(26, 26, 25);
+                buf[7] = RGB(9, 9, 9);
+                break;
+            case THEME_COLOR_USER:
+                buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+                break;
         }
+        LoadPalette(buf, 0x10, sizeof(sUnknown_0855C604));
         gMain.state++;
         break;
     case 6:
@@ -309,13 +373,18 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
         sOptions->sel[MENUITEM_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
         sOptions->sel[MENUITEM_FORCESETBATTLE] = gSaveBlock2Ptr->forceSetBattleType;
+        //FULL_COLOR
+        sOptions->sel[MENUITEM_THEME_UI] = VarGet(VAR_HAT_THEME_UI_NUMBER);
+        sOptions->sel[MENUITEM_THEME_BALL] = sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA ? 0 : gSaveBlock2Ptr->UIBallSelection + 1;
         sOptions->sel[MENUITEM_THEME] = VarGet(VAR_RYU_THEME_NUMBER);
+        sOptions->sel[MENUITEM_THEMEPRESETS] = gSaveBlock2Ptr->userPresetThemeSelectionChoice;
         sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
-        sOptions->sel[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
         sOptions->sel[MENUITEM_BAR_SPEED] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
+        sOptions->sel[MENUITEM_DISABLEMUSIC] = gSaveBlock2Ptr->disableBGM;
         sOptions->sel[MENUITEM_TRANSITION] = FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION);
         sOptions->sel[MENUITEM_VANILLACAP] = FlagGet(FLAG_RYU_VANILLA_CAP);
+        sOptions->sel[MENUITEM_TRAINERSLIDE] = gSaveBlock2Ptr->trainerSlideEnabled;
         sOptions->sel[MENUITEM_AUTORUN] = FlagGet(FLAG_RYU_AUTORUN);
 
 
@@ -362,7 +431,7 @@ static void ScrollMenu(int direction)
 static void ScrollAll(int direction) // to bottom or top
 {
     int i, y, menuItem, pos;
-    int scrollCount = MENUITEM_COUNT - 7;
+    int scrollCount = min(7, MENUITEM_COUNT - 7);
     // Move items up/down
     ScrollWindow(WIN_OPTIONS, direction, Y_DIFF * scrollCount, PIXEL_FILL(0));
 
@@ -904,6 +973,8 @@ static void Task_OptionColorPicker(u8 taskId)
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[12] = taskData->colorBuffer[4];
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[13] = taskData->colorBuffer[3];
                     gSaveBlock2Ptr->userInterfaceTextboxPalette[14] = taskData->colorBuffer[2];
+                    gSaveBlock2Ptr->userPresetThemeSelectionChoice = PRESETTHEME_NONE; //if the user is applying a user customization, don't use a preset.
+                    sOptions->sel[MENUITEM_THEMEPRESETS] = PRESETTHEME_NONE; //hopefully set the selected preset option to None.
                     taskData->state++;
                     break;
                 case INPUT_PREV_ELEM:
@@ -1022,44 +1093,47 @@ static void Task_OptionColorPicker(u8 taskId)
             HighlightOptionMenuItem(3);
             ClearStdWindowAndFrameToTransparent(WIN_COLOR_PICKER, TRUE);
             CpuFill32(0, gTasks[taskId].data, sizeof(gTasks[taskId].data));
+            DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
             gTasks[taskId].func = Task_OptionMenuProcessInput;
             break;
     }
 }
 
 extern bool32 RyuCheckFor100Lv(void);
+extern void StopMapMusic(void);
+extern void LoadMapMusic(void);
+extern void ApplyPresetRGBUserTheme(void);
 
 static void Task_OptionMenuSave(u8 taskId)
 {
     gSaveBlock2Ptr->optionsTextSpeed = sOptions->sel[MENUITEM_TEXTSPEED];
     if (sOptions->sel[MENUITEM_TEXTSPEED] == 3)
-    {
-        FlagSet(FLAG_SELECTED_FF_TEXT_OPTION);
-        FlagSet(FLAG_RYU_USED_INSTANT_TEXT);
-    }
-    else
-        FlagClear(FLAG_SELECTED_FF_TEXT_OPTION);
+        gSaveBlock2Ptr->optionsTextSpeed = 2;
+        
 
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptions->sel[MENUITEM_BATTLESCENE];
     gSaveBlock2Ptr->optionsThemeNumber = sOptions->sel[MENUITEM_THEME];
     
     gSaveBlock2Ptr->forceSetBattleType = sOptions->sel[MENUITEM_FORCESETBATTLE];
     if ((gSaveBlock2Ptr->optionsBattleSceneOff) == TRUE)
-    {
         FlagSet(FLAG_RYU_DISABLED_ANIMS);
-    }
+
     if (sOptions->sel[MENUITEM_RDM_MUSIC])
         FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
     else
         FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
 
-    gSaveBlock2Ptr->optionsButtonMode = sOptions->sel[MENUITEM_BUTTONMODE];
 
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
-    if (sOptions->sel[MENUITEM_THEME] == 2)
-        gSaveBlock2Ptr->optionsWindowFrameType = 0;
-    else
-        gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
+    if (!(sOptions->sel[MENUITEM_THEME] == THEME_COLOR_USER))
+        sOptions->sel[MENUITEM_THEMEPRESETS] = PRESETTHEME_NONE;//sets theme preset to NONE if not on user mode.
+
+    gSaveBlock2Ptr->userPresetThemeSelectionChoice = sOptions->sel[MENUITEM_THEMEPRESETS];//automatically set to none if user isn't selected
+    //FULL_COLOR
+    VarSet(VAR_HAT_THEME_UI_NUMBER, sOptions->sel[MENUITEM_THEME_UI]);
+    gSaveBlock2Ptr->UIBallSelection = max(0, sOptions->sel[MENUITEM_THEME_BALL] - 1);
+
+    gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
 
     VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_BAR_SPEED]);
     if ((VarGet(VAR_OPTIONS_EXP_BAR_SPEED) > 7) || (VarGet(VAR_OPTIONS_HP_BAR_SPEED) > 7))
@@ -1073,6 +1147,21 @@ static void Task_OptionMenuSave(u8 taskId)
     }
     else
         FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
+
+    if (sOptions->sel[MENUITEM_DISABLEMUSIC])
+    {
+        gSaveBlock2Ptr->disableBGM = TRUE;
+        gDisableMusic = TRUE;
+        StopMapMusic();
+        FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
+        VarSet(VAR_RYU_JUKEBOX, 0);
+    }
+    else
+    {
+        gSaveBlock2Ptr->disableBGM = FALSE;
+        gDisableMusic = FALSE;
+        LoadMapMusic();
+    }
 
     if (sOptions->sel[MENUITEM_AUTORUN])
         FlagSet(FLAG_RYU_AUTORUN);
@@ -1097,6 +1186,8 @@ static void Task_OptionMenuSave(u8 taskId)
         {
             FlagClear(FLAG_RYU_VANILLA_CAP);
         }
+
+    gSaveBlock2Ptr->trainerSlideEnabled = sOptions->sel[MENUITEM_TRAINERSLIDE];
         
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -1163,7 +1254,33 @@ static int Sound_ProcessInput(int selection)
     return selection;
 }
 
-static int Theme_ProcessInput(int selection)
+//FULL_COLOR
+static int ThemeBall_ProcessInput(int selection)
+{
+    if (sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA)
+        return selection;
+
+    if (gMain.newKeys & DPAD_RIGHT)
+    {
+        if (selection < 31)
+            selection++;
+        else
+            selection = 1;
+
+    }
+    if (gMain.newKeys & DPAD_LEFT)
+    {
+        if (selection > 1)
+            selection--;
+        else
+            selection = 31;
+
+    }
+    return selection;
+}
+
+//FULL_COLOR
+static int ThemeUI_ProcessInput(int selection)
 {
     if (gMain.newKeys & DPAD_RIGHT)
     {
@@ -1181,48 +1298,122 @@ static int Theme_ProcessInput(int selection)
             selection = 2;
 
     }
-    if(selection == 2) {
-        LoadBgTiles(1, GetWindowFrameDarkTilesPal(0)->tiles, 0x120, 0x1A2);
-        LoadPalette(gSaveBlock2Ptr->userInterfaceTextboxPalette, 0x70, 0x20);
-        gPlttBufferUnfaded[0x11] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];
-        gPlttBufferFaded[0x11] = gSaveBlock2Ptr->userInterfaceTextboxPalette[1];
-        gPlttBufferUnfaded[0x16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];
-        gPlttBufferFaded[0x16] = gSaveBlock2Ptr->userInterfaceTextboxPalette[2];
-        gPlttBufferUnfaded[0x17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];
-        gPlttBufferFaded[0x17] = gSaveBlock2Ptr->userInterfaceTextboxPalette[3];
-        //LoadPalette(GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
-        sOptions->sel[MENUITEM_FRAMETYPE] = 0;
+    if (selection == THEME_UI_VANILLA) {
+        gSaveBlock2Ptr->UIBallSelection = max(0, sOptions->sel[MENUITEM_THEME_BALL] - 1);
+        sOptions->sel[MENUITEM_THEME_BALL] = 0;
+    } else if (sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA)
+        sOptions->sel[MENUITEM_THEME_BALL] = gSaveBlock2Ptr->UIBallSelection + 1;
+    DrawChoices(sOptions->menuCursor+3, (sOptions->visibleCursor + 3) * Y_DIFF, 0);
+    return selection;
+}
+
+static int PresetThemeSelection_ProcessInput(int selection)
+{
+    u16 buf[16];
+
+    if (sOptions->sel[MENUITEM_THEME] != THEME_COLOR_USER)
+        return selection;
+
+    if (gMain.newKeys & DPAD_RIGHT)
+    {
+        if (selection < NUM_PRESET_THEMES-1)
+            selection++;
+        else
+            selection = 0;
+
+    }
+    if (gMain.newKeys & DPAD_LEFT)
+    {
+        if (selection > 0)
+            selection--;
+        else
+            selection = NUM_PRESET_THEMES-1;
+
+    }
+    
+    gSpecialVar_0x8001 = selection;//load the preset theme number into this var to be read by the following function
+    ApplyPresetRGBUserTheme();
+    CpuCopy16(sUnknown_0855C604, buf, sizeof(sUnknown_0855C604));
+    buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+    LoadPalette(buf, 0x10, sizeof(sUnknown_0855C604));
+    LoadBgTiles(1, GetWindowFrameUserTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
+    CpuCopy16(GetWindowFrameUserTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, buf, 0x20);
+    buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+    if (sOptions->sel[MENUITEM_FRAMETYPE] == 0) {
+        buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+        buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+        buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+    }
+    LoadPalette(buf, 0x70, 0x20);
+    return selection;
+}
+
+//FULL_COLOR
+static int Theme_ProcessInput(int selection)
+{
+    u16 pal;
+    u16 buf[0x20];
+    const struct TilesPal * frame;
+    if (gMain.newKeys & DPAD_RIGHT)
+    {
+        if (selection < 3)
+            selection++;
+        else
+            selection = 0;
+
+    }
+    if (gMain.newKeys & DPAD_LEFT)
+    {
+        if (selection != 0)
+            selection--;
+        else
+            selection = 3;
+
+    }
+    switch (selection) {
+        case THEME_COLOR_LIGHT:
+        case THEME_COLOR_VANILLA:
+            LoadPalette(sUnknown_0855C604, 0x10, sizeof(sUnknown_0855C604));
+            LoadBgTiles(1, GetWindowFrameLightTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
+            LoadPalette(GetWindowFrameLightTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
+            break;
+        case THEME_COLOR_DARK:
+            CpuCopy16(sUnknown_0855C604, buf, sizeof(sUnknown_0855C604));
+            buf[1] = RGB(3, 3, 3);
+            buf[6] = RGB(26, 26, 25);
+            buf[7] = RGB(9, 9, 9);
+            LoadPalette(buf, 0x10, sizeof(sUnknown_0855C604));
+            LoadBgTiles(1, GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
+            LoadPalette(GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
+            break;
+        case THEME_COLOR_USER:
+            CpuCopy16(sUnknown_0855C604, buf, sizeof(sUnknown_0855C604));
+            buf[1] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            LoadPalette(buf, 0x10, sizeof(sUnknown_0855C604));
+            LoadBgTiles(1, GetWindowFrameUserTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
+            CpuCopy16(GetWindowFrameUserTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, buf, 0x20);
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            if (sOptions->sel[MENUITEM_FRAMETYPE] == 0) {
+                buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+                buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+                buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+            }
+            LoadPalette(buf, 0x70, 0x20);
+            //DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
+            break;
+    }
+    if (sOptions->sel[MENUITEM_THEME] != THEME_COLOR_USER) {
+        sOptions->sel[MENUITEM_THEMEPRESETS] = PRESETTHEME_NONE;
         DrawChoices(sOptions->menuCursor+1, (sOptions->visibleCursor + 1) * Y_DIFF, 0);
-        //DrawChoices(MENUITEM_FRAMETYPE, 0, 0xFF);
-        //AddTextPrinterParameterized(WIN_OPTIONS, 1, sOptionMenuItemsNames[MENUITEM_FRAMETYPE], 8, 1, 0xFF, NULL);
-        //CopyWindowToVram(WIN_OPTIONS, 2);
-    } else if (selection == 1) {
-        u16 pal = RGB(3, 3, 3);
-        LoadPalette(&pal, 0x11, 0x2);
-        pal = RGB(26, 26, 25);
-        LoadPalette(&pal, 0x16, 0x2);
-        pal = RGB(9, 9, 9);
-        LoadPalette(&pal, 0x17, 0x2);
-        LoadBgTiles(1, GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
-        LoadPalette(GetWindowFrameDarkTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
-    } else {
-        u16 pal = RGB(31, 31, 31);
-        LoadPalette(&pal, 0x11, 0x2);
-        pal = RGB(9, 9, 9);
-        LoadPalette(&pal, 0x16, 0x2);
-        pal = RGB(26, 26, 25);
-        LoadPalette(&pal, 0x17, 0x2);
-        LoadBgTiles(1, GetWindowFrameLightTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1A2);
-        LoadPalette(GetWindowFrameLightTilesPal(sOptions->sel[MENUITEM_FRAMETYPE])->pal, 0x70, 0x20);
-        //LoadPalette(gMessageBox_Pal, 0xC0, 0x20);
     }
     return selection;
 }
 
 static int FrameType_ProcessInput(int selection)
 {
+    u16 buf[0x20];
     const struct TilesPal * frame;
-    if(sOptions->sel[MENUITEM_THEME] == 2) return selection;
+    //if(sOptions->sel[MENUITEM_THEME] == 2) return selection;
     if (gMain.newKeys & DPAD_RIGHT)
     {
         if (selection < WINDOW_FRAMES_COUNT - 1)
@@ -1237,9 +1428,29 @@ static int FrameType_ProcessInput(int selection)
         else
             selection = WINDOW_FRAMES_COUNT - 1;
     }
-    frame = sOptions->sel[MENUITEM_THEME] ? GetWindowFrameDarkTilesPal(selection) : GetWindowFrameLightTilesPal(selection);
+    switch (sOptions->sel[MENUITEM_THEME]) {
+        case THEME_COLOR_LIGHT:
+        case THEME_COLOR_VANILLA:
+            frame = GetWindowFrameLightTilesPal(selection);
+            CpuCopy16(frame->pal, buf, 0x20);
+            break;
+        case THEME_COLOR_DARK:
+            frame = GetWindowFrameDarkTilesPal(selection);
+            CpuCopy16(frame->pal, buf, 0x20);
+            break;
+        case THEME_COLOR_USER:
+            frame = GetWindowFrameUserTilesPal(selection);
+            CpuCopy16(frame->pal, buf, 0x20);
+            buf[14] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BG];
+            if (selection == 0) {
+                buf[3] = COLOR_AUTO_SHADE(gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER], THRESHOLD_DEFAULT);
+                buf[5] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_HIGHLIGHT];
+                buf[13] = gSaveBlock2Ptr->userInterfaceTextboxPalette[USER_COLOR_BORDER];
+            }
+            break;
+    }
     LoadBgTiles(1, frame->tiles, 0x120, 0x1A2);
-    LoadPalette(frame->pal, 0x70, 0x20);
+    LoadPalette(buf, 0x70, 0x20);
     return selection;
 }
 
@@ -1255,6 +1466,20 @@ static int GetMiddleX(const u8 *txt1, const u8 *txt2, const u8 *txt3)
     return xMid;
 }
 
+//FULL_COLOR
+static void GetMiddleX1X2(const u8 *txt1, const u8 *txt2, const u8 *txt3, const u8 *txt4, u8* x1, u8* x2)
+{
+    int xMid;
+    int widthLeft = GetStringWidth(1, txt1, 0);
+    int widthMid1 = GetStringWidth(1, txt2, 0);
+    int widthMid2 = GetStringWidth(1, txt3, 0);
+    int widthRight = GetStringWidth(1, txt4, 0);
+    
+    xMid = (198 - widthRight - widthLeft - 78) / 2 + 78 + widthLeft;
+    *x1 = (xMid - widthLeft - 78 - widthMid1) * 2 / 3 + 78 + widthLeft;
+    *x2 = (198 - widthRight - xMid - widthMid2) / 3 + xMid;
+}
+
 // Draw Choices functions
 static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style, u8 textSpeed)
 {
@@ -1263,6 +1488,28 @@ static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style, u8 textSp
 
     for (i = 0; *text != EOS && i <= 14; i++)
         dst[i] = *(text++);
+
+    if (style != 0)
+    {
+        dst[2] = 4;
+        dst[5] = 5;
+    }
+
+    dst[i] = EOS;
+    AddTextPrinterParameterized(WIN_OPTIONS, 1, dst, x, y + 1, textSpeed, NULL);
+}
+
+// Draw Choices functions
+static void DrawOptionMenuChoiceLong(const u8 *text, u8 x, u8 y, u8 style, u8 textSpeed)
+{
+    u8 dst[21];
+    u32 i;
+
+    for (i = 0; i <= 20; i++)
+        if(*text != EOS)
+            dst[i] = *(text++);
+        else
+            dst[i] = 0x77;
 
     if (style != 0)
     {
@@ -1314,16 +1561,38 @@ static void ToggleAutoRun_DrawChoices(int selection, int y, u8 textSpeed)
     DrawOptionMenuChoice(gText_BattleSceneOff, 104, y, styles[0], textSpeed);
     DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOn, 198), y, styles[1], textSpeed);
 }
-
+//FULL_COLOR
+static void ThemeBallSelection_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    DrawOptionMenuChoiceLong(gText_ThemePokeballNames[selection], 104, y, 1, textSpeed);
+}
+//FULL_COLOR
+static void PresetThemeSelection_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    DrawOptionMenuChoiceLong(gText_PresetThemeNames[selection], 104, y, 1, textSpeed);
+}
+//FULL_COLOR
+static void ThemeUISelection_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[3] = {0};    
+    int xMid = GetMiddleX(gText_UiThemeModern, gText_UiThemeClassic, gText_UiThemeVanilla);
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_UiThemeModern, 78, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeClassic, xMid-(104-78)/2, y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeVanilla, GetStringRightAlignXOffset(1, gText_UiThemeVanilla, 198), y, styles[2], textSpeed);
+}
+//FULL_COLOR
 static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed)
 {
-    u8 styles[3] = {0};
-    int xMid = GetMiddleX(gText_UiThemeLight, gText_UiThemeDark, gText_UiThemeUser);
+    u8 styles[4] = {0};
+    u8 x1, x2;
+    GetMiddleX1X2(gText_UiThemeLight, gText_UiThemeDark, gText_UiThemeUser, gText_UiThemeVanilla, &x1, &x2);
 
     styles[selection] = 1;
-    DrawOptionMenuChoice(gText_UiThemeLight, 104, y, styles[0], textSpeed);
-    DrawOptionMenuChoice(gText_UiThemeDark, xMid, y, styles[1], textSpeed);
-    DrawOptionMenuChoice(gText_UiThemeUser, GetStringRightAlignXOffset(1, gText_UiThemeUser, 198), y, styles[2], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeLight, 78, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeDark, x1, y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeUser, x2, y, styles[2], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeVanilla, GetStringRightAlignXOffset(1, gText_UiThemeVanilla, 198), y, styles[3], textSpeed);
 }
 
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed)
@@ -1362,7 +1631,13 @@ static void FourOptions_DrawChoices(const u8 *const *const strings, int selectio
 
 static void TextSpeed_DrawChoices(int selection, int y, u8 textSpeed)
 {
-    FourOptions_DrawChoices(sTextSpeedStrings, selection, y, textSpeed);
+    u8 styles[3] = {0};
+    int xMid = GetMiddleX(gText_TextSpeedSlow, gText_TextSpeedMid, gText_TextSpeedFast);
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_TextSpeedSlow, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_TextSpeedMid, xMid, y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_TextSpeedFast, GetStringRightAlignXOffset(1, gText_TextSpeedFast, 198), y, styles[2], textSpeed);
 }
 
 
@@ -1373,6 +1648,15 @@ static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed)
     styles[selection] = 1;
     DrawOptionMenuChoice(gText_SoundMono, 104, y, styles[0], textSpeed);
     DrawOptionMenuChoice(gText_SoundStereo, GetStringRightAlignXOffset(1, gText_SoundStereo, 198), y, styles[1], textSpeed);
+}
+
+static void DisableBgm_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[2] = {0, 0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(OptionText_No, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(OptionText_Yes, GetStringRightAlignXOffset(1, gText_No, 198), y, styles[1], textSpeed);
 }
 
 static void FrameType_DrawChoices(int selection, int y, u8 textSpeed)
@@ -1406,17 +1690,6 @@ static void FrameType_DrawChoices(int selection, int y, u8 textSpeed)
     DrawOptionMenuChoice(text, 128, y, 1, textSpeed);
 }
 
-static void ButtonMode_DrawChoices(int selection, int y, u8 textSpeed)
-{
-    u8 styles[3] = {0};
-    int xMid = GetMiddleX(gText_ButtonTypeNormal, gText_ButtonTypeLR, gText_ButtonTypeLEqualsA);
-
-    styles[selection] = 1;
-    DrawOptionMenuChoice(gText_ButtonTypeNormal, 104, y, styles[0], textSpeed);
-    DrawOptionMenuChoice(gText_ButtonTypeLR, xMid, y, styles[1], textSpeed);
-    DrawOptionMenuChoice(gText_ButtonTypeLEqualsA, GetStringRightAlignXOffset(1, gText_ButtonTypeLEqualsA, 198), y, styles[2], textSpeed);
-}
-
 static void DrawTextOption(void)
 {
     FillWindowPixelBuffer(WIN_TEXT_OPTION, PIXEL_FILL(1));
@@ -1431,6 +1704,15 @@ static void ForceBattleSet_DrawChoices(int selection, int y, u8 textSpeed)
     styles[selection] = 1;
     DrawOptionMenuChoice(sText_Dynamic, 104, y, styles[0], textSpeed);
     DrawOptionMenuChoice(sText_Set, GetStringRightAlignXOffset(1, sText_Set, 198), y, styles[1], textSpeed);
+}
+
+static void TrainerSlide_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[2] = {0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_BattleSceneOff, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(1, gText_BattleSceneOn, 198), y, styles[1], textSpeed);
 }
 
 static void DrawOptionMenuTexts(void)

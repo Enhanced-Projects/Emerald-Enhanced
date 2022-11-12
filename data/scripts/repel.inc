@@ -16,6 +16,7 @@ RA_RepelMsg:
 	.string "You applied your potent repelling\nsolution. It will last for {STR_VAR_1} steps.$"
 
 EventScript_ChooseAnotherRepel::
+	special RyuBufferRepelItemCounts
 	multichoicedefault 10, 4, MULTI_OW_REPEL_DLG, 0, 1
 	switch VAR_RESULT
 	case 0, EventScriptChoseRepel
@@ -33,6 +34,7 @@ EventScriptChoseRepel::
 	playse SE_TU_SAA
 	waitse
 	msgbox EventScript_UsedTheRepel
+	callnative RyuSetUpRepelNotify
 	release
 	end
 
@@ -45,6 +47,7 @@ EventScriptChoseSuperRepel::
 	playse SE_TU_SAA
 	waitse
 	msgbox EventScript_UsedTheRepel
+	callnative RyuSetUpRepelNotify
 	release
 	end
 
@@ -57,6 +60,7 @@ EventScriptChoseMaxRepel::
 	playse SE_TU_SAA
 	waitse
 	msgbox EventScript_UsedTheRepel
+	callnative RyuSetUpRepelNotify
 	release
 	end
 

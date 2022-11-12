@@ -237,11 +237,12 @@
 #define OBJ_EVENT_GFX_DEOXYS_TRIANGLE            233
 #define OBJ_EVENT_GFX_BRANDON                    234
 #define OBJ_EVENT_GFX_LINK_RS_BRENDAN            235
-#define OBJ_EVENT_GFX_MAY                236
+#define OBJ_EVENT_GFX_MAY                        236
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
+#define OBJ_EVENT_GFX_LUSAMINE                   239
 
-#define NUM_EVENT_OBJ_GFX                        239
+#define NUM_EVENT_OBJ_GFX                        240
 
 
 // These are dynamic object gfx ids.

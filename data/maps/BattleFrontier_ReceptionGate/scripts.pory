@@ -80,12 +80,6 @@ BattleFrontier_ReceptionGate_Movement_PlayerFaceScott: @ 82662D7
 	walk_in_place_fastest_right
 	step_end
 
-@ Unused
-BattleFrontier_ReceptionGate_Movement_WalkDown: @ 82662DD
-	walk_down
-	walk_down
-	step_end
-
 BattleFrontier_ReceptionGate_Movement_ScottEnter: @ 82662E0
 	walk_down
 	walk_down
@@ -329,7 +323,7 @@ BattleFrontier_ReceptionGate_Text_IfItIsntPlayerYouCame: @ 8266703
 	.string "You came out here!$"
 
 BattleFrontier_ReceptionGate_Text_OhMrScottGoodDay: @ 8266733
-	.string "Guide: Oh! MR. Scott, sir!\n"
+	.string "Guide: Oh! Mr. Scott, sir!\n"
 	.string "Good day to you, sir!$"
 
 BattleFrontier_ReceptionGate_Text_ScottGreatToSeeYouHere: @ 8266764

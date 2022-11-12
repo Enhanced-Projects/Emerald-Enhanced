@@ -44,6 +44,7 @@
 #include "constants/map_groups.h"
 #include "factions.h"
 #include "RyuRealEstate.h"
+#include "RyuDynDeliveries.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -93,7 +94,8 @@ static void InitPlayerTrainerId(void)
 static void SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
-    gSaveBlock2Ptr->optionsWindowFrameType = 12;
+    gSaveBlock2Ptr->optionsWindowFrameType = 0;
+    gSaveBlock2Ptr->userPresetThemeSelectionChoice = PRESETTHEME_NONE;
     gSaveBlock2Ptr->optionsThemeNumber = OPTIONS_THEME_DARK;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
@@ -176,10 +178,11 @@ void NewGameInitData(void)
         memset(gSaveBlock2Ptr->achievementPowerFlags, 0, (sizeof(gSaveBlock2Ptr->achievementPowerFlags)));//disable all AP's on raw new game.
         RyuResetRealEstateData(); //only initialize real estate data if there's not a previous file.
         RyuResetUserPaletteData(); //same as above
+        NewGameInitPCItems();
     }
     else //hacky, I know but it's the only way I could get it to work :shrug:
     {
-        ClearSav1_SkipDex();
+        ClearSav1_NewGamePlus();
     }
     
     RyuFactions_ResetAllStanding();
@@ -189,7 +192,6 @@ void NewGameInitData(void)
     ZeroEnemyPartyMons();
     ClearFrontierRecord();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
-    gSaveBlock2Ptr->gcnLinkFlags = 0;
     InitPlayerTrainerId();
     PlayTimeCounter_Reset();
     InitEventData();
@@ -207,12 +209,9 @@ void NewGameInitData(void)
     InitLotadSizeRecord();
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();
-    ClearRoamerData();
-    ClearRoamerLocationData();
     gSaveBlock1Ptr->registeredItem = 0;
     gSaveBlock2Ptr->expShare = 0;
     ClearBag();
-    NewGameInitPCItems();
     ClearPokeblocks();
     ClearDecorationInventories();
     InitEasyChatPhrases();
@@ -229,6 +228,8 @@ void NewGameInitData(void)
     ResetTrainerHillResults();
     ResetContestLinkResults();
     ClearMysteryEventFlags();
+    RyuClearDeliveryQueue();
+    gSaveBlock2Ptr->notifiedSaveState = FALSE;
 
     //flags
     FlagSet(FLAG_RYU_LT_RIVAL2);
@@ -314,18 +315,22 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_VERDANTURF_WALLY);
     FlagSet(FLAG_RYU_HIDE_RT_WALLY);
     FlagSet(FLAG_RYU_HIDE_PBC_HOME_WALLY);
+    FlagSet(FLAG_RYU_HIDE_PETALBURG_MAY);
+    FlagClear(FLAG_RYU_SAVED_ATTENDANT);
+    FlagClear(FLAG_RYU_HIDE_HOME_ATTENDANT);
+    FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
+    FlagClear(FLAG_RYU_OLDCOIN_PASSCODE);
+    FlagSet(FLAG_RYU_HIDE_LAVARIDGE_RIVAL);
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);
-    VarSet(VAR_RYU_GCMS_MOVE1, 0);
-    VarSet(VAR_RYU_GCMS_MOVE2, 0);
-    VarSet(VAR_RYU_GCMS_MOVE3, 0);
-    VarSet(VAR_RYU_GCMS_MOVE4, 0);
     VarSet(VAR_WEATHER_INSTITUTE_STATE, 1);
     VarSet(VAR_CONTEST_HALL_STATE, 0);
     VarSet(VAR_JAGGED_PASS_STATE, 0);
     VarSet(VAR_LITTLEROOT_INTRO_STATE, 4);
     VarSet(VAR_RYU_THEME_NUMBER, 1);
+    //FULL_COLOR
+    VarSet(VAR_HAT_THEME_UI_NUMBER, 0);
     VarSet(VAR_RYU_EXP_MULTIPLIER, 1);
     VarSet(VAR_RYU_JUKEBOX, 999);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
@@ -336,6 +341,9 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_QUESTLINE_ID, 100); //No questline started
     VarSet(VAR_RYU_PLAYER_HOUSE_ID, 0xFFFF);//Which house the player has set as their own
     VarSet(VAR_RYU_CONTEST_REWARD, 1000); //'clear' ryu contest reward id.
+    VarSet(VAR_RYU_ATTENDANT_ID, 0xFFFF); //which companion is currently the player's attendant.
+    VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, 1000); //quest tracker will show no data on this until the delivery feature is unlocked.
+    VarSet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, 7); //quest tracker shows no active daily.
     
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));

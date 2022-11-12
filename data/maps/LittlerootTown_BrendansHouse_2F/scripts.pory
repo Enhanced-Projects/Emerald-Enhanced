@@ -8,15 +8,8 @@ GameIntroSequenceCheck::
 	map_script_2 VAR_TEMP_E, 0, LRT_CheckGameOver
 	map_script_2 VAR_RYU_QUEST_LANA, 75, LRT_LeafEvent
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, LRT_BeginHaremSequence
+	map_script_2 VAR_RYU_PARTNER_COUNT, 6, LRT_BeginHaremSequence
 	.2byte 0
-	
-LRT_RemoveFemaleClone::
-	@removeobject 2
-	@setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
-	setflag FLAG_TEMP_4
-	setvar VAR_TEMP_0, 99
-	release
-	end
 	
 LRT_BrendanAfterLilycoveScene::
 	lock
@@ -90,9 +83,6 @@ GI_MaleLeavingForRoute103:
 	walk_fast_right
 	walk_fast_up
 	step_end
-	
-EventScript_PlayerPCMale::
-	end
 	
 BH_DeskBook::
 	msgbox LRT_BH_DeskBookMsg MSGBOX_DEFAULT
@@ -560,6 +550,7 @@ LRT_Story7:
 
 LRT_BeginHaremSequence::
 	clearflag FLAG_RYU_RANDOMBATTLE
+	call LRT_HaremRivalCheck
 	goto HaremBegin
 	end
 	
@@ -576,32 +567,30 @@ HaremBegin:
 	turnobject PLAYER, DIR_EAST
 	applymovement 4, LRT_Harem_RivalMove
 	waitmovement 4
+	setflag FLAG_RYU_HAREM_EVENT_STARTED
 	msgbox LRT_HaremBeginRivalMsg
 	closemessage
-	clearflag FLAG_RYU_HIDE_HAREM_EVENT_NPCS
-	fadescreen FADE_TO_BLACK
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq HaremBeginFemale
 	clearflag FLAG_RYU_HIDE_HAREM_EVENT_DAWN
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	warpsilent MAP_LITTLEROOT_TOWN, 255, 9, 8
-	release
-	end
+	waitstate
 
 HaremAlreadyFinished::
 	setvar VAR_RYU_PARTNER_COUNT, 10
 	goto ryu_end
 	
 HaremBeginFemale::
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	clearflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN
 	warpsilent MAP_LITTLEROOT_TOWN, 255, 10, 8
 	release
 	end
 	
-	
 LRT_HaremBeginRivalMsg:
-	.string "{RIVAL}: HEY! come outside!\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}HEY!\nCome outside!\p"
 	.string "I have a suprise for you!$"
 	
 LRT_Harem_RivalMove:
@@ -614,10 +603,13 @@ LRT_CheckGameOver::
 	setvar VAR_TEMP_E, 10
 	goto_if_unset FLAG_RYU_GAME_OVER, ryu_end
 	goto RyuScript_GameOver
-	
-
-
-
-
-
 `
+
+script LRT_HaremRivalCheck { //If player hasn't romanced brendan or dawn, don't start harem event.
+	if ((flag(FLAG_RYU_DS_BRENDAN_PARTNERS) == FALSE) && (flag(FLAG_RYU_DS_DAWN_PARTNERS) == FALSE)) {
+		setvar(VAR_RYU_PARTNER_COUNT, 10)
+		release
+		end
+	}
+	return
+}

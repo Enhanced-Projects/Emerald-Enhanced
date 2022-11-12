@@ -79,27 +79,6 @@ Route128_EventScript_KyogreAwakenedScene:: @ 81F6B57
 	releaseall
 	end
 
-@ Unused
-Route128_Movement_1F6C76: @ 81F6C76
-	walk_fast_left
-	step_end
-
-@ Unused
-Route128_Movement_1F6C78: @ 81F6C78
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
 Route128_Movement_StevenWalkUp: @ 81F6C85
 	walk_up
 	step_end
@@ -191,11 +170,6 @@ Route128_EventScript_RegisterIsaiah:: @ 81F6CEA
 	release
 	end
 
-Route128_EventScript_RematchIsaiah:: @ 81F6D09
-	trainerbattle_rematch TRAINER_ISAIAH_1, Route128_Text_IsaiahRematchIntro, Route128_Text_IsaiahRematchDefeat
-	msgbox Route128_Text_IsaiahPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route128_EventScript_Katelyn:: @ 81F6D20
 	trainerbattle_single TRAINER_KATELYN_1, Route128_Text_KatelynIntro, Route128_Text_KatelynDefeat, Route128_EventScript_RegisterKatelyn
 	msgbox Route128_Text_KatelynPostBattle, MSGBOX_DEFAULT
@@ -208,11 +182,6 @@ Route128_EventScript_RegisterKatelyn:: @ 81F6D4C
 	msgbox Route128_Text_KatelynRegister, MSGBOX_DEFAULT
 	@nop Trainer_KATELYN_1
 	release
-	end
-
-Route128_EventScript_RematchKatelyn:: @ 81F6D6B
-	trainerbattle_rematch TRAINER_KATELYN_1, Route128_Text_KatelynRematchIntro, Route128_Text_KatelynRematchDefeat
-	msgbox Route128_Text_KatelynPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route128_EventScript_Alexa:: @ 81F6D82

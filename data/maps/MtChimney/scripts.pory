@@ -364,11 +364,6 @@ MtChimney_EventScript_DefeatedShelby:: @ 822F176
 	release
 	end
 
-MtChimney_EventScript_RematchShelby:: @ 822F195
-	trainerbattle_rematch TRAINER_SHELBY_1, MtChimney_Text_ShelbyRematchIntro, MtChimney_Text_ShelbyRematchDefeat
-	msgbox MtChimney_Text_ShelbyPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 MtChimney_EventScript_Melissa:: @ 822F1AC
 	trainerbattle_single TRAINER_MELISSA, MtChimney_Text_MelissaIntro, MtChimney_Text_MelissaDefeat
 	msgbox MtChimney_Text_MelissaPostBattle, MSGBOX_AUTOCLOSE
@@ -400,11 +395,6 @@ MtChimney_EventScript_SawyerDefeated:: @ 822F234
 	waitmovement 0
 	msgbox MtChimney_Text_SawyerRegister, MSGBOX_DEFAULT
 	release
-	end
-
-MtChimney_EventScript_SawyerRematch:: @ 822F253
-	trainerbattle_rematch TRAINER_SAWYER_1, MtChimney_Text_SawyerRematchIntro, MtChimney_Text_SawyerRematchDefeat
-	msgbox MtChimney_Text_SawyerPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 MtChimney_Text_MeteoriteWillActivateVolcano: @ 822F26A

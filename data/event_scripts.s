@@ -53,6 +53,7 @@
 #include "constants/vars.h"
 #include "constants/weather.h"
 #include "constants/general.h"
+#include "constants/region_map_sections.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"
@@ -587,13 +588,12 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/frontiermode.inc"
 	.include "data/scripts/fertilizer.inc"
 	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
-	.include "data/scripts/RyuRealEstate.inc"
 	.include "data/scripts/RyuAchievementPowerScripts.inc"
 	.include "data/scripts/slakoth_vending_machine.inc"
 	.include "data/scripts/_poryscripts/RyuDebug_BetaMenu.inc"
 	.include "data/scripts/_poryscripts/RyuScripts.inc"
 	.include "data/scripts/_poryscripts/FactionQuestsNaturalists.inc"
-	.include "data/scripts/_poryscripts/FactionQuestsAthletes.inc"
+	.include "data/scripts/_poryscripts/FactionQuestsGeneral.inc"
 	.include "data/scripts/_poryscripts/FactionQuestsProfessionals.inc"
 	.include "data/scripts/_poryscripts/FactionQuestsOutcasts.inc"
 	.include "data/scripts/_poryscripts/FactionQuestsPokefans.inc"
@@ -605,6 +605,10 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/RyuFollowerSystem.inc"
 	.include "data/scripts/_poryscripts/UserInterfaceCustomization.inc"
 	.include "data/scripts/_poryscripts/RyuChampionRoom.inc"
+	.include "data/scripts/_poryscripts/REHomeScripts.inc"
+	.include "data/scripts/_poryscripts/DynamicDeliveryScripts.inc"
+	.include "data/scripts/_poryscripts/RyuNatureSwap.inc"
+	.include "data/scripts/_poryscripts/RyuHaremEndScripts.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -622,7 +626,6 @@ EverGrandeCity_HallOfFame_EventScript_ResetEliteFour:: @ 82718CC
 
 	.include "data/scripts/pkmn_center_nurse.inc"
 	.include "data/scripts/obtain_item.inc"
-	.include "data/scripts/record_mix.inc"
 	.include "data/scripts/pc.inc"
 
 @ scripts/notices.inc? signs.inc? See comment about text/notices.inc
@@ -870,16 +873,6 @@ gText_UndergoingAdjustments:: @ 82730BC
 gBallBlackMarket::
 	.string "Psst... Hurry up!\pI don't want caught!$"
 
-@ Unused
-gText_SorryTradeCenterInspections:: @ 82730E5
-	.string "I'm terribly sorry. The TRADE CENTER\n"
-	.string "is undergoing inspections.$"
-
-@ Unused
-gText_SorryRecordCornerPreparation:: @ 8273125
-	.string "I'm terribly sorry. The RECORD CORNER\n"
-	.string "is under preparation.$"
-
 gText_PlayerHandedOverTheItem:: @ 8273161
 	.string "{PLAYER} handed over the\n"
 	.string "{STR_VAR_1}.$"
@@ -901,7 +894,6 @@ gText_LegendaryFlewAway:: @ 8273204
 	.string "The {STR_VAR_1} flew away!$"
 
 	.include "data/text/pc_transfer.inc"
-	.include "data/text/mevent.inc"
 	.include "data/text/abnormal_weather.inc"
 
 EventScript_SelectWithoutRegisteredItem:: @ 82736B3
@@ -909,11 +901,6 @@ EventScript_SelectWithoutRegisteredItem:: @ 82736B3
 	end
 
 Common_EventScript_NopReturn:: @ 827374E
-	return
-
-@ Unused
-EventScript_CableClub_SetVarResult1:: @ 827374F
-	setvar VAR_RESULT, 1
 	return
 
 EventScript_CableClub_SetVarResult0:: @ 8273755
@@ -986,7 +973,6 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/text/check_furniture.inc"
 	.include "data/scripts/cave_hole.inc"
 	.include "data/scripts/lilycove_lady.inc"
-	.include "data/text/match_call.inc"
 	.include "data/text/battle_dome.inc"
 	.include "data/scripts/battle_pike.inc"
 	.include "data/text/blend_master.inc"
@@ -1237,3 +1223,6 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/LittlerootTown_DawnsHouse_UpperHallway/scripts.inc"
 
 	.include "data/maps/LittlerootTown_DawnsHouse_MayBedroom/scripts.inc"
+
+
+	.include "data/maps/Underworld/scripts.inc"

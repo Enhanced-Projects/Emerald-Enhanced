@@ -10,6 +10,7 @@
 #include "main.h"
 #include "ach_atlas.h"
 #include "overworld_notif.h"
+#include "constants/event_objects.h"
 
 
 
@@ -30,6 +31,18 @@ const u16 gRyuPropertyData[NUM_PROPERTIES][7] = { //property id, property value,
     [PROPERTY_VERDANTURF] = {24000, 1200, 8, 9, 255, 5, 8},
     [PROPERTY_MOSSDEEP  ] = {30000, 1500, 13, 14, 255, 3, 8},
 };
+
+int CheckIfInPlayerHome(void)
+{
+    u32 i;
+    for (i = 0;i < NUM_PROPERTIES;i++)
+        {
+            if (gSaveBlock1Ptr->location.mapGroup == gRyuPropertyData[i][2])
+                if (gSaveBlock1Ptr->location.mapNum == gRyuPropertyData[i][3])
+                    return i;
+        }
+        return 0xFFFF;
+}
 
 const u8 gRyuPropertyNames[NUM_PROPERTIES][22] = {
     [PROPERTY_DEWFORD]    = _("Dewford Island Home"),
@@ -75,6 +88,24 @@ const u8 gRyuDamageTypeNamesTable[NUM_DAMAGE_TYPES][26] = { //will be buffered w
 };
 
 u8 const gRyuInterestNotifyString[] = _("You earned ¥{STR_VAR_1} in interest.");
+
+bool32 RyuCheckIfFollowerCanStay (void)
+{
+    u16 follower = (VarGet(VAR_RYU_FOLLOWER_ID));
+
+    if ((follower == 0) || 
+        (follower == OBJ_EVENT_GFX_LASS ) || 
+        (follower == OBJ_EVENT_GFX_MAGMA_MEMBER_M) || 
+        (follower == OBJ_EVENT_GFX_HEX_MANIAC) || 
+        (FlagGet(FLAG_RYU_HAS_FOLLOWER) == FALSE))
+    {
+        return FALSE;
+    }
+    else
+    {
+        return TRUE;
+    }
+}
 
 //DAILY TASKS
 void DoDailyRealEstateTasks(void)
@@ -154,7 +185,7 @@ void TryDamageproperties(void)
             VarSet(VAR_RYU_DAMAGED_HOUSE_ID, id);
             VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, damageType);
             VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, gRyuPropertyDamageTable[damageType][1]);
-            VarSet(VAR_TEMP_D, id);
+            VarSet(VAR_0x8009, id);
             FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
             StringCopy(gStringVar1, gRyuPropertyNames[id]);
             StringCopy(gStringVar2, gRyuDamageTypeNamesTable[id]);
@@ -166,7 +197,7 @@ void TryDamageproperties(void)
 
 void RyuBufferRealEstateDetails(void)
 {
-    u8 id = (VarGet(VAR_TEMP_D));
+    u8 id = gSpecialVar_0x8009;
     u16 sellprice = ((gRyuPropertyData[id][0] / 3) * 2);
     ConvertIntToDecimalStringN(gStringVar1, gRyuPropertyData[id][0], STR_CONV_MODE_LEFT_ALIGN, 5);//value
     StringCopy(gStringVar2, gRyuPropertyNames[id]);//name of property
@@ -185,7 +216,7 @@ u16 RyuReturnPropertyRentFromID(u8 id)
 
 u16 CheckIfPlayerOwnsCurrentProperty(void)
 {
-    u8 id = VarGet(VAR_TEMP_D);
+    u8 id = gSpecialVar_0x8009;
     bool8 owned = CheckOwnedProperty(id);
     bool8 rented = CheckRentedProperty(id);
 
@@ -222,7 +253,7 @@ void RemoveProperty(u32 id)
 
 void ScriptSellProperty(void)
 {
-    u8 id = VarGet(VAR_TEMP_D);
+    u8 id = gSpecialVar_0x8009;
     RemoveProperty(id);
     SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE) + ((gRyuPropertyData[id][0] / 3) * 2)));
 }
@@ -245,7 +276,7 @@ bool32 CheckRentedProperty(u32 id)
 
 void ScriptCheckRentedProperty(void)
 {
-    u8 id = VarGet(VAR_TEMP_D);
+    u8 id = gSpecialVar_0x8009;
     gSpecialVar_Result = CheckRentedProperty(id);
 }
 
@@ -259,7 +290,7 @@ void VacateProperty(u32 id)
 
 void ScriptVacateProperty(void)
 {
-    u8 id = VarGet(VAR_TEMP_D);
+    u8 id = gSpecialVar_0x8009;
 
     VacateProperty(id);
 }
@@ -275,7 +306,7 @@ void LeaseProperty(u32 id)
 
 void ScriptLeaseProperty(void)
 {
-    u8 id = VarGet(VAR_TEMP_D);
+    u8 id = VarGet(VAR_0x8009);
 
     LeaseProperty(id);
 }
@@ -302,7 +333,7 @@ void CollectRent(void)
 
 int RyuCheckPropertyStatus(void)
 {
-    u8 id = (VarGet(VAR_TEMP_D));
+    u8 id = (VarGet(VAR_0x8009));
     bool8 playerOwned = (CheckOwnedProperty(id));
     bool8 playerLeased = (CheckRentedProperty(id));
 
@@ -334,7 +365,7 @@ int RyuGetNumberOwnedProperties(void)
 
 void RyuBufferOwnedPropertyDetails(void)
 {
-    u8 id = (VarGet(VAR_TEMP_D));
+    u8 id = gSpecialVar_0x8009;
     const u8 sYesMsg[] = _("Yes");
     const u8 sNoMsg[] = _("No");
 
@@ -406,7 +437,7 @@ void RyuBufferPropertyDamageData(void)
 
 void RyuRE_TakeMoney(void)
 {
-    u8 id = (VarGet(VAR_TEMP_D));
+    u8 id = gSpecialVar_0x8009;
 
     RemoveMoney(&gSaveBlock1Ptr->money, (gRyuPropertyData[id][0]));
     AddProperty(id);
@@ -414,7 +445,7 @@ void RyuRE_TakeMoney(void)
 
 void RyuRE_TakeRepairMoney(void)
 {
-    u8 id = VarGet(VAR_TEMP_D);
+    u8 id = gSpecialVar_0x8009;
     RemoveMoney(&gSaveBlock1Ptr->money, (gRyuPropertyDamageTable[VarGet(VAR_RYU_PROPERTY_DAMAGE_TYPE)][0]));
 }
 
@@ -425,19 +456,19 @@ void RyuLoadRepairCost(void)
 
 void RyuLoadPropertyCost(void)
 {
-    u8 id = VarGet(VAR_TEMP_D);
+    u8 id = gSpecialVar_0x8009;
     VarSet(VAR_TEMP_9, gRyuPropertyData[id][0]);
 }
 
 void BufferPropertyRent(void)
 {
-    u8 id = VarGet(VAR_TEMP_D);
+    u8 id = gSpecialVar_0x8009;
     ConvertIntToDecimalStringN(gStringVar1, gRyuPropertyData[id][1], STR_CONV_MODE_LEFT_ALIGN, 5);
 }
 
 void doSpecialHouseWarp(void)//Used to dynamically warp to the current house.
 {
-    u8 id = (VarGet(VAR_TEMP_D));
+    u8 id = gSpecialVar_0x8009;
     u8 mapGroup = gRyuPropertyData[id][2];
     u8 mapNum = gRyuPropertyData[id][3];
     u8 warpId = gRyuPropertyData[id][4];

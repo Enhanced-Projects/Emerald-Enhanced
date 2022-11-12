@@ -67,14 +67,7 @@ SnowyShore_EventScript_Girl::
 SnowyShore_Text_MyGarden:
 	.string "Isn't my garden pretty? I take\n"
 	.string "good care of it!$"
-
-SnowyShore_EventScript_LittleGirl::
-	lock
-	faceplayer
-	msgbox SnowyShore_Text_SlidingOnIce, MSGBOX_DEFAULT
-	release
-	end
-
+	
 SnowyShore_Text_SlidingOnIce:
 	.string "I love sliding on ice!$"
 
@@ -149,11 +142,6 @@ SnowyShore_EventScript_Tim::
 	msgbox SnowyShore_Text_TimPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-SnowyShore_EventScript_Jim::
-	trainerbattle_single TRAINER_JIM, SnowyShore_Text_JimIntro, SnowyShore_Text_JimDefeated
-	msgbox SnowyShore_Text_JimPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 SnowyShore_EventScript_Joyce::
 	trainerbattle_single TRAINER_JOYCE, SnowyShore_Text_JoyceIntro, SnowyShore_Text_JoyceDefeated
 	msgbox SnowyShore_Text_JoycePostBattle, MSGBOX_AUTOCLOSE
@@ -207,11 +195,11 @@ text SnowyShore_Text_TownSign {
 }
 
 script SnowyShore_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_SNOWYSHORE)
+	setvar(VAR_0x8009, PROPERTY_SNOWYSHORE)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script SnowyShore_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_SNOWYSHORE)
+	setvar(VAR_0x8009, PROPERTY_SNOWYSHORE)
 	goto(RyuRealEstateHouseSign)
 }

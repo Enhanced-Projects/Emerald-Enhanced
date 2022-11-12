@@ -467,10 +467,6 @@ Route110_TrickHouseEntrance_EventScript_BeginChallenge:: @ 8269CF8
 	releaseall
 	end
 
-Route110_TrickHouseEntrance_EventScript_UnusedRelease:: @ 8269D39
-	releaseall
-	end
-
 Route110_TrickHouseEntrance_EventScript_TrickMaster:: @ 8269D3B
 	lockall
 	switch VAR_TRICK_HOUSE_ENTRANCE_STATE

@@ -2455,25 +2455,6 @@ ContestLiveUpdates_Text_Intro:: @ 08289DD6
 	.string "MC: Let's hear what the fans have\n"
 	.string "to say about this Contest.$"
 
-gTVContestLiveUpdatesText:: @ 08289DD6
-	.string "“Pokémon Contest Live Updates!”\p"
-	.string "MC: Thanks for joining us!\p"
-	.string "We're live from the just-ended\n"
-	.string "{STR_VAR_1} site.\p"
-	.string "The hall is still filled with\n"
-	.string "an audience unwilling to leave.\p"
-	.string "Spectator: {STR_VAR_2}!\p"
-	.string "Spectator: {STR_VAR_3}!\p"
-	.string "MC: As you've just heard, the Contest\n"
-	.string "was won by the Pokémon {STR_VAR_2}\l"
-	.string "of {STR_VAR_3}.\p"
-	.string "Spectator: {STR_VAR_2}!\n"
-	.string "You're the best!\p"
-	.string "Spectator: {STR_VAR_3}!\n"
-	.string "Way to go!\p"
-	.string "MC: Let's hear what the fans have\n"
-	.string "to say about this Contest.$"
-
 ContestLiveUpdates_Text_WonBothRounds:: @ 08289F53
 	.string "Spectator: The {STR_VAR_2} was tops in\n"
 	.string "both primary and secondary judging!\p"

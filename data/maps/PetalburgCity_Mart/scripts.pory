@@ -29,12 +29,6 @@ PetalburgCity_Mart_Pokemart_Basic: @ 8207D8C
 	release
 	end
 
-PetalburgCity_Mart_EventScript_ExpandedItems:: @ 8207DA6
-	pokemart PetalburgCity_Mart_Pokemart_Expanded
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
 	.align 2
 PetalburgCity_Mart_Pokemart_Expanded: @ 8207DB8
 	.2byte ITEM_POKE_BALL

@@ -8,11 +8,6 @@ EverGrandeCity_PokemonCenter_1F_OnTransition: @ 8229A3F
 	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY
 	end
 
-EverGrandeCity_PokemonCenter_1F_EventScript_TryShowScott:: @ 8229A4C
-	goto_if_unset FLAG_BADGE06_GET, Common_EventScript_NopReturn
-	clearflag FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
-	return
-
 @ VAR_0x800B is the Nurse's object event id
 EverGrandeCity_PokemonCenter_1F_EventScript_Nurse:: @ 8229A59
 	setvar VAR_0x800B, 1

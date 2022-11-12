@@ -126,12 +126,11 @@ void UndoMegaEvolution(u32 monId);
 void UndoFormChange(u32 monId, u32 side);
 bool32 DoBattlersShareType(u32 battler1, u32 battler2);
 bool32 CanBattlerGetOrLoseItem(u8 battlerId, u16 itemId);
-struct Pokemon *GetIllusionMonPtr(u32 battlerId);
-void ClearIllusionMon(u32 battlerId);
-bool32 SetIllusionMon(struct Pokemon *mon, u32 battlerId);
 bool8 ShouldGetStatBadgeBoost(u16 flagId, u8 battlerId);
 u8 GetBattleMoveSplit(u32 moveId);
 extern bool8 RyuAffectionStatusHealCheck(u8 battlerId);
 bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags);
+bool32 CompareStat(u8 battlerId, u8 statId, u8 cmpTo, u8 cmpKind);
+extern bool32 IsPlayerInUnderworld(void);
 
 #endif // GUARD_BATTLE_UTIL_H

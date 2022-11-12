@@ -14,6 +14,8 @@
 #include "factions.h"
 #include "RyuRealEstate.h"
 #include "overworld_notif.h"
+#include "RyuDynDeliveries.h"
+#include "ach_atlas.h"
 
 static void UpdatePerDay(struct Time *localTime);
 void UpdatePerHour(struct Time *localTime);
@@ -58,16 +60,16 @@ void UpdatePerHour(struct Time *localTime)
             if ((gLocalTime.hours >= 14) && (gLocalTime.hours <= 20)) //betwen 2pm and 8pm rival hangs out at lab. Different dialogue.
             {
                 if (gSaveBlock2Ptr->playerGender == MALE)
-                {                                     //OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
-                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 105))// 3a. don't bother if they are currently following player.|No constant here because it's undefined in this context
+                {                                     
+                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_DAWN))// 3a. don't bother if they are currently following player.
                        {
                            FlagSet(FLAG_HIDE_DAWNS_HOUSE_DAWN);
                            FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
                        }
                 }
                 else
-                {                                     //OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
-                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 100))//see 3a
+                {                                     
+                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_BRENDAN))//see 3a
                        {
                            FlagSet(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
                            FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
@@ -79,7 +81,7 @@ void UpdatePerHour(struct Time *localTime)
             {
                if (gSaveBlock2Ptr->playerGender == FEMALE)
                {
-                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 100))//see 3a
+                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_BRENDAN))//see 3a
                        {
                            FlagClear(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
                            FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
@@ -87,7 +89,7 @@ void UpdatePerHour(struct Time *localTime)
                }
                else
                {
-                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == 105)) //see 3a
+                   if (!(VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_DAWN)) //see 3a
                        {
                            FlagClear(FLAG_HIDE_DAWNS_HOUSE_DAWN);
                            FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
@@ -97,28 +99,31 @@ void UpdatePerHour(struct Time *localTime)
             }
         }
     }
-    if (((gLocalTime.hours >= 17) || (gLocalTime.hours <= 8)) && (VarGet(VAR_RYU_QUEST_MAY) > 10)) //birch is at the lab between 8am and 5pm if player unlocked May.
-    {
-        FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
-        if (gSaveBlock2Ptr->playerGender == MALE)
+    if (VarGet(VAR_RYU_QUEST_MAY) > 10)
+    {//birch is at the lab between 8am and 5pm if player unlocked May.
+        if ((gLocalTime.hours >= 17) || (gLocalTime.hours <= 8))
         {
-            FlagSet(FLAG_HIDE_LRT_DH_BIRCH); //hide birch in Dawn's house
+            FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
+            if (gSaveBlock2Ptr->playerGender == MALE)
+            {
+                FlagSet(FLAG_HIDE_LRT_DH_BIRCH); //hide birch in Dawn's house
+            }
+            else
+            {
+                FlagSet(FLAG_HIDE_LRT_BH_BIRCH); //hide birch in Brendan's house
+            }
         }
         else
-        {
-            FlagSet(FLAG_HIDE_LRT_BH_BIRCH); //hide birch in Brendan's house
-        }
-    }
-    else if (((gLocalTime.hours > 8) && (gLocalTime.hours < 17)) && (VarGet(VAR_RYU_QUEST_MAY) > 10)) //birch is at home from 6pm to 7am if player unlocked May.
-    {
-        FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
-        if (gSaveBlock2Ptr->playerGender == MALE)
-        {
-            FlagClear(FLAG_HIDE_LRT_DH_BIRCH); //show birch in Dawn's house
-        }
-        else
-        {
-            FlagClear(FLAG_HIDE_LRT_BH_BIRCH); //show birch in Brendan's house
+        {//birch is at home between 6pm and 7am if player unlocked may.
+            FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
+            if (gSaveBlock2Ptr->playerGender == MALE)
+            {
+                FlagClear(FLAG_HIDE_LRT_DH_BIRCH); //show birch in Dawn's house
+            }
+            else
+            {
+                FlagClear(FLAG_HIDE_LRT_BH_BIRCH); //show birch in Brendan's house
+            }
         }
     }
     else //default to having birch in the lab if above requirements aren't met.
@@ -154,9 +159,15 @@ static void UpdatePerDay(struct Time *localTime)
         UpdateFrontierGambler(daysSince);
         SetShoalItemFlag(daysSince);
         SetRandomLotteryNumber(daysSince);
-        FlagClear(FLAG_RYU_FAILED_PROF_SPECIAL_QUEST);
         *days = localTime->days;
+        FlagClear(FLAG_RYU_DELIVERY_IN_PROGRESS);
+        RyuClearDeliveryQueue();
+        if ((VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) > 0) && (VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) <= 10))//only reset delivery data if in quota range.
+            VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, 0);
         QueueNotification(gRyuText_DailyQuestsReset, NOTIFY_GENERAL, 60);
+        VarSet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES, 0); //reset daily purchase quota
+        if ((CheckAchievement(ACH_THE_PHOENIX) == FALSE) && (CheckAchievement(ACH_MARKED_FOR_DEATH) == TRUE))
+            FlagClear(FLAG_RYU_NOTIFIED_UNDERWORLD);
     }
 }
 
@@ -173,6 +184,21 @@ static void UpdatePerMinute(struct Time *localTime)
         {
             BerryTreeTimeUpdate(minutes);
             gSaveBlock2Ptr->lastBerryTreeUpdate = *localTime;
+            if (gSaveBlock2Ptr->DeliveryTimer.active == TRUE)
+            {
+                gSaveBlock2Ptr->DeliveryTimer.Timer -= 1;
+                if (gSaveBlock2Ptr->DeliveryTimer.Timer == 0)
+                {
+                    gSaveBlock2Ptr->DeliveryTimer.active = FALSE;
+                    gSaveBlock2Ptr->DeliveryTimer.timeRanOut = TRUE;
+                    QueueNotification(((const u8 []) _("Delivery time limit expired.")), NOTIFY_GENERAL, 120);
+                }
+                else
+                {
+                    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock2Ptr->DeliveryTimer.Timer, STR_CONV_MODE_LEFT_ALIGN, 2);
+                    QueueNotification(((const u8 []) _("Delivery: {STR_VAR_1} min(s) left.")), NOTIFY_GENERAL, 120);
+                }
+            }
         }
     }
 }

@@ -386,6 +386,10 @@ const union AnimCmd *const gTrainerFrontAnims_Eskimo[] ={
     sAnim_GeneralFrame0,
 };
 
+const union AnimCmd *const gTrainerFrontAnims_Lusamine[] ={
+    sAnim_GeneralFrame0,
+};
+
 const union AnimCmd *const gTrainerFrontAnims_Lanette[] ={
     sAnim_GeneralFrame0,
 };
@@ -500,4 +504,5 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_MINNIE] = gTrainerFrontAnims_Minnie,
     [TRAINER_PIC_MEWTWO] = gTrainerFrontAnims_Mewtwo,
     [TRAINER_PIC_ESKIMO] = gTrainerFrontAnims_Eskimo,
+    [TRAINER_PIC_LUSAMINE] = gTrainerFrontAnims_Lusamine,
 };

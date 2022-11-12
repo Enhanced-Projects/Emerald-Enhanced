@@ -45,18 +45,6 @@ Route121_SafariZoneEntrance_EventScript_FirstTimeInfo:: @ 822BC0E
 	release
 	end
 
-Route121_SafariZoneEntrance_EventScript_EntranceCounterTrigger:: @ 822BC18
-	lockall
-	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	showmoneybox 0, 0, 0
-	msgbox Route121_SafariZoneEntrance_Text_WouldYouLikeToPlay, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq Route121_SafariZoneEntrance_EventScript_TryEnterSafariZone
-	msgbox Route121_SafariZoneEntrance_Text_PlayAnotherTime, MSGBOX_DEFAULT
-	goto Route121_SafariZoneEntrance_EventScript_MovePlayerBackFromCounter
-	end
-
 Route121_SafariZoneEntrance_EventScript_TryEnterSafariZone:: @ 822BC48
 	checkitem ITEM_POKEBLOCK_CASE, 1
 	compare VAR_RESULT, 0

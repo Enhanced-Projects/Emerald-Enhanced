@@ -114,6 +114,7 @@ SG_FollowerReset::
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_SOOTOPOLIS_GYM 
+	call_if_unset FLAG_BADGE08_GET, RyuAdjustPokemonLeagueFaction
 	setflag FLAG_BADGE08_GET
 	cleartrainerflag TRAINER_JUAN_1
 	cleartrainerflag TRAINER_JUAN_2
@@ -189,16 +190,6 @@ SootopolisCity_Gym_1F_EventScript_GiveWaterPulse:: @ 8224FD4
 	msgbox SootopolisCity_Gym_1F_Text_ExplainWaterPulse, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM03
 	return
-
-SootopolisCity_Gym_1F_EventScript_GoGetFortreeBadge:: @ 822501B
-	msgbox SootopolisCity_Gym_1F_Text_GoGetFortreeBadge, MSGBOX_DEFAULT
-	release
-	end
-
-SootopolisCity_Gym_1F_EventScript_JuanRematch:: @ 8225025
-	trainerbattle_rematch_double TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanPreRematch, SootopolisCity_Gym_1F_Text_JuanRematchDefeat, SootopolisCity_Gym_1F_Text_JuanRematchNeedTwoMons
-	msgbox SootopolisCity_Gym_1F_Text_JuanPostRematch, MSGBOX_AUTOCLOSE
-	end
 
 SootopolisCity_Gym_1F_EventScript_GymGuide:: @ 8225040
 	lock
@@ -417,6 +408,17 @@ SG_JoyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED} It would be great to see Juan\nand Winona in a dance-off!$"
 
 `
+
+script SG_TryWeatherChange {
+	specialvar(VAR_RESULT, CountBadges)
+	if (var(VAR_RESULT) > 5) {
+		setweather(WEATHER_DOWNPOUR)
+		doweather
+	}
+	setvar(VAR_TEMP_0, 100)
+	release
+	end
+}
 
 script SG_FollowerOutroSelector {
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == FALSE) {

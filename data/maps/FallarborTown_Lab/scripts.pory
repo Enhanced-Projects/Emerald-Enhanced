@@ -32,13 +32,4 @@ FallarborTown_Lab_Text_Welcome:
 	.string "If you find any fossil, maybe we could\n"
 	.string "check it out for you.$"
 
-FallarborTown_Lab_EventScript_BottomRightScientist::
-	msgbox FallarborTown_Lab_Text_IThinkThisFossilBelongs, MSGBOX_NPC
-	end
-
-FallarborTown_Lab_Text_IThinkThisFossilBelongs:
-	.string "Hm, I think this fossil belongs to an\n"
-	.string "ancient sea creature...\p"
-	.string "There are signs of a helix shell, so\n"
-	.string "this is probably a cephalopod.$"
 `

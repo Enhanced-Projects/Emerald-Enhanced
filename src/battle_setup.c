@@ -54,6 +54,7 @@
 #include "constants/items.h"
 #include "item.h"
 #include "overworld_notif.h"
+#include "factions.h"
 
 enum
 {
@@ -510,6 +511,11 @@ void BattleSetup_StartLegendaryBattle(void)
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
         break;
     case SPECIES_LATIAS:
+    case SPECIES_WEEZING:
+    case SPECIES_GENGAR:
+    case SPECIES_KABUTOPS:
+    case SPECIES_SNORLAX:
+    case SPECIES_ARCEUS:
         CreateBattleStartTask(B_TRANSITION_WHITEFADE, MUS_VS_RAYQUAZA);
         break;
     case SPECIES_LATIOS:
@@ -625,6 +631,8 @@ void RyuDebugDoPickupTestRoll(void)
     RyuDoPickupLootRoll(200, 2);
 }
 
+extern void CheckIfAllBeastsCaught();
+
 static void CB2_EndWildBattle(void)
 {
     u32 i;
@@ -639,6 +647,7 @@ static void CB2_EndWildBattle(void)
     {
         if (!(gBattleOutcome == B_OUTCOME_RAN))
         {
+            CheckIfAllBeastsCaught();
             for (i = 0; i < PARTY_SIZE; i++)
             {   
                 u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
@@ -659,6 +668,12 @@ static void CB2_EndWildBattle(void)
                     }
             }
         }
+
+        if ((gBattleOutcome == B_OUTCOME_CAUGHT) && FlagGet(FLAG_RYU_ENCOUNTERED_MELOETTA) == TRUE)//special case for finishing a battle with Meloetta.
+        {
+            FlagSet(FLAG_RYU_CAPTURED_MELOETTA);
+        }
+        FlagSet(FLAG_TEMP_C);
         SetMainCallback2(CB2_ReturnToField);
         gFieldCallback = sub_80AF6F0;
     }
@@ -668,6 +683,7 @@ static void CB2_EndScriptedWildBattle(void)
 {
     CpuFill16(0, (void*)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
+    FlagClear(FLAG_RYU_BOSS_WILD);
 
     if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
@@ -1280,10 +1296,14 @@ u8 GetTrainerBattleMode(void)
 
 bool8 GetTrainerFlag(void)
 {
+    u8 enemyFaction = (GetFactionId(gTrainerBattleOpponent_A));
+    u8 enemyFactionStanding = (GetFactionStanding(enemyFaction));
     if (InBattlePyramid())
         return GetBattlePyramidTrainerFlag(gSelectedObjectEvent);
     else if (InTrainerHill())
         return GetHillTrainerFlag(gSelectedObjectEvent);
+    else if ((gSaveBlock2Ptr->gNPCTrainerFactionRelations[enemyFaction]) < 20)
+        return FALSE;
     else
         return FlagGet(GetTrainerAFlag());
 }
@@ -1386,6 +1406,8 @@ static void CB2_EndTrainerBattle(void)
     FlagClear(FLAG_RYU_BOSS_SCALE);
     FlagClear(FLAG_RYU_MAX_SCALE);
     FlagClear(FLAG_RYU_FACING_FACTION_BOSS);
+    FlagClear(FLAG_RYU_FACING_HORSEMAN);
+    FlagClear(FLAG_RYU_FACING_REAPER);
     
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
     {
@@ -1409,7 +1431,7 @@ static void CB2_EndTrainerBattle(void)
 
     if ((FlagGet(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LASS))
     {
-        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS] < 140)//this is intended to make it so that the lass following 
+        if (gSaveBlock2Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS] < 140)//this is intended to make it so that the lass following 
             {                                                                   //you gains 1 faction standing every battle until player
                 RyuAdjustFactionValueInternal(FACTION_STUDENTS, 1, FALSE);      //reached 80 standing gained from thhe mentorship, but i forgot
                 RyuAdjustOpposingFactionValues(FACTION_STUDENTS, 1, TRUE);      //to address this when i changed how standing works.  
@@ -1433,12 +1455,20 @@ static void CB2_EndTrainerBattle(void)
         FlagClear(FLAG_USED_THIEF);
     }
 
-    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_HEALING_FACTOR && gSaveBlock2Ptr->alchemyCharges > 0)
+    if (gSaveBlock2Ptr->hasAlchemyEffectActive == TRUE)
     {
-        gSaveBlock2Ptr->alchemyCharges -= 1;
-        if (gSaveBlock2Ptr->alchemyCharges == 0)
+        for (i = 0;i < NUM_ALCHEMY_EFFECTS;i++)
         {
-            RyuClearAlchemyEffect();
+            if ((gSaveBlock2Ptr->alchemyEffect < 11) && (gSaveBlock2Ptr->alchemyEffect > 0))
+                {
+                    gSaveBlock2Ptr->alchemyCharges -= 1;
+                    if (gSaveBlock2Ptr->alchemyCharges == 0)
+                    {
+                        RyuClearAlchemyEffect();
+                        break;
+                    }
+                    break;
+                }
         }
     }
 

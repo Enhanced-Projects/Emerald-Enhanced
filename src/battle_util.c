@@ -781,7 +781,6 @@ static const u8 sAbilitiesNotTraced[ABILITIES_COUNT] =
     [ABILITY_DISGUISE] = 1,
     [ABILITY_FLOWER_GIFT] = 1,
     [ABILITY_FORECAST] = 1,
-    [ABILITY_ILLUSION] = 1,
     [ABILITY_IMPOSTER] = 1,
     [ABILITY_MULTITYPE] = 1,
     [ABILITY_NONE] = 1,
@@ -2135,7 +2134,7 @@ enum
 	ENDTURN_THROAT_CHOP,
 	ENDTURN_SLOW_START,
     ENDTURN_BOSSMODEHEAL,
-    ENDTURN_BOSSMODERAISESTAT,
+    //ENDTURN_BOSSMODERAISESTAT,
     ENDTURN_ALCHEMYHEALEFFECT,
     ENDTURN_FACTIONBOSSMODIFIER,
 	ENDTURN_BATTLER_COUNT
@@ -2380,6 +2379,11 @@ u8 DoBattlerEndTurnEffects(void)
                     gBattleScripting.animArg1 = gBattleStruct->wrappedMove[gActiveBattler];
                     gBattleScripting.animArg2 = gBattleStruct->wrappedMove[gActiveBattler] >> 8;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, gBattleStruct->wrappedMove[gActiveBattler]);
+                    for (gBattleCommunication[MULTISTRING_CHOOSER] = 0; ; gBattleCommunication[MULTISTRING_CHOOSER]++)
+                    {
+                        if (gTrappingMoves[gBattleCommunication[MULTISTRING_CHOOSER]] == gBattleStruct->wrappedMove[gActiveBattler])
+                            break;
+                    }
                     gBattlescriptCurrInstr = BattleScript_WrapTurnDmg;
                     if (GetBattlerHoldEffect(gBattleStruct->wrappedBy[gActiveBattler], TRUE) == HOLD_EFFECT_BINDING_BAND)
                         gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / (B_BINDING_DAMAGE >= GEN_6) ? 6 : 8;
@@ -2646,24 +2650,24 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BOSSMODEHEAL:
-            if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
-                if(!(BATTLER_MAX_HP(gActiveBattler)))
-                    if(gBattleMons[gActiveBattler].hp != 0)
-                        if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT)
-                            {
-                                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
-                                if (gBattleMoveDamage == 0)
-                                    gBattleMoveDamage = 1;
-                                gBattleMoveDamage *= -1;
-                                StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
-                                StringCopy(gStringVar2, gText_PokemonStringBuffer);
-                                BattleScriptExecute(BattleScript_BossModeHeal);
-                            }
+            if ((FlagGet(FLAG_IS_FIGHTING_RYU) == 1) && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
+                    if ((!(BATTLER_MAX_HP(gActiveBattler))) && (!(gBattleMons[gActiveBattler].hp == 0)))
+                        if(gBattleMons[gActiveBattler].hp != 0)
+                        {
+                            gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 4;
+                            if (gBattleMoveDamage == 0)
+                                gBattleMoveDamage = 1;
+                            gBattleMoveDamage *= -1;
+                            StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+                            StringCopy(gStringVar2, gText_PokemonStringBuffer);
+                            BattleScriptExecute(BattleScript_BossModeHeal);
+                            effect++;
+                        }
             gBattleStruct->turnEffectsTracker++;
             break;
-        case ENDTURN_BOSSMODERAISESTAT:
+        /*case ENDTURN_BOSSMODERAISESTAT:
         {
-            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
+            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(FlagGet(FLAG_RYU_FACING_ATTENDANT) == TRUE)))
                 {
                     StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
                     StringCopy(gStringVar2, gText_PokemonStringBuffer);
@@ -2681,7 +2685,7 @@ u8 DoBattlerEndTurnEffects(void)
                 }
         }
             gBattleStruct->turnEffectsTracker++;
-            break;
+            break;*/
         case ENDTURN_ALCHEMYHEALEFFECT:
         {
             if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_HEALING_FACTOR)
@@ -3086,7 +3090,10 @@ u8 AtkCanceller_UnableToUseMove(void)
                 gBattleMons[gBattlerAttacker].status2 &= ~(STATUS2_RECHARGE);
                 gDisableStructs[gBattlerAttacker].rechargeTimer = 0;
                 CancelMultiTurnMoves(gBattlerAttacker);
-                gBattlescriptCurrInstr = BattleScript_MoveUsedMustRecharge;
+                if ((IsPlayerInUnderworld() == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
+                    gBattlescriptCurrInstr = BattleScript_JudgingYou;
+                else
+                    gBattlescriptCurrInstr = BattleScript_MoveUsedMustRecharge;
                 gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
                 effect = 1;
             }
@@ -3777,7 +3784,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
 
     GET_MOVE_TYPE(move, moveType);
 
-    if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
+    if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(FlagGet(FLAG_RYU_FACING_ATTENDANT) == TRUE)))
     {
         StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
         StringCopy(gStringVar2, gText_PokemonStringBuffer);
@@ -3877,7 +3884,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             if (IsBattlerAlive(BATTLE_OPPOSITE(battler))
                 && !(gBattleMons[BATTLE_OPPOSITE(battler)].status2 & (STATUS2_TRANSFORMED | STATUS2_SUBSTITUTE))
                 && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED)
-                && !(gBattleStruct->illusion[BATTLE_OPPOSITE(battler)].on)
                 && !(gStatuses3[BATTLE_OPPOSITE(battler)] & STATUS3_SEMI_INVULNERABLE))
             {
                 gBattlerTarget = BATTLE_OPPOSITE(battler);
@@ -4812,14 +4818,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 effect++;
             }
             break;
-        case ABILITY_ILLUSION:
-            if (gBattleStruct->illusion[gBattlerTarget].on && !gBattleStruct->illusion[gBattlerTarget].broken && TARGET_TURN_DAMAGED)
-            {
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_IllusionOff;
-                effect++;
-            }
-            break;
         }
         break;
     case ABILITYEFFECT_MOVE_END_ATTACKER: // Same as above, but for attacker
@@ -5113,6 +5111,13 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
         gBattlerAbility = battler;
 
     return effect;
+}
+
+bool32 IsPlayerInUnderworld(void)
+{
+    if ((gSaveBlock1Ptr->location.mapGroup == 33) && (gSaveBlock1Ptr->location.mapNum == 4))
+        return TRUE;
+    return FALSE;
 }
 
 u32 GetBattlerAbility(u8 battlerId)
@@ -6279,7 +6284,7 @@ static bool32 HasObedientBitSet(u8 battlerId)
 
 u8 IsMonDisobedient(void)
 {
-    return 0;   
+    return 0;
 }
 
 u32 GetBattlerHoldEffect(u8 battlerId, bool32 checkNegating)
@@ -6814,7 +6819,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     switch (GetBattlerAbility(battlerAtk))
     {
     case ABILITY_TECHNICIAN:
-        if (basePower <= 60)
+        if (basePower <= 65)
            MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_FLARE_BOOST:
@@ -7434,8 +7439,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     {
         if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
-        else if (moveType == TYPE_FIRE && (FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1))//Placeholder flag
-        gBattlescriptCurrInstr = BattleScript_PreventFireAttackInRain;
         else if (moveType == TYPE_FIRE)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
         else if (moveType == TYPE_GRASS)
@@ -7445,8 +7448,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     {
         if (moveType == TYPE_FIRE)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
-        else if (moveType == TYPE_WATER && (FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1))//Placeholder flag
-        gBattlescriptCurrInstr = BattleScript_PreventWaterAttackInSun;
         else if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
         else if (moveType == TYPE_GRASS)
@@ -7465,15 +7466,19 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
     }   
 
-    // Eclipse boosts Dark type moves by 25%, Ghost type moves by 15% and Psychic type moves by 10%
+    // Eclipse boosts Dark type moves by 50%, Ghost type moves by 25% and Psychic type moves by 10%
     if (IsBattlerWeatherAffected(battlerAtk, WEATHER_ECLIPSE_ANY))
     {
         if (moveType == TYPE_DARK)
-            dmg = ApplyModifier(UQ_4_12(1.25), dmg);
+            dmg = ApplyModifier(UQ_4_12(1.50), dmg);
         else if (moveType == TYPE_GHOST)
-            dmg = ApplyModifier(UQ_4_12(1.15), dmg);
+            dmg = ApplyModifier(UQ_4_12(1.25), dmg);
         else if (moveType == TYPE_PSYCHIC)
             dmg = ApplyModifier(UQ_4_12(1.10), dmg);
+        else if (moveType == TYPE_FAIRY)
+            dmg = ApplyModifier(UQ_4_12(0.5), dmg);
+        else if (moveType == TYPE_NORMAL)
+            dmg = ApplyModifier(UQ_4_12(0.9), dmg);
     }   
 
     // check stab
@@ -7636,11 +7641,6 @@ int RyuCalculateAlchemyModifiers(s32 damage)
                 break;
         }
     }
-    gSaveBlock2Ptr->alchemyCharges -= 1;
-    if (gSaveBlock2Ptr->alchemyCharges == 0)
-    {
-        RyuClearAlchemyEffect();
-    }
     return damage;
 
 }
@@ -7677,6 +7677,13 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
           dmg *= 5;
       }
 
+    if ((gBattleMons[gBattlerAttacker].ability == ABILITY_ILLUSIONIST) && (GetBattleMoveSplit(move) == SPLIT_SPECIAL))
+    {
+        if ((moveType == gBattleMons[gBattlerAttacker].type1) || (moveType == gBattleMons[gBattlerAttacker].type2))
+            dmg *= 2;
+
+    }
+
     //Steven is meant to defeat player in slateport museum
     if ((VarGet(VAR_RYU_QUEST_AQUA) == 40) && (FlagGet(FLAG_TEMP_E) == 1) && GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT)
         dmg /= 10;
@@ -7690,21 +7697,27 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         {
             switch (VarGet(VAR_RYU_FOLLOWER_ID))
             {
-                case OBJ_EVENT_GFX_AQUA_MEMBER_F://Shelly grants increase to dark and water type moves
+                case FOLLOWER_SHELLY://Shelly grants increase to dark and water type moves
                     {
                         if ((moveType == TYPE_WATER) || (moveType == TYPE_DARK))
                             dmg = ((dmg * 110) / 100);
                             break;
                     }
-                case OBJ_EVENT_GFX_MAGMA_MEMBER_F://courtney grants increase to dark and fire type moves
+                case FOLLOWER_COURTNEY://courtney grants increase to dark and fire type moves
                     {
                         if ((moveType == TYPE_FIRE) || (moveType == TYPE_DARK))
                             dmg = ((dmg * 110) / 100);
                             break;
                     }
-                case OBJ_EVENT_GFX_MAY://May grants increase to fairy and fighting type moves
+                case FOLLOWER_MAY://May grants increase to fairy and fighting type moves
                     {
                         if ((moveType == TYPE_FAIRY) || (moveType == TYPE_FIGHTING))
+                            dmg = ((dmg * 110) / 100);
+                            break;
+                    }
+                case FOLLOWER_LUCY://Lucy gives a bonus to poison and dragon type damage
+                    {
+                        if ((moveType == TYPE_POISON) || (moveType == TYPE_DRAGON))
                             dmg = ((dmg * 110) / 100);
                             break;
                     }
@@ -7714,12 +7727,12 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         {
             switch (VarGet(VAR_RYU_FOLLOWER_ID))
             {
-                case OBJ_EVENT_GFX_TWIN:
+                case FOLLOWER_MINNIE:
                     {
                         dmg = ((dmg * 95) / 100); //5% damage decrease from all sources
                         break;
                     }
-                case OBJ_EVENT_GFX_LEAF:
+                case FOLLOWER_LEAF:
                     {
                         if ((moveType == TYPE_FIRE) || (moveType == TYPE_WATER) || (moveType == TYPE_GRASS))
                         {
@@ -7755,6 +7768,8 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         }
     }
 
+    if (((FlagGet(FLAG_RYU_FACING_REAPER) == TRUE) || (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
+        dmg = 333;
 
     if (dmg == 0)
         dmg = 1;
@@ -8059,6 +8074,9 @@ bool32 CanMegaEvolve(u8 battlerId)
     species = GetMonData(mon, MON_DATA_SPECIES);
     itemId = GetMonData(mon, MON_DATA_HELD_ITEM);
 
+    if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) && (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY))
+        return FALSE;
+
     // Check if there is an entry in the evolution table for regular Mega Evolution.
     if (GetMegaEvolutionSpecies(species, itemId) != SPECIES_NONE)
     {
@@ -8165,73 +8183,8 @@ bool32 CanBattlerGetOrLoseItem(u8 battlerId, u16 itemId)
         return FALSE;
     else if (species == SPECIES_GIRATINA && itemId == ITEM_GRISEOUS_ORB)
         return FALSE;
-    else if (species == SPECIES_GENESECT && GetBattlerHoldEffect(battlerId, FALSE) == HOLD_EFFECT_DRIVE)
-        return FALSE;
-    else if (species == SPECIES_SILVALLY && GetBattlerHoldEffect(battlerId, FALSE) == HOLD_EFFECT_MEMORY)
-        return FALSE;
     else
         return TRUE;
-}
-
-struct Pokemon *GetIllusionMonPtr(u32 battlerId)
-{
-    if (gBattleStruct->illusion[battlerId].broken)
-        return NULL;
-    if (!gBattleStruct->illusion[battlerId].set)
-    {
-        if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
-            SetIllusionMon(&gPlayerParty[gBattlerPartyIndexes[battlerId]], battlerId);
-        else
-            SetIllusionMon(&gEnemyParty[gBattlerPartyIndexes[battlerId]], battlerId);
-    }
-    if (!gBattleStruct->illusion[battlerId].on)
-        return NULL;
-
-    return gBattleStruct->illusion[battlerId].mon;
-}
-
-void ClearIllusionMon(u32 battlerId)
-{
-    memset(&gBattleStruct->illusion[battlerId], 0, sizeof(gBattleStruct->illusion[battlerId]));
-}
-
-bool32 SetIllusionMon(struct Pokemon *mon, u32 battlerId)
-{
-    struct Pokemon *party, *partnerMon;
-    s32 i, id;
-
-    gBattleStruct->illusion[battlerId].set = 1;
-    if (GetMonAbility(mon) != ABILITY_ILLUSION)
-        return FALSE;
-
-    if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
-        party = gPlayerParty;
-    else
-        party = gEnemyParty;
-
-    if (IsBattlerAlive(BATTLE_PARTNER(battlerId)))
-        partnerMon = &party[gBattlerPartyIndexes[BATTLE_PARTNER(battlerId)]];
-    else
-        partnerMon = mon;
-
-    // Find last alive non-egg pokemon.
-    for (i = PARTY_SIZE - 1; i >= 0; i--)
-    {
-        id = i;
-        if (GetMonData(&party[id], MON_DATA_SANITY_HAS_SPECIES)
-            && GetMonData(&party[id], MON_DATA_HP)
-            && &party[id] != mon
-            && &party[id] != partnerMon)
-        {
-            gBattleStruct->illusion[battlerId].on = 1;
-            gBattleStruct->illusion[battlerId].broken = 0;
-            gBattleStruct->illusion[battlerId].partyId = id;
-            gBattleStruct->illusion[battlerId].mon = &party[id];
-            return TRUE;
-        }
-    }
-
-    return FALSE;
 }
 
 bool8 ShouldGetStatBadgeBoost(u16 badgeFlag, u8 battlerId)
@@ -8275,4 +8228,55 @@ bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags)
         return TRUE;
     }
     return FALSE;
+}
+
+bool32 CompareStat(u8 battlerId, u8 statId, u8 cmpTo, u8 cmpKind)
+{
+    bool8 ret = FALSE;
+    u8 statValue = gBattleMons[battlerId].statStages[statId];
+
+    // Because this command is used as a way of checking if a stat can be lowered/raised,
+    // we need to do some modification at run-time.
+    if (GetBattlerAbility(battlerId) == ABILITY_CONTRARY)
+    {
+        if (cmpKind == CMP_GREATER_THAN)
+            cmpKind = CMP_LESS_THAN;
+        else if (cmpKind == CMP_LESS_THAN)
+            cmpKind = CMP_GREATER_THAN;
+
+        if (cmpTo == MIN_STAT_STAGE)
+            cmpTo = MAX_STAT_STAGE;
+        else if (cmpTo == MAX_STAT_STAGE)
+            cmpTo = MIN_STAT_STAGE;
+    }
+
+    switch (cmpKind)
+    {
+    case CMP_EQUAL:
+        if (statValue == cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_NOT_EQUAL:
+        if (statValue != cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_GREATER_THAN:
+        if (statValue > cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_LESS_THAN:
+        if (statValue < cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_COMMON_BITS:
+        if (statValue & cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_NO_COMMON_BITS:
+        if (!(statValue & cmpTo))
+            ret = TRUE;
+        break;
+    }
+
+    return ret;
 }

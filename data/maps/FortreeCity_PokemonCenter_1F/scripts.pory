@@ -56,3 +56,31 @@ FortreeCity_PokemonCenter_1F_Text_DoYouKnowAboutPokenav: @ 821751F
 	.string "sure know what they're doing!$"
 
 `
+
+script FC_DeliveryQuestTarget1 {
+	checkitem(ITEM_ANTIQUE, 1)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Where's my Antique?\nHurry and grab it!")
+		closemessage
+		release
+		end
+	}
+	removeitem(ITEM_ANTIQUE, 1)
+	msgbox("Ah! I was expecting this.\nThank you very much!")
+	closemessage
+	call(RyuChooseDeliveryTipAmount)
+	setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 102)//Player delivered the antique. Return to Adrasti Foreman.
+	applymovement(5, ExitPokemonCenter)
+	waitmovement(5)
+	playse(SE_DOOR)
+	removeobject(5)
+	setflag(FLAG_RYU_HIDE_DELIVERY_NPC_1)
+	release
+	end
+}
+
+movement ExitPokemonCenter {
+	walk_left * 3
+	walk_down * 2
+	step_end
+}

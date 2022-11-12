@@ -30,11 +30,6 @@ Route106_EventScript_ElliotRegisterMatchCallAfterBattle:: @ 81EE4ED
 	release
 	end
 
-Route106_EventScript_ElliotRematch:: @ 81EE50C
-	trainerbattle_rematch TRAINER_ELLIOT_1, Route106_Text_ElliotRematchIntro, Route106_Text_ElliotRematchDefeated
-	msgbox Route106_Text_ElliotRematchPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route106_EventScript_Ned:: @ 81EE523
 	trainerbattle_single TRAINER_NED, Route106_Text_NedIntro, Route106_Text_NedDefeated
 	msgbox Route106_Text_NedPostBattle, MSGBOX_AUTOCLOSE

@@ -58,6 +58,7 @@
 #include "constants/rgb.h"
 #include "constants/region_map_sections.h"
 #include "gba/m4a_internal.h"
+#include "overworld_notif.h"
 
 // Defines
 enum WindowIds
@@ -991,9 +992,16 @@ bool8 TryStartDexnavSearch(void)
 {
     u8 taskId;
     u16 val = VarGet(VAR_DEXNAV_SPECIES);
+    u16 temp = (val & MASK_SPECIES);
     
     if (FlagGet(FLAG_SYS_DEXNAV_SEARCH) || (val & MASK_SPECIES) == SPECIES_NONE)
+    {
+        if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+        {
+            DebugPrint((const u8[])_("species is "), 1, temp);
+        }
         return FALSE;
+    }
     
     HideMapNamePopUpWindow();
     ChangeBgY_ScreenOff(0, 0, 0);
@@ -1903,6 +1911,7 @@ static void DexNavGuiFreeResources(void)
 static void CB1_InitDexNavSearch(void)
 {
     u8 taskId;
+    FlagClear(FLAG_RYU_BOSS_WILD);
     
     if (!gPaletteFade.active && !ScriptContext2_IsEnabled() && gMain.callback2 == CB2_Overworld)
     {
@@ -2081,6 +2090,7 @@ static void DrawSpeciesIcons(void)
 static u16 DexNavGetSpecies(void)
 {
     u16 species;
+    FlagClear(FLAG_RYU_BOSS_WILD);
     
     switch (sDexNavUiDataPtr->cursorRow)
     {
@@ -2528,6 +2538,9 @@ static void Task_DexNavMain(u8 taskId)
         species = DexNavGetSpecies();
         if (species == SPECIES_NONE)
         {
+            PrintSearchableSpecies(species);
+            VarSet(VAR_DEXNAV_SPECIES, SPECIES_NONE);
+            FlagClear(FLAG_SYS_DEXNAV_SEARCH);
             PlaySE(SE_FAILURE);
         }
         else
@@ -2767,6 +2780,7 @@ void ResetDexNavSearch(void)
     VarSet(VAR_DEXNAV_STEP_COUNTER, 0); //reset hidden pokemon step counter
     if (FlagGet(FLAG_SYS_DEXNAV_SEARCH))
         EndDexNavSearch(FindTaskIdByFunc(Task_DexNavSearch));   //moving to new map ends dexnav search
+    FlagClear(FLAG_SYS_DEXNAV_SEARCH);
 }
 
 void IncrementDexNavChain(void)

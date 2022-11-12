@@ -1,18 +1,12 @@
 //quests for outcasts
 
-//Procedural components
-const FETCH_TYPE = 1
-const CAPTURE_TYPE = 2
-const TRAVEL_TYPE = 3
-const HATCH_TYPE = 4
-
 
 script(global) RyuOutcastsDailyQuest  {
     lock
     faceplayer
      if (flag(FLAG_FINISHED_OUTCAST_DAILY) == TRUE) { //quest done
         checkfactionstanding(FACTION_OUTCASTS, 175)
-        if (var(VAR_RESULT) == TRUE) {
+        if ((var(VAR_RESULT) == TRUE) && (flag(FLAG_RYU_OUTCASTS_SPECIAL_STARTED) == FALSE)) {
             call(RyuOutcastsSpecialQuestIntro)
         }
         msgbox("The rituals are going as intended.")
@@ -22,10 +16,9 @@ script(global) RyuOutcastsDailyQuest  {
 
     checkfactionstanding(FACTION_OUTCASTS, 200)
 
-    if (var(VAR_RESULT) == TRUE) {
+    if ((var(VAR_RESULT) == TRUE) && (flag(FLAG_FINISHED_OUTCAST_DAILY) == TRUE)) {
         msgbox("Archmage, I'm pleased to see you.\pHow are the leylines treating you\lthis day?")
-        release
-        end
+        closemessage
     }
 
     if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_OUTCASTS) { //currently doing a daily quest for this faction
@@ -46,7 +39,7 @@ script(global) RyuOutcastsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 4000) {
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
                     msgbox(format("I see... The leylines are not yet aligned. Thank you for checking."))
                     goto(CommonOutcastRewardScript)
                 }
@@ -80,7 +73,10 @@ script(global) RyuOutcastsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
-    random(3)//increase this by the number of quests you add. 
+    random(4)//increase this by the number of quests you add.
+    if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
+        call(RyuDoDailyQuestVerbosePrint)
+    }
     switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
@@ -94,8 +90,9 @@ script(global) RyuOutcastsDailyQuest  {
             msgbox("Heya {PLAYER}.\pWe recently got word that some\nrare pokemon can be attracted\lby anointing stones with stardust.\pPlease bring us five pouches of it.")
         case 2:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_MT_PYRE_SUMMIT)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_MT_PYRE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
+            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
             msgbox(format("Please travel to Mt. Pyre's summit and check the leylines. We're waiting for the right ones to perform a ritual."))
         case 3:
             random(4)
@@ -126,8 +123,10 @@ script CommonOutcastRewardScript {
     msgbox("The gods shine upon you\nthis day.\lMany thanks.")
     setflag(FLAG_FINISHED_OUTCAST_DAILY)
     changefactionstanding(FACTION_OUTCASTS, 25, FALSE)
-    addmoney(2000)
-    buffernumberstring(0, 2000)
+    random(1500)
+    addvar(VAR_RESULT, 3000)
+    buffernumberstring(0, VAR_RESULT)
+    addmoney(VAR_RESULT)
     goto(CommonDailyQuestEnd)
 }
 
@@ -143,6 +142,8 @@ script RyuOutcastsSpecialQuestIntro {
     msgbox(AlchemyIntroQuestMsg)
     closemessage
     setflag(FLAG_RYU_OUTCASTS_SPECIAL_STARTED)
+    release
+    end
 }
 
 script RyuOutcastsSpecialAlreadyInProgress {

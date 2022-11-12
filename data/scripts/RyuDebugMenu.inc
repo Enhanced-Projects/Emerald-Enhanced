@@ -8,7 +8,7 @@ RyuDevSwitch::
 	switch VAR_RESULT
 	case 69, Ryu_enableDevMode
 	case 666, Ryu_SpecialChallengeActive
-	case 420, RyuChallengeQuery
+	case 777, Hat_enableTestMode
 	release
 	end
 
@@ -18,6 +18,15 @@ Ryu_enableDevMode::
 	msgbox RyuNowDeveloper MSGBOX_SIGN
 	setvar VAR_TEMP_9, 100
 	end
+
+Hat_enableTestMode::
+	setflag FLAG_HAT_TEST_MODE
+	msgbox HatNowTestmode MSGBOX_SIGN
+	end
+
+HatNowTestmode:
+	.string "{PLAYER} has activated test mode.$"
+	
 
 Ryu_SpecialChallengeActive::
 	msgbox RyuCantEnableDevBecauseChallenge
@@ -29,9 +38,13 @@ RyuCantEnableDevBecauseChallenge:
 	
 RyuNowDeveloper:
 	.string "{PLAYER} is now a developer.$"
+
+RyuDebugMenuBootstrap::
+	fadescreenspeed FADE_FROM_BLACK, 0
+	goto RyuDebugMenuScript
 	
 RyuDebugMenuScript::
-	msgbox RyuDebug_msg MSGBOX_SIGN
+	msgbox RyuDebug_msg, MSGBOX_SIGN
 	multichoicedefault 0, 0, MULTI_DEV_MENU_MAIN, 8, 0
 	switch VAR_RESULT
 	case 0, RyuDebug_UtilitiesMenu
@@ -92,7 +105,8 @@ RyuDebug_UtilitiesMenu:
 	case 17, RyuDebug_ReadoutRGBTheme
 	case 18, RyuDebug_CheckRyuChallengeStatus
 	case 19, RyuDebug_CheckExactPlayTime
-	case 20, RyuDebug_menu_nodevcheck
+	case 20, RyuDebug_EnableVerboseUtility
+	case 21, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -108,11 +122,12 @@ RDB_SpawnFollowerMultiMenu::
 	case 6, RDB_SpawnCourtney
 	case 7, RDB_SpawnJoy
 	case 8, RDB_SpawnMay
-	case 9, RDB_NONCOMBATFOLLOWER
-	case 10, RDB_SpawnBlaise
-	case 11, RDB_SpawnTiana
-	case 12, RDB_SpawnHexer
-	case 13, RDB_RETURNTOMAIN
+	case 9, RDB_SpawnLucy
+	case 10, RDB_NONCOMBATFOLLOWER
+	case 11, RDB_SpawnBlaise
+	case 12, RDB_SpawnTiana
+	case 13, RDB_SpawnHexer
+	case 14, RDB_RETURNTOMAIN
 	goto RDB_RETURNTOMAIN
 
 RDB_SpawnWhichFollower:
@@ -120,49 +135,49 @@ RDB_SpawnWhichFollower:
 
 RDB_SpawnMinnie::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_MINNIE, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
 RDB_SpawnShelly::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_SHELLY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
 RDB_SpawnLanette::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_WOMAN_2, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_LANETTE, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnDawn::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_DAWN, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnBrendan::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_BRENDAN, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnLeaf::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnCourtney::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 	
 RDB_SpawnJoy::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
@@ -186,7 +201,13 @@ RDB_SpawnHexer::
 
 RDB_SpawnMay::
 	call RyuForceCancelFollowerForQuest
-	createfollower OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
+	createfollower FOLLOWER_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnLucy::
+	call RyuForceCancelFollowerForQuest
+	createfollower FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_SOUTH
 	goto RDB_ExplainSpawnFollower
 	end
 
@@ -234,6 +255,7 @@ RyuDebug_giveAllBadges::
 	setflag FLAG_BADGE06_GET
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_BADGE08_GET
+	callnative RyuSetFactionStandingPokemonLeagueDebug
 	playse SE_EXPMAX
 	goto RyuDebug_UtilitiesMenu
 
@@ -306,21 +328,25 @@ Ryu_CollisionOnMsg:
 
 DevModeDisabled:
 	.string "{PLAYER} is no longer a developer.$"
-	
-EGC_CLEARGAMECLEARFLAG::
-	clearflag FLAG_SYS_GAME_CLEAR
-	end
-
-RyuDebug_waystone::
-	additem ITEM_WAYSTONE, 1
-	goto RyuDebug_menu_nodevcheck
-	releaseall
-	end
 
 RyuDebug_EnableDexnav::
 	setflag FLAG_SYS_DEXNAV_GET
 	release
 	end
+
+RDB_AlchemyInfo::
+	callnative RyuDebug_CheckAlchemyStatus
+	msgbox RDB_AlchemyInfoMsg
+	closemessage
+	release
+	end
+
+RDB_AlchemyInfoMsg:
+	.string "Has Alchemy effect active? {STR_VAR_1}\n"
+	.string "Current effect is {STR_VAR_2},\l"
+	.string "with {STR_VAR_3} charges left.\p"
+	.string "Player's alchemy level is {RYU_STR_1}.\n"
+	.string "Player's Alchemy exp is {RYU_STR_2}.$"
 
 RDB_ToggleLevelCap::
 	msgbox RDB_LevelCapToggled
@@ -369,56 +395,6 @@ RyuDebug_ViewTempVars::
 
 RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
-@@clearflag FLAG_RYU_DEV_MODE
-@@clearflag FLAG_RYU_CHEATS_USED
-@@setvar VAR_RYU_NGPLUS_COUNT, 6
-
-
-RyuDebug_Utility1::
-	release
-	end
-
-RDB_DQT::
-	.string "{PLAYER}, can you go check out\nRoute 103?\pI want to know specifically if\nthere's a good place to camp\lthere or not.$"
-
-RDB_String1:
-	.string "Your name is {PLAYER}.\nYour rival is {RIVAL}.$"
-
-RDB_DoLittlerootLatiCheck::
-	buffernumberstring 0, VAR_ROAMER_POKEMON
-	buffernumberstring 1, VAR_LITTLEROOT_INTRO_STATE
-	msgbox RDBLRT2
-	closemessage
-	release
-	end
-
-RDBTeleport:
-	.string "Teleport?$"
-
-RDBResult:
-	.string "Result: {STR_VAR_1}$"
-
-RDBLRT2:
-	.string "Your roamer is {STR_VAR_1}\nYour Tutorial state is {STR_VAR_2}$"
-
-RDB_LifeSkills:
-	.string "Alchemy- EXP: {STR_VAR_1} Level: {STR_VAR_2}\n"
-	.string "Botany- EXP: {STR_VAR_3} Level: {RYU_STR_1}\l"
-	.string "Mining- EXP: {RYU_STR_2} Level: {RYU_STR_3}$"
-
-RDB_AlchemyInfo::
-	callnative RyuDebug_CheckAlchemyStatus
-	msgbox RDB_AlchemyInfoMsg
-	closemessage
-	release
-	end
-
-RDB_AlchemyInfoMsg:
-	.string "Has Alchemy effect active? {STR_VAR_1}\n"
-	.string "Current effect is {STR_VAR_2},\l"
-	.string "with {STR_VAR_3} charges left.\p"
-	.string "Player's alchemy level is {RYU_STR_1}.\n"
-	.string "Player's Alchemy exp is {RYU_STR_2}.$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
@@ -456,7 +432,7 @@ RyuDebug_SaveFileDebug::
 	end
 
 SaveFileStructMsg:
-	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.$"
+	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.\psize3 is {STR_VAR_3}\nsize4 is {RYU_STR_1}$"
 
 exampletext:
 	.string "This is standard text.\p"
@@ -488,11 +464,6 @@ GiveRandomFrontiermonsEnd::
 
 RDB_GRFMD:
 	.string "Given 6 random frontier mons.$"
-
-RDB_u1_EnableRandomize::
-	setflag FLAG_RYU_RANDOMIZE_MUSIC
-	release
-	end
 
 RDB_Readout:
 	.string "It is currently: {STR_VAR_1}:{STR_VAR_2}::{STR_VAR_3}  $"
@@ -565,7 +536,7 @@ RyuDebugGiveTMsDone::
 
 RyuDebug_GiveAlchemyKit::
 	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 5
-	setvar VAR_RYU_ALCHEMY_EXP, 5000
+	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 5000
 	additem ITEM_FRESH_WATER, 200
 	additem ITEM_TONIC_WATER, 200
 	additem ITEM_MINERAL_WATER, 200
@@ -695,7 +666,7 @@ RyuDebug_msg:
 	.string "What would you like to activate?$"
 	
 RyuDebug_Init_GiveAll::
-	setvar VAR_TEMP_0, 1
+	setvar VAR_TEMP_0, 265
 	msgbox RyuDebug_GiveAllBeginMsg MSGBOX_DEFAULT
 	goto RyuDebug_GiveAllMons
 	
@@ -705,7 +676,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 152
+	compare VAR_TEMP_0, 686
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	
@@ -721,16 +692,16 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_DevMonQuickStart::
-	setflag FLAG_RYU_IGNORE_CAP @@why not just max lv
+	setflag FLAG_RYU_IGNORE_CAP
 	clearflag FLAG_RYU_VANILLA_CAP
 	setvar VAR_TEMP_A, NATURE_MODEST     
-	setvar VAR_TEMP_B, SPECIES_NAGANADEL
-	setvar VAR_TEMP_C, HIDDEN_ABILITY
-	setvar VAR_TEMP_D, MON_FEMALE @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS.
+	setvar VAR_TEMP_B, SPECIES_MAGEARNA
+	setvar VAR_TEMP_C, 0
+	setvar VAR_TEMP_D, MON_GENDERLESS @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS.
 	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
-	setvar VAR_TEMP_1, MOVE_SLUDGE_BOMB
-	setvar VAR_TEMP_2, MOVE_DRAGON_PULSE
-	setvar VAR_TEMP_3, MOVE_FLAMETHROWER
+	setvar VAR_TEMP_1, MOVE_MOONBLAST
+	setvar VAR_TEMP_2, MOVE_SHADOW_BALL
+	setvar VAR_TEMP_3, MOVE_FLASH_CANNON
 	setvar VAR_TEMP_4, MOVE_THUNDERBOLT
 	callnative RyuGiveDevMon
 	@@
@@ -739,14 +710,14 @@ RyuDebug_DevMonQuickStart::
 	@@
 	@@
 	setvar VAR_TEMP_A, NATURE_ADAMANT
-	setvar VAR_TEMP_B, SPECIES_KINGLER
-	setvar VAR_TEMP_C, HIDDEN_ABILITY
+	setvar VAR_TEMP_B, SPECIES_MEGA_ABSOL
+	setvar VAR_TEMP_C, 0
 	setvar VAR_TEMP_D, MON_FEMALE
 	setvar VAR_TEMP_E, ITEM_SCOPE_LENS
-	setvar VAR_TEMP_1, MOVE_EARTHQUAKE
-	setvar VAR_TEMP_2, MOVE_TRIPLE_KICK
-	setvar VAR_TEMP_3, MOVE_ICE_SHARD
-	setvar VAR_TEMP_4, MOVE_CRABHAMMER
+	setvar VAR_TEMP_1, MOVE_SLASH
+	setvar VAR_TEMP_2, MOVE_NIGHT_SLASH
+	setvar VAR_TEMP_3, MOVE_PSYCHO_CUT
+	setvar VAR_TEMP_4, MOVE_STONE_EDGE
 	callnative RyuGiveDevMon
 	special HealPlayerParty
 	goto RyuDebug_QuickItemFlagStart
@@ -807,15 +778,37 @@ RyuNewGameQuery:
 @@EV DEBUG MENU==================================================================================================================
 
 RyuPokeEditMenu::
-	multichoicedefault 1, 0, 122, 0, 0
+	multichoicedefault 0, 0, MULTI_DEV_MODE_POKEEDIT_MENU, 0, 0
 	switch VAR_RESULT
 	case 0, RD_MonDataView
 	case 1, Ryu_ResetEVIV
 	case 2, RyuSetIvEvDebugMenu
 	case 3, RyuSetFriendshipDebugMenu
 	case 4, RyuAccessDevMoveRelearner
-	case 5, RyuExitPokeEditMenu
+	case 5, RyuChangeBossStatus
+	case 6, RyuExitPokeEditMenu
 	goto RyuExitPokeEditMenu
+
+RyuChangeBossStatus::
+	call RyuBufferPartyMonNames
+	multichoice 0, 0, MULTI_DYNAMIC_6, 1
+	copyvar VAR_0x8001, VAR_RESULT
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RyuPokeEditMenu
+	bufferpartymonnick 0, VAR_0x8001
+	msgbox RCBS_Query, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RyuPokeEditMenu
+	callnative RyuToggleBossStatus
+	msgbox RCBS_Success
+	goto RyuPokeEditMenu
+
+RCBS_Query:	
+	.string "Would you like to toggle {COLOR LIGHT_RED}{SHADOW RED}boss{COLOR DARK_GREY}{SHADOW LIGHT_GREY} status\nfor {STR_VAR_1}?$"
+
+RCBS_Success:
+	.string "Boss status successfully changed.$"
 
 RD_MonDataView::
 	setvar VAR_0x8001, 0
@@ -1221,10 +1214,10 @@ RyuDebug_CheckRyuChallengeStatus::
 
 RDB_SCS:
 	.string "Finished play time: {RYU_STR_1}:{RYU_STR_2}:{RYU_STR_3}\p"
+	.string "Your challenge took {RYU_STR_4} minutes.\p"
 	.string "Speed options used:\p"
 	.string "{STR_VAR_1}\p"
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({COLOR DARK_GREY}{SHADOW LIGHT_GREY} bs - {COLOR LIGHT_RED}{SHADOW RED}Bar Speed{COLOR DARK_GREY}{SHADOW LIGHT_GREY}, 1c - {COLOR LIGHT_RED}{SHADOW RED}100 cap{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\n"
-	.string " itx - {COLOR LIGHT_RED}{SHADOW RED}instant text{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\p"
 	.string " its - {COLOR LIGHT_RED}{SHADOW RED}instant transition{COLOR DARK_GREY}{SHADOW LIGHT_GREY},\n"
 	.string " da - {COLOR LIGHT_RED}{SHADOW RED}disabled anims{COLOR LIGHT_GREEN}{SHADOW GREEN})$"
 
@@ -1234,3 +1227,21 @@ RyuDebug_CheckExactPlayTime::
 	release
 	end
 
+RDB_VERBOSETOGGLED:
+	.string "Verbose Mode Enabled.$"
+
+RyuDebug_EnableVerboseUtility::
+	goto_if_set FLAG_RYU_VERBOSE_MODE, RDB_DisableVerbose
+	setflag FLAG_RYU_VERBOSE_MODE
+	debugprint RDB_VERBOSETOGGLED, 120
+	release
+	end
+
+RDB_DisableVerbose:
+	clearflag FLAG_RYU_VERBOSE_MODE
+	msgbox RDB_VBD
+	release
+	end
+
+RDB_VBD:
+	.string "Verbose mode disabled.$"

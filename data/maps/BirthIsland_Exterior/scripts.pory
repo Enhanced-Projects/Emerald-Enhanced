@@ -126,7 +126,7 @@ BirthIsland_Exterior_Movement_DeoxysApproach: @ 8268054
 `
 
 script RyuLegendary_ChooseDeoxysForm {
-	random(3)
+	random(4)
 	switch (var(VAR_RESULT)) {
 		case 0:
 			setvar(VAR_0x8004, SPECIES_DEOXYS)

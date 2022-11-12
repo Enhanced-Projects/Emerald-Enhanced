@@ -41,7 +41,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 60
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 61
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -108,8 +108,8 @@
 #define ACH_WANTED  59
 #define ACH_DE_ORPHANED 60// gave may a place to live
 #define ACH_LOST_GIRL  61
-#define ACH_UNUSED_63  62
-#define ACH_UNUSED_64  63
+#define ACH_MARKED_FOR_DEATH  62// beat overlord ryu first time without any blackouts
+#define ACH_THE_PHOENIX  63
 #define ACH_UNUSED_65  64
 #define ACH_UNUSED_66  65
 #define ACH_UNUSED_67  66
@@ -316,12 +316,12 @@
 #define ALCHEMY_EFFECT_EXP_BOOST_T1        7 // for ten battles, your experience is increased by 20%
 #define ALCHEMY_EFFECT_EXP_BOOST_T2        8 // for ten battles, your experience is increased by 50%
 #define ALCHEMY_EFFECT_EXP_BOOST_T3        9 // for ten battles, your experience is increased by 100%
-#define ALCHEMY_EFFECT_REPEL_T1            10 // adds 500 to repel step counter
-#define ALCHEMY_EFFECT_REPEL_T2            11 // adds 1000 to repel step counter
-#define ALCHEMY_EFFECT_SUPER_CAPTURE       12 // for one battle, you have a 25% chance of a capture succeeding regardless of ball used.
-#define ALCHEMY_EFFECT_ULTRA_CAPTURE       13 // for one battle, you have a 50% chance of a capture succeeding regardless of ball used.
-#define ALCHEMY_EFFECT_MASTER_CAPTURE      14 // For one battle, you are garunteed to capture regardelss of ball used.
-#define ALCHEMY_EFFECT_HEALING_FACTOR      15 // for five battles, you regain 10% health per turn. 
+#define ALCHEMY_EFFECT_HEALING_FACTOR      10 // for five battles, you regain 10% health per turn. 
+#define ALCHEMY_EFFECT_REPEL_T1            11 // adds 500 to repel step counter
+#define ALCHEMY_EFFECT_REPEL_T2            12 // adds 1000 to repel step counter
+#define ALCHEMY_EFFECT_SUPER_CAPTURE       13 // for one battle, you have a 25% chance of a capture succeeding regardless of ball used.
+#define ALCHEMY_EFFECT_ULTRA_CAPTURE       14 // for one battle, you have a 50% chance of a capture succeeding regardless of ball used.
+#define ALCHEMY_EFFECT_MASTER_CAPTURE      15 // For one battle, you are garunteed to capture regardelss of ball used.
 #define ALCHEMY_ITEM_RECIPE_STARDUST       16 // creates Stardust from Soft Sand and Gem Powder
 #define ALCHEMY_ITEM_RECIPE_FRESH_WATER    17 // creates Fresh Water from Snowball and Fire Stone
 #define ALCHEMY_ITEM_RECIPE_TONIC_WATER    18 // creates Tonic Water from Charcoal and Fresh Water
@@ -375,6 +375,7 @@
 #define SCENEBGCOURTNEYNEUTRAL 14
 #define SCENEBGSHELLY 15
 #define SCENEBGSHELLYNIGHT 16
+#define SCENEBGMAY 17
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0
@@ -408,6 +409,7 @@
 #define INFOBOX_PROF_SPECIAL_DELIVERY_MANIFEST 23
 #define INFOBOX_DYNAMIC 24
 
+
 //Times
 #define RTC_TIME_DAY 0
 #define RTC_TIME_EVENING 1
@@ -431,6 +433,8 @@
 #define NUM_MEDICINE_RECIPES 8
 #define NUM_RECIPES (BR_ICE_STONE + 1)
 
+#define NUM_MAX_QUEUED_DELIVERIES 4
+
 //Hack to make it so I only need one script command to perform all functions. Yes, i know, constants should be capsed, but this is for my sanity since i'll be the
 //one scripting in all the achievements.
 #define give 0
@@ -444,8 +448,8 @@
 #define FACTION_POKEFANS 3 //The people who just like having their pokemon around. Love pokemon for what they are, companions or pets.             Opposed: Athletes(x1) "Pokemon aren't tools of war, they're friends!"
 #define FACTION_OUTCASTS 4 //The intense people that are eccentric, shunned, or generally out of it. Hex maniacs, bug maniacs, pokemaniacs, etc.      Opposed: Schoolkids(x1) "The wierd pokemons are the coolest!"
 #define FACTION_PROFESSIONALS 5 //people who chose a pokemon related career with specific paths, like kindlers, or guitarists.                     Opposed: Pokefans(x1) "Pokemon should be used to their strengths"
-#define FACTION_ATHLETES 6 //bodybuilders, meatheads, jocks, those whose entire existence is self improvement. Martial artists, fighters, etc.     Opposed: Pokefans(x0.5) Richkids(x0.5)  "Pokemon are best when trained 
-#define FACTION_OTHERS 7 //everything else unclassified like aqua, magma, leaders, etc.                                                                     to their potential, not left to rot and spoil!"
+#define FACTION_POKEMON_LEAGUE 6 //leaders/elites/champions
+#define FACTION_OTHERS 7 //everything else unclassified like aqua or magma.
 
 #define FACTION_STAND_INVALID 0
 #define FACTION_STAND_WORST 1
@@ -455,6 +459,11 @@
 #define FACTION_STAND_GOOD 5
 #define FACTION_STAND_HIGH 6
 #define FACTION_STAND_BEST 7
+
+#define FETCH_TYPE 0
+#define CAPTURE_TYPE 1
+#define TRAVEL_TYPE 2
+#define HATCH_TYPE 3
 
 //The questlines that have their own discrete quest stage tracking variable
 #define QUEST_ID_DEVON_SCIENTIST 0
@@ -500,10 +509,26 @@
 #define NOTIFY_QUEST       5
 #define NOTIFY_GENERAL     6
 
+#define FOLLOWER_MINNIE 6
+#define FOLLOWER_SHELLY 118
+#define FOLLOWER_COURTNEY 120
+#define FOLLOWER_JOY 58
+#define FOLLOWER_DAWN 105
+#define FOLLOWER_BRENDAN 100
+#define FOLLOWER_LANETTE 20
+#define FOLLOWER_LEAF 231
+#define FOLLOWER_MAY 236
+#define FOLLOWER_LUCY 75
+
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
 
-#define EE_GAME_VERSION 8303
+//uncomment for winter mode.
+//#define EE_WINTER_MODE
 
+//uncomment to punish save states. Otherwise detections are just logged.
+//#define RYU_PUNISH_SAVE_STATE 1
 
-#endif
+#define EE_GAME_VERSION 9251
+
+#endif 

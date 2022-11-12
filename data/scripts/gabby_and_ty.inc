@@ -1,13 +1,3 @@
-@ Unused
-EventScript_28CCAA:: @ 828CCAA
-	setvar VAR_0x8005, 8
-	special InterviewBefore
-	compare VAR_RESULT, 1
-	goto_if_eq EventScript_UnusedRet
-	setvar VAR_0x8005, 8
-	special InterviewAfter
-	return
-
 EventScript_UnusedRet:: @ 828CCC6
 	return
 

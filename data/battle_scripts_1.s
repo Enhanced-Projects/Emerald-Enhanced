@@ -3238,6 +3238,11 @@ BattleScript_MoveUsedMustRecharge::
 	waitmessage 0x40
 	goto BattleScript_MoveEnd
 
+BattleScript_JudgingYou::
+	printstring STRINGID_PKMNJUDGING
+	waitmessage 0x40
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectRage::
 	attackcanceler
 	accuracycheck BattleScript_RageMiss, ACC_CURR_MOVE
@@ -3793,8 +3798,8 @@ BattleScript_FuryCutterHit:
 BattleScript_TryDestinyKnotTarget:
 	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_DESTINY_KNOT, BattleScript_TryDestinyKnotTargetRet
 	infatuatewithbattler BS_TARGET, BS_ATTACKER
-	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, NULL
-	waitanimation
+	//playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//waitanimation
 	status2animation BS_TARGET, STATUS2_INFATUATION
 	waitanimation
 	printstring STRINGID_DESTINYKNOTACTIVATES
@@ -3805,8 +3810,8 @@ BattleScript_TryDestinyKnotTargetRet:
 BattleScript_TryDestinyKnotAttacker:
 	jumpifnoholdeffect BS_TARGET, HOLD_EFFECT_DESTINY_KNOT, BattleScript_TryDestinyKnotAttackerRet
 	infatuatewithbattler BS_ATTACKER, BS_TARGET
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
-	waitanimation
+	//playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//waitanimation
 	status2animation BS_ATTACKER, STATUS2_INFATUATION
 	waitanimation
 	printstring STRINGID_DESTINYKNOTACTIVATES
@@ -5062,7 +5067,6 @@ BattleScript_EffectCamouflage::
 	goto BattleScript_MoveEnd
 
 BattleScript_FaintAttacker::
-	tryillusionoff BS_ATTACKER
 	playfaintcry BS_ATTACKER
 	pause 0x40
 	dofaintanimation BS_ATTACKER
@@ -5074,7 +5078,6 @@ BattleScript_FaintAttacker::
 	return
 
 BattleScript_FaintTarget::@If something gets added here, add to the 4 below!
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
@@ -5089,50 +5092,54 @@ BattleScript_FaintTarget::@If something gets added here, add to the 4 below!
 	return
 
 BattleScript_FaintTarget2x::
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED2X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
 BattleScript_FaintTarget4x::
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED4X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
 BattleScript_FaintTarget10x::
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED10X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
 BattleScript_FaintTarget20x::
-	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED20X
 	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
-	tryactivatefellstinger BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -5164,7 +5171,6 @@ BattleScript_FaintedMonTryChooseAnother:
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_x400000, BattleScript_FaintedMonChooseAnother
 	jumpifbyte CMP_EQUAL, sBATTLE_STYLE, 0x1, BattleScript_FaintedMonChooseAnother
 	jumpifcantswitch BS_PLAYER1, BattleScript_FaintedMonChooseAnother
-	setbyte sILLUSION_NICK_HACK, 1
 	printstring STRINGID_ENEMYABOUTTOSWITCHPKMN
 	setbyte gBattleCommunication, 0x0
 	yesnobox
@@ -5758,8 +5764,8 @@ BattleScript_WeaknessPolicy::
 	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, 0xC, BattleScript_WeaknessPolicyAtk
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPATK, 0xC, BattleScript_WeaknessPolicyEnd
 BattleScript_WeaknessPolicyAtk:
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
-	waitanimation
+	//playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//waitanimation
 	setbyte sSTAT_ANIM_PLAYED, FALSE
 	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPATK, STAT_CHANGE_BY_TWO
 	setstatchanger STAT_ATK, 2, FALSE
@@ -6189,7 +6195,11 @@ BattleScript_AquaRingHeal::
 BattleScript_BossModeHeal::
 	playanimation BS_ATTACKER, B_ANIM_INGRAIN_HEAL, NULL
 	printstring STRINGID_BOSSMODEHEAL
-	goto BattleScript_TurnHeal
+	waitmessage 0x40
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	end2
 
 BattleScript_AlchemyHealingFactor::
 	playanimation BS_ATTACKER, B_ANIM_INGRAIN_HEAL, NULL
@@ -6439,17 +6449,6 @@ BattleScript_TargetFormChange::
 	handleformchange BS_TARGET, 2 
 	return
 
-BattleScript_IllusionOff::
-	spriteignore0hp TRUE
-	playanimation BS_TARGET, B_ANIM_ILLUSION_OFF, NULL
-	waitanimation
-	updatenick BS_TARGET
-	waitstate
-	spriteignore0hp FALSE
-	printstring STRINGID_ILLUSIONWOREOFF
-	waitmessage 0x40
-	return
-
 BattleScript_AnticipationActivates::
 	pause 0x5
 	call BattleScript_AbilityPopUp
@@ -6688,7 +6687,7 @@ BattleScript_PrintPayDayMoneyString::
 BattleScript_WrapTurnDmg::
 	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_DoTurnDmgEnd
 	playanimation BS_ATTACKER, B_ANIM_TURN_TRAP, sB_ANIM_ARG1
-	printstring STRINGID_PKMNHURTBY
+	printfromtable gWrappedDoTIds
 	waitmessage 0x40
 	goto BattleScript_DoTurnDmg
 
@@ -7051,7 +7050,7 @@ BattleScript_TryAdrenalineOrb:
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPEED, 12, BattleScript_TryAdrenalineOrbRet
 	setstatchanger STAT_SPEED, 1, FALSE
 	statbuffchange STAT_BUFF_NOT_PROTECT_AFFECTED | MOVE_EFFECT_CERTAIN | STAT_BUFF_ALLOW_PTR, BattleScript_TryAdrenalineOrbRet
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	copybyte sBATTLER, gBattlerTarget
@@ -7573,8 +7572,8 @@ BattleScript_RoughSkinActivates::
 BattleScript_RockyHelmetActivates::
 	@ don't play the animation for a fainted mon
 	jumpifabsent BS_TARGET, BattleScript_RockyHelmetActivatesDmg
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
-	waitanimation
+	//playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, NULL
+	//waitanimation
 BattleScript_RockyHelmetActivatesDmg:
 	call BattleScript_HurtAttacker
 	return
@@ -7952,15 +7951,6 @@ BattleScript_ArenaTurnBeginning::
 	@@pause 0x40
 	@@various15 BS_ATTACKER
 	@@volumeup
-	end2
-
-BattleScript_82DB8E0:: @ Unused battlescript
-	playse SE_DING_DONG
-	various14 BS_ATTACKER
-	arenajudmengtstring BS_TARGET
-	arenawaitmessage BS_TARGET
-	pause 0x40
-	various15 BS_ATTACKER
 	end2
 
 BattleScript_ArenaDoJudgment::

@@ -194,6 +194,7 @@ static const u8 sText_PkmnHasSubstitute[] = _("{B_ATK_NAME_WITH_PREFIX} already\
 static const u8 sText_SubstituteDamaged[] = _("The Substitute took damage\nfor {B_DEF_NAME_WITH_PREFIX}!\p");
 static const u8 sText_PkmnSubstituteFaded[] = _("{B_DEF_NAME_WITH_PREFIX}'s\nSubstitute faded!\p");
 static const u8 sText_PkmnMustRecharge[] = _("{B_ATK_NAME_WITH_PREFIX} must\nrecharge!");
+static const u8 sText_PkmnIsJudgingYou[] = _("You're being silently judged.");
 static const u8 sText_PkmnRageBuilding[] = _("{B_DEF_NAME_WITH_PREFIX}'s Rage\nis building!");
 static const u8 sText_PkmnMoveWasDisabled[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\nwas disabled!");
 static const u8 sText_PkmnMoveDisabledNoMore[] = _("{B_ATK_NAME_WITH_PREFIX} is disabled\nno more!");
@@ -375,7 +376,7 @@ static const u8 sText_PkmnIgnoresAsleep[] = _("{B_ATK_NAME_WITH_PREFIX} ignored\
 static const u8 sText_PkmnIgnoredOrders[] = _("{B_ATK_NAME_WITH_PREFIX} ignored\norders!");
 static const u8 sText_PkmnBeganToNap[] = _("{B_ATK_NAME_WITH_PREFIX} began to nap!");
 static const u8 sText_PkmnLoafing[] = _("{B_ATK_NAME_WITH_PREFIX} is\nloafing around!");
-static const u8 sText_PkmnWontObey[] = _("{B_ATK_NAME_WITH_PREFIX} won't\nobey!");
+static const u8 sText_PkmnWontObey[] = _("{B_ATK_NAME_WITH_PREFIX} won't obey cheaters!");
 static const u8 sText_PkmnTurnedAway[] = _("{B_ATK_NAME_WITH_PREFIX} turned away!");
 static const u8 sText_PkmnPretendNotNotice[] = _("{B_ATK_NAME_WITH_PREFIX} pretended\nnot to notice!");
 static const u8 sText_EnemyAboutToSwitchPkmn[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_NAME} is\nabout to use {B_BUFF2}.\pWill {B_PLAYER_NAME} change\nPokémon?");
@@ -391,6 +392,7 @@ static const u8 sText_ThrewPokeblockAtPkmn[] = _("{B_PLAYER_NAME} threw a {POKEB
 static const u8 sText_OutOfSafariBalls[] = _("{PLAY_SE SE_DING_DONG}ANNOUNCER: You're out of\nSAFARI BALLS! Game over!\p");
 static const u8 sText_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppeared[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!\p");
+static const u8 sText_ReaperAppeared[] = _("{B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppeared2[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppearedPause[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!{PAUSE 127}");
 static const u8 sText_TwoWildPkmnAppeared[] = _("Wild {B_OPPONENT_MON1_NAME} and\n{B_OPPONENT_MON2_NAME} appeared!\p");
@@ -430,6 +432,7 @@ static const u8 sText_AllyPkmnPrefix2[] = _("Ally");
 static const u8 sText_FoePkmnPrefix4[] = _("Foe");
 static const u8 sText_AllyPkmnPrefix3[] = _("Ally");
 static const u8 sText_AttackerUsedX[] = _("{B_ATK_NAME_WITH_PREFIX} used\n{B_BUFF3}!");
+static const u8 sText_ReaperUsedX[] = _("The being used\n{B_BUFF3}!");
 static const u8 sText_ExclamationMark[] = _("!");
 static const u8 sText_ExclamationMark2[] = _("!");
 static const u8 sText_ExclamationMark3[] = _("!");
@@ -674,15 +677,14 @@ static const u8 sText_AirBalloonFloat[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} flo
 static const u8 sText_AirBalloonPop[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_LAST_ITEM} popped!");
 static const u8 sText_IncinerateBurn[] = _("{B_EFF_NAME_WITH_PREFIX}'s {B_LAST_ITEM}\nwas burnt up!");
 static const u8 sText_BugBite[] = _("{B_ATK_NAME_WITH_PREFIX} stole and ate\n{B_EFF_NAME_WITH_PREFIX}'s {B_LAST_ITEM}!");
-static const u8 sText_IllusionWoreOff[] = _("{B_DEF_NAME_WITH_PREFIX}'s Illusion wore off!");
 static const u8 sText_RyuItDealtDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} damage!\n                ");
 static const u8 sText_RyuItDealtOverkillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_2} overkill damage!\n                    ");
 static const u8 sText_RyuItDealtDamageCrit[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} critical damage!");
 static const u8 sText_RyuItDealtOverkillDamageCrit[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_2}\ncritical overkill damage!");
 static const u8 sText_RyuItDealtSEDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} damage!\nIt was super effective!");
 static const u8 sText_RyuItDealtSEOverkillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_2} overkill damage!\nIt was super effective!");
-static const u8 sText_RyuItDealtNVEDamage[] = _("Its move wasn't very effective,\nbut it still dealt {STR_VAR_3} damage!");
-static const u8 sText_RyuItDealtNVEOverkillDamage[] = _("Its move wasn't very effective,\nbut it still dealt {STR_VAR_2} overkill damage!");
+static const u8 sText_RyuItDealtNVEDamage[] = _("Its move wasn't very effective, but\nit still dealt {STR_VAR_3} damage!");
+static const u8 sText_RyuItDealtNVEOverkillDamage[] = _("Its move wasn't very effective, but\nit still dealt {STR_VAR_2} overkill damage!");
 static const u8 sText_RyuItDealtOHKOOverkillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} executed {B_DEF_NAME_WITH_PREFIX}\nfor {STR_VAR_3} damage!");
 static const u8 sText_RyuItDealtDamageHungOn[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} damage but\n{B_DEF_NAME_WITH_PREFIX} barely clung to life anyway!");
 static const u8 sText_RyuItDealtNoDamage[] = _("{B_ATK_NAME_WITH_PREFIX} didn't do any damage.");
@@ -714,6 +716,7 @@ static const u8 sText_RyuAffectionUnparalyzed[] = _("{B_ATK_NAME_WITH_PREFIX} sh
 static const u8 sText_RyuAffectionEndured[] = _("{B_DEF_NAME_WITH_PREFIX} hung on because it wanted\nto please you!");
 static const u8 sText_RyuAffectionEvaded[] = _("{B_DEF_NAME_WITH_PREFIX} evaded the attack\nlike a boss!");
 static const u8 sText_RyuCantSteal[] = _("{B_ATK_NAME_WITH_PREFIX} doesn't want to be\na criminal.");
+static const u8 sTextRyuMonTooPowerfulForBall[] = _("The kingpin is too strong\nfor a pokéball!");
 static const u8 sText_EclipseStarts[] = _("A shadow engulfs the battlefield!");
 static const u8 sText_EclipseEnds[] = _("The eclipse has come to an end!");
 static const u8 sText_EclipseContinues[] = _("The battlefield remains darkened\nby the ongoing eclipse...");
@@ -731,6 +734,19 @@ static const u8 sText_MysteriousAirCurrentBlowsOn[] = _("The mysterious air curr
 static const u8 sText_AttackWeakenedByStrongWinds[] = _("The mysterious strong winds\nweakened the attack!");
 static const u8 sText_PkmnAuraIsGrowingExplosively[] = _("{B_ATK_NAME_WITH_PREFIX}'s aura is growing\nexplosively!");
 static const u8 sText_PkmnRevertedToPrimal[] = _("{B_ATK_NAME_WITH_PREFIX} reverted to its\nPrimal form!");
+
+static const u8 sText_RyuDoTBind[] = _("The bonds are causing pain\nfor {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTWrap[] = _("The wrap is causing pain\nfor {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTFireSpin[] = _("The Fire Spin continues to\nburn {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTClamp[] = _("{B_ATK_NAME_WITH_PREFIX} is getting clamped down on!");
+static const u8 sText_RyuDoTWhirlpool[] = _("{B_ATK_NAME_WITH_PREFIX} is getting lost in\nthe vortex!");
+static const u8 sText_RyuDoTSandTomb[] = _("{B_ATK_NAME_WITH_PREFIX} is being buried alive!");
+static const u8 sText_RyuDoTInfestation[] = _("The infestation continues to eat\nat {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_RyuDoTCling[] = _("{B_ATK_NAME_WITH_PREFIX} is still being hugged\ntightly by {B_DEF_NAME_WITH_PREFIX}!"); 
+static const u8 sText_RyuItDoesntLikeCheaters[] = _("The wild pokémon doesn't\nlike cheaters!"); 
+static const u8 sText_RyuBurnedByMagma[] = _("{B_ATK_NAME_WITH_PREFIX} was burned by the\nswirling magma!"); 
+static const u8 sText_RyuBallBlockedReaper[] = _("YOU ARE NOT WORTHY!"); 
+static const u8 sText_RyuBallBlockedHorseman[] = _("A strange forcefield blocked\nthe ball."); 
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -761,7 +777,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_HEALERCURE - 12] = sText_HealerCure,
     [STRINGID_ATTACKERLOSTFIRETYPE - 12] = sText_AttackerLostFireType,
     [STRINGID_ATTACKERCUREDTARGETSTATUS - 12] = sText_AttackerCuredTargetStatus,
-    [STRINGID_ILLUSIONWOREOFF - 12] = sText_IllusionWoreOff,
+    [STRINGID_UNUSED_538 - 12] = sText_EmptyString8,
     [STRINGID_BUGBITE - 12] = sText_BugBite,
     [STRINGID_INCINERATEBURN - 12] = sText_IncinerateBurn,
     [STRINGID_AIRBALLOONPOP - 12] = sText_AirBalloonPop,
@@ -903,6 +919,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_SUBSTITUTEDAMAGED - 12] = sText_SubstituteDamaged,
     [STRINGID_PKMNSUBSTITUTEFADED - 12] = sText_PkmnSubstituteFaded,
     [STRINGID_PKMNMUSTRECHARGE - 12] = sText_PkmnMustRecharge,
+    [STRINGID_PKMNJUDGING - 12] = sText_PkmnIsJudgingYou,
     [STRINGID_PKMNRAGEBUILDING - 12] = sText_PkmnRageBuilding,
     [STRINGID_PKMNMOVEWASDISABLED - 12] = sText_PkmnMoveWasDisabled,
     [STRINGID_PKMNMOVEISDISABLED - 12] = sText_PkmnMoveIsDisabled,
@@ -1324,6 +1341,19 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_RYUAFFECTIONENDURED - 12] = sText_RyuAffectionEndured,
     [STRINGID_RYUAFFECTIONEVADED - 12] = sText_RyuAffectionEvaded,
     [STRINGID_RYUCANTSTEAL - 12] = sText_RyuCantSteal,
+    [STRINGID_RYUMONTOOPOWERFULLFORBALL - 12] = sTextRyuMonTooPowerfulForBall,
+    [STRINGID_DOTBIND - 12] = sText_RyuDoTBind,
+    [STRINGID_DOTWRAP - 12] = sText_RyuDoTWrap,
+    [STRINGID_DOTFIRESPIN - 12] = sText_RyuDoTFireSpin,
+    [STRINGID_DOTCLAMP - 12] = sText_RyuDoTClamp,
+    [STRINGID_DOTWHIRLPOOL - 12] = sText_RyuDoTWhirlpool,
+    [STRINGID_DOTSANDTOMB - 12] = sText_RyuDoTSandTomb,
+    [STRINGID_DOTINFESTATION - 12] = sText_RyuDoTInfestation,
+    [STRINGID_DOTCLING - 12] = sText_RyuDoTCling,
+    [STRINGID_ITDOESNTLIKECHEATERS - 12] = sText_RyuItDoesntLikeCheaters,
+    [STRINGID_DOTMS - 12] = sText_RyuBurnedByMagma,
+    [STRINGID_BALLBLOCKEDREAPER - 12] = sText_RyuBallBlockedReaper,
+    [STRINGID_BALLBLOCKEDHORSEMAN - 12] = sText_RyuBallBlockedHorseman
 };
 
 const u16 gTerrainStringIds[] =
@@ -1483,6 +1513,20 @@ const u16 gWrappedStringIds[] =
     STRINGID_PKMNTRAPPEDBYSANDTOMB,// MOVE_SAND_TOMB
     STRINGID_INFESTATION,          // MOVE_INFESTATION
     STRINGID_WASHUGGEDBY,          // MOVE_CLING
+    STRINGID_TRAPPERBYSWIRLINGMAGMA,// MOVE_MAGMA_STORM
+};
+
+const u16 gWrappedDoTIds[] = 
+{
+    STRINGID_DOTBIND,
+    STRINGID_DOTWRAP,
+    STRINGID_DOTFIRESPIN,
+    STRINGID_DOTCLAMP,
+    STRINGID_DOTWHIRLPOOL,
+    STRINGID_DOTSANDTOMB,
+    STRINGID_DOTINFESTATION,
+    STRINGID_DOTCLING,
+    STRINGID_DOTMS,
 };
 
 const u16 gMistUsedStringIds[] =
@@ -1652,7 +1696,7 @@ const u16 gCaughtMonStringIds[] =
 
 const u16 gTrappingMoves[] =
 {
-    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_INFESTATION, MOVE_CLING, 0xFFFF
+    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_INFESTATION, MOVE_CLING, MOVE_MAGMA_STORM, 0xFFFF
 };
 
 const u16 gRoomsStringIds[] =
@@ -1707,12 +1751,12 @@ const u8 gText_Confusion[] = _("Confused");
 const u8 gText_Love[] = _("In Love");
 const u8 gText_SpaceAndSpace[] = _(" and ");
 const u8 gText_CommaSpace[] = _(", ");
-const u8 gText_Space2[] = _(" ");
+const u8 gText_Space2[] = _(", ");
 const u8 gText_LineBreak[] = _("\l");
 const u8 gText_NewLine[] = _("\n");
 const u8 gText_Are[] = _("are");
 const u8 gText_Are2[] = _("are");
-const u8 gText_BadEgg[] = _("Bad EGG");
+const u8 gText_BadEgg[] = _("MissingNo.");
 const u8 gText_BattleWallyName[] = _("WALLY");
 const u8 gText_Win[] = _("{HIGHLIGHT TRANSPARENT}Win");
 const u8 gText_Loss[] = _("{HIGHLIGHT TRANSPARENT}Loss");
@@ -2536,6 +2580,8 @@ void BufferStringBattle(u16 stringID)
                 stringPtr = sText_TwoWildPkmnAppeared;
             else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL)
                 stringPtr = sText_WildPkmnAppearedPause;
+            else if (IsPlayerInUnderworld() == TRUE)
+                stringPtr = sText_ReaperAppeared;
             else
                 stringPtr = sText_WildPkmnAppeared;
         }
@@ -2685,6 +2731,14 @@ void BufferStringBattle(u16 stringID)
 
         stringPtr = sText_AttackerUsedX;
         break;
+    case STRINGID_REAPERUSEDMOVE: // pokemon used a move msg
+        if (gBattleMsgDataPtr->currentMove >= MOVES_COUNT)
+            StringCopy(gBattleTextBuff3, sATypeMove_Table[*(&gBattleStruct->stringMoveType)]);
+        else
+            StringCopy(gBattleTextBuff3, gMoveNames[gBattleMsgDataPtr->currentMove]);
+
+        stringPtr = sText_ReaperUsedX;
+        break;
     case STRINGID_BATTLEEND: // battle end
         if (gBattleTextBuff1[0] & B_OUTCOME_LINK_BATTLE_RAN)
         {
@@ -2810,17 +2864,14 @@ static const u8* TryGetStatusString(u8 *src)
 }
 
 static void GetBattlerNick(u32 battlerId, u8 *dst)
-{
-    struct Pokemon *mon, *illusionMon;
+{   
+    struct Pokemon *mon;
 
     if (GET_BATTLER_SIDE(battlerId) == B_SIDE_PLAYER)
         mon = &gPlayerParty[gBattlerPartyIndexes[battlerId]];
     else
         mon = &gEnemyParty[gBattlerPartyIndexes[battlerId]];
 
-    illusionMon = GetIllusionMonPtr(battlerId);
-    if (illusionMon != NULL)
-        mon = illusionMon;
     GetMonData(mon, MON_DATA_NICKNAME, dst);
     StringGetEnd10(dst);
 }
@@ -3405,37 +3456,6 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
     return dstID;
 }
 
-static void IllusionNickHack(u32 battlerId, u32 partyId, u8 *dst)
-{
-    s32 id, i;
-    // we know it's gEnemyParty
-    struct Pokemon *mon = &gEnemyParty[partyId], *partnerMon;
-
-    if (GetMonAbility(mon) == ABILITY_ILLUSION)
-    {
-        if (IsBattlerAlive(BATTLE_PARTNER(battlerId)))
-            partnerMon = &gEnemyParty[gBattlerPartyIndexes[BATTLE_PARTNER(battlerId)]];
-        else
-            partnerMon = mon;
-
-        // Find last alive non-egg pokemon.
-        for (i = PARTY_SIZE - 1; i >= 0; i--)
-        {
-            id = i;
-            if (GetMonData(&gEnemyParty[id], MON_DATA_SANITY_HAS_SPECIES)
-                && GetMonData(&gEnemyParty[id], MON_DATA_HP)
-                && &gEnemyParty[id] != mon
-                && &gEnemyParty[id] != partnerMon)
-            {
-                GetMonData(&gEnemyParty[id], MON_DATA_NICKNAME, dst);
-                return;
-            }
-        }
-    }
-
-    GetMonData(mon, MON_DATA_NICKNAME, dst);
-}
-
 static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
 {
     u32 srcID = 1;
@@ -3507,12 +3527,6 @@ static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
             if (src[srcID + 2] == gBattlerPartyIndexes[src[srcID + 1]])
             {
                 GetBattlerNick(src[srcID + 1], dst);
-            }
-            else if (gBattleScripting.illusionNickHack) // for STRINGID_ENEMYABOUTTOSWITCHPKMN
-            {
-                gBattleScripting.illusionNickHack = 0;
-                IllusionNickHack(src[srcID + 1], src[srcID + 2], dst);
-                StringGetEnd10(dst);
             }
             else
             {
@@ -3843,6 +3857,18 @@ bool32 ShouldDoTrainerSlide(u32 battlerId, u32 trainerId, u32 which)
     s32 i;
 
     if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || GetBattlerSide(battlerId) != B_SIDE_OPPONENT)
+        return FALSE;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+        return FALSE;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
+        return FALSE;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        return FALSE;
+
+    if (gSaveBlock2Ptr->trainerSlideEnabled == FALSE)
         return FALSE;
 
     for (i = 0; i < ARRAY_COUNT(sTrainerSlides); i++)

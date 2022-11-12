@@ -23,22 +23,21 @@ script LRT_BH_May {
             release
             end
         case 160: //neutral end
-            //drawfullscreenimage SCENEBGMAYNORMAL
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}Thanks a lot for helping me\nfind Wally!")
             if (flag(FLAG_RYU_MAY_DAILY_REWARD) == FALSE) {
                 callnative(RyuGetMayDailyReward) //this will eventually be random pokeblock instead of berry.
                 additem(VAR_0x8004, VAR_0x8005)
-                bufferitemnameplural(0, VAR_0x8004, VAR_0x8005)
-                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Here, take this {STR_VAR_1}!\pI found it while I was\nrunning around with Wally.")
+                bufferitemname(0, VAR_0x8004)
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Here, take this {STR_VAR_1}!\pI found it while I was\nrunning around with Wally.$")
                 setflag(FLAG_RYU_MAY_DAILY_REWARD)
             }
             else {
-                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Come see me tomorrow, I might\nhave another berry for you!")
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Come see me tomorrow, I might\nhave another berry for you!$")
             }
             release
             end
         case 180: //good end
-            //drawfullscreenimage SCENEBGMAYNORMAL
+            drawfullscreenimage(SCENEBGMAY)
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}Did you come to visit for\nthe night?", MSGBOX_YESNO)
             if (var(VAR_RESULT) == NO) {
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh, I see. Well, let me check\nif I have a berry for you...\p . . .")
@@ -49,15 +48,18 @@ script LRT_BH_May {
                     msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aha! here we go!\pSome {STR_VAR_1} for you!")
                     closemessage
                     msgbox("{COLOR LIGHT_RED}{SHADOW RED}You can come over to hang\nout for a night, you know.")
+                    clearfullscreenimage
                     release
                     end
                 }
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Nope, none, sorry.\nCome see me tomorrow!")
+                clearfullscreenimage
                 release
                 end
             }
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}All right! Let's play some\nF-Zero or Mario Kart\lAll night!")
             closemessage
+            clearfullscreenimage
             fadescreen(FADE_TO_BLACK)
             delay(10)
             msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and May stay up\n all night playing games.)")
@@ -69,12 +71,14 @@ script LRT_BH_May {
             release
             end
         case 200: //best end
+            drawfullscreenimage(SCENEBGMAY)
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}You've been so good to me...\nthank you.\pLife was pretty rough for me\nbefore you came around.\pIf there is EVER anything\nI can do to help you\lPlease let me know!")
             closemessage
             setflag(FLAG_RYU_DS_MAY_PARTNERS)
             addvar(VAR_RYU_QUESTS_FINISHED, 1)
             setvar(VAR_RYU_QUEST_MAY, 250)
             ach(give, ACH_LOST_GIRL)
+            clearfullscreenimage
             release
             end
     }
@@ -154,12 +158,12 @@ script LRT_MayRoom_CorrectPositionLoop {
 }
 
 script LRT_May_nightTime {
-    //drawfullscreenimage(SCENEBGMAYNIGHT)
+    drawfullscreenimage(SCENEBGMAY)
     faceplayer
     msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh! {PLAYER}! I'm so glad you're here!\pDid you come to stay the\nnight with me?", MSGBOX_YESNO)
     closemessage
     if(var(VAR_RESULT) == YES) {
-        //clearfullscreenimage
+        clearfullscreenimage
         getplayerxy(VAR_0x8001, VAR_0x8002)
         if (var(VAR_0x8001) == 7) {
             applymovement(PLAYER, Common_Movement_StepDown)
@@ -180,9 +184,9 @@ script LRT_May_nightTime {
         delay(15)
         msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and May snuggle up\n and sleep soundly for the\l whole night...)")
         closemessage
-        delay(30)
-        removeobject(MAY)
-        addobject(MAY)
+        applymovement(MAY, LRT_MayFromBedToTv)
+        waitmovement(MAY)
+        delay(10)
         fadescreen(FADE_FROM_BLACK)
         addvar(VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1)
         msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (When you come to, May is\n already awake and playing\l games on her TV.)")
@@ -206,16 +210,18 @@ script LRT_May_nightTime {
     else {
         msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh! Did you come to pick\nme up?", MSGBOX_YESNO)
         if (var(VAR_RESULT) == YES) {
+            clearfullscreenimage
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}Yay! I was really stuck on this\ngame, anyways.\pI need some fresh air.")
             closemessage
             removeobject(MAY)
-            createfollower(OBJ_EVENT_GFX_MAY, RyuFollowerSelectNPCScript, DIR_EAST)
+            createfollower(FOLLOWER_MAY, RyuFollowerSelectNPCScript, DIR_EAST)
             setflag(FLAG_RYU_BH_HIDE_MAY)
             setflag(FLAG_RYU_DH_HIDE_MAY)
             release
             end
         }
         else {
+            clearfullscreenimage
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh... okay, then...\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (She looks disappointed...)")
             closemessage
             release
@@ -224,10 +230,91 @@ script LRT_May_nightTime {
     }
 }
 
-script LRT_BH_MayAfterStory {
-    if (var(VAR_RYU_QUEST_MAY) == 170) {//do neutral end stuff.
-        msgbox("")
+script LRT_MayBed {
+    if ((flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAY) && (flag(FLAG_RYU_BROUGHT_MAY_HOME) == FALSE)) {
+        checkfacing
+        switch (var(VAR_RESULT)) {
+            case DIR_EAST:
+                setobjectxy(FOLLOWER, 5, 6)
+                turnobject(PLAYER, DIR_WEST)
+                turnobject(FOLLOWER, DIR_EAST)
+                msgbox(LRT_BroughtMayHome)
+                closemessage
+                applymovement(PLAYER, Common_Movement_StepRight)
+                waitmovement(PLAYER)
+                applymovement(FOLLOWER, Common_Movement_StepRight)
+                waitmovement(FOLLOWER)
+                applymovement(FOLLOWER, Common_Movement_StepRight)
+                waitmovement(FOLLOWER)
+            case DIR_SOUTH:
+                setobjectxy(FOLLOWER, 7, 4)
+                turnobject(PLAYER, DIR_NORTH)
+                turnobject(FOLLOWER, DIR_SOUTH)
+                msgbox(LRT_BroughtMayHome)
+                closemessage
+                applymovement(PLAYER, Common_Movement_StepDown)
+                waitmovement(PLAYER)
+                applymovement(FOLLOWER, Common_Movement_StepDown)
+                waitmovement(FOLLOWER)
+                applymovement(FOLLOWER, Common_Movement_StepDown)
+                waitmovement(FOLLOWER)
+            case DIR_WEST:
+                setobjectxy(FOLLOWER, 8, 5)
+                turnobject(PLAYER, DIR_WEST)
+                turnobject(FOLLOWER, DIR_EAST)
+                msgbox(LRT_BroughtMayHome)
+                closemessage
+                applymovement(PLAYER, Common_Movement_StepLeft)
+                waitmovement(PLAYER)
+                applymovement(FOLLOWER, Common_Movement_StepDown)
+                waitmovement(FOLLOWER)
+                applymovement(FOLLOWER, Common_Movement_StepLeft)
+                waitmovement(FOLLOWER)
+            case DIR_NORTH:
+                setobjectxy(FOLLOWER, 6, 7)
+                turnobject(PLAYER, DIR_WEST)
+                turnobject(FOLLOWER, DIR_EAST)
+                msgbox(LRT_BroughtMayHome)
+                closemessage
+                applymovement(PLAYER, Common_Movement_StepLeft)
+                waitmovement(PLAYER)
+                applymovement(FOLLOWER, Common_Movement_StepRight)
+                waitmovement(FOLLOWER)
+                applymovement(FOLLOWER, Common_Movement_StepUp)
+                waitmovement(FOLLOWER)
+        }
+        fadescreen(FADE_TO_BLACK)
+        msgbox(LRT_BroughtMayHome2)
+        closemessage
+        call(RF_RemoveFollowerSilent)
+        addvar(VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1)
+        addobject(1)
+        setobjectxy(1, 7, 5)
+        turnobject(1, DIR_SOUTH)
+        fadescreen(FADE_FROM_BLACK)
+        setflag(FLAG_RYU_BROUGHT_MAY_HOME)
+        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (When you awake, you see May\n staring down at you.)\p{COLOR LIGHT_RED}{SHADOW RED}There you are!\nYou sure do sleep a lot.\pWant to play some games or\nsomething?\p{COLOR LIGHT_BLUE}{SHADOW BLUE}No, I think I'll pass this time.\nGood morning!")
+        closemessage
+        applymovement(1, LRT_MayToPc)
+        waitmovement(1)
+        release
+        end
     }
+}
+
+text LRT_BroughtMayHome {
+    "{COLOR LIGHT_BLUE}{SHADOW BLUE}Well, We're home.\p"
+    "Ready to go to bed?\p"
+    "{COLOR LIGHT_RED}{SHADOW RED}Boy, you sure don't mess around,\n"
+    "do you?\pStright to the point!\n"
+    "I respect it.\p"
+    "Yeah, let's sleep!"
+}
+
+text LRT_BroughtMayHome2 {
+    "{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and May, tired from chasing\n"
+    " Wally around,\p"
+    " lay in the bed holding one\n another, and fall into a deep\l sleep.) "
 }
 
 text LRT_MayQ2 {
@@ -247,6 +334,20 @@ text LRT_MayQuestStart {
     "to go visit Petalburg and try to\l"
     "find an old friend of mine.\p"
     "His name is Wally. Ever met him?"
+}
+
+movement LRT_MayFromBedToTv {
+    walk_right
+    walk_up * 3
+    face_up
+    step_end
+}
+
+movement LRT_MayToPc {
+    walk_up * 2
+    walk_right
+    face_up
+    step_end
 }
 
 movement LRT_MayRoom_PlayerExit {

@@ -18,6 +18,7 @@ R104_ME_EventStart::
 	delay 30
 	msgbox R104_ME_BringThemToMe
 	applymovement PLAYER, R104_ME_UpToMaxie
+	applymovement FOLLOWER, R104_ME_UpToMaxie
 	waitmovement PLAYER
 	applymovement 8, R104_ME_MoveTabitha
 	waitmovement 8
@@ -73,7 +74,8 @@ R104_ME_EventStart::
 	msgbox R104_ME_ComeAlong
 	closemessage
 	applymovement 1, R104_ME_MaxieExits
-	applymovement PLAYER R14_MovePlayerOutOfWay
+	applymovement PLAYER, R14_MovePlayerOutOfWay
+	applymovement FOLLOWER, R14_MovePlayerOutOfWay
 	applymovement 8, Common_Movement_FaceRight
 	msgbox R104_ME_HehYoureFortunate
 	closemessage

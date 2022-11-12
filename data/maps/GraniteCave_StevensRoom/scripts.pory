@@ -1,6 +1,6 @@
 raw `
 GraniteCave_StevensRoom_MapScripts:: @ 822DC7A
-	map_script ON_LOAD, GC_CheckLoadStevenPostgame
+	map_script ON_LOAD, GC_CheckLoadSteven
 	.byte 0
 
 GraniteCave_StevensRoom_EventScript_Steven:: @ 822DC7B
@@ -17,6 +17,7 @@ GraniteCave_StevensRoom_EventScript_Steven:: @ 822DC7B
 	compare VAR_RESULT, FALSE
 	call_if_eq GraniteCave_StevensRoom_EventScript_BagFull
 	delay 30
+	setflag FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
 	msgbox GraniteCave_StevensRoom_Text_IveGotToHurryAlong, MSGBOX_DEFAULT
 	closemessage
 	compare VAR_FACING, DIR_NORTH
@@ -175,7 +176,7 @@ GC1_RYUMSG_TOUCHED:
 
 `
 
-script GC_CheckLoadStevenPostgame {
+script GC_CheckLoadSteven {
 	if ((var(VAR_RYU_QUESTLINE_ID) == 1) || (var(VAR_RYU_QUESTLINE_ID) == 2))
 	{
 		if (!(flag(FLAG_RYU_DEFEATED_STEVEN_POSTGAME))) {
@@ -183,6 +184,11 @@ script GC_CheckLoadStevenPostgame {
 			addobject(1)
 			end
 		}
+	}
+	if (var(VAR_RYU_QUEST_DEVON_CORPORATE) == 15) {
+		clearflag(FLAG_HIDE_GRANITE_CAVE_STEVEN)
+		addobject(1)
+		end
 	}
 }
 

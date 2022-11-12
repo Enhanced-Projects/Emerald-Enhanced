@@ -56,6 +56,7 @@
 #include "constants/party_menu.h"
 #include "constants/event_objects.h"
 #include "ach_atlas.h"
+#include "overworld_notif.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 extern bool8 gHasAmuletEffectActive;
@@ -997,6 +998,7 @@ static const u8 sForbiddenMoves[MOVES_COUNT] =
     [MOVE_WIDE_GUARD] = FORBIDDEN_METRONOME,
     [MOVE_WHIRLWIND] = FORBIDDEN_ASSIST | FORBIDDEN_COPYCAT | FORBIDDEN_SLEEP_TALK,
     [MOVE_UPROAR] = FORBIDDEN_SLEEP_TALK,
+    [MOVE_SHORE_UP] = FORBIDDEN_METRONOME | FORBIDDEN_COPYCAT,
 };
 
 static const u16 sMoveEffectsForbiddenToInstruct[] =
@@ -1278,6 +1280,8 @@ static bool32 TryAegiFormChange(void)
     return TRUE;
 }
 
+extern bool32 IsPlayerInUnderworld(void);
+
 static void Cmd_attackcanceler(void)
 {
     s32 i, moveType;
@@ -1389,7 +1393,7 @@ static void Cmd_attackcanceler(void)
         gBattlescriptCurrInstr = BattleScript_MagicCoatBounce;
         return;
     }
-    else if (GetBattlerAbility(gBattlerTarget) == ABILITY_MAGIC_BOUNCE
+    else if (((GetBattlerAbility(gBattlerTarget) == ABILITY_MAGIC_BOUNCE) || (((IsPlayerInUnderworld() == TRUE) && ((GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT)))))
              && gBattleMoves[gCurrentMove].flags & FLAG_MAGICCOAT_AFFECTED
              && !gProtectStructs[gBattlerAttacker].usesBouncedMove)
     {
@@ -1540,6 +1544,11 @@ static bool32 AccuracyCalcHelper(u16 move)
         JumpIfMoveFailed(7, move);
         return TRUE;
     }
+    else if ((IsPlayerInUnderworld() == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
+    {
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
     else if (GetBattlerAbility(gBattlerAttacker) == ABILITY_KEEN_EYE)
     {
         JumpIfMoveFailed(7, move);
@@ -1556,17 +1565,24 @@ static bool32 AccuracyCalcHelper(u16 move)
         return TRUE;
     }
 
-    if ((WEATHER_HAS_EFFECT &&
-            ((IsBattlerWeatherAffected(gBattlerTarget, WEATHER_RAIN_ANY) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))))
-     || (gBattleMoves[move].effect == EFFECT_VITAL_THROW)
-     || (gBattleMoves[move].accuracy == 0)
-     || ((B_MINIMIZE_DMG_ACC >= GEN_6) && (gStatuses3[gBattlerTarget] & STATUS3_MINIMIZED) && (gBattleMoves[move].flags & FLAG_DMG_MINIMIZE)))
+    if (WEATHER_HAS_EFFECT)
     {
-        JumpIfMoveFailed(7, move);
-        return TRUE;
-    }
+        if ((IsBattlerWeatherAffected(gBattlerTarget, WEATHER_RAIN_ANY) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE)))
+        {
+            // thunder/hurricane ignore acc checks in rain unless target is holding utility umbrella
+            JumpIfMoveFailed(7, move);
+            return TRUE;
+        }
+    #if B_BLIZZARD_HAIL >= GEN_4
+        else if ((gBattleWeather & WEATHER_HAIL_ANY) && (move == MOVE_BLIZZARD))
+        {
+            JumpIfMoveFailed(7, move);
+            return TRUE;
+        }
+    #endif
 
     return FALSE;
+    }
 }
 
 u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move)
@@ -1689,7 +1705,10 @@ static void Cmd_attackstring(void)
          return;
     if (!(gHitMarker & (HITMARKER_NO_ATTACKSTRING | HITMARKER_ATTACKSTRING_PRINTED)))
     {
-        PrepareStringBattle(STRINGID_USEDMOVE, gBattlerAttacker);
+        if ((IsPlayerInUnderworld() == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
+            PrepareStringBattle(STRINGID_REAPERUSEDMOVE, gBattlerAttacker);
+        else
+            PrepareStringBattle(STRINGID_USEDMOVE, gBattlerAttacker);
         gHitMarker |= HITMARKER_ATTACKSTRING_PRINTED;
     }
     gBattlescriptCurrInstr++;
@@ -1727,6 +1746,13 @@ static void Cmd_ppreduce(void)
                 ppToDeduct++;
             break;
         }
+        if ((FlagGet(FLAG_TEMP_E) == TRUE) &&
+            (gTrainerBattleOpponent_A == TRAINER_STEVEN) &&
+            (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT)) //Steven won't use PP during the aqua fight.
+        {
+            ppToDeduct = 0;
+        }
+        
     }
 
     if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING)) && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
@@ -1821,6 +1847,12 @@ static void Cmd_critcalc(void)
         gIsCriticalHit = TRUE;
     else if (Random() % sCriticalHitChance[critChance] == 0)
         gIsCriticalHit = TRUE;
+#ifdef RYU_PUNISH_SAVE_STATE
+    else if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && 
+            ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE)) && 
+             (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
+        gIsCriticalHit = TRUE;//opponents always crit if save state detected.
+#endif
     else if ((Random() % sCriticalHitChance[critChance] == 0) && //roll another crit check if mon is max happiness
             (gBattleMons[gBattlerAttacker].friendship == 255) &&
             (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER) &&
@@ -3026,7 +3058,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
 
                     for (gBattleCommunication[MULTISTRING_CHOOSER] = 0; ; gBattleCommunication[MULTISTRING_CHOOSER]++)
                     {
-                        if (gBattleCommunication[MULTISTRING_CHOOSER] > 6)
+                        if (gBattleCommunication[MULTISTRING_CHOOSER] > 8)
                             break;
                         if (gTrappingMoves[gBattleCommunication[MULTISTRING_CHOOSER]] == gCurrentMove)
                             break;
@@ -3753,52 +3785,11 @@ static void Cmd_jumpifstat(void)
 {
     bool32 ret = 0;
     u8 battlerId = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
-    u8 statValue = gBattleMons[battlerId].statStages[gBattlescriptCurrInstr[3]];
+    u8 statId = gBattlescriptCurrInstr[3];
     u8 cmpTo = gBattlescriptCurrInstr[4];
     u8 cmpKind = gBattlescriptCurrInstr[2];
 
-    // Because this command is used as a way of checking if a stat can be lowered/raised,
-    // we need to do some modification at run-time.
-    if (GetBattlerAbility(battlerId) == ABILITY_CONTRARY)
-    {
-        if (cmpKind == CMP_GREATER_THAN)
-            cmpKind = CMP_LESS_THAN;
-        else if (cmpKind == CMP_LESS_THAN)
-            cmpKind = CMP_GREATER_THAN;
-
-        if (cmpTo == 0)
-            cmpTo = 0xC;
-        else if (cmpTo == 0xC)
-            cmpTo = 0;
-    }
-
-    switch (cmpKind)
-    {
-    case CMP_EQUAL:
-        if (statValue == cmpTo)
-            ret++;
-        break;
-    case CMP_NOT_EQUAL:
-        if (statValue != cmpTo)
-            ret++;
-        break;
-    case CMP_GREATER_THAN:
-        if (statValue > cmpTo)
-            ret++;
-        break;
-    case CMP_LESS_THAN:
-        if (statValue < cmpTo)
-            ret++;
-        break;
-    case CMP_COMMON_BITS:
-        if (statValue & cmpTo)
-            ret++;
-        break;
-    case CMP_NO_COMMON_BITS:
-        if (!(statValue & cmpTo))
-            ret++;
-        break;
-    }
+    ret = CompareStat(battlerId, statId, cmpTo, cmpKind);
 
     if (ret)
         gBattlescriptCurrInstr = T2_READ_PTR(gBattlescriptCurrInstr + 5);
@@ -3885,11 +3876,6 @@ int RyuCalculateAlchemyExpModifier(s32 exp)
     else if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_EXP_BOOST_T3)
         exp = ((exp * 200) / 100);
 
-    gSaveBlock2Ptr->alchemyCharges -= 1;
-    if (gSaveBlock2Ptr->alchemyCharges == 0)//make sure to clear effect when charges are gone.
-    {
-        RyuClearAlchemyEffect();
-    }
     return exp;
 }
 
@@ -3959,6 +3945,9 @@ static void Cmd_getexp(void)
             calculatedExp = (calculatedExp * multiplier / 1000);
 
             calculatedExp = (RyuCalculateAlchemyExpModifier(calculatedExp));
+
+            if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE)
+                calculatedExp *= 4;
 
             RyuExpBatteryTemp = ((calculatedExp * 5) / 100);
             RyuExpDriveInternalOperation(EXP_DRIVE_MODE_ADD, RyuExpBatteryTemp);
@@ -4213,7 +4202,11 @@ static bool32 NoAliveMonsForPlayer(void)
         }
     }
 
-    return (HP_count == 0);
+    //return (HP_count == 0);
+    if (HP_count == 0)
+        return TRUE;
+    else
+        return FALSE;
 }
 
 static bool32 NoAliveMonsForOpponent(void)
@@ -4230,7 +4223,11 @@ static bool32 NoAliveMonsForOpponent(void)
         }
     }
 
-    return (HP_count == 0);
+        //return (HP_count == 0);
+    if (HP_count == 0)
+        return TRUE;
+    else
+        return FALSE;
 }
 
 bool32 NoAliveMonsForEitherParty(void)
@@ -4707,7 +4704,7 @@ static void Cmd_playanimation(void)
     if (gBattlescriptCurrInstr[2] == B_ANIM_STATS_CHANGE
         || gBattlescriptCurrInstr[2] == B_ANIM_SNATCH_MOVE
         || gBattlescriptCurrInstr[2] == B_ANIM_MEGA_EVOLUTION
-        || gBattlescriptCurrInstr[2] == B_ANIM_ILLUSION_OFF
+        || gBattlescriptCurrInstr[2] == B_ANIM_UNUSED
         || gBattlescriptCurrInstr[2] == B_ANIM_FORM_CHANGE
         || gBattlescriptCurrInstr[2] == B_ANIM_SUBSTITUTE_FADE)
     {
@@ -4754,7 +4751,7 @@ static void Cmd_playanimation2(void) // animation Id is stored in the first poin
     if (*animationIdPtr == B_ANIM_STATS_CHANGE
         || *animationIdPtr == B_ANIM_SNATCH_MOVE
         || *animationIdPtr == B_ANIM_MEGA_EVOLUTION
-        || *animationIdPtr == B_ANIM_ILLUSION_OFF
+        || *animationIdPtr == B_ANIM_UNUSED
         || *animationIdPtr == B_ANIM_FORM_CHANGE
         || *animationIdPtr == B_ANIM_SUBSTITUTE_FADE)
     {
@@ -5025,10 +5022,13 @@ static void Cmd_moveend(void)
             break;
         case MOVEEND_RAGE: // rage check
             if (gBattleMons[gBattlerTarget].status2 & STATUS2_RAGE
-                && gBattleMons[gBattlerTarget].hp != 0 && gBattlerAttacker != gBattlerTarget
+                && gBattleMons[gBattlerTarget].hp != 0
+                && gBattlerAttacker != gBattlerTarget
                 && GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gBattlerTarget)
-                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED
-                && gBattleMoves[gCurrentMove].power && gBattleMons[gBattlerTarget].statStages[STAT_ATK] < MAX_STAT_STAGE)
+                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+                && TARGET_TURN_DAMAGED
+                && gBattleMoves[gCurrentMove].power != 0
+                && CompareStat(gBattlerTarget, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
                 gBattleMons[gBattlerTarget].statStages[STAT_ATK]++;
                 BattleScriptPushCursor();
@@ -6507,7 +6507,7 @@ static void Cmd_getmoneyreward(void)
     }
 
     //if player has their rival following them, they get a bonus to money earned.
-    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL) || (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)))
+    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_BRENDAN) || (VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_DAWN)))
         moneyReward = ((moneyReward * 115) / 100);
 
     //if player has the winnings boost AP active, they get 10% more money
@@ -6521,6 +6521,8 @@ static void Cmd_getmoneyreward(void)
     }
 
     if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
+        AddMoney(&gSaveBlock1Ptr->money, 1);
+    else if (gSpecialVar_0x8002 == 65535)
         AddMoney(&gSaveBlock1Ptr->money, 1);
     else
         AddMoney(&gSaveBlock1Ptr->money, moneyReward);
@@ -7502,15 +7504,6 @@ static void Cmd_various(void)
         gBattleMons[gActiveBattler].ability = gBattleStruct->tracedAbility[gActiveBattler];
         RecordAbilityBattle(gActiveBattler, gBattleMons[gActiveBattler].ability);
         break;
-    case VARIOUS_TRY_ILLUSION_OFF:
-        if (GetIllusionMonPtr(gActiveBattler) != NULL)
-        {
-            gBattlescriptCurrInstr += 3;
-            BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_IllusionOff;
-            return;
-        }
-        break;
     case VARIOUS_SET_SPRITEIGNORE0HP:
         gBattleStruct->spriteIgnore0Hp = gBattlescriptCurrInstr[3];
         gBattlescriptCurrInstr += 4;
@@ -7576,7 +7569,7 @@ static void Cmd_various(void)
         bits = 0;
         for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
         {
-            if (gBattleMons[gActiveBattler].statStages[i] != 12)
+            if (CompareStat(gActiveBattler, i, MAX_STAT_STAGE, CMP_LESS_THAN))
                 bits |= gBitTable[i];
         }
         if (bits)
@@ -7810,7 +7803,7 @@ static void Cmd_various(void)
         if (GetBattlerAbility(gActiveBattler) == ABILITY_MOXIE
             && HasAttackerFaintedTarget()
             && !NoAliveMonsForEitherParty()
-            && gBattleMons[gBattlerAttacker].statStages[STAT_ATK] != 12)
+            && CompareStat(gBattlerAttacker, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
         {
             gBattleMons[gBattlerAttacker].statStages[STAT_ATK]++;
             SET_STATCHANGER(STAT_ATK, 1, FALSE);
@@ -7830,7 +7823,7 @@ static void Cmd_various(void)
             { // Can't copy these abilities.
             case ABILITY_POWER_OF_ALCHEMY:  case ABILITY_RECEIVER:
             case ABILITY_FORECAST:          case ABILITY_MULTITYPE:
-            case ABILITY_FLOWER_GIFT:       case ABILITY_ILLUSION:
+            case ABILITY_FLOWER_GIFT:
             case ABILITY_WONDER_GUARD:      case ABILITY_ZEN_MODE:
             case ABILITY_STANCE_CHANGE:     case ABILITY_IMPOSTER:
             case ABILITY_POWER_CONSTRUCT:   case ABILITY_BATTLE_BOND:
@@ -7852,7 +7845,7 @@ static void Cmd_various(void)
         if (GetBattlerAbility(gActiveBattler) == ABILITY_BEAST_BOOST
             && HasAttackerFaintedTarget()
             && !NoAliveMonsForEitherParty()
-            && gBattleMons[gBattlerAttacker].statStages[i] != 12)
+            && CompareStat(gBattlerAttacker, i, MAX_STAT_STAGE, CMP_LESS_THAN))
         {
             gBattleMons[gBattlerAttacker].statStages[i]++;
             SET_STATCHANGER(i, 1, FALSE);
@@ -7869,7 +7862,7 @@ static void Cmd_various(void)
             if (GetBattlerAbility(gBattleScripting.battler) == ABILITY_SOUL_HEART
                 && IsBattlerAlive(gBattleScripting.battler)
                 && !NoAliveMonsForEitherParty()
-                && gBattleMons[gBattleScripting.battler].statStages[STAT_SPATK] != 12)
+                && (CompareStat(gBattleScripting.battler, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN) == TRUE))
             {
                 gBattleMons[gBattleScripting.battler].statStages[STAT_SPATK]++;
                 SET_STATCHANGER(STAT_SPATK, 1, FALSE);
@@ -7885,7 +7878,7 @@ static void Cmd_various(void)
         if (gBattleMoves[gCurrentMove].effect == EFFECT_FELL_STINGER
             && HasAttackerFaintedTarget()
             && !NoAliveMonsForEitherParty()
-            && gBattleMons[gBattlerAttacker].statStages[STAT_ATK] != 12)
+            && CompareStat(gBattlerAttacker, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
         {
             if (B_FELL_STINGER_STAT_RAISE >= GEN_7)
                 SET_STATCHANGER(STAT_ATK, 3, FALSE);
@@ -7961,7 +7954,7 @@ static void Cmd_various(void)
         case ABILITY_FORECAST:
         case ABILITY_FLOWER_GIFT:
         case ABILITY_ZEN_MODE:
-        case ABILITY_ILLUSION:
+        case ABILITY_ILLUSIONIST:
         case ABILITY_IMPOSTER:
         case ABILITY_POWER_OF_ALCHEMY:
         case ABILITY_RECEIVER:
@@ -10049,7 +10042,6 @@ static void Cmd_transformdataexecution(void)
     gChosenMove = 0xFFFF;
     gBattlescriptCurrInstr++;
     if (gBattleMons[gBattlerTarget].status2 & STATUS2_TRANSFORMED
-        || gBattleStruct->illusion[gBattlerTarget].on
         || gStatuses3[gBattlerTarget] & STATUS3_SEMI_INVULNERABLE)
     {
         gMoveResultFlags |= MOVE_RESULT_FAILED;
@@ -10736,8 +10728,9 @@ static void Cmd_trysetperishsong(void)
 
     for (i = 0; i < gBattlersCount; i++)
     {
-        if (gStatuses3[i] & STATUS3_PERISH_SONG
+        if ((gStatuses3[i] & STATUS3_PERISH_SONG
             || gBattleMons[i].ability == ABILITY_SOUNDPROOF)
+            || ((IsPlayerInUnderworld() == TRUE) && gBattleMons[i].ability == ABILITY_MAGIC_GUARD))
         {
             notAffectedCount++;
         }
@@ -10785,8 +10778,8 @@ static void Cmd_handlerollout(void)
 static void Cmd_jumpifconfusedandstatmaxed(void)
 {
     if (gBattleMons[gBattlerTarget].status2 & STATUS2_CONFUSION
-        && gBattleMons[gBattlerTarget].statStages[gBattlescriptCurrInstr[1]] == MAX_STAT_STAGE)
-        gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 2);
+      && !CompareStat(gBattlerTarget, gBattlescriptCurrInstr[1], MAX_STAT_STAGE, CMP_LESS_THAN))
+        gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 2); // Fails if we're confused AND stat cannot be raised
     else
         gBattlescriptCurrInstr += 6;
 }
@@ -12208,6 +12201,24 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_TrainerBallBlock;
     }
+    else if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE)
+    {
+        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_MonTooPowerfulForBall;
+    }
+    else if (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)//block ball, horsemen can't be caught
+    {
+        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_BallBlockedHorseman;
+    }
+    else if ((FlagGet(FLAG_RYU_FACING_REAPER) == TRUE) && gBattleMons[1].hp > (gBattleMons[1].maxHP / 100))//block ball if arceus is greater than 600 health.
+    {
+        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_BallBlockedReaper;
+    }
     else
     {
         u32 odds, i;
@@ -12356,11 +12367,15 @@ static void Cmd_handleballthrow(void)
             * (gBattleMons[gBattlerTarget].maxHP * 3 - gBattleMons[gBattlerTarget].hp * 2)
             / (3 * gBattleMons[gBattlerTarget].maxHP);
 
-        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_WOMAN_2))//If Lanette is following player, catch rate gets an additional 5% boost.
+        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && (VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_LANETTE))//If Lanette is following player, catch rate gets an additional 5% boost.
             odds = ((odds * 105) / 100);
         
         if (CheckAPFlag(AP_CAPTURE_BOOST) == TRUE)
             odds = ((odds * 105) /100);
+#ifdef RYU_PUNISH_SAVE_STATE
+        if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000))
+            odds = ((odds * 50) / 100); //reduces capture rate by half if save states are detected.
+#endif
 
         if (gBattleMons[gBattlerTarget].status1 & (STATUS1_POISON | STATUS1_BURN | STATUS1_TOXIC_POISON))
             odds = (odds * 15) / 10;
@@ -12623,21 +12638,29 @@ void HandleBattleWindow(u8 xStart, u8 yStart, u8 xEnd, u8 yEnd, u8 flags)
     }
 }
 
+
+//FULL_COLOR
 void BattleCreateYesNoCursorAt(u8 cursorPosition)
 {
     u16 src[2];
+    u16 src2[2];
     src[0] = 1;
     src[1] = 2;
+    src2[0] = 0x20;
+    src2[1] = 0x20;
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 0x11);
+    CopyToBgTilemapBufferRect_ChangePalette(0, src2, 0x19, 9 + (2 * !cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
 }
 
+
+//FULL_COLOR
 void BattleDestroyYesNoCursorAt(u8 cursorPosition)
 {
     u16 src[2];
-    src[0] = 0x1016;
-    src[1] = 0x1016;
+    src[0] = 0x20;
+    src[1] = 0x20;
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);

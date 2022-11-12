@@ -20,5 +20,6 @@
 #define FADE_TO_BLACK    1
 #define FADE_FROM_WHITE  2
 #define FADE_TO_WHITE    3
+#define FADE_TO_RED    4
 
 #endif // GUARD_CONSTANTS_FIELD_WEATHER_H

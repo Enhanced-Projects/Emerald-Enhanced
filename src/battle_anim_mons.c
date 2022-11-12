@@ -111,7 +111,7 @@ u8 GetBattlerSpriteCoord(u8 battlerId, u8 coordType)
 {
     u8 retVal;
     u16 species;
-    struct Pokemon *mon, *illusionMon;
+    struct Pokemon *mon;
     struct BattleSpriteInfo *spriteInfo;
 
     if (IsContest())
@@ -146,9 +146,6 @@ u8 GetBattlerSpriteCoord(u8 battlerId, u8 coordType)
             else
                 mon = &gPlayerParty[gBattlerPartyIndexes[battlerId]];
 
-            illusionMon = GetIllusionMonPtr(battlerId);
-            if (illusionMon != NULL)
-                mon = illusionMon;
             spriteInfo = gBattleSpritesDataPtr->battlerData;
             if (!spriteInfo[battlerId].transformSpecies)
                 species = GetMonData(mon, MON_DATA_SPECIES);

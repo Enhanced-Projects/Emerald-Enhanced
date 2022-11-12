@@ -2,13 +2,7 @@ raw `
 LilycoveCity_MapScripts:: @ 81E2B3C
 	map_script ON_TRANSITION, LilycoveCity_OnTransition
 	map_script ON_LOAD , LilycoveCity_OnLoad
-	map_script ON_FRAME, LeafScene
 	.byte 0
-
-LeafScene::
-    map_script_2 VAR_RYU_QUEST_LANA, 1, LeafSceneResume
-	map_script_2 VAR_TEMP_A, 0, LCC_SetUpMagma
-    .2byte 0
 	
 LCC_SetUpMagma::
 	setvar VAR_TEMP_A, 100
@@ -18,7 +12,7 @@ LCC_SetUpMagma::
 	setobjectxy 22, 27, 0
 	copyobjectxytoperm 21
 	copyobjectxytoperm 22
-	end
+	return
 	
 	
 @================================================================================================== Follower Shelly interaction
@@ -93,6 +87,7 @@ LeafSceneResume::
 	goto_if_unset FLAG_RYU_ON_DATE ryu_end
 	call RyuResetFollowerPositionAR
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	turnobject PLAYER, DIR_SOUTH
 	fadenewbgm MUS_THANKFOR
 	msgbox LCL_Story1 MSGBOX_DEFAULT
 	closemessage
@@ -161,25 +156,11 @@ LilycoveCity_OnTransition: @ 81E2B47
 	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	call Common_EventScript_SetupRivalGfxId
+	call LCC_SetUpMagma
 	end
 
 LilycoveCity_OnLoad: @ 81E2B61
 	end
-
-LilycoveCity_EventScript_SetWailmerMetatiles:: @ 81E2B6B
-	setmetatile 76, 12, METATILE_Lilycove_Wailmer0, 1
-	setmetatile 77, 12, METATILE_Lilycove_Wailmer1, 1
-	setmetatile 76, 13, METATILE_Lilycove_Wailmer2, 1
-	setmetatile 77, 13, METATILE_Lilycove_Wailmer3, 1
-	setmetatile 76, 14, METATILE_Lilycove_Wailmer0_Alt, 1
-	setmetatile 77, 14, METATILE_Lilycove_Wailmer1_Alt, 1
-	setmetatile 76, 15, METATILE_Lilycove_Wailmer2, 1
-	setmetatile 77, 15, METATILE_Lilycove_Wailmer3, 1
-	setmetatile 77, 16, METATILE_Lilycove_Wailmer0_Alt, 1
-	setmetatile 78, 16, METATILE_Lilycove_Wailmer1_Alt, 1
-	setmetatile 77, 17, METATILE_Lilycove_Wailmer2, 1
-	setmetatile 78, 17, METATILE_Lilycove_Wailmer3, 1
-	return
 
 LilycoveCity_EventScript_BerryGentleman:: @ 81E2BD8
 	lock
@@ -344,11 +325,6 @@ LilycoveCity_EventScript_MoveDeletersHouseSign:: @ 81E2D74
 
 LilycoveCity_EventScript_WailmerTrainerGrunt:: @ 81E2D7D
 	lockall
-	releaseall
-	end
-
-LilycoveCity_EventScript_MetWailmerTrainer:: @ 81E2DB0
-	msgbox LilycoveCity_Text_WailmerLeapOutOfWater, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -621,51 +597,10 @@ LCC_FemalRivalIntroScript:: @ 81E2DF8
 	goto LCC_FemalRivalStartBattle
 	end
 
-LilycoveCity_EventScript_1E2E48:: @ 81E2E48
-	msgbox lcc_femaleRivalAskAgain, MSGBOX_YESNO
-	nop
-    return
-
-LilycoveCity_EventScript_1E2E51:: @ 81E2E51
-	msgbox lcc_femaleRivalIntro, MSGBOX_DEFAULT
-	closemessage
-	nop
-    msgbox lcc_femaleRivalIntroQuery MSGBOX_YESNO
-    return
-
-LCC_FemalRivalBattleDeclined:: @ 81E2E5A
-	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
-	msgbox lcc_femaleRivalVictory, MSGBOX_DEFAULT
-	closemessage
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	release
-	end
-
 MaleRivalIntroScript:: @ 81E2E6B
 	playbgm MUS_BOY_SUP, 1
 	msgbox lcc_brendanBattleStarting, MSGBOX_DEFAULT
 	goto LCC_MaleRivalStartBattle
-	end
-
-LilycoveCity_EventScript_1E2EBB:: @ 81E2EBB
-	msgbox lcc_brendanAsksforBattle, MSGBOX_YESNO
-	return
-
-LilycoveCity_EventScript_1E2EC4:: @ 81E2EC4
-	msgbox lcc_brendanPreBattleIntro MSGBOX_DEFAULT
-	closemessage
-	applymovement 17, Common_Movement_ExclamationMark
-	waitmovement 0
-	msgbox lcc_brendanIntro, MSGBOX_YESNO
-	return
-
-LilycoveCity_EventScript_1E2ECD:: @ 81E2ECD
-	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
-	msgbox lcc_declinedBrendanBattle, MSGBOX_DEFAULT
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	release
 	end
 
 LCC_FemalRivalStartBattle:: @ 81E2EFE
@@ -1375,11 +1310,11 @@ LCC_AquaGruntRunsAway:
 `
 
 script LilycoveCity_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_LILYCOVE)
+	setvar(VAR_0x8009, PROPERTY_LILYCOVE)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script LilycoveCity_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_LILYCOVE)
+	setvar(VAR_0x8009, PROPERTY_LILYCOVE)
 	goto(RyuRealEstateHouseSign)
 }

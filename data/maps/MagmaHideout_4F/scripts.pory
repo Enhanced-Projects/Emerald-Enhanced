@@ -359,11 +359,6 @@ MH4_SetupCourtneyPursuit::
 	clearflag FLAG_RYU_HIDE_REL_OBJECTS
 	addobject 24
 	return
-	
-MH_CourtneyMaxieAltBattle::
-	compare VAR_RYU_QUEST_MAGMA, 301
-	goto_if_ge ryu_end
-	end
 
 MH_Groudon_Enc::
 	call MH4_CheckMagmaLineGroudonCaptured
@@ -411,26 +406,17 @@ MH_Groudon_Enc::
 	multvar VAR_RESULT, 10
 	compare VAR_RESULT, 10
 	call_if_lt TC_NoBadge
-	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_HARD_STONE
+	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_RED_ORB
 	msgbox MH_GroudonMsg MSGBOX_AUTOCLOSE
 	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	removeobject 7
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_CAUGHT
-	call_if_eq MH4_RedOrb
 	special DrawWholeMapView
 	setflag FLAG_RYU_GROUDON_ENCOUNTERED
 	releaseall
 	end
-
-MH4_RedOrb::
-	checkitem ITEM_RED_ORB, 1
-	compare VAR_RESULT, TRUE
-	goto_if_eq ryu_return
-	msgbox MH4_GotOrb
-	additem ITEM_RED_ORB
-	return
 	
 MH4_CheckMagmaLineGroudonCaptured::
 	goto_if_unset FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON, ryu_end
@@ -484,7 +470,7 @@ MH4_CourtneySetUpChaseMaxie::
 	setvar VAR_RYU_QUEST_MAGMA, 565@Player is chasing down maxie with robot courtney
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	removeobject 24
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_WEST
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_WEST
 	release
 	end
 
@@ -499,20 +485,6 @@ SetMaxiePosition2::
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	addobject 11
 	addobject 12
-	end
-	
-MH4_MagmaAdminCheck::
-	@goto_if_unset magma admin flag, ryu_end
-	specialvar VAR_RESULT, GetPlayerFacingDirection
-	compare VAR_RESULT, DIR_EAST
-	goto_if_eq ryu_end
-	compare VAR_RESULT, DIR_WEST
-	goto_if_eq ryu_end
-	msgbox MH4_NotAdminCantGoHere
-	closemessage
-	applymovement PLAYER, Common_Movement_StepDown
-	waitmovement PLAYER
-	release
 	end
 
 MH4_AquaShowMaxieBoss::
@@ -540,6 +512,10 @@ MH4_MagmaMaxieEvent::
 	applymovement PLAYER, Common_Movement_StepDown
 	applymovement 11, MH4_MaxieToPlayer@left 3 up 1 left 2, up 3
 	waitmovement 11
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
+	turnobject 1, DIR_SOUTH
 	msgbox MH4_SoItSeems
 	closemessage
 	applymovement 11, MH4_MaxieToCourtney@down 3, right 2, down1, right 3, down 2, right 2
@@ -626,7 +602,7 @@ MH4_Maxie2Event::
 	msgbox MH4_Analyzing
 	closemessage
 	removeobject 12
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, 1
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, 1
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	clearflag FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS
@@ -643,8 +619,8 @@ MH4_CourtneyScript::
 	goto_if_ge MH4_PostR114CourtneyFollower
 	compare VAR_RYU_QUEST_MAGMA, 560
 	goto_if_ge MH4_PostGroudonCourtneyFollower
+	call MH_CheckGruntsDefeated
 	msgbox MH4_CourtneyChatter
-	clearfullscreenimage
 	goto ryu_end
 	
 MH4_PostLabCourtneyFollower::
@@ -1196,7 +1172,7 @@ MH4_GroudonEvent::
 	msgbox MH4_WhatIsHappening
 	specialvar VAR_TEMP_A, CountBadges
 	multvar VAR_TEMP_A, 10
-	setwildbattle SPECIES_GROUDON, VAR_TEMP_A, ITEM_NONE
+	setwildbattle SPECIES_GROUDON, VAR_TEMP_A, ITEM_RED_ORB
 	playmoncry SPECIES_GROUDON, 0
 	msgbox MH4_GroudonLooksAtYou
 	closemessage
@@ -1211,7 +1187,6 @@ MH4_GroudonEvent::
 	specialvar VAR_TEMP_A, GetBattleOutcome
 	compare VAR_TEMP_A, B_OUTCOME_CAUGHT
 	call_if_ne MH4_PlayerFailedCapturingGroudon
-	call MH4_RedOrb
 	goto MH4_NormalMagmaGroudonEndEvent
 	end
 	
@@ -1252,7 +1227,6 @@ MH4_NormalMagmaGroudonEndEvent::
 	removeobject 22
 	removeobject 23
 	fadescreen FADE_FROM_BLACK
-	call MH4_RedOrb
 	closemessage
 	setflag FLAG_RYU_MAGMA_INTENSE_SUN_ENABLED
 	msgbox MH4_SeemsLikeIm
@@ -1414,7 +1388,7 @@ MH4_CourtneyEnd3::
 	call RyuScript_IncrementQuestsFinished
 	ach give ACH_THROUGH_THE_FIRE
 	removeobject 21
-	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
+	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_NORTH
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
@@ -1585,12 +1559,6 @@ MH4_BlaiseExitsEnd:
 	walk_up
 	walk_left
 	step_end
-	
-MH4_HideDeadMagmaMembers::
-	setvar VAR_TEMP_B, 100
-	setobjectxy 22, 37, 0
-	setobjectxy 20, 37, 0
-	end
 
 @==================================================================================================Aqua
 

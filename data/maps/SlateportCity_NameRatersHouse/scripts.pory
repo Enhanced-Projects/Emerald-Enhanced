@@ -44,11 +44,6 @@ SlateportCity_NameRatersHouse_EventScript_CantRateEgg:: @ 8209B46
 	release
 	end
 
-SlateportCity_NameRatersHouse_EventScript_PlayerNotMonsOT:: @ 8209B50
-	msgbox SlateportCity_NameRatersHouse_Text_MagnificentName, MSGBOX_DEFAULT
-	release
-	end
-
 SlateportCity_NameRatersHouse_EventScript_ChangeNickname:: @ 8209B5A
 	msgbox SlateportCity_NameRatersHouse_Text_WhatShallNewNameBe, MSGBOX_DEFAULT
 	call Common_EventScript_NameReceivedPartyMon

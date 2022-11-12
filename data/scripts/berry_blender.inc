@@ -117,11 +117,6 @@ BerryBlender_Text_DontHavePokeblockCase2: @ 82934A2
 	.string "You should get a {POKEBLOCK} Case and\n"
 	.string "then come back.$"
 
-@ Unused
-BerryBlender_Text_MakePokeblocksWithOurGroup: @ 829350B
-	.string "Oh, hello! Did you want to make some\n"
-	.string "{POKEBLOCK}S with our little group?$"
-
 BerryBlender_Text_OhDear: @ 829354E
 	.string "Oh, dear!$"
 

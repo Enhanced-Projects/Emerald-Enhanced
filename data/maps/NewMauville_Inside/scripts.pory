@@ -52,26 +52,6 @@ NewMauville_Inside_OnLoad: @ 823744D
 	call_if_eq NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
 	end
 
-NewMauville_Inside_EventScript_BlueButton:: @ 8237459
-	lockall
-	setvar VAR_TEMP_1, 1
-	setvar VAR_TEMP_2, 0
-	playse SE_PIN
-	call NewMauville_Inside_EventScript_SetBarrierStateBlueButton
-	special DrawWholeMapView
-	releaseall
-	end
-
-NewMauville_Inside_EventScript_GreenButton:: @ 8237471
-	lockall
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 1
-	playse SE_PIN
-	call NewMauville_Inside_EventScript_SetBarrierStateGreenButton
-	special DrawWholeMapView
-	releaseall
-	end
-
 NewMauville_Inside_EventScript_SetBarrierStateBlueButton:: @ 8237489
 	setmetatile 23, 34, METATILE_BikeShop_Barrier_Hidden_Top, 1
 	setmetatile 23, 35, METATILE_BikeShop_Barrier_Hidden_Bottom, 1
@@ -287,16 +267,6 @@ NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped: @ 8237932
 	.string "stopped…$"
 	
 @==================================================================================================LANA EVENTS
-
-NM_SpecCheck::
-	lock
-	addobject 10
-	release
-	end
-
-NM_DevShortcut::
-	release
-	end
 
 NM_DevUp:
 	walk_fast_up

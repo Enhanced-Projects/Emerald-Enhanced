@@ -75,6 +75,8 @@
 #include "item.h"
 #include "pokedex.h"
 #include "ach_atlas.h"
+#include "RyuRealEstate.h"
+#include "overworld_notif.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -389,16 +391,29 @@ static void (*const gMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
 
 void SetWarpDestinationToHome(void)
 {
-    if (gSaveBlock2Ptr->playerGender == 0)
-        SetWarpDestination(1, 1, 255, 4, 4);
+    u8 homeId = (VarGet(VAR_RYU_PLAYER_HOUSE_ID));
+    if (FlagGet(FLAG_RYU_HAS_HOME_REGISTERED) == TRUE) // && (VarGet(VAR_RYU_PLAYER_HOUSE_ID) == id))
+    {
+        SetWarpDestination(gRyuPropertyData[homeId][2], gRyuPropertyData[homeId][3], 255, gRyuPropertyData[homeId][5], gRyuPropertyData[homeId][6]);
+    }
     else
-        SetWarpDestination(1, 3, 255, 4, 4);
+    {
+        if (gSaveBlock2Ptr->playerGender == 0)
+            SetWarpDestination(1, 1, 255, 4, 4);
+        else
+            SetWarpDestination(1, 3, 255, 4, 4);
+    }
     
 }
 
 void SetWarpDestinationToLimbo(void) //challenge over
 {
         SetWarpDestination(33, 3, 255, 2, 1);
+}
+
+void SetWarpDestinationToUnderworld(void) //face death
+{
+        SetWarpDestination(33, 4, 255, 5, 10);
 }
 
 
@@ -423,6 +438,9 @@ void DoWhiteOut(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuWipeParty();
+
+    if (FlagGet(FLAG_RYU_UNDERWORLD) == FALSE)
+        FlagSet(FLAG_RYU_PREMATURE_DEATH);
 
     FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
 
@@ -1110,78 +1128,6 @@ static u8 GetObjectEventLoadFlag(void)
     return sObjectEventLoadFlag;
 }
 
-static bool16 ShouldLegendaryMusicPlayAtLocation(struct WarpData *warp)
-{
-    if (!FlagGet(FLAG_SYS_WEATHER_CTRL))
-        return FALSE;
-    if (warp->mapGroup == 0)
-    {
-        switch (warp->mapNum)
-        {
-        case MAP_NUM(LILYCOVE_CITY):
-        case MAP_NUM(MOSSDEEP_CITY):
-        case MAP_NUM(SOOTOPOLIS_CITY):
-        case MAP_NUM(EVER_GRANDE_CITY):
-        case MAP_NUM(ROUTE124):
-        case MAP_NUM(ROUTE125):
-        case MAP_NUM(ROUTE126):
-        case MAP_NUM(ROUTE127):
-        case MAP_NUM(ROUTE128):
-            return TRUE;
-        default:
-            if (VarGet(VAR_SOOTOPOLIS_CITY_STATE) < 4)
-                return FALSE;
-            switch (warp->mapNum)
-            {
-            case MAP_NUM(ROUTE129):
-            case MAP_NUM(ROUTE130):
-            case MAP_NUM(ROUTE131):
-                return TRUE;
-            }
-        }
-    }
-    return FALSE;
-}
-
-static bool16 NoMusicInSotopolisWithLegendaries(struct WarpData *warp)
-{
-    if (VarGet(VAR_SKY_PILLAR_STATE) != 1)
-        return FALSE;
-    else if (warp->mapGroup != MAP_GROUP(SOOTOPOLIS_CITY))
-        return FALSE;
-    else if (warp->mapNum == MAP_NUM(SOOTOPOLIS_CITY))
-        return TRUE;
-    else
-        return FALSE;
-}
-
-static bool16 IsInfiltratedWeatherInstitute(struct WarpData *warp)
-{
-    if (VarGet(VAR_WEATHER_INSTITUTE_STATE))
-        return FALSE;
-    else if (warp->mapGroup != MAP_GROUP(ROUTE119_WEATHER_INSTITUTE_1F))
-        return FALSE;
-    else if (warp->mapNum == MAP_NUM(ROUTE119_WEATHER_INSTITUTE_1F)
-     || warp->mapNum == MAP_NUM(ROUTE119_WEATHER_INSTITUTE_2F))
-        return TRUE;
-    else
-        return FALSE;
-}
-
-static bool16 IsInflitratedSpaceCenter(struct WarpData *warp)
-{
-    if (VarGet(VAR_MOSSDEEP_CITY_STATE) == 0)
-        return FALSE;
-    else if (VarGet(VAR_MOSSDEEP_CITY_STATE) > 2)
-        return FALSE;
-    else if (warp->mapGroup != MAP_GROUP(MOSSDEEP_CITY_SPACE_CENTER_1F))
-        return FALSE;
-    else if (warp->mapNum == MAP_NUM(MOSSDEEP_CITY_SPACE_CENTER_1F)
-     || warp->mapNum == MAP_NUM(MOSSDEEP_CITY_SPACE_CENTER_2F))
-        return TRUE;
-    return FALSE;
-}
-
 u16 GetLocationMusic(struct WarpData *warp)
 {
     return Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum)->music;    
@@ -1262,6 +1208,10 @@ void LoadMapMusic(void)
         step = 5;
         newMusic = GetCurrLocationDefaultMusic();
     }
+    //if (gSaveBlock2Ptr->disableBGM == TRUE)
+    //{
+    //    step = 6;
+    //}
     if (newMusic != currentMusic)
     {
         switch (step)
@@ -1281,6 +1231,11 @@ void LoadMapMusic(void)
             case 4:
             {
                 FadeOutAndPlayNewMapMusic((VarGet(VAR_RYU_JUKEBOX)), 4);
+                break;
+            }
+            case 6:
+            {
+                StopMapMusic();
                 break;
             }
             default:
@@ -1319,17 +1274,8 @@ void TryFadeOutOldMapMusic(void)
 {
     u16 currentMusic = GetCurrentMapMusic();
     u16 warpMusic = GetWarpDestinationMusic();
-    if (FlagGet(FLAG_DONT_TRANSITION_MUSIC) != TRUE && warpMusic != GetCurrentMapMusic())
+    if (!(warpMusic == GetCurrentMapMusic()))
     {
-        if (currentMusic == MUS_SURF
-            && VarGet(VAR_SKY_PILLAR_STATE) == 2
-            && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SOOTOPOLIS_CITY)
-            && gSaveBlock1Ptr->location.mapNum == MAP_NUM(SOOTOPOLIS_CITY)
-            && sWarpDestination.mapGroup == MAP_GROUP(SOOTOPOLIS_CITY)
-            && sWarpDestination.mapNum == MAP_NUM(SOOTOPOLIS_CITY)
-            && sWarpDestination.x == 29
-            && sWarpDestination.y == 53)
-            return;
         FadeOutMapMusic(GetMapMusicFadeoutSpeed());
     }
 }
@@ -1556,7 +1502,7 @@ static void OverworldBasic(void)
     AnimateSprites();
     CameraUpdate();
     UpdateCameraPanning();
-    BuildOamBuffer();
+    BuildOamBufferNoOrder();
     UpdatePaletteFade();
     UpdateTilesetAnimations();
     DoScheduledBgTilemapCopiesToVram();
@@ -1673,6 +1619,16 @@ void CB2_NewGame(void)
     bool8 hasShinyCharm = FALSE;
     bool8 hasOvalCharm = FALSE;
     bool8 hasMegaBracelet = FALSE;
+    bool8 hasRecipeBook = FALSE;
+    u16 playerLifeSkills[3][2] = {0};
+    bool8 hasRealEstate = gSaveBlock2Ptr->playerIsRealtor;
+
+    playerLifeSkills[0][0] = VarGet(VAR_RYU_PLAYER_MINING_SKILL);
+    playerLifeSkills[0][1] = VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP);
+    playerLifeSkills[1][0] = VarGet(VAR_RYU_PLAYER_BOTANY_SKILL);
+    playerLifeSkills[1][1] = VarGet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP);
+    playerLifeSkills[2][0] = VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL);
+    playerLifeSkills[2][1] = VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP);
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
@@ -1712,6 +1668,9 @@ void CB2_NewGame(void)
 
     if (FlagGet(FLAG_SYS_DEXNAV_GET) == 1)
         hasDexNav = TRUE;
+    
+    if (CheckBagHasItem(ITEM_RECIPE_BOOK, 1))
+        hasRecipeBook = TRUE;
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
@@ -1727,6 +1686,7 @@ void CB2_NewGame(void)
     SetMainCallback2(CB2_Overworld);
     if (isNGPlus == TRUE)
     {
+
         if (hasExpDrive == TRUE)
             FlagSet(FLAG_RYU_HAS_EXP_DRIVE);
 
@@ -1757,10 +1717,24 @@ void CB2_NewGame(void)
         if (hasMegaBracelet == TRUE)
             FlagSet(FLAG_RYU_HAS_MEGA_BRACELET);
 
+        if (hasRecipeBook == TRUE)
+            FlagSet(FLAG_RYU_HAS_RECIPE_BOOK);
+
+        if (hasRealEstate == TRUE)
+            gSaveBlock2Ptr->playerIsRealtor = 1;
+
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);
         FlagSet(FLAG_RYU_ISNGPLUS);
         VarSet(VAR_RYU_NGPLUS_COUNT, VarGet(VAR_RYU_NGPLUS_COUNT) + 1);
+        
+        //this should make life skills persist between new game +'s. If they aren't changed by the above code, they will set to zero.
+        VarSet(VAR_RYU_PLAYER_MINING_SKILL, playerLifeSkills[0][0]);
+        VarSet(VAR_RYU_PLAYER_MINING_SKILL_EXP, playerLifeSkills[0][1]);
+        VarSet(VAR_RYU_PLAYER_BOTANY_SKILL, playerLifeSkills[1][0]);
+        VarSet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP, playerLifeSkills[1][1]);
+        VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL, playerLifeSkills[2][0]);
+        VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, playerLifeSkills[2][1]);
     }
     else
     {
@@ -2317,7 +2291,10 @@ static void sub_80867D8(void)
     ScanlineEffect_Stop();
 
     DmaClear16(3, PLTT + 2, PLTT_SIZE - 2);
-    DmaFillLarge16(3, 0, (void *)(VRAM + 0x0), 0x18000, 0x1000);
+
+    // USE REGULAR FILL INSTEAD
+    //DmaFillLarge16(3, 0, (void *)(VRAM + 0x0), 0x18000, 0x1000);
+    DmaFill16(3, 0, (void *)(VRAM + 0x0), 0x18000);
     ResetOamRange(0, 128);
     LoadOam();
 }
@@ -2374,10 +2351,7 @@ static void ResumeMap(bool32 a1)
     ResetAllPicSprites();
     ResetCameraUpdateInfo();
     InstallCameraPanAheadCallback();
-    if (!a1)
-        InitObjectEventPalettes(0);
-    else
-        InitObjectEventPalettes(1);
+    FreeAllSpritePalettes();
 
     FieldEffectActiveListClear();
     if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1 && (GetSav1Weather() != VarGet(VAR_RYU_WEATHER)))

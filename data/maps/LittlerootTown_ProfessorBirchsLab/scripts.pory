@@ -17,10 +17,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter:: @ 
 	turnobject PLAYER, DIR_NORTH
 	end
 
-LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject:: @ 81F9D71
-	addobject 3
-	end
-
 LittlerootTown_ProfessorBirchsLab_OnFrame: @ 81F9DB9
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 8, LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent
 	.2byte 0
@@ -67,14 +63,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival:: @ 81F9E48
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival
 	compare VAR_RESULT, NO
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent:: @ 81F9E67
-	lockall
-	applymovement PLAYER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex
-	applymovement FOLLOWER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex
-	waitmovement 0
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex
 	end
 
 LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex: @ 81F9E78
@@ -211,11 +199,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex:: @ 81FA3AC
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	return
-
-LittlerootTown_ProfessorBirchsLab_EventScript_PokemonAwait:: @ 81FA3C4
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait, MSGBOX_DEFAULT
-	release
-	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls:: @ 81FA3CE
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull, MSGBOX_DEFAULT
@@ -447,18 +430,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanPreferCollectingSlowly: @ 81FBC2D
 `
 
 script LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting {
-	specialvar(VAR_RESULT, RyuGetTotalCaughtMons)
-	if (var(VAR_RESULT) >= 151){
-		if (flag(FLAG_RYU_GIVEN_MEWTWO_MEGAS) == FALSE){
-			msgbox(format("Hey there, {PLAYER}! It seems like you're well on your way to becoming a pokemon master! Accept these gifts, they should come in handy."))
-			giveitem(ITEM_MEWTWONITE_Y, 1)
-			giveitem(ITEM_MEWTWONITE_X, 1)
-			ach(give, ACH_POKEMON_TRAINER)
-			setflag(FLAG_RYU_GIVEN_MEWTWO_MEGAS)
-			release
-			end
-		}
-	}
+	msgbox("There's a grassy patch waiting\nfor you somewhere!")
 	return
 }
 
@@ -492,7 +464,7 @@ script LRT_BL_MaleRivalAfterRomanceStory {
 	}
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Can I hang out with you for\na while?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES){
-		createfollower(OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RyuFollowerSelectNPCScript, DIR_NORTH)
+		createfollower(FOLLOWER_BRENDAN, RyuFollowerSelectNPCScript, DIR_NORTH)
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay partner! Let's dip!")
 		setflag(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL)
 		release
@@ -511,7 +483,7 @@ script LRT_BL_FemaleRivalAfterRomanceStory {
 	if (var(VAR_RESULT) == YES){
 		removeobject(3)
 		setflag(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL)
-		createfollower(OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_NORTH)
+		createfollower(FOLLOWER_DAWN, RyuFollowerSelectNPCScript, DIR_NORTH)
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Yay! I'm tired of being\nhere every day.")
 		setflag(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL)
 		release
@@ -620,14 +592,17 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_Birch{
 	lock
 	faceplayer
 	delay(60)
-	special(RyuDevCheck)
+	special(RyuChallengeCheck)
 	if (var(VAR_RESULT) == 420) {
-		goto(RyuChallengeQuery)
+		call(RyuChallengeQuery)
 	}
 	goto(LRT_StandardBirch)
 }
 
 script RyuChallengeQuery {
+	if (var(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 69){
+		goto(RyuSpecialChallengeComplete)
+	}
 	if (flag(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) {
 		msgbox("You have already started the challenge.\pCheck status?", MSGBOX_YESNO)
 		if (var(VAR_RESULT) == YES) {
@@ -657,6 +632,8 @@ script RyuChallengeQuery {
 				clearflag(FLAG_RYU_DOING_RYU_CHALLENGE)
 				setvar(VAR_RYU_SPECIAL_CHALLENGE_STATE, 666)
 				setflag(FLAG_RYU_FAILED_RYU_CHALLENGE)
+				release
+				end
 			}
 		}
 		msgbox("Exiting Challenge Status.")
@@ -667,10 +644,10 @@ script RyuChallengeQuery {
 	closemessage
 	msgbox("You have entered the key combo\nfor Ryu's Challenge.\pDo you want to attempt the\nChallenge?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == NO) {
+		closemessage
 		goto(ryu_return)
 	}
 	msgbox("I will now see if you\nmeet the requirements.\pPlease Wait.")
-	delay(60)
 	if (flag(FLAG_RYU_ISNGPLUS) == FALSE) {
 		goto(RyuChallengeFailedRequisite1)
 	}
@@ -688,8 +665,13 @@ script RyuChallengeQuery {
 		goto(RyuChallengeFailedRequisite5)
 	}
 	specialvar(VAR_RESULT, CheckValidMonsForSpecialChallenge)
-	if (var(VAR_RESULT) == 666) {
-		goto(RyuChallengeFailedRequisite6)
+	switch (var(VAR_RESULT)) {
+		case 666:
+			goto(RyuChallengeFailedRequisite6)
+		case 667:
+			goto(RyuChallengeFailedRequisite67)
+		case 668:
+			goto(RyuChallengeFailedRequisite68)
 	}
 	if (flag(FLAG_RYU_FAILED_RYU_CHALLENGE) == TRUE) {
 		goto(RyuChallengeFailedRequisite7)
@@ -714,45 +696,108 @@ script RyuChallengeQuery {
 	end
 }
 
+script RyuSpecialChallengeComplete {
+	if (flag(FLAG_RYU_MAGEARNA_GIVEN) == TRUE) {
+		msgbox("Good job on completing the\nchallenge.\pMaybe you should try for a faster\ntime?")
+		release
+		end
+	}
+	msgbox("Congratulations on completing the\nspecial challenge!\pPost in the Discord Server\nif you think your completion\ltime is leaderboard material!")
+	closemessage
+	msgbox("Please accept this Pokémon as\na reward for your efforts!")
+	closemessage
+	special(CalculatePlayerPartyCount)
+	if (var(VAR_RESULT) < 6){
+		givemon(SPECIES_MAGEARNA, 100, ITEM_EXPERT_BELT)
+		msgbox("You've been given a Magearna\nfor a reward. Enjoy!")
+		setflag(FLAG_RYU_MAGEARNA_GIVEN)
+		release
+		end
+	}
+	msgbox("Go clear out a space in your\nparty to receive the gift\lPokémon!")
+	closemessage
+	release
+	end
+}
+
 
 script RyuChallengeFailedRequisite1 {
-	msgbox("You do not meed the requirements.\pYou must be on a New Game Plus.")
+	msgbox("You do not meet the requirements.\pYou must be on a New Game Plus.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite2 {
-	msgbox("You do not meed the requirements.\pYou may not use cheats.")
+	msgbox("You do not meet the requirements.\pYou may not use cheats.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite3 {
-	msgbox("You do not meed the requirements.\pYou must be at prestige 6 or higher.")
+	msgbox("You do not meet the requirements.\pYou must be at prestige 6 or higher.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite4 {
-	msgbox("You do not meed the requirements.\pYou may not have any badges.")
+	msgbox("You do not meet the requirements.\pYou may not have any badges.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite5 {
-	msgbox("You do not meed the requirements.\pYou must complete the tutorial.")
+	msgbox("You do not meet the requirements.\pYou must complete the tutorial.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite6 {
-	msgbox("You do not meed the requirements.\pYou may not use legendaries.")
+	msgbox("You do not meet the requirements.\pYou may not use Legendaries.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite67 {
+	msgbox("You do not meet the requirements.\pYou may not use permanent Megas.")
+	release
+	end
+}
+
+script RyuChallengeFailedRequisite68 {
+	msgbox("You do not meet the requirements.\pYou may not use Ultra Beasts.")
 	release
 	end
 }
 
 script RyuChallengeFailedRequisite7 {
-	msgbox("You do not meed the requirements.\pYou have already failed the\nchallenge.")
+	msgbox("You do not meet the requirements.\pYou have already failed the\nchallenge.")
 	release
 	end
+}
+
+
+script RyuMewtwoMegaGift {
+	if (flag(FLAG_RYU_GIVEN_MEWTWO_MEGAS) == FALSE){
+			msgbox(format("It seems like you're well on your way to becoming a pokemon master! Accept these gifts, they should come in handy."))
+			giveitem(ITEM_MEWTWONITE_Y, 1)
+			giveitem(ITEM_MEWTWONITE_X, 1)
+			ach(give, ACH_POKEMON_TRAINER)
+			setflag(FLAG_RYU_GIVEN_MEWTWO_MEGAS)
+			return
+		}
+		return
+}
+
+script RyuCheckForMayQuest{
+		if ((var(VAR_RYU_QUEST_MAY) < 5) && (flag(FLAG_RYU_STARTED_MAY_QUEST) == FALSE)){
+			buffernumberstring(0, VAR_0x8009) // Num National caught
+			msgbox("Birch: My word!\nYou have caught {STR_VAR_1}\ldifferent species of Pokémon!\pThis is incredible!\pI... don't have to work\nso hard anymore!\pThanks a ton, {PLAYER}!\pI knew you'd be the right\nperson for the job!")
+			setvar(VAR_RYU_QUEST_MAY, 5) //player has enabled the may event.
+			setflag(FLAG_RYU_STARTED_MAY_QUEST)//don't repeat this script
+			closemessage
+			msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You can now recruit May\n as a follower once the\l intro is completed.)")
+			closemessage
+			return
+		}
+		return
 }

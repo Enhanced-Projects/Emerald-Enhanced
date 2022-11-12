@@ -309,6 +309,17 @@ LCC_LeafEvent::
 	release
 	end
 
+LCC_PreventPlayerExitLanaScene::
+	lock
+	msgbox LCC_DoLanaEvent
+	applymovement PLAYER, Common_Movement_StepRight
+	waitmovement PLAYER
+	release
+	end
+
+LCC_DoLanaEvent:
+	.string "Lana's waiting for you.$"
+
 	
 	
 LCC_Story1:

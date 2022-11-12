@@ -21,15 +21,6 @@ EventScript_TrainerHillTimer:: @ 82C8393
 	releaseall
 	end
 
-TrainerHill_1F_EventScript_DummyWarpToEntranceCounter:: @ 82C83A6
-	end
-
-@ Never reached
-TrainerHill_1F_EventScript_WarpSilentToEntranceCounter:: @ 82C83BF
-	warpsilent MAP_TRAINER_HILL_ENTRANCE, 255, 9, 6
-	waitstate
-	end
-
 TrainerHill_1F_EventScript_Lost:: @ 82C83C9
 	trainerhill_settrainerflags
 	trainerhill_lost
@@ -42,11 +33,6 @@ TrainerHill_EventScript_WarpToEntranceCounter:: @ 82C83DF
 	warp MAP_TRAINER_HILL_ENTRANCE, 255, 3, 8
 	waitstate
 	end
-
-@ Unused
-TrainerHill_1F_Movement_SetInvisible:: @ 82C83EE
-	set_invisible
-	step_end
 
 @ TRAINER_PHILLIP is an actual Trainer on the SS Tidal, but is used as a placeholder here
 TrainerHill_EventScript_TrainerBattle:: @ 82C83F0

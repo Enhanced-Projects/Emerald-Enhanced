@@ -725,8 +725,8 @@ const u32 gItemIconPalette_SecretKey[] = INCBIN_U32("graphics/items/icon_palette
 const u32 gItemIcon_BikeVoucher[] = INCBIN_U32("graphics/items/icons/bike_voucher.4bpp.lz");
 const u32 gItemIconPalette_BikeVoucher[] = INCBIN_U32("graphics/items/icon_palettes/bike_voucher.gbapal.lz");
 
-const u32 gItemIcon_GoldTeeth[] = INCBIN_U32("graphics/items/icons/gold_teeth.4bpp.lz");
-const u32 gItemIconPalette_GoldTeeth[] = INCBIN_U32("graphics/items/icon_palettes/gold_teeth.gbapal.lz");
+const u32 gItemIcon_AncientCoin[] = INCBIN_U32("graphics/items/icons/gold_teeth.4bpp.lz");
+const u32 gItemIconPalette_AncientCoin[] = INCBIN_U32("graphics/items/icon_palettes/gold_teeth.gbapal.lz");
 
 const u32 gItemIcon_OldAmber[] = INCBIN_U32("graphics/items/icons/old_amber.4bpp.lz");
 const u32 gItemIconPalette_OldAmber[] = INCBIN_U32("graphics/items/icon_palettes/old_amber.gbapal.lz");

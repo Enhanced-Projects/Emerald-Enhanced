@@ -44,6 +44,7 @@ struct TrainerMonItemCustomMoves
     u8 lvl;
     u16 species;
     u16 heldItem;
+    u8 evspread;
     u8 ability;
     u8 nickname[12];
     u16 moves[4];
@@ -97,6 +98,7 @@ extern const struct SpriteFrameImage gTrainerBackPicTable_Courtney[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Nurse[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Gold[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Krystal[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Lucy[];
 
 extern const union AffineAnimCmd *const gUnknown_082FF618[];
 extern const union AffineAnimCmd *const gUnknown_082FF694[];

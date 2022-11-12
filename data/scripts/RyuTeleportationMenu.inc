@@ -5,6 +5,7 @@ RyuTeleport::
 	compare VAR_RESULT, FALSE
 	goto_if_eq RT_NoWaystone
 	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, RyuTeleportDisabled
+	goto_if_set FLAG_RYU_UNDERWORLD, RyuTeleportDisabled
 	call_if_set FLAG_RYU_CHALLENGEMODE, RyuTeleportUseCheck
 	call_if_set FLAG_RYU_HARDCORE_MODE, RyuTeleportUseCheck
 	msgbox MSG_Teleport MSGBOX_SIGN
@@ -189,11 +190,6 @@ RT_LCCDEPT::
 	goto_if_set FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE, RT_BannedFromLilycove
     goto_if_unset FLAG_RYU_LANDMARK_LCCDEPTSTORE, RT_NoFlag
 	warpteleport MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP, 255, 4, 5
-	waitstate
-
-RT_LCAH::
-    goto_if_unset FLAG_RYU_PLAYER_HELPING_AQUA, RT_NoFlag
-	@warpteleport MAP_NEW_MAP4, 255, 7, 14
 	waitstate
 	
 RT_BerryFarm::

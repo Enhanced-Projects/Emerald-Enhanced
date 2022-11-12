@@ -256,7 +256,7 @@ const u16 gSpeciesToHoennPokedexNum[NUM_SPECIES] = // Assigns all species to the
     SPECIES_TO_HOENN(DUSCLOPS),
     SPECIES_TO_HOENN(DUSKNOIR),
     SPECIES_TO_HOENN(TROPIUS),
-    SPECIES_TO_HOENN(CHINGLING),
+    //SPECIES_TO_HOENN(LUNALA),
     SPECIES_TO_HOENN(CRYSTAL_ONIX),
     SPECIES_TO_HOENN(ABSOL),
     SPECIES_TO_HOENN(VULPIX),
@@ -733,7 +733,7 @@ const u16 gSpeciesToNationalPokedexNum[NUM_SPECIES] = // Assigns all species to 
 	SPECIES_TO_NATIONAL(LOPUNNY),
 	SPECIES_TO_NATIONAL(MISMAGIUS),
 	SPECIES_TO_NATIONAL(HONCHKROW),
-	SPECIES_TO_NATIONAL(CHINGLING),
+	SPECIES_TO_NATIONAL(LUNALA),
 	SPECIES_TO_NATIONAL(BONSLY),
 	SPECIES_TO_NATIONAL(MIMEJR),
 	SPECIES_TO_NATIONAL(HAPPINY),
@@ -1004,6 +1004,9 @@ const u16 gSpeciesToNationalPokedexNum[NUM_SPECIES] = // Assigns all species to 
 	SPECIES_TO_NATIONAL(ZERAORA),
 	SPECIES_TO_NATIONAL(UNOWN_SCHOOL),
     SPECIES_TO_NATIONAL(MIMIKYU_BUSTED),
+    SPECIES_TO_NATIONAL(DEOXYS_ATTACK),
+    SPECIES_TO_NATIONAL(DEOXYS_DEFENSE),
+    SPECIES_TO_NATIONAL(DEOXYS_SPEED),
 };
 
 const u16 gHoennToNationalOrder[HOENN_DEX_COUNT] = // Assigns Hoenn Dex Pokémon (Using National Dex Index)
@@ -1164,7 +1167,7 @@ const u16 gHoennToNationalOrder[HOENN_DEX_COUNT] = // Assigns Hoenn Dex Pokémon
     HOENN_TO_NATIONAL(DUSCLOPS),
     HOENN_TO_NATIONAL(DUSKNOIR),
     HOENN_TO_NATIONAL(TROPIUS),
-    HOENN_TO_NATIONAL(CHINGLING),
+    //HOENN_TO_NATIONAL(LUNALA),
     HOENN_TO_NATIONAL(CRYSTAL_ONIX),
     HOENN_TO_NATIONAL(ABSOL),
     HOENN_TO_NATIONAL(VULPIX),
@@ -2244,6 +2247,15 @@ static const struct SpriteTemplate gSpriteTemplateTable_TrainerBackSprites[] =
         .affineAnims = gUnknown_082FF618,
         .callback = sub_8039BB4,
     },
+    {
+        .tileTag = 0xFFFF,
+        .paletteTag = 0,
+        .oam = &gOamData_831ACB0,
+        .anims = NULL,
+        .images = gTrainerBackPicTable_Lucy,
+        .affineAnims = gUnknown_082FF618,
+        .callback = sub_8039BB4,
+    },
 };
 
 static const u8 sSecretBaseFacilityClasses[2][5] =
@@ -2393,12 +2405,12 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     //Determine original trainer ID
     if (otIdType == OT_ID_RANDOM_NO_SHINY) //Pokemon cannot be shiny
     {
-        u32 shinyValue;
-        do
+        u32 personality = Random32();
+        /*do
         {
             value = Random32();
             shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-        } while (shinyValue < SHINY_ODDS);
+        } while (shinyValue < SHINY_ODDS);*/
     }
     else if (otIdType == OT_ID_PRESET) //Pokemon has a preset OT ID
     {
@@ -3038,9 +3050,9 @@ inline u8 GetCurrentMaxLevel()
 inline u8 RyuGetAffectionChance()
 {
     if ((FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) || FlagGet(FLAG_RYU_HARDCORE_MODE))
-        return 10;
+        return 7;
     else
-        return 15;
+        return 10;
 }
 
 u8 GetLevelFromMonExp(struct Pokemon *mon)
@@ -3558,13 +3570,6 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         substruct3 = &(GetSubstruct(boxMon, boxMon->personality, 3)->type3);
 
         DecryptBoxMon(boxMon);
-
-        if (CalculateBoxMonChecksum(boxMon) != boxMon->checksum)
-        {
-            boxMon->isBadEgg = 1;
-            boxMon->isEgg = 1;
-            substruct3->isEgg = 1;
-        }
     }
 
     switch (field)
@@ -3575,17 +3580,15 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
     case MON_DATA_OT_ID:
         retVal = boxMon->otId;
         break;
+    case MON_DATA_HAS_CUSTOM_NATURE:
+        retVal = boxMon->hasCustomNature;
+        break;
+    case MON_DATA_CUSTOM_NATURE:
+        retVal = boxMon->customNatureID;
+        break;
     case MON_DATA_NICKNAME:
     {
-        if (boxMon->isBadEgg)
-        {
-            for (retVal = 0;
-                retVal < POKEMON_NAME_LENGTH && gText_BadEgg[retVal] != EOS;
-                data[retVal] = gText_BadEgg[retVal], retVal++) {}
-
-            data[retVal] = EOS;
-        }
-        else if (boxMon->isEgg)
+        if (boxMon->isEgg)
         {
             StringCopy(data, gText_EggNickname);
             retVal = StringLength(data);
@@ -3616,9 +3619,6 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
     case MON_DATA_LANGUAGE:
         retVal = boxMon->language;
         break;
-    case MON_DATA_SANITY_IS_BAD_EGG:
-        retVal = boxMon->isBadEgg;
-        break;
     case MON_DATA_SANITY_HAS_SPECIES:
         retVal = boxMon->hasSpecies;
         break;
@@ -3648,7 +3648,7 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         retVal = boxMon->unknown;
         break;
     case MON_DATA_SPECIES:
-        retVal = boxMon->isBadEgg ? SPECIES_EGG : substruct0->species;
+        retVal = substruct0->species;
         break;
     case MON_DATA_HELD_ITEM:
         retVal = substruct0->heldItem;
@@ -3811,7 +3811,7 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         break;
     case MON_DATA_SPECIES2:
         retVal = substruct0->species;
-        if (substruct0->species && (substruct3->isEgg || boxMon->isBadEgg))
+        if (substruct0->species && substruct3->isEgg)
             retVal = SPECIES_EGG;
         break;
     case MON_DATA_IVS:
@@ -3937,6 +3937,42 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
     }
 }
 
+void ChangeBoxMonDataPersonality(struct BoxPokemon *boxMon, const void *dataArg) {
+    const u8 *data = dataArg;
+
+    struct PokemonSubstruct0 *substruct0 = NULL;
+    struct PokemonSubstruct1 *substruct1 = NULL;
+    struct PokemonSubstruct2 *substruct2 = NULL;
+    struct PokemonSubstruct3 *substruct3 = NULL;
+
+    struct PokemonSubstruct0 substruct0tmp;
+    struct PokemonSubstruct1 substruct1tmp;
+    struct PokemonSubstruct2 substruct2tmp;
+    struct PokemonSubstruct3 substruct3tmp;
+
+    DecryptBoxMon(boxMon);
+
+    substruct0tmp = (GetSubstruct(boxMon, boxMon->personality, 0)->type0);
+    substruct1tmp = (GetSubstruct(boxMon, boxMon->personality, 1)->type1);
+    substruct2tmp = (GetSubstruct(boxMon, boxMon->personality, 2)->type2);
+    substruct3tmp = (GetSubstruct(boxMon, boxMon->personality, 3)->type3);
+
+    SET32(boxMon->personality);
+
+    substruct0 = &(GetSubstruct(boxMon, boxMon->personality, 0)->type0);
+    substruct1 = &(GetSubstruct(boxMon, boxMon->personality, 1)->type1);
+    substruct2 = &(GetSubstruct(boxMon, boxMon->personality, 2)->type2);
+    substruct3 = &(GetSubstruct(boxMon, boxMon->personality, 3)->type3);
+
+    *substruct0 = substruct0tmp;
+    *substruct1 = substruct1tmp;
+    *substruct2 = substruct2tmp;
+    *substruct3 = substruct3tmp;
+
+    boxMon->checksum = CalculateBoxMonChecksum(boxMon);
+    EncryptBoxMon(boxMon);
+}
+
 void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
 {
     const u8 *data = dataArg;
@@ -3954,15 +3990,6 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         substruct3 = &(GetSubstruct(boxMon, boxMon->personality, 3)->type3);
 
         DecryptBoxMon(boxMon);
-
-        if (CalculateBoxMonChecksum(boxMon) != boxMon->checksum)
-        {
-            boxMon->isBadEgg = 1;
-            boxMon->isEgg = 1;
-            substruct3->isEgg = 1;
-            EncryptBoxMon(boxMon);
-            return;
-        }
     }
 
     switch (field)
@@ -3983,8 +4010,11 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
     case MON_DATA_LANGUAGE:
         SET8(boxMon->language);
         break;
-    case MON_DATA_SANITY_IS_BAD_EGG:
-        SET8(boxMon->isBadEgg);
+    case MON_DATA_HAS_CUSTOM_NATURE:
+        SET8(boxMon->hasCustomNature);
+        break;
+    case MON_DATA_CUSTOM_NATURE:
+        SET8(boxMon->customNatureID);
         break;
     case MON_DATA_SANITY_HAS_SPECIES:
         SET8(boxMon->hasSpecies);
@@ -4368,9 +4398,9 @@ void CreateSecretBaseEnemyParty(struct SecretBase *secretBaseRecord)
                 gBattleResources->secretBase->party.species[i],
                 gBattleResources->secretBase->party.levels[i],
                 15,
-                1,
+                0,
                 gBattleResources->secretBase->party.personality[i],
-                OT_ID_RANDOM_NO_SHINY,
+                0,
                 0);
 
             SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBattleResources->secretBase->party.heldItems[i]);
@@ -5309,7 +5339,14 @@ u8 *UseStatIncreaseItem(u16 itemId)
 
 u8 GetNature(struct Pokemon *mon)
 {
-    return GetMonData(mon, MON_DATA_PERSONALITY, 0) % NUM_NATURES;
+    if (GetMonData(mon, MON_DATA_HAS_CUSTOM_NATURE, NULL) == FALSE)
+    {
+        return GetMonData(mon, MON_DATA_PERSONALITY, 0) % NUM_NATURES;
+    }
+    else
+    {
+        return (GetMonData(mon, MON_DATA_CUSTOM_NATURE, NULL));
+    }
 }
 
 u8 GetNatureFromPersonality(u32 personality)
@@ -6308,6 +6345,8 @@ const u16 sBattleThemes[] = {
 
 u16 GetBattleBGM(void)
 {
+    //if (gSaveBlock2Ptr->disableBGM == TRUE)
+    //    return MUS_DUMMY;
     if (FlagGet(FLAG_RYU_ENCOUNTERED_UB) == TRUE)
         return MUS_VS_MEW;
     if (gBattleTypeFlags & BATTLE_TYPE_KYOGRE_GROUDON)

@@ -8,7 +8,6 @@ EventScript_UseSurf:: @ 8271EA0
 	dofieldeffect FLDEFF_USE_SURF
 EventScript_ReleaseUseSurf:: @ 8271ED5
 	releaseall
-EventScript_EndUseSurf:: @ 8271ED6
 	end
 
 ES_SurfHasFollower::

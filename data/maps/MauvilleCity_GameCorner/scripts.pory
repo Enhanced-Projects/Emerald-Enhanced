@@ -33,16 +33,7 @@ MauvilleCity_GameCorner_EventScript_ChooseCoinsDefault50:: @ 820FBE5
 	case 1, MauvilleCity_GameCorner_EventScript_Buy500Coins
 	goto MauvilleCity_GameCorner_EventScript_CancelBuyCoins
 	end
-
-@ Unused
-MauvilleCity_GameCorner_EventScript_ChooseCoinsDefault500:: @ 820FC0C
-	multichoicedefault 15, 0, MULTI_GAME_CORNER_COINS, 1, 0
-	switch VAR_RESULT
-	case 0, MauvilleCity_GameCorner_EventScript_Buy50Coins
-	case 1, MauvilleCity_GameCorner_EventScript_Buy500Coins
-	goto MauvilleCity_GameCorner_EventScript_CancelBuyCoins
-	end
-
+	
 MauvilleCity_GameCorner_EventScript_Buy50Coins:: @ 820FC33
 	checkcoins VAR_TEMP_1
 	compare VAR_TEMP_1, (MAX_COINS + 1 - 50)
@@ -695,11 +686,6 @@ MauvilleCity_GameCorner_Text_SendToYourHomePC: @ 8210646
 MauvilleCity_GameCorner_Text_NotEnoughCoins: @ 8210673
 	.string "You don't have enough coins.$"
 
-@ Unused
-MauvilleCity_GameCorner_Text_NoRoomForPlacingDecor: @ 8210690
-	.string "There isn't any room available for\n"
-	.string "placing {STR_VAR_1}.$"
-
 MauvilleCity_GameCorner_Text_OhIsThatSo: @ 82106BF
 	.string "Oh, is that so? \n"
 	.string "You need to save some coins before\l"
@@ -710,10 +696,6 @@ MauvilleCity_GameCorner_Text_SoYourChoiceIsX: @ 8210705
 
 MauvilleCity_GameCorner_Text_HereYouGo: @ 821071B
 	.string "Here you go!$"
-
-@ Unused
-MauvilleCity_GameCorner_Text_CantCarryAnyMore: @ 8210728
-	.string "Oh, you can't carry any more than that.$"
 
 MauvilleCity_GameCorner_Text_GotTwoOfSameDollWantOne: @ 8210750
 	.string "I hit the jackpot recently and\n"

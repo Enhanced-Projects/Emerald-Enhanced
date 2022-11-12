@@ -10,14 +10,6 @@ TrainerHill_Elevator_OnFrame: @ 8269355
 TrainerHill_Elevator_EventScript_Attendant:: @ 826935F
 	end
 
-TrainerHill_Elevator_EventScript_ExitToRoof:: @ 8269360
-	applymovement PLAYER, TrainerHill_Elevator_Movement_PlayerExitElevatorToRoof
-	waitmovement 0
-	releaseall
-	warp MAP_TRAINER_HILL_ROOF, 255, 15, 5
-	waitstate
-	end
-
 TrainerHill_Elevator_EventScript_EnterElevator:: @ 8269375
 	applymovement PLAYER, TrainerHill_Elevator_Movement_PlayerApproachAttendant
 	waitmovement 0
@@ -38,11 +30,6 @@ TrainerHill_Elevator_EventScript_EnterElevator:: @ 8269375
 	waitmovement 0
 	warp MAP_TRAINER_HILL_ENTRANCE, 255, 17, 8
 	waitstate
-	end
-
-@ Unused
-TrainerHill_Elevator_EventScript_ExitFloorSelect:: @ 82693CE
-	goto TrainerHill_Elevator_EventScript_CloseFloorSelect
 	end
 
 @ Functionally unused

@@ -898,7 +898,8 @@ static const u8 sText_DebugUtilityItem16[] = _("Test DNS");
 static const u8 sText_DebugUtilityItem17[] = _("Print out theme colors");
 static const u8 sText_DebugUtilityItem18[] = _("Check Ryu's Challenge");
 static const u8 sText_DebugUtilityItem19[] = _("Check exact play time");
-static const u8 sText_DebugUtilityItem20[] = _("Exit");
+static const u8 sText_DebugUtilityItem20[] = _("Enable Verbose Mode");
+static const u8 sText_DebugUtilityItem21[] = _("Exit");
 
 // strings to display as items.
 static const u8 sText_BotanyConsumableItem1[] = _("Muscle Powder");
@@ -964,12 +965,24 @@ static const u8 sFollowerBrendan[] = _("Spawn Brendan");
 static const u8 sFollowerLeaf[] = _("Spawn Leaf");
 static const u8 sFollowerCourtney[] = _("Spawn Courtney");
 static const u8 sFollowerJoy[] = _("Spawn Joy");
+static const u8 sFollowerMay[] = _("Spawn May");
+static const u8 sFollowerLucy[] = _("Spawn Lucy");
 static const u8 sFollowerNonCombat[] = _("{COLOR LIGHT_RED}{SHADOW RED}{DOWN_ARROW} NON COMBAT {DOWN_ARROW}");
 static const u8 sFollowerBlaise[] = _("Spawn Blaise");
 static const u8 sFollowerTiana[] = _("Spawn Tiana");
 static const u8 sFollowerHexer[] = _("Spawn Hexer");
-static const u8 sFollowerMay[] = _("Spawn May");
 static const u8 sReturnPrevious[] = _("Return");
+
+static const u8 sBetaMenuBugReport[] = _("Bug Report");
+static const u8 sBetaMenuWaystone[] = _ ("Check Waystone");
+static const u8 sBetaMenuBattleFlags[] = _ ("Reset Battle Flags");
+static const u8 sBetaMenuBadges[] = _ ("Reset Badges");
+static const u8 sBetaMenuGCMS[] = _ ("Clear GCMS");
+static const u8 sBetaMenuHome[] = _ ("Teleport Home");
+static const u8 sBetaMenuRTC[] = _ ("Reset RTC");
+static const u8 sBetaMenuRetroDex[] = _ ("Fill Dex from Boxes");
+static const u8 sBetaMenuExit[] = _ ("Exit Menu");
+static const u8 sBetaMenuFixFollowers[] = _("Restore Followers");
 
 static const struct ListMenuItem sBotanyConsumablesSet[] =
     {
@@ -1036,6 +1049,7 @@ static const struct ListMenuItem sDebugUtilitySet[] =
         {sText_DebugUtilityItem18, 18},
         {sText_DebugUtilityItem19, 19},
         {sText_DebugUtilityItem20, 20},
+        {sText_DebugUtilityItem21, 21},
 };
 
 static const struct ListMenuItem sAlchemyMenu[] =
@@ -1049,12 +1063,12 @@ static const struct ListMenuItem sAlchemyMenu[] =
         {sRAEffectEXPBoost1, 6},
         {sRAEffectEXPBoost2, 7},
         {sRAEffectEXPBoost3, 8},
-        {sRAEffectRepelT1, 9},
-        {sRAEffectRepelT2, 10},
-        {sRAEffectSuperCapture1, 11},
-        {sRAEffectSuperCapture2, 12},
-        {sRAEffectSuperCapture3, 13},
-        {sRAEffectHealingFactor, 14},
+        {sRAEffectHealingFactor, 9},
+        {sRAEffectRepelT1, 10},
+        {sRAEffectRepelT2, 11},
+        {sRAEffectSuperCapture1, 12},
+        {sRAEffectSuperCapture2, 13},
+        {sRAEffectSuperCapture3, 14},
         {sRAItemStardust, 15},
         {sRAItemFreshWater, 16},
         {sRAItemTonicWater, 17},
@@ -1074,11 +1088,26 @@ static const struct ListMenuItem sRyuFollowerDebugSet[] =
         {sFollowerCourtney, 6},
         {sFollowerJoy, 7},
         {sFollowerMay, 8},
-        {sFollowerNonCombat, 9},
-        {sFollowerBlaise, 10},
-        {sFollowerTiana, 11},
-        {sFollowerHexer, 12},
-        {sReturnPrevious, 13},
+        {sFollowerLucy, 9},
+        {sFollowerNonCombat, 10},
+        {sFollowerBlaise, 11},
+        {sFollowerTiana, 12},
+        {sFollowerHexer, 13},
+        {sReturnPrevious, 14},
+};
+
+static const struct ListMenuItem sRyuBetaMenuSet[] =
+    {
+    {sBetaMenuBugReport, 0},
+    {sBetaMenuWaystone, 1},
+    {sBetaMenuBattleFlags, 2},
+    {sBetaMenuBadges, 3},
+    {sBetaMenuGCMS, 4},
+    {sBetaMenuHome, 5},
+    {sBetaMenuRTC, 6},
+    {sBetaMenuRetroDex, 7},
+    {sBetaMenuFixFollowers, 8},
+    {sBetaMenuExit, 9}
 };
 
 
@@ -1094,6 +1123,7 @@ struct
         {sBotanyEvolutionSet, ARRAY_COUNT(sBotanyEvolutionSet)},
         {sAlchemyMenu, ARRAY_COUNT(sAlchemyMenu)},
         {sRyuFollowerDebugSet, ARRAY_COUNT(sRyuFollowerDebugSet)},
+        {sRyuBetaMenuSet, ARRAY_COUNT(sRyuBetaMenuSet)},
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);

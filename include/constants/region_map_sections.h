@@ -230,7 +230,8 @@
 #define MAPSEC_LILYCOVE_TRAINING_CENTER     0xE2
 #define MAPSEC_BANANA_SLAKOTH_GARDEN        0xE3
 #define MAPSEC_FROSTY_GROTTO                0xE4
-#define MAPSEC_NONE                         0xE5
+#define MAPSEC_CRAGGY_COAST_UNDERWATER      0xE5
+#define MAPSEC_NONE                         0xE6
 
 
 #define METLOC_SPECIAL_EGG                  0xFD

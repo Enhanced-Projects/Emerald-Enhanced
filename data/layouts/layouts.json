@@ -5537,7 +5537,7 @@
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_Facility",
+      "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/MauvilleCity_AdrastiWarehouse/border.bin",
       "blockdata_filepath": "data/layouts/MauvilleCity_AdrastiWarehouse/map.bin"
     },
@@ -5590,6 +5590,16 @@
       "secondary_tileset": "gTileset_BrendansDawnsHouse",
       "border_filepath": "data/layouts/LittlerootTown_DawnsHouse_MayBedroom/border.bin",
       "blockdata_filepath": "data/layouts/LittlerootTown_DawnsHouse_MayBedroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNDERWORLD",
+      "name": "Underworld_Layout",
+      "width": 11,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused2",
+      "border_filepath": "data/layouts/Underworld/border.bin",
+      "blockdata_filepath": "data/layouts/Underworld/map.bin"
     }
   ]
 }

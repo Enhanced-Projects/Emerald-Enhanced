@@ -508,36 +508,36 @@ bool8 ScrCmd_random(struct ScriptContext *ctx)
 bool8 ScrCmd_additem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = AddBagItem(itemId, (u8)quantity);
+    gSpecialVar_Result = AddBagItem(itemId, quantity);
     return FALSE;
 }
 
 bool8 ScrCmd_removeitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = RemoveBagItem(itemId, (u8)quantity);
+    gSpecialVar_Result = RemoveBagItem(itemId, quantity);
     return FALSE;
 }
 
 bool8 ScrCmd_checkitemspace(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = CheckBagHasSpace(itemId, (u8)quantity);
+    gSpecialVar_Result = CheckBagHasSpace(itemId, quantity);
     return FALSE;
 }
 
 bool8 ScrCmd_checkitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = CheckBagHasItem(itemId, (u8)quantity);
+    gSpecialVar_Result = CheckBagHasItem(itemId, quantity);
     return FALSE;
 }
 
@@ -1491,60 +1491,13 @@ bool8 ScrCmd_showcontestwinner(struct ScriptContext *ctx)
     return TRUE;
 }
 
-bool8 ScrCmd_braillemessage(struct ScriptContext *ctx)
+bool8 ScrCmd_empty0x78(struct ScriptContext *ctx)
 {
-    u8 *ptr = (u8 *)ScriptReadWord(ctx);
-    struct WindowTemplate winTemplate;
-    s32 i;
-    u8 width, height;
-    u8 xWindow, yWindow, xText, yText;
-    u8 temp;
-
-    StringExpandPlaceholders(gStringVar4, ptr + 6);
-
-    width = GetStringWidth(6, gStringVar4, -1) / 8u;
-
-    if (width > 0x1C)
-        width = 0x1C;
-
-    for (i = 0, height = 4; gStringVar4[i] != 0xFF;)
-    {
-        if (gStringVar4[i++] == 0xFE)
-            height += 3;
-    }
-
-    if (height > 0x12)
-        height = 0x12;
-
-    temp = width + 2;
-    xWindow = (0x1E - temp) / 2;
-
-    temp = height + 2;
-    yText = (0x14 - temp) / 2;
-
-    xText = xWindow;
-    xWindow += 1;
-
-    yWindow = yText;
-    yText += 2;
-
-    xText = (xWindow - xText - 1) * 8 + 3;
-    yText = (yText - yWindow - 1) * 8;
-
-    winTemplate = CreateWindowTemplate(0, xWindow, yWindow + 1, width, height, 0xF, 0x1);
-    gBrailleWindowId = AddWindow(&winTemplate);
-    LoadUserWindowBorderGfx(gBrailleWindowId, 0x214, 0xE0);
-    DrawStdWindowFrame(gBrailleWindowId, 0);
-    PutWindowTilemap(gBrailleWindowId);
-    FillWindowPixelBuffer(gBrailleWindowId, PIXEL_FILL(1));
-    AddTextPrinterParameterized(gBrailleWindowId, 6, gStringVar4, xText, yText, 0xFF, 0x0);
-    CopyWindowToVram(gBrailleWindowId, 3);
     return FALSE;
 }
 
-bool8 ScrCmd_closebraillemessage(struct ScriptContext *ctx)
+bool8 ScrCmd_empty0xda(struct ScriptContext *ctx)
 {
-    CloseBrailleWindow();
     return FALSE;
 }
 
@@ -2356,7 +2309,9 @@ bool8 ScrCmd_scriptdebug(struct ScriptContext *ctx)
         msg = (const u8 *)ctx->data[0];
 
     StringExpandPlaceholders(gStringVar4, msg);
+    mgba_open();
     mgba_printf(LOGINFO, "%s", ConvertToAscii(gStringVar4));
+    mgba_close();
     return FALSE;
 }
 
@@ -2512,12 +2467,7 @@ extern u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength);
 bool8 ScrCmd_buffermapname(struct ScriptContext *ctx)
 {
     u8 bufferIndex = ScriptReadByte(ctx);
-    u16 mapData = VarGet(ScriptReadHalfword(ctx));
-    u16 targetMapNum = (mapData & 0xFF);
-    u16 targetMapGroup = (mapData >> 8) & 0xFF;
-    u16 mapSecId = 0;
-
-    mapSecId = Overworld_GetMapHeaderByGroupAndId(targetMapGroup, targetMapNum)->regionMapSectionId;
+    u16 mapSecId = VarGet(ScriptReadHalfword(ctx));
     GetMapName(sScriptStringVars[bufferIndex], mapSecId, 0);
     return FALSE;
 }

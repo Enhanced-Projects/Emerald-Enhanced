@@ -371,6 +371,8 @@ void BattleAI_SetupFlags(void)
         AI_THINKING_STRUCT->aiFlags = GetAiScriptsInBattleFactory();
     else if (gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL | BATTLE_TYPE_SECRET_BASE))
         AI_THINKING_STRUCT->aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_TRY_TO_FAINT;
+    else if (IsPlayerInUnderworld() == TRUE)
+        AI_THINKING_STRUCT->aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_TRY_TO_FAINT;
     else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
         AI_THINKING_STRUCT->aiFlags = gTrainers[gTrainerBattleOpponent_A].aiFlags | gTrainers[gTrainerBattleOpponent_B].aiFlags;
     else
@@ -825,7 +827,6 @@ static void SetBattlerData(u8 battlerId)
 {
     if (!IsBattlerAIControlled(battlerId))
     {
-        struct Pokemon *illusionMon;
         u32 i;
 
         // Use the known battler's ability.
@@ -847,10 +848,6 @@ static void SetBattlerData(u8 battlerId)
             if (BATTLE_HISTORY->usedMoves[battlerId][i] == 0)
                 gBattleMons[battlerId].moves[i] = 0;
         }
-
-        // Simulate Illusion
-        if ((illusionMon = GetIllusionMonPtr(battlerId)) != NULL)
-            gBattleMons[battlerId].species = GetMonData(illusionMon, MON_DATA_SPECIES2);
     }
 }
 
@@ -1872,6 +1869,8 @@ static void Cmd_get_weather(void)
         AI_THINKING_STRUCT->funcResult = AI_WEATHER_SUN;
     else if (gBattleWeather & WEATHER_HAIL_ANY)
         AI_THINKING_STRUCT->funcResult = AI_WEATHER_HAIL;
+    else if (gBattleWeather & WEATHER_ECLIPSE_ANY)
+        AI_THINKING_STRUCT->funcResult = AI_WEATHER_ECLIPSE;
     else
         AI_THINKING_STRUCT->funcResult = AI_WEATHER_NONE;
 

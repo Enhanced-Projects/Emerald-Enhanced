@@ -20,24 +20,26 @@ script RCR_FollowerIntroSetup {//Dynamically chooses which follower text to disp
 	addvar(VAR_RYU_FOLLOWER_ELITE_MATCHES, 1)
 	addvar(VAR_RYU_FOLLOWER_BATTLES, 1)
 	switch (var(VAR_RYU_FOLLOWER_ID)) {
-		case OBJ_EVENT_GFX_TWIN:
+		case FOLLOWER_MINNIE:
 			msgbox(FMinnieMsg)
-		case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+		case FOLLOWER_SHELLY:
 			msgbox(FShellyMsg)
-		case OBJ_EVENT_GFX_WOMAN_2:
+		case FOLLOWER_LANETTE:
 			msgbox(FLanetteMsg)
-		case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+		case FOLLOWER_DAWN:
 			msgbox(FDawnMsg)
-		case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+		case FOLLOWER_BRENDAN:
 			msgbox(FBrendanMsg)
-		case OBJ_EVENT_GFX_LEAF:
+		case FOLLOWER_LEAF:
 			msgbox(FLeafMsg)
-		case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+		case FOLLOWER_COURTNEY:
 			msgbox(FCourtneyMsg)
-		case OBJ_EVENT_GFX_NURSE:
+		case FOLLOWER_JOY:
 			msgbox(FJoyMsg)
-		case OBJ_EVENT_GFX_MAY:
+		case FOLLOWER_MAY:
 			msgbox(FMayMsg)
+		case FOLLOWER_LUCY:
+			msgbox(FLucyMsg)
 	}
 	closemessage
 	return
@@ -104,6 +106,18 @@ script RyuChampionThroneStart { //For solo challenging
 				msgbox(RCR_Danny_Intro)
 				closemessage
 				trainerbattle_no_intro(TRAINER_CHALLENGER_DANNY, RCR_Danny_DefeatText)
+			case 20:
+				msgbox(RCR_Lusamine_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_LUSAMINE, RCR_Lusamine_DefeatText)
+			case 21:
+				msgbox(RCR_Clay_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_CLAY, RCR_Clay_DefeatText)
+			case 22:
+				msgbox(RCR_Yui_Intro)
+				closemessage
+				trainerbattle_no_intro(TRAINER_CHALLENGER_YUI, RCR_Yui_DefeatText)
 	}
 	goto(RCR_FinishChallenge)
 }
@@ -175,11 +189,41 @@ script RCR_OverlordRyuEndMatch {
 	end
 }
 
+text RCR_NumberDebug {
+	"Fighting Opponent {RYU_STR_1}$"
+}
+
+script RCR_RETURNRANDOM {
+	random(13)
+	copyvar(VAR_0x8009, VAR_RESULT)
+	buffernumberstring(0, VAR_RESULT)
+	msgbox("Is {STR_VAR_1} ok?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		closemessage
+		copyvar(VAR_RESULT, VAR_0x8009)
+		return
+	}
+	goto(RCR_RETURNRANDOM)
+}
+
 script RCR_ChooseOpponent { //randomly selects which challenger the player is getting
 	special(SpawnCameraObject)
 	applymovement(CAMERA, RCR_CameraMove)
 	waitmovement(CAMERA)
-	random(9)
+	random(13)
+	copyvar(VAR_0x8002, VAR_RESULT)
+	if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
+		buffernumberstring(3, VAR_RESULT)
+		debugprint(RCR_NumberDebug, 120)
+		if (flag(FLAG_RYU_DEV_MODE) == TRUE)  {
+			msgbox("Accept this roll?", MSGBOX_YESNO)
+			if (var(VAR_RESULT) == NO) {
+    		    call(RCR_RETURNRANDOM)
+			}
+		}
+	}
+	closemessage
+	copyvar(VAR_RESULT, VAR_0x8002)
 	switch (var(VAR_RESULT)) {
 	case 0:
 		setvar(VAR_TEMP_5, 1)
@@ -201,6 +245,12 @@ script RCR_ChooseOpponent { //randomly selects which challenger the player is ge
 		setvar(VAR_TEMP_5, 13)
 	case 9:
 		setvar(VAR_TEMP_5, 19)
+	case 10:
+		setvar(VAR_TEMP_5, 20)
+	case 11:
+		setvar(VAR_TEMP_5, 21)
+	case 12:
+		setvar(VAR_TEMP_5, 22)
 	}
 	return
 }
@@ -215,11 +265,11 @@ script RCR_SetUpBattle { //For follower matches
 	waitmovement(CAMERA)
 	waitmovement(VAR_TEMP_5)
 	addvar(VAR_RYU_FOLLOWER_BATTLES, 1)
+	RedoBattleStartCheck:
 	switch(var(VAR_TEMP_5)) {
 	case 1:
 		msgbox(RCR_Steven_Intro)
 		closemessage
-		//special(SavePlayerParty) I don't remember if i still need this or not, so commented out for now.
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -228,7 +278,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 2:
 		msgbox(RCR_Norman_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -237,7 +286,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 7:
 		msgbox(RCR_Johnatan_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -246,7 +294,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 8:
 		msgbox(RCR_Robert_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -255,7 +302,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 9:
 		msgbox(RCR_Lance_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -264,7 +310,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 10:
 		msgbox(RCR_Zod_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -273,7 +318,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 11:
 		msgbox(RCR_Giovanni_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -282,7 +326,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 12:
 		msgbox(RCR_Sigma_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -291,7 +334,6 @@ script RCR_SetUpBattle { //For follower matches
 	case 13:
 		msgbox(RCR_Juan_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
@@ -300,12 +342,35 @@ script RCR_SetUpBattle { //For follower matches
 	case 19:
 		msgbox(RCR_Danny_Intro)
 		closemessage
-		//special(SavePlayerParty)
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
 			call(RCR_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_DANNY, RCR_Danny_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 20:
+		msgbox(RCR_Lusamine_Intro)
+		closemessage
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_LUSAMINE, RCR_Lusamine_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 21:
+		msgbox(RCR_Clay_Intro)
+		closemessage
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_CLAY, RCR_Clay_DefeatText, VAR_0x8008, VAR_0x8009)
+	case 22:
+		msgbox(RCR_Yui_Intro)
+		closemessage
+		choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RCR_ChooseValidMons)
+		}
+		multi_2_vs_1(TRAINER_CHALLENGER_YUI, RCR_Yui_DefeatText, VAR_0x8008, VAR_0x8009)
 	}
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
@@ -317,7 +382,7 @@ script RCR_SetUpBattle { //For follower matches
 script RCR_ChooseValidMons{ //player didn't select valid mons or pressed B at party selection
 	msgbox(EGC_NeedToChoose)
 	closemessage
-	return
+	goto(RedoBattleStartCheck)
 }
 
 script RCR_ChallengerStevenAggroniteReward { //special reward for steven
@@ -338,6 +403,13 @@ script MawileMegaReward { //overlord ryu's mawilite reward
 	msgbox(RyuGivesMawilite)
 	additem(ITEM_MAWILITE)
 	setflag(FLAG_RYU_DEFEATED_OVERLORD)
+	if (flag(FLAG_RYU_PREMATURE_DEATH) == FALSE){
+		ach(query, ACH_MARKED_FOR_DEATH)
+		if (var(VAR_RESULT) == FALSE){
+			ach(give, ACH_MARKED_FOR_DEATH)
+			setflag(FLAG_RYU_UNDERWORLD)
+		}
+	}
 	return
 }
 	
@@ -369,6 +441,10 @@ script RCR_FinishChallenge { //clean up and go to hall of fame
 	waitmovement(PLAYER)
 	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE) {
 		call(RyuForceCancelFollowerForQuest)
+	}
+	if ((flag(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) && (flag(FLAG_RYU_FAILED_RYU_CHALLENGE) == FALSE) && (var(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100)){
+		setvar(VAR_RYU_SPECIAL_CHALLENGE_STATE, 69)
+		clearflag(FLAG_RYU_BANNED_FROM_MARTS)
 	}
 	warp(MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 255, 7, 16)
 	waitstate
@@ -590,6 +666,24 @@ RCR_Juan_DefeatText:
 	.string "Ahahaha, excellent!\n"
 	.string "You truly are a remarkable trainer!$"
 
+RCR_Lusamine_Intro:
+	.string "Perhaps I should put you on display\nlike I have my beloved specimens...\pI must have you!\nFight me!$"
+	
+RCR_Lusamine_DefeatText:
+	.string "Wh- WHAT?! IMPOSSIBLE!\nI must add you to my collection!\pThis isn't... over...$"
+
+RCR_Clay_Intro:
+	.string "So you're the one I've been hearing\nabout all the way in Unova.\pLet's see how well you can keep up\nwith a former gym leader!$"
+
+RCR_Clay_DefeatText:
+	.string "Dang, so the rumors were true...$"
+
+RCR_Yui_Intro:
+	.string "Just give up.\pI did.$"
+
+RCR_Yui_DefeatText:
+	.string "Whatever.\nSee if I care.$"
+
 RCR_Danny_Intro:
 	.string "Never thought Hoenn would be\n"
 	.string "such a marvelous spot to\p"
@@ -648,7 +742,7 @@ FLeafMsg:
     .string "repertoire!$"
 
 FCourtneyMsg:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}You know, I didn't fancy mself a\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}You know, I didn't fancy myself a\n"
     .string "voyeur... But hurting people in\p"
     .string "such a public way really excites me.\p"
     .string "My pupper is hungry!$"
@@ -663,5 +757,8 @@ FMayMsg:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}At last... Championship.\n"
 	.string "I can finally have an all-out\l"
 	.string "battle!"
+
+FLucyMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Huh. I feel like I've been here\nbefore.\pTrainers at the frontier\nare far scarier.\pThis will be easy.$"
 
 `

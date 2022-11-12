@@ -6,6 +6,7 @@ SeafloorCavern_Room9_MapScripts:: @ 8234DC8
 
 SFC_OnFrame::
 	map_script_2 VAR_RYU_QUEST_AQUA, 112, SFC_AquaCutScene
+	map_script_2 VAR_TEMP_3, 0, SFC_ClearCavernMaybe
 	.2byte 0
 
 SFC_OnWarp:
@@ -24,10 +25,6 @@ SFC_InvisPlayer:: @this is an annoying hack to make the player invisible for the
 SFC_MakePlayerInvis::
 	applymovement PLAYER, SCH_SetInvisible
 	end
-	
-SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
-    releaseall
-    end
 
 SFC_AltKyogre::
 	end
@@ -90,13 +87,13 @@ SFC9_TakeOpportunity::
 	waitmovement 2
 	call SFC_DoKyogreAnimation
 	setvar VAR_RYU_QUEST_MAGMA, 550@player's doing alternate magma line
+	setflag FLAG_RYU_CHOSE_MAGMA_PATH
 	warpsilent MAP_SOOTOPOLIS_CITY_MAGMA_EVENT, 255, 20, 37
 	waitstate
 	
 SFC9_CompleteTheMission::
 	applymovement PLAYER, SFC9_WalkInPlaceTakeOrb
 	waitmovement PLAYER
-	giveitem ITEM_BLUE_ORB, 1
 	closemessage
 	delay 40
 	msgbox SFC9_AquaGone
@@ -108,6 +105,7 @@ SFC9_CompleteTheMission::
 	closemessage
 	setvar VAR_RYU_QUEST_MAGMA, 450@Player's doing the main magma line
 	clearflag FLAG_RYU_MAXIE_END_EVENT
+	setflag FLAG_RYU_CHOSE_MAGMA_PATH
 	warpsilent MAP_MAGMA_HIDEOUT_4F, 255, 5, 13
 	
 SFC9_Shelly::
@@ -378,14 +376,22 @@ SFC_MoveCamera1:
 	walk_up
 	step_end
 
-
-
-
-
-
-
-
-
-
-
 `
+
+script SFC_ClearCavernMaybe { //makes the event non-repeatable
+	if ((flag(FLAG_RYU_CHOSE_MAGMA_PATH) == TRUE) || (flag(FLAG_RYU_PLAYER_HELPING_MAGMA) == FALSE)) {
+		setflag(FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS)
+		removeobject(5)
+		removeobject(6)
+		removeobject(7)
+		removeobject(2)
+		removeobject(4)
+		removeobject(1)
+		setflag(FLAG_RYU_HIDE_REL_OBJECTS)
+		setflag(FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE)
+		setflag(FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_2)
+		setvar(VAR_TEMP_3, 100)
+	}
+	setvar(VAR_TEMP_3, 120)
+	end
+}

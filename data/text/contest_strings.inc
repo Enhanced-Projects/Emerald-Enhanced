@@ -296,11 +296,6 @@ gText_MonHasntMadeItsAppeal:: @ 827D7E8
 	.string "{STR_VAR_1} hasn't made\n"
 	.string "its appeal.{PAUSE_UNTIL_PRESS}$"
 
-@ Unused
-gText_AnticipationSwelledForMonsAppealNext2:: @ 827D805
-	.string "Anticipation swelled for\n"
-	.string "{STR_VAR_1}'s appeal next.$"
-
 gText_EmptyContestString:: @ 827D830
 	.string "$"
 
@@ -701,10 +696,6 @@ gText_Contest_Smartness:: @ 827E878
 
 gText_Contest_Toughness:: @ 827E882
 	.string "toughness$"
-
-@ Unused
-gText_Tension:: @ 827E88C
-	.string "Tension$"
 
 gText_CoolMove:: @ 827E894
 	.string "Cool Move$"

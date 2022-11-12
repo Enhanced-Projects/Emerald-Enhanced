@@ -122,16 +122,6 @@ Route116_EventScript_Briney:: @ 81F2D84
 	release
 	end
 
-Route116_EventScript_BrineyTrigger:: @ 81F2D95
-	lockall
-	applymovement 11, Common_Movement_WalkInPlaceFastestRight
-	applymovement PLAYER, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	msgbox Route116_Text_ScoundrelMadeOffWithPeeko, MSGBOX_DEFAULT
-	setvar VAR_ROUTE116_STATE, 2
-	releaseall
-	end
-
 Route116_EventScript_GlassesMan:: @ 81F2DB6
 	lock
 	faceplayer
@@ -236,14 +226,6 @@ Route116_EventScript_TryRegisterJerryAfterBattle:: @ 81F2EF8
 	release
 	end
 
-Route116_EventScript_RegisterJerryAfterBattle:: @ 81F2F03
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route116_Text_JerryRegister2, MSGBOX_DEFAULT
-	@nop Trainer_JERRY_1
-	release
-	end
-
 Route116_EventScript_TryRegisterJerry:: @ 81F2F22
 	msgbox Route116_Text_JerryPostBattle, MSGBOX_DEFAULT
 	release
@@ -253,11 +235,6 @@ Route116_EventScript_RegisterJerry:: @ 81F2F35
 	msgbox Route116_Text_JerryRegister1, MSGBOX_DEFAULT
 	@nop Trainer_JERRY_1
 	release
-	end
-
-Route116_EventScript_RematchJerry:: @ 81F2F4E
-	trainerbattle_rematch TRAINER_JERRY_1, Route116_Text_JerryRematchIntro, Route116_Text_JerryRematchDefeat
-	msgbox Route116_Text_JerryPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_Clark:: @ 81F2F65
@@ -280,14 +257,6 @@ Route116_EventScript_TryRegisterKarenAfterBattle:: @ 81F2FD4
 	release
 	end
 
-Route116_EventScript_RegisterKarenAfterBattle:: @ 81F2FDF
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route116_Text_KarenRegister2, MSGBOX_DEFAULT
-	@nop Trainer_KAREN_1
-	release
-	end
-
 Route116_EventScript_TryRegisterKaren:: @ 81F2FFE
 	msgbox Route116_Text_KarenPostBattle, MSGBOX_DEFAULT
 	release
@@ -297,11 +266,6 @@ Route116_EventScript_RegisterKaren:: @ 81F3011
 	msgbox Route116_Text_KarenRegister1, MSGBOX_DEFAULT
 	@nop Trainer_KAREN_1
 	release
-	end
-
-Route116_EventScript_RematchKaren:: @ 81F302A
-	trainerbattle_rematch TRAINER_KAREN_1, Route116_Text_KarenRematchIntro, Route116_Text_KarenRematchDefeat
-	msgbox Route116_Text_KarenPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_Sarah:: @ 81F3041

@@ -23,6 +23,7 @@ EventScript_BufferPocketNameAndTryFanfare:: @ 8271B08
 	case POCKET_POKE_BALLS, EventScript_BufferPokeballsPocket
 	case POCKET_TM_HM, EventScript_BufferTMHMsPocket
 	case POCKET_BERRIES, EventScript_BufferBerriesPocket
+	case POCKET_MEGASTONES, EventScript_BufferMegaStonesPocket
 	end
 
 EventScript_BufferItemsPocket:: @ 8271B45
@@ -63,6 +64,12 @@ EventScript_BufferTMHMsPocket:: @ 8271B75
 
 EventScript_BufferBerriesPocket:: @ 8271B85
 	bufferstdstring 2, STDSTRING_BERRIES
+	compare VAR_0x8007, 1
+	call_if_eq EventScript_PlayFanfareObtainedItem
+	return
+
+EventScript_BufferMegaStonesPocket::
+	bufferstdstring 2, STDSTRING_MEGASTONES
 	compare VAR_0x8007, 1
 	call_if_eq EventScript_PlayFanfareObtainedItem
 	return
@@ -132,6 +139,7 @@ Std_FindItem:: @ 8271BFD
 
 EventScript_PickUpItem:: @ 8271C3A
 	removeobject VAR_LAST_TALKED
+	call_if_set FLAG_RYU_VERBOSE_MODE, EVT_PrintPickedUpItem
 	additem VAR_0x8004, VAR_0x8005
 	specialvar VAR_RESULT, BufferTMHMMoveName
 	copyvar VAR_0x8008, VAR_RESULT
@@ -146,6 +154,14 @@ EventScript_PickUpItem:: @ 8271C3A
 	compare VAR_RESULT, 1
 	goto_if_eq EventScript_PutBattlePyramidItemInBag
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	return
+
+EVT_VerbosePrint:
+	.string "Removed {RYU_STR_3}.$"
+	
+EVT_PrintPickedUpItem::
+	buffernumberstring 5, VAR_LAST_TALKED
+	debugprint EVT_VerbosePrint, 60
 	return
 
 EventScript_PutBattlePyramidItemInBag:: @ 8271C86

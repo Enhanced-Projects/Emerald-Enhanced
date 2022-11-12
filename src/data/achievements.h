@@ -191,8 +191,8 @@ static const u8 sTheTradesmanHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  
 static const u8 sTheTradesmanDesc[] = _("Your skill may be unrivaled, but what of\nyour compassion?\n(175+ standing with the Professionals.)");
 
 static const u8 sTheWarriorLabel[] = _("The Warrior");
-static const u8 sTheWarriorHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Olympian.");
-static const u8 sTheWarriorDesc[] = _("Your unbridled power is impressive, but\nhow does your intelligence stack?\n(175+ standing with the Athletes.)");
+static const u8 sTheWarriorHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}League Conqueror.");
+static const u8 sTheWarriorDesc[] = _("You defeated the most well-known\ntrainers in Hoenn.\nGreatness Awaits!(All Badges)");
 
 static const u8 sTheUniversalistLabel[] = _("The Universalist");
 static const u8 sTheUniversalistHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Way of the seven paths.");
@@ -245,6 +245,14 @@ static const u8 sDeOrphanedDesc[] = _("You gave her a new lease on life!\n(Found
 static const u8 sLostGirlLabel[] = _("Lost Girl");
 static const u8 sLostGirlHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Recruit an orphan");
 static const u8 sLostGirlDesc[] = _("With no expectations, she's super loyal!\n(Romanced May)");
+
+static const u8 sMarkedForDeathLabel[] = _("Marked For Death");
+static const u8 sMarkedForDeathHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}be immortal");
+static const u8 sMarkedForDeathDesc[] = _("You have angered the gods that be by\ndefeating your fate.");
+
+static const u8 sThePhoenixLabel[] = _("The Phoenix");
+static const u8 sThePhoenixHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}defeat the reaper");
+static const u8 sThePhoenixDesc[] = _("Even the gods cannot stop you!");
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
@@ -310,4 +318,6 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_WANTED] = {12, 47, CATEGORY_EXPLORATION, ACH_WANTED, sWantedLabel, sWantedDesc, sWantedHint}, //bounty of greater than 100000
     [ACH_DE_ORPHANED] = {37, 35, CATEGORY_QUESTING, ACH_DE_ORPHANED, sDeOrphanedLabel, sDeOrphanedDesc, sDeOrphanedHint}, //Unlocked May quest
     [ACH_LOST_GIRL] = {55, 35, CATEGORY_COMPANIONS, ACH_LOST_GIRL, sLostGirlLabel, sLostGirlDesc, sLostGirlHint}, //recruited May
+    [ACH_MARKED_FOR_DEATH] = {12, 49, CATEGORY_EXPLORATION, ACH_MARKED_FOR_DEATH, sMarkedForDeathLabel, sMarkedForDeathDesc, sMarkedForDeathHint}, //defeat overlord ryu with zero blackouts
+    [ACH_THE_PHOENIX] = {12, 51, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_MARKED_FOR_DEATH, sThePhoenixLabel, sThePhoenixDesc, sThePhoenixHint}, //defeat the four horsemen and arceus
 };

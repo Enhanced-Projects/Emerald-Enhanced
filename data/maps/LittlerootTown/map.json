@@ -69,13 +69,13 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RyuDebug_Utility1",
+      "script": "LRT_FollowerTest",
       "flag": "FLAG_RYU_HIDE_MINNIE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-      "x": 8,
-      "y": 11,
+      "x": 10,
+      "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -100,8 +100,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LEAF",
-      "x": 9,
-      "y": 11,
+      "x": 11,
+      "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -113,8 +113,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-      "x": 10,
-      "y": 11,
+      "x": 12,
+      "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -152,8 +152,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NURSE",
-      "x": 11,
-      "y": 11,
+      "x": 13,
+      "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -165,15 +165,15 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LUCY",
-      "x": 25,
-      "y": 18,
+      "x": 30,
+      "y": 30,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RyuScript_GiveHolidayGiftMon",
+      "script": "RyuScript_NoEventNPCScript",
       "flag": "FLAG_RYU_HIDE_HOLIDAY_NPC"
     },
     {
@@ -188,6 +188,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "LRT_HideMay",
       "flag": "FLAG_RYU_HIDE_LRT_MAY"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 14,
+      "y": 14,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS"
     }
   ],
   "warp_events": [
@@ -237,7 +250,7 @@
       "x": 12,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_TEMP_4",
+      "var": "VAR_TEMP_7",
       "var_value": "0",
       "script": "LRT_StopGoingSouth"
     },
@@ -246,7 +259,7 @@
       "x": 13,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_TEMP_4",
+      "var": "VAR_TEMP_7",
       "var_value": "0",
       "script": "LRT_StopGoingSouth"
     },
@@ -342,16 +355,16 @@
     },
     {
       "type": "sign",
-      "x": 7,
-      "y": 8,
+      "x": 4,
+      "y": 9,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LRT_BrendansHouseSign"
     },
     {
       "type": "sign",
-      "x": 12,
-      "y": 8,
+      "x": 15,
+      "y": 9,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LRT_DawnsHouseSign"

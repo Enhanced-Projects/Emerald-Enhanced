@@ -82,10 +82,6 @@ MossdeepCity_EventScript_VisitedMossdeep:: @ 81E4B38
 	setvar VAR_TEMP_5, 1
 	end
 
-MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter:: @ 81E4B41
-	end
-
-
 MossdeepCity_EventScript_Man:: @ 81E4C10
 	lock
 	faceplayer
@@ -468,11 +464,35 @@ MDC_DevonGuy2ToMatt:
 `
 
 script MossdeepTown_RealEstatePropertyDoor {
-	setvar(VAR_TEMP_D, PROPERTY_MOSSDEEP)
+	setvar(VAR_0x8009, PROPERTY_MOSSDEEP)
 	goto(RyuScript_HouseDoorLocks)
 }
 
 script MossdeepTown_RealEstatePropertySign {
-	setvar(VAR_TEMP_D, PROPERTY_MOSSDEEP)
+	setvar(VAR_0x8009, PROPERTY_MOSSDEEP)
 	goto(RyuRealEstateHouseSign)
 }
+
+script MDC_DeliveryQuestTarget4 {
+	checkitem(ITEM_FLOWERS, 1)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("I wish my husband would visit\nme more often.\pHe's always working.")
+		closemessage
+		release
+		end
+	}
+	removeitem(ITEM_FLOWERS, 1)
+	msgbox("Hm? From my husband?")
+	closemessage
+	applymovement(16, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	waitse
+	waitmovement(16)
+	msgbox("Oh, wow!\nThese are beautiful!\pThanks so much!\pAt least I know my husband\nis thinking of me.")
+	call(RyuChooseDeliveryTipAmount)
+	setvar(VAR_RYU_DELIVERY_SYSTEM_DATA, 108)//Player delivered the flowers. Return to Adrasti Foreman.
+	setflag(FLAG_RYU_HIDE_DELIVERY_NPC_4)
+	release
+	end
+}
+

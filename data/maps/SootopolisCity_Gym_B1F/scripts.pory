@@ -1,6 +1,11 @@
 raw `
 SootopolisCity_Gym_B1F_MapScripts:: @ 8225C8A
+	map_script ON_FRAME, SG_B1F_FrameScript
 	.byte 0
+
+SG_B1F_FrameScript:
+	map_script_2 VAR_TEMP_0, 0, SG_TryWeatherChange
+	.2byte 0
 
 SootopolisCity_Gym_B1F_EventScript_Andrea:: @ 8225C8B
 	trainerbattle_single TRAINER_ANDREA, SootopolisCity_Gym_B1F_Text_AndreaPreBattle, SootopolisCity_Gym_B1F_Text_AndreaDefeat

@@ -3,22 +3,9 @@ LittlerootTown_DawnsHouse_1F_MapScripts:: @ 81F88A5
 	map_script ON_FRAME, LRT_MayIntroCheck2
 	.byte 0
 
-
-LRT_leftSideTriggerFemale::
-	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
-	applymovement PLAYER, Lrt_trigger_moveRight
-	waitmovement 0
-	goto LRT_GameClearTriggerFemale
-
 LRT_MayIntroCheck2::
 	map_script_2 VAR_TEMP_6, 0, LRT_StartMalePlayerMayEvent
 	.2byte 0
-	
-LRT_rightSideTriggerFemale::
-	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
-	applymovement PLAYER, Lrt_trigger_moveLeft
-	waitmovement 0
-	goto LRT_GameClearTriggerFemale
 
 LRT_GameClearTriggerFemale::
 	call LRT_FemaleRivalDSStage3

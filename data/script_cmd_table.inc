@@ -120,7 +120,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_showmonpic                @ 0x75
 	.4byte ScrCmd_hidemonpic                @ 0x76
 	.4byte ScrCmd_showcontestwinner         @ 0x77
-	.4byte ScrCmd_braillemessage            @ 0x78
+	.4byte ScrCmd_empty0x78                 @ 0x78
 	.4byte ScrCmd_givemon                   @ 0x79
 	.4byte ScrCmd_giveegg                   @ 0x7a
 	.4byte ScrCmd_setmonmove                @ 0x7b
@@ -218,7 +218,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_warpmossdeepgym           @ 0xd7
 	.4byte ScrCmd_cmdD8                     @ 0xd8
 	.4byte ScrCmd_cmdD9                     @ 0xd9
-	.4byte ScrCmd_closebraillemessage       @ 0xda
+	.4byte ScrCmd_empty0xda                 @ 0xda
 	.4byte ScrCmd_cmdDB                     @ 0xdb
 	.4byte ScrCmd_fadescreenswapbuffers     @ 0xdc
 	.4byte ScrCmd_buffertrainerclassname    @ 0xdd
@@ -235,7 +235,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_scriptdebug               @ 0xe8
 	.4byte ScrCmd_buffersingledynamicline   @ 0xe9
 	.4byte ScrCmd_checkbp                   @ 0xea
-	.4byte ScrCmd_gfec                      @ 0xeb
+	.4byte ScrCmd_debugprint                @ 0xeb
 	.4byte ScrCmd_multvar                   @ 0xec
 	.4byte ScrCmd_divvar                    @ 0xed
 	.4byte ScrCmd_drawfullscreenimage       @ 0xee

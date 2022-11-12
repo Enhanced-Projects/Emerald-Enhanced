@@ -1,8 +1,15 @@
-mapscripts DewfordTown_Home_MapScripts {}
+mapscripts DewfordTown_Home_MapScripts {
+    ON_FRAME [
+        VAR_TEMP_5, 0: LoadAttendantGfx
+    ]
+}
+
+const HOUSEWIFEID = 1
 
 script DewfordHouse_ExitHome {
     lockall
     clearflag(FLAG_RYU_ENTERING_RENTED_HOME)
+    clearflag(FLAG_RYU_ENTERING_OWNED_HOME)
     warpsilent(MAP_DEWFORD_TOWN, 255, 11, 7)
     waitstate
 }

@@ -15,28 +15,6 @@ Route111_EventScript_CloseDesertRuins:: @ 81F0CD1
 	setmetatile 29, 87, METATILE_General_RockWall_SandBase, 1
 	return
 
-@ Show Mirage Tower just prior to disintegration. Mirage Tower is otherwise handled by the map layout
-Route111_EventScript_ShowTemporaryMirageTower:: @ 81F0CE4
-	setmetatile 18, 53, METATILE_Mauville_MirageTower_Tile0, 0
-	setmetatile 19, 53, METATILE_Mauville_MirageTower_Tile1, 0
-	setmetatile 20, 53, METATILE_Mauville_MirageTower_Tile2, 0
-	setmetatile 18, 54, METATILE_Mauville_MirageTower_Tile3, 0
-	setmetatile 19, 54, METATILE_Mauville_MirageTower_Tile4, 0
-	setmetatile 20, 54, METATILE_Mauville_MirageTower_Tile5, 0
-	setmetatile 18, 55, METATILE_Mauville_MirageTower_Tile6, 0
-	setmetatile 19, 55, METATILE_Mauville_MirageTower_Tile7, 0
-	setmetatile 20, 55, METATILE_Mauville_MirageTower_Tile8, 0
-	setmetatile 18, 56, METATILE_Mauville_MirageTower_Tile9, 0
-	setmetatile 19, 56, METATILE_Mauville_MirageTower_TileA, 0
-	setmetatile 20, 56, METATILE_Mauville_MirageTower_TileB, 0
-	setmetatile 18, 57, METATILE_Mauville_MirageTower_TileC, 0
-	setmetatile 19, 57, METATILE_Mauville_MirageTower_TileD, 0
-	setmetatile 20, 57, METATILE_Mauville_MirageTower_TileE, 0
-	setmetatile 18, 58, METATILE_Mauville_MirageTower_TileF, 0
-	setmetatile 19, 58, METATILE_Mauville_MirageTower_Tile10, 0
-	setmetatile 20, 58, METATILE_Mauville_MirageTower_Tile11, 0
-	return
-
 Route111_OnTransition: @ 81F0D87
 	setvar VAR_TRAINER_HILL_IS_ACTIVE, 0
 	special SetMirageTowerVisibility
@@ -105,17 +83,6 @@ Route111_EventScript_HidePlayerForMirageTower:: @ 81F0E50
 Route111_OnFrame: @ 81F0E56
 	map_script_2 VAR_RYU_QUEST_MAGMA, 150, R111_ResumeMagmaScene
 	.2byte 0
-
-@ Unused
-Route111_Movement_PlayerFall:: @ 81F0EB1
-	store_lock_anim
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	step_end
 
 Route111_EventScript_Girl:: @ 81F0EB9
 	lock
@@ -294,30 +261,9 @@ Route111_EventScript_Hiker:: @ 81F119B
 	release
 	end
 
-Route111_EventScript_HikerMirageTowerGone:: @ 81F11C6
-	msgbox Route111_Text_MirageTowerHasntBeenSeenSince, MSGBOX_DEFAULT
-	release
-	end
-
-Route111_EventScript_HikerMirageTowerDisintegrated:: @ 81F11D0
-	msgbox Route111_Text_ThatWasShockingSandRainedDown, MSGBOX_DEFAULT
-	release
-	end
-
 Route111_EventScript_HikerMirageTowerVisible:: @ 81F11DA
 	msgbox Route111_Text_MirageTowerClearlyVisible, MSGBOX_DEFAULT
 	release
-	end
-
-Route111_EventScript_RockSmashTipFatMan:: @ 81F11E4
-	lockall
-	applymovement 46, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox Route111_Text_MauvilleUncleToldMeToTakeRockSmash, MSGBOX_DEFAULT
-	closemessage
-	applymovement 46, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	releaseall
 	end
 
 Route111_EventScript_Drew:: @ 81F1204
@@ -354,11 +300,6 @@ Route111_EventScript_RegisterDusty:: @ 81F128C
 	release
 	end
 
-Route111_EventScript_RematchDusty:: @ 81F12AB
-	trainerbattle_rematch TRAINER_DUSTY_1, Route111_Text_DustyRematchIntro, Route111_Text_DustyRematchDefeat
-	msgbox Route111_Text_DustyPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route111_EventScript_Travis:: @ 81F12C2
 	trainerbattle_single TRAINER_TRAVIS, Route111_Text_TravisIntro, Route111_Text_TravisDefeat
 	msgbox Route111_Text_TravisPostBattle, MSGBOX_AUTOCLOSE
@@ -388,11 +329,6 @@ Route111_EventScript_RegisterWilton:: @ 81F1333
 	release
 	end
 
-Route111_EventScript_RematchWilton:: @ 81F1352
-	trainerbattle_rematch TRAINER_WILTON_1, Route111_Text_WiltonRematchIntro, Route111_Text_WiltonRematchDefeat
-	msgbox Route111_Text_WiltonPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route111_EventScript_Brooke:: @ 81F1369
 	trainerbattle_single TRAINER_BROOKE_1, Route111_Text_BrookeIntro, Route111_Text_BrookeDefeat, Route111_EventScript_RegisterBrooke
 	msgbox Route111_Text_BrookePostBattle, MSGBOX_DEFAULT
@@ -405,11 +341,6 @@ Route111_EventScript_RegisterBrooke:: @ 81F1395
 	msgbox Route111_Text_BrookeRegister, MSGBOX_DEFAULT
 	@nop Trainer_BROOKE_1
 	release
-	end
-
-Route111_EventScript_RematchBrooke:: @ 81F13B4
-	trainerbattle_rematch TRAINER_BROOKE_1, Route111_Text_BrookeRematchIntro, Route111_Text_BrookeRematchDefeat
-	msgbox Route111_Text_BrookePostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route111_EventScript_Hayden:: @ 81F13CB

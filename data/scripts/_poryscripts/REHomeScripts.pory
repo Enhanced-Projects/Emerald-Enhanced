@@ -1,0 +1,698 @@
+// store-a-companion
+script LoadAttendantGfx {
+    setvar(VAR_TEMP_5, 100)
+    if ((flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) && (flag(FLAG_RYU_SAVED_ATTENDANT) == TRUE)) {
+        copyvar(VAR_OBJ_GFX_ID_3, VAR_RYU_ATTENDANT_ID)
+        clearflag(FLAG_RYU_HIDE_HOME_ATTENDANT)
+    }
+    return
+}
+
+script whoami {
+    buffernumberstring(0, VAR_OBJ_GFX_ID_3)
+    msgbox("I am {STR_VAR_1}")
+    release
+    end
+}
+
+script SetFollowerAsAttendant {
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Should I stay here at your home?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        copyvar(VAR_RYU_ATTENDANT_ID, VAR_RYU_FOLLOWER_ID)
+        copyvar(VAR_OBJ_GFX_ID_3, VAR_RYU_ATTENDANT_ID)
+        setflag(FLAG_RYU_SAVED_ATTENDANT)
+        getobjectxy(FOLLOWER)
+        destroyfollower
+        setobjectxy(1, VAR_0x8001, VAR_0x8002)
+        addobject(1)
+        release
+        end
+    }
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay, I'll keep following you.")
+    return
+}
+
+text RASDF {
+    "Attendant:{STR_VAR_1}, Follower:{STR_VAR_2}, Enabled:{STR_VAR_3}"
+}
+
+script ExpelPartnerAtHome {
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay! I'll head back to my\nhome!\pThanks for letting me stay.")
+    call(RyuDismissAttendant)
+    release
+    end
+}
+
+script RyuRE_ActivateBed {
+    lock
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}Sleep for the night?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        specialvar(VAR_RESULT, GetPlayerFacingDirection)
+        switch (var(VAR_RESULT)) {
+            case DIR_NORTH:
+                applymovement(PLAYER, Common_Movement_StepUp)
+                waitmovement(PLAYER)
+                turnobject(PLAYER, DIR_SOUTH)
+                goto(RyuRE_UseBed)
+            case DIR_SOUTH:
+                applymovement(PLAYER, Common_Movement_StepUp)
+                waitmovement(PLAYER)
+                turnobject(PLAYER, DIR_SOUTH)
+                goto(RyuRE_UseBed)
+            case DIR_EAST:
+                applymovement(PLAYER, Common_Movement_StepRight)
+                waitmovement(PLAYER)
+                turnobject(PLAYER, DIR_SOUTH)
+                goto(RyuRE_UseBed)
+            case DIR_WEST:
+                applymovement(PLAYER, Common_Movement_StepLeft)
+                waitmovement(PLAYER)
+                turnobject(PLAYER, DIR_SOUTH)
+                goto(RyuRE_UseBed)
+        }
+        release
+        end
+    }
+release
+end
+}
+
+script RyuRE_UseBed {
+        lock
+        fadescreen(FADE_TO_BLACK)
+        closemessage
+        getplayerxy(VAR_0x8003, VAR_0x8004)
+        setobjectxy(1, VAR_0x8003, VAR_0x8004)
+        switch (var(VAR_RYU_ATTENDANT_ID)) {
+            case FOLLOWER_LANETTE:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aw! But it's still so early!\nI'm used to being up much later than\lthis.\pOh well, guess I'll enjoy the extra\nsleep.")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {STR_VAR_1} spend the night\n together . . .)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Good morning, {PLAYER}!\pShould I make some coffee?")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+	        case FOLLOWER_MINNIE:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I'm tired and ready for bed!")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} tucks Minnie in and then\n lays down on the bed next to her)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hi! did you sleep good?\pCan we go out adventuring\ntoday?")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+	        case FOLLOWER_DAWN:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm ready for whatever you can\nthrow at me!")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL} roll around on the bed\n wrestling with each other\l until they rest for the night.)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Man... I'm more tired now than\nbefore we went to bed.\pI might take a nap today.")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+	        case FOLLOWER_BRENDAN:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}You're not going to let me sleep\nare you?")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL} spend a restless night\n together.)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}You just don't want me to sleep,\nhuh?")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+	        case FOLLOWER_LEAF:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}I was just craving a good snuggle!")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Lana snuggle tightly and rest\n together.)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}It's too early!\nCan't we stay like this a little\nlonger?")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+	        case FOLLOWER_COURTNEY:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Sleep is for the weak...")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(Courtney holds {PLAYER} extremely\n tight and nods off...)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}But...I don't want to let go...\n{PLAYER}.... stay...")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+	        case FOLLOWER_SHELLY:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}You read my mind!\nLet's snuggle for a while first...")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly and {PLAYER} enjoy a\n long night's rest in\l each other's arms.)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Owh... is it morning already?!")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+	        case FOLLOWER_JOY:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}I could use a good rest.")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Joy have a nice, comfy\n night together..)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Good morning, {PLAYER}!\nI trust you slept well?")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+	        case FOLLOWER_MAY:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hmm... I'm not very tired,\nbut I could rest, I guess.")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(May and {PLAYER} sleep restlessly\n for the night...)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Well that was... eventful.\nHope you got SOME sleep...")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+	        case FOLLOWER_LUCY:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}I have to rest pretty often to\nkeep my skin silky smooth.")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lucy and {PLAYER} get tangled up and\nfall asleep for the night.)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (She appears to glow as\n she awakens and stretches.)\p{COLOR LIGHT_RED}{SHADOW RED}hey there, {PLAYER}... did you sleep well?")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
+            case 0xFFFF:
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                release
+                end
+        }
+        fadescreen(FADE_FROM_BLACK)
+        special(HealPlayerParty)
+        release
+        end
+    }
+
+script RyuAttendantScript {
+    lock
+    faceplayer
+    bufferdynamicmulti(RyuRE_Menu1, RyuRE_Menu2, RyuRE_Menu3, RyuRE_Menu4)
+    multichoice(18, 5 , MULTI_DYNAMIC_4, 1)
+    switch (var(VAR_RYU_ATTENDANT_ID)) {
+        case 0:
+            goto(Ryu_ClearBadAttendant)
+        case 65535:
+            goto(Ryu_ClearBadAttendant)
+        case FOLLOWER_LANETTE:
+            goto(Ryu_AttendantLanette)
+	    case FOLLOWER_MINNIE:
+            call(Ryu_AttendantMinnie)
+	    case FOLLOWER_DAWN:
+            call(Ryu_AttendantDawn)
+	    case FOLLOWER_BRENDAN:
+            call(Ryu_AttendantBrendan)
+	    case FOLLOWER_LEAF:
+            call(Ryu_AttendantLeaf)
+	    case FOLLOWER_COURTNEY:
+            call(Ryu_AttendantCourtney)
+	    case FOLLOWER_SHELLY:
+            call(Ryu_AttendantShelly)
+	    case FOLLOWER_JOY:
+            call(Ryu_AttendantJoy)
+	    case FOLLOWER_MAY:
+            call(Ryu_AttendantMay)
+	    case FOLLOWER_LUCY:
+            call(Ryu_AttendantLucy)
+    }
+    release
+    end
+}
+
+script Ryu_AttendantLanette {
+    switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Should I return to my lab?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == TRUE) {
+                goto(RyuDismissAttendant)
+            }
+            closemessage
+        case 1:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh, no. There's not enough space\nfor us to battle here.\pI'm happy to go with you and\lfight in a gym or something though!")
+            closemessage
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_LANETTE, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}I really like this house.\nI should bring a laptop so\lthat I can be more productive...")
+            closemessage
+    }
+    releaseall
+    end
+}
+
+script Ryu_AttendantMinnie {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Can I stay please?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == NO) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aww.... but I don't wanna...")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_MINNIE)
+            trainerbattle_single(TRAINER_REL_MINNIE, RyuRE_MinnieBattleIntro, RyuRE_MinnieBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_MINNIE, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}This place is waay better than\nstanding around in town!")
+    }
+    closemessage
+    releaseall
+    end
+}
+
+script Ryu_AttendantDawn {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Don't you want me around?\neven if it's just to look pretty?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == NO) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh, Fine!\nHmph.")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_DAWN)
+            trainerbattle_single(TRAINER_REL_DAWN, RyuRE_DawnBattleIntro, RyuRE_DawnBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_DAWN, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}This makes for a great love shack!")
+    }
+    closemessage
+    releaseall
+    end
+}
+
+script Ryu_AttendantBrendan {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Should I head back to Littleroot?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Maybe I'll actually get to\nsleep...")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_BRENDAN)
+            trainerbattle_single(TRAINER_REL_BRENDAN, RyuRE_BrendanBattleIntro, RyuRE_BrendanBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_BRENDAN, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}This makes for a great love shack!")
+    }
+    closemessage
+    releaseall
+    end
+}
+
+script Ryu_AttendantLeaf {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Do you want me to return to\nSlateport?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Um, Ok!\pYou know where to find me!")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_LANA)
+            trainerbattle_single(TRAINER_REL_LANA, RyuRE_LanaBattleIntro, RyuRE_LanaBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}It's so peaceful here.\nI like it!")
+    }
+    closemessage
+    releaseall
+    end
+}
+
+script Ryu_AttendantCourtney {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Are you sure you want me\nto go?\pI'll just stalk you anyway...", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Don't keep me away too long...\pYou know I'll find you!")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_COURTNEY_2)
+            trainerbattle_single(TRAINER_REL_COURTNEY_2, RyuRE_CourtneyBattleIntro, RyuRE_CourtneyBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}This is acceptable... I guess.\pToo much light, though.")
+    }
+    closemessage
+    releaseall
+    end
+}
+
+script Ryu_AttendantShelly {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aqua can handle operations without\nme, you know.\pDo you still want me to go?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Alright! I miss the ocean air anyways.\pYou can find me at the aqueus\noffice.")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_SHELLY)
+            trainerbattle_single(TRAINER_REL_SHELLY, RyuRE_ShellyBattleIntro, RyuRE_ShellyBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_SHELLY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}We've got a nice place here.\nIt's quaint. I love it!")
+    }
+    closemessage
+    releaseall
+    end
+}
+
+script Ryu_AttendantJoy {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}You're right, Pokecenters probably\nneed me.\pShould I go?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay! Come visit me at the Pokecenter!")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_NURSE)
+            trainerbattle_single(TRAINER_REL_NURSE, RyuRE_NurseBattleIntro, RyuRE_NurseBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}I hope things are going well at the\nPokecenters...")
+    }
+    closemessage
+    releaseall
+    end
+}
+
+script Ryu_AttendantMay {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}I was feeling a little cramped\ndid you want me to leave?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Sure! I'll head back home!")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_MAY)
+            trainerbattle_single(TRAINER_REL_MAY, RyuRE_MayBattleIntro, RyuRE_MayBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_MAY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}There's still a lot of things\nI want to see.")
+    }
+    closemessage
+    releaseall
+    end
+}
+
+script Ryu_AttendantLucy {
+        switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}I can hear whispers of\ndaring trainers calling me back.\pShould I leave?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Alright, I'll head back to the Pike.")
+                goto(RyuDismissAttendant)
+            }
+        case 1:
+            setvar(VAR_0x8002, 0xFFFF)
+            setflag(FLAG_RYU_MAX_SCALE)
+            setflag(FLAG_RYU_FACING_ATTENDANT)
+            cleartrainerflag(TRAINER_REL_LUCY)
+            trainerbattle_single(TRAINER_REL_LUCY, RyuRE_LucyBattleIntro, RyuRE_LucyBattleOutro)
+            waitstate
+            setvar(VAR_0x8002, 0)
+            clearflag(FLAG_RYU_FACING_ATTENDANT)
+            release
+            end
+        case 2:
+            call(RyuDismissAttendant)
+            createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+        case 3:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}I pay really close attention\nto my skin care regimen...")
+    }
+    closemessage
+    releaseall
+    end
+}
+
+script Ryu_ClearBadAttendant {
+    msgbox("{COLOR LIGHT_RED}{SHADOW RED}ERROR! Bad Attendant ID!\nReport this on discord!")
+    setflag(FLAG_RYU_HIDE_HOME_ATTENDANT)
+    clearflag(FLAG_RYU_SAVED_ATTENDANT)
+    setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+    removeobject(1)
+    closemessage
+    release
+    end
+}
+
+script RyuDismissAttendant {
+    closemessage
+    setflag(FLAG_RYU_HIDE_HOME_ATTENDANT)
+    clearflag(FLAG_RYU_SAVED_ATTENDANT)
+    removeobject(1)
+    switch (var(VAR_RYU_ATTENDANT_ID)) {
+        case FOLLOWER_LANETTE:
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            call(Ryu_RestoreLanetteAtHouse)
+	    case FOLLOWER_MINNIE:
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            call(Ryu_RestoreMinnie)
+	    case FOLLOWER_DAWN:
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            call(Ryu_RestoreDawn)
+	    case FOLLOWER_BRENDAN:
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            call(Ryu_RestoreBrendan)
+	    case FOLLOWER_LEAF:
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            call(Ryu_RestoreLeaf)
+	    case FOLLOWER_COURTNEY:
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            call(Ryu_RestoreCourtney)
+	    case FOLLOWER_SHELLY:
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            call(Ryu_RestoreShelly)
+	    case FOLLOWER_JOY:
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            call(Ryu_RestoreNurse)
+	    case FOLLOWER_MAY:
+            setvar(VAR_RYU_ATTENDANT_ID, 0xFFFF)
+            call(Ryu_ReturnMayToHome)
+    }
+    return
+}
+
+text RyuRE_Menu1 {
+    "{COLOR LIGHT_RED}{SHADOW RED}Dismiss"
+}
+
+text RyuRE_Menu2 {
+    "{COLOR LIGHT_BLUE}{SHADOW BLUE}Spar"
+}
+
+text RyuRE_Menu3 {
+    "{COLOR LIGHT_GREEN}{SHADOW GREEN}Recruit"
+}
+
+text RyuRE_Menu4 {
+    "Nevermind"
+}
+
+text RyuRE_LanetteBattleIntro {
+    "Let's get this party started!"
+}
+
+text RyuRE_LanetteBattleOutro {
+    "That was pretty fun!"
+}
+
+text RyuRE_MinnieBattleIntro {
+    "Okay! Let's play!"
+}
+
+text RyuRE_MinnieBattleOutro {
+    "I think Rapidash liked that!"
+}
+
+text RyuRE_DawnBattleIntro {
+    "I'm going to pound you!"
+}
+
+text RyuRE_DawnBattleOutro {
+    "Oof, you pounded me real good..."
+}
+
+text RyuRE_BrendanBattleIntro {
+    "I would say be gentle...\nbut I prefer the opposite!"
+}
+
+text RyuRE_BrendanBattleOutro {
+    "Ahhh, I feel a lot better!"
+}
+
+text RyuRE_LanaBattleIntro {
+    "You know I was kanto's champion\nright?"
+}
+
+text RyuRE_LanaBattleOutro {
+    "Wow! You would have done great\nin Kanto!"
+}
+
+text RyuRE_CourtneyBattleIntro {
+    "Perfect. Mightyena was getting hungry\nanyway."
+}
+
+text RyuRE_CourtneyBattleOutro {
+    "Unbelievable. Glad you're on my side."
+}
+
+text RyuRE_ShellyBattleIntro {
+    "Oh?\nYou want me to get you wet?"
+}
+
+text RyuRE_ShellyBattleOutro {
+    "Whoa, I ended up being the wet one."
+}
+
+text RyuRE_NurseBattleIntro {
+    "Oh, but I don't really\nlike battling..."
+}
+
+text RyuRE_NurseBattleOutro {
+    "Well, this wasn't very suprising."
+}
+
+text RyuRE_MayBattleIntro {
+    "Oh, but I don't really\nlike battling..."
+}
+
+text RyuRE_MayBattleOutro {
+    "Well, this wasn't very suprising."
+}
+
+text RyuRE_LucyBattleIntro {
+    "Oh? You dare challenge\nPike Queen Lucy?"
+}
+
+text RyuRE_LucyBattleOutro {
+    "Hah! Beginner's luck!"
+}

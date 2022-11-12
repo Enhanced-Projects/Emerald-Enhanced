@@ -36,11 +36,6 @@ Route125_EventScript_RegisterErnest:: @ 81F682C
 	release
 	end
 
-Route125_EventScript_RematchErnest:: @ 81F684B
-	trainerbattle_rematch TRAINER_ERNEST_1, Route125_Text_ErnestRematchIntro, Route125_Text_ErnestRematchDefeat
-	msgbox Route125_Text_ErnestRematchPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route125_EventScript_Kim:: @ 81F6862
 	trainerbattle_double TRAINER_KIM_AND_IRIS, Route125_Text_KimIntro, Route125_Text_KimDefeat, Route125_Text_KimNotEnoughMons
 	msgbox Route125_Text_KimPostBattle, MSGBOX_AUTOCLOSE

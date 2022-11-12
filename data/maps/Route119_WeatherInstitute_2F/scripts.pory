@@ -335,26 +335,6 @@ WI_Diag:
 	walk_diag_southeast
 	step_end
 
-
-Route119_WeatherInstitute_2F_EventScript_ReceiveCastformParty:: @ 8270085
-	call Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq Route119_WeatherInstitute_2F_EventScript_ExplainCastform
-	call Common_EventScript_GetGiftMonPartySlot
-	call Common_EventScript_NameReceivedPartyMon
-	goto Route119_WeatherInstitute_2F_EventScript_ExplainCastform
-	end
-
-Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPC:: @ 82700AD
-	call Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq Route119_WeatherInstitute_2F_EventScript_SendCastformToPC
-	call Common_EventScript_NameReceivedBoxMon
-	goto Route119_WeatherInstitute_2F_EventScript_SendCastformToPC
-	end
-
 Route119_WeatherInstitute_2F_EventScript_SendCastformToPC:: @ 82700D0
 	call Common_EventScript_TransferredToPC
 	goto Route119_WeatherInstitute_2F_EventScript_ExplainCastform
@@ -381,23 +361,6 @@ Route119_WeatherInstitute_2F_EventScript_ScientistMentionWeather:: @ 82700F7
 	end
 
 Route119_WeatherInstitute_2F_EventScript_TryStartAbnormalWeather:: @ 827010A
-	release
-	end
-
-Route119_WeatherInstitute_2F_EventScript_KyogreWeather:: @ 827014F
-	msgbox Route119_WeatherInstitute_2F_Text_KyogreWeather, MSGBOX_DEFAULT
-	release
-	end
-
-Route119_WeatherInstitute_2F_EventScript_CreateAbnormalWeather:: @ 8270159
-	return
-
-Route119_WeatherInstitute_2F_EventScript_LegendaryDefeated:: @ 8270160
-	addvar VAR_0x8004, 1
-	return
-
-Route119_WeatherInstitute_2F_EventScript_NoAbnormalWeather:: @ 8270166
-	msgbox Route119_WeatherInstitute_2F_Text_NoAbnormalWeather, MSGBOX_DEFAULT
 	release
 	end
 
@@ -522,11 +485,6 @@ Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon: @ 8270650
 	.string "Thanks to you, we're safe!\p"
 	.string "It might be an odd way of thanking you,\n"
 	.string "but take this Pokémon.$"
-
-@ Unused
-Route119_WeatherInstitute_2F_Text_NoRoomForPokemon: @ 82706B2
-	.string "Hm? You don't seem to have any room\n"
-	.string "for this Pokémon.$"
 
 Route119_WeatherInstitute_2F_Text_PlayerReceivedCastform: @ 82706E8
 	.string "{PLAYER} received CASTFORM!$"

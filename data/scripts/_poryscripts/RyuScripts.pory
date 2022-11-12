@@ -301,14 +301,6 @@ RyuTCDisabledChallenge::
 	release
 	end
 
-Ryu_YouHaveNoMons::
-	msgbox CantHealNoMons
-	release
-	end
-
-CantHealNoMons:
-	.string "You don't have any pokemon to heal.\nPlease return another time!$"
-
 RyuMartsDisabledChallengeMsg:
 	.string "{COLOR DARK_GREY}{SHADOW RED}Sorry, but you can't use this while\n"
 	.string "playing in challenge mode. Fight more\p"
@@ -552,214 +544,6 @@ Ryu_CantUsePcCharging::
 RyuCantUsePCCHARGING:
 	.string "The Wireless PC needs to recharge.\nPlease try again later.$"
 
-@========================================================================Random "Stepped On" encounter
-
-Ryu_MeloettaWatchingMsg::
-	goto_if_set FLAG_RYU_SECOND_MELOETTA_MSG, ryu_end
-	playmoncry SPECIES_MELOETTA, 0
-	msgbox Ryu_HearAMelodyFromSomewhere
-	setflag FLAG_RYU_SECOND_MELOETTA_MSG
-	waitmoncry
-	closemessage
-	release
-	end
-
-Ryu_HearAMelodyFromSomewhere:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You hear a delightful melody from\n"
-	.string " somewhere nearby...)$"
-
-Ryu_BeingWatched::
-	goto_if_set FLAG_RYU_FIRST_MELOETTA_MSG, ryu_end
-	msgbox Ryu_Feelslikebeingwatchedmsg
-	setflag FLAG_RYU_FIRST_MELOETTA_MSG
-	closemessage
-	release
-	end
-
-Ryu_Feelslikebeingwatchedmsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You get the strangest feeling...\n"
-	.string " as if someone or something is\l"
-	.string " watching over you...)$"
-
-Ryu_DoMeloettaRoll::
-	random 9
-	compare VAR_RESULT, 1
-	goto_if_eq Ryu_DoMeloettaEncounter
-	release
-	end
-
-Ryu_DoMeloettaEncounter::
-	playse SE_PIN
-	applymovement FOLLOWER, Common_Movement_ExclamationMark
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	waitmovement PLAYER
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGMELOETTA
-	msgbox Ryu_MeloettaApproaches
-	closemessage
-	playmoncry SPECIES_MELOETTA, 0
-	msgbox Ryu_ItsSingingBeautifully
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	setwildbattle SPECIES_MELOETTA, VAR_RESULT, ITEM_STAR_PIECE
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	call RyuCheckSetupBoss
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	special GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_CAUGHT
-	goto_if_ne Ryu_MeloettaNotCaught
-	setflag FLAG_RYU_CAPTURED_MELOETTA
-	release
-	end
-
-Ryu_MeloettaNotCaught::
-	special resetSoundGameStat
-	release
-	end
-
-Ryu_MeloettaApproaches:
-	.string "A cute looking Pokemon approaches!$"
-
-Ryu_ItsSingingBeautifully::
-	.string "It starts singing a nice tune...\p"
-	.string "It finishes its tune and attacks!$"
-
-SB_SetupRandomSteppedOnEncounter::
-	specialvar VAR_RESULT, AreMonsRepelled
-	compare VAR_RESULT, TRUE
-	goto_if_eq ryu_end
-	random 5
-	switch VAR_RESULT
-	case 0, SB_Random0
-	case 1, SB_Random1
-	case 2, SB_Random2
-	case 3, SB_Random3
-	case 4, SB_Random4
-	goto  ryu_end
-
-SB_SetupRandomMimikyuEncounter::
-	lock
-	clearflag FLAG_TEMP_A
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_MIMIKYU, VAR_TEMP_7, ITEM_NONE
-	playmoncry SPECIES_MIMIKYU, 0
-	waitmoncry
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	applymovement FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement PLAYER
-	msgbox StumbledOnMimikyu
-	closemessage
-	dowildbattle
-	release
-	end
-
-StumbledOnMimikyu:
-	.string "You stumbled across\na wild Mimikyu!$"
-
-
-SB_Random0::
-	playmoncry SPECIES_PYUKUMUKU, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_PYUKUMUKU, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_PYUKUMUKU
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-SB_Random1::
-	playmoncry SPECIES_SANDYGAST, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_SANDYGAST, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_SANDYGAST
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-SB_Random2::
-	playmoncry SPECIES_SHELLDER, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_SHELLDER, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_SHELLDER
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-SB_Random3::
-	playmoncry SPECIES_MAREANIE, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_MAREANIE, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_MAREANIE
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-SB_Random4::
-	playmoncry SPECIES_SKRELP, 0
-	waitmoncry
-	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 12
-	compare VAR_TEMP_7, 110
-	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_7, 20
-	call_if_le RyuLegendary_SetBaseScale
-	setwildbattle SPECIES_SKRELP, VAR_TEMP_7, VAR_TEMP_9
-	call RyuCheckSetupBoss
-	bufferspeciesname 0, SPECIES_SKRELP
-	msgbox Ryu_YouSteppedOn
-	closemessage
-	dowildbattle
-	release
-	end
-
-Ryu_YouSteppedOn:
-	.string "You stepped on a wild {STR_VAR_1}!$"
-
 @==================================================================================================MEGA STONE REWARDS
 
 
@@ -882,11 +666,6 @@ RyuLegendary_GeneralLegendEncounter::
 	clearflag FLAG_RYU_BOSS_WILD
 	return
 	end
-
-
-RyuLegendary_SetBossFlag::
-	setflag FLAG_RYU_BOSS_WILD
-	return
 	
 RyuLegendary_SetMaxScale::
 	setvar VAR_TEMP_7, 110
@@ -911,6 +690,11 @@ RyuLegendary_GameClearResetLegends::
 	call_if_set FLAG_RYU_VICTINI_RAN, RL_ResetVictini
 	call_if_set FLAG_RYU_LATIOS_RAN, RL_ResetLatios
 	call_if_set FLAG_RYU_LATIAS_RAN, RL_ResetLatias
+	call_if_unset FLAG_RYU_CAPTURED_MELOETTA, RL_ResetMeloetta
+	return
+
+RL_ResetMeloetta::
+	clearflag FLAG_RYU_ENCOUNTERED_MELOETTA
 	return
 
 RL_ResetLatias::
@@ -1111,11 +895,11 @@ Ryu_CheckForPartnerReward::
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_return
 	switch VAR_RYU_FOLLOWER_ID
-	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_GiveShellyMegaAndReturn
-	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_GiveDawnMegaAndReturn
-	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, Ryu_GiveBrendanMegaAndReturn
-	case OBJ_EVENT_GFX_LEAF, Ryu_GiveLeafMegaAndReturn
-	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, Ryu_GiveCourtneyMegaAndReturn
+	case FOLLOWER_SHELLY, Ryu_GiveShellyMegaAndReturn
+	case FOLLOWER_DAWN, Ryu_GiveDawnMegaAndReturn
+	case FOLLOWER_BRENDAN, Ryu_GiveBrendanMegaAndReturn
+	case FOLLOWER_LEAF, Ryu_GiveLeafMegaAndReturn
+	case FOLLOWER_COURTNEY, Ryu_GiveCourtneyMegaAndReturn
 	goto ryu_return
 
 Ryu_GiveShellyMegaAndReturn::
@@ -1289,303 +1073,6 @@ Ryu_SootSackReadout:
 
 @=================================================================================================Global Scripts
 
-RyuGlobal_CheckMissionCallStatus::
-	setvar VAR_TEMP_A, 10
-	goto RyuGlobal_CheckMagmaStatus
-
-Ryu_FFTextSpeedWarning::
-	msgbox FFTextMsg
-	clearflag FLAG_SELECTED_FF_TEXT_OPTION
-	release
-	end	
-
-FFTextMsg::
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have selected Instant text speed.\p"
-	.string "Note that this option has been\n"
-	.string "reported to skip certain story\l"
-	.string "quest dialogues.\p"
-	.string "It is recommended that you use\n"
-	.string "fast instead.$"
-
-RyuGlobal_EnableNormalDexnav::
-	pokenavcall Ryu_DexnavGive
-	waitmessage
-	setflag FLAG_SYS_DEXNAV_GET
-	return
-
-Ryu_DexnavGive:
-	.string "Congratulations, {PLAYER}!\pYou have been randomly selected\nto receive the free DexNav upgrade\lfor your Pokenav.\pWe hope you will enjoy this new\nbeta feature!$"
-
-RyuGlobal_CheckMagmaStatus::
-	switch VAR_RYU_QUEST_MAGMA
-	case 130, Ryu_InitializeMagmaPart4
-	case 210, Ryu_InitializeMagmaPart6
-	case 350, Ryu_InitializeMagmaPart8
-	goto ryu_end
-
-RyuGlobal_CheckAquaStatus::
-	switch VAR_RYU_QUEST_AQUA
-	case 10, Ryu_initializeAquaStage1
-	case 55, Ryu_InitializeAquaStage2
-	case 80, Ryu_InitializeAquaStage3NR
-	case 91, Ryu_InitializeAquaStage3R
-	case 123, Ryu_InitializeAquaStage4R
-	goto ryu_end
-
-Ryu_initializeAquaStage1::
-	setflag FLAG_TEMP_F
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 3
-	goto_if_lt ryu_end
-	goto_if_set FLAG_RYU_AQUA_1_NOTIFY, ryu_end
-	removeobject FOLLOWER
-	lockall
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	waitse
-	msgbox Ryu_AquaStage1NotifyIntro
-	closemessage
-	pokenavcall Ryu_AquaStage1NotifyMessage
-	waitmessage
-	closemessage
-	msgbox Ryu_AquaStep1OutroMessage
-	closemessage
-	setvar VAR_RYU_QUEST_AQUA, 25 @received instructions to go to aqua at museum
-	setflag FLAG_RYU_AQUA_1_NOTIFY
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
-	release
-	end
-
-Ryu_InitializeAquaStage2::
-	setflag FLAG_TEMP_F
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 5
-	goto_if_lt ryu_end
-	goto_if_set FLAG_RYU_AQUA_2_NOTIFY, ryu_end
-	removeobject FOLLOWER
-	lockall
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	waitmovement PLAYER
-	msgbox Ryu_AquaStage1NotifyIntro
-	closemessage
-	pokenavcall Ryu_AquaStage2NotifyMsg
-	waitmessage
-	closemessage
-	setvar VAR_RYU_QUEST_AQUA, 60 @player is off to meteor falls
-	setflag FLAG_RYU_AQUA_2_NOTIFY
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
-	release
-	end
-
-Ryu_InitializeAquaStage3NR::
-	setflag FLAG_TEMP_F
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 6
-	goto_if_lt ryu_end
-	goto_if_set FLAG_RYU_AQUA_3_NOTIFY, ryu_end
-	removeobject FOLLOWER
-	lockall
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	waitmovement PLAYER
-	msgbox Ryu_AquaStage1NotifyIntro
-	closemessage
-	pokenavcall Ryu_AquaStage3NotifyMsg
-	waitmessage
-	closemessage
-	clearflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
-	setvar VAR_RYU_QUEST_AQUA, 82 @player is being called to Mt Pyre
-	setflag FLAG_RYU_AQUA_3_NOTIFY
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
-	release
-	end
-
-Ryu_InitializeAquaStage3R::
-	setflag FLAG_TEMP_F
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 6
-	goto_if_lt ryu_end
-	goto_if_set FLAG_RYU_AQUA_3_NOTIFY, ryu_end
-	removeobject FOLLOWER
-	lockall
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	waitmovement PLAYER
-	msgbox Ryu_AquaStage1NotifyIntro
-	closemessage
-	pokenavcall Ryu_AquaStage3RomanceNotifyMsg
-	waitmessage
-	closemessage
-	setflag FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY
-	setvar VAR_RYU_QUEST_AQUA, 93 @player is being called to Jagged Pass by Shelly.
-	setflag FLAG_RYU_AQUA_3_NOTIFY
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
-	release
-	end
-
-Ryu_InitializeAquaStage4R::
-	setflag FLAG_TEMP_F
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 7
-	goto_if_lt ryu_end
-	goto_if_set FLAG_RYU_AQUA_4_NOTIFY, ryu_end
-	removeobject FOLLOWER
-	lockall
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	waitmovement PLAYER
-	msgbox Ryu_AquaStage1NotifyIntro
-	closemessage
-	pokenavcall Ryu_AquaStage4RomanceNotifyMsg
-	waitmessage
-	closemessage
-	setflag FLAG_RYU_AQUA_4_NOTIFY
-	clearflag FLAG_RYU_DEVON_HIDE_MATT_SUB
-	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
-	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE
-	clearflag FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW
-	clearflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
-	call Ryu_SetAquaHideoutTrainerflags
-	setvar VAR_RYU_QUEST_AQUA, 125 @Player received the call to go to the aqua hideout.
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
-	release
-	end
-
-Ryu_Global_ResetFollower:
-	callnative RyuAddFollower
-	releaseall
-	end
-
-Ryu_AquaStage4RomanceNotifyMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, it's time...meet us in the\n"
-    .string "main Team Aqua Headquarters.\p"
-    .string "We'll be waiting by the dock.$"
-
-Ryu_AquaStage3RomanceNotifyMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, this is Shelly.\p"
-    .string "We've discovered what Magma is\n"
-    .string "scheming, and it's far from good.\p"
-    .string "We were able to weaken their forces\n"
-    .string "at Mt. Chimney, so now they're\l"
-    .string "desperate.\p"
-    .string "It's time to hit them while they're\n"
-    .string "still down!\p"
-    .string "Meet me at their hideout located in\n"
-    .string "Jagged Pass.$"
-
-
-Ryu_AquaStage3NotifyMsg::
-	.string "This is an urgent message from Admin\n"
-    .string "Matt!\p"
-    .string "Calling all members to mobilize at\n"
-    .string "the peak of Mt. Pyre!\p"
-    .string "I repeat: the peak of Mt. Pyre!$"
-
-Ryu_AquaStage2NotifyMsg:
-	.string "Admin Shelly speaking.\p"
-    .string "I'm sending you to Meteor Falls to\n"
-    .string "provide some assistance to those\l"
-    .string "already in the area.\p"
-    .string "Don't be a hero!$"
-
-Ryu_AquaStage1NotifyIntro:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(A notification shows up on your\n"
-    .string " Pokénav.)$"
-	
-Ryu_AquaStage1NotifyMessage:
-	.string "This is Admin Shelly speaking.\p"
-    .string "You're to rendezvous with the rest of\n"
-    .string "the crew at Slateport Museum.\p"
-    .string "Your objective is to detain and\n"
-    .string "interrogate Captain Stern.$"
-	
-Ryu_AquaStep1OutroMessage:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Time to get to work.$"
-
-Ryu_InitializeMagmaPart4::
-	setflag FLAG_TEMP_F
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 3
-	goto_if_lt ryu_end
-	goto_if_set FLAG_RYU_MAGMA_4_NOTIFY, ryu_end
-	lockall
-	setflag FLAG_RYU_MAGMA_4_NOTIFY
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	waitmovement 0xff
-	msgbox Ryu_MagmaCallIntro4
-	closemessage
-	pokenavcall Ryu_MagmaPokenavMsg4
-	waitmessage
-	closemessage
-	msgbox Ryu_MagmaCallOutro4
-	clearflag FLAG_RYU_HIDE_111_MAGMA_MEETING
-	clearflag FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1
-	clearflag FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE
-	closemessage
-	releaseall
-	end
-
-Ryu_InitializeMagmaPart6::
-	setflag FLAG_TEMP_F
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 6
-	goto_if_lt ryu_end
-	goto_if_set FLAG_RYU_MAGMA_6_NOTIFY, ryu_end
-	lock
-	setflag FLAG_RYU_MAGMA_6_NOTIFY
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_ExclamationMark
-	waitmovement 0xff
-	msgbox Ryu_MagmaCallIntro4
-	closemessage
-	pokenavcall Ryu_MagmaPokenavMsg6
-	waitmessage
-	closemessage
-	msgbox Ryu_MagmaCallOutro6
-	clearflag FLAG_RYU_HIDE_103_MAGMA_MEETING
-	closemessage
-	releaseall
-	end
-
-
-Ryu_InitializeMagmaPart8::
-	setflag FLAG_TEMP_F
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 7
-	goto_if_lt ryu_end
-	goto_if_set FLAG_RYU_MAGMA_8_NOTIFY, ryu_end
-	lock
-	msgbox Ryu_Magma8Notice
-	closemessage
-	setvar VAR_RYU_QUEST_MAGMA, 400
-	setflag FLAG_RYU_MAGMA_8_NOTIFY
-	release
-	end
-
-Ryu_MagmaPokenavMsg6:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Scheduled Heist at Oldale Town's\n"
-    .string " PokéMart. Group meet north of town\p"
-    .string " for further briefing.)$"
-
-Ryu_MagmaCallOutro6:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I should go check it out.$"
-
-Ryu_MagmaPokenavMsg4:
-	.string "{PLAYER}, report to the \n"
-    .string "marked location for further\l"
-	.string "instruction.$"
-
-
-Ryu_MagmaCallIntro4:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(A notification shows up on your\n"
-    .string " Pokénav!)$"
-
-Ryu_MagmaCallOutro4:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It's pointing to a mountain ridge\n"
-    .string " north of the desert.)$"
-
 RyuSetMagmaTrainerFlags::
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_1
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_2
@@ -1604,23 +1091,6 @@ RyuSetMagmaTrainerFlags::
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_15
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_16
 	return
-
-Ryu_SetAquaHideoutTrainerflags:
-	settrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_1
-	settrainerflag TRAINER_GRUNT_2
-	settrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_3
-	settrainerflag TRAINER_GRUNT_21
-	settrainerflag TRAINER_GRUNT_25
-	settrainerflag TRAINER_GRUNT_4
-	settrainerflag TRAINER_GRUNT_22
-	settrainerflag TRAINER_GRUNT_26
-	settrainerflag TRAINER_SHELLY_2
-	settrainerflag TRAINER_MATT
-	return
-
-Ryu_Magma8Notice:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I suppose it's time to head back to\n"
-    .string "base and see what's happened so far.$"
 
 @==================================================================================================Player lost a multibattle
 
@@ -1663,20 +1133,6 @@ RyuScript_IncrementQuestsFinished::
 	call_if_eq RyuScript_GiveDejaVu
 	return
 
-RyuScript_CheckGivenGoldAch::
-	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
-	callnative BufferGivenAchievement
-	playse SE_EXPMAX
-	msgbox RS_GOLD_ACH_RECEIVED
-	closemessage
-	setvar VAR_RYU_LAST_ACH, 300
-	msgbox RS_GoldAchMsg
-	closemessage
-	giveitem ITEM_MASTER_BALL, 1
-	setvar VAR_RYU_LAST_ACH, 300
-	release
-	end
-
 RS_GoldAchMsg:
 	.string "You earned a GOLDEN achievement!\nAs a reward for your dedication\pYou are receiving one Master Ball!$"
 
@@ -1689,16 +1145,6 @@ RS_ACH_RECEIVED:
 
 RS_GOLD_ACH_RECEIVED:
 	.string "{COLOR LIGHT_RED}{SHADOW BLUE}GOLDEN ACHIEVEMENT GET!!!\n{RYU_STR_4}$"
-
-RyuScript_CheckFollowerFactionChanges::
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LASS
-	goto_if_ne ryu_end
-	checkfactionstanding FACTION_STUDENTS, 80
-	compare VAR_RESULT, FALSE
-	goto_if_eq ryu_end
-	changefactionstanding FACTION_STUDENTS, 1, FALSE
-	release
-	end
 
 @@GAME OVER========================================================================================
 
@@ -1776,15 +1222,6 @@ RS_GO_GameOverDesc::
 	.string "and become champion, however\l"
 	.string "you cannot continue this quest.$"
 
-RS_PreventEntryNorth::
-	lockall
-	msgbox RS_DeniedEntry
-	closemessage
-	applymovement PLAYER, Common_Movement_StepDown
-	waitmovement PLAYER
-	release
-	end
-
 RS_DeniedEntry:
 	.string "You failed a questline, you\nmay not enter this quest area.$"
 
@@ -1815,43 +1252,17 @@ RyuCheckForWellTravelledAch::
 	ach give ACH_WELL_TRAVELLED
 	return
 
-RyuCheckForLNSUAch::
-	ach query ACH_LEAVE_NO_STONE_UNTURNED @@Don't bother checking these flags if achievement is already owned.
-	compare VAR_RESULT, TRUE
-	goto_if_eq ryu_end
-	goto_if_unset FLAG_LANDMARK_FLOWER_SHOP, ryu_end
-	goto_if_unset FLAG_LANDMARK_ABANDONED_SHIP, ryu_end
-	goto_if_unset FLAG_LANDMARK_SEASHORE_HOUSE, ryu_end
-	goto_if_unset FLAG_LANDMARK_NEW_MAUVILLE, ryu_end
-	goto_if_unset FLAG_LANDMARK_OLD_LADY_REST_SHOP, ryu_end
-	goto_if_unset FLAG_LANDMARK_TRICK_HOUSE, ryu_end
-	goto_if_unset FLAG_LANDMARK_WINSTRATE_FAMILY, ryu_end
-	goto_if_unset FLAG_LANDMARK_GLASS_WORKSHOP, ryu_end
-	goto_if_unset FLAG_LANDMARK_LANETTES_HOUSE, ryu_end
-	goto_if_unset FLAG_LANDMARK_POKEMON_DAYCARE, ryu_end
-	goto_if_unset FLAG_LANDMARK_SEAFLOOR_CAVERN, ryu_end
-	goto_if_unset FLAG_LANDMARK_BATTLE_FRONTIER, ryu_end
-	goto_if_unset FLAG_LANDMARK_FIERY_PATH, ryu_end
-	goto_if_unset FLAG_LANDMARK_POKEMON_LEAGUE, ryu_end
-	goto_if_unset FLAG_LANDMARK_ISLAND_CAVE, ryu_end
-	goto_if_unset FLAG_LANDMARK_DESERT_RUINS, ryu_end
-	goto_if_unset FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE, ryu_end
-	goto_if_unset FLAG_LANDMARK_SCORCHED_SLAB, ryu_end
-	goto_if_unset FLAG_LANDMARK_ANCIENT_TOMB, ryu_end
-	goto_if_unset FLAG_LANDMARK_TUNNELERS_REST_HOUSE, ryu_end
-	goto_if_unset FLAG_LANDMARK_HUNTERS_HOUSE, ryu_end
-	goto_if_unset FLAG_LANDMARK_SEALED_CHAMBER, ryu_end
-	goto_if_unset FLAG_LANDMARK_BERRY_MASTERS_HOUSE, ryu_end
-	goto_if_unset FLAG_LANDMARK_ALTERING_CAVE, ryu_end
-	goto_if_unset FLAG_LANDMARK_DESERT_UNDERPASS, ryu_end
-	goto_if_unset FLAG_LANDMARK_ARTISAN_CAVE, ryu_end
-	goto_if_unset FLAG_LANDMARK_TRAINER_HILL, ryu_end
-	goto_if_unset FLAG_LANDMARK_MIRAGE_TOWER, ryu_end
-	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, ryu_end
-	ach give ACH_LEAVE_NO_STONE_UNTURNED
-	return	
-
 `
+
+script RyuDebug_Utility1 {
+	release
+	end
+}
+
+text utilityText {
+	"{STR_VAR_1}"
+}
+
 
 //prevent oob writes with bufferdynamicmulti
 text(global) RyuEmptyTextPtr {
@@ -1861,13 +1272,6 @@ text(global) RyuEmptyTextPtr {
 script RyuCheckSetupBoss {
 	callnative(RyuLegendaryDoBossRoll)
 	return
-}
-
-
-script RyuScript_GoToLimbo{
-    lockall
-    warpsilent(MAP_LIMBO, 255, 3, 3)
-    waitstate
 }
 
 script RyuScript_EndChallengeMode{
@@ -2164,199 +1568,6 @@ script RyuScript_NotifyUltraBeasts {
 	}
 }
 
-//UB Encounters
-
-script RyuScript_EncounterBuzzwole {
-	msgbox("A mysterious Bug Pokémon attacks!", MSGBOX_ONELINE)
-	setvar(VAR_TEMP_5, SPECIES_BUZZWOLE)
-	call(RyuLegendary_GeneralLegendEncounter)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		setflag(FLAG_RYU_BUZZWOLE_CAUGHT)
-		call(RyuCheckIfAllBeastsCaught)
-	}
-	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
-	clearflag(FLAG_RYU_ENCOUNTERED_UB)
-	release
-	end
-}
-
-script RyuScript_EncounterPheromosa {
-	msgbox("A feminine Bug Pokémon attacks!", MSGBOX_ONELINE)
-	setvar(VAR_TEMP_5, SPECIES_PHEROMOSA)
-	call(RyuLegendary_GeneralLegendEncounter)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		setflag(FLAG_RYU_PHEROMOSA_CAUGHT)
-		call(RyuCheckIfAllBeastsCaught)
-	}
-	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
-	clearflag(FLAG_RYU_ENCOUNTERED_UB)
-	release
-	end
-}
-
-script RyuScript_EncounterKartana {
-	msgbox("Some animated origami attacks!", MSGBOX_ONELINE)
-	setvar(VAR_TEMP_5, SPECIES_KARTANA)
-	call(RyuLegendary_GeneralLegendEncounter)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		setflag(FLAG_RYU_KARTANA_CAUGHT)
-		call(RyuCheckIfAllBeastsCaught)
-	}
-	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
-	clearflag(FLAG_RYU_ENCOUNTERED_UB)
-	release
-	end
-}
-
-script RyuScript_EncounterXurkitree {
-	msgbox("Some living power lines attack!", MSGBOX_ONELINE)
-	setvar(VAR_TEMP_5, SPECIES_XURKITREE)
-	call(RyuLegendary_GeneralLegendEncounter)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		setflag(FLAG_RYU_XURKITREE_CAUGHT)
-		call(RyuCheckIfAllBeastsCaught)
-	}
-	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
-	clearflag(FLAG_RYU_ENCOUNTERED_UB)
-	release
-	end
-}
-
-script RyuScript_EncounterNihilego {
-	msgbox("An odd wig-shaped jellyfish attacks!", MSGBOX_ONELINE)
-	setvar(VAR_TEMP_5, SPECIES_NIHILEGO)
-	call(RyuLegendary_GeneralLegendEncounter)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		setflag(FLAG_RYU_NIHILEGO_CAUGHT)
-		call(RyuCheckIfAllBeastsCaught)
-	}
-	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
-	clearflag(FLAG_RYU_ENCOUNTERED_UB)
-	release
-	end
-}
-
-script RyuScript_EncounterGuzzlord {
-	msgbox("A Pokémon with a gaping maw attacks!", MSGBOX_ONELINE)
-	setvar(VAR_TEMP_5, SPECIES_GUZZLORD)
-	call(RyuLegendary_GeneralLegendEncounter)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		setflag(FLAG_RYU_GUZZLORD_CAUGHT)
-		call(RyuCheckIfAllBeastsCaught)
-	}
-	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
-	clearflag(FLAG_RYU_ENCOUNTERED_UB)
-	release
-	end
-}
-
-script RyuScript_EncounterStakataka {
-	msgbox("A giant living box attacks!", MSGBOX_ONELINE)
-	setvar(VAR_TEMP_5, SPECIES_STAKATAKA)
-	call(RyuLegendary_GeneralLegendEncounter)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		setflag(FLAG_RYU_STAKATAKA_CAUGHT)
-		call(RyuCheckIfAllBeastsCaught)
-	}
-	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
-	clearflag(FLAG_RYU_ENCOUNTERED_UB)
-	release
-	end
-}
-
-script RyuScript_EncounterCelesteela {
-	msgbox("A magical statue attacks!", MSGBOX_ONELINE)
-	setvar(VAR_TEMP_5, SPECIES_CELESTEELA)
-	call(RyuLegendary_GeneralLegendEncounter)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		setflag(FLAG_RYU_CELESTEELA_CAUGHT)
-		call(RyuCheckIfAllBeastsCaught)
-		clearflag(FLAG_RYU_BOSS_WILD)
-	}
-	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
-	clearflag(FLAG_RYU_ENCOUNTERED_UB)
-	release
-	end
-}
-
-script RyuCheckIfAllBeastsCaught {
-	goto_if_set(FLAG_RYU_CAUGHT_ALL_UBS, ryu_return)
-	goto_if_unset(FLAG_RYU_NIHILEGO_CAUGHT, ryu_return)
-	goto_if_unset(FLAG_RYU_BUZZWOLE_CAUGHT, ryu_return)
-	goto_if_unset(FLAG_RYU_PHEROMOSA_CAUGHT, ryu_return)
-	goto_if_unset(FLAG_RYU_XURKITREE_CAUGHT, ryu_return)
-	goto_if_unset(FLAG_RYU_CELESTEELA_CAUGHT, ryu_return)
-	goto_if_unset(FLAG_RYU_KARTANA_CAUGHT, ryu_return)
-	goto_if_unset(FLAG_RYU_GUZZLORD_CAUGHT, ryu_return)
-	goto_if_unset(FLAG_RYU_STAKATAKA_CAUGHT, ryu_return)
-	setflag(FLAG_RYU_CAUGHT_ALL_UBS)
-	ach(give, ACH_ULTRA_BEASTLY)
-	return
-}
-
-script RyuScript_EncounterKeldeo {
-	if (flag(FLAG_RYU_BOSS_WILD)) {
-		msgbox("Boss flag is set in encounterscript.")
-		closemessage
-	}
-	msgbox("You hear trotting from the sky...", MSGBOX_ONELINE)
-	setvar(VAR_TEMP_5, SPECIES_KELDEO)
-	call(RyuLegendary_GeneralLegendEncounter)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		setflag(FLAG_RYU_CAUGHT_KELDEO)
-		clearflag(FLAG_RYU_BOSS_WILD)
-	}
-	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
-	release
-	end
-}
-
-script RyuScript_NotifyFailedChallenge {
-	msgbox("You have failed Ryu's Challenge.\nYou can try again in another\lNew Game Plus.\pOne moment please.")
-	setflag(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE)
-	clearflag(FLAG_RYU_DOING_RYU_CHALLENGE)
-	callnative(RyuForceSaveTheGame)
-	msgbox("We look forward to you trying\nagain!")
-	closemessage
-	release
-	end
-}
-
-script RyuScript_NotifySucceededChallenge {
-	msgbox("You have completed\nRyu's Challenge.\pPing Ryu in discord to get your\nsave checked and score posted!")
-	callnative(RyuSavePlayTimeChallenge)
-	clearflag(FLAG_RYU_DOING_RYU_CHALLENGE)
-	setflag(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS)
-	goto(RyuDebug_CheckRyuChallengeStatus)
-	closemessage
-	release
-	end
-}
-
-script RyuScript_Lv100FailMsg {
-	msgbox(format("You attempted to switch to the lv100 vanilla cap, but your party is not at or below level 100. Get only lv100 mons in your party to use this option."))
-	clearflag(FLAG_RYU_FAILED_100_CAP_SWITCH)
-	closemessage
-	release
-	end
-}
-
-script RyuScript_Lv100SwitchMsg {
-	msgbox(format("You have enabled the lv100 vanilla cap. If you have pokemon in your pc that are higher than level 100, \p{COLOR LIGHT_RED}{SHADOW RED}They will be adjusted down to 100. \p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Keep this in mind when using the vanilla cap.\pIf this is not what you want, disable the cap before withdrawing mons from the PC."))
-	clearflag(FLAG_RYU_NOTIFY_LV100_SWITCH)
-	closemessage
-	release
-	end
-}
 
 script RyuSetUpMoneyMode {
 	msgbox("Please choose a money mode.")
@@ -2404,25 +1615,6 @@ text NGMO3 {
 	"Safe: More consistent, less potential."
 }
 
-script SB_CheckMeloettaEncounter {
-	goto_if_set(FLAG_RYU_CAPTURED_MELOETTA, ryu_end)
-	readgamestat(GAME_STAT_USED_SOUND_MOVE)
-	if (var(VAR_RESULT) >= 255) {
-		goto(Ryu_DoMeloettaRoll)
-	}
-	elif((var(VAR_RESULT) > 199) && (var(VAR_RESULT) < 256)) {
-		goto(Ryu_MeloettaWatchingMsg)
-	}
-	elif(var(VAR_RESULT) >= 100){
-		goto(Ryu_BeingWatched)
-	}
-	else {
-		goto(ryu_end)
-	}
-	release
-	end
-}
-
 script gRyuWarpFemaleHomeScript {
 	warpsilent(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F, 255, 1, 4)
 	waitstate
@@ -2436,23 +1628,7 @@ script gRyuWarpMaleHomeScript {
 raw `
 @===================================================================================================Holiday 2020
 
-RyuScript_GiveHolidayGiftMon::
-	msgbox RS_EventOver
-	release
-	end
-	msgbox RS_LucyIntro
-	getpartysize
-	compare VAR_RESULT, 6
-	goto_if_ge RyuScript_NoRoomForHolidayMon
-	bufferdynamicmulti HGM01Msg, HGM02Msg, HGM03Msg, HGM04Msg, HGM05Msg, HGM06Msg, 
-	multichoice  0, 0, MULTI_DYNAMIC_6, 1
-	switch VAR_RESULT
-	case 0, RS_HGM01
-	case 1, RS_HGM02
-	case 2, RS_HGM03
-	case 3, RS_HGM04
-	case 4, RS_HGM05
-	case 5, RS_HGM06
+
 
 HGM01Msg:
     .string "Xerneas$"
@@ -2470,123 +1646,76 @@ HGM06Msg:
 RS_EventOver:
 	.string "Event is over.\nWhat are you doing here?$"
 
-RS_HolidayOutro::
-	callnative RyuHolidayGiftMonSetData
-	msgbox RS_HolidayOutroMsg
-	setflag FLAG_RYU_HIDE_HOLIDAY_NPC
-	applymovement 12, LucyExit
-	waitmovement 12
-	removeobject 12
-	release
-	end
-
-LucyExit:
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-	
-
 RyuScript_NoRoomForHolidayMon::
 	msgbox RS_HolidayNoSpace
 	release
 	end
 
-RS_HolidayOutroMsg::
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Our lord Ryu thanks you for\nplaying {COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced.\p{COLOR LIGHT_RED}{SHADOW RED}Please enjoy your {STR_VAR_1}.$"
-
 RS_HolidayNoSpace::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}You don't have space for\nthe gift. Please make space in\lyour party and return.$"
 
-RS_LucyIntro::
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Greetings, {PLAYER}.\pI have travelled far to\ngive you season's tidings.\pPlease Choose a gift Pokémon\nfrom the list.$"
-
 `
 
-script RS_HGM01 {
+script RyuScript_NoEventNPCScript{
+	msgbox("There's no event going on.\nWhy are you here?")
+	closemessage
+	release
+	end
+}
+
+script RyuScript_GiveHolidayGiftMon{
+	lock
+	faceplayer
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hello, {PLAYER}!\pLord ryu summoned me here to give\nyou a special gift to\lcommemorate the spooky season!")
+	closemessage
 	getpartysize
-	copyvar(VAR_TEMP_E, VAR_RESULT)
-	setvar(VAR_TEMP_D,  SPECIES_XERNEAS)
-	bufferdynamicmulti(HGM01_Nature1, HGM01_Nature2)
-	multichoice(0, 5, MULTI_DYNAMIC_2, 1)
-	if (var(VAR_RESULT) == 0) {
-		setvar(VAR_TEMP_C, NATURE_ADAMANT)
+	if (var(VAR_RESULT) > 5){
+		msgbox(RS_HolidayNoSpace)
+		release
+		end
 	}
-	else {
-		setvar(VAR_TEMP_C, NATURE_MODEST)
-	}
-	callnative(RyuGiveHolidayModdedMon)
-	bufferspeciesname(0, SPECIES_XERNEAS)
-	goto(RS_HolidayOutro)
+	givemon(SPECIES_DARKRAI, 100, ITEM_ANCIENT_COIN)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}She hands you a Pokéball.")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Lord Ryu once again thanks you for\nplaying Emerald Enhanced.\pI must take my leave now!")
+	closemessage
+	applymovement(PLAYER, Common_Movement_StepDown)
+	applymovement(FOLLOWER, Common_Movement_StepDown)
+	waitmovement(FOLLOWER)
+	turnobject(PLAYER, DIR_NORTH)
+	turnobject(FOLLOWER, DIR_NORTH)
+	applymovement(12, HH2020Exit)
+	waitmovement(12)
+	applymovement(12, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	msgbox("Oh! One more thing!\nLook forward to me having a\lbigger part in the coming weeks!\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lucy gives you a wink.)$")
+	closemessage
+	applymovement(12, HH2020Exit2)
+	waitmovement(12)
+	setflag(FLAG_RYU_HALOWEEN_2022)
+	setflag(FLAG_RYU_HIDE_HOLIDAY_NPC)
+	removeobject(12)
+	release
+	end
 }
 
-text HGM01_Nature1 {
-	"Specially Offensive"
-}
-text HGM01_Nature2 {
-	"Physically Offensive"
-}
-
-script RS_HGM02{
-	getpartysize
-	copyvar(VAR_TEMP_E, VAR_RESULT)
-	setvar(VAR_TEMP_D,  SPECIES_YVELTAL)
-	bufferdynamicmulti(HGM01_Nature1, HGM01_Nature2)
-	multichoice(0, 5, MULTI_DYNAMIC_2, 1)
-	if (var(VAR_RESULT) == 0) {
-		setvar(VAR_TEMP_C, NATURE_ADAMANT)
-	}
-	else {
-		setvar(VAR_TEMP_C, NATURE_MODEST)
-	}
-	callnative(RyuGiveHolidayModdedMon)
-	bufferspeciesname(0, SPECIES_YVELTAL)
-	goto(RS_HolidayOutro)
+movement HH2020Exit{
+	walk_in_place_down
+	delay_16
+	walk_left * 2
+	face_right
+	step_end
 }
 
-script RS_HGM03{
-	getpartysize
-	copyvar(VAR_TEMP_E, VAR_RESULT)
-	setvar(VAR_TEMP_D,  SPECIES_MAGEARNA)
-	setvar(VAR_TEMP_C, NATURE_MODEST)
-	callnative(RyuGiveHolidayModdedMon)
-	bufferspeciesname(0, SPECIES_MAGEARNA)
-	goto(RS_HolidayOutro)
+movement HH2020Exit2{
+	face_left
+	delay_16
+	walk_left
+	walk_up * 3
+	step_end
 }
 
-script RS_HGM04{
-	getpartysize
-	copyvar(VAR_TEMP_E, VAR_RESULT)
-	setvar(VAR_TEMP_D, SPECIES_SOLGALEO)
-	setvar(VAR_TEMP_C, NATURE_ADAMANT)
-	callnative(RyuGiveHolidayModdedMon)
-	bufferspeciesname(0, SPECIES_SOLGALEO)
-	goto(RS_HolidayOutro)
-}
-
-script RS_HGM05{
-	getpartysize
-	copyvar(VAR_TEMP_E, VAR_RESULT)
-	setvar(VAR_TEMP_D,  SPECIES_MARSHADOW)
-	setvar(VAR_TEMP_C,  NATURE_JOLLY)
-	callnative(RyuGiveHolidayModdedMon)
-	bufferspeciesname(0, SPECIES_MARSHADOW)
-	goto(RS_HolidayOutro)
-}
-
-script RS_HGM06{
-	getpartysize
-	copyvar(VAR_TEMP_E, VAR_RESULT)
-	setvar(VAR_TEMP_D,  SPECIES_LUNALA)
-	setvar(VAR_TEMP_C, NATURE_MODEST)
-	callnative(RyuGiveHolidayModdedMon)
-	bufferspeciesname(0, SPECIES_LUNALA)
-	goto(RS_HolidayOutro)
-}
 
 //==================================================================================================RYU EV USER MODE MENU
 
@@ -2626,7 +1755,7 @@ script RyuUserModeEVMenu {
 		goto(RyuUserEvInvalidSlot)
 	}
 	msgbox(RyuUserIVEV_SelectStat)
-	bufferdynamicmulti(RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpAtk, RyuEVSpDef, RyuEVSpeed)
+	bufferdynamicmulti(RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpeed, RyuEVSpAtk, RyuEVSpDef,)
 	multichoice(0, 0, MULTI_DYNAMIC_6, 0)
 	copyvar(VAR_0x8002, VAR_RESULT) //stat
 	if (var(VAR_RESULT) == 127) {
@@ -2707,14 +1836,14 @@ script gScript_InvalidSaveDetected {
 	special(DoSoftReset)
 }
 
-script RyuScript_SetRivalGfxId { //dynamically sets the rival gfx in OBJ_EVENT_GFX_VAR_3
+script RyuScript_SetRivalGfxId { //dynamically sets the rival gfx in VAR_OBJ_GFX_ID_3
 	checkplayergender
 	if (var(VAR_RESULT) == MALE) {
-		setvar(OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)
+		setvar(VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)
 	}
 	else
 	{
-		setvar(OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL)
+		setvar(VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL)
 	}
 	return
 }
@@ -2733,4 +1862,69 @@ script CheckDexForMayQuest {//if player has over 210 mons caught, enables May qu
 		closemessage
 		return
 	}
+}
+
+script RyuAdjustPokemonLeagueFaction {
+	changefactionstanding(FACTION_POKEMON_LEAGUE, 11, TRUE)
+	return
+}
+
+//uses VAR_RYU_DYNAMIC_MOVEMENT_ID, VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X, VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y
+//to automatically move a given object to location. Ignores Collision.
+script dynamicMovement { 
+	getobjectxy(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	if (var(VAR_0x8001) > VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X) {
+		call(RDM_MoveLeft1)
+		goto(dynamicMovement)
+	}
+	elif (var(VAR_0x8002) > VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y) {
+		call(RDM_MoveUp1)
+		goto(dynamicMovement)
+	}
+	elif (var(VAR_0x8001) < VAR_RYU_DYNAMIC_MOVEMENT_TARGET_X) {
+		call(RDM_MoveRight1)
+		goto(dynamicMovement)
+	}
+	elif (var(VAR_0x8002) < VAR_RYU_DYNAMIC_MOVEMENT_TARGET_Y) {
+		call(RDM_MoveDown1)
+		goto(dynamicMovement)
+	}
+	else{
+		return
+	}
+
+}
+
+script RDM_MoveLeft1 {
+	applymovement(VAR_RYU_DYNAMIC_MOVEMENT_ID, Common_Movement_StepLeft)
+	waitmovement(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	return
+}
+
+script RDM_MoveRight1 {
+	applymovement(VAR_RYU_DYNAMIC_MOVEMENT_ID, Common_Movement_StepRight)
+	waitmovement(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	return
+}
+
+script RDM_MoveUp1 {
+	applymovement(VAR_RYU_DYNAMIC_MOVEMENT_ID, Common_Movement_StepUp)
+	waitmovement(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	return
+}
+
+script RDM_MoveDown1 {
+	applymovement(VAR_RYU_DYNAMIC_MOVEMENT_ID, Common_Movement_StepDown)
+	waitmovement(VAR_RYU_DYNAMIC_MOVEMENT_ID)
+	return
+}
+
+text DailyVerboseMsg {
+	"Rolled quest {STR_VAR_1}$"
+}
+
+script RyuDoDailyQuestVerbosePrint {
+	buffernumberstring(0, VAR_RESULT)
+    //debugprint(DailyVerboseMsg, 60)
+	return
 }

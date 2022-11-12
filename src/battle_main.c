@@ -68,6 +68,8 @@
 #include "autoscale_tables.h"
 #include "ach_atlas.h"
 #include "factions.h"
+#include "lifeskill.h"
+#include "overworld_notif.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_SE1;
 extern struct MusicPlayerInfo gMPlayInfo_SE2;
@@ -389,6 +391,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_YOUNG_COUPLE, 8},
     {TRAINER_CLASS_WINSTRATE, 10},
     {TRAINER_CLASS_DEVON_ENFORCER, 8},
+    {TRAINER_CLASS_AETHER_FOUNDER, 50},
     {0xFF, 5},
 };
 
@@ -1991,7 +1994,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = partyData[i].iv * 31 / 255;
-                CreateMon(&party[i], species, level, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                CreateMon(&party[i], species, level, fixedIV, FALSE, personalityValue, 0, 0);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET:
@@ -2004,7 +2007,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = partyData[i].iv * 31 / 255;
-                CreateMon(&party[i], species, level, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                CreateMon(&party[i], species, level, fixedIV, FALSE, personalityValue, 0, 0);
 
                 break;
 
@@ -2026,7 +2029,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = partyData[i].iv * 31 / 255;
-                CreateMon(&party[i], species, level, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                CreateMon(&party[i], species, level, fixedIV, FALSE, personalityValue, 0, 0);
 
                 break;
 
@@ -2042,7 +2045,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = partyData[i].iv * 31 / 255;
-                CreateMon(&party[i], partyData[i].species, level, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                CreateMon(&party[i], partyData[i].species, level, fixedIV, FALSE, personalityValue, 0, 0);
                 SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].ability);
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
                 if (FlagGet(FLAG_TEMP_6) == 1)
@@ -2053,7 +2056,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
-                if ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE))
+                if ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) || (VarGet(VAR_RYU_NGPLUS_COUNT) > 10))
                 {
                     SetMonData(&party[i], MON_DATA_HP_EV,    &evmax);
                     SetMonData(&party[i], MON_DATA_ATK_EV,   &evmax);
@@ -3146,7 +3149,6 @@ void SwitchInClearSetData(void)
     s32 i;
     struct DisableStruct disableStructCopy = gDisableStructs[gActiveBattler];
 
-    ClearIllusionMon(gActiveBattler);
     if (gBattleMoves[gCurrentMove].effect != EFFECT_BATON_PASS)
     {
         for (i = 0; i < NUM_BATTLE_STATS; i++)
@@ -3716,6 +3718,14 @@ static void TryDoEventsBeforeFirstTurn(void)
 
 }
 
+extern bool32 IsPlayerInUnderworld(void);
+
+const u16 bossMovePoolSwaps[3][3] = {
+    [0] = {MOVE_TORMENT, MOVE_SIMPLE_BEAM, MOVE_MOONBLAST},
+    [1] = {MOVE_KNOCK_OFF, MOVE_EE_PROTECT, MOVE_METEOR_MASH},
+    [2] = {MOVE_GLARE, MOVE_SPORE, MOVE_FLASH_CANNON}
+};
+
 static void HandleEndTurn_ContinueBattle(void)
 {
     s32 i;
@@ -3737,6 +3747,30 @@ static void HandleEndTurn_ContinueBattle(void)
         gBattleStruct->wishPerishSongBattlerId = 0;
         gBattleStruct->turnCountersTracker = 0;
         gMoveResultFlags = 0;
+    }
+    if (((IsPlayerInUnderworld()) == TRUE) && (FlagGet(FLAG_RYU_FACING_HORSEMAN)))
+        {
+            gBattleMons[1].ability = ABILITY_MAGIC_GUARD;
+            gBattleMons[1].type3 == TYPE_GHOST;
+        if ((Random() % 100) > 75)//25% chance to recharge between turns to make fight a little more fair.
+            {
+                gDisableStructs[gBattlerAttacker].rechargeTimer = 1;
+                gBattleMons[gBattlerAttacker].status2 |= STATUS2_RECHARGE;
+            }
+        }
+
+    if (((IsPlayerInUnderworld()) == TRUE) && (FlagGet(FLAG_RYU_FACING_REAPER)))
+    {
+        gBattleMons[1].ability = ABILITY_MAGIC_GUARD;
+        gBattleMons[1].moves[1] = bossMovePoolSwaps[0][(Random() % 3)];
+        gBattleMons[1].moves[2] = bossMovePoolSwaps[1][(Random() % 3)];
+        gBattleMons[1].moves[3] = bossMovePoolSwaps[2][(Random() % 3)];
+        gBattleMons[1].type3 == TYPE_GHOST;
+        if ((Random() % 100) > 61)//40% chance to recharge between turns to make fight a little more fair.
+            {
+                gDisableStructs[gBattlerAttacker].rechargeTimer = 1;
+                gBattleMons[gBattlerAttacker].status2 |= STATUS2_RECHARGE;
+            }
     }
 }
 
@@ -5088,6 +5122,8 @@ bool32 RyuCheckForLegendary(u16 species)
     return FALSE;
 }
 
+
+const u8 sTextLootPickupNotify[] = _("Picked up a {STR_VAR_1} from the kingpin.");
 static void ReturnFromBattleToOverworld(void)
 {
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
@@ -5141,6 +5177,21 @@ static void ReturnFromBattleToOverworld(void)
 
     if ((VarGet(VAR_RYU_TOTAL_FAINTS) >= 666) && (CheckAchievement(ACH_EVIL_INCARNATE) == FALSE))
         GiveAchievement(ACH_EVIL_INCARNATE);
+
+        if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE)
+        {
+            u16 newItem = (gRyuHighPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
+            FlagClear(FLAG_RYU_SPAWN_KINGPIN);
+            if (gBattleOutcome == B_OUTCOME_WON)
+            {
+                if (CheckBagHasSpace(newItem, 1))
+                {
+                    AddBagItem(newItem, 1);
+                    CopyItemName(newItem, gStringVar1);
+                    QueueNotification(sTextLootPickupNotify, NOTIFY_PICKUP, 120);
+                }
+            }
+        }
 
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);
