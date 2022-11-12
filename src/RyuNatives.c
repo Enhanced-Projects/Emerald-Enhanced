@@ -1302,7 +1302,7 @@ int Ryu_GiveRevivedFossilEgg(void)//gives the player a revived fossil mon with 3
     SetMonData(&gPlayerParty[slot], rnd2, &iv);
     SetMonData(&gPlayerParty[slot], rnd3, &iv);
 
-    if ((slot <= 4))// && (Random() % 1000 < 19))
+    if ((slot <= 4) && (Random() % 1000 < 19))
     {
         SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &egg);
         SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
@@ -2788,3 +2788,4 @@ void RyuApplyPlagueEffects(void)
         SetMonData(&gPlayerParty[i], MON_DATA_STATUS, &one);
     VarSet(VAR_RYU_HORSEMAN_ID, 2);
 }
+
