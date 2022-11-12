@@ -619,8 +619,10 @@
 #define STRINGID_REAPERDEALTDAMAGE                    615
 #define STRINGID_BALLBLOCKEDREAPER                    616
 #define STRINGID_BALLBLOCKEDHORSEMAN                  617
+#define STRINGID_TOXICTHREADUSED                      618
+#define STRINGID_SPIKESALERADYTHERE          619
 
-#define BATTLESTRINGS_COUNT                618
+#define BATTLESTRINGS_COUNT                619
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

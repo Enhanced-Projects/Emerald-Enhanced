@@ -2384,6 +2384,11 @@ static void Cmd_resultmessage(void)
         }
         gBattleCommunication[MSG_DISPLAY] = 1;
     }
+    else if (gMoveResultFlags & MOVE_RESULT_SPIKES_ALREADY_THERE)
+    {
+        stringId = STRINGID_SPIKESALERADYTHERE;
+        gBattleCommunication[MSG_DISPLAY] = 1;
+    }
     else
     {
         gBattleCommunication[MSG_DISPLAY] = 1;
@@ -8629,6 +8634,30 @@ static void Cmd_various(void)
                 gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 7);
             else
                 gBattlescriptCurrInstr += 11;
+        }
+    case VARIOUS_SET_TOXIC_THREAD:
+        {
+            u8 targetSide = GetBattlerSide(gBattlerTarget);
+            if (gSideStatuses[targetSide] & SIDE_STATUS_STICKY_WEB)
+            {
+                gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
+            }
+            else
+            {
+                gSideStatuses[targetSide] |= SIDE_STATUS_STICKY_WEB;
+                gSideTimers[targetSide].stickyWebAmount = 1;
+                gBattlescriptCurrInstr += 5;
+            }
+            if (gSideTimers[targetSide].toxicSpikesAmount >= 2)
+            {
+                gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
+            }
+            else
+            {
+                gSideTimers[targetSide].toxicSpikesAmount = 2;
+                gSideStatuses[targetSide] |= SIDE_STATUS_TOXIC_SPIKES;
+                gBattlescriptCurrInstr += 5;
+            }
         }
         return;
     }

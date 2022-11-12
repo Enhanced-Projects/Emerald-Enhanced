@@ -1146,32 +1146,23 @@ BattleScript_EffectClearSmog:
 	goto BattleScript_EffectHit
 
 BattleScript_EffectToxicThread:
-	setstatchanger STAT_SPEED, 2, TRUE
 	attackcanceler
-	jumpifsubstituteblocks BattleScript_ButItFailedAtkStringPpReduce
-	jumpifstat BS_TARGET, CMP_NOT_EQUAL, STAT_SPEED, 0x0, BattleScript_ToxicThreadWorks
-	jumpifstatus BS_TARGET, STATUS1_PSN_ANY, BattleScript_ButItFailedAtkStringPpReduce
-BattleScript_ToxicThreadWorks:
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
-	ppreduce
-	statbuffchange STAT_BUFF_ALLOW_PTR, BattleScript_ToxicThreadTryPsn
-	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, 0x2, BattleScript_ToxicThreadDoAnim
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, 0x3, BattleScript_ToxicThreadTryPsn
-	pause 0x20
-	goto BattleScript_ToxicThreadPrintString
-BattleScript_ToxicThreadDoAnim::
 	attackanimation
 	waitanimation
-	setgraphicalstatchangevalues
-	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-BattleScript_ToxicThreadPrintString::
-	printfromtable gStatDownStringIds
+	settoxicspikes BattleScript_ToxicSpikesAlreadyThere @Some hackiness required to make it not display "but it failed"
+	settoxicspikes BattleScript_ToxicSpikesAlreadyThere @this will only be goto'd if toxic spikes are alrady there
+BattleScript_ContinueToxicThread:
+	setstickyweb BattleScript_ButItFailed
+	printstring STRINGID_TOXICTHREADUSED
 	waitmessage 0x40
-BattleScript_ToxicThreadTryPsn::
-	setmoveeffect MOVE_EFFECT_TOXIC
-	seteffectprimary
 	goto BattleScript_MoveEnd
+BattleScript_ToxicSpikesAlreadyThere:@this will return to the above code after the message
+	pause 0x20
+	orhalfword gMoveResultFlags, MOVE_RESULT_SPIKES_ALREADY_THERE
+	resultmessage
+	waitmessage 0x40
+	goto BattleScript_ContinueToxicThread
 
 BattleScript_EffectVenomDrench:
 	attackcanceler
@@ -6050,7 +6041,7 @@ BattleScript_FutureAttackEnd::
 	end2
 BattleScript_FutureAttackMiss::
 	pause 0x20
-	sethword gMoveResultFlags, MOVE_RESULT_FAILED
+	sethword gMoveResultFlags, MOVE_RESULT_SPIKES_ALREADY_THERE
 	resultmessage
 	waitmessage 0x40
 	sethword gMoveResultFlags, 0
