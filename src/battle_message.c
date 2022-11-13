@@ -747,6 +747,8 @@ static const u8 sText_RyuItDoesntLikeCheaters[] = _("The wild pokémon doesn't\n
 static const u8 sText_RyuBurnedByMagma[] = _("{B_ATK_NAME_WITH_PREFIX} was burned by the\nswirling magma!"); 
 static const u8 sText_RyuBallBlockedReaper[] = _("YOU ARE NOT WORTHY!"); 
 static const u8 sText_RyuBallBlockedHorseman[] = _("A strange forcefield blocked\nthe ball."); 
+static const u8 sText_ToxicWebBlankets[] = _("The other side is blanketed\nwith a toxic thread!"); 
+static const u8 sText_ToxicSpikesAlreadyThere[] = _("Some toxic poison remains from\nbefore..."); 
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1353,7 +1355,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ITDOESNTLIKECHEATERS - 12] = sText_RyuItDoesntLikeCheaters,
     [STRINGID_DOTMS - 12] = sText_RyuBurnedByMagma,
     [STRINGID_BALLBLOCKEDREAPER - 12] = sText_RyuBallBlockedReaper,
-    [STRINGID_BALLBLOCKEDHORSEMAN - 12] = sText_RyuBallBlockedHorseman
+    [STRINGID_BALLBLOCKEDHORSEMAN - 12] = sText_RyuBallBlockedHorseman,
+    [STRINGID_TOXICTHREADUSED - 12] = sText_ToxicWebBlankets,
+    [STRINGID_SPIKESALERADYTHERE - 12] = sText_ToxicSpikesAlreadyThere
 };
 
 const u16 gTerrainStringIds[] =

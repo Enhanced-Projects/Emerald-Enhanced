@@ -2384,6 +2384,11 @@ static void Cmd_resultmessage(void)
         }
         gBattleCommunication[MSG_DISPLAY] = 1;
     }
+    else if (gMoveResultFlags & MOVE_RESULT_SPIKES_ALREADY_THERE)
+    {
+        stringId = STRINGID_SPIKESALERADYTHERE;
+        gBattleCommunication[MSG_DISPLAY] = 1;
+    }
     else
     {
         gBattleCommunication[MSG_DISPLAY] = 1;
