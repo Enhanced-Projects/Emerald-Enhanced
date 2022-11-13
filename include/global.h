@@ -143,6 +143,8 @@
 #define NUM_ACH_PWR_BYTES (ROUND_BITS_TO_BYTES(AP_FLAGS_COUNT))
 #define NUM_NPC_FACTIONS 8
 
+#define MAX_DYNAMIC_OBJECTS 4
+
 struct Coords8
 {
     s8 x;
@@ -399,6 +401,18 @@ struct DeliveryTime //size 4
     u32 unusedDeliveryTimeBits:2;
 };
 
+struct PokefansMedicTarget//size 8
+{
+    u8 mapNum;
+    u8 mapGroup;
+    u8 objectID;
+    u8 bestItem;
+    u8 neutralItem;
+    u8 reward;
+    u8 favor;
+    u8 filler;//pad to 8 bytes
+};
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -452,6 +466,8 @@ struct SaveBlock2
              u8 RtcTimeSecondRAW;
              u32 RtcTimeSecond;
              u32 SaveStateLastDetection;
+             struct PokefansMedicTarget victim;
+
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -744,6 +760,21 @@ struct WaldaPhrase
     bool8 patternUnlocked;
 };
 
+struct DynamicMapObjects
+{
+    bool8 active;
+    u8 mapGroup;
+    u8 mapNum;
+    u8 x;
+    u8 y;
+    u8 z;
+    u8 gfxId;
+    u8 movement;
+    u8 localId;
+    u8 *scriptPtr;
+    u8 otherData; //generally used to clear this slot if necessary.
+};
+
 struct TrainerNameRecord
 {
     u32 trainerId;
@@ -837,6 +868,8 @@ struct SaveBlock1
                u8 dexNavSearchLevels[SPECIES_MELMETAL];
                u8 dexNavChain;
                struct Pokemon GCMS;
+               struct DynamicMapObjects DynamicObjects[MAX_DYNAMIC_OBJECTS];
+               u8 dynamicDeliveryIds[4];
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

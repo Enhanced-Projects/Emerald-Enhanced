@@ -1283,7 +1283,7 @@ u8 SpawnSpecialObjectEventParameterized(u16 graphicsId, u8 movementBehavior, u8 
     return SpawnSpecialObjectEvent(&objectEventTemplate);
 }
 
-void RyuSpawnDeliveryObject(u16 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 z)
+void RyuSpawnDynamicObject(u16 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 z, u8 *scriptPtr)
 {
     struct ObjectEventTemplate objectEventTemplate;
     u8 id = 0;
@@ -1300,7 +1300,7 @@ void RyuSpawnDeliveryObject(u16 graphicsId, u8 movementBehavior, u8 localId, s16
     objectEventTemplate.movementRangeY = 0;
     objectEventTemplate.trainerType = TRAINER_TYPE_NONE;
     objectEventTemplate.trainerRange_berryTreeId = 0;
-    objectEventTemplate.script = RyuDeliveryTargetScript;
+    objectEventTemplate.script = scriptPtr;
     objectEventTemplate.flagId = 0;
     id = SpawnSpecialObjectEvent(&objectEventTemplate);
 }
@@ -1531,6 +1531,26 @@ void DestroyFollowerObjectEvent(void)
     }
 }
 
+int RyuGetLowestAvailableDynamicSlot(void)
+{
+    u32 i;
+    u8 slot = 7;
+    for (i=7;i>MAX_DYNAMIC_OBJECTS;i--)
+    {
+        if (gSaveBlock1Ptr->DynamicObjects[i].active == FALSE)
+            slot--;
+    }
+
+    return slot;
+}
+
+void RyuClearAllDynamicObjects(void)
+{
+    u32 i;
+    for (i=0;i<MAX_DYNAMIC_OBJECTS;i++)
+        gSaveBlock1Ptr->DynamicObjects[i].active = 0;
+}
+
 extern int RyuGetCurrentMapsec(void);
 void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
 {
@@ -1567,20 +1587,22 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
                 && !FlagGet(template->flagId))
                 TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
         }
-        for (i = 0; i < 4; i++)
+        for (i = 0; i < MAX_DYNAMIC_OBJECTS; i++)
         {
-            if ((gSaveBlock1Ptr->location.mapGroup == gSaveBlock2Ptr->Deliveries[i].mapgroup) && (gSaveBlock1Ptr->location.mapNum == gSaveBlock2Ptr->Deliveries[i].mapnum))
+            if (gSaveBlock1Ptr->DynamicObjects[i].active == TRUE)
             {
-                if (top <= gSaveBlock2Ptr->Deliveries[i].ypos && bottom >= gSaveBlock2Ptr->Deliveries[i].ypos && left <= gSaveBlock2Ptr->Deliveries[i].xpos && right >= gSaveBlock2Ptr->Deliveries[i].xpos)
+                if ((gSaveBlock1Ptr->location.mapGroup == gSaveBlock1Ptr->DynamicObjects[i].mapGroup) && (gSaveBlock1Ptr->location.mapNum == gSaveBlock1Ptr->DynamicObjects[i].mapNum))
                 {
-                    if ((gSaveBlock2Ptr->DeliveryTimer.active == TRUE) && ((gSaveBlock2Ptr->Deliveries[i].finished == FALSE)))
+                    if (top <= gSaveBlock1Ptr->DynamicObjects[i].y && bottom >= gSaveBlock1Ptr->DynamicObjects[i].y && left <= gSaveBlock1Ptr->DynamicObjects[i].x && right >= gSaveBlock1Ptr->DynamicObjects[i].x)
                     {
-                        (RyuSpawnDeliveryObject(gSaveBlock2Ptr->Deliveries[i].GfxID,
-                                                MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN, 
-                                                0xDD, 
-                                                gSaveBlock2Ptr->Deliveries[i].xpos, 
-                                                gSaveBlock2Ptr->Deliveries[i].ypos,
-                                                3));
+                            RyuSpawnDynamicObject(gSaveBlock1Ptr->DynamicObjects[i].gfxId,
+                                                  gSaveBlock1Ptr->DynamicObjects[i].movement,
+                                                  gSaveBlock1Ptr->DynamicObjects[i].localId,
+                                                  gSaveBlock1Ptr->DynamicObjects[i].x,
+                                                  gSaveBlock1Ptr->DynamicObjects[i].y,
+                                                  gSaveBlock1Ptr->DynamicObjects[i].z,
+                                                  gSaveBlock1Ptr->DynamicObjects[i].scriptPtr);
+
                     }
                 }
             }

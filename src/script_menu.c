@@ -899,7 +899,8 @@ static const u8 sText_DebugUtilityItem17[] = _("Print out theme colors");
 static const u8 sText_DebugUtilityItem18[] = _("Check Ryu's Challenge");
 static const u8 sText_DebugUtilityItem19[] = _("Check exact play time");
 static const u8 sText_DebugUtilityItem20[] = _("Enable Verbose Mode");
-static const u8 sText_DebugUtilityItem21[] = _("Exit");
+static const u8 sText_DebugUtilityItem21[] = _("Check DOE status");
+static const u8 sText_DebugUtilityItem22[] = _("Exit");
 
 // strings to display as items.
 static const u8 sText_BotanyConsumableItem1[] = _("Muscle Powder");
@@ -1050,6 +1051,7 @@ static const struct ListMenuItem sDebugUtilitySet[] =
         {sText_DebugUtilityItem19, 19},
         {sText_DebugUtilityItem20, 20},
         {sText_DebugUtilityItem21, 21},
+        {sText_DebugUtilityItem22, 22},
 };
 
 static const struct ListMenuItem sAlchemyMenu[] =

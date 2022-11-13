@@ -2789,3 +2789,20 @@ void RyuApplyPlagueEffects(void)
     VarSet(VAR_RYU_HORSEMAN_ID, 2);
 }
 
+void RyuTestDynamicObjectContents(void)
+{
+    u32 i;
+    u8 objectsCount = 0;
+    mgba_open();
+    for (i=0;i<4;i++)
+        if (gSaveBlock1Ptr->DynamicObjects[i].active == TRUE)
+            objectsCount++;
+    ConvertIntToDecimalStringN(gStringVar1, objectsCount, 0, 1);
+    mgba_printf(LOGINFO, "There are %d active dynamic objects.", objectsCount);
+    for (i=0;i<4;i++)
+        if (gSaveBlock1Ptr->DynamicObjects[i].active == TRUE)
+        {
+            mgba_printf(LOGINFO, "\nobject # %d:\nObject gfx ID: %d\nMap is %d:%d\ncoords are %d,%d,%d\nMovement type: %d\nlocalid: %d\nscript pointer: %d", i, gSaveBlock1Ptr->DynamicObjects[i].gfxId, gSaveBlock1Ptr->DynamicObjects[i].mapGroup, gSaveBlock1Ptr->DynamicObjects[i].mapNum, (gSaveBlock1Ptr->DynamicObjects[i].x + 7), (gSaveBlock1Ptr->DynamicObjects[i].y + 7), gSaveBlock1Ptr->DynamicObjects[i].z, gSaveBlock1Ptr->DynamicObjects[i].movement, gSaveBlock1Ptr->DynamicObjects[i].localId, gSaveBlock1Ptr->DynamicObjects[i].scriptPtr);
+        }
+    mgba_close();
+}
