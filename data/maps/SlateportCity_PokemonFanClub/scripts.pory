@@ -15,6 +15,8 @@ SlateportCity_PokemonFanClub_EventScript_Chairman:: @ 8209E96
 	end
 
 SlateportCity_PokemonFanClub_EventScript_ChairmanFirstAssessment:: @ 8209ED2
+	checkfactionstanding FACTION_POKEFANS
+	goto_if_gt VAR_RESULT, 170, FC_PokefansSpecialContent
 	setvar VAR_SLATEPORT_FAN_CLUB_STATE, 1
 	msgbox SlateportCity_PokemonFanClub_Text_AllowMeToExamineYourPokemon, MSGBOX_DEFAULT
 	goto SlateportCity_PokemonFanClub_EventScript_ChairmanAssessLeadMon
@@ -414,3 +416,27 @@ SlateportCity_PokemonFanClub_Text_Azumarill: @ 820AD80
 	.string "Azumarill: Marimari?$"
 
 `
+
+script FC_PokefansSpecialContent {
+	if (flag(FLAG_RYU_POKEFANS_FINAL_QUEST_STARTED) == TRUE) {
+		goto(FC_SpecialQuestInProgress)
+	}
+	if (flag(FLAG_RYU_POKEFANS_FINAL_QUEST_DONE) == TRUE){
+		goto(SpecialPokefansContentEvergreen)
+	}
+	//start special quest
+	release
+	end
+}
+
+script FC_SpecialQuestInProgress {
+	msgbox("Quest in progress")
+	release
+	end
+}
+
+script SpecialPokefansContentEvergreen {
+	msgbox("Continuous pokefans content here")
+	release
+	end
+}

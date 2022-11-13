@@ -216,8 +216,8 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_initrotatingtilepuzzle    @ 0xd5
 	.4byte ScrCmd_freerotatingtilepuzzle    @ 0xd6
 	.4byte ScrCmd_warpmossdeepgym           @ 0xd7
-	.4byte ScrCmd_cmdD8                     @ 0xd8
-	.4byte ScrCmd_cmdD9                     @ 0xd9
+	.4byte ScrCmd_trainstat                 @ 0xd8
+	.4byte ScrCmd_cmd_unused_D9                     @ 0xd9
 	.4byte ScrCmd_empty0xda                 @ 0xda
 	.4byte ScrCmd_cmdDB                     @ 0xdb
 	.4byte ScrCmd_fadescreenswapbuffers     @ 0xdc

@@ -2165,7 +2165,7 @@ bool8 ScrCmd_cmdD8(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_cmdD9(struct ScriptContext *ctx)
+bool8 ScrCmd_cmd_unused_D9(struct ScriptContext *ctx)
 {
     if (IsUpdateLinkStateCBActive())
     {
@@ -2352,48 +2352,14 @@ bool8 ScrCmd_checkbp(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_gfec(struct ScriptContext *ctx)
+bool8 ScrCmd_trainstat(struct ScriptContext *ctx)
 {
-    u8 dir = (GetPlayerFacingDirection());
-    u8 pX = (gSaveBlock1Ptr->pos.x);
-    u8 pY = (gSaveBlock1Ptr->pos.y);
-    u8 fX, fY;
-
-    switch (dir)
-    {
-        case DIR_NORTH:
-        {
-            fX = pX;
-            fY = pY + 1;
-            VarSet(VAR_TEMP_D, fX);
-            VarSet(VAR_TEMP_C, fY);
-            return FALSE;
-        }
-        case DIR_SOUTH:
-        {
-            fX = pX;
-            fY = pY - 1;
-            VarSet(VAR_TEMP_D, fX);
-            VarSet(VAR_TEMP_C, fY);
-            return FALSE;
-        }
-        case DIR_EAST:
-        {
-            fX = pX - 1;
-            fY = pY;
-            VarSet(VAR_TEMP_D, fX);
-            VarSet(VAR_TEMP_C, fY);
-            return FALSE;
-        }
-        case DIR_WEST:
-        {
-            fX = pX + 1;
-            fY = pY;
-            VarSet(VAR_TEMP_D, fX);
-            VarSet(VAR_TEMP_C, fY);
-            return FALSE;
-        }
-    }
+    u8 statid = (VarGet(ScriptReadHalfword(ctx)));
+    u8 amount = (VarGet(ScriptReadHalfword(ctx)));
+    u8 currentStat = GetMonData(&gPlayerParty[0], statid);
+    currentStat += amount;
+    SetMonData(&gPlayerParty[0], statid, &currentStat);
+    return FALSE;
 }
 
 bool8 ScrCmd_multvar(struct ScriptContext *ctx)

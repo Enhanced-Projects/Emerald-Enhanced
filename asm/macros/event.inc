@@ -1460,14 +1460,6 @@
 	.byte 0xcb
 	.endm
 
-	@ Compares the value of a hidden variable to a dword.
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro comparehiddenvar a:req, value:req
-	.byte 0xcc
-	.byte \a
-	.4byte \value
-	.endm
-
 	@ Makes the Pokemon in the specified slot of the player's party obedient. It will not randomly disobey orders in battle.
 	.macro setmonobedient slot:req
 	.byte 0xcd
@@ -1543,11 +1535,15 @@
 	.2byte \y
 	.endm
 
-	.macro cmdD8
+	@ Sets increases statid by amount
+	@ accepts any MON_DATA constant for statid.
+	.macro trainstat statid:req, amount:req
 	.byte 0xd8
+	.2byte \statid
+	.2byte \amount
 	.endm
 
-	.macro cmdD9
+	.macro cmd_unused_D9
 	.byte 0xd9
 	.endm
 
