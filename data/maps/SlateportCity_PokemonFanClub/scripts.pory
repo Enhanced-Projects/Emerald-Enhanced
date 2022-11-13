@@ -15,8 +15,9 @@ SlateportCity_PokemonFanClub_EventScript_Chairman:: @ 8209E96
 	end
 
 SlateportCity_PokemonFanClub_EventScript_ChairmanFirstAssessment:: @ 8209ED2
-	checkfactionstanding FACTION_POKEFANS
-	goto_if_gt VAR_RESULT, 170, FC_PokefansSpecialContent
+	checkfactionstanding FACTION_POKEFANS, 170
+	compare VAR_RESULT, 170
+	goto_if_gt FC_PokefansSpecialContent
 	setvar VAR_SLATEPORT_FAN_CLUB_STATE, 1
 	msgbox SlateportCity_PokemonFanClub_Text_AllowMeToExamineYourPokemon, MSGBOX_DEFAULT
 	goto SlateportCity_PokemonFanClub_EventScript_ChairmanAssessLeadMon

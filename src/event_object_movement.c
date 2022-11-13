@@ -31,6 +31,7 @@
 #include "constants/trainer_types.h"
 #include "constants/union_room.h"
 #include "overworld_notif.h"
+#include "DynamicObjects.h"
 
 // this file was known as evobjmv.c in Game Freak's original source
 
@@ -136,9 +137,6 @@ static bool8 AnimateSpriteInFigure8(struct Sprite *sprite);
 static void UpdateObjectEventSprite(struct Sprite *);
 static void FaceDirection(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction);
 static u8 GetDirectionToFace(s16 x1, s16 y1, s16 x2, s16 y2);
-
-extern const u8 RyuDeliveryTargetScript[];
-
 
 const struct SpriteTemplate gCameraSpriteTemplate = {0, 0xFFFF, &gDummyOamData, gDummySpriteAnimTable, NULL, gDummySpriteAffineAnimTable, ObjectCB_CameraObject};
 
@@ -1283,28 +1281,6 @@ u8 SpawnSpecialObjectEventParameterized(u16 graphicsId, u8 movementBehavior, u8 
     return SpawnSpecialObjectEvent(&objectEventTemplate);
 }
 
-void RyuSpawnDynamicObject(u16 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 z, u8 *scriptPtr)
-{
-    struct ObjectEventTemplate objectEventTemplate;
-    u8 id = 0;
-
-    x -= 7;
-    y -= 7;
-    objectEventTemplate.localId = localId;
-    objectEventTemplate.graphicsId = graphicsId;
-    objectEventTemplate.x = x;
-    objectEventTemplate.y = y;
-    objectEventTemplate.elevation = z;
-    objectEventTemplate.movementType = movementBehavior;
-    objectEventTemplate.movementRangeX = 0;
-    objectEventTemplate.movementRangeY = 0;
-    objectEventTemplate.trainerType = TRAINER_TYPE_NONE;
-    objectEventTemplate.trainerRange_berryTreeId = 0;
-    objectEventTemplate.script = scriptPtr;
-    objectEventTemplate.flagId = 0;
-    id = SpawnSpecialObjectEvent(&objectEventTemplate);
-}
-
 u8 TrySpawnObjectEvent(u8 localId, u8 mapNum, u8 mapGroup)
 {
     struct ObjectEventTemplate *objectEventTemplate;
@@ -1531,26 +1507,6 @@ void DestroyFollowerObjectEvent(void)
     }
 }
 
-int RyuGetLowestAvailableDynamicSlot(void)
-{
-    u32 i;
-    u8 slot = 7;
-    for (i=7;i>MAX_DYNAMIC_OBJECTS;i--)
-    {
-        if (gSaveBlock1Ptr->DynamicObjects[i].active == FALSE)
-            slot--;
-    }
-
-    return slot;
-}
-
-void RyuClearAllDynamicObjects(void)
-{
-    u32 i;
-    for (i=0;i<MAX_DYNAMIC_OBJECTS;i++)
-        gSaveBlock1Ptr->DynamicObjects[i].active = 0;
-}
-
 extern int RyuGetCurrentMapsec(void);
 void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
 {
@@ -1583,7 +1539,10 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
             s16 npcX = template->x + 7;
             s16 npcY = template->y + 7;
 
-            if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX
+            if (top <= npcY &&
+                bottom >= npcY &&
+                left <= npcX &&
+                right >= npcX
                 && !FlagGet(template->flagId))
                 TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
         }
@@ -1593,13 +1552,18 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
             {
                 if ((gSaveBlock1Ptr->location.mapGroup == gSaveBlock1Ptr->DynamicObjects[i].mapGroup) && (gSaveBlock1Ptr->location.mapNum == gSaveBlock1Ptr->DynamicObjects[i].mapNum))
                 {
-                    if (top <= gSaveBlock1Ptr->DynamicObjects[i].y && bottom >= gSaveBlock1Ptr->DynamicObjects[i].y && left <= gSaveBlock1Ptr->DynamicObjects[i].x && right >= gSaveBlock1Ptr->DynamicObjects[i].x)
+                    s16 dynobjX = gSaveBlock1Ptr->DynamicObjects[i].x + 7;
+                    s16 dynobjY = gSaveBlock1Ptr->DynamicObjects[i].y + 7;
+                    if (top <= dynobjY &&
+                        bottom >= dynobjY &&
+                        left <= dynobjX &&
+                        right >= dynobjX)
                     {
-                            RyuSpawnDynamicObject(gSaveBlock1Ptr->DynamicObjects[i].gfxId,
+                            RyuSpawnDynamicObject(gSaveBlock1Ptr->DynamicObjects[i].localId,
+                                                  gSaveBlock1Ptr->DynamicObjects[i].gfxId,
                                                   gSaveBlock1Ptr->DynamicObjects[i].movement,
-                                                  gSaveBlock1Ptr->DynamicObjects[i].localId,
-                                                  gSaveBlock1Ptr->DynamicObjects[i].x,
-                                                  gSaveBlock1Ptr->DynamicObjects[i].y,
+                                                  dynobjX - 7,
+                                                  dynobjY - 7,
                                                   gSaveBlock1Ptr->DynamicObjects[i].z,
                                                   gSaveBlock1Ptr->DynamicObjects[i].scriptPtr);
 
@@ -2285,8 +2249,17 @@ void SetObjectEventDirection(struct ObjectEvent *objectEvent, u8 direction)
 
 static const u8 *GetObjectEventScriptPointerByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 {
-    if (localId == 0xDD)
-        return RyuDeliveryTargetScript;
+    switch (localId)
+    {
+        case 0xDA:
+            return gSaveBlock1Ptr->DynamicObjects[0].scriptPtr;
+        case 0xDB:
+            return gSaveBlock1Ptr->DynamicObjects[1].scriptPtr;
+        case 0xDC:
+            return gSaveBlock1Ptr->DynamicObjects[2].scriptPtr;
+        case 0xDD:
+            return gSaveBlock1Ptr->DynamicObjects[3].scriptPtr;
+    }
     return GetObjectEventTemplateByLocalIdAndMap(localId, mapNum, mapGroup)->script;
 }
 

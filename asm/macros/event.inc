@@ -1441,17 +1441,32 @@
 	.byte \digits
 	.endm
 
-	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of
-	@ the screen when the Main Menu is opened.
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro unloadhelp
+	@ removes the dynamic object with specified ID from dynamic object storage.
+	@ Specify all = TRUE to completely empty the dynamic object storage.
+	.macro removedynamicobject id:req, all=FALSE
 	.byte 0xc9
+	.byte \id
+	.byte \all
 	.endm
 
-	@ After using this command, all standard message boxes will use the signpost frame.
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro signmsg
+	@ Creates a dynamic object event in the object event storage space.
+	@ Object will not be created if dynamic object storage is full (default 4 slots)
+	@ Object will spawn where directed with the script specified attached as interact.
+	@ Take care to not exceed the maximum (16) objects that can appear on the screen
+	@ or you're going to have a bad time.
+	@ LocalId defaults to 0xDD to not take any of the reserved slots for player, dynamic gfx id, and camera.
+	@ You can specify localid if you wish, but if you choose one that exists already
+	@ bugs will appear. z should usually be 3, localid will be 0xDA + the dynamic object id (e.g. dynamic object slot 2 localid would be 0xDB)
+	.macro adddynamicobject mapgroup:req, mapnum:req, gfxid:req, xposition:req, yposition:req, zposition:req, movementType:req,scriptptr:req
 	.byte 0xca
+	.byte \mapgroup
+	.byte \mapnum
+	.2byte \gfxid
+	.2byte \xposition
+	.2byte \yposition
+	.byte \zposition
+	.byte \movementType
+	.4byte \scriptptr
 	.endm
 
 	@ Ends the effects of signmsg, returning message box frames to normal.

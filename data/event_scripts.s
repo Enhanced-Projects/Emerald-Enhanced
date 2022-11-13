@@ -54,6 +54,7 @@
 #include "constants/weather.h"
 #include "constants/general.h"
 #include "constants/region_map_sections.h"
+#include "constants/event_object_movement.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"

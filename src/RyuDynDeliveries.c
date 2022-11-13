@@ -108,7 +108,7 @@ int RyuConvertDeliveryTargetsToDynamicObjects(void)
             gSaveBlock1Ptr->DynamicObjects[dynamicSlot].x = gSaveBlock2Ptr->Deliveries[i].xpos;
             gSaveBlock1Ptr->DynamicObjects[dynamicSlot].y = gSaveBlock2Ptr->Deliveries[i].ypos;
             gSaveBlock1Ptr->DynamicObjects[dynamicSlot].z = 3;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].scriptPtr == RyuDeliveryTargetScript;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].scriptPtr = RyuDeliveryTargetScript;
             gSaveBlock1Ptr->dynamicDeliveryIds[i] = dynamicSlot;
             dynamicSlot++;//increment slot number based on where first slot was
             if (dynamicSlot > 3)

@@ -765,13 +765,13 @@ struct DynamicMapObjects
     bool8 active;
     u8 mapGroup;
     u8 mapNum;
-    u8 x;
-    u8 y;
+    s16 x;
+    s16 y;
     u8 z;
     u8 gfxId;
     u8 movement;
     u8 localId;
-    u8 *scriptPtr;
+    const u8 *scriptPtr;
     u8 otherData; //generally used to clear this slot if necessary.
 };
 
