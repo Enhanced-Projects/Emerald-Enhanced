@@ -31,7 +31,7 @@ struct UnknownPokemonStruct4
 void CB2_InitBattle(void);
 void BattleMainCB2(void);
 void CB2_QuitRecordedBattle(void);
-void sub_8038528(struct Sprite* sprite);
+void SpriteCB_VsLetterDummy(struct Sprite* sprite);
 void sub_8038A04(void); // unused
 void VBlankCB_Battle(void);
 void nullsub_17(struct Sprite *sprite);
@@ -46,8 +46,8 @@ void SpriteCb_ShowAsMoveTarget(struct Sprite *sprite);
 void SpriteCb_HideAsMoveTarget(struct Sprite *sprite);
 void SpriteCb_OpponentMonFromBall(struct Sprite *sprite);
 void sub_8039BB4(struct Sprite *sprite);
-void sub_80105DC(struct Sprite *sprite);
-void sub_8039C00(struct Sprite *sprite);
+void SpriteCB_BattleSpriteStartSlideLeft(struct Sprite *sprite);
+void SpriteCB_FaintSlideAnim(struct Sprite *sprite);
 void DoBounceEffect(u8 battlerId, u8 b, s8 c, s8 d);
 void EndBounceEffect(u8 battlerId, bool8 b);
 void SpriteCb_PlayerMonFromBall(struct Sprite *sprite);

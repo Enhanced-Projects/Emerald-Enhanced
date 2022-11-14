@@ -35,7 +35,7 @@ void DoCableClubWarp(void);
 void DoContestHallWarp(void);
 void AnimateFlash(u8 flashLevel);
 void WriteBattlePyramidViewScanlineEffectBuffer(void);
-void sub_80B0244(void);
+void DoSpinEnterWarp(void);
 void sub_80B0268(void);
 void DoOrbEffect(void);
 void FadeOutOrbEffect(void);

@@ -1135,7 +1135,7 @@ static void sub_80B01BC(u8 taskId)
     }
 }
 
-void sub_80B0244(void)
+void DoSpinEnterWarp(void)
 {
     ScriptContext2_Enable();
     CreateTask(Task_WarpAndLoadMap, 10);

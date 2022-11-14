@@ -2224,7 +2224,7 @@ bool8 ScrCmd_warpD1(struct ScriptContext *ctx)
 
     SetWarpDestination(mapGroup, mapNum, warpId, x, y);
     sub_808D074(GetPlayerFacingDirection());
-    sub_80B0244();
+    DoSpinEnterWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
 }
