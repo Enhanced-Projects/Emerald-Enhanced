@@ -778,7 +778,7 @@ bool8 CameraMove(int x, int y)
     else
     {
         save_serialize_map();
-        ClearMirageTowerPulseBlendEffect();
+        //ClearMirageTowerPulseBlendEffect();
         old_x = gSaveBlock1Ptr->pos.x;
         old_y = gSaveBlock1Ptr->pos.y;
         connection = sub_8088950(direction, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y);

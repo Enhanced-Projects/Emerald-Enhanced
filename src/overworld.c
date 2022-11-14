@@ -1450,7 +1450,7 @@ static void InitOverworldBgs(void)
 
 void CleanupOverworldWindowsAndTilemaps(void)
 {
-    ClearMirageTowerPulseBlendEffect();
+    //ClearMirageTowerPulseBlendEffect();
     FreeAllOverworldWindowBuffers();
     if (gBGTilemapBuffers3)
         FREE_AND_SET_NULL(gBGTilemapBuffers3);
@@ -1567,32 +1567,14 @@ static bool8 RunFieldCallback(void)
     return TRUE;
 }
 
-bool8 KeepKeyItem(u16 itemId)
-{
-    switch (itemId)
-    {
-    case ITEM_WAYSTONE:
-    case ITEM_IMPRINTER:
-    case ITEM_SUPER_ROD:
-    case ITEM_FORECASTER:
-    case ITEM_EXP_DRIVE:
-    case ITEM_EXP_SHARE:
-        return TRUE;
-    default:
-        return FALSE;    
-    }
-}
 
 void ClearKeyItems(void)
 {
     int i;
     for (i = 0; i < BAG_KEYITEMS_COUNT; i++)
     {
-        if (!KeepKeyItem(gSaveBlock1Ptr->bagPocket_KeyItems[i].itemId))
-        {
-            gSaveBlock1Ptr->bagPocket_KeyItems[i].itemId = ITEM_NONE;
-            gSaveBlock1Ptr->bagPocket_KeyItems[i].quantity = 0;
-        }
+        gSaveBlock1Ptr->bagPocket_KeyItems[i].itemId = ITEM_NONE;
+        gSaveBlock1Ptr->bagPocket_KeyItems[i].quantity = 0;
     }
 }
 
@@ -2281,7 +2263,7 @@ static void DoMapLoadLoop(u8 *state)
 
 static void ResetMirageTowerAndSaveBlockPtrs(void)
 {
-    ClearMirageTowerPulseBlend();
+    //ClearMirageTowerPulseBlend();
     MoveSaveBlocks_ResetHeap();
 }
 
@@ -2362,7 +2344,7 @@ static void ResumeMap(bool32 a1)
     if (!a1)
         SetUpFieldTasks();
     RunOnResumeMapScript();
-    TryStartMirageTowerPulseBlendEffect();
+    //TryStartMirageTowerPulseBlendEffect();
 }
 
 static void InitObjectEventsLink(void)

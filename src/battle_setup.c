@@ -269,7 +269,7 @@ static void Task_BattleStart(u8 taskId)
         if (!FldEffPoison_IsActive()) // is poison not active?
         {
             BattleTransition_StartOnField(tTransition);
-            ClearMirageTowerPulseBlendEffect();
+            //ClearMirageTowerPulseBlendEffect();
             tState++; // go to case 1.
         }
         break;

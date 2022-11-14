@@ -745,7 +745,7 @@ static void Task_WarpAndLoadMap(u8 taskId)
         {
             if (task->data[1] == 0)
             {
-                ClearMirageTowerPulseBlendEffect();
+                //ClearMirageTowerPulseBlendEffect();
                 task->data[1] = 1;
             }
             if (BGMusicStopped())

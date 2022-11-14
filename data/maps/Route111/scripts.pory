@@ -17,7 +17,7 @@ Route111_EventScript_CloseDesertRuins:: @ 81F0CD1
 
 Route111_OnTransition: @ 81F0D87
 	setvar VAR_TRAINER_HILL_IS_ACTIVE, 0
-	special SetMirageTowerVisibility
+	@special SetMirageTowerVisibility
 	call Route111_EventScript_CheckSetSandstorm
 	call GabbyAndTy_EventScript_UpdateLocation
 	checktrainerflag TRAINER_VICKY
