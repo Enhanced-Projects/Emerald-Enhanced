@@ -1567,13 +1567,32 @@ static bool8 RunFieldCallback(void)
     return TRUE;
 }
 
+bool8 KeepKeyItem(u16 itemId)
+{
+    switch (itemId)
+    {
+    case ITEM_WAYSTONE:
+    case ITEM_IMPRINTER:
+    case ITEM_SUPER_ROD:
+    case ITEM_FORECASTER:
+    case ITEM_EXP_DRIVE:
+    case ITEM_EXP_SHARE:
+        return TRUE;
+    default:
+        return FALSE;    
+    }
+}
+
 void ClearKeyItems(void)
 {
     int i;
     for (i = 0; i < BAG_KEYITEMS_COUNT; i++)
     {
-        gSaveBlock1Ptr->bagPocket_KeyItems[i].itemId = ITEM_NONE;
-        gSaveBlock1Ptr->bagPocket_KeyItems[i].quantity = 0;
+        if (!KeepKeyItem(gSaveBlock1Ptr->bagPocket_KeyItems[i].itemId))
+        {
+            gSaveBlock1Ptr->bagPocket_KeyItems[i].itemId = ITEM_NONE;
+            gSaveBlock1Ptr->bagPocket_KeyItems[i].quantity = 0;
+        }
     }
 }
 
@@ -2097,7 +2116,7 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
         (*state)++;
         break;
     case 4:
-        //InitCurrentFlashLevelScanlineEffect();
+        InitCurrentFlashLevelScanlineEffect();
         InitOverworldGraphicsRegisters();
         InitTextBoxGfxAndPrinters();
         (*state)++;
@@ -2262,7 +2281,7 @@ static void DoMapLoadLoop(u8 *state)
 
 static void ResetMirageTowerAndSaveBlockPtrs(void)
 {
-    //ClearMirageTowerPulseBlend();
+    ClearMirageTowerPulseBlend();
     MoveSaveBlocks_ResetHeap();
 }
 
@@ -2343,7 +2362,7 @@ static void ResumeMap(bool32 a1)
     if (!a1)
         SetUpFieldTasks();
     RunOnResumeMapScript();
-    //TryStartMirageTowerPulseBlendEffect();
+    TryStartMirageTowerPulseBlendEffect();
 }
 
 static void InitObjectEventsLink(void)
@@ -2970,9 +2989,6 @@ static const u8 *TryInteractWithPlayer(struct TradeRoomPlayer *player)
 // these event scripts runs.
 static u16 GetDirectionForEventScript(const u8 *script)
 {
-    mgba_open();
-    mgba_printf(LOGINFO, "Forced a face");
-    mgba_close();
     if (script == EventScript_BattleColosseum_4P_PlayerSpot0)
         return FACING_FORCED_RIGHT;
     else if (script == EventScript_BattleColosseum_4P_PlayerSpot1)
