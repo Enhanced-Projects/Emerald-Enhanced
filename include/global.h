@@ -401,18 +401,6 @@ struct DeliveryTime //size 4
     u32 unusedDeliveryTimeBits:2;
 };
 
-struct PokefansMedicTarget//size 8
-{
-    u8 mapNum;
-    u8 mapGroup;
-    u8 objectID;
-    u8 bestItem;
-    u8 neutralItem;
-    u8 reward;
-    u8 favor;
-    u8 filler;//pad to 8 bytes
-};
-
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -466,7 +454,6 @@ struct SaveBlock2
              u8 RtcTimeSecondRAW;
              u32 RtcTimeSecond;
              u32 SaveStateLastDetection;
-             struct PokefansMedicTarget victim;
 
 };
 

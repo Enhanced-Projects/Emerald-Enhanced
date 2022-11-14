@@ -1255,7 +1255,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	release
+	special(IsWirelessAdapterConnected)
 	end
 }
 
