@@ -1130,7 +1130,7 @@ void PlayerJumpLedge(u8 direction)
     PlayerSetAnimId(GetJump2MovementAction(direction), 8, FOLLOWABLE_MOVEMENT_LEDGE_JUMP);
 }
 
-void sub_808B864(void)
+void PlayerFreeze(void)
 {
     if (gPlayerAvatar.tileTransitionState == T_TILE_CENTER || gPlayerAvatar.tileTransitionState == T_NOT_MOVING)
     {
@@ -1312,7 +1312,7 @@ void sub_808BCE8(void)
     ForcedMovement_None();
 }
 
-void sub_808BCF4(void)
+void StopPlayerAvatar(void)
 {
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
 

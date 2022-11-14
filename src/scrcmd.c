@@ -1223,8 +1223,8 @@ bool8 ScrCmd_turnvobject(struct ScriptContext *ctx)
 
 bool8 ScrCmd_lockall(struct ScriptContext *ctx)
 {
-    ScriptFreezeObjectEvents();
-    SetupNativeScript(ctx, sub_80983C4);
+    FreezeObjects_WaitForPlayer();
+    SetupNativeScript(ctx, IsFreezePlayerFinished);
     return TRUE;
 }
 
@@ -1234,12 +1234,12 @@ bool8 ScrCmd_lock(struct ScriptContext *ctx)
     if (gObjectEvents[gSelectedObjectEvent].active)
     {
         LockSelectedObjectEvent();
-        SetupNativeScript(ctx, sub_809847C);
+        SetupNativeScript(ctx, IsFreezeSelectedObjectAndPlayerFinished);
     }
     else
     {
-        ScriptFreezeObjectEvents();
-        SetupNativeScript(ctx, sub_80983C4);
+        FreezeObjects_WaitForPlayer();
+        SetupNativeScript(ctx, IsFreezePlayerFinished);
     }
 
     return TRUE;
@@ -2175,8 +2175,8 @@ bool8 ScrCmd_cmd_unused_D9(struct ScriptContext *ctx)
     {
         if (gObjectEvents[gSelectedObjectEvent].active)
         {
-            sub_8098630();
-            SetupNativeScript(ctx, sub_8098734);
+            FreezeForApproachingTrainers();
+            SetupNativeScript(ctx, IsFreezeObjectAndPlayerFinished);
         }
         return TRUE;
     }

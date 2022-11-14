@@ -9103,7 +9103,7 @@ void DestroyExtraMovementTask(u8 taskId)
     DestroyTask(taskId);
 }
 
-void sub_8098074(u8 var1, u8 var2)
+void FreezeObjectEventsExceptTwo(u8 var1, u8 var2)
 {
     u8 i;
 

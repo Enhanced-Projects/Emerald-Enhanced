@@ -1106,8 +1106,8 @@ void ShowStartMenu(void)
     if (!IsUpdateLinkStateCBActive())
     {
         FreezeObjectEvents();
-        sub_808B864();
-        sub_808BCF4();
+        PlayerFreeze();
+        StopPlayerAvatar();
     }
 
     CreateStartMenuTask(Task_ShowStartMenu);
