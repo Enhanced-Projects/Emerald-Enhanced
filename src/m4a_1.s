@@ -652,7 +652,7 @@ fast_mixing_instructions:
 	.align 2
 
 upper_stack_bounds:
-	.word 0x03007910
+	.word iwram_end + 0x80
 previous_fast_code:
 	.word 0x0 @ Mark as invalid initially
 

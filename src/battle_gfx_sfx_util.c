@@ -805,7 +805,7 @@ void LoadHealthBoxesPalettte() {
 }
 
 //FULL_COLOR
-static const struct CompressedSpriteSheet* healthBoxSpritesheets[THEME_UI_MAX][4][2] = {
+static const struct CompressedSpriteSheet* const healthBoxSpritesheets[THEME_UI_MAX][4][2] = {
     {//THEME MODERN
         {&sSpriteSheet_SinglesPlayerHealthboxDark, &sSpriteSheets_DoublesPlayerHealthboxDark[0]}, //step 2 {singles, doubles}
         {&sSpriteSheet_SinglesOpponentHealthboxDark, &sSpriteSheets_DoublesPlayerHealthboxDark[1]}, //step 3 {singles, doubles}

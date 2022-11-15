@@ -40,7 +40,7 @@ struct RfuDebug
     u8 filler4[88];
 };
 
-u32 gf_rfu_REQ_api[RFU_API_BUFF_SIZE_RAM / 4];
+u32 gf_rfu_REQ_api[RFU_API_BUFF_SIZE_ROM / 4];
 struct GFRfuManager Rfu;
 
 static u8 sHeldKeyCount;
@@ -261,7 +261,7 @@ void InitRFU(void)
 
 void InitRFUAPI(void)
 {
-    if (!rfu_initializeAPI((void *)gf_rfu_REQ_api, sizeof gf_rfu_REQ_api, gIntrTable + 1, TRUE))
+    if (!rfu_initializeAPI((void *)gf_rfu_REQ_api, sizeof gf_rfu_REQ_api, gIntrTable + 1, FALSE))
     {
         gLinkType = 0;
         ClearSavedLinkPlayers();

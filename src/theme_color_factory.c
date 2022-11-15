@@ -50,7 +50,7 @@ void DarkShader(u16* color, u16 step) {
     *color = COLOR_CREATE_DARK_SHADE_STEP(*color, step);
 }
 
-void (*ShaderFunctions[])(u16* color, u16 number) = {
+void (*const ShaderFunctions[])(u16* color, u16 number) = {
     &LightShader,
     &DarkShader
 };
@@ -230,7 +230,7 @@ void HatGenerateShades(u16 srcColor, u16 func, u16* dest, u16 size, u16 stepLimi
     }
 }
 
-u16 (*HatHSVColorFunctions[])(u16 srcColor, s16 val) = {
+u16 (*const HatHSVColorFunctions[])(u16 srcColor, s16 val) = {
     HatColorRotateHue,
     HatColorChangeSaturation,
     //HatColorChangeSaturation//HatColorChangeIntensity
