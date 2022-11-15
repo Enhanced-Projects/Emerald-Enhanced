@@ -13,6 +13,8 @@
 #include "constants/general.h"
 #include "theme_color_factory.h"
 
+#define UBFIX
+
 //remove special case defines for when NOT using Item Expansion
 #define ITEM_EXPANSION 1
 

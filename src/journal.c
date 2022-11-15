@@ -87,7 +87,7 @@ static const struct SpriteFrameImage sGymFrontierIconImages[] =
     },
 };
 
-static u8 sColors[][3] = {
+static const u8 sColors[][3] = {
     {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY},
 };
 
@@ -746,7 +746,7 @@ static const struct JournalStatData sJournalSocialStatsPage[] =
     JOURNAL_STAT_END
 };
 
-static const struct JournalStatData * sJournalStatPages[] = 
+static const struct JournalStatData * const sJournalStatPages[] = 
 {
     sJournalGeneralStatsPage,
     sJournalLifeSkillsPage,
@@ -756,7 +756,7 @@ static const struct JournalStatData * sJournalStatPages[] =
     sJournalSocialStatsPage
 };
 
-static const u8 * sJournalPageNames[]=
+static const u8 * const sJournalPageNames[]=
 {
     (u8[])_("General Stats"),
     (u8[])_("Life Skills"),

@@ -1635,7 +1635,7 @@ void Ryu_GiveOrTakeAllAchievments(void)
     }
 }
 
-u8 gGoldAchNotif[] = _("Awarded Master Ball for Gold Achievement.");
+const u8 gGoldAchNotif[] = _("Awarded Master Ball for Gold Achievement.");
 void CheckFormasterBallGift(u8 id)
 {
     if (((id == ACH_POKEMON_MASTER) ||

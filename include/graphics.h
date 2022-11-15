@@ -7058,8 +7058,8 @@ extern const u32 gPartyMenuBgModern_Tilemap[];
 extern const u8 gPartyThemeBoxElementsModern_Gfx[];
 
 //THEME BALLS
-extern const u8 *gThemeBalls_Gfx[];
-extern const u16 *gThemeBalls_Pal[];
+extern const u8 * const gThemeBalls_Gfx[];
+extern const u16 * const gThemeBalls_Pal[];
 
 
 // berry pics

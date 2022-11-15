@@ -89,7 +89,7 @@ const u16 CustomInterfacePaletteSlots[] = {
     1, //textbox and text background color
 };
 
-const u16 *UserPresetThemes[] = {
+const u16 * const UserPresetThemes[] = {
     BlueSteelRGBTheme,
     RoyalPurpleRGBTheme,
     GlacierRGBTheme,

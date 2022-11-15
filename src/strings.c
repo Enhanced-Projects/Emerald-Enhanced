@@ -2247,7 +2247,7 @@ const u8 gText_RyuRESellProperty[] = _("Sell Property");
 const u8 gText_RyuBallChangerLabel[] = _("Ball Changer");
 const u8 gText_RyuBallMarketLabel[] = _("Ball Market");
 
-const u8* gText_PresetThemeNames[] = {
+const u8* const gText_PresetThemeNames[] = {
     (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Blue Steel"),
     (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Royal Purple"),
     (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Glacier"),
@@ -2255,7 +2255,7 @@ const u8* gText_PresetThemeNames[] = {
     (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None"),
 };
 
-const u8* gText_ThemePokeballNames[] = {    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None           "),
+const u8* const gText_ThemePokeballNames[] = {    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None           "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Poke Ball      "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mega Ball      "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Ultra Ball     "),

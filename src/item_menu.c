@@ -366,7 +366,7 @@ static const struct ScrollArrowsTemplate sVanillaBagScrollArrowsTemplate = {
     .palNum = 0,
 };
 
-static const struct ScrollArrowsTemplate * sBagScrollArrowsTemplates[THEME_UI_MAX] = {
+static const struct ScrollArrowsTemplate * const sBagScrollArrowsTemplates[THEME_UI_MAX] = {
     &sModernBagScrollArrowsTemplate,
     &sClassicBagScrollArrowsTemplate,
     &sVanillaBagScrollArrowsTemplate,
@@ -560,7 +560,7 @@ const struct WindowTemplate sModernBagWindows[] =
     DUMMY_WIN_TEMPLATE,
 };
 
-const struct WindowTemplate* sBagWindowTemplates[THEME_UI_MAX] = {
+const struct WindowTemplate * const sBagWindowTemplates[THEME_UI_MAX] = {
     sModernBagWindows,
     sClassicBagWindows,
     sDefaultBagWindows
