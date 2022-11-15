@@ -81,7 +81,6 @@ static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
 static void UpdateHappinessStepCounter(void);
 static bool8 UpdatePoisonStepCounter(void);
-extern void Task_MapNamePopUpWindow(u8 taskId);
 
 
 void FieldClearPlayerInput(struct FieldInput *input)
@@ -168,8 +167,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
  
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
-    if (!(FuncIsActiveTask(Task_MapNamePopUpWindow)))
-        RyuDoNotifyTasks();
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
         return TRUE;

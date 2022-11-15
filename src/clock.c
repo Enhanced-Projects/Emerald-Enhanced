@@ -16,6 +16,7 @@
 #include "overworld_notif.h"
 #include "RyuDynDeliveries.h"
 #include "ach_atlas.h"
+#include "task.h"
 
 static void UpdatePerDay(struct Time *localTime);
 void UpdatePerHour(struct Time *localTime);
@@ -49,13 +50,10 @@ void RotateDailyUBGroup(void)
             VarSet(VAR_RYU_UB_EVENT_TIMER, 0);
 }
 
-void UpdatePerHour(struct Time *localTime)
-{
 
-    if ((!(gLocalTime.hours == 0)) && (gLocalTime.hours > VarGet(VAR_HOURS))) //Had to make this change because this is called whenever time is checked, causing this to repeat many times a second.
-    {
-        DoHourlyRealEstateNotification();
-        if ((FlagGet(FLAG_RYU_DS_BRENDAN_PARTNERS)) || (FlagGet(FLAG_RYU_DS_DAWN_PARTNERS)))//only need to check if player has finished companion line for rival to check this event 
+void TryMoveRivalIdleLocation(void)
+{
+    if ((FlagGet(FLAG_RYU_DS_BRENDAN_PARTNERS)) || (FlagGet(FLAG_RYU_DS_DAWN_PARTNERS)))//only need to check if player has finished companion line for rival to check this event 
         {
             if ((gLocalTime.hours >= 14) && (gLocalTime.hours <= 20)) //betwen 2pm and 8pm rival hangs out at lab. Different dialogue.
             {
@@ -98,8 +96,11 @@ void UpdatePerHour(struct Time *localTime)
 
             }
         }
-    }
-    if (VarGet(VAR_RYU_QUEST_MAY) > 10)
+}
+
+void TryMoveBirchLocationPostMay(void)
+{
+        if (VarGet(VAR_RYU_QUEST_MAY) > 10)
     {//birch is at the lab between 8am and 5pm if player unlocked May.
         if ((gLocalTime.hours >= 17) || (gLocalTime.hours <= 8))
         {
@@ -131,6 +132,15 @@ void UpdatePerHour(struct Time *localTime)
         FlagSet(FLAG_HIDE_LRT_DH_BIRCH);
         FlagSet(FLAG_HIDE_LRT_BH_BIRCH);
         FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH);
+    }
+}
+
+void UpdatePerHour(struct Time *localTime)
+{
+
+    if ((!(gLocalTime.hours == 0)) && (gLocalTime.hours > VarGet(VAR_HOURS))) //Had to make this change because this is called whenever time is checked, causing this to repeat many times a second.
+    {
+        DoHourlyRealEstateNotification();
     }
     VarSet(VAR_HOURS, gLocalTime.hours);
 }
@@ -170,6 +180,8 @@ static void UpdatePerDay(struct Time *localTime)
             FlagClear(FLAG_RYU_NOTIFIED_UNDERWORLD);
     }
 }
+extern void Task_MapNamePopUpWindow(u8 taskId);
+extern void RyuDoNotifyTasks(void);
 
 static void UpdatePerMinute(struct Time *localTime)
 {
@@ -184,6 +196,10 @@ static void UpdatePerMinute(struct Time *localTime)
         {
             BerryTreeTimeUpdate(minutes);
             gSaveBlock2Ptr->lastBerryTreeUpdate = *localTime;
+            TryMoveRivalIdleLocation();
+            TryMoveBirchLocationPostMay();
+            if (!(FuncIsActiveTask(Task_MapNamePopUpWindow)))
+                RyuDoNotifyTasks();
             if (gSaveBlock2Ptr->DeliveryTimer.active == TRUE)
             {
                 gSaveBlock2Ptr->DeliveryTimer.Timer -= 1;
