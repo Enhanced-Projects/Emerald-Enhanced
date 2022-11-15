@@ -10733,9 +10733,9 @@ static void Cmd_trysetperishsong(void)
 
     for (i = 0; i < gBattlersCount; i++)
     {
-        if ((gStatuses3[i] & STATUS3_PERISH_SONG
-            || gBattleMons[i].ability == ABILITY_SOUNDPROOF)
-            || ((IsPlayerInUnderworld() == TRUE) && gBattleMons[i].ability == ABILITY_MAGIC_GUARD))
+        if (gStatuses3[i] & STATUS3_PERISH_SONG
+            || gBattleMons[i].ability == ABILITY_SOUNDPROOF
+            || (IsPlayerInUnderworld() == TRUE))
         {
             notAffectedCount++;
         }
