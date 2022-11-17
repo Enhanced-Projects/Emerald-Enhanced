@@ -622,8 +622,11 @@
 #define STRINGID_TOXICTHREADUSED                      618
 #define STRINGID_SPIKESALERADYTHERE                   619
 #define STRINGID_BOTHCANNOLONGERESCAPE                620
+#define STRINGID_ITDEALTULTRAOVERKILLDAMAGE           621
+#define STRINGID_ITDEALTULTRADAMAGE                   622
+#define STRINGID_TARGETFAINTED50X                     623
 
-#define BATTLESTRINGS_COUNT                621
+#define BATTLESTRINGS_COUNT                624
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

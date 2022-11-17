@@ -1644,7 +1644,9 @@ void CheckFormasterBallGift(u8 id)
         (id == ACH_TOURIST) ||
         (id == ACH_MILLIONAIRE) ||
         (id == ACH_MONEYBAGS) ||
-        (id == ACH_ULTRA_BEASTLY)))
+        (id == ACH_ULTRA_BEASTLY) ||
+        (id == ACH_THE_PHOENIX)||
+        (id == ACH_ULTRAKILL)))
         {
             AddBagItem(ITEM_MASTER_BALL, 1);
             QueueNotification(gGoldAchNotif, NOTIFY_GENERAL, 120);

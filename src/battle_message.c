@@ -750,6 +750,9 @@ static const u8 sText_RyuBallBlockedHorseman[] = _("A strange forcefield blocked
 static const u8 sText_ToxicWebBlankets[] = _("The other side is blanketed\nwith a toxic thread!"); 
 static const u8 sText_ToxicSpikesAlreadyThere[] = _("Some toxic poison remains from\nbefore..."); 
 static const u8 sText_BothCanNoLongerEscape[] = _("Neither Pokémon can run away!"); 
+static const u8 sText_UltraKillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} damage!\nIt was ultra effective!"); 
+static const u8 sText_UltraOverKillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} overkill damage!\nIt was ultra effective!"); 
+static const u8 sText_TargetFainted50x[] = _("{B_DEF_NAME_WITH_PREFIX} was erased from the\nhistory of the multiverse...");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1359,7 +1362,10 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BALLBLOCKEDHORSEMAN - 12] = sText_RyuBallBlockedHorseman,
     [STRINGID_TOXICTHREADUSED - 12] = sText_ToxicWebBlankets,
     [STRINGID_SPIKESALERADYTHERE - 12] = sText_ToxicSpikesAlreadyThere,
-    [STRINGID_BOTHCANNOLONGERESCAPE - 12] = sText_BothCanNoLongerEscape
+    [STRINGID_BOTHCANNOLONGERESCAPE - 12] = sText_BothCanNoLongerEscape,
+    [STRINGID_ITDEALTULTRADAMAGE - 12] = sText_UltraKillDamage,
+    [STRINGID_ITDEALTULTRAOVERKILLDAMAGE - 12] = sText_UltraOverKillDamage,
+    [STRINGID_TARGETFAINTED50X - 12] = sText_TargetFainted50x
 };
 
 const u16 gTerrainStringIds[] =

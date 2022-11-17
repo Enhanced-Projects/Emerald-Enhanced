@@ -2323,7 +2323,11 @@ static void Cmd_effectivenesssound(void)
     if (!(gMoveResultFlags & MOVE_RESULT_MISSED))
     {
         switch (gMoveResultFlags & (~(MOVE_RESULT_MISSED)))
-        {
+        {   
+        case MOVE_RESULT_ULTRA_EFFECTIVE:
+            BtlController_EmitPlaySE(0, SE_SUPER_EFFECTIVE);
+            BtlController_EmitPlaySE(0, SE_SUPER_EFFECTIVE);
+            MarkBattlerForControllerExec(gActiveBattler);
         case MOVE_RESULT_SUPER_EFFECTIVE:
             BtlController_EmitPlaySE(0, SE_SUPER_EFFECTIVE);
             MarkBattlerForControllerExec(gActiveBattler);
@@ -2394,6 +2398,19 @@ static void Cmd_resultmessage(void)
         gBattleCommunication[MSG_DISPLAY] = 1;
         switch (gMoveResultFlags & (~MOVE_RESULT_MISSED))
         {
+        case MOVE_RESULT_ULTRA_EFFECTIVE:
+            if (gIsCriticalHit == FALSE)
+            {
+                if (gBattleMoveDamage > gHpDealt)
+                {
+                    stringId = STRINGID_ITDEALTULTRAOVERKILLDAMAGE;
+                }
+                else
+                {
+                    stringId = STRINGID_ITDEALTULTRADAMAGE;
+                }
+            }
+            break;
         case MOVE_RESULT_SUPER_EFFECTIVE:
             if (gIsCriticalHit == FALSE)
             {
@@ -3593,7 +3610,12 @@ static void Cmd_tryfaintmon(void)
         {
             gActiveBattler = gBattlerTarget;
             battlerId = gBattlerAttacker;
-            if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 20))
+            if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 50))
+            {
+                GiveAchievement(ACH_ULTRAKILL);
+                BS_ptr = BattleScript_FaintTarget50x;
+            }
+            else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 20))
             {
                 GiveAchievement(ACH_EXPONENTIAL);
                 BS_ptr = BattleScript_FaintTarget20x;
