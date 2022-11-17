@@ -368,6 +368,8 @@ gBattleScriptsForMoveEffects:: @ 82D86A8
 	.4byte BattleScript_EffectAllySwitch
 	.4byte BattleScript_EffectSleepHit
 	.4byte BattleScript_EffectOmen
+	.4byte BattleScript_EffectSnap
+	.4byte BattleScript_BothCanNoLongerEscape
 
 BattleScript_EffectOmen:
 	attackcanceler
@@ -378,6 +380,15 @@ BattleScript_EffectOmen:
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
 	seteclipse
 	goto BattleScript_MoveWeatherChange
+
+BattleScript_EffectSnap:
+	setmoveeffect MOVE_EFFECT_TRAP_BOTH | MOVE_EFFECT_CERTAIN
+	goto BattleScript_EffectHit
+
+BattleScript_BothCanNoLongerEscape::
+	printstring STRINGID_BOTHCANNOLONGERESCAPE
+	waitmessage B_WAIT_TIME_LONG
+	return
 
 BattleScript_EffectSleepHit:
 	setmoveeffect MOVE_EFFECT_SLEEP

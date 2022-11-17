@@ -749,6 +749,7 @@ static const u8 sText_RyuBallBlockedReaper[] = _("YOU ARE NOT WORTHY!");
 static const u8 sText_RyuBallBlockedHorseman[] = _("A strange forcefield blocked\nthe ball."); 
 static const u8 sText_ToxicWebBlankets[] = _("The other side is blanketed\nwith a toxic thread!"); 
 static const u8 sText_ToxicSpikesAlreadyThere[] = _("Some toxic poison remains from\nbefore..."); 
+static const u8 sText_BothCanNoLongerEscape[] = _("Neither Pokémon can run away!"); 
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1357,7 +1358,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BALLBLOCKEDREAPER - 12] = sText_RyuBallBlockedReaper,
     [STRINGID_BALLBLOCKEDHORSEMAN - 12] = sText_RyuBallBlockedHorseman,
     [STRINGID_TOXICTHREADUSED - 12] = sText_ToxicWebBlankets,
-    [STRINGID_SPIKESALERADYTHERE - 12] = sText_ToxicSpikesAlreadyThere
+    [STRINGID_SPIKESALERADYTHERE - 12] = sText_ToxicSpikesAlreadyThere,
+    [STRINGID_BOTHCANNOLONGERESCAPE - 12] = sText_BothCanNoLongerEscape
 };
 
 const u16 gTerrainStringIds[] =

@@ -3480,6 +3480,21 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_MoveEffectBugBite;
                 }
                 break;
+            case MOVE_EFFECT_TRAP_BOTH:
+                if (!(gBattleMons[gBattlerTarget].status2 & STATUS2_ESCAPE_PREVENTION) && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_ESCAPE_PREVENTION))
+                {
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
+                    gBattlescriptCurrInstr = BattleScript_BothCanNoLongerEscape;
+                }
+                if (!gBattleMons[gBattlerTarget].status2 & STATUS2_ESCAPE_PREVENTION)
+                    gDisableStructs[gBattlerTarget].battlerPreventingEscape = gBattlerAttacker;
+
+                if (!(gBattleMons[gBattlerAttacker].status2 & STATUS2_ESCAPE_PREVENTION))
+                    gDisableStructs[gBattlerAttacker].battlerPreventingEscape = gBattlerTarget;
+
+                gBattleMons[gBattlerTarget].status2 |= STATUS2_ESCAPE_PREVENTION;
+                gBattleMons[gBattlerAttacker].status2 |= STATUS2_ESCAPE_PREVENTION;
+                break;
             }
         }
     }

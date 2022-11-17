@@ -3758,11 +3758,11 @@ static const struct TrainerMonItemCustomMoves sParty_Winona1[] = {
 	{
 	.iv = 255,
 	.lvl = 31,
-	.species = SPECIES_JUMPLUFF,
-	.heldItem = ITEM_LEFTOVERS,
+	.species = SPECIES_CARNIVINE,
+	.heldItem = ITEM_SHELL_BELL,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_SPORE, MOVE_SPIKES, MOVE_ROOST, MOVE_GIGA_DRAIN},
+	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_THUNDER_FANG, MOVE_SWORDS_DANCE},
 	},
 	{
 	.iv = 255,
@@ -12774,11 +12774,11 @@ static const struct TrainerMonItemCustomMoves sParty_Winona2[] = {
 	{
 	.iv = 255,
 	.lvl = 31,
-	.species = SPECIES_JUMPLUFF,
-	.heldItem = ITEM_NONE,
+	.species = SPECIES_CARNIVINE,
+	.heldItem = ITEM_SHELL_BELL,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_SPORE, MOVE_SUNNY_DAY, MOVE_ACROBATICS, MOVE_STRENGTH_SAP},
+	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_THUNDER_FANG, MOVE_SWORDS_DANCE},
 	},
     {
 	.iv = 239,
@@ -12829,13 +12829,13 @@ static const struct TrainerMonItemCustomMoves sParty_Winona2[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_Winona3[] = {
 	{
-	.iv = 247,
+	.iv = 239,
 	.lvl = 31,
-	.species = SPECIES_LILLIGANT,
-	.heldItem = ITEM_NONE,
+	.species = SPECIES_CARNIVINE,
+	.heldItem = ITEM_SHELL_BELL,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_HIDDEN_POWER, MOVE_QUIVER_DANCE, MOVE_ENERGY_BALL, MOVE_ICE_BEAM},
+	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_SECRET_POWER, MOVE_SWORDS_DANCE},
 	},
     {
 	.iv = 239,
@@ -12931,14 +12931,14 @@ static const struct TrainerMonItemCustomMoves sParty_Winona4[] = {
 	.moves = {MOVE_POWER_WHIP, MOVE_ANCHOR_SHOT, MOVE_GYRO_BALL, MOVE_TRICK_ROOM},
 	},
 	{
-	.iv = 255,
-	.lvl = 86,
-	.species = SPECIES_SAWSBUCK,
-	.heldItem = ITEM_SILK_SCARF,
+	.iv = 239,
+	.lvl = 31,
+	.species = SPECIES_CARNIVINE,
+	.heldItem = ITEM_SHELL_BELL,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_SWORDS_DANCE, MOVE_DOUBLE_EDGE, MOVE_HORN_LEECH, MOVE_JUMP_KICK},
-	}
+	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_SECRET_POWER, MOVE_SWORDS_DANCE},
+	},
 };
 
 static const struct TrainerMonItemCustomMoves sParty_ShellyPyre[] = {

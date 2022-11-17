@@ -352,7 +352,8 @@
 #define MOVE_EFFECT_THROAT_CHOP         0x43
 #define MOVE_EFFECT_INCINERATE          0x44
 #define MOVE_EFFECT_BUG_BITE            0x45
-#define NUM_MOVE_EFFECTS                0x46
+#define MOVE_EFFECT_TRAP_BOTH           0x46
+#define NUM_MOVE_EFFECTS                0x47
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000
@@ -382,5 +383,10 @@
 #define MOVE_TARGET_FOES_AND_ALLY       0x20
 #define MOVE_TARGET_OPPONENTS_FIELD     0x40
 #define MOVE_TARGET_ALLY                0x80
+
+#define B_WAIT_TIME_LONG                (B_WAIT_TIME_MULTIPLIER * 4)
+#define B_WAIT_TIME_MED                (B_WAIT_TIME_MULTIPLIER * 4)
+#define B_WAIT_TIME_SHORT                (B_WAIT_TIME_MULTIPLIER * 4)
+#define B_WAIT_TIME_SHORTEST                (B_WAIT_TIME_MULTIPLIER * 4)
 
 #endif // GUARD_CONSTANTS_BATTLE_H
