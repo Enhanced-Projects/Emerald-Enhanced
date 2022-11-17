@@ -1558,11 +1558,11 @@
 	.2byte \amount
 	.endm
 
-	.macro cmd_unused_D9
+	.macro lockfortrainer
 	.byte 0xd9
 	.endm
 
-	.macro empty0xda
+	.macro selectapproachingtrainer
 	.byte 0xda
 	.endm
 

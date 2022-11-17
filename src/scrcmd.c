@@ -2159,13 +2159,13 @@ bool8 ScrCmd_freerotatingtilepuzzle(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_cmdD8(struct ScriptContext *ctx)
+bool8 ScrCmd_selectapproachingtrainer(struct ScriptContext *ctx)
 {
     gSelectedObjectEvent = GetCurrentApproachingTrainerObjectEventId();
     return FALSE;
 }
 
-bool8 ScrCmd_cmd_unused_D9(struct ScriptContext *ctx)
+bool8 ScrCmd_lockfortrainer(struct ScriptContext *ctx)
 {
     if (IsUpdateLinkStateCBActive())
     {

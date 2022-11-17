@@ -1259,7 +1259,7 @@ void ConfigureAndSetUpOneTrainerBattle(u8 trainerObjEventId, const u8 *trainerSc
     gSelectedObjectEvent = trainerObjEventId;
     gSpecialVar_LastTalked = gObjectEvents[trainerObjEventId].localId;
     BattleSetup_ConfigureTrainerBattle(trainerScript + 1);
-    ScriptContext1_SetupScript(EventScript_271354);
+    ScriptContext1_SetupScript(EventScript_StartTrainerApproach);
     ScriptContext2_Enable();
 }
 
@@ -1272,7 +1272,7 @@ void ConfigureTwoTrainersBattle(u8 trainerObjEventId, const u8 *trainerScript)
 
 void SetUpTwoTrainersBattle(void)
 {
-    ScriptContext1_SetupScript(EventScript_271354);
+    ScriptContext1_SetupScript(EventScript_StartTrainerApproach);
     ScriptContext2_Enable();
 }
 
