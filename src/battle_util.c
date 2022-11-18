@@ -7771,6 +7771,12 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
     if (((FlagGet(FLAG_RYU_FACING_REAPER) == TRUE) || (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
         dmg = 333;
 
+    if (((FlagGet(FLAG_RYU_FACING_REAPER) == TRUE) || (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER))
+        if (dmg >= 3000)
+            dmg = 3000;
+
+
+
     if (dmg == 0)
         dmg = 1;
 
