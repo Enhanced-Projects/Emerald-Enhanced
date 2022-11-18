@@ -865,22 +865,27 @@ int RyuSwapRotomForm(void)//Toby had concerns that this wasn't as 'nice' as the 
 
 bool8 checkForOverlordRyuEncounter(void)
 {
+    u16 rv = (Random() % 100);
+    ConvertIntToDecimalStringN(gStringVar1, rv, 0, 2);
     if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10 && (FlagGet(FLAG_RYU_DEFEATED_OVERLORD) == 1))
     {
-        if ((Random() % 100) <= 25)
+        if (rv <= 25)
         {
+            gSpecialVar_0x8002 = 2;
             return 2;
         }
     }
     else if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10)
     {
-        if ((Random() % 100) <= 10)
+        if (rv <= 10)
         {
+            gSpecialVar_0x8002 = 1;
             return 1;
         }
     }
     else
     {
+        gSpecialVar_0x8002 = 0;
         return 0;
     }
 }
