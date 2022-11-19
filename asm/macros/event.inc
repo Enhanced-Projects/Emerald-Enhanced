@@ -1555,7 +1555,7 @@
 	@ accepts any MON_DATA constant for statid.
 	.macro trainstat slot:req, statid:req, amount:req, buffer=FALSE
 	.byte 0xd8
-	.byte \slot
+	.2byte \slot
 	.2byte \statid
 	.2byte \amount
 	.byte \buffer
