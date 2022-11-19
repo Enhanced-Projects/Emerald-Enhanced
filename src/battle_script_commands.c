@@ -1659,9 +1659,6 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move)
     if (gBattleMoves[move].accuracy == 0)
         calc += 100;
 
-    mgba_open();
-    mgba_printf(LOGINFO, "accuracy calc reports %d", calc);
-
     return calc;
 }
 
@@ -4756,7 +4753,6 @@ static void Cmd_playanimation(void)
     if (gBattlescriptCurrInstr[2] == B_ANIM_STATS_CHANGE
         || gBattlescriptCurrInstr[2] == B_ANIM_SNATCH_MOVE
         || gBattlescriptCurrInstr[2] == B_ANIM_MEGA_EVOLUTION
-        || gBattlescriptCurrInstr[2] == B_ANIM_UNUSED
         || gBattlescriptCurrInstr[2] == B_ANIM_FORM_CHANGE
         || gBattlescriptCurrInstr[2] == B_ANIM_SUBSTITUTE_FADE)
     {
@@ -4803,7 +4799,6 @@ static void Cmd_playanimation2(void) // animation Id is stored in the first poin
     if (*animationIdPtr == B_ANIM_STATS_CHANGE
         || *animationIdPtr == B_ANIM_SNATCH_MOVE
         || *animationIdPtr == B_ANIM_MEGA_EVOLUTION
-        || *animationIdPtr == B_ANIM_UNUSED
         || *animationIdPtr == B_ANIM_FORM_CHANGE
         || *animationIdPtr == B_ANIM_SUBSTITUTE_FADE)
     {

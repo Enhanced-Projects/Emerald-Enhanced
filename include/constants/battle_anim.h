@@ -524,12 +524,11 @@
 #define B_ANIM_TERRAIN_GRASSY           0x19
 #define B_ANIM_TERRAIN_ELECTRIC         0x1A
 #define B_ANIM_TERRAIN_PSYCHIC          0x1B
-#define B_ANIM_UNUSED                   0x1C
-#define B_ANIM_FORM_CHANGE              0x1D
-#define B_ANIM_SLIDE_OFFSCREEN          0x1E // for Emergency Exit
-#define B_ANIM_RYU_AFFECTION_ANIM       0x1F
-#define B_ANIM_ECLIPSE                  0x20
-#define B_ANIM_STRONG_WINDS             0x21
+#define B_ANIM_FORM_CHANGE              0x1C
+#define B_ANIM_SLIDE_OFFSCREEN          0x1D // for Emergency Exit
+#define B_ANIM_RYU_AFFECTION_ANIM       0x1E
+#define B_ANIM_ECLIPSE                  0x1F
+#define B_ANIM_STRONG_WINDS             0x20
 
 // special animations table
 #define B_ANIM_LVL_UP                   0x0
