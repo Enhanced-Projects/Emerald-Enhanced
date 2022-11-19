@@ -2352,13 +2352,20 @@ bool8 ScrCmd_checkbp(struct ScriptContext *ctx)
     return FALSE;
 }
 
+
 bool8 ScrCmd_trainstat(struct ScriptContext *ctx)
 {
-    u8 statid = (VarGet(ScriptReadHalfword(ctx)));
-    u8 amount = (VarGet(ScriptReadHalfword(ctx)));
-    u8 currentStat = GetMonData(&gPlayerParty[0], statid);
+    u16 slot = (VarGet(ScriptReadHalfword(ctx)));
+    u16 statid = (VarGet(ScriptReadHalfword(ctx)));
+    u16 amount = (VarGet(ScriptReadHalfword(ctx)));
+    bool16 bufferNick = ScriptReadByte(ctx);
+    u8 currentStat = GetMonData(&gPlayerParty[slot], statid);
     currentStat += amount;
     SetMonData(&gPlayerParty[0], statid, &currentStat);
+    if (bufferNick == TRUE){
+        GetMonData(&gPlayerParty[slot], MON_DATA_NICKNAME, gStringVar1);
+        StringGetEnd10(gStringVar1);
+    }
     return FALSE;
 }
 

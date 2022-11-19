@@ -1,0 +1,47 @@
+//scripts for the contest stat trainers
+
+
+script RyuCoolnessTrainer {
+    msgbox("Hello, coordinator.\nI provide training in Coolness\lfor your Pokémon.\pWould you like me to train\nCoolness for your Pokémon?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        msgbox("All right then.\nCome see me if you change\lyour mind!")
+        closemessage
+        release
+        end
+    }
+    SelectCoolnessPartyMon:
+    msgbox("Okay! Which Pokémon needs\nCoolness training?")
+    call(RyuBufferPartyMonNames)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    copyvar(VAR_0x8005, VAR_RESULT)
+    if (var(VAR_RESULT) > 5){
+        msgbox("You have to select a Pokémon!\nTry Again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            closemessage
+            release
+            end
+        }
+        else{
+            goto(SelectCoolnessPartyMon)
+        }
+    }
+    checkmoney(50000)
+    if (var(VAR_RESULT) == FALSE){
+        msgbox("You can't afford this training!")
+        closemessage
+        release
+        end
+    }
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    removemoney(50000)
+    trainstat(VAR_0x8005, MON_DATA_COOL, 15, TRUE)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("All done!\nYour {STR_VAR_1}'s Coolness has\lincreased by 15!")
+    closemessage
+    msgbox("Thank you for your business!")
+    closemessage
+    release
+    end
+}
