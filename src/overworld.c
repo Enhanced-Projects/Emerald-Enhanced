@@ -929,8 +929,6 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
         ApplyWeatherGammaShiftToPal(paletteIndex);
 
     InitSecondaryTilesetAnimation();
-    //UpdateLocationHistoryForRoamer();
-    //RoamerMove();
     DoCurrentWeather();
     ResetFieldTasksArgs();
     RunOnResumeMapScript();

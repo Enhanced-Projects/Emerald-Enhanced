@@ -366,6 +366,13 @@ void RyuDoNotifyTasks(void)
         }
     }
 
+    if ((FlagGet(FLAG_RYU_UNDERWORLD) == FALSE) &&
+        (CheckAchievement(ACH_MARKED_FOR_DEATH) == TRUE) &&
+        (IsPlayerInUnderworld() == FALSE))
+        {
+            FlagSet(FLAG_RYU_UNDERWORLD);
+        }
+
     if ((FlagGet(FLAG_RYU_UNDERWORLD) == TRUE) /*(&& (FlagGet(FLAG_TEMP_14) == FALSE)*/ && (FlagGet(FLAG_RYU_REAPER) == FALSE) && (IsPlayerInUnderworld() == FALSE))
         FlagClear(FLAG_RYU_NOTIFIED_UNDERWORLD);
 
