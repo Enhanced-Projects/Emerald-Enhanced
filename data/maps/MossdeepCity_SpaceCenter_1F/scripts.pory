@@ -1,6 +1,5 @@
 raw `
 MossdeepCity_SpaceCenter_1F_MapScripts:: @ 8222F41
-	map_script ON_TRANSITION, MossdeepCity_SpaceCenter_1F_OnTransition
 	map_script ON_FRAME, SPC_CheckDevonQuest
 	map_script ON_WARP, SPC_OnWarpScripts1
 	.byte 0
@@ -19,11 +18,6 @@ SPC_AddSteven:
 SPC_CheckDevonQuest::
 	map_script_2 VAR_RYU_QUEST_DEVON_SCIENTIST, 1055, SPC_StevenApproach
 	.2byte 0
-
-MossdeepCity_SpaceCenter_1F_OnTransition: @ 8222F4C
-	compare VAR_MOSSDEEP_CITY_STATE, 2
-	goto_if_eq MossdeepCity_SpaceCenter_1F_EventScript_MoveObjectsForTeamMagma
-	end
 
 @==================================================================================================Scientist devon
 
@@ -95,24 +89,6 @@ SPC_CantLeave::
 	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You must clear out Magma\nbefore you may leave.$"
 
 @+=================================================================================================end custom
-
-MossdeepCity_SpaceCenter_1F_EventScript_MoveObjectsForTeamMagma:: @ 8222F58
-	setobjectxyperm 3, 1, 9
-	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectxyperm 5, 0, 8
-	setobjectmovementtype 5, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectxyperm 4, 1, 6
-	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectxyperm 1, 3, 4
-	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_RIGHT
-	compare VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE, 1
-	goto_if_eq MossdeepCity_SpaceCenter_1F_EventScript_MoveStairGuardLeft
-	compare VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE, 2
-	goto_if_eq MossdeepCity_SpaceCenter_1F_EventScript_MoveStairGuardDown
-	compare VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE, 3
-	goto_if_eq MossdeepCity_SpaceCenter_1F_EventScript_MoveStairGuardRight
-	end
 
 MossdeepCity_SpaceCenter_1F_EventScript_MoveStairGuardLeft:: @ 8222FAA
 	setobjectxyperm 9, 12, 2
@@ -301,13 +277,8 @@ MossdeepCity_SpaceCenter_1F_EventScript_Grunt2:: @ 822321F
 	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt2Intro, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_GRUNT_SPACE_CENTER_2, MossdeepCity_SpaceCenter_1F_Text_Grunt2Defeat
 	setflag FLAG_DEFEATED_GRUNT_SPACE_CENTER_1F
-	copyobjectxytoperm 9
-	switch VAR_FACING
-	case DIR_WEST, MossdeepCity_SpaceCenter_1F_EventScript_MoveGruntFromStairsWest
-	case DIR_WEST, MossdeepCity_SpaceCenter_1F_EventScript_MoveGruntFromStairsEast  @ BUG: This was meant to be case DIR_EAST
 	applymovement 9, MossdeepCity_SpaceCenter_1F_Movement_MoveGruntFromStairs
 	waitmovement 0
-	setvar VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE, 2
 	release
 	end
 
