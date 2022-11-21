@@ -1655,7 +1655,9 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move)
     else if (atkHoldEffect == HOLD_EFFECT_ZOOM_LENS && GetBattlerTurnOrderNum(battlerAtk) > GetBattlerTurnOrderNum(battlerDef));
         calc = (calc * (100 + atkParam)) / 100;
         
-//HACK! This makes all moves with an accuracy of 0 always hit. This is a band aid to all 'always hit' moves universally missing. Remove when latter issue is resolved.
+// HACK: This makes all moves with an accuracy of 0 always hit. 
+// This is a band aid to all 'always hit' moves universally missing.
+// Remove when latter issue is resolved.
     if (gBattleMoves[move].accuracy == 0)
         calc += 100;
 
