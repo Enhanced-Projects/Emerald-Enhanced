@@ -1960,6 +1960,16 @@ static const u8 sAncientCoinDesc[] = _(
     "unearthed via\n"
     "Mining.");
 
+static const u8 sTrainingTokenDesc[] = _(
+    "A very shiny and\n"
+    "polished silver\n"
+    "token.");
+
+static const u8 sGroomingTokenDesc[] = _(
+    "A very shiny and\n"
+    "polished golden\n"
+    "token.");
+
 static const u8 sOldAmberDesc[] = _(
     "A stone containing\n"
     "the genes of an\n"

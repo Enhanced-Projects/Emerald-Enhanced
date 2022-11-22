@@ -5329,6 +5329,32 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
+    [ITEM_GROOMING_TOKEN] =
+    {
+        .name = _("Gold Token"),
+        .itemId = ITEM_GROOMING_TOKEN,
+        .price = 5000,
+        .description = sGroomingTokenDesc,
+        .importance = 0,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_TRAINING_TOKEN] =
+    {
+        .name = _("Silver Token"),
+        .itemId = ITEM_TRAINING_TOKEN,
+        .price = 5000,
+        .description = sTrainingTokenDesc,
+        .importance = 0,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
     [ITEM_OLD_AMBER] =
     {
         .name = _("Old Amber"),

@@ -2361,7 +2361,7 @@ bool8 ScrCmd_trainstat(struct ScriptContext *ctx)
     bool16 bufferNick = ScriptReadByte(ctx);
     u8 currentStat = GetMonData(&gPlayerParty[slot], statid);
     currentStat += amount;
-    SetMonData(&gPlayerParty[0], statid, &currentStat);
+    SetMonData(&gPlayerParty[slot], statid, &currentStat);
     if (bufferNick == TRUE){
         GetMonData(&gPlayerParty[slot], MON_DATA_NICKNAME, gStringVar1);
         StringGetEnd10(gStringVar1);

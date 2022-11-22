@@ -637,4 +637,6 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_MINERAL_WATER] = {gItemIcon_FreshWater, gItemIconPalette_FreshWater},
     [ITEM_GOLD_NUGGET] = {gItemIcon_Nugget, gItemIconPalette_Nugget},
     [ITEM_GEM_POWDER] = {gItemIcon_SoftSand, gItemIconPalette_SoftSand},
+    [ITEM_GROOMING_TOKEN] = {gItemIcon_AncientCoin, gItemIconPalette_Nugget},
+    [ITEM_TRAINING_TOKEN] = {gItemIcon_AncientCoin, gItemIconPalette_FreshWater},
 };
