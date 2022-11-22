@@ -3932,6 +3932,14 @@ int RyuCalculateAlchemyExpModifier(s32 exp)
 
 extern void RyuExpDriveInternalOperation(u8 mode, u32 value);
 
+static const u8 gRyuNeutralNatures[5] = {
+    NATURE_DOCILE,
+    NATURE_SERIOUS,
+    NATURE_HARDY,
+    NATURE_QUIRKY,
+    NATURE_BASHFUL
+};
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -3975,7 +3983,7 @@ static void Cmd_getexp(void)
         {
             u32 calculatedExp;
             s32 viaSentIn;
-
+            u32 i;
 
             for (viaSentIn = 0, i = 0; i < PARTY_SIZE; i++)
             {
@@ -4003,8 +4011,12 @@ static void Cmd_getexp(void)
             RyuExpBatteryTemp = ((calculatedExp * 5) / 100);
             RyuExpDriveInternalOperation(EXP_DRIVE_MODE_ADD, RyuExpBatteryTemp);
 
-            if (gBattleMons[gBattlerAttacker].friendship > 50)// If mon has affection boost, gain 20% more exp
+            if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_FRIENDSHIP) > 199)// If mon has affection boost, gain 20% more exp
                 calculatedExp = ((calculatedExp * 120) /100);
+
+            for (i = 0, i < ARRAY_COUNT(gRyuNeutralNatures); i++;) //if mon has a neutral nature, it gets 10% bonus to exp.
+                if ((GetNature(&gPlayerParty[gBattleStruct->expGetterMonId])) == gRyuNeutralNatures[i])
+                    calculatedExp = ((calculatedExp * 110) / 100);
 
             if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
             {
