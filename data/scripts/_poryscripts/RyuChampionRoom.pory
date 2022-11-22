@@ -279,7 +279,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_STEVEN, RCR_Steven_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 2:
@@ -287,7 +287,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_NORMAN, RCR_Norman_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 7:
@@ -295,7 +295,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_JOHNATAN, RCR_Johnatan_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 8:
@@ -303,7 +303,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_ROBERT, RCR_Robert_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 9:
@@ -311,7 +311,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_LANCE, RCR_Lance_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 10:
@@ -319,7 +319,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_ZOD, RCR_Zod_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 11:
@@ -327,7 +327,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_GIOVANNI, RCR_Giovanni_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 12:
@@ -335,7 +335,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_SIGMA, RCR_Sigma_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 13:
@@ -343,7 +343,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_JUAN, RCR_Juan_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 19:
@@ -351,7 +351,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_DANNY, RCR_Danny_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 20:
@@ -359,7 +359,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_LUSAMINE, RCR_Lusamine_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 21:
@@ -367,7 +367,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_CLAY, RCR_Clay_DefeatText, VAR_0x8008, VAR_0x8009)
 	case 22:
@@ -375,7 +375,7 @@ script RCR_SetUpBattle { //For follower matches
 		closemessage
 		choose_mons
 		if (var(VAR_RESULT) == 0) {
-			call(RCR_ChooseValidMons)
+			call(RyuScript_ChooseValidMons)
 		}
 		multi_2_vs_1(TRAINER_CHALLENGER_YUI, RCR_Yui_DefeatText, VAR_0x8008, VAR_0x8009)
 	}
@@ -384,12 +384,6 @@ script RCR_SetUpBattle { //For follower matches
 		goto(EGC_RYU_PLAYER_LOST)
 	}
 	goto(RCR_FinishChallenge)
-}
-
-script RCR_ChooseValidMons{ //player didn't select valid mons or pressed B at party selection
-	msgbox(EGC_NeedToChoose)
-	closemessage
-	goto(RedoBattleStartCheck)
 }
 
 script RCR_ChallengerStevenAggroniteReward { //special reward for steven

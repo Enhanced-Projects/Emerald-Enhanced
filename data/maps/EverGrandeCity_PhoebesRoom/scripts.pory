@@ -59,7 +59,7 @@ EGC_FollowerPhoebe::
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq EGC_PR_ChooseValidMons
+	call_if_eq RyuScript_ChooseValidMons
 	multi_2_vs_1 TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -77,12 +77,6 @@ RyuPhoebeMegaReward::
 
 PhoebeMegaRewardMsg::
 	.string "My pokemon didn't give you a\nhard time at all!\pYou should be able to use this.$"
-	
-EGC_PR_ChooseValidMons::
-	msgbox EGC_NeedToChoose
-	closemessage
-	goto_if_set FLAG_TEMP_B, EGC_FollowerPhoebeRematch
-	goto EGC_FollowerPhoebe
 
 EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech:: @ 82281F2
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
@@ -148,11 +142,10 @@ script EGC_AltPhoebe{
 }
 
 script EGC_FollowerPhoebeRematch {
-	setflag(FLAG_TEMP_B)
 	call(RyuFollowerAllySelector)
 	choose_mons
 	if (var(VAR_RESULT) == FALSE) {
-		goto(EGC_PR_ChooseValidMons)
+		call(RyuScript_ChooseValidMons)
 	}
 	if (var(VAR_RYU_E42) == 0) {
 		msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleSpeech)

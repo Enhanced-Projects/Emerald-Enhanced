@@ -65,7 +65,7 @@ EGC_FollowerDrake::
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq EGC_DR_ChooseValidMons
+	call_if_eq RyuScript_ChooseValidMons
 	multi_2_vs_1 TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -73,13 +73,6 @@ EGC_FollowerDrake::
 	goto Ryu_DrakeMegaReward
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
-
-	
-EGC_DR_ChooseValidMons::
-	msgbox EGC_NeedToChoose
-	closemessage
-	goto_if_set FLAG_TEMP_B, EGC_FollowerDrakeRematch
-	goto EGC_FollowerDrake
 
 EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech:: @ 822871A
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
@@ -152,11 +145,10 @@ script EGC_AltDrake{
 }
 
 script EGC_FollowerDrakeRematch {
-	setflag(FLAG_TEMP_B)
 	call(RyuFollowerAllySelector)
 	choose_mons
 	if (var(VAR_RESULT) == FALSE) {
-		goto(EGC_PR_ChooseValidMons)
+		call(RyuScript_ChooseValidMons)
 	}
 	if (var(VAR_RYU_E44) == 0) {
 		msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleSpeech)

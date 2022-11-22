@@ -719,6 +719,16 @@ RF_NurseQuestCancelledText:
 	.string "Sorry for taking up your time.$"
 `
 
+script RyuScript_ChooseValidMons {
+	msgbox(EGC_NeedToChoose)
+	closemessage
+	choose_mons
+	if (var(VAR_RESULT) == FALSE){
+		goto(RyuScript_ChooseValidMons)
+	}
+	return
+}
+
 script RyuFollower_ShellyChatterSelector {
     random(7)
     switch (var(VAR_RESULT)) {

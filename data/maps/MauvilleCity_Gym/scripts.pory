@@ -153,7 +153,7 @@ MVG_FollowerMatch::
 MVG_StartFollowerBattle::
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq MVG_ChooseValidMons
+	call_if_eq RyuScript_ChooseValidMons
 	multi_2_vs_1 TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonDefeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -162,11 +162,6 @@ MVG_StartFollowerBattle::
 	call MVG_FollowerOutroSelector
 	goto MVG_FollowerReset
 	end
-
-MVG_ChooseValidMons::
-	msgbox EGC_NeedToChoose
-	closemessage
-	goto MVG_StartFollowerBattle
 
 MVG_PreBattleText:
 	.string "Wattson: Ah! Two on one!\n"

@@ -61,7 +61,7 @@ EGC_AltWallaceFollower::
 	call_if_eq EGC_FollowerMinnieFlagSet
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq EGC_CR_ChooseValidMons
+	call_if_eq RyuScript_ChooseValidMons
 	multi_2_vs_1 TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -70,12 +70,6 @@ EGC_AltWallaceFollower::
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
 	end
-	
-EGC_CR_ChooseValidMons::
-	msgbox EGC_NeedToChoose
-	closemessage
-	goto EGC_AltWallaceFollower
-
 
 EverGrandeCity_ChampionsRoom_EventScript_Defeated:: @ 8228A61
 	setflag FLAG_SYS_GAME_CLEAR
