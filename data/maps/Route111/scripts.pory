@@ -23,7 +23,14 @@ Route111_OnTransition: @ 81F0D87
 	checktrainerflag TRAINER_VICKY
 	goto_if_lt Route111_EventScript_SetWinstratesNotDefeated
 	call_if_set FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA2, R111_FixTabitha
+	compare VAR_RYU_QUEST_MAGMA, 160
+	call_if_eq R111_FixBlaise
 	end
+
+R111_FixBlaise::
+	clearflag FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE
+	addobject 46
+	return
 
 R111_FixTabitha::
 	setobjectxy 45, 31, 28
