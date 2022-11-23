@@ -155,8 +155,8 @@ void StartNewDeliveryQueue(void)
         AddBagItem(gSaveBlock2Ptr->Deliveries[i].itemId, 1);
         gSaveBlock2Ptr->Deliveries[i].mapgroup =  sRyuDeliveryMapsList[maplistnum][0];
         gSaveBlock2Ptr->Deliveries[i].mapnum =  sRyuDeliveryMapsList[maplistnum][1];
-        gSaveBlock2Ptr->Deliveries[i].xpos = (sRyuDeliveryCoords[maplistnum][coordGroup][0] + 7);//game offsets npc coords by -7 , have to compensate.
-        gSaveBlock2Ptr->Deliveries[i].ypos = (sRyuDeliveryCoords[maplistnum][coordGroup][1] + 7);
+        gSaveBlock2Ptr->Deliveries[i].xpos = (sRyuDeliveryCoords[maplistnum][coordGroup][0]);
+        gSaveBlock2Ptr->Deliveries[i].ypos = (sRyuDeliveryCoords[maplistnum][coordGroup][1]);
         gSaveBlock2Ptr->Deliveries[i].mapNameId = maplistnum;
         gSaveBlock2Ptr->Deliveries[i].finished = FALSE;
     }

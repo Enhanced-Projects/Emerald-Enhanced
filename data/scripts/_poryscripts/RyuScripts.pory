@@ -1255,7 +1255,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	goto(RyuPokemonGroomer)
 	end
 }
 
