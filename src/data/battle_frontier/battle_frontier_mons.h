@@ -785,21 +785,21 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ARIADOS_1] = { // Ariados-Offensive (ID: 87)
         .species = SPECIES_ARIADOS,
-        .moves = {MOVE_STICKY_WEB, MOVE_TOXIC_SPIKES, MOVE_MEGAHORN, MOVE_SUCKER_PUNCH},
-        .heldItem = ITEM_SITRUS_BERRY,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_ADAMANT,
+        .moves = {MOVE_TOXIC_THREAD, MOVE_MEGAHORN, MOVE_KNOCK_OFF, MOVE_U_TURN},
+        .heldItem = ITEM_SILVER_POWDER,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
-    [FRONTIER_MON_ARIADOS_2] = { // Ariados-Bulky (ID: 88)
+    [FRONTIER_MON_ARIADOS_2] = { // Ariados-Lead (ID: 88)
         .species = SPECIES_ARIADOS,
-        .moves = {MOVE_STICKY_WEB, MOVE_TOXIC_SPIKES, MOVE_TOXIC_THREAD, MOVE_MEGAHORN},
-        .heldItem = ITEM_SITRUS_BERRY,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_BOLD,
+        .moves = {MOVE_TOXIC_THREAD, MOVE_U_TURN, MOVE_KNOCK_OFF, MOVE_VENOM_DRENCH},
+        .heldItem = ITEM_BLACK_SLUDGE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_BEAUTIFLY_1] = { // Beautifly-HPfighting (ID: 89)
         .species = SPECIES_BEAUTIFLY,
@@ -8426,12 +8426,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ARIADOS_HYPER_OFFENSE] = { // (ID: 936)
         .species = SPECIES_ARIADOS,
-        .moves = {MOVE_STICKY_WEB, MOVE_TOXIC_SPIKES, MOVE_MEGAHORN, MOVE_TOXIC_THREAD},
-        .heldItem = ITEM_FOCUS_SASH,
+        .moves = {MOVE_TOXIC_THREAD, MOVE_MEGAHORN, MOVE_KNOCK_OFF, MOVE_U_TURN},
+        .heldItem = ITEM_SILVER_POWDER,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_TOXICROAK_HYPER_OFFENSE] = { // (ID: 937)
         .species = SPECIES_TOXICROAK,
