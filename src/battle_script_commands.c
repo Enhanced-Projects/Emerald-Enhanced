@@ -1580,9 +1580,9 @@ static bool32 AccuracyCalcHelper(u16 move)
             return TRUE;
         }
     #endif
-
-    return FALSE;
     }
+    
+    return FALSE;
 }
 
 u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move)
@@ -1654,12 +1654,6 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move)
         calc = (calc * (100 + atkParam)) / 100;
     else if (atkHoldEffect == HOLD_EFFECT_ZOOM_LENS && GetBattlerTurnOrderNum(battlerAtk) > GetBattlerTurnOrderNum(battlerDef));
         calc = (calc * (100 + atkParam)) / 100;
-        
-// HACK: This makes all moves with an accuracy of 0 always hit. 
-// This is a band aid to all 'always hit' moves universally missing.
-// Remove when latter issue is resolved.
-    if (gBattleMoves[move].accuracy == 0)
-        calc += 100;
 
     return calc;
 }
@@ -1671,8 +1665,8 @@ static void Cmd_accuracycheck(void)
     if (move == ACC_CURR_MOVE)
         move = gCurrentMove;
 
-    //if (gBattleMoves[move].accuracy == 0)
-        //gBattlescriptCurrInstr += 7;
+    if (gBattleMoves[move].accuracy == 0)
+        gBattlescriptCurrInstr += 7;
 
     if (move == NO_ACC_CALC_CHECK_LOCK_ON)
     {
