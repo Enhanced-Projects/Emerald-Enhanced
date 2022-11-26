@@ -2429,8 +2429,8 @@ static const u8 sSPOTLIGHTDescription[] = _(
 	"spotlighted Pokémon.");
 
 static const u8 sTOXIC_THREADDescription[] = _(
-    "Attacks with a thread that\n"
-    "poisons and drops Speed.");
+    "Lays a web that slows and\n"
+    "badly poisons on entry.");
 
 static const u8 sLASER_FOCUSDescription[] = _(
     "Guarantees the next move\n"
