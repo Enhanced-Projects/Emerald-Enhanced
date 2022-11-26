@@ -366,7 +366,7 @@ static const struct ScrollArrowsTemplate sVanillaBagScrollArrowsTemplate = {
     .palNum = 0,
 };
 
-static const struct ScrollArrowsTemplate * sBagScrollArrowsTemplates[THEME_UI_MAX] = {
+static const struct ScrollArrowsTemplate * const sBagScrollArrowsTemplates[THEME_UI_MAX] = {
     &sModernBagScrollArrowsTemplate,
     &sClassicBagScrollArrowsTemplate,
     &sVanillaBagScrollArrowsTemplate,
@@ -560,7 +560,7 @@ const struct WindowTemplate sModernBagWindows[] =
     DUMMY_WIN_TEMPLATE,
 };
 
-const struct WindowTemplate* sBagWindowTemplates[THEME_UI_MAX] = {
+const struct WindowTemplate * const sBagWindowTemplates[THEME_UI_MAX] = {
     sModernBagWindows,
     sClassicBagWindows,
     sDefaultBagWindows
@@ -2340,8 +2340,8 @@ bool8 UseRegisteredKeyItemOnField(void)
         {
             ScriptContext2_Enable();
             FreezeObjectEvents();
-            sub_808B864();
-            sub_808BCF4();
+            PlayerFreeze();
+            StopPlayerAvatar();
             gSpecialVar_ItemId = gSaveBlock1Ptr->registeredItem;
             taskId = CreateTask(ItemId_GetFieldFunc(gSaveBlock1Ptr->registeredItem), 8);
             gTasks[taskId].tUsingRegisteredKeyItem = TRUE;

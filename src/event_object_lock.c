@@ -16,42 +16,42 @@ bool8 IsPlayerStandingStill(void)
         return TRUE;
 }
 
-static void sub_80983A4(u8 taskId)
+static void Task_FreezePlayer(u8 taskId)
 {
     if (IsPlayerStandingStill())
     {
-        sub_808B864();
+        PlayerFreeze();
         DestroyTask(taskId);
     }
 }
 
-bool8 sub_80983C4(void)
+bool8 IsFreezePlayerFinished(void)
 {
-    if (FuncIsActiveTask(sub_80983A4))
+    if (FuncIsActiveTask(Task_FreezePlayer))
     {
         return FALSE;
     }
     else
     {
-        sub_808BCF4();
+        StopPlayerAvatar();
         return TRUE;
     }
 }
 
 
-void ScriptFreezeObjectEvents(void)
+void FreezeObjects_WaitForPlayer(void)
 {
     FreezeObjectEvents();
-    CreateTask(sub_80983A4, 80);
+    CreateTask(Task_FreezePlayer, 80);
 }
 
-static void sub_8098400(u8 taskId)
+static void Task_FreezeSelectedObjectAndPlayer(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
     if (!task->data[0] && IsPlayerStandingStill() == TRUE)
     {
-        sub_808B864();
+        PlayerFreeze();
         task->data[0] = 1;
     }
     if (!task->data[1] && !gObjectEvents[gSelectedObjectEvent].singleMovementActive)
@@ -63,15 +63,15 @@ static void sub_8098400(u8 taskId)
         DestroyTask(taskId);
 }
 
-bool8 sub_809847C(void)
+bool8 IsFreezeSelectedObjectAndPlayerFinished(void)
 {
-    if (FuncIsActiveTask(sub_8098400))
+    if (FuncIsActiveTask(Task_FreezeSelectedObjectAndPlayer))
     {
         return FALSE;
     }
     else
     {
-        sub_808BCF4();
+        StopPlayerAvatar();
         return TRUE;
     }
 }
@@ -80,7 +80,7 @@ void LockSelectedObjectEvent(void)
 {
     u8 taskId;
     FreezeObjectEventsExceptOne(gSelectedObjectEvent);
-    taskId = CreateTask(sub_8098400, 80);
+    taskId = CreateTask(Task_FreezeSelectedObjectAndPlayer, 80);
     if (!gObjectEvents[gSelectedObjectEvent].singleMovementActive)
     {
         FreezeObjectEvent(&gObjectEvents[gSelectedObjectEvent]);
@@ -118,14 +118,14 @@ void Script_ClearHeldMovement(void)
     ObjectEventClearHeldMovementIfActive(&gObjectEvents[gSelectedObjectEvent]);
 }
 
-static void sub_80985BC(u8 taskId)
+static void Task_FreezeObjectAndPlayer(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
     u8 objectEventId = task->data[2];
 
     if (!task->data[0] && IsPlayerStandingStill() == TRUE)
     {
-        sub_808B864();
+        PlayerFreeze();
         task->data[0] = 1;
     }
     if (!task->data[1] && !gObjectEvents[objectEventId].singleMovementActive)
@@ -137,22 +137,22 @@ static void sub_80985BC(u8 taskId)
         DestroyTask(taskId);
 }
 
-void sub_8098630(void)
+void FreezeForApproachingTrainers(void)
 {
     u8 trainerObjectId1, trainerObjectId2, taskId;
     trainerObjectId1 = GetChosenApproachingTrainerObjectEventId(0);
     if(gNoOfApproachingTrainers == 2)
     {
         trainerObjectId2 = GetChosenApproachingTrainerObjectEventId(1);
-        sub_8098074(trainerObjectId1, trainerObjectId2);
-        taskId = CreateTask(sub_80985BC, 80);
+        FreezeObjectEventsExceptTwo(trainerObjectId1, trainerObjectId2);
+        taskId = CreateTask(Task_FreezeObjectAndPlayer, 80);
         gTasks[taskId].data[2] = trainerObjectId1;
         if(!gObjectEvents[trainerObjectId1].singleMovementActive)
         {
             FreezeObjectEvent(&gObjectEvents[trainerObjectId1]);
             gTasks[taskId].data[1] = 1;
         }
-        taskId = CreateTask(sub_80985BC, 81);
+        taskId = CreateTask(Task_FreezeObjectAndPlayer, 81);
         gTasks[taskId].data[2] = trainerObjectId2;
         if(!gObjectEvents[trainerObjectId2].singleMovementActive)
         {
@@ -163,7 +163,7 @@ void sub_8098630(void)
     else
     {
         FreezeObjectEventsExceptOne(trainerObjectId1);
-        taskId = CreateTask(sub_80985BC, 80);
+        taskId = CreateTask(Task_FreezeObjectAndPlayer, 80);
         gTasks[taskId].data[2] = trainerObjectId1;
         if(!gObjectEvents[trainerObjectId1].singleMovementActive)
         {
@@ -173,15 +173,15 @@ void sub_8098630(void)
     }
 }
 
-bool8 sub_8098734(void)
+bool8 IsFreezeObjectAndPlayerFinished(void)
 {
-    if (FuncIsActiveTask(sub_80985BC))
+    if (FuncIsActiveTask(Task_FreezeObjectAndPlayer))
     {
         return FALSE;
     }
     else
     {
-        sub_808BCF4();
+        StopPlayerAvatar();
         return TRUE;
     }
 }

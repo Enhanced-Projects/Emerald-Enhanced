@@ -702,6 +702,7 @@ gBattleAnims_Moves::
 	.4byte Move_SNUGGLE
 	.4byte Move_CLING
 	.4byte Move_OMEN
+	.4byte Move_SNAP
 @@@@@@@@@@@@ GEN 8 @@@@@@@@@@@@
 	.4byte Move_DYNAMAX_CANNON
 	.4byte Move_SNIPE_SHOT
@@ -13225,6 +13226,26 @@ Move_JAW_LOCK::
 	loadspritegfx ANIM_TAG_SHARP_TEETH
 	loadspritegfx ANIM_TAG_IMPACT
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_SHARP_TEETH, 0, 10, 10, 0x0B1D @Light orange
+	monbg ANIM_TARGET
+	launchtask AnimTask_BlendBattleAnimPal 0xa 0x5 ANIM_PAL_BG 0x1 0x0 0x7 0x0   @Black
+	waitforvisualfinish
+	playsewithpan SE_M_BITE, SOUND_PAN_TARGET 
+	launchtemplate gJawLockTeethTemplate 0x2 0x7 0xffe0 0xffe0 0x1 0x333 0x333 0xa 15
+	launchtemplate gJawLockTeethTemplate 0x2 0x7 0x20 0x20 0x5 0xfccd 0xfccd 0xa 15
+	delay 0xa 
+	launchtemplate gBasicHitSplatSpriteTemplate 0x2 0x4 0xfff8 0x0 0x1 0x1 
+	launchtask AnimTask_ShakeMon 0x5 0x5 ANIM_TARGET 0x0 0x7 0xA 0x2  
+	waitforvisualfinish 
+	launchtask AnimTask_BlendBattleAnimPal 0xa 0x5 ANIM_PAL_BG 0x1 0x7 0x0 0x0 @;Black
+	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	delay 0x1
+	end
+
+Move_SNAP::
+	loadspritegfx ANIM_TAG_SHARP_TEETH
+	loadspritegfx ANIM_TAG_IMPACT
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_SHARP_TEETH, 0, 18, 2, 0x0B1D @verdant green
 	monbg ANIM_TARGET
 	launchtask AnimTask_BlendBattleAnimPal 0xa 0x5 ANIM_PAL_BG 0x1 0x0 0x7 0x0   @Black
 	waitforvisualfinish

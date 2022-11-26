@@ -920,8 +920,8 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN              0x35F
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_1           0x360
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_2           0x361
-#define FLAG_UNUSED_0x362                                           0x362
-#define FLAG_UNUSED_0x363                                           0x363
+#define FLAG_RYU_POKEFANS_FINAL_QUEST_STARTED                       0x362
+#define FLAG_RYU_POKEFANS_FINAL_QUEST_DONE                          0x363
 #define FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN                           0x364
 #define FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY          0x365
 #define FLAG_HIDE_LANETTES_HOUSE_LANETTE                            0x366

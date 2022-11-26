@@ -77,7 +77,7 @@ script RyuScript_HorsemanOfWar {
         end
     }
     setflag(FLAG_RYU_FACING_HORSEMAN)
-    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Some of Your Pokémon have perished...)")
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Some of Your Pokémon have been\ninjured...)")
     callnative(RyuApplyWarEffects)
     playse(SE_FAINT)
     waitse

@@ -12,6 +12,13 @@ script AW_Dispatcher {
                 closemessage
                 if (var(VAR_RYU_DELIVERY_SYSTEM_DATA) <= 4) {
                     callnative(StartNewDeliveryQueue)
+                    switch (var(VAR_RESULT)){
+                        case 100:
+                            msgbox("Sorry, but the customer count has\nexceeded our tracking capabilities.\pPlease try again.")
+                            callnative(RyuClearDeliveryQueue)
+                            release
+                            end
+                    }
                     msgbox("Okay! here's the job details:")
                     closemessage
                     call(ShowDeliveryData)

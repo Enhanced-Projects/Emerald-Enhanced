@@ -1223,8 +1223,8 @@ bool8 ScrCmd_turnvobject(struct ScriptContext *ctx)
 
 bool8 ScrCmd_lockall(struct ScriptContext *ctx)
 {
-    ScriptFreezeObjectEvents();
-    SetupNativeScript(ctx, sub_80983C4);
+    FreezeObjects_WaitForPlayer();
+    SetupNativeScript(ctx, IsFreezePlayerFinished);
     return TRUE;
 }
 
@@ -1234,12 +1234,12 @@ bool8 ScrCmd_lock(struct ScriptContext *ctx)
     if (gObjectEvents[gSelectedObjectEvent].active)
     {
         LockSelectedObjectEvent();
-        SetupNativeScript(ctx, sub_809847C);
+        SetupNativeScript(ctx, IsFreezeSelectedObjectAndPlayerFinished);
     }
     else
     {
-        ScriptFreezeObjectEvents();
-        SetupNativeScript(ctx, sub_80983C4);
+        FreezeObjects_WaitForPlayer();
+        SetupNativeScript(ctx, IsFreezePlayerFinished);
     }
 
     return TRUE;
@@ -2159,13 +2159,13 @@ bool8 ScrCmd_freerotatingtilepuzzle(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_cmdD8(struct ScriptContext *ctx)
+bool8 ScrCmd_selectapproachingtrainer(struct ScriptContext *ctx)
 {
     gSelectedObjectEvent = GetCurrentApproachingTrainerObjectEventId();
     return FALSE;
 }
 
-bool8 ScrCmd_cmdD9(struct ScriptContext *ctx)
+bool8 ScrCmd_lockfortrainer(struct ScriptContext *ctx)
 {
     if (IsUpdateLinkStateCBActive())
     {
@@ -2175,8 +2175,8 @@ bool8 ScrCmd_cmdD9(struct ScriptContext *ctx)
     {
         if (gObjectEvents[gSelectedObjectEvent].active)
         {
-            sub_8098630();
-            SetupNativeScript(ctx, sub_8098734);
+            FreezeForApproachingTrainers();
+            SetupNativeScript(ctx, IsFreezeObjectAndPlayerFinished);
         }
         return TRUE;
     }
@@ -2224,7 +2224,7 @@ bool8 ScrCmd_warpD1(struct ScriptContext *ctx)
 
     SetWarpDestination(mapGroup, mapNum, warpId, x, y);
     sub_808D074(GetPlayerFacingDirection());
-    sub_80B0244();
+    DoSpinEnterWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
 }
@@ -2352,48 +2352,21 @@ bool8 ScrCmd_checkbp(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_gfec(struct ScriptContext *ctx)
-{
-    u8 dir = (GetPlayerFacingDirection());
-    u8 pX = (gSaveBlock1Ptr->pos.x);
-    u8 pY = (gSaveBlock1Ptr->pos.y);
-    u8 fX, fY;
 
-    switch (dir)
-    {
-        case DIR_NORTH:
-        {
-            fX = pX;
-            fY = pY + 1;
-            VarSet(VAR_TEMP_D, fX);
-            VarSet(VAR_TEMP_C, fY);
-            return FALSE;
-        }
-        case DIR_SOUTH:
-        {
-            fX = pX;
-            fY = pY - 1;
-            VarSet(VAR_TEMP_D, fX);
-            VarSet(VAR_TEMP_C, fY);
-            return FALSE;
-        }
-        case DIR_EAST:
-        {
-            fX = pX - 1;
-            fY = pY;
-            VarSet(VAR_TEMP_D, fX);
-            VarSet(VAR_TEMP_C, fY);
-            return FALSE;
-        }
-        case DIR_WEST:
-        {
-            fX = pX + 1;
-            fY = pY;
-            VarSet(VAR_TEMP_D, fX);
-            VarSet(VAR_TEMP_C, fY);
-            return FALSE;
-        }
+bool8 ScrCmd_trainstat(struct ScriptContext *ctx)
+{
+    u16 slot = (VarGet(ScriptReadHalfword(ctx)));
+    u16 statid = (VarGet(ScriptReadHalfword(ctx)));
+    u16 amount = (VarGet(ScriptReadHalfword(ctx)));
+    bool16 bufferNick = ScriptReadByte(ctx);
+    u8 currentStat = GetMonData(&gPlayerParty[slot], statid);
+    currentStat += amount;
+    SetMonData(&gPlayerParty[slot], statid, &currentStat);
+    if (bufferNick == TRUE){
+        GetMonData(&gPlayerParty[slot], MON_DATA_NICKNAME, gStringVar1);
+        StringGetEnd10(gStringVar1);
     }
+    return FALSE;
 }
 
 bool8 ScrCmd_multvar(struct ScriptContext *ctx)

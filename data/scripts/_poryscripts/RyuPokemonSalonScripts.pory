@@ -1,0 +1,236 @@
+//scripts for the contest stat trainers
+
+
+script RyuCoolnessTrainer {
+    msgbox("Hello, coordinator.\nI provide training in Coolness\lfor your Pokémon.\pWould you like me to train\nCoolness for your Pokémon?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        msgbox("All right then.\nCome see me if you change\lyour mind!")
+        goto(ryu_end)
+    }
+    SelectCoolnessPartyMon:
+    msgbox("Okay! Which Pokémon needs\nCoolness training?")
+    call(RyuBufferPartyMonNames)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    copyvar(VAR_0x8005, VAR_RESULT)
+    if (var(VAR_RESULT) > 5){
+        msgbox("You have to select a Pokémon!\nTry Again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            goto(ryu_end)
+        }
+        else{
+            goto(SelectCoolnessPartyMon)
+        }
+    }
+    checkitem(ITEM_TRAINING_TOKEN, 1)
+    if (var(VAR_RESULT) == FALSE){
+        msgbox("You don't have any tokens!")
+        goto(ryu_end)
+    }
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    removeitem(ITEM_TRAINING_TOKEN)
+    trainstat(VAR_0x8005, MON_DATA_COOL, 15, TRUE)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("All done!\nYour {STR_VAR_1}'s Coolness has\lincreased by 15!")
+    closemessage
+    msgbox("That will be one Silver Token,\nplease!\p... ... ...\pThank you for your business!")
+    closemessage
+    goto(ryu_end)
+}
+
+script RyuBeautyTrainer {
+    msgbox("Hello, coordinator.\nI make Pokémon more beautiful!\pWould you like for me to\ntrain your Pokémon in Beauty?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        msgbox("All right then.\nCome see me if you change\lyour mind!")
+    goto(ryu_end)
+    }
+    SelectBeautyPartyMon:
+    msgbox("Okay! Which Pokémon needs\nBeauty training?")
+    call(RyuBufferPartyMonNames)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    copyvar(VAR_0x8005, VAR_RESULT)
+    if (var(VAR_RESULT) > 5){
+        msgbox("You have to select a Pokémon!\nTry Again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            goto(ryu_end)
+        }
+        else{
+            goto(SelectBeautyPartyMon)
+        }
+    }
+    checkitem(ITEM_TRAINING_TOKEN, 1)
+    if (var(VAR_RESULT) == FALSE){
+        msgbox("You don't have any tokens!")
+        goto(ryu_end)
+    }
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    removeitem(ITEM_TRAINING_TOKEN)
+    trainstat(VAR_0x8005, MON_DATA_BEAUTY, 15, TRUE)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("All done!\nYour {STR_VAR_1}'s Beauty has\lincreased by 15!")
+    closemessage
+    msgbox("That will be one Silver Token,\nplease!\p... ... ...\pThank you for your business!")
+    closemessage
+    goto(ryu_end)
+}
+
+script RyuCutenessTrainer {
+    msgbox("Hello, coordinator.\nI just adore Cute Pokémon!\pWould you like me to\nteach a Pokémon to act more cute?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        msgbox("All right then.\nCome see me if you change\lyour mind!")
+        goto(ryu_end)
+    }
+    SelectCutenessPartyMon:
+    msgbox("Okay! Which Pokémon needs\nto act cuter?")
+    call(RyuBufferPartyMonNames)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    copyvar(VAR_0x8005, VAR_RESULT)
+    if (var(VAR_RESULT) > 5){
+        msgbox("You have to select a Pokémon!\nTry Again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            goto(ryu_end)
+        }
+        else{
+            goto(SelectCutenessPartyMon)
+        }
+    }
+    checkitem(ITEM_TRAINING_TOKEN, 1)
+    if (var(VAR_RESULT) == FALSE){
+        msgbox("You don't have any tokens!")
+    goto(ryu_end)
+    }
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    removeitem(ITEM_TRAINING_TOKEN)
+    trainstat(VAR_0x8005, MON_DATA_CUTE, 15, TRUE)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("All done!\nYour {STR_VAR_1}'s Cuteness has\lincreased by 15!")
+    closemessage
+    msgbox("That will be one Silver Token,\nplease!\p... ... ...\pThank you for your business!")
+    goto(ryu_end)
+}
+
+script RyuToughnessTrainer {
+    msgbox("Hello, coordinator.\nI toughen up Pokémon!\pShould I train one of your Pokémon\nto toughen them up?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        msgbox("All right then.\nCome see me if you change\lyour mind!")
+    goto(ryu_end)
+    }
+    SelectToughnessPartyMon:
+    msgbox("Okay! Which Pokémon needs\nto toughen up?")
+    call(RyuBufferPartyMonNames)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    copyvar(VAR_0x8005, VAR_RESULT)
+    if (var(VAR_RESULT) > 5){
+        msgbox("You have to select a Pokémon!\nTry Again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            goto(ryu_end)
+        }
+        else{
+            goto(SelectToughnessPartyMon)
+        }
+    }
+    checkitem(ITEM_TRAINING_TOKEN, 1)
+    if (var(VAR_RESULT) == FALSE){
+        msgbox("You don't have any tokens!")
+        goto(ryu_end)
+    }
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    removeitem(ITEM_TRAINING_TOKEN)
+    trainstat(VAR_0x8005, MON_DATA_TOUGH, 15, TRUE)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("All done!\nYour {STR_VAR_1}'s Toughness has\lincreased by 15!")
+    closemessage
+    msgbox("That will be one Silver Token,\nplease!\p... ... ...\pThank you for your business!")
+    goto(ryu_end)
+}
+
+script RyuSmartnessTrainer {
+    msgbox("Hello, coordinator.\nI teach Pokémon to be more\lIntelligent.\pWould you like for me to\nimprove a Pokémon's intelligence?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        msgbox("All right then.\nCome see me if you change\lyour mind!")
+        goto(ryu_end)
+    }
+    SelectSmartnessPartyMon:
+    msgbox("All right.\nWhich one needs to learn?")
+    call(RyuBufferPartyMonNames)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    copyvar(VAR_0x8005, VAR_RESULT)
+    if (var(VAR_RESULT) > 5){
+        msgbox("You have to select a Pokémon!\nTry Again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            goto(ryu_end)
+        }
+        else{
+            goto(SelectSmartnessPartyMon)
+        }
+    }
+    checkitem(ITEM_TRAINING_TOKEN, 1)
+    if (var(VAR_RESULT) == FALSE){
+        msgbox("You don't have any tokens!")
+        goto(ryu_end)
+    }
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    removeitem(ITEM_TRAINING_TOKEN)
+    trainstat(VAR_0x8005, MON_DATA_SMART, 15, TRUE)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("All done!\nYour {STR_VAR_1}'s Smartness has\lincreased by 15!")
+    closemessage
+    msgbox("That will be one Silver Token,\nplease!\p... ... ...\pThank you for your business!")
+    goto(ryu_end)
+}
+
+script RyuPokemonGroomer {
+    msgbox("Hello, {PLAYER}!\pI provide grooming services\nto increase a Pokémon's\linitial appeal in contests!\pWould you like for me to\ngroom one of your Pokémon?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        msgbox("Shame.\nSome other time then!")
+        closemessage
+        goto(ryu_end)
+    }
+    SelectGroomingPartyMon:
+    call(RyuBufferPartyMonNames)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    copyvar(VAR_0x8005, VAR_RESULT)
+    if (var(VAR_RESULT) > 5){
+        msgbox("You have to select a Pokémon!\nTry Again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            goto(ryu_end)
+        }
+        else{
+            goto(SelectGroomingPartyMon)
+        }
+    }
+    msgbox("Grooming services cost one\nGold Token, Okay?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox("I can't very well provide\nservices for free!\pHow will I feed my family?")
+        goto(ryu_end)
+    }
+    checkitem(ITEM_GROOMING_TOKEN, 1)
+    if (var(VAR_RESULT) == FALSE){
+        msgbox("If you didn't have the Token,\nwhy didn't you say so, instead of\lwasting my time?")
+        goto(ryu_end)
+    }
+    fadescreen(FADE_TO_BLACK)
+    playse(SE_M_SCRATCH)
+    waitse
+    playse(SE_M_SCRATCH)
+    waitse
+    playse(SE_M_SCRATCH)
+    waitse
+    delay(20)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("All done!\nYour Pokémon is looking\lquite dapper!")
+    closemessage
+    trainstat(VAR_0x8005, MON_DATA_SHEEN, 50, TRUE)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({STR_VAR_1} looks qutie happy!)")
+    closemessage
+    goto(ryu_end)
+}

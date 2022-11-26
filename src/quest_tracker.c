@@ -87,26 +87,26 @@ static const struct WindowTemplate sQuestWindowTemplate[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static u8 sTextDevon1[] = _("Devon Corporate");
-static u8 sTextDevon2[] = _("Devon Scientist");
-static u8 sTextMagma[] = _("Magma");
-static u8 sTextLana[] = _("Lana");
-static u8 sTextLanette[] = _("Lanette");
-static u8 sTextAqua[] = _("Aqua");
-static u8 sTextNurse[] = _("Nurse");
-static u8 sTextMay[] = _("May");
-static u8 sText_DeliverySystem[] = _("Delivery System");
-static u8 sText_Daily[] = _("Faction Daily Quest");
-static u8 sText_DailyNaturalistss[] = _("Naturalists Daily");
-static u8 sText_DailyStudents[] = _("Students Daily");
-static u8 sText_DailyNobles[] = _("Nobles Daily");
-static u8 sText_DailyPokefans[] = _("Pokéfans Daily");
-static u8 sText_DailyOutcasts[] = _("Outcasts Daily");
-static u8 sText_DailyProfessionals[] = _("Professionals Daily");
+static const u8 sTextDevon1[] = _("Devon Corporate");
+static const u8 sTextDevon2[] = _("Devon Scientist");
+static const u8 sTextMagma[] = _("Magma");
+static const u8 sTextLana[] = _("Lana");
+static const u8 sTextLanette[] = _("Lanette");
+static const u8 sTextAqua[] = _("Aqua");
+static const u8 sTextNurse[] = _("Nurse");
+static const u8 sTextMay[] = _("May");
+static const u8 sText_DeliverySystem[] = _("Delivery System");
+static const u8 sText_Daily[] = _("Faction Daily Quest");
+static const u8 sText_DailyNaturalistss[] = _("Naturalists Daily");
+static const u8 sText_DailyStudents[] = _("Students Daily");
+static const u8 sText_DailyNobles[] = _("Nobles Daily");
+static const u8 sText_DailyPokefans[] = _("Pokéfans Daily");
+static const u8 sText_DailyOutcasts[] = _("Outcasts Daily");
+static const u8 sText_DailyProfessionals[] = _("Professionals Daily");
 
 struct QuestData {
     const struct QuestStageDesc * stageDescs;
-    u8 * name;
+    const u8 * name;
     u16 var;
 };
 
@@ -188,7 +188,7 @@ static const struct BgTemplate sQuestTrackerBGTemplates[] =
     }
 };
 
-static struct QuestData sQuests[] = {
+static const struct QuestData sQuests[] = {
     {gDevonCorporateQuestStages, sTextDevon1, VAR_RYU_QUEST_DEVON_CORPORATE},
     {gDevonScientistQuestStages, sTextDevon2, VAR_RYU_QUEST_DEVON_SCIENTIST},
     {gMagmaQuestStages, sTextMagma, VAR_RYU_QUEST_MAGMA},
@@ -200,7 +200,7 @@ static struct QuestData sQuests[] = {
     {gDailyQuestStages, sText_Daily, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION},
 };
 
-static u8 sColors[][3] = {
+static const u8 sColors[][3] = {
     {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY},
 };
 

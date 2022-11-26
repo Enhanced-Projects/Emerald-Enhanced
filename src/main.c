@@ -83,8 +83,10 @@ static void ReadKeys(void);
 void InitIntrHandlers(void);
 static void WaitForVBlank(void);
 void EnableVCountIntrAtLine150(void);
+#ifdef RYU_PUNISH_SAVE_STATE
 bool8 IsRtcSynched(u32 rtcSec, u32 rtcSecRaw);
 void RtcCheckCallback(void);
+#endif
 
 #define B_START_SELECT (B_BUTTON | START_BUTTON | SELECT_BUTTON)
 
@@ -115,7 +117,6 @@ void AgbMain()
     ResetBgs();
     SetDefaultFontsPointer();
     InitHeap(gHeap, HEAP_SIZE);
-    mgba_open();
 
     gSoftResetDisabled = FALSE;
 
@@ -124,14 +125,18 @@ void AgbMain()
 
     gLinkTransferringData = FALSE;
     gUnknown_03000000 = 0xFC0;
+    #ifdef RYU_PUNISH_SAVE_STATE
     gSaveBlock2Ptr->RtcTimeSecond = RtcGetSecondCount();
     gSaveBlock2Ptr->RtcTimeSecondRAW = RtcGetSecondCountRAW();
+    #endif
 
     for (i = 0; ; ++i)
     {
         ReadKeys();
+        #ifdef RYU_PUNISH_SAVE_STATE
         if (!(i % 5))
             RtcCheckCallback();
+        #endif
 
         if (gSoftResetDisabled == FALSE
          && (gMain.heldKeysRaw & A_BUTTON)
@@ -464,7 +469,7 @@ u8 RtcFrequenciesOffsets[90] =
     [73] = 80,
     [89] = 0
 };
-
+#ifdef RYU_PUNISH_SAVE_STATE
 bool8 IsRtcSynched(u32 rtcSec, u32 rtcSecRaw)
 {
     if (gSaveBlock2Ptr->RtcTimeSecond + 10 >= rtcSec)
@@ -491,7 +496,6 @@ void RtcCheckCallback(void)
         FlagSet(FLAG_RYU_SAVE_STATE_DETECTED);
         gSaveBlock2Ptr->SaveStateLastDetection = rtcSec;
     }
-#ifdef RYU_PUNISH_SAVE_STATE
     //remove punishment after an hour if the user is in hardcore/challenge mode.
     if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000))
     {
@@ -499,8 +503,9 @@ void RtcCheckCallback(void)
         gSaveBlock2Ptr->notifiedSaveState = TRUE;
         QueueNotification((const u8[])_("Save State penalty Lifted."), NOTIFY_GENERAL, 120);
     }
-#endif
+
 
     gSaveBlock2Ptr->RtcTimeSecondRAW = rtcSecRaw;
     gSaveBlock2Ptr->RtcTimeSecond = rtcSec;
 }
+#endif

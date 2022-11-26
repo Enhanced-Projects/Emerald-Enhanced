@@ -1121,8 +1121,10 @@ void CB2_InitCopyrightScreenAfterBootup(void)
             Sav2_ClearSetDefault();
         SetPokemonCryStereo();
         InitHeap(gHeap, HEAP_SIZE);
+        #ifdef RYU_PUNISH_SAVE_STATE
         gSaveBlock2Ptr->RtcTimeSecondRAW = RtcGetSecondCountRAW();
         gSaveBlock2Ptr->RtcTimeSecond = RtcGetSecondCount();
+        #endif
     }
 }
 

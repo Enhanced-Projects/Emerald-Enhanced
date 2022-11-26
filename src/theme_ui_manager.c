@@ -48,7 +48,7 @@ static const u16 ClassicUI_Bag[2048] = {
 };
 
 
-static const u16* UITemplates[1][THEME_UI_MAX-1] = {
+static const u16 *const UITemplates[1][THEME_UI_MAX-1] = {
     {ModernUI_Bag, ClassicUI_Bag}
 };
 

@@ -126,7 +126,7 @@ LG_FollowerMatch::
 LG_StartFollowerBattle::
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq LG_ChooseValidMons
+	call_if_eq RyuScript_ChooseValidMons
 	multi_2_vs_1 TRAINER_FLANNERY_4, LG_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -135,11 +135,6 @@ LG_StartFollowerBattle::
 	call LG_FollowerOutroSelector
 	goto LG_FollowerReset
 	end
-
-LG_ChooseValidMons::
-	msgbox EGC_NeedToChoose
-	closemessage
-	goto LG_StartFollowerBattle
 
 LG_PreBattleText:
     .string "Flannery: Oh, ho ho ho...\p"

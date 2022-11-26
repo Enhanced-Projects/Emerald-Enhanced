@@ -22,6 +22,7 @@ extern const u8 BattleScript_FaintTarget2x[];
 extern const u8 BattleScript_FaintTarget4x[];
 extern const u8 BattleScript_FaintTarget10x[];
 extern const u8 BattleScript_FaintTarget20x[];
+extern const u8 BattleScript_FaintTarget50x[];
 extern const u8 BattleScript_GiveExp[];
 extern const u8 BattleScript_HandleFaintedMon[];
 extern const u8 BattleScript_LocalTrainerBattleWon[];
@@ -385,5 +386,6 @@ extern const u8 BattleScript_MysteriousAirCurrentBlowsOn[];
 extern const u8 BattleScript_AttackWeakenedByStrongWinds[];
 extern const u8 BattleScript_BlockedByPrimalWeatherEnd3[];
 extern const u8 BattleScript_BlockedByPrimalWeatherRet[];
+extern const u8 BattleScript_BothCanNoLongerEscape[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

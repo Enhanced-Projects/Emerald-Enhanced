@@ -54,6 +54,7 @@
 #include "constants/weather.h"
 #include "constants/general.h"
 #include "constants/region_map_sections.h"
+#include "constants/event_object_movement.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"
@@ -609,6 +610,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/DynamicDeliveryScripts.inc"
 	.include "data/scripts/_poryscripts/RyuNatureSwap.inc"
 	.include "data/scripts/_poryscripts/RyuHaremEndScripts.inc"
+	.include "data/scripts/_poryscripts/RyuPokemonSalonScripts.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED

@@ -865,22 +865,27 @@ int RyuSwapRotomForm(void)//Toby had concerns that this wasn't as 'nice' as the 
 
 bool8 checkForOverlordRyuEncounter(void)
 {
+    u16 rv = (Random() % 100);
+    ConvertIntToDecimalStringN(gStringVar1, rv, 0, 2);
     if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10 && (FlagGet(FLAG_RYU_DEFEATED_OVERLORD) == 1))
     {
-        if ((Random() % 100) <= 25)
+        if (rv <= 25)
         {
+            gSpecialVar_0x8002 = 2;
             return 2;
         }
     }
     else if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10)
     {
-        if ((Random() % 100) <= 10)
+        if (rv <= 10)
         {
+            gSpecialVar_0x8002 = 1;
             return 1;
         }
     }
     else
     {
+        gSpecialVar_0x8002 = 0;
         return 0;
     }
 }
@@ -889,8 +894,8 @@ void CheckSaveFileSize(void)//used in debug menu from time to time as a special 
 {
     u32 size = (sizeof(struct SaveBlock1));
     u32 size2 = (sizeof(struct SaveBlock2));
-    u32 size3 = (sizeof(struct DeliveryManifest) * 4);
-    u32 size4 = (sizeof(struct DeliveryTime));
+    u32 size3 = (sizeof(struct DynamicMapObjects));
+    u32 size4 = (sizeof(struct ObjectEventTemplate));
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar2, size2, STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar3, size3, STR_CONV_MODE_LEFT_ALIGN, 6);
@@ -2789,3 +2794,20 @@ void RyuApplyPlagueEffects(void)
     VarSet(VAR_RYU_HORSEMAN_ID, 2);
 }
 
+void RyuTestDynamicObjectContents(void)
+{
+    u32 i;
+    u8 objectsCount = 0;
+    mgba_open();
+    for (i=0;i<4;i++)
+        if (gSaveBlock1Ptr->DynamicObjects[i].active == TRUE)
+            objectsCount++;
+    ConvertIntToDecimalStringN(gStringVar1, objectsCount, 0, 1);
+    mgba_printf(LOGINFO, "There are %d active dynamic objects.", objectsCount);
+    for (i=0;i<4;i++)
+        if (gSaveBlock1Ptr->DynamicObjects[i].active == TRUE)
+        {
+            mgba_printf(LOGINFO, "\nobject # %d:\nObject gfx ID: %d\nMap is %d:%d\ncoords are %d,%d,%d\nMovement type: %d\nlocalid: %d\nscript pointer: %d", i, gSaveBlock1Ptr->DynamicObjects[i].gfxId, gSaveBlock1Ptr->DynamicObjects[i].mapGroup, gSaveBlock1Ptr->DynamicObjects[i].mapNum, gSaveBlock1Ptr->DynamicObjects[i].x, gSaveBlock1Ptr->DynamicObjects[i].y, gSaveBlock1Ptr->DynamicObjects[i].z, gSaveBlock1Ptr->DynamicObjects[i].movement, gSaveBlock1Ptr->DynamicObjects[i].localId, gSaveBlock1Ptr->DynamicObjects[i].scriptPtr);
+        }
+    mgba_close();
+}

@@ -1580,9 +1580,9 @@ static bool32 AccuracyCalcHelper(u16 move)
             return TRUE;
         }
     #endif
-
-    return FALSE;
     }
+    
+    return FALSE;
 }
 
 u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move)
@@ -1664,6 +1664,9 @@ static void Cmd_accuracycheck(void)
 
     if (move == ACC_CURR_MOVE)
         move = gCurrentMove;
+
+    if (gBattleMoves[move].accuracy == 0)
+        gBattlescriptCurrInstr += 7;
 
     if (move == NO_ACC_CALC_CHECK_LOCK_ON)
     {
@@ -2323,7 +2326,11 @@ static void Cmd_effectivenesssound(void)
     if (!(gMoveResultFlags & MOVE_RESULT_MISSED))
     {
         switch (gMoveResultFlags & (~(MOVE_RESULT_MISSED)))
-        {
+        {   
+        case MOVE_RESULT_ULTRA_EFFECTIVE:
+            BtlController_EmitPlaySE(0, SE_SUPER_EFFECTIVE);
+            BtlController_EmitPlaySE(0, SE_SUPER_EFFECTIVE);
+            MarkBattlerForControllerExec(gActiveBattler);
         case MOVE_RESULT_SUPER_EFFECTIVE:
             BtlController_EmitPlaySE(0, SE_SUPER_EFFECTIVE);
             MarkBattlerForControllerExec(gActiveBattler);
@@ -2394,6 +2401,19 @@ static void Cmd_resultmessage(void)
         gBattleCommunication[MSG_DISPLAY] = 1;
         switch (gMoveResultFlags & (~MOVE_RESULT_MISSED))
         {
+        case MOVE_RESULT_ULTRA_EFFECTIVE:
+            if (gIsCriticalHit == FALSE)
+            {
+                if (gBattleMoveDamage > gHpDealt)
+                {
+                    stringId = STRINGID_ITDEALTULTRAOVERKILLDAMAGE;
+                }
+                else
+                {
+                    stringId = STRINGID_ITDEALTULTRADAMAGE;
+                }
+            }
+            break;
         case MOVE_RESULT_SUPER_EFFECTIVE:
             if (gIsCriticalHit == FALSE)
             {
@@ -3480,6 +3500,21 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_MoveEffectBugBite;
                 }
                 break;
+            case MOVE_EFFECT_TRAP_BOTH:
+                if (!(gBattleMons[gBattlerTarget].status2 & STATUS2_ESCAPE_PREVENTION) && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_ESCAPE_PREVENTION))
+                {
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
+                    gBattlescriptCurrInstr = BattleScript_BothCanNoLongerEscape;
+                }
+                if (!gBattleMons[gBattlerTarget].status2 & STATUS2_ESCAPE_PREVENTION)
+                    gDisableStructs[gBattlerTarget].battlerPreventingEscape = gBattlerAttacker;
+
+                if (!(gBattleMons[gBattlerAttacker].status2 & STATUS2_ESCAPE_PREVENTION))
+                    gDisableStructs[gBattlerAttacker].battlerPreventingEscape = gBattlerTarget;
+
+                gBattleMons[gBattlerTarget].status2 |= STATUS2_ESCAPE_PREVENTION;
+                gBattleMons[gBattlerAttacker].status2 |= STATUS2_ESCAPE_PREVENTION;
+                break;
             }
         }
     }
@@ -3578,7 +3613,12 @@ static void Cmd_tryfaintmon(void)
         {
             gActiveBattler = gBattlerTarget;
             battlerId = gBattlerAttacker;
-            if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 20))
+            if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 50))
+            {
+                GiveAchievement(ACH_ULTRAKILL);
+                BS_ptr = BattleScript_FaintTarget50x;
+            }
+            else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 20))
             {
                 GiveAchievement(ACH_EXPONENTIAL);
                 BS_ptr = BattleScript_FaintTarget20x;
@@ -3886,6 +3926,14 @@ int RyuCalculateAlchemyExpModifier(s32 exp)
 
 extern void RyuExpDriveInternalOperation(u8 mode, u32 value);
 
+static const u8 gRyuNeutralNatures[5] = {
+    NATURE_DOCILE,
+    NATURE_SERIOUS,
+    NATURE_HARDY,
+    NATURE_QUIRKY,
+    NATURE_BASHFUL
+};
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -3929,7 +3977,7 @@ static void Cmd_getexp(void)
         {
             u32 calculatedExp;
             s32 viaSentIn;
-
+            u32 i;
 
             for (viaSentIn = 0, i = 0; i < PARTY_SIZE; i++)
             {
@@ -3957,8 +4005,12 @@ static void Cmd_getexp(void)
             RyuExpBatteryTemp = ((calculatedExp * 5) / 100);
             RyuExpDriveInternalOperation(EXP_DRIVE_MODE_ADD, RyuExpBatteryTemp);
 
-            if (gBattleMons[gBattlerAttacker].friendship > 50)// If mon has affection boost, gain 20% more exp
+            if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_FRIENDSHIP) > 199)// If mon has affection boost, gain 20% more exp
                 calculatedExp = ((calculatedExp * 120) /100);
+
+            for (i = 0, i < ARRAY_COUNT(gRyuNeutralNatures); i++;) //if mon has a neutral nature, it gets 10% bonus to exp.
+                if ((GetNature(&gPlayerParty[gBattleStruct->expGetterMonId])) == gRyuNeutralNatures[i])
+                    calculatedExp = ((calculatedExp * 110) / 100);
 
             if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
             {
@@ -4709,7 +4761,6 @@ static void Cmd_playanimation(void)
     if (gBattlescriptCurrInstr[2] == B_ANIM_STATS_CHANGE
         || gBattlescriptCurrInstr[2] == B_ANIM_SNATCH_MOVE
         || gBattlescriptCurrInstr[2] == B_ANIM_MEGA_EVOLUTION
-        || gBattlescriptCurrInstr[2] == B_ANIM_UNUSED
         || gBattlescriptCurrInstr[2] == B_ANIM_FORM_CHANGE
         || gBattlescriptCurrInstr[2] == B_ANIM_SUBSTITUTE_FADE)
     {
@@ -4756,7 +4807,6 @@ static void Cmd_playanimation2(void) // animation Id is stored in the first poin
     if (*animationIdPtr == B_ANIM_STATS_CHANGE
         || *animationIdPtr == B_ANIM_SNATCH_MOVE
         || *animationIdPtr == B_ANIM_MEGA_EVOLUTION
-        || *animationIdPtr == B_ANIM_UNUSED
         || *animationIdPtr == B_ANIM_FORM_CHANGE
         || *animationIdPtr == B_ANIM_SUBSTITUTE_FADE)
     {
@@ -10733,9 +10783,9 @@ static void Cmd_trysetperishsong(void)
 
     for (i = 0; i < gBattlersCount; i++)
     {
-        if ((gStatuses3[i] & STATUS3_PERISH_SONG
-            || gBattleMons[i].ability == ABILITY_SOUNDPROOF)
-            || ((IsPlayerInUnderworld() == TRUE) && gBattleMons[i].ability == ABILITY_MAGIC_GUARD))
+        if (gStatuses3[i] & STATUS3_PERISH_SONG
+            || gBattleMons[i].ability == ABILITY_SOUNDPROOF
+            || (IsPlayerInUnderworld() == TRUE))
         {
             notAffectedCount++;
         }

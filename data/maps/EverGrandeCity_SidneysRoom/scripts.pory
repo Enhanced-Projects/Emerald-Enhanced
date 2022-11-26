@@ -86,19 +86,13 @@ EGC_FollowerSidney::
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq EGC_ChooseValidMons
+	call_if_eq RyuScript_ChooseValidMons
 	multi_2_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
-	
-EGC_ChooseValidMons::
-	msgbox EGC_NeedToChoose
-	closemessage
-	goto_if_set FLAG_TEMP_B, EGC_FollowerSidneyRematch
-	goto EGC_FollowerSidney
 	
 EGC_NeedToChoose:
 	.string "You must make a valid selection.$"
@@ -177,11 +171,10 @@ script EGC_AltSidney{
 }
 
 script EGC_FollowerSidneyRematch {
-	setflag(FLAG_TEMP_B)
 	call(RyuFollowerAllySelector)
 	choose_mons
 	if (var(VAR_RESULT) == FALSE) {
-		goto(EGC_ChooseValidMons)
+		call(RyuScript_ChooseValidMons)
 	}
 	if (var(VAR_RYU_E41) == 0) {
 		multi_2_vs_1(TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)

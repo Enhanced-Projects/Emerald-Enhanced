@@ -311,7 +311,7 @@ extern const u8 gText_UiThemeModern[];
 extern const u8 gText_UiThemeClassic[];
 extern const u8 gText_UiThemeVanilla[];
 
-extern const u8* gText_ThemePokeballNames[];
+extern const u8* const gText_ThemePokeballNames[];
 
 extern const u8 gText_TransitionStyleNormal[];
 extern const u8 gText_TransitionStyleInstant[];
@@ -3318,7 +3318,7 @@ extern const u8 gText_RyuAttendantNameShelly[];
 extern const u8 gText_RyuAttendantNameJoy[];
 extern const u8 gText_RyuAttendantNameMay[];
 extern const u8 gText_RyuAttendantNameNone[];
-extern const u8* gText_PresetThemeNames[];
+extern const u8* const gText_PresetThemeNames[];
 
 
 extern const u8 sText_DebugMainUtilityItem1[];

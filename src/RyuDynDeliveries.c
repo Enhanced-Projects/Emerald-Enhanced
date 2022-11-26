@@ -16,6 +16,7 @@
 
 const u8 sText_comma[] = _(", ");
 const u8 sText_locations[] = _("Delivery Locations:");
+extern u8 RyuDeliveryTargetScript[];
 
 const u16 sRyuDeliveryObjEventIds[] = {
     OBJ_EVENT_GFX_CONTEST_JUDGE,
@@ -88,6 +89,36 @@ const u8 sRyuDeliveryCoords[][3][2] = {
     [6] = {{4, 2}, {17, 6}, {4, 16}},
     [7] = {{11, 14}, {26, 8}, {26, 3}},
 };
+
+int RyuConvertDeliveryTargetsToDynamicObjects(void)
+{
+    u32 i;
+    u8 dynamicSlot = 0;
+    u8 jobcount = 0;
+    for (i = 0;i < 4;i++)
+    {
+        if (gSaveBlock2Ptr->Deliveries[i].GfxID != 0)
+        {
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].active = TRUE;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].gfxId = gSaveBlock2Ptr->Deliveries[i].GfxID;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].localId = 0xDD;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].mapGroup = gSaveBlock2Ptr->Deliveries[i].mapgroup;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].mapNum = gSaveBlock2Ptr->Deliveries[i].mapnum;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].movement = MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].x = gSaveBlock2Ptr->Deliveries[i].xpos;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].y = gSaveBlock2Ptr->Deliveries[i].ypos;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].z = 3;
+            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].scriptPtr = RyuDeliveryTargetScript;
+            gSaveBlock1Ptr->dynamicDeliveryIds[i] = dynamicSlot;
+            dynamicSlot++;//increment slot number based on where first slot was
+            if (dynamicSlot > 3)
+                return 100;//job would exceed dynamic object count
+            jobcount++;
+        }
+    }
+    return jobcount;
+}
+
 void StartNewDeliveryQueue(void) 
 {
     u8 numJobs = (Random() % 4) + 1;
@@ -124,10 +155,21 @@ void StartNewDeliveryQueue(void)
         AddBagItem(gSaveBlock2Ptr->Deliveries[i].itemId, 1);
         gSaveBlock2Ptr->Deliveries[i].mapgroup =  sRyuDeliveryMapsList[maplistnum][0];
         gSaveBlock2Ptr->Deliveries[i].mapnum =  sRyuDeliveryMapsList[maplistnum][1];
-        gSaveBlock2Ptr->Deliveries[i].xpos = (sRyuDeliveryCoords[maplistnum][coordGroup][0] + 7);//game offsets npc coords by -7 , have to compensate.
-        gSaveBlock2Ptr->Deliveries[i].ypos = (sRyuDeliveryCoords[maplistnum][coordGroup][1] + 7);
+        gSaveBlock2Ptr->Deliveries[i].xpos = (sRyuDeliveryCoords[maplistnum][coordGroup][0]);
+        gSaveBlock2Ptr->Deliveries[i].ypos = (sRyuDeliveryCoords[maplistnum][coordGroup][1]);
         gSaveBlock2Ptr->Deliveries[i].mapNameId = maplistnum;
         gSaveBlock2Ptr->Deliveries[i].finished = FALSE;
+    }
+    switch (RyuConvertDeliveryTargetsToDynamicObjects())
+    {
+        case 100:
+            gSpecialVar_Result = 100;
+        case 200:
+            gSpecialVar_Result = 200;
+        case 300:
+            gSpecialVar_Result = 300;
+        default:
+            gSpecialVar_Result = TRUE;//successfully queued jobs.
     }
     gSaveBlock2Ptr->DeliveryTimer.minutesGiven = numJobs;
     gSaveBlock2Ptr->DeliveryTimer.Timer = numJobs + 1;
@@ -139,12 +181,11 @@ void StartNewDeliveryQueue(void)
         gSaveBlock2Ptr->DeliveryTimer.saveBlockTimeSanity = TRUE;//save block time can be safely compared with RTC time.
     gSaveBlock2Ptr->DeliveryTimer.active = TRUE;
 
-    //roll rewards wheng iving the job so that the player can't savescum the reward item.
+    //roll rewards wheng giving the job so that the player can't savescum the reward item.
     VarSet(VAR_RYU_DELIVERY_SYSTEM_HIGH_REWARD_ROLL, highReward);
     VarSet(VAR_RYU_DELIVERY_SYSTEM_LOW_REWARD_ROLL, lowReward);
 
 }
-//u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
 
 void HatBuildDeliveryInfoString(void)
 {
@@ -252,6 +293,8 @@ void RyuClearDeliveryQueue(void)
         gSaveBlock2Ptr->Deliveries[i].mapnum = 0;
         gSaveBlock2Ptr->Deliveries[i].xpos = 0;
         gSaveBlock2Ptr->Deliveries[i].ypos = 0;
+        gSaveBlock1Ptr->DynamicObjects[gSaveBlock1Ptr->dynamicDeliveryIds[i]].active = FALSE;
+        gSaveBlock1Ptr->dynamicDeliveryIds[i] = 0;
     }
 
     gSaveBlock2Ptr->DeliveryTimer.active = FALSE;
@@ -278,7 +321,8 @@ int CheckDeliverySuccessful(void)
             (!(gSaveBlock2Ptr->Deliveries[i].finished) == TRUE))
             {
                 RemoveBagItem(gSaveBlock2Ptr->Deliveries[i].itemId, 1);
-                gSaveBlock2Ptr->Deliveries[i].finished = TRUE;             
+                gSaveBlock2Ptr->Deliveries[i].finished = TRUE;
+                gSaveBlock1Ptr->DynamicObjects[gSaveBlock1Ptr->dynamicDeliveryIds[i]].active = FALSE;           
                 ret = TRUE;
             }
     }

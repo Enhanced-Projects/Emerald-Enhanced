@@ -255,7 +255,7 @@ MH4_DoBossFight::
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE
-	goto_if_eq MH4_ChooseValidMons
+	call_if_eq RyuScript_ChooseValidMons
 	multi_2_vs_2 TRAINER_COURTNEY_3, MH4_CourtneyDefeated, TRAINER_MAXIE_MAGMA_HIDEOUT, MH4_MaxieDefeated, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST

@@ -269,7 +269,7 @@ static void Task_BattleStart(u8 taskId)
         if (!FldEffPoison_IsActive()) // is poison not active?
         {
             BattleTransition_StartOnField(tTransition);
-            ClearMirageTowerPulseBlendEffect();
+            //ClearMirageTowerPulseBlendEffect();
             tState++; // go to case 1.
         }
         break;
@@ -319,7 +319,7 @@ static void DoStandardWildBattle(bool32 isDouble)
 {
     ScriptContext2_Enable();
     FreezeObjectEvents();
-    sub_808BCF4();
+    StopPlayerAvatar();
     gMain.savedCallback = CB2_EndWildBattle;
     gBattleTypeFlags = 0;
     if (isDouble)
@@ -339,7 +339,7 @@ void BattleSetup_StartRoamerBattle(void)
 {
     ScriptContext2_Enable();
     FreezeObjectEvents();
-    sub_808BCF4();
+    StopPlayerAvatar();
     gMain.savedCallback = CB2_EndWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_ROAMER;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
@@ -352,7 +352,7 @@ static void DoSafariBattle(void)
 {
     ScriptContext2_Enable();
     FreezeObjectEvents();
-    sub_808BCF4();
+    StopPlayerAvatar();
     gMain.savedCallback = CB2_EndSafariBattle;
     gBattleTypeFlags = BATTLE_TYPE_SAFARI;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
@@ -362,7 +362,7 @@ static void DoBattlePikeWildBattle(void)
 {
     ScriptContext2_Enable();
     FreezeObjectEvents();
-    sub_808BCF4();
+    StopPlayerAvatar();
     gMain.savedCallback = CB2_EndWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_PIKE;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
@@ -1259,7 +1259,7 @@ void ConfigureAndSetUpOneTrainerBattle(u8 trainerObjEventId, const u8 *trainerSc
     gSelectedObjectEvent = trainerObjEventId;
     gSpecialVar_LastTalked = gObjectEvents[trainerObjEventId].localId;
     BattleSetup_ConfigureTrainerBattle(trainerScript + 1);
-    ScriptContext1_SetupScript(EventScript_271354);
+    ScriptContext1_SetupScript(EventScript_StartTrainerApproach);
     ScriptContext2_Enable();
 }
 
@@ -1272,7 +1272,7 @@ void ConfigureTwoTrainersBattle(u8 trainerObjEventId, const u8 *trainerScript)
 
 void SetUpTwoTrainersBattle(void)
 {
-    ScriptContext1_SetupScript(EventScript_271354);
+    ScriptContext1_SetupScript(EventScript_StartTrainerApproach);
     ScriptContext2_Enable();
 }
 

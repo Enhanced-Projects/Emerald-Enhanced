@@ -9580,6 +9580,20 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .flags = 0,
         .split = SPLIT_STATUS,
     },
+
+    [MOVE_SNAP] =
+    {
+        .effect = EFFECT_SNAP,
+        .power = 80,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_STRONG_JAW_BOOST | FLAG_IS_BITE_MOVE,
+        .split = SPLIT_PHYSICAL,
+    },
     
     [MOVE_DYNAMAX_CANNON] =
     {

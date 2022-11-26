@@ -106,8 +106,19 @@ RyuDebug_UtilitiesMenu:
 	case 18, RyuDebug_CheckRyuChallengeStatus
 	case 19, RyuDebug_CheckExactPlayTime
 	case 20, RyuDebug_EnableVerboseUtility
-	case 21, RyuDebug_menu_nodevcheck
+	case 21, RyuDebug_TestDynamicObjects
+	case 22, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
+
+RyuDebug_TestDynamicObjects::
+	callnative RyuTestDynamicObjectContents
+	msgbox RDBTDO, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+RDBTDO:
+	.string "There are {STR_VAR_1} Dynamic Object(s) active.$"
 
 RDB_SpawnFollowerMultiMenu::
 	msgbox RDB_SpawnWhichFollower

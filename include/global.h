@@ -13,6 +13,8 @@
 #include "constants/general.h"
 #include "theme_color_factory.h"
 
+#define UBFIX
+
 //remove special case defines for when NOT using Item Expansion
 #define ITEM_EXPANSION 1
 
@@ -142,6 +144,8 @@
 #define NUM_PROPERTY_BYTES (ROUND_BITS_TO_BYTES(PLAYER_PROPERTIES_COUNT))
 #define NUM_ACH_PWR_BYTES (ROUND_BITS_TO_BYTES(AP_FLAGS_COUNT))
 #define NUM_NPC_FACTIONS 8
+
+#define MAX_DYNAMIC_OBJECTS 4
 
 struct Coords8
 {
@@ -452,6 +456,7 @@ struct SaveBlock2
              u8 RtcTimeSecondRAW;
              u32 RtcTimeSecond;
              u32 SaveStateLastDetection;
+
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -744,6 +749,21 @@ struct WaldaPhrase
     bool8 patternUnlocked;
 };
 
+struct DynamicMapObjects
+{
+    bool8 active;
+    u8 mapGroup;
+    u8 mapNum;
+    s16 x;
+    s16 y;
+    u8 z;
+    u8 gfxId;
+    u8 movement;
+    u8 localId;
+    const u8 *scriptPtr;
+    u8 otherData; //generally used to clear this slot if necessary.
+};
+
 struct TrainerNameRecord
 {
     u32 trainerId;
@@ -837,6 +857,8 @@ struct SaveBlock1
                u8 dexNavSearchLevels[SPECIES_MELMETAL];
                u8 dexNavChain;
                struct Pokemon GCMS;
+               struct DynamicMapObjects DynamicObjects[MAX_DYNAMIC_OBJECTS];
+               u8 dynamicDeliveryIds[4];
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

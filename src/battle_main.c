@@ -272,7 +272,7 @@ const struct SpriteTemplate gUnknown_0831AC88 =
     .anims = gDummySpriteAnimTable,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = sub_8038528,
+    .callback = SpriteCB_VsLetterDummy,
 };
 
 static const u8 sText_ShedinjaJpnName[] = _("ヌケニン"); // Nukenin
@@ -1744,7 +1744,7 @@ void CB2_QuitRecordedBattle(void)
     }
 }
 
-void sub_8038528(struct Sprite* sprite)
+void SpriteCB_VsLetterDummy(struct Sprite* sprite)
 {
     sprite->data[0] = 0;
     sprite->callback = sub_8038538;
@@ -2888,7 +2888,7 @@ static void oac_poke_ally_(struct Sprite *sprite)
     }
 }
 
-void sub_80105DC(struct Sprite *sprite)
+void SpriteCB_BattleSpriteStartSlideLeft(struct Sprite *sprite)
 {
     sprite->callback = SpriteCallbackDummy_3;
 }
@@ -2897,7 +2897,7 @@ static void SpriteCallbackDummy_3(struct Sprite *sprite)
 {
 }
 
-void sub_8039C00(struct Sprite *sprite)
+void SpriteCB_FaintSlideAnim(struct Sprite *sprite)
 {
     if (!(gIntroSlideFlags & 1))
     {

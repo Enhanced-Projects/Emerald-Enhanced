@@ -216,9 +216,9 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
                 SetMonData(&gEnemyParty[0], MON_DATA_SPDEF, &maxdef);
                 SetMonData(&gEnemyParty[0], MON_DATA_SPEED, &maxdef);
                 SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &m1);
-                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &m2);
-                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &m3);
-                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &m4);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE2, &m2);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE3, &m3);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE4, &m4);
                 SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, &nick);
                 SetMonData(&gEnemyParty[0], MON_DATA_ATK_IV, &maxiv);
                 SetMonData(&gEnemyParty[0], MON_DATA_DEF_IV, &maxiv);

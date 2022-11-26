@@ -305,7 +305,7 @@ void ClearMirageTowerPulseBlendEffect(void)
 
 void SetMirageTowerVisibility(void)
 {
-    TryStartMirageTowerPulseBlendEffect();
+    //TryStartMirageTowerPulseBlendEffect();
     return;
 }
 

@@ -1,7 +1,6 @@
-EventScript_271354:: @ 8271354
-	cmdD8
-	cmdD9
-
+EventScript_StartTrainerApproach:: @ 8271354
+	selectapproachingtrainer
+	lockfortrainer
 EventScript_ShowSecondTrainerIntro:: @ 8271356
 	special SetUpTrainerEncounterMusic
 	special EndTrainerApproach

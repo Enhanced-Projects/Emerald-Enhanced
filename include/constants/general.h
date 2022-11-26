@@ -41,7 +41,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 61
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 64
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -109,8 +109,8 @@
 #define ACH_DE_ORPHANED 60// gave may a place to live
 #define ACH_LOST_GIRL  61
 #define ACH_MARKED_FOR_DEATH  62// beat overlord ryu first time without any blackouts
-#define ACH_THE_PHOENIX  63
-#define ACH_UNUSED_65  64
+#define ACH_THE_PHOENIX  63 //capture/beat the reaper
+#define ACH_ULTRAKILL  64 //faint 50x
 #define ACH_UNUSED_66  65
 #define ACH_UNUSED_67  66
 #define ACH_UNUSED_68  67
@@ -529,6 +529,6 @@
 //uncomment to punish save states. Otherwise detections are just logged.
 //#define RYU_PUNISH_SAVE_STATE 1
 
-#define EE_GAME_VERSION 9251
+#define EE_GAME_VERSION 9255
 
 #endif 

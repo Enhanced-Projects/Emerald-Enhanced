@@ -96,7 +96,7 @@ static const struct CombinedMove sCombinedMoves[2] =
 #define SPECIES_TO_HOENN(name)      [SPECIES_##name - 1] = HOENN_DEX_##name
 #define SPECIES_TO_NATIONAL(name)   [SPECIES_##name - 1] = NATIONAL_DEX_##name
 #define HOENN_TO_NATIONAL(name)     [HOENN_DEX_##name - 1] = NATIONAL_DEX_##name
-#define NUM_EE_MONS 807
+#define NUM_EE_MONS 808
 
 const u16 gSpeciesToHoennPokedexNum[NUM_SPECIES] = // Assigns all species to the Hoenn Dex Index (Summary No. for Hoenn Dex)
 {
@@ -1002,6 +1002,7 @@ const u16 gSpeciesToNationalPokedexNum[NUM_SPECIES] = // Assigns all species to 
 	SPECIES_TO_NATIONAL(NAGANADEL),
 	SPECIES_TO_NATIONAL(STAKATAKA),
 	SPECIES_TO_NATIONAL(ZERAORA),
+    SPECIES_TO_NATIONAL(ARCEUS),
 	SPECIES_TO_NATIONAL(UNOWN_SCHOOL),
     SPECIES_TO_NATIONAL(MIMIKYU_BUSTED),
     SPECIES_TO_NATIONAL(DEOXYS_ATTACK),

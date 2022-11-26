@@ -899,7 +899,7 @@ static u32 ColorPickerProcessInput(void) {
     return -1u;
 }
 
-static const u8 * gElementNames[] = {
+static const u8 *const gElementNames[] = {
     (u8[])_("Text Color"),
     (u8[])_("Text Shadow Color"),
     (u8[])_("Window Highlight"),

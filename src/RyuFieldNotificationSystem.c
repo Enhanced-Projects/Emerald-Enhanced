@@ -343,9 +343,13 @@ void RyuCheckAquaQuestNotifications(void)
 }
 
 extern void RyuSavePlayTimeChallenge(void);
+extern bool32 IsPlayerInUnderworld(void);
 
 void RyuDoNotifyTasks(void)
 {
+    if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+        DebugPrint((const u8[])_("Running notification check..."), 0);
+
     if (FlagGet(FLAG_RYU_ENTERING_OWNED_HOME) == FALSE)
         FlagSet(FLAG_RYU_HIDE_HOME_ATTENDANT);
 
@@ -362,7 +366,14 @@ void RyuDoNotifyTasks(void)
         }
     }
 
-    if ((FlagGet(FLAG_RYU_UNDERWORLD) == TRUE) && (FlagGet(FLAG_TEMP_14) == FALSE) && (FlagGet(FLAG_RYU_REAPER) == FALSE) && (!(gSaveBlock1Ptr->location.mapGroup == 33)))
+    if ((FlagGet(FLAG_RYU_UNDERWORLD) == FALSE) &&
+        (CheckAchievement(ACH_MARKED_FOR_DEATH) == TRUE) &&
+        (IsPlayerInUnderworld() == FALSE))
+        {
+            FlagSet(FLAG_RYU_UNDERWORLD);
+        }
+
+    if ((FlagGet(FLAG_RYU_UNDERWORLD) == TRUE) /*(&& (FlagGet(FLAG_TEMP_14) == FALSE)*/ && (FlagGet(FLAG_RYU_REAPER) == FALSE) && (IsPlayerInUnderworld() == FALSE))
         FlagClear(FLAG_RYU_NOTIFIED_UNDERWORLD);
 
     if ((FlagGet(FLAG_RYU_UNDERWORLD) == TRUE) && (CheckAchievement(ACH_THE_PHOENIX) == FALSE) && (FlagGet(FLAG_RYU_NOTIFIED_UNDERWORLD) == FALSE))

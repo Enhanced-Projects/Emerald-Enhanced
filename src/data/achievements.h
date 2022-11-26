@@ -254,6 +254,10 @@ static const u8 sThePhoenixLabel[] = _("The Phoenix");
 static const u8 sThePhoenixHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}defeat the reaper");
 static const u8 sThePhoenixDesc[] = _("Even the gods cannot stop you!");
 
+static const u8 sUltraKillLabel[] = _("ULTRAKILL");
+static const u8 sUltraKillHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}converge on infinity");
+static const u8 sUltraKillDesc[] = _("You destroyed every last atom of a\ntarget's existence... You monster.");
+
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
     [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, sWholeNewWorldAchHint}, //started exploring enhanced hoenn
@@ -314,10 +318,11 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_MILLIONAIRE] = {8, 45, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_MILLIONAIRE, sMillionaireLabel, sMillionaireDesc, sMillionaireHint},// 1 mirion dorars
     [ACH_MONEYBAGS] = {16, 45, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_MILLIONAIRE, sBillionaireLabel, sBillionaireDesc, sBillionaireHint},// 1 birion dorars
     [ACH_SLUM_LORD] = {16, 35, CATEGORY_EXPLORATION, ACH_SLUM_LORD, sSlumLordLabel, sSlumLordDesc, sSlumLordHint},// Own all NUM_PROPERTIES properties
-    [ACH_ULTRA_BEASTLY] = {28, 31, CATEGORY_BATTLE | CATEGORY_FLAG_GOLD, ACH_ULTRA_BEASTLY, sUltraBeastlyLabel, sUltraBeastlyDesc, sUltraBeastlyHint}, //Capture all roaming Ultra Beasts
+    [ACH_ULTRA_BEASTLY] = {28, 29, CATEGORY_BATTLE | CATEGORY_FLAG_GOLD, ACH_ULTRA_BEASTLY, sUltraBeastlyLabel, sUltraBeastlyDesc, sUltraBeastlyHint}, //Capture all roaming Ultra Beasts
     [ACH_WANTED] = {12, 47, CATEGORY_EXPLORATION, ACH_WANTED, sWantedLabel, sWantedDesc, sWantedHint}, //bounty of greater than 100000
     [ACH_DE_ORPHANED] = {37, 35, CATEGORY_QUESTING, ACH_DE_ORPHANED, sDeOrphanedLabel, sDeOrphanedDesc, sDeOrphanedHint}, //Unlocked May quest
     [ACH_LOST_GIRL] = {55, 35, CATEGORY_COMPANIONS, ACH_LOST_GIRL, sLostGirlLabel, sLostGirlDesc, sLostGirlHint}, //recruited May
     [ACH_MARKED_FOR_DEATH] = {12, 49, CATEGORY_EXPLORATION, ACH_MARKED_FOR_DEATH, sMarkedForDeathLabel, sMarkedForDeathDesc, sMarkedForDeathHint}, //defeat overlord ryu with zero blackouts
     [ACH_THE_PHOENIX] = {12, 51, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_MARKED_FOR_DEATH, sThePhoenixLabel, sThePhoenixDesc, sThePhoenixHint}, //defeat the four horsemen and arceus
+    [ACH_ULTRAKILL] = {28, 31, CATEGORY_BATTLE | CATEGORY_FLAG_GOLD, ACH_ULTRAKILL, sUltraKillLabel, sUltraKillDesc, sUltraKillHint}, //faint 50x
 };

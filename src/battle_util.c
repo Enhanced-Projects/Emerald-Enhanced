@@ -7771,6 +7771,12 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
     if (((FlagGet(FLAG_RYU_FACING_REAPER) == TRUE) || (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
         dmg = 333;
 
+    if (((FlagGet(FLAG_RYU_FACING_REAPER) == TRUE) || (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER))
+        if (dmg >= 3000)
+            dmg = 3000;
+
+
+
     if (dmg == 0)
         dmg = 1;
 
@@ -7815,6 +7821,9 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
     if (move == MOVE_ACID && (defType == TYPE_STEEL))
         mod = UQ_4_12(2.0);
 
+    if ((move == MOVE_SNAP) && ((defType == TYPE_FLYING) || (defType == TYPE_BUG)))
+        mod = UQ_4_12(2.0);
+
     if (move == MOVE_BONEMERANG && (defType == TYPE_FLYING))
         mod = UQ_4_12(1.0);
 
@@ -7839,10 +7848,15 @@ static void UpdateMoveResultFlags(u16 modifier)
     {
         gMoveResultFlags &= ~(MOVE_RESULT_NOT_VERY_EFFECTIVE | MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_DOESNT_AFFECT_FOE);
     }
-    else if (modifier > UQ_4_12(1.0))
+    else if ((modifier > UQ_4_12(1.0)) && (modifier < UQ_4_12(2.1)))
     {
         gMoveResultFlags |= MOVE_RESULT_SUPER_EFFECTIVE;
         gMoveResultFlags &= ~(MOVE_RESULT_NOT_VERY_EFFECTIVE | MOVE_RESULT_DOESNT_AFFECT_FOE);
+    }
+    else if (modifier > UQ_4_12(2.1))
+    {
+        gMoveResultFlags |= MOVE_RESULT_ULTRA_EFFECTIVE;
+        gMoveResultFlags &= ~(MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_DOESNT_AFFECT_FOE);
     }
     else //if (modifier < UQ_4_12(1.0))
     {

@@ -2421,7 +2421,7 @@ static void TeleportWarpOutFieldEffect_End(struct Task *task)
     {
         if (task->data[5] == FALSE)
         {
-            ClearMirageTowerPulseBlendEffect();
+            //ClearMirageTowerPulseBlendEffect();
             task->data[5] = TRUE;
         }
 

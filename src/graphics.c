@@ -2212,7 +2212,7 @@ static const u16 gThemeBallGreen_Pal[] = INCBIN_U16("graphics/interface/theme_ba
 static const u16 gThemeBallBlue_Pal[] = INCBIN_U16("graphics/interface/theme_balls/blue_ball_pal.gbapal");
 static const u16 gThemeBallYellow_Pal[] = INCBIN_U16("graphics/interface/theme_balls/yellow_ball_pal.gbapal");
 
-const u8* gThemeBalls_Gfx[] = {
+const u8* const gThemeBalls_Gfx[] = {
     gThemeBallPoke_Gfx,
     gThemeBallMega_Gfx,
     gThemeBallUltra_Gfx,
@@ -2246,7 +2246,7 @@ const u8* gThemeBalls_Gfx[] = {
 
 };
 
-const u16* gThemeBalls_Pal[] = {
+const u16* const gThemeBalls_Pal[] = {
     gThemeBallPoke_Pal,
     gThemeBallMega_Pal,
     gThemeBallUltra_Pal,
