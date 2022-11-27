@@ -347,9 +347,6 @@ extern bool32 IsPlayerInUnderworld(void);
 
 void RyuDoNotifyTasks(void)
 {
-    if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
-        DebugPrint((const u8[])_("Running notification check..."), 0);
-
     if (FlagGet(FLAG_RYU_ENTERING_OWNED_HOME) == FALSE)
         FlagSet(FLAG_RYU_HIDE_HOME_ATTENDANT);
 
