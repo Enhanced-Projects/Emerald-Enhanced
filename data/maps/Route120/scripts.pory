@@ -211,11 +211,21 @@ Route120_EventScript_SetWeather:: @ 81F54D8
 	return
 
 Route120_EventScript_SetCloudyWeather:: @ 81F54FF
+	goto_if_set FLAG_RYU_WINTER_WEATHER, R120_ConvertSunnyCloudsToFoggy
 	setweather WEATHER_SUNNY_CLOUDS
 	return
 
+R120_ConvertSunnyCloudsToFoggy::
+	setweather WEATHER_FOG_HORIZONTAL
+	return
+
 Route120_EventScript_SetSunnyWeather:: @ 81F5503
+	goto_if_set FLAG_RYU_WINTER_WEATHER, R120_ConvertSunnyToShade
 	setweather WEATHER_SUNNY
+	return
+
+R120_ConvertSunnyToShade::
+	setweather WEATHER_SHADE
 	return
 
 Route120_EventScript_TrySetRainyWeather:: @ 81F5507
@@ -227,7 +237,12 @@ Route120_EventScript_TrySetRainyWeather:: @ 81F5507
 	end
 
 Route120_EventScript_SetRainyWeather:: @ 81F5523
+	goto_if_set FLAG_RYU_WINTER_WEATHER, R120_ConvertRainyToSnowy
 	setweather WEATHER_RAIN
+	return
+
+R120_ConvertRainyToSnowy::
+	setweather WEATHER_SNOW
 	return
 
 Route120_EventScript_BerryBeauty:: @ 81F5527

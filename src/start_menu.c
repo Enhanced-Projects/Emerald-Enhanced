@@ -1061,6 +1061,12 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
 
     if ((FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE) && (CheckAchievement(ACH_1337) == FALSE))
         TryGiveLeetAch();
+
+    #ifdef EE_WINTER_MODE
+        FlagSet(FLAG_RYU_WINTER_WEATHER);
+    #else
+        FlagClear(FLAG_RYU_WINTER_WEATHER);
+    #endif
 }
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)

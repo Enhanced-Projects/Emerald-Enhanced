@@ -1,5 +1,7 @@
-#ifndef GUARD_CONSTANTS_WEATHER_H
-#define GUARD_CONSTANTS_WEATHER_H
+//#ifndef GUARD_CONSTANTS_WEATHER_H
+//#define GUARD_CONSTANTS_WEATHER_H
+
+#include "constants/general.h"
 
 #define WEATHER_NONE                    0
 #define WEATHER_SUNNY_CLOUDS            1
@@ -23,6 +25,7 @@
 // These are used in maps' coord_weather_event entries.
 // They are not a one-to-one mapping with the engine's
 // internal weather constants above.
+
 #define COORD_EVENT_WEATHER_SUNNY_CLOUDS        1
 #define COORD_EVENT_WEATHER_SUNNY               2
 #define COORD_EVENT_WEATHER_RAIN                3
@@ -66,4 +69,4 @@
 #define ABNORMAL_WEATHER_ROUTE_129_EAST     (MARINE_CAVE_LOCATIONS_START + 7)
 #define MARINE_CAVE_LOCATIONS               8
 
-#endif // GUARD_CONSTANTS_WEATHER_H
+//#endif // GUARD_CONSTANTS_WEATHER_H
