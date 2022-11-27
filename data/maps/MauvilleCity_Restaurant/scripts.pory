@@ -1,1 +1,107 @@
-mapscripts MauvilleCity_Restaurant_MapScripts {}
+raw `
+MauvilleCity_Restaurant_MapScripts::
+	.byte 0
+
+MauvilleCity_Restaurant_EventScript_Clerk::
+	lock
+	faceplayer
+	message MauvilleCity_Restaurant_Text_WelcomeToHerbShop
+	waitmessage
+	pokemart MauvilleCity_Restaurant_Pokemart
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+MauvilleCity_Restaurant_Pokemart:
+	.2byte ITEM_LAVA_COOKIE
+	.2byte ITEM_BERRY_JUICE
+	.2byte ITEM_FRESH_WATER
+	.2byte ITEM_SODA_POP
+	.2byte ITEM_LEMONADE
+	.2byte ITEM_MOOMOO_MILK
+	.2byte ITEM_TEA
+	.2byte ITEM_NONE
+	release
+	end
+
+MauvilleCity_Restaurant_Text_WelcomeToHerbShop: @ 81FE53E
+	.string "Welcome to the Little Cozy, what\n"
+	.string "can I serve you?$"
+
+MauvilleCity_Restaurant_EventScript_OldWoman::
+	lock
+	faceplayer
+	msgbox MauvilleCity_Restaurant_Text_MyHusband, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_Restaurant_Text_MyHusband:
+	.string "My husband and I were on vacation\n"
+	.string "years ago and he proposed to me\l"
+	.string "in this very town!\p"
+	.string "We've been coming back every\n"
+	.string "year since then.$"
+
+MauvilleCity_Restaurant_EventScript_OldMan::
+	lock
+	faceplayer
+	msgbox MauvilleCity_Restaurant_Text_DidYouKnow, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_Restaurant_Text_DidYouKnow:
+	.string "Did you know the owner of the\n"
+	.string "restaurant used to sell Lava\l"
+	.string "Cookies on Mt Chimney?\p"
+	.string "Someone bought so many cookies\n"
+	.string "that she purchased a restaurant.$"
+
+MauvilleCity_Restaurant_EventScript_Man::
+	lock
+	faceplayer
+	msgbox MauvilleCity_Restaurant_Text_IGotLucky, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_Restaurant_Text_IGotLucky:
+	.string "I got pretty lucky today at the\n"
+	.string "Game Corner, so I decided to\l"
+	.string "take everyone out to celebrate!$"
+
+MauvilleCity_Restaurant_EventScript_Woman::
+	lock
+	faceplayer
+	msgbox MauvilleCity_Restaurant_Text_YouLookTired, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_Restaurant_Text_YouLookTired:
+	.string "You look a bit tired. Rest up\n"
+	.string "with some tasty Black Tea!$"
+
+MauvilleCity_Restaurant_EventScript_Boy::
+	lock
+	faceplayer
+	msgbox MauvilleCity_Restaurant_Text_TheseLavaCookies, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_Restaurant_Text_TheseLavaCookies:
+	.string "These Lava Cookies are so tasty!\n"
+	.string "I bet Pokémon love them too.$"
+
+MauvilleCity_Restaurant_EventScript_Girl::
+	lock
+	faceplayer
+	msgbox MauvilleCity_Restaurant_Text_OhHi, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_Restaurant_Text_OhHi:
+	.string "Oh hi! We haven't seen a new face\n"
+	.string "in forever!\p"
+	.string "Huh, a sign blocking the door?\n"
+	.string "What are you talking about?$"
+
+`

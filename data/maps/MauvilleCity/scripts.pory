@@ -142,7 +142,7 @@ MauvilleCity_Text_WattsonThanksTakeTM: @ 81E020E
     .string "the right choice asking you!\p"
     .string "This is my thanks--an egg!\p"
     .string "I found it in a magnetic field,\n"
-    .string "maybe a special pokemon is inside?\p"
+    .string "maybe a special Pokémon is inside?\p"
     .string "Go on, you've earned it!$"
 
 MauvilleCity_Text_WattsonYoungTakeCharge: @ 81E02AA
@@ -190,9 +190,9 @@ MauvilleCity_Text_GameCornerSign: @ 81E053C
 	.string "Mauville Game Corner$"
 
 MauvilleCity_Text_RestaurantSign:
-	.string "We are currently moving in!\p"
-	.string "Please check back in the\n"
-	.string "next update.$"
+    .string "“Food so good you will think\n"
+    .string "we kidnapped your grandma!”\l"
+    .string "The Little Cozy$"
 
 MauvilleCity_Text_ExplainTV: @ 81E056A
 	.string "Hi, do you check out TV at all?\p"

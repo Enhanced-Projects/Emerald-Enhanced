@@ -761,7 +761,7 @@ const struct Item gItems[] =
     {
         .name = _("Lava Cookie"),
         .itemId = ITEM_LAVA_COOKIE,
-        .price = 200,
+        .price = 300,
         .description = sLavaCookieDesc,
         .pocket = POCKET_MEDICINE,
         .type = 1,

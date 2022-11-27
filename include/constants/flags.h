@@ -111,7 +111,7 @@
 #define FLAG_RECEIVED_POKEBLOCK_CASE         0x5F
 #define FLAG_RECEIVED_SECRET_POWER           0x60
 #define FLAG_MET_TEAM_AQUA_HARBOR            0x61
-#define FLAG_TV_EXPLAINED                    0x62
+#define FLAG_TV_EXPLAINED                    0x62 // Just remove the associated NPC if running low on flags, this explanation is unnecessary.
 #define FLAG_MAUVILLE_GYM_BARRIERS_STATE     0x63
 #define FLAG_RYU_RECRUITED_TIANA             0x64
 #define FLAG_RYU_HELPED_POKEFAN_PIKACHU      0x65
@@ -1048,7 +1048,7 @@
 #define FLAG_HIDE_ROUTE_101_BOY                                     0x3DF
 #define FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M                 0x3E0
 #define FLAG_HIDE_LILYCOVE_POKEMON_CENTER_CONTEST_LADY_MON          0x3E1
-#define FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY                       0x3E2
+#define FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY                       0x3E2  // Unused Flag
 #define FLAG_HIDE_PETALBURG_CITY_SCOTT                              0x3E3
 #define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_FIRE_STONE                 0x3E4
 #define FLAG_UNUSED_0x3E5                                           0x3E5
