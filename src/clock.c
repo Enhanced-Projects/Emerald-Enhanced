@@ -198,8 +198,6 @@ static void UpdatePerMinute(struct Time *localTime)
             gSaveBlock2Ptr->lastBerryTreeUpdate = *localTime;
             TryMoveRivalIdleLocation();
             TryMoveBirchLocationPostMay();
-            if (!(FuncIsActiveTask(Task_MapNamePopUpWindow)))
-                RyuDoNotifyTasks();
             if (gSaveBlock2Ptr->DeliveryTimer.active == TRUE)
             {
                 gSaveBlock2Ptr->DeliveryTimer.Timer -= 1;

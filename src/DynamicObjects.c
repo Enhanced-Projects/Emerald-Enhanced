@@ -8,7 +8,6 @@
 #include "constants/map_scripts.h"
 
 
-
 void RyuSpawnDynamicObject(u8 dynObjId, u16 graphicsId, u8 movementBehavior, s16 x, s16 y, u8 z, const u8 *scriptPtr)
 {
     struct ObjectEventTemplate objectEventTemplate;
@@ -28,11 +27,11 @@ void RyuSpawnDynamicObject(u8 dynObjId, u16 graphicsId, u8 movementBehavior, s16
     id = SpawnSpecialObjectEvent(&objectEventTemplate);
 }
 
-void AddDynamicObject(u8 mapGroup, u8 mapNum, u16 graphicsId, u8 movementType, s16 xpos, s16 ypos, u8 zpos, const u8 *scriptPointer)
+int AddDynamicObject(u8 mapGroup, u8 mapNum, u16 graphicsId, u8 movementType, s16 xpos, s16 ypos, u8 zpos, const u8 *scriptPointer)
 {
     u8 i = RyuGetLowestAvailableDynamicSlot();
     if (i > 3)
-        return;
+        return -1;
     gSaveBlock1Ptr->DynamicObjects[i].active = TRUE;
     gSaveBlock1Ptr->DynamicObjects[i].gfxId = graphicsId;
     gSaveBlock1Ptr->DynamicObjects[i].movement = movementType;
@@ -43,6 +42,7 @@ void AddDynamicObject(u8 mapGroup, u8 mapNum, u16 graphicsId, u8 movementType, s
     gSaveBlock1Ptr->DynamicObjects[i].scriptPtr = scriptPointer;
     gSaveBlock1Ptr->DynamicObjects[i].mapGroup = mapGroup;
     gSaveBlock1Ptr->DynamicObjects[i].mapNum = mapNum;
+    return i;
 }
 
 int RyuGetLowestAvailableDynamicSlot(void)

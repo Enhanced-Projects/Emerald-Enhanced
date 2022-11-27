@@ -65,9 +65,14 @@ Route111_EventScript_CheckSetSandstorm:: @ 81F0DE6
 	compare VAR_TEMP_0, 8
 	goto_if_lt Route111_EventScript_EndCheckSetSandstorm
 Route111_EventScript_SetSandstorm:: @ 81F0E22
+	goto_if_set FLAG_RYU_WINTER_WEATHER, R111_SetRainstorm
 	setweather WEATHER_SANDSTORM
 Route111_EventScript_EndCheckSetSandstorm:: @ 81F0E25
 	return
+
+R111_SetRainstorm::
+	setweather WEATHER_RAIN_THUNDERSTORM
+	goto Route111_EventScript_EndCheckSetSandstorm
 
 Route111_EventScript_SetWinstratesNotDefeated:: @ 81F0E26
 	clearflag FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
@@ -112,14 +117,29 @@ Route111_EventScript_ReceivedBerry:: @ 81F0EF4
 	end
 
 Route111_EventScript_SunTrigger:: @ 81F0FB0
+	goto_if_set FLAG_RYU_WINTER_WEATHER, R111_SunToShade
 	setweather WEATHER_SUNNY
 	fadenewbgm MUS_DOORO_X1
 	doweather
 	setvar VAR_TEMP_3, 0
 	end
 
+R111_SunToShade::
+	setweather WEATHER_SHADE
+	fadenewbgm MUS_DOORO_X1
+	doweather
+	setvar VAR_TEMP_3, 0
+	end
+
 Route111_EventScript_SandstormTrigger:: @ 81F0FBD
+	goto_if_set FLAG_RYU_WINTER_WEATHER, R111_SandstormToRainstorm
 	setweather WEATHER_SANDSTORM
+	fadenewbgm MUS_ASHROAD
+	doweather
+	end
+
+R111_SandstormToRainstorm::
+	setweather WEATHER_RAIN_THUNDERSTORM
 	fadenewbgm MUS_ASHROAD
 	doweather
 	end

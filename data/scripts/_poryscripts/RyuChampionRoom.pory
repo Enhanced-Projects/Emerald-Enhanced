@@ -192,6 +192,7 @@ script RCR_OverlordRyuRematch { //THE RYUMATCH
 	
 script RCR_OverlordRyuEndMatch {
 	clearflag(FLAG_RYU_WAYSTONE_DISABLED)
+	special(GameClear)
     goto(AT1_Warp)
 	end
 }

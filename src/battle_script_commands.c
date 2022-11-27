@@ -1665,8 +1665,10 @@ static void Cmd_accuracycheck(void)
     if (move == ACC_CURR_MOVE)
         move = gCurrentMove;
 
-    if (gBattleMoves[move].accuracy == 0)
+    if (gBattleMoves[move].accuracy == 0) {
         gBattlescriptCurrInstr += 7;
+        return;
+    }
 
     if (move == NO_ACC_CALC_CHECK_LOCK_ON)
     {

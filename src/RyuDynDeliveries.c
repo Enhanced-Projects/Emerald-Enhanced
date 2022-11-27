@@ -13,6 +13,7 @@
 #include "item.h"
 #include "constants/maps.h"
 #include "lifeskill.h"
+#include "DynamicObjects.h"
 
 const u8 sText_comma[] = _(", ");
 const u8 sText_locations[] = _("Delivery Locations:");
@@ -94,29 +95,24 @@ int RyuConvertDeliveryTargetsToDynamicObjects(void)
 {
     u32 i;
     u8 dynamicSlot = 0;
-    u8 jobcount = 0;
-    for (i = 0;i < 4;i++)
+    for (i = 0; i < 4; i++)
     {
         if (gSaveBlock2Ptr->Deliveries[i].GfxID != 0)
         {
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].active = TRUE;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].gfxId = gSaveBlock2Ptr->Deliveries[i].GfxID;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].localId = 0xDD;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].mapGroup = gSaveBlock2Ptr->Deliveries[i].mapgroup;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].mapNum = gSaveBlock2Ptr->Deliveries[i].mapnum;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].movement = MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].x = gSaveBlock2Ptr->Deliveries[i].xpos;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].y = gSaveBlock2Ptr->Deliveries[i].ypos;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].z = 3;
-            gSaveBlock1Ptr->DynamicObjects[dynamicSlot].scriptPtr = RyuDeliveryTargetScript;
+            u32 dynamicSlot = AddDynamicObject(gSaveBlock2Ptr->Deliveries[i].mapgroup,
+                                           gSaveBlock2Ptr->Deliveries[i].mapnum, 
+                                           gSaveBlock2Ptr->Deliveries[i].GfxID, 
+                                           MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN, 
+                                           gSaveBlock2Ptr->Deliveries[i].xpos, 
+                                           gSaveBlock2Ptr->Deliveries[i].ypos, 
+                                           3, 
+                                           RyuDeliveryTargetScript);
+            if (dynamicSlot == -1)
+                return 100; //job would exceed dynamic object count
             gSaveBlock1Ptr->dynamicDeliveryIds[i] = dynamicSlot;
-            dynamicSlot++;//increment slot number based on where first slot was
-            if (dynamicSlot > 3)
-                return 100;//job would exceed dynamic object count
-            jobcount++;
         }
     }
-    return jobcount;
+    return i;
 }
 
 void StartNewDeliveryQueue(void) 

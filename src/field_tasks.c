@@ -122,19 +122,27 @@ static void Task_RunPerStepCallback(u8 taskId)
 #define tAmbientCryState data[1]
 #define tAmbientCryDelay data[2]
 
+extern void Task_MapNamePopUpWindow(u8 taskId);
+extern void RyuDoNotifyTasks(void);
+
 static void RunTimeBasedEvents(s16 *data)
 {
+    if ((gMain.vblankCounter1 & 0xFF) == 0) { // every 256 frames roughly 4 seconds
+        if (!(FuncIsActiveTask(Task_MapNamePopUpWindow)))
+            RyuDoNotifyTasks();
+    }
+
     switch (tState)
     {
         case 0:
-            if (gMain.vblankCounter1 & 0x1000)
+            if (gMain.vblankCounter1 & 0x1000) // do every 4096 frames roughly 68 seconds
             {
                 DoTimeBasedEvents();
                 tState++;
             }
             break;
         case 1:
-            if (!(gMain.vblankCounter1 & 0x1000))
+            if (!(gMain.vblankCounter1 & 0x1000)) // stall for 4096 frames roughly 68 seconds but why?
             {
                 tState--;
             }
