@@ -3762,7 +3762,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona1[] = {
 	.heldItem = ITEM_SHELL_BELL,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_THUNDER_FANG, MOVE_SWORDS_DANCE},
+	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_PSYCHIC_FANGS, MOVE_SWORDS_DANCE},
 	},
 	{
 	.iv = 255,
@@ -7223,6 +7223,15 @@ static const struct TrainerMonItemCustomMoves sParty_RelMay[] = {
 static const struct TrainerMonItemCustomMoves sParty_DrakeRematch2[] = {
 	{
 	.iv = 250,
+	.lvl = 90,
+	.species = SPECIES_ARIADOS,
+	.heldItem = ITEM_FOCUS_SASH,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_TOXIC_THREAD, MOVE_MEGAHORN, MOVE_KNOCK_OFF, MOVE_U_TURN},
+	},
+	{
+	.iv = 250,
 	.lvl = 91,
 	.species = SPECIES_FLYGON,
 	.heldItem = ITEM_CHOICE_SCARF,
@@ -7238,15 +7247,6 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch2[] = {
 	.evspread = 0,
     .ability = 2,
 	.moves = {MOVE_TWINEEDLE, MOVE_FELL_STINGER, MOVE_DRILL_RUN, MOVE_PURSUIT},
-	},
-	{
-	.iv = 250,
-	.lvl = 90,
-	.species = SPECIES_ARIADOS,
-	.heldItem = ITEM_LIFE_ORB,
-	.evspread = 0,
-    .ability = 2,
-	.moves = {MOVE_EARTHQUAKE, MOVE_OUTRAGE, MOVE_STONE_EDGE, MOVE_SWORDS_DANCE},
 	},
 	{
 	.iv = 250,
@@ -12778,7 +12778,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona2[] = {
 	.heldItem = ITEM_SHELL_BELL,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_THUNDER_FANG, MOVE_SWORDS_DANCE},
+	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_PSYCHIC_FANGS, MOVE_SWORDS_DANCE},
 	},
     {
 	.iv = 239,
@@ -12835,7 +12835,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona3[] = {
 	.heldItem = ITEM_SHELL_BELL,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_SECRET_POWER, MOVE_SWORDS_DANCE},
+	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_PSYCHIC_FANGS, MOVE_SWORDS_DANCE},
 	},
     {
 	.iv = 239,
@@ -12937,7 +12937,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona4[] = {
 	.heldItem = ITEM_SHELL_BELL,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_SECRET_POWER, MOVE_SWORDS_DANCE},
+	.moves = {MOVE_SNAP, MOVE_ICE_FANG, MOVE_PSYCHIC_FANGS, MOVE_SWORDS_DANCE},
 	},
 };
 
