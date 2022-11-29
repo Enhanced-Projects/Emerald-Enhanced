@@ -38,7 +38,7 @@ script MP_FerryWoman2 {
 	multichoicegrid(0, 10, MULTI_DYNAMIC_3, 3, 1)
 	switch (var(VAR_RESULT)) {
 		case 0:
-			warpsilent(MAP_ROUTE121, 255, 32, 18)
+			warpsilent(MAP_ROUTE122, 255, 22, 31)
 			waitstate
 		case 1:
 			warpsilent(MAP_ROUTE122, 255, 19, 37)
