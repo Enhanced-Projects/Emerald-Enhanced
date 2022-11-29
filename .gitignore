@@ -34,6 +34,14 @@ porymap.project.cfg
 *.a
 .fuse_hidden*
 pokeemerald.ss1
+pokeemerald.ss2
+pokeemerald.ss3
+pokeemerald.ss4
+pokeemerald.ss5
+pokeemerald.ss6
+pokeemerald.ss7
+pokeemerald.ss8
+pokeemerald.ss9
 include/constants/battle_frontier_mons.h.old
 pokeemerald.bps
 tools/poryscript
