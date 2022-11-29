@@ -630,7 +630,7 @@ const struct Item gItems[] =
     {
         .name = _("Moomoo Milk"),
         .itemId = ITEM_MOOMOO_MILK,
-        .price = 750,
+        .price = 400,
         .holdEffectParam = 100,
         .description = sMoomooMilkDesc,
         .pocket = POCKET_MEDICINE,
@@ -761,7 +761,7 @@ const struct Item gItems[] =
     {
         .name = _("Lava Cookie"),
         .itemId = ITEM_LAVA_COOKIE,
-        .price = 200,
+        .price = 300,
         .description = sLavaCookieDesc,
         .pocket = POCKET_MEDICINE,
         .type = 1,
@@ -843,7 +843,7 @@ const struct Item gItems[] =
     {
         .name = _("Berry Juice"),
         .itemId = ITEM_BERRY_JUICE,
-        .price = 1000,
+        .price = 100,
         .holdEffect = HOLD_EFFECT_RESTORE_HP,
         .holdEffectParam = 20,
         .description = sBerryJuiceDesc,

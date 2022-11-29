@@ -119,7 +119,6 @@ MC_PlayerNotAqua::
 	setflag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
 	applymovement PLAYER, Common_Movement_FaceRight
 	waitmovement PLAYER
 	goto MtChimney_EventScript_MeteoriteMachine

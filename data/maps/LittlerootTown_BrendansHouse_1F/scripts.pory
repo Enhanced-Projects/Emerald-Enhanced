@@ -170,7 +170,7 @@ WarpZone_EventScript_Sign4::
 	end
 
 WarpZone_Text_Sign4:
-	.string "$"
+	.string "Mauville City$"
 
 `
 
