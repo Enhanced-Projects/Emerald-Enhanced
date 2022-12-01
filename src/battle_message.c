@@ -753,6 +753,13 @@ static const u8 sText_BothCanNoLongerEscape[] = _("Neither Pokémon can run away
 static const u8 sText_UltraKillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} damage!\nIt was ultra effective!"); 
 static const u8 sText_UltraOverKillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} overkill damage!\nIt was ultra effective!"); 
 static const u8 sText_TargetFainted50x[] = _("{B_DEF_NAME_WITH_PREFIX} was erased from the\nhistory of the multiverse...");
+static const u8 sText_NN_ItWasSuprEffective[] = _("It was Super Effective!");
+static const u8 sText_NN_ItWasUltrEffective[] = _("It was Ultra Effective!");
+static const u8 sText_NN_ItWasNvEffective[]   = _("It wasn't very effective...");
+static const u8 sText_NN_NeutralEffect[]      = _(" ");
+static const u8 sText_NN_Ohko[]      = _("{B_DEF_NAME_WITH_PREFIX} was executed!");
+static const u8 sText_NN_Fainted[]      = _("{B_DEF_NAME_WITH_PREFIX} was defeated!");
+static const u8 sText_NN_Critical[]      = _("{B_ATK_NAME_WITH_PREFIX} landed a critical hit!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1365,7 +1372,14 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BOTHCANNOLONGERESCAPE - 12] = sText_BothCanNoLongerEscape,
     [STRINGID_ITDEALTULTRADAMAGE - 12] = sText_UltraKillDamage,
     [STRINGID_ITDEALTULTRAOVERKILLDAMAGE - 12] = sText_UltraOverKillDamage,
-    [STRINGID_TARGETFAINTED50X - 12] = sText_TargetFainted50x
+    [STRINGID_TARGETFAINTED50X - 12] = sText_TargetFainted50x,
+    [STRINGID_NN_ITWASSUPREFFECTIVE - 12] = sText_NN_ItWasSuprEffective,
+    [STRINGID_NN_ITWASULTREFFECTIVE - 12] = sText_NN_ItWasUltrEffective,
+    [STRINGID_NN_ITWASNVEFFECTIVE - 12]   = sText_NN_ItWasNvEffective,
+    [STRINGID_NN_EMPTYSTRING - 12]        = sText_NN_NeutralEffect,
+    [STRINGID_NN_OHKO - 12]               = sText_NN_Ohko,
+    [STRINGID_NN_FAINTED - 12]            = sText_NN_Fainted,
+    [STRINGID_NN_CRITICAL - 12]            = sText_NN_Critical,
 };
 
 const u16 gTerrainStringIds[] =

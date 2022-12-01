@@ -2304,14 +2304,22 @@ static void Cmd_critmessage(void)
     {
         if (gIsCriticalHit && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
         {
-            if (gBattleMoveDamage > gHpDealt)
+            if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
             {
-                PrepareStringBattle(STRINGID_ITDEALTOVERKILLDAMAGECRIT, gBattlerAttacker);
-                gBattleCommunication[MSG_DISPLAY] = 1;
+                if (gBattleMoveDamage > gHpDealt)
+                {
+                    PrepareStringBattle(STRINGID_ITDEALTOVERKILLDAMAGECRIT, gBattlerAttacker);
+                    gBattleCommunication[MSG_DISPLAY] = 1;
+                }
+                else
+                {
+                    PrepareStringBattle(STRINGID_ITDEALTDAMAGECRIT, gBattlerAttacker);
+                    gBattleCommunication[MSG_DISPLAY] = 1;
+                }
             }
             else
             {
-                PrepareStringBattle(STRINGID_ITDEALTDAMAGECRIT, gBattlerAttacker);
+                PrepareStringBattle(STRINGID_NN_CRITICAL, gBattlerAttacker);
                 gBattleCommunication[MSG_DISPLAY] = 1;
             }
         }
@@ -2401,6 +2409,8 @@ static void Cmd_resultmessage(void)
     else
     {
         gBattleCommunication[MSG_DISPLAY] = 1;
+        if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
+        {
         switch (gMoveResultFlags & (~MOVE_RESULT_MISSED))
         {
         case MOVE_RESULT_ULTRA_EFFECTIVE:
@@ -2523,6 +2533,90 @@ static void Cmd_resultmessage(void)
                         stringId = STRINGID_ITDEALTNODAMAGE;
                     }
                 }
+            }
+        }
+        }
+        else
+        {
+            switch (gMoveResultFlags & (~MOVE_RESULT_MISSED))
+            {
+                case MOVE_RESULT_ULTRA_EFFECTIVE:
+                    if (gIsCriticalHit == FALSE)
+                        stringId = STRINGID_NN_ITWASULTREFFECTIVE;
+                    break;
+                case MOVE_RESULT_SUPER_EFFECTIVE:
+                    if (gIsCriticalHit == FALSE)
+                        stringId = STRINGID_NN_ITWASSUPREFFECTIVE;
+                    break;
+                case MOVE_RESULT_NOT_VERY_EFFECTIVE:
+                    if (gIsCriticalHit == FALSE)
+                        stringId = STRINGID_NN_ITWASNVEFFECTIVE;
+                    break;
+                case MOVE_RESULT_ONE_HIT_KO:
+                    stringId = STRINGID_NN_OHKO;
+                    break;
+                case MOVE_RESULT_FOE_ENDURED:
+                    stringId = STRINGID_ITDEALTDAMAGEHUNGON;
+                    break;
+                case MOVE_RESULT_FAILED:
+                    stringId = STRINGID_BUTITFAILED;
+                    break;
+                case MOVE_RESULT_DOESNT_AFFECT_FOE:
+                    stringId = STRINGID_ITDOESNTAFFECT;
+                    break;
+                case MOVE_RESULT_FOE_HUNG_ON:
+                    gLastUsedItem = gBattleMons[gBattlerTarget].item;
+                    gPotentialItemEffectBattler = gBattlerTarget;
+                    gMoveResultFlags &= ~(MOVE_RESULT_FOE_ENDURED | MOVE_RESULT_FOE_HUNG_ON);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_HangedOnMsg;
+                    return;
+                default:
+                    if (gMoveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE)
+                    {
+                        stringId = STRINGID_ITDOESNTAFFECT;
+                    }
+                    else if (gMoveResultFlags & MOVE_RESULT_ONE_HIT_KO)
+                    {
+                        gMoveResultFlags &= ~(MOVE_RESULT_ONE_HIT_KO);
+                        gMoveResultFlags &= ~(MOVE_RESULT_SUPER_EFFECTIVE);
+                        gMoveResultFlags &= ~(MOVE_RESULT_NOT_VERY_EFFECTIVE);
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_OneHitKOMsg;
+                        return;
+                    }
+                    else if (gMoveResultFlags & MOVE_RESULT_STURDIED)
+                    {
+                        gMoveResultFlags &= ~(MOVE_RESULT_STURDIED | MOVE_RESULT_FOE_ENDURED | MOVE_RESULT_FOE_HUNG_ON);
+                        gSpecialStatuses[gBattlerTarget].sturdied = 0;
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_SturdiedMsg;
+                        return;
+                    }
+                    else if (gMoveResultFlags & MOVE_RESULT_FOE_ENDURED)
+                    {
+                        gMoveResultFlags &= ~(MOVE_RESULT_FOE_ENDURED | MOVE_RESULT_FOE_HUNG_ON);
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_EnduredMsg;
+                        return;
+                    }
+                    else if (gMoveResultFlags & MOVE_RESULT_FOE_HUNG_ON)
+                    {
+                        gLastUsedItem = gBattleMons[gBattlerTarget].item;
+                        gPotentialItemEffectBattler = gBattlerTarget;
+                        gMoveResultFlags &= ~(MOVE_RESULT_FOE_ENDURED | MOVE_RESULT_FOE_HUNG_ON);
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_HangedOnMsg;
+                        return;
+                    }
+                    else if (gMoveResultFlags & MOVE_RESULT_FAILED)
+                    {
+                        stringId = STRINGID_BUTITFAILED;
+                    }
+                    else
+                    {
+                        stringId = STRINGID_NN_EMPTYSTRING;
+                    }
             }
         }
     }
@@ -3618,31 +3712,49 @@ static void Cmd_tryfaintmon(void)
             if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 50))
             {
                 GiveAchievement(ACH_ULTRAKILL);
-                BS_ptr = BattleScript_FaintTarget50x;
+                if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
+                    BS_ptr = BattleScript_FaintTarget50x;
+                else
+                    BS_ptr= BattleScript_NN_FaintTarget;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 20))
             {
                 GiveAchievement(ACH_EXPONENTIAL);
-                BS_ptr = BattleScript_FaintTarget20x;
+                if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
+                    BS_ptr = BattleScript_FaintTarget20x;
+                else
+                    BS_ptr= BattleScript_NN_FaintTarget;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 10))
             {
                 GiveAchievement(ACH_MULTIPLICATIVE);
-                BS_ptr = BattleScript_FaintTarget10x;
+                if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
+                    BS_ptr = BattleScript_FaintTarget10x;
+                else
+                    BS_ptr= BattleScript_NN_FaintTarget;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 4)) 
             {
                 GiveAchievement(ACH_ADDITIVE);
-                BS_ptr = BattleScript_FaintTarget4x;
+                if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
+                    BS_ptr = BattleScript_FaintTarget4x;
+                else
+                    BS_ptr= BattleScript_NN_FaintTarget;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 2)) 
             {
                 GiveAchievement(ACH_NO_KILL_LIKE_OVERKILL);
-                BS_ptr = BattleScript_FaintTarget2x;
+                if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
+                    BS_ptr = BattleScript_FaintTarget2x;
+                else
+                    BS_ptr= BattleScript_NN_FaintTarget;
             }
             else if (gBattleMoveDamage <= (gBattleMons[gActiveBattler].maxHP)) 
             {
-                BS_ptr = BattleScript_FaintTarget;
+                if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
+                    BS_ptr = BattleScript_FaintTarget;
+                else
+                    BS_ptr= BattleScript_NN_FaintTarget;
             }
             else
             {

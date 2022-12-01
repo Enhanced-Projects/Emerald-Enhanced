@@ -625,8 +625,16 @@
 #define STRINGID_ITDEALTULTRAOVERKILLDAMAGE           621
 #define STRINGID_ITDEALTULTRADAMAGE                   622
 #define STRINGID_TARGETFAINTED50X                     623
+#define STRINGID_NN_ITWASEFFECTIVE                    624
+#define STRINGID_NN_ITWASSUPREFFECTIVE                625
+#define STRINGID_NN_ITWASULTREFFECTIVE                626
+#define STRINGID_NN_ITWASNVEFFECTIVE                  627
+#define STRINGID_NN_EMPTYSTRING                       628
+#define STRINGID_NN_OHKO                              629
+#define STRINGID_NN_FAINTED                           630
+#define STRINGID_NN_CRITICAL                          631
 
-#define BATTLESTRINGS_COUNT                624
+#define BATTLESTRINGS_COUNT                632
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

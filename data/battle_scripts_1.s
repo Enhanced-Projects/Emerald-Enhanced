@@ -5158,6 +5158,19 @@ BattleScript_FaintTarget50x::
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
+BattleScript_NN_FaintTarget::
+	playfaintcry BS_TARGET
+	pause 0x40
+	dofaintanimation BS_TARGET
+	printstring STRINGID_NN_FAINTED
+	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
+	tryactivatemoxie BS_ATTACKER
+	tryactivatebeastboost BS_ATTACKER
+	trytrainerslidefirstdownmsg BS_TARGET
+	return
+
 BattleScript_GiveExp::
 	setbyte sGIVEEXP_STATE, 0x0
 	getexp BS_TARGET

@@ -316,6 +316,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_RT_WALLY);
     FlagSet(FLAG_RYU_HIDE_PBC_HOME_WALLY);
     FlagSet(FLAG_RYU_HIDE_PETALBURG_MAY);
+    FlagSet(FLAG_RYU_TGL_BATTLE_INFO); //extra battle info defaults to on.
     FlagClear(FLAG_RYU_SAVED_ATTENDANT);
     FlagClear(FLAG_RYU_HIDE_HOME_ATTENDANT);
     FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
@@ -343,7 +344,7 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_CONTEST_REWARD, 1000); //'clear' ryu contest reward id.
     VarSet(VAR_RYU_ATTENDANT_ID, 0xFFFF); //which companion is currently the player's attendant.
     VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, 1000); //quest tracker will show no data on this until the delivery feature is unlocked.
-    VarSet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, 7); //quest tracker shows no active daily.
+    VarSet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, 7); //quest tracker shows no active daily. 
     
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));

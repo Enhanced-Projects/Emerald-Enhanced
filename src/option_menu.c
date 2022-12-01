@@ -30,6 +30,7 @@ enum
     MENUITEM_TEXTSPEED,
     MENUITEM_BATTLESCENE,
     MENUITEM_FORCESETBATTLE,
+    MENUITEM_TOGGLEDAMAGENUMBERS,
     //FULL_COLOR
     MENUITEM_THEME_UI,
     MENUITEM_THEME,
@@ -89,6 +90,7 @@ static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed);
 static void DisableBgm_DrawChoices(int selection, int y, u8 textSpeed);
 static void FrameType_DrawChoices(int selection, int y, u8 textSpeed);
 static void ForceBattleSet_DrawChoices(int selection, int y, u8 textSpeed);
+static void ToggleDamageNumbers_DrawChoices(int selection, int y, u8 textSpeed);
 static int FrameType_ProcessInput(int selection);
 static int FourOptions_ProcessInput(int selection);
 static int ThreeOptions_ProcessInput(int selection);
@@ -113,6 +115,7 @@ static const sItemFunctions[MENUITEM_COUNT] =
     [MENUITEM_TEXTSPEED] = {TextSpeed_DrawChoices, ThreeOptions_ProcessInput},
     [MENUITEM_BATTLESCENE] = {BattleScene_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_FORCESETBATTLE] = {ForceBattleSet_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_TOGGLEDAMAGENUMBERS] = {ToggleDamageNumbers_DrawChoices, TwoOptions_ProcessInput},
     //FULL_COLOR
     [MENUITEM_THEME_UI] = {ThemeUISelection_DrawChoices, ThemeUI_ProcessInput},
     [MENUITEM_THEME] = {ThemeSelection_DrawChoices, Theme_ProcessInput},
@@ -149,6 +152,9 @@ static const u8 sText_TrainerSlideOption[] = _("Slide in msg");
 static const u8 sTextDisableMusic[] = _("Disable Music");
 static const u8 OptionText_Yes[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Yes");
 static const u8 OptionText_No[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}No");
+static const u8 sText_ToggleDamageInfo[] = _("Xtr Battle Info");
+const u8 sText_On[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
+const u8 sText_Off[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 
 //FULL_COLOR
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
@@ -156,6 +162,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_TEXTSPEED]   = gText_TextSpeed,
     [MENUITEM_BATTLESCENE] = gText_BattleScene,
     [MENUITEM_FORCESETBATTLE]     = sText_ForceSetBattleMode,
+    [MENUITEM_TOGGLEDAMAGENUMBERS]     = sText_ToggleDamageInfo,
     //FULL_COLOR
     [MENUITEM_THEME_UI]    = gText_ThemeUISelector,
     [MENUITEM_THEME]       = gText_ThemeSelector,
@@ -373,6 +380,7 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
         sOptions->sel[MENUITEM_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
         sOptions->sel[MENUITEM_FORCESETBATTLE] = gSaveBlock2Ptr->forceSetBattleType;
+        sOptions->sel[MENUITEM_TOGGLEDAMAGENUMBERS] = FlagGet(FLAG_RYU_TGL_BATTLE_INFO);
         //FULL_COLOR
         sOptions->sel[MENUITEM_THEME_UI] = VarGet(VAR_HAT_THEME_UI_NUMBER);
         sOptions->sel[MENUITEM_THEME_BALL] = sOptions->sel[MENUITEM_THEME_UI] == THEME_UI_VANILLA ? 0 : gSaveBlock2Ptr->UIBallSelection + 1;
@@ -1123,6 +1131,11 @@ static void Task_OptionMenuSave(u8 taskId)
     else
         FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
 
+    if (sOptions->sel[MENUITEM_TOGGLEDAMAGENUMBERS])
+        FlagSet(FLAG_RYU_TGL_BATTLE_INFO);
+    else
+        FlagClear(FLAG_RYU_TGL_BATTLE_INFO);
+
 
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
     if (!(sOptions->sel[MENUITEM_THEME] == THEME_COLOR_USER))
@@ -1704,6 +1717,15 @@ static void ForceBattleSet_DrawChoices(int selection, int y, u8 textSpeed)
     styles[selection] = 1;
     DrawOptionMenuChoice(sText_Dynamic, 104, y, styles[0], textSpeed);
     DrawOptionMenuChoice(sText_Set, GetStringRightAlignXOffset(1, sText_Set, 198), y, styles[1], textSpeed);
+}
+
+static void ToggleDamageNumbers_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[2] = {0, 0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(sText_Off, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(sText_On, GetStringRightAlignXOffset(1, sText_On, 198), y, styles[1], textSpeed);
 }
 
 static void TrainerSlide_DrawChoices(int selection, int y, u8 textSpeed)
