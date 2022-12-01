@@ -37,7 +37,7 @@ script(global) RyuPokefansDailyQuest  {
                 end
             case TRAVEL_TYPE:
                 if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
-                        msgbox(format("So there weren't any pokémon playing there. That's so unfortunate. THank you for your time, anyways!"))
+                        msgbox(format("So there weren't any pokémon playing there. That's so unfortunate. Thank you for your time, anyways!"))
                         goto(CommonPokefansRewardScript)
                 }
                 else {
@@ -78,7 +78,7 @@ script(global) RyuPokefansDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_DOLL)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
-            msgbox("Hello, dear.\pWe're trying to find some dolls\nto give to our kids.\pPlease find us 5 Poke Dolls.")
+            msgbox("Hello, there!\pWe're trying to find some dolls\nto give to our kids.\pPlease find us 5 Poke Dolls.")
         case 1:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HEART_SCALE)
