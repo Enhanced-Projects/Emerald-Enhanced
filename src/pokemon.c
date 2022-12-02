@@ -4252,6 +4252,10 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
     SetMonData(mon, MON_DATA_OT_ID, gSaveBlock2Ptr->playerTrainerId);
 
+    if ((VarGet(VAR_RYU_TARGET_BOUNTY_MON) == GetMonData(mon, MON_DATA_SPECIES, NULL)) && (FlagGet(FLAG_RYU_DOING_NATURALIST_BOUNTY_HUNT) == TRUE))
+    {
+        return MON_SENT_TO_RESERVE;
+    }
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE)

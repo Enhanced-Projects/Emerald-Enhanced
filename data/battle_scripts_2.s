@@ -77,6 +77,20 @@ BattleScript_SafariBallThrow::
 	updatestatusicon BS_ATTACKER
 	handleballthrow
 
+BattleScript_CapturedNaturePreserveTarget::
+	setbyte sMON_CAUGHT, TRUE
+	incrementgamestat GAME_STAT_POKEMON_CAPTURES
+	printstring STRINGID_GOTCHAPKMNCAUGHT
+	jumpifbyte CMP_NOT_EQUAL, sEXP_CATCH, TRUE, BattleScript_GiveCaughtMonEnd
+	setbyte sGIVEEXP_STATE, 0x0
+	getexp BS_TARGET
+	sethword gBattle_BG2_X, 0x0
+	givecaughtmon
+	printstring STRINGID_PKMNSENTTONATUREPRESERVE
+	waitmessage B_WAIT_TIME_SHORT
+	setbyte gBattleOutcome, B_OUTCOME_CAUGHT
+	finishturn
+
 BattleScript_SuccessBallThrow::
 	setbyte sMON_CAUGHT, TRUE
 	jumpifhalfword CMP_EQUAL, gLastUsedItem, ITEM_SAFARI_BALL, BattleScript_PrintCaughtMonInfo

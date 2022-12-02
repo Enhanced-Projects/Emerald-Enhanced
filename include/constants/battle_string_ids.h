@@ -633,8 +633,9 @@
 #define STRINGID_NN_OHKO                              629
 #define STRINGID_NN_FAINTED                           630
 #define STRINGID_NN_CRITICAL                          631
+#define STRINGID_PKMNSENTTONATUREPRESERVE             632
 
-#define BATTLESTRINGS_COUNT                632
+#define BATTLESTRINGS_COUNT                633
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

@@ -293,6 +293,7 @@
 #define VAR_RYU_DELIVERY_SYSTEM_DATA         0x4111
 #define VAR_RYU_DELIVERY_SYSTEM_HIGH_REWARD_ROLL        0x4112
 #define VAR_RYU_DELIVERY_SYSTEM_LOW_REWARD_ROLL         0x4113
+#define VAR_RYU_TARGET_BOUNTY_MON            0x4114
 //FULL_COLOR
 #define VAR_HAT_THEME_UI_NUMBER              0x411F // Which theme UI is selected
 

@@ -1255,6 +1255,8 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	setvar(VAR_RYU_TARGET_BOUNTY_MON, SPECIES_SEEDOT)
+	setflag(FLAG_RYU_DOING_NATURALIST_BOUNTY_HUNT)
 	end
 }
 

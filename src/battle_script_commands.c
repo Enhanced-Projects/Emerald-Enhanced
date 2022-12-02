@@ -12393,6 +12393,7 @@ static void Cmd_handleballthrow(void)
         u32 odds, i;
         u8 catchRate = gBaseStats[gBattleMons[gBattlerTarget].species].catchRate;
 
+
         if (IS_ULTRA_BEAST(gBattleMons[gBattlerTarget].species))
         {
             if (gLastUsedItem == ITEM_BEAST_BALL)
@@ -12644,7 +12645,14 @@ static void Cmd_handleballthrow(void)
                     gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = 1;
                 }
 
-                gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
+                if ((VarGet(VAR_RYU_TARGET_BOUNTY_MON) == GetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_SPECIES, NULL)) && (FlagGet(FLAG_RYU_DOING_NATURALIST_BOUNTY_HUNT) == TRUE))
+                {
+                    gBattlescriptCurrInstr = BattleScript_CapturedNaturePreserveTarget;
+                }
+                else
+                {
+                    gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
+                }
                 SetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_POKEBALL, &gLastUsedItem);
                 if (CalculatePlayerPartyCount() == PARTY_SIZE)
                     gBattleCommunication[MULTISTRING_CHOOSER] = 0;
@@ -12667,7 +12675,13 @@ static void Cmd_handleballthrow(void)
 
 static void Cmd_givecaughtmon(void)
 {
-    if (GiveMonToPlayer(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]]) != MON_GIVEN_TO_PARTY)
+    int mongiven = (GiveMonToPlayer(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]]));
+
+    if (mongiven == MON_SENT_TO_RESERVE)
+    {
+        gUnusedBattleGlobal2 = 4;
+    }
+    else if (mongiven != MON_GIVEN_TO_PARTY)
     {
         if (!ShouldShowBoxWasFullMessage())
         {
