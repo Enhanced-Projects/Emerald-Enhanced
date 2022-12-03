@@ -1700,7 +1700,7 @@ script RyuScript_GiveHolidayGiftMon{
 		case 3:
 			setvar(VAR_0x8005, SPECIES_YVELTAL)
 		case 4:
-			setvar(VAR_0x8005, SPECIES_ZYGARDE_COMPLETE)
+			setvar(VAR_0x8005, SPECIES_ZYGARDE_10)
 		case 5:
 			setvar(VAR_0x8005, SPECIES_GENESECT)
 	}
