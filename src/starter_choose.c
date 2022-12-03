@@ -101,15 +101,15 @@ static const struct WindowTemplate sWindowTemplate_StarterLabel =
     .baseBlock = 0x0274
 };
 
-static const u8 sPokeballCoords[STARTER_MON_COUNT][6] =
+static const u8 sPokeballCoords[STARTER_MON_COUNT][2] =
 {
-    {0x40, 0x2c},
-    {0x3c, 0x40},
-    {0x54, 0x52},
-    {0x78, 0x58},
-    {0x9c, 0x52},
-    {0xb4, 0x40},
-    {0xb0, 0x2c},
+    { 24, 96},
+    { 56, 96},
+    { 88, 96},
+    {120, 96},
+    {152, 96},
+    {184, 96},
+    {216, 96},
 };
 
 static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
@@ -220,13 +220,13 @@ static const struct OamData sOam_StarterCircle =
 
 static const u8 sCursorCoords[][2] =
 {
-    {0x40, 0xf},
-    {0x3c, 0x20},
-    {0x54, 0x20},
-    {0x78, 0x20},
-    {0x9c, 0x20},
-    {0xb4, 0x20},
-    {0xb0, 0xf},
+    { 26, 64},
+    { 58, 64},
+    { 90, 64},
+    {122, 64},
+    {154, 64},
+    {186, 64},
+    {218, 64},
 };
 
 static const union AnimCmd sAnim_Hand[] =
@@ -419,10 +419,6 @@ void CB2_ChooseStarter(void)
     DmaFill32(3, 0, OAM, OAM_SIZE);
     DmaFill16(3, 0, PLTT, PLTT_SIZE);
 
-    LZ77UnCompVram(gBirchHelpGfx, (void *)VRAM);
-    LZ77UnCompVram(gBirchBagTilemap, (void *)(BG_SCREEN_ADDR(6)));
-    LZ77UnCompVram(gBirchGrassTilemap, (void *)(BG_SCREEN_ADDR(7)));
-
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
     InitWindows(sWindowTemplates);
@@ -438,7 +434,6 @@ void CB2_ChooseStarter(void)
     ResetAllPicSprites();
 
     LoadPalette(GetOverworldTextboxPalettePtr(), 0xE0, 0x20);
-    LoadPalette(gBirchBagGrassPal, 0, 0x40);
     LoadCompressedSpriteSheet(&sSpriteSheet_PokeballSelect[0]);
     LoadCompressedSpriteSheet(&sSpriteSheet_StarterCircle[0]);
     LoadSpritePalettes(sSpritePalettes_StarterChoose);
@@ -462,10 +457,10 @@ void CB2_ChooseStarter(void)
     ShowBg(3);
 
     taskId = CreateTask(Task_StarterChoose, 0);
-    gTasks[taskId].tStarterSelection = 1;
+    gTasks[taskId].tStarterSelection = 3;
 
     // Create hand sprite
-    spriteId = CreateSprite(&sSpriteTemplate_Hand, 120, 56, 0);
+    spriteId = CreateSprite(&sSpriteTemplate_Hand, 2, 8, 0);
     gSprites[spriteId].data[0] = taskId;
 
     // Create three Pokeball sprites
