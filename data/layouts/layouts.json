@@ -5600,6 +5600,16 @@
       "secondary_tileset": "gTileset_Unused2",
       "border_filepath": "data/layouts/Underworld/border.bin",
       "blockdata_filepath": "data/layouts/Underworld/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTRO_ROOM",
+      "name": "IntroRoom_Layout",
+      "width": 4,
+      "height": 4,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/IntroRoom/border.bin",
+      "blockdata_filepath": "data/layouts/IntroRoom/map.bin"
     }
   ]
 }

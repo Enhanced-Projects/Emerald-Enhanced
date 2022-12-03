@@ -214,40 +214,6 @@ Route101_EventScript_RouteSign:: @ 81EBE0D
 	msgbox Route101_Text_RouteSign, MSGBOX_SIGN
 	end
 
-Route101_EventScript_BirchsBag:: @ 81EBE16
-	lock
-	faceplayer
-	setflag FLAG_SYS_POKEMON_GET
-	setflag FLAG_RESCUED_BIRCH
-	fadescreen FADE_TO_BLACK
-	removeobject 4
-	setobjectxy PLAYER, 6, 13
-	applymovement PLAYER, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	special ChooseStarter
-	waitstate
-	call Ryu_ShowStarterInfo
-	applymovement 2, Route101_Movement_BirchApproachPlayer
-	waitmovement 0
-	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
-	special HealPlayerParty
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
-	setvar VAR_BIRCH_LAB_STATE, 2
-	setvar VAR_ROUTE101_STATE, 3
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	checkplayergender
-	compare VAR_RESULT, MALE
-	call_if_eq Route101_EventScript_HideMayInBedroom
-	compare VAR_RESULT, FEMALE
-	call_if_eq Route101_EventScript_HideBrendanInBedroom
-	setvar VAR_LITTLEROOT_INTRO_STATE, 8 @@Player chose starter and finished first battle.
-	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 255, 6, 5
-	waitstate
-	release
-	end
-
 Route101_EventScript_HideMayInBedroom:: @ 81EBE85
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_BEDROOM
 	return

@@ -574,7 +574,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Route119_WeatherInstitute_2F/scripts.inc"
 	.include "data/maps/Route119_House/scripts.inc"
 	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
-	.include "data/scripts/RyuIntroScripts.inc"
 	.include "data/scripts/RyuSacrificeSystem.inc"
 	.include "data/scripts/RyuDevonLine.inc"
 	.include "data/scripts/RyuTeleportationMenu.inc"
@@ -611,6 +610,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/RyuNatureSwap.inc"
 	.include "data/scripts/_poryscripts/RyuHaremEndScripts.inc"
 	.include "data/scripts/_poryscripts/RyuPokemonSalonScripts.inc"
+	.include "data/scripts/_poryscripts/RyuIntroScripts.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -1228,3 +1228,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 
 
 	.include "data/maps/Underworld/scripts.inc"
+
+	.include "data/maps/IntroRoom/scripts.inc"

@@ -121,17 +121,8 @@ static void ClearFrontierRecord(void)
 
 static void WarpToTruck(void)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-    {
-        SetWarpDestination(1, 1, -1, 1, 4);
-        WarpIntoMap();
-    }
-    else
-    {
-        SetWarpDestination(1, 3, -1, 7, 4);
-        WarpIntoMap();
-    }
-    
+    SetWarpDestination(MAP_GROUP(INTRO_ROOM), MAP_NUM(INTRO_ROOM), -1, 2, 2);
+    WarpIntoMap();
 }
 
 void Sav2_ClearSetDefault(void)

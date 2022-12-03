@@ -969,9 +969,9 @@
 #define FLAG_HIDE_MAUVILLE_CITY_WATTSON                             0x390
 #define FLAG_HIDE_MAUVILLE_GYM_WATTSON                              0x391
 #define FLAG_RYU_DOING_NATURALIST_BOUNTY_HUNT                       0x392
-#define FLAG_UNUSED_0x393                                           0x393
+#define FLAG_RYU_STARTER_CHOICE_QUEUED                              0x393
 #define FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE                             0x394
-#define FLAG_UNUSED_0x395                                           0x395
+#define FLAG_RYU_STARTER_LOCATION_CHOSEN                            0x395
 #define FLAG_HIDE_BATTLE_TOWER_REPORTER                             0x396
 #define FLAG_HIDE_ROUTE_110_RIVAL                                   0x397
 #define FLAG_HIDE_CHAMPIONS_ROOM_RIVAL                              0x398

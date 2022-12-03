@@ -23,6 +23,8 @@
 #include "window.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "overworld.h"
+#include "script.h"
 
 #define STARTER_MON_COUNT   7
 
@@ -497,7 +499,6 @@ void CB2_ChooseStarter(void)
 
 static void CB2_StarterChoose(void)
 {
-    FlagSet(FLAG_RYU_STARTER_CHOSEN);
     RunTasks();
     AnimateSprites();
     BuildOamBuffer();
@@ -592,10 +593,13 @@ static void Task_HandleConfirmStarterInput(u8 taskId)
     switch (Menu_ProcessInputNoWrapClearOnChoose())
     {
     case 0:  // YES
-        // Return the starter choice and exit.
+        // Give starter, finish UI. 
+        FlagSet(FLAG_SYS_POKEMON_GET);
         gSpecialVar_Result = gTasks[taskId].tStarterSelection;
+        CreateMon(&gPlayerParty[0], sStarterMon[gSpecialVar_Result], 10, 32, 0, 0, OT_ID_PLAYER_ID, FALSE);
         ResetAllPicSprites();
-        SetMainCallback2(gMain.savedCallback);
+        FlagSet(FLAG_RYU_STARTER_CHOICE_QUEUED);
+        SetMainCallback2(CB2_ReturnToField);
         break;
     case 1:  // NO
     case MENU_B_PRESSED:

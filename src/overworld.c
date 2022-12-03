@@ -203,6 +203,7 @@ u8 gFieldLinkPlayerCount;
 extern u8 RyuFollowerSelectNPCScript[];
 extern u8 Ryu_StartRandomBattle[];
 extern u8 Ryu_PlayerFailedChallengeHardcore[];
+extern u8 RyuScript_VerifyStarterChoice[];
 
 // EWRAM vars
 EWRAM_DATA static u8 sObjectEventLoadFlag = 0;

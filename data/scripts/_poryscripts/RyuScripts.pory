@@ -1115,16 +1115,6 @@ RyuPlayerLostTheGameSoloFemale::
 	release
 	end
 
-@===================================================================================================
-Ryu_ShowStarterInfo::
-	setvar VAR_0x8001, 0
-    special RyuFillStatsBuffers
-    drawinfobox INFOBOXPOKEMONDATA
-	bufferpartymonnick 1, 0
-	msgbox Ryu_Stats
-	removeinfobox
-	return
-
 @==================================================================================================Achievement RELATED
 RyuScript_IncrementQuestsFinished::
 	addvar VAR_RYU_QUESTS_FINISHED, 1
@@ -1255,8 +1245,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	setvar(VAR_RYU_TARGET_BOUNTY_MON, SPECIES_SEEDOT)
-	setflag(FLAG_RYU_DOING_NATURALIST_BOUNTY_HUNT)
 	end
 }
 

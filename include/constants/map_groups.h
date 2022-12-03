@@ -709,6 +709,7 @@
 #define MAP_ROUTE124_MAXIE_HIDEOUT_CAVE            (2 | (33 << 8))
 #define MAP_LIMBO                                  (3 | (33 << 8))
 #define MAP_UNDERWORLD                             (4 | (33 << 8))
+#define MAP_INTRO_ROOM                             (5 | (33 << 8))
 
 #define MAP_GROUPS_COUNT 34
 

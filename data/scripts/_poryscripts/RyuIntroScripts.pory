@@ -1,13 +1,58 @@
+raw`
 GameIntroSequencePart1::
 	clearflag FLAG_RYU_RANDOMBATTLE
 	goto GameModeSelect
 	
 LRT_IntroMsg1:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken later than you expected.\p It seems like your clock's\n battery died.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken later than you expected.\p It seems like your watch's\n battery died.)$"
+
+RyuIntro_ChooseStarter:
+	.string "Choose a starting partner!$"
+
+RI_ChooseStartLocation:
+	.string "Choose a starting location.$"
+
+NatureMsg:
+	.string "{STR_VAR_1}'s nature is {STR_VAR_2}.$"
+
+ConfrimChoiceMsg:
+	.string "Are you happy with\nyour selection?$"
 
 GameModeSelect:: @ 823BF04
 	lockall
+	msgbox RI_ChooseStartLocation
+	bufferdynamicmulti SL_1, SL_2, SL_3, SL_4, SL_5, SL_6
+	multichoicedefault 0, 0, MULTI_DYNAMIC_6, 0, 1
+	copyvar VAR_0x8002, VAR_RESULT
 	closemessage
+	setflag FLAG_RYU_STARTER_LOCATION_CHOSEN
+	msgbox RyuIntro_ChooseStarter
+	closemessage
+RyuScript_StarterChoose::
+	special ChooseStarter
+	waitstate
+	goto RyuScript_VerifyStarter
+
+RyuScript_VerifyStarter::
+	callnative RyuBufferMonZeroNature
+	msgbox NatureMsg
+	closemessage
+	setvar VAR_0x8001, 0
+    special RyuFillStatsBuffers
+    drawinfobox INFOBOXPOKEMONDATA
+	bufferpartymonnick 1, 0
+	msgbox Ryu_Stats
+	closemessage
+	removeinfobox
+	msgbox ConfrimChoiceMsg, MSGBOX_YESNO 
+	compare VAR_RESULT, NO
+	goto_if_eq RyuScript_StarterChoose
+	setflag FLAG_RYU_STARTER_CHOSEN 
+	closemessage
+	goto RyuScript_ContinueIntroAfterStarter
+
+RyuScript_ContinueIntroAfterStarter::
+	setvar VAR_LITTLEROOT_INTRO_STATE, 6
 	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
 	msgbox RI_CheckPreviousExp, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -126,7 +171,7 @@ RyuNGPInfo:
 	.string "to your own party instead of badges.$"
 
 RyuSetTime:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} put a new battery in the alarm.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} put a new battery in the watch.)$"
 
 IT_EasyMode::
 	setvar VAR_RYU_EXP_MULTIPLIER, 4000
@@ -287,10 +332,27 @@ SetMaleStartingVariables:: @ 823BF20
 	setflag FLAG_HIDE_DH_DAD
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_RESCUED_BIRCH
+	setvar VAR_BIRCH_LAB_STATE, 4
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+	setflag FLAG_DEFEATED_RIVAL_ROUTE103
+	setvar VAR_OLDALE_RIVAL_STATE, 1
+	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	special HealPlayerParty
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setvar VAR_BIRCH_LAB_STATE, 2
+	setvar VAR_ROUTE101_STATE, 3
+	compare VAR_RESULT, MALE
+	call_if_eq Route101_EventScript_HideMayInBedroom
+	compare VAR_RESULT, FEMALE
+	call_if_eq Route101_EventScript_HideBrendanInBedroom
+	setvar VAR_LITTLEROOT_INTRO_STATE, 8 @@Player chose starter and finished first battle.
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_MOM
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1
 	goto_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeBegin
-	setdynamicwarp MAP_LITTLEROOT_TOWN, 255, 3, 10
 	msgbox LRT_IntroMsg1 MSGBOX_SIGN
 	msgbox RyuSetTime MSGBOX_SIGN
 	goto RyuSetRTC
@@ -307,6 +369,24 @@ SetFemaleStartingVariables:: @ 823BF46
 	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	setflag FLAG_HIDE_BH_DAD
 	setflag FLAG_HIDE_DH_DAD
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_RESCUED_BIRCH
+	setvar VAR_BIRCH_LAB_STATE, 4
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+	setflag FLAG_DEFEATED_RIVAL_ROUTE103
+	setvar VAR_OLDALE_RIVAL_STATE, 1
+	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	special HealPlayerParty
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setvar VAR_BIRCH_LAB_STATE, 2
+	setvar VAR_ROUTE101_STATE, 3
+	compare VAR_RESULT, MALE
+	call_if_eq Route101_EventScript_HideMayInBedroom
+	compare VAR_RESULT, FEMALE
+	call_if_eq Route101_EventScript_HideBrendanInBedroom
+	setvar VAR_LITTLEROOT_INTRO_STATE, 8 @@Player chose starter and finished first battle.
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM
@@ -412,6 +492,8 @@ GameIntroSequencePart2::
 	msgbox GI_GoSeeRivalMaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
+	setvar VAR_LITTLEROOT_INTRO_STATE, 10
+	callnative RyuWarpToStartingLocation
 	releaseall
 	end
 	
@@ -430,6 +512,8 @@ GameIntroFemalePart2::
 	msgbox GI_GoSeeRivalFemaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
+	setvar VAR_LITTLEROOT_INTRO_STATE, 10
+	callnative RyuWarpToStartingLocation
 	releaseall
 	end
 	
@@ -564,3 +648,30 @@ MomGoGetThem:
 
 Mom_IBelieveInYou:
 	.string "Mom: Keep at it!$"
+`
+
+text SL_1 {
+	"Littleroot"
+}
+
+text SL_2 {
+	"Mauville"
+}
+
+text SL_3 {
+	"Lilycove"
+}
+
+text SL_4 {
+	"Snowshore"
+}
+
+text SL_5 {
+	"Rustburo"
+}
+
+text SL_6 {
+	"Fallarbor"
+}
+
+

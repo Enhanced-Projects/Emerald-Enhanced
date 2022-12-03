@@ -1426,6 +1426,15 @@ bool8 RyuFillStatsBuffers(void)
     StringAppend(gTextBuffer1, gTextBuffer4);
     StringCopy(gRyuStringVar3, gTextBuffer1);
 }
+
+extern const u8 *const gNatureNamePointers[NUM_NATURES];
+void RyuBufferMonZeroNature(void)
+{
+    u8 nature = GetNature(&gPlayerParty[0]);
+    u8 nick = (GetMonData(&gPlayerParty[0], MON_DATA_NICKNAME, gStringVar1));
+    StringCopy(gStringVar2, gNatureNamePointers[nature]);
+}
+
 //FULL_COLOR
 void RyuSetUpSaveBlockStuff(void)
 {
@@ -2810,4 +2819,19 @@ void RyuTestDynamicObjectContents(void)
             mgba_printf(LOGINFO, "\nobject # %d:\nObject gfx ID: %d\nMap is %d:%d\ncoords are %d,%d,%d\nMovement type: %d\nlocalid: %d\nscript pointer: %d", i, gSaveBlock1Ptr->DynamicObjects[i].gfxId, gSaveBlock1Ptr->DynamicObjects[i].mapGroup, gSaveBlock1Ptr->DynamicObjects[i].mapNum, gSaveBlock1Ptr->DynamicObjects[i].x, gSaveBlock1Ptr->DynamicObjects[i].y, gSaveBlock1Ptr->DynamicObjects[i].z, gSaveBlock1Ptr->DynamicObjects[i].movement, gSaveBlock1Ptr->DynamicObjects[i].localId, gSaveBlock1Ptr->DynamicObjects[i].scriptPtr);
         }
     mgba_close();
+}
+
+static const u16 sStartingLocations[6][4] = {
+    {MAP_GROUP(LITTLEROOT_TOWN), MAP_NUM(LITTLEROOT_TOWN), 10, 8},
+    {MAP_GROUP(MAUVILLE_CITY), MAP_NUM(MAUVILLE_CITY), 22, 6},
+    {MAP_GROUP(LILYCOVE_CITY), MAP_NUM(LILYCOVE_CITY), 37, 25},
+    {MAP_GROUP(SNOWY_SHORE), MAP_NUM(SNOWY_SHORE), 20, 13},
+    {MAP_GROUP(RUSTBORO_CITY), MAP_NUM(RUSTBORO_CITY), 27, 35},
+    {MAP_GROUP(FALLARBOR_TOWN), MAP_NUM(FALLARBOR_TOWN), 8, 6},
+};
+
+void RyuWarpToStartingLocation(void)
+{
+    SetWarpDestination(sStartingLocations[gSpecialVar_0x8002][0], sStartingLocations[gSpecialVar_0x8002][1], 255, sStartingLocations[gSpecialVar_0x8002][2], sStartingLocations[gSpecialVar_0x8002][3]);
+    WarpIntoMap();
 }
