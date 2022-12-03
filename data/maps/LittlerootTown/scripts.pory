@@ -16,7 +16,7 @@ LRT_CheckMagmaWarp::
 	waitstate
 
 LittlerootTown_MapScript1_1E7DDB: @ 81E7DDB
-	call_if_unset FLAG_RYU_HALOWEEN_2022, LRT_EnableHolidayEvent
+	call_if_unset FLAG_RYU_HOLIDAY_EVENT, LRT_EnableHolidayEvent
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
 	call RyuCheckForWellTravelledAch
@@ -103,7 +103,7 @@ LRT_BirchLabSignNormal::
 	msgbox BirchsLabSign MSGBOX_SIGN
 	release
 	end
-	
+
 LittlerootSign:
 	.string "Littleroot Town\pThe town of humble beginnings.$"
 

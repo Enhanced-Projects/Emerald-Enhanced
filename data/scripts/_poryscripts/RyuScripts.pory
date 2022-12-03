@@ -1652,10 +1652,34 @@ script RyuScript_NoEventNPCScript{
 	end
 }
 
+text H23_1 {
+	"Reshiram"
+}
+
+text H23_2 {
+	"Zekrom"
+}
+
+text H23_3 {
+	"Xerneas"
+}
+
+text H23_4 {
+	"Yveltal"
+}
+
+text H23_5 {
+	"Zygarde"
+}
+
+text H23_6 {
+	"Genesect"
+}
+
 script RyuScript_GiveHolidayGiftMon{
 	lock
 	faceplayer
-	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hello, {PLAYER}!\pLord ryu summoned me here to give\nyou a special gift to\lcommemorate the spooky season!")
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hello, {PLAYER}!\pLord Ryu ordered me here to\ngive you a selection of\lrare Pokémon!")
 	closemessage
 	getpartysize
 	if (var(VAR_RESULT) > 5){
@@ -1663,8 +1687,25 @@ script RyuScript_GiveHolidayGiftMon{
 		release
 		end
 	}
-	givemon(SPECIES_DARKRAI, 100, ITEM_ANCIENT_COIN)
+	msgbox("Select a Pokémon!")
+	bufferdynamicmulti(H23_1, H23_2, H23_3, H23_4, H23_5, H23_6)
+	multichoice(0, 0, MULTI_DYNAMIC_6, 1)
+	switch(var(VAR_RESULT)){
+		case 0:
+			setvar(VAR_0x8005, SPECIES_RESHIRAM)
+		case 1:
+			setvar(VAR_0x8005, SPECIES_ZEKROM)
+		case 2:
+			setvar(VAR_0x8005, SPECIES_XERNEAS)
+		case 3:
+			setvar(VAR_0x8005, SPECIES_YVELTAL)
+		case 4:
+			setvar(VAR_0x8005, SPECIES_ZYGARDE_COMPLETE)
+		case 5:
+			setvar(VAR_0x8005, SPECIES_GENESECT)
+	}
 	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}She hands you a Pokéball.")
+	givemon(VAR_0x8005, 100, ITEM_LUCKY_EGG)
 	closemessage
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Lord Ryu once again thanks you for\nplaying Emerald Enhanced.\pI must take my leave now!")
 	closemessage
@@ -1673,23 +1714,23 @@ script RyuScript_GiveHolidayGiftMon{
 	waitmovement(FOLLOWER)
 	turnobject(PLAYER, DIR_NORTH)
 	turnobject(FOLLOWER, DIR_NORTH)
-	applymovement(12, HH2020Exit)
+	applymovement(12, HExit)
 	waitmovement(12)
 	applymovement(12, Common_Movement_ExclamationMark)
 	playse(SE_PIN)
 	waitse
-	msgbox("Oh! One more thing!\nLook forward to me having a\lbigger part in the coming weeks!\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lucy gives you a wink.)$")
+	msgbox("Oh! One more thing!\nLook forward to me having a\lbigger part in the future!\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lucy gives you a wink.)$")
 	closemessage
-	applymovement(12, HH2020Exit2)
+	applymovement(12, HExit2)
 	waitmovement(12)
-	setflag(FLAG_RYU_HALOWEEN_2022)
+	setflag(FLAG_RYU_HOLIDAY_EVENT)
 	setflag(FLAG_RYU_HIDE_HOLIDAY_NPC)
 	removeobject(12)
 	release
 	end
 }
 
-movement HH2020Exit{
+movement HExit{
 	walk_in_place_down
 	delay_16
 	walk_left * 2
@@ -1697,7 +1738,7 @@ movement HH2020Exit{
 	step_end
 }
 
-movement HH2020Exit2{
+movement HExit2{
 	face_left
 	delay_16
 	walk_left
