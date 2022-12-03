@@ -593,7 +593,7 @@ text SL_3 {
 }
 
 text SL_4 {
-	"Snowshore"
+	"Dewford"
 }
 
 text SL_5 {
@@ -614,7 +614,7 @@ script RyuScript_DoIntroWarp {
 		case 2:
 			warpsilent(MAP_LILYCOVE_CITY, 255, 37, 25)
 		case 3:
-			warpsilent(MAP_SNOWY_SHORE, 255, 20, 13)
+			warpsilent(MAP_DEWFORD_TOWN, 255, 23, 4)
 		case 4:
 			warpsilent(MAP_RUSTBORO_CITY, 255, 27, 35)
 		case 5:
