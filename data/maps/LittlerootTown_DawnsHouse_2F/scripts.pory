@@ -5,12 +5,26 @@ LittlerootTown_DawnsHouse_2F_MapScripts:: @ 81F83E3
 
 LRT_DawnAfterLilycoveSequence:: @ 81F951D
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
-	goto_if_eq LRT_DawnIntroductionScene
 	lock
 	faceplayer
 	goto_if_set FLAG_RYU_DS_DAWN_LOVERS, LRT_NIGHT2
 	goto_if_set FLAG_RYU_DS_DAWN_ACQ, LRT_FZ
+	goto_if_set FLAG_RYU_DS_DAWN_FRIENDS LRT_Dawn_AfterLilycoveScene
+	goto_if_set FLAG_RYU_DS_DAWN_INTRO LRT_DawnIntroDone
+	goto LRT_DawnIntroductionScene
+	release
+	end
+
+LRT_DawnIntroDone::
+	msgbox LRT_DAWN_INTRODONEMSG
+	closemessage
+	release
+	end
+
+LRT_DAWN_INTRODONEMSG:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey! Have you caught any cute\nPokémon lately?$"
+
+LRT_Dawn_AfterLilycoveScene::
 	msgbox LRT_DAWN_SORRYKISSED, MSGBOX_DEFAULT
 	msgbox LRT_DAWN_KISS, MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -266,13 +280,8 @@ LRT_DawnIntroductionScene::
 	msgbox GI_DawnMetMsg
 	closemessage
 	setflag FLAG_SYS_NATIONAL_DEX
-	setflag FLAG_RYU_LT_RIVAL
-	setflag FLAG_RYU_LT_RIVAL2
-	setflag FLAG_RIVAL_LEFT_FOR_ROUTE103
-	setvar VAR_OLDALE_RIVAL_STATE, 2
-	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
-	setvar VAR_LITTLEROOT_INTRO_STATE, 7@@ met rival
-	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
+	setflag FLAG_RYU_DS_DAWN_INTRO
+	clearflag FLAG_HIDE_ROUTE_103_RIVAL
 	release
 	end
 	

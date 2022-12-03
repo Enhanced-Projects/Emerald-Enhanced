@@ -155,7 +155,7 @@ LilycoveCity_OnTransition: @ 81E2B47
 	setvar VAR_CONTEST_HALL_STATE, 0
 	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
-	call Common_EventScript_SetupRivalGfxId
+	call_if_set FLAG_RYU_RIVAL_103_BATTLE, Common_EventScript_SetupRivalGfxId
 	call LCC_SetUpMagma
 	end
 
@@ -691,6 +691,7 @@ lcc_femaleRivalRelChoice1:: @ 81E3006
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	closemessage
 	clearflag FLAG_RYU_PREVENT_ACH_POPUP
+	setflag FLAG_RYU_DS_DAWN_FRIENDS
 	release
 	end
 	
@@ -722,6 +723,7 @@ lcc_maleRivalRelChoice1::
 	fadedefaultbgm
 	setflag FLAG_MET_RIVAL_LILYCOVE
 	clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
+	setflag FLAG_RYU_DS_BRENDAN_FRIENDS
 	release
 	end
 	

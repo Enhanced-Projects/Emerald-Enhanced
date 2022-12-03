@@ -1,5 +1,7 @@
 mapscripts IntroRoom_MapScripts {
         ON_FRAME [
         VAR_LITTLEROOT_INTRO_STATE, 4: GameIntroSequencePart1
+        VAR_LITTLEROOT_INTRO_STATE, 5: RyuScript_CheckStarter
+        VAR_LITTLEROOT_INTRO_STATE, 10: RyuScript_DoIntroWarp
     ]
 }

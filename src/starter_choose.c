@@ -599,6 +599,7 @@ static void Task_HandleConfirmStarterInput(u8 taskId)
         CreateMon(&gPlayerParty[0], sStarterMon[gSpecialVar_Result], 10, 32, 0, 0, OT_ID_PLAYER_ID, FALSE);
         ResetAllPicSprites();
         FlagSet(FLAG_RYU_STARTER_CHOICE_QUEUED);
+        VarSet(VAR_LITTLEROOT_INTRO_STATE, 5);
         SetMainCallback2(CB2_ReturnToField);
         break;
     case 1:  // NO

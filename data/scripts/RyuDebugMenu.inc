@@ -736,54 +736,24 @@ RyuDebug_DevMonQuickStart::
 
 RyuDebug_QuickItemFlagStart::
 	additem ITEM_WAYSTONE, 1
-	setflag FLAG_SYS_POKEMON_GET
-	setflag FLAG_SYS_POKENAV_GET
-	setflag FLAG_RECEIVED_POKENAV
 	call RyuDebug_enableWaystone
 	special RyuSetUpSaveBlockStuff
-	msgbox RyuNewGameQuery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RyuDebug_SkipTutorial
-	closemessage
-	goto RyuDebug_menu_nodevcheck
-	releaseall
+	goto RyuDebug_SkipTutorial
 	end
 
 RyuDebug_SkipTutorial::
 	goto_if_unset FLAG_RYU_DEV_MODE, ryu_end
-	setvar VAR_LITTLEROOT_INTRO_STATE, 10
-	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
-	setvar VAR_BIRCH_LAB_STATE, 5
-	setflag FLAG_ADVENTURE_STARTED
-	setvar VAR_OLDALE_TOWN_STATE, 1
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
-	setvar VAR_LITTLEROOT_TOWN_STATE, 3
-	setflag FLAG_RYU_INTRO_COMPLETE
-	setflag FLAG_HIDE_ROUTE_101_ZIGZAGOON
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
-	setflag FLAG_HIDE_ROUTE_103_RIVAL
-	setflag FLAG_SYS_POKEDEX_GET
-	special SetUnlockedPokedexFlags
-	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
-	setflag FLAG_SYS_NATIONAL_DEX
-	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
-	msgbox LRT_GameStartVariablesInfoMsg MSGBOX_DEFAULT
-	closemessage
 	msgbox RyuDebug_GiveItemQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	call_if_eq RyuDebug_GiveItems
 	release
 	end
 
-LRT_GameStartVariablesInfoMsg:
-	.string "New Game Flags and Variables Set.$"
-
 RyuDebug_GiveItemQuery:
 	.string "Show item options?$"
 
 RyuNewGameQuery:
-	.string "Would you like to activate the new\ngame scripts?$"
+	.string "Access QuickStart dialogues?$"
 
 @@EV DEBUG MENU==================================================================================================================
 

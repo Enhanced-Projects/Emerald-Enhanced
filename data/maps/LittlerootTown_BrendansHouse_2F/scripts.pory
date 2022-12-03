@@ -13,14 +13,23 @@ GameIntroSequenceCheck::
 LRT_BrendanAfterLilycoveScene::
 	lock
 	faceplayer
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
-	goto_if_eq LRT_BrendanIntroductionScene
 	goto_if_set FLAG_RYU_DS_BRENDAN_LOVERS, LRT_BrendanNight2
+	goto_if_set FLAG_RYU_DS_BRENDAN_ACQ, LRT_BrendanFZ
 	goto_if_set FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS, LRT_BrendanNIGHT
 	goto_if_set FLAG_RYU_DS_BRENDAN_FRIENDS, LRT_BrendanRelationshipScene1
-	goto_if_set FLAG_RYU_DS_BRENDAN_ACQ, LRT_BrendanFZ
+	goto_if_set FLAG_RYU_DS_BRENDAN_INTRO, LRT_BrendanIntroDone
+	goto LRT_BrendanIntroductionScene
 	release
 	end
+
+LRT_BrendanIntroDone::
+	msgbox LRT_BrendanIntroMsg
+	closemessage
+	release
+	end
+
+LRT_BrendanIntroMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Heya neighbor!\nCaught any awesome or cool Pokémon\llately?$"
 	
 LRT_BrendanRelationshipScene1::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
@@ -52,13 +61,8 @@ LRT_BrendanIntroductionScene::
 	setflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
 	msgbox GI_BrendanMetMsg
 	setflag FLAG_SYS_NATIONAL_DEX
-	setflag FLAG_RYU_LT_RIVAL
-	setflag FLAG_RYU_LT_RIVAL2
-	setflag FLAG_RIVAL_LEFT_FOR_ROUTE103
-	setvar VAR_OLDALE_RIVAL_STATE, 2
-	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
-	setvar VAR_LITTLEROOT_INTRO_STATE, 7@@ met rival
-	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
+	setflag FLAG_RYU_DS_BRENDAN_INTRO
+	clearflag FLAG_HIDE_ROUTE_103_RIVAL
 	release
 	end
 	

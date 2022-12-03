@@ -2821,17 +2821,3 @@ void RyuTestDynamicObjectContents(void)
     mgba_close();
 }
 
-static const u16 sStartingLocations[6][4] = {
-    {MAP_GROUP(LITTLEROOT_TOWN), MAP_NUM(LITTLEROOT_TOWN), 10, 8},
-    {MAP_GROUP(MAUVILLE_CITY), MAP_NUM(MAUVILLE_CITY), 22, 6},
-    {MAP_GROUP(LILYCOVE_CITY), MAP_NUM(LILYCOVE_CITY), 37, 25},
-    {MAP_GROUP(SNOWY_SHORE), MAP_NUM(SNOWY_SHORE), 20, 13},
-    {MAP_GROUP(RUSTBORO_CITY), MAP_NUM(RUSTBORO_CITY), 27, 35},
-    {MAP_GROUP(FALLARBOR_TOWN), MAP_NUM(FALLARBOR_TOWN), 8, 6},
-};
-
-void RyuWarpToStartingLocation(void)
-{
-    SetWarpDestination(sStartingLocations[gSpecialVar_0x8002][0], sStartingLocations[gSpecialVar_0x8002][1], 255, sStartingLocations[gSpecialVar_0x8002][2], sStartingLocations[gSpecialVar_0x8002][3]);
-    WarpIntoMap();
-}

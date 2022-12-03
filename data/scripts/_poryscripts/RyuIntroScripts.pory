@@ -4,7 +4,7 @@ GameIntroSequencePart1::
 	goto GameModeSelect
 	
 LRT_IntroMsg1:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken later than you expected.\p It seems like your watch's\n battery died.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(After checking your watch,\n you realize it's stopped.)$"
 
 RyuIntro_ChooseStarter:
 	.string "Choose a starting partner!$"
@@ -31,9 +31,7 @@ GameModeSelect:: @ 823BF04
 RyuScript_StarterChoose::
 	special ChooseStarter
 	waitstate
-	goto RyuScript_VerifyStarter
-
-RyuScript_VerifyStarter::
+RyuScript_CheckStarter::
 	callnative RyuBufferMonZeroNature
 	msgbox NatureMsg
 	closemessage
@@ -52,6 +50,7 @@ RyuScript_VerifyStarter::
 	goto RyuScript_ContinueIntroAfterStarter
 
 RyuScript_ContinueIntroAfterStarter::
+	setflag FLAG_HIDE_ROUTE_103_RIVAL
 	setvar VAR_LITTLEROOT_INTRO_STATE, 6
 	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
 	msgbox RI_CheckPreviousExp, MSGBOX_YESNO
@@ -98,7 +97,6 @@ Ryu_NewGamePlus::
 	call_if_set FLAG_RYU_HAS_OVAL_CHARM, Ryu_NGP_OvalCharm
 	call_if_set FLAG_RYU_HAS_RECIPE_BOOK, Ryu_NGP_RecipeBook
 	setflag FLAG_SYS_POKEDEX_GET
-	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	closemessage
 	msgbox Ryu_PleaseSelectDifficulty
@@ -333,25 +331,11 @@ SetMaleStartingVariables:: @ 823BF20
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING
 	setflag FLAG_SYS_POKEMON_GET
-	setflag FLAG_RESCUED_BIRCH
-	setvar VAR_BIRCH_LAB_STATE, 4
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
-	setflag FLAG_DEFEATED_RIVAL_ROUTE103
-	setvar VAR_OLDALE_RIVAL_STATE, 1
-	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
 	special HealPlayerParty
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
-	setvar VAR_BIRCH_LAB_STATE, 2
-	setvar VAR_ROUTE101_STATE, 3
-	compare VAR_RESULT, MALE
-	call_if_eq Route101_EventScript_HideMayInBedroom
-	compare VAR_RESULT, FEMALE
-	call_if_eq Route101_EventScript_HideBrendanInBedroom
 	setvar VAR_LITTLEROOT_INTRO_STATE, 8 @@Player chose starter and finished first battle.
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_MOM
-	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1
 	goto_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeBegin
 	msgbox LRT_IntroMsg1 MSGBOX_SIGN
 	msgbox RyuSetTime MSGBOX_SIGN
@@ -370,28 +354,14 @@ SetFemaleStartingVariables:: @ 823BF46
 	setflag FLAG_HIDE_BH_DAD
 	setflag FLAG_HIDE_DH_DAD
 	setflag FLAG_SYS_POKEMON_GET
-	setflag FLAG_RESCUED_BIRCH
-	setvar VAR_BIRCH_LAB_STATE, 4
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
-	setflag FLAG_DEFEATED_RIVAL_ROUTE103
-	setvar VAR_OLDALE_RIVAL_STATE, 1
-	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
 	special HealPlayerParty
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
-	setvar VAR_BIRCH_LAB_STATE, 2
-	setvar VAR_ROUTE101_STATE, 3
-	compare VAR_RESULT, MALE
-	call_if_eq Route101_EventScript_HideMayInBedroom
-	compare VAR_RESULT, FEMALE
-	call_if_eq Route101_EventScript_HideBrendanInBedroom
 	setvar VAR_LITTLEROOT_INTRO_STATE, 8 @@Player chose starter and finished first battle.
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM
 	goto_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeBegin
-	setdynamicwarp MAP_LITTLEROOT_TOWN, 255, 12, 10
 	msgbox LRT_IntroMsg1 MSGBOX_SIGN
 	msgbox RyuSetTime MSGBOX_SIGN
 	goto RyuSetRTC
@@ -404,7 +374,6 @@ Ryu_FrontierModeBegin::
 
 RyuSetRTC::
 	goto_if_set FLAG_SET_WALL_CLOCK, ViewClock
-	msgbox ClockStopped, MSGBOX_DEFAULT
 	call SetClockStage1
 	delay 30
 	setvar VAR_LITTLEROOT_INTRO_STATE, 6
@@ -421,20 +390,8 @@ RyuSetRTCFrontier::
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
-	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
-	setvar VAR_BIRCH_LAB_STATE, 5
-	setflag FLAG_ADVENTURE_STARTED
-	setvar VAR_OLDALE_TOWN_STATE, 1
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
-	setvar VAR_LITTLEROOT_TOWN_STATE, 3
-	setflag FLAG_RYU_INTRO_COMPLETE
-	setflag FLAG_HIDE_ROUTE_101_ZIGZAGOON
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
-	setflag FLAG_HIDE_ROUTE_103_RIVAL
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
-	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	goto GameIntroSequenceFrontier
 	releaseall
@@ -461,11 +418,6 @@ ViewClock:: @ 829283F
 	waitstate
 	releaseall
 	end
-
-
-ClockStopped:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}The clock is stopped…\p"
-	.string "Better set it and start it!$"
 	
 SetClockStage1:: @ 8292849
 	fadescreen 1
@@ -475,45 +427,27 @@ SetClockStage1:: @ 8292849
 	
 GameIntroSequencePart2::
 	lock
+	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
+	ach give ACH_WHOLE_NEW_WORLD
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
     checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq GameIntroFemalePart2
-	applymovement PLAYER, GI_Male_GetOutOfBed
-	waitmovement 0
-	playse SE_PC_ON
-	waitse
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_QuestionMark
-	waitmovement 0
-	msgbox GI_CheckedEmail MSGBOX_SIGN
-	closemessage
-	playse SE_PC_OFF
-	waitse
 	msgbox GI_GoSeeRivalMaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	setvar VAR_LITTLEROOT_INTRO_STATE, 10
-	callnative RyuWarpToStartingLocation
 	releaseall
 	end
 	
 GameIntroFemalePart2::
-	applymovement PLAYER, GI_Female_GetOutOfBed
-	waitmovement 0
-	playse SE_PC_ON
-	waitse
-	playse SE_PIN
-	applymovement PLAYER, Common_Movement_QuestionMark
-	waitmovement 0
-	msgbox GI_CheckedEmail MSGBOX_SIGN
-	closemessage
-	playse SE_PC_OFF
 	checkplayergender
 	msgbox GI_GoSeeRivalFemaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
 	setvar VAR_LITTLEROOT_INTRO_STATE, 10
-	callnative RyuWarpToStartingLocation
 	releaseall
 	end
 	
@@ -535,15 +469,11 @@ GI_Female_GetOutOfBed:
 	walk_in_place_up
 	step_end
 	
-GI_CheckedEmail:
-	.string "{PLAYER} checked email.\pThere's 2 new emails.\pOne from the online market which says:\n 'The ordered item was delivered to\l your item box!'\pThere's another one here... \nIt's from Prof. Birch! It says: \p"
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}! I'm glad you decided to \nstart your journey!\pCome see me in my lab to get\nyour starting partner!\pI'm looking forward to meeting you!$"
-	
 GI_GoSeeRivalMaleMsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You remember that the professor\n has a daughter.\l Maybe you should go meet her?)$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You remember that the professor\n in Littleroot Town has a daughter.\l Maybe you should go meet her?)$"
 	
 GI_GoSeeRivalFemaleMsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You remember that the professor\n has a son.\l Maybe you should go meet him?)$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You remember that the professor\n in Littleroot Town has a son.\l Maybe you should go meet him?)$"
 
 LRT_MOM::
 	lock
@@ -674,4 +604,21 @@ text SL_6 {
 	"Fallarbor"
 }
 
-
+script RyuScript_DoIntroWarp {
+	setvar(VAR_LITTLEROOT_INTRO_STATE, 11)
+	switch (var(VAR_0x8002)){
+		case 0:
+			warpsilent(MAP_LITTLEROOT_TOWN, 255, 10, 8)
+		case 1:
+			warpsilent(MAP_MAUVILLE_CITY, 255, 22, 6)
+		case 2:
+			warpsilent(MAP_LILYCOVE_CITY, 255, 37, 25)
+		case 3:
+			warpsilent(MAP_SNOWY_SHORE, 255, 20, 13)
+		case 4:
+			warpsilent(MAP_RUSTBORO_CITY, 255, 27, 35)
+		case 5:
+			warpsilent(MAP_FALLARBOR_TOWN, 255, 8, 6)
+	}
+	waitstate
+}

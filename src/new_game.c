@@ -223,8 +223,6 @@ void NewGameInitData(void)
     gSaveBlock2Ptr->notifiedSaveState = FALSE;
 
     //flags
-    FlagSet(FLAG_RYU_LT_RIVAL2);
-    FlagSet(FLAG_RYU_LT_RIVAL);
     FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN);
     FlagSet(FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA);
     FlagSet(FLAG_HIDE_METEOR_FALLS_TEAM_AQUA);

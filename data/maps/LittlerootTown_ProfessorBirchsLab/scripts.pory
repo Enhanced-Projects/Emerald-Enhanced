@@ -1,121 +1,16 @@
 raw `
 LittlerootTown_ProfessorBirchsLab_MapScripts:: @ 81F9C91
 	map_script ON_TRANSITION, LittlerootTown_ProfessorBirchsLab_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_ProfessorBirchsLab_OnWarp
-	map_script ON_FRAME, LittlerootTown_ProfessorBirchsLab_OnFrame
 	.byte 0
 
 LittlerootTown_ProfessorBirchsLab_OnTransition: @ 81F9CA1
 	call Common_EventScript_SetupRivalGfxId
 	end
 
-LittlerootTown_ProfessorBirchsLab_OnWarp: @ 81F9D06
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 8, LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter
-	.2byte 0
-
-LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter:: @ 81F9D40
-	turnobject PLAYER, DIR_NORTH
-	end
-
-LittlerootTown_ProfessorBirchsLab_OnFrame: @ 81F9DB9
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 8, LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent
-	.2byte 0
-
-LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent:: @ 81F9DDB
-	lockall
-	bufferleadmonspeciesname 0
-	message LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon
-	waitmessage
-	playfanfare MUS_FANFA4
-	waitfanfare
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_NicknameStarter
-	compare VAR_RESULT, NO
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_GoSeeRival
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_NicknameStarter:: @ 81F9E07
-	setvar VAR_0x8004, 0
-	call Common_EventScript_NameReceivedPartyMon
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_GoSeeRival
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_GoSeeRival:: @ 81F9E17
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival
-	compare VAR_RESULT, NO
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival:: @ 81F9E36
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou, MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_ROUTE_101_BOY
-	setvar VAR_BIRCH_LAB_STATE, 3
-	setvar VAR_LITTLEROOT_INTRO_STATE, 9
-	releaseall
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival:: @ 81F9E48
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival
-	compare VAR_RESULT, NO
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival
-	end
-
-LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex: @ 81F9E78
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-LittlerootTown_ProfessorBirchsLab_Movement_BirchRetrievePokedexes: @ 81F9F46
-	walk_left
-	walk_in_place_fastest_down
-	delay_16
-	delay_16
-	walk_right
-	walk_in_place_fastest_down
-	delay_16
-	delay_16
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_fastest_up
-	step_end
-
-LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex: @ 81F9F58
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	walk_in_place_fastest_down
-	step_end
-
-
 LittlerootTown_ProfessorBirchsLab_EventScript_Aide:: @ 81F9F84
 	lock
 	faceplayer
-	compare VAR_BIRCH_LAB_STATE, 3
-	goto_if_ge LittlerootTown_ProfessorBirchsLab_EventScript_AideReceivedStarter
-	goto_if_set FLAG_BIRCH_AIDE_MET, LittlerootTown_ProfessorBirchsLab_EventScript_AideAlreadyMet
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork, MSGBOX_DEFAULT
-	setflag FLAG_BIRCH_AIDE_MET
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_AideAlreadyMet
 	release
 	end
 
@@ -133,10 +28,8 @@ LRT_StandardBirch::
 	ach query, ACH_POKEMON_TRAINER
 	compare VAR_RESULT, TRUE
 	call_if_ne LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting
-	compare VAR_LITTLEROOT_INTRO_STATE, 10
+	compare VAR_LITTLEROOT_INTRO_STATE, 11
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister
-	compare VAR_LITTLEROOT_INTRO_STATE, 95
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex
 	msgbox LRT_BL_HaveYouSeenRivalYet
 	closemessage
 	release
@@ -146,75 +39,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister:: @ 81FA2
 	goto ProfBirch_EventScript_RatePokedexOrRegister
 	release
 	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex:: @ 81FA2F8
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex, MSGBOX_DEFAULT
-	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex, MSGBOX_DEFAULT
-	closemessage
-	applymovement 3, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
-	waitmovement 0
-	applymovement PLAYER, Common_Movement_WalkInPlaceFastestLeft
-	applymovement FOLLOWER, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	checkplayergender
-	compare VAR_RESULT, MALE
-	call_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
-	compare VAR_RESULT, FEMALE
-	call_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
-	setvar VAR_BIRCH_LAB_STATE, 5
-	setflag FLAG_ADVENTURE_STARTED
-	ach give ACH_WHOLE_NEW_WORLD
-	setvar VAR_OLDALE_TOWN_STATE, 1
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
-	setvar VAR_LITTLEROOT_TOWN_STATE, 3
-	setvar VAR_LITTLEROOT_INTRO_STATE, 10
-	releaseall
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls:: @ 81FA352
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	giveitem ITEM_POKE_BALL, 5
-	compare VAR_RESULT, FALSE
-	call_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls, MSGBOX_DEFAULT
-	setvar VAR_RESULT, 0
-	return
-
-LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls:: @ 81FA37F
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	giveitem ITEM_POKE_BALL, 5
-	compare VAR_RESULT, FALSE
-	call_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls, MSGBOX_DEFAULT
-	setvar VAR_RESULT, 1
-	return
-
-LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex:: @ 81FA3AC
-	playfanfare MUS_FANFA4
-	message LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex
-	waitfanfare
-	setflag FLAG_SYS_POKEDEX_GET
-	special SetUnlockedPokedexFlags
-	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
-	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
-	return
-
-LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls:: @ 81FA3CE
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull, MSGBOX_DEFAULT
-	return
-
-LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls:: @ 81FA3D7
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeyYourBagsFull, MSGBOX_DEFAULT
-	return
-
-LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer: @ 81FA3E0
-	walk_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_in_place_fastest_right
-	step_end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Machine:: @ 81FA3E3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_SeriousLookingMachine, MSGBOX_SIGN
@@ -263,113 +87,9 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo: @ 81FA6CE
 	.string "The Prof enjoys {RIVAL}'s help, too.\n"
 	.string "There's a lot of love there.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon: @ 81FA74D
-	.string "Prof. Birch: So, {PLAYER}.\p"
-	.string "I've heard so much about you from\n"
-	.string "your father.\p"
-	.string "I've heard that you don't have your\n"
-	.string "own Pokémon yet.\p"
-	.string "But the way you battled earlier,\n"
-	.string "you pulled it off with aplomb!\p"
-	.string "I guess you have your father's blood\n"
-	.string "in your veins after all!\p"
-	.string "Oh, yes. As thanks for rescuing me,\n"
-	.string "I'd like you to have the Pokémon you\l"
-	.string "used earlier.\p"
-	.string "{PLAYER} received the {STR_VAR_1}!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon: @ 81FA8B1
-	.string "Prof. Birch: While you're at it, why not\n"
-	.string "give a nickname to that {STR_VAR_1}?$"
-
-LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival: @ 81FA8F6
-	.string "Prof. Birch: If you work at Pokémon\n"
-	.string "and gain experience, I think you'll make\l"
-	.string "an extremely good Trainer.\p"
-	.string "My kid, {RIVAL}, is also studying\n"
-	.string "Pokémon while helping me out.\p"
-	.string "{PLAYER}, don't you think it might be\n"
-	.string "a good idea to go see {RIVAL}?$"
-
-LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou: @ 81FA9D5
-	.string "Prof. Birch: Great!\n"
-	.string "{RIVAL} should be happy, too.\p"
-	.string "Get {RIVAL} to teach you what it\n"
-	.string "means to be a Trainer.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay: @ 81FAA35
-	.string "Prof. Birch: Oh, don't be that way.\n"
-	.string "You should go meet my kid.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex: @ 81FAB22
-	.string "Prof. Birch: Oh, hi, {PLAYER}!\p"
-	.string "I heard you beat {RIVAL} on\n"
-	.string "your first try. That's excellent!\p"
-	.string "{RIVAL}'s been helping with my research\n"
-	.string "for a long time.\p"
-	.string "{RIVAL} has an extensive history as\n"
-	.string "a Trainer already.\p"
-	.string "Here, {PLAYER}, I ordered this for my\n"
-	.string "research, but I think you should have\l"
-	.string "this Pokédex.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex: @ 81FAC32
-	.string "{PLAYER} received the Pokédex!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex: @ 81FAC4B
-	.string "Prof. Birch: The Pokédex is a high-tech\n"
-	.string "tool that automatically makes a record\l"
-	.string "of any Pokémon you meet or catch.\p"
-	.string "My kid, {RIVAL}, goes everywhere\n"
-	.string "with it.\p"
-	.string "Whenever my kid catches a rare Pokémon\n"
-	.string "and records its data in the Pokédex,\l"
-	.string "why, {RIVAL} looks for me while I'm out\l"
-	.string "doing fieldwork, and shows me.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait: @ 81FAD6F
-	.string "Prof. Birch: Countless Pokémon\n"
-	.string "await you!\p"
-	.string "Argh, I'm getting the itch to get out\n"
-	.string "and do fieldwork again!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese: @ 81FADD7
-	.string "{COLOR LIGHT_RED}{SHADOW RED} Oh, wow, {PLAYER}!\n"
-	.string "You got a Pokédex, too!\p"
-	.string "That's great! Just like me!\n"
-	.string "I've got something for you, too!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls: @ 81FAE40
-	.string "{COLOR LIGHT_RED}{SHADOW RED} It's fun if you can get a lot of\n"
-	.string "Pokémon!\p"
-	.string "I'm going to look all over the place\n"
-	.string "because I want different Pokémon.\p"
-	.string "If I find any cute Pokémon, I'll catch\n"
-	.string "them with Poké Balls!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull: @ 81FAEF3
-	.string "Oh? Your Pack's full.$"
-
 LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext: @ 81FAF08
 	.string "{COLOR LIGHT_RED}{SHADOW RED} I wonder where I should go look\n"
 	.string "for Pokémon next?$"
-
-LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese: @ 81FAF3F
-	.string "{COLOR LIGHT_RED}{SHADOW RED} Huh…\n"
-	.string "So you got a Pokédex, too.\p"
-	.string "Well then, here.\n"
-	.string "I'll give you these.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls: @ 81FAF8E
-	.string "{COLOR LIGHT_RED}{SHADOW RED} You know it's more fun to\n"
-	.string "have a whole bunch of Pokémon.\p"
-	.string "I'm going to explore all over the place\n"
-	.string "to find different Pokémon.\p"
-	.string "If I find any cool Pokémon, you bet\n"
-	.string "I'll try to get them with Poké Balls.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_HeyYourBagsFull: @ 81FB05D
-	.string "Hey, your Pack's full.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanWhereShouldIGoNext: @ 81FB073
 	.string "{COLOR LIGHT_RED}{SHADOW RED} Where should I look for\n"
@@ -388,44 +108,6 @@ LittlerootTown_ProfessorBirchsLab_Text_CrammedWithBooksOnPokemon: @ 81FB124
 
 LittlerootTown_ProfessorBirchsLab_Text_BookTooHardToRead: @ 81FB148
 	.string "It's a book that's too hard to read.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2: @ 81FB466
-	.string "Prof. Birch: But listen.\n"
-	.string "You've become the Champion,\l"
-	.string "but your Pokémon journey isn't over.\p"
-	.string "There is no end to the road\n"
-	.string "that is Pokémon.\p"
-	.string "Somewhere, there is a grassy patch\n"
-	.string "that's waiting for you!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting: @ 81FBA2C
-	.string "Prof. Birch: Listen, {PLAYER}.\n"
-	.string "You've completed the Hoenn Pokédex,\l"
-	.string "but your Pokémon journey isn't over.\p"
-	.string "There is no end to the road\n"
-	.string "that is Pokémon.\p"
-	.string "Somewhere, there is a grassy patch\n"
-	.string "that's waiting for you!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_BetterLeaveOthersAlone: @ 81FBAF8
-	.string "You received the promised Pokémon.\n"
-	.string "Better leave the others alone.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_MayWhatNextImStayingHere: @ 81FBB68
-	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, after this…\n"
-	.string "What are you going to do?\p"
-	.string "Are you going to keep battling\n"
-	.string "and sharpening your skills?\p"
-	.string "Or are you going to try filling\n"
-	.string "the Pokédex?\p"
-	.string "I'm staying here to help the Prof.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_BrendanPreferCollectingSlowly: @ 81FBC2D
-	.string "{COLOR LIGHT_RED}{SHADOW RED} Rather than collecting\n"
-	.string "Pokémon, I prefer slowly and \l"
-	.string "steadily raising the one I chose.$"
-
-
 
 `
 

@@ -41,8 +41,8 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
-#define FLAG_RYU_LT_RIVAL2                   0x20
-#define FLAG_RYU_LT_RIVAL                    0x21
+#define FLAG_UNUSED_0x20                     0x20
+#define FLAG_UNUSED_0x21                     0x21
 #define FLAG_HIDE_CHAMPIONS_ROOM_STEVEN      0x22
 #define FLAG_RYU_STARTER_CHOSEN              0x23
 #define FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS 0x24
@@ -93,7 +93,7 @@
 // Scripts
 #define FLAG_HIDE_RAYQUAZA_SKY_TOWER_SUMMIT  0x50
 #define FLAG_SET_WALL_CLOCK                  0x51
-#define FLAG_RESCUED_BIRCH                   0x52
+#define FLAG_UNUSED_0x52                     0x52
 #define FLAG_TOBY_TRAINER_SIGHT              0x53
 
 #define FLAG_RYU_JUKEBOX_ENABLED             0x54
@@ -131,7 +131,7 @@
 #define FLAG_RYU_IN_MOSSDEEP_GYM             0x71
 #define FLAG_RYU_HAS_HOME_REGISTERED         0x72 //player has registered a real estate property as their home.
 #define FLAG_RECEIVED_METEORITE              0x73
-#define FLAG_ADVENTURE_STARTED               0x74 // RECEIVED Pokédex.
+#define FLAG_UNUSED_0x74                     0x74
 #define FLAG_DEFEATED_MAGMA_SPACE_CENTER     0x75 // Set when Team Magma is defeated at Mossdeep's Space Center.
 #define FLAG_MET_HIDDEN_POWER_GIVER          0x76
 
@@ -147,7 +147,7 @@
 #define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F
 #define FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON 0x80 //necessary for the devon line while player is in aqua hideout.
 #define FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN  0x81
-#define FLAG_DEFEATED_RIVAL_ROUTE103         0x82
+#define FLAG_UNUSED_0x82                     0x82
 #define FLAG_RECEIVED_DOLL_LANETTE           0x83
 #define FLAG_RECEIVED_GREAT_BALL_OLDALE      0x84
 #define FLAG_RECEIVED_AMULET_COIN            0x85
@@ -318,7 +318,7 @@
 #define FLAG_RECEIVED_BELDUM                 0x12A
 #define FLAG_RECEIVED_FANCLUB_TM_THIS_WEEK   0x12B
 #define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0x12C
-#define FLAG_RIVAL_LEFT_FOR_ROUTE103         0x12D
+#define FLAG_UNUSED_0x12D                    0x12D
 #define FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES    0x12E // Hides the devon enforcers in the shipyard during the aqua quest shelly line
 #define FLAG_RYU_RECEIVED_MEGA_BRACELET      0x12F
 #define FLAG_RYU_AQUA_4_NOTIFY               0x130 // Player received the pokenav call from the stage 4(romance) aqua quest.
@@ -752,7 +752,7 @@
 #define FLAG_RYU_PREVENT_ACH_POPUP                                  0x2BB
 
 // Event Flags
-#define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
+#define FLAG_UNUSED_0x2BC                                           0x2BC
 #define FLAG_RYU_CHOSE_MAGMA_PATH                                   0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
@@ -772,7 +772,7 @@
 #define FLAG_HIDE_SAFARI_ZONE_SOUTH_CONSTRUCTION_WORKERS            0x2CD
 #define FLAG_HIDE_MEW                                               0x2CE
 #define FLAG_HIDE_ROUTE_104_RIVAL                                   0x2CF
-#define FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE                  0x2D0
+#define FLAG_UNUSED_0x2D0                                           0x2D0
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH                  0x2D1
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_BEDROOM         0x2D2
 #define FLAG_HIDE_ROUTE_103_RIVAL                                   0x2D3
@@ -804,7 +804,7 @@
 #define FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION                  0x2EB
 #define FLAG_HIDE_LILYCOVE_HARBOR_EVENT_TICKET_TAKER                0x2EC
 #define FLAG_RYU_HIDE_LAVARIDGE_RIVAL                               0x2ED
-#define FLAG_HIDE_ROUTE_101_ZIGZAGOON                               0x2EE
+#define FLAG_UNUSED_0x2EE                                           0x2EE
 #define FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY                           0x2EF
 #define FLAG_RYU_MAGMA_SOOTOPOLIS_EVENT                             0x2F0
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN              0x2F1
@@ -994,7 +994,7 @@
 #define FLAG_HIDE_REGISTEEL                                         0x3A9
 #define FLAG_HIDE_METEOR_FALLS_TEAM_AQUA                            0x3AA
 #define FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA                           0x3AB
-#define FLAG_UNUSED_0x3AC                                           0x3AC
+#define FLAG_RYU_DS_DAWN_INTRO                                      0x3AC
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT               0x3AD
 #define FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO                          0x3AE
 #define FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW                 0x3AF
@@ -1024,16 +1024,16 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN                0x3C7
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL       0x3C8
 #define FLAG_HIDE_ALL_KECLEON_OWS                                   0x3C9
-#define FLAG_UNUSED_0x3CA                                           0x3CA
+#define FLAG_RYU_DS_BRENDAN_INTRO                                   0x3CA
 #define FLAG_HIDE_LILYCOVE_CITY_RIVAL                               0x3CB
 #define FLAG_HIDE_ROUTE_120_STEVEN                                  0x3CC
-#define FLAG_UNUSED_0x3CD                                           0x3CD
+#define FLAG_RYU_RIVAL_103_BATTLE                                   0x3CD
 #define FLAG_HIDE_NEW_MAUVILLE_VOLTORB_1                            0x3CE
 #define FLAG_HIDE_NEW_MAUVILLE_VOLTORB_2                            0x3CF
 #define FLAG_HIDE_NEW_MAUVILLE_VOLTORB_3                            0x3D0
 #define FLAG_HIDE_AQUA_HIDEOUT_B1F_ELECTRODE_1                      0x3D1
 #define FLAG_HIDE_AQUA_HIDEOUT_B1F_ELECTRODE_2                      0x3D2
-#define FLAG_HIDE_OLDALE_TOWN_RIVAL                                 0x3D3
+#define FLAG_UNUSED_0x3D3                                           0x3D3
 #define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4
 #define FLAG_UNUSED_0x3D5                                           0x3D5
 #define FLAG_UNUSED_0x3D6                                           0x3D6
@@ -1184,9 +1184,9 @@
 #define FLAG_ITEM_NEW_MAUVILLE_PARALYZE_HEAL                        0x463
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL                      0x464
 
-#define FLAG_RYU_MET_RIVAL_LITTLEROOT                               0x465
+#define FLAG_UNUSED_0x465                                           0x465
 #define FLAG_RYU_FRONTIER_MODE                                      0x466
-#define FLAG_RYU_CHALLENGEMODE                                       0x467
+#define FLAG_RYU_CHALLENGEMODE                                      0x467
 #define FLAG_RYU_HARDCORE_MODE                                      0x468
 
 #define FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL                             0x469
@@ -1196,7 +1196,7 @@
 #define FLAG_RYU_EXP_DRIVE_DISABLE_EARNING                          0x46D
 #define FLAG_ITEM_ROUTE_119_NUGGET                                  0x46E
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
-#define FLAG_RYU_CHALLENGEFAILED                                     0x470
+#define FLAG_RYU_CHALLENGEFAILED                                    0x470
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
 #define FLAG_UNUSED_0x472                                           0x472
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
@@ -1246,7 +1246,7 @@
 // with greater than zero comparisons on VAR_RYU_NGPLUS_COUNT
 #define FLAG_RYU_ISNGPLUS                                           0x49A
 #define FLAG_RYU_HAS_IMPRINTER                                      0x49B
-#define FLAG_RYU_INTRO_COMPLETE                                     0x49C
+#define FLAG_UNUSED_0x49C                                           0x49C
 #define FLAG_RYU_ON_DATE                                            0x49D
 #define FLAG_RYU_ON_DATE_2                                          0x49E
 #define FLAG_RYU_FORECASTER                                         0x49F
@@ -1541,7 +1541,7 @@
 
 #define FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS       (SYSTEM_FLAGS + 0x83)
 
-#define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
+#define FLAG_UNUSED_SYSTEM_FLAG                     (SYSTEM_FLAGS + 0x84)
 
 #define FLAG_RYU_FROSTY_FOREST_ENERGY_ROOT          (SYSTEM_FLAGS + 0x85)
 #define FLAG_RYU_FROSTY_FOREST_BANETTITE            (SYSTEM_FLAGS + 0x86)

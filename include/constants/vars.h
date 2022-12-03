@@ -96,8 +96,8 @@
 #define VAR_POKELOT_RND2                     0x404C
 #define VAR_POKELOT_PRIZE_PLACE              0x404D
 #define VAR_RYU_THEME_NUMBER                 0x404E // Which theme is selected
-#define VAR_LITTLEROOT_TOWN_STATE            0x4050
-#define VAR_OLDALE_TOWN_STATE                0x4051
+#define VAR_UNUSED_0x4050                    0x4050
+#define VAR_UNUSED_0x4051                    0x4051
 #define VAR_LAST_KNOWN_GAME_VERSION          0x4052 // current game version
 #define VAR_LAVARIDGE_TOWN_STATE             0x4053
 #define VAR_CURRENT_SECRET_BASE              0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
@@ -112,7 +112,7 @@
 #define VAR_MOSSDEEP_CITY_STATE              0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E
 #define VAR_RYU_PARTNER_COUNT                0x405F // Used to track how many partners the player has
-#define VAR_ROUTE101_STATE                   0x4060
+#define VAR_UNUSED_0x4060                    0x4060
 #define VAR_SAVE_FILE_CREATED_ON_VERSION     0x4061 // Unused Var
 #define VAR_RYU_TIMES_STAYED_WITH_COMPANION  0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                   0x4063
@@ -148,7 +148,7 @@
 #define VAR_RYU_DAILY_QUEST_DATA             0x4081 // Multi-Purpose component for daily quests.
 #define VAR_RYU_PROPERTY_DAMAGE_DAYS         0x4082 
 #define VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION 0x4083 // The faction that assigned the current daily quest.
-#define VAR_BIRCH_LAB_STATE                  0x4084
+#define VAR_UNUSED_0x4084                    0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // used to determine which petalburg doors are open.
 #define VAR_CONTEST_HALL_STATE               0x4086
 #define VAR_CABLE_CLUB_STATE                 0x4087
@@ -156,8 +156,8 @@
 #define VAR_SECRET_BASE_INITIALIZED          0x4089
 #define VAR_CONTEST_PRIZE_PICKUP             0x408A
 #define VAR_RYU_PLAYER_HOUSE_ID              0x408B // which house the player set as their home. Defaults to 0xFFFF for none.
-#define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN  0x408C
-#define VAR_LITTLEROOT_RIVAL_STATE           0x408D
+#define VAR_UNUSED_0c408C                    0x408C
+#define VAR_UNUSED_0x408D                    0x408D
 #define VAR_UNUSED_0x408E                    0x408E
 #define VAR_DEVON_CORP_3F_STATE              0x408F
 #define VAR_UNUSED_0x4090                    0x4090
@@ -215,7 +215,7 @@
 #define VAR_FOSSIL_RESURRECTION_STATE        0x40C4
 #define VAR_WHICH_FOSSIL_REVIVED             0x40C5
 #define VAR_STEVENS_HOUSE_STATE              0x40C6
-#define VAR_OLDALE_RIVAL_STATE               0x40C7
+#define VAR_UNUSED_0x40C7                    0x40C7
 #define VAR_JAGGED_PASS_STATE                0x40C8
 #define VAR_UNUSED_0x40C9                    0x40C9
 #define VAR_SKY_PILLAR_STATE                 0x40CA

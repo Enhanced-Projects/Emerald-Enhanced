@@ -104,11 +104,6 @@ LRT_BirchLabSignNormal::
 	release
 	end
 	
-LRT_SealedChamber:
-	warpteleport MAP_SEALED_CHAMBER_OUTER_ROOM, 0, 0, 0
-	release
-	end
-	
 LittlerootSign:
 	.string "Littleroot Town\pThe town of humble beginnings.$"
 
@@ -124,55 +119,6 @@ LRT_LittleGirlChatter::
 	
 LRT_LittleGirl:
 	.string " {COLOR LIGHT_RED}{SHADOW RED}Hi! I'm on guard duty!\nDon't go outside without friends, okay?$"
-
-LRT_PreventLeave::
-	goto_if_set FLAG_RYU_MET_RIVAL_LITTLEROOT, ryu_end
-	lock
-	faceplayer
-	playse SE_PIN
-	applymovement 1, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 1, LRT_StepRight
-	waitmovement 0
-	checkplayergender
-	compare VAR_RESULT, FEMALE
-	goto_if_eq LRT_cantLeaveFemale
-	msgbox LRT_Girl_PreventLeave MSGBOX_DEFAULT
-	applymovement PLAYER, LRT_CantLeave
-	applymovement 1, LRT_StepLeft
-	waitmovement 0
-	release
-	end
-	
-LRT_cantLeaveFemale:
-	msgbox LRT_Girl_PreventLeaveFemale MSGBOX_DEFAULT
-	applymovement PLAYER, LRT_CantLeave
-	applymovement 1, LRT_StepLeft
-	waitmovement 0
-	release
-	end
-	
-LRT_Girl_PreventLeaveFemale:
-	.string " {COLOR LIGHT_RED}{SHADOW RED}Um! Lady!\pIt's dangerous to go out there\nwithout Pokémon to protect you!$"
-	
-	
-LRT_StepLeft:
-	walk_left
-	walk_in_place_down
-	step_end
-
-LRT_StepRight:
-	walk_right
-	walk_in_place_right
-	step_end
-
-LRT_Girl_PreventLeave:
-	.string " {COLOR LIGHT_RED}{SHADOW RED}Um! Mister!\pIt's dangerous to go out there\nwithout Pokémon to protect you!$"
-	
-LRT_CantLeave:
-	walk_down
-	walk_down
-	step_end
 
 LRT_BrendansHouseSign:: @ 81E818F
 	lockall
