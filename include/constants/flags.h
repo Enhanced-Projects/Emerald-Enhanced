@@ -1366,10 +1366,10 @@
 #define FLAG_RYU_DISABLED_ANIMS                                   0x509
 #define FLAG_RYU_FACING_ATTENDANT                                 0x50A
 #define FLAG_RYU_VERBOSE_MODE                                     0x50B
-#define FLAG_UNUSED_0x50C                                         0x50C
+#define FLAG_RYU_HOLIDAY_EVENT                                    0x50C
 #define FLAG_UNUSED_0x50D                                         0x50D
 #define FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS                 0x50E
-#define FLAG_RYU_HOLIDAY_EVENT                                    0x50F
+#define FLAG_UNUSED_0x50F                                         0x50F
 
 
 #define NEW_FLAGS_END                                             0x5FF
