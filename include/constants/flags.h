@@ -318,7 +318,7 @@
 #define FLAG_RECEIVED_BELDUM                 0x12A
 #define FLAG_RECEIVED_FANCLUB_TM_THIS_WEEK   0x12B
 #define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0x12C
-#define FLAG_UNUSED_0x12D                    0x12D
+#define FLAG_RYU_COMPANION_PARTICIPATION     0x12D //allow followers to participate.
 #define FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES    0x12E // Hides the devon enforcers in the shipyard during the aqua quest shelly line
 #define FLAG_RYU_RECEIVED_MEGA_BRACELET      0x12F
 #define FLAG_RYU_AQUA_4_NOTIFY               0x130 // Player received the pokenav call from the stage 4(romance) aqua quest.

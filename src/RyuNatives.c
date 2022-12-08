@@ -1029,7 +1029,6 @@ bool8 ScrCmd_getobjectxy(struct ScriptContext *ctx)
     struct ObjectEvent *objectEvent = &gObjectEvents[GetObjectEventIdByLocalId(localId)];
     gSpecialVar_0x8001 = objectEvent->currentCoords.x - 7;
     gSpecialVar_0x8002 = objectEvent->currentCoords.y - 7;
-    DebugPrint((const u8 []) _("coords:"), 2, gSpecialVar_0x8001, gSpecialVar_0x8002);
 
     return FALSE;
 }

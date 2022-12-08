@@ -43,7 +43,7 @@ EverGrandeCity_DrakesRoom_EventScript_Drake:: @ 82286F3
 	setflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltDrake
 	msgbox EverGrandeCity_DrakesRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrake
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, EGC_FollowerDrake
 	trainerbattle_no_intro TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST

@@ -110,7 +110,7 @@ FLANNERY3::
 	end
 
 FLANNERY4::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, LG_FollowerMatch
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, LG_FollowerMatch
 	trainerbattle_single TRAINER_FLANNERY_4, LavaridgeTown_Gym_1F_Text_FlanneryPreBattle, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LG_Reset
 	release
 	end

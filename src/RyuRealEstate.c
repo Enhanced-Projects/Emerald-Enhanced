@@ -39,7 +39,7 @@ int CheckIfInPlayerHome(void)
         {
             if (gSaveBlock1Ptr->location.mapGroup == gRyuPropertyData[i][2])
                 if (gSaveBlock1Ptr->location.mapNum == gRyuPropertyData[i][3])
-                    return i;
+                    return TRUE;
         }
         return 0xFFFF;
 }

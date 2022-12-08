@@ -68,9 +68,6 @@ LRT_CancelFollower::
 	
 LRT_MinnieScript::
 	call RyuFollower_MinnieChatterSelector
-	msgbox LRT_MinnieLeaveQuery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq LRT_RemoveMinnie
 	closemessage
 	end
 

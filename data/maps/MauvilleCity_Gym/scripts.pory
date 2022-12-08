@@ -137,7 +137,7 @@ WATTSON3::
 	end
 
 WATTSON4::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, MVG_FollowerMatch
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, MVG_FollowerMatch
 	trainerbattle_single TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MVG_Reset
 	release
 	end

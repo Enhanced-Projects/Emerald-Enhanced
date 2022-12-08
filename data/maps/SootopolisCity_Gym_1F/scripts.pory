@@ -145,7 +145,7 @@ Juan3::
 	end
 
 Juan4::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, SG_FollowerMatch
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, SG_FollowerMatch
 	trainerbattle_single TRAINER_JUAN_4, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
 	release
 	end

@@ -26,49 +26,31 @@ RyuFollower_ShellyScript::
 	drawfullscreenimage SCENEBGSHELLY
     call RyuFollower_ShellyChatterSelector
 	clearfullscreenimage
-	msgbox RyuFollower_ShellyLeaveMsg MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RF_FollowerLeave
 	release
 	end
 
 RyuFollower_LucyScript::
 	call RyuFollower_LucyChatterSelector
-	msgbox RF_LucyDismissQuery, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq RF_FollowerLeave
 	release
 	end
 	
 RyuFollower_LanetteScript::
 	call RyuFollower_LanetteChatterSelector
-	msgbox RyuFollowerLanetteLeaveMsg MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RF_FollowerLeave
 	release
 	end
 
 RyuFollower_DawnScript::
 	call RyuFollower_DawnChatterSelector
-	msgbox RF_FollowerDawnExit, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RF_FollowerLeave
 	release
 	end
 
 RyuFollower_BrendanScript::
 	call RyuFollower_BrendanChatterSelector
-	msgbox FollowerBrendanExit, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RF_FollowerLeave
 	release
 	end
 
 RyuFollower_LeafScript::
 	call RyuFollower_LanaChatterSelector
-	msgbox FollowerLeafExit, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RF_FollowerLeave
 	release
 	end
 
@@ -160,24 +142,17 @@ RF_MayStage180:
 
 RyuFollower_MayNormal::
 	call RyuFollower_MayChatterSelector
-	msgbox RF_MayDismissQuery, MSGBOX_YESNO
-	closemessage
-	compare VAR_RESULT, YES
-	goto_if_eq Ryu_ReturnMayToHome
 	release
 	end
+
+RF_MayDismissQuery:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I go on ahead home?$"
 
 RF_MayLetsGoHome:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's head home.\nI need some rest.$"
 
 RF_MayWeShouldGoHome:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm tired. We should go home and\ntake a nap.$"
-
-RF_MayDismissQuery::
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I find my own way?$"
-
-RF_FollowerDawnExit:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Would you like me to leave?$"
 
 RF_ShouldIHeal:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I heal your team?$"
@@ -193,9 +168,6 @@ RF_OkayAllBetter:
 
 RF_MayIntroMsg:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}So, Where's the Professor live?$"
-
-RF_LucyDismissQuery:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Aww, do I really have to go?\nMy job is so boring...$"
 
 FollowerDawnSetup::
 	removeobject 2
@@ -278,6 +250,7 @@ RF_FollowerLeaveCall::
 	msgbox RyuFollowerLeavesService
 	closemessage
 RF_RemoveFollowerSilent::
+	clearflag FLAG_RYU_COMPANION_PARTICIPATION
 	switch VAR_RYU_FOLLOWER_ID
 	case FOLLOWER_LANETTE, Ryu_RestoreLanetteAtHouse
 	case FOLLOWER_MINNIE, Ryu_RestoreMinnie
@@ -385,14 +358,6 @@ Ryu_RestoreTiana::
 	clearflag FLAG_RYU_HIDE_101_TIANA
 	return
 
-@ //RyuFollowerToTrainerID will write the current follower’s Party and back sprite to VAR_0x8008 and 0x8009
-@ //and return true if there is a follower or do nothing and return false otherwise.
-RyuFollowerAllySelector::
-	specialvar VAR_RESULT, RyuFollowerToTrainerID
-	compare VAR_RESULT, FALSE
-	goto_if_eq ryu_end
-	return
-
 LeafOkLetsGo:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay, {PLAYER}!\nI'm as ready as I can be!$"
 
@@ -401,12 +366,6 @@ DawnOkLetsGo:
 
 BrendanOkLetsGo:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Okay! Let's hit the road!$"
-	
-RyuFollower_ShellyLeaveMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I go?$"
-	
-RyuFollowerLanetteLeaveMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I return to my lab??$"
 
 RyuFollowerLeavesService:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Your follower\nleaves your service...$"
@@ -417,12 +376,6 @@ RyuCantHaveFollower:
 	.string "You can't have a follower present\n"
 	.string "for this quest. Would you like\l"
 	.string "to dismiss your follower?$"
-
-FollowerBrendanExit:
-	.string "Do you need to be alone?$"
-
-FollowerLeafExit:
-	.string "Do you need some space?$"
 
 
 @+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Nurse quest
@@ -719,6 +672,183 @@ RF_NurseQuestCancelledText:
 	.string "Sorry for taking up your time.$"
 `
 
+script RyuFollowerSelectNPCScript {
+	specialvar(VAR_0x8003, CheckIfInPlayerHome)
+	if (var(VAR_0x8003) == TRUE){
+		goto(RyuFollowerSelectNPCScriptHome)
+	}
+	else {
+	bufferdynamicmulti(Followermenu1, Followermenu2, Followermenu4, followermenu5)
+	multichoicedefault(16, 7, MULTI_DYNAMIC_4, 0, 1)
+	switch (var(VAR_RESULT)){
+		case 0:
+			goto(RyuFollowerChatterSelect)
+		case 1:
+			goto(RyuFollowerJoinBattleQuery)
+		case 2:
+			goto(RyuFollowerCheckDismiss)
+	}
+	release
+	end
+	}
+}
+
+script RyuFollowerSelectNPCScriptHome {
+	bufferdynamicmulti(Followermenu1, Followermenu2, Followermenu3, Followermenu4, followermenu5)
+	multichoicedefault(17, 8, MULTI_DYNAMIC_5, 0, 1)
+	switch (var(VAR_RESULT)){
+		case 0:
+			goto(RyuFollowerChatterSelect)
+		case 1:
+			goto(RyuFollowerJoinBattleQuery)
+		case 2:
+			goto(RyuFollowerSetAttendant)
+		case 3:
+			goto(RyuFollowerCheckDismiss)
+	}
+	release
+	end
+}
+
+script RyuFollowerJoinBattleQuery {
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Should I join you in battles?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		setflag(FLAG_RYU_COMPANION_PARTICIPATION)
+	}
+	else{
+		clearflag(FLAG_RYU_COMPANION_PARTICIPATION)
+	}
+	release
+	end
+}
+
+script RyuFollowerCheckDismiss{
+	if (var(VAR_RYU_FOLLOWER_ID) == FOLLOWER_COURTNEY){
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}You can't get rid of me that\neasily!")
+		release
+		end
+	}
+	msgbox("Are you sure you want to dismiss\nyour companion?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == TRUE){
+	goto(RF_FollowerLeave)
+	}
+	else{
+		goto(ryu_end)
+	}
+}
+
+script RyuFollowerChatterSelect {
+	switch (var(VAR_RYU_FOLLOWER_ID)) {
+		case FOLLOWER_MINNIE:
+			goto(LRT_MinnieScript)
+		case FOLLOWER_SHELLY:
+			goto(RyuFollower_ShellyScript)
+		case FOLLOWER_LANETTE:
+			goto(RyuFollower_LanetteScript)
+		case FOLLOWER_DAWN:
+			goto(RyuFollower_DawnScript)
+		case FOLLOWER_BRENDAN:
+			goto(RyuFollower_BrendanScript)
+		case FOLLOWER_LEAF:
+			goto(RyuFollower_LeafScript)
+		case OBJ_EVENT_GFX_MAGMA_MEMBER_M:
+			goto(GC_BlaiseScript)
+		case FOLLOWER_COURTNEY:
+			goto(MH4_CourtneyScript)
+		case FOLLOWER_JOY:
+			goto(RyuFollower_NurseJoy)
+		case OBJ_EVENT_GFX_LASS:
+			goto(r102_FollowerTianaScript)
+		case OBJ_EVENT_GFX_HEX_MANIAC:
+			goto(MP_FQ_HexerFollowerScript)
+		case FOLLOWER_MAY:
+			goto(RyuFollower_MaySelector)
+		case FOLLOWER_LUCY:
+			goto(RyuFollower_LucyScript)
+	}
+}
+
+script RyuFollowerSetAttendant{
+	specialvar(VAR_0x8003, CheckIfInPlayerHome)
+	specialvar(VAR_0x8004, RyuCheckIfFollowerCanStay)
+	if ((var(VAR_0x8003) == TRUE) && (flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) && (var(VAR_0x8004) == TRUE)) {
+		call(SetFollowerAsAttendant)
+	}
+	release
+	end
+}
+
+
+text Followermenu1 {
+	"Chat"
+}
+
+text Followermenu2 {
+	"Team Up"
+}
+
+text Followermenu3{
+	"Set Attendant"
+}
+
+text Followermenu4{
+	"Dismiss"
+}
+
+text followermenu5{
+	"Nothing"
+}
+
+//RyuFollowerToTrainerID will write the current follower’s Party and back sprite to VAR_0x8008 and 0x8009
+//and return true if there is a follower or do nothing and return false if there is none.
+//Return 2 if the follower is non-combat.
+script RyuFollowerAllySelector{
+	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
+	if (var(VAR_RESULT) == FALSE){
+		goto(RyuFollower_InvalidFollowerData)
+	}
+	elif (var(VAR_RESULT) == 2){
+		goto(RyuFollower_NonCombat)
+	}
+	else{
+		return
+	} 
+	return
+}
+
+script RyuFollower_NonCombat{
+	msgbox(RF_NCFMsg)
+	closemessage
+	clearflag(FLAG_RYU_COMPANION_PARTICIPATION)
+	release
+	end
+}
+
+script RyuFollower_InvalidFollowerData{
+	msgbox(RyuFollower_InvalidMsg)
+	closemessage
+	clearflag(FLAG_RYU_HAS_FOLLOWER)
+	setvar(VAR_RYU_FOLLOWER_ID, 0xFFFF)
+	release
+	end
+}
+
+text RF_NCFMsg{
+	"You have Companions joining fights\n"
+	"but your companion does not have\l"
+	"a combat team.\p"
+	"Try this battle again, the\n"
+	"follower join flag has been reset."
+}
+
+text RyuFollower_InvalidMsg {
+	"There's been an error with the\n"
+	"follower system, and it has been\l"
+	"reset.\p"
+	"Try your battle again."
+}
+
+
 script RyuScript_ChooseValidMons {
 	msgbox(EGC_NeedToChoose)
 	closemessage
@@ -935,42 +1065,6 @@ script RF_NurseChallenge {
         end
 }
 
-script RyuFollowerSelectNPCScript{
-	specialvar(VAR_0x8003, CheckIfInPlayerHome)
-	specialvar(VAR_0x8004, RyuCheckIfFollowerCanStay)
-	if ((var(VAR_0x8003) == TRUE) && (flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) && (var(VAR_0x8004) == TRUE)) {
-		call(SetFollowerAsAttendant)
-	}
-	switch (var(VAR_RYU_FOLLOWER_ID)) {
-		case FOLLOWER_MINNIE:
-			goto(LRT_MinnieScript)
-		case FOLLOWER_SHELLY:
-			goto(RyuFollower_ShellyScript)
-		case FOLLOWER_LANETTE:
-			goto(RyuFollower_LanetteScript)
-		case FOLLOWER_DAWN:
-			goto(RyuFollower_DawnScript)
-		case FOLLOWER_BRENDAN:
-			goto(RyuFollower_BrendanScript)
-		case FOLLOWER_LEAF:
-			goto(RyuFollower_LeafScript)
-		case OBJ_EVENT_GFX_MAGMA_MEMBER_M:
-			goto(GC_BlaiseScript)
-		case FOLLOWER_COURTNEY:
-			goto(MH4_CourtneyScript)
-		case FOLLOWER_JOY:
-			goto(RyuFollower_NurseJoy)
-		case OBJ_EVENT_GFX_LASS:
-			goto(r102_FollowerTianaScript)
-		case OBJ_EVENT_GFX_HEX_MANIAC:
-			goto(MP_FQ_HexerFollowerScript)
-		case FOLLOWER_MAY:
-			goto(RyuFollower_MaySelector)
-		case FOLLOWER_LUCY:
-			goto(RyuFollower_LucyScript)
-	}
-	end
-}
 
 script ryu_return {
 	return

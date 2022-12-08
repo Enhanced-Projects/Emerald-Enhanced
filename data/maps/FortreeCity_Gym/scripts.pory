@@ -66,7 +66,7 @@ WINONA3::
 	end
 
 WINONA4::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, FG_FollowerMatch
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, FG_FollowerMatch
 	trainerbattle_single TRAINER_WINONA_4, FortreeCity_Gym_Text_WinonaPreBattle, FortreeCity_Gym_Text_WinonaDefeat, FG_Reset
 	release
 	end

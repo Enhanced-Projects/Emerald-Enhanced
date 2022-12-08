@@ -60,7 +60,7 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltSidney
 	msgbox EverGrandeCity_SidneysRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidney
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, EGC_FollowerSidney
 	trainerbattle_no_intro TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST

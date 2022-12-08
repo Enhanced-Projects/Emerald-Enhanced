@@ -125,7 +125,7 @@ norman3::
 	end
 
 norman4::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, PBG_FollowerMatch
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, PBG_FollowerMatch
 	trainerbattle_single TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PBG_Reset
 	release
 	end

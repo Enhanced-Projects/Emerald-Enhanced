@@ -63,7 +63,7 @@ ROXANNE3::
 	end
 
 ROXANNE4::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, RG_FollowerMatch
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, RG_FollowerMatch
 	trainerbattle_single TRAINER_ROXANNE_4, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
 	release
 	end

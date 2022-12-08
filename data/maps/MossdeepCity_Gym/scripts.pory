@@ -67,7 +67,7 @@ SABRINA3::
 	end
 
 SABRINA4::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, MDG_FollowerMatch
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, MDG_FollowerMatch
 	trainerbattle_double TRAINER_TATE_AND_LIZA_4, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MDG_Reset, NO_MUSIC
 	release
 	end

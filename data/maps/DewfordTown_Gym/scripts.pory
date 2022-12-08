@@ -62,7 +62,7 @@ brawly3::
 	end
 
 brawly4::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, DFG_FollowerMatch
+	goto_if_set FLAG_RYU_COMPANION_PARTICIPATION, DFG_FollowerMatch
 	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyDefeat, DFG_Reset
 	msgbox DewfordTown_Gym_Text_BrawlyPostBattle
 	release
