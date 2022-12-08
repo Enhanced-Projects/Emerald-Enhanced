@@ -3481,7 +3481,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         .abilities = {ABILITY_WATER_ABSORB, ABILITY_WATER_ABSORB},
-        .abilityHidden = ABILITY_HYDRATION,
+        .abilityHidden = ABILITY_REGENERATOR,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BLUE,
     },

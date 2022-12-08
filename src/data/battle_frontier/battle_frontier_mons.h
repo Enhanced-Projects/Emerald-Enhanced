@@ -3321,12 +3321,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_VAPOREON_1] = { // Vaporeon-Hydration (ID: 369)
+    [FRONTIER_MON_VAPOREON_1] = { // Vaporeon-Offensive (ID: 369)
         .species = SPECIES_VAPOREON,
-        .moves = {MOVE_SCALD, MOVE_ICE_BEAM, MOVE_RAIN_DANCE, MOVE_REST},
-        .heldItem = ITEM_DAMP_ROCK,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_BOLD,
+        .moves = {MOVE_SCALD, MOVE_ICE_BEAM, MOVE_WISH, MOVE_U_TURN},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_QUIET,
         .ivs = 31,
         .ability = 2
     },
@@ -5164,7 +5164,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_RELAXED,
         .ivs = 31,
-        .ability = 0
+        .ability = 2
     },
     [FRONTIER_MON_JOLTEON_2] = { // Jolteon-Specs (ID: 676)
         .species = SPECIES_JOLTEON,
@@ -8759,12 +8759,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_VAPOREON_BATON_PASS] = { // (ID: 979)
         .species = SPECIES_VAPOREON,
-        .moves = {MOVE_ACID_ARMOR, MOVE_WORK_UP, MOVE_WISH, MOVE_BATON_PASS},
+        .moves = {MOVE_ACID_ARMOR, MOVE_AQUA_RING, MOVE_WISH, MOVE_BATON_PASS},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_CALM,
         .ivs = 31,
-        .ability = 0
+        .ability = 2
     },
     [FRONTIER_MON_ESPEON_BATON_PASS] = { // (ID: 980)
         .species = SPECIES_ESPEON,
