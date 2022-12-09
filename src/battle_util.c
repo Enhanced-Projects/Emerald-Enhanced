@@ -7821,6 +7821,17 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
     if (move == MOVE_ACID && (defType == TYPE_STEEL))
         mod = UQ_4_12(2.0);
 
+    if (((moveType == TYPE_FLYING) ||
+        (moveType == TYPE_BUG)    ||
+        (moveType == TYPE_ICE)    ||
+        (moveType == TYPE_POISON) ||
+        (moveType == TYPE_FIRE))   &&
+        (gBattleMons[gBattlerTarget].ability == ABILITY_GREATWOOD) &&
+        (GetBattleMoveSplit(move) == SPLIT_PHYSICAL))
+        {
+            mod = UQ_4_12(1.0);
+        }
+
     if ((move == MOVE_SNAP) && ((defType == TYPE_FLYING) || (defType == TYPE_BUG)))
         mod = UQ_4_12(2.0);
 
