@@ -12244,9 +12244,9 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_LEAFEON] =
     {
         .baseHP        = 65,
-        .baseAttack    = 110,
+        .baseAttack    = 95,
         .baseDefense   = 130,
-        .baseSpeed     = 95,
+        .baseSpeed     = 110,
         .baseSpAttack  = 60,
         .baseSpDefense = 65,
         .type1 = TYPE_GRASS,
