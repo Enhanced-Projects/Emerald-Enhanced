@@ -43,7 +43,7 @@ script RyuLegendary_Latias {
 		goto(RyuLegendary_CaughtLatias)
 	}
 	setflag(FLAG_RYU_LATIAS_RAN)
-	removeobject(5)
+	removeobject(4)
 	release
 	end
 }
@@ -63,7 +63,7 @@ text RyuLegendary_IntroLatias {
 script SI_Latiosite {
 	finditem(ITEM_LATIOSITE)
 	setflag(FLAG_RYU_LATIOSITE)
-	removeobject(4)
+	removeobject(3)
 	release
 	end
 }
@@ -71,7 +71,7 @@ script SI_Latiosite {
 script SI_Latiasite {
 	finditem(ITEM_LATIASITE)
 	setflag(FLAG_RYU_LATIASITE)
-	removeobject(3)
+	removeobject(2)
 	release
 	end
 }
