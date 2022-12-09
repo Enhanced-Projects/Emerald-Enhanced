@@ -1646,6 +1646,7 @@ void CheckFormasterBallGift(u8 id)
         (id == ACH_MONEYBAGS) ||
         (id == ACH_ULTRA_BEASTLY) ||
         (id == ACH_THE_PHOENIX)||
+        (id == ACH_ULTIMATE_END)||
         (id == ACH_ULTRAKILL)))
         {
             AddBagItem(ITEM_MASTER_BALL, 1);

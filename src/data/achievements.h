@@ -258,6 +258,10 @@ static const u8 sUltraKillLabel[] = _("ULTRAKILL");
 static const u8 sUltraKillHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}converge on infinity");
 static const u8 sUltraKillDesc[] = _("You destroyed every last atom of a\ntarget's existence... You monster.");
 
+static const u8 sUltimateEndLabel[] = _("The Ultimate End");
+static const u8 sUltimateEndHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Advanced chick magnet.");
+static const u8 sUltimateEndDesc[] = _("You got the Advanced Harem ending.\nThere's not a girl in the world that\ndoesn't like you...");
+
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
     [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, sWholeNewWorldAchHint}, //started exploring enhanced hoenn
@@ -325,4 +329,5 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_MARKED_FOR_DEATH] = {12, 49, CATEGORY_EXPLORATION, ACH_MARKED_FOR_DEATH, sMarkedForDeathLabel, sMarkedForDeathDesc, sMarkedForDeathHint}, //defeat overlord ryu with zero blackouts
     [ACH_THE_PHOENIX] = {12, 51, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_MARKED_FOR_DEATH, sThePhoenixLabel, sThePhoenixDesc, sThePhoenixHint}, //defeat the four horsemen and arceus
     [ACH_ULTRAKILL] = {28, 31, CATEGORY_BATTLE | CATEGORY_FLAG_GOLD, ACH_ULTRAKILL, sUltraKillLabel, sUltraKillDesc, sUltraKillHint}, //faint 50x
+    [ACH_ULTIMATE_END] = {57, 29, CATEGORY_COMPANIONS | CATEGORY_FLAG_GOLD, ACH_ULTIMATE_END, sUltimateEndLabel, sUltimateEndDesc, sUltimateEndHint}, //faint 50x
 };

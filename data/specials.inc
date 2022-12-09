@@ -575,3 +575,4 @@ gSpecials:: @ 81DBA64
 	def_special RyuChallengeCheck
 	def_special RyuCheckIfFollowerCanStay
 	def_special CheckIfInPlayerHome
+	def_special RyuGetPartnerCount

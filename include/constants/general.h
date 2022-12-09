@@ -111,7 +111,7 @@
 #define ACH_MARKED_FOR_DEATH  62// beat overlord ryu first time without any blackouts
 #define ACH_THE_PHOENIX  63 //capture/beat the reaper
 #define ACH_ULTRAKILL  64 //faint 50x
-#define ACH_UNUSED_66  65
+#define ACH_ULTIMATE_END  65 //Get the Advanced Harem end
 #define ACH_UNUSED_67  66
 #define ACH_UNUSED_68  67
 #define ACH_UNUSED_69  68
