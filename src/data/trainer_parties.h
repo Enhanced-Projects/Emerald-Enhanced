@@ -6801,22 +6801,34 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Duncan[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Ernest2[] = {
+static const struct TrainerMonItemCustomMoves sParty_RelMom[] = {
     {
-    .iv = 10,
-    .lvl = 36,
-    .species = SPECIES_WINGULL,
-    },
+	.iv = 255,
+	.lvl = 91,
+	.species = SPECIES_EXEGGUTOR,
+	.heldItem = ITEM_HARD_STONE,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_EGG_BOMB, MOVE_GIGA_DRAIN, MOVE_PSYCHIC, MOVE_HIDDEN_POWER},
+	},
     {
-    .iv = 10,
-    .lvl = 36,
-    .species = SPECIES_PALOSSAND,
-    },
+	.iv = 247,
+	.lvl = 91,
+	.species = SPECIES_BELLOSSOM,
+	.heldItem = ITEM_ABSORB_BULB,
+	.evspread = 0,
+    .ability = 1,
+	.moves = {MOVE_SOLAR_BEAM, MOVE_GIGA_DRAIN, MOVE_HYPER_BEAM, MOVE_HIDDEN_POWER},
+	},
     {
-    .iv = 10,
-    .lvl = 36,
-    .species = SPECIES_MACHOKE,
-    }
+	.iv = 255,
+	.lvl = 91,
+	.species = SPECIES_PERSIAN,
+	.heldItem = ITEM_SCOPE_LENS,
+	.evspread = 0,
+    .ability = 2,
+	.moves = {MOVE_PLAY_ROUGH, MOVE_SLASH, MOVE_NIGHT_SLASH, MOVE_CHARM},
+	},
 };
 
 static const struct TrainerMonItemCustomMoves sParty_RelLucy[] = {

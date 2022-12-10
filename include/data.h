@@ -99,6 +99,7 @@ extern const struct SpriteFrameImage gTrainerBackPicTable_Nurse[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Gold[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Krystal[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Lucy[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Mom[];
 
 extern const union AffineAnimCmd *const gUnknown_082FF618[];
 extern const union AffineAnimCmd *const gUnknown_082FF694[];

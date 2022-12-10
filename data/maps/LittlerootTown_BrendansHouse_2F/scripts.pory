@@ -8,6 +8,7 @@ GameIntroSequenceCheck::
 	map_script_2 VAR_RYU_QUEST_LANA, 75, LRT_LeafEvent
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, LRT_BeginHaremSequence
 	map_script_2 VAR_RYU_PARTNER_COUNT, 6, LRT_BeginHaremSequence
+	map_script_2 VAR_TEMP_9, 0, LRT_CheckAntiharemEnd
 	.2byte 0
 	
 LRT_BrendanAfterLilycoveScene::
@@ -615,4 +616,101 @@ script LRT_HaremRivalCheck { //If player hasn't romanced brendan or dawn, don't 
 		end
 	}
 	return
+}
+
+script LRT_CheckAntiharemEnd {
+	setvar(VAR_TEMP_9, 100)
+	call(RyuCheckForTrueBadEnding)
+	if ((flag(FLAG_RYU_ANTIHAREM_END) == TRUE) && (flag(FLAG_RYU_FINISHED_ANTIHAREM_END) == FALSE)) {
+		goto(BeginAntiHaremSequence)
+	}
+	end
+}
+
+script BeginAntiHaremSequence {
+	addobject(6)
+	applymovement(6, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		call(LRT_Antiharem_MomMovement_Female)
+	}
+	else{
+		call(LRT_Antiharem_MomMovement_Male)
+	}
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hey... {PLAYER}...\nI heard that you've been having\psome relationship issues...")
+	closemessage
+	applymovement(6, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	waitse
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Just so you know, Momma's\nalways here for you...\pIf you ever want to talk\nplease, don't hesitate to chat\lwith me!")
+	closemessage
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE){
+		call(LRT_AntiHarem_MomExitFemale)
+	}
+	else{
+		call(LRT_AntiHarem_MomExitMale)
+	}
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (As Mom exits the room,\n You realize that she HAS\l been the only one...\p The only one that is always\n there for you.)")
+	closemessage
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You have permanently unlocked\n Mom as a companion for travel.)")
+	setflag(FLAG_RYU_DS_MOM_AVAILABLE)
+	setflag(FLAG_RYU_FINISHED_ANTIHAREM_END)
+	release
+	end
+}
+
+script LRT_Antiharem_MomMovement_Female {
+	applymovement(6, Common_Movement_StepDown)
+	waitmovement(6)
+	applymovement(6, LRT_MomWalkRight)
+	waitmovement(6)
+	turnobject(PLAYER, DIR_SOUTH)
+	turnobject(6, DIR_NORTH)
+	return
+}
+
+script LRT_Antiharem_MomMovement_Male {
+	applymovement(6, Common_Movement_StepDown)
+	waitmovement(6)
+	applymovement(6, LRT_MomWalkLeft)
+	waitmovement(6)
+	turnobject(PLAYER, DIR_SOUTH)
+	turnobject(6, DIR_NORTH)
+	return
+}
+
+script LRT_AntiHarem_MomExitFemale {
+	applymovement(6, LRT_MomWalkLeft)
+	waitmovement(6)
+	applymovement(6, Common_Movement_StepUp)
+	waitmovement(6)
+	removeobject(6)
+	playse(SE_DOOR)
+	applymovement(6, Common_Movement_StepUp)
+	waitmovement(6)
+	return
+}
+
+script LRT_AntiHarem_MomExitMale {
+	applymovement(6, LRT_MomWalkRight)
+	waitmovement(6)
+	applymovement(6, Common_Movement_StepUp)
+	waitmovement(6)
+	removeobject(6)
+	playse(SE_DOOR)
+	applymovement(6, Common_Movement_StepUp)
+	waitmovement(6)
+	return
+}
+
+
+movement LRT_MomWalkLeft { 
+	walk_left * 3
+}
+
+movement LRT_MomWalkRight { 
+	walk_right * 3
 }

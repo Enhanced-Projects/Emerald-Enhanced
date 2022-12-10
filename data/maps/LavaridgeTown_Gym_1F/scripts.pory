@@ -544,6 +544,10 @@ script LG_FollowerOutroSelector {
 			msgbox(LG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}The steam really relaxed me...\nyou might have to carry me home!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}You know, I inherited the\nPike when I was young too!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}You shouldn't play with fire!\nYou can get burnt!")
 	}
 	closemessage
 	return
@@ -572,6 +576,10 @@ script LG_FollowerIntroSelector {
 			msgbox(LG_JOY_INTRO)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I love a good sauna.\nIt's the best thing ever!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Another young prodigy.\nI can't afford to lose this\land look weak!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Didn't I warn you!?")
 	}
 	closemessage
 	return

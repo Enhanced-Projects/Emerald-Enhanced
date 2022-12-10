@@ -2136,6 +2136,7 @@ enum
     ENDTURN_BOSSMODEHEAL,
     //ENDTURN_BOSSMODERAISESTAT,
     ENDTURN_ALCHEMYHEALEFFECT,
+    ENDTURN_MOM_ACTIVE_HEAL,
     ENDTURN_FACTIONBOSSMODIFIER,
 	ENDTURN_BATTLER_COUNT
 };
@@ -2698,6 +2699,23 @@ u8 DoBattlerEndTurnEffects(void)
                                 gBattleMoveDamage = 1;
                             gBattleMoveDamage *= -1;
                             BattleScriptExecute(BattleScript_AlchemyHealingFactor);
+                            effect++;
+                        }
+        gBattleStruct->turnEffectsTracker++;
+        break;
+        }
+        case ENDTURN_MOM_ACTIVE_HEAL:
+        {
+            if ((VarGet(VAR_RYU_FOLLOWER_ID) == FOLLOWER_MOM) && (FlagGet(FLAG_RYU_HAS_FOLLOWER) == TRUE))
+                if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_PLAYER)
+                    if(!(BATTLER_MAX_HP(gActiveBattler)))
+                        if(gBattleMons[gActiveBattler].hp != 0)
+                        {
+                            gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
+                            if (gBattleMoveDamage == 0)
+                                gBattleMoveDamage = 1;
+                            gBattleMoveDamage *= -1;
+                            BattleScriptExecute(BattleScript_MomActiveHeal);
                             effect++;
                         }
         gBattleStruct->turnEffectsTracker++;

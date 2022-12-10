@@ -346,6 +346,7 @@ extern const u8 BattleScript_DancerActivates[];
 extern const u8 BattleScript_AftermathDmg[];
 extern const u8 BattleScript_BossModeHeal[];
 extern const u8 BattleScript_AlchemyHealingFactor[];
+extern const u8 BattleScript_MomActiveHeal[];
 extern const u8 BattlesScript_FactionBossModifier[];
 extern const u8 BattleScript_BossModeStatBoostActivates[];
 extern const u8 BattleScript_StanceChangeActivates[];

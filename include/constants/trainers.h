@@ -135,6 +135,7 @@
 #define TRAINER_BACK_PIC_GOLD                   13
 #define TRAINER_BACK_PIC_KRYSTAL                14
 #define TRAINER_BACK_PIC_LUCY                   15
+#define TRAINER_BACK_PIC_MOM                   16
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1
@@ -375,6 +376,7 @@
 #define TRAINER_CLASS_MEWTWO         0x43
 #define TRAINER_CLASS_DEVON_ENFORCER 0x44
 #define TRAINER_CLASS_AETHER_FOUNDER 0x45
+#define TRAINER_CLASS_MOM 0x46
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

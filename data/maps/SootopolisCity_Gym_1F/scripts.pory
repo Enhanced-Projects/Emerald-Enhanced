@@ -438,6 +438,10 @@ script SG_FollowerOutroSelector {
 			msgbox(SG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}He has WAY too much energy\nfor his age!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I am thouroughly frozen...\nYou;re going to have to cuddle\lme later!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Are you cold?\nDo you have enough layers?")
 	}
 	closemessage
 	return
@@ -466,6 +470,10 @@ script SG_FollowerIntroSelector {
 			msgbox(SG_JOY_INTRO)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Kind of annoying to get here...\nbut here we go!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I never did like the cold.\nThis gym is freezing...")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}You're not afraid of\nstorms anymore, right?")
 	}
 	closemessage
 	return

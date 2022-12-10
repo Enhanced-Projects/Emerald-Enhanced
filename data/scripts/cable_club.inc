@@ -1828,7 +1828,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_PHILLIP
 	cleartrainerflag TRAINER_LEONARD
 	cleartrainerflag TRAINER_DUNCAN
-	cleartrainerflag TRAINER_EMPTY_185
+	cleartrainerflag TRAINER_REL_MOM
 	cleartrainerflag TRAINER_REL_LUCY
 	cleartrainerflag TRAINER_CHALLENGER_YUI
 	cleartrainerflag TRAINER_CHALLENGER_CLAY

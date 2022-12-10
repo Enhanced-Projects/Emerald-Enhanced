@@ -522,6 +522,7 @@ LRT_Mom_8badges::
 LRT_Mom_base::
 	goto_if_set FLAG_RYU_CHALLENGEMODE, LRT_MOM_Restricted
 	goto_if_set FLAG_RYU_HARDCORE_MODE, LRT_MOM_Restricted
+	call_if_set FLAG_RYU_DS_MOM_AVAILABLE, LRT_FollowerMom
 	msgbox Momwouldyouliketoheal, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq LRT_Mom_Heal

@@ -2424,6 +2424,26 @@ void TryHideBattleTowerReporter(void)
 
 #define STEVEN_OTID 61226
 
+int RyuChoosePartnerLevel (void)
+{
+    u32 i;
+    u32 max = 0;
+    u32 count = 0;
+    for (i = 0; i < 6; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+        {
+            count++;
+            max += (GetMonData(&gPlayerParty[i], MON_DATA_LEVEL, NULL));
+        }
+        max /= count;
+        max += (Random() % 5);
+        if (max > 250)
+            max = 250;
+        return max;
+    }
+}
+
 static void FillPartnerParty(u16 trainerId)
 {
     s32 i, j;
@@ -2468,7 +2488,7 @@ static void FillPartnerParty(u16 trainerId)
         s16 partyStrength = CalculatePlayerPartyStrength();
         bool8 maxScale = FlagGet(FLAG_RYU_MAX_SCALE);
         u8 scalingType = FlagGet(FLAG_RYU_BOSS_SCALE) ? SCALING_TYPE_BOSS : SCALING_TYPE_TRAINER;
-        u32 level = RyuChooseLevel(badges, maxScale, scalingType, partyStrength);
+        u32 level = RyuChoosePartnerLevel();
         otID = Random32();
 
         for (i = 0; i < 3; i++)

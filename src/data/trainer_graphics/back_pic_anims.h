@@ -148,6 +148,16 @@ static const union AnimCmd gAnimCmd_Lucy_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd gAnimCmd_Mom_1[] =
+{
+    ANIMCMD_FRAME(1, 20),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_FRAME(4, 24),
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd *const sBackAnims_Brendan[] =
 {
     sAnim_GeneralFrame3,
@@ -243,6 +253,11 @@ static const union AnimCmd *const sBackAnims_Lucy[] =
     sAnim_GeneralFrame0,
     gAnimCmd_Lucy_1,
 };
+static const union AnimCmd *const sBackAnims_Mom[] =
+{
+    sAnim_GeneralFrame0,
+    gAnimCmd_Mom_1,
+};
 
 const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] =
 {
@@ -262,4 +277,5 @@ const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] =
     [TRAINER_BACK_PIC_GOLD] = sBackAnims_Gold,
     [TRAINER_BACK_PIC_KRYSTAL] = sBackAnims_Krystal,
     [TRAINER_BACK_PIC_LUCY] = sBackAnims_Lucy,
+    [TRAINER_BACK_PIC_MOM] = sBackAnims_Mom,
 };

@@ -761,6 +761,7 @@ static const u8 sText_NN_Ohko[]      = _("{B_DEF_NAME_WITH_PREFIX} was executed!
 static const u8 sText_NN_Fainted[]      = _("{B_DEF_NAME_WITH_PREFIX} was defeated!");
 static const u8 sText_NN_Critical[]      = _("{B_ATK_NAME_WITH_PREFIX} landed a critical hit!");
 static const u8 sText_MonSentToPreserve[]      = _("{B_DEF_NAME_WITH_PREFIX} was sent to the\nnature preserve!");
+static const u8 sText_MomHealsPlayer[]      = _("Mom heals your Pokémon...\nYou got this honey!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1382,6 +1383,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_NN_FAINTED - 12]            = sText_NN_Fainted,
     [STRINGID_NN_CRITICAL - 12]            = sText_NN_Critical,
     [STRINGID_PKMNSENTTONATUREPRESERVE - 12]            = sText_MonSentToPreserve,
+    [STRINGID_MOM_HEALS - 12]            = sText_MomHealsPlayer,
 };
 
 const u16 gTerrainStringIds[] =

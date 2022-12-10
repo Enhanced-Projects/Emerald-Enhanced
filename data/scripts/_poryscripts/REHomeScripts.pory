@@ -214,6 +214,19 @@ script RyuRE_UseBed {
                 applymovement(1, Common_Movement_StepDown)
                 release
                 end
+            case FOLLOWER_MOM:
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh, wow! Look at you!\nAll grown up with your own\lplace!\pStill haven't outgrown snuggling\nwith your mom though!")
+                closemessage
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} rests peacefully next to\n the familiar presence.)")
+                delay(20)
+                closemessage
+                fadescreen(FADE_FROM_BLACK)
+                special(HealPlayerParty)
+                faceplayer
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Should I whip up your favorite\nbreakfast?")
+                applymovement(1, Common_Movement_StepDown)
+                release
+                end
             case 0xFFFF:
                 fadescreen(FADE_FROM_BLACK)
                 special(HealPlayerParty)

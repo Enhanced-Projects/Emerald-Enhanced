@@ -409,6 +409,10 @@ script FG_FollowerOutroSelector {
 			msgbox(FG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aha! I did it!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Seviper should sleep well tonight!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Her Pokémon are so colorful!")
 	}
 	closemessage
 	return
@@ -437,6 +441,10 @@ script FG_FollowerIntroSelector {
 			msgbox(FG_JOY_INTRO)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I lost to her once...\nLet's see if I can even the score!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Ooooh, snakey snacks!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh look how cute!\nWe should get some plants.")
 	}
 	closemessage
 	return

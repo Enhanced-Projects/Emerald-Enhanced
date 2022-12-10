@@ -498,7 +498,7 @@
 #define TRAINER_PHILLIP                     494
 #define TRAINER_LEONARD                     495
 #define TRAINER_DUNCAN                      496
-#define TRAINER_EMPTY_185                    497
+#define TRAINER_REL_MOM                  497
 #define TRAINER_REL_LUCY                    498
 #define TRAINER_CHALLENGER_YUI                    499
 #define TRAINER_CHALLENGER_CLAY                    500

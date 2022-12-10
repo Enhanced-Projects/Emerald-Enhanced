@@ -40,6 +40,8 @@ script RCR_FollowerIntroSetup {//Dynamically chooses which follower text to disp
 			msgbox(FMayMsg)
 		case FOLLOWER_LUCY:
 			msgbox(FLucyMsg)
+		case FOLLOWER_MOM:
+			msgbox(FMomMsg)
 	}
 	closemessage
 	return
@@ -764,5 +766,8 @@ FMayMsg:
 
 FLucyMsg:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Huh. I feel like I've been here\nbefore.\pTrainers at the frontier\nare far scarier.\pThis will be easy.$"
+
+FMomMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh my! such a grandiose room!\nI've only ever seen it on TV!$"
 
 `

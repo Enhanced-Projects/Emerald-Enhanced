@@ -426,6 +426,10 @@ script RG_FollowerOutroSelector {
 			msgbox(RG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}That was pretty close,\nbut I knew we could do it!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Thanks for the carry, boss!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}She definitely has a\nunique teaching style!")
 	}
 	closemessage
 	return
@@ -454,6 +458,10 @@ script RG_FollowerIntroSelector {
 			msgbox(RG_JOY_INTRO)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}She could be problematic.\nHer Pokémon are deceptively fast!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}This isn't... optimal for my team.\nYou're gonna have to carry me!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Interesting way to have a\nparent-teacher conference!\pEven if my child has\noutgrown school!")
 	}
 	closemessage
 	return

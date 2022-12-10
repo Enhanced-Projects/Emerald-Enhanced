@@ -42,6 +42,9 @@ void RyuBufferAttendantName (void)
 	        case FOLLOWER_LUCY:
                 StringCopy(gStringVar1, (const u8[])_("Lucy"));
                 break;
+	        case FOLLOWER_MOM:
+                StringCopy(gStringVar1, (const u8[])_("Mom"));
+                break;
 	        case 0xFFFF:
                 StringCopy(gStringVar1, (const u8[])_("None"));
                 break;
@@ -83,6 +86,9 @@ void RyuDebug_ShowActiveFollower (void)
                 break;
             case FOLLOWER_LUCY:
                 DebugPrint(((const u8[]) _("Lucy: 10% PSN/DRG dmg boost.")), 0);
+                break;
+            case FOLLOWER_MOM:
+                DebugPrint(((const u8[]) _("Mom: Active heal in battle.")), 0);
                 break;
         }
     }
@@ -134,6 +140,10 @@ bool8 RyuFollowerToTrainerID(void)
         case FOLLOWER_LUCY:
             gSpecialVar_0x8008 = TRAINER_REL_LUCY;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_LUCY;
+            return TRUE;
+        case FOLLOWER_MOM:
+            gSpecialVar_0x8008 = TRAINER_REL_MOM;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_MOM;
             return TRUE;
         }
         return FALSE;

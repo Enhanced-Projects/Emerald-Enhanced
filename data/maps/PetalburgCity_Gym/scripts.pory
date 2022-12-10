@@ -131,7 +131,11 @@ norman4::
 	end
 
 PBG_FollowerMatch::
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_MOM
+	goto_if_eq PBG_MomChat
+PBG_NormalChat::
 	msgbox PBG_PreBattleText
+PBG_FollowerRedirect::
 	closemessage
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	call RyuFollowerAllySelector @// load follower details for battle.
@@ -878,6 +882,10 @@ script PBG_FollowerOutroSelector {
 			msgbox(PBG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Nice rematch, Norman!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Just as expected.\nUtterly boring.")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Don't bother coming home, either!\pHmph!\p {COLOR LIGHT_GREEN}{SHADOW GREEN} (It seems like Mom didn't\n buy it either.)")
 	}
 	closemessage
 	return
@@ -906,7 +914,20 @@ script PBG_FollowerIntroSelector {
 			msgbox(PBG_JOY_INTRO)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Most trainers only make it to Norman\nin their gym challenge.\pI already beat him, though.")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Your dad doesn't understand\nhow fun mysteries can be.")
+		case TRAINER_REL_MOM:
+			setflag(FLAG_PBG_DADEVENT)
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm travelling with {PLAYER} for now\nYou haven't been sneaking\laround on me, have you?\p... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Erm, uh... no, not at all!\n{COLOR LIGHT_GREEN}{SHADOW GREEN} (Dad looks pretty guilty, to\n you...)\p")
 	}
 	closemessage
 	return
+}
+
+script PBG_MomChat {
+	if (flag(FLAG_PBG_DADEVENT) == TRUE){
+		goto(PBG_NormalChat)
+	}
+	msgbox("Honey?! What are you doing here?")
+	goto(PBG_FollowerRedirect)
 }

@@ -645,6 +645,10 @@ script MDG_FollowerOutroSelector {
 			msgbox(MDG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I don't think my Blaziken enjoyed\nthis match very much.")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}That was a close one.\nI dislike psychics...")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Just cuz you're a little smarter\ndoesn't mean you can pick on\lnormal people!")
 	}
 	closemessage
 	return
@@ -673,6 +677,10 @@ script MDG_FollowerIntroSelector {
 			msgbox(MDG_JOY_INTRO)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm not going to have a good time\nhere...")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}This is going to be tough...\nSeviper at least should be\lokay...")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}No one plays mind games with\nmy {PLAYER}!")
 	}
 	closemessage
 	return

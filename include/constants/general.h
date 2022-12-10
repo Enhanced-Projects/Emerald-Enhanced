@@ -41,7 +41,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 64
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 67
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -112,7 +112,7 @@
 #define ACH_THE_PHOENIX  63 //capture/beat the reaper
 #define ACH_ULTRAKILL  64 //faint 50x
 #define ACH_ULTIMATE_END  65 //Get the Advanced Harem end
-#define ACH_UNUSED_67  66
+#define ACH_TRULY_BAD_ENDING  66 //Get the Antiharem end
 #define ACH_UNUSED_68  67
 #define ACH_UNUSED_69  68
 #define ACH_UNUSED_70  69
@@ -519,6 +519,7 @@
 #define FOLLOWER_LEAF 231
 #define FOLLOWER_MAY 236
 #define FOLLOWER_LUCY 75
+#define FOLLOWER_MOM 215
 
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
@@ -537,6 +538,6 @@
 #endif
 //end hack
 
-#define EE_GAME_VERSION 9262
+#define EE_GAME_VERSION 9270
 
 #endif 

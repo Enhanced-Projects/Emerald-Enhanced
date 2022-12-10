@@ -41,8 +41,8 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
-#define FLAG_UNUSED_0x20                     0x20
-#define FLAG_UNUSED_0x21                     0x21
+#define FLAG_RYU_DS_MOM_AVAILABLE            0x20
+#define FLAG_RYU_ANTIHAREM_END               0x21
 #define FLAG_HIDE_CHAMPIONS_ROOM_STEVEN      0x22
 #define FLAG_RYU_STARTER_CHOSEN              0x23
 #define FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS 0x24
@@ -62,7 +62,7 @@
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO  0x32
 #define FLAG_RYU_WAYSTONE_DISABLED           0x33
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE4 0x34
-#define FLAG_RYU_DEFEATED_SS                 0x35
+#define FLAG_RYU_FINISHED_ANTIHAREM_END      0x35
 #define FLAG_RYU_HIDE_LANETTE_BASEMENT       0x36
 #define FLAG_RYU_TEMPTP                      0x37
 #define FLAG_RYU_HAS_FOLLOWER                0x38
@@ -93,7 +93,7 @@
 // Scripts
 #define FLAG_HIDE_RAYQUAZA_SKY_TOWER_SUMMIT  0x50
 #define FLAG_SET_WALL_CLOCK                  0x51
-#define FLAG_UNUSED_0x52                     0x52
+#define FLAG_PBG_DADEVENT                    0x52
 #define FLAG_TOBY_TRAINER_SIGHT              0x53
 
 #define FLAG_RYU_JUKEBOX_ENABLED             0x54

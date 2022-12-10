@@ -1601,6 +1601,7 @@ void CB2_NewGame(void)
     bool8 hasOvalCharm = FALSE;
     bool8 hasMegaBracelet = FALSE;
     bool8 hasRecipeBook = FALSE;
+    bool8 hasMomFollower = FALSE;
     u16 playerLifeSkills[3][2] = {0};
     bool8 hasRealEstate = gSaveBlock2Ptr->playerIsRealtor;
 
@@ -1622,6 +1623,9 @@ void CB2_NewGame(void)
 
     if (CheckBagHasItem(ITEM_FORECASTER, 1))
         hasForecaster = TRUE;
+
+    if (FlagGet(FLAG_RYU_DS_MOM_AVAILABLE) == TRUE)
+        hasMomFollower = TRUE;
 
     if (CheckBagHasItem(ITEM_IMPRINTER, 1))
         hasImprinter = TRUE;
@@ -1700,6 +1704,9 @@ void CB2_NewGame(void)
 
         if (hasRecipeBook == TRUE)
             FlagSet(FLAG_RYU_HAS_RECIPE_BOOK);
+
+        if (hasMomFollower == TRUE)
+            FlagSet(FLAG_RYU_DS_MOM_AVAILABLE);
 
         if (hasRealEstate == TRUE)
             gSaveBlock2Ptr->playerIsRealtor = 1;

@@ -634,8 +634,9 @@
 #define STRINGID_NN_FAINTED                           630
 #define STRINGID_NN_CRITICAL                          631
 #define STRINGID_PKMNSENTTONATUREPRESERVE             632
+#define STRINGID_MOM_HEALS                            633
 
-#define BATTLESTRINGS_COUNT                633
+#define BATTLESTRINGS_COUNT                           634
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

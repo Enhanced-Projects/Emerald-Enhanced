@@ -33,6 +33,11 @@ RyuFollower_LucyScript::
 	call RyuFollower_LucyChatterSelector
 	release
 	end
+
+RyuFollower_MomScript::
+	call RyuFollower_MomChatterSelector
+	release
+	end
 	
 RyuFollower_LanetteScript::
 	call RyuFollower_LanetteChatterSelector
@@ -265,6 +270,7 @@ RF_RemoveFollowerSilent::
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, ryu_end
 	case FOLLOWER_MAY, Ryu_ReturnMayToHome
 	case FOLLOWER_LUCY, Ryu_ReturnLucyPike
+	case FOLLOWER_MOM, LRT_RestoreMom
 	return
 
 Ryu_ReturnLucyPike::
@@ -765,6 +771,8 @@ script RyuFollowerChatterSelect {
 			goto(RyuFollower_MaySelector)
 		case FOLLOWER_LUCY:
 			goto(RyuFollower_LucyScript)
+		case FOLLOWER_MOM:
+			goto(RyuFollower_MomScript)
 	}
 }
 
@@ -1050,6 +1058,22 @@ script RyuFollower_LucyChatterSelector {
 	return
 }
 
+script RyuFollower_MomChatterSelector {
+	random(5)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox("How are you, honey?\nDoes spending time with\lMom help?")
+		case 1:
+			msgbox("Those others don't know the\nreal you. Don't let it bother\lyou!")
+		case 2:
+			msgbox("I'm right here with you!\nI won't leave you behind...")
+		case 3:
+			msgbox("Oh, my!\nI forgot to pack lunch!")
+		case 4:
+			msgbox("Do you have special plans\nfor today?")
+	}
+}
+
 script RF_MayStage70 {
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Let's go meet wally in Rusturf\nTunnel.\pI'm really curious as to why\nhe disappeared.")
 	closemessage
@@ -1073,4 +1097,77 @@ script ryu_return {
 script ryu_end{
 	release
 	end
+}
+
+
+script RyuCheckForTrueBadEnding {
+	if (flag(FLAG_SYS_GAME_CLEAR) == FALSE){
+		msgbox("1")
+		return
+	}
+	if (var(VAR_RYU_QUEST_AQUA) != 160) {
+		if (var(VAR_RYU_QUEST_MAGMA) != 597){
+			msgbox("2")
+			return
+		}
+	}
+	if (var(VAR_RYU_QUEST_LANA) != 666) {
+		msgbox("3")
+		return
+	}
+	if (var(VAR_RYU_QUEST_NURSE) != 11) {
+		msgbox("4")
+		return
+	}
+	if (var(VAR_RYU_QUEST_MAY) != 666) {
+		if (var(VAR_RYU_QUEST_MAY) != 999){
+		msgbox("5")
+		return
+		}
+	} 
+	goto_if_unset(FLAG_RYU_DS_LANETTE_BADEND, ryu_return)
+	if (flag(FLAG_RYU_DS_BRENDAN_ACQ) == FALSE){
+		if (flag(FLAG_RYU_DS_DAWN_ACQ) == FALSE) {
+		msgbox("6")
+		return
+		}
+	}
+	ach(query, ACH_TRULY_BAD_ENDING)
+	if (var(VAR_RESULT) == TRUE) {
+		msgbox("7")
+		return
+	}
+	ach(give, ACH_TRULY_BAD_ENDING)
+	setflag(FLAG_RYU_ANTIHAREM_END)
+	return
+}
+
+script LRT_FollowerMom {
+	msgbox("Would you like my company for a while?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO){
+		return
+	}
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		setflag(FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM)
+	}
+	else{
+		setflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM)
+	}
+	removeobject(1)
+	createfollower(OBJ_EVENT_GFX_MOM, RyuFollowerSelectNPCScript, DIR_NORTH)
+	release
+	end
+}
+
+script LRT_RestoreMom {
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) {
+		clearflag(FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM)
+	}
+	else{
+		clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM)
+	}
+	destroyfollower
+	return
 }

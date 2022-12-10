@@ -569,6 +569,10 @@ script MVG_FollowerOutroSelector {
 			msgbox(MVG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I can feel the static in the air\nI don't like it.")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I need moisturizer and a\nstraightening iron... Stat!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}You didn't get shocked, did you?")
 	}
 	closemessage
 	return
@@ -597,6 +601,10 @@ script MVG_FollowerIntroSelector {
 			msgbox(MVG_JOY_INTRO)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Those lightning doors are trippy!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}The static here is terrible\nfor my skin and hair!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Avoid getting hit by the\nelectricity!\pIt's painful!")
 	}
 	closemessage
 	return

@@ -458,6 +458,10 @@ script DFG_FollowerOutroSelector {
 			msgbox(DFG_JoyGymBattleComplete)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}See? I can punch things too!")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Heh, hard to grapple something\nwhen it's slimy!")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I knew you could do it\nhoney!")
 	}
 	closemessage
 	return
@@ -486,6 +490,10 @@ script DFG_FollowerIntroSelector {
 			msgbox(DFG_JOY_INTRO)
 		case TRAINER_REL_MAY:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Huh, I haven't been here yet.\nNot a fan of sweaty dojos, though.")
+		case TRAINER_REL_LUCY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Seviper's going to love this.")
+		case TRAINER_REL_MOM:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER} remember to stand up to\nbullies!")
 	}
 	closemessage
 	return
