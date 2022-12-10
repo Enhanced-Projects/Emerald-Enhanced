@@ -1102,39 +1102,32 @@ script ryu_end{
 
 script RyuCheckForTrueBadEnding {
 	if (flag(FLAG_SYS_GAME_CLEAR) == FALSE){
-		msgbox("1")
 		return
 	}
 	if (var(VAR_RYU_QUEST_AQUA) != 160) {
 		if (var(VAR_RYU_QUEST_MAGMA) != 597){
-			msgbox("2")
 			return
 		}
 	}
 	if (var(VAR_RYU_QUEST_LANA) != 666) {
-		msgbox("3")
 		return
 	}
 	if (var(VAR_RYU_QUEST_NURSE) != 11) {
-		msgbox("4")
 		return
 	}
 	if (var(VAR_RYU_QUEST_MAY) != 666) {
 		if (var(VAR_RYU_QUEST_MAY) != 999){
-		msgbox("5")
 		return
 		}
 	} 
 	goto_if_unset(FLAG_RYU_DS_LANETTE_BADEND, ryu_return)
 	if (flag(FLAG_RYU_DS_BRENDAN_ACQ) == FALSE){
 		if (flag(FLAG_RYU_DS_DAWN_ACQ) == FALSE) {
-		msgbox("6")
 		return
 		}
 	}
 	ach(query, ACH_TRULY_BAD_ENDING)
 	if (var(VAR_RESULT) == TRUE) {
-		msgbox("7")
 		return
 	}
 	ach(give, ACH_TRULY_BAD_ENDING)

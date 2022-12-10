@@ -298,11 +298,11 @@ script RyuEndHaremEvent { //move objects offscreen and disappear them
 //advanced harem end
 
 script RyuCheckForAdvancedEnd{
-	goto_if_unset(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN, end1)
-	goto_if_unset(FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS, end2)
-	goto_if_unset(FLAG_RYU_MINNIE_GAME_CLEAR, end3)
-	goto_if_unset(FLAG_RYU_MINNIE_POKEMON_SCHOOL, end4)
-	goto_if_unset(FLAG_RYU_DS_MAY_PARTNERS, end5)
+	goto_if_unset(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN, ryu_end)
+	goto_if_unset(FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS, ryu_end)
+	goto_if_unset(FLAG_RYU_MINNIE_GAME_CLEAR, ryu_end)
+	goto_if_unset(FLAG_RYU_MINNIE_POKEMON_SCHOOL, ryu_end)
+	goto_if_unset(FLAG_RYU_DS_MAY_PARTNERS, ryu_end)
 	if (var(VAR_RYU_PARTNER_COUNT) >= 6) {
 		msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Huh. I really have done it\nall, haven't I?\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(You take a second to reflect\n on yourself and your travels\l and you feel accomplished.)")
 		ach(give, ACH_ULTIMATE_END)
@@ -310,27 +310,6 @@ script RyuCheckForAdvancedEnd{
 	}
 	return
 }
-
-script end1 {
-	msgbox("1")
-}
-
-script end2 {
-	msgbox("2")
-}
-
-script end3 {
-	msgbox("3")
-}
-
-script end4 {
-	msgbox("4")
-}
-
-script end5 {
-	msgbox("5")
-}
-
 //movements
 
 movement LRT_HE_JoyExit {
