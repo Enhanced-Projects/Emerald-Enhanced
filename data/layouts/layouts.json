@@ -994,8 +994,8 @@
     {
       "id": "LAYOUT_FORTREE_CITY_GYM",
       "name": "FortreeCity_Gym_Layout",
-      "width": 20,
-      "height": 25,
+      "width": 24,
+      "height": 21,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_FortreeGym",
       "border_filepath": "data/layouts/FortreeCity_Gym/border.bin",

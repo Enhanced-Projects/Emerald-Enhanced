@@ -37,7 +37,7 @@ OldaleTown_EventScript_MartEmployee:: @ 81E8EFC
 	playbgm MUS_TSURETEK, 0
 	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
 	closemessage
-	OldaleTown_EventScript_ExplainPokemonMart
+	goto OldaleTown_EventScript_ExplainPokemonMart
 	end
 
 OldaleTown_EventScript_GoToMartSouth:: @ 81E8F47
