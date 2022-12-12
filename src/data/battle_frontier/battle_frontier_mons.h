@@ -3861,14 +3861,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 29,
         .ability = 0
     },
-    [FRONTIER_MON_LEAFEON_1] = { // Leafeon-Band (ID: 429)
+    [FRONTIER_MON_LEAFEON_1] = { // Leafeon-SD (ID: 429)
         .species = SPECIES_LEAFEON,
-        .moves = {MOVE_LEAF_BLADE, MOVE_KNOCK_OFF, MOVE_RETURN, MOVE_QUICK_ATTACK},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_LEAF_BLADE, MOVE_JUMP_KICK, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_SHELL_BELL,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_SPIRITOMB_1] = { // Spiritomb-NightShade (ID: 328)
         .species = SPECIES_SPIRITOMB,
@@ -5697,14 +5697,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 29,
         .ability = 0
     },
-    [FRONTIER_MON_LEAFEON_2] = { // Leafeon-SD (ID: 633)
+    [FRONTIER_MON_LEAFEON_2] = { // Leafeon-SubSeed (ID: 633)
         .species = SPECIES_LEAFEON,
-        .moves = {MOVE_LEAF_BLADE, MOVE_KNOCK_OFF, MOVE_RETURN, MOVE_SWORDS_DANCE},
+        .moves = {MOVE_LEAF_BLADE, MOVE_LEECH_SEED, MOVE_SUBSTITUTE, MOVE_ENCORE},
         .heldItem = ITEM_YACHE_BERRY,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_SPIRITOMB_2] = { // Spiritomb-Curse (ID: 532)
         .species = SPECIES_SPIRITOMB,
