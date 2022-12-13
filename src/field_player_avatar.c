@@ -842,6 +842,18 @@ static bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
                 return TRUE;
             }
         }
+        if (objectEventId != 16 && gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_SLAKOTH)
+        {
+            x = gObjectEvents[objectEventId].currentCoords.x;
+            y = gObjectEvents[objectEventId].currentCoords.y;
+            MoveCoords(direction, &x, &y);
+            if (GetCollisionAtCoords(&gObjectEvents[objectEventId], x, y, direction) == COLLISION_NONE
+             && MetatileBehavior_IsNonAnimDoor(MapGridGetMetatileBehaviorAt(x, y)) == 0)
+            {
+                StartStrengthAnim(objectEventId, direction);
+                return TRUE;
+            }
+        }
     }
     return FALSE;
 }
