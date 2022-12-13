@@ -4204,11 +4204,11 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             switch (gLastUsedAbility)
             {
             case ABILITY_HARVEST:
-                if ((IsBattlerWeatherAffected(battler, WEATHER_SUN_ANY) || Random() % 2 == 0)
-                 && gBattleMons[battler].item == ITEM_NONE
+                if (gBattleMons[battler].item == ITEM_NONE
                  && gBattleStruct->changedItems[battler] == ITEM_NONE   // Will not inherit an item
-                 && ItemId_GetPocket(gBattleStruct->usedHeldItems[battler]) == POCKET_BERRIES)
+                 && ItemId_GetPocket(GetUsedHeldItem(battler)) == POCKET_BERRIES)
                 {
+                    gLastUsedItem = GetUsedHeldItem(battler);
                     BattleScriptPushCursorAndCallback(BattleScript_HarvestActivates);
                     effect++;
                 }
@@ -8254,6 +8254,11 @@ u8 GetBattleMoveSplit(u32 moveId)
         return SPLIT_PHYSICAL;
     else
         return SPLIT_SPECIAL;
+}
+
+u16 GetUsedHeldItem(u8 battler)
+{
+    return gBattleStruct->usedHeldItems[gBattlerPartyIndexes[battler]][GetBattlerSide(battler)];
 }
 
 bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags)

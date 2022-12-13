@@ -1245,15 +1245,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	setflag(FLAG_SYS_GAME_CLEAR)
-	setvar(VAR_RYU_QUEST_AQUA, 160)
-	setvar(VAR_RYU_QUEST_LANA, 666)
-	setvar(VAR_RYU_QUEST_NURSE, 11)
-	setvar(VAR_RYU_QUEST_MAY, 999)
-	//setflag(FLAG_RYU_DS_DAWN_ACQ)
-	setflag(FLAG_RYU_DS_BRENDAN_ACQ)
-	setflag(FLAG_RYU_DS_LANETTE_BADEND)
-	setvar(VAR_TEMP_9, 0)
 	end
 }
 

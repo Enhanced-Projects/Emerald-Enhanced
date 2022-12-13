@@ -6955,7 +6955,7 @@ static void Cmd_removeitem(void)
 
     // Popped Air Balloon cannot be restored by no means.
     if (GetBattlerHoldEffect(gActiveBattler, TRUE) != HOLD_EFFECT_AIR_BALLOON)
-        gBattleStruct->usedHeldItems[gActiveBattler] = itemId;
+        gBattleStruct->usedHeldItems[gBattlerPartyIndexes[gActiveBattler]][GetBattlerSide(gActiveBattler)] = itemId;
 
     gBattleMons[gActiveBattler].item = 0;
     CheckSetUnburden(gActiveBattler);
@@ -12253,14 +12253,14 @@ static void Cmd_tryrecycleitem(void)
     u16 *usedHeldItem;
 
     gActiveBattler = gBattlerAttacker;
-    usedHeldItem = &gBattleStruct->usedHeldItems[gActiveBattler];
-    if (*usedHeldItem != 0 && gBattleMons[gActiveBattler].item == 0)
+    usedHeldItem = &gBattleStruct->usedHeldItems[gBattlerPartyIndexes[gActiveBattler]][GetBattlerSide(gActiveBattler)];
+    if (*usedHeldItem != ITEM_NONE && gBattleMons[gActiveBattler].item == ITEM_NONE)
     {
         gLastUsedItem = *usedHeldItem;
-        *usedHeldItem = 0;
+        *usedHeldItem = ITEM_NONE;
         gBattleMons[gActiveBattler].item = gLastUsedItem;
 
-        BtlController_EmitSetMonData(0, REQUEST_HELDITEM_BATTLE, 0, 2, &gBattleMons[gActiveBattler].item);
+        BtlController_EmitSetMonData(0, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gActiveBattler].item), &gBattleMons[gActiveBattler].item);
         MarkBattlerForControllerExec(gActiveBattler);
 
         gBattlescriptCurrInstr += 5;
