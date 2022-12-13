@@ -37,37 +37,6 @@ OldaleTown_EventScript_MartEmployee:: @ 81E8EFC
 	playbgm MUS_TSURETEK, 0
 	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
 	closemessage
-	switch VAR_FACING
-	case DIR_SOUTH, OldaleTown_EventScript_GoToMartSouth
-	case DIR_NORTH, OldaleTown_EventScript_GoToMartNorth
-	case DIR_EAST, OldaleTown_EventScript_GoToMartEast
-	end
-
-OldaleTown_EventScript_GoToMartSouth:: @ 81E8F47
-	applymovement 2, OldaleTown_Movement_EmployeeSouth
-	applymovement PLAYER, OldaleTown_Movement_PlayerSouth
-	applymovement FOLLOWER, OldaleTown_Movement_PlayerSouth
-	waitmovement 0
-	goto OldaleTown_EventScript_ExplainPokemonMart
-	end
-
-OldaleTown_EventScript_GoToMartNorth:: @ 81E8F5E
-	applymovement 2, OldaleTown_Movement_EmployeeNorth
-	applymovement PLAYER, OldaleTown_Movement_PlayerNorth
-	applymovement FOLLOWER, OldaleTown_Movement_PlayerNorth
-	waitmovement 0
-	goto OldaleTown_EventScript_ExplainPokemonMart
-	end
-
-OldaleTown_EventScript_GoToMartEast:: @ 81E8F75
-	applymovement PLAYER, OldaleTown_Movement_PlayerEast
-	applymovement FOLLOWER, OldaleTown_Movement_PlayerEast
-	applymovement 2, OldaleTown_Movement_EmployeeEast
-	waitmovement 0
-	goto OldaleTown_EventScript_ExplainPokemonMart
-	end
-
-OldaleTown_EventScript_ExplainPokemonMart:: @ 81E8F8C
 	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
 	giveitem ITEM_GREAT_BALL
 	compare VAR_RESULT, 0
@@ -178,12 +147,9 @@ OldaleTown_Text_SavingMyProgress: @ 81E918E
 
 OldaleTown_Text_IWorkAtPokemonMart: @ 81E91C0
 	.string "Hi!\n"
-	.string "I work at a Pokémon Mart.\p"
-	.string "Can I get you to come with me?$"
+	.string "I work at a Pokémon Mart.$"
 
 OldaleTown_Text_ThisIsAPokemonMart: @ 81E91FD
-	.string "This is a Pokémon Mart.\n"
-	.string "Just look for our blue roof.\p"
 	.string "We sell a variety of goods including\n"
 	.string "Poké Balls for catching Pokémon.\p"
 	.string "Here, I'd like you to have this one\n"
