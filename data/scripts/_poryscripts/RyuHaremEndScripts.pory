@@ -11,15 +11,14 @@ const COURTNEY = 14
 script Ryu_HaremEvent {
 	setvar(VAR_TEMP_2, 100)
 	if ((var(VAR_RYU_PARTNER_COUNT) < 5) || (flag(FLAG_RYU_HAREM_EVENT_COMPLETED) == TRUE)){
+		setflag(FLAG_RYU_HIDE_HAREM_EVENT_NPCS)
 		goto(ryu_end)
 	}
 	if (flag(FLAG_RYU_HAREM_EVENT_STARTED) == FALSE){
+		setflag(FLAG_RYU_HIDE_HAREM_EVENT_NPCS)
 		goto(ryu_end)
 	}
 	fadenewbgm(MUS_THANKFOR)
-	if (flag(FLAG_RYU_HAREM_EVENT_COMPLETED) == TRUE) {
-		end
-	}
 	call(RyuRivalHaremIntro)
 	if (flag(FLAG_RYU_DS_SHELLY_PARTNERS) == TRUE) {
 		addobject(SHELLY)
