@@ -643,6 +643,7 @@ script BeginAntiHaremSequence {
 	closemessage
 	applymovement(6, Common_Movement_HeartEmote)
 	playse(SE_M_CHARM)
+	waitmovement(6)
 	waitse
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Just so you know, Momma's\nalways here for you...\pIf you ever want to talk\nplease, don't hesitate to chat\lwith me!")
 	closemessage
