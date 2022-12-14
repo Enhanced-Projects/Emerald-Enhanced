@@ -7021,10 +7021,12 @@ BattleScript_CheekPouchActivates::
 	return
 
 BattleScript_HarvestActivates::
-	pause 0x5
+	pause 5
+	tryrecycleitem BattleScript_HarvestActivatesEnd
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_HARVESTBERRY
-	waitmessage 0x40
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_HarvestActivatesEnd:
 	end3
 
 BattleScript_SolarPowerActivates::
