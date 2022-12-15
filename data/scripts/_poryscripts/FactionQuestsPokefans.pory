@@ -8,10 +8,25 @@ script(global) RyuPokefansDailyQuest  {
         end
     }
 
-    checkfactionstanding(FACTION_POKEFANS, 200)
+    if (flag(FLAG_RYU_POKEFANS_FINAL_QUEST_IN_PROGRESS) == TRUE) {
+        msgbox("I heard you're working for the\nPresident now!\pThat's so cool.")
+        closemessage
+        release
+        end
+    }
+
+    if ((flag(FLAG_RYU_POKEFANS_FINAL_QUEST_STARTED) == TRUE) && (flag(FLAG_RYU_POKEFANS_FINAL_QUEST_DONE) == FALSE)) {
+        msgbox("You really need to go meet\nthe President!\pWhere is he?\pWhy, the Lilycove city Fanclub,\nof course!")
+        closemessage
+        release
+        end
+    } 
+
+    checkfactionstanding(FACTION_POKEFANS, 175)
 
     if (var(VAR_RESULT) == TRUE) {
-        msgbox("I'm so glad to see you are\ndoing well!\pThe other Pokefans all adore you.\nYou have your own fanclub!")
+        msgbox("Hey, {PLAYER}? have you met the fanclub\nPresident?\pHe reached out and let us know\nthat he'd like to mee you!\pyou can find him in the fanclub\lin Lilycove!\pPlease go meet him!")
+        setflag(FLAG_RYU_POKEFANS_FINAL_QUEST_STARTED)
         release
         end
     }
@@ -128,4 +143,50 @@ text PokefansQuest3Desc {
     "anonymously dropped off.\p"
     "Is there any chance you could hatch\n"
     "it for us?"
+}
+
+//Pokefans special content
+//pretty generic and lazy, i know, but hey, it could be expanded upon later
+
+script RyuPokefansEscortMission { //generate an npc and location tos end player with and to
+    if (flag(FLAG_RYU_POKEFANS_ESCORT_DONE) == TRUE){
+        additem(VAR_RYU_POKEFANS_REWID, 1)
+        msgbox("Thank you so much for your help!\nHere's your payment.")
+        random(100)
+        if (var(VAR_RESULT) < 5){
+            additem(VAR_RYU_POKEFANS_REWID, 1)
+            msgbox("Oh! There were two tokens\nstuck together!\lHow lucky you are!")
+            closemessage
+        }
+        closemessage
+        bufferitemname(0, VAR_RYU_POKEFANS_REWID)
+        msgbox(" {COLOR DARK_GREY}{SHADOW LIGHT_GREY}(You received a {STR_VAR_1})")
+        clearflag(FLAG_RYU_POKEFANS_ESCORT_DONE)
+        closemessage
+        release
+        end
+    }
+    random(10)
+    copyvar(VAR_RYU_POKEFANS_REWID, VAR_RESULT)
+    callnative(RyuRandomizeEscortReward)
+    msgbox("Ah! {PLAYER}!\pI have a task for you!\nI'd like you to escort someone.")
+    closemessage
+    callnative(RyuSetupPokefansEscortQuest)
+    copyvar(VAR_OBJ_GFX_ID_8, VAR_RYU_POKEFANS_OBJID)
+    addobject(12)
+    applymovement(12, BringEscorteeOnScreen)
+    waitmovement(12)
+    msgbox("This person would like to go\nto {STR_VAR_1}.\pThanks ahead of time!")
+    removeobject(12)
+    createfollower(VAR_RYU_POKEFANS_OBJID, RyuPokefansEscortFollowerScript, DIR_EAST)
+    release
+    end
+}
+
+script RyuPokefansEscortFollowerScript {
+    callnative(RyuBufferPokefansTarget)
+    msgbox("I'm going to {STR_VAR_1}.\nThanks for your help!")
+    closemessage
+    release
+    end
 }

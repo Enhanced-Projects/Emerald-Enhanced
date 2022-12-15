@@ -611,6 +611,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/RyuHaremEndScripts.inc"
 	.include "data/scripts/_poryscripts/RyuPokemonSalonScripts.inc"
 	.include "data/scripts/_poryscripts/RyuIntroScripts.inc"
+	.include "data/scripts/_poryscripts/movement.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -775,7 +776,6 @@ Common_EventScript_PlayerHandedOverTheItem:: @ 82723E4
 	return
 
 	.include "data/scripts/elite_four.inc"
-	.include "data/scripts/movement.inc"
 	.include "data/scripts/check_furniture.inc"
 	.include "data/text/record_mix.inc"
 	.include "data/text/pc.inc"
@@ -1230,3 +1230,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Underworld/scripts.inc"
 
 	.include "data/maps/IntroRoom/scripts.inc"
+
+	.include "data/maps/LilycoveCity_Salon/scripts.inc"

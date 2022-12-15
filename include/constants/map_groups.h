@@ -536,6 +536,7 @@
 #define MAP_BATTLE_PYRAMID_SQUARE15         (58 | (25 << 8))
 #define MAP_BATTLE_PYRAMID_SQUARE16         (59 | (25 << 8))
 #define MAP_UNION_ROOM                      (60 | (25 << 8))
+#define MAP_LILYCOVE_CITY_SALON             (61 | (25 << 8))
 
 // Map Group 26
 #define MAP_SAFARI_ZONE_NORTHWEST                           (0 | (26 << 8))

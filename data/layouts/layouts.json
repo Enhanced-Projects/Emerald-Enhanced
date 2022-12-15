@@ -5610,6 +5610,16 @@
       "secondary_tileset": "gTileset_Unused1",
       "border_filepath": "data/layouts/IntroRoom/border.bin",
       "blockdata_filepath": "data/layouts/IntroRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_LILYCOVE_CITY_SALON",
+      "name": "LilycoveCity_Salon_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_LilycoveMuseum",
+      "border_filepath": "data/layouts/LilycoveCity_Salon/border.bin",
+      "blockdata_filepath": "data/layouts/LilycoveCity_Salon/map.bin"
     }
   ]
 }

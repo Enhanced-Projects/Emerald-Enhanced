@@ -27,6 +27,11 @@ void RyuSpawnDynamicObject(u8 dynObjId, u16 graphicsId, u8 movementBehavior, s16
     id = SpawnSpecialObjectEvent(&objectEventTemplate);
 }
 
+void RemoveDynamicObject(u8 id)
+{
+    gSaveBlock1Ptr->DynamicObjects[id].active = FALSE;
+}
+
 int AddDynamicObject(u8 mapGroup, u8 mapNum, u16 graphicsId, u8 movementType, s16 xpos, s16 ypos, u8 zpos, const u8 *scriptPointer)
 {
     u8 i = RyuGetLowestAvailableDynamicSlot();

@@ -96,8 +96,8 @@
 #define VAR_POKELOT_RND2                     0x404C
 #define VAR_POKELOT_PRIZE_PLACE              0x404D
 #define VAR_RYU_THEME_NUMBER                 0x404E // Which theme is selected
-#define VAR_UNUSED_0x4050                    0x4050
-#define VAR_UNUSED_0x4051                    0x4051
+#define VAR_RYU_POKEFANS_LOCID               0x4050
+#define VAR_RYU_POKEFANS_OBJID               0x4051
 #define VAR_LAST_KNOWN_GAME_VERSION          0x4052 // current game version
 #define VAR_LAVARIDGE_TOWN_STATE             0x4053
 #define VAR_CURRENT_SECRET_BASE              0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
@@ -107,7 +107,7 @@
 #define VAR_SLATEPORT_CITY_STATE             0x4058
 #define VAR_RYU_SPIRITOMB_FAINTS             0x4059 // Tracks up to 107 KO's for spiritomb diversion
 #define VAR_RUSTBORO_CITY_STATE              0x405A
-#define VAR_UNUSED_0x405B                    0x405B
+#define VAR_RYU_POKEFANS_REWID               0x405B
 #define VAR_RYU_LAST_ACH                     0x405C // stores the most recently given achievement if the player didn't have it previously.
 #define VAR_MOSSDEEP_CITY_STATE              0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E

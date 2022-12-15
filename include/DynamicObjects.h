@@ -8,4 +8,5 @@ void RyuClearAllDynamicObjects(void);
 bool8 ScrCmd_adddynamicobject(struct ScriptContext *ctx);
 bool8 ScrCmd_removedynamicobject(struct ScriptContext *ctx);
 int AddDynamicObject(u8 mapGroup, u8 mapNum, u16 graphicsId, u8 movementType, s16 xpos, s16 ypos, u8 zpos, const u8 *scriptPointer);
+void RemoveDynamicObject(u8 id);
 void RyuClearAllDynamicObjects(void);

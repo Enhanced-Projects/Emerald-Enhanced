@@ -1,7 +1,7 @@
 //scripts for the contest stat trainers
 
 
-script RyuCoolnessTrainer {
+script LCS_CoolnessTrainer {
     msgbox("Hello, coordinator.\nI provide training in Coolness\lfor your Pokémon.\pWould you like me to train\nCoolness for your Pokémon?", MSGBOX_YESNO)
     if (var(VAR_RESULT) == NO){
         msgbox("All right then.\nCome see me if you change\lyour mind!")
@@ -39,7 +39,7 @@ script RyuCoolnessTrainer {
     goto(ryu_end)
 }
 
-script RyuBeautyTrainer {
+script LCS_BeautyTrainer {
     msgbox("Hello, coordinator.\nI make Pokémon more beautiful!\pWould you like for me to\ntrain your Pokémon in Beauty?", MSGBOX_YESNO)
     if (var(VAR_RESULT) == NO){
         msgbox("All right then.\nCome see me if you change\lyour mind!")
@@ -77,7 +77,7 @@ script RyuBeautyTrainer {
     goto(ryu_end)
 }
 
-script RyuCutenessTrainer {
+script LCS_CutenessTrainer {
     msgbox("Hello, coordinator.\nI just adore Cute Pokémon!\pWould you like me to\nteach a Pokémon to act more cute?", MSGBOX_YESNO)
     if (var(VAR_RESULT) == NO){
         msgbox("All right then.\nCome see me if you change\lyour mind!")
@@ -114,7 +114,7 @@ script RyuCutenessTrainer {
     goto(ryu_end)
 }
 
-script RyuToughnessTrainer {
+script LCS_StrengthTrainer {
     msgbox("Hello, coordinator.\nI toughen up Pokémon!\pShould I train one of your Pokémon\nto toughen them up?", MSGBOX_YESNO)
     if (var(VAR_RESULT) == NO){
         msgbox("All right then.\nCome see me if you change\lyour mind!")
@@ -151,7 +151,7 @@ script RyuToughnessTrainer {
     goto(ryu_end)
 }
 
-script RyuSmartnessTrainer {
+script LCS_IntelligenceTrainer {
     msgbox("Hello, coordinator.\nI teach Pokémon to be more\lIntelligent.\pWould you like for me to\nimprove a Pokémon's intelligence?", MSGBOX_YESNO)
     if (var(VAR_RESULT) == NO){
         msgbox("All right then.\nCome see me if you change\lyour mind!")
@@ -188,7 +188,7 @@ script RyuSmartnessTrainer {
     goto(ryu_end)
 }
 
-script RyuPokemonGroomer {
+script LCS_Stylist {
     msgbox("Hello, {PLAYER}!\pI provide grooming services\nto increase a Pokémon's\linitial appeal in contests!\pWould you like for me to\ngroom one of your Pokémon?", MSGBOX_YESNO)
     if (var(VAR_RESULT) == NO){
         msgbox("Shame.\nSome other time then!")

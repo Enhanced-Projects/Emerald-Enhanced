@@ -208,6 +208,11 @@ ContestHall_EventScript_DoContest:: @ 8279F97
 	releaseall
 	call ContestHall_EventScript_GetContestRankStringId
 	call ContestHall_EventScript_GetContestCategory
+	callnative RyuAddFollower
+	applymovement FOLLOWER, RyuContest_SetFollowerAsObserver
+	waitmovement FOLLOWER
+	msgbox RyuContest_FollowerCommentary
+	closemessage
 	call ContestHall_EventScript_ContestGettingStarted
 	call ContestHall_EventScript_ShowContestMons
 	call ContestHall_EventScript_DoContestAppeals
@@ -219,6 +224,9 @@ ContestHall_EventScript_DoContest:: @ 8279F97
 	call ContestHall_EventScript_GiveWinnerPrize
 	setvar VAR_CONTEST_HALL_STATE, 2
 	return
+
+RyuContest_FollowerCommentary:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You got this, {PLAYER}!$"
 
 ContestHall_EventScript_GetContestRankStringId:: @ 8279FF2
 	switch VAR_CONTEST_RANK
@@ -283,6 +291,12 @@ ContestHall_EventScript_ContestGettingStarted:: @ 827A097
 	waitmovement 0
 	releaseall
 	return
+
+RyuContest_SetFollowerAsObserver:
+	walk_up
+	walk_up
+	face_down
+	step_end
 
 ContestHall_EventScript_GettingStarted:: @ 827A0B1
 	compare VAR_CONTEST_TYPE, CONTEST_TYPE_LINK

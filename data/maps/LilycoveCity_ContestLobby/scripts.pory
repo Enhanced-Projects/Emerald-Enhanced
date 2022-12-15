@@ -320,12 +320,14 @@ LilycoveCity_ContestLobby_Movement_LinkArtistReturnToPlayer: @ 821A54B
 	step_end
 
 @ EventScript_SpeakToContestReceptionist either ends or returns after a contest entry is submitted
+LilycoveCity_ContestLobby_EventScript_ContestReceptionist2::
+	applymovement PLAYER, Common_Movement_StepLeft
+	applymovement FOLLOWER, Common_Movement_StepLeft
+	waitmovement PLAYER
+	turnobject PLAYER, DIR_NORTH
+	turnobject FOLLOWER, DIR_NORTH
 LilycoveCity_ContestLobby_EventScript_ContestReceptionist:: @ 821A554
-	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	special ClearLinkContestFlags
-	specialvar VAR_RESULT, IsContestDebugActive  @ Always FALSE
-	compare VAR_RESULT, TRUE
-	goto_if_eq LilycoveCity_ContestLobby_EventScript_SetDebug
 	call LilycoveCity_ContestLobby_EventScript_SpeakToContestReceptionist
 	call LilycoveCity_ContestLobby_EventScript_LeadToContestHall
 	special SetContestTrainerGfxIds
@@ -428,11 +430,13 @@ LilycoveCity_ContestLobby_EventScript_LeadToContestHall:: @ 821A670
 	applymovement 1, LilycoveCity_ContestLobby_Movement_ReceptionistFacePlayer
 	waitmovement 0
 	applymovement PLAYER, LilycoveCity_ContestLobby_Movement_PlayerApproachReceptionist
+	applymovement FOLLOWER, LilycoveCity_ContestLobby_Movement_PlayerApproachReceptionist
 	waitmovement 0
 	msgbox LilycoveCity_ContestLobby_Text_ComeThroughHere, MSGBOX_DEFAULT
 	closemessage
 	applymovement 1, LilycoveCity_ContestLobby_Movement_ReceptionistWalkToContestHall
 	applymovement PLAYER, LilycoveCity_ContestLobby_Movement_PlayerWalkToContestHall
+	applymovement FOLLOWER, LilycoveCity_ContestLobby_Movement_PlayerWalkToContestHall
 	waitmovement 0
 	releaseall
 	return

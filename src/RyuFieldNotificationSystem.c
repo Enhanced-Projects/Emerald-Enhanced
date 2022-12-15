@@ -19,6 +19,7 @@
 #include "scripted_encounters.h"
 #include "sound.h"
 #include "cutscene.h"
+#include "DynamicObjects.h"
 
 extern const u8 RyuGlobal_CancelDailyQuest[];
 extern void GetPlayerPosition(struct MapPosition *);
@@ -344,6 +345,7 @@ void RyuCheckAquaQuestNotifications(void)
 
 extern void RyuSavePlayTimeChallenge(void);
 extern bool32 IsPlayerInUnderworld(void);
+extern bool32 checkEscortMission(void);
 
 void RyuDoNotifyTasks(void)
 {
@@ -445,6 +447,25 @@ void RyuDoNotifyTasks(void)
     {
         FlagClear(FLAG_RYU_OPTIONAL_QT_ACTION);
         ScriptContext1_SetupScript(RyuGlobal_CancelDailyQuest);
+    }
+
+    if ((checkEscortMission() == TRUE) && (VarGet(VAR_RYU_POKEFANS_OBJID) == (VarGet(VAR_RYU_FOLLOWER_ID))) && (FlagGet(FLAG_RYU_POKEFANS_ESCORT_DONE) == FALSE))
+    {
+        FlagSet(FLAG_RYU_POKEFANS_ESCORT_DONE);
+        ShowFieldMessage((const u8[])_("Ah! Here we are.\nThank you so much for escorting me!"));
+        CreateTask(RyuMessageTimerTask, 0xFF);
+        /*tempobjectid = (AddDynamicObject(gSaveBlock1Ptr->location.mapGroup,
+                         gSaveBlock1Ptr->location.mapNum,
+                         (VarGet(VAR_RYU_POKEFANS_OBJID)),
+                         0, 
+                         gObjectEvents[FOLLOWER].currentCoords.x, 
+                         gObjectEvents[FOLLOWER].currentCoords.y,
+                         3,
+                         NULL));//create a dynamic object where the player's follower is*/
+        DestroyFollowerObjectEvent();//delete the follower
+        VarSet(VAR_RYU_POKEFANS_OBJID, 0);
+        FlagClear(FLAG_RYU_HAS_FOLLOWER);
+        VarSet(VAR_RYU_FOLLOWER_ID, 0);
     }
 }
 

@@ -131,7 +131,7 @@
 #define FLAG_RYU_IN_MOSSDEEP_GYM             0x71
 #define FLAG_RYU_HAS_HOME_REGISTERED         0x72 //player has registered a real estate property as their home.
 #define FLAG_RECEIVED_METEORITE              0x73
-#define FLAG_UNUSED_0x74                     0x74
+#define FLAG_RYU_POKEFANS_FINAL_QUEST_IN_PROGRESS     0x74
 #define FLAG_DEFEATED_MAGMA_SPACE_CENTER     0x75 // Set when Team Magma is defeated at Mossdeep's Space Center.
 #define FLAG_MET_HIDDEN_POWER_GIVER          0x76
 
@@ -147,7 +147,7 @@
 #define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F
 #define FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON 0x80 //necessary for the devon line while player is in aqua hideout.
 #define FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN  0x81
-#define FLAG_UNUSED_0x82                     0x82
+#define FLAG_RYU_HIDE_LCFC_LILY              0x82
 #define FLAG_RECEIVED_DOLL_LANETTE           0x83
 #define FLAG_RECEIVED_GREAT_BALL_OLDALE      0x84
 #define FLAG_RECEIVED_AMULET_COIN            0x85
@@ -752,7 +752,7 @@
 #define FLAG_RYU_PREVENT_ACH_POPUP                                  0x2BB
 
 // Event Flags
-#define FLAG_UNUSED_0x2BC                                           0x2BC
+#define FLAG_RYU_POKEFANS_FINAL_QUEST_FINISHED                      0x2BC
 #define FLAG_RYU_CHOSE_MAGMA_PATH                                   0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
@@ -772,7 +772,7 @@
 #define FLAG_HIDE_SAFARI_ZONE_SOUTH_CONSTRUCTION_WORKERS            0x2CD
 #define FLAG_HIDE_MEW                                               0x2CE
 #define FLAG_HIDE_ROUTE_104_RIVAL                                   0x2CF
-#define FLAG_UNUSED_0x2D0                                           0x2D0
+#define FLAG_RYU_POKEFANS_ESCORT_DONE                               0x2D0
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH                  0x2D1
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_BEDROOM         0x2D2
 #define FLAG_HIDE_ROUTE_103_RIVAL                                   0x2D3

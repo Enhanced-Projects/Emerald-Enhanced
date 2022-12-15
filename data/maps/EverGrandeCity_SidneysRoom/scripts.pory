@@ -52,7 +52,6 @@ EverGrandeCity_SidneysRoom_EventScript_WalkInCloseDoor:: @ 8227F57
 EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 	lock
 	faceplayer
-	call_if_set FLAG_RYU_HAS_FOLLOWER, EGC_CheckForceDismissFollower
 	goto_if_set FLAG_DEFEATED_ELITE_4_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 82

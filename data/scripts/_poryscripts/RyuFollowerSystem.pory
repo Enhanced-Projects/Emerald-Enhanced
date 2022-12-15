@@ -271,6 +271,11 @@ RF_RemoveFollowerSilent::
 	case FOLLOWER_MAY, Ryu_ReturnMayToHome
 	case FOLLOWER_LUCY, Ryu_ReturnLucyPike
 	case FOLLOWER_MOM, LRT_RestoreMom
+	case OBJ_EVENT_GFX_GIRL_3, LCFC_RemoveLily
+	return
+
+LCFC_RemoveLily::
+	destroyfollower
 	return
 
 Ryu_ReturnLucyPike::
@@ -679,6 +684,9 @@ RF_NurseQuestCancelledText:
 `
 
 script RyuFollowerSelectNPCScript {
+	if (var(VAR_RYU_POKEFANS_OBJID) != 0){
+		goto(RyuPokefansEscortFollowerScript)
+	}
 	specialvar(VAR_0x8003, CheckIfInPlayerHome)
 	if (var(VAR_0x8003) == TRUE){
 		goto(RyuFollowerSelectNPCScriptHome)
@@ -717,6 +725,12 @@ script RyuFollowerSelectNPCScriptHome {
 }
 
 script RyuFollowerJoinBattleQuery {
+	if (var(VAR_RYU_POKEFANS_OBJID) > 0){
+		msgbox("This follower cannot join in\nbattles.")
+		clearflag(FLAG_RYU_COMPANION_PARTICIPATION)
+		release
+		end
+	}
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Should I join you in battles?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES){
 		setflag(FLAG_RYU_COMPANION_PARTICIPATION)
@@ -731,6 +745,11 @@ script RyuFollowerJoinBattleQuery {
 script RyuFollowerCheckDismiss{
 	if (var(VAR_RYU_FOLLOWER_ID) == FOLLOWER_COURTNEY){
 		msgbox("{COLOR LIGHT_RED}{SHADOW RED}You can't get rid of me that\neasily!")
+		release
+		end
+	}
+	if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_GIRL_3){
+		msgbox(" ({COLOR LIGHT_GREEN}{SHADOW GREEN}It would be a very bad idea\n to just leave her after\l promising her father.)")
 		release
 		end
 	}
@@ -773,10 +792,15 @@ script RyuFollowerChatterSelect {
 			goto(RyuFollower_LucyScript)
 		case FOLLOWER_MOM:
 			goto(RyuFollower_MomScript)
+		case OBJ_EVENT_GFX_GIRL_3:
+			goto(RyuFollower_LilySelector)
 	}
 }
 
 script RyuFollowerSetAttendant{
+	if (var(VAR_RYU_POKEFANS_OBJID) > 0){
+		msgbox("You can't set this NPC as\nan attendant.")
+	}
 	specialvar(VAR_0x8003, CheckIfInPlayerHome)
 	specialvar(VAR_0x8004, RyuCheckIfFollowerCanStay)
 	if ((var(VAR_0x8003) == TRUE) && (flag(FLAG_RYU_ENTERING_OWNED_HOME) == TRUE) && (var(VAR_0x8004) == TRUE)) {

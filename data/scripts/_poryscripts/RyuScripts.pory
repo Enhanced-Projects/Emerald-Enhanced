@@ -1245,6 +1245,10 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	setflag(FLAG_RYU_DS_DAWN_PARTNERS)
+	setflag(FLAG_RYU_DS_DAWN_LOVERS)
+	clearflag(FLAG_RYU_DS_DAWN_ACQ)
+	setvar(VAR_RYU_PARTNER_COUNT, 1)
 	end
 }
 

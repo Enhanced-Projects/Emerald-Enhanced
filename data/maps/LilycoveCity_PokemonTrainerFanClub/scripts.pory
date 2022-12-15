@@ -868,3 +868,279 @@ LilycoveCity_PokemonTrainerFanClub_Text_YourePowerfulButNotTrueStrength: @ 821DF
 	.string "… …\p"
 	.string "Actually, I have no idea, either.$"
 `
+
+script LCFC_CorrectPlayerPosition {
+	getplayerxy(VAR_TEMP_A, VAR_TEMP_B)
+	if (var(VAR_TEMP_A) == 8){
+		if (var(VAR_TEMP_B) == 5){
+			applymovement(PLAYER, Common_Movement_StepDown)
+			waitmovement(PLAYER)
+			applymovement(PLAYER, Common_Movement_StepLeft)
+			waitmovement(PLAYER)
+			turnobject(PLAYER, DIR_NORTH)
+		}
+	}
+	if (var(VAR_TEMP_A) == 6){
+		if (var(VAR_TEMP_B) == 5){
+			applymovement(PLAYER, Common_Movement_StepDown)
+			waitmovement(PLAYER)
+			applymovement(PLAYER, Common_Movement_StepRight)
+			waitmovement(PLAYER)
+			turnobject(PLAYER, DIR_NORTH)
+		}
+	}
+	return
+}
+
+script LilycoveCity_FanclubPresident {
+	lock
+	faceplayer
+	call(LCFC_CorrectPlayerPosition)
+	if (flag(FLAG_RYU_POKEFANS_FINAL_QUEST_FINISHED) == TRUE){
+		goto(LCFC_FinishedSpecialQuest)
+	}
+	if ((flag(FLAG_RYU_POKEFANS_FINAL_QUEST_STARTED) == TRUE) && (flag(FLAG_RYU_POKEFANS_FINAL_QUEST_DONE) == FALSE)) {
+		turnobject(10, DIR_SOUTH)
+		msgbox(LCFC_PokefansPresidentIntro)
+		closemessage
+		if (flag(FLAG_SYS_GAME_CLEAR) == TRUE){
+		msgbox(LCFC_QuestIntro)//start pokefans final quest
+		closemessage
+		delay(20)
+		turnobject(10, DIR_NORTH)
+		msgbox("Lily! Hey!\pCome over here!")
+		waitmessage
+		applymovement(11, Common_Movement_ExclamationMark)
+		playse(SE_PIN)
+		waitmovement(11)
+		applymovement(11, LCFC_GirlToPresident)
+		turnobject(10, DIR_EAST)
+		waitmovement(11)
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}What did you need, daddy?")
+		closemessage
+		msgbox("Do you remember how you asked\nme to take you to a Contest?\pThis kind soul is willing to do\njust that for you!")
+		closemessage
+		applymovement(11, Common_Movement_ExclamationMark)
+		playse(SE_PIN)
+		applymovement(11, Common_Movement_StepDown)
+		waitmovement(11)
+		turnobject(11, DIR_WEST)
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}No way! Really?!\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}... ... ...\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Uh... Yeah. Sure!")
+		closemessage
+		applymovement(11, LCFC_Lily_ToPlayer)
+		delay(30)
+		playse(SE_M_CHARM)
+		waitmovement(11)
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh! Sorry... I got a little\nexcited...\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lily looks incredibly embarassed.)\p... ... ...")
+		turnobject(11, DIR_EAST)
+		delay(30)
+		turnobject(PLAYER, DIR_EAST)
+		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} pats Lily on the head)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Ah, don't mention it.\nYou're adorable!")
+		closemessage
+		turnobject(11, DIR_WEST)
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay! I'll wait for you at\nthe door!")
+		closemessage
+		applymovement(11, LilyToExit)
+		turnobject(PLAYER, DIR_SOUTH)
+		applymovement(10, Common_Movement_WalkInPlaceFastestDown)
+		waitmovement(10)
+		waitmovement(11)
+		turnobject(PLAYER, DIR_NORTH)
+		msgbox("As you can see, she is very...\nnaiive.\pI have to be very careful who\nI trust her with.\pIt goes without saying,\nIf anything happens to her...")
+		closemessage
+		applymovement(10, Common_Movement_WalkInPlaceDown)
+		waitmovement(10)
+		playse(SE_BALL_OPEN)
+		waitse
+		msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(The unseeming middle-aged man\n glares at you terrifyingly\l and then crushes an empty pokeball\p in his hand,\n sending a shiver down your spine.)")
+		closemessage
+		msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Uh, there won't be any problem,\nsir!\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Excellent. Take care now!\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (The man's face softens and\n takes on his sunny demeanor\l once again.)")
+		closemessage
+		setflag(FLAG_RYU_POKEFANS_FINAL_QUEST_IN_PROGRESS)
+		release
+		end
+		}
+		else{
+			msgbox("I see that you're still\nworking on your Pokémon League\lcareer.\pFar be it from me to stray\nsomeone from their dream!\pPlease return to me when\nyou have finished your Pokémon\lLeague Challenge!")
+			release
+			end
+		}
+	}
+	elif (flag(FLAG_RYU_POKEFANS_FINAL_QUEST_DONE) == TRUE){
+		goto(RyuPokefansEscortMission)
+		release
+		end
+	}
+	else{
+		msgbox("Hello, Trainer!\nDid you come to dote on\ladorable Pokémon too?")
+		closemessage
+		release
+		end
+	}
+}
+
+script LilycoveCity_Fanclub_Lily {
+	if (flag(FLAG_RYU_POKEFANS_FINAL_QUEST_IN_PROGRESS) == TRUE) {
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm all ready to go!")
+		closemessage
+		setflag(FLAG_RYU_HIDE_LCFC_LILY)
+		removeobject(11)
+		createfollower(OBJ_EVENT_GFX_GIRL_3, RyuFollowerSelectNPCScript, DIR_WEST)
+		release
+		end
+	}
+	msgbox("Hi there!\nI'm a Pokémon Coordinator\lin training!\pOne day, I'll be a superstar!")
+	closemessage
+	release
+	end
+}
+
+script RyuFollower_LilySelector {
+	random(4)
+	switch (var(VAR_RESULT)){
+		case 0:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Are we almost to the contest\nhall yet?")
+		case 1:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Normally, daddy is really\nprotective of me.\pYou must really be something\nif he trusted you with me.")
+		case 2:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I know we're supposed to\ngo to the Contest Hall\lbut daddy didn't say anything\pabout WHEN we should go.\pWanna go grab some food\nat the restaurant?")
+		case 3:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}I wonder what kinds of Pokémon\nwill be in the contest...")
+	}
+	closemessage
+	release
+	end
+}
+
+script LCFC_FinishedSpecialQuest {
+	lock
+	call(LCFC_CorrectPlayerPosition)
+	turnobject(10, DIR_SOUTH)
+	clearflag(FLAG_RYU_POKEFANS_FINAL_QUEST_FINISHED)
+	setflag(FLAG_RYU_POKEFANS_FINAL_QUEST_DONE)
+	setobjectxy(FOLLOWER, 7, 7)
+	applymovement(FOLLOWER, LCFC_FollowerLilyToDad)
+	waitmovement(FOLLOWER)
+	turnobject(FOLLOWER, DIR_EAST)
+	turnobject(10, DIR_WEST)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Daddy! We did it!\nWe went to a contest!\pI didn't know {PLAYER} would actually\nbe IN the contest though!\p{PLAYER}'s so cool.\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I'm glad to hear it dear.\pAs for you...")
+	closemessage
+	turnobject(10, DIR_SOUTH)
+	msgbox("You held up your end of\nthe bargain.\pSo, here you go!\pIt's an exclusive pass to\nthe Lilycove Salon!\pYou should go check it out.")
+	closemessage
+	playfanfare(MUS_FANFA1)
+	msgbox("{PLAYER} obtained the\nSalon Membership Card!")
+	closemessage
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} attached the card to\n the journal.)")
+	closemessage
+	msgbox("With that, You will be able\nto visit the Salon any time.\pIt will definitely give you an\nedge in contests!")
+	closemessage
+	applymovement(FOLLOWER, LCFC_LilyOneLastHug)
+	waitmovement(FOLLOWER)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Thanks again, {PLAYER}!\pYou really helped me out!")
+	closemessage
+	clearflag(FLAG_RYU_HIDE_LCFC_LILY)
+	applymovement(FOLLOWER, LCFC_LilyReturn)
+	waitmovement(FOLLOWER)
+	goto_if_unset(FLAG_RYU_HAS_FOLLOWER, ryu_end)
+	addobject(11)
+	goto(RF_FollowerLeave)
+	release
+	end
+
+}
+
+text LCFC_PokefansPresidentIntro{
+	"Hi there!\p"
+	"I'm the Pokémon Fan Club President!\n"
+	"People in my position help define\l"
+	"the Pokémon Contest rules!\p"
+	"I also write all the bylaws\n"
+	"of the fandom!"
+}
+
+text LCFC_QuestIntro {
+	"Oh, you must be {PLAYER}!\p"
+	"I've heard so much about you\n"
+	"from all the other Pokéfans in\l"
+	"the club!\p"
+	"Well, I have a special task that\n"
+	"I think only you could complete.\p"
+	"Please understand that the only\n"
+	"reason I'm willing to do this is\p"
+	"that all the other members of the\n"
+	"club belive you are a kind soul.\p"
+	"Could you please take my\n"
+	"daughter to a Contest?\p"
+	"She's never seen one and really\n"
+	"wants to go.\p"
+	"She aspires to be a Pokémon\n"
+	"coordinator!\p"
+	"This will be a great learning\n"
+	"experience for her.\p"
+	"Will you please do it?\p"
+	"{COLOR LIGHT_BLUE}{SHADOW BLUE}I'd be delighted to!\p"
+	"{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Oh! Thank you so much!\p"
+	"I will be happy to add you to\n"
+	"the fanclub Hall of Fame!"
+}
+
+movement LCFC_FollowerLilyToDad {
+	walk_left
+	walk_up * 2
+	face_right
+	step_end
+}
+
+movement LCFC_GirlToPresident{
+	walk_down * 3
+	walk_left * 2
+	step_end
+}
+
+movement LCFC_LilyOneLastHug {
+	walk_down
+	slide_right
+	delay_16
+	emote_heart
+	slide_left
+	face_right
+	step_end
+}
+
+movement LCFC_LilyReturn {
+	walk_down
+	walk_right * 2
+	walk_up * 1
+	walk_right * 2
+	walk_up * 4
+	face_down
+	step_end
+}
+
+movement LCFC_Lily_ToPlayer {
+	walk_down
+	slide_left
+	delay_8
+	emote_heart
+	slide_right
+	face_left
+	step_end
+}
+
+movement LilyToExit {
+	walk_down * 3
+	walk_right
+	walk_down * 4
+	walk_left * 3
+	face_up
+	step_end
+}
+
+movement BringEscorteeOnScreen {
+	walk_up * 3
+	walk_right
+	walk_up * 3
+	walk_right * 3
+	step_end
+}

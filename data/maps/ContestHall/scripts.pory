@@ -409,6 +409,7 @@ ContestHall_EventScript_CreateWirelessContestAudience:: @ 823BD86
 	return
 
 ContestHall_EventScript_SetExitWarp:: @ 823BE44
+	call_if_set FLAG_RYU_POKEFANS_FINAL_QUEST_IN_PROGRESS, RyuContest_MarkQuestCompleted
 	special ClearLinkContestFlags
 	switch VAR_CONTEST_TYPE
 	case CONTEST_TYPE_NPC_NORMAL, ContestHall_EventScript_SetExitWarpNormalContest
@@ -419,27 +420,27 @@ ContestHall_EventScript_SetExitWarp:: @ 823BE44
 	return
 
 ContestHall_EventScript_SetExitWarpNormalContest:: @ 823BE84
-	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 4
+	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 5
 	waitstate
 	end
 
 ContestHall_EventScript_SetExitWarpSuperContest:: @ 823BE8E
-	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 4
+	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 5
 	waitstate
 	end
 
 ContestHall_EventScript_SetExitWarpHyperContest:: @ 823BE98
-	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 4
+	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 5
 	waitstate
 	end
 
 ContestHall_EventScript_SetExitWarpMasterContest:: @ 823BEA2
-	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 4
+	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 5
 	waitstate
 	end
 
 ContestHall_EventScript_SetExitWarpLinkContest:: @ 823BEAC
-	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 15, 4
+	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 15, 5
 	waitstate
 	end
 
@@ -460,3 +461,12 @@ LilycoveCity_ContestLobby_EventScript_SetPlayerGfxMay:: @ 823BED4
 	return
 
 `
+
+script RyuContest_MarkQuestCompleted {
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE){
+		if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_GIRL_3){
+			setflag(FLAG_RYU_POKEFANS_FINAL_QUEST_FINISHED)
+		}
+	}
+	return
+}
