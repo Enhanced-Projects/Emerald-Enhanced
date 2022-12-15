@@ -91,7 +91,7 @@ extern int RyuGetCurrentMapsec(void);
 
 bool32 checkEscortMission(void)
 {
-    if (VarGet(VAR_RYU_POKEFANS_LOCID) == RyuGetCurrentMapsec())
+    if ((VarGet(VAR_RYU_POKEFANS_LOCID) == RyuGetCurrentMapsec()) && (!(VarGet(VAR_RYU_POKEFANS_LOCID) == 0)))
         return TRUE;
     return FALSE;
 }
