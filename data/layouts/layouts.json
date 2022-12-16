@@ -5614,10 +5614,10 @@
     {
       "id": "LAYOUT_LILYCOVE_CITY_SALON",
       "name": "LilycoveCity_Salon_Layout",
-      "width": 10,
-      "height": 10,
+      "width": 15,
+      "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_LilycoveMuseum",
+      "secondary_tileset": "gTileset_BattleFrontier",
       "border_filepath": "data/layouts/LilycoveCity_Salon/border.bin",
       "blockdata_filepath": "data/layouts/LilycoveCity_Salon/map.bin"
     }
