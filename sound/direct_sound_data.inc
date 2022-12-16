@@ -2964,7 +2964,7 @@ Cry_Meloetta::
 
 	.align 2
 Cry_Genesect::
-	.incbin "sound/direct_sound_samples/cries/cry_not_genesect.bin"
+	.incbin "sound/direct_sound_samples/cries/cry_genesect.bin"
 
 	.align 2
 Cry_Chespin::
