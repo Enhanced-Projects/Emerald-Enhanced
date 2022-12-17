@@ -1124,9 +1124,6 @@ LCC_Magma_PoisonWater1::
 	setmetatile 71, 12, 369, 0
 	setmetatile 72, 12, 369, 0
 	call LCC_DrawMapAndDelay
-	setmetatile 65, 11, 369, 0
-	setmetatile 66, 11, 369, 0
-	setmetatile 67, 11, 369, 0
 	setmetatile 68, 11, 369, 0
 	setmetatile 69, 11, 369, 0
 	setmetatile 70, 11, 369, 0
@@ -1143,20 +1140,20 @@ LCC_Magma_PoisonWater1::
 	setmetatile 75, 18, 369, 0
 	setmetatile 76, 18, 369, 0
 	call LCC_DrawMapAndDelay
-	setmetatile 65, 14, 369, 0
-	setmetatile 66, 14, 369, 0
-	call LCC_DrawMapAndDelay
 	return
 	
 LCC_Magma_PoisonWater2::
-	setmetatile 65, 13, 369, 0
-	setmetatile 66, 14, 369, 0
-	setmetatile 67, 14, 369, 0
 	setmetatile 68, 14, 369, 0
+	setmetatile 68, 13, 369, 0
+	setmetatile 68, 12, 369, 0
+	setmetatile 68, 11, 369, 0
+	setmetatile 68, 10, 369, 0
 	call LCC_DrawMapAndDelay
-	setmetatile 67, 9, 369, 0
+	setmetatile 68, 8, 369, 0
+	setmetatile 68, 7, 369, 0
 	setmetatile 68, 9, 369, 0
 	setmetatile 69, 9, 369, 0
+	setmetatile 69, 12, 369, 0
 	call LCC_DrawMapAndDelay
 	setmetatile 68, 8, 369, 0
 	setmetatile 69, 8, 369, 0
@@ -1164,27 +1161,27 @@ LCC_Magma_PoisonWater2::
 	setmetatile 68, 7, 369, 0
 	setmetatile 69, 7, 369, 0
 	call LCC_DrawMapAndDelay
-	setmetatile 65, 10, 369, 0
-	setmetatile 66, 10, 369, 0
-	setmetatile 67, 10, 369, 0
 	setmetatile 68, 10, 369, 0
 	setmetatile 69, 10, 369, 0
 	setmetatile 70, 10, 369, 0
-	call LCC_DrawMapAndDelay
-	setmetatile 63, 11, 369, 0
-	setmetatile 64, 11, 369, 0
-	call LCC_DrawMapAndDelay
-	setmetatile 63, 12, 369, 0
-	setmetatile 64, 12, 369, 0
-	call LCC_DrawMapAndDelay
-	setmetatile 63, 13, 369, 0
-	setmetatile 64, 13, 369, 0
 	call LCC_DrawMapAndDelay
 	setmetatile 70, 6, 369, 0
 	setmetatile 70, 7, 369, 0
 	setmetatile 70, 8, 369, 0
 	setmetatile 70, 9, 369, 0
 	setmetatile 70, 10, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 71, 6, 369, 0
+	setmetatile 71, 7, 369, 0
+	setmetatile 71, 8, 369, 0
+	setmetatile 71, 9, 369, 0
+	setmetatile 71, 10, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 72, 6, 369, 0
+	setmetatile 72, 7, 369, 0
+	setmetatile 72, 8, 369, 0
+	setmetatile 72, 9, 369, 0
+	setmetatile 72, 10, 369, 0
 	call LCC_DrawMapAndDelay
 	return
 	
