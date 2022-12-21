@@ -38,6 +38,7 @@
 #include "constants/rgb.h"
 #include "event_data.h"
 #include "constants/flags.h"
+#include "overworld_notif.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 

@@ -23,7 +23,8 @@
 #define AP_PDA 5//lets player access a mart remotely
 #define AP_ALPHA_AURA 10 //10% increased boss chance
 #define AP_BIOHAZARD 12 //double pokerus chance
-#define AP_GOLD_COUNT 4
+#define AP_SCOUTER 14 //see iv potential and nature on wild battle
+#define AP_GOLD_COUNT 5
 
 //SILVER AP's (you can use up to 3 of these at a time)
 #define AP_WINNINGS_BOOST 6 //Gives the player 10% more winnings after battle
@@ -38,7 +39,7 @@
 #define AP_COPPER_COUNT 3
 
 // total number of achivement powers available
-#define TOTAL_AP_COUNT 14
+#define TOTAL_AP_COUNT 15
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
 #define TOTAL_OBTAINABLE_ACHIEVEMENTS 67

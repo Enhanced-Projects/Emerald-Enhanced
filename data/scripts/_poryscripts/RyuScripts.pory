@@ -1245,10 +1245,8 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	drawfullscreenimage(SCENEBGCOURTNEYNEUTRAL)
-	waitbuttonpress
-	clearfullscreenimage
-	setvar(VAR_ASH_GATHER_COUNT, 8000)
+	warpsilent(MAP_MIRAGE_CAVE, 255, 10, 10)
+	waitstate
 	release
 	end
 }

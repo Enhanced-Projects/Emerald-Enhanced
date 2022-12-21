@@ -30,6 +30,7 @@
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "ach_atlas.h"
 
 struct BattleWindowText
 {
@@ -2527,7 +2528,46 @@ static const struct BattleWindowText *const sBattleTextOnWindowsInfo[] =
     sTextOnWindowsInfo_Normal, sTextOnWindowsInfo_Arena
 };
 
+u8 RyuGetPotentialFromEnemy (void)
+{
+    u8 ivs[6] = {0};
+    int i;
+    u8 count = 0;
+    for (i = 0;i < 6;i++)
+    {
+        ivs[i] = (GetMonData(&gEnemyParty[0], (MON_DATA_HP_IV + i)));
+            if (ivs[i] > 25)
+                count++;
+    }
+    return count;
+}
+
 static const u8 sRecordedBattleTextSpeeds[] = {8, 4, 1, 0};
+
+extern const u8 *const gNatureNamePointers[NUM_NATURES];
+const u8 gText_RyuBattlePreviewText[] = _("{STR_VAR_3}");
+const u8 sText_ryuNatureMessage[] = _("It's potential is {RYU_STR_1}\nand has a {RYU_STR_2} nature.\p");
+
+void RyuBufferIVAverage(void)
+{
+    int i;
+    int count = 0;
+    u8 nature = (GetNature(&gEnemyParty[0]));
+    u8 buffer[100];
+    u8 potential = (RyuGetPotentialFromEnemy()); 
+    StringCopy(gRyuStringVar1, gNatureNamePointers[nature]);
+    ConvertIntToDecimalStringN(gRyuStringVar2, potential, 0, 1);
+    StringCopy(buffer, (const u8[])_("A wild "));
+    GetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, gRyuStringVar3);
+    StringAppend(buffer, gRyuStringVar3);
+    StringAppend(buffer, (const u8[])_(" appeared!\n"));
+    StringAppend(buffer, (const u8[])_("Potential: "));
+    StringAppend(buffer, gRyuStringVar2);
+    StringAppend(buffer, (const u8[])_(", Nature: "));
+    StringAppend(buffer, gRyuStringVar1);
+    StringAppend(buffer, (const u8[])_(".\p"));
+    StringCopy(gStringVar3, buffer);
+}
 
 // code
 void BufferStringBattle(u16 stringID)
@@ -2612,6 +2652,11 @@ void BufferStringBattle(u16 stringID)
                 stringPtr = sText_WildPkmnAppearedPause;
             else if (IsPlayerInUnderworld() == TRUE)
                 stringPtr = sText_ReaperAppeared;
+            else if (CheckAPFlag(AP_SCOUTER) == TRUE)
+                {
+                    RyuBufferIVAverage();
+                    stringPtr = gText_RyuBattlePreviewText;
+                }
             else
                 stringPtr = sText_WildPkmnAppeared;
         }
@@ -2631,9 +2676,7 @@ void BufferStringBattle(u16 stringID)
                     stringPtr = sText_GoTwoPkmn;
             }
             else
-            {
                 stringPtr = sText_GoPkmn;
-            }
         }
         else
         {

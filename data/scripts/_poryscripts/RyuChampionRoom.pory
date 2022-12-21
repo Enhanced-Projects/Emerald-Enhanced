@@ -410,7 +410,6 @@ script MawileMegaReward { //overlord ryu's mawilite reward
 	setflag(FLAG_RYU_DEFEATED_OVERLORD)
 	if (flag(FLAG_RYU_PREMATURE_DEATH) == FALSE){
 		setflag(FLAG_RYU_UNDERWORLD)
-		setflag(FLAG_RYU_UNDERWORLD)
 		ach(query, ACH_MARKED_FOR_DEATH)
 		if (var(VAR_RESULT) == FALSE){
 			ach(give, ACH_MARKED_FOR_DEATH)

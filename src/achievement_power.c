@@ -20,7 +20,7 @@ const u8 sAPNameMobileStatCheck[] = _("Stat Device Access");
 const u8 sAPNamePDA[] =             _("PDA Device Access");
 const u8 sAPNameAlphaAura[] =       _("Alpha Aura");
 const u8 sAPNameBiohazard[] =       _("Biohazard");
-
+const u8 sAPNameScouter[] =         _("Scouter");
 //silver powers
 const u8 sSilverLabel[] = _("Silver");
 const u8 sAPNameWinningsBoost[] =   _("Winnings Boost");
@@ -48,6 +48,7 @@ const u8 sAlphaAuraAPDesc[] = _("Boss encounter rate is boosted\nby 10%.");
 const u8 sBreederAPDesc[] = _("Pokemon Eggs hatch twice as fast.\nStacks with Oval Charm and abilities.");
 const u8 sBiohazardAPDesc[] = _("Chance of getting Pokerus is doubled.");
 const u8 sLuckyLootAPDesc[] = _("Wild pokemon held item rate is increased.\nStacks with mon abilities.");
+const u8 sScouterAPDesc[] = _("See wild Pokémon potential and nature\nwhen a wild battle starts.");
 
 static void DummyFunc(void);
 
@@ -65,6 +66,7 @@ const struct APInfoTier gAP_InfoGold[] =
     {AP_PDA, sAPNamePDA, sPDAAPDesc, GiveTakePDAItem},
     {AP_ALPHA_AURA, sAPNameAlphaAura, sAlphaAuraAPDesc, DummyFunc},
     {AP_BIOHAZARD, sAPNameBiohazard, sBiohazardAPDesc, DummyFunc},
+    {AP_SCOUTER, sAPNameScouter, sScouterAPDesc, DummyFunc},
 };
 
 const struct APInfoTier gAP_InfoSilver[] = 
@@ -223,6 +225,14 @@ void GiveTakeStatAssistItem(void)//gives the pda item when ap is active. You nee
 }
 
 void APGlobalRepelToggle(void) //toggles the global repel
+{
+    if (CheckAPFlag(AP_GLOBAL_REPEL) == TRUE)
+        ClearAPFlag(AP_GLOBAL_REPEL);
+    else
+        SetAPFlag(AP_GLOBAL_REPEL);
+}
+
+void APScouterToggle(void) //toggles the Scouter
 {
     if (CheckAPFlag(AP_GLOBAL_REPEL) == TRUE)
         ClearAPFlag(AP_GLOBAL_REPEL);
