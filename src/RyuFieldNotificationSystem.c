@@ -365,6 +365,9 @@ void RyuDoNotifyTasks(void)
         }
     }
 
+    if ((CheckAchievement(ACH_THE_PHOENIX) == TRUE) && (FlagGet(FLAG_RYU_UNDERWORLD) == TRUE))
+        FlagClear(FLAG_RYU_UNDERWORLD);
+
     if ((FlagGet(FLAG_RYU_UNDERWORLD) == FALSE) &&
         (CheckAchievement(ACH_MARKED_FOR_DEATH) == TRUE) &&
         (IsPlayerInUnderworld() == FALSE))
