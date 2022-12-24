@@ -23,12 +23,8 @@ RyuAP_StatAssist::
     specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
 	compare VAR_TEMP_A, FALSE
 	goto_if_eq RyuAP_StatsFailed
-    special RyuFillStatsBuffers
-	delay 30
-    drawinfobox INFOBOXPOKEMONDATA
-    bufferpartymonnick 6, VAR_RESULT
-	msgbox RyuAP_StatMsg
-	removeinfobox
+    fadescreen FADE_TO_BLACK
+    callnative RyuCallStatAssistUI
     release
     end
 

@@ -91,6 +91,7 @@
 #include "overworld_notif.h"
 #include "factions.h"
 #include "scripted_encounters.h"
+#include "StatAssist.h"
 
 extern u8 GetObjectEventIdByLocalId(u8 id);
 
@@ -1985,7 +1986,7 @@ int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game
     if (VarGet(VAR_RYU_QUEST_MAY) == 50) //Player is investigating wally's house with May
         return 130;
     
-    if (FlagGet(FLAG_RYU_UNDERWORLD) == TRUE)
+    if ((FlagGet(FLAG_RYU_UNDERWORLD) == TRUE) && (CheckAchievement(ACH_THE_PHOENIX) == FALSE))
         return 140;
 
     return 0;
@@ -2818,5 +2819,10 @@ void RyuTestDynamicObjectContents(void)
             mgba_printf(LOGINFO, "\nobject # %d:\nObject gfx ID: %d\nMap is %d:%d\ncoords are %d,%d,%d\nMovement type: %d\nlocalid: %d\nscript pointer: %d", i, gSaveBlock1Ptr->DynamicObjects[i].gfxId, gSaveBlock1Ptr->DynamicObjects[i].mapGroup, gSaveBlock1Ptr->DynamicObjects[i].mapNum, gSaveBlock1Ptr->DynamicObjects[i].x, gSaveBlock1Ptr->DynamicObjects[i].y, gSaveBlock1Ptr->DynamicObjects[i].z, gSaveBlock1Ptr->DynamicObjects[i].movement, gSaveBlock1Ptr->DynamicObjects[i].localId, gSaveBlock1Ptr->DynamicObjects[i].scriptPtr);
         }
     mgba_close();
+}
+
+void RyuCallStatAssistUI(void)
+{
+    StatAssist_Init(CB2_ReturnToField);
 }
 

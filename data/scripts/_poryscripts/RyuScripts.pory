@@ -1245,8 +1245,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	warpsilent(MAP_MIRAGE_CAVE, 255, 10, 10)
-	waitstate
 	release
 	end
 }

@@ -36,6 +36,9 @@ RyuTeleport::
 
 RyuCheckUnderworldWaystone::
 	goto_if_set FLAG_RYU_REAPER, ryu_return
+	ach query ACH_THE_PHOENIX
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_return
 	goto RyuTeleportDisabled
 
 RT_NoWaystone::
