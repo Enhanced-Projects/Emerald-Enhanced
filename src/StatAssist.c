@@ -434,7 +434,7 @@ void RyuBufferStats(void)
         temp = GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_HP_EV + i);
         ConvertIntToDecimalStringN(gStringVar1, temp, 0, 4);
         StringAppend(gStringVar4, gStringVar1);
-        StringAppend(gStringVar4, sText_IV);
+        StringAppend(gStringVar4, sText_EV);
         StringAppend(gStringVar4, sText_FwSlash);
         //buffer IV's
         temp = GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_HP_IV + i);
