@@ -6476,14 +6476,16 @@ BattleScript_HarbingerActivates::
 	end3
 
 BattleScript_TargetFormChange::
-	pause 0x5
+	pause 5
 	copybyte gBattlerAbility, gBattlerTarget
 	call BattleScript_AbilityPopUp
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
 	handleformchange BS_TARGET, 0
 	handleformchange BS_TARGET, 1
-	playanimation BS_TARGET, B_ANIM_FORM_CHANGE, NULL
+	playanimation BS_TARGET, B_ANIM_FORM_CHANGE
 	waitanimation
-	handleformchange BS_TARGET, 2 
+	handleformchange BS_TARGET, 2
 	return
 
 BattleScript_AnticipationActivates::
