@@ -477,6 +477,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return ryu_end;
     if (MetatileBehavior_IsTrainerHillTimer(metatileBehavior) == TRUE)
         return EventScript_TrainerHillTimer;
+    if (MetatileBehavior_IsMineable(metatileBehavior) == TRUE)
+        return MiningWall;
 
     height = position->height;
     if (height == MapGridGetZCoordAt(position->x, position->y))
@@ -651,33 +653,10 @@ static void UpdateHappinessStepCounter(void)
     }
 }
 
-void ClearPoisonStepCounter(void)
-{
-    VarSet(VAR_POISON_STEP_COUNTER, 0);
-}
+void ClearPoisonStepCounter(void) {} //disabled because we don't use this.
 
-static bool8 UpdatePoisonStepCounter(void)
+static bool8 UpdatePoisonStepCounter(void) //disabled because we don't use this.
 {
-    u16 *ptr;
-
-    if (gMapHeader.mapType != MAP_TYPE_SECRET_BASE)
-    {
-        ptr = GetVarPointer(VAR_POISON_STEP_COUNTER);
-        (*ptr)++;
-        (*ptr) %= 4;
-        if (*ptr == 0)
-        {
-            switch (DoPoisonFieldEffect())
-            {
-            case FLDPSN_NONE:
-                return FALSE;
-            case FLDPSN_PSN:
-                return FALSE;
-            case FLDPSN_FNT:
-                return TRUE;
-            }
-        }
-    }
     return FALSE;
 }
 

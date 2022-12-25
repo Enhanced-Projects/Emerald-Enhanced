@@ -2826,3 +2826,13 @@ void RyuCallStatAssistUI(void)
     StatAssist_Init(CB2_ReturnToField);
 }
 
+
+void RyuSetupMiningRichness(void)
+{
+    u16 skill = (VarGet(VAR_RYU_PLAYER_MINING_SKILL));
+    u16 rdmcp = (Random() % 5);
+    rdmcp += skill;
+    if ((Random() % 100) > 40)
+        rdmcp = 0xFFFF; //60% chance the map isn't mineable at all.
+    VarSet(VAR_RYU_MINING_RICHNESS, rdmcp);
+}

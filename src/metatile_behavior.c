@@ -3,7 +3,7 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/metatile_labels.h"
 #include "fieldmap.h"
-
+#include "constants/map_types.h"
 #define TILE_FLAG_ENCOUNTER_TILE 1
 #define TILE_FLAG_SURFABLE 2
 
@@ -47,7 +47,7 @@ static const u8 sTileBitAttributes[] =
     [MB_ICE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_SAND] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_SEAWEED] = TILE_ATTRIBUTES(TRUE, TRUE, TRUE),
-    [MB_UNUSED_23] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
+    [MB_MINEABLE_CAVEWALL] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_ASHGRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_FOOTPRINTS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_THIN_ICE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
@@ -1491,6 +1491,14 @@ bool8 MetatileBehavior_IsTrainerHillTimer(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsMineable(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_MINEABLE_CAVEWALL)
+        if (gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
+            return TRUE;
+        
+    return FALSE;
+}
 bool8 MetatileBehavior_IsMtFreezeOrPolarPillar(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_COLD_CAVE || metatileBehavior == MB_MT_FREEZE_EXTERIOR)

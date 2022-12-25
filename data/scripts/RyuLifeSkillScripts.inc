@@ -412,7 +412,7 @@ Ryu_MineRock:: @@The special code function determines if you are inside or outsi
     dominingcheck
     compare VAR_TEMP_B, 0
     goto_if_eq Ryu_MineFailed
-    checkitemspace ITEM_RARE_CANDY, 1  @@arbitrarily checks if there's space in the item pocket.
+    checkitemspace VAR_TEMP_B, VAR_TEMP_C
     compare VAR_RESULT, FALSE
     goto_if_eq MiningNotEnoughSpace
     addvar VAR_RYU_PLAYER_MINING_SKILL_EXP, 1
@@ -475,6 +475,16 @@ Ryu_NoOresHere::
     release
     end
 
+Ryu_OresExhausted::
+    msgbox Ryu_OresExhaustedMsg
+    release
+    end
+
+Ryu_NoOresToBeFound::
+    msgbox Ryu_NoOresToBeFoundMsg
+    release
+    end
+
 RyuCheckMiningSkill::
     compare VAR_RYU_PLAYER_MINING_SKILL, 0
     goto_if_eq ryu_end
@@ -494,6 +504,12 @@ Ryu_Level2Mining:
 
 Ryu_Level3Mining:
     .string "The earth now speaks to you,\nletting you see ores more clearly.$"
+
+Ryu_OresExhaustedMsg:
+    .string "The ores here appear to be\nexhausted...$"
+
+Ryu_NoOresToBeFoundMsg:
+    .string "This area appears to be barren...$"
 
 @overworld mining scripts==========================================================================
 
@@ -567,6 +583,22 @@ MiningRock10::
     call Ryu_MineRock
     release
     end
+
+MiningWall::
+    compare VAR_RYU_MINING_RICHNESS, 0
+    call_if_eq Ryu_RollMiningRichness
+    compare VAR_RYU_MINING_RICHNESS, 1
+    goto_if_eq Ryu_OresExhausted
+    compare VAR_RYU_MINING_RICHNESS, 0xFFFF
+    goto_if_eq Ryu_NoOresToBeFound
+    subvar VAR_RYU_MINING_RICHNESS, 1
+    call Ryu_MineRock
+    release
+    end
+
+Ryu_RollMiningRichness:
+    callnative RyuSetupMiningRichness
+    return
 
 @alchemy related
 

@@ -58,7 +58,7 @@
 #define VAR_RYU_NGPLUS_COUNT                 0x4028
 #define VAR_RYU_FOLLOWER_ELITE_MATCHES       0x4029 // Number of times e4 was challenged with a follower
 #define VAR_HAPPINESS_STEP_COUNTER           0x402A
-#define VAR_POISON_STEP_COUNTER              0x402B
+#define VAR_RYU_MINING_RICHNESS              0x402B
 #define VAR_RESET_RTC_ENABLE                 0x402C
 #define VAR_ENIGMA_BERRY_AVAILABLE           0x402D
 #define VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES 0x402E
