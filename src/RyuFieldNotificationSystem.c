@@ -546,7 +546,7 @@ void RyuDoSpecialEncounterChecks(void)
         
         if (FlagGet(FLAG_RYU_ENCOUNTERED_MELOETTA) == FALSE)
             {
-                if (MetatileBehavior_IsTallGrass(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)) && (FlagGet(FLAG_RYU_CAPTURED_MELOETTA) == FALSE))
+                if ((MetatileBehavior_IsTallGrass(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)) == TRUE) && (FlagGet(FLAG_RYU_CAPTURED_MELOETTA) == FALSE))
                 {
                     if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 255)
                     {
