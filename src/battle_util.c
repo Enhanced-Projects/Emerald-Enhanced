@@ -7877,15 +7877,10 @@ static void UpdateMoveResultFlags(u16 modifier)
     {
         gMoveResultFlags &= ~(MOVE_RESULT_NOT_VERY_EFFECTIVE | MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_DOESNT_AFFECT_FOE);
     }
-    else if ((modifier > UQ_4_12(1.0)) && (modifier < UQ_4_12(2.1)))
+    else if (modifier > UQ_4_12(1.0))
     {
         gMoveResultFlags |= MOVE_RESULT_SUPER_EFFECTIVE;
         gMoveResultFlags &= ~(MOVE_RESULT_NOT_VERY_EFFECTIVE | MOVE_RESULT_DOESNT_AFFECT_FOE);
-    }
-    else if (modifier > UQ_4_12(2.1))
-    {
-        gMoveResultFlags |= MOVE_RESULT_ULTRA_EFFECTIVE;
-        gMoveResultFlags &= ~(MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_DOESNT_AFFECT_FOE);
     }
     else //if (modifier < UQ_4_12(1.0))
     {
