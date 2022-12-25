@@ -158,7 +158,7 @@ script RCR_OverlordRyuBossFight { //THE OVERLORD
 	if (flag(FLAG_RYU_DEFEATED_OVERLORD) == FALSE) {
 		call(MawileMegaReward)
 	}
-	goto(RCR_OverlordRyuEndMatch)
+	goto(RCR_FinishChallenge)
 }
 
 script RCR_OverlordRyuRematch { //THE RYUMATCH
@@ -189,14 +189,7 @@ script RCR_OverlordRyuRematch { //THE RYUMATCH
 	if (flag(FLAG_RYU_DEFEATED_OVERLORD) == FALSE) {
 		call(MawileMegaReward)
 	}
-	goto(RCR_OverlordRyuEndMatch)
-}
-	
-script RCR_OverlordRyuEndMatch {
-	clearflag(FLAG_RYU_WAYSTONE_DISABLED)
-	special(GameClear)
-    goto(AT1_Warp)
-	end
+	goto(RCR_FinishChallenge)
 }
 
 text RCR_NumberDebug {
