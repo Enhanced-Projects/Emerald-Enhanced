@@ -40,6 +40,7 @@
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
+#include "StatAssist.h"
 
 extern u8 RyuTeleport[];
 extern u8 RyuUserModeEVMenu[];
@@ -870,9 +871,9 @@ void ItemUseOutOfBattle_RyuExpBattery(u8 taskId)
 
 void ItemUseOutOfBattle_StatAssist(u8 taskId)
 {
-    SetMainCallback2(CB2_ReturnToField);
-    ScriptContext2_Enable();
-    ScriptContext1_SetupScript(RyuAP_StatAssist);
+    gSpecialVar_0x8001 = 0;
+    gSpecialVar_0x8002 = 0;
+    StatAssist_Init(CB2_ReturnToField);
 }
 
 void ItemUseOutOfBattle_PDA(u8 taskId)

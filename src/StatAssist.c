@@ -43,7 +43,11 @@ enum WindowIds
 {
     MON_NICKNAME_WINDOW,
     STATS_WINDOW,
-    LEVEL_WINDOW
+    LEVEL_WINDOW,
+    SUMMARY_WINDOW,
+    ABILITY_WINDOW,
+    ITEM_EXP_WINDOW,
+    WINDOWS_COUNT
 };
 
 //==========EWRAM==========//
@@ -104,7 +108,7 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .width = 15,        // width (per 8 pixels)
         .height = 14,        // height (per 8 pixels)
         .paletteNum = 15,   // palette index to use for text
-        .baseBlock = 49,     // tile start in VRAM
+        .baseBlock = 50,     // tile start in VRAM
     },
     [LEVEL_WINDOW] = 
     {
@@ -114,12 +118,43 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .width = 8,        // width (per 8 pixels)
         .height = 8,        // height (per 8 pixels)
         .paletteNum = 15,   // palette index to use for text
-        .baseBlock = 261,     // tile start in VRAM
+        .baseBlock = 210,     // tile start in VRAM
+    },
+    [SUMMARY_WINDOW] = 
+    {
+        .bg = 0,            // windowId bg to print text on
+        .tilemapLeft = 12,   // position from left (per 8 pixels)
+        .tilemapTop = 4,    // position from top (per 8 pixels)
+        .width = 17,        // width (per 8 pixels)
+        .height = 3,        // height (per 8 pixels)
+        .paletteNum = 15,   // palette index to use for text
+        .baseBlock = 50,     // tile start in VRAM
+    },
+    [ABILITY_WINDOW] = 
+    {
+        .bg = 0,            // windowId bg to print text on
+        .tilemapLeft = 12,   // position from left (per 8 pixels)
+        .tilemapTop = 8,    // position from top (per 8 pixels)
+        .width = 17,        // width (per 8 pixels)
+        .height = 4,        // height (per 8 pixels)
+        .paletteNum = 15,   // palette index to use for text
+        .baseBlock = 110,     // tile start in VRAM
+    },
+    [ITEM_EXP_WINDOW] = 
+    {
+        .bg = 0,            // windowId bg to print text on
+        .tilemapLeft = 12,   // position from left (per 8 pixels)
+        .tilemapTop = 13,    // position from top (per 8 pixels)
+        .width = 17,        // width (per 8 pixels)
+        .height = 5,        // height (per 8 pixels)
+        .paletteNum = 15,   // palette index to use for text
+        .baseBlock = 280,     // tile start in VRAM
     },
 };
 
 static const u32 sMenuTiles[] =   INCBIN_U32("graphics/stat_assist/tiles.4bpp.lz");
-static const u32 sMenuTilemap[] = INCBIN_U32("graphics/stat_assist/tilemap.bin.lz");
+static const u32 sStatsTilemap[] = INCBIN_U32("graphics/stat_assist/tilemap.bin.lz");
+static const u32 sSummaryTilemap[] = INCBIN_U32("graphics/stat_assist/summary_tilemap.bin.lz");
 const u8 sMainLabelText[] = _("'s stats");
 
 enum Colors
@@ -136,7 +171,6 @@ static const u8 sMenuWindowFontColors[][3] =
     [FONT_RED]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_RED,        TEXT_COLOR_LIGHT_GREY},
     [FONT_BLUE]   = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_BLUE,       TEXT_COLOR_LIGHT_GREY},
 };
-
 //==========FUNCTIONS==========//
 // UI loader template
 void Task_OpenMenuFromStartMenu(u8 taskId)
@@ -192,13 +226,15 @@ static void Menu_VBlankCB(void)
 }
 extern const struct MenuAction MultichoiceList_126[];
 
-static EWRAM_DATA u8 specialPreviewSpriteID1 = 0;
-static EWRAM_DATA u8 specialPreviewSpriteID2 = 0;
+static EWRAM_DATA u8 specialPreviewSpriteID1 = 0xFF;
+static EWRAM_DATA u8 specialPreviewSpriteID2 = 0xFF;
 
 void RyuDrawPreviewSprite(void)
 {
     u16 species = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_SPECIES));
-    specialPreviewSpriteID2 = CreateMonPicSprite(species, GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_OT_ID), GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_PERSONALITY), TRUE, 50, 65, 15, 0xFFFF);
+    if (specialPreviewSpriteID1 == 0)
+        DestroySprite(&gSprites[specialPreviewSpriteID1]);
+    specialPreviewSpriteID1 = CreateMonPicSprite(species, GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_OT_ID), GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_PERSONALITY), TRUE, 50, 65, 15, 0xFFFF);
     PlayCry1(species, 127);
 }
 
@@ -207,9 +243,31 @@ void RyuDrawCaughtBall(void)//not working?
     u8 ball = ItemIdToBallId(GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_POKEBALL));
 
     LoadBallGfx(ball);
+    if (specialPreviewSpriteID2 == 1)
+        DestroySprite(&gSprites[specialPreviewSpriteID2]);
     specialPreviewSpriteID2 = CreateSprite(&gBallSpriteTemplates[ball], 222, 22, 0);
     gSprites[specialPreviewSpriteID2].callback = SpriteCallbackDummy;
     gSprites[specialPreviewSpriteID2].oam.priority = 3;
+}
+
+void FillStatsData(void)
+{
+    RyuDrawPreviewSprite();
+    RyuDrawCaughtBall();
+    PrintToWindow(MON_NICKNAME_WINDOW, FONT_BLACK);
+    PrintToWindow(STATS_WINDOW, FONT_BLACK);
+    PrintToWindow(LEVEL_WINDOW, FONT_BLACK);
+}
+
+void FillSummaryData(void)
+{
+    RyuDrawPreviewSprite();
+    RyuDrawCaughtBall();
+    PrintToWindow(MON_NICKNAME_WINDOW, FONT_BLACK);
+    PrintToWindow(SUMMARY_WINDOW, FONT_BLACK);
+    PrintToWindow(ABILITY_WINDOW, FONT_BLACK);
+    PrintToWindow(LEVEL_WINDOW, FONT_BLACK);
+    PrintToWindow(ITEM_EXP_WINDOW, FONT_BLACK);
 }
 
 static bool8 Menu_DoGfxSetup(void)
@@ -252,11 +310,16 @@ static bool8 Menu_DoGfxSetup(void)
         gMain.state++;
         break;
     case 5:
-        PrintToWindow(MON_NICKNAME_WINDOW, FONT_BLACK);
-        PrintToWindow(STATS_WINDOW, FONT_BLACK);
-        PrintToWindow(LEVEL_WINDOW, FONT_BLACK);
-        RyuDrawPreviewSprite();
-        RyuDrawCaughtBall();
+        switch(gSpecialVar_0x8002)
+        {
+            case 0:
+                FillSummaryData();
+                break;
+            case 1:
+                FillStatsData();
+                break;
+        }
+        
         taskId = CreateTask(Task_MenuWaitFadeIn, 0);
         BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
         gMain.state++;
@@ -335,7 +398,15 @@ static bool8 Menu_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(sMenuTilemap, sBg1TilemapBuffer);
+            switch (gSpecialVar_0x8002)//which page to load
+            {
+                case 0:
+                    LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
+                    break;
+                case 1:
+                    LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
+                    break;
+            }
             sMenuDataPtr->gfxLoadState++;
         }
         break;
@@ -355,17 +426,44 @@ static void Menu_InitWindows(void)
     InitWindows(sMenuWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
-    FillWindowPixelBuffer(MON_NICKNAME_WINDOW, 0);
-    PutWindowTilemap(MON_NICKNAME_WINDOW);
-    CopyWindowToVram(MON_NICKNAME_WINDOW, 3);
-    FillWindowPixelBuffer(STATS_WINDOW, 0);
-    PutWindowTilemap(STATS_WINDOW);
-    CopyWindowToVram(STATS_WINDOW, 3);
+    switch (gSpecialVar_0x8002) //which set of windows to load (page)
+    {
+        case 0:
+            FillWindowPixelBuffer(MON_NICKNAME_WINDOW, 0);
+            PutWindowTilemap(MON_NICKNAME_WINDOW);
+            CopyWindowToVram(MON_NICKNAME_WINDOW, 3);
+            FillWindowPixelBuffer(LEVEL_WINDOW, 0);
+            PutWindowTilemap(LEVEL_WINDOW);
+            CopyWindowToVram(LEVEL_WINDOW, 3);
+            FillWindowPixelBuffer(SUMMARY_WINDOW, 0);
+            PutWindowTilemap(SUMMARY_WINDOW);
+            CopyWindowToVram(SUMMARY_WINDOW, 3);
+            FillWindowPixelBuffer(ABILITY_WINDOW, 0);
+            PutWindowTilemap(ABILITY_WINDOW);
+            CopyWindowToVram(ABILITY_WINDOW, 3);
+            FillWindowPixelBuffer(ITEM_EXP_WINDOW, 0);
+            PutWindowTilemap(ITEM_EXP_WINDOW);
+            CopyWindowToVram(ITEM_EXP_WINDOW, 3);
+            break;
+        case 1:
+            FillWindowPixelBuffer(MON_NICKNAME_WINDOW, 0);
+            PutWindowTilemap(MON_NICKNAME_WINDOW);
+            CopyWindowToVram(MON_NICKNAME_WINDOW, 3);
+            FillWindowPixelBuffer(STATS_WINDOW, 0);
+            PutWindowTilemap(STATS_WINDOW);
+            CopyWindowToVram(STATS_WINDOW, 3);
+            FillWindowPixelBuffer(LEVEL_WINDOW, 0);
+            PutWindowTilemap(LEVEL_WINDOW);
+            CopyWindowToVram(LEVEL_WINDOW, 3);
+            break;
+    }
 
     ScheduleBgCopyTilemapToVram(2);
 }
 
-const u8 sStatStrings[9][12] = {
+extern const u8 *const gNatureNamePointers[NUM_NATURES];
+
+const u8 sStatStrings[12][12] = {
     [0] = _("HP: "),
     [1] = _("Atk: "),
     [2] = _("Def: "),
@@ -375,6 +473,9 @@ const u8 sStatStrings[9][12] = {
     [6] = _("Affection: "),
     [7] = _("Types: "),
     [8] = _("Ability: "),
+    [9] = _("Holding: "),
+    [10] = _("Exp:"),
+    [11] = _("Next:")
 };
 
 const u8 sText_Newline[] = _("\n");
@@ -498,10 +599,93 @@ void RyuBufferGenderBossIcon(void)
                 StringCopy(gStringVar1, (const u8[])_("{BOSS_INDI}"));
                 StringExpandPlaceholders(gStringVar2, gStringVar1);
             }
+            else
+            {
+                StringCopy(gStringVar1, sText_SingleSpace);
+                StringExpandPlaceholders(gStringVar2, gStringVar1);
+            }
         }
 }
 
-extern const u8 *const gNatureNamePointers[NUM_NATURES];
+void BufferTitleWindow(void)
+{
+    GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_NICKNAME, gStringVar4);
+    StringAppend(gStringVar4, sMainLabelText);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    StringCopy(gStringVar1, ((const u8[])_("{DPAD_UP}{DPAD_DOWN}: Slot, {DPAD_LEFT}{DPAD_RIGHT}: Page")));
+    StringExpandPlaceholders(gStringVar2, gStringVar1);
+    StringAppend(gStringVar4, gStringVar1);
+}
+
+void BufferLevelWindow(void)
+{
+    GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_NICKNAME, gStringVar4);
+    StringAppend(gStringVar4, ((const u8[])_("/")));
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, gSpeciesNames[GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_SPECIES)]);
+    StringAppend(gStringVar4, sText_Newline);
+    RyuBufferGenderBossIcon();
+    StringAppend(gStringVar4, gStringVar2);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    StringAppend(gStringVar4, sText_SwitchToDefaultColor);
+    StringAppend(gStringVar4, (const u8[])_("Lv. "));
+    ConvertIntToDecimalStringN(gStringVar1, (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_LEVEL)), 0, 3);
+    StringAppend(gStringVar4, gStringVar1);
+}
+
+void BufferSummaryWindow(void)
+{  
+    u16 temp = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_SPECIES));
+    StringCopy(gStringVar4, gTypeNames[gBaseStats[temp].type1]);
+    StringAppend(gStringVar4, sText_FwSlash);
+    StringAppend(gStringVar4, gTypeNames[gBaseStats[temp].type2]);
+    StringAppend(gStringVar4, ((const u8[])_("      OT:")));
+    GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_OT_NAME, gStringVar1);
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, ((const u8[])_("No. ")));
+    ConvertIntToDecimalStringN(gStringVar1, temp, 0, 3);
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, ((const u8[])_("              ")));
+    StringAppend(gStringVar4, gNatureNamePointers[GetNature(&gPlayerParty[gSpecialVar_0x8001])]);
+}
+
+void BufferAbilityWindow(void)
+{
+    u16 temp = 0;
+    temp = GetMonAbility(&gPlayerParty[gSpecialVar_0x8001]);
+    StringCopy(gStringVar4, sStatStrings[8]);
+    StringAppend(gStringVar4, gAbilityNames[temp]);
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, gAbilityDescriptionPointers[temp]);
+}
+
+void BufferItemExpWindow(void)
+{
+    u16 temp = GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_HELD_ITEM);
+    u16 species = GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_SPECIES);
+    u32 currentExp = GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_EXP);
+    u8 currentLevel = GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_LEVEL);
+    u32 next = 0;
+    StringCopy(gStringVar4, sStatStrings[9]);
+    if (temp != 0)
+        CopyItemName(temp, gStringVar1);
+    else
+        StringCopy(gStringVar1, ((const u8[])_("Nothing")));
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, sStatStrings[10]);
+    ConvertIntToDecimalStringN(gStringVar1, currentExp, 0, 10);
+    StringAppend(gStringVar4, gStringVar1);
+    if (currentLevel < MAX_LEVEL)
+        next = gExperienceTables[gBaseStats[species].growthRate][currentLevel + 1] - currentExp;
+    else
+        next = 0;
+    StringAppend(gStringVar4, sText_Newline);
+    ConvertIntToDecimalStringN(gStringVar1, next, 0, 10);
+    StringAppend(gStringVar4, sStatStrings[11]);
+    StringAppend(gStringVar4, gStringVar1);
+}
 
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
@@ -511,35 +695,42 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     switch (windowId)
     {
-    case 0:
-        GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_NICKNAME, gStringVar4);
-        StringAppend(gStringVar4, sMainLabelText);
+    case MON_NICKNAME_WINDOW:
+        BufferTitleWindow();
         AddTextPrinterParameterized4(MON_NICKNAME_WINDOW, 1, 1, 0, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
         PutWindowTilemap(MON_NICKNAME_WINDOW);
         CopyWindowToVram(MON_NICKNAME_WINDOW, 3);
         break;
-    case 1:
+    case STATS_WINDOW:
         RyuBufferStats();
         AddTextPrinterParameterized4(STATS_WINDOW, 0, 1, 4, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
         PutWindowTilemap(STATS_WINDOW);
         CopyWindowToVram(STATS_WINDOW, 3);
         break;
-    case 2:
-        GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_NICKNAME, gStringVar4);
-        StringAppend(gStringVar4, ((const u8[])_("/")));
-        StringAppend(gStringVar4, sText_Newline);
-        StringAppend(gStringVar4, gSpeciesNames[GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_SPECIES)]);
-        StringAppend(gStringVar4, sText_Newline);
-        RyuBufferGenderBossIcon();
-        StringAppend(gStringVar4, gStringVar2);
-        StringAppend(gStringVar4, sText_SingleSpace);
-        StringAppend(gStringVar4, sText_SwitchToDefaultColor);
-        StringAppend(gStringVar4, (const u8[])_("Lv. "));
-        ConvertIntToDecimalStringN(gStringVar1, (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_LEVEL)), 0, 3);
-        StringAppend(gStringVar4, gStringVar1);
+    case LEVEL_WINDOW:
+        BufferLevelWindow();
         AddTextPrinterParameterized4(LEVEL_WINDOW, 1, 1, 0, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
         PutWindowTilemap(LEVEL_WINDOW);
         CopyWindowToVram(LEVEL_WINDOW, 3);
+        break;
+    case SUMMARY_WINDOW:
+        BufferSummaryWindow();
+        AddTextPrinterParameterized4(SUMMARY_WINDOW, 0, 1, 0, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+        PutWindowTilemap(SUMMARY_WINDOW);
+        CopyWindowToVram(SUMMARY_WINDOW, 3);
+        break;
+    case ABILITY_WINDOW:
+        BufferAbilityWindow();
+        AddTextPrinterParameterized4(ABILITY_WINDOW, 0, 1, 0, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+        PutWindowTilemap(ABILITY_WINDOW);
+        CopyWindowToVram(ABILITY_WINDOW, 3);
+        break;
+    case ITEM_EXP_WINDOW:
+        BufferItemExpWindow();
+        AddTextPrinterParameterized4(ITEM_EXP_WINDOW, 0, 1, 0, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+        PutWindowTilemap(ITEM_EXP_WINDOW);
+        CopyWindowToVram(ITEM_EXP_WINDOW, 3);
+        break;
     }
 }
 
@@ -562,14 +753,111 @@ static void Task_MenuTurnOff(u8 taskId)
     }
 }
 
+bool32 IsEmptySlot(u8 slot)
+{
+    if ((!(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES) == SPECIES_NONE)) || (!(GetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG) == TRUE)))
+        return FALSE;
+    return TRUE;
+}
+
 
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
 {
+    u32 i;
     if (JOY_NEW(B_BUTTON))
     {
         PlaySE(3);
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_MenuTurnOff;
+    }
+    else if (JOY_NEW(DPAD_DOWN))
+    {
+        i = 0;
+        gSpecialVar_0x8001++;
+        if (gSpecialVar_0x8001 > 5)
+            gSpecialVar_0x8001 = 0;
+        PlaySE(3);
+        for (i = 0; i < WINDOWS_COUNT;i++)
+            ClearWindowTilemap(i);
+        sMenuDataPtr->gfxLoadState = 0;
+        Menu_LoadGraphics();
+        switch (gSpecialVar_0x8002)//which page to load
+        {
+            case 0:
+                LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
+                FillSummaryData();
+                break;
+            case 1:
+                LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
+                FillStatsData();
+                break;
+        }
+    }
+    else if (JOY_NEW(DPAD_UP))
+    {   
+        gSpecialVar_0x8001--;
+        if (gSpecialVar_0x8001 > 5)
+            gSpecialVar_0x8001 = 5;
+        PlaySE(3);
+        for (i = 0; i < WINDOWS_COUNT;i++)
+            ClearWindowTilemap(i);
+        sMenuDataPtr->gfxLoadState = 0;
+        Menu_LoadGraphics();
+        switch (gSpecialVar_0x8002)//which page to load
+        {
+            case 0:
+                LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
+                FillSummaryData();
+                break;
+            case 1:
+                LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
+                FillStatsData();
+                break;
+        }
+    }
+    else if (JOY_NEW(DPAD_LEFT))
+    {
+        gSpecialVar_0x8002--;
+        if (gSpecialVar_0x8002 > 3)
+            gSpecialVar_0x8002 = 3;
+        PlaySE(3);
+        for (i = 0; i < WINDOWS_COUNT;i++)
+            ClearWindowTilemap(i);
+        sMenuDataPtr->gfxLoadState = 0;
+        Menu_LoadGraphics();
+        switch (gSpecialVar_0x8002)//which page to load
+        {
+            case 0:
+                LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
+                FillSummaryData();
+                break;
+            case 1:
+                LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
+                FillStatsData();
+                break;
+        }
+    }
+    else if (JOY_NEW(DPAD_RIGHT))
+    {
+        gSpecialVar_0x8002++;
+        if (gSpecialVar_0x8002 > 3)
+            gSpecialVar_0x8002 = 0;
+        PlaySE(3);
+        for (i = 0; i < WINDOWS_COUNT;i++)
+            ClearWindowTilemap(i);
+        sMenuDataPtr->gfxLoadState = 0;
+        Menu_LoadGraphics();
+        switch (gSpecialVar_0x8002)//which page to load
+        {
+            case 0:
+                LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
+                FillSummaryData();
+                break;
+            case 1:
+                LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
+                FillStatsData();
+                break;
+        }
     }
 }
