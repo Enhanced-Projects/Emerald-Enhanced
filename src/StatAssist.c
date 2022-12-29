@@ -47,6 +47,8 @@ enum WindowIds
     SUMMARY_WINDOW,
     ABILITY_WINDOW,
     ITEM_EXP_WINDOW,
+    BATTLE_MOVES_WINDOW,
+    CONTEST_MOVES_WINDOW,
     WINDOWS_COUNT
 };
 
@@ -118,7 +120,7 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .width = 8,        // width (per 8 pixels)
         .height = 8,        // height (per 8 pixels)
         .paletteNum = 15,   // palette index to use for text
-        .baseBlock = 210,     // tile start in VRAM
+        .baseBlock = 260,     // tile start in VRAM
     },
     [SUMMARY_WINDOW] = 
     {
@@ -148,14 +150,36 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .width = 17,        // width (per 8 pixels)
         .height = 5,        // height (per 8 pixels)
         .paletteNum = 15,   // palette index to use for text
-        .baseBlock = 280,     // tile start in VRAM
+        .baseBlock = 326,     // tile start in VRAM
+    },
+    [BATTLE_MOVES_WINDOW] = 
+    {
+        .bg = 0,            // windowId bg to print text on
+        .tilemapLeft = 12,   // position from left (per 8 pixels)
+        .tilemapTop = 4,    // position from top (per 8 pixels)
+        .width = 15,        // width (per 8 pixels)
+        .height = 14,        // height (per 8 pixels)
+        .paletteNum = 15,   // palette index to use for text
+        .baseBlock = 50,     // tile start in VRAM
+    },
+    [CONTEST_MOVES_WINDOW] = 
+    {
+        .bg = 0,            // windowId bg to print text on
+        .tilemapLeft = 12,   // position from left (per 8 pixels)
+        .tilemapTop = 4,    // position from top (per 8 pixels)
+        .width = 15,        // width (per 8 pixels)
+        .height = 14,        // height (per 8 pixels)
+        .paletteNum = 15,   // palette index to use for text
+        .baseBlock = 50,     // tile start in VRAM
     },
 };
 
 static const u32 sMenuTiles[] =   INCBIN_U32("graphics/stat_assist/tiles.4bpp.lz");
 static const u32 sStatsTilemap[] = INCBIN_U32("graphics/stat_assist/tilemap.bin.lz");
 static const u32 sSummaryTilemap[] = INCBIN_U32("graphics/stat_assist/summary_tilemap.bin.lz");
-const u8 sMainLabelText[] = _("'s stats");
+const u8 sMainLabelStatsText[] = _("'s stats");
+const u8 sMainLabelSummaryText[] = _("'s summary");
+const u8 sMainLabelMovesText[] = _("'s moves");
 
 enum Colors
 {
@@ -252,22 +276,32 @@ void RyuDrawCaughtBall(void)//not working?
 
 void FillStatsData(void)
 {
-    RyuDrawPreviewSprite();
-    RyuDrawCaughtBall();
     PrintToWindow(MON_NICKNAME_WINDOW, FONT_BLACK);
-    PrintToWindow(STATS_WINDOW, FONT_BLACK);
     PrintToWindow(LEVEL_WINDOW, FONT_BLACK);
+    PrintToWindow(STATS_WINDOW, FONT_BLACK);
 }
 
 void FillSummaryData(void)
 {
-    RyuDrawPreviewSprite();
-    RyuDrawCaughtBall();
     PrintToWindow(MON_NICKNAME_WINDOW, FONT_BLACK);
     PrintToWindow(SUMMARY_WINDOW, FONT_BLACK);
     PrintToWindow(ABILITY_WINDOW, FONT_BLACK);
     PrintToWindow(LEVEL_WINDOW, FONT_BLACK);
     PrintToWindow(ITEM_EXP_WINDOW, FONT_BLACK);
+}
+
+void FillBattleMovesData(void)
+{
+    PrintToWindow(MON_NICKNAME_WINDOW, FONT_BLACK);
+    PrintToWindow(LEVEL_WINDOW, FONT_BLACK);
+    PrintToWindow(BATTLE_MOVES_WINDOW, FONT_BLACK);
+}
+
+void FillContestMovesData(void)
+{
+    PrintToWindow(MON_NICKNAME_WINDOW, FONT_BLACK);
+    PrintToWindow(LEVEL_WINDOW, FONT_BLACK);
+    PrintToWindow(CONTEST_MOVES_WINDOW, FONT_BLACK);
 }
 
 static bool8 Menu_DoGfxSetup(void)
@@ -310,16 +344,9 @@ static bool8 Menu_DoGfxSetup(void)
         gMain.state++;
         break;
     case 5:
-        switch(gSpecialVar_0x8002)
-        {
-            case 0:
-                FillSummaryData();
-                break;
-            case 1:
-                FillStatsData();
-                break;
-        }
-        
+        RyuDrawPreviewSprite();
+        RyuDrawCaughtBall();
+        FillSummaryData();
         taskId = CreateTask(Task_MenuWaitFadeIn, 0);
         BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
         gMain.state++;
@@ -398,15 +425,7 @@ static bool8 Menu_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            switch (gSpecialVar_0x8002)//which page to load
-            {
-                case 0:
-                    LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
-                    break;
-                case 1:
-                    LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
-                    break;
-            }
+            LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
             sMenuDataPtr->gfxLoadState++;
         }
         break;
@@ -456,6 +475,28 @@ static void Menu_InitWindows(void)
             PutWindowTilemap(LEVEL_WINDOW);
             CopyWindowToVram(LEVEL_WINDOW, 3);
             break;
+        case 2:
+            FillWindowPixelBuffer(MON_NICKNAME_WINDOW, 0);
+            PutWindowTilemap(MON_NICKNAME_WINDOW);
+            CopyWindowToVram(MON_NICKNAME_WINDOW, 3);
+            FillWindowPixelBuffer(BATTLE_MOVES_WINDOW, 0);
+            PutWindowTilemap(BATTLE_MOVES_WINDOW);
+            CopyWindowToVram(BATTLE_MOVES_WINDOW, 3);
+            FillWindowPixelBuffer(LEVEL_WINDOW, 0);
+            PutWindowTilemap(LEVEL_WINDOW);
+            CopyWindowToVram(LEVEL_WINDOW, 3);
+            break;
+        case 3:
+            FillWindowPixelBuffer(MON_NICKNAME_WINDOW, 0);
+            PutWindowTilemap(MON_NICKNAME_WINDOW);
+            CopyWindowToVram(MON_NICKNAME_WINDOW, 3);
+            FillWindowPixelBuffer(CONTEST_MOVES_WINDOW, 0);
+            PutWindowTilemap(CONTEST_MOVES_WINDOW);
+            CopyWindowToVram(CONTEST_MOVES_WINDOW, 3);
+            FillWindowPixelBuffer(LEVEL_WINDOW, 0);
+            PutWindowTilemap(LEVEL_WINDOW);
+            CopyWindowToVram(LEVEL_WINDOW, 3);
+            break;
     }
 
     ScheduleBgCopyTilemapToVram(2);
@@ -463,7 +504,13 @@ static void Menu_InitWindows(void)
 
 extern const u8 *const gNatureNamePointers[NUM_NATURES];
 
-const u8 sStatStrings[12][12] = {
+const u8 sSplitStrings[3][9] = {
+    [SPLIT_PHYSICAL] = _("Physical"),
+    [SPLIT_SPECIAL] = _("Special"),
+    [SPLIT_STATUS] = _("Status"),
+};
+
+const u8 sStatStrings[15][12] = {
     [0] = _("HP: "),
     [1] = _("Atk: "),
     [2] = _("Def: "),
@@ -475,7 +522,10 @@ const u8 sStatStrings[12][12] = {
     [8] = _("Ability: "),
     [9] = _("Holding: "),
     [10] = _("Exp:"),
-    [11] = _("Next:")
+    [11] = _("Next:"),
+    [12] = _("Pwr:"),
+    [13] = _("     Split:"),
+    [14] = _("    PP:")
 };
 
 const u8 sText_Newline[] = _("\n");
@@ -610,7 +660,18 @@ void RyuBufferGenderBossIcon(void)
 void BufferTitleWindow(void)
 {
     GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_NICKNAME, gStringVar4);
-    StringAppend(gStringVar4, sMainLabelText);
+    switch (gSpecialVar_0x8002)
+    {
+        case 0:
+            StringAppend(gStringVar4, sMainLabelSummaryText);
+            break;
+        case 1:
+            StringAppend(gStringVar4, sMainLabelStatsText);
+            break;
+        case 2:
+            StringAppend(gStringVar4, sMainLabelMovesText);
+            break;
+    }
     StringAppend(gStringVar4, sText_SingleSpace);
     StringCopy(gStringVar1, ((const u8[])_("{DPAD_UP}{DPAD_DOWN}: Slot, {DPAD_LEFT}{DPAD_RIGHT}: Page")));
     StringExpandPlaceholders(gStringVar2, gStringVar1);
@@ -687,6 +748,75 @@ void BufferItemExpWindow(void)
     StringAppend(gStringVar4, gStringVar1);
 }
 
+void RyuBufferBattleMovesData(void)
+{
+    u16 move1 = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_MOVE1));
+    u16 move2 = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_MOVE2));
+    u16 move3 = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_MOVE3));
+    u16 move4 = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_MOVE4));
+    //buffer move 1
+    StringCopy(gStringVar4, gMoveNames[move1]);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move1].pp, 0, 2);
+    StringAppend(gStringVar4, sStatStrings[14]),
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, sStatStrings[12]);
+    ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move1].power, 0, 3);
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    StringAppend(gStringVar4, sStatStrings[13]);
+    StringAppend(gStringVar4, sSplitStrings[gBattleMoves[move1].split]);
+    StringAppend(gStringVar4, sText_Newline);
+    //buffer move 2
+    StringAppend(gStringVar4, gMoveNames[move2]);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move2].pp, 0, 2);
+    StringAppend(gStringVar4, sStatStrings[14]),
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, sStatStrings[12]);
+    ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move2].power, 0, 3);
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    StringAppend(gStringVar4, sStatStrings[13]);
+    StringAppend(gStringVar4, sSplitStrings[gBattleMoves[move2].split]);
+    StringAppend(gStringVar4, sText_Newline);
+    //buffer move 3
+    StringAppend(gStringVar4, gMoveNames[move3]);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move3].pp, 0, 2);
+    StringAppend(gStringVar4, sStatStrings[14]),
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, sStatStrings[12]);
+    ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move3].power, 0, 3);
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    StringAppend(gStringVar4, sStatStrings[13]);
+    StringAppend(gStringVar4, sSplitStrings[gBattleMoves[move3].split]);
+    StringAppend(gStringVar4, sText_Newline);
+    //buffer move 4
+    StringAppend(gStringVar4, gMoveNames[move4]);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move4].pp, 0, 2);
+    StringAppend(gStringVar4, sStatStrings[14]),
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, sStatStrings[12]);
+    ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move4].power, 0, 3);
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_SingleSpace);
+    StringAppend(gStringVar4, sStatStrings[13]);
+    StringAppend(gStringVar4, sSplitStrings[gBattleMoves[move4].split]);
+    StringAppend(gStringVar4, sText_Newline);
+}
+
+void RyuBufferContestMovesData(void)
+{
+
+}
+
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     u16 temp = 0;
@@ -731,6 +861,20 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         PutWindowTilemap(ITEM_EXP_WINDOW);
         CopyWindowToVram(ITEM_EXP_WINDOW, 3);
         break;
+    case BATTLE_MOVES_WINDOW:
+        RyuBufferBattleMovesData();
+        AddTextPrinterParameterized4(BATTLE_MOVES_WINDOW, 0, 1, 4, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+        ClearWindowTilemap(BATTLE_MOVES_WINDOW);
+        PutWindowTilemap(BATTLE_MOVES_WINDOW);
+        CopyWindowToVram(BATTLE_MOVES_WINDOW, 3);
+        break;
+    case CONTEST_MOVES_WINDOW:
+        RyuBufferContestMovesData();
+        AddTextPrinterParameterized4(CONTEST_MOVES_WINDOW, 0, 1, 4, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+        ClearWindowTilemap(CONTEST_MOVES_WINDOW);
+        PutWindowTilemap(CONTEST_MOVES_WINDOW);
+        CopyWindowToVram(CONTEST_MOVES_WINDOW, 3);
+        break;
     }
 }
 
@@ -760,11 +904,40 @@ bool32 IsEmptySlot(u8 slot)
     return TRUE;
 }
 
+void LoadSelectedPage(void)
+{
+    int i;
+    PlaySE(3);
+    for (i = 0; i < WINDOWS_COUNT;i++)
+        ClearWindowTilemap(i);
+    
+    switch (gSpecialVar_0x8002)//which page to load
+    {
+        case 0:
+            LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
+            FillSummaryData();
+            break;
+        case 1:
+            LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
+            FillStatsData();
+            break;
+        case 2:
+            LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
+            FillBattleMovesData();
+            break;
+        case 3:
+            LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
+            FillContestMovesData();
+            break;
+    }
+    ScheduleBgCopyTilemapToVram(1);
+    return;
+}
+
 
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
 {
-    u32 i;
     if (JOY_NEW(B_BUTTON))
     {
         PlaySE(3);
@@ -773,91 +946,34 @@ static void Task_MenuMain(u8 taskId)
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
-        i = 0;
         gSpecialVar_0x8001++;
         if (gSpecialVar_0x8001 > 5)
             gSpecialVar_0x8001 = 0;
-        PlaySE(3);
-        for (i = 0; i < WINDOWS_COUNT;i++)
-            ClearWindowTilemap(i);
-        sMenuDataPtr->gfxLoadState = 0;
-        Menu_LoadGraphics();
-        switch (gSpecialVar_0x8002)//which page to load
-        {
-            case 0:
-                LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
-                FillSummaryData();
-                break;
-            case 1:
-                LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
-                FillStatsData();
-                break;
-        }
+        LoadSelectedPage();
+        RyuDrawPreviewSprite();
+        RyuDrawCaughtBall();
     }
     else if (JOY_NEW(DPAD_UP))
     {   
         gSpecialVar_0x8001--;
         if (gSpecialVar_0x8001 > 5)
             gSpecialVar_0x8001 = 5;
-        PlaySE(3);
-        for (i = 0; i < WINDOWS_COUNT;i++)
-            ClearWindowTilemap(i);
-        sMenuDataPtr->gfxLoadState = 0;
-        Menu_LoadGraphics();
-        switch (gSpecialVar_0x8002)//which page to load
-        {
-            case 0:
-                LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
-                FillSummaryData();
-                break;
-            case 1:
-                LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
-                FillStatsData();
-                break;
-        }
+        LoadSelectedPage();
+        RyuDrawPreviewSprite();
+        RyuDrawCaughtBall();
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
         gSpecialVar_0x8002--;
         if (gSpecialVar_0x8002 > 3)
             gSpecialVar_0x8002 = 3;
-        PlaySE(3);
-        for (i = 0; i < WINDOWS_COUNT;i++)
-            ClearWindowTilemap(i);
-        sMenuDataPtr->gfxLoadState = 0;
-        Menu_LoadGraphics();
-        switch (gSpecialVar_0x8002)//which page to load
-        {
-            case 0:
-                LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
-                FillSummaryData();
-                break;
-            case 1:
-                LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
-                FillStatsData();
-                break;
-        }
+        LoadSelectedPage();
     }
     else if (JOY_NEW(DPAD_RIGHT))
     {
         gSpecialVar_0x8002++;
         if (gSpecialVar_0x8002 > 3)
             gSpecialVar_0x8002 = 0;
-        PlaySE(3);
-        for (i = 0; i < WINDOWS_COUNT;i++)
-            ClearWindowTilemap(i);
-        sMenuDataPtr->gfxLoadState = 0;
-        Menu_LoadGraphics();
-        switch (gSpecialVar_0x8002)//which page to load
-        {
-            case 0:
-                LZDecompressWram(sSummaryTilemap, sBg1TilemapBuffer);
-                FillSummaryData();
-                break;
-            case 1:
-                LZDecompressWram(sStatsTilemap, sBg1TilemapBuffer);
-                FillStatsData();
-                break;
-        }
+        LoadSelectedPage();
     }
 }
