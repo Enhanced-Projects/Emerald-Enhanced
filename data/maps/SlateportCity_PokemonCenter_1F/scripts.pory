@@ -27,7 +27,7 @@ SlateportCity_PokemonCenter_1F_EventScript_Woman:: @ 820DAEA
 	end
 	
 SC_PC_LanaIntro::
-	goto_if_set FLAG_RYU_SC_PC_LANA_INTRO_EVENT, ryu_end
+	goto_if_set FLAG_RYU_SC_PC_LEAF_INTRO_EVENT, ryu_end
 	lockall
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
@@ -41,8 +41,8 @@ SC_PC_LanaIntro::
 	msgbox SC_PC_LanaEmote, MSGBOX_AUTOCLOSE
 	playse SE_DOOR
 	waitse
-	setflag FLAG_RYU_LANA_SLATEPORT
-	setflag FLAG_RYU_SC_PC_LANA_INTRO_EVENT
+	setflag FLAG_RYU_LEAF_SLATEPORT
+	setflag FLAG_RYU_SC_PC_LEAF_INTRO_EVENT
 	removeobject 4
 	releaseall
 	end

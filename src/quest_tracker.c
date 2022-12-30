@@ -90,7 +90,7 @@ static const struct WindowTemplate sQuestWindowTemplate[] =
 static const u8 sTextDevon1[] = _("Devon Corporate");
 static const u8 sTextDevon2[] = _("Devon Scientist");
 static const u8 sTextMagma[] = _("Magma");
-static const u8 sTextLana[] = _("Lana");
+static const u8 sTextLana[] = _("Leaf");
 static const u8 sTextLanette[] = _("Lanette");
 static const u8 sTextAqua[] = _("Aqua");
 static const u8 sTextNurse[] = _("Nurse");
@@ -193,7 +193,7 @@ static const struct QuestData sQuests[] = {
     {gDevonScientistQuestStages, sTextDevon2, VAR_RYU_QUEST_DEVON_SCIENTIST},
     {gMagmaQuestStages, sTextMagma, VAR_RYU_QUEST_MAGMA},
     {gAquaQuestStages, sTextAqua, VAR_RYU_QUEST_AQUA},
-    {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LANA},
+    {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LEAF},
     {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE},
     {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY},
     {gDeliverySystemQuestStages, sText_DeliverySystem, VAR_RYU_DELIVERY_SYSTEM_DATA},

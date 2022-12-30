@@ -14,15 +14,15 @@ Route120_OnResume: @ 81F53FC
 
 r120_SetupLeafHiker::
 	lock
-	clearflag FLAG_RYU_HIDE_R120_LANA_AND_HIKER
+	clearflag FLAG_RYU_HIDE_R120_LEAF_AND_HIKER
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
-	setvar VAR_RYU_QUEST_LANA, 66
+	setvar VAR_RYU_QUEST_LEAF, 66
 	release
 	end
 
 r120_LeafEvent::
 	lock
-	setvar VAR_RYU_QUEST_LANA, 67
+	setvar VAR_RYU_QUEST_LEAF, 67
 	special SpawnCameraObject
 	applymovement CAMERA, r120_PanUp
 	waitmovement CAMERA
@@ -46,7 +46,7 @@ r120_LeafEvent::
 	applymovement PLAYER, Common_Movement_FaceUp
 	waitmovement PLAYER
 	clearflag FLAG_HIDE_AT1_LEAF
-	setvar VAR_RYU_QUEST_LANA, 68
+	setvar VAR_RYU_QUEST_LEAF, 68
 	warp MAP_ANCIENT_TOMB1F, 255, 8, 29
 	release
 	end
@@ -115,25 +115,25 @@ r120_FollowLeafIntoChamber:
 	step_end
 	
 r120_AT_SECOND_VISIT_SETUP::
-	compare VAR_RYU_QUEST_LANA, 80
+	compare VAR_RYU_QUEST_LEAF, 80
 	goto_if_ne ryu_end
 	lock
 	msgbox r120_SV_Intro MSGBOX_DEFAULT
 	closemessage
 	applymovement PLAYER, r120_SV_walkup
 	waitmovement PLAYER
-	setvar VAR_RYU_QUEST_LANA, 82
+	setvar VAR_RYU_QUEST_LEAF, 82
 	clearflag FLAG_HIDE_AT1_LEAF
 	warp MAP_ANCIENT_TOMB, 255, 8, 29
 	release
 	end
 	
 r120_notReady:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}There's no sign of Lana\nhaving been here.\pMaybe she's at another ruin?$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}There's no sign of Leaf\nhaving been here.\pMaybe she's at another ruin?$"
 
 
 r120_SV_Intro:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Hmm. I bet Lana is inside.\pWelp, time to get this over with!\pI'll destroy that giant hunk of\nrust...$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Hmm. I bet Leaf is inside.\pWelp, time to get this over with!\pI'll destroy that giant hunk of\nrust...$"
 
 r120_SV_walkup:
 	walk_in_place_up

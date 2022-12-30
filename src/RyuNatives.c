@@ -2707,7 +2707,7 @@ void Ryu_Restorefollowers(void)
     
     if (FlagGet(FLAG_RYU_DS_LEAF_PARTNERS) == TRUE)
     {
-        FlagClear(FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO);
+        FlagClear(FLAG_HIDE_LEAFS_HOUSE_LEAF_AND_BRO);
         count++;
     }
 

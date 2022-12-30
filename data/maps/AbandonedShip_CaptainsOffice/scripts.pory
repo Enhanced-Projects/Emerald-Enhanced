@@ -31,7 +31,7 @@ AbandonedShip_CaptainsOffice_Text_ThisIsSSCactus: @ 8238918
 	.string "This ship is called S.S. Cactus.\n"
 	.string "It seems to be from an earlier era.$"
 	
-@==================================================================================================LANA AbandonedShip_CaptainsOffice_EventScript_2387E2
+@==================================================================================================Leaf AbandonedShip_CaptainsOffice_EventScript_2387E2
 AS_Leaf_Event::
 	msgbox AS_LeafMsg1 MSGBOX_DEFAULT
 	closemessage
@@ -49,10 +49,10 @@ AS_Leaf_Event::
 	applymovement PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox AS_PlayerMsg2 MSGBOX_DEFAULT
-	@setflag FLAG_LANA_EVENT_4
-	setflag FLAG_HIDE_ABN_SHIP_LANA
-	setvar VAR_RYU_QUEST_LANA, 25
-	clearflag FLAG_HIDE_PCF_TOWN_LANA
+	@setflag FLAG_LEAF_EVENT_4
+	setflag FLAG_HIDE_ABN_SHIP_LEAF
+	setvar VAR_RYU_QUEST_LEAF, 25
+	clearflag FLAG_HIDE_PCF_TOWN_LEAF
 	release
 	end
 	

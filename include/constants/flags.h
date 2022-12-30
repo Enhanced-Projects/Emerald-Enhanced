@@ -54,7 +54,7 @@
 #define FLAG_HIDE_103_TEST_TRAINER           0x2A
 #define FLAG_RYU_SCIENTIST_DONE              0x2B
 #define FLAG_RYU_RANDOMIZE_MUSIC             0x2C
-#define FLAG_RYU_HIDE_R120_LANA_AND_HIKER    0x2D
+#define FLAG_RYU_HIDE_R120_LEAF_AND_HIKER    0x2D
 #define FLAG_RYU_HIDE_REL_OBJECTS            0x2E
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3 0x2F
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE 0x30
@@ -662,16 +662,16 @@
 #define FLAG_HIDDEN_ITEM_UNUSED_0x6F                         (FLAG_HIDDEN_ITEMS_START + 0x6F)//Unused hidden item flag.
 
 
-#define FLAG_HIDE_NM_LANA                                           0x264
-#define FLAG_HIDE_TRICK_HOUSE_LANA                                  0x265
-#define FLAG_LANA_EVENT3_DONE                                       0x266
-#define FLAG_HIDE_PCF_TOWN_LANA                                     0x267 // removed from lana AbnShipEvt
-#define FLAG_HIDE_SCH_LANA                                          0x268
-#define FLAG_HIDE_DR_LANA                                           0x269
-#define FLAG_HIDE_R110_LANA                                         0x26A
+#define FLAG_HIDE_NM_LEAF                                           0x264
+#define FLAG_HIDE_TRICK_HOUSE_LEAF                                  0x265
+#define FLAG_LEAF_EVENT3_DONE                                       0x266
+#define FLAG_HIDE_PCF_TOWN_LEAF                                     0x267 // removed from LEAF AbnShipEvt
+#define FLAG_HIDE_SCH_LEAF                                          0x268
+#define FLAG_HIDE_DR_LEAF                                           0x269
+#define FLAG_HIDE_R110_LEAF                                         0x26A
 #define FLAG_HIDE_AT1_LEAF                                          0x26B
 #define FLAG_RYU_ZAPDOS                                             0x26C
-#define FLAG_HIDE_IC_LANA                                           0x26D
+#define FLAG_HIDE_IC_LEAF                                           0x26D
 #define FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED                          0x26E
 #define FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN                       0x26F
 #define FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN                       0x270
@@ -679,15 +679,15 @@
 #define FLAG_RYU_LEAF_ALTERNATE_LINE                                0x272
 #define FLAG_RYU_LEAF_MTPYRE                                        0x273
 #define FLAG_RYU_DAYCARE_LEAFEVENTPC                                0x274
-#define FLAG_RYU_LANA_ALTEVENT3                                     0x275
+#define FLAG_RYU_LEAF_ALTEVENT3                                     0x275
 #define FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC                             0x276
 #define FLAG_RYU_LEAF_LCC_EVENT_DONE                                0x277
 #define FLAG_LH_EVENT                                               0x278
-#define FLAG_HIDE_ABN_SHIP_LANA                                     0x279
+#define FLAG_HIDE_ABN_SHIP_LEAF                                     0x279
 #define FLAG_NO_LONGER_USED_1                                       0x27A
 #define FLAG_RYU_DS_FEMALE_MOM_MET                                  0x27B
-#define FLAG_RYU_LANA_ALTEVENT2                                     0x27C
-#define FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO                          0x27D
+#define FLAG_RYU_LEAF_ALTEVENT2                                     0x27C
+#define FLAG_HIDE_LEAFS_HOUSE_LEAF_AND_BRO                          0x27D
 #define FLAG_RYU_DS_LEAF_LINE_CANCELLED                             0x27E
 #define FLAG_LEAF_EVENT_0                                           0x27F
 #define FLAG_RYU_DAWN_GIFTPOKE_RECEIVED                             0x280
@@ -725,7 +725,7 @@
 #define FLAG_RYU_PLAYER_NOOB                                        0x2A0
 #define FLAG_RYU_MEWTWO_OBTAINED                                    0x2A1
 #define FLAG_RYU_GROUDON_ENCOUNTERED                                0x2A2
-#define FLAG_RYU_LANA_EVENT14                                       0x2A3
+#define FLAG_RYU_LEAF_EVENT14                                       0x2A3
 #define FLAG_RYU_RECIEVED_ROTOM                                     0x2A4
 #define FLAG_RYU_STAYED_2_NIGHTS_AT_LANETTE                         0x2A5
 #define FLAG_RYU_ROXANNE_MEGA_REWARD                                0x2A6
@@ -1306,8 +1306,8 @@
 #define FLAG_RYU_TYRANITARITE                                       0x4D5
 #define FLAG_RYU_DTC_STEELIXITE                                     0x4D6
 #define FLAG_RYU_FORCE_TUCKER                                       0x4D7
-#define FLAG_RYU_LANA_SLATEPORT                                     0x4D8
-#define FLAG_RYU_SC_PC_LANA_INTRO_EVENT                             0x4D9
+#define FLAG_RYU_LEAF_SLATEPORT                                     0x4D8
+#define FLAG_RYU_SC_PC_LEAF_INTRO_EVENT                             0x4D9
 #define FLAG_RYU_SPIRITOMB_IN_PROGRESS                              0x4DA
 #define FLAG_RYU_FINISHED_SPIRITOMB_SIDEQUEST                       0x4DB
 #define FLAG_RYU_HIDE_HAREM_EVENT_NPCS                              0x4DC

@@ -300,7 +300,7 @@ LCC_LeafEvent::
 	closemessage
 	savebgm MUS_THANKFOR
 	delay 5
-	setvar VAR_RYU_QUEST_LANA, 1
+	setvar VAR_RYU_QUEST_LEAF, 1
 	setflag FLAG_RYU_ON_DATE
 	applymovement 5, LCC_PullRight
 	waitmovement 5
@@ -348,7 +348,7 @@ LCC_Story7:
 	.string "belong...not in Kanto, not here...\pOr anywhere else!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Please...$"
 	
 LCC_Story8:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana sees {PLAYER} crying...)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana...don't go...I don't know\nwhat I'd do without you. You might\lthink it makes no difference, but\pit's not that simple...\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf sees {PLAYER} crying...)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana...don't go...I don't know\nwhat I'd do without you. You might\lthink it makes no difference, but\pit's not that simple...\p"
 	.string "It's not like I can turn my\nrelationship with you off\llike a light switch,\pand I wouldn't want to anyway.\pIf you left...I'd never forgive\nmyself...it'd haunt me until the\lday I die.\pLana...you belong in my life.$"
 
 LCC_Story9:
@@ -451,7 +451,7 @@ LCL_Story4_5:
 	.string "took control of me to where I...$"
 	
 LCL_Story5:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} kisses Lana directly!)\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} kisses Leaf directly!)\p"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}No need to dwell on that any\p"
 	.string "longer, my dear. I'm here now.\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Yeah, you're right. Sorry about\n"
@@ -466,7 +466,7 @@ LCL_Story6:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Well...I would get on my knees,\n"
 	.string "but...that's for a different time\l"
 	.string "and place, wouldn't you agree?\p"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana winks at {PLAYER} in a\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf winks at {PLAYER} in a\p"
 	.string " suggestive manner)\n"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Wow...didn't know there was that\n"
 	.string "side of you too...turns me on.\p"

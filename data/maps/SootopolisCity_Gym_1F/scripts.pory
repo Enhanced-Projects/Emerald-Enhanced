@@ -354,7 +354,7 @@ SG_DAWN_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}This guy's creepy...\p"
     .string "Let's stomp him out of existence!$"
 	
-SG_LANA_INTRO:
+SG_LEAF_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}This guy's annoying... can\n"
     .string "we get this over with quickly?\l"
     .string "He creeps me out...$"
@@ -430,7 +430,7 @@ script SG_FollowerOutroSelector {
 			msgbox(SG_DawnGymBattleComplete)
 		case TRAINER_REL_BRENDAN:
 			msgbox(SG_BrendanGymBattleComplete)
-		case TRAINER_REL_LANA:
+		case TRAINER_REL_LEAF:
 			msgbox(SG_LanaGymBattleComplete)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(SG_CourtneyGymBattleComplete)
@@ -462,8 +462,8 @@ script SG_FollowerIntroSelector {
 			msgbox(SG_DAWN_INTRO)
 		case TRAINER_REL_BRENDAN:
 			msgbox(SG_BRENDAN_INTRO)
-		case TRAINER_REL_LANA:
-			msgbox(SG_LANA_INTRO)
+		case TRAINER_REL_LEAF:
+			msgbox(SG_LEAF_INTRO)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(SG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:

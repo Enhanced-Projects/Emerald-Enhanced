@@ -139,7 +139,7 @@ script RyuRE_UseBed {
 	        case FOLLOWER_LEAF:
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}I was just craving a good snuggle!")
                 closemessage
-                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Lana snuggle tightly and rest\n together.)")
+                msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Leaf snuggle tightly and rest\n together.)")
                 delay(20)
                 closemessage
                 fadescreen(FADE_FROM_BLACK)
@@ -398,8 +398,8 @@ script Ryu_AttendantLeaf {
             setvar(VAR_0x8002, 0xFFFF)
             setflag(FLAG_RYU_MAX_SCALE)
             setflag(FLAG_RYU_FACING_ATTENDANT)
-            cleartrainerflag(TRAINER_REL_LANA)
-            trainerbattle_single(TRAINER_REL_LANA, RyuRE_LanaBattleIntro, RyuRE_LanaBattleOutro)
+            cleartrainerflag(TRAINER_REL_LEAF)
+            trainerbattle_single(TRAINER_REL_LEAF, RyuRE_LanaBattleIntro, RyuRE_LanaBattleOutro)
             waitstate
             setvar(VAR_0x8002, 0)
             clearflag(FLAG_RYU_FACING_ATTENDANT)

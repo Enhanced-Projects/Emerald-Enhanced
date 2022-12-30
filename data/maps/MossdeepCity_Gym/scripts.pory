@@ -556,7 +556,7 @@ MDG_DAWN_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}This gym is so creepy...\n"
 	.string "I'll power through it!$"
 	
-MDG_LANA_INTRO:
+MDG_LEAF_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hmm, I didn't know gym leaders\n"
 	.string "were allowed to be this young.\p"
 	.string "Oh well, I won't be nice about it.$"
@@ -637,7 +637,7 @@ script MDG_FollowerOutroSelector {
 			msgbox(MDG_DawnGymBattleComplete)
 		case TRAINER_REL_BRENDAN:
 			msgbox(MDG_BrendanGymBattleComplete)
-		case TRAINER_REL_LANA:
+		case TRAINER_REL_LEAF:
 			msgbox(MDG_LanaGymBattleComplete)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(MDG_CourtneyGymBattleComplete)
@@ -669,8 +669,8 @@ script MDG_FollowerIntroSelector {
 			msgbox(MDG_DAWN_INTRO)
 		case TRAINER_REL_BRENDAN:
 			msgbox(MDG_BRENDAN_INTRO)
-		case TRAINER_REL_LANA:
-			msgbox(MDG_LANA_INTRO)
+		case TRAINER_REL_LEAF:
+			msgbox(MDG_LEAF_INTRO)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(MDG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:

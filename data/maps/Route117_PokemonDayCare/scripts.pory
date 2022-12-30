@@ -10,7 +10,7 @@ Route117_PokemonDayCare_OnTransition: @ 822BBB7
 
 DC_LanaTrigger::
 	goto_if_unset FLAG_RYU_LEAF_MTPYRE, ryu_end
-	goto_if_set FLAG_RYU_LANA_ALTEVENT2, ryu_end
+	goto_if_set FLAG_RYU_LEAF_ALTEVENT2, ryu_end
 	lock
 	applymovement 2, DC_NpcToPlayer
 	waitmovement 2
@@ -24,7 +24,7 @@ DC_LanaTrigger::
 	msgbox DC_LanaStory3 MSGBOX_DEFAULT
 	applymovement 2, DC_NpcBack
 	waitmovement 2
-	setflag FLAG_RYU_LANA_ALTEVENT2
+	setflag FLAG_RYU_LEAF_ALTEVENT2
 	release
 	end
 	
@@ -36,12 +36,12 @@ DC_NormalNPC::
 	end
 	
 DC_PcTrigger::
-	goto_if_unset FLAG_RYU_LANA_ALTEVENT2, ryu_end
+	goto_if_unset FLAG_RYU_LEAF_ALTEVENT2, ryu_end
 	goto_if_set FLAG_RYU_DAYCARE_LEAFEVENTPC, ryu_end
 	msgbox DC_PCMSG MSGBOX_DEFAULT
 	setflag FLAG_RYU_DAYCARE_LEAFEVENTPC
 	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
-	setvar VAR_RYU_QUEST_LANA, 515
+	setvar VAR_RYU_QUEST_LEAF, 515
 	closemessage
 	release
 	end

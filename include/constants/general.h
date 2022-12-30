@@ -471,7 +471,7 @@
 #define QUEST_ID_DEVON_CORPORATE 1
 #define QUEST_ID_AQUA 2
 #define QUEST_ID_MAGMA 3
-#define QUEST_ID_LANA 4
+#define QUEST_ID_Leaf 4
 #define QUEST_ID_NURSE 5
 
 //Real Estate defines that need to be visible to scripts

@@ -516,7 +516,7 @@ gSpecials:: @ 81DBA64
 	def_special RyuWarp
 	def_special RyuWarp2
 	def_special RyuCheckTempVars
-	def_special RyuNumberOfFullBoxes
+	def_special RyuCountBoxedPokemon
 	def_special RyuWipeParty
 	def_special GivePlayerModdedMon
 	def_special RyuSacrificeMon

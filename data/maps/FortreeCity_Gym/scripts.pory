@@ -401,7 +401,7 @@ script FG_FollowerOutroSelector {
 			msgbox(FG_DawnGymBattleComplete)
 		case TRAINER_REL_BRENDAN:
 			msgbox(FG_BrendanGymBattleComplete)
-		case TRAINER_REL_LANA:
+		case TRAINER_REL_LEAF:
 			msgbox(FG_LanaGymBattleComplete)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(FG_CourtneyGymBattleComplete)
@@ -433,7 +433,7 @@ script FG_FollowerIntroSelector {
 			msgbox(FG_DAWN_INTRO)
 		case TRAINER_REL_BRENDAN:
 			msgbox(FG_BRENDAN_INTRO)
-		case TRAINER_REL_LANA:
+		case TRAINER_REL_LEAF:
 			msgbox(FG_Lana_INTRO)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(FG_COURTNEY_INTRO)

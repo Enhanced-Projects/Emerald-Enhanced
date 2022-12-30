@@ -42,7 +42,7 @@ AncientTomb_EventScript_HideRegiEntrance:: @ 8238FFC
 AncientTomb_EventScript_CaveEntranceMiddle:: @ 8239033
 	lockall
 	goto_if_set FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED, AncientTomb_EventScript_BigHoleInWall
-	compare VAR_RYU_QUEST_LANA, 40
+	compare VAR_RYU_QUEST_LEAF, 40
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall
 	closemessage
@@ -108,14 +108,14 @@ AncientTomb_EventScript_RanFromRegisteel:: @ 82390AA
 
 
 AT_SetupLanaEvent2:
-	map_script_2 VAR_RYU_QUEST_LANA, 82, AT_LanaEvent2
+	map_script_2 VAR_RYU_QUEST_LEAF, 82, AT_LanaEvent2
 	.2byte 0
 	
 AT_LanaEvent2::
 	addobject 4
 	addobject 2
 	lock
-	setvar VAR_RYU_QUEST_LANA, 83
+	setvar VAR_RYU_QUEST_LEAF, 83
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	applymovement PLAYER, AT_SV_PlayerEntry
 	waitmovement PLAYER
@@ -137,11 +137,11 @@ AT_LanaEvent2::
 	closemessage
 	msgbox AT_SV_Story31 MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_QUEST_LANA, 83
+	setvar VAR_RYU_QUEST_LEAF, 83
 	goto AT_LanaEvent3
 
 AT_LanaEvent3::
-	setvar VAR_RYU_QUEST_LANA, 84
+	setvar VAR_RYU_QUEST_LEAF, 84
 	msgbox AT_SV_Story32 MSGBOX_DEFAULT
 	closemessage
 	applymovement 4, AT_SV_Gary1
@@ -185,11 +185,11 @@ AT_LanaEvent3::
 	setflag FLAG_TEMP_9
 	msgbox AT_SV_Story9 MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_QUEST_LANA, 85
+	setvar VAR_RYU_QUEST_LEAF, 85
 	goto AT_SV_Battle
 	
 AT_SV_Battle::
-	setvar VAR_RYU_QUEST_LANA, 86
+	setvar VAR_RYU_QUEST_LEAF, 86
 	savebgm MUS_RG_NANADUNGEON
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
@@ -198,7 +198,7 @@ AT_SV_Battle::
 	trainerbattle 10 TRAINER_RED, 0, NULL, AT_SV_GaryBattleDefeat
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
 	setvar VAR_0x8005, 4|2
-	setvar VAR_0x8006, TRAINER_REL_LANA
+	setvar VAR_0x8006, TRAINER_REL_LEAF
 	setvar VAR_0x8007, TRAINER_BACK_PIC_LEAF
 	special DoSpecialTrainerBattle
 	waitstate
@@ -259,7 +259,7 @@ AT_SV_ReturnFromBattle::
 	closemessage
 	applymovement 2, AT_SV_LeafLeaving
 	waitmovement 2
-	setvar VAR_RYU_QUEST_LANA, 90
+	setvar VAR_RYU_QUEST_LEAF, 90
 	setflag FLAG_HIDE_AT1_LEAF
 	playse SE_DOOR
 	removeobject 2

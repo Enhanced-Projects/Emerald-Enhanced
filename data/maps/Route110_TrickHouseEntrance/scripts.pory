@@ -209,15 +209,15 @@ Route110_TrickHouseEntrance_EventScript_SetTrickMasterInFrontOfDoor:: @ 8269CDF
 	end
 
 Route110_TrickHouseEntrance_OnFrame: @ 8269CEE
-	map_script_2 VAR_RYU_QUEST_LANA, 11, TH_LanaEvent1
-	map_script_2 VAR_RYU_QUEST_LANA, 91, TH_Lana_Event2
+	map_script_2 VAR_RYU_QUEST_LEAF, 11, TH_LanaEvent1
+	map_script_2 VAR_RYU_QUEST_LEAF, 91, TH_Lana_Event2
 	map_script_2 VAR_TRICK_HOUSE_FOUND_TRICK_MASTER, 1, Route110_TrickHouseEntrance_EventScript_BeginChallenge
 	.2byte 0
 	
 @================================================================================================== Lana
 
 TH_LanaEvent1::
-	setvar VAR_RYU_QUEST_LANA, 12
+	setvar VAR_RYU_QUEST_LEAF, 12
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	savebgm MUS_DUMMY
 	special DrawWholeMapView
@@ -263,7 +263,7 @@ TH_LanaEvent1::
 	applymovement PLAYER, Common_Movement_QuestionMark
 	waitmovement 3
 	removeobject 3
-	setflag FLAG_HIDE_TRICK_HOUSE_LANA
+	setflag FLAG_HIDE_TRICK_HOUSE_LEAF
 	playse SE_DOOR
 	waitse
 	msgbox TH_Event6 MSGBOX_DEFAULT
@@ -273,7 +273,7 @@ TH_LanaEvent1::
 	msgbox TH_Event7 MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
-	setvar VAR_RYU_QUEST_LANA, 15
+	setvar VAR_RYU_QUEST_LEAF, 15
 	applymovement PLAYER, TH_PlayerLeave
 	waitmovement 0
 	playse SE_DOOR
@@ -291,7 +291,7 @@ TH_TM_3:
 	.string "Stranger: Ah,\nso you brought a friend along?\pSplendid! Welcome friend. This home\nbelongs to none other than the\lgreatest mystery man of all Hoenn.\pMe...the one and only\nTRICK Master!$"
 	
 TH_Event1:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana claps while you stand,\n contemplating life's choices...)\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Come now, why the blank face?\nSurely you've heard of me.\l"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf claps while you stand,\n contemplating life's choices...)\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Come now, why the blank face?\nSurely you've heard of me.\l"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p... ... ... ...\p... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Ah, nevermind. I don't blame you\nfor not knowing.$"
 
 TH_Event2:
@@ -367,7 +367,7 @@ TH_PlayerLeave:
 	
 TH_Lana_Event2::
 	lock
-	setvar VAR_RYU_QUEST_LANA, 92
+	setvar VAR_RYU_QUEST_LEAF, 92
 	applymovement 3, Common_Movement_FaceUp
 	applymovement PLAYER, TH_Player2move
 	waitmovement PLAYER
@@ -401,9 +401,9 @@ TH_Lana_Event2::
 	fadescreen 1
 	delay 5
 	playse SE_DOOR
-	setvar VAR_RYU_QUEST_LANA, 95
+	setvar VAR_RYU_QUEST_LEAF, 95
 	savebgm MUS_RG_SLOWMASARA
-	clearflag FLAG_HIDE_R110_LANA
+	clearflag FLAG_HIDE_R110_LEAF
 	warpsilent MAP_ROUTE110, 255, 11, 59
 	release
 	end

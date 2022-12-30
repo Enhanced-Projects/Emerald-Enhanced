@@ -553,7 +553,7 @@
       "x": 58,
       "y": 36,
       "elevation": 0,
-      "var": "VAR_RYU_QUEST_LANA",
+      "var": "VAR_RYU_QUEST_LEAF",
       "var_value": "1",
       "script": "LCC_PreventPlayerExitLanaScene"
     },

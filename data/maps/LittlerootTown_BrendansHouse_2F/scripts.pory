@@ -5,7 +5,7 @@ LittlerootTown_BrendansHouse_2F_MapScripts:: @ 81F83E3
 	
 GameIntroSequenceCheck::
 	map_script_2 VAR_TEMP_E, 0, LRT_CheckGameOver
-	map_script_2 VAR_RYU_QUEST_LANA, 75, LRT_LeafEvent
+	map_script_2 VAR_RYU_QUEST_LEAF, 75, LRT_LeafEvent
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, LRT_BeginHaremSequence
 	map_script_2 VAR_RYU_PARTNER_COUNT, 6, LRT_BeginHaremSequence
 	map_script_2 VAR_TEMP_9, 0, LRT_CheckAntiharemEnd
@@ -394,7 +394,7 @@ LRT_BH_Unchanged:
 LRT_LeafEvent::
 	lock
 	clearflag FLAG_RYU_RANDOMBATTLE
-	setvar VAR_RYU_QUEST_LANA, 76
+	setvar VAR_RYU_QUEST_LEAF, 76
 	msgbox LRT_Story1 MSGBOX_DEFAULT
 	closemessage
 	applymovement PLAYER, Common_Movement_FaceDown
@@ -434,10 +434,10 @@ LRT_LeafEvent::
 	msgbox LRT_Story7 MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_MISHIRO, 0
-	setvar VAR_RYU_QUEST_LANA, 80
+	setvar VAR_RYU_QUEST_LEAF, 80
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	setflag FLAG_RYU_DS_LEAF_LOVERS
-	clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
+	clearflag FLAG_HIDE_LEAFS_HOUSE_LEAF_AND_BRO
 	release
 	end
 	
@@ -538,7 +538,7 @@ LRT_Story6:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Uh huh...$"
 	
 LRT_Story6_5:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana kisses {PLAYER} back.)\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf kisses {PLAYER} back.)\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Sleep well, {PLAYER}.\p"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yeah, see you soon.$"
 

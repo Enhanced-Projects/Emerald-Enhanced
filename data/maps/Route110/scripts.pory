@@ -6,8 +6,8 @@ Route110_MapScripts:: @ 81EF269
 
 R110_LanaSetup::
 	lock
-	clearflag FLAG_HIDE_TRICK_HOUSE_LANA
-	setvar VAR_RYU_QUEST_LANA, 11
+	clearflag FLAG_HIDE_TRICK_HOUSE_LEAF
+	setvar VAR_RYU_QUEST_LEAF, 11
 	clearflag FLAG_RYU_HIDE_REL_OBJECTS
 	release
 	end
@@ -18,16 +18,16 @@ Route110_OnTransition: @ 81EF27D
 	end
 
 Route110_OnFrame: @ 81EF297
-	map_script_2 VAR_RYU_QUEST_LANA, 95, R110_LeafEventKickstart
+	map_script_2 VAR_RYU_QUEST_LEAF, 95, R110_LeafEventKickstart
 	.2byte 0
 	
-@==================================================================================================Lana Ending
+@==================================================================================================Leaf Ending
 
 r110_SetUpTrickHouseLanaEvent2::
 	lock
-	clearflag FLAG_HIDE_TRICK_HOUSE_LANA
+	clearflag FLAG_HIDE_TRICK_HOUSE_LEAF
 	clearflag FLAG_RYU_HIDE_REL_OBJECTS
-	setvar VAR_RYU_QUEST_LANA, 91
+	setvar VAR_RYU_QUEST_LEAF, 91
 	release
 	end
 
@@ -41,7 +41,7 @@ R110_LeafEventKickstart::
 r110_LeafSceneEnding::
 	lock
 	fadenewbgm MUS_RG_SLOWMASARA
-	setvar VAR_RYU_QUEST_LANA, 96
+	setvar VAR_RYU_QUEST_LEAF, 96
 	applymovement PLAYER, Common_Movement_FaceRight
 	applymovement 31, Common_Movement_FaceLeft
 	waitmovement 31
@@ -65,10 +65,10 @@ r110_LeafSceneEnding::
 	ach give ACH_SILENT_STRONG_TYPE
 	addvar VAR_RYU_PARTNER_COUNT, 1
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
-	clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
+	clearflag FLAG_HIDE_LEAFS_HOUSE_LEAF_AND_BRO
 	delay 40
 	removeobject 31
-	setvar VAR_RYU_QUEST_LANA, 100
+	setvar VAR_RYU_QUEST_LEAF, 100
 	warp MAP_SLATEPORT_CITY, 255, 14, 20
 	releaseall
 	end
@@ -100,7 +100,7 @@ r110_LeafSceneEndText:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Honestly, babe...I think he pulled\na fast one on us.$"
 	
 r110_LeafSceneEndText2:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana affectionately gives a\n lingering kiss to {PLAYER}!)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf affectionately gives a\n lingering kiss to {PLAYER}!)$"
 	
 r110_LeafSceneEndText3:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Nah, I think we got the better\ndeal. C'mon, let's go!$"

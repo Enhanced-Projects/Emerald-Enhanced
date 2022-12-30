@@ -137,7 +137,7 @@ NewMauville_Inside_EventScript_RedButton:: @ 8237725
 	msgbox NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped, MSGBOX_DEFAULT
 	call NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
 	setvar VAR_NEW_MAUVILLE_STATE, 2
-	compare VAR_RYU_QUEST_LANA, 17
+	compare VAR_RYU_QUEST_LEAF, 17
 	call_if_eq NM_Leaf_Event
 	releaseall
 	end
@@ -266,7 +266,7 @@ NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped: @ 8237932
 	.string "The generator appears to have\n"
 	.string "stopped…$"
 	
-@==================================================================================================LANA EVENTS
+@==================================================================================================Leaf EVENTS
 
 NM_DevUp:
 	walk_fast_up
@@ -276,10 +276,10 @@ NM_DevUp:
 
 NM_Leaf_Trigger::
 	lock
-	compare VAR_RYU_QUEST_LANA, 15
+	compare VAR_RYU_QUEST_LEAF, 15
 	goto_if_ne ryu_end
-	clearflag FLAG_HIDE_NM_LANA
-	setvar VAR_RYU_QUEST_LANA, 17
+	clearflag FLAG_HIDE_NM_LEAF
+	setvar VAR_RYU_QUEST_LEAF, 17
 	release
 	end
 
@@ -305,8 +305,8 @@ NM_Leaf_Event::
 	applymovement PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox NM_ScavengerHuntClue2 MSGBOX_DEFAULT
-	setflag FLAG_HIDE_NM_LANA
-	setvar VAR_RYU_QUEST_LANA, 20
+	setflag FLAG_HIDE_NM_LEAF
+	setvar VAR_RYU_QUEST_LEAF, 20
 	return
 	
 NM_LeafNoGenerator:
@@ -317,10 +317,10 @@ NM_LeafNoGenerator:
 	end
 
 lanadoesntlookatyou:
-	.string "Lana is staring inquisitively\nat the generator.$"
+	.string "Leaf is staring inquisitively\nat the generator.$"
 	
 NM_LanaElipsis:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Lana used an Escape Rope!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Leaf used an Escape Rope!$"
 	
 NM_LanaElipsis2:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ... ... ...$"
@@ -348,7 +348,7 @@ NM_Warp2::
 	end
 
 
-@==================================================================================================End Lana Events
+@==================================================================================================End Leaf Events
 
 RyuLegendary_Zapdos::
 	goto_if_set FLAG_RYU_ZAPDOS, ryu_end

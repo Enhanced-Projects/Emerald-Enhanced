@@ -14002,7 +14002,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerJohnatan[] = {
 	}
 };
 
-static const struct TrainerMonItemCustomMoves gTrainerParty_StoryLana[] = {
+static const struct TrainerMonItemCustomMoves gTrainerParty_StoryLeaf[] = {
 	{
 	.iv = 247,
 	.lvl = 119,

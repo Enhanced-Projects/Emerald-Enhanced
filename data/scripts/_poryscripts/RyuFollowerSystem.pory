@@ -201,7 +201,7 @@ FollowerLeafSetup::
 	createfollower FOLLOWER_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
 	applymovement FOLLOWER, Common_Movement_FaceUp
 	waitmovement 0
-	setflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
+	setflag FLAG_HIDE_LEAFS_HOUSE_LEAF_AND_BRO
 	msgbox LeafOkLetsGo
 	release
 	end
@@ -345,7 +345,7 @@ Ryu_RestoreBrendan::
 
 Ryu_RestoreLeaf::
 	destroyfollower
-	clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
+	clearflag FLAG_HIDE_LEAFS_HOUSE_LEAF_AND_BRO
 	return
 
 Ryu_RestoreCourtney::
@@ -1019,7 +1019,7 @@ script RyuFollower_LanaChatterSelector {
 		case 3:
 			msgbox("{COLOR LIGHT_RED}{SHADOW RED}Thanks for traveling with me.\pWith you I feel strong enough to\neven fight Arceus!")
 		case 4:
-			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Why are you looking at me? Is my hat crooked or something?\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lana looks embarassed...)"))
+			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Why are you looking at me? Is my hat crooked or something?\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Leaf looks embarassed...)"))
 	}
 	closemessage
 	return
@@ -1133,7 +1133,7 @@ script RyuCheckForTrueBadEnding {
 			return
 		}
 	}
-	if (var(VAR_RYU_QUEST_LANA) != 666) {
+	if (var(VAR_RYU_QUEST_LEAF) != 666) {
 		return
 	}
 	if (var(VAR_RYU_QUEST_NURSE) != 11) {

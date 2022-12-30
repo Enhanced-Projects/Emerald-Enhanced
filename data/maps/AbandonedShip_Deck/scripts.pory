@@ -10,8 +10,8 @@ AbandonedShip_Deck_OnTransition: @ 82379A0
 AS_CheckLana::
 	lock
 	goto_if_unset FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_4_SCANNER, ryu_end
-	clearflag FLAG_HIDE_ABN_SHIP_LANA
-	setvar VAR_RYU_QUEST_LANA, 21
+	clearflag FLAG_HIDE_ABN_SHIP_LEAF
+	setvar VAR_RYU_QUEST_LEAF, 21
 	release
 	end
 	

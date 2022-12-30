@@ -64,8 +64,8 @@ Ryu_LNH_RomQuest::
 	goto LNH_CheckHasMons
 
 LNH_CheckHasMons::
-	specialvar VAR_RESULT, RyuNumberOfFullBoxes
-	compare VAR_RESULT, 4
+	specialvar VAR_RESULT, RyuCountBoxedPokemon
+	compare VAR_RESULT, 120
 	goto_if_ge LNH_PlayerHasCollection
 	goto LNH_NotEnoughMons
 
@@ -362,8 +362,8 @@ LNH_StillLookingMsg:
 
 	
 LNH_StillLooking:
-	specialvar VAR_RESULT, RyuNumberOfFullBoxes
-	compare VAR_RESULT, 4
+	specialvar VAR_RESULT, RyuCountBoxedPokemon
+	compare VAR_RESULT, 120
 	goto_if_ge LNH_PlayerHasCollection
 	msgbox LNH_StillLookingMsg
 	release
@@ -489,9 +489,9 @@ Route114_LanettesHouse_Text_EmailFromBill: @ 822B6FC
 LNH_LeafEvent::
 	goto_if_set FLAG_RYU_LANETTE_EVENT1, ryu_end
 	goto_if_set FLAG_RYU_DS_LANETTE_CLOSEFRIENDS, LNH_RomanceEvent
-	goto_if_set FLAG_RYU_LANA_ALTEVENT3, ryu_end
+	goto_if_set FLAG_RYU_LEAF_ALTEVENT3, ryu_end
 	goto_if_unset FLAG_RYU_DAYCARE_LEAFEVENTPC, ryu_end
-	goto_if_unset FLAG_RYU_LANA_ALTEVENT2, ryu_end
+	goto_if_unset FLAG_RYU_LEAF_ALTEVENT2, ryu_end
 	lock
 	msgbox LNH_StoryMsg1 MSGBOX_DEFAULT
 	closemessage
@@ -513,8 +513,8 @@ LNH_LeafEvent::
 	waitmovement 1
 	msgbox LNH_StoryMsg4 MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_QUEST_LANA, 525
-	setflag FLAG_RYU_LANA_ALTEVENT3
+	setvar VAR_RYU_QUEST_LEAF, 525
+	setflag FLAG_RYU_LEAF_ALTEVENT3
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	release
 	end

@@ -25,7 +25,7 @@ void RyuBufferAttendantName (void)
                 StringCopy(gStringVar1, (const u8[])_("Brendan"));
                 break;
 	        case FOLLOWER_LEAF:
-                StringCopy(gStringVar1, (const u8[])_("Lana"));
+                StringCopy(gStringVar1, (const u8[])_("Leaf"));
                 break;
 	        case FOLLOWER_COURTNEY:
                 StringCopy(gStringVar1, (const u8[])_("Courtney"));
@@ -122,7 +122,7 @@ bool8 RyuFollowerToTrainerID(void)
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_BRENDAN;
             return TRUE;
         case FOLLOWER_LEAF:
-            gSpecialVar_0x8008 = TRAINER_REL_LANA;
+            gSpecialVar_0x8008 = TRAINER_REL_LEAF;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_LEAF;
             return TRUE;
         case FOLLOWER_COURTNEY:

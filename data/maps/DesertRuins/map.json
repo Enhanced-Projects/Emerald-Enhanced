@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_DR_LANA"
+      "flag": "FLAG_HIDE_DR_LEAF"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_DR_LANA"
+      "flag": "FLAG_HIDE_DR_LEAF"
     }
   ],
   "warp_events": [
@@ -96,7 +96,7 @@
       "x": 8,
       "y": 28,
       "elevation": 3,
-      "var": "VAR_RYU_QUEST_LANA",
+      "var": "VAR_RYU_QUEST_LEAF",
       "var_value": "45",
       "script": "DR_SetStage"
     },
@@ -105,7 +105,7 @@
       "x": 8,
       "y": 21,
       "elevation": 3,
-      "var": "VAR_RYU_QUEST_LANA",
+      "var": "VAR_RYU_QUEST_LEAF",
       "var_value": "48",
       "script": "DR_LeafCheck2"
     },
@@ -114,7 +114,7 @@
       "x": 8,
       "y": 10,
       "elevation": 3,
-      "var": "VAR_RYU_QUEST_LANA",
+      "var": "VAR_RYU_QUEST_LEAF",
       "var_value": "49",
       "script": "DR_LeafEvent2"
     }

@@ -13126,13 +13126,13 @@ const struct Trainer gTrainers[] = {
         .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_LEAF,
-        .trainerName = _("Lana"),
+        .trainerName = _("Leaf"),
         .items = {},
         .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_HP_AWARE | AI_SCRIPT_RISKY,
         .partySize = 5,
-        .party = {.ItemCustomMoves = gTrainerParty_StoryLana }
+        .party = {.ItemCustomMoves = gTrainerParty_StoryLeaf }
     },
 
     [TRAINER_GRUNT_AQUA_HIDEOUT_24] =
@@ -13151,14 +13151,14 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Pablo3},
     },
 
-    [TRAINER_REL_LANA] =
+    [TRAINER_REL_LEAF] =
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
         .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_LEAF,
-        .trainerName = _("Lana"),
+        .trainerName = _("Leaf"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE},
         .battleStyle = BS_SET,
         .doubleBattle = FALSE,

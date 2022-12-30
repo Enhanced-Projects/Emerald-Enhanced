@@ -373,7 +373,7 @@ RG_SHELLY_INTRO:
 RG_DAWN_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I flew in as soon as you called!\pLet's Show her how much we've\lgrown!!$"
 	
-RG_LANA_INTRO:
+RG_LEAF_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I love smashing rocks.\n"
     .string "It's practically therapeutic!$"
 	
@@ -418,7 +418,7 @@ script RG_FollowerOutroSelector {
 			msgbox(RG_DawnGymBattleComplete)
 		case TRAINER_REL_BRENDAN:
 			msgbox(RG_BrendanGymBattleComplete)
-		case TRAINER_REL_LANA:
+		case TRAINER_REL_LEAF:
 			msgbox(RG_LanaGymBattleComplete)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(RG_CourtneyGymBattleComplete)
@@ -450,8 +450,8 @@ script RG_FollowerIntroSelector {
 			msgbox(RG_DAWN_INTRO)
 		case TRAINER_REL_BRENDAN:
 			msgbox(RG_BRENDAN_INTRO)
-		case TRAINER_REL_LANA:
-			msgbox(RG_LANA_INTRO)
+		case TRAINER_REL_LEAF:
+			msgbox(RG_LEAF_INTRO)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(RG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:

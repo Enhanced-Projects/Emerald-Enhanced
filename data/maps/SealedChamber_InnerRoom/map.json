@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SCH_LanaEvent",
-      "flag": "FLAG_HIDE_SCH_LANA"
+      "flag": "FLAG_HIDE_SCH_LEAF"
     }
   ],
   "warp_events": [
@@ -43,7 +43,7 @@
       "x": 10,
       "y": 18,
       "elevation": 3,
-      "var": "VAR_RYU_QUEST_LANA",
+      "var": "VAR_RYU_QUEST_LEAF",
       "var_value": "30",
       "script": "SCH_LanaCheck"
     }

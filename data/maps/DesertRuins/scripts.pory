@@ -41,7 +41,7 @@ DesertRuins_EventScript_ShowRegirock:: @ 822D9D7
 DesertRuins_EventScript_CaveEntranceMiddle:: @ 822D9DB
 	lockall
 	goto_if_set FLAG_SYS_REGIROCK_PUZZLE_COMPLETED, DesertRuins_EventScript_BigHoleInWall
-	compare VAR_RYU_QUEST_LANA, 40
+	compare VAR_RYU_QUEST_LEAF, 40
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall
 	closemessage
@@ -112,15 +112,15 @@ DesertRuins_EventScript_RanFromRegirock:: @ 822DA52
 DR_SetStage::
 	lock
 	addobject 2
-	clearflag FLAG_HIDE_DR_LANA
-	setvar VAR_RYU_QUEST_LANA, 46
+	clearflag FLAG_HIDE_DR_LEAF
+	setvar VAR_RYU_QUEST_LEAF, 46
 	addobject 2
 	goto DR_LeafEvent
 	
 	
 DR_LeafEvent::
 	lock
-	setvar VAR_RYU_QUEST_LANA, 47
+	setvar VAR_RYU_QUEST_LEAF, 47
 	delay 25
 	special SpawnCameraObject
 	applymovement CAMERA, DR_CameraSequence
@@ -150,7 +150,7 @@ DR_LeafEvent::
 	waitmovement 0
 	special RemoveCameraObject
 	setflag FLAG_SYS_REGIROCK_PUZZLE_COMPLETED
-	setvar VAR_RYU_QUEST_LANA, 48
+	setvar VAR_RYU_QUEST_LEAF, 48
 	release
 	end
 	
@@ -159,16 +159,16 @@ DR_LeafCheck2::
 	removeobject 2
 	special DrawWholeMapView
 	applymovement PLAYER, Common_Movement_FaceUp
-	setvar VAR_RYU_QUEST_LANA, 49
+	setvar VAR_RYU_QUEST_LEAF, 49
 	setobjectxy 2, 16, 32
-	clearflag FLAG_HIDE_DR_LANA
+	clearflag FLAG_HIDE_DR_LEAF
 	warp MAP_DESERT_RUINS, 255, 8, 11
 	release
 	end
 	
 	
 DR_LeafEvent2::
-	setvar VAR_RYU_QUEST_LANA, 50
+	setvar VAR_RYU_QUEST_LEAF, 50
 	setflag FLAG_HIDE_REGIROCK
 	removeobject 1
 	special DrawWholeMapView
@@ -189,10 +189,10 @@ DR_LeafEvent2::
 	waitmovement 4
 	playse SE_KAIDAN @Stairs
 	removeobject 4
-	setflag FLAG_HIDE_DR_LANA
+	setflag FLAG_HIDE_DR_LEAF
 	waitse
-	setvar VAR_RYU_QUEST_LANA, 55
-	setflag FLAG_HIDE_DR_LANA
+	setvar VAR_RYU_QUEST_LEAF, 55
+	setflag FLAG_HIDE_DR_LEAF
 	release
 	end
 	

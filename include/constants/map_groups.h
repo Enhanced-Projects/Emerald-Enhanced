@@ -144,7 +144,7 @@
 #define MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F       (4 | (6 << 8))
 #define MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_2F       (5 | (6 << 8))
 #define MAP_SLATEPORT_CITY_HARBOR                  (6 | (6 << 8))
-#define MAP_SLATEPORT_CITY_LANAS_HOUSE             (7 | (6 << 8))
+#define MAP_SLATEPORT_CITY_LEAFS_HOUSE             (7 | (6 << 8))
 #define MAP_SLATEPORT_CITY_HOUSE                   (8 | (6 << 8))
 #define MAP_SLATEPORT_CITY_BATTLE_TENT_LOBBY       (9 | (6 << 8))
 #define MAP_SLATEPORT_CITY_BATTLE_TENT_CORRIDOR    (10 | (6 << 8))

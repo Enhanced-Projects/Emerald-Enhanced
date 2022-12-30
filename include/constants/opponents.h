@@ -823,7 +823,7 @@
 #define TRAINER_CHALLENGER_JOHNATAN         819
 #define TRAINER_STORY_LEAF                  820
 #define TRAINER_GRUNT_AQUA_HIDEOUT_24       821
-#define TRAINER_REL_LANA                    822
+#define TRAINER_REL_LEAF                    822
 #define TRAINER_REL_BRENDAN                 823
 #define TRAINER_REL_DAWN                    824
 #define TRAINER_REL_SHELLY                  825

@@ -501,7 +501,7 @@ MVG_BRENDAN_INTRO:
     .string "a while since I've been to Mauville.\l"
     .string "This should be fun!$"
 	
-MVG_LANA_INTRO:
+MVG_LEAF_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I fought Lieutenant Surge.\p"
     .string "He's a Real electric type user.\p"
     .string "I wonder if this old codger can\n"
@@ -561,7 +561,7 @@ script MVG_FollowerOutroSelector {
 			msgbox(MVG_DawnGymBattleComplete)
 		case TRAINER_REL_BRENDAN:
 			msgbox(MVG_BrendanGymBattleComplete)
-		case TRAINER_REL_LANA:
+		case TRAINER_REL_LEAF:
 			msgbox(MVG_LanaGymBattleComplete)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(MVG_CourtneyGymBattleComplete)
@@ -593,8 +593,8 @@ script MVG_FollowerIntroSelector {
 			msgbox(MVG_DAWN_INTRO)
 		case TRAINER_REL_BRENDAN:
 			msgbox(MVG_BRENDAN_INTRO)
-		case TRAINER_REL_LANA:
-			msgbox(MVG_LANA_INTRO)
+		case TRAINER_REL_LEAF:
+			msgbox(MVG_LEAF_INTRO)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(MVG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:

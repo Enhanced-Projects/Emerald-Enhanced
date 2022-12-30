@@ -821,7 +821,7 @@ PBG_BRENDAN_INTRO:
 PBG_ShellyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Well, this was fun!\nNice to meet you, pops!$"
 	
-PBG_LANA_INTRO:
+PBG_LEAF_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, so your dad is a Gym\n"
     .string "Leader. Your strength makes sense\l"
     .string "now!$"
@@ -874,7 +874,7 @@ script PBG_FollowerOutroSelector {
 			msgbox(PBG_DawnGymBattleComplete)
 		case TRAINER_REL_BRENDAN:
 			msgbox(PBG_BrendanGymBattleComplete)
-		case TRAINER_REL_LANA:
+		case TRAINER_REL_LEAF:
 			msgbox(PBG_LanaGymBattleComplete)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(PBG_CourtneyGymBattleComplete)
@@ -906,8 +906,8 @@ script PBG_FollowerIntroSelector {
 			msgbox(PBG_DAWN_INTRO)
 		case TRAINER_REL_BRENDAN:
 			msgbox(PBG_BRENDAN_INTRO)
-		case TRAINER_REL_LANA:
-			msgbox(PBG_LANA_INTRO)
+		case TRAINER_REL_LEAF:
+			msgbox(PBG_LEAF_INTRO)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(PBG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:

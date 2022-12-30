@@ -270,7 +270,7 @@
 #define VAR_RYU_CHALLENGE_WAYSTONE_USES      0x40FB
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC
 #define VAR_RYU_WEATHER                      0x40FD
-#define VAR_RYU_QUEST_LANA                   0x40FE
+#define VAR_RYU_QUEST_LEAF                   0x40FE
 #define VAR_RYU_QUEST_MAGMA                  0x40FF // Magma quest var
 #define VAR_RYU_E41                          0x4100
 #define VAR_RYU_E42                          0x4101

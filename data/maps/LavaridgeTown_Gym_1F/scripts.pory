@@ -502,7 +502,7 @@ LG_DAWN_INTRO:
     .string "greatest against fire types, but\l"
     .string "I'm willing to try for you!$"
 	
-LG_LANA_INTRO:
+LG_LEAF_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I never really liked fire\n"
     .string "types. It might be tough, but\l"
     .string "I can overcome it!$"
@@ -536,7 +536,7 @@ script LG_FollowerOutroSelector {
 			msgbox(LG_DawnGymBattleComplete)
 		case TRAINER_REL_BRENDAN:
 			msgbox(LG_BrendanGymBattleComplete)
-		case TRAINER_REL_LANA:
+		case TRAINER_REL_LEAF:
 			msgbox(LG_LanaGymBattleComplete)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(LG_CourtneyGymBattleComplete)
@@ -568,8 +568,8 @@ script LG_FollowerIntroSelector {
 			msgbox(LG_DAWN_INTRO)
 		case TRAINER_REL_BRENDAN:
 			msgbox(LG_BRENDAN_INTRO)
-		case TRAINER_REL_LANA:
-			msgbox(LG_LANA_INTRO)
+		case TRAINER_REL_LEAF:
+			msgbox(LG_LEAF_INTRO)
 		case TRAINER_REL_COURTNEY_2:
 			msgbox(LG_COURTNEY_INTRO)
 		case TRAINER_REL_NURSE:

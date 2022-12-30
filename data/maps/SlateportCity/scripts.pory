@@ -10,7 +10,7 @@ SlateportCity_OnTransition: @ 81DCC6C
 	
 SC_LH_DoorLock::
 	goto_if_set FLAG_RYU_DS_LEAF_LINE_CANCELLED, SC1_LeafHouseVacant
-	goto_if_set FLAG_RYU_SC_PC_LANA_INTRO_EVENT, ryu_end
+	goto_if_set FLAG_RYU_SC_PC_LEAF_INTRO_EVENT, ryu_end
 	msgbox SC1_LeafHouseSign1
 	closemessage
 	applymovement PLAYER, Common_Movement_StepDown

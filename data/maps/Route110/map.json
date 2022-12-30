@@ -418,7 +418,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_R110_LANA"
+      "flag": "FLAG_HIDE_R110_LEAF"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
@@ -509,7 +509,7 @@
       "x": 11,
       "y": 59,
       "elevation": 3,
-      "var": "VAR_RYU_QUEST_LANA",
+      "var": "VAR_RYU_QUEST_LEAF",
       "var_value": "10",
       "script": "R110_LanaSetup"
     },
@@ -518,7 +518,7 @@
       "x": 11,
       "y": 59,
       "elevation": 3,
-      "var": "VAR_RYU_QUEST_LANA",
+      "var": "VAR_RYU_QUEST_LEAF",
       "var_value": "90",
       "script": "r110_SetUpTrickHouseLanaEvent2"
     },

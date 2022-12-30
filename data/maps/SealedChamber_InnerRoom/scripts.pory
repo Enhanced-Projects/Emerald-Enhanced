@@ -3,7 +3,7 @@ SealedChamber_InnerRoom_MapScripts:: @ 82391F7
 	.byte 0
 
 SCH_OpenDoors:: @ 82391F8
-	compare VAR_RYU_QUEST_LANA, 35
+	compare VAR_RYU_QUEST_LEAF, 35
 	goto_if_eq ryu_end
 	playbgm MUS_DUMMY, 0
 	playse SE_W089
@@ -29,7 +29,7 @@ SCH_OpenDoors:: @ 82391F8
 	delay 40
 	fadedefaultbgm
 	setflag FLAG_REGI_DOORS_OPENED
-	compare VAR_RYU_QUEST_LANA, 41
+	compare VAR_RYU_QUEST_LEAF, 41
 	goto_if_ne ryu_end
 	return
 	releaseall
@@ -93,14 +93,14 @@ SealedChamber_InnerRoom_EventScript_BrailleStoryPart6:: @ 8239287
 	releaseall
 	end
 	
-@==================================================================================================LANA SCRIPTS
+@==================================================================================================Leaf SCRIPTS
 
 SCH_LanaCheck::
-	compare VAR_RYU_QUEST_LANA, 30
+	compare VAR_RYU_QUEST_LEAF, 30
 	goto_if_ne ryu_end
 	addobject 1
-	clearflag FLAG_HIDE_SCH_LANA
-	setvar VAR_RYU_QUEST_LANA, 35
+	clearflag FLAG_HIDE_SCH_LEAF
+	setvar VAR_RYU_QUEST_LEAF, 35
 	release
 	end
 
@@ -121,7 +121,7 @@ SCH_LanaEvent::
 	msgbox SCH_LanaMsg2 MSGBOX_DEFAULT
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
 	setflag FLAG_RYU_BOSS_SCALE
-	setvar VAR_RYU_QUEST_LANA, 40
+	setvar VAR_RYU_QUEST_LEAF, 40
 	cleartrainerflag TRAINER_STORY_LEAF
 	trainerbattle_no_intro TRAINER_STORY_LEAF, SCH_Victory
 	goto SCH_AfterBattle
@@ -136,7 +136,7 @@ SCH_LanaDispt::
 	end
 	
 SCH_AfterBattle::
-	setvar VAR_RYU_QUEST_LANA, 41
+	setvar VAR_RYU_QUEST_LEAF, 41
 	applymovement 1, SCH_Fall
 	setflag FLAG_TEMP_B
 	call SCH_OpenDoors
@@ -152,14 +152,14 @@ SCH_AfterBattle::
 	applymovement 1, SCH_LanaLeaves
 	waitmovement 1
 	removeobject 1
-	setflag FLAG_HIDE_SCH_LANA
+	setflag FLAG_HIDE_SCH_LEAF
 	msgbox SCH_PlayerMsg1 MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_LEAF_CLOSEFRIENDS
 	goto_if_set FLAG_DEFEATED_REGIROCK, SCH_AlternateStoryTrigger
 	goto_if_set FLAG_DEFEATED_REGICE, SCH_AlternateStoryTrigger
 	goto_if_set FLAG_DEFEATED_REGISTEEL, SCH_AlternateStoryTrigger
-	setvar VAR_RYU_QUEST_LANA, 45
-	clearflag FLAG_HIDE_DR_LANA
+	setvar VAR_RYU_QUEST_LEAF, 45
+	clearflag FLAG_HIDE_DR_LEAF
 	release
 	end
 	
@@ -173,7 +173,7 @@ SCH_AlternateStoryTrigger::
 	msgbox SCH_AltStory22 MSGBOX_DEFAULT
 	closemessage
 	msgbox SCH_AltStory23 MSGBOX_DEFAULT
-	setvar VAR_RYU_QUEST_LANA, 500
+	setvar VAR_RYU_QUEST_LEAF, 500
 	fadedefaultbgm
 	release
 	end
@@ -185,7 +185,7 @@ Ryu_CancelLeafLanetteQuest::
 	applymovement PLAYER, Common_Movement_ExclamationMark
 	msgbox SCH_AltAnotherNote
 	setflag FLAG_RYU_DS_LEAF_LINE_CANCELLED
-	setvar VAR_RYU_QUEST_LANA, 666
+	setvar VAR_RYU_QUEST_LEAF, 666
 	release
 	end
 
@@ -246,13 +246,13 @@ SCH_LanaMsg3:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hey, you okay?\p{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...$"
 
 SCH_LanaSCMsg:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(An earthquake suddenly occurs,\n causing Lana to crash into {PLAYER}.)$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(An earthquake suddenly occurs,\n causing Leaf to crash into {PLAYER}.)$"
 
 SCH_NoLanaSCMsg:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(An earthquake suddenly occurs.\n Doors can be heard opening far\l away.)$"
 
 SCH_LanaMsg4:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana smiles in response before\n surprisingly opening her mouth.)\p{COLOR LIGHT_RED}{SHADOW RED}See...you...$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf smiles in response before\n surprisingly opening her mouth.)\p{COLOR LIGHT_RED}{SHADOW RED}See...you...$"
 
 SCH_Victory:
 	.string "Strangely... \nshe seems happy she lost...$"

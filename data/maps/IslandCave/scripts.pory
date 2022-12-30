@@ -9,14 +9,14 @@ IslandCave_OnResume: @ 8238E3A
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, IslandCave_EventScript_TryRemoveRegice
 	end
 	
-@==================================================================================================Lana Scripts
+@==================================================================================================Leaf Scripts
 
 IC_CaveCheck::
-	compare VAR_RYU_QUEST_LANA, 40
+	compare VAR_RYU_QUEST_LEAF, 40
 	goto_if_lt ryu_end
-	compare VAR_RYU_QUEST_LANA, 55
+	compare VAR_RYU_QUEST_LEAF, 55
 	goto_if_eq IC_Setup
-	compare VAR_RYU_QUEST_LANA, 65
+	compare VAR_RYU_QUEST_LEAF, 65
 	goto_if_ge ryu_end
 	msgbox r120_notReady MSGBOX_DEFAULT
 	applymovement PLAYER, IC_Exit
@@ -25,8 +25,8 @@ IC_CaveCheck::
 	end
 	
 IC_Setup::
-	clearflag FLAG_HIDE_IC_LANA
-	setvar VAR_RYU_QUEST_LANA, 56
+	clearflag FLAG_HIDE_IC_LEAF
+	setvar VAR_RYU_QUEST_LEAF, 56
 	addobject 2
 	release
 	end
@@ -35,15 +35,15 @@ IC_Setup2::
     lock
 	applymovement PLAYER, Common_Movement_FaceUp
 	setobjectxy 2, 16, 32
-	clearflag FLAG_HIDE_IC_LANA
+	clearflag FLAG_HIDE_IC_LEAF
 	addobject 3
-	setvar VAR_RYU_QUEST_LANA, 59
+	setvar VAR_RYU_QUEST_LEAF, 59
 	warp MAP_ISLAND_CAVE, 255, 8, 11
 	release
 	end
 	
 IC_LeafEvent2::
-	setvar VAR_RYU_QUEST_LANA, 60
+	setvar VAR_RYU_QUEST_LEAF, 60
 	lock
 	removeobject 1
 	playse SE_BOWA2
@@ -69,14 +69,14 @@ IC_LeafEvent2::
 	waitse
 	msgbox IC_PlayerMsg MSGBOX_DEFAULT
 	setflag FLAG_SYS_BRAILLE_REGICE_COMPLETED
-	setflag FLAG_HIDE_IC_LANA
+	setflag FLAG_HIDE_IC_LEAF
 	setflag FLAG_DEFEATED_REGICE
-	setvar VAR_RYU_QUEST_LANA, 65
+	setvar VAR_RYU_QUEST_LEAF, 65
 	release
 	end
 
 IC_LeafEvent::
-	setvar VAR_RYU_QUEST_LANA, 57
+	setvar VAR_RYU_QUEST_LEAF, 57
 	lock
 	faceplayer
 	msgbox IC_LeafMsg1 MSGBOX_DEFAULT
@@ -104,7 +104,7 @@ IC_LeafEvent::
 	setobjectxy 2, 16, 32
 	msgbox IC_LeafMsg2 MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_QUEST_LANA, 58
+	setvar VAR_RYU_QUEST_LEAF, 58
 	release
 	end
 	
@@ -209,7 +209,7 @@ IC_StepUp:
 	step_end
 
 
-@==================================================================================================End Lana Scripts
+@==================================================================================================End Leaf Scripts
 
 
 IslandCave_EventScript_TryRemoveRegice:: @ 8238E44
@@ -258,7 +258,7 @@ IslandCave_EventScript_OpenRegiEntrance:: @ 8238EAF
 IslandCave_EventScript_CaveEntranceMiddle:: @ 8238EEF
 	lockall
 	goto_if_set FLAG_SYS_BRAILLE_REGICE_COMPLETED, IslandCave_EventScript_BigHoleInWall
-	compare VAR_RYU_QUEST_LANA, 40
+	compare VAR_RYU_QUEST_LEAF, 40
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall
 	closemessage
