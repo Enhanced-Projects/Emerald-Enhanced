@@ -782,17 +782,18 @@ bool8 RyuSwapAbility(void)//ability switcher, which requires a big pearl in the 
     }
 }
 
-int RyuNumberOfFullBoxes(void)//used by lanette to determine how many full boxes player has for her quest. She requires 4.
+int RyuCountBoxedPokemon(void)//used by lanette to determine how many box pokemon player has
 {
-    u8 i;
-    u8 fullBoxes = 0;
+    int i,k;
+    u16 count = 0;
 
     for (i = 0; i < TOTAL_BOXES_COUNT; i++)
-    {
-        if (GetFirstFreeBoxSpot(i) == -1)
-            fullBoxes++;
-    }
-    return fullBoxes;
+        for (k = 0;k < IN_BOX_COUNT;k++)
+                if ((GetBoxMonDataAt(i, k, MON_DATA_IS_EGG) == FALSE) && (!(GetBoxMonDataAt(i, k, MON_DATA_SPECIES) == SPECIES_NONE)))
+                    count++;
+    if (FlagGet(FLAG_RYU_VERBOSE_MODE) == TRUE)
+        DebugPrint(((const u8[])_("Total box mons: ")), 1, count);
+    return count;
 }
 
 static const u16 sRotomForms[6] = {

@@ -205,7 +205,7 @@ RyuMultiBattlePartnerBrendan::
 
 RyuMultiBattlePartnerLana::
 	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, RyuPartnerNoRelationship
-	setvar VAR_0x8008, TRAINER_REL_LANA
+	setvar VAR_0x8008, TRAINER_REL_LEAF
 	setvar VAR_0x8009, TRAINER_BACK_PIC_LEAF
 	return
 
@@ -1245,12 +1245,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	if (flag(FLAG_RYU_BATTLE_INFO) == TRUE){
-		clearflag(FLAG_RYU_BATTLE_INFO)
-	}
-	else {
-		setflag(FLAG_RYU_BATTLE_INFO)
-	}
 	release
 	end
 }
