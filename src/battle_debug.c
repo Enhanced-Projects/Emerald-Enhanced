@@ -566,6 +566,14 @@ static const bool8 sHasChangeableEntries[LIST_ITEM_COUNT] =
     [LIST_ITEM_STAT_STAGES] = TRUE,
 };
 
+static const u8 sBattleInfoFontColor[][3] = 
+{
+    [0]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_DARK_GREY,  TEXT_COLOR_LIGHT_GREY},
+    [1]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_WHITE,      TEXT_COLOR_DARK_GREY},
+    [2]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_RED,        TEXT_COLOR_LIGHT_GREY},
+    [3]   = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_BLUE,       TEXT_COLOR_LIGHT_GREY},
+};
+
 static const u16 sBgColorWhite[] = {RGB_WHITE};
 static const u16 sBgColorBlack[] = {RGB_RYU_DARK};
 
@@ -620,6 +628,199 @@ static void VBlankCB(void)
     TransferPlttBuffer();
 }
 
+static const struct WindowTemplate sBattleInfoWindow[] = 
+{
+    [0] = 
+    {
+        .bg = 0,            // windowId bg to print text on
+        .tilemapLeft = 0,   // position from left (per 8 pixels)
+        .tilemapTop = 0,    // position from top (per 8 pixels)
+        .width = 30,        // width (per 8 pixels)
+        .height = 8,        // height (per 8 pixels)
+        .paletteNum = 15,   // palette index to use for text
+        .baseBlock = 1,     // tile start in VRAM
+    },
+    [1] = 
+    {
+        .bg = 0,            // windowId bg to print text on
+        .tilemapLeft = 0,   // position from left (per 8 pixels)
+        .tilemapTop = 8,    // position from top (per 8 pixels)
+        .width = 30,        // width (per 8 pixels)
+        .height = 8,        // height (per 8 pixels)
+        .paletteNum = 15,   // palette index to use for text
+        .baseBlock = 241,     // tile start in VRAM
+    },
+    [2] = 
+    {
+        .bg = 0,            // windowId bg to print text on
+        .tilemapLeft = 0,   // position from left (per 8 pixels)
+        .tilemapTop = 16,    // position from top (per 8 pixels)
+        .width = 30,        // width (per 8 pixels)
+        .height = 6,        // height (per 8 pixels)
+        .paletteNum = 15,   // palette index to use for text
+        .baseBlock = 482,     // tile start in VRAM
+    }
+};
+
+extern const u8 sText_Newline[];
+extern const u8 sText_SingleSpace[];
+const u8 sBattleStatStrings[7][12] = {
+    [0] = _("Atk: "),
+    [1] = _("Def: "),
+    [2] = _("Spe: "),
+    [3] = _("SpA: "),
+    [4] = _("SpD: "),
+    [5] = _("Acc: "),
+    [6] = _("Eva: ")
+}; 
+const u8 sText_StatsMsg[] = _("' ");
+const u8 sText_Comma[] = _(",");
+
+void BufferPlayerRightBattleData(void)
+{
+    int i;
+    StringCopy(gStringVar4, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
+    StringExpandPlaceholders(gStringVar1, gStringVar4);
+    StringAppend(gStringVar4, gBattleMons[0].nickname);
+    StringCopy(gStringVar1, ((const u8[])_("     (Player Right)           {SELECT_BUTTON}:Exit{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
+    StringExpandPlaceholders(gStringVar2, gStringVar1);
+    StringAppend(gStringVar4, gStringVar2);
+    StringAppend(gStringVar4, sText_Newline);
+    for (i = 0;i < 7;i++)
+    {   
+        StringAppend(gStringVar4, sBattleStatStrings[i]);
+        ConvertIntToDecimalStringN(gStringVar1, (gBattleMons[0].statStages[STAT_ATK + i]) - 6, 0, 3);
+        StringAppend(gStringVar4, gStringVar1);
+        if (i < 7)
+            StringAppend(gStringVar4, sText_Comma);
+        StringAppend(gStringVar4, sText_SingleSpace);
+        if (i == 4)
+            StringAppend(gStringVar4, sText_Newline);
+    }
+    StringAppend(gStringVar4, sText_SingleSpace);
+    if (gDisableStructs[0].stockpileCounter != 0) //player's first mon stockpile count
+    {
+        StringAppend(gStringVar4 , ((const u8[])_("Stock: ")));
+        ConvertIntToDecimalStringN(gStringVar1, gDisableStructs[0].stockpileCounter, 0, 2);
+        StringAppend(gStringVar4, gStringVar1);
+    }
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, ((const u8[])_("No data")));
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, ((const u8[])_("No data")));
+}
+
+void BufferPlayerLeftBattleData(void)
+{
+    int i;
+    if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) == TRUE)
+    {
+    StringCopy(gStringVar1, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
+    StringExpandPlaceholders(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, gBattleMons[2].nickname);
+    StringCopy(gStringVar1, ((const u8[])_("     (Player Left){COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
+    StringExpandPlaceholders(gStringVar2, gStringVar1);
+    StringAppend(gStringVar4, gStringVar2);
+    StringAppend(gStringVar4, sText_Newline);
+        for (i = 0;i < 7;i++)
+        {   
+            StringAppend(gStringVar4, sBattleStatStrings[i]);
+            ConvertIntToDecimalStringN(gStringVar1, (gBattleMons[1].statStages[STAT_ATK + i]) - 6, 0, 3);
+            StringAppend(gStringVar4, gStringVar1);
+            if (i < 7)
+                StringAppend(gStringVar4, sText_Comma);
+            StringAppend(gStringVar4, sText_SingleSpace);
+            if (i == 4)
+                StringAppend(gStringVar4, sText_Newline);
+        }
+        if (gDisableStructs[1].stockpileCounter != 0) //player's second mon stockpile count
+        {
+            StringAppend(gStringVar4 , ((const u8[])_("Stock: ")));
+            ConvertIntToDecimalStringN(gStringVar1, gDisableStructs[0].stockpileCounter, 0, 2);
+            StringAppend(gStringVar4, gStringVar1);
+        }
+    }
+    else
+    {
+        StringCopy(gStringVar4, ((const u8[])_("N/A (Player Left)")));
+    }
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, ((const u8[])_("No data")));
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, ((const u8[])_("No data")));
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, ((const u8[])_("No data")));
+
+}
+
+void BufferGeneralBattleData(void)
+{//  other data
+    StringCopy(gStringVar1, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}General Data{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
+    StringExpandPlaceholders(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_Newline);
+    if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_ANY)
+    {
+        StringAppend(gStringVar4, ((const u8[])_("Weather: ")));
+        ConvertIntToDecimalStringN(gStringVar1, gWishFutureKnock.weatherDuration, 0, 1);
+        StringAppend(gStringVar4, gStringVar1);
+        StringAppend(gStringVar4, sText_SingleSpace);
+    }
+    else
+    {
+        StringAppend(gStringVar4, ((const u8[])_(" - ")));
+    }
+    if (gFieldTimers.trickRoomTimer > 0)
+    {
+        StringAppend(gStringVar4, ((const u8[])_("TrickRoom: ")));
+        ConvertIntToDecimalStringN(gStringVar1, gFieldTimers.trickRoomTimer, 0, 2);
+        StringAppend(gStringVar4, gStringVar1);
+        StringAppend(gStringVar4, sText_SingleSpace);
+    }
+    else
+    {
+        StringAppend(gStringVar4, ((const u8[])_(" - ")));
+    }
+    if (gFieldTimers.gravityTimer > 0)
+    {
+        StringAppend(gStringVar4, ((const u8[])_("Gravity: ")));
+        ConvertIntToDecimalStringN(gStringVar1, gFieldTimers.gravityTimer, 0, 2);
+        StringAppend(gStringVar4, gStringVar1);
+        StringAppend(gStringVar4, sText_SingleSpace);
+    }
+    else
+    {
+        StringAppend(gStringVar4, ((const u8[])_(" - ")));
+    }
+}
+
+
+void PrintDataWindows(void)
+{
+    //player right
+    FillWindowPixelBuffer(0, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    BufferPlayerRightBattleData();
+    AddTextPrinterParameterized4(0, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+    PutWindowTilemap(0);
+    CopyWindowToVram(0, 3);
+    //player left
+    FillWindowPixelBuffer(1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    BufferPlayerLeftBattleData();
+    AddTextPrinterParameterized4(1, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+    PutWindowTilemap(1);
+    CopyWindowToVram(1, 3);
+    //general info
+    FillWindowPixelBuffer(2, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    BufferGeneralBattleData();
+    AddTextPrinterParameterized4(2, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+    PutWindowTilemap(2);
+    CopyWindowToVram(2, 3);
+}
+
+void FillBattleInfoWindowData (void)
+{
+    PrintDataWindows();
+}
+
 void CB2_BattleDebugMenu(void)
 {
     u8 taskId;
@@ -665,26 +866,44 @@ void CB2_BattleDebugMenu(void)
         gMain.state++;
         break;
     case 4:
-        taskId = CreateTask(Task_DebugMenuFadeIn, 0);
-        data = AllocZeroed(sizeof(struct BattleDebugMenu));
-        SetStructPtr(taskId, data);
+        if (FlagGet(FLAG_RYU_BATTLE_INFO) == TRUE)
+        {
+            taskId = CreateTask(Task_DebugMenuFadeIn, 0);
+            data = AllocZeroed(sizeof(struct BattleDebugMenu));
+            SetStructPtr(taskId, data);
+            InitWindows(sBattleInfoWindow);
+            DeactivateAllTextPrinters();
+            ScheduleBgCopyTilemapToVram(0);
+            FillWindowPixelBuffer(0, 0);
+            PutWindowTilemap(0);
+            CopyWindowToVram(0, 3);
+            FillBattleInfoWindowData();
+            gMain.state++;
+            break;
+        }
+        else
+        {
+            taskId = CreateTask(Task_DebugMenuFadeIn, 0);
+            data = AllocZeroed(sizeof(struct BattleDebugMenu));
+            SetStructPtr(taskId, data);
 
-        data->battlerId = gBattleStruct->debugBattler;
-        data->battlerWindowId = AddWindow(&sBattlerWindowTemplate);
-        PutWindowTilemap(data->battlerWindowId);
-        PrintOnBattlerWindow(data->battlerWindowId, data->battlerId);
+            data->battlerId = gBattleStruct->debugBattler;
+            data->battlerWindowId = AddWindow(&sBattlerWindowTemplate);
+            PutWindowTilemap(data->battlerWindowId);
+            PrintOnBattlerWindow(data->battlerWindowId, data->battlerId);
 
-        data->mainListWindowId = AddWindow(&sMainListWindowTemplate);
+            data->mainListWindowId = AddWindow(&sMainListWindowTemplate);
 
-        gMultiuseListMenuTemplate = sMainListTemplate;
-        gMultiuseListMenuTemplate.windowId = data->mainListWindowId;
-        data->mainListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, 0, 0);
+            gMultiuseListMenuTemplate = sMainListTemplate;
+            gMultiuseListMenuTemplate.windowId = data->mainListWindowId;
+            data->mainListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, 0, 0);
 
-        data->currentMainListItemId = 0;
-        data->activeWindow = ACTIVE_WIN_MAIN;
-        data->secondaryListTaskId = 0xFF;
-        CopyWindowToVram(data->mainListWindowId, 3);
-        gMain.state++;
+            data->currentMainListItemId = 0;
+            data->activeWindow = ACTIVE_WIN_MAIN;
+            data->secondaryListTaskId = 0xFF;
+            CopyWindowToVram(data->mainListWindowId, 3);
+            gMain.state++;
+        }
         break;
     case 5:
         BeginNormalPaletteFade(-1, 0, 0x10, 0, 0);

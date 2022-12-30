@@ -1245,6 +1245,12 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	if (flag(FLAG_RYU_BATTLE_INFO) == TRUE){
+		clearflag(FLAG_RYU_BATTLE_INFO)
+	}
+	else {
+		setflag(FLAG_RYU_BATTLE_INFO)
+	}
 	release
 	end
 }

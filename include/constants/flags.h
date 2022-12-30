@@ -1184,7 +1184,7 @@
 #define FLAG_ITEM_NEW_MAUVILLE_PARALYZE_HEAL                        0x463
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL                      0x464
 
-#define FLAG_UNUSED_0x465                                           0x465
+#define FLAG_RYU_BATTLE_INFO                                        0x465
 #define FLAG_RYU_FRONTIER_MODE                                      0x466
 #define FLAG_RYU_CHALLENGEMODE                                      0x467
 #define FLAG_RYU_HARDCORE_MODE                                      0x468
