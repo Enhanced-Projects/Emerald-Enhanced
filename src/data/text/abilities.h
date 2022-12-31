@@ -230,6 +230,7 @@ static const u8 sGlacialDescription[] = _("Moving last boosts power.");
 static const u8 sVampiricDescription[] = _("Biting moves restore HP.");
 static const u8 sHarbingerDescription[] = _("Summons an eclipse");
 static const u8 sGreatwoodDescription[] = _("Super Effective is Neutral.");
+static const u8 sVoodooDescription[] = _("Curses when at half HP.");
 
 const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
 {
@@ -477,6 +478,7 @@ const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_VAMPIRIC] = _("Vampiric"),
     [ABILITY_HARBINGER] = _("Harbinger"),
     [ABILITY_GREATWOOD] = _("Greatwood"),
+    [ABILITY_VOODOO] = _("Voodoo"),
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
@@ -724,5 +726,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
     [ABILITY_GLACIAL] = sGlacialDescription,
     [ABILITY_VAMPIRIC] = sVampiricDescription,
     [ABILITY_HARBINGER] = sHarbingerDescription,
-    [ABILITY_GREATWOOD] = sGreatwoodDescription
+    [ABILITY_GREATWOOD] = sGreatwoodDescription,
+    [ABILITY_VOODOO] = sVoodooDescription
 };

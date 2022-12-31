@@ -4836,6 +4836,20 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 effect++;
             }
             break;
+        case ABILITY_VOODOO:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattleMons[gBattlerAttacker].hp != 0
+             && TARGET_TURN_DAMAGED
+             && ((gBattleStruct->hpBefore[gBattlerTarget]) > (gBattleMons[gBattlerTarget].maxHP / 2))
+             && ((gBattleMons[gBattlerTarget].hp) < (gBattleMons[gBattlerTarget].maxHP / 2))
+             && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_CURSED))
+            {
+                gBattleMons[gBattlerAttacker].status2 |= STATUS2_CURSED;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_VoodooActivates;
+                effect++;
+            }
+            break;
         }
         break;
     case ABILITYEFFECT_MOVE_END_ATTACKER: // Same as above, but for attacker

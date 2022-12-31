@@ -7654,6 +7654,13 @@ BattleScript_CuteCharmActivates::
 	call BattleScript_TryDestinyKnotTarget
 	return
 
+BattleScript_VoodooActivates::
+	call BattleScript_AbilityPopUp
+	status2animation BS_ATTACKER, STATUS2_CURSED
+	printstring STRINGID_WASINFLICTEDWITHVOODOOCURSE
+	waitmessage 0x40
+	return
+
 BattleScript_AbilityStatusEffect::
 	waitstate
 	call BattleScript_AbilityPopUp
