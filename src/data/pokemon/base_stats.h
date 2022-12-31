@@ -9139,14 +9139,14 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_BANETTE] =
     {
-        .baseHP        = 84,
-        .baseAttack    = 135,
+        .baseHP        = 94,
+        .baseAttack    = 125,
         .baseDefense   = 65,
         .baseSpeed     = 75,
         .baseSpAttack  = 83,
         .baseSpDefense = 63,
         .type1 = TYPE_GHOST,
-        .type2 = TYPE_DARK,
+        .type2 = TYPE_NORMAL,
         .catchRate = 45,
         .expYield = 159,
         .evYield_Attack    = 2,
@@ -21460,12 +21460,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_MEGA_BANETTE] =
     {
-        .baseHP        = 84,
-        .baseAttack    = 165,
+        .baseHP        = 94,
+        .baseAttack    = 135,
         .baseDefense   = 75,
-        .baseSpeed     = 85,
+        .baseSpeed     = 65,
         .baseSpAttack  = 93,
-        .baseSpDefense = 83,
+        .baseSpDefense = 133,
         .type1 = TYPE_GHOST,
         .type2 = TYPE_FAIRY,
         .catchRate = 45,

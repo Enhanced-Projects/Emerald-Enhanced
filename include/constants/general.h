@@ -529,7 +529,7 @@
 //#define RYU_PUNISH_SAVE_STATE 1
 
 //uncomment for winter mode.
-#define EE_WINTER_MODE 1
+//#define EE_WINTER_MODE 1
 
 //HACK to make weather changes work for winter mode
 #ifdef EE_WINTER_MODE
