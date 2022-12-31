@@ -4841,7 +4841,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && gBattleMons[gBattlerAttacker].hp != 0
              && TARGET_TURN_DAMAGED
              && gBattleMons[gBattlerTarget].hp != 0
-             && ((gBattleStruct->hpBefore[gBattlerTarget]) > (gBattleMons[gBattlerTarget].maxHP / 2))
+             && ((gBattleStruct->hpBefore[gBattlerTarget]) >= (gBattleMons[gBattlerTarget].maxHP / 2))
              && ((gBattleMons[gBattlerTarget].hp) < (gBattleMons[gBattlerTarget].maxHP / 2))
              && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_CURSED))
             {
