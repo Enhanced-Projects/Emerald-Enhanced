@@ -1341,22 +1341,22 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_HITMONTOP_1] = { // Hitmontop-TechniTopMachPunch (ID: 149)
+    [FRONTIER_MON_HITMONTOP_1] = { // Hitmontop-BU (ID: 149)
         .species = SPECIES_HITMONTOP,
-        .moves = {MOVE_TRIPLE_KICK, MOVE_MACH_PUNCH, MOVE_BULLET_PUNCH, MOVE_STONE_EDGE},
-        .heldItem = ITEM_WIDE_LENS,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_ADAMANT,
-        .ivs = 31,
-        .ability = 1
-    },
-    [FRONTIER_MON_BANETTE_1] = { // Banette-Bulky (ID: 150)
-        .species = SPECIES_BANETTE,
-        .moves = {MOVE_SHADOW_SNEAK, MOVE_KNOCK_OFF, MOVE_SNUGGLE, MOVE_WILL_O_WISP},
+        .moves = {MOVE_MACH_PUNCH, MOVE_BULLET_PUNCH, MOVE_SECRET_POWER, MOVE_BULK_UP},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
-        .ivs = 31,
+        .ivs = 25,
+        .ability = 1
+    },
+    [FRONTIER_MON_BANETTE_1] = { // Banette-AV (ID: 150)
+        .species = SPECIES_BANETTE,
+        .moves = {MOVE_REAPING_BLOW, MOVE_SHADOW_SNEAK, MOVE_QUICK_ATTACK, MOVE_SECRET_POWER},
+        .heldItem = ITEM_ASSAULT_VEST,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
+        .ivs = 27,
         .ability = 1
     },
     [FRONTIER_MON_SEVIPER_1] = { // Seviper-NP (ID: 151)
@@ -2223,7 +2223,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_HITMONTOP_2] = { // Hitmontop-TechniTopFakeOut (ID: 247)
+    [FRONTIER_MON_HITMONTOP_2] = { // Hitmontop-TechniTop (ID: 247)
         .species = SPECIES_HITMONTOP,
         .moves = {MOVE_FAKE_OUT, MOVE_TRIPLE_KICK, MOVE_BULLET_PUNCH, MOVE_STONE_EDGE},
         .heldItem = ITEM_WIDE_LENS,
@@ -2232,13 +2232,13 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_BANETTE_2] = { // Banette-4attacks (ID: 248)
+    [FRONTIER_MON_BANETTE_2] = { // Banette-BU (ID: 248)
         .species = SPECIES_BANETTE,
-        .moves = {MOVE_SHADOW_SNEAK, MOVE_KNOCK_OFF, MOVE_SNUGGLE, MOVE_SUCKER_PUNCH},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .moves = {MOVE_SHADOW_SNEAK, MOVE_QUICK_ATTACK, MOVE_SECRET_POWER, MOVE_BULK_UP},
+        .heldItem = ITEM_SHELL_BELL,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
-        .ivs = 31,
+        .ivs = 27,
         .ability = 1
     },
     [FRONTIER_MON_SEVIPER_2] = { // Seviper-ExBelt (ID: 249)
@@ -8118,23 +8118,23 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MEGA_BANETTE_1] = { // Mega_Banette-Offensive (ID: 902)
+    [FRONTIER_MON_MEGA_BANETTE_1] = { // Mega_Banette-TR (ID: 902)
         .species = SPECIES_MEGA_BANETTE,
-        .moves = {MOVE_REAPING_BLOW, MOVE_KNOCK_OFF, MOVE_SHADOW_SNEAK, MOVE_DESTINY_BOND},
-        .heldItem = ITEM_BANETTITE,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_ADAMANT,
-        .ivs = 31,
-        .ability = 1
-    },
-    [FRONTIER_MON_MEGA_BANETTE_2] = { // Mega_Banette-Bulky (ID: 903)
-        .species = SPECIES_MEGA_BANETTE,
-        .moves = {MOVE_REAPING_BLOW, MOVE_KNOCK_OFF, MOVE_DESTINY_BOND, MOVE_WILL_O_WISP},
+        .moves = {MOVE_REAPING_BLOW, MOVE_PLAY_ROUGH, MOVE_SHADOW_SNEAK, MOVE_TRICK_ROOM},
         .heldItem = ITEM_BANETTITE,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_BANETTE_2] = { // Mega_Banette-RestTalk (ID: 903)
+        .species = SPECIES_MEGA_BANETTE,
+        .moves = {MOVE_REAPING_BLOW, MOVE_PLAY_ROUGH, MOVE_REST, MOVE_SLEEP_TALK},
+        .heldItem = ITEM_BANETTITE,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
     },
     [FRONTIER_MON_MEGA_ABSOL_1] = { // Mega_Absol-4attacks (ID: 904)
         .species = SPECIES_MEGA_ABSOL,
@@ -8933,7 +8933,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .moves = {MOVE_HI_JUMP_KICK, MOVE_U_TURN, MOVE_ICE_BEAM, MOVE_DRILL_RUN},
         .heldItem = ITEM_FOCUS_SASH,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_ADAMANT,
+        .nature = NATURE_NAUGHTY,
         .ivs = 31,
         .ability = 0
     },

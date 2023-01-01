@@ -14649,11 +14649,11 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch[] = {
 	{
 	.iv = 255,
 	.lvl = 103,
-	.species = SPECIES_SABLEYE,
-	.heldItem = ITEM_SABLENITE,
+	.species = SPECIES_BANETTE,
+	.heldItem = ITEM_BANETTITE,
 	.evspread = 0,
-    .ability = 2,
-	.moves = {MOVE_WILL_O_WISP, MOVE_REAPING_BLOW, MOVE_KNOCK_OFF, MOVE_RECOVER},
+    .ability = 0,
+	.moves = {MOVE_REAPING_BLOW, MOVE_PLAY_ROUGH, MOVE_SHADOW_SNEAK, MOVE_NONE},
 	},
 	{
 	.iv = 255,
