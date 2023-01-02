@@ -13592,6 +13592,7 @@ static const struct LevelUpMove sBanetteLevelUpLearnset[] = {
     // Gen 7 TM's
     LEVEL_UP_MOVE( 1, MOVE_CALM_MIND),
     LEVEL_UP_MOVE( 1, MOVE_TOXIC),
+    LEVEL_UP_MOVE( 1, MOVE_BULK_UP),
     LEVEL_UP_MOVE( 1, MOVE_HIDDEN_POWER),
     LEVEL_UP_MOVE( 1, MOVE_SUNNY_DAY),
     LEVEL_UP_MOVE( 1, MOVE_TAUNT),
