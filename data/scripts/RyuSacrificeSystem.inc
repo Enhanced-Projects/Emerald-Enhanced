@@ -251,7 +251,17 @@ DevModeMonPidShiny::
 DevModeMonPid::
 	special SetMonPid
 	goto ryu_return
-	
+
+GCMS_ConsignmentQuery::
+	msgbox GCMS_ConsignAgainQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq GCMS_Consignment
+	release
+	end
+
+GCMS_ConsignAgainQuery:
+	.string "Would you like to consign another\nPokémon?$"
+
 GCMS_Consignment::
 	getpartysize
 	compare VAR_RESULT, 1
@@ -393,7 +403,7 @@ GCMS_Confirm::
 	buffernumberstring 0, VAR_TEMP_9
 	msgbox GCMS_ConsignSuccess
 	closemessage
-	goto GCMS_Consignment
+	goto GCMS_ConsignmentQuery
 	end
 
 GCMS_Legendary::
