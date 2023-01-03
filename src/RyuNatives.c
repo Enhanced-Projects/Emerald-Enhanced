@@ -523,9 +523,19 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
     u16 mode = gSpecialVar_0x8003;//0 = ev, 1 = iv
     u16 evmax = 252;
     u16 ivmax = 31;
+    int i;
 
     if (mode == 0)
     {
+        if (stat > 6)// user probably pressed B during stat selection menu. just set all stats to max.
+        {
+            if (value > evmax)
+                value = evmax;
+            for (i = 0;i<6;i++)
+                SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV + i, &evmax);
+            CalculateMonStats(&gPlayerParty[slot]);
+            return;
+        }
         if (value > evmax)
         {
             value = evmax;
@@ -543,6 +553,15 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
     
     if (mode == 1)
     {
+        if (stat > 6)// user probably pressed B during stat selection menu. just set all stats to max.
+        {
+            if (value > ivmax)
+                value = 31;
+            for (i = 0;i<6;i++)
+                SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV + i, &ivmax);
+            CalculateMonStats(&gPlayerParty[slot]);
+            return;
+        }
         if (value > ivmax)
         {
             value = ivmax;
