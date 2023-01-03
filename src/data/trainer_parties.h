@@ -12615,15 +12615,6 @@ static const struct TrainerMonItemCustomMoves sParty_Norman3[] = {
 	{
 	.iv = 255,
 	.lvl = 82,
-	.species = SPECIES_CHANSEY,
-	.heldItem = ITEM_EVIOLITE,
-	.evspread = 0,
-    .ability = 0,
-	.moves = {MOVE_SEISMIC_TOSS, MOVE_TOXIC, MOVE_STEALTH_ROCK, MOVE_SOFT_BOILED},
-	},
-	{
-	.iv = 255,
-	.lvl = 82,
 	.species = SPECIES_SNORLAX,
 	.heldItem = ITEM_FIGY_BERRY,
 	.evspread = 0,
@@ -12665,19 +12656,19 @@ static const struct TrainerMonItemCustomMoves sParty_Norman3[] = {
 	.evspread = 0,
     .ability = 0,
 	.moves = {MOVE_DRAIN_PUNCH, MOVE_SUCKER_PUNCH, MOVE_BULK_UP, MOVE_SLACK_OFF},
+	},
+	{
+	.iv = 255,
+	.lvl = 82,
+	.species = SPECIES_DITTO,
+	.heldItem = ITEM_CHOICE_SCARF,
+	.evspread = 0,
+    .ability = 2,
+	.moves = {MOVE_TRANSFORM, MOVE_NONE, MOVE_NONE, MOVE_NONE},
 	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_Norman4[] = {
- 	{
-	.iv = 255,
-	.lvl = 82,
-	.species = SPECIES_CHANSEY,
-	.heldItem = ITEM_EVIOLITE,
-	.evspread = 0,
-    .ability = 0,
-	.moves = {MOVE_SEISMIC_TOSS, MOVE_TOXIC, MOVE_STEALTH_ROCK, MOVE_SOFT_BOILED},
-	},
 	{
 	.iv = 255,
 	.lvl = 82,
@@ -12722,19 +12713,19 @@ static const struct TrainerMonItemCustomMoves sParty_Norman4[] = {
 	.evspread = 0,
     .ability = 0,
 	.moves = {MOVE_DRAIN_PUNCH, MOVE_SUCKER_PUNCH, MOVE_BULK_UP, MOVE_SLACK_OFF},
+	},
+	{
+	.iv = 255,
+	.lvl = 82,
+	.species = SPECIES_DITTO,
+	.heldItem = ITEM_CHOICE_SCARF,
+	.evspread = 0,
+    .ability = 2,
+	.moves = {MOVE_TRANSFORM, MOVE_NONE, MOVE_NONE, MOVE_NONE},
 	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_Norman5[] = {//challenger Norman
-    {
-    .iv = 255,
-	.lvl = 103,
-	.species = SPECIES_CHANSEY,
-	.heldItem = ITEM_EVIOLITE,
-	.evspread = 0,
-    .ability = 0,
-	.moves = {MOVE_SEISMIC_TOSS, MOVE_TOXIC, MOVE_STEALTH_ROCK, MOVE_SOFT_BOILED},
-	},
 	{
 	.iv = 255,
 	.lvl = 105,
@@ -12779,7 +12770,16 @@ static const struct TrainerMonItemCustomMoves sParty_Norman5[] = {//challenger N
 	.evspread = 0,
     .ability = 0,
 	.moves = {MOVE_DRAIN_PUNCH, MOVE_SUCKER_PUNCH, MOVE_BULK_UP, MOVE_SLACK_OFF},
-    }
+    },
+	{
+	.iv = 255,
+	.lvl = 82,
+	.species = SPECIES_DITTO,
+	.heldItem = ITEM_CHOICE_SCARF,
+	.evspread = 0,
+    .ability = 2,
+	.moves = {MOVE_TRANSFORM, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+	},
 };
 
 static const struct TrainerMonItemCustomMoves sParty_Winona2[] = {
