@@ -12779,7 +12779,7 @@ static const struct TrainerMonItemCustomMoves sParty_Norman5[] = {//challenger N
 	.evspread = 0,
     .ability = 2,
 	.moves = {MOVE_TRANSFORM, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-	},
+	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_Winona2[] = {
