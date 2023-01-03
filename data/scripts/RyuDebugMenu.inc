@@ -773,7 +773,8 @@ RyuPokeEditMenu::
 	case 3, RyuSetFriendshipDebugMenu
 	case 4, RyuAccessDevMoveRelearner
 	case 5, RyuChangeBossStatus
-	case 6, RyuExitPokeEditMenu
+	case 6, RyuNatureSwapDevMode
+	case 7, RyuExitPokeEditMenu
 	goto RyuExitPokeEditMenu
 
 RyuChangeBossStatus::
@@ -891,7 +892,7 @@ RyuSetIvEvDebugMenu::
 	copyvar VAR_0x8002, VAR_RESULT @...................Which stat
 	closemessage
 	compare VAR_RESULT, 127
-	goto_if_eq RyuIvEv_ExitQuery
+	goto_if_eq RyuIvEv_DoMaximum
 	msgbox RyuIvEv_ChooseValue
 	numberentry 5, 10, 3
 	copyvar VAR_0x8000, VAR_RESULT @...................The value to set
@@ -900,6 +901,17 @@ RyuSetIvEvDebugMenu::
 	closemessage
 	call ShowMonDataInfoBox @..........................Should use gSpecialVar_0x8001 by default
 	goto RyuIvEv_ExitQuery
+
+RyuIvEv_DoMaximum::@...................user made no stat selection, since this is dev menu, assume user wants all stats.
+	msgbox RyuIvEv_ChooseValue
+	numberentry 5, 10, 3
+	copyvar VAR_0x8000, VAR_RESULT @...................The value to set
+	callnative RyuSetSlotStatIVEV
+	msgbox IvMenuDone
+	closemessage
+	call ShowMonDataInfoBox @..........................Should use gSpecialVar_0x8001 by default
+	goto RyuIvEv_ExitQuery
+
 
 RyuIvEv_ExitQuery::
 	msgbox RyuIvEv_Cancel, MSGBOX_YESNO

@@ -1938,6 +1938,7 @@ const u8 gText_RyuSetIvEvMenuOption[] = _("Set IVs or EVs");
 const u8 gText_RyuMaxIvMenuOption[] = _("");
 const u8 gText_RyuAccessMoveRelearner[] = _("Relearner");
 const u8 gText_RyuAccessBossStatus[] = _("Tgl boss Status");
+const u8 gText_RyuNatureChangerDevMenu[] = _("Change Nature");
 const u8 gText_RyuSetFriendshipMenuOption[] = _("Set Friendship");
 const u8 gText_RyuExitPokeEditMenuOption[] = _("Exit");
 const u8 sText_DebugMainUtilityItem1[] = _("Utility 1");

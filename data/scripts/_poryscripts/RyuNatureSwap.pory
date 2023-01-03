@@ -49,3 +49,37 @@ script RyuNatureChangeInvalidSlot {
     closemessage
 	goto(RyuNatureSwapperMenu)
 }
+
+script RyuNatureSwapDevMode {
+    msgbox("Select a party member.")
+    closemessage
+	call(RyuBufferPartyMonNames)
+	multichoice(0, 0, MULTI_DYNAMIC_6, 1)
+	copyvar(VAR_0x8001, VAR_RESULT) //slot
+	if (var(VAR_RESULT) == 127) {
+		goto(RyuNatureChangeInvalidSlotDevMode)
+	}
+	bufferpartymonnick(2, VAR_0x8001)
+	msgbox("Select {STR_VAR_3}'s new nature.")
+    closemessage
+	multichoicegrid(0, 0, 139, 4, 1)
+    if (var(VAR_RESULT) == 127) {
+        msgbox("You didn't select a nature.\nTry Again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            goto(RyuNatureSwapDevMode)
+        }
+        closemessage
+        goto(RyuPokeEditMenu)
+    }
+	copyvar(VAR_0x8005, VAR_RESULT)
+	callnative(RyuSetCustomNature)
+    goto(RyuPokeEditMenu)
+}
+
+script RyuNatureChangeInvalidSlotDevMode {
+    msgbox("You didn't select a valid\nslot.\pTry again?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){
+        goto(RyuNatureSwapDevMode)
+    }
+    goto(RyuPokeEditMenu)
+}
