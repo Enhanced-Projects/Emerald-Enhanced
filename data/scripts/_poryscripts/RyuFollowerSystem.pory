@@ -743,15 +743,18 @@ script RyuFollowerJoinBattleQuery {
 }
 
 script RyuFollowerCheckDismiss{
-	if (var(VAR_RYU_FOLLOWER_ID) == FOLLOWER_COURTNEY){
-		msgbox("{COLOR LIGHT_RED}{SHADOW RED}You can't get rid of me that\neasily!")
-		release
-		end
-	}
-	if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_GIRL_3){
-		msgbox(" ({COLOR LIGHT_GREEN}{SHADOW GREEN}It would be a very bad idea\n to just leave her after\l promising her father.)")
-		release
-		end
+	switch (var(VAR_RYU_FOLLOWER_ID)){
+		case FOLLOWER_COURTNEY:
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED}You can't get rid of me that\neasily!")
+			goto(ryu_end)
+		case OBJ_EVENT_GFX_GIRL_3:
+			msgbox(" ({COLOR LIGHT_GREEN}{SHADOW GREEN}It would be a very bad idea\n to just leave her after\l promising her father.)")
+			goto(ryu_end)
+		case FOLLOWER_JOY:
+			if (var(VAR_RYU_QUEST_NURSE) < 10){
+				msgbox("{COLOR LIGHT_RED}{SHADOW RED}But, you agreed to take me...")
+				goto(ryu_end)
+			}
 	}
 	msgbox("Are you sure you want to dismiss\nyour companion?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == TRUE){
