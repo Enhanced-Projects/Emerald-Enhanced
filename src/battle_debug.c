@@ -1104,7 +1104,7 @@ static void Task_DebugMenuProcessInput(u8 taskId)
         }
     }
     // Handle value modifying.
-    else if ((data->activeWindow == ACTIVE_WIN_MODIFY) && ((FlagGet(FLAG_RYU_DEV_MODE) == TRUE) && ((FlagGet(FLAG_RYU_BATTLE_INFO) == TRUE))))
+    else if ((data->activeWindow == ACTIVE_WIN_MODIFY) && ((FlagGet(FLAG_RYU_DEV_MODE) == TRUE) && ((FlagGet(FLAG_RYU_BATTLE_INFO) == FALSE))))
     {
         if ((JOY_NEW(B_BUTTON)) || (JOY_NEW(A_BUTTON)))
         {
