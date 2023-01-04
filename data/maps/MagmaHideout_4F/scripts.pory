@@ -602,6 +602,7 @@ MH4_Maxie2Event::
 	msgbox MH4_Analyzing
 	closemessage
 	removeobject 12
+	call MH4_EnableAquaTrainers
 	createfollower FOLLOWER_COURTNEY, RyuFollowerSelectNPCScript, 1
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
@@ -609,6 +610,19 @@ MH4_Maxie2Event::
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	release
 	end
+
+MH4_EnableAquaTrainers::
+	cleartrainerflag TRAINER_GRUNT_22
+	cleartrainerflag TRAINER_GRUNT_26
+	cleartrainerflag TRAINER_GRUNT_SEAFLOOR_CAVERN_3
+	cleartrainerflag TRAINER_GRUNT_21
+	cleartrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_3
+	cleartrainerflag TRAINER_GRUNT_4
+	cleartrainerflag TRAINER_GRUNT_SEAFLOOR_CAVERN_4
+	cleartrainerflag TRAINER_GRUNT_SEAFLOOR_CAVERN_2
+	cleartrainerflag TRAINER_GRUNT_SEAFLOOR_CAVERN_1
+	cleartrainerflag TRAINER_GRUNT_25
+	return
 	
 MH4_CourtneyScript::
 	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, RyuFollower_CourtneyScript

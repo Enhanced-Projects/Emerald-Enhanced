@@ -1202,7 +1202,7 @@ static const struct TrainerMonItemCustomMoves sParty_Alexia[] = {
     .species = SPECIES_WIGGLYTUFF,
     .heldItem = ITEM_NONE,
     .ability = 0,
-    .moves = {MOVE_DEFENSE_CURL, MOVE_DOUBLE_EDGE, MOVE_SHADOW_BALL, MOVE_NONE},
+    .moves = {MOVE_DEFENSE_CURL, MOVE_DRAIN_PUNCH, MOVE_SHADOW_BALL, MOVE_FLARE_BLITZ},
     }
 };
 

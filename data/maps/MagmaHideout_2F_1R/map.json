@@ -77,7 +77,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MH_AquaGrunt6",
-      "flag": "FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS"
+      "flag": "(TRAINER_FLAGS_START + TRAINER_GRUNT_AQUA_HIDEOUT_3)"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MH_AquaGrunt5",
-      "flag": "FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS"
+      "flag": "(TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_3)"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
@@ -103,7 +103,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MH_AquaGrunt7",
-      "flag": "FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS"
+      "flag": "(TRAINER_FLAGS_START + TRAINER_GRUNT_21)"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_4",

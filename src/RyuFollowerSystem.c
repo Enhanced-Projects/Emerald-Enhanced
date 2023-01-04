@@ -95,7 +95,7 @@ void RyuDebug_ShowActiveFollower (void)
 }
 
 // This function fills in the necessary temporary variables for setting up partner multibattles
-bool8 RyuFollowerToTrainerID(void)
+int RyuFollowerToTrainerID(void)
 {
     if (FlagGet(FLAG_RYU_HAS_FOLLOWER))
     {

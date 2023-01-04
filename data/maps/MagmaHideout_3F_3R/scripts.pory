@@ -190,6 +190,7 @@ MH_AquaGruntDefeated::
 	end
 
 MH_GruntsDefeated::
+	call MH_ClearRemainingAqua
 	setvar VAR_RYU_QUEST_MAGMA, 320
 	applymovement FOLLOWER, Common_Movement_FacePlayer
 	waitmovement FOLLOWER
@@ -199,6 +200,19 @@ MH_GruntsDefeated::
 	clearfullscreenimage
 	release
 	end
+
+MH_ClearRemainingAqua::
+	settrainerflag TRAINER_GRUNT_22
+	settrainerflag TRAINER_GRUNT_26
+	settrainerflag TRAINER_GRUNT_SEAFLOOR_CAVERN_3
+	settrainerflag TRAINER_GRUNT_21
+	settrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_3
+	settrainerflag TRAINER_GRUNT_4
+	settrainerflag TRAINER_GRUNT_SEAFLOOR_CAVERN_4
+	settrainerflag TRAINER_GRUNT_SEAFLOOR_CAVERN_2
+	settrainerflag TRAINER_GRUNT_SEAFLOOR_CAVERN_1
+	settrainerflag TRAINER_GRUNT_25
+	return
 
 MH_GruntsNotDefeated::
 	buffernumberstring 0, VAR_TEMP_6
@@ -246,7 +260,7 @@ script MH_CheckGruntsDefeated {
 	if (defeated(TRAINER_GRUNT_22)) {
 		addvar(VAR_TEMP_6, 1)
 	}
-	if (var(VAR_TEMP_6) == 10) {
+	if (var(VAR_TEMP_6) == 9) {
 		goto(MH_GruntsDefeated)
 	}
 	goto(MH_GruntsNotDefeated) 
