@@ -866,7 +866,7 @@ void CB2_BattleDebugMenu(void)
         gMain.state++;
         break;
     case 4:
-        if (FlagGet(FLAG_RYU_BATTLE_INFO) == TRUE)
+        if ((FlagGet(FLAG_RYU_DEV_MODE) == FALSE) || (FlagGet(FLAG_RYU_BATTLE_INFO) == TRUE))
         {
             taskId = CreateTask(Task_DebugMenuFadeIn, 0);
             data = AllocZeroed(sizeof(struct BattleDebugMenu));
@@ -1048,13 +1048,13 @@ static void Task_DebugMenuProcessInput(u8 taskId)
     }
 
     // Try changing active battler.
-    if (gMain.newKeys & R_BUTTON)
+    if ((JOY_NEW(R_BUTTON)) && ((FlagGet(FLAG_RYU_DEV_MODE) == TRUE) && ((FlagGet(FLAG_RYU_BATTLE_INFO) ==  FALSE))))
     {
         if (data->battlerId++ == gBattlersCount - 1)
             data->battlerId = 0;
         UpdateWindowsOnChangedBattler(data);
     }
-    else if (gMain.newKeys & L_BUTTON)
+    else if ((JOY_NEW(L_BUTTON)) && ((FlagGet(FLAG_RYU_DEV_MODE) == TRUE) && ((FlagGet(FLAG_RYU_BATTLE_INFO) == FALSE))))
     {
         if (data->battlerId-- == 0)
             data->battlerId = gBattlersCount - 1;
@@ -1062,12 +1062,12 @@ static void Task_DebugMenuProcessInput(u8 taskId)
     }
 
     // A main list item is active, handle input.
-    if (data->activeWindow == ACTIVE_WIN_MAIN)
+    if ((data->activeWindow == ACTIVE_WIN_MAIN) && ((FlagGet(FLAG_RYU_DEV_MODE) == TRUE) && ((FlagGet(FLAG_RYU_BATTLE_INFO) == FALSE))))
     {
         listItemId = ListMenu_ProcessInput(data->mainListTaskId);
         if (listItemId != LIST_CANCEL && listItemId != LIST_NOTHING_CHOSEN && listItemId < LIST_ITEM_COUNT)
         {
-            if (listItemId == LIST_ITEM_AI_MOVES_PTS && gMain.newKeys & A_BUTTON)
+            if ((listItemId == LIST_ITEM_AI_MOVES_PTS) && (JOY_NEW(A_BUTTON)))
             {
                 SwitchToAiPointsView(taskId);
                 return;
@@ -1081,7 +1081,7 @@ static void Task_DebugMenuProcessInput(u8 taskId)
         }
     }
     // Secondary list is active, handle input.
-    else if (data->activeWindow == ACTIVE_WIN_SECONDARY)
+    else if ((data->activeWindow == ACTIVE_WIN_SECONDARY) && ((FlagGet(FLAG_RYU_DEV_MODE) == TRUE) && ((FlagGet(FLAG_RYU_BATTLE_INFO) == FALSE))))
     {
         listItemId = ListMenu_ProcessInput(data->secondaryListTaskId);
         if (listItemId == LIST_CANCEL)
@@ -1104,9 +1104,9 @@ static void Task_DebugMenuProcessInput(u8 taskId)
         }
     }
     // Handle value modifying.
-    else if (data->activeWindow == ACTIVE_WIN_MODIFY)
+    else if ((data->activeWindow == ACTIVE_WIN_MODIFY) && ((FlagGet(FLAG_RYU_DEV_MODE) == TRUE) && ((FlagGet(FLAG_RYU_BATTLE_INFO) == TRUE))))
     {
-        if (gMain.newKeys & (B_BUTTON | A_BUTTON))
+        if ((JOY_NEW(B_BUTTON)) || (JOY_NEW(A_BUTTON)))
         {
             ClearStdWindowAndFrameToTransparent(data->modifyWindowId, TRUE);
             RemoveWindow(data->modifyWindowId);

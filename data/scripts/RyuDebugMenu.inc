@@ -107,8 +107,24 @@ RyuDebug_UtilitiesMenu:
 	case 19, RyuDebug_CheckExactPlayTime
 	case 20, RyuDebug_EnableVerboseUtility
 	case 21, RyuDebug_TestDynamicObjects
-	case 22, RyuDebug_menu_nodevcheck
+	case 22, RyuDebug_ToggleBattleInfo
+	case 23, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
+
+RyuDebug_ToggleBattleInfo::
+	goto_if_set FLAG_RYU_BATTLE_INFO, RDB_TurnOffBattleInfo
+	setflag FLAG_RYU_BATTLE_INFO
+	msgbox RDB_BIT
+	closemessage
+	goto RyuDebug_UtilitiesMenu
+
+RDB_TurnOffBattleInfo::
+	clearflag FLAG_RYU_BATTLE_INFO
+	msgbox RDB_BIT
+	goto RyuDebug_UtilitiesMenu
+
+RDB_BIT:
+	.string "Battle Info screen toggled.$"
 
 RyuDebug_TestDynamicObjects::
 	callnative RyuTestDynamicObjectContents
