@@ -758,7 +758,7 @@ script RyuFollowerCheckDismiss{
 	}
 	msgbox("Are you sure you want to dismiss\nyour companion?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == TRUE){
-	goto(RF_FollowerLeave)
+		goto(RF_FollowerLeave)
 	}
 	else{
 		goto(ryu_end)
