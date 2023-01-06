@@ -764,6 +764,7 @@ static const u8 sText_NN_Critical[]      = _("{B_ATK_NAME_WITH_PREFIX} landed a 
 static const u8 sText_MonSentToPreserve[]      = _("{B_DEF_NAME_WITH_PREFIX} was sent to the\nnature preserve!");
 static const u8 sText_MomHealsPlayer[]      = _("Mom heals your Pokémon...\nYou got this honey!");
 static const u8 sText_VoodooCurseActivates[]      = _("{B_ATK_NAME_WITH_PREFIX} was inflicted with a voodoo\ncurse!");
+static const u8 sText_MagicianMadeItemDisappear[]      = _("{B_ATK_NAME_WITH_PREFIX} made {B_DEF_NAME_WITH_PREFIX}'s item\ndisappear!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1387,6 +1388,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNSENTTONATUREPRESERVE - 12]            = sText_MonSentToPreserve,
     [STRINGID_MOM_HEALS - 12]            = sText_MomHealsPlayer,
     [STRINGID_WASINFLICTEDWITHVOODOOCURSE - 12]            = sText_VoodooCurseActivates,
+    [STRINGID_MADEITEMDISAPPEAR - 12]            = sText_MagicianMadeItemDisappear,
 };
 
 const u16 gTerrainStringIds[] =
