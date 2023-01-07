@@ -4320,11 +4320,11 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_DELPHOX_1] = { // Delphox-Defensive (ID: 378)
+    [FRONTIER_MON_DELPHOX_1] = { // Delphox-Specs (ID: 378)
         .species = SPECIES_DELPHOX,
-        .moves = {MOVE_MYSTICAL_FIRE, MOVE_TOXIC, MOVE_WISH, MOVE_EE_PROTECT},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .moves = {MOVE_PSYCHIC, MOVE_FIRE_BLAST, MOVE_MOONBLAST, MOVE_BLAST_BURN},
+        .heldItem = ITEM_CHOICE_SPECS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
         .ivs = 31,
         .ability = 2
@@ -6158,8 +6158,8 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DELPHOX_2] = { // Delphox-CM (ID: 582)
         .species = SPECIES_DELPHOX,
-        .moves = {MOVE_FIRE_BLAST, MOVE_PSYCHIC, MOVE_GRASS_KNOT, MOVE_CALM_MIND},
-        .heldItem = ITEM_COLBUR_BERRY,
+        .moves = {MOVE_PSYCHIC, MOVE_FIRE_BLAST, MOVE_DRAINING_KISS, MOVE_CALM_MIND},
+        .heldItem = ITEM_SHELL_BELL,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
         .ivs = 31,
@@ -8705,7 +8705,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DELPHOX_PSYCHIC_TERRAIN] = { // (ID: 973)
         .species = SPECIES_DELPHOX,
-        .moves = {MOVE_PSYCHIC, MOVE_PSYSHOCK, MOVE_FLAMETHROWER, MOVE_DAZZLING_GLEAM},
+        .moves = {MOVE_PSYCHIC, MOVE_PSYSHOCK, MOVE_FLAMETHROWER, MOVE_DRAINING_KISS},
         .heldItem = ITEM_LIFE_ORB,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
@@ -9054,7 +9054,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_NINETALES_CURSE_BURN] = { // Ninetales-curseBurn
+    [FRONTIER_MON_NINETALES_CURSE_BURN] = { // Ninetales-CurseBurn
         .species = SPECIES_NINETALES,
         .moves = {MOVE_WILL_O_WISP, MOVE_CURSE, MOVE_SUBSTITUTE, MOVE_MOONLIGHT},
         .heldItem = ITEM_LEFTOVERS,
