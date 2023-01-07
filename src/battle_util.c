@@ -3770,6 +3770,7 @@ extern bool8 RyuCheckPlayerisInColdArea();
 
 extern bool8 TobyCheckPlayerisInHailStorm();
 
+extern bool32 TryKnockOffBattleScript(u8 def, bool32 isMagician);
 u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveArg)
 {
     u8 effect = 0;
@@ -4875,6 +4876,18 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
+            break;
+        case ABILITY_MAGICIAN:
+            if ((gBattleMons[gBattlerTarget].item != ITEM_NONE) &&
+                (gBattleMoves[gCurrentMove].type == TYPE_PSYCHIC))
+                {
+                    if  (TryKnockOffBattleScript(gBattlerTarget, TRUE) == TRUE)
+                    {
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_MagicianActivates;
+                        effect++;
+                    }
+                }  
             break;
         case ABILITY_VAMPIRIC:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
@@ -7716,6 +7729,13 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
             dmg *= 2;
 
     }
+
+    if ((gBattleMons[gBattlerAttacker].ability == ABILITY_MAGICIAN) 
+        && (gBattleMons[gBattlerTarget].item != ITEM_NONE) 
+        && (moveType == TYPE_PSYCHIC))
+        {
+            dmg = (dmg * 150) / 100;
+        }
 
     //Steven is meant to defeat player in slateport museum
     if ((VarGet(VAR_RYU_QUEST_AQUA) == 40) && (FlagGet(FLAG_TEMP_E) == 1) && GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT)

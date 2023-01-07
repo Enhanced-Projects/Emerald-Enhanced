@@ -1042,7 +1042,9 @@
 #define FRONTIER_MON_NAGANADEL_2                          1014
 #define FRONTIER_MON_STAKATAKA_1                          1015
 #define FRONTIER_MON_STAKATAKA_2                          1016
+#define FRONTIER_MON_NINETALES_PARAFUSE                   1017
+#define FRONTIER_MON_NINETALES_CURSE_BURN                 1018
 
-#define NUM_FRONTIER_MONS                                 1017
+#define NUM_FRONTIER_MONS                                 1019
 
 #endif //GUARD_CONSTANTS_BATTLE_FRONTIER_MONS_H

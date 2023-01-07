@@ -636,8 +636,9 @@
 #define STRINGID_PKMNSENTTONATUREPRESERVE             632
 #define STRINGID_MOM_HEALS                            633
 #define STRINGID_WASINFLICTEDWITHVOODOOCURSE          634
+#define STRINGID_MADEITEMDISAPPEAR                    635
 
-#define BATTLESTRINGS_COUNT                           635
+#define BATTLESTRINGS_COUNT                           636
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

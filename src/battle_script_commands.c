@@ -5085,7 +5085,7 @@ static void Cmd_playstatchangeanimation(void)
     }
 }
 
-static bool32 TryKnockOffBattleScript(u32 battlerDef)
+bool32 TryKnockOffBattleScript(u32 battlerDef, bool32 isMagician)
 {
     if (gBattleMons[battlerDef].item != 0
         && CanBattlerGetOrLoseItem(battlerDef, gBattleMons[battlerDef].item)
@@ -5108,7 +5108,10 @@ static bool32 TryKnockOffBattleScript(u32 battlerDef)
             CheckSetUnburden(battlerDef);
 
             BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_KnockedOff;
+            if (isMagician == TRUE)
+                gBattlescriptCurrInstr = BattleScript_KnockedOffSilent;
+            else
+                gBattlescriptCurrInstr = BattleScript_KnockedOff;
         }
         return TRUE;
     }
@@ -5136,7 +5139,6 @@ static void Cmd_moveend(void)
     holdEffectAtk = GetBattlerHoldEffect(gBattlerAttacker, TRUE);
     choicedMoveAtk = &gBattleStruct->choicedMove[gBattlerAttacker];
     GET_MOVE_TYPE(gCurrentMove, moveType);
-
     do
     {
         switch (gBattleScripting.moveendState)
@@ -5279,7 +5281,7 @@ static void Cmd_moveend(void)
             switch (gBattleStruct->moveEffect2)
             {
             case MOVE_EFFECT_KNOCK_OFF:
-                effect = TryKnockOffBattleScript(gBattlerTarget);
+                effect = TryKnockOffBattleScript(gBattlerTarget, FALSE);
                 break;
             }
             gBattleStruct->moveEffect2 = 0;

@@ -6316,6 +6316,10 @@ BattleScript_KnockedOff::
 	waitmessage 0x40
 	return
 
+BattleScript_KnockedOffSilent::
+	playanimation BS_TARGET, B_ANIM_ITEM_KNOCKOFF, NULL
+	return
+
 BattleScript_MoveUsedIsImprisoned::
 	printstring STRINGID_PKMNCANTUSEMOVESEALED
 	waitmessage 0x40
@@ -7465,6 +7469,12 @@ BattleScript_ColorChangeActivates::
 BattleScript_ProteanActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNCHANGEDTYPE
+	waitmessage 0x40
+	return
+
+BattleScript_MagicianActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_MADEITEMDISAPPEAR
 	waitmessage 0x40
 	return
 
