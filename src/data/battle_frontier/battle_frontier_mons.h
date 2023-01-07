@@ -4295,7 +4295,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_EMPOLEON_1] = { // Empoleon-Defensive (ID: 477)
         .species = SPECIES_EMPOLEON,
-        .moves = {MOVE_SCALD, MOVE_ICE_BEAM, MOVE_STEALTH_ROCK, MOVE_ROAR},
+        .moves = {MOVE_SCALD, MOVE_ICE_BEAM, MOVE_AQUA_RING, MOVE_TOXIC},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_CALM,
@@ -6129,12 +6129,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_EMPOLEON_2] = { // Empoleon-LifeOrb (ID: 681)
+    [FRONTIER_MON_EMPOLEON_2] = { // Empoleon-Offensive (ID: 681)
         .species = SPECIES_EMPOLEON,
-        .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_GRASS_KNOT, MOVE_RAIN_DANCE},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_MODEST,
+        .moves = {MOVE_ICICLE_CRASH, MOVE_EARTHQUAKE, MOVE_SHIFT_GEAR, MOVE_AQUA_RING},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
