@@ -2664,12 +2664,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_ORANGURU_1] = { // Oranguru-NP (ID: 296)
+    [FRONTIER_MON_ORANGURU_1] = { // Oranguru-AntiSweep (ID: 296)
         .species = SPECIES_ORANGURU,
-        .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_NASTY_PLOT},
-        .heldItem = ITEM_COLBUR_BERRY,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_MODEST,
+        .moves = {MOVE_PSYCHIC, MOVE_FOUL_PLAY, MOVE_FOCUS_BLAST, MOVE_CALM_MIND},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
         .ivs = 31,
         .ability = 0
     },
@@ -6030,11 +6030,11 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_SERPERIOR_2] = { // Serperior-GlareSeed (ID: 568)
+    [FRONTIER_MON_SERPERIOR_2] = { // Serperior-3attacks (ID: 762)
         .species = SPECIES_SERPERIOR,
-        .moves = {MOVE_LEAF_STORM, MOVE_HIDDEN_POWER, MOVE_GLARE, MOVE_LEECH_SEED},
+        .moves = {MOVE_LEAF_STORM, MOVE_HIDDEN_POWER, MOVE_DRAGON_PULSE, MOVE_GLARE},
         .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_HP | F_EV_SPREAD_SPEED,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
         .ivs = 30,
         .ability = 2
@@ -6858,13 +6858,13 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_SERPERIOR_3] = { // Serperior-3attacks (ID: 762)
+    [FRONTIER_MON_SERPERIOR_3] = { // Serperior-SubSeed (ID: 764)
         .species = SPECIES_SERPERIOR,
-        .moves = {MOVE_LEAF_STORM, MOVE_HIDDEN_POWER, MOVE_DRAGON_PULSE, MOVE_GLARE},
+        .moves = {MOVE_LEAF_STORM, MOVE_HIDDEN_POWER, MOVE_SUBSTITUTE, MOVE_LEECH_SEED},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
-        .ivs = 30,
+        .ivs = 25,
         .ability = 2
     },
     [FRONTIER_MON_GARDEVOIR_4] = { // Gardevoir-Scarf (ID: 763)
@@ -6876,13 +6876,13 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_SERPERIOR_4] = { // Serperior-SubSeed (ID: 764)
+    [FRONTIER_MON_SERPERIOR_4] = { // Serperior-RestTalk (ID: 762)
         .species = SPECIES_SERPERIOR,
-        .moves = {MOVE_LEAF_STORM, MOVE_HIDDEN_POWER, MOVE_SUBSTITUTE, MOVE_LEECH_SEED},
-        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_LEAF_STORM, MOVE_REST, MOVE_SLEEP_TALK, MOVE_NONE},
+        .heldItem = ITEM_MIRACLE_SEED,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
-        .ivs = 25,
+        .ivs = 31,
         .ability = 2
     },
     [FRONTIER_MON_STARMIE_3] = { // Starmie-Specs (ID: 765)
@@ -7722,16 +7722,16 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_MEGA_GYARADOS_1] = { // Mega_Gyarados-IceFang (ID: 858)
+    [FRONTIER_MON_MEGA_GYARADOS_1] = { // Mega_Gyarados-RestTalk (ID: 858)
         .species = SPECIES_MEGA_GYARADOS,
-        .moves = {MOVE_WATERFALL, MOVE_ICE_FANG, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
+        .moves = {MOVE_DIVE, MOVE_DRAGON_DANCE, MOVE_REST, MOVE_SLEEP_TALK},
         .heldItem = ITEM_GYARADOSITE,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MEGA_GYARADOS_2] = { // Mega_Gyarados-Crunch (ID: 859)
+    [FRONTIER_MON_MEGA_GYARADOS_2] = { // Mega_Gyarados-Offensive (ID: 859)
         .species = SPECIES_MEGA_GYARADOS,
         .moves = {MOVE_WATERFALL, MOVE_CRUNCH, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
         .heldItem = ITEM_GYARADOSITE,
@@ -7740,18 +7740,18 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MEGA_AERODACTYL_1] = { // Mega_Aerodactyl-4attacks (ID: 860)
+    [FRONTIER_MON_MEGA_AERODACTYL_1] = { // Mega_Aerodactyl-StallBreaker (ID: 860)
         .species = SPECIES_MEGA_AERODACTYL,
-        .moves = {MOVE_FLY, MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
+        .moves = {MOVE_FLY, MOVE_EARTHQUAKE, MOVE_TAUNT, MOVE_ROOST},
         .heldItem = ITEM_AERODACTYLITE,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_MEGA_AERODACTYL_2] = { // Mega_Aerodactyl-3attacksRoost (ID: 861)
+    [FRONTIER_MON_MEGA_AERODACTYL_2] = { // Mega_Aerodactyl-4attacks (ID: 860)
         .species = SPECIES_MEGA_AERODACTYL,
-        .moves = {MOVE_FLY, MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_ROOST},
+        .moves = {MOVE_FLY, MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
         .heldItem = ITEM_AERODACTYLITE,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
