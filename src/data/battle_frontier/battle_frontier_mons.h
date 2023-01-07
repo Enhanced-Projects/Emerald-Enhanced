@@ -9044,5 +9044,23 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_BRAVE,
         .ivs = 31,
         .ability = 0
+    },
+    [FRONTIER_MON_NINETALES_PARAFUSE] = { // Ninetales-Parafuse
+        .species = SPECIES_NINETALES,
+        .moves = {MOVE_THUNDER_WAVE, MOVE_CONFUSE_RAY, MOVE_SUBSTITUTE, MOVE_MOONLIGHT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_NINETALES_CURSE_BURN] = { // Ninetales-curseBurn
+        .species = SPECIES_NINETALES,
+        .moves = {MOVE_WILL_O_WISP, MOVE_CURSE, MOVE_SUBSTITUTE, MOVE_MOONLIGHT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
+        .ivs = 31,
+        .ability = 2
     }
 };

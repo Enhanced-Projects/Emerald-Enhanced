@@ -413,6 +413,8 @@ void RyuBrendanGiftPoke(void)
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPATK_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_SPEED_EV, &iv);
     SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_OT_GENDER, &gender);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_OT_NAME, &otname);
 }
 
 void RyuChallengeCheck (void)
@@ -1491,10 +1493,10 @@ int CheckRivalGiftMonStatus(void)
     {
         for (i = 0; i < CalculatePlayerPartyCount(); i++)
         {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
+            if ((GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL) && (GetMonData(&gPlayerParty[i], MON_DATA_OT_GENDER) == 1))
                 return hasChampionRibbon(i) ? 5 : 1;
 
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WEAVILE)
+            if ((GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WEAVILE)  && (GetMonData(&gPlayerParty[i], MON_DATA_OT_GENDER) == 1))
                 return hasChampionRibbon(i) ? 5 : 2;
         }
     }
@@ -1502,13 +1504,13 @@ int CheckRivalGiftMonStatus(void)
     {
         for (i = 0; i < CalculatePlayerPartyCount(); i++)
         {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)
+            if ((GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT) && (GetMonData(&gPlayerParty[i], MON_DATA_OT_GENDER) == 0))
                 return hasChampionRibbon(i) ? 5 : 1;
 
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_FROSLASS)
+            if ((GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_FROSLASS) && (GetMonData(&gPlayerParty[i], MON_DATA_OT_GENDER) == 0))
                 return hasChampionRibbon(i) ? 5 : 2;
 
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_GLALIE)
+            if ((GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_GLALIE) && (GetMonData(&gPlayerParty[i], MON_DATA_OT_GENDER) == 0))
                 return hasChampionRibbon(i) ? 5 : 3;
         }
     }
