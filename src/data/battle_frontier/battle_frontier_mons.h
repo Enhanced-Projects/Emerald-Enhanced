@@ -5096,7 +5096,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_AERODACTYL_2] = { // Aerodactyl-Band (ID: 668)
         .species = SPECIES_AERODACTYL,
-        .moves = {MOVE_ROCK_SLIDE, MOVE_ROCK_SLIDE, MOVE_FLY, MOVE_EARTHQUAKE},
+        .moves = {MOVE_ROCK_SLIDE, MOVE_FLY, MOVE_EARTHQUAKE, MOVE_ICE_FANG},
         .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
