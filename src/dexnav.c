@@ -160,9 +160,9 @@ static void DrawHiddenSearchWindow(u8 width);
 static const u32 sDexNavGuiTilesDark[] = INCBIN_U32("graphics/dexnav/gui_tiles_dark.4bpp.lz");
 static const u32 sDexNavGuiTilemapDark[] = INCBIN_U32("graphics/dexnav/gui_tilemap_dark.bin.lz");
 static const u32 sDexNavGuiPalDark[] = INCBIN_U32("graphics/dexnav/gui_dark.gbapal");
-static const u32 sDexNavGuiTiles[] = INCBIN_U32("graphics/dexnav/gui_tiles.4bpp.lz");
-static const u32 sDexNavGuiTilemap[] = INCBIN_U32("graphics/dexnav/gui_tilemap.bin.lz");
-static const u32 sDexNavGuiPal[] = INCBIN_U32("graphics/dexnav/gui.gbapal");
+static const u32 sDexNavGuiTiles[] = INCBIN_U32("graphics/dexnav/gui_tiles_light.4bpp.lz");
+static const u32 sDexNavGuiTilemap[] = INCBIN_U32("graphics/dexnav/gui_tilemap_light.bin.lz");
+static const u32 sDexNavGuiPal[] = INCBIN_U32("graphics/dexnav/gui_light.gbapal");
 
 static const u32 sSelectionCursorGfx[] = INCBIN_U32("graphics/dexnav/cursor.4bpp.lz");
 static const u16 sSelectionCursorPal[] = INCBIN_U16("graphics/dexnav/cursor.gbapal");
