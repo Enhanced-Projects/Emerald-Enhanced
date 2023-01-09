@@ -22,6 +22,6 @@
 
 // Array buffers
 #define EGG_MOVES_ARRAY_COUNT           16
-#define EGG_LVL_UP_MOVES_ARRAY_COUNT    50
+#define EGG_LVL_UP_MOVES_ARRAY_COUNT    75
 
 #endif //GUARD_DAYCARE_CONSTANTS_H
