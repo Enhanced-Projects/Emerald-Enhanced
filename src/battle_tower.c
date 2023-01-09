@@ -1658,7 +1658,10 @@ static void HandleSpecialTrainerBattleEnd(void)
         break;
     }
 
-    SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+        SetMainCallback2(CB2_WhiteOut);
+    else
+        SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
 static void Task_StartBattleAfterTransition(u8 taskId)
