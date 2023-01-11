@@ -397,6 +397,7 @@ RDB_LevelCapToggled:
 
 RyuDebug_enableWaystone::
 	additem ITEM_WAYSTONE, 1
+	setflag FLAG_RYU_WAYSTONE_BYPASS
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
 	setflag FLAG_VISITED_OLDALE_TOWN
 	setflag FLAG_VISITED_DEWFORD_TOWN
