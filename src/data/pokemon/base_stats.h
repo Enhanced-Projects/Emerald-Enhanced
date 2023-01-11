@@ -8937,7 +8937,7 @@ const struct BaseStats gBaseStats[] =
         .baseHP        = 130,
         .baseAttack    = 69,
         .baseDefense   = 100,
-        .baseSpeed     = 40,
+        .baseSpeed     = 31,
         .baseSpAttack  = 95,
         .baseSpDefense = 120,
         .type1 = TYPE_ROCK,
@@ -8961,8 +8961,8 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_ANORITH] =
     {
         .baseHP        = 65,
-        .baseAttack    = 115,
-        .baseDefense   = 50,
+        .baseAttack    = 95,
+        .baseDefense   = 70,
         .baseSpeed     = 75,
         .baseSpAttack  = 40,
         .baseSpDefense = 50,
@@ -8985,10 +8985,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_ARMALDO] =
     {
-        .baseHP        = 105,
-        .baseAttack    = 138,
-        .baseDefense   = 100,
-        .baseSpeed     = 60,
+        .baseHP        = 90,
+        .baseAttack    = 125,
+        .baseDefense   = 130,
+        .baseSpeed     = 50,
         .baseSpAttack  = 70,
         .baseSpDefense = 80,
         .type1 = TYPE_WATER,
