@@ -162,13 +162,13 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_MURKROW] = { // Murkrow-Mixed (ID: 18)
+    [FRONTIER_MON_MURKROW] = { // Murkrow-SwagCrow (ID: 18)
         .species = SPECIES_MURKROW,
-        .moves = {MOVE_BRAVE_BIRD, MOVE_SUCKER_PUNCH, MOVE_HEAT_WAVE, MOVE_HIDDEN_POWER},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_NAIVE,
-        .ivs = 28,
+        .moves = {MOVE_FOUL_PLAY, MOVE_SWAGGER, MOVE_THUNDER_WAVE, MOVE_ROOST},
+        .heldItem = ITEM_EVIOLITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
         .ability = 1
     },
     [FRONTIER_MON_SNEASEL] = { // Sneasel-Band (ID: 19)
@@ -3753,12 +3753,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_HONCHKROW_1] = { // Honchkrow-SuperLuck (ID: 312)
+    [FRONTIER_MON_HONCHKROW_1] = { // Honchkrow-Scarf (ID: 516)
         .species = SPECIES_HONCHKROW,
-        .moves = {MOVE_DRILL_PECK, MOVE_NIGHT_SLASH, MOVE_SUPERPOWER, MOVE_ROOST},
-        .heldItem = ITEM_SCOPE_LENS,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .moves = {MOVE_OBLIVION_WING, MOVE_DARK_PULSE, MOVE_HEAT_WAVE, MOVE_SWITCHEROO},
+        .heldItem = ITEM_CHOICE_SCARF,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 1
     },
@@ -5562,14 +5562,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_HONCHKROW_2] = { // Honchkrow-Scarf (ID: 516)
+    [FRONTIER_MON_HONCHKROW_2] = { // Honchkrow-Bulky (ID: 516)
         .species = SPECIES_HONCHKROW,
-        .moves = {MOVE_BRAVE_BIRD, MOVE_NIGHT_SLASH, MOVE_SUPERPOWER, MOVE_DRILL_PECK},
-        .heldItem = ITEM_CHOICE_SCARF,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .moves = {MOVE_OBLIVION_WING, MOVE_DARK_PULSE, MOVE_HEAT_WAVE, MOVE_THUNDER_WAVE},
+        .heldItem = ITEM_BIG_ROOT,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_DEFENSE,
+        .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_STARAPTOR_2] = { // Staraptor-Scarf (ID: 619)
         .species = SPECIES_STARAPTOR,

@@ -4986,7 +4986,6 @@ const u32 gTMHMLearnsets[][2] =
 
     [SPECIES_MURKROW]     = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
 											| TMHM(TM45_ATTRACT)
-											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM62_CURSE)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)
@@ -10622,7 +10621,6 @@ const u32 gTMHMLearnsets[][2] =
 
     [SPECIES_HONCHKROW]   = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
 											| TMHM(TM45_ATTRACT)
-											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM62_CURSE)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)

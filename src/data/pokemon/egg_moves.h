@@ -1190,6 +1190,7 @@ const u16 gEggMoves[] = {
         MOVE_ROOST,
         MOVE_SCREECH,
         MOVE_SKY_ATTACK,
+        MOVE_SWITCHEROO,
         MOVE_WHIRLWIND,
         MOVE_WING_ATTACK),
 
