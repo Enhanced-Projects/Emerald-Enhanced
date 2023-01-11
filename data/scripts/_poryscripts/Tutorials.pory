@@ -1,0 +1,98 @@
+//Tutorials menu.
+script RyuScript_TutorialMainMenu {
+
+}
+
+script RyuTutorial_Followers {
+    fadescreen(FADE_TO_BLACK)
+    msgbox("Beginning Followers tutorial...")
+    closemessage
+    drawfullscreenimage(TUTORIALFOLLOWER1)
+    msgbox(format("To recruit a follower to your side, you only need to talk to them. In most cases, they will first ask if you want to stay the night."))
+    clearfullscreenimage
+    fadescreen(FADE_FROM_BLACK)
+    drawfullscreenimage(TUTORIALFOLLOWER3)
+    msgbox(format("Answer no to staying the night, and they will ask if they can follow you."), MSGBOX_DEFAULT)
+    closemessage
+    clearfullscreenimage
+    fadescreen(FADE_FROM_BLACK)
+    drawfullscreenimage(TUTORIALFOLLOWER2)
+    msgbox(format("The follower menu has several options. Here's what they do:"))
+    closemessage
+    msgbox(format("Chat: Your follower will say something."))
+    closemessage
+    msgbox(format("Team Up: You choose wether or not followers will join you in battle."))
+    closemessage
+    msgbox(format("Dismiss: Your follower will return to where they came from, if they can be dismissed. Sometimes followers cannot be dismissed due to quest or story events."))
+    closemessage
+    msgbox(format("Nothing: Close the menu and do nothing."))
+    closemessage
+    msgbox(format("Set Attendant: This option is only available when in an owned house. You can choose to have the current follower stay at the current house if you wish."))
+    clearfullscreenimage
+    msgbox(format("Some followers may not be able to participate in battles."))
+    closemessage
+    drawfullscreenimage(TUTORIALFOLLOWER4)
+    msgbox(format("If you have a follower and are unable to teleport, there are old people at river crossings throughout hoenn that will ferry you across for a small fee."))
+    closemessage
+    clearfullscreenimage
+    fadescreen(FADE_FROM_BLACK)
+    msgbox(format("Most followers will require you complete a quest to unlock them. A list of each follower's passive effects can be found on the discord."))
+    closemessage
+    msgbox(format("This concludes the followers tutorial."))
+    closemessage
+    return
+    end
+}
+
+script RyuTutorial_RealEstate {
+    msgbox("Beginning Real Estate Tutorial...")
+    fadescreen(FADE_TO_BLACK)
+    msgbox(format("You unlock Real Estate by gaining favor with the Nobles. The manager of Frontier Bank will give you your realtor license."))
+    closemessage
+    drawfullscreenimage(TUTORIAL_REALESTATE1)
+    buffernumberstring(0, NUM_PROPERTIES)
+    msgbox(format("There are {STR_VAR_1} properties throughout Hoenn that can be managed with Real Estate. They can be easily found by looking for the alternate design Sign. Activate the sign at one of the properties to buy it. Once you have bought it, you can manage it by activating the sign again."))
+    closemessage
+    clearfullscreenimage
+    fadescreen(FADE_TO_BLACK)
+    drawfullscreenimage(TUTORIAL_REALESTATE2)
+    msgbox(format("There are 5 options in this menu. They are as follows:"))
+    closemessage
+    msgbox(format("Move In:\nSet this bought property as your Home. You will teleport here when using the 'Home' option on your Waystone, or if you are defeated in battle."))
+    closemessage
+    msgbox(format("Lease Out:\nPut the house on the market for a renter to take over. When you do this, you can begin collecting rent daily at the same time daily quests reset."))
+    closemessage
+    msgbox(format("Check Details:\nYou can see the value of the property as well as see if it's in need of repair."))
+    closemessage
+    msgbox(format("Sell Property:\nSell the property for it's depreciated value back to the bank. If you have an attendant or have set this as your home, they will be removed."))
+    closemessage
+    msgbox(format("Exit:\nCloses the menu."))
+    clearfullscreenimage
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    drawfullscreenimage(TUTORIAL_REALESTATE3)
+    msgbox(format("You may notice a property was damaged when you would normally collect rent. When this happens, you have to go to the property and activate the sign. It will tell you the details of the damage and how long it will take to get fixed. During the downtime, you cannot collect rent, nor can you sell the property. It's recommended to get properties repaired as soon as possible so that they stay profitable."))
+    closemessage
+    clearfullscreenimage
+    fadescreen(FADE_TO_BLACK)
+    drawfullscreenimage(TUTORIAL_REALESTATE4)
+    msgbox(format("If you enter a house you have set as your home with a follower, you can set them as an attendant. Just talk to them to do so."))
+    closemessage
+    msgbox(format("When you have set your attendant, you can speak with them for a new menu of options. They are as follows:"))
+    closemessage
+    msgbox(format("Dismiss:\nReturn the follower to their place in the overworld."))
+    closemessage
+    msgbox(format("Spar:\nStart a battle and fight against your follower. No exp is awarded for this battle."))
+    closemessage
+    msgbox(format("Recruit:\nReturn them as your follower. They will follow you around again."))
+    closemessage
+    msgbox(format("Nevermind:\nDo nothing."))
+    closemessage
+    clearfullscreenimage
+    fadescreen(FADE_TO_BLACK)
+    msgbox(format("You can use the bed in an owned home to sleep and recover your party. Sometimes your attendant will also sleep next to you."))
+    closemessage
+    fadescreen(FADE_FROM_BLACK)
+    msgbox(format("This concludes the Real Estate tutorial."))
+    return
+}

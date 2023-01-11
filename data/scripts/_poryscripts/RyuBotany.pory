@@ -72,13 +72,13 @@ RyuBotanyTree_TryGive2Items::
     end
 
 RyuBotanyTree_TryGive3Items::
-    call RyuBotanyGrass_GiveOneItem
+    call RyuBotanyTree_GiveOneItem
     random 1
     compare VAR_RESULT, 1
-    call_if_eq RyuBotanyGrass_GiveOneItem
+    call_if_eq RyuBotanyTree_GiveOneItem
     random 3
     compare VAR_RESULT, 1 @25% chance to get a 3rd bonus roll at rank 5.
-    call_if_eq RyuBotanyGrass_GiveOneItem
+    call_if_eq RyuBotanyTree_GiveOneItem
     release
     end
 

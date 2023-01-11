@@ -1245,6 +1245,8 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	numberentry(0, 10, 3)
+	copyvar(VAR_0x8001, VAR_RESULT)
 	release
 	end
 }

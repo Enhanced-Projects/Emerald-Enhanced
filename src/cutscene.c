@@ -80,6 +80,38 @@ static const u8 sMayBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/may/ma
 static const u8 sMayBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/may/may_map.bin");
 static const u8 sMayBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/may/may_palette.gbapal");
 
+static const u8 sFollowerTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial1.4bpp");
+static const u8 sFollowerTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial1.bin");
+static const u8 sFollowerTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial1.gbapal");
+
+static const u8 sFollowerTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial2.4bpp");
+static const u8 sFollowerTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial2.bin");
+static const u8 sFollowerTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial2.gbapal");
+
+static const u8 sFollowerTutorial3BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial3.4bpp");
+static const u8 sFollowerTutorial3BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial3.bin");
+static const u8 sFollowerTutorial3BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial3.gbapal");
+
+static const u8 sFollowerTutorial4BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial4.4bpp");
+static const u8 sFollowerTutorial4BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial4.bin");
+static const u8 sFollowerTutorial4BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial4.gbapal");
+
+static const u8 sRealEstateTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial1.4bpp");
+static const u8 sRealEstateTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial1.bin");
+static const u8 sRealEstateTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial1.gbapal");
+
+static const u8 sRealEstateTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial2.4bpp");
+static const u8 sRealEstateTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial2.bin");
+static const u8 sRealEstateTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial2.gbapal");
+
+static const u8 sRealEstateTutorial3BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial3.4bpp");
+static const u8 sRealEstateTutorial3BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial3.bin");
+static const u8 sRealEstateTutorial3BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial3.gbapal");
+
+static const u8 sRealEstateTutorial4BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial4.4bpp");
+static const u8 sRealEstateTutorial4BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial4.bin");
+static const u8 sRealEstateTutorial4BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial4.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -280,7 +312,95 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sMayBgMap),
         .palette = sMayBgPalette,
 		.palIdxCnt = 224
-	}
+	},
+	[TUTORIALFOLLOWER1] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sFollowerTutorial1BgTiles,
+		.tileSize = sizeof(sFollowerTutorial1BgTiles),
+        .map = sFollowerTutorial1BgMap,
+		.mapSize = sizeof(sFollowerTutorial1BgMap),
+        .palette = sFollowerTutorial1BgPalette,
+		.palIdxCnt = 16
+	},
+	[TUTORIALFOLLOWER2] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sFollowerTutorial2BgTiles,
+		.tileSize = sizeof(sFollowerTutorial2BgTiles),
+        .map = sFollowerTutorial2BgMap,
+		.mapSize = sizeof(sFollowerTutorial2BgMap),
+        .palette = sFollowerTutorial2BgPalette,
+		.palIdxCnt = 16
+	},
+	[TUTORIALFOLLOWER3] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sFollowerTutorial3BgTiles,
+		.tileSize = sizeof(sFollowerTutorial3BgTiles),
+        .map = sFollowerTutorial3BgMap,
+		.mapSize = sizeof(sFollowerTutorial3BgMap),
+        .palette = sFollowerTutorial3BgPalette,
+		.palIdxCnt = 16
+	},
+	[TUTORIALFOLLOWER4] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sFollowerTutorial4BgTiles,
+		.tileSize = sizeof(sFollowerTutorial4BgTiles),
+        .map = sFollowerTutorial4BgMap,
+		.mapSize = sizeof(sFollowerTutorial4BgMap),
+        .palette = sFollowerTutorial4BgPalette,
+		.palIdxCnt = 16
+	},
+	[TUTORIAL_REALESTATE1] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sRealEstateTutorial1BgTiles,
+		.tileSize = sizeof(sRealEstateTutorial1BgTiles),
+        .map = sRealEstateTutorial1BgMap,
+		.mapSize = sizeof(sRealEstateTutorial1BgMap),
+        .palette = sRealEstateTutorial1BgPalette,
+		.palIdxCnt = 16
+	},
+	[TUTORIAL_REALESTATE2] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sRealEstateTutorial2BgTiles,
+		.tileSize = sizeof(sRealEstateTutorial2BgTiles),
+        .map = sRealEstateTutorial2BgMap,
+		.mapSize = sizeof(sRealEstateTutorial2BgMap),
+        .palette = sRealEstateTutorial2BgPalette,
+		.palIdxCnt = 16
+	},
+	[TUTORIAL_REALESTATE3] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sRealEstateTutorial3BgTiles,
+		.tileSize = sizeof(sRealEstateTutorial3BgTiles),
+        .map = sRealEstateTutorial3BgMap,
+		.mapSize = sizeof(sRealEstateTutorial3BgMap),
+        .palette = sRealEstateTutorial3BgPalette,
+		.palIdxCnt = 16
+	},
+	[TUTORIAL_REALESTATE4] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sRealEstateTutorial4BgTiles,
+		.tileSize = sizeof(sRealEstateTutorial4BgTiles),
+        .map = sRealEstateTutorial4BgMap,
+		.mapSize = sizeof(sRealEstateTutorial4BgMap),
+        .palette = sRealEstateTutorial4BgPalette,
+		.palIdxCnt = 16
+	},
 };
 
 static const struct BgTemplate sCutsceneBackground8bpp = {

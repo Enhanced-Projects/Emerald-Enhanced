@@ -1191,3 +1191,13 @@ script LRT_RestoreMom {
 	destroyfollower
 	return
 }
+
+script RyuTryFollowerTutorialQuery {
+	goto_if_set(FLAG_RYU_FOLLOWER_TUTORIAL_UNLOCKED, ryu_return)
+	msgbox("You've recruited a follower for the\nfirst time.\pView follower tutorial?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		call(RyuTutorial_Followers)
+	}
+	setflag(FLAG_RYU_FOLLOWER_TUTORIAL_UNLOCKED)
+	return
+}

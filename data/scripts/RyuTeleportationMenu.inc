@@ -35,6 +35,7 @@ RyuTeleport::
 	end
 
 RyuCheckUnderworldWaystone::
+	goto_if_set FLAG_RYU_WAYSTONE_BYPASS, ryu_return
 	goto_if_set FLAG_RYU_REAPER, ryu_return
 	ach query ACH_THE_PHOENIX
 	compare VAR_RESULT, TRUE

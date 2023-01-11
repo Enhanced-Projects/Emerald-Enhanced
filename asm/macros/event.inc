@@ -1627,6 +1627,7 @@
 	.2byte \graphicsId
 	.4byte \script
 	.byte \direction
+	call RyuTryFollowerTutorialQuery
 	.endm
 
 

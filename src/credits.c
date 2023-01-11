@@ -1209,7 +1209,7 @@ static void LoadTheEndScreen(u16, u16, u16);
 static void sub_8176E40(u16 arg0, u16 palette);
 static void sub_8176EE8(struct Sprite *sprite);
 static void sub_8176F90(struct Sprite *sprite);
-static u8 MakeMonSprite(u16 species, s16 x, s16 y, u16 position);
+u8 MakeMonSprite(u16 species, s16 x, s16 y, u16 position);
 static void DeterminePokemonToShow(void);
 
 static void CreditsVBlankCallback(void)
@@ -2339,7 +2339,7 @@ static void sub_8177050(struct Sprite *sprite)
     }
 }
 
-static u8 MakeMonSprite(u16 nationalDexNum, s16 x, s16 y, u16 position)
+u8 MakeMonSprite(u16 nationalDexNum, s16 x, s16 y, u16 position)
 {
     u8 spriteId;
     u8 spriteId2;

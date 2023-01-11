@@ -1358,7 +1358,6 @@
 #define FLAG_RYU_GIFTED_LUCARIONITE                               0x502
 #define FLAG_RYU_GIFTED_VENUSAURITE                               0x503
 #define FLAG_RYU_GIFTED_CAMERUPTITE                               0x504
-
 #define FLAG_RYU_CHANGED_BAR_SPEED                                0x505
 #define FLAG_RYU_USED_100_CAP                                     0x506
 #define FLAG_RYU_USED_INSTANT_TEXT                                0x507
@@ -1370,8 +1369,12 @@
 #define FLAG_UNUSED_0x50D                                         0x50D
 #define FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS                 0x50E
 #define FLAG_UNUSED_0x50F                                         0x50F
+#define FLAG_RYU_WAYSTONE_BYPASS                                  0x510
 
 
+//tutorial system flags
+#define FLAG_RYU_FOLLOWER_TUTORIAL_UNLOCKED                       0x5FD
+#define FLAG_RYU_REAL_ESTATE_TUTORIAL_UNLOCKED                    0x5FE
 #define NEW_FLAGS_END                                             0x5FF
 // Trainer Flags
 // Trainer flags occupy 0x5FF - 0x95F, the last 9 of which are unused
