@@ -1358,6 +1358,9 @@
 #define FLAG_RYU_GIFTED_LUCARIONITE                               0x502
 #define FLAG_RYU_GIFTED_VENUSAURITE                               0x503
 #define FLAG_RYU_GIFTED_CAMERUPTITE                               0x504
+//tutorial system flags
+#define FLAG_RYU_FOLLOWER_TUTORIAL_UNLOCKED                       0x505
+#define FLAG_RYU_REAL_ESTATE_TUTORIAL_UNLOCKED                    0x506
 
 #define FLAG_RYU_CHANGED_BAR_SPEED                                0x505
 #define FLAG_RYU_USED_100_CAP                                     0x506

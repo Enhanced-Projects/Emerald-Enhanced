@@ -2290,6 +2290,8 @@ bool8 ScrCmd_createfollower(struct ScriptContext *ctx)
     CreateFollowerObjectEvent(graphicsId, script, direction);
     VarSet(VAR_RYU_FOLLOWER_ID, graphicsId);
     FlagSet(FLAG_RYU_HAS_FOLLOWER);
+    if (FlagGet(FLAG_RYU_FOLLOWER_TUTORIAL_UNLOCKED) == FALSE)
+        NewTutorialNotify();
     return FALSE;
 }
 

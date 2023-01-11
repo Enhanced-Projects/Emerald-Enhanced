@@ -96,6 +96,11 @@ void QueueNotification(const u8 *message, u32 type, u32 time)
     }
 }
 
+void NewTutorialNotify(void)
+{
+    QueueNotification((const u8[])_("New tutorial unlocked."), NOTIFY_GENERAL, 60);
+}
+
 void AddNewNotification(void)
 {
     QueueNotification(gRyuStringVar4, VarGet(VAR_TEMP_F), VarGet(VAR_TEMP_E));
