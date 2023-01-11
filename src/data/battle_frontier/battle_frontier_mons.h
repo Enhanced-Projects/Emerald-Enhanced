@@ -2718,12 +2718,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_FEAROW_1] = { // Fearow-DualSetup (ID: 404)
+    [FRONTIER_MON_FEAROW_1] = { // Fearow-Defensive (ID: 608)
         .species = SPECIES_FEAROW,
-        .moves = {MOVE_DRILL_PECK, MOVE_DRILL_RUN, MOVE_FOCUS_ENERGY, MOVE_AGILITY},
-        .heldItem = ITEM_SITRUS_BERRY,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .moves = {MOVE_FOUL_PLAY, MOVE_DRILL_PECK, MOVE_FOCUS_ENERGY, MOVE_ROOST},
+        .heldItem = ITEM_SCOPE_LENS,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_IMPISH,
         .ivs = 31,
         .ability = 2
     },
@@ -4554,12 +4554,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_FEAROW_2] = { // Fearow-RoostSetup (ID: 608)
+    [FRONTIER_MON_FEAROW_2] = { // Fearow-Offensive (ID: 608)
         .species = SPECIES_FEAROW,
-        .moves = {MOVE_DRILL_PECK, MOVE_DRILL_RUN, MOVE_FOCUS_ENERGY, MOVE_ROOST},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .moves = {MOVE_DRILL_PECK, MOVE_NIGHT_SLASH, MOVE_FOCUS_ENERGY, MOVE_ROOST},
+        .heldItem = ITEM_SHELL_BELL,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 2
     },

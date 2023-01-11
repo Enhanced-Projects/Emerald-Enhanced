@@ -517,12 +517,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SPEAROW] =
     {
-        .baseHP        = 40,
-        .baseAttack    = 60,
-        .baseDefense   = 30,
-        .baseSpeed     = 70,
+        .baseHP        = 50,
+        .baseAttack    = 65,
+        .baseDefense   = 50,
+        .baseSpeed     = 45,
         .baseSpAttack  = 31,
-        .baseSpDefense = 31,
+        .baseSpDefense = 75,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FLYING,
         .catchRate = 255,
@@ -544,13 +544,13 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_FEAROW] =
     {
-        .baseHP        = 65,
-        .baseAttack    = 90,
-        .baseDefense   = 65,
-        .baseSpeed     = 100,
-        .baseSpAttack  = 61,
-        .baseSpDefense = 61,
-        .type1 = TYPE_NORMAL,
+        .baseHP        = 95,
+        .baseAttack    = 98,
+        .baseDefense   = 85,
+        .baseSpeed     = 60,
+        .baseSpAttack  = 45,
+        .baseSpDefense = 130,
+        .type1 = TYPE_DARK,
         .type2 = TYPE_FLYING,
         .catchRate = 90,
         .expYield = 155,
@@ -563,7 +563,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FLYING,
         .eggGroup2 = EGG_GROUP_FLYING,
-        .abilities = {ABILITY_KEEN_EYE, ABILITY_KEEN_EYE},
+        .abilities = {ABILITY_RIVALRY, ABILITY_RIVALRY},
         .abilityHidden = ABILITY_SNIPER,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BROWN,
