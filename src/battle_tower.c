@@ -37,6 +37,7 @@
 #include "constants/moves.h"
 #include "constants/easy_chat.h"
 #include "constants/tv.h"
+#include "load_save.h"
 
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer[];
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_CourtneyTrainer[];
@@ -1658,10 +1659,15 @@ static void HandleSpecialTrainerBattleEnd(void)
         break;
     }
 
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gBattleOutcome == B_OUTCOME_LOST)
+    {
+        LoadPlayerParty();
         SetMainCallback2(CB2_WhiteOut);
+    }
     else
+    {
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    }
 }
 
 static void Task_StartBattleAfterTransition(u8 taskId)
