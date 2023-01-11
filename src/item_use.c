@@ -41,6 +41,7 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "StatAssist.h"
+#include "RyuBaseStatsViewerWIP.h"
 
 extern u8 RyuTeleport[];
 extern u8 RyuUserModeEVMenu[];
@@ -874,6 +875,13 @@ void ItemUseOutOfBattle_StatAssist(u8 taskId)
     gSpecialVar_0x8001 = 0;
     gSpecialVar_0x8002 = 0;
     StatAssist_Init(CB2_ReturnToField);
+}
+
+void ItemUseOutOfBattle_BCW(u8 taskId)
+{
+    if(gSpecialVar_0x8001 == 0)
+        gSpecialVar_0x8001 == 1;
+    BSViewer_Init(CB2_ReturnToField);
 }
 
 void ItemUseOutOfBattle_PDA(u8 taskId)
