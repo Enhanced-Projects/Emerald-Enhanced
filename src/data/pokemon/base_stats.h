@@ -7115,12 +7115,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_TAILLOW] =
     {
-        .baseHP        = 40,
-        .baseAttack    = 55,
-        .baseDefense   = 30,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 30,
-        .baseSpDefense = 30,
+        .baseHP        = 45,
+        .baseAttack    = 65,
+        .baseDefense   = 45,
+        .baseSpeed     = 100,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 40,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FLYING,
         .catchRate = 200,
@@ -7140,12 +7140,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SWELLOW] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 85,
-        .baseDefense   = 60,
+        .baseHP        = 70,
+        .baseAttack    = 105,
+        .baseDefense   = 85,
         .baseSpeed     = 125,
-        .baseSpAttack  = 75,
-        .baseSpDefense = 50,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 70,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FLYING,
         .catchRate = 45,
