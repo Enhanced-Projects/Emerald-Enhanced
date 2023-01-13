@@ -110,7 +110,7 @@ script SCFB_Manager{
             msgbox("Oh, my.\nYou have considerable wealth.\pYou should consider getting into\nthe real estate business.\pWe own many properties throughout\nHoenn.\pI'll put you in our realtor registry\nso that you can manage properties.\pJust remember that the Frontier Bank\nalways gets a cut.")
             callnative(SetPlayerRealtorStatus)
             msgbox("You may now buy, sell, rent, or use\nproperties as you like.\pI look forward to a profitable\nrelationship.")
-            msgbox(format("You have unlocked Real Estate for the first time. Would you like to view the tutorial?"), MSGBOX_YESNO)
+            msgbox(format("{COLOR LIGHT_GREEN}{SHADOW GREEN}You have unlocked Real Estate for the first time. Would you like to view the tutorial?"), MSGBOX_YESNO)
             RyuScriptUnlockRealestate:
             if (var(VAR_RESULT) == YES){
                 call(RyuTutorial_RealEstate)

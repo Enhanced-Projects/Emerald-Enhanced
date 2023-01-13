@@ -36,6 +36,8 @@ script RDB_BetaMenuStandalone{
         case 8:
             goto(RDBM_FixFollowers)
         case 9:
+            goto(RDBM_ViewTutorials)
+        case 10:
             goto(RDBM_ExitResetMenu)
     }
     goto(RDBM_ExitResetMenu)
@@ -75,6 +77,45 @@ script RDBM_ResetRTC {
     closemessage
     release
     end
+}
+
+script RDBM_ViewTutorials {
+    msgbox("Select a tutorial to view.")
+    bufferdynamicmulti(RDBM_Tut1Lbl, RDBM_Tut2Lbl, RDBM_Tut3Lbl, RDBM_Tut4Lbl, RDBM_Tut5Lbl)
+    multichoice(0, 0, MULTI_DYNAMIC_5, 1)
+    switch (var(VAR_RESULT)) {
+        case 0:
+            call(RyuTutorial_Followers)
+        case 1:
+            call(RyuTutorial_RealEstate)
+        case 2:
+            call(RyuTutorial_Quest)
+        case 3:
+            call(RyuTutorial_Factions)
+        case 4:
+            release
+            end
+    }
+}
+
+text RDBM_Tut1Lbl {
+    "Followers"
+}
+
+text RDBM_Tut2Lbl {
+    "Real Estate"
+}
+
+text RDBM_Tut3Lbl {
+    "Quest"
+}
+
+text RDBM_Tut4Lbl {
+    "Factions"
+}
+
+text RDBM_Tut5Lbl {
+    "Exit"
 }
 
 script RDBM_ViewSaveVersion{

@@ -96,3 +96,59 @@ script RyuTutorial_RealEstate {
     msgbox(format("This concludes the Real Estate tutorial."))
     return
 }
+
+script RyuTutorial_Quest {
+    msgbox("Now beginning the Quest System\ntutorial...")
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    msgbox(format("EE is an open world game. As such, the quests are opt-in based, which means you have to find and start them yourself."))
+    closemessage
+    msgbox(format("There are 3 main questlines for Emerald Enhanced. The quest log can be located by selecting Journal from the Start Menu, then navigating right until you reach the Quests tab."))
+    closemessage
+    msgbox(format("The Quest log will help you understand what you need to do for the next steps of all possible quests in the game. Note that some minor sidequests, such as the one for Lanette, does not have an entry in the quest log due to the relatively short length of them."))
+    closemessage
+    msgbox(format("Because Emerald Enhanced is an open world game, it also uses various forms of autoscaling. By default, on your first playthrough, Normal mode is selected and recommended. This mode gives you bonus exp based on the number of badges you have. It does not matter what order you complete the gyms in."))
+    closemessage
+    msgbox(format("The base autoscaling mode makes wild pokemon, trainers, and all other forms of battle stick to specific level ranges based on the number of badges you have."))
+    closemessage
+    msgbox(format("On subsequent playthroughs with New Game plus, the autoscaling method is switched to power-level based. In this mode, all battles will scale to the general power level of your party. If you are on any higher difficulty settings, this means that NPC's will typically match or outlevel you."))
+    closemessage
+    msgbox(format("This concludes the quest and autoscale tutorial."))
+    closemessage
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
+script RyuTutorial_Factions {
+    msgbox("Starting the Factions system tutorial...")
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    msgbox(format("There are 6 factions in Emerald Enhanced. Each faction represents unique ideals and customs. Most factions have exclusive content when you have high standing with them."))
+    closemessage
+    drawfullscreenimage(TUTORIAL_FACTIONS1)//screenshot of factions standing display
+    msgbox(format("All factions start out at 100 standing, which is neutral. There are various ways to increase the standing for any given faction. The most common way is Daily quests, which will be covered soon. When you increase standing for a given faction, you will simultaneously reduce the standing for the opposed faction. Keep this in mind if there are multiple factions you wish to work for."))
+    closemessage
+    clearfullscreenimage
+    fadescreen(FADE_TO_BLACK)
+    msgbox(format("You can get daily quests from any member trainer of any faction after they have been defeated in battle. Note that defeating them (or losing to them) does NOT affect your standing with the associated faction."))
+    closemessage
+    drawfullscreenimage(TUTORIAL_FACTIONS2)//screenshot of daily quest in quest log.
+    msgbox(format("You can find details on the currently assigned daily quest in the Quest log. You can also cancel a daily quest by pressing {SELECT_BUTTON} on this screen while viewing the daily quest details. Daily quests will reset each real day, allowing you to take up to one daily quest from each faction per 24 real hours."))
+    closemessage
+    msgbox(format("There are currently 3 types of daily quests that you can be randomly assigned from. they are as follows:"))
+    closemessage
+    msgbox(format("Travel:\pTravel type daily quests require you go to the given location and stand in the area for 30 seconds to a minute. Sometimes it's a specific map of a given area. You can check your world map to see that you are in the correct location, as the location it lists for you is the same as the one assigned by the daily quest."))
+    closemessage
+    msgbox(format("Hatch:\pThe NPC will give you an egg to hatch. It's randomly picked from a preset list for the given faction. All you have to do is hatch the egg."))
+    closemessage
+    msgbox(format("Fetch:\pThis is the standard 'fetch' quest from rpg's you've played in the past. You simply have to acquire the given item and quantity of said item for the faction that assigned you the quest."))
+    closemessage
+    clearfullscreenimage
+    fadescreen(FADE_TO_BLACK)
+    msgbox(format("Once you have completed the assigned task, you simply need to return to any member NPC of the faction that assigned you the quest."))
+    closemessage
+    msgbox(format("You can find a spreadsheet in the Useful Info channel linked in the discord that lists the trainer types associated with each faction."))
+    closemessage
+    msgbox(format("This concludes the Factions tutorial."))
+    return
+}

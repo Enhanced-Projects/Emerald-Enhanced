@@ -86,6 +86,7 @@ LH_EventStart::
 	msgbox LH_QuestStarted MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_RYU_QUEST_LEAF, 10 @Leaf took off to the trick house. Meet her there.
+	call_if_unset FLAG_RYU_QUEST_TUTORIAL_UNLOCKED, RyuScript_QuestTutorialQuery
 	release
 	end
 	

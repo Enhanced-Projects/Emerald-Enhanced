@@ -366,6 +366,17 @@ const u8 sText_TripleSpace[] = _("   ");
 const u8 sText_BSFwSlash[] = _("/");
 const u8 sText_BSPct[] = _(" % ");
 
+int RyuGetCurrentBST(void)
+{
+    u16 species = gSpecialVar_0x8001;
+    return (gBaseStats[species].baseHP + 
+            gBaseStats[species].baseAttack + 
+            gBaseStats[species].baseSpAttack + 
+            gBaseStats[species].baseDefense + 
+            gBaseStats[species].baseSpeed + 
+            gBaseStats[species].baseSpDefense);
+}
+
 void BSRyuBufferStats(void)
 {
     int temp;
@@ -405,6 +416,11 @@ void BSRyuBufferStats(void)
     ConvertIntToDecimalStringN(gStringVar1, temp, 0, 4);
     StringAppend(gStringVar4, gStringVar1);
     StringAppend(gStringVar4, sText_BSNewline);
+    // buffer BST
+    StringAppend(gStringVar4, (const u8[])_("Base Stat Total: "));
+    ConvertIntToDecimalStringN(gStringVar1, RyuGetCurrentBST(), 0, 4);
+    StringAppend(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, sText_BSNewline);
     // buffer abilities
     StringAppend(gStringVar4, ((const u8[])_("Abilities:")));
     StringAppend(gStringVar4, sText_BSNewline);
@@ -434,33 +450,31 @@ void BSBufferLevelWindow(void)
     int temp = (((gBaseStats[gSpecialVar_0x8001].genderRatio) + 1) * 100);
     int female = (temp / 256);
     int male = (100 - female);
-    u8 buffer[255] = {0};
 
+    StringCopy(gStringVar4, ((const u8[])_("Gender ratio: ")));
+    StringAppend(gStringVar4, sText_BSNewline);
     if (temp == 25600) //mon is genderless
     {
-        StringCopy(buffer, ((const u8[])_("Genderless")));
-        StringAppend(buffer, sText_BSNewline);
+        StringAppend(gStringVar4, ((const u8[])_("Genderless")));
     }
     else
     {
-        StringCopy(buffer, ((const u8[])_("Gender ratio: ")));
-        StringAppend(buffer, sText_BSNewline);
         ConvertIntToDecimalStringN(gStringVar1, male, 0, 3);
-        StringAppend(buffer, ((const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}")));
-        StringAppend(buffer, gStringVar1);
-        StringAppend(buffer, sText_BSPct);
-        StringExpandPlaceholders(gStringVar4, buffer);
-        StringCopy(buffer, ((const u8[])_(" {COLOR DARK_GREY}{SHADOW LIGHT_GREY}/ {COLOR LIGHT_RED}{SHADOW RED}")));
+        StringAppend(gStringVar4, ((const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}")));
+        StringAppend(gStringVar4, gStringVar1);
+        StringAppend(gStringVar4, sText_BSPct);
+        StringExpandPlaceholders(gRyuStringVar4, gStringVar4);
+        StringCopy(gStringVar4, gRyuStringVar4);
+        StringAppend(gStringVar4, ((const u8[])_(" {COLOR DARK_GREY}{SHADOW LIGHT_GREY}/ {COLOR LIGHT_RED}{SHADOW RED}")));
         ConvertIntToDecimalStringN(gStringVar1, female, 0, 3);
-        StringAppend(buffer, gStringVar1);
-        StringAppend(buffer, sText_BSPct);
-        StringExpandPlaceholders(gRyuStringVar1, buffer);
-        StringAppend(gStringVar4, gRyuStringVar1);
-        StringCopy(buffer, ((const u8[])_("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
+        StringAppend(gStringVar4, gStringVar1);
+        StringAppend(gStringVar4, sText_BSPct);
+        StringExpandPlaceholders(gRyuStringVar4, gStringVar4);
+        StringCopy(gStringVar4, gRyuStringVar4);
+        StringAppend(gStringVar4, ((const u8[])_("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
+        StringExpandPlaceholders(gRyuStringVar4, gStringVar4);
+        StringCopy(gStringVar4, gRyuStringVar4);
     }
-    
-    StringExpandPlaceholders(gRyuStringVar1, buffer);
-    StringAppend(gStringVar4, gRyuStringVar1);
     StringAppend(gStringVar4, sText_BSNewline);
     StringAppend(gStringVar4, ((const u8[])_("Type 1: ")));
     StringAppend(gStringVar4, gTypeNames[gBaseStats[gSpecialVar_0x8001].type1]);

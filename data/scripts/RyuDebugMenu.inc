@@ -548,7 +548,15 @@ RyuDebug_GiveItems::
 	msgbox MegaStonesQuery, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	call_if_eq RyuDebug_GiveMegaStones
+	msgbox collAndRepel, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_DisableCollisionandencounters
 	goto RyuDebug_menu_nodevcheck
+
+RyuDebug_DisableCollisionandencounters::
+	setflag FLAG_RYU_COLLISION_OFF
+	setflag FLAG_RYU_DEV_DISENC
+	return
 
 RyuDebug_Init_GiveAllTMs::
 	setvar VAR_TEMP_2, 482
@@ -572,21 +580,22 @@ RyuDebugGiveTMsDone::
 RyuDebug_GiveAlchemyKit::
 	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 5
 	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 5000
-	additem ITEM_FRESH_WATER, 200
-	additem ITEM_TONIC_WATER, 200
-	additem ITEM_MINERAL_WATER, 200
-	additem ITEM_MUSCLE_POWDER, 200
-	additem ITEM_SMART_POWDER, 200
-	additem ITEM_STARDUST, 200
-	additem ITEM_TOUGH_POWDER, 200
-	additem ITEM_RAWST_BERRY, 200
-	additem ITEM_BRIGHT_POWDER, 200
-	additem ITEM_ORAN_BERRY, 200
-	additem ITEM_CHARCOAL 200
-	additem ITEM_FIRE_STONE 200
-	additem ITEM_SOFT_SAND 200
-	additem ITEM_SNOWBALL 200
-	additem ITEM_GEM_POWDER 200
+	additem ITEM_FRESH_WATER, 1000
+	additem ITEM_TONIC_WATER, 1000
+	additem ITEM_MINERAL_WATER, 1000
+	additem ITEM_MUSCLE_POWDER, 1000
+	additem ITEM_SMART_POWDER, 1000
+	additem ITEM_STARDUST, 1000
+	additem ITEM_TOUGH_POWDER, 1000
+	additem ITEM_RAWST_BERRY, 1000
+	additem ITEM_BRIGHT_POWDER, 1000
+	additem ITEM_ORAN_BERRY, 1000
+	additem ITEM_CHARCOAL, 1000
+	additem ITEM_FIRE_STONE, 1000
+	additem ITEM_SOFT_SAND, 1000
+	additem ITEM_SNOWBALL, 1000
+	additem ITEM_GEM_POWDER, 1000
+	additem ITEM_STAR_PIECE, 1000
 	setvar VAR_RYU_ALCHEMY_COPPER, 65500
 	setvar VAR_RYU_ALCHEMY_SILVER, 65500
 	setvar VAR_RYU_ALCHEMY_GOLD, 65500
@@ -643,16 +652,16 @@ RyuDebug_GiveMegaStones::
 	return
 
 RyuDebug_GiveItemsKit:
-	additem ITEM_FULL_RESTORE, 100
-	additem ITEM_MAX_ELIXIR, 100
-	additem ITEM_MAX_REVIVE, 100
-	additem ITEM_HEART_SCALE, 100
-	additem ITEM_PP_MAX, 100
-	additem ITEM_RARE_CANDY, 200
-	additem ITEM_LUXURY_BALL, 100
-	additem ITEM_MASTER_BALL, 100
-	additem ITEM_MAX_REPEL, 100
-	additem ITEM_BIG_PEARL, 100
+	additem ITEM_FULL_RESTORE, 1000
+	additem ITEM_MAX_ELIXIR, 1000
+	additem ITEM_MAX_REVIVE, 1000
+	additem ITEM_HEART_SCALE, 1000
+	additem ITEM_PP_MAX, 1000
+	additem ITEM_RARE_CANDY, 1000
+	additem ITEM_LUXURY_BALL, 1000
+	additem ITEM_MASTER_BALL, 1000
+	additem ITEM_MAX_REPEL, 1000
+	additem ITEM_BIG_PEARL, 1000
 	return
 
 RyuDebug_GiveKeyItemsKit::
@@ -664,6 +673,8 @@ RyuDebug_GiveKeyItemsKit::
 	additem ITEM_SOOT_SACK, 1
 	additem ITEM_RECIPE_BOOK, 1
 	additem ITEM_REAGENT_POUCH, 1
+	additem ITEM_STATASSIST, 1
+	additem ITEM_RAINBOW_PASS, 1
 	return
 
 MegaStonesQuery:
@@ -696,6 +707,9 @@ RyuDebug_givemonsquery:
 RyuDebug_cancel::
 	closemessage
 	end
+
+collAndRepel:
+	.string "Turn off collision and encounters?$"
 
 RyuDebug_msg:
 	.string "What would you like to activate?$"
@@ -738,6 +752,7 @@ RyuDebug_DevMonQuickStart::
 	setvar VAR_TEMP_2, MOVE_SHADOW_BALL
 	setvar VAR_TEMP_3, MOVE_FLASH_CANNON
 	setvar VAR_TEMP_4, MOVE_THUNDERBOLT
+	givepokedexflag SPECIES_MAGEARNA, TRUE @@for some reason, pokdex won't open unless you've seen at least one nat'l dex mon. This fixes that.
 	callnative RyuGiveDevMon
 	@@
 	@@
@@ -753,6 +768,7 @@ RyuDebug_DevMonQuickStart::
 	setvar VAR_TEMP_2, MOVE_NIGHT_SLASH
 	setvar VAR_TEMP_3, MOVE_PSYCHO_CUT
 	setvar VAR_TEMP_4, MOVE_STONE_EDGE
+	givepokedexflag SPECIES_ABSOL, TRUE @@see above pokedex comment
 	callnative RyuGiveDevMon
 	special HealPlayerParty
 	goto RyuDebug_QuickItemFlagStart
@@ -1117,9 +1133,11 @@ RDBSP_6:
 
 FrontierMonDev::
 	msgbox DMFMG
-	numberentry 0, 9, 3
-	compare VAR_RESULT, FRONTIER_MON_BLANK1_BLANK3
+	numberentry 0, 9, 4
+	compare VAR_RESULT, NUM_FRONTIER_MONS
 	goto_if_ge RDB_CancelSpawn
+	compare VAR_RESULT, 0
+	goto_if_eq RDB_CancelSpawn
 	copyvar VAR_TEMP_6, VAR_RESULT
 	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
 	special RyuGiveFrontierMon
@@ -1155,7 +1173,7 @@ DevModeItemGive::
 	goto_if_eq RDB_CancelSpawn
 	compare VAR_RESULT, ITEMS_COUNT
 	goto_if_ge RDB_CancelSpawn
-	additem VAR_RESULT, 200
+	additem VAR_RESULT, 1000
 	msgbox SpawnMenuSuccess
 	goto RyuDebug_SpawningMenu
 
@@ -1261,3 +1279,8 @@ RDB_DisableVerbose:
 
 RDB_VBD:
 	.string "Verbose mode disabled.$"
+
+RyuScript_QuickNumberEntry::
+	numberentry 15, 17, 3
+	copyvar VAR_0x8001, VAR_RESULT
+	return

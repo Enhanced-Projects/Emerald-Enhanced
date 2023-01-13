@@ -1245,8 +1245,9 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	numberentry(0, 10, 3)
-	copyvar(VAR_0x8001, VAR_RESULT)
+	changefactionstanding(FACTION_POKEFANS, 46, FALSE)
+	changefactionstanding(FACTION_OUTCASTS, 62, FALSE)
+	changefactionstanding(FACTION_NATURALISTS, 25, FALSE)
 	release
 	end
 }

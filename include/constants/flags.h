@@ -1373,6 +1373,8 @@
 
 
 //tutorial system flags
+#define FLAG_RYU_FACTION_TUTORIAL_UNLOCKED                        0x5FB
+#define FLAG_RYU_QUEST_TUTORIAL_UNLOCKED                          0x5FC
 #define FLAG_RYU_FOLLOWER_TUTORIAL_UNLOCKED                       0x5FD
 #define FLAG_RYU_REAL_ESTATE_TUTORIAL_UNLOCKED                    0x5FE
 #define NEW_FLAGS_END                                             0x5FF

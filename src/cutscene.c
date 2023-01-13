@@ -112,6 +112,14 @@ static const u8 sRealEstateTutorial4BgTiles[] =   INCBIN_U8("graphics/cutscene/f
 static const u8 sRealEstateTutorial4BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial4.bin");
 static const u8 sRealEstateTutorial4BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial4.gbapal");
 
+static const u8 sFactionsTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial1.4bpp");
+static const u8 sFactionsTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial1.bin");
+static const u8 sFactionsTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial1.gbapal");
+
+static const u8 sFactionsTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial2.4bpp");
+static const u8 sFactionsTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial2.bin");
+static const u8 sFactionsTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial2.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -399,6 +407,28 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .map = sRealEstateTutorial4BgMap,
 		.mapSize = sizeof(sRealEstateTutorial4BgMap),
         .palette = sRealEstateTutorial4BgPalette,
+		.palIdxCnt = 16
+	},
+	[TUTORIAL_FACTIONS1] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sFactionsTutorial1BgTiles,
+		.tileSize = sizeof(sFactionsTutorial1BgTiles),
+        .map = sFactionsTutorial1BgMap,
+		.mapSize = sizeof(sFactionsTutorial1BgMap),
+        .palette = sFactionsTutorial1BgPalette,
+		.palIdxCnt = 16
+	},
+	[TUTORIAL_FACTIONS2] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sFactionsTutorial2BgTiles,
+		.tileSize = sizeof(sFactionsTutorial2BgTiles),
+        .map = sFactionsTutorial2BgMap,
+		.mapSize = sizeof(sFactionsTutorial2BgMap),
+        .palette = sFactionsTutorial2BgPalette,
 		.palIdxCnt = 16
 	},
 };
