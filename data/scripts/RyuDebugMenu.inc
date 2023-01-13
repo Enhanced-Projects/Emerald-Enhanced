@@ -1117,9 +1117,11 @@ RDBSP_6:
 
 FrontierMonDev::
 	msgbox DMFMG
-	numberentry 0, 9, 3
-	compare VAR_RESULT, FRONTIER_MON_BLANK1_BLANK3
+	numberentry 0, 9, 4
+	compare VAR_RESULT, NUM_FRONTIER_MONS
 	goto_if_ge RDB_CancelSpawn
+	compare VAR_RESULT, 0
+	goto_if_eq RDB_CancelSpawn
 	copyvar VAR_TEMP_6, VAR_RESULT
 	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
 	special RyuGiveFrontierMon

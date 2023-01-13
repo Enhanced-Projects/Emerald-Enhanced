@@ -477,7 +477,8 @@ script RyuCheckForMayQuest{
 			setvar(VAR_RYU_QUEST_MAY, 5) //player has enabled the may event.
 			setflag(FLAG_RYU_STARTED_MAY_QUEST)//don't repeat this script
 			closemessage
-			msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You can now recruit May\n as a follower once the\l intro is completed.)")
+			msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You can now recruit May\n as a follower.)")
+			call_if_unset(FLAG_RYU_QUEST_TUTORIAL_UNLOCKED, RyuScript_QuestTutorialQuery)
 			closemessage
 			return
 		}

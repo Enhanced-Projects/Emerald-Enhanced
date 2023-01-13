@@ -111,6 +111,7 @@ PetalburgWoods_EventScript_DevonResearcherFinish:: @ 822E18B
 PetalburgWoods_EventScript_RemoveDevonResearcher:: @ 822E1A7
 	removeobject 4
 	setvar VAR_PETALBURG_WOODS_STATE, 1
+	call_if_unset FLAG_RYU_QUEST_TUTORIAL_UNLOCKED, RyuScript_QuestTutorialQuery
 	releaseall
 	end
 
@@ -450,3 +451,18 @@ PetalburgWoods_Text_TrainerTipsPP: @ 822ED07
 	.string "taken to a Pokémon Center.$"
 
 `
+
+
+script RyuScript_QuestTutorialQuery {
+	msgbox(format("{COLOR LIGHT_GREEN}{SHADOW GREEN}You have started a quest. Would you like to view the tutorial?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		call(RyuTutorial_Quest)
+		setflag(FLAG_RYU_QUEST_TUTORIAL_UNLOCKED)
+	}
+	else
+	{
+		setflag(FLAG_RYU_QUEST_TUTORIAL_UNLOCKED)
+		callnative(NewTutorialNotify)
+	}
+	return
+}

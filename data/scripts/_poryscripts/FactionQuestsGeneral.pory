@@ -48,3 +48,16 @@ script RyuGlobal_CancelDailyQuest {
         end
     }
 }
+
+script RyuScript_FactionsTutorialQuery {
+    msgbox(format("{COLOR LIGHT_GREEN}{SHADOW GREEN}You've started a daily quest for a Faction. Would you like to view the tutorial for the Factions system?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){
+        call(RyuTutorial_Factions)
+        setflag(FLAG_RYU_FACTION_TUTORIAL_UNLOCKED)
+    }
+    else{
+        setflag(FLAG_RYU_FACTION_TUTORIAL_UNLOCKED)
+        callnative(NewTutorialNotify)
+    }
+    return
+}
