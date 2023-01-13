@@ -8883,7 +8883,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_NIHILEGO_1] = { // Nihilego-DualHazards
+    [FRONTIER_MON_NIHILEGO_1] = { // Nihilego-DualHazards (id 999)
         .species = SPECIES_NIHILEGO,
         .moves = {MOVE_POWER_GEM, MOVE_ACID, MOVE_STEALTH_ROCK, MOVE_TOXIC_SPIKES},
         .heldItem = ITEM_AIR_BALLOON,
@@ -8892,7 +8892,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_NIHILEGO_2] = { // Nihilego-Offensive
+    [FRONTIER_MON_NIHILEGO_2] = { // Nihilego-Offensive (id 1000)
         .species = SPECIES_NIHILEGO,
         .moves = {MOVE_SLUDGE_WAVE, MOVE_POWER_GEM, MOVE_GRASS_KNOT, MOVE_ACID},
         .heldItem = ITEM_LIFE_ORB,
@@ -8901,7 +8901,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_BUZZWOLE_1] = { // Buzzwole-Defensive
+    [FRONTIER_MON_BUZZWOLE_1] = { // Buzzwole-Defensive  (id 1001)
         .species = SPECIES_BUZZWOLE,
         .moves = {MOVE_HAMMER_ARM, MOVE_LEECH_LIFE, MOVE_TOXIC, MOVE_ROOST},
         .heldItem = ITEM_LEFTOVERS,
@@ -8910,7 +8910,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_BUZZWOLE_2] = { // Buzzwole-Offensive
+    [FRONTIER_MON_BUZZWOLE_2] = { // Buzzwole-Offensive (id 1002)
         .species = SPECIES_BUZZWOLE,
         .moves = {MOVE_HAMMER_ARM, MOVE_LEECH_LIFE, MOVE_STONE_EDGE, MOVE_EARTHQUAKE},
         .heldItem = ITEM_ASSAULT_VEST,
@@ -8919,7 +8919,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PHEROMOSA_1] = { // Pheromosa-Special
+    [FRONTIER_MON_PHEROMOSA_1] = { // Pheromosa-Special (id 1003)
         .species = SPECIES_PHEROMOSA,
         .moves = {MOVE_FOCUS_BLAST, MOVE_BUG_BUZZ, MOVE_ICE_BEAM, MOVE_QUIVER_DANCE},
         .heldItem = ITEM_FOCUS_SASH,
@@ -8928,7 +8928,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PHEROMOSA_2] = { // Pheromosa-Physical
+    [FRONTIER_MON_PHEROMOSA_2] = { // Pheromosa-Physical (id 1004)
         .species = SPECIES_PHEROMOSA,
         .moves = {MOVE_HI_JUMP_KICK, MOVE_U_TURN, MOVE_ICE_BEAM, MOVE_DRILL_RUN},
         .heldItem = ITEM_FOCUS_SASH,
@@ -8937,7 +8937,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_XURKITREE_1] = { // Xurkitree-Bulkitree
+    [FRONTIER_MON_XURKITREE_1] = { // Xurkitree-Bulkitree (id 1005)
         .species = SPECIES_XURKITREE,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_TAIL_GLOW, MOVE_SUBSTITUTE},
         .heldItem = ITEM_SHELL_BELL,
@@ -8946,7 +8946,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_XURKITREE_2] = { // Xurkitree-Scarf
+    [FRONTIER_MON_XURKITREE_2] = { // Xurkitree-Scarf (id 1006)
         .species = SPECIES_XURKITREE,
         .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_ENERGY_BALL, MOVE_HIDDEN_POWER},
         .heldItem = ITEM_CHOICE_SCARF,
@@ -8955,7 +8955,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_CELESTEELA_1] = { // Celesteela-Offensive
+    [FRONTIER_MON_CELESTEELA_1] = { // Celesteela-Offensive (id 1007)
         .species = SPECIES_CELESTEELA,
         .moves = {MOVE_ACROBATICS, MOVE_HEAVY_SLAM, MOVE_EARTHQUAKE, MOVE_AUTOTOMIZE},
         .heldItem = ITEM_FLYING_GEM,
@@ -8964,7 +8964,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_CELESTEELA_2] = { // Celesteela-Defensive
+    [FRONTIER_MON_CELESTEELA_2] = { // Celesteela-Defensive (id 1008)
         .species = SPECIES_CELESTEELA,
         .moves = {MOVE_HEAVY_SLAM, MOVE_LEECH_SEED, MOVE_TOXIC, MOVE_EE_PROTECT},
         .heldItem = ITEM_LEFTOVERS,
@@ -8973,7 +8973,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_KARTANA_1] = { // Kartana-Scarf
+    [FRONTIER_MON_KARTANA_1] = { // Kartana-Scarf (id 1009)
         .species = SPECIES_KARTANA,
         .moves = {MOVE_LEAF_BLADE, MOVE_SACRED_SWORD, MOVE_SMART_STRIKE, MOVE_SECRET_POWER},
         .heldItem = ITEM_CHOICE_SCARF,
@@ -8982,7 +8982,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 25,
         .ability = 0
     },
-    [FRONTIER_MON_KARTANA_2] = { // Kartana-SD
+    [FRONTIER_MON_KARTANA_2] = { // Kartana-SD (id 1010)
         .species = SPECIES_KARTANA,
         .moves = {MOVE_LEAF_BLADE, MOVE_SACRED_SWORD, MOVE_SECRET_POWER, MOVE_SWORDS_DANCE},
         .heldItem = ITEM_FOCUS_SASH,
@@ -8991,7 +8991,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 25,
         .ability = 0
     },
-    [FRONTIER_MON_GUZZLORD_1] = { // Guzzlord-Defensive
+    [FRONTIER_MON_GUZZLORD_1] = { // Guzzlord-Defensive (id 1011)
         .species = SPECIES_GUZZLORD,
         .moves = {MOVE_DRACO_METEOR, MOVE_KNOCK_OFF, MOVE_TOXIC, MOVE_EE_PROTECT},
         .heldItem = ITEM_LEFTOVERS,
@@ -9000,7 +9000,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_GUZZLORD_2] = { // Guzzlord-Specs
+    [FRONTIER_MON_GUZZLORD_2] = { // Guzzlord-Specs (id 1012)
         .species = SPECIES_GUZZLORD,
         .moves = {MOVE_DRACO_METEOR, MOVE_DARK_PULSE, MOVE_FIRE_BLAST, MOVE_SLUDGE_BOMB},
         .heldItem = ITEM_CHOICE_SPECS,
@@ -9009,7 +9009,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_NAGANADEL_1] = { // Naganadel-Scarf
+    [FRONTIER_MON_NAGANADEL_1] = { // Naganadel-Scarf (id 1013)
         .species = SPECIES_NAGANADEL,
         .moves = {MOVE_SLUDGE_WAVE, MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_THUNDERBOLT},
         .heldItem = ITEM_CHOICE_SCARF,
@@ -9018,7 +9018,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_NAGANADEL_2] = { // Naganadel-NP
+    [FRONTIER_MON_NAGANADEL_2] = { // Naganadel-NP (id 1014)
         .species = SPECIES_NAGANADEL,
         .moves = {MOVE_SLUDGE_WAVE, MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_NASTY_PLOT},
         .heldItem = ITEM_FOCUS_SASH,
@@ -9027,7 +9027,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_STAKATAKA_1] = { // Stakataka-Defensive
+    [FRONTIER_MON_STAKATAKA_1] = { // Stakataka-Defensive (id 1015)
         .species = SPECIES_STAKATAKA,
         .moves = {MOVE_GYRO_BALL, MOVE_SHADOW_FORCE, MOVE_TOXIC, MOVE_EE_PROTECT},
         .heldItem = ITEM_LEFTOVERS,
@@ -9036,7 +9036,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_STAKATAKA_2] = { // Stakataka-Offensive
+    [FRONTIER_MON_STAKATAKA_2] = { // Stakataka-Offensive (id 1016)
         .species = SPECIES_STAKATAKA,
         .moves = {MOVE_GYRO_BALL, MOVE_SHADOW_FORCE, MOVE_SUPERPOWER, MOVE_TRICK_ROOM},
         .heldItem = ITEM_SHELL_BELL,
@@ -9045,7 +9045,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_NINETALES_PARAFUSE] = { // Ninetales-Parafuse
+    [FRONTIER_MON_NINETALES_PARAFUSE] = { // Ninetales-Parafuse (id 1017)
         .species = SPECIES_NINETALES,
         .moves = {MOVE_THUNDER_WAVE, MOVE_CONFUSE_RAY, MOVE_SUBSTITUTE, MOVE_MOONLIGHT},
         .heldItem = ITEM_LEFTOVERS,
@@ -9054,7 +9054,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_NINETALES_CURSE_BURN] = { // Ninetales-CurseBurn
+    [FRONTIER_MON_NINETALES_CURSE_BURN] = { // Ninetales-CurseBurn (id 1018)
         .species = SPECIES_NINETALES,
         .moves = {MOVE_WILL_O_WISP, MOVE_CURSE, MOVE_SUBSTITUTE, MOVE_MOONLIGHT},
         .heldItem = ITEM_LEFTOVERS,
