@@ -425,7 +425,6 @@ const u16 *GetTextWindowPalette(u8 id)
 const u16 *GetOverworldTextboxPalettePtr(void)
 {
     u32 palette = VarGet(VAR_RYU_THEME_NUMBER);
-
     switch (palette)
     {
         case 0:
