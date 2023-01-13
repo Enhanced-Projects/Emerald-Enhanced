@@ -186,6 +186,7 @@ static const u32 sTutorLearnsets[] =
     [SPECIES_FEAROW]        = TUTOR_LEARNSET(TUTOR(MOVE_DOUBLE_EDGE)
 											| TUTOR(MOVE_METRONOME)
 											| TUTOR(MOVE_TAILWIND)
+											| TUTOR(MOVE_FOUL_PLAY)
 											| TUTOR(MOVE_HEAT_WAVE)
 											| TUTOR(MOVE_ENDURE)),
 
