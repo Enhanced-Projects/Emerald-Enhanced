@@ -232,6 +232,7 @@ static const u8 sHarbingerDescription[] = _("Summons an eclipse");
 static const u8 sGreatwoodDescription[] = _("Super Effective is Neutral.");
 static const u8 sVoodooDescription[] = _("Curses when at half HP.");
 static const u8 sIceworkerDescription[] = _("Powers up Ice moves.");
+static const u8 sPlaguebearerDescription[] = _("Bite moves dmg + infest boost");
 
 const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
 {
@@ -481,6 +482,7 @@ const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_GREATWOOD] = _("Greatwood"),
     [ABILITY_VOODOO] = _("Voodoo"),
     [ABILITY_ICEWORKER] = _("Iceworker"),
+    [ABILITY_PLAGUEBEARER] = _("Plaguebearer"),
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
@@ -730,5 +732,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
     [ABILITY_HARBINGER] = sHarbingerDescription,
     [ABILITY_GREATWOOD] = sGreatwoodDescription,
     [ABILITY_VOODOO] = sVoodooDescription,
-    [ABILITY_ICEWORKER] = sIceworkerDescription
+    [ABILITY_ICEWORKER] = sIceworkerDescription,
+    [ABILITY_PLAGUEBEARER] = sPlaguebearerDescription
 };

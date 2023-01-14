@@ -2387,9 +2387,9 @@ u8 DoBattlerEndTurnEffects(void)
                     }
                     gBattlescriptCurrInstr = BattleScript_WrapTurnDmg;
                     if (GetBattlerHoldEffect(gBattleStruct->wrappedBy[gActiveBattler], TRUE) == HOLD_EFFECT_BINDING_BAND)
-                        gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / (B_BINDING_DAMAGE >= GEN_6) ? 6 : 8;
+                        gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 6;
                     else
-                        gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / (B_BINDING_DAMAGE >= GEN_6) ? 8 : 16;
+                        gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
 
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
@@ -4877,6 +4877,24 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 effect++;
             }
             break;
+        case ABILITY_PLAGUEBEARER:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && (gBattleMoves[gCurrentMove].flags & FLAG_STRONG_JAW_BOOST)
+             && gBattleMons[gBattlerTarget].hp != 0
+             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
+             && !(gBattleMons[gBattlerTarget].status2 & STATUS2_WRAPPED)
+             && !IsAbilityStatusProtected(gBattlerTarget)
+             && (Random() % 2) == 0)
+            {
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_PlaguebearerCausedInfest;
+                gBattleMons[gBattlerTarget].status2 |= STATUS2_WRAPPED;
+                gBattleStruct->wrappedMove[gBattlerTarget] = MOVE_INFESTATION;
+                gBattleStruct->wrappedBy[gBattlerTarget] = gBattlerAttacker;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                effect++;
+            }
+            break;
         case ABILITY_MAGICIAN:
             if ((gBattleMons[gBattlerTarget].item != ITEM_NONE) &&
                 (gBattleMoves[gCurrentMove].type == TYPE_PSYCHIC))
@@ -6918,6 +6936,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     case ABILITY_STRONG_JAW:
         if (gBattleMoves[move].flags & FLAG_STRONG_JAW_BOOST)
            MulModifier(&modifier, UQ_4_12(1.5));
+        break;
+    case ABILITY_PLAGUEBEARER:
+        if (gBattleMoves[move].flags & FLAG_STRONG_JAW_BOOST)
+           MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_MEGA_LAUNCHER:
         if (gBattleMoves[move].flags & FLAG_MEGA_LAUNCHER_BOOST)

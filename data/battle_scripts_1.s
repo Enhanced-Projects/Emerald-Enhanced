@@ -2590,6 +2590,11 @@ BattleScript_MultiHitLoop::
 	jumpifhasnohp BS_TARGET, BattleScript_MultiHitPrintStrings
 	jumpifhalfword CMP_EQUAL, gChosenMove, MOVE_SLEEP_TALK, BattleScript_DoMultiHit
 	jumpifstatus BS_ATTACKER, STATUS1_SLEEP, BattleScript_MultiHitPrintStrings
+	jumpifhalfword CMP_EQUAL, gChosenMove, MOVE_FRENZY_FANG, BattleScript_ResetFrenzyFangStatusByte
+	goto BattleScript_DoMultiHit
+BattleScript_ResetFrenzyFangStatusByte::
+	sethword sMULTIHIT_EFFECT, MOVE_EFFECT_FRENZY_FANG
+	seteffectsecondary
 BattleScript_DoMultiHit::
 	movevaluescleanup
 	copyhword sMOVE_EFFECT, sMULTIHIT_EFFECT
@@ -2742,6 +2747,10 @@ BattleScript_EffectLightScreen::
 BattleScript_EffectTriAttack::
 	setmoveeffect MOVE_EFFECT_TRI_ATTACK
 	goto BattleScript_EffectHit
+
+BattleScript_EffectFrenzyFang::
+	setmoveeffect MOVE_EFFECT_FRENZY_FANG
+	goto BattleScript_EffectMultiHit
 
 BattleScript_EffectRest::
 	attackcanceler
@@ -6855,6 +6864,13 @@ BattleScript_MoveEffectPayDay::
 
 BattleScript_MoveEffectWrap::
 	printfromtable gWrappedStringIds
+	waitmessage 0x40
+	return
+
+BattleScript_PlaguebearerCausedInfest::
+	showabilitypopup BS_ATTACKER
+	seteffectsecondary
+	printstring STRINGID_PLAGUEBEARERINFEST
 	waitmessage 0x40
 	return
 

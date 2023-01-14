@@ -684,6 +684,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_CLING] = _("Cling"),
     [MOVE_OMEN] = _("Omen"),
     [MOVE_SNAP] = _("Snap"),
+    [MOVE_FRENZY_FANG] = _("Frenzy Fang"),
     //GEN 8
     [MOVE_DYNAMAX_CANNON] = _("Dyna Cannon"),
     [MOVE_SNIPE_SHOT] = _("Snipe Shot"),

@@ -703,6 +703,7 @@ gBattleAnims_Moves::
 	.4byte Move_CLING
 	.4byte Move_OMEN
 	.4byte Move_SNAP
+	.4byte Move_FRENZY_FANG
 @@@@@@@@@@@@ GEN 8 @@@@@@@@@@@@
 	.4byte Move_DYNAMAX_CANNON
 	.4byte Move_SNIPE_SHOT
@@ -22421,6 +22422,30 @@ Move_POISON_FANG:
 	waitforvisualfinish
 	createvisualtask AnimTask_BlendColorCycle, 2, 4, 0, 4, 0, 12, RGB(26, 0, 26)
 	call PoisonBubblesEffect
+	waitforvisualfinish
+	end
+
+PoisonBubblesEffectShort:
+	createsprite gPoisonBubbleSpriteTemplate, ANIM_TARGET, 2, 10, 10, 0
+	playsewithpan SE_M_TOXIC, SOUND_PAN_TARGET
+	delay 6
+	createsprite gPoisonBubbleSpriteTemplate, ANIM_TARGET, 2, 20, -20, 0
+	playsewithpan SE_M_TOXIC, SOUND_PAN_TARGET
+	delay 6
+	createsprite gPoisonBubbleSpriteTemplate, ANIM_TARGET, 2, -20, -20, 0
+	playsewithpan SE_M_TOXIC, SOUND_PAN_TARGET
+	return
+
+Move_FRENZY_FANG:
+	loadspritegfx ANIM_TAG_FANG_ATTACK
+	loadspritegfx ANIM_TAG_POISON_BUBBLE
+	playsewithpan SE_M_BITE, SOUND_PAN_TARGET
+	createsprite gFangSpriteTemplate, ANIM_TARGET, 2
+	delay 5
+	createvisualtask AnimTask_ShakeMon, 3, ANIM_TARGET, 3, 0, 10, 1
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendColorCycle, 2, 4, 0, 4, 0, 12, RGB(26, 0, 26)
+	call PoisonBubblesEffectShort
 	waitforvisualfinish
 	end
 

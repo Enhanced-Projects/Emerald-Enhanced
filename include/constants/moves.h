@@ -707,8 +707,9 @@
 #define MOVE_CLING 682
 #define MOVE_OMEN 683
 #define MOVE_SNAP 684
+#define MOVE_FRENZY_FANG 685
 
-#define MOVES_COUNT_GEN7 685
+#define MOVES_COUNT_GEN7 686
 
 
 // Gen 8 moves.

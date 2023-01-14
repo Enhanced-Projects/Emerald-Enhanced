@@ -3138,6 +3138,31 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     SetMoveEffect(FALSE, 0);
                 }
                 break;
+            case MOVE_EFFECT_FRENZY_FANG:
+                if (gBattleMons[gBattlerTarget].status1)
+                {
+                    gBattlescriptCurrInstr++;
+                }
+                else
+                {
+                    if ((Random() % 100) < 30)
+                    {
+                        switch (Random() % 2)
+                        {
+                            case 0:
+                                gBattleScripting.moveEffect = MOVE_EFFECT_POISON;
+                                break;
+                            case 1:
+                                gBattleScripting.moveEffect = MOVE_EFFECT_PARALYSIS;
+                                break;
+                            case 2:
+                                gBattleScripting.moveEffect = MOVE_EFFECT_SLEEP;
+                                break;
+                        }
+                        SetMoveEffect(FALSE, TRUE);
+                    }
+                }
+                break;
             case MOVE_EFFECT_CHARGING:
                 gBattleMons[gEffectBattler].status2 |= STATUS2_MULTIPLETURNS;
                 gLockedMoves[gEffectBattler] = gCurrentMove;
