@@ -21,7 +21,7 @@ script RyuTutorial_Followers {
     closemessage
     msgbox(format("Chat: Your follower will say something."))
     closemessage
-    msgbox(format("Team Up: You choose wether or not followers will join you in battle."))
+    msgbox(format("Team Up: You choose wether or not followers will join you in battle. Followers can only participate in Gym Leader battles when you have 7 or more badges, as well as the elite four, championship, and title defense."))
     closemessage
     msgbox(format("Dismiss: Your follower will return to where they came from, if they can be dismissed. Sometimes followers cannot be dismissed due to quest or story events."))
     closemessage
