@@ -438,8 +438,25 @@ LilycoveCity_ContestLobby_EventScript_LeadToContestHall:: @ 821A670
 	applymovement PLAYER, LilycoveCity_ContestLobby_Movement_PlayerWalkToContestHall
 	applymovement FOLLOWER, LilycoveCity_ContestLobby_Movement_PlayerWalkToContestHall
 	waitmovement 0
+	applymovement FOLLOWER, Common_Movement_FaceUp
+	waitmovement FOLLOWER
+	msgbox LCC_IllWaitHere
+	applymovement FOLLOWER LCC_FollowerWait
+	waitmovement FOLLOWER
+	delay 10
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
 	releaseall
 	return
+
+LCC_IllWaitHere:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'll wait for you out here.\pI'll watch on the big screen!$"
+
+LCC_FollowerWait:
+	walk_left
+	face_right
+	emote_heart
+	step_end
 
 LilycoveCity_ContestLobby_Movement_PlayerWalkToContestHall: @ 821A6E8
 	walk_left
@@ -450,7 +467,7 @@ LilycoveCity_ContestLobby_Movement_PlayerWalkToContestHall: @ 821A6E8
 	walk_up
 	walk_up
 	delay_8
-	set_invisible
+	face_down
 	step_end
 
 LilycoveCity_ContestLobby_Movement_PlayerApproachReceptionist: @ 821A6F2

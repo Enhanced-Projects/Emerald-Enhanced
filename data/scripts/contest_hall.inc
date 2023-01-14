@@ -208,10 +208,6 @@ ContestHall_EventScript_DoContest:: @ 8279F97
 	releaseall
 	call ContestHall_EventScript_GetContestRankStringId
 	call ContestHall_EventScript_GetContestCategory
-	callnative RyuAddFollower
-	applymovement FOLLOWER, RyuContest_SetFollowerAsObserver
-	waitmovement FOLLOWER
-	msgbox RyuContest_FollowerCommentary
 	closemessage
 	call ContestHall_EventScript_ContestGettingStarted
 	call ContestHall_EventScript_ShowContestMons

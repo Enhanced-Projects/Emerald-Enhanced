@@ -78,6 +78,7 @@ ContestHall_EventScript_SetContestObjects:: @ 823B834
 	special LoadLinkContestPlayerPalettes
 	hideobjectat PLAYER, MAP_LITTLEROOT_TOWN
 	call ContestHall_EventScript_CreateAudience
+	removeobject FOLLOWER
 	end
 
 @ There are 8 audience member object events, 7 of which are given random gfx below (the 8th is the Artist)
@@ -419,25 +420,20 @@ ContestHall_EventScript_SetExitWarp:: @ 823BE44
 	case CONTEST_TYPE_LINK, ContestHall_EventScript_SetExitWarpLinkContest
 	return
 
-ContestHall_EventScript_SetExitWarpNormalContest:: @ 823BE84
-	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 5
-	waitstate
-	end
-
 ContestHall_EventScript_SetExitWarpSuperContest:: @ 823BE8E
-	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 5
-	waitstate
-	end
-
 ContestHall_EventScript_SetExitWarpHyperContest:: @ 823BE98
+ContestHall_EventScript_SetExitWarpNormalContest:: @ 823BE84
+ContestHall_EventScript_SetExitWarpMasterContest:: @ 823BEA2
+	goto_if_set FLAG_RYU_HAS_FOLLOWER LCC_SetExitWarpFollower
 	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 5
 	waitstate
 	end
 
-ContestHall_EventScript_SetExitWarpMasterContest:: @ 823BEA2
-	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 14, 5
+LCC_SetExitWarpFollower:
+	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 9, 3
 	waitstate
 	end
+
 
 ContestHall_EventScript_SetExitWarpLinkContest:: @ 823BEAC
 	warp MAP_LILYCOVE_CITY_CONTEST_LOBBY, 255, 15, 5
