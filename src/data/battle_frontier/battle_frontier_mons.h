@@ -1107,14 +1107,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_LINOONE_1] = { // Linoone-StompingTantrum (ID: 123)
+    [FRONTIER_MON_LINOONE_1] = { // Linoone-Offensive (ID: 221)
         .species = SPECIES_LINOONE,
-        .moves = {MOVE_EXTREME_SPEED, MOVE_SHADOW_CLAW, MOVE_STOMPING_TANTRUM, MOVE_BELLY_DRUM},
-        .heldItem = ITEM_FIGY_BERRY,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .moves = {MOVE_RETURN, MOVE_FLAIL, MOVE_THROAT_CHOP, MOVE_SUBSTITUTE},
+        .heldItem = ITEM_LIECHI_BERRY,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
-        .ivs = 29,
-        .ability = 1
+        .ivs = 31,
+        .ability = 2
     },
     [FRONTIER_MON_CASTFORM_1] = { // Castform-ExBelt (ID: 124)
         .species = SPECIES_CASTFORM,
@@ -1989,14 +1989,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_LINOONE_2] = { // Linoone-SeedBomb (ID: 221)
+    [FRONTIER_MON_LINOONE_2] = { // Linoone-BatonPass (ID: 221)
         .species = SPECIES_LINOONE,
-        .moves = {MOVE_EXTREME_SPEED, MOVE_SEED_BOMB, MOVE_SHADOW_CLAW, MOVE_BELLY_DRUM},
-        .heldItem = ITEM_FIGY_BERRY,
+        .moves = {MOVE_FLAIL, MOVE_SUBSTITUTE, MOVE_EE_PROTECT, MOVE_BATON_PASS},
+        .heldItem = ITEM_LIECHI_BERRY,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
-        .ivs = 29,
-        .ability = 1
+        .ivs = 31,
+        .ability = 2
     },
     [FRONTIER_MON_CASTFORM_2] = { // Castform-Rain (ID: 222)
         .species = SPECIES_CASTFORM,

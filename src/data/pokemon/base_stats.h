@@ -6770,10 +6770,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_ZIGZAGOON] =
     {
-        .baseHP        = 38,
-        .baseAttack    = 30,
+        .baseHP        = 48,
+        .baseAttack    = 50,
         .baseDefense   = 41,
-        .baseSpeed     = 60,
+        .baseSpeed     = 80,
         .baseSpAttack  = 30,
         .baseSpDefense = 41,
         .type1 = TYPE_NORMAL,
@@ -6791,19 +6791,19 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         .abilities = {ABILITY_PICKUP, ABILITY_GLUTTONY},
-        .abilityHidden = ABILITY_QUICK_FEET,
+        .abilityHidden = ABILITY_SPEED_BOOST,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BROWN,
     },
 
     [SPECIES_LINOONE] =
     {
-        .baseHP        = 78,
-        .baseAttack    = 70,
-        .baseDefense   = 61,
-        .baseSpeed     = 100,
+        .baseHP        = 98,
+        .baseAttack    = 105,
+        .baseDefense   = 71,
+        .baseSpeed     = 115,
         .baseSpAttack  = 50,
-        .baseSpDefense = 61,
+        .baseSpDefense = 71,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_NORMAL,
         .catchRate = 90,
@@ -6819,7 +6819,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         .abilities = {ABILITY_PICKUP, ABILITY_GLUTTONY},
-        .abilityHidden = ABILITY_QUICK_FEET,
+        .abilityHidden = ABILITY_SPEED_BOOST,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_WHITE,
     },
@@ -7115,12 +7115,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_TAILLOW] =
     {
-        .baseHP        = 40,
-        .baseAttack    = 55,
-        .baseDefense   = 30,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 30,
-        .baseSpDefense = 30,
+        .baseHP        = 45,
+        .baseAttack    = 65,
+        .baseDefense   = 45,
+        .baseSpeed     = 100,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 40,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FLYING,
         .catchRate = 200,
@@ -7140,12 +7140,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SWELLOW] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 85,
-        .baseDefense   = 60,
+        .baseHP        = 70,
+        .baseAttack    = 105,
+        .baseDefense   = 85,
         .baseSpeed     = 125,
-        .baseSpAttack  = 75,
-        .baseSpDefense = 50,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 70,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FLYING,
         .catchRate = 45,
