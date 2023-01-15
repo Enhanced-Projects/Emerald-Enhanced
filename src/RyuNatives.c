@@ -2893,6 +2893,6 @@ void RyuTestShinyRoll(void)
         average += rolls;//shiny found, add rolls to average to be calculated later
         rolls = 0;
     }//1000 shines found, time to calculate average
-    average /= 100;
+    average /= 1000;
     mgba_printf(LOGINFO, "After 1000 shinies at modified shiny rate,\nthe average encounters was %d", average);
 }
