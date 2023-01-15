@@ -2858,3 +2858,41 @@ void RyuSetupMiningRichness(void)
         rdmcp = 0xFFFF; //60% chance the map isn't mineable at all.
     VarSet(VAR_RYU_MINING_RICHNESS, rdmcp);
 }
+
+#include "dexnav.h"
+#include "wild_encounter.h"
+//it is recommended to Disable BGM when running these tests, they take minutes and up to an hour.
+//disabled bgm is a nontrivial decrease to that time.
+//run this with callnative.
+//If you wnt to test dexnav rates, set searchLevels[species] to 100 for each entry in the array,
+//dexnav chain to 100, and set the flag FLAG_SYS_DEXNAV_SEARCH.
+//if you want to test base shiny rate, clear that flag and remvoe any shiny charm you have in inventory.
+//you can test with shiny charm and dexnav.
+//ORIGINAL RESULTS after 1000 shinies:
+//max dexnav + shiny charm: 1/437
+//shiny charm only: 1/1350
+//base rate: 1/3824
+void RyuTestShinyRoll(void)
+{
+    int i;
+    int rolls = 0;
+    int shinycount = 0;
+    int average = 0;
+    int temp = 0;
+    mgba_open();
+    for (i = 0;i < 1000;i++)//roll 100 shinies
+    {
+        do {
+            ZeroMonData(&gEnemyParty[0]);
+            CreateWildMon(SPECIES_RALTS, 20);
+            rolls++;
+        } while (IsMonShiny(&gEnemyParty[0]) == FALSE);//not shiny, delete and try again
+        shinycount++;
+        temp = (shinycount / 10);
+        mgba_printf(LOGINFO, "Shiny after %d rolls. %d pct total progress.", rolls, temp);
+        average += rolls;//shiny found, add rolls to average to be calculated later
+        rolls = 0;
+    }//1000 shines found, time to calculate average
+    average /= 100;
+    mgba_printf(LOGINFO, "After 1000 shinies at modified shiny rate,\nthe average encounters was %d", average);
+}
