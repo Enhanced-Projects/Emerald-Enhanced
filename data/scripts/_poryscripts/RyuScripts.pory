@@ -1245,6 +1245,18 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	buffernumberstring(0, VAR_RYU_PARTNER_COUNT)
+	msgbox(utilityText)
+	closemessage
+	if (flag(FLAG_RYU_HAREM_EVENT_COMPLETED) == TRUE){
+		msgbox("harem complete")
+	}
+	if (flag(FLAG_RYU_HAREM_EVENT_STARTED) == TRUE){
+		msgbox("harem started")
+	}
+	if (flag(FLAG_RYU_HIDE_HAREM_EVENT_NPCS) == TRUE){
+		msgbox("harem hidden")
+	}
 	release
 	end
 }

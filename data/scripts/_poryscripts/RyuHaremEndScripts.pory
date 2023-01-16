@@ -22,6 +22,7 @@ script Ryu_HaremEvent {
 		setflag(FLAG_RYU_HIDE_HAREM_EVENT_NPCS)
 		goto(ryu_end)
 	}
+	clearflag(FLAG_RYU_HAREM_EVENT_STARTED)
 	fadenewbgm(MUS_THANKFOR)
 	call(RyuRivalHaremIntro)
 	if (flag(FLAG_RYU_DS_SHELLY_PARTNERS) == TRUE) {
@@ -223,6 +224,8 @@ script RyuHaremEventRivalOutro {//finish harem event
 		turnobject(BRENDAN, DIR_EAST)
 	}
 	msgbox(format("So the thing we got for you is a Shiny Charm! It's an irreplacable artifact that has a mysterious blessing of luck! We all lucked out by meeting you, now you get some good luck too!"))
+	clearflag(FLAG_RYU_HAREM_EVENT_STARTED)
+	setflag(FLAG_RYU_HAREM_EVENT_COMPLETED)
 	closemessage
 	return
 }
