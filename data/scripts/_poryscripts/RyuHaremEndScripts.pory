@@ -226,6 +226,8 @@ script RyuHaremEventRivalOutro {//finish harem event
 	msgbox(format("So the thing we got for you is a Shiny Charm! It's an irreplacable artifact that has a mysterious blessing of luck! We all lucked out by meeting you, now you get some good luck too!"))
 	clearflag(FLAG_RYU_HAREM_EVENT_STARTED)
 	setflag(FLAG_RYU_HAREM_EVENT_COMPLETED)
+	setflag(FLAG_RYU_HIDE_HAREM_EVENT_DAWN)
+	setflag(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN)
 	closemessage
 	return
 }
