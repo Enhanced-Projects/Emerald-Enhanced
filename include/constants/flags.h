@@ -804,7 +804,7 @@
 #define FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION                  0x2EB
 #define FLAG_HIDE_LILYCOVE_HARBOR_EVENT_TICKET_TAKER                0x2EC
 #define FLAG_RYU_HIDE_LAVARIDGE_RIVAL                               0x2ED
-#define FLAG_UNUSED_0x2EE                                           0x2EE
+#define FLAG_RYU_SHOWED_GAME_OVER                                   0x2EE
 #define FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY                           0x2EF
 #define FLAG_RYU_MAGMA_SOOTOPOLIS_EVENT                             0x2F0
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN              0x2F1

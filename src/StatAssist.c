@@ -250,8 +250,8 @@ static void Menu_VBlankCB(void)
 }
 extern const struct MenuAction MultichoiceList_126[];
 
-static EWRAM_DATA u8 specialPreviewSpriteID1 = 0xFF;
-static EWRAM_DATA u8 specialPreviewSpriteID2 = 0xFF;
+static EWRAM_DATA u8 specialPreviewSpriteID1 = 0x0;
+static EWRAM_DATA u8 specialPreviewSpriteID2 = 0x1;
 
 void RyuDrawPreviewSprite(void)
 {
@@ -307,6 +307,7 @@ void FillContestMovesData(void)
 static bool8 Menu_DoGfxSetup(void)
 {
     u8 taskId;
+    int b;
     switch (gMain.state)
     {
     case 0:
@@ -327,6 +328,8 @@ static bool8 Menu_DoGfxSetup(void)
         if (Menu_InitBgs())
         {
             sMenuDataPtr->gfxLoadState = 0;
+            for (b = 0;b<MAX_SPRITES;b++)
+                DestroySpriteAndFreeResources(&gSprites[b]);
             gMain.state++;
         }
         else
@@ -345,7 +348,7 @@ static bool8 Menu_DoGfxSetup(void)
         break;
     case 5:
         RyuDrawPreviewSprite();
-        RyuDrawCaughtBall();
+        //RyuDrawCaughtBall();
         FillSummaryData();
         taskId = CreateTask(Task_MenuWaitFadeIn, 0);
         BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
@@ -938,6 +941,7 @@ void LoadSelectedPage(void)
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
 {
+    u8 pcount = ((CalculatePlayerPartyCount()) - 1 );
     if (JOY_NEW(B_BUTTON))
     {
         PlaySE(3);
@@ -947,7 +951,7 @@ static void Task_MenuMain(u8 taskId)
     else if (JOY_NEW(DPAD_DOWN))
     {
         gSpecialVar_0x8001++;
-        if (gSpecialVar_0x8001 > 5)
+        if (gSpecialVar_0x8001 > pcount)
             gSpecialVar_0x8001 = 0;
         LoadSelectedPage();
         RyuDrawPreviewSprite();
@@ -956,8 +960,8 @@ static void Task_MenuMain(u8 taskId)
     else if (JOY_NEW(DPAD_UP))
     {   
         gSpecialVar_0x8001--;
-        if (gSpecialVar_0x8001 > 5)
-            gSpecialVar_0x8001 = 5;
+        if (gSpecialVar_0x8001 > pcount)
+            gSpecialVar_0x8001 = pcount;
         LoadSelectedPage();
         RyuDrawPreviewSprite();
         RyuDrawCaughtBall();
