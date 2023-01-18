@@ -3145,7 +3145,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 else
                 {
-                    if ((Random() % 100) < 30)
+                    if ((Random() % 100) < 20)
                     {
                         switch (Random() % 2)
                         {
