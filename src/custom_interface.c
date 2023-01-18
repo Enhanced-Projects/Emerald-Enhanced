@@ -43,11 +43,11 @@ const u16 RoyalPurpleRGBTheme[16] = {
     RGB(9, 14, 20)
 };
 
-const u16 GlacierRGBTheme[16] = {
+const u16 SynthwaveRGBTheme[16] = {
     RGB(14, 25, 20),
+    RGB(6, 0, 11),
     RGB(31, 31, 31),
-    RGB(0, 10, 29),
-    RGB(0, 28, 31),
+    RGB(10, 10, 12),
     RGB(15, 2, 9),
     RGB(31, 22, 28),
     RGB(4, 19, 1),
@@ -55,10 +55,10 @@ const u16 GlacierRGBTheme[16] = {
     RGB(5, 9, 23),
     RGB(25, 27, 30),
     RGB(31, 31, 31),
-    RGB(31, 31, 31),
-    RGB(31, 31, 31),
-    RGB(0, 21, 31),
-    RGB(11, 27, 31),
+    RGB(6, 0, 11),
+    RGB(6, 0, 11),
+    RGB(12, 0, 22),
+    RGB(27, 0, 31),
     RGB(9, 14, 20),
 };
 
@@ -92,7 +92,7 @@ const u16 CustomInterfacePaletteSlots[] = {
 const u16 * const UserPresetThemes[] = {
     BlueSteelRGBTheme,
     RoyalPurpleRGBTheme,
-    GlacierRGBTheme,
+    SynthwaveRGBTheme,
     MochaRGBTheme,
 };
 

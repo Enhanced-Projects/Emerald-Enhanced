@@ -16,7 +16,7 @@
 
 #define PRESETTHEME_BLUESTEEL       0
 #define PRESETTHEME_ROYALPURPLE     1
-#define PRESETTHEME_GLACIER         2
+#define PRESETTHEME_SYNTHWAVE         2
 #define PRESETTHEME_MOCHA           3
 #define PRESETTHEME_NONE            4
 

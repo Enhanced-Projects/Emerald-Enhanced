@@ -2251,7 +2251,7 @@ const u8 gText_RyuBallMarketLabel[] = _("Ball Market");
 const u8* const gText_PresetThemeNames[] = {
     (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Blue Steel"),
     (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Royal Purple"),
-    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Glacier"),
+    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Synthwave"),
     (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mocha"),
     (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None"),
 };
