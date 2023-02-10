@@ -1521,22 +1521,22 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_HUNTAIL_1] = { // Huntail-3attacks (ID: 169)
+    [FRONTIER_MON_HUNTAIL_1] = { // Huntail-Bulky (ID: 169)
         .species = SPECIES_HUNTAIL,
-        .moves = {MOVE_WATERFALL, MOVE_ICE_FANG, MOVE_SUCKER_PUNCH, MOVE_SHELL_SMASH},
-        .heldItem = ITEM_WHITE_HERB,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .moves = {MOVE_AQUA_JET, MOVE_PSYCHIC_FANGS, MOVE_ICE_FANG, MOVE_CRUNCH},
+        .heldItem = ITEM_DEEP_SEA_TOOTH,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
-    [FRONTIER_MON_GOREBYSS_1] = { // Gorebyss-3attacks (ID: 170)
+    [FRONTIER_MON_GOREBYSS_1] = { // Gorebyss-CM (ID: 170)
         .species = SPECIES_GOREBYSS,
-        .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_SHELL_SMASH},
-        .heldItem = ITEM_WHITE_HERB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_MODEST,
-        .ivs = 28,
+        .moves = {MOVE_SCALD, MOVE_DRAINING_KISS, MOVE_CALM_MIND, MOVE_AQUA_RING},
+        .heldItem = ITEM_DEEP_SEA_SCALE,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
+        .ivs = 31,
         .ability = 0
     },
     [FRONTIER_MON_RELICANTH_1] = { // Relicanth-Band (ID: 171)
@@ -2403,21 +2403,21 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_HUNTAIL_2] = { // Huntail-SmashPass (ID: 267)
+    [FRONTIER_MON_HUNTAIL_2] = { // Huntail-ShellSmash (ID: 267)
         .species = SPECIES_HUNTAIL,
-        .moves = {MOVE_WATERFALL, MOVE_ICE_FANG, MOVE_BATON_PASS, MOVE_SHELL_SMASH},
-        .heldItem = ITEM_WHITE_HERB,
+        .moves = {MOVE_PSYCHIC_FANGS, MOVE_ICE_FANG, MOVE_AQUA_JET, MOVE_SHELL_SMASH},
+        .heldItem = ITEM_DEEP_SEA_TOOTH,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
-    [FRONTIER_MON_GOREBYSS_2] = { // Gorebyss-SmashPass (ID: 268)
+    [FRONTIER_MON_GOREBYSS_2] = { // Gorebyss-ShellSmash (ID: 268)
         .species = SPECIES_GOREBYSS,
-        .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_BATON_PASS, MOVE_SHELL_SMASH},
-        .heldItem = ITEM_WHITE_HERB,
+        .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_DRAINING_KISS, MOVE_SHELL_SMASH},
+        .heldItem = ITEM_DEEP_SEA_SCALE,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_MODEST,
+        .nature = NATURE_TIMID,
         .ivs = 31,
         .ability = 0
     },

@@ -169,6 +169,10 @@ Route119_EventScript_TrainerTipsDecoration:: @ 81F49E3
 	msgbox Route119_Text_TrainerTipsDecoration, MSGBOX_SIGN
 	end
 
+Route119_EventScript_ImpossibleBall::
+	msgbox Route119_Text_FoundDisappointment, MSGBOX_SIGN
+	end
+
 Route119_Text_StayAwayFromWeatherInstitute: @ 81F50EB
 	.string "We're standing lookout here.\p"
 	.string "Hey, you! Stay away from the Weather\n"
@@ -215,6 +219,9 @@ Route119_Text_TrainerTipsDecoration: @ 81F5339
 	.string "your very own Secret Base exactly the\l"
 	.string "way you want.$"
 
+Route119_Text_FoundDisappointment:
+	.string "{PLAYER} found one Disappointment!\p"
+	.string "Your bag is full of Disappointment…$"
 @==================================================================================================RIVAL ENCOUNTER
 
 r119_RivalEncounterNorth::
