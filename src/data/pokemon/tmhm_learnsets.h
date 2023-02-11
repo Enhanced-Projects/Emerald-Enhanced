@@ -9162,6 +9162,7 @@ const u32 gTMHMLearnsets[][2] =
 
     [SPECIES_GOREBYSS]    = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
 											| TMHM(TM14_BLIZZARD)
+											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM58_DIVE)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)
