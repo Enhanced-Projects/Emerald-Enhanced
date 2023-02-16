@@ -42,9 +42,9 @@ LRT_FollowerTest::
 	setflag FLAG_RYU_RECRUITED_MINNIE
 	ach give ACH_NEW_REGION_WHO_DIS
 	removeobject 4
-	createfollower FOLLOWER_MINNIE, RyuFollowerSelectNPCScript, 1
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
+	createfollower FOLLOWER_MINNIE, RyuFollowerSelectNPCScript, 1
 	release
 	end
 
