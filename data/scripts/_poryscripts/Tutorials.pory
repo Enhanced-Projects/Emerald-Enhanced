@@ -7,6 +7,7 @@ script RyuTutorial_Followers {
     fadescreen(FADE_TO_BLACK)
     msgbox("Beginning Followers tutorial...")
     closemessage
+    clearfullscreenimage
     drawfullscreenimage(TUTORIALFOLLOWER1)
     msgbox(format("To recruit a follower to your side, you only need to talk to them. In most cases, they will first ask if you want to stay the night."))
     clearfullscreenimage
