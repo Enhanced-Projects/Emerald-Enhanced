@@ -13,7 +13,7 @@ RI_ChooseStartLocation:
 	.string "Choose a starting location.$"
 
 NatureMsg:
-	.string "{STR_VAR_1}'s nature is {STR_VAR_2}.$"
+	.string "{STR_VAR_1}'s nature is {STR_VAR_2}.\n{STR_VAR_1}'s gender is {STR_VAR_3}.$"
 
 ConfrimChoiceMsg:
 	.string "Are you happy with\nyour selection?$"
@@ -606,20 +606,25 @@ text SL_6 {
 }
 
 script RyuScript_DoIntroWarp {
-	setvar(VAR_LITTLEROOT_INTRO_STATE, 11)
-	switch (var(VAR_0x8002)){
-		case 0:
-			warpsilent(MAP_LITTLEROOT_TOWN, 255, 10, 8)
-		case 1:
-			warpsilent(MAP_MAUVILLE_CITY, 255, 22, 6)
-		case 2:
-			warpsilent(MAP_LILYCOVE_CITY, 255, 37, 25)
-		case 3:
-			warpsilent(MAP_DEWFORD_TOWN, 255, 23, 4)
-		case 4:
-			warpsilent(MAP_RUSTBORO_CITY, 255, 27, 35)
-		case 5:
-			warpsilent(MAP_FALLARBOR_TOWN, 255, 8, 6)
+	if (flag(FLAG_RYU_FRONTIER_MODE) == TRUE){
+		warpsilent(MAP_BATTLE_FRONTIER_RECEPTION_GATE, 255, 4, 4)
+	}
+	else{
+		setvar(VAR_LITTLEROOT_INTRO_STATE, 11)
+		switch (var(VAR_0x8002)){
+			case 0:
+				warpsilent(MAP_LITTLEROOT_TOWN, 255, 10, 8)
+			case 1:
+				warpsilent(MAP_MAUVILLE_CITY, 255, 22, 6)
+			case 2:
+				warpsilent(MAP_LILYCOVE_CITY, 255, 37, 25)
+			case 3:
+				warpsilent(MAP_DEWFORD_TOWN, 255, 23, 4)
+			case 4:
+				warpsilent(MAP_RUSTBORO_CITY, 255, 27, 35)
+			case 5:
+				warpsilent(MAP_FALLARBOR_TOWN, 255, 8, 6)
+		}
 	}
 	waitstate
 }

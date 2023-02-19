@@ -1450,13 +1450,27 @@ bool8 RyuFillStatsBuffers(void)
 }
 
 extern const u8 *const gNatureNamePointers[NUM_NATURES];
+extern const u8 gText_BirchBoy[];
+extern const u8 gText_BirchGirl[];
 void RyuBufferMonZeroNature(void)
 {
     u8 nature = GetNature(&gPlayerParty[0]);
     u8 nick = (GetMonData(&gPlayerParty[0], MON_DATA_NICKNAME, gStringVar1));
     StringCopy(gStringVar2, gNatureNamePointers[nature]);
-}
+    switch (GetMonGender(&gPlayerParty[0]))
+    {
+        case MON_MALE:
+            StringCopy(gStringVar3, gText_BirchBoy);
+        break;
+        case MON_FEMALE:
+            StringCopy(gStringVar3, gText_BirchGirl);
+        break;
+        case MON_GENDERLESS:
+            StringCopy(gStringVar3, ((const u8[])_("Unknown")));
+        break;
+    }
 
+}
 //FULL_COLOR
 void RyuSetUpSaveBlockStuff(void)
 {
