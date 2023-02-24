@@ -1276,10 +1276,14 @@ script RyuScript_EndChallengeMode{
     setflag(FLAG_RYU_LIMBO)
     lockall
     setflag(FLAG_RYU_WAYSTONE_DISABLED)
-    msgbox(format("Welcome to Limbo. You have failed your Challenge or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game +."))
+    msgbox(format("Welcome to Limbo. You have failed your Challenge or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game Plus if your prestige is higher than zero."))
     closemessage
     msgbox(format("Please wait while we check some things, this might take a few seconds."))
-	setflag(FLAG_SYS_GAME_CLEAR)
+	if (var(VAR_RYU_NGPLUS_COUNT) > 0) {	
+		setflag(FLAG_SYS_GAME_CLEAR)
+	} else {
+		clearflag(FLAG_SYS_GAME_CLEAR)
+	}
     callnative(RyuForceSaveTheGame)
     closemessage
     clearfullscreenimage
