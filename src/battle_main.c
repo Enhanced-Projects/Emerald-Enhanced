@@ -5147,7 +5147,7 @@ static void ReturnFromBattleToOverworld(void)
             SetRoamerInactive();
     }
 
-    if (VarGet(VAR_LITTLEROOT_INTRO_STATE) == 10)//player already finished tutorial
+    if (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)//player already finished tutorial
         GiveAchievement(ACH_ENHANCED_BATTLE);
 
     if ((RyuCheckForLegendary(gBattleMons[gBattlerTarget].species) == TRUE) && (gLastUsedItem == ITEM_BEAST_BALL) && (gBattleOutcome == B_OUTCOME_CAUGHT))
