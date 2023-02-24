@@ -448,23 +448,23 @@ LRT_Story2:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Huh? How'd I...?$"
 
 LRT_Story3:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana...you brought me here?\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Leaf...you brought me here?\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\p"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}C'mon, say something. What\n"
 	.string "happened back there?\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}I...\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Seeing her struggling to speak,\n"
 	.string " {PLAYER} places his hand on hers.)\p"
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Please Lana, you can talk to me. I\n"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Please Leaf, you can talk to me. I\n"
 	.string "want to understand you.\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Still...? Even after everything\n"
 	.string "I've done? Why...?\p"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Simple...to me, you're no nobody.\p"
 	.string "You're somebody special...you're\n"
-	.string "Lana.\p"
+	.string "Leaf.\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh {PLAYER}...\p"
 	.string "... ... ... ...!\p"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Tears begin to stream down Lana's\n"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Tears begin to stream down Leaf's\n"
 	.string " face...)\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}All I wanted...was to find myself.\p"
 	.string "To actually be someone...\p"
@@ -506,7 +506,7 @@ LRT_Story3:
 	.string "continue... I- $"
 
 LRT_PlayerKiss:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} kisses Lana.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} kisses Leaf.)$"
 
 
 LRT_Story4:
@@ -531,7 +531,7 @@ LRT_Story6:
 	.string "my chance to do a number on you!\p"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Ooh...any chance that number is\n"
 	.string "one less than 70?\p"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana's face immediately reddens\n"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf's face immediately reddens\n"
 	.string " at the remark.)\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}H-Hey now, don't push it, mister!\p"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perish the thought...\p"

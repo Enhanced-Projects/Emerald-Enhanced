@@ -74,7 +74,7 @@ void RyuDebug_ShowActiveFollower (void)
                 DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")), 0);
                 break;
             case FOLLOWER_LEAF:
-                DebugPrint(((const u8[]) _("Lana: -10% damage from FIR/WTR/GRS")), 0);
+                DebugPrint(((const u8[]) _("Leaf: -10% damage from FIR/WTR/GRS")), 0);
                 break;
             case FOLLOWER_COURTNEY:
                 DebugPrint(((const u8[]) _("Courtney: 10% DRK/FIR dmg boost.")), 0);

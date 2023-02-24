@@ -48,7 +48,7 @@ SC_PC_LanaIntro::
 	end
 	
 SC_PC_Nurse1:
-    .string "Nurse: Okay, Lana, dear, here are\n"
+    .string "Nurse: Okay, Leaf, dear, here are\n"
     .string "your Pokémon back. Have a nice day!$"
 
 SC_PC_LanaEmote:

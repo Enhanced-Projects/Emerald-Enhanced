@@ -182,7 +182,7 @@ AT1_PlayerFollow:
 	step_end
 
 AT1_Story1:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yo, Lana, hold up!\nWhat's the deal? Why're you doing\lall of this?$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yo, Leaf, hold up!\nWhat's the deal? Why're you doing\lall of this?$"
 
 AT1_Story2:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Let...go!$"
@@ -197,16 +197,16 @@ AT1_Story23:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Who told you that?\p{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...$"
 
 AT1_Story3:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}C'mon Lana...talk to me.$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}C'mon Leaf...talk to me.$"
 
 AT1_Story4:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana, don't!$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Leaf, don't!$"
 	
 AT1_Story5:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Strong...!$"
 	
 AT1_Story6:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana, stop! You're gonna get hurt!\p{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\pGo!$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Leaf, stop! You're gonna get hurt!\p{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\pGo!$"
 	
 AT1_Story7:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf sends out another Pokémon,\n only for it to be defeated moments\l later.)$"

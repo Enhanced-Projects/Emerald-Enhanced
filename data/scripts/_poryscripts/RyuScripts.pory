@@ -237,7 +237,7 @@ Ryu_PlayerCalledBrendan:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Brendan...\n... ... ... ... ... ...$"
 
 Ryu_PlayerCalledLana:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Lana...\n... ... ... ... ... ...$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Leaf...\n... ... ... ... ... ...$"
 
 Ryu_PlayerCalledLanette:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Lanette...\n... ... ... ... ... ...$"

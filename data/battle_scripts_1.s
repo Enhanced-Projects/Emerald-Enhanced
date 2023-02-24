@@ -5111,6 +5111,7 @@ BattleScript_FaintTarget2x::
 	tryactivatesoulheart
 	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
+	tryactivatefellstinger BS_ATTACKER
 	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
@@ -5124,6 +5125,7 @@ BattleScript_FaintTarget4x::
 	tryactivatesoulheart
 	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
+	tryactivatefellstinger BS_ATTACKER
 	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
@@ -5137,6 +5139,7 @@ BattleScript_FaintTarget10x::
 	tryactivatesoulheart
 	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
+	tryactivatefellstinger BS_ATTACKER
 	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
@@ -5151,6 +5154,7 @@ BattleScript_FaintTarget20x::
 	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
 	tryactivatebeastboost BS_ATTACKER
+	tryactivatefellstinger BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -5163,6 +5167,7 @@ BattleScript_FaintTarget50x::
 	tryactivatesoulheart
 	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
+	tryactivatefellstinger BS_ATTACKER
 	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
@@ -5175,6 +5180,7 @@ BattleScript_NN_FaintTarget::
 	cleareffectsonfaint BS_TARGET
 	tryactivatesoulheart
 	tryactivatereceiver BS_TARGET
+	tryactivatefellstinger BS_ATTACKER
 	tryactivatemoxie BS_ATTACKER
 	tryactivatebeastboost BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET

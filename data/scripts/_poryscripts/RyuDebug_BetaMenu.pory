@@ -308,7 +308,7 @@ text RDBM_ShowSaveFileOriginalVersion{
 
 text RDBM_DisplayQuestVarsMsg{
 	"Magma: {STR_VAR_1}, DevonM: {STR_VAR_2}, DevonS: {STR_VAR_3}\n"
-	"Lana: {RYU_STR_1}, Lanette: {RYU_STR_2} Aqua: {RYU_STR_3}\l"
+	"Leaf: {RYU_STR_1}, Lanette: {RYU_STR_2} Aqua: {RYU_STR_3}\l"
     "Nurse: {RYU_STR_4}$"
 }
 

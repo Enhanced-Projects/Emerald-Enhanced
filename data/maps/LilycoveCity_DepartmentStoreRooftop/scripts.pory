@@ -318,7 +318,7 @@ LCC_PreventPlayerExitLanaScene::
 	end
 
 LCC_DoLanaEvent:
-	.string "Lana's waiting for you.$"
+	.string "Leaf's waiting for you.$"
 
 	
 	
@@ -326,13 +326,13 @@ LCC_Story1:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}This is it...I'm...$"
 	
 LCC_Story2:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana!$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Leaf!$"
 	
 LCC_Story3:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}!?$"
 	
 LCC_Story4:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}You shouldn't be here!\pYou shouldn't care!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Please, Lana...don't do this!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You shouldn't be here!\pYou shouldn't care!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Please, Leaf...don't do this!$"
 	
 LCC_Story5:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Huh?\p... ... ... ...\p{COLOR LIGHT_RED}{SHADOW RED}It's no use...\nDon't try to stop me!$"
@@ -348,12 +348,12 @@ LCC_Story7:
 	.string "belong...not in Kanto, not here...\pOr anywhere else!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Please...$"
 	
 LCC_Story8:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf sees {PLAYER} crying...)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana...don't go...I don't know\nwhat I'd do without you. You might\lthink it makes no difference, but\pit's not that simple...\p"
-	.string "It's not like I can turn my\nrelationship with you off\llike a light switch,\pand I wouldn't want to anyway.\pIf you left...I'd never forgive\nmyself...it'd haunt me until the\lday I die.\pLana...you belong in my life.$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Leaf sees {PLAYER} crying...)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Leaf...don't go...I don't know\nwhat I'd do without you. You might\lthink it makes no difference, but\pit's not that simple...\p"
+	.string "It's not like I can turn my\nrelationship with you off\llike a light switch,\pand I wouldn't want to anyway.\pIf you left...I'd never forgive\nmyself...it'd haunt me until the\lday I die.\pLeaf...you belong in my life.$"
 
 LCC_Story9:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Do you...truly...truly mean that?\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Of course I do! Why else would I\ngo through such great lengths to\lstop you!?\p"
-	.string "Look, you even made an adult\ncry!\p{COLOR LIGHT_RED}{SHADOW RED}Haha...I guess I did...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Tears flow down Lana's face, and\n"
+	.string "Look, you even made an adult\ncry!\p{COLOR LIGHT_RED}{SHADOW RED}Haha...I guess I did...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Tears flow down Leaf's face, and\n"
 	.string " the two embrace each other in a\l long, drawn-out hug...)\p{COLOR LIGHT_RED}{SHADOW RED}Thank you, {PLAYER}...thank you...$"
 	
 LCL_Story1:
