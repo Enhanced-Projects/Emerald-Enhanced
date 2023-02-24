@@ -428,6 +428,7 @@ SetClockStage1:: @ 8292849
 GameIntroSequencePart2::
 	lock
 	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
+	setvar VAR_LITTLEROOT_INTRO_STATE, 10
 	ach give ACH_WHOLE_NEW_WORLD
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
@@ -438,7 +439,6 @@ GameIntroSequencePart2::
 	msgbox GI_GoSeeRivalMaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
-	setvar VAR_LITTLEROOT_INTRO_STATE, 10
 	releaseall
 	end
 	
@@ -447,7 +447,6 @@ GameIntroFemalePart2::
 	msgbox GI_GoSeeRivalFemaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
-	setvar VAR_LITTLEROOT_INTRO_STATE, 10
 	releaseall
 	end
 	

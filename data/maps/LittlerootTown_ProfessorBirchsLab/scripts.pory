@@ -343,7 +343,7 @@ script RyuChallengeQuery {
 	if (!(var(VAR_RESULT) == 0)) {
 		goto(RyuChallengeFailedRequisite4)
 	}
-	if (!(var(VAR_LITTLEROOT_INTRO_STATE) == 10)) {
+	if (!(var(VAR_LITTLEROOT_INTRO_STATE) >= 10)) {
 		goto(RyuChallengeFailedRequisite5)
 	}
 	specialvar(VAR_RESULT, CheckValidMonsForSpecialChallenge)
