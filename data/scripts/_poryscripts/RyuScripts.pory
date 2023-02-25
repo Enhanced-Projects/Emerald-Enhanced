@@ -1246,8 +1246,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	buffernumberstring(0, VAR_LITTLEROOT_INTRO_STATE)
-	msgbox("Var is {STR_VAR_1}")
 	release
 	end
 }

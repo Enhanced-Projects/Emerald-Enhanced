@@ -419,7 +419,6 @@ RF_SetupNurseSpawnEvent:: @Generates a nurse NPC to interact with.
 	applymovement PLAYER, Common_Movement_FaceUp
 	waitmovement PLAYER
 	drawfullscreenimage SCENEBGNURSE
-	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	return
 
 RF_NurseQuestStage1::
@@ -435,6 +434,7 @@ RF_NurseQuestStage1::
 	closemessage
 	delay 10
 	clearfullscreenimage
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	setvar VAR_RYU_QUEST_NURSE, 2
 	call_if_unset FLAG_RYU_QUEST_TUTORIAL_UNLOCKED, RyuScript_QuestTutorialQuery
 	release
