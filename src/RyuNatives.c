@@ -2910,3 +2910,12 @@ void RyuTestShinyRoll(void)
     average /= 1000;
     mgba_printf(LOGINFO, "After 1000 shinies at modified shiny rate,\nthe average encounters was %d", average);
 }
+
+void RyuFixLegendHP(void)
+{
+    int i;
+    for (i = 0;i < PARTY_SIZE; i++)
+    {
+        CalculateMonStats(&gPlayerParty[i]);
+    }
+}

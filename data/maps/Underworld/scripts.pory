@@ -35,10 +35,12 @@ script RyuScript_Reaper {
     special(BattleSetup_StartLegendaryBattle)
     waitstate
     clearflag(FLAG_RYU_FACING_REAPER)
+    
     specialvar(VAR_RESULT, GetBattleOutcome)
     switch (var(VAR_RESULT)){
         case B_OUTCOME_WON:
             msgbox("Thou hast proven thyself... Formidable.")
+            callnative(RyuFixLegendHP)
             closemessage
             release
             end
