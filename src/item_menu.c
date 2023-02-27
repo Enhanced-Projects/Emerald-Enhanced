@@ -755,9 +755,6 @@ void QuizLadyOpenBagMenu(void)
 void CB2_ChooseMedicine(void)
 {
     GoToBagMenu(ITEMMENULOCATION_BERRY_TREE, MEDICINE_POCKET, CB2_ReturnToFieldContinueScript);
-    //GoToBagMenu(ITEMMENULOCATION_APPRENTICE, POCKETS_COUNT, CB2_ApprenticeExitBagMenu);
-    //gSpecialVar_0x8005 = ITEM_NONE;
-    //gSpecialVar_Result = FALSE;
 }
 
 void Bag_ChooseMedicine(void)
