@@ -2754,14 +2754,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_DODRIO_1] = { // Dodrio-Flail (ID: 408)
+    [FRONTIER_MON_DODRIO_1] = { // Dodrio-SD (ID: 408)
         .species = SPECIES_DODRIO,
-        .moves = {MOVE_FLAIL, MOVE_DRILL_PECK, MOVE_JUMP_KICK, MOVE_ENDURE},
-        .heldItem = ITEM_LIECHI_BERRY,
+        .moves = {MOVE_EARTHQUAKE, MOVE_DRILL_PECK, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_SHELL_BELL,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_MR_MIME_1] = { // Mr_Mime-Scarf (ID: 307)
         .species = SPECIES_MR_MIME,
@@ -4592,12 +4592,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DODRIO_2] = { // Dodrio-Band (ID: 612)
         .species = SPECIES_DODRIO,
-        .moves = {MOVE_BRAVE_BIRD, MOVE_RETURN, MOVE_JUMP_KICK, MOVE_QUICK_ATTACK},
+        .moves = {MOVE_EARTHQUAKE, MOVE_DRILL_PECK, MOVE_ROCK_SLIDE, MOVE_U_TURN},
         .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_MR_MIME_2] = { // Mr_Mime-NP (ID: 511)
         .species = SPECIES_MR_MIME,
