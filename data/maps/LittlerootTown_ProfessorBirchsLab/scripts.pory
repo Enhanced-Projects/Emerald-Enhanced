@@ -388,7 +388,7 @@ script RyuSpecialChallengeComplete {
 	closemessage
 	msgbox("Please accept this Pokémon as\na reward for your efforts!")
 	closemessage
-	special(CalculatePlayerPartyCount)
+	specialvar(VAR_RESULT, CalculatePlayerPartyCount)
 	if (var(VAR_RESULT) < 6){
 		givemon(SPECIES_MAGEARNA, 100, ITEM_EXPERT_BELT)
 		msgbox("You've been given a Magearna\nfor a reward. Enjoy!")
