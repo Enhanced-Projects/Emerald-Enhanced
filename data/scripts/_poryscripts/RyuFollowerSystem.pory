@@ -453,6 +453,7 @@ RF_NurseQuestStage2::
 	closemessage
 	delay 10
 	clearfullscreenimage
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	setvar VAR_RYU_QUEST_NURSE, 4
 	release
 	end
@@ -470,6 +471,7 @@ RF_NurseQuestStage3::
 	closemessage
 	delay 10
 	clearfullscreenimage
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	setvar VAR_RYU_QUEST_NURSE, 6
 	release
 	end
