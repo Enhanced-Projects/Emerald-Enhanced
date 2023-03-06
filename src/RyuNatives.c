@@ -2764,7 +2764,7 @@ void Ryu_Restorefollowers(void)
         count++;
     }
 
-    if (FlagGet(FLAG_RYU_DS_JOY_PARTNERS) == TRUE)
+    if ((FlagGet(FLAG_RYU_DS_JOY_PARTNERS) == TRUE) || ((VarGet(VAR_RYU_QUEST_NURSE) > 1) && (VarGet(VAR_RYU_QUEST_NURSE) < 12)))
     {
         FlagClear(FLAG_RYU_HIDE_JOY);
         count++;
