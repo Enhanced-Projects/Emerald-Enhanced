@@ -485,6 +485,7 @@ RF_NurseQuestStage4::
 	closemessage
 	delay 10
 	clearfullscreenimage
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	setvar VAR_RYU_QUEST_NURSE, 8
 	warpsilent MAP_LILYCOVE_CITY_POKEMON_CENTER_2F, 255, 3, 6
 	waitstate
