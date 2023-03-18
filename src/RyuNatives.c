@@ -1102,6 +1102,14 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx) //rolls the inside/outside
     u8 amount = 1;
     u8 i = 0;
     u8 outsideCount = (ARRAY_COUNT(gOutsideMapSecs));
+    u16 playerMLv = (VarGet(VAR_RYU_PLAYER_MINING_SKILL));
+    u16 playerMHVLv = (VarGet(VAR_RYU_MINING_HARVEST_LV));
+    u16 miningLevel = 0;
+
+    if (playerMLv == playerMHVLv)
+        miningLevel = playerMLv;
+    else
+        miningLevel = playerMHVLv;
 
     for (i = 0; i < outsideCount; i++)
     {
@@ -1111,7 +1119,7 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx) //rolls the inside/outside
         }
     }
 
-    switch (VarGet(VAR_RYU_PLAYER_MINING_SKILL))//I feel like this could be made more efficient
+    switch (miningLevel)//I feel like this could be made more efficient
     {
     case 0:
         {

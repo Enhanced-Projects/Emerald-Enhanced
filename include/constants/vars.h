@@ -296,6 +296,7 @@
 #define VAR_RYU_TARGET_BOUNTY_MON            0x4114
 //FULL_COLOR
 #define VAR_HAT_THEME_UI_NUMBER              0x411F // Which theme UI is selected
+#define VAR_RYU_MINING_HARVEST_LV            0x4120
 
 
 //vars 4100 thru 417f are new; total of 128.
