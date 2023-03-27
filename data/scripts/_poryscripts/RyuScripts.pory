@@ -1246,9 +1246,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	setvar(VAR_RYU_PLAYER_MINING_SKILL, 3)
-	setvar(VAR_RYU_PLAYER_ALCHEMY_SKILL, 1)
-	setvar(VAR_RYU_PLAYER_BOTANY_SKILL, 1)
 	release
 	end
 }

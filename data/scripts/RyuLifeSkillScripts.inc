@@ -695,7 +695,7 @@ RyuAlchemy_AttemptCreateEffect::
     addvar VAR_RESULT, 1
     copyvar VAR_TEMP_A, VAR_RESULT
     specialvar VAR_RESULT, RyuAlchemy_TryCraftingItem
-    copyvar VAR_TEMP_B, VAR_RESULT
+    copyvar VAR_0x8002, VAR_RESULT
     switch VAR_RESULT
     case 1000, RA_NotEnoughMetalDust
     case 2000, RA_LevelNotHighEnough
@@ -703,7 +703,11 @@ RyuAlchemy_AttemptCreateEffect::
     case 4200, RA_Ingredient2Missing
     case 4300, RA_Ingredient3Missing
     clearflag FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS
-    compare VAR_RESULT, ALCHEMY_ITEM_RECIPE_STARDUST
+    buffernumberstring 4, VAR_RESULT
+    buffernumberstring 5, VAR_0x8002
+    msgbox RA_DebugMSG
+    closemessage
+    compare VAR_0x8002, ALCHEMY_ITEM_RECIPE_STARDUST
     goto_if_ge RA_CreateItem
     msgbox AlchemyEffectSuccessful
     closemessage
@@ -715,6 +719,9 @@ RyuAlchemy_AttemptCreateEffect::
     call RyuAlchemy_CheckForLevelup
     release
     end
+
+RA_DebugMSG:
+    .string "{RYU_STR_2} and {RYU_STR_3}$"
 
 RA_Cancel::
     clearflag FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS

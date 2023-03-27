@@ -1105,6 +1105,8 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx) //rolls the inside/outside
     u16 playerMLv = (VarGet(VAR_RYU_PLAYER_MINING_SKILL));
     u16 playerMHVLv = (VarGet(VAR_RYU_MINING_HARVEST_LV));
     u16 miningLevel = 0;
+    if (playerMHVLv == 0)
+        playerMHVLv++;
 
     if (playerMLv == playerMHVLv)
         miningLevel = playerMLv;
@@ -1889,7 +1891,8 @@ u16 RyuAlchemy_TryCraftingItem(void)
     currentExp += gAlchemyRecipes[recipe].expGiven;
     ConvertIntToDecimalStringN(gStringVar3, gAlchemyRecipes[recipe].expGiven, STR_CONV_MODE_LEFT_ALIGN, 3);
     VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, currentExp);
-    if (recipe > ALCHEMY_EFFECT_HEALING_FACTOR)
+    DebugPrint((const u8[])_("recipe:"), 1, recipe);
+    if (recipe > ALCHEMY_EFFECT_MASTER_CAPTURE)
         return RyuGetAlchemyItemId(recipe - 2);
     else
         return recipe;
