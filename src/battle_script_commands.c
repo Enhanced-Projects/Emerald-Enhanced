@@ -10477,7 +10477,7 @@ static void Cmd_trysetencore(void)
 
 static void Cmd_painsplitdmgcalc(void)
 {
-    if (!(DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove)))
+    if ((!(DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove))) && (!(FlagGet(FLAG_RYU_FACING_REAPER))))
     {
         s32 hpDiff = (gBattleMons[gBattlerAttacker].hp + gBattleMons[gBattlerTarget].hp) / 2;
         s32 painSplitHp = gBattleMoveDamage = gBattleMons[gBattlerTarget].hp - hpDiff;

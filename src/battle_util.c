@@ -1479,16 +1479,19 @@ u8 TrySetCantSelectMoveBattleScript(void)
     gPotentialItemEffectBattler = gActiveBattler;
     if (HOLD_EFFECT_CHOICE(holdEffect) && *choicedMove != 0 && *choicedMove != 0xFFFF && *choicedMove != move)
     {
-        gCurrentMove = *choicedMove;
-        gLastUsedItem = gBattleMons[gActiveBattler].item;
-        if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
+        if ((!(gBattleMons[gActiveBattler].species == SPECIES_ARCEUS)) && (FlagGet(FLAG_RYU_FACING_REAPER) == FALSE))
         {
-            gProtectStructs[gActiveBattler].palaceUnableToUseMove = 1;
-        }
-        else
-        {
-            gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedMoveChoiceItem;
-            limitations++;
+            gCurrentMove = *choicedMove;
+            gLastUsedItem = gBattleMons[gActiveBattler].item;
+            if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
+            {
+                gProtectStructs[gActiveBattler].palaceUnableToUseMove = 1;
+            }
+            else
+            {
+                gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedMoveChoiceItem;
+                limitations++;
+            }
         }
     }
     else if (holdEffect == HOLD_EFFECT_ASSAULT_VEST && gBattleMoves[move].power == 0)
@@ -4239,7 +4242,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 }
                 break;
             case ABILITY_SHED_SKIN:
-                if ((gBattleMons[battler].status1 & STATUS1_ANY) && (Random() % 3) == 0)
+                if (((gBattleMons[battler].status1 & STATUS1_ANY) && (Random() % 3) == 0) || ((gBattleMons[battler].species == SPECIES_ARCEUS) && FlagGet(FLAG_RYU_FACING_REAPER)))
                 {
                 ABILITY_HEAL_MON_STATUS:
                     if (gBattleMons[battler].status1 & (STATUS1_POISON | STATUS1_TOXIC_POISON))
