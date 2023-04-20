@@ -260,7 +260,7 @@ script MH_CheckGruntsDefeated {
 	if (defeated(TRAINER_GRUNT_22)) {
 		addvar(VAR_TEMP_6, 1)
 	}
-	if (var(VAR_TEMP_6) == 9) {
+	if (var(VAR_TEMP_6) >= 7) {
 		goto(MH_GruntsDefeated)
 	}
 	goto(MH_GruntsNotDefeated) 
