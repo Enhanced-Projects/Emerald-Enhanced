@@ -1035,7 +1035,7 @@
 #define FLAG_HIDE_AQUA_HIDEOUT_B1F_ELECTRODE_2                      0x3D2
 #define FLAG_UNUSED_0x3D3                                           0x3D3
 #define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4
-#define FLAG_UNUSED_0x3D5                                           0x3D5
+#define FLAG_RYU_MAGMA_COLLECTED_ASH                                0x3D5
 #define FLAG_UNUSED_0x3D6                                           0x3D6
 #define FLAG_RYU_HOOPA                                              0x3D7
 #define FLAG_RYU_HOOPA_RAN                                          0x3D8

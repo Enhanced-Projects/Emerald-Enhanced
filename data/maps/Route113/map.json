@@ -395,6 +395,42 @@
       "y": 7,
       "elevation": 3,
       "weather": "COORD_EVENT_WEATHER_VOLCANIC_ASH"
+    },
+    {
+      "type": "trigger",
+      "x": 84,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_MAGMA",
+      "var_value": "160",
+      "script": "r113_FinishCollectingMagmaAsh"
+    },
+    {
+      "type": "trigger",
+      "x": 84,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_MAGMA",
+      "var_value": "160",
+      "script": "r113_FinishCollectingMagmaAsh"
+    },
+    {
+      "type": "trigger",
+      "x": 83,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_MAGMA",
+      "var_value": "160",
+      "script": "r113_FinishCollectingMagmaAsh"
+    },
+    {
+      "type": "trigger",
+      "x": 83,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_MAGMA",
+      "var_value": "160",
+      "script": "r113_FinishCollectingMagmaAsh"
     }
   ],
   "bg_events": [
