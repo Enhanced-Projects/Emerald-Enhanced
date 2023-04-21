@@ -703,10 +703,6 @@ RyuAlchemy_AttemptCreateEffect::
     case 4200, RA_Ingredient2Missing
     case 4300, RA_Ingredient3Missing
     clearflag FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS
-    buffernumberstring 4, VAR_RESULT
-    buffernumberstring 5, VAR_0x8002
-    msgbox RA_DebugMSG
-    closemessage
     compare VAR_0x8002, ALCHEMY_ITEM_RECIPE_STARDUST
     goto_if_ge RA_CreateItem
     msgbox AlchemyEffectSuccessful
@@ -736,8 +732,8 @@ RA_DoNativeRepelSetup::
     return
 
 RA_CreateItem::
-    additem VAR_TEMP_B, 1
-    bufferitemname 0, VAR_TEMP_B
+    additem VAR_0x8002, 1
+    bufferitemname 0, VAR_0x8002
     msgbox RA_AlchemyItemSuccessful
     closemessage
     call RyuAlchemy_CheckForLevelup
