@@ -560,7 +560,7 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
             if (value > ivmax)
                 value = 31;
             for (i = 0;i<6;i++)
-                SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV + i, &ivmax);
+                SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV + i, &ivmax);
             CalculateMonStats(&gPlayerParty[slot]);
             return;
         }
@@ -588,21 +588,21 @@ void RyuResetIvEvs(void)
     PlaySE(SE_EXPMAX);
     if (mode == 0)
     {
-        SetMonData(&gPlayerParty[0], MON_DATA_HP_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_ATK_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_DEF_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_ATK_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_DEF_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_IV, &ev);
     }
     else
     {
-        SetMonData(&gPlayerParty[0], MON_DATA_HP_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_ATK_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_DEF_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPATK_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, &ev);
     }
     CalculateMonStats(&gPlayerParty[slot]);
     return;
@@ -2707,8 +2707,10 @@ void RyuBetaMenuDynamicInfoBox(void)
     ConvertIntToDecimalStringN(buffer1, devModeon, STR_CONV_MODE_LEFT_ALIGN, 4);
     StringCopy(gRyuStringVar1, (const u8[])_("Dev mode enabled: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
     StringAppend(gRyuStringVar1, buffer1);
-    StringCopy(gRyuStringVar2, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}Detailed steps on how to reproduce"));
-    StringCopy(gRyuStringVar3, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}your bug."));
+    ConvertIntToDecimalStringN(buffer1, VarGet(VAR_RYU_AUTOFILL_ERROR_COUNT), 0, 4);
+    StringCopy(gRyuStringVar2, (const u8[])_("Autofill Error Count: {COLOR LIGHT_BLUE}{SHADOW BLUE}"));
+    StringAppend(gRyuStringVar2, buffer1);
+    StringCopy(gRyuStringVar3, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}And details of your bug."));
 }
 
 void RyuSetCustomNature (void)

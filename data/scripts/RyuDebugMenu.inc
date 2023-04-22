@@ -864,7 +864,7 @@ Ryu_ResetEVIV::
 	goto_if_eq RyuPokeEditMenu
 	callnative RyuResetIvEvs
 	addvar VAR_TEMP_2, 1
-	buffernumberstring 0, VAR_TEMP_2
+	buffernumberstring 0, VAR_0x8001
 	msgbox ResetDone
 	goto RyuPokeEditMenu
 
