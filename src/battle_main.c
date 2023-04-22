@@ -2960,14 +2960,14 @@ u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStr
     return max(level, minLevel);
 }
 
-// If either the required level is reached or the mon is level 50
+// If either the required level is reached or the mon is level 30
 // (at which point we can assume that any reasonable trainer would have found the evolution stone,
 // done the necessary trade, etc. for the evolution), evolve the Pokemon.
 // This is done so our autoscaled enemies don’t end up with level 200 Zigzagoons.
 u16 autoevolve(u16 species, u16 level) {
     if ((
             (gEvolutionTable[species][0].method == EVO_LEVEL && gEvolutionTable[species][0].param <= level)
-            || (gEvolutionTable[species][0].method != EVO_MEGA_EVOLUTION && level >= 50)
+            || (gEvolutionTable[species][0].method != EVO_MEGA_EVOLUTION && level >= 30)
         )
         // while there is an evolution available at all (the method is 0 if there isn’t)
         && gEvolutionTable[species][0].method != 0
@@ -2998,7 +2998,11 @@ u16 RyuChooseEnemyProceduralMons(u16 trainerClass)
 {
     u16 species = gRyuProceduralTrainerMonLists[trainerClass][(Random() % 20)];
     if ((species == SPECIES_NONE) || (species > SPECIES_MELMETAL))
-    species = SPECIES_EGG;
+    {
+        species = SPECIES_BIDOOF;
+        VarSet(VAR_RYU_AUTOFILL_ERROR_COUNT, (VarGet(VAR_RYU_AUTOFILL_ERROR_COUNT) + 1));
+    }
+
     return species;
 }
 
