@@ -45,6 +45,7 @@
 #include "factions.h"
 #include "RyuRealEstate.h"
 #include "RyuDynDeliveries.h"
+#include "DynamicObjects.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -220,6 +221,7 @@ void NewGameInitData(void)
     ResetContestLinkResults();
     ClearMysteryEventFlags();
     RyuClearDeliveryQueue();
+    RyuClearAllDynamicObjects();
     gSaveBlock2Ptr->notifiedSaveState = FALSE;
 
     //flags
@@ -329,6 +331,11 @@ void NewGameInitData(void)
 	FlagSet(TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_2);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_1);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_GRUNT_25);
+    FlagSet(FLAG_RYU_POKEFANS_ESCORT_DONE);
+    FlagSet(FLAG_RYU_HIDE_DELIVERY_NPC_1);
+    FlagSet(FLAG_RYU_HIDE_DELIVERY_NPC_2);
+    FlagSet(FLAG_RYU_HIDE_DELIVERY_NPC_3);
+    FlagSet(FLAG_RYU_HIDE_DELIVERY_NPC_4);
     //FULL_COLOR
     VarSet(VAR_HAT_THEME_UI_NUMBER, 0);
     VarSet(VAR_RYU_EXP_MULTIPLIER, 1);
@@ -344,7 +351,9 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_ATTENDANT_ID, 0xFFFF); //which companion is currently the player's attendant.
     VarSet(VAR_RYU_DELIVERY_SYSTEM_DATA, 1000); //quest tracker will show no data on this until the delivery feature is unlocked.
     VarSet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, 7); //quest tracker shows no active daily. 
-    
+    VarSet(VAR_RYU_NUM_DELIVERIES, 0);
+    VarSet(VAR_RYU_AUTOFILL_ERROR_COUNT, 0);
+    VarSet(VAR_RYU_POKEFANS_OBJID, OBJ_EVENT_GFX_BRENDAN_NORMAL);
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
