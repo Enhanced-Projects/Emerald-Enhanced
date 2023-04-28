@@ -456,6 +456,7 @@ struct SaveBlock2
              u8 RtcTimeSecondRAW;
              u32 RtcTimeSecond;
              u32 SaveStateLastDetection;
+             u16 CompanionPartyMembers[3];
 
 };
 

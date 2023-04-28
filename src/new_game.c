@@ -223,6 +223,9 @@ void NewGameInitData(void)
     RyuClearDeliveryQueue();
     RyuClearAllDynamicObjects();
     gSaveBlock2Ptr->notifiedSaveState = FALSE;
+    gSaveBlock2Ptr->CompanionPartyMembers[0] = SPECIES_BIDOOF;
+    gSaveBlock2Ptr->CompanionPartyMembers[1] = SPECIES_BIDOOF;
+    gSaveBlock2Ptr->CompanionPartyMembers[2] = SPECIES_BIDOOF;
 
     //flags
     FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN);

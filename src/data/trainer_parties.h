@@ -9843,21 +9843,24 @@ static const struct TrainerMonItemCustomMoves sParty_Dawn5[] = {
 	},
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_StevenStory1[] = {//Dawn12
+static const struct TrainerMonNoItemCustomMoves sParty_StevenStory1[] = {//Dawn12
     {
     .iv = 150,
     .lvl = 31,
     .species = SPECIES_BELDUM,
+    .moves = {MOVE_HEADBUTT, MOVE_IRON_HEAD, MOVE_ZEN_HEADBUTT, MOVE_NONE}
     },
     {
     .iv = 150,
     .lvl = 32,
     .species = SPECIES_ANORITH,
+    .moves = {MOVE_METAL_CLAW, MOVE_AQUA_JET, MOVE_ANCIENT_POWER, MOVE_NONE}
     },
     {
     .iv = 150,
     .lvl = 32,
     .species = SPECIES_SKARMORY,
+    .moves = {MOVE_AUTOTOMIZE, MOVE_AIR_SLASH, MOVE_STEEL_WING, MOVE_NONE}
     }
 };
 
@@ -14265,36 +14268,42 @@ static const struct TrainerMonItemCustomMoves sParty_RelLanette[] = {
 	},
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_RelMinnie[] = {
+static const struct TrainerMonItemCustomMoves sParty_RelMinnie[] = {
     {
 	.iv = 255,
 	.lvl = 105,
-	.species = SPECIES_RAPIDASH,
+	.species = SPECIES_ALTARIA,
+    .moves = {},
 	},
 	{
 	.iv = 255,
 	.lvl = 108,
 	.species = SPECIES_BEWEAR,
+    .moves = {},
 	},
 	{
 	.iv = 255,
 	.lvl = 111,
-	.species = SPECIES_AMPHAROS,
+	.species = SPECIES_MUDSDALE,
+    .moves = {},
 	},
 	{
 	.iv = 255,
 	.lvl = 105,
 	.species = SPECIES_ALTARIA,
+    .moves = {},
 	},
 	{
 	.iv = 255,
 	.lvl = 108,
 	.species = SPECIES_EEVEE,
+    .moves = {},
 	},
 	{
 	.iv = 255,
 	.lvl = 111,
 	.species = SPECIES_BRIONNE,
+    .moves = {},
 	}
 };
 

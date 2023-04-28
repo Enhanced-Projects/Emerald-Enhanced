@@ -149,3 +149,164 @@ int RyuFollowerToTrainerID(void)
         return FALSE;
     }
 }
+
+void RyuBufferCompanionParty(void)
+{
+    if ((gSaveBlock2Ptr->CompanionPartyMembers[0] == SPECIES_BIDOOF) &&
+       (gSaveBlock2Ptr->CompanionPartyMembers[1] == SPECIES_BIDOOF) &&
+       (gSaveBlock2Ptr->CompanionPartyMembers[2] == SPECIES_BIDOOF))
+    {
+     gSpecialVar_0x8002 = 777;
+    }
+    GetSpeciesName(gStringVar1, gSaveBlock2Ptr->CompanionPartyMembers[0]);    
+    GetSpeciesName(gStringVar2, gSaveBlock2Ptr->CompanionPartyMembers[1]);    
+    GetSpeciesName(gStringVar3, gSaveBlock2Ptr->CompanionPartyMembers[2]);    
+}
+
+const u16 gRyuCompanionPartyPools[][10] = 
+{
+    [FOLLOWER_MINNIE] = 
+    {
+        SPECIES_BEWEAR,
+        SPECIES_ALTARIA,
+        SPECIES_FLAREON,
+        SPECIES_RAPIDASH,
+        SPECIES_ARCANINE,
+        SPECIES_PYROAR,
+        SPECIES_LINOONE,
+        SPECIES_URSARING,
+        SPECIES_DRAMPA,
+        SPECIES_MUDSDALE
+    },
+    [FOLLOWER_LANETTE] =
+    {
+        SPECIES_ROTOM,
+        SPECIES_ROTOM_FROST,
+        SPECIES_ROTOM_WASH,
+        SPECIES_PORYGON_Z,
+        SPECIES_MAGNEZONE,
+        SPECIES_METAGROSS,
+        SPECIES_HELIOPTILE,
+        SPECIES_AMPHAROS,
+        SPECIES_LUXRAY,
+        SPECIES_ELECTIVIRE
+    },
+    [FOLLOWER_SHELLY] =
+    {
+        SPECIES_PRIMARINA,
+        SPECIES_JELLICENT,
+        SPECIES_KINGLER,
+        SPECIES_PALOSSAND,
+        SPECIES_VAPOREON,
+        SPECIES_FERALIGATR,
+        SPECIES_CLAWITZER,
+        SPECIES_AZUMARILL,
+        SPECIES_OCTILLERY,
+        SPECIES_CARRACOSTA
+    },
+    [FOLLOWER_DAWN] = 
+    {
+        SPECIES_SYLVEON,
+        SPECIES_SWAMPERT,
+        SPECIES_FROSLASS,
+        SPECIES_TOGEKISS,
+        SPECIES_MAWILE,
+        SPECIES_GARDEVOIR,
+        SPECIES_MIMIKYU,
+        SPECIES_SHIINOTIC,
+        SPECIES_MILOTIC,
+        SPECIES_QUAGSIRE
+    },
+    [FOLLOWER_BRENDAN] =
+    {
+        SPECIES_GALLADE,
+        SPECIES_LUCARIO,
+        SPECIES_SCEPTILE,
+        SPECIES_CRANIDOS,
+        SPECIES_WEAVILE,
+        SPECIES_HAXORUS,
+        SPECIES_TYRANITAR,
+        SPECIES_TYRANTRUM,
+        SPECIES_HITMONCHAN,
+        SPECIES_HITMONLEE
+
+    },
+    [FOLLOWER_LEAF] = 
+    {
+        SPECIES_VENUSAUR,
+        SPECIES_ALAKAZAM,
+        SPECIES_HERACROSS,
+        SPECIES_LAPRAS,
+        SPECIES_DRAGONITE,
+        SPECIES_RHYHORN,
+        SPECIES_BLASTOISE,
+        SPECIES_CHARIZARD,
+        SPECIES_RATICATE,
+        SPECIES_BLISSEY
+    },
+    [FOLLOWER_COURTNEY] = 
+    {
+        SPECIES_MIGHTYENA,
+        SPECIES_MIGHTYENA,
+        SPECIES_CAMERUPT,
+        SPECIES_DELPHOX,
+        SPECIES_SALAZZLE,
+        SPECIES_TYPHLOSION,
+        SPECIES_VOLCARONA,
+        SPECIES_TURTONATOR,
+        SPECIES_HOUNDOOM,
+        SPECIES_CHANDELURE
+    },
+    [FOLLOWER_JOY] = 
+    {
+        SPECIES_AUDINO,
+        SPECIES_MUSHARNA,
+        SPECIES_BLISSEY,
+        SPECIES_ALOMOMOLA,
+        SPECIES_CLEFABLE,
+        SPECIES_LEAVANNY,
+        SPECIES_EXEGGUTOR,
+        SPECIES_WIGGLYTUFF,
+        SPECIES_DELCATTY,
+        SPECIES_PERSIAN
+    },
+    [FOLLOWER_MAY] = 
+    {
+        SPECIES_BLAZIKEN,
+        SPECIES_SHEDINJA,
+        SPECIES_MIENSHAO,
+        SPECIES_BRELOOM,
+        SPECIES_LOPUNNY,
+        SPECIES_PELIPPER,
+        SPECIES_MAGMORTAR,
+        SPECIES_MAGCARGO,
+        SPECIES_TROPIUS,
+        SPECIES_LUDICOLO
+    },
+    [FOLLOWER_LUCY] = 
+    {
+        SPECIES_SEVIPER,
+        SPECIES_CROAGUNK,
+        SPECIES_CROBAT,
+        SPECIES_SWALOT,
+        SPECIES_ARBOK,
+        SPECIES_SCOLIPEDE,
+        SPECIES_LIEPARD,
+        SPECIES_VENOMOTH,
+        SPECIES_BEEDRILL,
+        SPECIES_ROSERADE
+    },
+    [FOLLOWER_MOM] =
+    {
+        SPECIES_LOPUNNY,
+        SPECIES_BELLOSSOM,
+        SPECIES_PERSIAN,
+        SPECIES_VICTREEBEL,
+        SPECIES_TAUROS,
+        SPECIES_MR_MIME,
+        SPECIES_ABSOL,
+        SPECIES_MEDICHAM,
+        SPECIES_SNORLAX,
+        SPECIES_MILTANK
+    }
+};
