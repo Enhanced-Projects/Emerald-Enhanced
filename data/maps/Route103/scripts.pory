@@ -524,6 +524,32 @@ R103_DeclinedMsg:
 
 `
 
+script r103_FerryNoticeLeft {
+	if (flag(FLAG_RYU_HAS_FOLLOWER)){
+		lockall
+		lock
+		applymovement(26, Common_Movement_ExclamationMark)
+		waitmovement(26)
+		releaseall
+		end
+	}
+	release
+	end
+}
+
+script r103_FerryNoticeRight {
+	if (flag(FLAG_RYU_HAS_FOLLOWER)){
+		lockall
+		lock
+		applymovement(27, Common_Movement_ExclamationMark)
+		waitmovement(27)
+		releaseall
+		end
+	}
+	release
+	end
+}
+
 script r103_CheckTutorial103 {
 	if (var(VAR_LITTLEROOT_INTRO_STATE) < 10) {
 		lockall

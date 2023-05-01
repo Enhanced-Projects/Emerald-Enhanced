@@ -378,6 +378,42 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "R121_CheckMagmaBan"
+    },
+    {
+      "type": "trigger",
+      "x": 30,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r121_FerryNotice"
+    },
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r121_FerryNotice"
+    },
+    {
+      "type": "trigger",
+      "x": 32,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r121_FerryNotice"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r121_FerryNotice"
     }
   ],
   "bg_events": [

@@ -158,6 +158,8 @@ Route118_Text_RouteSign119: @ 81F440E
 
 @======================================Ferryman/woman
 
+
+
 R118_FerryWoman::
 	lock
 	faceplayer
@@ -206,3 +208,29 @@ R118_DeclinedMsg:
 	.string "That's too bad.\nLet me know if you change\lyour mind!$"
 
 `
+
+script r118_FerryNoticeLeft {
+	if (flag(FLAG_RYU_HAS_FOLLOWER)){
+		lockall
+		lock
+		applymovement(21, Common_Movement_ExclamationMark)
+		waitmovement(21)
+		releaseall
+		end
+	}
+	release
+	end
+}
+
+script r118_FerryNoticeRight {
+	if (flag(FLAG_RYU_HAS_FOLLOWER)){
+		lockall
+		lock
+		applymovement(22, Common_Movement_ExclamationMark)
+		waitmovement(22)
+		releaseall
+		end
+	}
+	release
+	end
+}
