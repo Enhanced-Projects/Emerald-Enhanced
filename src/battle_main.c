@@ -3129,6 +3129,10 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
             if (monsCount < 1)
                 monsCount = 2;
+
+            if (gTrainers[trainerNum].doubleBattle == TRUE)
+                if (monsCount < 2)
+                    monsCount = 2;
         }
 
         if (gTrainers[trainerNum].doubleBattle == TRUE)

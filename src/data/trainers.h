@@ -7777,7 +7777,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_GINA_AND_MIA_2] =
     {
-        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TWINS,
         .trainerFaction = FACTION_STUDENTS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_TWINS,
