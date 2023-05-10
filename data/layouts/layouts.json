@@ -2417,7 +2417,7 @@
       "width": 58,
       "height": 26,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "0",
+      "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Unknown_08447028/border.bin",
       "blockdata_filepath": "data/layouts/Unknown_08447028/map.bin"
     },
@@ -5620,6 +5620,26 @@
       "secondary_tileset": "gTileset_BattleFrontier",
       "border_filepath": "data/layouts/LilycoveCity_Salon/border.bin",
       "blockdata_filepath": "data/layouts/LilycoveCity_Salon/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUSTBORO_CITY_POKEMON_SCHOOL_HALL",
+      "name": "RustboroCity_PokemonSchool_Hall_Layout",
+      "width": 6,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonSchool",
+      "border_filepath": "data/layouts/RustboroCity_PokemonSchool_Hall/border.bin",
+      "blockdata_filepath": "data/layouts/RustboroCity_PokemonSchool_Hall/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUSTBORO_CITY_POKEMON_SCHOOL_TRAINING_ROOM",
+      "name": "RustboroCity_PokemonSchool_TrainingRoom_Layout",
+      "width": 12,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonSchool",
+      "border_filepath": "data/layouts/RustboroCity_PokemonSchool_TrainingRoom/border.bin",
+      "blockdata_filepath": "data/layouts/RustboroCity_PokemonSchool_TrainingRoom/map.bin"
     }
   ]
 }

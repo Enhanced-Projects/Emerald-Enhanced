@@ -94,7 +94,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Good morning, {PLAYER}!\pShould I make some coffee?")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_LANETTE_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_LANETTE_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
 	        case FOLLOWER_MINNIE:
@@ -107,7 +116,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hi! did you sleep good?\pCan we go out adventuring\ntoday?")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_MINNIE_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_MINNIE_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
 	        case FOLLOWER_DAWN:
@@ -120,7 +138,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Man... I'm more tired now than\nbefore we went to bed.\pI might take a nap today.")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_RIVAL_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_RIVAL_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
 	        case FOLLOWER_BRENDAN:
@@ -133,7 +160,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}You just don't want me to sleep,\nhuh?")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_RIVAL_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_RIVAL_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
 	        case FOLLOWER_LEAF:
@@ -146,7 +182,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}It's too early!\nCan't we stay like this a little\nlonger?")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_LEAF_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_LEAF_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
 	        case FOLLOWER_COURTNEY:
@@ -159,7 +204,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}But...I don't want to let go...\n{PLAYER}.... stay...")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_COURTNEY_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_COURTNEY_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
 	        case FOLLOWER_SHELLY:
@@ -172,7 +226,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Owh... is it morning already?!")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_SHELLY_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_SHELLY_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
 	        case FOLLOWER_JOY:
@@ -185,7 +248,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Good morning, {PLAYER}!\nI trust you slept well?")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_JOY_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_JOY_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
 	        case FOLLOWER_MAY:
@@ -198,7 +270,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Well that was... eventful.\nHope you got SOME sleep...")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_MAY_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_MAY_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
 	        case FOLLOWER_LUCY:
@@ -211,7 +292,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (She appears to glow as\n she awakens and stretches.)\p{COLOR LIGHT_RED}{SHADOW RED}hey there, {PLAYER}... did you sleep well?")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_LUCY_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_LUCY_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
             case FOLLOWER_MOM:
@@ -224,7 +314,16 @@ script RyuRE_UseBed {
                 special(HealPlayerParty)
                 faceplayer
                 msgbox("{COLOR LIGHT_RED}{SHADOW RED}Should I whip up your favorite\nbreakfast?")
+                closemessage
                 applymovement(1, Common_Movement_StepDown)
+                if (var(VAR_RYU_PLAYER_STAMINA) < 100) {
+                    if      (flag(FLAG_RYU_MOM_STAMINA_CHARGE)){
+                        clearflag(FLAG_RYU_MOM_STAMINA_CHARGE)
+                        setvar(VAR_RYU_PLAYER_STAMINA, 100)
+                        msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Your stamina was restored.)")
+                        closemessage
+                    }
+                }
                 release
                 end
             case 0xFFFF:

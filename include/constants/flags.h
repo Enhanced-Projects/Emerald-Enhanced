@@ -1370,6 +1370,17 @@
 #define FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS                 0x50E
 #define FLAG_UNUSED_0x50F                                         0x50F
 #define FLAG_RYU_WAYSTONE_BYPASS                                  0x510
+#define FLAG_RYU_HAS_SUPER_TRAINING                               0x511
+#define FLAG_RYU_MINNIE_STAMINA_CHARGE                            0x512
+#define FLAG_RYU_RIVAL_STAMINA_CHARGE                             0x513
+#define FLAG_RYU_MOM_STAMINA_CHARGE                               0x514
+#define FLAG_RYU_MAY_STAMINA_CHARGE                               0x515
+#define FLAG_RYU_LEAF_STAMINA_CHARGE                              0x516
+#define FLAG_RYU_SHELLY_STAMINA_CHARGE                            0x517
+#define FLAG_RYU_COURTNEY_STAMINA_CHARGE                          0x518
+#define FLAG_RYU_LANETTE_STAMINA_CHARGE                           0x519
+#define FLAG_RYU_LUCY_STAMINA_CHARGE                              0x51A
+#define FLAG_RYU_JOY_STAMINA_CHARGE                               0x51B
 
 
 //tutorial system flags

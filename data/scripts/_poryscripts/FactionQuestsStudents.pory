@@ -4,19 +4,21 @@
 script(global) RyuStudentsDailyQuest  {
     lock
     faceplayer
-     if (flag(FLAG_FINISHED_STUDENT_DAILY) == TRUE) { //quest done
+    checkfactionstanding(FACTION_STUDENTS, 200)
+    if (var(VAR_RESULT) == TRUE) {
+        if (flag(FLAG_RYU_HAS_SUPER_TRAINING) == FALSE){
+            msgbox("The student council has informed me\nthat I'm supposed to give you access\pto our new Super Training\nprogram.\pYou can find the classroom\nfor it in the School!")
+            closemessage
+            setflag(FLAG_RYU_HAS_SUPER_TRAINING)
+        }
+    }
+
+    if (flag(FLAG_FINISHED_STUDENT_DAILY) == TRUE) { //quest done
         msgbox("We don't have any requests\nright now!")
         release
         end
     }
 
-    checkfactionstanding(FACTION_STUDENTS, 200)
-
-    if (var(VAR_RESULT) == TRUE) {
-        msgbox("Hey Boss! How's it going?\nThe Council is pleased with how\lthings are going!")
-        release
-        end
-    }
 
     if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_STUDENTS) { //currently doing a daily quest for this faction
         switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {

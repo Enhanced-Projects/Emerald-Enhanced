@@ -517,12 +517,31 @@ static const u16 RyuValToIv[] = {
     MON_DATA_SPDEF_IV
 };
 
+void CheckSuperTrainingTotalEV (void)
+{
+    u16 value = gSpecialVar_0x8000;
+    u16 slot = gSpecialVar_0x8001; 
+    u16 stat = gSpecialVar_0x8002;
+    u32 i;
+    u16 total = 0;
+    
+    for (i = 0; i < 6;i++)
+        total += (GetMonData(&gPlayerParty[slot], MON_DATA_HP_EV + i));
+
+    if (total >= 510)
+        gSpecialVar_Result = 3;//mon is maxed
+    else if ((GetMonData(&gPlayerParty[slot], RyuValToEv[stat])) + value > 252)
+        gSpecialVar_Result = 2;//slot is maxed
+    else
+        gSpecialVar_Result = 0;//slot can take all the requested EV
+}
+
 void RyuSetSlotStatIVEV(void)//Now with extra lewd
 {
     u16 value = gSpecialVar_0x8000; //set stat to this value
     u16 slot = gSpecialVar_0x8001; //which mon slot
     u16 stat = gSpecialVar_0x8002; //which mon stat
-    u16 mode = gSpecialVar_0x8003;//0 = ev, 1 = iv
+    u16 mode = gSpecialVar_0x8003;//0 = ev, 1 = iv, 2 = additive EV
     u16 evmax = 252;
     u16 ivmax = 31;
     int i;
@@ -574,6 +593,25 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
         else
         {
             SetMonData(&gPlayerParty[slot], RyuValToIv[stat], &value);
+            CalculateMonStats(&gPlayerParty[slot]);
+        }
+        
+    } 
+
+    if (mode == 2)
+    {
+        u16 current = GetMonData(&gPlayerParty[slot], RyuValToEv[stat]);
+        if ((current + value) > 252)
+        {
+            value = evmax;
+            SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
+            CalculateMonStats(&gPlayerParty[slot]);
+            return;
+        }
+        else
+        {
+            u16 newVal = (current + value);
+            SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &newVal);
             CalculateMonStats(&gPlayerParty[slot]);
         }
         
@@ -2936,5 +2974,30 @@ void RyuFixLegendHP(void)
     for (i = 0;i < PARTY_SIZE; i++)
     {
         CalculateMonStats(&gPlayerParty[i]);
+    }
+}
+
+void ryuBufferSTChosenStat()
+{
+    switch(gSpecialVar_0x8002)
+    {
+        case 0:
+            StringCopy(gStringVar2, ((const u8[])_("HP")));
+            break;
+        case 1:
+            StringCopy(gStringVar2, ((const u8[])_("Attack")));
+            break;
+        case 2:
+            StringCopy(gStringVar2, ((const u8[])_("Defense")));
+            break;
+        case 3:
+            StringCopy(gStringVar2, ((const u8[])_("Speed")));
+            break;
+        case 4:
+            StringCopy(gStringVar2, ((const u8[])_("Special Attack")));
+            break;
+        case 5:
+            StringCopy(gStringVar2, ((const u8[])_("Special Defense")));
+            break;
     }
 }

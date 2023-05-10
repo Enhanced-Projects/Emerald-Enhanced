@@ -1,0 +1,129 @@
+mapscripts RustboroCity_PokemonSchool_TrainingRoom_MapScripts {}
+
+script RC_RyuEVRoom_Lass1 {
+    lock
+    faceplayer
+    msgbox("Super Training is a highly effective\nform of education that can\prapidly improve a pokémon's Effort\nValues.\p...Or so the teacher says.\nIt just feels like it makes\lme tired.")
+    release
+    end
+}
+
+script RC_RyuEVRoom_Instructor {
+    lock
+    faceplayer
+    msgbox("Hi! i'm Ms. Sara.\nI teach students how to use this\lnew style of training.\pWould you like a tutorial?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){
+        msgbox("Go activate the large computer screen\nand it will give you an easy to follow\pregimen based on the parameters you\nselect!\pFollow the provided plan, and\nyour Pokémon will get trained!")
+    }
+    else{
+        msgbox("I wish you a fruitful training\nsession!")
+    }
+    release
+    end
+}
+
+script RC_RyuEVRoom_Youngster {
+    lock
+    faceplayer
+    msgbox("I'm taking a break after training\nspeed with my Rattata.\pIt really wears you out!")
+    release
+    end
+}
+
+script RyuEVRoom_LeftTwin {
+    lock
+    faceplayer
+    msgbox("Oh, you know Minnie?!\nShe did tell us that she was\lfollowing a strong trainer around.\pShe worked really hard to get\ninto the internship program!\pDon't you do anything weird to her!")
+    release
+    end
+}
+
+script RyuEVRoom_RightTwin {
+    lock
+    faceplayer
+    msgbox("I sure wish I could find a\nstrong trainer who will take\lme around Hoenn.\pYou need special permission to\njoin the internship program though...")
+    release
+    end
+}
+
+script RC_RyuEVRoom_TrainingInterface {
+    if (var(VAR_RYU_PLAYER_STAMINA) < 10){
+        msgbox("You're too tired to train with\nyour pokémon.")
+        closemessage
+        release
+        end
+    }
+    RyuSuperTrainingSelectMon:
+    msgbox("Choose a party member to train with.")
+    call(RyuBufferPartyMonNames)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    copyvar(VAR_0x8001, VAR_RESULT)
+    if (var(VAR_RESULT) > 5){
+        msgbox("You have to select a Pokémon!\nTry Again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            goto(ryu_end)
+        }
+        else{
+            goto(RyuSuperTrainingSelectMon)
+        }
+    }
+    specialvar(VAR_TEMP_A, CheckIfSelectedSlotIsValid)
+    if (var(VAR_TEMP_A) == FALSE){
+        msgbox("You didn't select a trainable mon!\nTry again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            goto(ryu_end)
+        }
+        else{
+            goto(RyuSuperTrainingSelectMon)
+        }
+    }
+    RyuSuperTrainingSelectStat:
+    msgbox("Choose a stat to train.")
+    bufferdynamicmulti(RyuEVHP, RyuEVAtk, RyuEVDef, RyuEVSpeed, RyuEVSpAtk, RyuEVSpDef)
+	multichoice(0, 0, MULTI_DYNAMIC_6, 0)
+    copyvar(VAR_0x8002, VAR_RESULT)
+    if (var(VAR_RESULT) > 5){
+        msgbox("You didn't select a valid stat.\nTry again?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            goto(RyuSuperTrainingSelectStat)
+        }
+        else {
+            goto(ryu_end)
+        }
+    }
+    closemessage
+    callnative(ryuBufferSTChosenStat)
+    msgbox("Train how many points\ninto {STR_VAR_2}?")
+    numberentry(5, 10, 2)
+    if (var(VAR_RESULT) > 48){
+        setvar(VAR_RESULT, 48)
+    }
+    closemessage
+    buffernumberstring(2, VAR_RESULT)
+    copyvar(VAR_0x8000, VAR_RESULT)
+    callnative(CheckSuperTrainingTotalEV)
+    if (var(VAR_RESULT) > 0){
+        msgbox("You can't add the chosen amount\nof EV's to this mon.\pIt's already maxed out!\pReturning to main menu.")
+        closemessage
+        goto(RC_RyuEVRoom_TrainingInterface)
+    }
+    subvar(VAR_RYU_PLAYER_STAMINA, 10)
+    setvar(VAR_0x8003, 2)//set evsetter to add ev instead of replace
+    fadescreen(FADE_TO_BLACK)
+    bufferpartymonnick(0, VAR_0x8001)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} and {STR_VAR_1} train for some time...")
+    closemessage
+    delay(60)
+    callnative(RyuSetSlotStatIVEV)
+    fadescreen(FADE_FROM_BLACK)
+    callnative(ryuBufferSTChosenStat)
+    msgbox("{STR_VAR_1}'s {STR_VAR_2} EV was\nincreased by {STR_VAR_3}!")
+    closemessage
+    buffernumberstring(0, VAR_RYU_PLAYER_STAMINA)
+    msgbox("{PLAYER} used some stamina to train.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_1} remains.)")
+    call(ShowMonDataInfoBox)
+    playfanfare(MUS_FANFA1)
+    waitfanfare
+    release
+    end
+}

@@ -1631,6 +1631,7 @@ void CB2_NewGame(void)
     bool8 hasMomFollower = FALSE;
     u16 playerLifeSkills[3][2] = {0};
     bool8 hasRealEstate = gSaveBlock2Ptr->playerIsRealtor;
+    bool8 hasSuperTraining = FALSE;
 
     playerLifeSkills[0][0] = VarGet(VAR_RYU_PLAYER_MINING_SKILL);
     playerLifeSkills[0][1] = VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP);
@@ -1683,6 +1684,10 @@ void CB2_NewGame(void)
     
     if (CheckBagHasItem(ITEM_RECIPE_BOOK, 1))
         hasRecipeBook = TRUE;
+
+    if (FlagGet(FLAG_RYU_HAS_SUPER_TRAINING) == TRUE)
+        hasSuperTraining = TRUE;
+
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();

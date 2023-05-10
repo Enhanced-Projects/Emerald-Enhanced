@@ -67,7 +67,7 @@ enum // much window, such complexity
     WIN_JOURNAL_TRAINER_ID,
     WIN_JOURNAL_TRAINER_MONEY,
     WIN_JOURNAL_PAGE_NAME,
-    WIN_JOURNAL_GAME_MODE,
+    WIN_JOURNAL_STAMINA_WINDOW,
     COUNT_JOURNAL_WINDOWS
 };
 
@@ -165,7 +165,7 @@ static const struct WindowTemplate sJournalWindowTemplate[] =
         .paletteNum = 15,
         .baseBlock = 351,
    },
-   [WIN_JOURNAL_GAME_MODE] =
+   [WIN_JOURNAL_STAMINA_WINDOW] =
    {
         .bg = 0,
         .tilemapLeft = 8,
@@ -814,6 +814,9 @@ static void DrawJournalStatText(void)
 {
     u8 * textBuffer;
     u32 length = 0;
+    StringCopy(gRyuStringVar1, ((const u8[])_("Stamina: ")));
+    ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_PLAYER_STAMINA), 0, 3);
+    StringAppend(gRyuStringVar1, gRyuStringVar2);
 
     DrawJournalStatPage(0);
     AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_NAME, 0, 0, 4, sColors[0], 0, gSaveBlock2Ptr->playerName);
@@ -824,6 +827,7 @@ static void DrawJournalStatText(void)
     *textBuffer++ = CHAR_SPACE;
     ConvertIntToDecimalStringN(textBuffer, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_RIGHT_ALIGN, 10);
     AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_MONEY, 0, 4, 4, sColors[0], 0, gStringVar4);
+    AddTextPrinterParameterized3(WIN_JOURNAL_STAMINA_WINDOW, 0, 4, 4, sColors[0], 0, gRyuStringVar1);
 
 }
 
@@ -1156,7 +1160,7 @@ static void Task_ExitJournalTaskIntoNewUI(u8 taskId)
     RemoveWindow(WIN_JOURNAL_TRAINER_MONEY);
     RemoveWindow(WIN_JOURNAL_TRAINER_NAME);
     RemoveWindow(WIN_JOURNAL_STATS);
-    RemoveWindow(WIN_JOURNAL_GAME_MODE);
+    RemoveWindow(WIN_JOURNAL_STAMINA_WINDOW);
     DmaFill32(3, 0, VRAM, VRAM_SIZE);
     DestroyTask(taskId);
     //gTasks[taskId].func = sJounralButtons[gTasks[taskId].tCurrentButton].callback2; //! SHOULD IDEALLY JUST GO TO PROPER CALLBACKS FOR THE UIs BUT I'M LAZY AND I HAD TO WORK ON EXISTING CODE WHICH GOT EDITED ANYWAYS

@@ -1,0 +1,29 @@
+mapscripts RustboroCity_PokemonSchool_Hall_MapScripts {}
+
+
+script RC_SchoolHall_CheckStudentsStanding {
+    if(flag(FLAG_RYU_HAS_SUPER_TRAINING) == FALSE){
+        lock
+        msgbox("There's a sign on the door:\pDo Not Disturb.\nTesting in progress.")
+        checkfacing
+        switch(var(VAR_RESULT)){
+            case DIR_NORTH:
+                applymovement(  PLAYER, Common_Movement_StepDown)
+                applymovement(FOLLOWER, Common_Movement_StepDown)
+            case DIR_SOUTH:
+                applymovement(  PLAYER, Common_Movement_StepUp)
+                applymovement(FOLLOWER, Common_Movement_StepUp)
+            case DIR_WEST:
+                applymovement(  PLAYER, Common_Movement_StepLeft)
+                applymovement(FOLLOWER, Common_Movement_StepLeft)
+            case DIR_EAST:
+                applymovement(  PLAYER, Common_Movement_StepLeft)
+                applymovement(FOLLOWER, Common_Movement_StepLeft)
+        }
+        waitmovement(PLAYER)
+        release
+        end
+    }
+    release
+    end
+}

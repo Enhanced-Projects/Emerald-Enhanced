@@ -272,8 +272,8 @@
       "x": 27,
       "y": 34,
       "elevation": 0,
-      "dest_map": "MAP_RUSTBORO_CITY_POKEMON_SCHOOL",
-      "dest_warp_id": 0
+      "dest_map": "MAP_RUSTBORO_CITY_POKEMON_SCHOOL_HALL",
+      "dest_warp_id": 1
     },
     {
       "x": 11,

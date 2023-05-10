@@ -298,6 +298,7 @@
 #define VAR_HAT_THEME_UI_NUMBER              0x411F // Which theme UI is selected
 #define VAR_RYU_MINING_HARVEST_LV            0x4120
 #define VAR_RYU_AUTOFILL_ERROR_COUNT         0x4121 // how many times a placeholder was used with the autofill system
+#define VAR_RYU_PLAYER_STAMINA               0x4122 // Player's stamina for use with super training
 
 
 //vars 4100 thru 417f are new; total of 128.
