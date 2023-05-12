@@ -127,7 +127,6 @@ static const struct MenuAction sPlayerPCMenuActions[] =
 static const u8 gBedroomPC_OptionOrder[] =
 {
     PLAYERPC_MENU_ITEMSTORAGE,
-    PLAYERPC_MENU_MAILBOX,
     PLAYERPC_MENU_DECORATION,
     PLAYERPC_MENU_TURNOFF
 };
@@ -135,7 +134,6 @@ static const u8 gBedroomPC_OptionOrder[] =
 static const u8 gPlayerPC_OptionOrder[] =
 {
     PLAYERPC_MENU_ITEMSTORAGE,
-    PLAYERPC_MENU_MAILBOX,
     PLAYERPC_MENU_TURNOFF
 };
 
@@ -153,14 +151,14 @@ static const struct ItemSlot gNewGamePCItems[] =
     { ITEM_NONE, 0 }
 };
 
-static const struct WindowTemplate gUnknown_085DFF24[3] =
+static const struct WindowTemplate gPlayerPC_WindowTemplates[3] =
 {
     {
         .bg = 0,
         .tilemapLeft = 1,
         .tilemapTop = 1,
         .width = 9,
-        .height = 6,
+        .height = 2,
         .paletteNum = 15,
         .baseBlock = 1
     },
@@ -169,7 +167,7 @@ static const struct WindowTemplate gUnknown_085DFF24[3] =
         .tilemapLeft = 1,
         .tilemapTop = 1,
         .width = 9,
-        .height = 8,
+        .height = 4,
         .paletteNum = 15,
         .baseBlock = 1
     },
@@ -286,14 +284,14 @@ void NewGameInitPCItems(void)
 void BedroomPC(void)
 {
     gPcItemMenuOptionOrder = gBedroomPC_OptionOrder;
-    gPcItemMenuOptionsNum = 4;
+    gPcItemMenuOptionsNum = 3;
     DisplayItemMessageOnField(CreateTask(TaskDummy, 0), gText_WhatWouldYouLike, InitPlayerPCMenu);
 }
 
 void PlayerPC(void)
 {
     gPcItemMenuOptionOrder = gPlayerPC_OptionOrder;
-    gPcItemMenuOptionsNum = 3;
+    gPcItemMenuOptionsNum = 2;
     DisplayItemMessageOnField(CreateTask(TaskDummy, 0), gText_WhatWouldYouLike, InitPlayerPCMenu);
 }
 
@@ -304,9 +302,9 @@ static void InitPlayerPCMenu(u8 taskId)
 
     data = gTasks[taskId].data;
     if (gPcItemMenuOptionsNum == 3)
-        windowTemplate = gUnknown_085DFF24[0];
+        windowTemplate = gPlayerPC_WindowTemplates[0];
     else
-        windowTemplate = gUnknown_085DFF24[1];
+        windowTemplate = gPlayerPC_WindowTemplates[1];
     windowTemplate.width = sub_81DB3D8(sPlayerPCMenuActions, gPcItemMenuOptionOrder, gPcItemMenuOptionsNum);
     data[4] = AddWindow(&windowTemplate);
     SetStandardWindowBorderStyle(data[4], 0);
@@ -381,7 +379,7 @@ static void InitItemStorageMenu(u8 taskId, u8 var)
     struct WindowTemplate windowTemplate;
 
     data = gTasks[taskId].data;
-    windowTemplate = gUnknown_085DFF24[2];
+    windowTemplate = gPlayerPC_WindowTemplates[2];
     windowTemplate.width = GetMaxWidthInMenuTable(gPCText_ItemPCOptionsText, 4);
     data[4] = AddWindow(&windowTemplate);
     SetStandardWindowBorderStyle(data[4], 0);
