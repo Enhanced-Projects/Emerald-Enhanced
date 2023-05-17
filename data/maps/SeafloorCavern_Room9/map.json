@@ -67,7 +67,7 @@
       "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_2"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "graphics_id": "OBJ_EVENT_GFX_SHELLY",
       "x": 9,
       "y": 40,
       "elevation": 3,

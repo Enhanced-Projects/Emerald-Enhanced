@@ -132,7 +132,7 @@
       "flag": "FLAG_HIDE_MAGMA_ARMY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "graphics_id": "OBJ_EVENT_GFX_COURTNEY",
       "x": 22,
       "y": 10,
       "elevation": 3,

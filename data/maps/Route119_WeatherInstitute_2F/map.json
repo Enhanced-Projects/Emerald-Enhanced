@@ -41,7 +41,7 @@
       "flag": "FLAG_HIDE_ROUTE_119_TEAM_AQUA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "graphics_id": "OBJ_EVENT_GFX_SHELLY",
       "x": 4,
       "y": 6,
       "elevation": 3,
