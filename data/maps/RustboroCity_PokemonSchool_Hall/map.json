@@ -1,0 +1,81 @@
+{
+  "id": "MAP_RUSTBORO_CITY_POKEMON_SCHOOL_HALL",
+  "name": "RustboroCity_PokemonSchool_Hall",
+  "layout": "LAYOUT_RUSTBORO_CITY_POKEMON_SCHOOL_HALL",
+  "music": "MUS_SCHOOL",
+  "region_map_section": "MAPSEC_RUSTBORO_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 0,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBORO_CITY_POKEMON_SCHOOL",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 2,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBORO_CITY",
+      "dest_warp_id": 4
+    },
+    {
+      "x": 3,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBORO_CITY",
+      "dest_warp_id": 4
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBORO_CITY_POKEMON_SCHOOL_TRAINING_ROOM",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RC_SchoolHall_CheckStudentsStanding"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RC_SchoolHall_CheckStudentsStanding"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RC_SchoolHall_CheckStudentsStanding"
+    }
+  ],
+  "bg_events": [
+
+  ]
+}

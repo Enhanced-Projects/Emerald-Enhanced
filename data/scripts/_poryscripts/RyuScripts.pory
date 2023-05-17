@@ -1246,8 +1246,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	setflag(FLAG_RYU_LIMBO)
-	setflag(FLAG_RYU_UNDERWORLD)
 	release
 	end
 }

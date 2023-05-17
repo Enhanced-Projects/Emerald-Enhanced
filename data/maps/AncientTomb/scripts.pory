@@ -189,24 +189,28 @@ AT_LanaEvent3::
 	goto AT_SV_Battle
 	
 AT_SV_Battle::
+	setflag FLAG_HIDE_AT1_LEAF
+	removeobject 2
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	createfollower FOLLOWER_LEAF, RyuFollowerSelectNPCScript, DIR_WEST
 	setvar VAR_RYU_QUEST_LEAF, 86
 	savebgm MUS_RG_NANADUNGEON
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
 	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	setflag FLAG_RYU_GAME_OVER
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_RED, 0, NULL, AT_SV_GaryBattleDefeat
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	setvar VAR_0x8006, TRAINER_REL_LEAF
-	setvar VAR_0x8007, TRAINER_BACK_PIC_LEAF
-	special DoSpecialTrainerBattle
-	waitstate
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RyuScript_ChooseValidMons
+	setvar VAR_0x8008, TRAINER_REL_LEAF
+	setvar VAR_0x8009, TRAINER_BACK_PIC_LEAF
+	multi_2_vs_1 TRAINER_RED, AT_SV_GaryBattleDefeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_WON
-	goto_if_ne AT_SV_GAMEOVER
-	clearflag FLAG_RYU_GAME_OVER
-	special LoadPlayerParty
+    compare VAR_RESULT, B_OUTCOME_WON
+    goto_if_ne AT_SV_GAMEOVER
+    clearflag FLAG_RYU_GAME_OVER
+	clearflag FLAG_HIDE_AT1_LEAF
+	addobject 2
+	destroyfollower
 	goto AT_SV_ReturnFromBattle
 
 AT_SV_GAMEOVER::

@@ -155,7 +155,9 @@
     "RustboroCity_PokemonCenter_1F",
     "RustboroCity_PokemonCenter_2F",
     "RustboroCity_PidgeysCoop",
-    "RustboroCity_Home"
+    "RustboroCity_Home",
+    "RustboroCity_PokemonSchool_Hall",
+    "RustboroCity_PokemonSchool_TrainingRoom"
   ],
   "gMapGroup5": [
     "DewfordTown_Hall",

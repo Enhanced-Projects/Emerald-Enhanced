@@ -88,7 +88,7 @@ LRT_MinnieLeave:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay! Have fun!$"
 	
 LRT_FollowerMinnie:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Hi! I'm Minnie!\nMy sister guards the exit.\pI'm a bodyguard. Can I come with you?$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hi! I'm Minnie!\nI recently got my internship permit!\pThat means I can follow a senior\nTrainer around!\pCan I come with you?\nYou look strong!$"
 	
 LRT_NoFollower::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay!\nLet me know if you change your mind!$"

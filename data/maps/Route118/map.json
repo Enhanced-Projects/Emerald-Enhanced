@@ -334,7 +334,60 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r118_FerryNoticeLeft"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r118_FerryNoticeLeft"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r118_FerryNoticeLeft"
+    },
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r118_FerryNoticeRight"
+    },
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r118_FerryNoticeRight"
+    },
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "r118_FerryNoticeRight"
+    }
   ],
   "bg_events": [
     {

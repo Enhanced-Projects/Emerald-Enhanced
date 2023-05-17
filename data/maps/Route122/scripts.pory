@@ -73,6 +73,45 @@ script MP_FerryWoman {
 	goto(ryu_end)
 }
 
+script r121_FerryNotice{
+	if (flag(FLAG_RYU_HAS_FOLLOWER)){
+		lockall
+		lock
+		applymovement(23, Common_Movement_ExclamationMark)
+		waitmovement(23)
+		releaseall
+		end
+	}
+	release
+	end
+}
+
+script r122_FerryNotice{
+	if (flag(FLAG_RYU_HAS_FOLLOWER)){
+		lockall
+		lock
+		applymovement(1, Common_Movement_ExclamationMark)
+		waitmovement(1)
+		releaseall
+		end
+	}
+	release
+	end
+}
+
+script r122_FerryNotice2{
+	if (flag(FLAG_RYU_HAS_FOLLOWER)){
+		lockall
+		lock
+		applymovement(2, Common_Movement_ExclamationMark)
+		waitmovement(2)
+		releaseall
+		end
+	}
+	release
+	end
+}
+
 
 text MP_1 {
 	"Mt. Pyre$"

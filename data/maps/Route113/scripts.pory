@@ -167,3 +167,14 @@ Route113_Text_GlassWorkshopSign: @ 81F24F8
 	.string "“Turning Volcanic Ash into Glass Items”$"
 
 `
+
+script r113_FinishCollectingMagmaAsh {
+	lockall
+	lock
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} collects the necessary Ash...)")
+	closemessage
+	setvar(VAR_ASH_GATHER_COUNT, 2000)
+	setflag(FLAG_RYU_MAGMA_COLLECTED_ASH)
+	release
+	end
+}

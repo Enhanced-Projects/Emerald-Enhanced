@@ -517,12 +517,31 @@ static const u16 RyuValToIv[] = {
     MON_DATA_SPDEF_IV
 };
 
+void CheckSuperTrainingTotalEV (void)
+{
+    u16 value = gSpecialVar_0x8000;
+    u16 slot = gSpecialVar_0x8001; 
+    u16 stat = gSpecialVar_0x8002;
+    u32 i;
+    u16 total = 0;
+    
+    for (i = 0; i < 6;i++)
+        total += (GetMonData(&gPlayerParty[slot], MON_DATA_HP_EV + i));
+
+    if (total >= 510)
+        gSpecialVar_Result = 3;//mon is maxed
+    else if ((GetMonData(&gPlayerParty[slot], RyuValToEv[stat])) + value > 252)
+        gSpecialVar_Result = 2;//slot is maxed
+    else
+        gSpecialVar_Result = 0;//slot can take all the requested EV
+}
+
 void RyuSetSlotStatIVEV(void)//Now with extra lewd
 {
     u16 value = gSpecialVar_0x8000; //set stat to this value
     u16 slot = gSpecialVar_0x8001; //which mon slot
     u16 stat = gSpecialVar_0x8002; //which mon stat
-    u16 mode = gSpecialVar_0x8003;//0 = ev, 1 = iv
+    u16 mode = gSpecialVar_0x8003;//0 = ev, 1 = iv, 2 = additive EV
     u16 evmax = 252;
     u16 ivmax = 31;
     int i;
@@ -560,7 +579,7 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
             if (value > ivmax)
                 value = 31;
             for (i = 0;i<6;i++)
-                SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV + i, &ivmax);
+                SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV + i, &ivmax);
             CalculateMonStats(&gPlayerParty[slot]);
             return;
         }
@@ -578,6 +597,25 @@ void RyuSetSlotStatIVEV(void)//Now with extra lewd
         }
         
     } 
+
+    if (mode == 2)
+    {
+        u16 current = GetMonData(&gPlayerParty[slot], RyuValToEv[stat]);
+        if ((current + value) > 252)
+        {
+            value = evmax;
+            SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
+            CalculateMonStats(&gPlayerParty[slot]);
+            return;
+        }
+        else
+        {
+            u16 newVal = (current + value);
+            SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &newVal);
+            CalculateMonStats(&gPlayerParty[slot]);
+        }
+        
+    } 
 }
 
 void RyuResetIvEvs(void)
@@ -588,21 +626,21 @@ void RyuResetIvEvs(void)
     PlaySE(SE_EXPMAX);
     if (mode == 0)
     {
-        SetMonData(&gPlayerParty[0], MON_DATA_HP_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_ATK_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_DEF_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_ATK_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_DEF_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_IV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_IV, &ev);
     }
     else
     {
-        SetMonData(&gPlayerParty[0], MON_DATA_HP_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_ATK_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_DEF_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPATK_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV, &ev);
-        SetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &ev);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, &ev);
     }
     CalculateMonStats(&gPlayerParty[slot]);
     return;
@@ -1102,6 +1140,16 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx) //rolls the inside/outside
     u8 amount = 1;
     u8 i = 0;
     u8 outsideCount = (ARRAY_COUNT(gOutsideMapSecs));
+    u16 playerMLv = (VarGet(VAR_RYU_PLAYER_MINING_SKILL));
+    u16 playerMHVLv = (VarGet(VAR_RYU_MINING_HARVEST_LV));
+    u16 miningLevel = 0;
+    if (playerMHVLv == 0)
+        playerMHVLv++;
+
+    if (playerMLv == playerMHVLv)
+        miningLevel = playerMLv;
+    else
+        miningLevel = playerMHVLv;
 
     for (i = 0; i < outsideCount; i++)
     {
@@ -1111,7 +1159,7 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx) //rolls the inside/outside
         }
     }
 
-    switch (VarGet(VAR_RYU_PLAYER_MINING_SKILL))//I feel like this could be made more efficient
+    switch (miningLevel)//I feel like this could be made more efficient
     {
     case 0:
         {
@@ -1881,7 +1929,8 @@ u16 RyuAlchemy_TryCraftingItem(void)
     currentExp += gAlchemyRecipes[recipe].expGiven;
     ConvertIntToDecimalStringN(gStringVar3, gAlchemyRecipes[recipe].expGiven, STR_CONV_MODE_LEFT_ALIGN, 3);
     VarSet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, currentExp);
-    if (recipe > ALCHEMY_EFFECT_HEALING_FACTOR)
+    DebugPrint((const u8[])_("recipe:"), 1, recipe);
+    if (recipe > ALCHEMY_EFFECT_MASTER_CAPTURE)
         return RyuGetAlchemyItemId(recipe - 2);
     else
         return recipe;
@@ -1923,6 +1972,12 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
     {
         partners++;
         GiveAchievement(ACH_WET_N_WILD);
+    }
+
+    if (FlagGet(FLAG_RYU_DS_COURTNEY_PARTNERS) == 1)
+    {
+        partners++;
+        GiveAchievement(ACH_FIERY_PASSION);
     }
 
     if (FlagGet(FLAG_RYU_DS_JOY_PARTNERS) == 1)
@@ -2690,8 +2745,10 @@ void RyuBetaMenuDynamicInfoBox(void)
     ConvertIntToDecimalStringN(buffer1, devModeon, STR_CONV_MODE_LEFT_ALIGN, 4);
     StringCopy(gRyuStringVar1, (const u8[])_("Dev mode enabled: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
     StringAppend(gRyuStringVar1, buffer1);
-    StringCopy(gRyuStringVar2, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}Detailed steps on how to reproduce"));
-    StringCopy(gRyuStringVar3, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}your bug."));
+    ConvertIntToDecimalStringN(buffer1, VarGet(VAR_RYU_AUTOFILL_ERROR_COUNT), 0, 4);
+    StringCopy(gRyuStringVar2, (const u8[])_("Autofill Error Count: {COLOR LIGHT_BLUE}{SHADOW BLUE}"));
+    StringAppend(gRyuStringVar2, buffer1);
+    StringCopy(gRyuStringVar3, (const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE}And details of your bug."));
 }
 
 void RyuSetCustomNature (void)
@@ -2764,7 +2821,7 @@ void Ryu_Restorefollowers(void)
         count++;
     }
 
-    if (FlagGet(FLAG_RYU_DS_JOY_PARTNERS) == TRUE)
+    if ((FlagGet(FLAG_RYU_DS_JOY_PARTNERS) == TRUE) || ((VarGet(VAR_RYU_QUEST_NURSE) > 1) && (VarGet(VAR_RYU_QUEST_NURSE) < 12)))
     {
         FlagClear(FLAG_RYU_HIDE_JOY);
         count++;
@@ -2917,5 +2974,30 @@ void RyuFixLegendHP(void)
     for (i = 0;i < PARTY_SIZE; i++)
     {
         CalculateMonStats(&gPlayerParty[i]);
+    }
+}
+
+void ryuBufferSTChosenStat()
+{
+    switch(gSpecialVar_0x8002)
+    {
+        case 0:
+            StringCopy(gStringVar2, ((const u8[])_("HP")));
+            break;
+        case 1:
+            StringCopy(gStringVar2, ((const u8[])_("Attack")));
+            break;
+        case 2:
+            StringCopy(gStringVar2, ((const u8[])_("Defense")));
+            break;
+        case 3:
+            StringCopy(gStringVar2, ((const u8[])_("Speed")));
+            break;
+        case 4:
+            StringCopy(gStringVar2, ((const u8[])_("Special Attack")));
+            break;
+        case 5:
+            StringCopy(gStringVar2, ((const u8[])_("Special Defense")));
+            break;
     }
 }

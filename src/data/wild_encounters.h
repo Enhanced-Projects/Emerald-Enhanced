@@ -3508,149 +3508,149 @@ const struct WildPokemon gSafariZone_Northeast_RockSmashMons[] =
 
 const struct WildPokemonInfo gSafariZone_Northeast_RockSmashMonsInfo = {25, gSafariZone_Northeast_RockSmashMons};
 
-const struct WildPokemon gMagmaHideout_1F_LandMons[] =
-{
-	{27, 27, SPECIES_GEODUDE},
-	{28, 28, SPECIES_TORKOAL},
-	{28, 28, SPECIES_GEODUDE},
-	{30, 30, SPECIES_TORKOAL},
-	{29, 29, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_HOUNDOOM},
-	{30, 30, SPECIES_HOUNDOOM},
-	{31, 31, SPECIES_GRAVELER},
-	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_GRAVELER},
-};
-
-const struct WildPokemonInfo gMagmaHideout_1F_LandMonsInfo = {10, gMagmaHideout_1F_LandMons};
-
-const struct WildPokemon gMagmaHideout_2F_1R_LandMons[] =
-{
-	{27, 27, SPECIES_GEODUDE},
-	{28, 28, SPECIES_TORKOAL},
-	{28, 28, SPECIES_GEODUDE},
-	{30, 30, SPECIES_TORKOAL},
-	{29, 29, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GRAVELER},
-	{30, 30, SPECIES_GRAVELER},
-	{31, 31, SPECIES_GRAVELER},
-	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_GRAVELER},
-};
-
-const struct WildPokemonInfo gMagmaHideout_2F_1R_LandMonsInfo = {10, gMagmaHideout_2F_1R_LandMons};
-
-const struct WildPokemon gMagmaHideout_2F_2R_LandMons[] =
-{
-	{27, 27, SPECIES_GEODUDE},
-	{28, 28, SPECIES_TORKOAL},
-	{28, 28, SPECIES_GEODUDE},
-	{30, 30, SPECIES_TORKOAL},
-	{29, 29, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GRAVELER},
-	{30, 30, SPECIES_GRAVELER},
-	{31, 31, SPECIES_GRAVELER},
-	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_TURTONATOR},
-};
-
-const struct WildPokemonInfo gMagmaHideout_2F_2R_LandMonsInfo = {10, gMagmaHideout_2F_2R_LandMons};
-
-const struct WildPokemon gMagmaHideout_3F_1R_LandMons[] =
-{
-	{27, 27, SPECIES_GEODUDE},
-	{28, 28, SPECIES_TORKOAL},
-	{28, 28, SPECIES_GEODUDE},
-	{30, 30, SPECIES_TORKOAL},
-	{29, 29, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GRAVELER},
-	{30, 30, SPECIES_GRAVELER},
-	{31, 31, SPECIES_GRAVELER},
-	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_GRAVELER},
-};
-
-const struct WildPokemonInfo gMagmaHideout_3F_1R_LandMonsInfo = {10, gMagmaHideout_3F_1R_LandMons};
-
-const struct WildPokemon gMagmaHideout_3F_2R_LandMons[] =
-{
-	{27, 27, SPECIES_GEODUDE},
-	{28, 28, SPECIES_TORKOAL},
-	{28, 28, SPECIES_GEODUDE},
-	{30, 30, SPECIES_TORKOAL},
-	{29, 29, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GRAVELER},
-	{30, 30, SPECIES_GRAVELER},
-	{31, 31, SPECIES_GRAVELER},
-	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_TURTONATOR},
-};
-
-const struct WildPokemonInfo gMagmaHideout_3F_2R_LandMonsInfo = {10, gMagmaHideout_3F_2R_LandMons};
-
-const struct WildPokemon gMagmaHideout_4F_LandMons[] =
-{
-	{27, 27, SPECIES_GEODUDE},
-	{28, 28, SPECIES_TORKOAL},
-	{28, 28, SPECIES_GEODUDE},
-	{30, 30, SPECIES_TORKOAL},
-	{29, 29, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GRAVELER},
-	{30, 30, SPECIES_GRAVELER},
-	{31, 31, SPECIES_GRAVELER},
-	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_GRAVELER},
-};
-
-const struct WildPokemonInfo gMagmaHideout_4F_LandMonsInfo = {10, gMagmaHideout_4F_LandMons};
-
-const struct WildPokemon gMagmaHideout_3F_3R_LandMons[] =
-{
-	{27, 27, SPECIES_GEODUDE},
-	{28, 28, SPECIES_TORKOAL},
-	{28, 28, SPECIES_GEODUDE},
-	{30, 30, SPECIES_TORKOAL},
-	{29, 29, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GRAVELER},
-	{30, 30, SPECIES_GRAVELER},
-	{31, 31, SPECIES_GRAVELER},
-	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_GRAVELER},
-};
-
-const struct WildPokemonInfo gMagmaHideout_3F_3R_LandMonsInfo = {10, gMagmaHideout_3F_3R_LandMons};
-
-const struct WildPokemon gMagmaHideout_2F_3R_LandMons[] =
-{
-	{27, 27, SPECIES_GEODUDE},
-	{28, 28, SPECIES_TORKOAL},
-	{28, 28, SPECIES_GEODUDE},
-	{30, 30, SPECIES_TORKOAL},
-	{29, 29, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GEODUDE},
-	{30, 30, SPECIES_GRAVELER},
-	{30, 30, SPECIES_GRAVELER},
-	{31, 31, SPECIES_GRAVELER},
-	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_GRAVELER},
-};
-
-const struct WildPokemonInfo gMagmaHideout_2F_3R_LandMonsInfo = {10, gMagmaHideout_2F_3R_LandMons};
+//const struct WildPokemon gMagmaHideout_1F_LandMons[] =
+//{
+//	{27, 27, SPECIES_GEODUDE},
+//	{28, 28, SPECIES_TORKOAL},
+//	{28, 28, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_TORKOAL},
+//	{29, 29, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_HOUNDOOM},
+//	{30, 30, SPECIES_HOUNDOOM},
+//	{31, 31, SPECIES_GRAVELER},
+//	{32, 32, SPECIES_GRAVELER},
+//	{33, 33, SPECIES_GRAVELER},
+//};
+//
+//const struct WildPokemonInfo gMagmaHideout_1F_LandMonsInfo = {10, gMagmaHideout_1F_LandMons};
+//
+//const struct WildPokemon gMagmaHideout_2F_1R_LandMons[] =
+//{
+//	{27, 27, SPECIES_GEODUDE},
+//	{28, 28, SPECIES_TORKOAL},
+//	{28, 28, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_TORKOAL},
+//	{29, 29, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GRAVELER},
+//	{30, 30, SPECIES_GRAVELER},
+//	{31, 31, SPECIES_GRAVELER},
+//	{32, 32, SPECIES_GRAVELER},
+//	{33, 33, SPECIES_GRAVELER},
+//};
+//
+//const struct WildPokemonInfo gMagmaHideout_2F_1R_LandMonsInfo = {10, gMagmaHideout_2F_1R_LandMons};
+//
+//const struct WildPokemon gMagmaHideout_2F_2R_LandMons[] =
+//{
+//	{27, 27, SPECIES_GEODUDE},
+//	{28, 28, SPECIES_TORKOAL},
+//	{28, 28, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_TORKOAL},
+//	{29, 29, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GRAVELER},
+//	{30, 30, SPECIES_GRAVELER},
+//	{31, 31, SPECIES_GRAVELER},
+//	{32, 32, SPECIES_GRAVELER},
+//	{33, 33, SPECIES_TURTONATOR},
+//};
+//
+//const struct WildPokemonInfo gMagmaHideout_2F_2R_LandMonsInfo = {10, gMagmaHideout_2F_2R_LandMons};
+//
+//const struct WildPokemon gMagmaHideout_3F_1R_LandMons[] =
+//{
+//	{27, 27, SPECIES_GEODUDE},
+//	{28, 28, SPECIES_TORKOAL},
+//	{28, 28, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_TORKOAL},
+//	{29, 29, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GRAVELER},
+//	{30, 30, SPECIES_GRAVELER},
+//	{31, 31, SPECIES_GRAVELER},
+//	{32, 32, SPECIES_GRAVELER},
+//	{33, 33, SPECIES_GRAVELER},
+//};
+//
+//const struct WildPokemonInfo gMagmaHideout_3F_1R_LandMonsInfo = {10, gMagmaHideout_3F_1R_LandMons};
+//
+//const struct WildPokemon gMagmaHideout_3F_2R_LandMons[] =
+//{
+//	{27, 27, SPECIES_GEODUDE},
+//	{28, 28, SPECIES_TORKOAL},
+//	{28, 28, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_TORKOAL},
+//	{29, 29, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GRAVELER},
+//	{30, 30, SPECIES_GRAVELER},
+//	{31, 31, SPECIES_GRAVELER},
+//	{32, 32, SPECIES_GRAVELER},
+//	{33, 33, SPECIES_TURTONATOR},
+//};
+//
+//const struct WildPokemonInfo gMagmaHideout_3F_2R_LandMonsInfo = {10, gMagmaHideout_3F_2R_LandMons};
+//
+//const struct WildPokemon gMagmaHideout_4F_LandMons[] =
+//{
+//	{27, 27, SPECIES_GEODUDE},
+//	{28, 28, SPECIES_TORKOAL},
+//	{28, 28, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_TORKOAL},
+//	{29, 29, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GRAVELER},
+//	{30, 30, SPECIES_GRAVELER},
+//	{31, 31, SPECIES_GRAVELER},
+//	{32, 32, SPECIES_GRAVELER},
+//	{33, 33, SPECIES_GRAVELER},
+//};
+//
+//const struct WildPokemonInfo gMagmaHideout_4F_LandMonsInfo = {10, gMagmaHideout_4F_LandMons};
+//
+//const struct WildPokemon gMagmaHideout_3F_3R_LandMons[] =
+//{
+//	{27, 27, SPECIES_GEODUDE},
+//	{28, 28, SPECIES_TORKOAL},
+//	{28, 28, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_TORKOAL},
+//	{29, 29, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GRAVELER},
+//	{30, 30, SPECIES_GRAVELER},
+//	{31, 31, SPECIES_GRAVELER},
+//	{32, 32, SPECIES_GRAVELER},
+//	{33, 33, SPECIES_GRAVELER},
+//};
+//
+//const struct WildPokemonInfo gMagmaHideout_3F_3R_LandMonsInfo = {10, gMagmaHideout_3F_3R_LandMons};
+//
+//const struct WildPokemon gMagmaHideout_2F_3R_LandMons[] =
+//{
+//	{27, 27, SPECIES_GEODUDE},
+//	{28, 28, SPECIES_TORKOAL},
+//	{28, 28, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_TORKOAL},
+//	{29, 29, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GEODUDE},
+//	{30, 30, SPECIES_GRAVELER},
+//	{30, 30, SPECIES_GRAVELER},
+//	{31, 31, SPECIES_GRAVELER},
+//	{32, 32, SPECIES_GRAVELER},
+//	{33, 33, SPECIES_GRAVELER},
+//};
+//
+//const struct WildPokemonInfo gMagmaHideout_2F_3R_LandMonsInfo = {10, gMagmaHideout_2F_3R_LandMons};
 
 const struct WildPokemon gMirageTower_1F_LandMons[] =
 {
@@ -4972,70 +4972,70 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.rockSmashMonsInfo = &gSafariZone_Northeast_RockSmashMonsInfo,
 		.fishingMonsInfo = NULL,
 	},
-	{
-		.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_1F),
-		.mapNum = MAP_NUM(MAGMA_HIDEOUT_1F),
-		.landMonsInfo = &gMagmaHideout_1F_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
-	{
-		.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_2F_1R),
-		.mapNum = MAP_NUM(MAGMA_HIDEOUT_2F_1R),
-		.landMonsInfo = &gMagmaHideout_2F_1R_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
-	{
-		.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_2F_2R),
-		.mapNum = MAP_NUM(MAGMA_HIDEOUT_2F_2R),
-		.landMonsInfo = &gMagmaHideout_2F_2R_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
-	{
-		.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_3F_1R),
-		.mapNum = MAP_NUM(MAGMA_HIDEOUT_3F_1R),
-		.landMonsInfo = &gMagmaHideout_3F_1R_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
-	{
-		.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_3F_2R),
-		.mapNum = MAP_NUM(MAGMA_HIDEOUT_3F_2R),
-		.landMonsInfo = &gMagmaHideout_3F_2R_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
-	{
-		.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_4F),
-		.mapNum = MAP_NUM(MAGMA_HIDEOUT_4F),
-		.landMonsInfo = &gMagmaHideout_4F_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
-	{
-		.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_3F_3R),
-		.mapNum = MAP_NUM(MAGMA_HIDEOUT_3F_3R),
-		.landMonsInfo = &gMagmaHideout_3F_3R_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
-	{
-		.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_2F_3R),
-		.mapNum = MAP_NUM(MAGMA_HIDEOUT_2F_3R),
-		.landMonsInfo = &gMagmaHideout_2F_3R_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
+	//{
+	//	.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_1F),
+	//	.mapNum = MAP_NUM(MAGMA_HIDEOUT_1F),
+	//	.landMonsInfo = &gMagmaHideout_1F_LandMonsInfo,
+	//	.waterMonsInfo = NULL,
+	//	.rockSmashMonsInfo = NULL,
+	//	.fishingMonsInfo = NULL,
+	//},
+	//{
+	//	.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_2F_1R),
+	//	.mapNum = MAP_NUM(MAGMA_HIDEOUT_2F_1R),
+	//	.landMonsInfo = &gMagmaHideout_2F_1R_LandMonsInfo,
+	//	.waterMonsInfo = NULL,
+	//	.rockSmashMonsInfo = NULL,
+	//	.fishingMonsInfo = NULL,
+	//},
+	//{
+	//	.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_2F_2R),
+	//	.mapNum = MAP_NUM(MAGMA_HIDEOUT_2F_2R),
+	//	.landMonsInfo = &gMagmaHideout_2F_2R_LandMonsInfo,
+	//	.waterMonsInfo = NULL,
+	//	.rockSmashMonsInfo = NULL,
+	//	.fishingMonsInfo = NULL,
+	//},
+	//{
+	//	.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_3F_1R),
+	//	.mapNum = MAP_NUM(MAGMA_HIDEOUT_3F_1R),
+	//	.landMonsInfo = &gMagmaHideout_3F_1R_LandMonsInfo,
+	//	.waterMonsInfo = NULL,
+	//	.rockSmashMonsInfo = NULL,
+	//	.fishingMonsInfo = NULL,
+	//},
+	//{
+	//	.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_3F_2R),
+	//	.mapNum = MAP_NUM(MAGMA_HIDEOUT_3F_2R),
+	//	.landMonsInfo = &gMagmaHideout_3F_2R_LandMonsInfo,
+	//	.waterMonsInfo = NULL,
+	//	.rockSmashMonsInfo = NULL,
+	//	.fishingMonsInfo = NULL,
+	//},
+	//{
+	//	.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_4F),
+	//	.mapNum = MAP_NUM(MAGMA_HIDEOUT_4F),
+	//	.landMonsInfo = &gMagmaHideout_4F_LandMonsInfo,
+	//	.waterMonsInfo = NULL,
+	//	.rockSmashMonsInfo = NULL,
+	//	.fishingMonsInfo = NULL,
+	//},
+	//{
+	//	.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_3F_3R),
+	//	.mapNum = MAP_NUM(MAGMA_HIDEOUT_3F_3R),
+	//	.landMonsInfo = &gMagmaHideout_3F_3R_LandMonsInfo,
+	//	.waterMonsInfo = NULL,
+	//	.rockSmashMonsInfo = NULL,
+	//	.fishingMonsInfo = NULL,
+	//},
+	//{
+	//	.mapGroup = MAP_GROUP(MAGMA_HIDEOUT_2F_3R),
+	//	.mapNum = MAP_NUM(MAGMA_HIDEOUT_2F_3R),
+	//	.landMonsInfo = &gMagmaHideout_2F_3R_LandMonsInfo,
+	//	.waterMonsInfo = NULL,
+	//	.rockSmashMonsInfo = NULL,
+	//	.fishingMonsInfo = NULL,
+	//},
 	{
 		.mapGroup = MAP_GROUP(MIRAGE_TOWER_1F),
 		.mapNum = MAP_NUM(MIRAGE_TOWER_1F),

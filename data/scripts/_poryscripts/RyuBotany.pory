@@ -108,11 +108,22 @@ RyuBotanyRecipeBookScript::
     compare VAR_RYU_PLAYER_ALCHEMY_SKILL, 1  @@Alchemy shows up in the recipe book if the player has the skill, otherwise works exactly as it did before alchemy.
     goto_if_lt RyuBotany_BotanyRecipeCrafting
     msgbox WhichTypeOfRecipe
-    multichoicegrid 3, 10, MULTI_BOTANY_OR_ALCHEMY, 3, 1
+    bufferdynamicmulti RAMenu_Botany, RAMenu_Alchemy, RAMenu_HarvestLevel
+    multichoice 0, 6, MULTI_DYNAMIC_3, 1
     switch VAR_RESULT
     case 0, RyuBotany_BotanyRecipeCrafting
     case 1, RyuAlchemy_AttemptCreateEffect
+    case 2, RyuAlchemy_ChangeHarvestLevel
     goto ryu_end
+
+RAMenu_Alchemy:
+    .string "Alchemy$"
+
+RAMenu_Botany:
+    .string "Botany$"
+
+RAMenu_HarvestLevel:
+    .string "Harvest Level$"
 
 RyuBotany_BotanyRecipeCrafting::
     msgbox RB_WhichChapter
@@ -449,3 +460,35 @@ script RyuBotany_CheckLevelUp {
 text RyuBotany_SkillLeveledUp {
     "You have increased your Botany skill.\nYour Botany skill is now lv.{STR_VAR_1}."
 }   
+
+script RyuAlchemy_ChangeHarvestLevel {
+    msgbox("Choose the level you'd like to mine at.")
+    numberentry(0, 9, 1)
+    if (var(VAR_RESULT) > 3){
+        setvar(VAR_RESULT, 3)
+    }
+    elif (var(VAR_RESULT) == 0){
+        goto(RyuAlchemy_HarvestChangeFailed2)
+    }
+    copyvar(VAR_0x8002, VAR_RESULT)
+    compare_var_to_var(VAR_0x8002, VAR_RYU_PLAYER_MINING_SKILL)
+    goto_if_gt(RyuAlchemy_HarvestChangeFailed)
+    copyvar(VAR_RYU_MINING_HARVEST_LV, VAR_0x8002)
+    closemessage
+    buffernumberstring(0, VAR_RYU_MINING_HARVEST_LV)
+    msgbox("Harvest level has been set to {STR_VAR_1}.")
+    release
+    end
+}
+
+script RyuAlchemy_HarvestChangeFailed{
+    msgbox(format("The value you have chosen exceeds your maximum level. You cannot use this value."))
+    closemessage
+    goto(RyuAlchemy_ChangeHarvestLevel)
+}
+
+script RyuAlchemy_HarvestChangeFailed2{
+    msgbox(format("Zero is not a valid harvest level. Choose another level."))
+    closemessage
+    goto(RyuAlchemy_ChangeHarvestLevel)
+}

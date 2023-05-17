@@ -988,6 +988,33 @@ static void LoadMapFromWarp(bool32 a1)
         InitSecretBaseAppearance(TRUE);
     }
 }
+extern const u16 gRyuCompanionPartyPools[][10];
+
+void RyuCreateDynamicFollowerTeam(u16 imgId)
+{
+    u16 rnd1 = (Random() % 10);
+    u16 rnd2 = (Random() % 10);
+    u16 rnd3 = (Random() % 10);
+    do
+    { //make sure there's no duplicates in the companion's party
+        rnd1 = (Random() % 10);
+        rnd2 = (Random() % 10);
+        rnd3 = (Random() % 10);
+    }while (((rnd1 != rnd2) && (rnd2 != rnd3) && (rnd3 != rnd1)) == FALSE);
+
+    gSaveBlock2Ptr->CompanionPartyMembers[0] = gRyuCompanionPartyPools[imgId][rnd1];
+    gSaveBlock2Ptr->CompanionPartyMembers[1] = gRyuCompanionPartyPools[imgId][rnd2];
+    gSaveBlock2Ptr->CompanionPartyMembers[2] = gRyuCompanionPartyPools[imgId][rnd3];
+
+    if ((gSaveBlock2Ptr->CompanionPartyMembers[0] == 0) || (gSaveBlock2Ptr->CompanionPartyMembers[0] > SPECIES_MELMETAL))
+        gSaveBlock2Ptr->CompanionPartyMembers[0] = SPECIES_BIDOOF;
+
+    if ((gSaveBlock2Ptr->CompanionPartyMembers[1] == 0) || (gSaveBlock2Ptr->CompanionPartyMembers[1] > SPECIES_MELMETAL))
+        gSaveBlock2Ptr->CompanionPartyMembers[1] = SPECIES_BIDOOF;
+
+    if ((gSaveBlock2Ptr->CompanionPartyMembers[2] == 0) || (gSaveBlock2Ptr->CompanionPartyMembers[2] > SPECIES_MELMETAL))
+        gSaveBlock2Ptr->CompanionPartyMembers[2] = SPECIES_BIDOOF;
+}
 
 void RyuAddFollower(void)
 {
@@ -1604,6 +1631,7 @@ void CB2_NewGame(void)
     bool8 hasMomFollower = FALSE;
     u16 playerLifeSkills[3][2] = {0};
     bool8 hasRealEstate = gSaveBlock2Ptr->playerIsRealtor;
+    bool8 hasSuperTraining = FALSE;
 
     playerLifeSkills[0][0] = VarGet(VAR_RYU_PLAYER_MINING_SKILL);
     playerLifeSkills[0][1] = VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP);
@@ -1656,6 +1684,10 @@ void CB2_NewGame(void)
     
     if (CheckBagHasItem(ITEM_RECIPE_BOOK, 1))
         hasRecipeBook = TRUE;
+
+    if (FlagGet(FLAG_RYU_HAS_SUPER_TRAINING) == TRUE)
+        hasSuperTraining = TRUE;
+
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();

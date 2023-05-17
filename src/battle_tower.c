@@ -2456,6 +2456,7 @@ int RyuChoosePartnerLevel (void)
 static void FillPartnerParty(u16 trainerId)
 {
     s32 i, j;
+    u8 gen = 1;
     u32 ivs, level;
     u32 friendship;
     u16 monId;
@@ -2498,6 +2499,8 @@ static void FillPartnerParty(u16 trainerId)
         bool8 maxScale = FlagGet(FLAG_RYU_MAX_SCALE);
         u8 scalingType = FlagGet(FLAG_RYU_BOSS_SCALE) ? SCALING_TYPE_BOSS : SCALING_TYPE_TRAINER;
         u32 level = RyuChoosePartnerLevel();
+        u32 p = 0;
+        u8 setEv = 0;
         otID = Random32();
 
         for (i = 0; i < 3; i++)
@@ -2545,21 +2548,34 @@ static void FillPartnerParty(u16 trainerId)
             {
                 const struct TrainerMonItemCustomMoves *partyData = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].party.ItemCustomMoves;
 
-                CreateMon(&gPlayerParty[i + 3], partyData[i].species, level, partyData[i].iv * 31 / 255, TRUE, j, TRUE, otID);
-
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
-
-                for (j = 0; j < MAX_MON_MOVES; j++)
+                CreateMon(&gPlayerParty[i + 3], gSaveBlock2Ptr->CompanionPartyMembers[i], level, 31, TRUE, j, TRUE, otID);
+                switch (VarGet(VAR_RYU_EXP_MULTIPLIER))
                 {
-                    SetMonData(&gPlayerParty[i + 3], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
-                    SetMonData(&gPlayerParty[i + 3], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
+                    case 1: //normal, first play
+                        setEv = 64;
+                        break;
+                    case 10: //normal, ngp
+                        setEv = 192;
+                        break;
+                    case 4000:// easy
+                        setEv = 0;
+                        break;
+                    case 2000: //challenge
+                        setEv = 126;
+                        break;
+                    case 1000: //hardcore
+                        setEv = 255;
+                        break;
                 }
+                for (p = 0; p < 5;p++)
+                    SetMonData(&gPlayerParty[i + 3], MON_DATA_HP_EV + p, &setEv);
                 break;
             }
             }
 
             StringCopy(trainerName, gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].trainerName);
             SetMonData(&gPlayerParty[i + 3], MON_DATA_OT_NAME, trainerName);
+            SetMonData(&gPlayerParty[i + 3], MON_DATA_OT_GENDER, &gen);
         }
     }
     else if (trainerId < FRONTIER_TRAINERS_COUNT)

@@ -213,7 +213,8 @@ MH_CheckMagmaExit::
 	end
 	
 MH_CortneyConfirmsDone:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}...Task Finished...\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Enemies fleeing...\p"
+	.string "...Task Finished...\p"
 	.string "... ... ... \p"
 	.string "...fun\p"
 	.string "{PLAYER}... not useless...\p"

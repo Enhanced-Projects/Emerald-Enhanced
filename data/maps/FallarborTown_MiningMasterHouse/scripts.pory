@@ -63,6 +63,7 @@ FTCT_MiningMasterIntroZero::@@Intro shown when the player has enough badges and 
 	delay 60
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_RYU_PLAYER_MINING_SKILL, 1      @@player can now mine. At this point, MiningMasterIntroZero can no longer be reached due to the player having mining level 1.
+	setvar VAR_RYU_MINING_HARVEST_LV, 1
 	msgbox FTCT_GoForthAndMine@@ message telling the player to go start mining.
 	release
 	end

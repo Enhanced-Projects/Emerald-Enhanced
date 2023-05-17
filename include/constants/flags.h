@@ -1035,7 +1035,7 @@
 #define FLAG_HIDE_AQUA_HIDEOUT_B1F_ELECTRODE_2                      0x3D2
 #define FLAG_UNUSED_0x3D3                                           0x3D3
 #define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4
-#define FLAG_UNUSED_0x3D5                                           0x3D5
+#define FLAG_RYU_MAGMA_COLLECTED_ASH                                0x3D5
 #define FLAG_UNUSED_0x3D6                                           0x3D6
 #define FLAG_RYU_HOOPA                                              0x3D7
 #define FLAG_RYU_HOOPA_RAN                                          0x3D8
@@ -1370,6 +1370,17 @@
 #define FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS                 0x50E
 #define FLAG_UNUSED_0x50F                                         0x50F
 #define FLAG_RYU_WAYSTONE_BYPASS                                  0x510
+#define FLAG_RYU_HAS_SUPER_TRAINING                               0x511
+#define FLAG_RYU_MINNIE_STAMINA_CHARGE                            0x512
+#define FLAG_RYU_RIVAL_STAMINA_CHARGE                             0x513
+#define FLAG_RYU_MOM_STAMINA_CHARGE                               0x514
+#define FLAG_RYU_MAY_STAMINA_CHARGE                               0x515
+#define FLAG_RYU_LEAF_STAMINA_CHARGE                              0x516
+#define FLAG_RYU_SHELLY_STAMINA_CHARGE                            0x517
+#define FLAG_RYU_COURTNEY_STAMINA_CHARGE                          0x518
+#define FLAG_RYU_LANETTE_STAMINA_CHARGE                           0x519
+#define FLAG_RYU_LUCY_STAMINA_CHARGE                              0x51A
+#define FLAG_RYU_JOY_STAMINA_CHARGE                               0x51B
 
 
 //tutorial system flags

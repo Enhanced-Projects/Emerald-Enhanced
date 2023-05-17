@@ -453,6 +453,7 @@ RF_NurseQuestStage2::
 	closemessage
 	delay 10
 	clearfullscreenimage
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	setvar VAR_RYU_QUEST_NURSE, 4
 	release
 	end
@@ -470,6 +471,7 @@ RF_NurseQuestStage3::
 	closemessage
 	delay 10
 	clearfullscreenimage
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	setvar VAR_RYU_QUEST_NURSE, 6
 	release
 	end
@@ -483,6 +485,7 @@ RF_NurseQuestStage4::
 	closemessage
 	delay 10
 	clearfullscreenimage
+	createfollower FOLLOWER_JOY, RyuFollowerSelectNPCScript, DIR_NORTH
 	setvar VAR_RYU_QUEST_NURSE, 8
 	warpsilent MAP_LILYCOVE_CITY_POKEMON_CENTER_2F, 255, 3, 6
 	waitstate
@@ -693,14 +696,16 @@ script RyuFollowerSelectNPCScript {
 		goto(RyuFollowerSelectNPCScriptHome)
 	}
 	else {
-	bufferdynamicmulti(Followermenu1, Followermenu2, Followermenu4, followermenu5)
-	multichoicedefault(16, 7, MULTI_DYNAMIC_4, 0, 1)
+	bufferdynamicmulti(Followermenu1, Followermenu2, followermenu5, followermenu6, Followermenu4)
+	multichoicedefault(16, 7, MULTI_DYNAMIC_5, 0, 1)
 	switch (var(VAR_RESULT)){
 		case 0:
 			goto(RyuFollowerChatterSelect)
 		case 1:
 			goto(RyuFollowerJoinBattleQuery)
 		case 2:
+			goto(RyuFollowerShowCompanionParty)
+		case 3:
 			goto(RyuFollowerCheckDismiss)
 	}
 	release
@@ -723,6 +728,22 @@ script RyuFollowerSelectNPCScriptHome {
 	}
 	release
 	end
+}
+
+script RyuFollowerShowCompanionParty{
+	callnative(RyuBufferCompanionParty)
+	if (var(VAR_0x8002) == 777) {
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}I don't have a party.\nI'm just here for moral support!")
+		closemessage
+		release
+		end
+	}
+	else{
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}My party currently has:\n{STR_VAR_1}, {STR_VAR_2}, and {STR_VAR_3}.")
+		closemessage
+		release
+		end
+	}
 }
 
 script RyuFollowerJoinBattleQuery {
@@ -828,11 +849,15 @@ text Followermenu3{
 }
 
 text Followermenu4{
-	"Dismiss"
+	"Nothing"
 }
 
 text followermenu5{
-	"Nothing"
+	"Party"
+}
+
+text followermenu6{
+	"Dismiss"
 }
 
 //RyuFollowerToTrainerID will write the current follower’s Party and back sprite to VAR_0x8008 and 0x8009

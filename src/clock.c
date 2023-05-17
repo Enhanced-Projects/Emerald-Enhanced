@@ -178,6 +178,18 @@ static void UpdatePerDay(struct Time *localTime)
         VarSet(VAR_RYU_DAILY_VENDING_MACHINE_PURCHASES, 0); //reset daily purchase quota
         if ((CheckAchievement(ACH_THE_PHOENIX) == FALSE) && (CheckAchievement(ACH_MARKED_FOR_DEATH) == TRUE))
             FlagClear(FLAG_RYU_NOTIFIED_UNDERWORLD);
+        FlagSet(FLAG_RYU_MINNIE_STAMINA_CHARGE);
+        FlagSet(FLAG_RYU_RIVAL_STAMINA_CHARGE);
+        FlagSet(FLAG_RYU_MOM_STAMINA_CHARGE);
+        FlagSet(FLAG_RYU_MAY_STAMINA_CHARGE);
+        FlagSet(FLAG_RYU_LEAF_STAMINA_CHARGE);
+        FlagSet(FLAG_RYU_SHELLY_STAMINA_CHARGE);
+        FlagSet(FLAG_RYU_COURTNEY_STAMINA_CHARGE);
+        FlagSet(FLAG_RYU_LANETTE_STAMINA_CHARGE);
+        FlagSet(FLAG_RYU_LUCY_STAMINA_CHARGE);
+        if (FlagGet(FLAG_RYU_HAS_SUPER_TRAINING) == TRUE)
+            VarSet(VAR_RYU_PLAYER_STAMINA, 100);
+
     }
 }
 extern void Task_MapNamePopUpWindow(u8 taskId);
@@ -213,6 +225,11 @@ static void UpdatePerMinute(struct Time *localTime)
                     QueueNotification(((const u8 []) _("Delivery: {STR_VAR_1} min(s) left.")), NOTIFY_GENERAL, 120);
                 }
             }
+
+            if ((VarGet(VAR_RYU_PLAYER_STAMINA) < 100) && (FlagGet(FLAG_RYU_HAS_SUPER_TRAINING) == TRUE))
+                VarSet(VAR_RYU_PLAYER_STAMINA, (VarGet(VAR_RYU_PLAYER_STAMINA) + 1));
+            if (VarGet(VAR_RYU_PLAYER_STAMINA) > 100)
+                VarSet(VAR_RYU_PLAYER_STAMINA, 100);
         }
     }
 }

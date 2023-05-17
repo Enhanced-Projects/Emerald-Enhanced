@@ -2282,6 +2282,8 @@ bool8 ScrCmd_warpsootopolislegend(struct ScriptContext *ctx)
     return TRUE;
 }
 
+extern void RyuCreateDynamicFollowerTeam(u16 graphicsId);
+
 bool8 ScrCmd_createfollower(struct ScriptContext *ctx)
 {
     u16 graphicsId = (VarGet(ScriptReadHalfword(ctx)));
@@ -2290,6 +2292,7 @@ bool8 ScrCmd_createfollower(struct ScriptContext *ctx)
     CreateFollowerObjectEvent(graphicsId, script, direction);
     VarSet(VAR_RYU_FOLLOWER_ID, graphicsId);
     FlagSet(FLAG_RYU_HAS_FOLLOWER);
+    RyuCreateDynamicFollowerTeam(graphicsId);
     if (FlagGet(FLAG_RYU_FOLLOWER_TUTORIAL_UNLOCKED) == FALSE)
         NewTutorialNotify();
     return FALSE;
@@ -2300,6 +2303,9 @@ bool8 ScrCmd_destroyfollower(struct ScriptContext *ctx)
     DestroyFollowerObjectEvent();
     VarSet(VAR_RYU_FOLLOWER_ID, 0);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);
+    gSaveBlock2Ptr->CompanionPartyMembers[0] = SPECIES_BIDOOF;
+    gSaveBlock2Ptr->CompanionPartyMembers[1] = SPECIES_BIDOOF;
+    gSaveBlock2Ptr->CompanionPartyMembers[2] = SPECIES_BIDOOF;
     return FALSE;
 }
 
