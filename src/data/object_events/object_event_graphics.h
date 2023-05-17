@@ -43,6 +43,8 @@ const u16 gObjectEventPalette34[] = INCBIN_U16("graphics/object_events/palettes/
 const u16 gUnusedObjectEventPalette[] = INCBIN_U16("graphics/object_events/palettes/unused_palette.gbapal");
 const u16 gObjectEventPaletteLeaf[] = INCBIN_U16("graphics/object_events/palettes/leaf.gbapal");
 const u16 gObjectEventPaletteLusamine[] = INCBIN_U16("graphics/object_events/palettes/lusamine.gbapal");
+const u16 gObjectEventPaletteCourtney[] = INCBIN_U16("graphics/object_events/palettes/courtney.gbapal");
+const u16 gObjectEventPaletteShelly[] = INCBIN_U16("graphics/object_events/palettes/shelly.gbapal");
 const u16 gObjectEventPaletteNull16[16] = {};
 const u16 gObjectEventPaletteNull17[16] = {};
 const u16 gObjectEventPaletteNull18[16] = {};
@@ -161,10 +163,8 @@ const u32 gObjectEventPic_Steven[] = INCBIN_U32("graphics/object_events/pics/peo
 const u32 gObjectEventPic_Wally[] = INCBIN_U32("graphics/object_events/pics/people/wally.4bpp");
 //Aether Foundation
 const u32 gObjectEventPic_Lusamine[] = INCBIN_U32("graphics/object_events/pics/people/team_aether/lusamine.4bpp");
-
-
-
-
+const u32 gObjectEventPic_Courtney[] = INCBIN_U32("graphics/object_events/pics/people/team_magma/courtney.4bpp");
+const u32 gObjectEventPic_Shelly[] = INCBIN_U32("graphics/object_events/pics/people/team_aqua/shelly.4bpp");
 
 const u32 gObjectEventPic_RubySapphireLittleBoy[] = INCBIN_U32("graphics/object_events/pics/people/rs_little_boy.4bpp");
 const u32 gObjectEventPic_HotSpringsOldWoman[] = INCBIN_U32("graphics/object_events/pics/people/hot_springs_old_woman.4bpp");

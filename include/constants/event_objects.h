@@ -241,8 +241,10 @@
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
 #define OBJ_EVENT_GFX_LUSAMINE                   239
+#define OBJ_EVENT_GFX_COURTNEY                   240
+#define OBJ_EVENT_GFX_SHELLY                     241
 
-#define NUM_EVENT_OBJ_GFX                        240
+#define NUM_EVENT_OBJ_GFX                        242
 
 
 // These are dynamic object gfx ids.
