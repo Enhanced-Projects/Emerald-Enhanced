@@ -442,7 +442,6 @@ const u16 gEggMoves[] = {
 
     egg_moves(DODUO,
         MOVE_ASSURANCE,
-        MOVE_BRAVE_BIRD,
         MOVE_ENDEAVOR,
         MOVE_FAINT_ATTACK,
         MOVE_FLAIL,
