@@ -264,7 +264,7 @@ DR_LeafLeaves:
 	step_end
 	
 DR_LeafMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Leaf: One down...$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}One down...$"
 	
 @==================================================================================================End Leaf Events
 

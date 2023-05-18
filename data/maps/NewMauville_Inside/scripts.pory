@@ -320,10 +320,10 @@ lanadoesntlookatyou:
 	.string "Leaf is staring inquisitively\nat the generator.$"
 	
 NM_LanaElipsis:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Leaf: ... ... ... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Leaf used an Escape Rope!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Leaf used an Escape Rope!$"
 	
 NM_LanaElipsis2:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Leaf: ... ... ... ... ... ...$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... ... ... ...$"
 	
 NM_LanaLeft:
 	.string "Not even a word...$"

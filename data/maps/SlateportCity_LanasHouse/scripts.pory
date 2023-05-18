@@ -121,6 +121,7 @@ LH_StayTheNight::
 	goto_if_eq LH_LeafNight
 	msgbox LH_FollowerLanaQuery, MSGBOX_YESNO
 	compare VAR_RESULT, 1
+	clearfullscreenimage
 	goto_if_eq FollowerLeafSetup
 	msgbox LH_Dispt MSGBOX_DEFAULT
 	release
@@ -129,11 +130,11 @@ LH_StayTheNight::
 LH_LeafNight:
 	msgbox LH_LeafNightMsg1 MSGBOX_DEFAULT
 	closemessage
+	clearfullscreenimage
 	applymovement PLAYER, LH_PlayerToBed
 	applymovement 2, LH_LeafToBed
 	waitmovement 2
 	fadenewbgm MUS_DUMMY
-	clearfullscreenimage
 	delay 10
 	fadescreen 1
 	msgbox LH_LeafNightSceneMsg MSGBOX_DEFAULT
@@ -234,7 +235,7 @@ LH_CourtneyCaughtMsg:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Ohohoho what is this?\nCaught red-handed!\pIf I catch you here again,\nI'll send her packing myself!$"
 
 LH_FollowerLanaQuery:
-    .string "Leaf: {COLOR LIGHT_RED}{SHADOW RED}It's been a while since I've\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}It's been a while since I've\n"
     .string "been out with someone.\p"
     .string "Can I come with you, please?$"
 	

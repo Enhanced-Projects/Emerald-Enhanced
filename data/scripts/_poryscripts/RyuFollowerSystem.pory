@@ -1037,6 +1037,7 @@ script RyuFollower_BrendanChatterSelector {
 }
 
 script RyuFollower_LanaChatterSelector {
+	drawfullscreenimage(SCENEBGLEAF)
 	random(5)
 	switch (var(VAR_RESULT)) {
 		case 0:
@@ -1050,6 +1051,7 @@ script RyuFollower_LanaChatterSelector {
 		case 4:
 			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Why are you looking at me? Is my hat crooked or something?\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Leaf looks embarassed...)"))
 	}
+	clearfullscreenimage
 	closemessage
 	return
 }

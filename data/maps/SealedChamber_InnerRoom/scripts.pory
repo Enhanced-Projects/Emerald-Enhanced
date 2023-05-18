@@ -237,13 +237,13 @@ SCH_LanaDisptMsg:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She looks expectantly at you...\n soon frowning in disappointment.\p Am I missing something?)$"
 	
 SCH_LanaMsg:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Whew...I finally found you. Sure\ntook a while.\p{COLOR LIGHT_RED}{SHADOW RED}Leaf: ... ... ... ...$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Whew...I finally found you. Sure\ntook a while.\p{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...$"
 	
 SCH_LanaMsg2:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She swipes a pokéball from your\n belt and puts it in your hand,\l soon after, taking out hers.)\p{COLOR LIGHT_BLUE}{SHADOW BLUE} What, you wanna battle?\pFine by me!\nGimme your best shot!$"
 	
 SCH_LanaMsg3:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hey, you okay?\p{COLOR LIGHT_RED}{SHADOW RED}Leaf: ... ... ... ...$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hey, you okay?\p{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...$"
 
 SCH_LanaSCMsg:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(An earthquake suddenly occurs,\n causing Leaf to crash into {PLAYER}.)$"
