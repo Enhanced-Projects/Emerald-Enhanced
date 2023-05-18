@@ -317,3 +317,141 @@ movement LT_RivalExitLavaridge {
 	walk_right * 9
 	step_end
 }
+const LUCY = 10
+
+script LT_CheckLucyQuest{
+	if (flag(FLAG_RYU_LAVARIDGE_LUCY) == TRUE){
+		goto(ryu_end)
+	}
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You see a beautiful girl\n relaxing in the hot spring.)")
+	delay(60)
+	applymovement(LUCY, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	applymovement(LUCY, Common_Movement_StepDown)
+	waitmovement(LUCY)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Umm, can I help you?")
+	closemessage
+	bufferdynamicmulti(LT_lucy1, LT_lucy2)
+	multichoice(0, 10, MULTI_DYNAMIC_2, 1)
+	if (var(VAR_RESULT) == 0){ //end quest
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Yes, yes, I've heard it a million\ntimes. Please don't try any\lterrible pickup lines.")
+		closemessage
+		applymovement(LUCY, LT_LucyLeave)
+		waitmovement(LUCY)
+		setvar(VAR_RYU_QUEST_LUCY, 666)//Player offended lucy. Bad End.
+		removeobject(LUCY)
+		setflag(FLAG_RYU_LAVARIDGE_LUCY)
+		msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Must have been something I said...)")
+		closemessage
+		release
+		end
+	}
+	setvar(VAR_RYU_QUEST_LUCY, 10)//@player successfully struck conversation with Lucy. Quest begins.
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}It's no problem. I'm used to it.\nAt least you were man enough\lto admit your mistake.")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm Lucy. What's your name?")
+	closemessage
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}I'm {PLAYER}. Nice to meet you.\pyour own private hot spring, huh?\nmust be really nice.")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Yeah, it cost me quite a bit to\nhave it installed.\pIt was totally worth it though,\nbecause it really helps my skin\lcare routine.")
+	closemessage
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}It's really working.\pYour skin is silky and beautiful.")
+	closemessage
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You notice some red flush across\n her pearlescent face)")
+	closemessage
+	turnobject(LUCY, DIR_NORTH)
+	waitmovement(LUCY)
+	delay(30)
+	turnobject(LUCY, DIR_SOUTH)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (She clears her throat.)\p... ... ...\p{COLOR LIGHT_RED}{SHADOW RED}You're a brave one.\nI appreciate your confidence.\p Give me a minute to get dressed\nand I'll come out and we can have\la proper conversation.\pThere might be something you can\nhelp me with.")
+	closemessage
+	applymovement(LUCY, LT_LucyLeave)
+	waitmovement(LUCY)
+	applymovement(LUCY, Common_Movement_SetInvisible)
+	waitmovement(LUCY)
+	applymovement(LUCY, LT_LucyToDoor)
+	waitmovement(LUCY)
+	playse(SE_DOOR)
+	applymovement(LUCY, Common_Movement_StepDown)
+	waitmovement(LUCY)
+	turnobject(PLAYER, DIR_EAST)
+	delay(90)
+	applymovement(PLAYER, LT_PlayerToLucy)
+	waitmovement(PLAYER)
+	turnobject(LUCY, DIR_WEST)
+	setvar(VAR_RYU_QUEST_LUCY, 20)//Scene in private hot spring done. Await lucy to come out front.
+	setflag(FLAG_RYU_DS_LUCY_FRIENDS)
+	goto(LT_LucyQuestStart)
+}
+
+script LT_LucyQuestStart{
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Have you captured a Skitty?\pWell, it doesn't matter.\nYou seem to be a well informed\ltrainer.\pYou probably know that recently\nthere's been a boom in popularity of Skitty\pbecause some people found some of it's\nhidden potential.")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Skitty are so popular in fact,\nthat there's a surge in poaching.\pI've been trying to track down\nthe people doing this, so that\lI can bring them to justice.")
+	closemessage
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}I thought that poaching died out back\nwhen team Rocket was disbanded.\pPretty much haven't heard anything\nabout it since.")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}That's correct. You ARE well\ninformed.\pNo one's really sure who's doing\nthe poaching, but there's a huge\lblack market.\pSOMEONE has to be doing something.")
+	closemessage
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}And you... want me to help\nwith this task?")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}I would, yes. You seem plenty\ncapable.\pThe only lead I have is that\nthere's someone in Petalburg Woods\lwho's been acting as a lookout.")
+	closemessage
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}It's probably the last person\nyou'd expect.\pMeet me there?")
+	closemessage
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Count me in!\pI'll meet you there.")
+	closemessage
+	applymovement(LUCY, LT_LucyExitStageRight)
+	waitmovement(LUCY)
+	removeobject(LUCY)
+	setflag(FLAG_RYU_LAVARIDGE_LUCY)
+	setvar(VAR_RYU_QUEST_LUCY, 30) //@player has officially begun Lucy's investigation. Head to petalburg woods.
+	release
+	end
+}
+
+script LT_Skitty{
+	faceplayer
+	lock
+	msgbox("Skitty: {COLOR LIGHT_RED}{SHADOW RED}Mew!")
+	closemessage
+	release
+	end
+}
+
+movement LT_LucyLeave{
+	walk_right
+	walk_up * 3
+	walk_right
+	walk_up
+	walk_right * 4
+	walk_down
+	step_end
+}
+
+movement LT_LucyToDoor{
+	walk_down * 4
+	set_visible
+	step_end
+}
+
+movement LT_PlayerToLucy{
+	walk_right * 5
+	step_end
+}
+
+movement LT_LucyExitStageRight{
+	walk_right * 2
+	walk_down * 2
+	walk_right * 5
+	step_end 
+}
+
+text LT_lucy1{
+	"{COLOR LIGHT_GREEN}{SHADOW GREEN}(Comment on her beauty)"
+}
+
+text LT_lucy2{
+	"{COLOR LIGHT_GREEN}{SHADOW GREEN}(Apologize for peeping)"
+}

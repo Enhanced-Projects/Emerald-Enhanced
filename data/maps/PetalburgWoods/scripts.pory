@@ -1,5 +1,6 @@
 raw `
 PetalburgWoods_MapScripts:: @ 822DFD6
+	map_script ON_FRAME, PBW_trySetUpLucy
 	.byte 0
 
 PetalburgWoods_EventScript_DevonResearcherLeft:: @ 822DFD7
@@ -251,6 +252,8 @@ PetalburgWoods_EventScript_Boy2:: @ 822E219
 PetalburgWoods_EventScript_Girl:: @ 822E222
 	lock
 	faceplayer
+	compare VAR_RYU_QUEST_LUCY, 40
+	goto_if_eq PBW_PoacherLookout
 	goto_if_set FLAG_RECEIVED_MIRACLE_SEED, PetalburgWoods_EventScript_ExplainMiracleSeed
 	msgbox PetalburgWoods_Text_TryUsingThisItem, MSGBOX_DEFAULT
 	giveitem ITEM_MIRACLE_SEED
@@ -465,4 +468,147 @@ script RyuScript_QuestTutorialQuery {
 		callnative(NewTutorialNotify)
 	}
 	return
+}
+
+const PBW_LUCY1 = 14
+const PBW_LUCY2 = 15
+
+raw`
+PBW_trySetUpLucy::
+	map_script_2 VAR_RYU_QUEST_LUCY, 30,  PBW_SetUpLucy
+	.2byte 0
+`
+script PBW_SetUpLucy{
+		setvar(VAR_RYU_QUEST_LUCY, 35) //@Player found lucy in pbw. Begin investigation.
+		addobject(PBW_LUCY1)
+		addobject(PBW_LUCY2)
+		end
+	}
+
+script PBW_LucyInvestigate {
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I'm glad you could make it.\nThe poachers' lookout is here\lsomewhere.\pLet's look together!")
+	closemessage
+	removeobject(PBW_LUCY1)
+	removeobject(PBW_LUCY2)
+	createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_SOUTH)
+	setvar(VAR_RYU_QUEST_LUCY, 40)//Player has started the investigation of petalburg woods with lucy. Can't leave until they find the poacher's lookout.
+	release
+	end
+}
+
+script PBW_PreventExitSouth{
+	lockall
+	lock
+	applymovement(FOLLOWER, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}We can't leave now!\nWe haven't found the poachers'\llookout!")
+	closemessage
+	applymovement(PLAYER, Common_Movement_StepUp)
+	applymovement(FOLLOWER, Common_Movement_StepUp)
+	waitmovement(FOLLOWER)
+	release
+	end
+}
+
+script PBW_PreventExit{
+	lockall
+	lock
+	applymovement(FOLLOWER, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}We can't leave now!\nWe haven't found the poachers'\llookout!")
+	closemessage
+	applymovement(PLAYER, Common_Movement_StepDown)
+	applymovement(FOLLOWER, Common_Movement_StepDown)
+	waitmovement(FOLLOWER)
+	release
+	end
+}
+
+script PBW_PoacherLookout{
+	lock
+	faceplayer
+	setvar(VAR_RYU_QUEST_LUCY, 50)//Player found the poacher. Watch scene. (or return if defeated)
+	msgbox("Hello, trainer!\nWould you like a miracle-")
+	msgbox("What's with the mean look?\nI'm just giving away miracle\lseeds...")
+	closemessage
+	applymovement(FOLLOWER, PBW_FollowerAround)
+	waitmovement(FOLLOWER)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (The girl appears uneasy, and\n begins to look around.)")
+	closemessage
+	turnobject(13, DIR_WEST)
+	delay(25)
+	turnobject(13, DIR_EAST)
+	delay(25)
+	turnobject(13, DIR_NORTH)
+	delay(25)
+	turnobject(13, DIR_SOUTH)
+	msgbox("Jase! Get in here! We're busted!\nWe got to silence these\lmeddlers!")
+	closemessage
+	addobject(16)
+	applymovement(16, PBW_JaseToPlayer)
+	waitmovement(16)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}I knew it was too good to be\ntrue.\pA person who's giving away battle\nitems for free?\lDon't make me laugh.")
+	closemessage
+	applymovement(13, Common_Movement_ExclamationMark)
+	applymovement(16, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	msgbox(format("Well now that you know our secret, we can't very well let you run amok, can we?"))
+	closemessage
+	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
+	if (var(VAR_RESULT) == 0){
+		goto(ryu_end)
+	}
+	choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RyuScript_ChooseValidMons)
+		}
+	multi_2_vs_2(TRAINER_MILLY, PBW_MillyLose, TRAINER_JASE, PBW_JaseLose, VAR_0x8008, VAR_0x8009)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(PBW_playerLost)
+	}
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}All right. Enough. Now talk!\pWho do you work for?\nWhere's your base?")
+	//(do stuff here for after defeating the poacher grunts)
+}
+
+script PBW_playerLost {
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}How are we not strong enough?...")
+	closemessage
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Sorry... I guess I'm too weak...")
+	setvar(VAR_RYU_QUEST_LUCY, 999) //@Player lost to the poachers in petalburg woods. BAD END.
+	clearflag(FLAG_RYU_DS_LUCY_FRIENDS)
+	applymovement(FOLLOWER, Common_Movement_StepDown)
+	waitmovement(FOLLOWER)
+	applymovement(FOLLOWER, pbwFollowerExit)
+	waitmovement(FOLLOWER)
+	destroyfollower
+	release
+	end
+}
+
+movement PBW_JaseToPlayer {
+	walk_left * 8
+	step_end
+}
+
+movement PBW_FollowerAround{
+	walk_right
+	walk_up
+	step_end
+}
+
+movement pbwFollowerExit{
+	walk_left * 8
+	step_end
+}
+
+text PBW_MillyLose{
+	"But... we worked so hard..."
+}
+
+text PBW_JaseLose{
+	"No way these are normal people..."
 }

@@ -182,6 +182,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PetalburgWoods_EventScript_Girl",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LUCY",
+      "x": 14,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PBW_LucyInvestigate",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LUCY",
+      "x": 17,
+      "y": 35,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PBW_LucyInvestigate",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 43,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL"
     }
   ],
   "warp_events": [
@@ -246,6 +285,60 @@
       "var": "VAR_PETALBURG_WOODS_STATE",
       "var_value": "0",
       "script": "PetalburgWoods_EventScript_DevonResearcherRight"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_LUCY",
+      "var_value": "40",
+      "script": "PBW_PreventExit"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_LUCY",
+      "var_value": "40",
+      "script": "PBW_PreventExit"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 37,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_LUCY",
+      "var_value": "40",
+      "script": "PBW_PreventExitSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 37,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_LUCY",
+      "var_value": "40",
+      "script": "PBW_PreventExitSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 37,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_LUCY",
+      "var_value": "40",
+      "script": "PBW_PreventExitSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 37,
+      "y": 37,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_LUCY",
+      "var_value": "40",
+      "script": "PBW_PreventExitSouth"
     }
   ],
   "bg_events": [

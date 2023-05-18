@@ -1458,8 +1458,8 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_TAMMY
 	cleartrainerflag TRAINER_VALERIE_1
 	cleartrainerflag TRAINER_TASHA
-	cleartrainerflag TRAINER_EMPTY_33
-	cleartrainerflag TRAINER_EMPTY_34
+	cleartrainerflag TRAINER_JASE
+	cleartrainerflag TRAINER_MILLY
 	cleartrainerflag TRAINER_EMPTY_35
 	cleartrainerflag TRAINER_EMPTY_36
 	cleartrainerflag TRAINER_CINDY_1

@@ -1472,7 +1472,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Tasha[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Valerie2[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_MillyStory[] = {
     {
     .iv = 10,
     .lvl = 31,
@@ -1485,7 +1485,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Valerie2[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Valerie3[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_JaseStory[] = {
     {
     .iv = 20,
     .lvl = 35,

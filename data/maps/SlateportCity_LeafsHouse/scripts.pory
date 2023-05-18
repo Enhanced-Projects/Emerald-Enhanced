@@ -1,5 +1,5 @@
 raw `
-SlateportCity_LanasHouse_MapScripts::
+SlateportCity_LeafsHouse_MapScripts::
 	.byte 0
 
 LeafHouse_brother::

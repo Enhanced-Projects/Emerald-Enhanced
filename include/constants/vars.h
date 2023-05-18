@@ -294,6 +294,7 @@
 #define VAR_RYU_DELIVERY_SYSTEM_HIGH_REWARD_ROLL        0x4112
 #define VAR_RYU_DELIVERY_SYSTEM_LOW_REWARD_ROLL         0x4113
 #define VAR_RYU_TARGET_BOUNTY_MON            0x4114
+#define VAR_RYU_QUEST_LUCY                   0x4115
 //FULL_COLOR
 #define VAR_HAT_THEME_UI_NUMBER              0x411F // Which theme UI is selected
 #define VAR_RYU_MINING_HARVEST_LV            0x4120

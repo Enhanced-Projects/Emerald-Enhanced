@@ -140,4 +140,14 @@ movement RC_MoveFollowerToPlayerObject {
     step_end
 }   
 
+movement Common_Movement_SetInvisible{
+	set_invisible
+	step_end
+}
+
+movement Common_Movement_SetVisible{
+	set_visible
+	step_end
+}
+
 

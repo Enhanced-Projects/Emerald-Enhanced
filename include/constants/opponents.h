@@ -111,8 +111,8 @@
 #define TRAINER_TAMMY                       107
 #define TRAINER_VALERIE_1                   108
 #define TRAINER_TASHA                       109
-#define TRAINER_EMPTY_33                   110
-#define TRAINER_EMPTY_34                   111
+#define TRAINER_MILLY                       110
+#define TRAINER_JASE                        111
 #define TRAINER_EMPTY_35                   112
 #define TRAINER_EMPTY_36                   113
 #define TRAINER_CINDY_1                     114

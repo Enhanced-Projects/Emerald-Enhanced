@@ -1368,7 +1368,7 @@
 #define FLAG_RYU_HOLIDAY_EVENT                                    0x50C
 #define FLAG_UNUSED_0x50D                                         0x50D
 #define FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS                 0x50E
-#define FLAG_UNUSED_0x50F                                         0x50F
+#define FLAG_RYU_LAVARIDGE_LUCY                                   0x50F
 #define FLAG_RYU_WAYSTONE_BYPASS                                  0x510
 #define FLAG_RYU_HAS_SUPER_TRAINING                               0x511
 #define FLAG_RYU_MINNIE_STAMINA_CHARGE                            0x512
@@ -1381,6 +1381,11 @@
 #define FLAG_RYU_LANETTE_STAMINA_CHARGE                           0x519
 #define FLAG_RYU_LUCY_STAMINA_CHARGE                              0x51A
 #define FLAG_RYU_JOY_STAMINA_CHARGE                               0x51B
+#define FLAG_RYU_DS_LUCY_ACQ                                      0x51C
+#define FLAG_RYU_DS_LUCY_FRIENDS                                  0x51D
+#define FLAG_RYU_DS_LUCY_CLOSEFRIENDS                             0x51E
+#define FLAG_RYU_DS_LUCY_LOVERS                                   0x51F
+#define FLAG_RYU_DS_LUCY_PARTNERS                                 0x520
 
 
 //tutorial system flags

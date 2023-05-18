@@ -1759,36 +1759,36 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Tasha},
     },
 
-    [TRAINER_EMPTY_33] =
+    [TRAINER_MILLY] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
-        .trainerFaction = FACTION_OUTCASTS,
+        .trainerClass = TRAINER_CLASS_AROMA_LADY,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
-        .trainerName = _("Valerie"),
+        .trainerPic = TRAINER_PIC_AROMA_LADY,
+        .trainerName = _("Milly"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_Valerie2),
-        .party = {.NoItemDefaultMoves = sParty_Valerie2},
+        .partySize = ARRAY_COUNT(sParty_MillyStory),
+        .party = {.NoItemDefaultMoves = sParty_MillyStory},
     },
 
-    [TRAINER_EMPTY_34] =
+    [TRAINER_JASE] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
-        .trainerFaction = FACTION_OUTCASTS,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
-        .trainerName = _("Valerie"),
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerName = _("Jase"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_Valerie3),
-        .party = {.NoItemDefaultMoves = sParty_Valerie3},
+        .partySize = ARRAY_COUNT(sParty_JaseStory),
+        .party = {.NoItemDefaultMoves = sParty_JaseStory},
     },
 
     [TRAINER_EMPTY_35] =

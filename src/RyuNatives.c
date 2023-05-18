@@ -445,6 +445,9 @@ int CountBadges(void)
     int count = 0, badge;
     for (badge = FLAG_BADGE01_GET; badge <= FLAG_BADGE08_GET; badge++)
         count += FlagGet(badge);
+    if (count > 4)//if player has more than 4 badges, hide Lucy at her home in lavaridge and prevent quest start.
+        FlagSet(FLAG_RYU_LAVARIDGE_LUCY);
+
     return count;
 }
 
