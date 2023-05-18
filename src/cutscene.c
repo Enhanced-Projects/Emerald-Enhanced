@@ -80,6 +80,10 @@ static const u8 sMayBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/may/ma
 static const u8 sMayBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/may/may_map.bin");
 static const u8 sMayBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/may/may_palette.gbapal");
 
+static const u8 sLeafBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_tiles.8bpp");
+static const u8 sLeafBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_map.bin");
+static const u8 sLeafBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_tiles.gbapal");
+
 static const u8 sFollowerTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial1.4bpp");
 static const u8 sFollowerTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial1.bin");
 static const u8 sFollowerTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial1.gbapal");
@@ -430,6 +434,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sFactionsTutorial2BgMap),
         .palette = sFactionsTutorial2BgPalette,
 		.palIdxCnt = 16
+	},
+	[SCENEBGLEAF] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sLeafBgTiles,
+		.tileSize = sizeof(sLeafBgTiles),
+        .map = sMayBgMap,
+		.mapSize = sizeof(sLeafBgMap),
+        .palette = sLeafBgPalette,
+		.palIdxCnt = 224
 	},
 };
 
