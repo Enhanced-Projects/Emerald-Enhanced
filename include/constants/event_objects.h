@@ -243,8 +243,9 @@
 #define OBJ_EVENT_GFX_LUSAMINE                   239
 #define OBJ_EVENT_GFX_COURTNEY                   240
 #define OBJ_EVENT_GFX_SHELLY                     241
+#define OBJ_EVENT_GFX_MINNIE                     242
 
-#define NUM_EVENT_OBJ_GFX                        242
+#define NUM_EVENT_OBJ_GFX                        243
 
 
 // These are dynamic object gfx ids.

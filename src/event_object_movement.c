@@ -444,6 +444,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_LUSAMINE 0x1125
 #define OBJ_EVENT_PAL_TAG_COURTNEY 0x1126
 #define OBJ_EVENT_PAL_TAG_SHELLY 0x1127
+#define OBJ_EVENT_PAL_TAG_MINNIE 0x1128
 #define OBJ_EVENT_PAL_TAG_NONE 0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -493,6 +494,7 @@ const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPaletteLeaf, OBJ_EVENT_PAL_TAG_LEAF},
     {gObjectEventPaletteLusamine, OBJ_EVENT_PAL_TAG_LUSAMINE}, 
     {gObjectEventPaletteCourtney, OBJ_EVENT_PAL_TAG_COURTNEY}, 
+    {gObjectEventPaletteMinnie, OBJ_EVENT_PAL_TAG_MINNIE}, 
     {gObjectEventPaletteShelly, OBJ_EVENT_PAL_TAG_SHELLY}, 
     {NULL,                  0x0000},
 };
