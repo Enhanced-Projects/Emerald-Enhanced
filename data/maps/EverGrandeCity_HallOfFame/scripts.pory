@@ -157,7 +157,7 @@ EGC_GameClearDevModeMsg:
 
 
 RyuGameClearedHCMessage:
-	.string "Holy shit! You actually managed\nto clear hardcore mode.\pI would very much like to see\nproof of this in the discord!$"
+	.string "Congratulations on clearing\nHARDCORE mode!$"
 
 
 EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame1: @ 8229901
