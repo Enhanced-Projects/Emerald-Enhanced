@@ -387,6 +387,7 @@
 #define TUTORIAL_REALESTATE4 25
 #define TUTORIAL_FACTIONS1 26
 #define TUTORIAL_FACTIONS2 27
+#define SCENEBGLEAF 28
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0
@@ -549,6 +550,6 @@
 #endif
 //end hack
 
-#define EE_GAME_VERSION 9467
+#define EE_GAME_VERSION 9500
 
 #endif 

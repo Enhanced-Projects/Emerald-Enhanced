@@ -57,7 +57,7 @@ AS_Leaf_Event::
 	end
 	
 AS_LeafMsg1:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Leaf: ... ... ... ...$"
 	
 AS_LeafMsg12:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (She seems upset by something.)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Hey, are you-$"

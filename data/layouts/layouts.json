@@ -4483,13 +4483,13 @@
     },
     {
       "id": "LAYOUT_SLATEPORT_CITY_LEAFS_HOUSE",
-      "name": "SlateportCity_LeafsHouse_Layout",
+      "name": "SlateportCity_LanasHouse_Layout",
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/SlateportCity_LeafsHouse/border.bin",
-      "blockdata_filepath": "data/layouts/SlateportCity_LeafsHouse/map.bin"
+      "border_filepath": "data/layouts/SlateportCity_LanasHouse/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportCity_LanasHouse/map.bin"
     },
     {
       "id": "LAYOUT_EVER_GRANDE_CITY_THRONE_ROOM",

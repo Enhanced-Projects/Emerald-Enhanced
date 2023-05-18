@@ -1003,7 +1003,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 
 	.include "data/maps/DesertTombCore/scripts.inc"
 
-	.include "data/maps/SlateportCity_LeafsHouse/scripts.inc"
+	.include "data/maps/SlateportCity_LanasHouse/scripts.inc"
 
 	.include "data/maps/EverGrandeCity_ThroneRoom/scripts.inc"
 
