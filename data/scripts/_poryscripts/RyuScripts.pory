@@ -1246,7 +1246,10 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	goto(LH_StayTheNight)
+	drawfullscreenimage(SCENEBGLANETTE)
+	msgbox("Showing Lanette")
+	closemessage
+	clearfullscreenimage
 	release
 	end
 }

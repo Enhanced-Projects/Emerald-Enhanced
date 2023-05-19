@@ -124,6 +124,14 @@ static const u8 sFactionsTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/fsc
 static const u8 sFactionsTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial2.bin");
 static const u8 sFactionsTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial2.gbapal");
 
+static const u8 sLucyBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/lucy/lucy_tiles.8bpp");
+static const u8 sLucyBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/lucy/lucy_map.bin");
+static const u8 sLucyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/lucy/lucy_tiles.gbapal");
+
+static const u8 sLanetteBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/lanette/lanette_tiles.8bpp");
+static const u8 sLanetteBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/lanette/lanette_map.bin");
+static const u8 sLanetteBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/lanette/lanette_tiles.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -323,6 +331,28 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .map = sMayBgMap,
 		.mapSize = sizeof(sMayBgMap),
         .palette = sMayBgPalette,
+		.palIdxCnt = 224
+	},
+	[SCENEBGLUCY] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sLucyBgTiles,
+		.tileSize = sizeof(sLucyBgTiles),
+        .map = sLucyBgMap,
+		.mapSize = sizeof(sLucyBgMap),
+        .palette = sLucyBgPalette,
+		.palIdxCnt = 224
+	},
+	[SCENEBGLANETTE] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sLanetteBgTiles,
+		.tileSize = sizeof(sLanetteBgTiles),
+        .map = sLanetteBgMap,
+		.mapSize = sizeof(sLanetteBgMap),
+        .palette = sLanetteBgPalette,
 		.palIdxCnt = 224
 	},
 	[TUTORIALFOLLOWER1] = 
@@ -633,7 +663,7 @@ void StartBGCutscene(u8 id)
 					LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
 					break;
 			}
-			break;
+			break; 
 		default:
 			break;
 	}
