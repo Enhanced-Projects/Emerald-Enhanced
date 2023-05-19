@@ -119,6 +119,26 @@ static const union AnimCmd gAnimCmd_Nurse_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd gAnimCmd_Lucy_1[] = //do not use as template, wierd edge case
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(2, 12),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd gAnimCmd_Mom_1[] =
+{
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 9),
+    ANIMCMD_FRAME(2, 24),
+    ANIMCMD_FRAME(0, 9),
+    ANIMCMD_FRAME(3, 50),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd gAnimCmd_Gold_1[] =
 {
     ANIMCMD_FRAME(1, 20),
@@ -130,25 +150,6 @@ static const union AnimCmd gAnimCmd_Gold_1[] =
 };
 
 static const union AnimCmd gAnimCmd_Krystal_1[] =
-{
-    ANIMCMD_FRAME(1, 20),
-    ANIMCMD_FRAME(2, 6),
-    ANIMCMD_FRAME(3, 6),
-    ANIMCMD_FRAME(4, 24),
-    ANIMCMD_FRAME(0, 1),
-    ANIMCMD_END,
-};
-static const union AnimCmd gAnimCmd_Lucy_1[] =
-{
-    ANIMCMD_FRAME(1, 20),
-    ANIMCMD_FRAME(2, 6),
-    ANIMCMD_FRAME(3, 6),
-    ANIMCMD_FRAME(4, 24),
-    ANIMCMD_FRAME(0, 1),
-    ANIMCMD_END,
-};
-
-static const union AnimCmd gAnimCmd_Mom_1[] =
 {
     ANIMCMD_FRAME(1, 20),
     ANIMCMD_FRAME(2, 6),
