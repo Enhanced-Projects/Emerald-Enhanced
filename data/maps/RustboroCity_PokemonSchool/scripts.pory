@@ -11,7 +11,7 @@ PS_minnieInteract::
 	setvar VAR_TEMP_0, 1
 	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_end
 	goto_if_set FLAG_RYU_MINNIE_POKEMON_SCHOOL, ryu_end
-	setobjectxy FOLLOWER, 6, 10
+	setobjectxy FOLLOWER, 11, 3
 	delay 5
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
 	goto_if_eq PS_MinnieInteraction
@@ -52,32 +52,27 @@ PS_MinnieHelpedE4::
 	return
 	
 PS_MinnieToTeacher:
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
 	walk_fast_left
 	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_in_place_right
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_in_place_left
 	step_end
 	
 PS_PlayerToMinnie:
 	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 	
 PS_ReturnFollowerBehindPlayer:
-	walk_down
-	walk_down
-	walk_down
+	walk_up
 	walk_right
-	walk_in_place_up
+	walk_right
+	walk_in_place_left
 	step_end
 
 
