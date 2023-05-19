@@ -138,6 +138,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lusamine;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Courtney;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Shelly;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Minnie;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lanette;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireLittleBoy;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFishing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnFishing;
@@ -391,6 +392,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_COURTNEY] =                 &gObjectEventGraphicsInfo_Courtney,
     [OBJ_EVENT_GFX_SHELLY] =                   &gObjectEventGraphicsInfo_Shelly,
     [OBJ_EVENT_GFX_MINNIE] =                   &gObjectEventGraphicsInfo_Minnie,
+    [OBJ_EVENT_GFX_LANETTE] =                   &gObjectEventGraphicsInfo_Lanette,
     [OBJ_EVENT_GFX_LITTLE_BOY_3] =             &gObjectEventGraphicsInfo_RubySapphireLittleBoy,
     [OBJ_EVENT_GFX_BRENDAN_FISHING] =          &gObjectEventGraphicsInfo_BrendanFishing,
     [OBJ_EVENT_GFX_DAWN_FISHING] =             &gObjectEventGraphicsInfo_DawnFishing,

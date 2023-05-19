@@ -477,6 +477,9 @@ $(OBJEVENTGFXDIR)/people/team_aether/lusamine.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/followers/minnie.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/followers/lanette.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
 $(OBJEVENTGFXDIR)/people/team_magma/courtney.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
