@@ -135,6 +135,12 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wallace;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Steven;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wally;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lusamine;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lillie;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gladion;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherMemberM;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherMemberF;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherAdminM;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherAdminF;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Courtney;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Shelly;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Minnie;
@@ -389,10 +395,16 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_STEVEN] =                   &gObjectEventGraphicsInfo_Steven,
     [OBJ_EVENT_GFX_WALLY] =                    &gObjectEventGraphicsInfo_Wally,
     [OBJ_EVENT_GFX_LUSAMINE] =                 &gObjectEventGraphicsInfo_Lusamine,
+    [OBJ_EVENT_GFX_LILLIE] =                   &gObjectEventGraphicsInfo_Lillie,
+    [OBJ_EVENT_GFX_GLADION] =                  &gObjectEventGraphicsInfo_Gladion,
+    [OBJ_EVENT_GFX_AETHER_MEMBER_M] =          &gObjectEventGraphicsInfo_AetherMemberM,
+    [OBJ_EVENT_GFX_AETHER_MEMBER_F] =          &gObjectEventGraphicsInfo_AetherMemberF,
+    [OBJ_EVENT_GFX_AETHER_ADMIN_M] =           &gObjectEventGraphicsInfo_AetherAdminM,
+    [OBJ_EVENT_GFX_AETHER_ADMIN_F] =           &gObjectEventGraphicsInfo_AetherAdminF,
     [OBJ_EVENT_GFX_COURTNEY] =                 &gObjectEventGraphicsInfo_Courtney,
     [OBJ_EVENT_GFX_SHELLY] =                   &gObjectEventGraphicsInfo_Shelly,
     [OBJ_EVENT_GFX_MINNIE] =                   &gObjectEventGraphicsInfo_Minnie,
-    [OBJ_EVENT_GFX_LANETTE] =                   &gObjectEventGraphicsInfo_Lanette,
+    [OBJ_EVENT_GFX_LANETTE] =                  &gObjectEventGraphicsInfo_Lanette,
     [OBJ_EVENT_GFX_LITTLE_BOY_3] =             &gObjectEventGraphicsInfo_RubySapphireLittleBoy,
     [OBJ_EVENT_GFX_BRENDAN_FISHING] =          &gObjectEventGraphicsInfo_BrendanFishing,
     [OBJ_EVENT_GFX_DAWN_FISHING] =             &gObjectEventGraphicsInfo_DawnFishing,

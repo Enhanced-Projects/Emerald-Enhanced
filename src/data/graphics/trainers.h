@@ -301,6 +301,24 @@ const u32 gTrainerPalette_Mewtwo[] = INCBIN_U32("graphics/trainers/palettes/trai
 const u32 gTrainerFrontPic_Lusamine[] = INCBIN_U32("graphics/trainers/front_pics/aether_leader_lusamine.4bpp.lz");
 const u32 gTrainerPalette_Lusamine[] = INCBIN_U32("graphics/trainers/front_pics/aether_leader_lusamine.gbapal.lz");
 
+const u32 gTrainerFrontPic_Lillie[] = INCBIN_U32("graphics/trainers/front_pics/trainer_lillie.4bpp.lz");
+const u32 gTrainerPalette_Lillie[] =  INCBIN_U32("graphics/trainers/front_pics/trainer_lillie.gbapal.lz");
+
+const u32 gTrainerFrontPic_Gladion[] = INCBIN_U32("graphics/trainers/front_pics/trainer_gladion.4bpp.lz");
+const u32 gTrainerPalette_Gladion[] = INCBIN_U32("graphics/trainers/front_pics/trainer_gladion.gbapal.lz");
+
+const u32 gTrainerFrontPic_AetherMemberM[] = INCBIN_U32("graphics/trainers/front_pics/aether_member_m.4bpp.lz");
+const u32 gTrainerPalette_AetherMemberM[] = INCBIN_U32("graphics/trainers/front_pics/aether_member_m.gbapal.lz");
+
+const u32 gTrainerFrontPic_AetherMemberF[] = INCBIN_U32("graphics/trainers/front_pics/aether_member_f.4bpp.lz");
+const u32 gTrainerPalette_AetherMemberF[] = INCBIN_U32("graphics/trainers/front_pics/aether_member_f.gbapal.lz");
+
+const u32 gTrainerFrontPic_AetherAdminM[] =  INCBIN_U32("graphics/trainers/front_pics/aether_admin_m.4bpp.lz");
+const u32 gTrainerPalette_AetherAdminM[] = INCBIN_U32("graphics/trainers/front_pics/aether_admin_m.gbapal.lz");
+
+const u32 gTrainerFrontPic_AetherAdminF[] =  INCBIN_U32("graphics/trainers/front_pics/aether_admin_f.4bpp.lz");
+const u32 gTrainerPalette_AetherAdminF[] = INCBIN_U32("graphics/trainers/front_pics/aether_admin_f.gbapal.lz");
+
 const u8 gTrainerBackPic_Brendan[] = INCBIN_U8("graphics/trainers/back_pics/brendan_back_pic.4bpp");
 const u8 gTrainerBackPic_Dawn[] = INCBIN_U8("graphics/trainers/back_pics/dawn_back_pic.4bpp");
 const u8 gTrainerBackPic_Red[] = INCBIN_U8("graphics/trainers/back_pics/red_back_pic.4bpp");

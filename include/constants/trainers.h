@@ -117,7 +117,13 @@
 #define TRAINER_PIC_MINNIE                97
 #define TRAINER_PIC_MEWTWO                98
 #define TRAINER_PIC_ESKIMO                99
-#define TRAINER_PIC_LUSAMINE                100
+#define TRAINER_PIC_LUSAMINE              100
+#define TRAINER_PIC_LILLIE                101
+#define TRAINER_PIC_GLADION               102
+#define TRAINER_PIC_AETHER_MEMBER_M       103
+#define TRAINER_PIC_AETHER_MEMBER_F       104
+#define TRAINER_PIC_AETHER_ADMIN_M        105
+#define TRAINER_PIC_AETHER_ADMIN_F        106
 
 #define TRAINER_BACK_PIC_BRENDAN                0
 #define TRAINER_BACK_PIC_DAWN                   1
@@ -223,8 +229,10 @@
 #define FACILITY_CLASS_MEWTWO                0x53
 #define FACILITY_CLASS_DEVON_ENFORCER        0x54
 #define FACILITY_CLASS_AETHER_FOUNDER        0x55
+#define FACILITY_CLASS_AETHER_ADMIN          0x56
+#define FACILITY_CLASS_AETHER_WORKER         0x57
 
-#define FACILITY_CLASSES_COUNT               0x56
+#define FACILITY_CLASSES_COUNT               0x58
 
 #define RS_FACILITY_CLASS_AQUA_LEADER_ARCHIE    0x0
 #define RS_FACILITY_CLASS_AQUA_GRUNT_M          0x1
@@ -376,7 +384,9 @@
 #define TRAINER_CLASS_MEWTWO         0x43
 #define TRAINER_CLASS_DEVON_ENFORCER 0x44
 #define TRAINER_CLASS_AETHER_FOUNDER 0x45
-#define TRAINER_CLASS_MOM 0x46
+#define TRAINER_CLASS_AETHER_ADMIN   0x47
+#define TRAINER_CLASS_AETHER_WORKER  0x48
+#define TRAINER_CLASS_MOM            0x46
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

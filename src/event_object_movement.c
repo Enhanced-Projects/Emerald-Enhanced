@@ -446,6 +446,12 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_SHELLY 0x1127
 #define OBJ_EVENT_PAL_TAG_MINNIE 0x1128
 #define OBJ_EVENT_PAL_TAG_LANETTE 0x1129
+#define OBJ_EVENT_PAL_TAG_LILLIE 0x112A
+#define OBJ_EVENT_PAL_TAG_GLADION 0x112B
+#define OBJ_EVENT_PAL_TAG_AETHER_MEMBER_M 0x112C
+#define OBJ_EVENT_PAL_TAG_AETHER_MEMBER_F 0x112D
+#define OBJ_EVENT_PAL_TAG_AETHER_ADMIN_M 0x112E
+#define OBJ_EVENT_PAL_TAG_AETHER_ADMIN_F 0x112F
 #define OBJ_EVENT_PAL_TAG_NONE 0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -498,6 +504,12 @@ const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPaletteMinnie, OBJ_EVENT_PAL_TAG_MINNIE}, 
     {gObjectEventPaletteShelly, OBJ_EVENT_PAL_TAG_SHELLY}, 
     {gObjectEventPaletteLanette, OBJ_EVENT_PAL_TAG_LANETTE}, 
+    {gObjectEventPaletteLillie, OBJ_EVENT_PAL_TAG_LILLIE}, 
+    {gObjectEventPaletteGladion, OBJ_EVENT_PAL_TAG_GLADION}, 
+    {gObjectEventPaletteAetherMemberM, OBJ_EVENT_PAL_TAG_AETHER_MEMBER_M}, 
+    {gObjectEventPaletteAetherMemberF, OBJ_EVENT_PAL_TAG_AETHER_MEMBER_F}, 
+    {gObjectEventPaletteAetherAdminM, OBJ_EVENT_PAL_TAG_AETHER_ADMIN_M}, 
+    {gObjectEventPaletteAetherAdminF, OBJ_EVENT_PAL_TAG_AETHER_ADMIN_F}, 
     {NULL,                  0x0000},
 };
 

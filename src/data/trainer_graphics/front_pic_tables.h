@@ -101,6 +101,12 @@ const struct MonCoords gTrainerFrontPicCoords[] =
     [TRAINER_PIC_MEWTWO] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_ESKIMO] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_LUSAMINE] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_LILLIE] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_GLADION] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_AETHER_MEMBER_M] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_AETHER_MEMBER_F] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_AETHER_ADMIN_M] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_AETHER_ADMIN_F] = {.size = 8, .y_offset = 1},
 };
 
 const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
@@ -206,6 +212,12 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(MEWTWO, gTrainerFrontPic_Mewtwo, 0x800),
     TRAINER_SPRITE(ESKIMO, gTrainerFrontPic_Eskimo, 0x800),
     TRAINER_SPRITE(LUSAMINE, gTrainerFrontPic_Lusamine, 0x800),
+    TRAINER_SPRITE(LILLIE, gTrainerFrontPic_Lillie, 0x800),
+    TRAINER_SPRITE(GLADION, gTrainerFrontPic_Gladion, 0x800),
+    TRAINER_SPRITE(AETHER_MEMBER_M, gTrainerFrontPic_AetherMemberM, 0x800),
+    TRAINER_SPRITE(AETHER_MEMBER_F, gTrainerFrontPic_AetherMemberF, 0x800),
+    TRAINER_SPRITE(AETHER_ADMIN_M, gTrainerFrontPic_AetherAdminM, 0x800),
+    TRAINER_SPRITE(AETHER_ADMIN_F, gTrainerFrontPic_AetherAdminF, 0x800),
 
 };
 
@@ -312,4 +324,10 @@ const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
     TRAINER_PAL(MEWTWO, gTrainerPalette_Mewtwo),
     TRAINER_PAL(ESKIMO, gTrainerPalette_Eskimo),
     TRAINER_PAL(LUSAMINE, gTrainerPalette_Lusamine),
+    TRAINER_PAL(LILLIE,          gTrainerPalette_Lillie),
+    TRAINER_PAL(GLADION,         gTrainerPalette_Gladion),
+    TRAINER_PAL(AETHER_MEMBER_M, gTrainerPalette_AetherMemberM),
+    TRAINER_PAL(AETHER_MEMBER_F, gTrainerPalette_AetherMemberF),
+    TRAINER_PAL(AETHER_ADMIN_M,  gTrainerPalette_AetherAdminM),
+    TRAINER_PAL(AETHER_ADMIN_F , gTrainerPalette_AetherAdminF),
 };

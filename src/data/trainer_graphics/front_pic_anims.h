@@ -390,6 +390,30 @@ const union AnimCmd *const gTrainerFrontAnims_Lusamine[] ={
     sAnim_GeneralFrame0,
 };
 
+const union AnimCmd *const gTrainerFrontAnims_Lillie[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_Gladion[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_AetherMemberM[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_AetherMemberF[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_AetherAdminM[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_AetherAdminF[] ={
+    sAnim_GeneralFrame0,
+};
+
 const union AnimCmd *const gTrainerFrontAnims_Lanette[] ={
     sAnim_GeneralFrame0,
 };
@@ -505,4 +529,10 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_MEWTWO] = gTrainerFrontAnims_Mewtwo,
     [TRAINER_PIC_ESKIMO] = gTrainerFrontAnims_Eskimo,
     [TRAINER_PIC_LUSAMINE] = gTrainerFrontAnims_Lusamine,
+    [TRAINER_PIC_LILLIE] =          gTrainerFrontAnims_Lillie,
+    [TRAINER_PIC_GLADION] =         gTrainerFrontAnims_Gladion,
+    [TRAINER_PIC_AETHER_MEMBER_M] = gTrainerFrontAnims_AetherMemberM,
+    [TRAINER_PIC_AETHER_MEMBER_F] = gTrainerFrontAnims_AetherMemberF,
+    [TRAINER_PIC_AETHER_ADMIN_M] =  gTrainerFrontAnims_AetherAdminM,
+    [TRAINER_PIC_AETHER_ADMIN_F] =  gTrainerFrontAnims_AetherAdminF,
 };

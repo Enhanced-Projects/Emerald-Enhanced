@@ -393,6 +393,8 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_DEVON_ENFORCER, 8},
     {TRAINER_CLASS_AETHER_FOUNDER, 50},
     {TRAINER_CLASS_MOM, 50},
+    {TRAINER_CLASS_AETHER_ADMIN, 40},
+    {TRAINER_CLASS_AETHER_WORKER, 40},
     {0xFF, 5},
 };
 

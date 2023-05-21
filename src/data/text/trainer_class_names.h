@@ -69,5 +69,7 @@ const u8 gTrainerClassNames[][13] = {
     [TRAINER_CLASS_MEWTWO] = _("Genetic"),
     [TRAINER_CLASS_DEVON_ENFORCER] = _("Enforcer"),
     [TRAINER_CLASS_AETHER_FOUNDER] = _("Aether Corp."),
+    [TRAINER_CLASS_AETHER_ADMIN] = _("Aether Admin"),
+    [TRAINER_CLASS_AETHER_WORKER] = _("Aether Agent"),
     [TRAINER_CLASS_MOM] = _(""),
 };

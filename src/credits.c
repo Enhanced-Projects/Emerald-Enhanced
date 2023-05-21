@@ -291,8 +291,9 @@ static const u8 gCreditsText_EEGraphics4[] = _("CAulin");
 static const u8 gCreditsTextExternalGraphics[] = _("External Art Sources:");
 static const u8 gCreditsText_EEExtGraphics1[] = _("mid117   silentninja");
 static const u8 gCreditsText_EEExtGraphics2[] = _("SharkGuy01");
-static const u8 gCreditsText_EEExtGraphics3[] = _("unini 99");
-static const u8 gCreditsText_EEExtGraphics4[] = _("");
+static const u8 gCreditsText_EEExtGraphics3[] = _("unini99 FursTheFox");
+static const u8 gCreditsText_EEExtGraphics4[] = _("Mid117  SilentNinja");
+static const u8 gCreditsText_EEExtGraphics5[] = _("Beliot419");
 static const u8 gCreditsText_DocumentationBy[] = _("Documentation By:");
 static const u8 gCreditsText_Toby[] = _("Toby");
 static const u8 gCreditsText_Jannisjo[] = _("jannisjo");
@@ -544,6 +545,7 @@ static const struct CreditsEntry gCreditsEntry_EEExtGraphics1[] = {0, FALSE, gCr
 static const struct CreditsEntry gCreditsEntry_EEExtGraphics2[] = {0, FALSE, gCreditsText_EEExtGraphics2};
 static const struct CreditsEntry gCreditsEntry_EEExtGraphics3[] = {0, FALSE, gCreditsText_EEExtGraphics3};
 static const struct CreditsEntry gCreditsEntry_EEExtGraphics4[] = {0, FALSE, gCreditsText_EEExtGraphics4};
+static const struct CreditsEntry gCreditsEntry_EEExtGraphics5[] = {0, FALSE, gCreditsText_EEExtGraphics5};
 //page
 static const struct CreditsEntry gCreditsEntry_DocumentationBy[] = {0, TRUE, gCreditsText_DocumentationBy};
 static const struct CreditsEntry gCreditsEntry_Toby[] = {0, FALSE, gCreditsText_Toby};
@@ -777,7 +779,7 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         gCreditsEntry_ExternalGraphics,
         gCreditsEntry_EEExtGraphics3,
         gCreditsEntry_EEExtGraphics4,
-        _,
+        gCreditsEntry_EEExtGraphics5,
         _
     },
     {
