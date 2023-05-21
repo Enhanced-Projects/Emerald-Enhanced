@@ -5,132 +5,140 @@
 #include "palette.h"
 #include "constants/rgb.h"
 #include "constants/vars.h"
+#include "sprite.h"
 
-static const u8 sDefaultCutsceneTilemap[] = INCBIN_U8("graphics/cutscene/fscutscene/default_tilemap.bin");
+static const u8 sDefaultCutsceneTilemap[] = INCBIN_U8("graphics/cutscene/default_tilemap.bin");
 
-static const u8 sDawnCutsceneBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/tiles.8bpp");
-static const u8 sDawnCutsceneBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/map.bin");
-static const u8 sDawnCutsceneBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/tiles.gbapal");
+static const u8 sDawnCutsceneBgTiles[] = INCBIN_U8("graphics/cutscene/dawn/tiles.8bpp");
+static const u8 sDawnCutsceneBgMap[] = INCBIN_U8("graphics/cutscene/dawn/map.bin");
+static const u8 sDawnCutsceneBgPalette[] = INCBIN_U8("graphics/cutscene/dawn/tiles.gbapal");
 
-static const u8 sDawnCutsceneBgNightTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/night_tiles.8bpp");
-static const u8 sDawnCutsceneBgNightMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/night_map.bin");
-static const u8 sDawnCutsceneBgNightPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/night_tiles.gbapal");
+static const u8 sDawnCutsceneBgNightTiles[] = INCBIN_U8("graphics/cutscene/dawn/night_tiles.8bpp");
+static const u8 sDawnCutsceneBgNightMap[] = INCBIN_U8("graphics/cutscene/dawn/night_map.bin");
+static const u8 sDawnCutsceneBgNightPalette[] = INCBIN_U8("graphics/cutscene/dawn/night_tiles.gbapal");
 
-static const u8 sMinnieBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_tiles.8bpp");
-static const u8 sMinnieBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_map.bin");
-static const u8 sMinnieBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_palette.gbapal");
+static const u8 sMinnieBgTiles[] = INCBIN_U8("graphics/cutscene/minnie/minnie_tiles.8bpp");
+static const u8 sMinnieBgMap[] = INCBIN_U8("graphics/cutscene/minnie/minnie_map.bin");
+static const u8 sMinnieBgPalette[] = INCBIN_U8("graphics/cutscene/minnie/minnie_palette.gbapal");
 
-static const u8 sMeloettaBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_tiles.4bpp");
-static const u8 sMeloettaBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_map.bin");
-static const u8 sMeloettaBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_palette.gbapal");
+static const u8 sMeloettaBgTiles[] = INCBIN_U8("graphics/cutscene/meloetta/meloetta_tiles.4bpp");
+static const u8 sMeloettaBgMap[] = INCBIN_U8("graphics/cutscene/meloetta/meloetta_map.bin");
+static const u8 sMeloettaBgPalette[] = INCBIN_U8("graphics/cutscene/meloetta/meloetta_palette.gbapal");
 
-static const u8 sBrendanBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_tiles.8bpp");
-static const u8 sBrendanBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_map.bin");
-static const u8 sBrendanBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_palette.gbapal");
+static const u8 sBrendanBgTiles[] = INCBIN_U8("graphics/cutscene/brendan/brendan_tiles.8bpp");
+static const u8 sBrendanBgMap[] = INCBIN_U8("graphics/cutscene/brendan/brendan_map.bin");
+static const u8 sBrendanBgPalette[] = INCBIN_U8("graphics/cutscene/brendan/brendan_palette.gbapal");
 
-static const u8 sBrendanNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_tiles.8bpp");
-static const u8 sBrendanNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_map.bin");
-static const u8 sBrendanNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_palette.gbapal");
+static const u8 sBrendanNightBgTiles[] = INCBIN_U8("graphics/cutscene/brendan/brendan_night_tiles.8bpp");
+static const u8 sBrendanNightBgMap[] = INCBIN_U8("graphics/cutscene/brendan/brendan_night_map.bin");
+static const u8 sBrendanNightBgPalette[] = INCBIN_U8("graphics/cutscene/brendan/brendan_night_palette.gbapal");
 
-static const u8 sCourtneyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_tiles.8bpp");
-static const u8 sCourtneyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_map.bin");
-static const u8 sCourtneyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_palette.gbapal");
+static const u8 sCourtneyBgTiles[] = INCBIN_U8("graphics/cutscene/courtney/courtney_tiles.8bpp");
+static const u8 sCourtneyBgMap[] = INCBIN_U8("graphics/cutscene/courtney/courtney_map.bin");
+static const u8 sCourtneyBgPalette[] = INCBIN_U8("graphics/cutscene/courtney/courtney_palette.gbapal");
 
-static const u8 sCourtneyNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_night_tiles.8bpp");
-static const u8 sCourtneyNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_night_map.bin");
-static const u8 sCourtneyNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_night_palette.gbapal");
+static const u8 sCourtneyNightBgTiles[] = INCBIN_U8("graphics/cutscene/courtney/courtney_night_tiles.8bpp");
+static const u8 sCourtneyNightBgMap[] = INCBIN_U8("graphics/cutscene/courtney/courtney_night_map.bin");
+static const u8 sCourtneyNightBgPalette[] = INCBIN_U8("graphics/cutscene/courtney/courtney_night_palette.gbapal");
 
-static const u8 sCourtneyNeutralBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_neutral_tiles.8bpp");
-static const u8 sCourtneyNeutralBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_neutral_map.bin");
-static const u8 sCourtneyNeutralBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_neutral_palette.gbapal");
+static const u8 sCourtneyNeutralBgTiles[] = INCBIN_U8("graphics/cutscene/courtney/courtney_neutral_tiles.8bpp");
+static const u8 sCourtneyNeutralBgMap[] = INCBIN_U8("graphics/cutscene/courtney/courtney_neutral_map.bin");
+static const u8 sCourtneyNeutralBgPalette[] = INCBIN_U8("graphics/cutscene/courtney/courtney_neutral_palette.gbapal");
 
-static const u8 sHeatranBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_tiles.8bpp");
-static const u8 sHeatranBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_map.bin");
-static const u8 sHeatranBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran.gbapal");
+static const u8 sHeatranBgTiles[] = INCBIN_U8("graphics/cutscene/heatran/heatran_tiles.8bpp");
+static const u8 sHeatranBgMap[] = INCBIN_U8("graphics/cutscene/heatran/heatran_map.bin");
+static const u8 sHeatranBgPalette[] = INCBIN_U8("graphics/cutscene/heatran/heatran.gbapal");
 
-static const u8 sNurseBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/nurse_tiles.8bpp");
-static const u8 sNurseBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/nurse_map.bin");
-static const u8 sNurseBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/nurse_palette.gbapal");
+static const u8 sNurseBgTiles[] = INCBIN_U8("graphics/cutscene/nurse/nurse_tiles.8bpp");
+static const u8 sNurseBgMap[] = INCBIN_U8("graphics/cutscene/nurse/nurse_map.bin");
+static const u8 sNurseBgPalette[] = INCBIN_U8("graphics/cutscene/nurse/nurse_palette.gbapal");
 
-static const u8 sNurseNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_tiles.8bpp");
-static const u8 sNurseNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_map.bin");
-static const u8 sNurseNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_palette.gbapal");
+static const u8 sNurseNightBgTiles[] = INCBIN_U8("graphics/cutscene/nurse/night_tiles.8bpp");
+static const u8 sNurseNightBgMap[] = INCBIN_U8("graphics/cutscene/nurse/night_map.bin");
+static const u8 sNurseNightBgPalette[] = INCBIN_U8("graphics/cutscene/nurse/night_palette.gbapal");
 
-static const u8 sPidgeyScreenshotTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.4bpp");
-static const u8 sPidgeyScreenshotMap[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.bin");
-static const u8 sPidgeyScreenshotPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.gbapal");
+static const u8 sPidgeyScreenshotTiles[] = INCBIN_U8("graphics/cutscene/pidgey_scrsht/pidgey_pc.4bpp");
+static const u8 sPidgeyScreenshotMap[] = INCBIN_U8("graphics/cutscene/pidgey_scrsht/pidgey_pc.bin");
+static const u8 sPidgeyScreenshotPalette[] = INCBIN_U8("graphics/cutscene/pidgey_scrsht/pidgey_pc.gbapal");
 
-static const u8 sGameOverBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_tiles.8bpp");
-static const u8 sGameOverBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_map.bin");
-static const u8 sGameOverBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_palette.gbapal");
+static const u8 sGameOverBgTiles[] = INCBIN_U8("graphics/cutscene/gameover/gameover_tiles.8bpp");
+static const u8 sGameOverBgMap[] = INCBIN_U8("graphics/cutscene/gameover/gameover_map.bin");
+static const u8 sGameOverBgPalette[] = INCBIN_U8("graphics/cutscene/gameover/gameover_palette.gbapal");
 
-static const u8 sWarpBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_tiles.4bpp");
-static const u8 sWarpBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_map.bin");
-static const u8 sWarpBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_palette.gbapal");
+static const u8 sWarpBgTiles[] = INCBIN_U8("graphics/cutscene/warp/warp_tiles.4bpp");
+static const u8 sWarpBgMap[] = INCBIN_U8("graphics/cutscene/warp/warp_map.bin");
+static const u8 sWarpBgPalette[] = INCBIN_U8("graphics/cutscene/warp/warp_palette.gbapal");
 
-static const u8 sShellyBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_tiles.8bpp");
-static const u8 sShellyBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_map.bin");
-static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_tiles.gbapal");
+static const u8 sShellyBgTiles[] =   INCBIN_U8("graphics/cutscene/shelly/shelly_tiles.8bpp");
+static const u8 sShellyBgMap[] =     INCBIN_U8("graphics/cutscene/shelly/shelly_map.bin");
+static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/shelly/shelly_tiles.gbapal");
 
-static const u8 sShellyNightBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_night_tiles.8bpp");
-static const u8 sShellyNightBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_night_map.bin");
-static const u8 sShellyNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_night_tiles.gbapal");
+static const u8 sShellyNightBgTiles[] =   INCBIN_U8("graphics/cutscene/shelly/shelly_night_tiles.8bpp");
+static const u8 sShellyNightBgMap[] =     INCBIN_U8("graphics/cutscene/shelly/shelly_night_map.bin");
+static const u8 sShellyNightBgPalette[] = INCBIN_U8("graphics/cutscene/shelly/shelly_night_tiles.gbapal");
 
-static const u8 sMayBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/may/may_tiles.8bpp");
-static const u8 sMayBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/may/may_map.bin");
-static const u8 sMayBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/may/may_palette.gbapal");
+static const u8 sMayBgTiles[] =   INCBIN_U8("graphics/cutscene/may/may_tiles.8bpp");
+static const u8 sMayBgMap[] =     INCBIN_U8("graphics/cutscene/may/may_map.bin");
+static const u8 sMayBgPalette[] = INCBIN_U8("graphics/cutscene/may/may_palette.gbapal");
 
-static const u8 sLeafBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_tiles.8bpp");
-static const u8 sLeafBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_map.bin");
-static const u8 sLeafBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_tiles.gbapal");
+static const u8 sLeafBgTiles[] =   INCBIN_U8("graphics/cutscene/leaf/leaf_tiles.8bpp");
+static const u8 sLeafBgMap[] =     INCBIN_U8("graphics/cutscene/leaf/leaf_map.bin");
+static const u8 sLeafBgPalette[] = INCBIN_U8("graphics/cutscene/leaf/leaf_tiles.gbapal");
 
-static const u8 sFollowerTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial1.4bpp");
-static const u8 sFollowerTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial1.bin");
-static const u8 sFollowerTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial1.gbapal");
+static const u8 sFollowerTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/followertutorial1.4bpp");
+static const u8 sFollowerTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/followertutorial1.bin");
+static const u8 sFollowerTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/followertutorial1.gbapal");
 
-static const u8 sFollowerTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial2.4bpp");
-static const u8 sFollowerTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial2.bin");
-static const u8 sFollowerTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial2.gbapal");
+static const u8 sFollowerTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/followertutorial2.4bpp");
+static const u8 sFollowerTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/followertutorial2.bin");
+static const u8 sFollowerTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/followertutorial2.gbapal");
 
-static const u8 sFollowerTutorial3BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial3.4bpp");
-static const u8 sFollowerTutorial3BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial3.bin");
-static const u8 sFollowerTutorial3BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial3.gbapal");
+static const u8 sFollowerTutorial3BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/followertutorial3.4bpp");
+static const u8 sFollowerTutorial3BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/followertutorial3.bin");
+static const u8 sFollowerTutorial3BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/followertutorial3.gbapal");
 
-static const u8 sFollowerTutorial4BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial4.4bpp");
-static const u8 sFollowerTutorial4BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial4.bin");
-static const u8 sFollowerTutorial4BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/followertutorial4.gbapal");
+static const u8 sFollowerTutorial4BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/followertutorial4.4bpp");
+static const u8 sFollowerTutorial4BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/followertutorial4.bin");
+static const u8 sFollowerTutorial4BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/followertutorial4.gbapal");
 
-static const u8 sRealEstateTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial1.4bpp");
-static const u8 sRealEstateTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial1.bin");
-static const u8 sRealEstateTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial1.gbapal");
+static const u8 sRealEstateTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial1.4bpp");
+static const u8 sRealEstateTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial1.bin");
+static const u8 sRealEstateTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial1.gbapal");
 
-static const u8 sRealEstateTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial2.4bpp");
-static const u8 sRealEstateTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial2.bin");
-static const u8 sRealEstateTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial2.gbapal");
+static const u8 sRealEstateTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial2.4bpp");
+static const u8 sRealEstateTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial2.bin");
+static const u8 sRealEstateTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial2.gbapal");
 
-static const u8 sRealEstateTutorial3BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial3.4bpp");
-static const u8 sRealEstateTutorial3BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial3.bin");
-static const u8 sRealEstateTutorial3BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial3.gbapal");
+static const u8 sRealEstateTutorial3BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial3.4bpp");
+static const u8 sRealEstateTutorial3BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial3.bin");
+static const u8 sRealEstateTutorial3BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial3.gbapal");
 
-static const u8 sRealEstateTutorial4BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial4.4bpp");
-static const u8 sRealEstateTutorial4BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial4.bin");
-static const u8 sRealEstateTutorial4BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/realestatetutorial4.gbapal");
+static const u8 sRealEstateTutorial4BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial4.4bpp");
+static const u8 sRealEstateTutorial4BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial4.bin");
+static const u8 sRealEstateTutorial4BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/realestatetutorial4.gbapal");
 
-static const u8 sFactionsTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial1.4bpp");
-static const u8 sFactionsTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial1.bin");
-static const u8 sFactionsTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial1.gbapal");
+static const u8 sFactionsTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/factionstutorial1.4bpp");
+static const u8 sFactionsTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/factionstutorial1.bin");
+static const u8 sFactionsTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/factionstutorial1.gbapal");
 
-static const u8 sFactionsTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial2.4bpp");
-static const u8 sFactionsTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial2.bin");
-static const u8 sFactionsTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/tutorials/factionstutorial2.gbapal");
+static const u8 sFactionsTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/factionstutorial2.4bpp");
+static const u8 sFactionsTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/factionstutorial2.bin");
+static const u8 sFactionsTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/factionstutorial2.gbapal");
 
-static const u8 sLucyBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/lucy/lucy_tiles.8bpp");
-static const u8 sLucyBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/lucy/lucy_map.bin");
-static const u8 sLucyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/lucy/lucy_tiles.gbapal");
+static const u8 sLucyBgTiles[] =   INCBIN_U8("graphics/cutscene/lucy/lucy_tiles.4bpp");
+static const u8 sLucyBgMap[] =     INCBIN_U8("graphics/cutscene/lucy/lucy_map.bin");
+static const u8 sLucyBgPalette[] = INCBIN_U8("graphics/cutscene/lucy/lucy_tiles.gbapal");
 
-static const u8 sLanetteBgTiles[] =   INCBIN_U8("graphics/cutscene/fscutscene/lanette/lanette_tiles.8bpp");
-static const u8 sLanetteBgMap[] =     INCBIN_U8("graphics/cutscene/fscutscene/lanette/lanette_map.bin");
-static const u8 sLanetteBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/lanette/lanette_tiles.gbapal");
+static const u8 sLanetteBgTiles[] =   INCBIN_U8("graphics/cutscene/lanette/lanette_tiles.8bpp");
+static const u8 sLanetteBgMap[] =     INCBIN_U8("graphics/cutscene/lanette/lanette_map.bin");
+static const u8 sLanetteBgPalette[] = INCBIN_U8("graphics/cutscene/lanette/lanette_tiles.gbapal");
+
+static const u8 sMomBgTiles[] =   INCBIN_U8("graphics/cutscene/mom/mom_tiles.8bpp");
+static const u8 sMomBgMap[] =     INCBIN_U8("graphics/cutscene/mom/mom_map.bin");
+static const u8 sMomBgPalette[] = INCBIN_U8("graphics/cutscene/mom/mom_tiles.gbapal");
+
+static const u8 sLucySceneSprite[] = INCBIN_U8("graphics/cutscene/lucy/lucy_sprite.4bpp");
+static const u8 sLucySceneSpritePal[] = INCBIN_U8("graphics/cutscene/lucy/lucy_sprite.gbapal");
 
 
 static const struct CutsceneBG gCutsceneBgTable[] =
@@ -335,14 +343,14 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 	},
 	[SCENEBGLUCY] = 
 	{
-		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
 		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sLucyBgTiles,
 		.tileSize = sizeof(sLucyBgTiles),
         .map = sLucyBgMap,
 		.mapSize = sizeof(sLucyBgMap),
         .palette = sLucyBgPalette,
-		.palIdxCnt = 224
+		.palIdxCnt = 16
 	},
 	[SCENEBGLANETTE] = 
 	{
@@ -474,6 +482,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .map = sLeafBgMap,
 		.mapSize = sizeof(sLeafBgMap),
         .palette = sLeafBgPalette,
+		.palIdxCnt = 224
+	},
+	[SCENEBGMOM] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sMomBgTiles,
+		.tileSize = sizeof(sMomBgTiles),
+        .map = sMomBgMap,
+		.mapSize = sizeof(sMomBgMap),
+        .palette = sMomBgPalette,
 		.palIdxCnt = 224
 	},
 };
