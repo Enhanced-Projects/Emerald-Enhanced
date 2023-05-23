@@ -1237,3 +1237,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/RustboroCity_PokemonSchool_Hall/scripts.inc"
 
 	.include "data/maps/RustboroCity_PokemonSchool_TrainingRoom/scripts.inc"
+
+	.include "data/maps/Route136/scripts.inc"
+
+	.include "data/maps/AetherParadise/scripts.inc"

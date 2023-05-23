@@ -571,7 +571,7 @@ script PBW_PoacherLookout{
 		goto(PBW_playerLost)
 	}
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}All right. Enough. Now talk!\pWho do you work for?\nWhere's your base?")
-	//(do stuff here for after defeating the poacher grunts)
+	closemessage
 }
 
 script PBW_playerLost {

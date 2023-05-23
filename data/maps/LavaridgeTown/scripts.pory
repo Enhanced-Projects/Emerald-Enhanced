@@ -455,3 +455,10 @@ text LT_lucy1{
 text LT_lucy2{
 	"{COLOR LIGHT_GREEN}{SHADOW GREEN}(Apologize for peeping)"
 }
+
+script LT_LucyDoorClosed {
+	lock
+	msgbox("The door appears to be locked.")
+	release
+	end
+}

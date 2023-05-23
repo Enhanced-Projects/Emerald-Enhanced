@@ -1246,6 +1246,13 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	drawfullscreenimage(SCENEBGSHELLY)
+	waitbuttonpress
+	clearfullscreenimage
+	delay(20)
+	drawfullscreenimage(SCENEBGSHELLYNIGHT)
+	waitbuttonpress
+	clearfullscreenimage
 	release
 	end
 }

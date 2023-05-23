@@ -1096,6 +1096,8 @@ script RyuFollower_MayChatterSelector {
 }
 
 script RyuFollower_LucyChatterSelector {
+	drawfullscreenimage(SCENEBGLUCY)
+	delay(30)
 	random(5)
 	switch (var(VAR_RESULT)) {
 		case 0:
@@ -1109,6 +1111,7 @@ script RyuFollower_LucyChatterSelector {
 		case 4:
 			msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}hey... {PLAYER}, do you think I'm...\ncute?"))
 	}
+	clearfullscreenimage
 	closemessage
 	return
 }

@@ -231,7 +231,9 @@
 #define MAPSEC_BANANA_SLAKOTH_GARDEN        0xE3
 #define MAPSEC_FROSTY_GROTTO                0xE4
 #define MAPSEC_CRAGGY_COAST_UNDERWATER      0xE5
-#define MAPSEC_NONE                         0xE6
+#define MAPSEC_ROUTE_136                    0xE6
+#define MAPSEC_AETHER_PARADISE              0xE7
+#define MAPSEC_NONE                         0xE8
 
 
 #define METLOC_SPECIAL_EGG                  0xFD
