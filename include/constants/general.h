@@ -391,7 +391,10 @@
 #define SCENEBGLUCY 29
 #define SCENEBGLANETTE 30
 #define SCENEBGMOM 31
-#define SCENEBGLUCYSPRITE 32
+
+
+//sprite based mugshots
+#define MUGSHOTLUCY 0 
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0

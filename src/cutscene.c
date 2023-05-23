@@ -125,7 +125,7 @@ static const u8 sFactionsTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/tut
 static const u8 sFactionsTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/factionstutorial2.bin");
 static const u8 sFactionsTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/factionstutorial2.gbapal");
 
-static const u8 sLucyBgTiles[] =   INCBIN_U8("graphics/cutscene/lucy/lucy_tiles.4bpp");
+static const u8 sLucyBgTiles[] =   INCBIN_U8("graphics/cutscene/lucy/lucy_tiles.8bpp");
 static const u8 sLucyBgMap[] =     INCBIN_U8("graphics/cutscene/lucy/lucy_map.bin");
 static const u8 sLucyBgPalette[] = INCBIN_U8("graphics/cutscene/lucy/lucy_tiles.gbapal");
 
@@ -343,14 +343,14 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 	},
 	[SCENEBGLUCY] = 
 	{
-		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
 		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sLucyBgTiles,
 		.tileSize = sizeof(sLucyBgTiles),
         .map = sLucyBgMap,
 		.mapSize = sizeof(sLucyBgMap),
         .palette = sLucyBgPalette,
-		.palIdxCnt = 16
+		.palIdxCnt = 48
 	},
 	[SCENEBGLANETTE] = 
 	{
@@ -497,6 +497,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 	},
 };
 
+//spritescenes defined here
+
 static const struct BgTemplate sCutsceneBackground8bpp = {
 	.bg = 1,
 	.charBaseIndex = 0,
@@ -523,6 +525,14 @@ EWRAM_DATA struct BGPanState gBgPanState = {0};
 ALIGNED(4) EWRAM_DATA u16 gUnfadedPalette[0x100] = {0};
 ALIGNED(4) EWRAM_DATA u16 gFadedPalette[0x100] = {0};
 EWRAM_DATA struct PidgeyPaletteFade gPPlttFade = {0};
+//ALIGNED(4) EWRAM_DATA u8 gCutsceneSpriteIDs[4] = {0};
+
+//static void DrawCutsceneSpriteArrangement(u8 xStart, u8 yStart, u8 mugshotId)
+//mugshot id here would be MUGSHOTLUCY for example, which has already been included.
+
+//remove the mugshot arrangement
+//(void)RyuRemoveCutsceneSpriteArrangement(void)
+//{}
 
 static void BlendPaletteDevPidgey(u16 palOffset, u16 numEntries, u8 coeff, u16 blendColor)
 {
