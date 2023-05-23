@@ -137,8 +137,8 @@ static const u8 sMomBgTiles[] =   INCBIN_U8("graphics/cutscene/mom/mom_tiles.8bp
 static const u8 sMomBgMap[] =     INCBIN_U8("graphics/cutscene/mom/mom_map.bin");
 static const u8 sMomBgPalette[] = INCBIN_U8("graphics/cutscene/mom/mom_tiles.gbapal");
 
-static const u8 sLucySceneSprite[] = INCBIN_U8("graphics/cutscene/lucy/lucy_sprite.4bpp");
-static const u8 sLucySceneSpritePal[] = INCBIN_U8("graphics/cutscene/lucy/lucy_sprite.gbapal");
+static const u8 sLucySceneSprite[] =    INCBIN_U8("graphics/cutscene/mugshotsprites/lucy_sprite.4bpp");
+static const u8 sLucySceneSpritePal[] = INCBIN_U8("graphics/cutscene/mugshotsprites/lucy_sprite.gbapal");
 
 
 static const struct CutsceneBG gCutsceneBgTable[] =
