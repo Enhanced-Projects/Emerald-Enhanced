@@ -2651,7 +2651,17 @@ void BufferStringBattle(u16 stringID)
         else
         {
             if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
-                stringPtr = sText_WildPkmnAppeared2;
+            {
+                if (CheckAPFlag(AP_SCOUTER) == TRUE)
+                {
+                    RyuBufferIVAverage();
+                    stringPtr = gText_RyuBattlePreviewText;
+                }
+                else
+                {
+                   stringPtr = sText_WildPkmnAppeared2; 
+                }
+            }
             else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE) // interesting, looks like they had something planned for wild double battles
                 stringPtr = sText_TwoWildPkmnAppeared;
             else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL)
