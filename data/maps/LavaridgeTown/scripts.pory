@@ -348,6 +348,7 @@ script LT_CheckLucyQuest{
 		end
 	}
 	setvar(VAR_RYU_QUEST_LUCY, 10)//@player successfully struck conversation with Lucy. Quest begins.
+	drawfullscreenimage(SCENEBGLUCY)
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}It's no problem. I'm used to it.\nAt least you were man enough\lto admit your mistake.")
 	closemessage
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm Lucy. What's your name?")
@@ -366,6 +367,7 @@ script LT_CheckLucyQuest{
 	turnobject(LUCY, DIR_SOUTH)
 	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (She clears her throat.)\p... ... ...\p{COLOR LIGHT_RED}{SHADOW RED}You're a brave one.\nI appreciate your confidence.\p Give me a minute to get dressed\nand I'll come out and we can have\la proper conversation.\pThere might be something you can\nhelp me with.")
 	closemessage
+	clearfullscreenimage
 	applymovement(LUCY, LT_LucyLeave)
 	waitmovement(LUCY)
 	applymovement(LUCY, Common_Movement_SetInvisible)
@@ -386,7 +388,7 @@ script LT_CheckLucyQuest{
 }
 
 script LT_LucyQuestStart{
-	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Have you captured a Skitty?\pWell, it doesn't matter.\nYou seem to be a well informed\ltrainer.\pYou probably know that recently\nthere's been a boom in popularity of Skitty\pbecause some people found some of it's\nhidden potential.")
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Have you captured a Skitty?\pWell, it doesn't matter.\nYou seem to be a well informed\ltrainer.\pYou probably know that recently\nthere's a boom in popularity of them\pbecause some people found it's\nhidden potential.")
 	closemessage
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Skitty are so popular in fact,\nthat there's a surge in poaching.\pI've been trying to track down\nthe people doing this, so that\lI can bring them to justice.")
 	closemessage

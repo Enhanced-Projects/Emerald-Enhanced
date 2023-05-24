@@ -1762,10 +1762,10 @@ const struct Trainer gTrainers[] = {
     [TRAINER_MILLY] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_AROMA_LADY,
+        .trainerClass = TRAINER_CLASS_AETHER_WORKER,
         .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-        .trainerPic = TRAINER_PIC_AROMA_LADY,
+        .trainerPic = TRAINER_PIC_AETHER_MEMBER_F,
         .trainerName = _("Milly"),
         .items = {},
         .battleStyle = BS_SHIFT,
@@ -1778,10 +1778,10 @@ const struct Trainer gTrainers[] = {
     [TRAINER_JASE] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_AETHER_WORKER,
         .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_AETHER_MEMBER_M,
         .trainerName = _("Jase"),
         .items = {},
         .battleStyle = BS_SHIFT,

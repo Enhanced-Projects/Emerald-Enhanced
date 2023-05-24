@@ -486,6 +486,8 @@ script PBW_SetUpLucy{
 	}
 
 script PBW_LucyInvestigate {
+	lock
+	faceplayer
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I'm glad you could make it.\nThe poachers' lookout is here\lsomewhere.\pLet's look together!")
 	closemessage
 	removeobject(PBW_LUCY1)
@@ -544,15 +546,26 @@ script PBW_PoacherLookout{
 	turnobject(13, DIR_NORTH)
 	delay(25)
 	turnobject(13, DIR_SOUTH)
+	applymovement(13, PBW_SpinObject)
+	waitmovement(13)
+	removeobject(13)
+	setflag(FLAG_RYU_HIDE_PBW_GIRL)
+	addobject(17)
+	playbgm(MUS_AQA_0, 0)
+	turnobject(17, DIR_EAST)
 	msgbox("Jase! Get in here! We're busted!\nWe got to silence these\lmeddlers!")
 	closemessage
 	addobject(16)
 	applymovement(16, PBW_JaseToPlayer)
 	waitmovement(16)
+	applymovement(FOLLOWER, Common_Movement_StepUp)
+	waitmovement(FOLLOWER)
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}I knew it was too good to be\ntrue.\pA person who's giving away battle\nitems for free?\lDon't make me laugh.")
 	closemessage
-	applymovement(13, Common_Movement_ExclamationMark)
+	applymovement(17, Common_Movement_ExclamationMark)
 	applymovement(16, Common_Movement_ExclamationMark)
+	turnobject(17, DIR_SOUTH)
+	turnobject(16, DIR_SOUTH)
 	playse(SE_PIN)
 	waitse
 	msgbox(format("Well now that you know our secret, we can't very well let you run amok, can we?"))
@@ -572,6 +585,38 @@ script PBW_PoacherLookout{
 	}
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}All right. Enough. Now talk!\pWho do you work for?\nWhere's your base?")
 	closemessage
+	msgbox(format("Faba will have our heads if we say anything..."))
+	closemessage
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}My Seviper can eat you now if you prefer."))
+	playmoncry(SPECIES_SEVIPER, 1)
+	waitmoncry
+	msgbox(format("No, that won't be necessary. Most of our teammates are in the Safari Zone, collecting Pokémon to sell, to fund our ventures and research here..."))
+	closemessage
+	playmoncry(SPECIES_SEVIPER, 0)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Are you SURE that's all of it?!"))
+	closemessage
+	msgbox(format("Yes! I swear, that's all we know!"))
+	closemessage
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}Okay, then scram, before we decide not to be so nice."))
+	closemessage
+	applymovement(17, PBW_JaseExit)
+	delay(20)
+	applymovement(16, PBW_JaseExit)
+	waitmovement(16)
+	removeobject(17)
+	removeobject(16)
+	turnobject(FOLLOWER, DIR_WEST)
+	turnobject(PLAYER, DIR_EAST)
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}So... off to Safari Zone, then?"))
+	closemessage
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Yes, I think so. I'll meet you there. I have some other leads to look into."))
+	closemessage
+	applymovement(FOLLOWER, PBW_PostSceneFollowerExit)
+	waitmovement(FOLLOWER)
+	setvar(VAR_RYU_QUEST_LUCY, 60)//player needs to now go meet lucy at the safari zone.
+	destroyfollower
+	release
+	end
 }
 
 script PBW_playerLost {
@@ -590,19 +635,51 @@ script PBW_playerLost {
 }
 
 movement PBW_JaseToPlayer {
-	walk_left * 8
+	walk_left * 9
 	step_end
 }
 
 movement PBW_FollowerAround{
 	walk_right
-	walk_up
+	face_up
 	step_end
 }
 
 movement pbwFollowerExit{
 	walk_left * 8
 	step_end
+}
+
+movement PBW_PostSceneFollowerExit{
+	walk_down * 2
+	walk_left * 9
+	step_end
+}
+
+movement PBW_JaseExit{
+	walk_fastest_right * 8
+	step_end
+}
+
+movement PBW_SpinObject{
+		face_right
+		delay_4
+		face_down
+		delay_4
+		face_left
+		delay_4
+		face_up
+		delay_4
+		face_right
+		delay_4
+		face_down
+		delay_4
+		face_left
+		delay_4
+		face_up
+		delay_4
+		face_right
+		step_end
 }
 
 text PBW_MillyLose{

@@ -384,9 +384,9 @@
 #define TRAINER_CLASS_MEWTWO         0x43
 #define TRAINER_CLASS_DEVON_ENFORCER 0x44
 #define TRAINER_CLASS_AETHER_FOUNDER 0x45
-#define TRAINER_CLASS_AETHER_ADMIN   0x47
-#define TRAINER_CLASS_AETHER_WORKER  0x48
-#define TRAINER_CLASS_MOM            0x46
+#define TRAINER_CLASS_AETHER_ADMIN   0x46
+#define TRAINER_CLASS_AETHER_WORKER  0x47
+#define TRAINER_CLASS_MOM            0x48
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

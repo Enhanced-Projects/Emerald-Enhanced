@@ -522,13 +522,13 @@
 #define FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST     0x1EA // Nobles related.
 #define NOBLES_SPECIAL_MISSION_IN_PROGRESS        0x1EB // Nobles related.
 #define FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS   0x1EC // Nobles related.
-#define FLAG_UNUSED_0x1ED                         0x1ED
-#define FLAG_UNUSED_0x1EE                         0x1EE
+#define FLAG_EVENT_UNUSED_0x1ED                         0x1ED
+#define FLAG_EVENT_UNUSED_0x1EE                         0x1EE
 #define FLAG_RYU_OLDCOIN_PASSCODE                 0x1EF
-#define FLAG_UNUSED_0x1F0                         0x1F0
-#define FLAG_UNUSED_0x1F1                         0x1F1
-#define FLAG_UNUSED_0x1F2                         0x1F2
-#define FLAG_UNUSED_0x1F3                         0x1F3
+#define FLAG_EVENT_UNUSED_0x1F0                         0x1F0
+#define FLAG_EVENT_UNUSED_0x1F1                         0x1F1
+#define FLAG_EVENT_UNUSED_0x1F2                         0x1F2
+#define FLAG_EVENT_UNUSED_0x1F3                         0x1F3
 
 // Hidden Items -- sorted by location
 #define FLAG_HIDDEN_ITEMS_START                                                         0x1F4
@@ -1042,7 +1042,7 @@
 #define FLAG_RYU_VOLCANION                                          0x3D9
 #define FLAG_RYU_VOLCANION_RAN                                      0x3DA
 #define FLAG_RYU_GIVEN_MEWTWO_MEGAS                                 0x3DB
-#define FLAG_UNUSED_0x3DC                                           0x3DC
+#define FLAG_RYU_HIDE_PBW_GIRL                                      0x3DC
 #define FLAG_UNUSED_0x3DD                                           0x3DD
 #define FLAG_UNUSED_0x3DE                                           0x3DE
 #define FLAG_HIDE_ROUTE_101_BOY                                     0x3DF

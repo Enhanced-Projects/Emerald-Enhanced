@@ -399,6 +399,29 @@ const struct TrainerMoney gTrainerMoneyTable[] =
 };
 
 const u16 gRyuProceduralTrainerMonLists[][20] = {
+[TRAINER_CLASS_AETHER_WORKER] =
+{
+        SPECIES_KADABRA,
+        SPECIES_BRUXISH,
+        SPECIES_DROWZEE,
+        SPECIES_GIRAFARIG,
+        SPECIES_NATU,
+        SPECIES_RALTS,
+        SPECIES_WOOBAT,
+        SPECIES_SIGILYPH,
+        SPECIES_SLOWBRO,
+        SPECIES_EXEGGCUTE,
+        SPECIES_INKAY,
+        SPECIES_DARMANITAN,
+        SPECIES_BELDUM,
+        SPECIES_ELGYEM,
+        SPECIES_SOLOSIS,
+        SPECIES_ESPURR,
+        SPECIES_GOTHITA,
+        SPECIES_MUNNA,
+        SPECIES_WYNAUT,
+        SPECIES_SPOINK
+},
 [TRAINER_CLASS_TEAM_AQUA] = 
     {
         SPECIES_CARVANHA, 
