@@ -87,7 +87,7 @@
 #include "lifeskill.h"
 #include "script_pokemon_util.h"
 #include "data/lifeskill.h"
-#include "autoscale_tables.h"
+#include "RyuEnemyEnhancementSystem.h"
 #include "overworld_notif.h"
 #include "factions.h"
 #include "scripted_encounters.h"

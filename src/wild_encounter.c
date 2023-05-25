@@ -27,7 +27,7 @@
 #include "field_message_box.h"
 #include "strings.h"
 #include "constants/weather.h"
-#include "autoscale_tables.h"
+#include "RyuEnemyEnhancementSystem.h"
 #include "constants/metatile_behaviors.h"
 #include "ach_atlas.h"
 

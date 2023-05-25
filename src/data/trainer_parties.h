@@ -609,43 +609,35 @@ static const struct TrainerMonNoItemCustomMoves sParty_Foster[] = {
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Dusty2[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Dusty2[] = {
     {
     .iv = 60,
     .lvl = 27,
     .species = SPECIES_SANDSLASH,
-    .ability = 0,
-    .moves = {MOVE_DIG, MOVE_SLASH, MOVE_SAND_ATTACK, MOVE_POISON_STING},
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Dusty3[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Dusty3[] = {
     {
     .iv = 70,
     .lvl = 30,
     .species = SPECIES_SANDSLASH,
-    .ability = 0,
-    .moves = {MOVE_DIG, MOVE_SLASH, MOVE_SAND_ATTACK, MOVE_POISON_STING},
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Dusty4[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Dusty4[] = {
     {
     .iv = 80,
     .lvl = 33,
     .species = SPECIES_SANDSLASH,
-    .ability = 0,
-    .moves = {MOVE_DIG, MOVE_SLASH, MOVE_SAND_ATTACK, MOVE_POISON_STING},
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Dusty5[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Dusty5[] = {
     {
     .iv = 90,
     .lvl = 36,
     .species = SPECIES_HIPPOWDON,
-    .ability = 0,
-    .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SLACK_OFF, MOVE_NONE},
     }
 };
 
@@ -843,13 +835,11 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Charlie[] = {
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Ricky2[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Ricky2[] = {
     {
     .iv = 10,
     .lvl = 27,
     .species = SPECIES_STUFFUL,
-    .ability = 0,
-    .moves = {MOVE_BABY_DOLL_EYES, MOVE_LEER, MOVE_STRENGTH, MOVE_PAYBACK},
     }
 };
 
@@ -873,13 +863,11 @@ static const struct TrainerMonNoItemCustomMoves sParty_Ricky4[] = {
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Ricky5[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Ricky5[] = {
     {
     .iv = 40,
     .lvl = 36,
     .species = SPECIES_BEWEAR,
-    .ability = 0,
-    .moves = {MOVE_BABY_DOLL_EYES, MOVE_HAMMER_ARM, MOVE_STRENGTH, MOVE_PAYBACK},
     }
 };
 

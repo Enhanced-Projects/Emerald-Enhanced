@@ -23,7 +23,7 @@
 #include "tv.h"
 #include "battle_factory.h"
 #include "battle_main.h"
-#include "autoscale_tables.h"
+#include "RyuEnemyEnhancementSystem.h"
 #include "constants/battle_dome.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_frontier_mons.h"

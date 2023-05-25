@@ -1397,28 +1397,28 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_MORRIS
 	cleartrainerflag TRAINER_BRINEY
 	cleartrainerflag TRAINER_STEVEN_POSTGAME
-	cleartrainerflag TRAINER_EMPTY_3
+	cleartrainerflag TRAINER_AETHER_GRUNT_1
 	cleartrainerflag TRAINER_DUSTY_1
 	cleartrainerflag TRAINER_CHIP
 	cleartrainerflag TRAINER_FOSTER
-	cleartrainerflag TRAINER_EMPTY_8
-	cleartrainerflag TRAINER_EMPTY_9
-	cleartrainerflag TRAINER_EMPTY_10
-	cleartrainerflag TRAINER_EMPTY_11
+	cleartrainerflag TRAINER_AETHER_GRUNT_2
+	cleartrainerflag TRAINER_AETHER_GRUNT_3
+	cleartrainerflag TRAINER_AETHER_GRUNT_4
+	cleartrainerflag TRAINER_AETHER_GRUNT_5
 	cleartrainerflag TRAINER_LOLA_1
 	cleartrainerflag TRAINER_AUSTINA
 	cleartrainerflag TRAINER_GWEN
-	cleartrainerflag TRAINER_EMPTY_12
-	cleartrainerflag TRAINER_EMPTY_13
-	cleartrainerflag TRAINER_EMPTY_14
-	cleartrainerflag TRAINER_EMPTY_15
+	cleartrainerflag TRAINER_AETHER_GRUNT_6
+	cleartrainerflag TRAINER_AETHER_GRUNT_7
+	cleartrainerflag TRAINER_AETHER_GRUNT_8
+	cleartrainerflag TRAINER_AETHER_GRUNT_9
 	cleartrainerflag TRAINER_RICKY_1
 	cleartrainerflag TRAINER_SIMON
 	cleartrainerflag TRAINER_CHARLIE
-	cleartrainerflag TRAINER_EMPTY_16
-	cleartrainerflag TRAINER_EMPTY_17
-	cleartrainerflag TRAINER_EMPTY_18
-	cleartrainerflag TRAINER_EMPTY_19
+	cleartrainerflag TRAINER_AETHER_GRUNT_10
+	cleartrainerflag TRAINER_AETHER_FABA1
+	cleartrainerflag TRAINER_AETHER_WICKE1
+	cleartrainerflag TRAINER_AETHER_GRUNT_11
 	cleartrainerflag TRAINER_RANDALL
 	cleartrainerflag TRAINER_PARKER
 	cleartrainerflag TRAINER_GEORGE
