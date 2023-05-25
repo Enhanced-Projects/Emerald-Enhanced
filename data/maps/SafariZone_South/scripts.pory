@@ -6,6 +6,7 @@ SafariZone_South_MapScripts:: @ 823D279
 
 SafariZone_South_OnFrame: @ 823D284
 	map_script_2 VAR_SAFARI_ZONE_STATE, 2, SafariZone_South_EventScript_EnterSafariZone
+	map_script_2 VAR_TEMP_7, 0, SZ_ClearAether
 	.2byte 0
 
 SafariZone_South_EventScript_EnterSafariZone:: @ 823D28E
@@ -132,3 +133,324 @@ SafariZone_Northeast_EventScript_Girl:: @ 823D3D8
 	msgbox SafariZone_Northeast_Text_Girl, MSGBOX_NPC
 	end
 `
+
+script SZ_ClearAether{
+	setvar(VAR_TEMP_7, 100)
+	if (var(VAR_RYU_QUEST_LUCY) < 60){
+		setflag(FLAG_RYU_HIDE_SZ_LUCY)
+		setflag(FLAG_RYU_HIDE_SZ_AETHER)
+	}
+	end
+}
+
+script SZ_LucyStart{
+	setvar(VAR_RYU_QUEST_LUCY, 65)//player picked up lucy in safari zone. Begin searching for admins.
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Hey! You made it! Let's start looking for the Aether Foundation admins! Shutting them down should get all of Aether out of here."))
+	createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_NORTH)
+	removeobject(10)
+	setflag(FLAG_RYU_HIDE_SZ_LUCY)
+	release
+	end
+}
+
+script SZ_PreventLeave{
+	lock
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}We can't leave yet, we have to take out the Aether admins!"))
+	closemessage
+	applymovement(PLAYER, Common_Movement_StepDown)
+	applymovement(FOLLOWER, Common_Movement_StepDown)
+	waitmovement(FOLLOWER)
+	release
+	end
+}
+
+script SZ_AetherGrunt1{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_1, SZ_G1_intro, SZ_G1_defeat)
+	msgbox(SZ_G1_defeat)
+}
+
+script SZ_AetherGrunt2{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_2, SZ_G2_intro, SZ_G2_defeat)
+	msgbox(SZ_G2_defeat)
+}
+
+script SZ_AetherGrunt3{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_3, SZ_G3_intro, SZ_G3_defeat)
+	msgbox(format("I would leave now, while you have a chance. It's going to get worse for you."))
+}
+
+script SZ_AetherGrunt4{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_4, SZ_G4_intro, SZ_G4_defeat)
+	msgbox( SZ_G4_defeat)
+}
+
+script SZ_AetherGrunt5{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_5, SZ_G5_intro, SZ_G5_defeat)
+	msgbox(SZ_G5_defeat)
+}
+
+script SZ_AetherGrunt6{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_6, SZ_G6_intro, SZ_G6_defeat)
+	msgbox(format("Ugh... So humid..."))
+}
+
+script SZ_AetherGrunt7{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_7, SZ_G7_intro, SZ_G7_defeat)
+	msgbox(format("I need to find somewhere else\nto live."))
+}
+
+script SZ_AetherGrunt8{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_8, SZ_G8_intro, SZ_G8_defeat)
+	msgbox(format("Remember that we grunts are people too..."))
+}
+
+script SZ_AetherGrunt9{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_9, SZ_G9_intro, SZ_G9_defeat)
+	msgbox(SZ_G9_defeat)
+}
+
+script SZ_AetherGrunt10{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_10, SZ_G10_intro, SZ_G10_defeat)
+	msgbox(SZ_G10_defeat)
+}
+
+script SZ_AetherGrunt11{
+	trainerbattle_single(TRAINER_AETHER_GRUNT_11, SZ_G11_intro, SZ_G11_defeat)
+	msgbox(format("Man, I could really use a break right now..."))
+}
+
+script SZ_AetherAdminFaba{
+	playbgm(MUS_MGM0)
+	msgbox(format("Ah, did you come as part of the auxillary research team?"))
+	closemessage
+	applymovement(FOLLOWER, Common_Movement_StepRight)
+	waitmovement(FOLLOWER)
+	applymovement(FOLLOWER, Common_Movement_StepUp)
+	waitmovement(FOLLOWER)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}No, we're here to put an end to your poaching. These grounds are for Trainers to catch Pokémon, not to fund your nefarious research."))
+	closemessage
+	msgbox(format("Oh, yet another simpleton who doesn't understand the bigger picture. Well, I'll just have to beat it into your thick skull then!"))
+	closemessage
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}Big words coming from such a small man. Do you have mommy issues? hmm? Try picking on me instead!"))
+	closemessage
+	msgbox(format("Teenagers these days... all of them are so hardheaded and think they're the king. I'll have to teach you using the old ways!"))
+	closemessage
+	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
+	if (var(VAR_RESULT) == 0){
+		goto(ryu_end)
+	}
+	choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RyuScript_ChooseValidMons)
+		}
+	multi_2_vs_2(TRAINER_AETHER_FABA1, SZ_FabaLose, TRAINER_AETHER_GRUNT_5, SZ_FabaGruntLose, VAR_0x8008, VAR_0x8009)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	msgbox(format("Bah! Nonsense!\nYour brains are just too small to understand how doomed Hoenn will be without us... We're here to help you!"))
+	closemessage
+	turnobject(13, DIR_NORTH)
+	delay(60)
+	turnobject(13, DIR_SOUTH)
+	msgbox(format("Eh... it's fine. We've collected enough specimens already anyways. You best not interfere with our work again!"))
+	closemessage
+	fadescreen(FADE_TO_BLACK)
+	setflag(FLAG_RYU_HIDE_SZ_AETHER)
+	removeobject(10)
+	removeobject(11)
+	removeobject(12)
+	removeobject(13)
+	removeobject(14)
+	fadescreen(FADE_FROM_BLACK)
+	turnobject(PLAYER, DIR_EAST)
+	turnobject(FOLLOWER, DIR_WEST)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}It seems that we are going against a whole organization. Are you okay with that?"))
+	closemessage
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}I would go to the ends of earth and the depths of hell with you if you asked."))
+	closemessage
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Well, then I guess we're walking this path of destruction together. I'm going to go talk to some officials about what was going on here, and I'll head home after that. Meet me there to decide which ring of hell we traverse next!"))
+	closemessage
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lucy teleports out after a\n loving glance at you.)")
+	setfieldeffectargument(0, 1)
+	applymovement(FOLLOWER, SZ_Lucy_Kiss)
+	playse(SE_M_CHARM)
+	waitmovement(FOLLOWER)
+	delay(20)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Don't make me wait too long!")
+	dofieldeffect(30)
+	delay(15)
+	waitfieldeffect(30)
+	destroyfollower
+	setvar(VAR_RYU_QUEST_LUCY, 75)//player defeated the aether admins in safari zone. Meet lucy at her house to discuss the next plan of action.
+	release
+	end
+}
+
+text SZ_FabaLose{
+	"No matter.\nAether will come out on top."
+}
+
+text SZ_FabaGruntLose{
+	"Faba, sir...\nWe should go..."
+}
+
+script SZ_AdminWicke{
+	playbgm(MUS_AQA_0)
+	msgbox(format("Just what do you two think you're doing here? This is private Aether business."))
+	closemessage
+	setobjectxy(FOLLOWER, 5, 22)
+	turnobject(FOLLOWER, DIR_WEST)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Last I checked, the Safari Zone was public property. We have just as much right to be here as you do."))
+	closemessage
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}But as citizens, we also reserve the right to punish evildoers. Your poaching ends right here and now!"))
+	closemessage
+	msgbox("Well I never!")
+	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
+	if (var(VAR_RESULT) == 0){
+		goto(ryu_end)
+	}
+	choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RyuScript_ChooseValidMons)
+		}
+	multi_2_vs_2(TRAINER_AETHER_WICKE1, SZ_WickeLose, TRAINER_AETHER_GRUNT_7, SZ_WickeGruntLose, VAR_0x8008, VAR_0x8009)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	msgbox(format("Do you have any idea what you've done? The Aether Foundation will save this region from overpopulation!"))
+	closemessage
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}We really never asked for your help, and we don't want you here. You need to disappear. Before I get serious."))
+	closemessage
+	msgbox(format("You really don't want to make an enemy of the Aether foundation."))
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Try me.")
+	closemessage
+	applymovement(11, WickeExit)
+	delay(20)
+	applymovement(12, Common_Movement_StepRight)
+	waitmovement(12)
+	applymovement(12, WickeExit)
+	waitmovement(12)
+	removeobject(11)
+	removeobject(12)
+	setflag(FLAG_RYU_HIDE_SZ_AETHER_WICKE)
+	turnobject(PLAYER, DIR_EAST)
+	msgbox(format("You're smart and strong. You're a person I could really get behind."))
+	applymovement(FOLLOWER, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	waitse
+	setflag(FLAG_RYU_DS_LUCY_CLOSEFRIENDS)
+	closemessage
+	release
+	end
+}
+
+movement SZ_Lucy_Kiss{
+	walk_in_place_left
+    emote_heart
+	step_end
+}
+
+movement WickeExit{
+	walk_right
+	walk_down * 6
+	step_end
+}
+
+text SZ_WickeLose{
+	"Mark my words...\nI will have my revenge!"
+}
+
+text SZ_WickeGruntLose{
+	"Ms. Wicke... what should we do\nnow?"
+}
+
+text SZ_G1_intro {
+	"What are you doing here?"
+}
+
+text SZ_G1_defeat {
+	"I should report this..."
+}
+
+text SZ_G2_intro {
+	"This place is off-limits!"
+}
+
+text SZ_G2_defeat {
+	"Drat..."
+}
+
+text SZ_G3_intro {
+	"You're sticking your nose into\nsomething you shouldn't."
+}
+
+text SZ_G3_defeat {
+	"Don't say I didn't warn you."
+}
+
+text SZ_G4_intro {
+	"Bet there's a bonus if I defeat\nyou."
+}
+
+text SZ_G4_defeat {
+	"Shoot!\nThere goes my bonus!"
+}
+
+text SZ_G5_intro {
+	"Uh we're... conducting field\nexperiments."
+}
+
+text SZ_G5_defeat {
+	"You weren't part of the experiment..."
+}
+
+text SZ_G6_intro {
+	"Why's it so humid here?!"
+}
+
+text SZ_G6_defeat {
+	"Augh! That battle made me even\nmore hot and tired!"
+}
+
+text SZ_G7_intro {
+	"Hoenn sure is a nice place to be."
+}
+
+text SZ_G7_defeat {
+	"Too bad the residents of Hoenn\nare so belligerent."
+}
+
+text SZ_G8_intro {
+	"Listen, I'm just doing my job...\nTake it easy on me?"
+}
+
+text SZ_G8_defeat {
+	"That was you taking it easy?!"
+}
+
+text SZ_G9_intro {
+	"Ugh why can't things just go\nsmoothly..."
+}
+
+text SZ_G9_defeat {
+	"Yet another thorn in my side..."
+}
+
+text SZ_G10_intro {
+	"Wicke is so stylish.\nI wish I could wear clothes\llike hers."
+}
+
+text SZ_G10_defeat {
+	"I guess I wear this grunt uniform\nfor a reason..."
+}
+
+text SZ_G11_intro {
+	"I really need a break.\nMaybe I'll get one after defeating\lyou!"
+}
+
+text SZ_G11_defeat {
+	"Sigh... no break for me."
+}
+

@@ -315,6 +315,8 @@ void NewGameInitData(void)
     FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
     FlagClear(FLAG_RYU_OLDCOIN_PASSCODE);
     FlagSet(FLAG_RYU_HIDE_LAVARIDGE_RIVAL);
+    FlagSet(FLAG_RYU_HIDE_SZ_LUCY);
+    FlagSet(FLAG_RYU_HIDE_SZ_AETHER);
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);

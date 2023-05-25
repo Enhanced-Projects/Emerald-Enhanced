@@ -1043,7 +1043,7 @@
 #define FLAG_RYU_VOLCANION_RAN                                      0x3DA
 #define FLAG_RYU_GIVEN_MEWTWO_MEGAS                                 0x3DB
 #define FLAG_RYU_HIDE_PBW_GIRL                                      0x3DC
-#define FLAG_UNUSED_0x3DD                                           0x3DD
+#define FLAG_RYU_HIDE_SZ_AETHER_WICKE                               0x3DD
 #define FLAG_UNUSED_0x3DE                                           0x3DE
 #define FLAG_HIDE_ROUTE_101_BOY                                     0x3DF
 #define FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M                 0x3E0

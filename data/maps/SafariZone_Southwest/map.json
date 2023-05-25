@@ -50,6 +50,71 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SafariZone_Southwest_EventScript_ItemMaxRevive",
       "flag": "FLAG_ITEM_SAFARI_ZONE_SOUTH_WEST_MAX_REVIVE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_MEMBER_M",
+      "x": 34,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "SZ_AetherGrunt5",
+      "flag": "FLAG_RYU_HIDE_SZ_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_MEMBER_F",
+      "x": 33,
+      "y": 19,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "SZ_AetherGrunt7",
+      "flag": "FLAG_RYU_HIDE_SZ_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_MEMBER_F",
+      "x": 4,
+      "y": 22,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "SZ_AetherGrunt6",
+      "flag": "FLAG_RYU_HIDE_SZ_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_MEMBER_F",
+      "x": 25,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "6",
+      "script": "SZ_AetherGrunt8",
+      "flag": "FLAG_RYU_HIDE_SZ_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_MEMBER_F",
+      "x": 4,
+      "y": 22,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "SZ_AetherGrunt11",
+      "flag": "FLAG_RYU_HIDE_SZ_AETHER"
     }
   ],
   "warp_events": [
