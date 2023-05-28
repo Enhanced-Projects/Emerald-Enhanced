@@ -1868,6 +1868,18 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
             nameHash += trainerNameHash;
             switch (gTrainers[trainerNum].partyFlags)
             {
+            case 0:
+            {
+                const struct TrainerMonNoItemDefaultMoves *partyData = gTrainers[trainerNum].party.NoItemDefaultMoves;
+
+                for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
+                    nameHash += gSpeciesNames[partyData[i].species][j];
+
+                personalityValue += nameHash << 8;
+                fixedIV = partyData[i].iv * 31 / 255;
+                CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                break;
+            }
             case (F_TRAINER_PARTY_HELD_ITEM | F_AUTOFILL_PARTY):
             case (F_TRAINER_PARTY_CUSTOM_MOVESET | F_AUTOFILL_PARTY):
             case (F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM | F_AUTOFILL_PARTY):

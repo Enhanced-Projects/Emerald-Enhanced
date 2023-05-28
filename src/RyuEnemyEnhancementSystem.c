@@ -210,6 +210,9 @@ u8 RyuChoosePartyCount(u16 trainer)
 {
     u8 count = ((Random() % 4) + 1);
 
+    if (VarGet(VAR_RYU_QUEST_MAGMA) == 0)
+        count += 2;
+
     if (FlagGet(FLAG_RYU_CHALLENGEMODE))
         count += 2;
     if (FlagGet(FLAG_RYU_HARDCORE_MODE))

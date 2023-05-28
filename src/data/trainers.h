@@ -9602,7 +9602,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_STORY_MEWTWO] =
     {
-        .partyFlags = F_AUTOFILL_PARTY,
+        .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_MEWTWO,
         .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -12817,7 +12817,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_STORY_MEWTWO_2] =
     {
-        .partyFlags = F_AUTOFILL_PARTY,
+        .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_MEWTWO,
         .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
