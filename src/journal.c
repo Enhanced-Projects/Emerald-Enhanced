@@ -582,6 +582,11 @@ u8 * GetMiningSkill(u8 * buffer)
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
+u8 * GetMiningHarvestLv(u8 * buffer)
+{
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_MINING_HARVEST_LV), STR_CONV_MODE_LEFT_ALIGN, 1);
+}
+
 u8 * GetMiningExp(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
@@ -695,6 +700,7 @@ static const struct JournalStatData sJournalLifeSkillsPage[] =
     JOURNAL_STAT("Mining exp", NULL, VAR_RYU_PLAYER_MINING_SKILL_EXP, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Alchemy Lv", NULL, VAR_RYU_PLAYER_ALCHEMY_SKILL, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Alchemy exp", NULL, VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Harvest Lv", NULL, VAR_RYU_MINING_HARVEST_LV, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT_END
 };
 

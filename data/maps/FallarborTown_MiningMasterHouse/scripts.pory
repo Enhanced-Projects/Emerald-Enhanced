@@ -42,14 +42,6 @@ FTCT_MiningMaster::@@This script goes on the mining master.
 	compare VAR_RESULT, 4
 	goto_if_ge FTCT_MiningMasterStandard@@The mining master checks badges. If the count is greater than or equal to 4, go to the normal miningmaster script.
 	goto FTCT_MiningMasterNoBadges @@script execution detected that you have less than 4 badges, so it skips the above line and executes this one.
-	
-FTCT_MiningMasterStandard::@Normal miningmaster script
-	switch VAR_RYU_PLAYER_MINING_SKILL@@Checks what level mining the player has
-	case 0, FTCT_MiningMasterIntroZero
-	case 1, FTCT_MiningMasterIntro1
-	case 2, FTCT_MiningMasterIntro2
-	case 3, FTCT_MiningMasterIntro3
-	goto FTCT_MiningMasterIntroZero@@failsafe in case somehow the player's mining level is greater than 3 or less than zero. Prevents null pointer crashes.
 
 FTCT_MiningMasterNoBadges::
 	msgbox FTCT_MiningMasterDefaultIntro@@This message shows when the player doesn't have enough badges to do mining stuff.
@@ -118,3 +110,62 @@ FTCT_Level3DescriptiveText:
 	.string "I don't think you can get any\n"
 	.string "better than this!$"
 `
+
+script FTCT_MiningMasterStandard {//Normal miningmaster script
+	if (var(VAR_RYU_PLAYER_MINING_SKILL) == 0){
+		goto(FTCT_MiningMasterIntroZero)
+	}
+
+	bufferdynamicmulti(FTCT_Menu1, FTCT_Menu2)
+	multichoice(0, 8, MULTI_DYNAMIC_2, 1)
+	if (var(VAR_RESULT) == 1){
+		msgbox("Choose a Harvest Level for Mining.")
+		bufferdynamicmulti(FTCT_HarvestLv1, FTCT_HarvestLv2, FTCT_HarvestLv3)
+		multichoice(0, 6, MULTI_DYNAMIC_3, 1)
+		copyvar(VAR_0x8009, VAR_RESULT)
+		addvar(VAR_0x8009, 1)
+		compare_var_to_var(VAR_0x8009, VAR_RYU_PLAYER_MINING_SKILL)
+		goto_if_gt(FTCT_MiningHarvestLvTooHigh)
+		copyvar(VAR_RYU_MINING_HARVEST_LV, VAR_0x8009)
+		buffernumberstring(0, VAR_RYU_MINING_HARVEST_LV)
+		msgbox("Mining harvest level was set to: {STR_VAR_1}")
+		release
+		end
+	}
+	switch(var(VAR_RYU_PLAYER_MINING_SKILL)){
+		case 1: 
+			goto(FTCT_MiningMasterIntro1)
+		case 2: 
+			goto(FTCT_MiningMasterIntro2)
+		case 3: 
+			goto(FTCT_MiningMasterIntro3)
+	}
+	goto(FTCT_MiningMasterIntroZero)  //failsafe in case somehow the player's mining level is greater than 3 or less than zero. Prevents null pointer crashes.
+}
+
+script FTCT_MiningHarvestLvTooHigh
+{
+	msgbox(format("You can't harvest at a higher level than your skill."))
+	release
+	end
+}
+
+text FTCT_Menu1{
+	"Chat with Mining Master"
+}
+
+text FTCT_Menu2{
+	"Change Harvest Level"
+}
+
+text FTCT_HarvestLv1 {
+	"Harvest Lv 1"
+}
+
+text FTCT_HarvestLv2 {
+	"Harvest Lv 2"
+}
+
+text FTCT_HarvestLv3 {
+	"Harvest Lv 3"
+}
