@@ -9698,7 +9698,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_VIVI] =
     {
-        .partyFlags = F_AUTOFILL_PARTY,
+        .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_WINSTRATE,
         .trainerFaction = FACTION_PROFESSIONALS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
