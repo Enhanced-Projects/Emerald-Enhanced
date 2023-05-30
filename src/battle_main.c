@@ -1818,6 +1818,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         // alternate scale is set for gym leader battles and increases levels
         u8 scalingType = FlagGet(FLAG_RYU_BOSS_SCALE) ? SCALING_TYPE_BOSS : SCALING_TYPE_TRAINER;
         s16 playerPartyStrength = CalculatePlayerPartyStrength();
+        u32 AutoEV = (RyuChooseAutoscaleEv());
 
         if (firstTrainer == TRUE)
             ZeroEnemyPartyMons();
@@ -1878,6 +1879,10 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * 31 / 255;
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                for (j = 0; j < 6; j++)
+                    SetMonData(&party[i], (MON_DATA_HP_EV + j), &AutoEV);
+
+                CalculateMonStats(&party[i]);
                 break;
             }
             case (F_TRAINER_PARTY_HELD_ITEM | F_AUTOFILL_PARTY):
@@ -1893,6 +1898,9 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = RyuChooseAutoscaleIV();
                 CreateMon(&party[i], species, level, fixedIV, FALSE, personalityValue, 0, 0);
+                for (j = 0; j < 6; j++)
+                    SetMonData(&party[i], (MON_DATA_HP_EV + j), &AutoEV);
+                CalculateMonStats(&party[i]);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET:
@@ -1907,14 +1915,15 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 fixedIV = partyData[i].iv * 31 / 255;
                 CreateMon(&party[i], species, level, fixedIV, FALSE, personalityValue, 0, 0);
 
-                break;
-
                 for (j = 0; j < MAX_MON_MOVES; j++)
                 {
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
                 SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].ability);
+                for (j = 0; j < 6; j++)
+                    SetMonData(&party[i], (MON_DATA_HP_EV + j), &AutoEV);
+                CalculateMonStats(&party[i]);
                 break;
             }
             case F_TRAINER_PARTY_HELD_ITEM:
@@ -1926,12 +1935,13 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     nameHash += gSpeciesNames[species][j];
 
                 personalityValue = personalityAdd + (nameHash << 8);
-                fixedIV = partyData[i].iv * 31 / 255;
+                fixedIV = RyuChooseAutoscaleIV();
                 CreateMon(&party[i], species, level, fixedIV, FALSE, personalityValue, 0, 0);
 
-                break;
-
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+                for (j = 0; j < 6; j++)
+                    SetMonData(&party[i], (MON_DATA_HP_EV + j), &AutoEV);
+                CalculateMonStats(&party[i]);
                 break;
             }
             case (F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM):
@@ -1954,26 +1964,9 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
-                if ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) || (VarGet(VAR_RYU_NGPLUS_COUNT) > 10))
-                {
-                    SetMonData(&party[i], MON_DATA_HP_EV,    &evmax);
-                    SetMonData(&party[i], MON_DATA_ATK_EV,   &evmax);
-                    SetMonData(&party[i], MON_DATA_SPATK_EV, &evmax);
-                    SetMonData(&party[i], MON_DATA_DEF_EV,   &evmax);
-                    SetMonData(&party[i], MON_DATA_SPDEF_EV, &evmax);
-                    SetMonData(&party[i], MON_DATA_SPEED_EV, &evmax);
-                    CalculateMonStats(&party[i]);
-                }
-                else if ((FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE) || (VarGet(VAR_RYU_NGPLUS_COUNT) > 5))
-                {
-                    SetMonData(&party[i], MON_DATA_HP_EV,    &evmed);
-                    SetMonData(&party[i], MON_DATA_ATK_EV,   &evmed);
-                    SetMonData(&party[i], MON_DATA_SPATK_EV, &evmed);
-                    SetMonData(&party[i], MON_DATA_DEF_EV,   &evmed);
-                    SetMonData(&party[i], MON_DATA_SPDEF_EV, &evmed);
-                    SetMonData(&party[i], MON_DATA_SPEED_EV, &evmed);
-                    CalculateMonStats(&party[i]);
-                }
+                for (j = 0; j < 6; j++)
+                    SetMonData(&party[j], (MON_DATA_HP_EV + j), &AutoEV);
+                CalculateMonStats(&party[i]);
                 break;
             }
             }

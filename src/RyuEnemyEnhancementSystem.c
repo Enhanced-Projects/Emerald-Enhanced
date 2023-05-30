@@ -206,6 +206,45 @@ u16 RyuChooseAutoscaleIV(void)
     return 31;
 }
 
+u8 RyuChooseAutoscaleEv(void)
+{
+    u16 diff = (VarGet(VAR_RYU_EXP_MULTIPLIER));
+    u16 prestige = (VarGet(VAR_RYU_NGPLUS_COUNT));
+    u8 badges = (CountBadges());
+    u8 ev = 16;
+    badges *= 10;
+    if (prestige == 0)
+    prestige = 1;
+
+    switch (diff)
+    {
+    case 1://autoscale
+    case 10://autoscale NGP
+        ev = (25 * prestige);
+        if (ev > 252)
+            ev = 252;
+        return (ev + badges);
+    case 2000://challenge mode
+        ev = (50 * prestige);
+        if (ev > 252)
+            ev = 252;
+        return (ev + badges);
+    case 4000://easy mode
+    case 8000://god mode
+        ev = (10 * prestige);
+        if (ev > 252)
+            ev = 252;
+        return (ev + badges);
+    case 1000://hard/hardcore
+        ev = (75 * prestige);
+        if (ev > 252)
+            ev = 252;
+        return (ev + badges);
+    }
+    return 255;
+
+}
+
 u8 RyuChoosePartyCount(u16 trainer)
 {
     u8 count = ((Random() % 4) + 1);

@@ -7,6 +7,7 @@ extern u16 Autoevolve(u16 species, u16 level);
 extern u16 RyuChooseEnemyProceduralMons(u16 trainerClass);
 extern u16 RyuChooseAutoscaleIV(void);
 extern u8 RyuChoosePartyCount(u16 trainer);
+extern u8 RyuChooseAutoscaleEv(void);
 
 extern const u16 gRyuProceduralTrainerMonLists[72][20];
 extern const u16 sWildRange[9][2];
