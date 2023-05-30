@@ -12673,7 +12673,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_WINONA_4] =
     {
-        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET | F_AUTOFILL_PARTY,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_LEADER,
         .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,

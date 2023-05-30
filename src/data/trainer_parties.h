@@ -3716,11 +3716,11 @@ static const struct TrainerMonItemCustomMoves sParty_Norman1[] = {
 	{
 	.iv = 255,
 	.lvl = 32,
-	.species = SPECIES_AIPOM,
-	.heldItem = ITEM_EVIOLITE,
+	.species = SPECIES_RATTATA,
+	.heldItem = ITEM_KINGS_ROCK,
 	.evspread = 0,
-    .ability = 2,
-	.moves = {MOVE_FAKE_OUT, MOVE_TAIL_SLAP, MOVE_LOW_SWEEP, MOVE_KNOCK_OFF},
+    .ability = 0,
+	.moves = {MOVE_FRENZY_FANG, MOVE_QUICK_ATTACK, MOVE_CRUNCH, MOVE_BELLY_DRUM},
 	},
 	{
 	.iv = 255,
@@ -12596,11 +12596,11 @@ static const struct TrainerMonItemCustomMoves sParty_Norman2[] = {
 	{
 	.iv = 255,
 	.lvl = 85,
-	.species = SPECIES_AMBIPOM,
+	.species = SPECIES_RATICATE,
 	.heldItem = ITEM_SILK_SCARF,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_KNOCK_OFF},
+	.moves = {MOVE_FRENZY_FANG, MOVE_QUICK_ATTACK, MOVE_CRUNCH, MOVE_PSYCHIC_FANGS},
 	},
 	{
 	.iv = 239,
@@ -12644,11 +12644,11 @@ static const struct TrainerMonItemCustomMoves sParty_Norman3[] = {
 	{
 	.iv = 255,
 	.lvl = 85,
-	.species = SPECIES_AMBIPOM,
+	.species = SPECIES_RATICATE,
 	.heldItem = ITEM_SILK_SCARF,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_KNOCK_OFF},
+	.moves = {MOVE_FRENZY_FANG, MOVE_THUNDER_FANG, MOVE_CRUNCH, MOVE_PSYCHIC_FANGS},
 	},
 	{
 	.iv = 255,
@@ -12718,12 +12718,12 @@ static const struct TrainerMonItemCustomMoves sParty_Norman4[] = {
 	},
 	{
 	.iv = 255,
-	.lvl = 82,
-	.species = SPECIES_AMBIPOM,
+	.lvl = 85,
+	.species = SPECIES_RATICATE,
 	.heldItem = ITEM_SILK_SCARF,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_KNOCK_OFF},
+	.moves = {MOVE_FRENZY_FANG, MOVE_EXTREME_SPEED, MOVE_CRUNCH, MOVE_PSYCHIC_FANGS},
 	},
 	{
 	.iv = 255,
