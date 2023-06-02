@@ -145,6 +145,14 @@ int RyuFollowerToTrainerID(void)
             gSpecialVar_0x8008 = TRAINER_REL_MOM;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_MOM;
             return TRUE;
+        case FOLLOWER_GLADION:
+            gSpecialVar_0x8008 = TRAINER_REL_GLADION;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_GLADION;
+            return TRUE;
+        case FOLLOWER_LILLIE:
+            gSpecialVar_0x8008 = TRAINER_REL_LILLIE;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_LILLIE;
+            return TRUE;
         }
         return FALSE;
     }
@@ -308,5 +316,31 @@ const u16 gRyuCompanionPartyPools[][10] =
         SPECIES_MEDICHAM,
         SPECIES_SNORLAX,
         SPECIES_MILTANK
+    },
+    [FOLLOWER_GLADION] =
+    {
+        SPECIES_TYPE_NULL,
+        SPECIES_CROBAT,
+        SPECIES_LUCARIO,
+        SPECIES_WEAVILE,
+        SPECIES_PORYGON_Z,
+        SPECIES_SILVALLY,
+        SPECIES_CROBAT,
+        SPECIES_LUCARIO,
+        SPECIES_WEAVILE,
+        SPECIES_PORYGON_Z,
+    },
+    [FOLLOWER_LILLIE] =
+    {
+        SPECIES_COSMOG,
+        SPECIES_RIBOMBEE,
+        SPECIES_COMFEY,
+        SPECIES_CLEFABLE,
+        SPECIES_MANTINE,
+        SPECIES_COSMOG,
+        SPECIES_RIBOMBEE,
+        SPECIES_COMFEY,
+        SPECIES_EEVEE,
+        SPECIES_WIGGLYTUFF
     }
 };

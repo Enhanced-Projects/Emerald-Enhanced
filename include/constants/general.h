@@ -539,6 +539,8 @@
 #define FOLLOWER_MAY 236
 #define FOLLOWER_LUCY 75
 #define FOLLOWER_MOM 215
+#define FOLLOWER_GLADION 245
+#define FOLLOWER_LILLIE 244
 
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()

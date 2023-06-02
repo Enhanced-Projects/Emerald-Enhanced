@@ -970,6 +970,8 @@ static const u8 sFollowerJoy[] = _("Spawn Joy");
 static const u8 sFollowerMay[] = _("Spawn May");
 static const u8 sFollowerLucy[] = _("Spawn Lucy");
 static const u8 sFollowerMom[] = _("Spawn Mom");
+static const u8 sFollowerGladion[] = _("Spawn Gladion");
+static const u8 sFollowerLillie[] = _("Spawn Lillie");
 static const u8 sFollowerNonCombat[] = _("{COLOR LIGHT_RED}{SHADOW RED}{DOWN_ARROW} NON COMBAT {DOWN_ARROW}");
 static const u8 sFollowerBlaise[] = _("Spawn Blaise");
 static const u8 sFollowerTiana[] = _("Spawn Tiana");
@@ -1096,11 +1098,9 @@ static const struct ListMenuItem sRyuFollowerDebugSet[] =
         {sFollowerMay, 8},
         {sFollowerLucy, 9},
         {sFollowerMom, 10},
-        {sFollowerNonCombat, 11},
-        {sFollowerBlaise, 12},
-        {sFollowerTiana, 13},
-        {sFollowerHexer, 14},
-        {sReturnPrevious, 15},
+        {sFollowerGladion, 11},
+        {sFollowerLillie, 12},
+        {sReturnPrevious, 13},
 };
 
 static const struct ListMenuItem sRyuBetaMenuSet[] =

@@ -151,11 +151,9 @@ RDB_SpawnFollowerMultiMenu::
 	case 8, RDB_SpawnMay
 	case 9, RDB_SpawnLucy
 	case 10, RDB_SpawnMom
-	case 11, RDB_NONCOMBATFOLLOWER
-	case 12, RDB_SpawnBlaise
-	case 13, RDB_SpawnTiana
-	case 14, RDB_SpawnHexer
-	case 15, RDB_RETURNTOMAIN
+	case 11, RDB_SpawnGladion
+	case 12, RDB_SpawnLillie
+	case 13, RDB_RETURNTOMAIN
 	goto RDB_RETURNTOMAIN
 
 RDB_SpawnWhichFollower:
@@ -245,6 +243,18 @@ RDB_SpawnMom::
 	goto RDB_ExplainSpawnFollower
 	end
 
+RDB_SpawnGladion::
+	call RyuForceCancelFollowerForQuest
+	createfollower FOLLOWER_GLADION, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnLillie::
+	call RyuForceCancelFollowerForQuest
+	createfollower FOLLOWER_LILLIE, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
 RDB_NONCOMBATFOLLOWER::
 	goto RDB_SpawnFollowerMultiMenu
 
@@ -254,7 +264,7 @@ RDB_ExplainSpawnFollower::
 	goto RyuDebug_UtilitiesMenu
 
 RDB_ExplainSpawnMsg:
-	.string "You have spawned in a follower.\nNote that this skips all quest\pchecks and just directly applies\ntheir base script.\lBugs may appear when talked to.$"
+	.string "You have spawned in a follower.$"
 	
 RDB_RETURNTOMAIN::
 	msgbox RDB_RTM1

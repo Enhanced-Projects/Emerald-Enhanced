@@ -1359,36 +1359,36 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Wilton2},
     },
 
-    [TRAINER_EMPTY_30] =
+    [TRAINER_REL_GLADION] =
     {
-        .partyFlags = F_AUTOFILL_PARTY,
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
-        .trainerFaction = FACTION_NOBLES,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
-        .trainerName = _("Wilton"),
-        .items = {ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
+        .trainerPic = TRAINER_PIC_GLADION,
+        .trainerName = _("Gladion"),
+        .items = {0},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_Wilton3),
-        .party = {.NoItemDefaultMoves = sParty_Wilton3},
+        .partySize = ARRAY_COUNT(sParty_RelGladion),
+        .party = {.ItemCustomMoves = sParty_RelGladion},
     },
 
-    [TRAINER_EMPTY_31] =
+    [TRAINER_REL_LILLIE] =
     {
-        .partyFlags = F_AUTOFILL_PARTY,
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
-        .trainerFaction = FACTION_NOBLES,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
-        .trainerName = _("Wilton"),
-        .items = {ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE},
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH | TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_LILLIE,
+        .trainerName = _("Lillie"),
+        .items = {0},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_Wilton4),
-        .party = {.NoItemDefaultMoves = sParty_Wilton4},
+        .partySize = ARRAY_COUNT(sParty_RelLillie),
+        .party = {.ItemCustomMoves = sParty_RelLillie},
     },
 
     [TRAINER_EMPTY_32] =

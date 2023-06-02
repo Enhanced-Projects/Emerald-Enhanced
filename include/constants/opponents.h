@@ -71,7 +71,7 @@
 #define TRAINER_AETHER_GRUNT_10              67
 #define TRAINER_AETHER_FABA1                 68
 #define TRAINER_AETHER_WICKE1                69
-#define TRAINER_AETHER_GRUNT_11                     70
+#define TRAINER_AETHER_GRUNT_11              70
 #define TRAINER_RANDALL                      71
 #define TRAINER_PARKER                       72
 #define TRAINER_GEORGE                       73
@@ -86,8 +86,8 @@
 #define TRAINER_VITO                         82
 #define TRAINER_OWEN                         83
 #define TRAINER_STEVEN_POSTGAME9             84
-#define TRAINER_EMPTY_30                     85
-#define TRAINER_EMPTY_31                     86
+#define TRAINER_REL_GLADION                  85
+#define TRAINER_REL_LILLIE                   86
 #define TRAINER_EMPTY_32                     87
 #define TRAINER_WARREN                       88
 #define TRAINER_MARY                         89

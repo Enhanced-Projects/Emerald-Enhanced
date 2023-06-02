@@ -1433,8 +1433,8 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_VITO
 	cleartrainerflag TRAINER_OWEN
 	cleartrainerflag TRAINER_STEVEN_POSTGAME9
-	cleartrainerflag TRAINER_EMPTY_30
-	cleartrainerflag TRAINER_EMPTY_31
+	cleartrainerflag TRAINER_REL_GLADION
+	cleartrainerflag TRAINER_REL_LILLIE
 	cleartrainerflag TRAINER_EMPTY_32
 	cleartrainerflag TRAINER_WARREN
 	cleartrainerflag TRAINER_MARY

@@ -141,7 +141,9 @@
 #define TRAINER_BACK_PIC_GOLD                   13
 #define TRAINER_BACK_PIC_KRYSTAL                14
 #define TRAINER_BACK_PIC_LUCY                   15
-#define TRAINER_BACK_PIC_MOM                   16
+#define TRAINER_BACK_PIC_MOM                    16
+#define TRAINER_BACK_PIC_GLADION                17
+#define TRAINER_BACK_PIC_LILLIE                 18
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1

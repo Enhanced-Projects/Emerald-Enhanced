@@ -1105,39 +1105,57 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Wilton2[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Wilton3[] = {
+static const struct TrainerMonItemCustomMoves sParty_RelGladion[] = {
     {
-    .iv = 120,
-    .lvl = 29,
-    .species = SPECIES_DURANT,
+    .iv = 255,
+    .lvl = 26,
+    .species = SPECIES_WIGGLYTUFF,
+    .heldItem = ITEM_NONE,
+    .ability = 0,
+    .moves = {MOVE_DEFENSE_CURL, MOVE_DRAIN_PUNCH, MOVE_SHADOW_BALL, MOVE_FLARE_BLITZ},
     },
     {
-    .iv = 120,
-    .lvl = 29,
-    .species = SPECIES_LAMPENT,
+    .iv = 255,
+    .lvl = 26,
+    .species = SPECIES_WIGGLYTUFF,
+    .heldItem = ITEM_NONE,
+    .ability = 0,
+    .moves = {MOVE_DEFENSE_CURL, MOVE_DRAIN_PUNCH, MOVE_SHADOW_BALL, MOVE_FLARE_BLITZ},
     },
     {
-    .iv = 120,
-    .lvl = 29,
-    .species = SPECIES_GURDURR,
+    .iv = 255,
+    .lvl = 26,
+    .species = SPECIES_WIGGLYTUFF,
+    .heldItem = ITEM_NONE,
+    .ability = 0,
+    .moves = {MOVE_DEFENSE_CURL, MOVE_DRAIN_PUNCH, MOVE_SHADOW_BALL, MOVE_FLARE_BLITZ},
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Wilton4[] = {
+static const struct TrainerMonItemCustomMoves sParty_RelLillie[] = {
     {
-    .iv = 130,
-    .lvl = 32,
-    .species = SPECIES_DURANT,
+    .iv = 255,
+    .lvl = 26,
+    .species = SPECIES_WIGGLYTUFF,
+    .heldItem = ITEM_NONE,
+    .ability = 0,
+    .moves = {MOVE_DEFENSE_CURL, MOVE_DRAIN_PUNCH, MOVE_SHADOW_BALL, MOVE_FLARE_BLITZ},
     },
     {
-    .iv = 130,
-    .lvl = 32,
-    .species = SPECIES_CHANDELURE,
+    .iv = 255,
+    .lvl = 26,
+    .species = SPECIES_WIGGLYTUFF,
+    .heldItem = ITEM_NONE,
+    .ability = 0,
+    .moves = {MOVE_DEFENSE_CURL, MOVE_DRAIN_PUNCH, MOVE_SHADOW_BALL, MOVE_FLARE_BLITZ},
     },
     {
-    .iv = 130,
-    .lvl = 32,
-    .species = SPECIES_CONKELDURR,
+    .iv = 255,
+    .lvl = 26,
+    .species = SPECIES_WIGGLYTUFF,
+    .heldItem = ITEM_NONE,
+    .ability = 0,
+    .moves = {MOVE_DEFENSE_CURL, MOVE_DRAIN_PUNCH, MOVE_SHADOW_BALL, MOVE_FLARE_BLITZ},
     }
 };
 
