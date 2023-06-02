@@ -52,17 +52,16 @@ void RyuTravelQuestTask(u8 taskId)
             FlagClear(FLAG_RYU_STARTED_TRAVEL_TIMER);
             DestroyTask(taskId);
         }
-
         tQuestFrames++;
     }
     else
     {
         u8 buf[40];
         u8 factionId = (VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION));
-        VarSet(VAR_RYU_DAILY_QUEST_DATA, 6);
-        StringCopy(buf, gFactionNames[VarGet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION)]);
+        StringCopy(buf, gFactionNames[factionId]);
         StringAppend(buf, (const u8[]) _(" travel quest completed."));
-        QueueNotification(buf, NOTIFY_MISSION, 120); 
+        QueueNotification(buf, NOTIFY_MISSION, 120);
+        VarSet(VAR_RYU_DAILY_QUEST_DATA, 6);
         DestroyTask(taskId);
     }
 }
@@ -76,7 +75,7 @@ void RyuCheckTravelTypeDaily(void)
     (RyuGetCurrentMapsec() == (VarGet(VAR_RYU_DAILY_QUEST_TARGET))))
     {
         FlagSet(FLAG_RYU_STARTED_TRAVEL_TIMER);
-        CreateTask(RyuTravelQuestTask, 0xFF);
+        CreateTask(RyuTravelQuestTask, 0xFE);
     }
 }
 
