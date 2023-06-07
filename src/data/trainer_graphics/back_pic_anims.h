@@ -172,11 +172,11 @@ static const union AnimCmd gAnimCmd_Gladion_1[] =
 
 static const union AnimCmd gAnimCmd_Lillie_1[] =
 {
-    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(0, 2),
     ANIMCMD_FRAME(1, 9),
     ANIMCMD_FRAME(2, 12),
-    ANIMCMD_FRAME(0, 9),
-    ANIMCMD_FRAME(3, 50),
+    ANIMCMD_FRAME(3, 9),
+    ANIMCMD_FRAME(0, 50),
     ANIMCMD_END,
 };
 
