@@ -64,6 +64,8 @@ Route103_EventScript_RivalBrendan:: @ 81EC434
 	drawfullscreenimage SCENEBGBRENDAN
 	msgbox r103_maleRivalChat, MSGBOX_DEFAULT
 	setflag FLAG_RYU_RIVAL_103_BATTLE
+	closemessage
+	clearfullscreenimage
 	goto Route103_EventScript_RivalExit
 	end
 
