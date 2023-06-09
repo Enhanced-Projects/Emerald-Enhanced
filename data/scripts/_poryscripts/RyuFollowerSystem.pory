@@ -272,7 +272,12 @@ RF_RemoveFollowerSilent::
 	case FOLLOWER_LUCY, Ryu_ReturnLucyPike
 	case FOLLOWER_MOM, LRT_RestoreMom
 	case OBJ_EVENT_GFX_GIRL_3, LCFC_RemoveLily
+	msgbox RF_UnknownFollower
+	destroyfollower
 	return
+
+RF_UnknownFollower:
+	.string "This follower doesn't have a\ndismissal script. Deleting.$"
 
 LCFC_RemoveLily::
 	destroyfollower
