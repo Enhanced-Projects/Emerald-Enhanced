@@ -171,6 +171,7 @@
 
 static EWRAM_DATA u8 gUnknown_02022D04 = 0;
 static EWRAM_DATA u16 sCurrItemAndOptionMenuCheck = 0;
+static EWRAM_DATA u8 IsUpdateMessageShown = 0;
 
 static u8 sBirchSpeechMainTaskId;
 
@@ -184,6 +185,7 @@ static void CreateMainMenuErrorWindow(const u8*);
 static void ClearMainMenuWindowTilemap(const struct WindowTemplate*);
 static void Task_DisplayMainMenu(u8);
 static void Task_WaitForBatteryDryErrorWindow(u8);
+static void Task_WaitForUpdateNotification(u8);
 static void MainMenu_FormatSavegameText(void);
 static void HighlightSelectedMainMenuItem(u8, u8, s16);
 static void Task_HandleMainMenuInput(u8);
@@ -773,6 +775,8 @@ static void Task_WaitForSaveFileErrorWindow(u8 taskId)
     }
 }
 
+const u8 gText_UpdateDetected[] = _("An update has been detected.\nPlease start a new game or new game\pplus to continue playing.");
+
 static void Task_MainMenuCheckBattery(u8 taskId)
 {
     if (!gPaletteFade.active)
@@ -785,19 +789,36 @@ static void Task_MainMenuCheckBattery(u8 taskId)
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 7);
 
-        if (!(RtcGetErrorStatus() & RTC_ERR_FLAG_MASK))
-        {
-            gTasks[taskId].func = Task_DisplayMainMenu;
-        }
-        else
+        if (RtcGetErrorStatus() & RTC_ERR_FLAG_MASK)
         {
             CreateMainMenuErrorWindow(gText_BatteryRunDry);
             gTasks[taskId].func = Task_WaitForBatteryDryErrorWindow;
+        }
+        else if ((EE_GAME_VERSION - VarGet(VAR_LAST_KNOWN_GAME_VERSION)) > 20)
+        {
+            IsUpdateMessageShown = 1;
+            CreateMainMenuErrorWindow(gText_UpdateDetected);
+            gTasks[taskId].func = Task_WaitForUpdateNotification;
+        }
+        else
+        {
+            gTasks[taskId].func = Task_DisplayMainMenu;
         }
     }
 }
 
 static void Task_WaitForBatteryDryErrorWindow(u8 taskId)
+{
+    RunTextPrinters();
+    if (!IsTextPrinterActive(7) && (JOY_NEW(A_BUTTON)))
+    {
+        ClearWindowTilemap(7);
+        ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[7]);
+        DoSoftReset();
+    }
+}
+
+static void Task_WaitForUpdateNotification(u8 taskId)
 {
     RunTextPrinters();
     if (!IsTextPrinterActive(7) && (JOY_NEW(A_BUTTON)))
@@ -1082,6 +1103,14 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
                 break;
             case ACTION_CONTINUE:
+                if (IsUpdateMessageShown == 1)
+                {
+                    sCurrItemAndOptionMenuCheck = 0;
+                    FreeAllWindowBuffers();
+                    SetMainCallback2(CB2_InitTitleScreen);
+                    DestroyTask(taskId);
+                    break;
+                }
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
                 SetMainCallback2(CB2_ContinueSavedGame);
