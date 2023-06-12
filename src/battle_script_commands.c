@@ -11745,7 +11745,7 @@ static void Cmd_setyawn(void)
 
 static void Cmd_setdamagetohealthdifference(void)
 {
-    if (gBattleMons[gBattlerTarget].hp <= gBattleMons[gBattlerAttacker].hp)
+    if (gBattleMons[gBattlerTarget].hp <= gBattleMons[gBattlerAttacker].hp || FlagGet(FLAG_RYU_FACING_REAPER) || FlagGet(FLAG_RYU_FACING_HORSEMAN))
     {
         gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
     }
