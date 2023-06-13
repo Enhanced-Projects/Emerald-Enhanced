@@ -199,6 +199,7 @@ LCC_Jewels:
 	.2byte ITEM_DARK_GEM
 	.2byte ITEM_STEEL_GEM
 	.2byte ITEM_FAIRY_GEM
+	.2byte ITEM_CLOTH
 	.2byte ITEM_NONE
 	
 LCC_Jeweler_Welcome:

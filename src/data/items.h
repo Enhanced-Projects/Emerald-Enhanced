@@ -3289,6 +3289,18 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
+    [ITEM_CLOTH] =
+    {
+        .name = _("Cloth"),
+        .itemId = ITEM_CLOTH,
+        .price = 100,
+        .description = sClothDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
     [ITEM_RAZOR_CLAW] =
     {
         .name = _("Razor Claw"),

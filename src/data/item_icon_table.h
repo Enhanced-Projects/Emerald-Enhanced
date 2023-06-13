@@ -451,6 +451,7 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_MAGMARIZER] = {gItemIcon_Magmarizer, gItemIconPalette_Magmarizer},
     [ITEM_DUBIOUS_DISC] = {gItemIcon_DubiousDisc, gItemIconPalette_DubiousDisc},
     [ITEM_REAPER_CLOTH] = {gItemIcon_ReaperCloth, gItemIconPalette_ReaperCloth},
+    [ITEM_CLOTH] = {gItemIcon_ReaperCloth, gItemIconPalette_SilkScarf},
     [ITEM_RAZOR_CLAW] = {gItemIcon_RazorClaw, gItemIconPalette_RazorClaw},
     [ITEM_RAZOR_FANG] = {gItemIcon_RazorFang, gItemIconPalette_RazorFang},
     [ITEM_POWER_BRACER] = {gItemIcon_PowerBracer, gItemIconPalette_PowerBracer},

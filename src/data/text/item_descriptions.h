@@ -1188,6 +1188,11 @@ static const u8 sReaperClothDesc[] = _(
     "Pokémon. Imbued\n"
     "with strong energy.");
 
+static const u8 sClothDesc[] = _(
+    "A very inexpensive,\n"
+    "low thread-count\n"
+    "piece of cloth.");
+
 static const u8 sRazorClawDesc[] = _(
     "Helps a certain\n"
     "Pokémon to evolve.\n"

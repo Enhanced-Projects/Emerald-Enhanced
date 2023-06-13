@@ -895,7 +895,7 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_RECIPES] = {
           .ingredients = {
             {ITEM_SOFT_SAND, 2},
             {ITEM_GEM_POWDER, 2},
-            {ITEM_NONE, 0},
+            {ITEM_CLOTH, 1},
         },
         .metal = 2,
         .metalDustAmt = 200,
@@ -908,7 +908,7 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_RECIPES] = {
           .ingredients = {
             {ITEM_SNOWBALL, 2},
             {ITEM_FIRE_STONE, 1},
-            {ITEM_NONE, 0},
+            {ITEM_CLOTH, 1},
         },
         .metal = 2,
         .metalDustAmt = 100,
@@ -921,7 +921,7 @@ const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_RECIPES] = {
           .ingredients = {
             {ITEM_FRESH_WATER, 2},
             {ITEM_CHARCOAL, 1},
-            {ITEM_NONE, 0},
+            {ITEM_CLOTH, 0},
         },
         .metal = 2,
         .metalDustAmt = 200,
