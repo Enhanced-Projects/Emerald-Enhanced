@@ -2867,7 +2867,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_AUTOFILL_PARTY,
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-        .trainerFaction = FACTION_PROFESSIONALS,
+        .trainerFaction = FACTION_POKEMON_LEAGUE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .trainerName = _("Takao"),
