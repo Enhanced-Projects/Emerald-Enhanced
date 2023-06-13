@@ -1366,7 +1366,7 @@
 #define FLAG_RYU_FACING_ATTENDANT                                 0x50A
 #define FLAG_RYU_VERBOSE_MODE                                     0x50B
 #define FLAG_RYU_HOLIDAY_EVENT                                    0x50C
-#define FLAG_UNUSED_0x50D                                         0x50D
+#define FLAG_RYU_HIDE_HAREM_EVENT_MOM                             0x50D
 #define FLAG_RYU_DISABLE_NATURE_SELECTION_IN_GCMS                 0x50E
 #define FLAG_RYU_LAVARIDGE_LUCY                                   0x50F
 #define FLAG_RYU_WAYSTONE_BYPASS                                  0x510

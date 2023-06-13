@@ -20,29 +20,29 @@ static const u8 sTrueLoveAchDesc[] = _("You have entered a relationship.\nNow yo
 
 static const u8 sSilentStrongTypeAchLabel[] = _("Silent, Strong type");
 static const u8 sSilentStrongTypeAchHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Befriend a quiet girl.");
-static const u8 sSilentStrongTypeAchDesc[] = _("The quiet ones usually have the most to say!\n(Romanced Lana)");
+static const u8 sSilentStrongTypeAchDesc[] = _("The quiet ones usually have the most to say!\n(Recruited Leaf)");
 
 static const u8 sChildhoodFriendAchLabel[] = _("A Childhood Friend");
 static const u8 sChildhoodFriendAchHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Rivals can get along.");
-static const u8 sChildhoodFriendAchDesc[] = _("{RIVAL} would follow you off of a cliff.\n(Romanced {RIVAL})");
+static const u8 sChildhoodFriendAchDesc[] = _("{RIVAL} would follow you off of a cliff.\n(Recruited {RIVAL})");
 
 static const u8 sNerdLoveAchLabel[] = _("Nerd Love");
 static const u8 sNerdLoveAchHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Programmers can be lonely.");
-static const u8 sNerdLoveAchDesc[] = _("You feel her rubbing off on you.\n(Romanced Lanette)");
+static const u8 sNerdLoveAchDesc[] = _("You feel her rubbing off on you.\n(Recruited Lanette)");
 
 static const u8 sFWBAchLabel[] = _("Friends with Benefits");
 static const u8 sFWBAchHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Heal many times.");
-static const u8 sFWBAchDesc[] = _("You have a secret weapon!\nYour own, personal nurse.\n(Romanced Joy)");
+static const u8 sFWBAchDesc[] = _("You have a secret weapon!\nYour own, personal nurse.\n(Recruited Joy)");
 
 static const u8 sWetnWildAchLabel[] = _("Wet and Wild");
 static const u8 sWetnWildAchHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Aquacious amore.");
-static const u8 sWetnWildAchDesc[] = _("You found a girl who loves to get wet.\n(Romanced Shelly)");
+static const u8 sWetnWildAchDesc[] = _("You found a girl who loves to get wet.\n(Recruited Shelly)");
 
 static const u8 sFieryPassionAchLabel[] = _("Fiery Passion");
 static const u8 sFieryPassionAchHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Lava love.");
-static const u8 sFieryPassionAchDesc[] = _("She's blazing hot!\n(Romanced Courtney)");
+static const u8 sFieryPassionAchDesc[] = _("She's blazing hot!\n(Recruited Courtney)");
 
-static const u8 sTrueEndingAchLabel[] = _("The True Ending");
+static const u8 sTrueEndingAchLabel[] = _("The Good Ending");
 static const u8 sTrueEndingAchHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Chick magnet!");
 static const u8 sTrueEndingAchDesc[] = _("You're quite the lady killer, eh?\n(Got the Harem ending)");
 
@@ -244,7 +244,7 @@ static const u8 sDeOrphanedDesc[] = _("You gave her a new lease on life!\n(Found
 
 static const u8 sLostGirlLabel[] = _("Lost Girl");
 static const u8 sLostGirlHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Recruit an orphan");
-static const u8 sLostGirlDesc[] = _("With no expectations, she's super loyal!\n(Romanced May)");
+static const u8 sLostGirlDesc[] = _("With no expectations, she's super loyal!\n(Recruited May)");
 
 static const u8 sMarkedForDeathLabel[] = _("Marked For Death");
 static const u8 sMarkedForDeathHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}be immortal");
@@ -266,19 +266,23 @@ static const u8 sTrulyBadEndingLabel[] = _("The Truly Bad Ending");
 static const u8 sTrulyBadEndingHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Momma's boy/girl.");
 static const u8 sTrulyBadEndingDesc[] = _("You got the truly worst ending.\nYou must be a soul that only a mother can love.\n(Failed all companion quests in 1 play)");
 
+static const u8 sSerpentineLabel[] = _("Serpentine!");
+static const u8 sSerpentineHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Help the snake shed.");
+static const u8 sSerpentineDesc[] = _("You really stepped up and helped her out!\n(Recruited Lucy)");
+
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
     [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, sWholeNewWorldAchHint}, //started exploring enhanced hoenn
     [ACH_ENHANCED_BATTLE] = {28, 40, CATEGORY_BATTLE, ACH_ENHANCED_BATTLE, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc, sEnhancedBattleAchHint}, //completed a non-tutorial battle
     [ACH_NEW_REGION_WHO_DIS] = {57, 40, CATEGORY_COMPANIONS, ACH_NEW_REGION_WHO_DIS, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc, sNewRegionWhoDisAchHint}, // Befriended any romanceable npc
     [ACH_ADVENTURE_TIME] = {42, 40, CATEGORY_QUESTING, ACH_ADVENTURE_TIME, sAdventureTimeAchLabel, sAdventureTimeAchDesc, sAdventureTimeAchHint}, //Began your adventure
-    [ACH_TRUE_LOVE] = {55, 37, CATEGORY_COMPANIONS, ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc, sTrueLoveAchHint}, //fully romanced any character
-    [ACH_SILENT_STRONG_TYPE] = {57, 33, CATEGORY_COMPANIONS, ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc, sSilentStrongTypeAchHint}, //fully romanced lana
-    [ACH_CHILDHOOD_FRIEND] = {57, 35, CATEGORY_COMPANIONS, ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc, sChildhoodFriendAchHint}, //fully romanced rival
-    [ACH_FIERY_PASSION] = {57, 37, CATEGORY_COMPANIONS, ACH_FIERY_PASSION, sFieryPassionAchLabel, sFieryPassionAchDesc, sFieryPassionAchHint}, //fully romanced courtney
-    [ACH_NERD_LOVE] = {59, 33, CATEGORY_COMPANIONS, ACH_NERD_LOVE, sNerdLoveAchLabel, sNerdLoveAchDesc, sNerdLoveAchHint}, //fully romanced lanette
-    [ACH_FWB] = {59, 35, CATEGORY_COMPANIONS, ACH_FWB, sFWBAchLabel, sFWBAchDesc, sFWBAchHint}, //fully romanced Joy
-    [ACH_WET_N_WILD] = {59, 37, CATEGORY_COMPANIONS, ACH_WET_N_WILD, sWetnWildAchLabel, sWetnWildAchDesc, sWetnWildAchHint}, //fully romanced shelly
+    [ACH_TRUE_LOVE] = {55, 37, CATEGORY_COMPANIONS, ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc, sTrueLoveAchHint}, //fully Recruited any character
+    [ACH_SILENT_STRONG_TYPE] = {57, 33, CATEGORY_COMPANIONS, ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc, sSilentStrongTypeAchHint}, //fully Recruited lana
+    [ACH_CHILDHOOD_FRIEND] = {57, 35, CATEGORY_COMPANIONS, ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc, sChildhoodFriendAchHint}, //fully Recruited rival
+    [ACH_FIERY_PASSION] = {57, 37, CATEGORY_COMPANIONS, ACH_FIERY_PASSION, sFieryPassionAchLabel, sFieryPassionAchDesc, sFieryPassionAchHint}, //fully Recruited courtney
+    [ACH_NERD_LOVE] = {59, 33, CATEGORY_COMPANIONS, ACH_NERD_LOVE, sNerdLoveAchLabel, sNerdLoveAchDesc, sNerdLoveAchHint}, //fully Recruited lanette
+    [ACH_FWB] = {59, 35, CATEGORY_COMPANIONS, ACH_FWB, sFWBAchLabel, sFWBAchDesc, sFWBAchHint}, //fully Recruited Joy
+    [ACH_WET_N_WILD] = {59, 37, CATEGORY_COMPANIONS, ACH_WET_N_WILD, sWetnWildAchLabel, sWetnWildAchDesc, sWetnWildAchHint}, //fully Recruited shelly
     [ACH_TRUE_ENDING] = {57, 31, CATEGORY_COMPANIONS, ACH_TRUE_ENDING, sTrueEndingAchLabel, sTrueEndingAchDesc, sTrueEndingAchHint}, //get the harem end
     [ACH_ETERNAL_DAMNATION] = {39, 37, CATEGORY_QUESTING, ACH_ETERNAL_DAMNATION, sEternalDamnationLabel, sEternalDamnationAchDesc, sEternalDamnationHint}, //magma alt romance ending
     [ACH_HUNTING_TRIP] = {39, 35, CATEGORY_QUESTING, ACH_HUNTING_TRIP, sHuntingTripAchLabel, sHuntingTripAchDesc, sHuntingTripAchHint}, //magma alt non romance ending
@@ -334,5 +338,6 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_THE_PHOENIX] = {12, 51, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_MARKED_FOR_DEATH, sThePhoenixLabel, sThePhoenixDesc, sThePhoenixHint}, //defeat the four horsemen and arceus
     [ACH_ULTRAKILL] = {28, 31, CATEGORY_BATTLE | CATEGORY_FLAG_GOLD, ACH_ULTRAKILL, sUltraKillLabel, sUltraKillDesc, sUltraKillHint}, //faint 50x
     [ACH_ULTIMATE_END] = {57, 29, CATEGORY_COMPANIONS | CATEGORY_FLAG_GOLD, ACH_ULTIMATE_END, sUltimateEndLabel, sUltimateEndDesc, sUltimateEndHint}, //Complete advanced harem end
-    [ACH_TRULY_BAD_ENDING] = {55, 29, CATEGORY_COMPANIONS , ACH_TRULY_BAD_ENDING, sTrulyBadEndingLabel, sTrulyBadEndingDesc, sTrulyBadEndingHint}, //Unlock Mom as follower
+    [ACH_TRULY_BAD_ENDING] = {55, 29, CATEGORY_COMPANIONS, ACH_TRULY_BAD_ENDING, sTrulyBadEndingLabel, sTrulyBadEndingDesc, sTrulyBadEndingHint}, //Unlock Mom as follower
+    [ACH_SERPENTINE] = {55, 33, CATEGORY_COMPANIONS, ACH_SERPENTINE, sSerpentineLabel, sSerpentineDesc, sSerpentineHint}, //Unlock Lucy as follower
 };

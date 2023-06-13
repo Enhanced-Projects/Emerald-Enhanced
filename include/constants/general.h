@@ -114,7 +114,7 @@
 #define ACH_ULTRAKILL  64 //faint 50x
 #define ACH_ULTIMATE_END  65 //Get the Advanced Harem end
 #define ACH_TRULY_BAD_ENDING  66 //Get the Antiharem end
-#define ACH_UNUSED_68  67
+#define ACH_SERPENTINE  67
 #define ACH_UNUSED_69  68
 #define ACH_UNUSED_70  69
 #define ACH_UNUSED_71  70

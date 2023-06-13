@@ -229,6 +229,7 @@ void NewGameInitData(void)
 
     //flags
     FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN);
+    FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_MOM);
     FlagSet(FLAG_RYU_HIDE_LH_LUCY);
     FlagSet(FLAG_RYU_NM_AETHER);
     FlagSet(FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA);

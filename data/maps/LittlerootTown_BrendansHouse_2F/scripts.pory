@@ -6,8 +6,7 @@ LittlerootTown_BrendansHouse_2F_MapScripts:: @ 81F83E3
 GameIntroSequenceCheck::
 	map_script_2 VAR_TEMP_E, 0, LRT_CheckGameOver
 	map_script_2 VAR_RYU_QUEST_LEAF, 75, LRT_LeafEvent
-	map_script_2 VAR_RYU_PARTNER_COUNT, 5, LRT_BeginHaremSequence
-	map_script_2 VAR_RYU_PARTNER_COUNT, 6, LRT_BeginHaremSequence
+	map_script_2 VAR_TEMP_D, 0, LRT_BeginHaremSequence
 	map_script_2 VAR_TEMP_9, 0, LRT_CheckAntiharemEnd
 	.2byte 0
 	
@@ -553,8 +552,10 @@ LRT_Story7:
 @Harem Stuff=======================================================================================
 
 LRT_BeginHaremSequence::
+	setvar VAR_TEMP_D, 100
+	compare VAR_RYU_PARTNER_COUNT, 5
+	goto_if_lt ryu_end
 	clearflag FLAG_RYU_RANDOMBATTLE
-	call LRT_HaremRivalCheck
 	goto HaremBegin
 	end
 	
@@ -562,40 +563,30 @@ HaremBegin:
 	lockall
 	goto_if_set FLAG_RYU_HAREM_EVENT_COMPLETED, HaremAlreadyFinished
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
-	addobject 4
+	addobject 6
 	playse SE_DOOR
 	waitse
 	playse SE_PIN
 	applymovement PLAYER, Common_Movement_ExclamationMark
 	waitmovement PLAYER
 	turnobject PLAYER, DIR_EAST
-	applymovement 4, LRT_Harem_RivalMove
-	waitmovement 4
+	applymovement 6, LRT_Harem_RivalMove
+	waitmovement 6
 	setflag FLAG_RYU_HAREM_EVENT_STARTED
 	msgbox LRT_HaremBeginRivalMsg
 	closemessage
-	checkplayergender
-	compare VAR_RESULT, FEMALE
-	goto_if_eq HaremBeginFemale
-	clearflag FLAG_RYU_HIDE_HAREM_EVENT_DAWN
+	call checkAddRivalToHaremEvent
+	clearflag FLAG_RYU_HIDE_HAREM_EVENT_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
-	warpsilent MAP_LITTLEROOT_TOWN, 255, 9, 8
+	warpsilent MAP_LITTLEROOT_TOWN, 255, 10, 9
 	waitstate
 
 HaremAlreadyFinished::
 	setvar VAR_RYU_PARTNER_COUNT, 10
 	goto ryu_end
 	
-HaremBeginFemale::
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
-	clearflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN
-	warpsilent MAP_LITTLEROOT_TOWN, 255, 10, 8
-	release
-	end
-	
 LRT_HaremBeginRivalMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}HEY!\nCome outside!\p"
-	.string "I have a suprise for you!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Uhh, {PLAYER}? you have a\nlot of, erm, friends outside.\pThey're asking for you.\pYou should go!$"
 	
 LRT_Harem_RivalMove:
 	walk_left
@@ -610,9 +601,18 @@ LRT_CheckGameOver::
 	goto RyuScript_GameOver
 `
 
+script checkAddRivalToHaremEvent {
+	if (flag(FLAG_RYU_DS_DAWN_PARTNERS) == TRUE){
+		clearflag(FLAG_RYU_HIDE_HAREM_EVENT_DAWN)
+	}
+	if (flag(FLAG_RYU_DS_BRENDAN_PARTNERS) == TRUE){
+		addobject(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN)
+	}
+}
+
 script LRT_HaremRivalCheck { //If player hasn't romanced brendan or dawn, don't start harem event.
 	if ((flag(FLAG_RYU_DS_BRENDAN_PARTNERS) == FALSE) && (flag(FLAG_RYU_DS_DAWN_PARTNERS) == FALSE)) {
-		setvar(VAR_RYU_PARTNER_COUNT, 10)
+		setvar(VAR_TEMP_D, 100)
 		release
 		end
 	}

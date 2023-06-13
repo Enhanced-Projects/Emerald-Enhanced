@@ -1977,6 +1977,12 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
         GiveAchievement(ACH_WET_N_WILD);
     }
 
+    if (FlagGet(FLAG_RYU_DS_LUCY_PARTNERS) == 1)
+    {
+        partners++;
+        GiveAchievement(ACH_SERPENTINE);
+    }
+
     if (FlagGet(FLAG_RYU_DS_COURTNEY_PARTNERS) == 1)
     {
         partners++;

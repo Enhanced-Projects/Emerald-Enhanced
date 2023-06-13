@@ -7,6 +7,37 @@ const LEAF = 7
 const JOY = 11
 const MINNIE = 4
 const COURTNEY = 14
+const LUCY = 15
+const MOM = 16
+
+script Ryu_TestAdvancedHaremEvent {
+	setflag(FLAG_RYU_DS_LUCY_PARTNERS)
+	setflag(FLAG_RYU_DS_LANETTE_PARTNERS)
+	setflag(FLAG_RYU_DS_LEAF_PARTNERS)
+	setflag(FLAG_RYU_DS_DAWN_PARTNERS)
+	setflag(FLAG_RYU_DS_MAY_PARTNERS)
+	setflag(FLAG_RYU_DS_SHELLY_PARTNERS)
+	setflag(FLAG_RYU_DS_COURTNEY_PARTNERS)
+	setflag(FLAG_RYU_DS_JOY_PARTNERS)
+	setflag(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN)
+	setflag(FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS)
+	setflag(FLAG_RYU_MINNIE_GAME_CLEAR)
+	setflag(FLAG_RYU_MINNIE_POKEMON_SCHOOL)
+	clearflag(FLAG_RYU_HAREM_EVENT_COMPLETED)
+	clearflag(FLAG_RYU_HAREM_EVENT_STARTED)
+	setvar(VAR_TEMP_D, 0)
+}
+
+script LRT_EliminateMom{
+	msgbox("Don't mind me,\njust getting some air.")
+	closemessage
+	setflag(FLAG_RYU_HIDE_HAREM_EVENT_MOM)
+	applymovement(MOM, LRT_HE_MomToHouse)
+	waitmovement(MOM)
+	playse(SE_DOOR)
+	removeobject(MOM)
+	end
+}
 
 script Ryu_HaremEvent {
 	setvar(VAR_TEMP_2, 100)
@@ -24,6 +55,7 @@ script Ryu_HaremEvent {
 	}
 	clearflag(FLAG_RYU_HAREM_EVENT_STARTED)
 	fadenewbgm(MUS_THANKFOR)
+	addobject(MOM)
 	call(RyuRivalHaremIntro)
 	if (flag(FLAG_RYU_DS_SHELLY_PARTNERS) == TRUE) {
 		addobject(SHELLY)
@@ -37,6 +69,10 @@ script Ryu_HaremEvent {
 		addobject(LANETTE)
 		call(RyuHaremEventLanette)
 	}
+	if (flag(FLAG_RYU_DS_LUCY_PARTNERS) == TRUE) {
+		addobject(LUCY)
+		call(RyuHaremEventLucy)
+	}
 	if (flag(FLAG_RYU_DS_LEAF_PARTNERS) == TRUE) {
 		addobject(LEAF)
 		call(RyuHaremEventLeaf)
@@ -47,30 +83,30 @@ script Ryu_HaremEvent {
 	if ((flag(FLAG_RYU_MINNIE_GAME_CLEAR) == TRUE) && (flag(FLAG_RYU_MINNIE_POKEMON_SCHOOL) == TRUE)) {
 		call(RyuHaremEventMinnie)
 	}
+	turnobject(PLAYER, DIR_SOUTH)
+	turnobject(DAWN, DIR_SOUTH)
+	turnobject(BRENDAN, DIR_SOUTH)
 	if (flag(FLAG_RYU_DS_COURTNEY_PARTNERS) == TRUE) {
 		addobject(COURTNEY)
 		call(RyuHaremEventCourtney)
 	}
+	turnobject(PLAYER, DIR_EAST)
+	turnobject(MOM, DIR_WEST)
+	turnobject(DAWN, DIR_WEST)
+	turnobject(BRENDAN, DIR_WEST)
 	call(RyuHaremEventRivalOutro)
 	goto(RyuEndHaremEvent)
 }
 
 //Rival introduces the harem clique
 script RyuRivalHaremIntro {
-	checkplayergender
-	if (var(VAR_RESULT) == MALE) {
-		turnobject(PLAYER, DIR_EAST)
-		turnobject(DAWN, DIR_WEST)
-	}
-	else {
-		turnobject(PLAYER, DIR_WEST)
-		turnobject(BRENDAN, DIR_EAST)
-	}
-	msgbox("{COLOR LIGHT_RED}{SHADOW RED}So the reason I called you here is\nthat you've touched the hearts of\lso many people.\pAll of these people, including me,\ngot together to get you a gift!")
+	turnobject(PLAYER, DIR_EAST)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}They all asked me to bring you out here so that they could express their thanks to you.\pAs your mother, I'm delighted that you've made so many friends!"))
 	closemessage
 	turnobject(PLAYER, DIR_SOUTH)
 	turnobject(DAWN, DIR_SOUTH)
 	turnobject(BRENDAN, DIR_SOUTH)
+	turnobject(MOM, DIR_SOUTH)
 	return
 }
 
@@ -143,6 +179,18 @@ script RyuHaremEventLanette {
 	return
 }
 
+//player recruited Lucy
+script RyuHaremEventLucy {
+	applymovement(LUCY, LRT_HE_PartnerMoveLucy1)
+	waitmovement(LUCY)
+	applymovement(LUCY, Common_Movement_HeartEmote)
+	playse(SE_M_CHARM)
+	waitmovement(LUCY)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You helped me shed evil from Hoenn's back..."))
+	closemessage
+	return
+}
+
 //player recruited leaf
 script RyuHaremEventLeaf {
 	setvar(VAR_TEMP_3, LEAF)
@@ -153,7 +201,7 @@ script RyuHaremEventLeaf {
 	waitmovement(LEAF)
 	applymovement(LEAF, Common_Movement_HeartEmote)
 	playse(SE_M_CHARM)
-	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You shattered my shell like a wine glass on concrete..."))
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}You helped me find my voice again..."))
 	closemessage
 	return
 }
@@ -214,21 +262,19 @@ script RyuHaremEventMinnie {
 }
 
 script RyuHaremEventRivalOutro {//finish harem event
-	checkplayergender
-	if (var(VAR_RESULT) == MALE){
-		turnobject(PLAYER, DIR_EAST)
-		turnobject(DAWN, DIR_WEST)
-	}
-	else {
-		turnobject(PLAYER, DIR_WEST)
-		turnobject(BRENDAN, DIR_EAST)
-	}
-	msgbox(format("So the thing we got for you is a Shiny Charm! It's an irreplacable artifact that has a mysterious blessing of luck! We all lucked out by meeting you, now you get some good luck too!"))
+	turnobject(PLAYER, DIR_EAST)
+	turnobject(DAWN, DIR_SOUTH)
+	turnobject(BRENDAN, DIR_SOUTH)
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm so very proud of you,\nbut they actually got together\l to get you this.\pIt's a Shiny Charm!\nI hear that it's incredibly rare.\pLook at you go!\nWell that's all, honey.\pHave fun with your adventures!")
+	closemessage
 	clearflag(FLAG_RYU_HAREM_EVENT_STARTED)
 	setflag(FLAG_RYU_HAREM_EVENT_COMPLETED)
 	setflag(FLAG_RYU_HIDE_HAREM_EVENT_DAWN)
 	setflag(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN)
-	closemessage
+	applymovement(MOM, LRT_HE_MomToHouse)
+	waitmovement(MOM)
+	playse(SE_DOOR)
+	removeobject(MOM)
 	return
 }
 
@@ -258,33 +304,19 @@ script RyuEndHaremEvent { //move objects offscreen and disappear them
 	delay(30)
 	applymovement(JOY, LRT_HE_JoyExit)
 	delay(35)
-	checkplayergender
-	if (var(VAR_RESULT) == FEMALE) {
-		applymovement(COURTNEY, Common_Movement_StepLeft)
-		waitmovement(COURTNEY)
-	}
 	applymovement(COURTNEY, LRT_HE_CourtneyExit)
 	delay(30)
 	applymovement(SHELLY, LRT_HE_ShellyExit)
 	delay(30)
 	applymovement(MINNIE, LRT_HE_MinnieReturnToPost)
 	checkplayergender
-	if (var(VAR_RESULT) == FEMALE) {
-		applymovement(DAWN, Common_Movement_StepDown)
-		applymovement(BRENDAN, Common_Movement_StepDown)
-		waitmovement(DAWN)
-		waitmovement(BRENDAN)
-		applymovement(DAWN, Common_Movement_StepRight)
-		applymovement(BRENDAN, Common_Movement_StepRight)
-		waitmovement(DAWN)
-		waitmovement(BRENDAN)
-	}
 	applymovement(DAWN, LRT_HE_RivalExit)
 	applymovement(BRENDAN, LRT_HE_RivalExit)
 	delay(30)
 	applymovement(MAY, LRT_HE_MayExit)
-	waitmovement(MAY)
-	call(RyuCheckForAdvancedEnd)
+	delay(20)
+	applymovement(LUCY, LRT_HE_LucyExit)
+	waitmovement(LUCY)
 	setvar(VAR_RYU_PARTNER_COUNT, 10)
 	setflag(FLAG_RYU_HAREM_EVENT_COMPLETED)
 	removeobject(DAWN)
@@ -295,10 +327,13 @@ script RyuEndHaremEvent { //move objects offscreen and disappear them
 	removeobject(LANETTE)
 	removeobject(LEAF)
 	removeobject(COURTNEY)
+	removeobject(LUCY)
 	setflag(FLAG_RYU_HIDE_HAREM_EVENT_NPCS)
 	setflag(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN)
 	setflag(FLAG_RYU_HIDE_HAREM_EVENT_DAWN)
+	setflag(FLAG_RYU_HIDE_HAREM_EVENT_MOM)
 	clearflag(FLAG_RYU_HAREM_EVENT_STARTED)
+	call(RyuCheckForAdvancedEnd)
 	fadenewbgm(MUS_TETSUJI)
 	release
 	end
@@ -306,12 +341,28 @@ script RyuEndHaremEvent { //move objects offscreen and disappear them
 //advanced harem end
 
 script RyuCheckForAdvancedEnd{
-	goto_if_unset(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN, ryu_end)
-	goto_if_unset(FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS, ryu_end)
-	goto_if_unset(FLAG_RYU_MINNIE_GAME_CLEAR, ryu_end)
-	goto_if_unset(FLAG_RYU_MINNIE_POKEMON_SCHOOL, ryu_end)
-	goto_if_unset(FLAG_RYU_DS_MAY_PARTNERS, ryu_end)
-	if (var(VAR_RYU_PARTNER_COUNT) >= 6) {
+	goto_if_unset(FLAG_RYU_COMPLETED_MAY_INTRO_WITH_DAWN, ryu_return)
+	goto_if_unset(FLAG_RYU_COMPLETED_MAY_RT_SCENE_WITH_PARTNERS, ryu_return)
+	goto_if_unset(FLAG_RYU_MINNIE_GAME_CLEAR, ryu_return)
+	goto_if_unset(FLAG_RYU_MINNIE_POKEMON_SCHOOL, ryu_return)
+	goto_if_unset(FLAG_RYU_DS_MAY_PARTNERS, ryu_return)
+	goto_if_unset(FLAG_RYU_DS_LUCY_PARTNERS, ryu_return)
+	goto_if_unset(FLAG_RYU_DS_LANETTE_PARTNERS, ryu_return)
+	goto_if_unset(FLAG_RYU_DS_LEAF_PARTNERS, ryu_return)
+	goto_if_unset(FLAG_RYU_DS_MAY_PARTNERS, ryu_return)
+	goto_if_unset(FLAG_RYU_DS_JOY_PARTNERS, ryu_return)
+	if (flag(FLAG_RYU_DS_SHELLY_PARTNERS) == FALSE){
+		if (flag(FLAG_RYU_DS_COURTNEY_PARTNERS) == FALSE){
+			goto(ryu_return)
+		}
+	}
+	if (flag(FLAG_RYU_DS_DAWN_PARTNERS) == FALSE){
+		if (flag(FLAG_RYU_DS_BRENDAN_PARTNERS) == FALSE){
+			goto(ryu_return)
+		}
+	}
+	if (var(VAR_RYU_PARTNER_COUNT) >= 7) {
+		turnobject(PLAYER, DIR_SOUTH)
 		msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Huh. I really have done it\nall, haven't I?\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(You take a second to reflect\n on yourself and your travels\l and you feel accomplished.)")
 		ach(give, ACH_ULTIMATE_END)
 		ach(give, ACH_TRUE_ENDING)
@@ -320,6 +371,29 @@ script RyuCheckForAdvancedEnd{
 }
 //movements
 
+movement LRT_HE_LucyExit {
+	walk_up
+	walk_left
+	walk_up * 6
+	walk_right
+	face_up
+	step_end
+}
+
+movement LRT_HE_PartnerMoveLucy1 {
+	walk_up * 4
+	walk_left * 2
+	face_up
+	step_end
+}
+
+movement LRT_HE_MomToHouse {
+	walk_right * 3
+	walk_up
+	walk_in_place_up
+	step_end
+}
+
 movement LRT_HE_JoyExit {
 	walk_right * 3
 	walk_down * 5
@@ -327,6 +401,7 @@ movement LRT_HE_JoyExit {
 }
 
 movement LRT_HE_RivalExit {
+	walk_right
 	walk_down * 7
 	step_end
 }
