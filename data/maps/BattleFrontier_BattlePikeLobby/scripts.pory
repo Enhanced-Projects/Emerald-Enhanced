@@ -2,6 +2,7 @@ raw `
 BattleFrontier_BattlePikeLobby_MapScripts:: @ 825B6C6
 	map_script ON_FRAME, BattleFrontier_BattlePikeLobby_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeLobby_OnWarp
+	map_script ON_LOAD, BF_BP_CloseWall
 	.byte 0
 
 BattleFrontier_BattlePikeLobby_OnFrame: @ 825B6D1
@@ -93,6 +94,7 @@ BattleFrontier_BattlePikeLobby_EventScript_LostChallenge:: @ 825B806
 BattleFrontier_BattlePikeLobby_EventScript_Attendant:: @ 825B868
 	lock
 	faceplayer
+	goto_if_set FLAG_RYU_DISABLE_PIKE, BF_BP_ClosedToday
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_PIKE
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES
 	special SavePlayerParty
@@ -410,3 +412,24 @@ BattleFrontier_BattlePikeLobby_Text_ExplainMonOrderRules: @ 825C6EB
 	.string "starting your challenge.$"
 
 `
+
+script BF_BP_ClosedToday {
+	msgbox(format("I'm terribly sorry, but our Brain has stepped out, and as a result, we are currently closed. Please come back later!"))
+	closemessage
+	release
+	end
+}
+
+script BF_BP_CloseWall {
+	goto_if_unset(FLAG_RYU_DISABLE_PIKE, ryu_end)
+	setmetatile(4, 1, 0x249, 1)
+	setmetatile(5, 1, 0x24A, 1)
+	setmetatile(6, 1, 0x24B, 1)
+	setmetatile(4, 2, 0x251, 1)
+	setmetatile(5, 2, 0x252, 1)
+	setmetatile(6, 2, 0x253, 1)
+	setmetatile(4, 3, 0x259, 1)
+	setmetatile(5, 3, 0x25A, 1)
+	setmetatile(6, 3, 0x25B, 1)
+	end
+}

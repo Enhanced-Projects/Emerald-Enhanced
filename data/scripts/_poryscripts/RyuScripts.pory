@@ -1246,6 +1246,9 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	setflag(FLAG_RYU_HIDE_LH_LUCY)
+	setflag(FLAG_RYU_DISABLE_PIKE)
+	createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_SOUTH)
 	release
 	end
 }

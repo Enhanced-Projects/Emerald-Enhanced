@@ -148,6 +148,7 @@ script SZ_LucyStart{
 		setflag(FLAG_RYU_WAYSTONE_DISABLED)
 	    setvar(VAR_RYU_QUEST_LUCY, 65)//player picked up lucy in safari zone. Begin searching for admins.
 	    msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Hey! You made it! Let's start looking for the Aether Foundation admins! Shutting them down should get all of Aether out of here."))
+		setflag(FLAG_RYU_DISABLE_PIKE)
 	    createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_NORTH)
 	    removeobject(10)
 	    setflag(FLAG_RYU_HIDE_SZ_LUCY)

@@ -492,6 +492,7 @@ script PBW_LucyInvestigate {
 	closemessage
 	removeobject(PBW_LUCY1)
 	removeobject(PBW_LUCY2)
+	setflag(FLAG_RYU_DISABLE_PIKE)
 	createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_SOUTH)
 	setvar(VAR_RYU_QUEST_LUCY, 40)//Player has started the investigation of petalburg woods with lucy. Can't leave until they find the poacher's lookout.
 	release

@@ -269,7 +269,7 @@ RF_RemoveFollowerSilent::
 	case OBJ_EVENT_GFX_HEX_MANIAC, Ryu_DestroyWithoutPrejudice
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, ryu_end
 	case FOLLOWER_MAY, Ryu_ReturnMayToHome
-	case FOLLOWER_LUCY, Ryu_ReturnLucyPike
+	case FOLLOWER_LUCY, Ryu_RestoreLucy
 	case FOLLOWER_MOM, LRT_RestoreMom
 	case OBJ_EVENT_GFX_GIRL_3, LCFC_RemoveLily
 	msgbox RF_UnknownFollower
@@ -283,8 +283,9 @@ LCFC_RemoveLily::
 	destroyfollower
 	return
 
-Ryu_ReturnLucyPike::
+Ryu_RestoreLucy::
 	clearflag FLAG_RYU_DISABLE_PIKE
+	clearflag FLAG_RYU_HIDE_LH_LUCY
 	destroyfollower
 	return
 

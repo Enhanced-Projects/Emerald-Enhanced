@@ -656,6 +656,7 @@ script Ryu_AttendantLucy {
             end
         case 2:
             call(RyuDismissAttendant)
+            setflag(FLAG_RYU_DISABLE_PIKE)
             createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_SOUTH)
         case 3:
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}I pay really close attention\nto my skin care regimen...")
