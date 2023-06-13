@@ -2083,6 +2083,9 @@ int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game
     if ((FlagGet(FLAG_RYU_UNDERWORLD) == TRUE) && (CheckAchievement(ACH_THE_PHOENIX) == FALSE))
         return 140;
 
+    if ((VarGet(VAR_RYU_QUEST_LUCY) == 80) || (VarGet(VAR_RYU_QUEST_LUCY) == 65) || (VarGet(VAR_RYU_QUEST_LUCY) == 40))
+        return 150;
+
     return 0;
 }
 
@@ -2775,14 +2778,25 @@ void SwapPlayerGender (void)
 
 void RetroPokedexRegister (void)
 {
-    int i, k;
+    int i = 0;
+    int k = 0;
+    int count = 0;
     for (i = 0;i < TOTAL_BOXES_COUNT;i++)
+    {
         for(k = 0;k < IN_BOX_COUNT;k++)
-            if(GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_GET_CAUGHT) == FALSE);
+        {
+            if(!(GetBoxMonDataAt(i, k, MON_DATA_SPECIES) == SPECIES_NONE))
             {
-                GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_SET_CAUGHT);
-                GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES2), FLAG_SET_SEEN);
+                if (GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES), FLAG_GET_CAUGHT) == FALSE)
+                {
+                    count++;
+                    GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES), FLAG_SET_CAUGHT);
+                    GetSetPokedexFlag(GetBoxMonDataAt(i, k, MON_DATA_SPECIES), FLAG_SET_SEEN);
+                }
             }
+        }
+    }
+    gSpecialVar_Result = count;
 }
 
 void Ryu_Restorefollowers(void)
