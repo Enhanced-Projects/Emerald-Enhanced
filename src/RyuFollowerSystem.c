@@ -189,8 +189,8 @@ const u16 gRyuCompanionPartyPools[][10] =
     [FOLLOWER_LANETTE] =
     {
         SPECIES_ROTOM,
-        SPECIES_ROTOM_FROST,
-        SPECIES_ROTOM_WASH,
+        SPECIES_RAICHU,
+        SPECIES_ZEBSTRIKA,
         SPECIES_PORYGON_Z,
         SPECIES_MAGNEZONE,
         SPECIES_METAGROSS,
