@@ -3769,6 +3769,14 @@ u8 IsRunningFromBattleImpossible(void)
         return 2;
     }
 
+    if (FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE)
+    {
+        gBattleScripting.battler = i - 1;
+        gLastUsedAbility = gBattleMons[i - 1].ability;
+        gBattleCommunication[MULTISTRING_CHOOSER] = 5;
+        return 2;
+    }
+
     if (!CanBattlerEscape(gActiveBattler))
     {
         gBattleCommunication[MULTISTRING_CHOOSER] = 0;

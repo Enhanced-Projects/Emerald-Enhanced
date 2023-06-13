@@ -241,7 +241,9 @@
     "LavaridgeTown_Gym_B1F",
     "LavaridgeTown_Mart",
     "LavaridgeTown_PokemonCenter_1F",
-    "LavaridgeTown_PokemonCenter_2F"
+    "LavaridgeTown_PokemonCenter_2F",
+    "NewMap1",
+    "LavaridgeTown_LucyHome"
   ],
   "gMapGroup11": [
     "FortreeCity_DecorationShop",

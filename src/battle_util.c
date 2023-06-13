@@ -2141,6 +2141,7 @@ enum
     ENDTURN_ALCHEMYHEALEFFECT,
     ENDTURN_MOM_ACTIVE_HEAL,
     ENDTURN_FACTIONBOSSMODIFIER,
+    ENDTURN_MAGNETOSPHERE,
 	ENDTURN_BATTLER_COUNT
 };
 
@@ -2669,27 +2670,6 @@ u8 DoBattlerEndTurnEffects(void)
                         }
             gBattleStruct->turnEffectsTracker++;
             break;
-        /*case ENDTURN_BOSSMODERAISESTAT:
-        {
-            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(FlagGet(FLAG_RYU_FACING_ATTENDANT) == TRUE)))
-                {
-                    StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
-                    StringCopy(gStringVar2, gText_PokemonStringBuffer);
-                    if (gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] < 0xC)
-                        {
-                            gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] = 10;
-                            gBattleMons[gBattlerAttacker].statStages[STAT_ATK] = 10;
-                            gBattleMons[gBattlerAttacker].statStages[STAT_DEF] = 12;
-                            gBattleMons[gBattlerAttacker].statStages[STAT_SPDEF] = 12;
-                            gBattleScripting.animArg1 = 0x11;
-                            gBattleScripting.animArg2 = 0;
-                            BattleScriptPushCursorAndCallback(BattleScript_BossModeStatBoostActivates);
-                            effect++;
-                        }
-                }
-        }
-            gBattleStruct->turnEffectsTracker++;
-            break;*/
         case ENDTURN_ALCHEMYHEALEFFECT:
         {
             if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_HEALING_FACTOR)
@@ -2740,6 +2720,22 @@ u8 DoBattlerEndTurnEffects(void)
                             }
         gBattleStruct->turnEffectsTracker++;
         break;
+        }
+        case ENDTURN_MAGNETOSPHERE:
+        {
+            if (FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE
+                && gBattleMons[gActiveBattler].hp != 0
+                && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
+            {
+                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 3;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattleMoveDamage += 1;
+                BattleScriptExecute(BattleScript_MagnetoDamage);
+                effect++;
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
         }
         case ENDTURN_BATTLER_COUNT:  // done
             gBattleStruct->turnEffectsTracker = 0;
@@ -5266,6 +5262,8 @@ u32 IsAbilityPreventingEscape(u32 battlerId)
 
 bool32 CanBattlerEscape(u32 battlerId) // no ability check
 {
+    if (FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE)
+        return FALSE;
     return (GetBattlerHoldEffect(battlerId, TRUE) == HOLD_EFFECT_SHED_SHELL
             || !((gBattleMons[battlerId].status2 & (STATUS2_ESCAPE_PREVENTION | STATUS2_WRAPPED))
                 || (gStatuses3[battlerId] & STATUS3_ROOTED)

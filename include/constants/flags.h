@@ -1044,15 +1044,15 @@
 #define FLAG_RYU_GIVEN_MEWTWO_MEGAS                                 0x3DB
 #define FLAG_RYU_HIDE_PBW_GIRL                                      0x3DC
 #define FLAG_RYU_HIDE_SZ_AETHER_WICKE                               0x3DD
-#define FLAG_UNUSED_0x3DE                                           0x3DE
+#define FLAG_RYU_NM_AETHER                                          0x3DE
 #define FLAG_HIDE_ROUTE_101_BOY                                     0x3DF
 #define FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M                 0x3E0
 #define FLAG_HIDE_LILYCOVE_POKEMON_CENTER_CONTEST_LADY_MON          0x3E1
 #define FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY                       0x3E2  // Unused Flag
 #define FLAG_HIDE_PETALBURG_CITY_SCOTT                              0x3E3
 #define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_FIRE_STONE                 0x3E4
-#define FLAG_UNUSED_0x3E5                                           0x3E5
-#define FLAG_UNUSED_0x3E6                                           0x3E6
+#define FLAG_RYU_FORCE_FULL_AUTOFILL_PARTY                          0x3E5 // forces autofill to give the opponent 6 mons
+#define FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD                          0x3E6 // effect not final, but prevent switching and buff his pokemon
 #define FLAG_RYU_DEFEATED_STEVEN_POSTGAME                           0x3E7
 
 // Item Ball Flags
@@ -1198,7 +1198,7 @@
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
 #define FLAG_RYU_CHALLENGEFAILED                                    0x470
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
-#define FLAG_UNUSED_0x472                                           0x472
+#define FLAG_RYU_HIDE_LH_LUCY                                       0x472
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
 #define FLAG_ITEM_ROUTE_109_POTION                                  0x474
 #define FLAG_ITEM_ROUTE_110_ELIXIR                                  0x475
@@ -1235,7 +1235,7 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_RYU_PASSCODE_MASTERBALL                                0x493
-#define FLAG_UNUSED_0x494                                           0x494
+#define FLAG_RYU_NOTIFIED_NGPLUS                                    0x494
 #define FLAG_RYU_PASSCODE_KOUTA                                     0x495
 #define FLAG_RYU_PASSCODE_GCMS_GIFT                                 0x496
 #define FLAG_RYU_DEV_DISENC                                         0x497
@@ -1246,7 +1246,7 @@
 // with greater than zero comparisons on VAR_RYU_NGPLUS_COUNT
 #define FLAG_RYU_ISNGPLUS                                           0x49A
 #define FLAG_RYU_HAS_IMPRINTER                                      0x49B
-#define FLAG_UNUSED_0x49C                                           0x49C
+#define FLAG_RYU_COMPLETED_SAVE_FILE_COMPATIBILITY_CHECK            0x49C
 #define FLAG_RYU_ON_DATE                                            0x49D
 #define FLAG_RYU_ON_DATE_2                                          0x49E
 #define FLAG_RYU_FORECASTER                                         0x49F

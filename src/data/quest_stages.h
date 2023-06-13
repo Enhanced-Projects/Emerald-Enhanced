@@ -211,6 +211,22 @@ const u8 sDailyQuestStageProfessionals[] = _("Daily quest for Professionals:\n{R
 const u8 sDailyQuestStageEmpty[] = _("No daily quest active.");
 const u8 sDailyQuestStageFinished[] = _("Daily Quest finished.\nReturn to the asignee faction.");
 
+const u8 sLucyQuestStageStart[] = _("You've not met Lucy yet.");
+const u8 sLucyQuestStage20[] = _("You've begun Lucy's quest.\nSpeak with her outside her home.");
+const u8 sLucyQuestStage30[] = _("Lucy has asked you to meet her\nin Petalburg Woods. Talk to her there.");
+const u8 sLucyQuestStage40[] = _("You've begin the investigation with\nLucy in Petalburg Woods.\nFind a suspicious trainer or person.");
+const u8 sLucyQuestStage50[] = _("You found the mysterious poachers.\nDefeat them in battle to continue.");
+const u8 sLucyQuestStage60[] = _("Lucy asked you to meet her in the Safari Zone.\nMeet here there near the entrance.");
+const u8 sLucyQuestStage65[] = _("Work with Lucy to clear the Aether operatives\nout of the Safari Zone.\nFind and defeat Faba and Wicke to continue.");
+const u8 sLucyQuestStage75[] = _("Lucy asked you to meet her at her house.\nGo to Lucy's house in Lavaridge to\ncontinue.");
+const u8 sLucyQuestStage78[] = _("Lucy awaits you at her house to begin\nthe attack on New Mauville.");
+const u8 sLucyQuestStage80[] = _("You are tasked with finding and defeating\nthe Aether Admins in New Mauville.\nSeek and Destroy to continue.");
+const u8 sLucyQuestStage90[] = _("You finished dealing with the Aether\nFoundation in New Mauville.\nSee Lucy at her house.");
+const u8 sLucyQuestStage100[] = _("You worked with Lucy to exterminate\nAether Foundation from Hoenn. (GOOD END)");
+const u8 sLucyQuestStage666[] = _("You insulted Lucy at her home.\n(BAD END)");
+const u8 sLucyQuestStage888[] = _("You were unable to protect Lucy\nin Petalburg Woods.\n(WORST END)");
+const u8 sLucyQuestStage999[] = _("Lucy left to work at the Battle Frontier.\n(BAD END)");
+
 struct QuestStageDesc
 {
   const u8 * description;
@@ -1054,6 +1070,74 @@ const static struct QuestStageDesc gMayQuestStages[] = { //only visible when sta
       .questStage = 999,
     },
     QUEST_STAGE_END
+};
+
+const static struct QuestStageDesc gLucyQuestStages[] = { //only visible when stage is 10 or greater.
+  {
+    .description = sLucyQuestStageStart,
+    .questStage = 0
+  },
+  {
+    .description = sLucyQuestStageStart,
+    .questStage = 10
+  },
+  {
+  .description = sLucyQuestStage20,
+  .questStage = 20
+  },
+  {
+  .description = sLucyQuestStage30,
+  .questStage = 30
+  },
+  {
+  .description = sLucyQuestStage40,
+  .questStage = 40
+  },
+  {
+  .description = sLucyQuestStage50,
+  .questStage = 50
+  },
+  {
+  .description = sLucyQuestStage60,
+  .questStage = 60
+  },
+  {
+  .description = sLucyQuestStage65,
+  .questStage = 65
+  },
+  {
+  .description = sLucyQuestStage75,
+  .questStage = 75
+  },
+  {
+  .description = sLucyQuestStage78,
+  .questStage = 78
+  },
+  {
+  .description = sLucyQuestStage80,
+  .questStage = 80
+  },
+  {
+  .description = sLucyQuestStage90,
+  .questStage = 90
+  },
+  {
+  .description = sLucyQuestStage100,
+  .questStage = 100
+  },
+  {
+  .description = sLucyQuestStage666,
+  .questStage = 666
+  },
+  {
+  .description = sLucyQuestStage888,
+  .questStage = 888
+  },
+  {
+  .description = sLucyQuestStage999,
+  .questStage = 999
+  },
+  QUEST_STAGE_END
 };
 /*
 HOW TO READ:

@@ -103,6 +103,7 @@ static const u8 sText_DailyNobles[] = _("Nobles Daily");
 static const u8 sText_DailyPokefans[] = _("Pokéfans Daily");
 static const u8 sText_DailyOutcasts[] = _("Outcasts Daily");
 static const u8 sText_DailyProfessionals[] = _("Professionals Daily");
+static const u8 sText_LucyQuest[] = _("Lucy");
 
 struct QuestData {
     const struct QuestStageDesc * stageDescs;
@@ -198,6 +199,7 @@ static const struct QuestData sQuests[] = {
     {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY},
     {gDeliverySystemQuestStages, sText_DeliverySystem, VAR_RYU_DELIVERY_SYSTEM_DATA},
     {gDailyQuestStages, sText_Daily, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION},
+    {gLucyQuestStages, sText_LucyQuest, VAR_RYU_QUEST_LUCY}
 };
 
 static const u8 sColors[][3] = {

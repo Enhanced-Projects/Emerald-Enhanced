@@ -375,3 +375,245 @@ RyuLegendary_CaughtZapdos::
 RyuLegendary_IntroZapdos: @put your intro here
 	.string "Gyaoo!$"
 `
+
+script NM_CheckLucyQuestProgress {
+	lock
+	if (var(VAR_RYU_QUEST_LUCY) == 80){
+		msgbox("You can't leave until you've\nremoved Aether from this place.")
+		closemessage
+		applymovement(PLAYER, Common_Movement_StepDown)
+		applymovement(FOLLOWER, Common_Movement_StepDown)
+		waitmovement(FOLLOWER)
+		release
+		end
+	}
+}
+
+script NM_AetherGrunt1 {
+	trainerbattle_single(TRAINER_AETHER_GRUNT_2, NM_G1Intro, NM_G1Defeat) //male
+	msgbox(NM_G1Defeat)
+	release
+	end
+}
+
+script NM_AetherGrunt2 {
+	trainerbattle_single(TRAINER_AETHER_GRUNT_1, NM_G2Intro, NM_G2Defeat) //female
+	msgbox(NM_G2Defeat)
+	release
+	end
+}
+
+script NM_AetherGrunt3 {
+	trainerbattle_single(TRAINER_AETHER_GRUNT_3, NM_G3Intro, NM_G3Defeat) //female
+	msgbox(NM_G3Defeat)
+	release
+	end
+}
+
+script NM_AetherGrunt4 {
+	trainerbattle_single(TRAINER_AETHER_GRUNT_4, NM_G4Intro, NM_G4Defeat) //male
+	msgbox(NM_G4Defeat)
+	release
+	end
+}
+
+script NM_WickeNotice {
+	applymovement(PLAYER, Common_Movement_StepRight)
+	waitmovement(PLAYER)
+	applymovement(FOLLOWER, Common_Movement_StepRight)
+	waitmovement(FOLLOWER)
+	applymovement(12, NM_WickeToPlayer)
+	waitmovement(12)
+	msgbox(format("I will not let you interfere this time!"))
+	setflag(FLAG_RYU_FORCE_FULL_AUTOFILL_PARTY)
+	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
+	if (var(VAR_RESULT) == 0){
+		goto(ryu_end)
+	}
+	choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RyuScript_ChooseValidMons)
+		}
+	multi_2_vs_1(TRAINER_AETHER_WICKE1, SZ_WickeLose, VAR_0x8008, VAR_0x8009)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	goto(NM_ContinueMainScene)
+}
+
+script NM_ContinueMainScene{
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}I can't believe you thought that would work.... Don't you know the definition of insanity?"))
+	closemessage
+	msgbox(format("You are going to be in a world of pain if Lady Lusamine shows up...\pFaba! I need your help over here! Now!"))
+	closemessage
+	addobject(13)
+	applymovement(13, NM_FabaEntrance)
+	waitmovement(13)
+	msgbox(format("Yet again, you are here to interfere with my work. Why does no one understand how important science is?!"))
+	closemessage
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}Science is great when it is furthering mankind and pokemon kind alike. What you're doing is disturbing the balance of human and pokemon kinship. This is unacceptable."))
+	closemessage
+	msgbox(format("Hmph. You're just too dense to understand the true value here."))
+	closemessage
+	setflag(FLAG_RYU_FORCE_FULL_AUTOFILL_PARTY)
+	setflag(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD)
+	msgbox(format("Behold! My Magnetosphere! You'll understand once you experience it!"))
+	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
+	if (var(VAR_RESULT) == 0){
+		goto(ryu_end)
+	}
+	choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RyuScript_ChooseValidMons)
+		}
+	multi_2_vs_1(TRAINER_AETHER_FABA1, NM_FabaLose, VAR_0x8008, VAR_0x8009)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	goto(NM_LusamineScene)
+}
+
+script NM_LusamineScene{
+	msgbox(format("I spent so much time researching that! It should have garunteed success in battle!!"))
+	closemessage
+	playse(SE_WARP_IN)
+	waitse
+	addobject(18)
+	playse(SE_PIN)
+	applymovement(12, Common_Movement_ExclamationMark)
+	applymovement(13, Common_Movement_ExclamationMark)
+	waitmovement(13)
+	msgbox(format("So... It's you that has been meddling in Aether's affairs."))
+	applymovement(12, Common_Movement_StepUp)
+	waitmovement(12)
+	applymovement(12, Common_Movement_StepUp)
+	waitmovement(12)
+	turnobject(12, DIR_SOUTH)
+	applymovement(18, NM_LusamineEntry)
+	waitmovement(18)
+	turnobject(PLAYER, DIR_WEST)
+	turnobject(FOLLOWER, DIR_WEST)
+	msgbox(format("We have a strict zero tolerance policy on meddling. When I defeat you, I'm going to freeze both of you in amber. You will be the new statues in my gallery!"))
+	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
+	if (var(VAR_RESULT) == 0){
+		goto(ryu_end)
+	}
+	choose_mons
+		if (var(VAR_RESULT) == 0) {
+			call(RyuScript_ChooseValidMons)
+		}
+	multi_2_vs_1(TRAINER_CHALLENGER_LUSAMINE, NM_FLusamineLose, VAR_0x8008, VAR_0x8009)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		goto(Ryu_PlayerLostTheGame)
+	}
+	goto(NM_FinishLusamineScene)
+}
+
+script NM_FinishLusamineScene{
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}Got anyone else to throw at us? I got all day to stomp on low-lifes like you."))
+	closemessage
+	turnobject(FOLLOWER, DIR_NORTH)
+	msgbox(format("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lucy stares at you with pure\n admiration.)"))
+	closemessage
+	msgbox(format("I see. Perhaps for now, Aether will step aside and perform tasks in the background. I hope for both of your sakes, I never see either of you again. Team Aether! Retreat Immediately!"))
+	closemessage
+	turnobject(PLAYER, DIR_WEST)
+	fadescreen(FADE_TO_BLACK)
+	setflag(FLAG_RYU_NM_AETHER)
+	removeobject(18)
+	removeobject(12)
+	removeobject(13)
+	drawfullscreenimage(SCENEBGLUCY)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED} {PLAYER}, you're terrifyingly strong... But I'm here for it. You really dealt a death blow to them. I don't think they'll be a problem ever again. But you..."))
+	closemessage
+	clearfullscreenimage
+	turnobject(PLAYER, DIR_SOUTH)
+	turnobject(FOLLOWER, DIR_NORTH)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (As you stare into Lucy's\n eyes, you feel like she\l has more to say...)")
+	closemessage
+	delay(20)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED} Thank you so much for helping me... I'm not sure if I'd have been able to do this on my own. You... you really came through for me, {PLAYER}."))
+	closemessage
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}I'm glad I was here for you. It's been a blast, spending this time with you. I hope we can continue to work together..."))
+	closemessage
+	playse(SE_M_CHARM)
+	applymovement(FOLLOWER, Common_Movement_HeartEmote)
+	applymovement(PLAYER, Common_Movement_HeartEmote)
+	waitmovement(PLAYER)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lucy embraces you tightly.)\p(As she gets close you are\n reminded how beautiful she is...)")
+	closemessage
+	delay(20)
+	setflag(FLAG_RYU_DS_LUCY_LOVERS)
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}We should head back to my place. Not much left here to do."))
+	setvar(VAR_RYU_QUEST_LUCY, 90)//player and lucy cleared aether out of new mauville, teleporting back to lucy's house.
+	clearflag(FLAG_RYU_WAYSTONE_DISABLED)
+	warpsilent(MAP_LAVARIDGE_TOWN_LUCY_HOME, 255, 5, 5)
+	waitstate
+}
+
+movement NM_LusamineEntry {
+	walk_right
+	step_end
+}
+
+movement NM_WickeToPlayer{
+	walk_down
+	walk_left
+	step_end
+}
+
+movement NM_PlayertoWicke {
+	walk_right
+	walk_right
+	step_end
+}
+
+movement NM_FabaEntrance{
+	walk_down * 2
+	walk_left * 11
+	face_up
+	step_end
+}
+
+text NM_FLusamineLose{
+	"But... How?!\nAre you even human!?"
+}
+
+text NM_FabaLose{
+	"But how?\nEven with my magnetosphere?!"
+}
+
+text NM_G1Intro {
+	"You again? Who tipped you off?!"
+}
+
+text NM_G2Intro {
+	"Listen, I just want to get my\nhair fixed... make this fast."
+}
+
+text NM_G3Intro {
+	"You're going to get my pay docked\nagain!"
+}
+
+text NM_G4Intro {
+	"I know I can't win, but I can\nwaste your time!"
+}
+
+text NM_G1Defeat {
+	"You again! Blast..."
+}
+
+text NM_G2Defeat {
+	"All the electric pokemon here\nhave my hair a mess!\pIt's going to take forever\nto fix it!"
+}
+
+text NM_G3Defeat {
+	"Why you of all people had\nto show up?!"
+}
+
+text NM_G4Defeat {
+	"At least I was able to stall you..."
+}

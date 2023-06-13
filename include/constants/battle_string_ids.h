@@ -638,8 +638,10 @@
 #define STRINGID_WASINFLICTEDWITHVOODOOCURSE          634
 #define STRINGID_MADEITEMDISAPPEAR                    635
 #define STRINGID_PLAGUEBEARERINFEST                   636
+#define STRINGID_FABAMAGNETOSPHERE                    637
+#define STRINGID_MAGNETOSPHEREACTIVE                  638
 
-#define BATTLESTRINGS_COUNT                           637
+#define BATTLESTRINGS_COUNT                           639
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

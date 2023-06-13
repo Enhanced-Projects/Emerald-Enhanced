@@ -1,0 +1,196 @@
+mapscripts LavaridgeTown_LucyHome_MapScripts {
+        ON_TRANSITION {
+            turnobject(PLAYER, DIR_EAST)
+            setobjectxy(FOLLOWER, 8, 4)
+            turnobject(FOLLOWER, DIR_WEST)
+            end
+    }
+        ON_FRAME [
+        VAR_RYU_QUEST_LUCY, 90 {
+            lock
+            msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}So that was a fun time. Faba's magnetothingy was kinda annoying. I'm glad we were able to put a stop to it. Cheating trainers all over the place would be using that."))
+            closemessage
+            goto(LT_LH_FinishLucyQuest)
+            release
+        }
+    ]
+}
+
+script LT_LH_FinishLucyQuest {
+    msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}So now that we're back home, would you like to spend the night?"))
+    closemessage
+    msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}Absolutely. I was hoping you would ask!"))
+    closemessage
+    applymovement(PLAYER, LT_LH_PlayerToBedNight)
+    delay(40)
+    applymovement(FOLLOWER, Common_Movement_StepDown)
+    waitmovement(FOLLOWER)
+    applymovement(FOLLOWER, LT_LH_PlayerToBedNight)
+    waitmovement(FOLLOWER)
+    fadescreen(FADE_TO_BLACK)
+    msgbox("{PLAYER} and Lucy sleep for the\nnight...")
+    delay(20)
+    closemessage
+    setvar(VAR_RYU_QUEST_LUCY, 100)//finished
+    clearflag(FLAG_RYU_HIDE_LH_LUCY)
+    setflag(FLAG_RYU_DS_LUCY_PARTNERS)
+    addobject(1)
+    destroyfollower
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
+}
+
+movement LT_LH_LucyToBed{
+    walk_up
+    walk_left * 7
+    walk_down * 3
+    walk_left
+    walk_down
+    walk_right
+    face_right
+    step_end
+}
+
+movement LT_LH_PlayerToBedNight{
+    walk_down * 3
+    walk_left * 4
+    face_left
+    step_end
+}
+
+script LT_LH_LucyMain {
+    lock
+    faceplayer
+    switch(var(VAR_RYU_QUEST_LUCY)){
+        case 75:
+            call(LT_LH_LucyBadgeCountCheck)
+            msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}As soon as we scared Aether out of the Safari Zone, there were reports of power outages in New Mauville. My guess is that they're there now. I did let the Pokemon League know about Aether, but they seemed totally uninterested, so I guess it's up to us."))
+            closemessage
+            msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}I guess we should head to New Mauville next then?"))
+            closemessage
+            msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}That is the plan. Would you like to go now?"), MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES)
+            {
+                setflag(FLAG_RYU_WAYSTONE_DISABLED)
+                createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_NORTH)
+                removeobject(1) 
+                setvar(VAR_RYU_QUEST_LUCY, 80)
+                setflag(FLAG_RYU_HIDE_LH_LUCY)
+                clearflag(FLAG_RYU_NM_AETHER)
+                warpsilent(MAP_NEW_MAUVILLE_INSIDE, 255, 32, 35)
+                waitstate
+            }
+            else {
+                msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Let me know when you want to head to New Mauville to deal with Aether again!"))
+                setvar(VAR_RYU_QUEST_LUCY, 78)//Player declined immediately going to NM
+                release
+                end
+            }
+        case 78:
+            call(LT_LH_LucyBadgeCountCheck)
+            msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Are you ready to head to new mauville?"), MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES)
+            {
+                setflag(FLAG_RYU_WAYSTONE_DISABLED)
+                createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_NORTH)
+                removeobject(1) 
+                setvar(VAR_RYU_QUEST_LUCY, 80)//go to new mauville and start dealing with aether
+                setflag(FLAG_RYU_HIDE_LH_LUCY)
+                clearflag(FLAG_RYU_NM_AETHER)
+                warpsilent(MAP_NEW_MAUVILLE_INSIDE, 255, 32, 35)
+                waitstate
+            }
+            else {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Let me know when you want to head to New Mauville to deal with Aether again!")
+                setvar(VAR_RYU_QUEST_LUCY, 78)//Player declined immediately going to NM
+                release
+                end
+            }
+        case 100:
+            drawfullscreenimage(SCENEBGLUCY)
+            msgbox(format("Would you like to stay the night?"), MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES){
+                msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}There's nothing I'd like more.")
+                closemessage
+                clearfullscreenimage
+                goto(LT_LH_StayNightScr)
+            }
+            else{
+                msgbox(format("Would you like me to come with you for a while?"), MSGBOX_YESNO)
+                if (var(VAR_RESULT) == YES){
+                    removeobject(1)
+                    setflag(FLAG_RYU_HIDE_LH_LUCY)
+                    createfollower(FOLLOWER_LUCY, RyuFollower_SelectNPCScript, DIR_NORTH)
+                    msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm all ready to go, lead away!")
+                    clearfullscreenimage
+                    closemessage
+                    release
+                    end
+                }
+                else {
+                    msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Oh... okay, then...\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (She looks really sad...)"))
+                    clearfullscreenimage
+                    release
+                    end
+                }
+            }
+    }
+    msgbox("Who are you and\nwhy are you here?")
+    release
+    end
+}
+
+script LT_LH_StayNightScr {
+    applymovement(PLAYER, LH_PlayerToBedForFollower)
+    delay(30)
+    applymovement(1, LH_LucyToBedFollower)
+    waitmovement(1)
+    fadescreen(FADE_TO_BLACK)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and Lucy once again cuddle\n for the night)")
+    closemessage
+    applymovement(1, LH_ReturnLucyToTable)
+    waitmovement(1)
+    special(HealPlayerParty)
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
+}
+
+script LT_LH_LucyBadgeCountCheck{
+    special(CountBadges)
+    if (var(VAR_RESULT) > 4){
+        msgbox(format("You've obtained too many badges. Lucy has gone to work at the Frontier."))
+        closemessage
+        setvar(VAR_RYU_QUEST_LUCY, 999)// Cancelled lucy's quest by having too many badges before finishing.
+        setflag(FLAG_RYU_HIDE_SZ_LUCY)
+        setflag(FLAG_RYU_HIDE_SZ_AETHER)
+        setflag(FLAG_RYU_HIDE_SZ_AETHER_WICKE)
+        setflag(FLAG_RYU_NM_AETHER)
+        setflag(FLAG_RYU_LAVARIDGE_LUCY)
+        release
+        end
+    }
+    return
+}
+
+movement LH_ReturnLucyToTable {
+    walk_fastest_right * 7
+    walk_fastest_up * 3
+    face_left
+    step_end
+}
+
+movement LH_PlayerToBedForFollower {
+    walk_down * 2
+    walk_left * 7
+    face_right
+    step_end
+}
+
+movement LH_LucyToBedFollower {
+    walk_down * 3
+    walk_left * 7
+    face_left
+    step_end    
+}

@@ -5825,6 +5825,8 @@ static u8 GetPartyMenuActionsTypeInBattle(struct Pokemon *mon)
     return ACTIONS_SUMMARY_ONLY;
 }
 
+extern const u8 sText_FabaMagnetosphere[];
+
 static bool8 TrySwitchInPokemon(void)
 {
     u8 slot = GetCursorSelectionMonId();
@@ -5873,7 +5875,10 @@ static bool8 TrySwitchInPokemon(void)
     {
         u8 currBattler = gBattlerInMenuId;
         GetMonNickname(&gPlayerParty[GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[currBattler])], gStringVar1);
-        StringExpandPlaceholders(gStringVar4, gText_PkmnCantSwitchOut);
+        if (FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE)
+            StringExpandPlaceholders(gStringVar4, sText_FabaMagnetosphere);
+        else
+            StringExpandPlaceholders(gStringVar4, gText_PkmnCantSwitchOut);
         return FALSE;
     }
     gSelectedMonPartyId = GetPartyIdFromBattleSlot(slot);

@@ -178,6 +178,9 @@ script RDBM_CheckWaystone{
         case 140:
             msgbox(format("The gods of this world have laid claim to your soul."))
             goto(RDBM_WaystoneDisabled)
+        case 150:
+            msgbox(format("You're supposed to be working with lucy to find and clear the Aether Foundation employees out of the area."))
+            goto(RDBM_WaystoneDisabled)
     }
     msgbox(WaystoneEnabled)
     clearflag(FLAG_RYU_WAYSTONE_DISABLED)
@@ -276,7 +279,8 @@ script RDBM_ScriptDelay2s {
 
 script RDBM_RetroFillDex {
     callnative(RetroPokedexRegister)
-    msgbox(format("Successfully scanned boxes for unregistered Pokémon."))
+    buffernumberstring(0, VAR_RESULT)
+    msgbox("Successfully scanned boxes for\nunregistered Pokémon. {STR_VAR_1} mon(s) found.")
     release
     end
 }

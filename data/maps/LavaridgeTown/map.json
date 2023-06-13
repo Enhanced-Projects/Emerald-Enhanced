@@ -206,6 +206,13 @@
       "elevation": 3,
       "dest_map": "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F",
       "dest_warp_id": 3
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_LAVARIDGE_TOWN_LUCY_HOME",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
@@ -256,21 +263,12 @@
     },
     {
       "type": "trigger",
-      "x": 5,
-      "y": 5,
-      "elevation": 3,
-      "var": "0",
-      "var_value": "0",
-      "script": "LavaridgeTown_EventScript_HotSpringsTrigger"
-    },
-    {
-      "type": "trigger",
       "x": 10,
-      "y": 7,
+      "y": 8,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "LT_LucyDoorClosed"
+      "script": "LT_CheckLucyDoor"
     }
   ],
   "bg_events": [

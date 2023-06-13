@@ -614,6 +614,7 @@ script PBW_PoacherLookout{
 	applymovement(FOLLOWER, PBW_PostSceneFollowerExit)
 	waitmovement(FOLLOWER)
 	setvar(VAR_RYU_QUEST_LUCY, 60)//player needs to now go meet lucy at the safari zone.
+	clearflag(FLAG_RYU_HIDE_SZ_LUCY)
 	destroyfollower
 	release
 	end
@@ -623,7 +624,7 @@ script PBW_playerLost {
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}How are we not strong enough?...")
 	closemessage
 	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Sorry... I guess I'm too weak...")
-	setvar(VAR_RYU_QUEST_LUCY, 999) //@Player lost to the poachers in petalburg woods. BAD END.
+	setvar(VAR_RYU_QUEST_LUCY, 888) //@Player lost to the poachers in petalburg woods. BAD END.
 	clearflag(FLAG_RYU_DS_LUCY_FRIENDS)
 	applymovement(FOLLOWER, Common_Movement_StepDown)
 	waitmovement(FOLLOWER)

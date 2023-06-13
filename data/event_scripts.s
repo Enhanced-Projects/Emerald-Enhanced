@@ -1241,3 +1241,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Route136/scripts.inc"
 
 	.include "data/maps/AetherParadise/scripts.inc"
+
+	.include "data/maps/NewMap1/scripts.inc"
+
+	.include "data/maps/LavaridgeTown_LucyHome/scripts.inc"

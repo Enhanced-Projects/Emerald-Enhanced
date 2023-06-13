@@ -27,6 +27,7 @@ script RyuScript_Reaper {
     goto_if_unset(FLAG_RYU_FAMINE, RyuScript_Reaper_NotReady)
     goto_if_unset(FLAG_RYU_PLAGUE, RyuScript_Reaper_NotReady)
     goto_if_unset(FLAG_RYU_DEATH, RyuScript_Reaper_NotReady)
+RyuScript_ArcheusShortcut:
     clearflag(FLAG_RYU_FACING_HORSEMAN)
     setflag(FLAG_RYU_FACING_REAPER)
     msgbox("Thou hast passed the tribulations\nbefore thee.\pNow, prepare thyself for oblivion!")

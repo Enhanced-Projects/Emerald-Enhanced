@@ -211,6 +211,8 @@
 #define MAP_LAVARIDGE_TOWN_MART              (4 | (10 << 8))
 #define MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F (5 | (10 << 8))
 #define MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F (6 | (10 << 8))
+#define MAP_NEW_MAP1                         (7 | (10 << 8))
+#define MAP_LAVARIDGE_TOWN_LUCY_HOME         (8 | (10 << 8))
 
 // Map Group 11
 #define MAP_FORTREE_CITY_DECORATION_SHOP   (0 | (11 << 8))

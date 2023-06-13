@@ -5660,6 +5660,26 @@
       "secondary_tileset": "gTileset_BattleFrontierOutsideWest",
       "border_filepath": "data/layouts/AetherParadise/border.bin",
       "blockdata_filepath": "data/layouts/AetherParadise/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAP1",
+      "name": "NewMap1_Layout",
+      "width": 5,
+      "height": 8,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/NewMap1/border.bin",
+      "blockdata_filepath": "data/layouts/NewMap1/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARIDGE_TOWN_LUCY_HOME",
+      "name": "LavaridgeTown_LucyHome_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansDawnsHouse",
+      "border_filepath": "data/layouts/LavaridgeTown_LucyHome/border.bin",
+      "blockdata_filepath": "data/layouts/LavaridgeTown_LucyHome/map.bin"
     }
   ]
 }

@@ -766,6 +766,8 @@ static const u8 sText_MomHealsPlayer[]      = _("Mom heals your Pokémon...\nYou
 static const u8 sText_VoodooCurseActivates[]      = _("{B_ATK_NAME_WITH_PREFIX} was inflicted with a voodoo\ncurse!");
 static const u8 sText_MagicianMadeItemDisappear[]      = _("{B_ATK_NAME_WITH_PREFIX} made {B_DEF_NAME_WITH_PREFIX}'s item\ndisappear!");
 static const u8 sText_PlaguebearerInfested[]      = _("{B_ATK_NAME_WITH_PREFIX}'s Plaguebearer caused an\ninfestation on {B_DEF_NAME_WITH_PREFIX}!");
+const u8 sText_FabaMagnetosphere[] = _("Faba's Magnetosphere is\npreventing switching!                         ");
+static const u8 sText_MagnetosphereActive[] = _("Faba's Magnetoshpere discharges!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1391,6 +1393,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_WASINFLICTEDWITHVOODOOCURSE - 12]            = sText_VoodooCurseActivates,
     [STRINGID_MADEITEMDISAPPEAR - 12]            = sText_MagicianMadeItemDisappear,
     [STRINGID_PLAGUEBEARERINFEST - 12]            = sText_PlaguebearerInfested,
+    [STRINGID_FABAMAGNETOSPHERE - 12] = sText_FabaMagnetosphere,
+    [STRINGID_MAGNETOSPHEREACTIVE - 12] = sText_MagnetosphereActive,
 };
 
 const u16 gTerrainStringIds[] =
@@ -1435,7 +1439,7 @@ const u16 gMissStringIds[] =
 const u16 gNoEscapeStringIds[] =
 {
     STRINGID_CANTESCAPE, STRINGID_DONTLEAVEBIRCH, STRINGID_PREVENTSESCAPE,
-    STRINGID_CANTESCAPE2, STRINGID_ATTACKERCANTESCAPE
+    STRINGID_CANTESCAPE2, STRINGID_ATTACKERCANTESCAPE, STRINGID_FABAMAGNETOSPHERE
 };
 
 const u16 gMoveWeatherChangeStringIds[] =

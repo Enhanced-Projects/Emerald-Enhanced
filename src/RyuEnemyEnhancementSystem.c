@@ -263,6 +263,8 @@ u8 RyuChoosePartyCount(u16 trainer)
     if (gTrainers[trainer].doubleBattle == TRUE)
         if (count < 2)
             count = 2;
+    if (FlagGet(FLAG_RYU_FORCE_FULL_AUTOFILL_PARTY) == TRUE) //used for autofilled bosses
+            count = PARTY_SIZE;
     return count;
 }
 
@@ -290,6 +292,29 @@ const u16 gRyuProceduralTrainerMonLists[72][20] = {
         SPECIES_MUNNA,
         SPECIES_WYNAUT,
         SPECIES_SPOINK
+},
+[TRAINER_CLASS_AETHER_ADMIN] =
+{
+        SPECIES_ALAKAZAM,
+        SPECIES_MINIOR,
+        SPECIES_HYPNO,
+        SPECIES_GIRAFARIG,
+        SPECIES_XATU,
+        SPECIES_GARDEVOIR,
+        SPECIES_SWOOBAT,
+        SPECIES_SIGILYPH,
+        SPECIES_SLOWKING,
+        SPECIES_EXEGGUTOR,
+        SPECIES_GALLADE,
+        SPECIES_DARMANITAN,
+        SPECIES_BELDUM,
+        SPECIES_ELGYEM,
+        SPECIES_DUOSION,
+        SPECIES_ESPURR,
+        SPECIES_GOTHITELLE,
+        SPECIES_WOBBUFFET,
+        SPECIES_CLEFABLE,
+        SPECIES_GRUMPIG
 },
 [TRAINER_CLASS_TEAM_AQUA] = 
     {

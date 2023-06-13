@@ -24,6 +24,8 @@ NewMauville_Entrance_OnTransition: @ 82372FB
 
 NewMauville_Entrance_EventScript_Door:: @ 82372FF
 	lockall
+	compare VAR_RYU_QUEST_LUCY, 80
+	goto_if_eq NM_Entrance_BypassDoor
 	applymovement PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	msgbox NewMauville_Entrance_Text_DoorIsLocked, MSGBOX_DEFAULT
@@ -61,3 +63,10 @@ NewMauville_Entrance_Text_UsedBasementKey: @ 82373AC
 	.string "The door opened!$"
 
 `
+
+script NM_Entrance_BypassDoor {
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Let's try this again... Hopefully we can defeat them this time."))
+	closemessage
+	warpsilent(MAP_NEW_MAUVILLE_INSIDE, 255, 32, 35)
+	waitstate
+}

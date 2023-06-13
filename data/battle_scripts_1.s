@@ -5699,6 +5699,11 @@ BattleScript_GravityEnds::
 	waitmessage 0x40
 	end2
 
+BattleScript_Magnetosphere::
+	printstring STRINGID_MAGNETOSPHEREACTIVE
+	waitmessage 0x40
+	end2
+
 BattleScript_SafeguardProtected::
 	pause 0x20
 	printstring STRINGID_PKMNUSEDSAFEGUARD
@@ -6277,6 +6282,12 @@ BattleScript_BossModeStatBoostActivates::
 	waitmessage 0x40
 	end3
 
+BattleScript_MagnetoStatBoostActivates::
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_MAGNETOSPHEREACTIVE
+	waitmessage 0x40
+	end3
+
 BattleScript_WildBossStatsRaise::
 	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	end3
@@ -6566,6 +6577,11 @@ BattleScript_MonWokeUpInUproar::
 	waitmessage 0x40
 	updatestatusicon BS_ATTACKER
 	end2
+
+BattleScript_MagnetoDamage::
+	printstring STRINGID_MAGNETOSPHEREACTIVE
+	waitmessage 0x40
+	goto BattleScript_DoStatusTurnDmg
 
 BattleScript_PoisonTurnDmg::
 	printstring STRINGID_PKMNHURTBYPOISON

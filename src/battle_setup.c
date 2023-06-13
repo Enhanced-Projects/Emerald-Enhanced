@@ -1408,6 +1408,8 @@ static void CB2_EndTrainerBattle(void)
     FlagClear(FLAG_RYU_FACING_FACTION_BOSS);
     FlagClear(FLAG_RYU_FACING_HORSEMAN);
     FlagClear(FLAG_RYU_FACING_REAPER);
+    FlagClear(FLAG_RYU_FORCE_FULL_AUTOFILL_PARTY);
+    FlagClear(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD);
     
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
     {

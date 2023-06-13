@@ -156,6 +156,97 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NMV_Ampharosite",
       "flag": "FLAG_ITEM_BALL_AMPHAROSITE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_ADMIN_F",
+      "x": 28,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_NM_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_ADMIN_M",
+      "x": 37,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_NM_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_MEMBER_F",
+      "x": 14,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "NM_AetherGrunt2",
+      "flag": "FLAG_RYU_NM_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_MEMBER_M",
+      "x": 6,
+      "y": 14,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "NM_AetherGrunt1",
+      "flag": "FLAG_RYU_NM_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_MEMBER_F",
+      "x": 4,
+      "y": 25,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "NM_AetherGrunt3",
+      "flag": "FLAG_RYU_NM_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_MEMBER_M",
+      "x": 33,
+      "y": 24,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NM_AetherGrunt4",
+      "flag": "FLAG_RYU_NM_AETHER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LUSAMINE",
+      "x": 23,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
     }
   ],
   "warp_events": [
@@ -212,6 +303,33 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "NM_Warp2"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NM_WickeNotice"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NM_WickeNotice"
+    },
+    {
+      "type": "trigger",
+      "x": 32,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_RYU_QUEST_LUCY",
+      "var_value": "80",
+      "script": "NM_CheckLucyQuestProgress"
     }
   ],
   "bg_events": [

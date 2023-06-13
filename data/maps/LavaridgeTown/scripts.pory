@@ -459,8 +459,20 @@ text LT_lucy2{
 }
 
 script LT_LucyDoorClosed {
-	lock
 	msgbox("The door appears to be locked.")
+	closemessage
+	applymovement(PLAYER, Common_Movement_StepDown)
+	applymovement(FOLLOWER, Common_Movement_StepDown)
+	waitmovement(FOLLOWER)
+	release
+	end
+}
+
+script LT_CheckLucyDoor {
+	lock
+	if (var(VAR_RYU_QUEST_LUCY) < 75){
+		goto(LT_LucyDoorClosed)
+	}
 	release
 	end
 }

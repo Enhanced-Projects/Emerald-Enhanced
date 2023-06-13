@@ -137,20 +137,29 @@ SafariZone_Northeast_EventScript_Girl:: @ 823D3D8
 script SZ_ClearAether{
 	setvar(VAR_TEMP_7, 100)
 	if (var(VAR_RYU_QUEST_LUCY) < 60){
-		setflag(FLAG_RYU_HIDE_SZ_LUCY)
 		setflag(FLAG_RYU_HIDE_SZ_AETHER)
 	}
 	end
 }
 
 script SZ_LucyStart{
-	setvar(VAR_RYU_QUEST_LUCY, 65)//player picked up lucy in safari zone. Begin searching for admins.
-	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Hey! You made it! Let's start looking for the Aether Foundation admins! Shutting them down should get all of Aether out of here."))
-	createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_NORTH)
-	removeobject(10)
-	setflag(FLAG_RYU_HIDE_SZ_LUCY)
-	release
-	end
+	call(LT_LH_LucyBadgeCountCheck)
+	if (var(VAR_RYU_QUEST_LUCY) == 60){
+		setflag(FLAG_RYU_WAYSTONE_DISABLED)
+	    setvar(VAR_RYU_QUEST_LUCY, 65)//player picked up lucy in safari zone. Begin searching for admins.
+	    msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Hey! You made it! Let's start looking for the Aether Foundation admins! Shutting them down should get all of Aether out of here."))
+	    createfollower(FOLLOWER_LUCY, RyuFollowerSelectNPCScript, DIR_NORTH)
+	    removeobject(10)
+	    setflag(FLAG_RYU_HIDE_SZ_LUCY)
+		clearflag(FLAG_RYU_HIDE_SZ_AETHER)
+	    release
+	    end
+	}
+	else{
+		msgbox("I'm investigating the Aether\nFoundation. Can't talk!")
+		release
+		end
+	}
 }
 
 script SZ_PreventLeave{
@@ -167,56 +176,78 @@ script SZ_PreventLeave{
 script SZ_AetherGrunt1{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_1, SZ_G1_intro, SZ_G1_defeat)
 	msgbox(SZ_G1_defeat)
+	release
+	end
 }
 
 script SZ_AetherGrunt2{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_2, SZ_G2_intro, SZ_G2_defeat)
 	msgbox(SZ_G2_defeat)
+	release
+	end
 }
 
 script SZ_AetherGrunt3{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_3, SZ_G3_intro, SZ_G3_defeat)
 	msgbox(format("I would leave now, while you have a chance. It's going to get worse for you."))
+	release
+	end
 }
 
 script SZ_AetherGrunt4{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_4, SZ_G4_intro, SZ_G4_defeat)
 	msgbox( SZ_G4_defeat)
+	release
+	end
 }
 
 script SZ_AetherGrunt5{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_5, SZ_G5_intro, SZ_G5_defeat)
 	msgbox(SZ_G5_defeat)
+	release
+	end
 }
 
 script SZ_AetherGrunt6{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_6, SZ_G6_intro, SZ_G6_defeat)
 	msgbox(format("Ugh... So humid..."))
+	release
+	end
 }
 
 script SZ_AetherGrunt7{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_7, SZ_G7_intro, SZ_G7_defeat)
 	msgbox(format("I need to find somewhere else\nto live."))
+	release
+	end
 }
 
 script SZ_AetherGrunt8{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_8, SZ_G8_intro, SZ_G8_defeat)
 	msgbox(format("Remember that we grunts are people too..."))
+	release
+	end
 }
 
 script SZ_AetherGrunt9{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_9, SZ_G9_intro, SZ_G9_defeat)
 	msgbox(SZ_G9_defeat)
+	release
+	end
 }
 
 script SZ_AetherGrunt10{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_10, SZ_G10_intro, SZ_G10_defeat)
 	msgbox(SZ_G10_defeat)
+	release
+	end
 }
 
 script SZ_AetherGrunt11{
 	trainerbattle_single(TRAINER_AETHER_GRUNT_11, SZ_G11_intro, SZ_G11_defeat)
 	msgbox(format("Man, I could really use a break right now..."))
+	release
+	end
 }
 
 script SZ_AetherAdminFaba{
@@ -235,6 +266,7 @@ script SZ_AetherAdminFaba{
 	closemessage
 	msgbox(format("Teenagers these days... all of them are so hardheaded and think they're the king. I'll have to teach you using the old ways!"))
 	closemessage
+	setflag(FLAG_RYU_FORCE_FULL_AUTOFILL_PARTY)
 	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
 	if (var(VAR_RESULT) == 0){
 		goto(ryu_end)
@@ -283,6 +315,8 @@ script SZ_AetherAdminFaba{
 	waitfieldeffect(30)
 	destroyfollower
 	setvar(VAR_RYU_QUEST_LUCY, 75)//player defeated the aether admins in safari zone. Meet lucy at her house to discuss the next plan of action.
+	clearflag(FLAG_RYU_HIDE_LH_LUCY)
+	clearflag(FLAG_RYU_WAYSTONE_DISABLED)
 	release
 	end
 }
@@ -306,6 +340,7 @@ script SZ_AdminWicke{
 	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}But as citizens, we also reserve the right to punish evildoers. Your poaching ends right here and now!"))
 	closemessage
 	msgbox("Well I never!")
+	setflag(FLAG_RYU_FORCE_FULL_AUTOFILL_PARTY)
 	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
 	if (var(VAR_RESULT) == 0){
 		goto(ryu_end)
