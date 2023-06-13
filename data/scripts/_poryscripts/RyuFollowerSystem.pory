@@ -1165,6 +1165,9 @@ script ryu_end{
 
 
 script RyuCheckForTrueBadEnding {
+	if (var(VAR_RYU_QUEST_LUCY) != 888){
+		return
+	}
 	if (flag(FLAG_SYS_GAME_CLEAR) == FALSE){
 		return
 	}
