@@ -129,6 +129,9 @@ RT_AquaIntro::
 	closemessage
 	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_AQUA, 5 @player started aqua
+	setvar VAR_RYU_QUEST_MAGMA, 60000
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 60000
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 60000
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	setflag FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON
 	changefactionstanding FACTION_STUDENTS, 10, TRUE

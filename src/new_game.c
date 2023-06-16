@@ -228,6 +228,7 @@ void NewGameInitData(void)
     gSaveBlock2Ptr->CompanionPartyMembers[2] = SPECIES_BIDOOF;
 
     //flags
+    FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN);
     FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN);
     FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_MOM);
     FlagSet(FLAG_RYU_HIDE_LH_LUCY);

@@ -775,7 +775,7 @@ static void Task_WaitForSaveFileErrorWindow(u8 taskId)
     }
 }
 
-const u8 gText_UpdateDetected[] = _("An update has been detected.\nPlease start a new game or new game\pplus to continue playing.");
+const u8 gText_UpdateDetected[] = _("A significant version change\nhas been detected.\pYou will not be allowed to\ncontinue wihout starting a new game.");
 
 static void Task_MainMenuCheckBattery(u8 taskId)
 {

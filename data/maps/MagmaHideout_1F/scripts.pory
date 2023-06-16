@@ -76,7 +76,7 @@ MH_ShellyArrival::
 	closemessage
 	setflag FLAG_RYU_DS_SHELLY_CLOSEFRIENDS
 	removeobject 7
-	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, MH_FollowerShellyScript, DIR_NORTH
+	createfollower FOLLOWER_SHELLY, MH_FollowerShellyScript, DIR_NORTH
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	clearflag FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS
 	setflag FLAG_RYU_MH_COURTNEY_SOLOMODE
