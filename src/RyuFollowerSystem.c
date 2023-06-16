@@ -296,7 +296,7 @@ const u16 gRyuCompanionPartyPools[][10] =
         SPECIES_SEVIPER,
         SPECIES_CROAGUNK,
         SPECIES_CROBAT,
-        SPECIES_SWALOT,
+        SPECIES_DRAPION,
         SPECIES_ARBOK,
         SPECIES_SCOLIPEDE,
         SPECIES_LIEPARD,
