@@ -13,15 +13,15 @@ PS_minnieInteract::
 	goto_if_set FLAG_RYU_MINNIE_POKEMON_SCHOOL, ryu_end
 	setobjectxy FOLLOWER, 11, 3
 	delay 5
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_MINNIE
 	goto_if_eq PS_MinnieInteraction
 	goto ryu_end
 	
 PS_MinnieInteraction::
-	@lockall
+	lockall
 	playbgm MUS_HUTAGO, 0
 	applymovement FOLLOWER, PS_MinnieToTeacher
-	applymovement 6, Common_Movement_FaceLeft
+	turnobject 6, DIR_EAST
 	waitmovement FOLLOWER
 	applymovement PLAYER, PS_PlayerToMinnie
 	waitmovement PLAYER
@@ -72,6 +72,7 @@ PS_ReturnFollowerBehindPlayer:
 	walk_up
 	walk_right
 	walk_right
+	walk_down
 	walk_in_place_left
 	step_end
 
