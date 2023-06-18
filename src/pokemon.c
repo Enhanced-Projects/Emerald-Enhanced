@@ -5423,23 +5423,23 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem, u
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_FRIENDSHIP_DAY:
-                if ((timeOfDay == RTC_TIME_DAY) && friendship >= 200)
+                if ((timeOfDay != RTC_TIME_NIGHT) && friendship >= 200)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_DAY:
-                if ((timeOfDay == RTC_TIME_DAY) && gEvolutionTable[species][i].param <= level)
+                if ((timeOfDay != RTC_TIME_NIGHT) && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_FRIENDSHIP_NIGHT:
-                if ((timeOfDay == RTC_TIME_NIGHT) && friendship >= 200)
+                if ((timeOfDay != RTC_TIME_DAY) && friendship >= 200)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_NIGHT:
-                if ((timeOfDay == RTC_TIME_NIGHT) && gEvolutionTable[species][i].param <= level)
+                if ((timeOfDay != RTC_TIME_DAY) && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_ITEM_HOLD_NIGHT:
-                if ((timeOfDay == RTC_TIME_NIGHT) && (heldItem == gEvolutionTable[species][i].param))
+                if ((timeOfDay != RTC_TIME_DAY) && (heldItem == gEvolutionTable[species][i].param))
                 {
                     heldItem = 0;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
@@ -5447,7 +5447,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem, u
                 }
                 break;
             case EVO_ITEM_HOLD_DAY:
-                if ((timeOfDay == RTC_TIME_DAY) && heldItem == gEvolutionTable[species][i].param)
+                if ((timeOfDay != RTC_TIME_NIGHT) && heldItem == gEvolutionTable[species][i].param)
                 {
                     heldItem = 0;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
