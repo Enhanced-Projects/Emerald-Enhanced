@@ -129,7 +129,7 @@ MHAQ_PartnerCourtney::
 	
 MHAQ_CheckTerminateCourtney::
 	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_end
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_F
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_COURTNEY
 	goto_if_ne ryu_end
 	lock
 	msgbox MHAQ_AskDismissCourtney, MSGBOX_YESNO

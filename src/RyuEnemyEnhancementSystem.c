@@ -1496,7 +1496,7 @@ const u16 gRyuProceduralTrainerMonLists[72][20] = {
         SPECIES_GROWLITHE, 
         SPECIES_SNUBBULL, 
         SPECIES_MEOWSTIC, 
-        SPECIES_MEOWSTIC_F, 
+        SPECIES_PURRLOIN,
         SPECIES_PURRLOIN, 
         SPECIES_TAILLOW, 
         SPECIES_RATTATA, 
