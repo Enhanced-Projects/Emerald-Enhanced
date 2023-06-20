@@ -4686,6 +4686,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && gBattleMons[gBattlerAttacker].hp != 0
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && TARGET_TURN_DAMAGED
+             && (FlagGet(FLAG_RYU_FACING_HORSEMAN) == FALSE)
+             && (FlagGet(FLAG_RYU_FACING_REAPER) == FALSE)
              && IsMoveMakingContact(move, gBattlerAttacker))
             {
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
@@ -6116,7 +6118,9 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                 if (TARGET_TURN_DAMAGED
                     && IsMoveMakingContact(gCurrentMove, gBattlerAttacker)
                     && IsBattlerAlive(gBattlerAttacker)
-                    && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD)
+                    && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD
+                    && (FlagGet(FLAG_RYU_FACING_HORSEMAN) == FALSE)
+                    && (FlagGet(FLAG_RYU_FACING_REAPER) == FALSE))
                 {
                     gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 6;
                     if (gBattleMoveDamage == 0)
