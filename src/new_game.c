@@ -223,9 +223,9 @@ void NewGameInitData(void)
     RyuClearDeliveryQueue();
     RyuClearAllDynamicObjects();
     gSaveBlock2Ptr->notifiedSaveState = FALSE;
-    gSaveBlock2Ptr->CompanionPartyMembers[0] = SPECIES_BIDOOF;
-    gSaveBlock2Ptr->CompanionPartyMembers[1] = SPECIES_BIDOOF;
-    gSaveBlock2Ptr->CompanionPartyMembers[2] = SPECIES_BIDOOF;
+    gSaveBlock2Ptr->CompanionParty[0].speciesId = SPECIES_BIDOOF;
+    gSaveBlock2Ptr->CompanionParty[1].speciesId = SPECIES_BIDOOF;
+    gSaveBlock2Ptr->CompanionParty[2].speciesId = SPECIES_BIDOOF;
 
     //flags
     FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN);

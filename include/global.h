@@ -403,6 +403,18 @@ struct DeliveryTime //size 4
     u32 unusedDeliveryTimeBits:2;
 };
 
+struct CompanionMon // size  8 * 3 = 24 bytes
+{
+    u32 speciesId:10;
+    u32 heldItem:10;
+    u32 move1:10;
+    u32 filler1:2;
+    u32 move2:10;
+    u32 move3:10;
+    u32 move4:10;
+    u32 abilityNum:2;
+};
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -456,7 +468,7 @@ struct SaveBlock2
              u8 RtcTimeSecondRAW;
              u32 RtcTimeSecond;
              u32 SaveStateLastDetection;
-             u16 CompanionPartyMembers[3];
+             struct CompanionMon CompanionParty[3];
 
 };
 

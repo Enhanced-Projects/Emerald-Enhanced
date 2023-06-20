@@ -988,33 +988,6 @@ static void LoadMapFromWarp(bool32 a1)
         InitSecretBaseAppearance(TRUE);
     }
 }
-extern const u16 gRyuCompanionPartyPools[][10];
-
-void RyuCreateDynamicFollowerTeam(u16 imgId)
-{
-    u16 rnd1 = (Random() % 10);
-    u16 rnd2 = (Random() % 10);
-    u16 rnd3 = (Random() % 10);
-    do
-    { //make sure there's no duplicates in the companion's party
-        rnd1 = (Random() % 10);
-        rnd2 = (Random() % 10);
-        rnd3 = (Random() % 10);
-    }while (((rnd1 != rnd2) && (rnd2 != rnd3) && (rnd3 != rnd1)) == FALSE);
-
-    gSaveBlock2Ptr->CompanionPartyMembers[0] = gRyuCompanionPartyPools[imgId][rnd1];
-    gSaveBlock2Ptr->CompanionPartyMembers[1] = gRyuCompanionPartyPools[imgId][rnd2];
-    gSaveBlock2Ptr->CompanionPartyMembers[2] = gRyuCompanionPartyPools[imgId][rnd3];
-
-    if ((gSaveBlock2Ptr->CompanionPartyMembers[0] == 0) || (gSaveBlock2Ptr->CompanionPartyMembers[0] > SPECIES_MELMETAL))
-        gSaveBlock2Ptr->CompanionPartyMembers[0] = SPECIES_BIDOOF;
-
-    if ((gSaveBlock2Ptr->CompanionPartyMembers[1] == 0) || (gSaveBlock2Ptr->CompanionPartyMembers[1] > SPECIES_MELMETAL))
-        gSaveBlock2Ptr->CompanionPartyMembers[1] = SPECIES_BIDOOF;
-
-    if ((gSaveBlock2Ptr->CompanionPartyMembers[2] == 0) || (gSaveBlock2Ptr->CompanionPartyMembers[2] > SPECIES_MELMETAL))
-        gSaveBlock2Ptr->CompanionPartyMembers[2] = SPECIES_BIDOOF;
-}
 
 void RyuAddFollower(void)
 {

@@ -2303,9 +2303,10 @@ bool8 ScrCmd_destroyfollower(struct ScriptContext *ctx)
     DestroyFollowerObjectEvent();
     VarSet(VAR_RYU_FOLLOWER_ID, 0);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);
-    gSaveBlock2Ptr->CompanionPartyMembers[0] = SPECIES_BIDOOF;
-    gSaveBlock2Ptr->CompanionPartyMembers[1] = SPECIES_BIDOOF;
-    gSaveBlock2Ptr->CompanionPartyMembers[2] = SPECIES_BIDOOF;
+    memset(gSaveBlock2Ptr->CompanionParty, 0, sizeof(gSaveBlock2Ptr->CompanionParty));
+    gSaveBlock2Ptr->CompanionParty[0].speciesId = SPECIES_BIDOOF;
+    gSaveBlock2Ptr->CompanionParty[1].speciesId = SPECIES_BIDOOF;
+    gSaveBlock2Ptr->CompanionParty[2].speciesId = SPECIES_BIDOOF;
     return FALSE;
 }
 

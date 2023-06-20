@@ -2501,6 +2501,7 @@ static void FillPartnerParty(u16 trainerId)
         u32 level = RyuChoosePartnerLevel();
         u32 p = 0;
         u8 setEv = 0;
+        u32 b;
         otID = Random32();
 
         for (i = 0; i < 3; i++)
@@ -2546,9 +2547,21 @@ static void FillPartnerParty(u16 trainerId)
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
             {
+                u16  temp = gSaveBlock2Ptr->CompanionParty[i].move1;
+                u16 temp1 = gSaveBlock2Ptr->CompanionParty[i].move2;
+                u16 temp2 = gSaveBlock2Ptr->CompanionParty[i].move3;
+                u16 temp3 = gSaveBlock2Ptr->CompanionParty[i].move4;
+                u16 temp4 = gSaveBlock2Ptr->CompanionParty[i].heldItem;
+                u16 temp5 = gSaveBlock2Ptr->CompanionParty[i].abilityNum;
                 const struct TrainerMonItemCustomMoves *partyData = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].party.ItemCustomMoves;
 
-                CreateMon(&gPlayerParty[i + 3], gSaveBlock2Ptr->CompanionPartyMembers[i], level, 31, TRUE, j, TRUE, otID);
+                CreateMon(&gPlayerParty[i + 3], gSaveBlock2Ptr->CompanionParty[i].speciesId, level, 31, TRUE, j, TRUE, otID);
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_MOVE1, &temp);
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_MOVE2, &temp1);
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_MOVE3, &temp2);
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_MOVE4, &temp3);
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_HELD_ITEM, &temp4);
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_ABILITY_NUM, &temp5);
                 switch (VarGet(VAR_RYU_EXP_MULTIPLIER))
                 {
                     case 1: //normal, first play
@@ -2563,6 +2576,7 @@ static void FillPartnerParty(u16 trainerId)
                     case 2000: //challenge
                         setEv = 126;
                         break;
+                    case 8000: //godmode
                     case 1000: //hardcore
                         setEv = 255;
                         break;

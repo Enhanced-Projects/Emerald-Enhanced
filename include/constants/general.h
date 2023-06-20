@@ -528,19 +528,19 @@
 #define NOTIFY_QUEST       5
 #define NOTIFY_GENERAL     6
 
-#define FOLLOWER_MINNIE 242
-#define FOLLOWER_SHELLY 241
-#define FOLLOWER_COURTNEY 240
-#define FOLLOWER_JOY 58
-#define FOLLOWER_DAWN 105
-#define FOLLOWER_BRENDAN 100
-#define FOLLOWER_LANETTE 243
-#define FOLLOWER_LEAF 231
-#define FOLLOWER_MAY 236
-#define FOLLOWER_LUCY 75
-#define FOLLOWER_MOM 215
-#define FOLLOWER_GLADION 245
-#define FOLLOWER_LILLIE 244
+#define FOLLOWER_MINNIE 242 //
+#define FOLLOWER_SHELLY 241 //
+#define FOLLOWER_COURTNEY 240 //
+#define FOLLOWER_JOY 58//
+#define FOLLOWER_DAWN 105 //
+#define FOLLOWER_BRENDAN 100 //
+#define FOLLOWER_LANETTE 243 //
+#define FOLLOWER_LEAF 231 //
+#define FOLLOWER_MAY 236 //
+#define FOLLOWER_LUCY 75 //
+#define FOLLOWER_MOM 215 //
+#define FOLLOWER_GLADION 245 //
+#define FOLLOWER_LILLIE 244 //
 
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
@@ -559,6 +559,6 @@
 #endif
 //end hack
 
-#define EE_GAME_VERSION 9503
+#define EE_GAME_VERSION 9530
 
 #endif 
