@@ -172,7 +172,7 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
 
      if ((gSaveBlock1Ptr->location.mapGroup == 33) && (gSaveBlock1Ptr->location.mapNum = 4))
         {
-            VarSet(VAR_OPTIONS_HP_BAR_SPEED, 0xFFFF);
+            //VarSet(VAR_OPTIONS_HP_BAR_SPEED, 0xFFFF);
             if (FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)
             {
                 u16 maxhp = 10000;

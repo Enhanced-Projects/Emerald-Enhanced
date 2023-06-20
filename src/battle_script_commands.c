@@ -2802,7 +2802,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 || IsAbilityOnSide(gEffectBattler, ABILITY_SWEET_VEIL)
                 || IsAbilityStatusProtected(gEffectBattler))
                 break;
-
+            if ((FlagGet(FLAG_RYU_FACING_HORSEMAN) || FlagGet(FLAG_RYU_FACING_REAPER)) && (gBattleMons[gBattlerTarget].hp > 2000))
+                break;
             CancelMultiTurnMoves(gEffectBattler);
             statusChanged = TRUE;
             break;
@@ -2845,7 +2846,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 || GetBattlerAbility(gEffectBattler) == ABILITY_COMATOSE
                 || IsAbilityStatusProtected(gEffectBattler))
                 break;
-
+            if ((FlagGet(FLAG_RYU_FACING_HORSEMAN) || FlagGet(FLAG_RYU_FACING_REAPER)) && (gBattleMons[gBattlerTarget].hp > 2000))
+                break;
             statusChanged = TRUE;
             break;
         case STATUS1_BURN:
@@ -2886,6 +2888,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             if (gBattleMons[gEffectBattler].status1)
                 break;
+            if ((FlagGet(FLAG_RYU_FACING_HORSEMAN) || FlagGet(FLAG_RYU_FACING_REAPER)) && (gBattleMons[gBattlerTarget].hp > 2000))
+                break;
 
             statusChanged = TRUE;
             break;
@@ -2901,6 +2905,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
             if (GetBattlerAbility(gEffectBattler) == ABILITY_MAGMA_ARMOR
                 || GetBattlerAbility(gEffectBattler) == ABILITY_COMATOSE
                 || IsAbilityStatusProtected(gEffectBattler))
+                break;
+            if ((FlagGet(FLAG_RYU_FACING_HORSEMAN) || FlagGet(FLAG_RYU_FACING_REAPER)) && (gBattleMons[gBattlerTarget].hp > 2000))
                 break;
 
             CancelMultiTurnMoves(gEffectBattler);
@@ -2943,6 +2949,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
             }
             if (!CanParalyzeType(gBattleScripting.battler, gEffectBattler))
                 break;
+            if ((FlagGet(FLAG_RYU_FACING_HORSEMAN) || FlagGet(FLAG_RYU_FACING_REAPER)) && (gBattleMons[gBattlerTarget].hp > 2000))
+                break;
             if (GetBattlerAbility(gEffectBattler) == ABILITY_LIMBER
                 || GetBattlerAbility(gEffectBattler) == ABILITY_COMATOSE
                 || IsAbilityStatusProtected(gEffectBattler))
@@ -2983,6 +2991,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 RESET_RETURN
             }
             if (gBattleMons[gEffectBattler].status1)
+                break;
+            if ((FlagGet(FLAG_RYU_FACING_HORSEMAN) || FlagGet(FLAG_RYU_FACING_REAPER)) && (gBattleMons[gBattlerTarget].hp > 2000))
                 break;
             if (CanPoisonType(gBattleScripting.battler, gEffectBattler))
             {
@@ -8650,6 +8660,7 @@ static void Cmd_various(void)
         if (gBattleMons[gBattlerAttacker].item == ITEM_NONE
             || gBattleMons[gBattlerTarget].item != ITEM_NONE
             || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerAttacker].item)
+            || (FlagGet(FLAG_RYU_FACING_REAPER) == TRUE || FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)
             || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item))
         {
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
@@ -11585,6 +11596,7 @@ static void Cmd_tryswapitems(void) // trick
                  || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerAttacker].item)
                  || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerTarget].item)
                  || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
+                 || (FlagGet(FLAG_RYU_FACING_REAPER) == TRUE || FlagGet(FLAG_RYU_FACING_HORSEMAN) == TRUE)
                  || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item))
         {
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
