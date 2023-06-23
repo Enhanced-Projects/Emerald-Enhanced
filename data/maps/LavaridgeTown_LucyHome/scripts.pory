@@ -32,6 +32,7 @@ script LT_LH_FinishLucyQuest {
     delay(20)
     closemessage
     setvar(VAR_RYU_QUEST_LUCY, 100)//finished
+    ach(give, ACH_SERPENTINE)
     clearflag(FLAG_RYU_HIDE_LH_LUCY)
     setflag(FLAG_RYU_DS_LUCY_PARTNERS)
     addobject(1)

@@ -1051,11 +1051,6 @@ void SetCompanionMons(const struct gRyuCompanionMon * CompanionMons)
     gSaveBlock2Ptr->CompanionParty[2].move4 = CompanionMons[rnd3].moves[3];
     gSaveBlock2Ptr->CompanionParty[2].heldItem = CompanionMons[rnd3].heldItem;
     gSaveBlock2Ptr->CompanionParty[2].abilityNum = CompanionMons[rnd3].abilityNum;
-
-    mgba_open();
-    mgba_printf(LOGINFO, "Setting slot 0 species to %d", gSaveBlock2Ptr->CompanionParty[0].speciesId);
-    mgba_printf(LOGINFO, "Setting slot 1 species to %d", gSaveBlock2Ptr->CompanionParty[1].speciesId);
-    mgba_printf(LOGINFO, "Setting slot 2 species to %d", gSaveBlock2Ptr->CompanionParty[2].speciesId);
 }
 
 void RyuCreateDynamicFollowerTeam(u16 imgId)
