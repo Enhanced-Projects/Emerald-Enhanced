@@ -299,7 +299,7 @@ script LT_FinishGiftEvent {
 
 script RyuCheckLavaridgeGiftStatus {
 	if (flag(FLAG_RYU_HIDE_LAVARIDGE_RIVAL) == FALSE) {
-		setobjectxyperm(7, 9, 12)
+		setobjectxyperm(7, 19, 13)
 		return
 	}
 	return
