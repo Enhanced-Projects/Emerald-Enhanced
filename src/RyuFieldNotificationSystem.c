@@ -153,7 +153,7 @@ void RyuCheckForLNSU (void)
     if (FlagGet(FLAG_LANDMARK_SNOWY_SHORE) == TRUE)
         count++;
 
-    if (count == 27)
+    if (count >= 25)
         GiveAchievement(ACH_LEAVE_NO_STONE_UNTURNED);
 }
 
