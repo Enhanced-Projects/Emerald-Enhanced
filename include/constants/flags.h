@@ -1386,6 +1386,7 @@
 #define FLAG_RYU_DS_LUCY_CLOSEFRIENDS                             0x51E
 #define FLAG_RYU_DS_LUCY_LOVERS                                   0x51F
 #define FLAG_RYU_DS_LUCY_PARTNERS                                 0x520
+#define FLAG_RYU_FORCE_EVENT_OTID                                 0x521
 
 
 //tutorial system flags

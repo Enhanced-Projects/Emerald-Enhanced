@@ -30318,7 +30318,7 @@ static const struct LevelUpMove sBlacephalonLevelUpLearnset[] = {//NOT IN EE
     LEVEL_UP_MOVE(37, MOVE_FIRE_BLAST),
     LEVEL_UP_MOVE(41, MOVE_SHADOW_BALL),
     LEVEL_UP_MOVE(47, MOVE_TRICK),
-    //LEVEL_UP_MOVE(59, MOVE_MIND_BLOWN),
+    LEVEL_UP_MOVE(59, MOVE_MIND_BLOWN),
     LEVEL_UP_END
 };
 

@@ -1626,20 +1626,6 @@ raw `
 @===================================================================================================Holiday 2020
 
 
-
-HGM01Msg:
-    .string "Xerneas$"
-HGM02Msg:
-    .string "Yveltal$"
-HGM03Msg:
-    .string "Magearna$"
-HGM04Msg:
-    .string "Solgaleo$"
-HGM05Msg:
-    .string "Marshadow$"
-HGM06Msg:
-    .string "Lunala$"
-
 RS_EventOver:
 	.string "Event is over.\nWhat are you doing here?$"
 
@@ -1661,97 +1647,95 @@ script RyuScript_NoEventNPCScript{
 }
 
 text H23_1 {
-	"Reshiram"
+	"Kyurem Black"
 }
 
 text H23_2 {
-	"Zekrom"
+	"Kyurem White"
 }
 
 text H23_3 {
-	"Xerneas"
+	"Landorus"
 }
 
 text H23_4 {
-	"Yveltal"
+	"Tapu Koko"
 }
 
 text H23_5 {
-	"Zygarde"
+	"Dialga"
 }
 
 text H23_6 {
-	"Genesect"
+	"Blacefalon"
 }
 
 script RyuScript_GiveHolidayGiftMon{
 	lock
 	faceplayer
-	msgbox("Why are you here?")
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Uhm... Hi! I'm here to... uh, let you choose one of these pokeballs. Please choose one!"))
+	closemessage
+	getpartysize
+	copyvar(VAR_0x8002, VAR_RESULT)
+	if (var(VAR_RESULT) > 5){
+		msgbox(RS_HolidayNoSpace)
+		release
+		end
+	}
+	msgbox("Select a Pokémon!")
+	bufferdynamicmulti(H23_1, H23_2, H23_3, H23_4, H23_5, H23_6)
+	multichoice(0, 0, MULTI_DYNAMIC_6, 1)
+	switch(var(VAR_RESULT)){
+		case 0:
+			setvar(VAR_0x8005, SPECIES_KYUREM_BLACK)
+			setvar(VAR_0x8001, NATURE_ADAMANT)
+		case 1:
+			setvar(VAR_0x8005, SPECIES_KYUREM_WHITE)
+			setvar(VAR_0x8001, NATURE_MODEST)
+		case 2:
+			setvar(VAR_0x8005, SPECIES_LANDORUS)
+			setvar(VAR_0x8001, NATURE_ADAMANT)
+		case 3:
+			setvar(VAR_0x8005, SPECIES_TAPU_KOKO)
+			setvar(VAR_0x8001, NATURE_ADAMANT)
+		case 4:
+			setvar(VAR_0x8005, SPECIES_DIALGA)
+			setvar(VAR_0x8001, NATURE_MODEST)
+		case 5:
+			setvar(VAR_0x8005, SPECIES_BLACEPHALON)
+			setvar(VAR_0x8001, NATURE_ADAMANT)
+	}
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}She hands you a Pokéball.")
+	setflag(FLAG_RYU_FORCE_EVENT_OTID)
+	callnative(RyuGiveHolidayModdedMon)
+	clearflag(FLAG_RYU_FORCE_EVENT_OTID)
+	closemessage
+	msgbox(format("{COLOR LIGHT_RED}{SHADOW RED}Umm... Lord Ryu thanks you for your continued interest in Emerald Enhanced!"))
+	closemessage
+	applymovement(PLAYER, Common_Movement_StepDown)
+	applymovement(FOLLOWER, Common_Movement_StepDown)
+	waitmovement(FOLLOWER)
+	turnobject(PLAYER, DIR_NORTH)
+	turnobject(FOLLOWER, DIR_NORTH)
+	applymovement(12, HExit)
+	waitmovement(12)
+	applymovement(12, HExit2)
+	waitmovement(12)
+	setflag(FLAG_RYU_HOLIDAY_EVENT)
+	setflag(FLAG_RYU_HIDE_HOLIDAY_NPC)
+	removeobject(12)
 	release
 	end
-
-	//msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hello, {PLAYER}!\pLord Ryu ordered me here to\ngive you a selection of\lrare Pokémon!")
-	//closemessage
-	//getpartysize
-	//if (var(VAR_RESULT) > 5){
-	//	msgbox(RS_HolidayNoSpace)
-	//	release
-	//	end
-	//}
-	//msgbox("Select a Pokémon!")
-	//bufferdynamicmulti(H23_1, H23_2, H23_3, H23_4, H23_5, H23_6)
-	//multichoice(0, 0, MULTI_DYNAMIC_6, 1)
-	//switch(var(VAR_RESULT)){
-	//	case 0:
-	//		setvar(VAR_0x8005, SPECIES_RESHIRAM)
-	//	case 1:
-	//		setvar(VAR_0x8005, SPECIES_ZEKROM)
-	//	case 2:
-	//		setvar(VAR_0x8005, SPECIES_XERNEAS)
-	//	case 3:
-	//		setvar(VAR_0x8005, SPECIES_YVELTAL)
-	//	case 4:
-	//		setvar(VAR_0x8005, SPECIES_ZYGARDE_10)
-	//	case 5:
-	//		setvar(VAR_0x8005, SPECIES_GENESECT)
-	//}
-	//msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}She hands you a Pokéball.")
-	//givemon(VAR_0x8005, 100, ITEM_LUCKY_EGG)
-	//closemessage
-	//msgbox("{COLOR LIGHT_RED}{SHADOW RED}Lord Ryu once again thanks you for\nplaying Emerald Enhanced.\pI must take my leave now!")
-	//closemessage
-	//applymovement(PLAYER, Common_Movement_StepDown)
-	//applymovement(FOLLOWER, Common_Movement_StepDown)
-	//waitmovement(FOLLOWER)
-	//turnobject(PLAYER, DIR_NORTH)
-	//turnobject(FOLLOWER, DIR_NORTH)
-	//applymovement(12, HExit)
-	//waitmovement(12)
-	//applymovement(12, Common_Movement_ExclamationMark)
-	//playse(SE_PIN)
-	//waitse
-	//msgbox("Oh! One more thing!\nLook forward to me having a\lbigger part in the future!\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lucy gives you a wink.)$")
-	//closemessage
-	//applymovement(12, HExit2)
-	//waitmovement(12)
-	//setflag(FLAG_RYU_HOLIDAY_EVENT)
-	//setflag(FLAG_RYU_HIDE_HOLIDAY_NPC)
-	//removeobject(12)
-	//release
-	//end
 }
 
 movement HExit{
 	walk_in_place_down
 	delay_16
 	walk_left * 2
-	face_right
 	step_end
 }
 
 movement HExit2{
-	face_left
 	delay_16
 	walk_left
 	walk_up * 3

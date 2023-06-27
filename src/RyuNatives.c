@@ -2360,17 +2360,26 @@ void RDB_DevModeGiveMoney(void)
 }
 
 void RyuGiveHolidayModdedMon(void)
-{   u16 slot = (VarGet(VAR_TEMP_E));
-    u16 species = (VarGet(VAR_TEMP_D));
+{   u16 slot = gSpecialVar_0x8002;
+    u16 species = gSpecialVar_0x8005;
     u16 level = 50;
     u16 fixedIv = 31;
-    u16 nature = (VarGet(VAR_TEMP_C));
+    u16 g69 = 69;
+    u16 nature = gSpecialVar_0x8001;
+    u16 loc = MAPSEC_AETHER_PARADISE;
+    u16 itm = ITEM_ANCIENT_COIN;
+    u16 tru = TRUE;
     bool16 isBoss = TRUE;
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     SetMonData(&gPlayerParty[slot], MON_DATA_BOSS_STATUS, &isBoss);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
-    GetSetPokedexFlag(species, FLAG_SET_CAUGHT);
-    GetSetPokedexFlag(species, FLAG_SET_SEEN);
+    SetMonData(&gPlayerParty[slot], MON_DATA_OT_NAME, ((const u8[])_("Ryu")));
+    SetMonData(&gPlayerParty[slot], MON_DATA_OT_GENDER, MALE);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MET_LEVEL, &g69);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MET_LOCATION, &loc);
+    SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &itm);
+    SetMonData(&gPlayerParty[slot], MON_DATA_FATEFUL_ENCOUNTER, &tru);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetupRandomForE4(void)
