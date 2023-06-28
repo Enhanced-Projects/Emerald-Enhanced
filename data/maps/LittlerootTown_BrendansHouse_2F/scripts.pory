@@ -426,6 +426,7 @@ LRT_LeafEvent::
 	closemessage
 	fadescreenspeed 1, 5
 	removeobject 3
+	removeobject 6
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	delay 80
 	playbgm MUS_DUMMY, 0
