@@ -1044,7 +1044,7 @@
 #define FRONTIER_MON_STAKATAKA_2                          1016
 #define FRONTIER_MON_NINETALES_PARAFUSE                   1017
 #define FRONTIER_MON_NINETALES_CURSE_BURN                 1018
-#define FRONTIER_MON_PLAGUE_RAT                           1019
+#define FRONTIER_MON_RATICATE_PLAGUE_RAT                  1019
 
 #define NUM_FRONTIER_MONS                                 1020
 
