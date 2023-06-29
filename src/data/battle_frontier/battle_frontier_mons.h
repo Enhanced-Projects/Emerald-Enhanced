@@ -9063,7 +9063,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_RATICATE_PLAGUE_RAT] = { // test (id 1019)
+    [FRONTIER_MON_RATICATE_PLAGUE_RAT] = { // Plague Raticate  (id 1019)
         .species = SPECIES_RATICATE,
         .moves = {MOVE_FRENZY_FANG, MOVE_HYPER_FANG, MOVE_TAKE_DOWN, MOVE_THUNDER_FANG},
         .heldItem = ITEM_LIFE_ORB,
