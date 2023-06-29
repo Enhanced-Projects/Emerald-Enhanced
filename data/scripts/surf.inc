@@ -11,7 +11,7 @@ EventScript_ReleaseUseSurf:: @ 8271ED5
 	end
 
 ES_SurfHasFollower::
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_F
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_COURTNEY
 	call_if_eq ES_TandemSurf
 	msgbox ES_YouHaveFollowerCantSurf
 	releaseall

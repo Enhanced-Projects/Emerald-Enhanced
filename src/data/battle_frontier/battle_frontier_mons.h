@@ -9062,5 +9062,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_BOLD,
         .ivs = 31,
         .ability = 2
+    },
+    [FRONTIER_MON_PLAGUE_RAT] = { // test (id 1019)
+        .species = SPECIES_RATICATE,
+        .moves = {MOVE_FRENZY_FANG, MOVE_HYPER_FANG, MOVE_TAKE_DOWN, MOVE_THUNDER_FANG},
+        .heldItem = ITEM_LIFE_ORB,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
     }
 };
