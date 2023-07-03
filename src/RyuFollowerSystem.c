@@ -421,9 +421,9 @@ const struct gRyuCompanionMon FollowerDawnMons[10] =
         .abilityNum = 0
     },
     {
-        .speciesId = SPECIES_SHIINOTIC,
-        .moves = {MOVE_SPORE, MOVE_DRAINING_KISS, MOVE_GIGA_DRAIN, MOVE_INGRAIN},
-        .heldItem = ITEM_LEFTOVERS,
+        .speciesId = SPECIES_BELLOSSOM,
+        .moves = {MOVE_GIGA_DRAIN, MOVE_SLEEP_POWDER, MOVE_LEECH_SEED, MOVE_STRENGTH_SAP},
+        .heldItem = ITEM_SITRUS_BERRY,
         .abilityNum = 2
     },
     {
@@ -508,7 +508,7 @@ const struct gRyuCompanionMon FollowerLeafMons[10] =
 {
     {
         .speciesId = SPECIES_VENUSAUR,
-        .moves = {MOVE_FRENZY_FANG, MOVE_LEECH_SEED, MOVE_PROTECT, MOVE_GIGA_DRAIN},
+        .moves = {MOVE_FRENZY_PLANT, MOVE_LEECH_SEED, MOVE_PROTECT, MOVE_GIGA_DRAIN},
         .heldItem = ITEM_LEFTOVERS,
         .abilityNum = 0
     },
@@ -590,7 +590,7 @@ const struct gRyuCompanionMon FollowerCourtneyMons[10] =
     },
     {
         .speciesId = SPECIES_SALAZZLE,
-        .moves = {MOVE_FLAMETHROWER, MOVE_SLUDGE_BOMB, MOVE_THUNDERBOLT, MOVE_SHADOW_BALL},
+        .moves = {MOVE_FLAMETHROWER, MOVE_SLUDGE_BOMB, MOVE_HEAT_WAVE, MOVE_SHADOW_BALL},
         .heldItem = ITEM_FOCUS_SASH,
         .abilityNum = 0
     },
@@ -641,10 +641,10 @@ const struct gRyuCompanionMon FollowerJoyMons[10] =
         .abilityNum = 1
     },
     {
-        .speciesId = SPECIES_MUSHARNA,
-        .moves = {MOVE_HYPNOSIS, MOVE_MOONLIGHT, MOVE_CALM_MIND, MOVE_DREAM_EATER},
+        .speciesId = SPECIES_MEGANIUM,
+        .moves = {MOVE_HEAL_PULSE, MOVE_GIGA_DRAIN, MOVE_MOONBLAST, MOVE_LEECH_SEED},
         .heldItem = ITEM_LEFTOVERS,
-        .abilityNum = 1
+        .abilityNum = 2
     },
     {
         .speciesId = SPECIES_BLISSEY,
@@ -653,10 +653,10 @@ const struct gRyuCompanionMon FollowerJoyMons[10] =
         .abilityNum = 2
     },
     {
-        .speciesId = SPECIES_ALOMOMOLA,
-        .moves = {MOVE_WISH, MOVE_PROTECT, MOVE_SCALD, MOVE_FINAL_GAMBIT},
-        .heldItem = ITEM_LEFTOVERS,
-        .abilityNum = 0
+        .speciesId = SPECIES_CHANSEY,
+        .moves = {MOVE_HEAL_PULSE, MOVE_SOFT_BOILED, MOVE_SEISMIC_TOSS, MOVE_THUNDER_WAVE},
+        .heldItem = ITEM_EVIOLITE,
+        .abilityNum = 2
     },
     {
         .speciesId = SPECIES_CLEFABLE,
@@ -665,10 +665,10 @@ const struct gRyuCompanionMon FollowerJoyMons[10] =
         .abilityNum = 1
     },
     {
-        .speciesId = SPECIES_LEAVANNY,
-        .moves = {MOVE_LEAF_BLADE, MOVE_KNOCK_OFF, MOVE_X_SCISSOR, MOVE_NONE},
-        .heldItem = ITEM_NONE,
-        .abilityNum = 0
+        .speciesId = SPECIES_BELLOSSOM,
+        .moves = {MOVE_MOONBLAST, MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_STRENGTH_SAP},
+        .heldItem = ITEM_SITRUS_BERRY,
+        .abilityNum = 2
     },
     {
         .speciesId = SPECIES_EXEGGUTOR,
@@ -961,16 +961,16 @@ const struct gRyuCompanionMon FollowerLillieMons[10] =
         .abilityNum = 0
     },
     {
-        .speciesId = SPECIES_RIBOMBEE,
-        .moves = {MOVE_QUIVER_DANCE, MOVE_CHARM, MOVE_DRAINING_KISS, MOVE_STRUGGLE_BUG},
-        .heldItem = ITEM_LEFTOVERS,
-        .abilityNum = 0
+        .speciesId = SPECIES_BUTTERFREE,
+        .moves = {MOVE_BUG_BUZZ, MOVE_PSYSHOCK, MOVE_ROOST, MOVE_NONE},
+        .heldItem = ITEM_SHELL_BELL,
+        .abilityNum = 2
     },
     {
-        .speciesId = SPECIES_COMFEY,
-        .moves = {MOVE_DRAINING_KISS, MOVE_CHARM, MOVE_CAPTIVATE, MOVE_CALM_MIND},
+        .speciesId = SPECIES_MEGANIUM,
+        .moves = {MOVE_GIGA_DRAIN, MOVE_MOONBLAST, MOVE_LEECH_SEED, MOVE_ANCIENT_POWER},
         .heldItem = ITEM_LEFTOVERS,
-        .abilityNum = 1
+        .abilityNum = 2
     },
     {
         .speciesId = SPECIES_CLEFABLE,
@@ -991,16 +991,16 @@ const struct gRyuCompanionMon FollowerLillieMons[10] =
         .abilityNum = 0
     },
     {
-        .speciesId = SPECIES_RIBOMBEE,
-      .moves = {MOVE_QUIVER_DANCE, MOVE_CHARM, MOVE_DRAINING_KISS, MOVE_STRUGGLE_BUG},
-        .heldItem = ITEM_LEFTOVERS,
-        .abilityNum = 0
+        .speciesId = SPECIES_CLEFABLE,
+        .moves = {MOVE_MOONBLAST, MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_SING},
+        .heldItem = ITEM_LIGHT_CLAY,
+        .abilityNum = 1
     },
     {
-        .speciesId = SPECIES_COMFEY,
-       .moves = {MOVE_DRAINING_KISS, MOVE_CHARM, MOVE_CAPTIVATE, MOVE_CALM_MIND},
-        .heldItem = ITEM_LEFTOVERS,
-        .abilityNum = 1
+        .speciesId = SPECIES_BELLOSSOM,
+        .moves = {MOVE_MOONBLAST, MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_STRENGTH_SAP},
+        .heldItem = ITEM_SITRUS_BERRY,
+        .abilityNum = 2
     },
     {
         .speciesId = SPECIES_EEVEE,

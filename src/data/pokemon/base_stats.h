@@ -467,12 +467,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_RATTATA] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 56,
-        .baseDefense   = 60,
-        .baseSpeed     = 72,
+        .baseHP        = 45,
+        .baseAttack    = 61,
+        .baseDefense   = 50,
+        .baseSpeed     = 90,
         .baseSpAttack  = 25,
-        .baseSpDefense = 65,
+        .baseSpDefense = 50,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_NORMAL,
         .catchRate = 255,
@@ -492,12 +492,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_RATICATE] =
     {
-        .baseHP        = 110,
-        .baseAttack    = 81,
-        .baseDefense   = 100,
+        .baseHP        = 105,
+        .baseAttack    = 91,
+        .baseDefense   = 80,
         .baseSpeed     = 90,
         .baseSpAttack  = 50,
-        .baseSpDefense = 100,
+        .baseSpDefense = 80,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_NORMAL,
         .catchRate = 127,
@@ -4712,7 +4712,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_GRASS,
         .eggGroup2 = EGG_GROUP_GRASS,
-        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_HEALER},
+        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_CHLOROPHYLL},
         .abilityHidden = ABILITY_HEALER,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_GREEN,

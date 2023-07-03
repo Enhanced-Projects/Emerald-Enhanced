@@ -1073,12 +1073,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_RATICATE_1] = { // Raticate-SD (ID: 119)
         .species = SPECIES_RATICATE,
-        .moves = {MOVE_FACADE, MOVE_CRUNCH, MOVE_STOMPING_TANTRUM, MOVE_SWORDS_DANCE},
-        .heldItem = ITEM_TOXIC_ORB,
+        .moves = {MOVE_FRENZY_FANG, MOVE_CRUNCH, MOVE_LEECH_LIFE, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_SHELL_BELL,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_MASQUERAIN_1] = { // Masquerain-Web (ID: 120)
         .species = SPECIES_MASQUERAIN,
@@ -1953,14 +1953,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_RATICATE_2] = { // Raticate-Band (ID: 217)
+    [FRONTIER_MON_RATICATE_2] = { // Raticate-Scarf (ID: 217)
         .species = SPECIES_RATICATE,
-        .moves = {MOVE_DOUBLE_EDGE, MOVE_CRUNCH, MOVE_STOMPING_TANTRUM, MOVE_U_TURN},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_FRENZY_FANG, MOVE_CRUNCH, MOVE_U_TURN, MOVE_FINAL_GAMBIT},
+        .heldItem = ITEM_CHOICE_SCARF,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_MASQUERAIN_2] = { // Masquerain-QD (ID: 218)
         .species = SPECIES_MASQUERAIN,
@@ -9063,7 +9063,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_RATICATE_PLAGUE_RAT] = { // Plague Raticate  (id 1019)
+    [FRONTIER_MON_RATICATE_PLAGUE_RAT] = { // (id 1019)
         .species = SPECIES_RATICATE,
         .moves = {MOVE_FRENZY_FANG, MOVE_HYPER_FANG, MOVE_TAKE_DOWN, MOVE_THUNDER_FANG},
         .heldItem = ITEM_LIFE_ORB,
