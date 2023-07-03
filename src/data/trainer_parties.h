@@ -8041,7 +8041,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerDanny[] = {
     .lvl = 109,
     .species = SPECIES_NIDOQUEEN,
     .heldItem = ITEM_BLACK_SLUDGE,
-    .ability = 2,
+    .ability = 1,
     .moves = {MOVE_EARTH_POWER, MOVE_TOXIC_SPIKES, MOVE_ICE_BEAM, MOVE_ROAR},
     },
     {
@@ -13762,7 +13762,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerGiovanni[] = {
 	.species = SPECIES_NIDOKING,
 	.heldItem = ITEM_LIFE_ORB,
 	.evspread = 0,
-    .ability = 2,
+    .ability = 1,
 	.moves = {MOVE_GUNK_SHOT, MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_ROCK_SLIDE},
 	},
 	{
@@ -13780,7 +13780,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerGiovanni[] = {
 	.species = SPECIES_NIDOQUEEN,
 	.heldItem = ITEM_LIFE_ORB,
 	.evspread = 0,
-    .ability = 2,
+    .ability = 1,
 	.moves = {MOVE_SLUDGE_WAVE, MOVE_EARTH_POWER, MOVE_ICE_BEAM, MOVE_THUNDERBOLT},
 	},
 	{
