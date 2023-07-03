@@ -3067,7 +3067,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_NIDOKING_1] = { // Nidoking-LifeOrb (ID: 341)
         .species = SPECIES_NIDOKING,
@@ -3076,7 +3076,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_MAGMORTAR_1] = { // Magmortar-Shuca (ID: 444)
         .species = SPECIES_MAGMORTAR,
@@ -4903,7 +4903,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_NIDOKING_2] = { // Nidoking-Scarf (ID: 545)
         .species = SPECIES_NIDOKING,
@@ -4912,7 +4912,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_MAGMORTAR_2] = { // Magmortar-ExBelt (ID: 648)
         .species = SPECIES_MAGMORTAR,
