@@ -2925,10 +2925,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_SHIFTRY_1] = { // Shiftry-ExBelt (ID: 325)
+    [FRONTIER_MON_SHIFTRY_1] = { // Shiftry-Physical (ID: 325)
         .species = SPECIES_SHIFTRY,
-        .moves = {MOVE_LEAF_BLADE, MOVE_KNOCK_OFF, MOVE_ROCK_SLIDE, MOVE_LOW_KICK},
-        .heldItem = ITEM_EXPERT_BELT,
+        .moves = {MOVE_POWER_WHIP, MOVE_ACROBATICS, MOVE_CROSS_CHOP, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -4761,12 +4761,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_SHIFTRY_2] = { // Shiftry-Sun (ID: 529)
+    [FRONTIER_MON_SHIFTRY_2] = { // Shiftry-Special (ID: 529)
         .species = SPECIES_SHIFTRY,
-        .moves = {MOVE_SOLAR_BLADE, MOVE_KNOCK_OFF, MOVE_SUNNY_DAY, MOVE_SWORDS_DANCE},
+        .moves = {MOVE_DARK_PULSE, MOVE_FOCUS_BLAST, MOVE_HURRICANE, MOVE_NASTY_PLOT},
         .heldItem = ITEM_FOCUS_SASH,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
         .ivs = 31,
         .ability = 0
     },
