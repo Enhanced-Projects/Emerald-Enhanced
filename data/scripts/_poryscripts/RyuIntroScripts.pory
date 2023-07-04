@@ -15,6 +15,9 @@ RI_ChooseStartLocation:
 NatureMsg:
 	.string "{STR_VAR_1}'s nature is {STR_VAR_2}.\n{STR_VAR_1}'s gender is {STR_VAR_3}.$"
 
+abilitymsg:
+	.string "{STR_VAR_1}'s ability is {COLOR LIGHT_GREEN}{SHADOW GREEN}{RYU_STR_3}{COLOR DARK_GREY}{SHADOW LIGHT_GREY}.$"
+
 ConfrimChoiceMsg:
 	.string "Are you happy with\nyour selection?$"
 
@@ -33,7 +36,9 @@ RyuScript_StarterChoose::
 	waitstate
 RyuScript_CheckStarter::
 	callnative RyuBufferMonZeroNature
+	call_if_set FLAG_RYU_BOSS_WILD, RyuScript_StarterBossMsg
 	msgbox NatureMsg
+RyuScript_FinishCheckBossStarter::
 	closemessage
 	setvar VAR_0x8001, 0
     special RyuFillStatsBuffers
@@ -626,4 +631,14 @@ script RyuScript_DoIntroWarp {
 		}
 	}
 	waitstate
+}
+
+script RyuScript_StarterBossMsg {
+	msgbox("{STR_VAR_1} is a Boss{BOSS_INDI}.")
+	clearflag(FLAG_RYU_BOSS_WILD)
+	closemessage
+	msgbox(NatureMsg)
+	closemessage
+	msgbox(abilitymsg)
+	goto(RyuScript_FinishCheckBossStarter)
 }

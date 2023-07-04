@@ -1520,6 +1520,7 @@ void RyuBufferMonZeroNature(void)
             StringCopy(gStringVar3, ((const u8[])_("Unknown")));
         break;
     }
+    StringCopy(gRyuStringVar3, gAbilityNames[GetMonAbility(&gPlayerParty[0])]);
 
 }
 //FULL_COLOR
@@ -2326,6 +2327,7 @@ bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at
 void RyuLegendaryDoBossRoll(void)
 {
     u32 randomvalue = (Random() % 99);
+    randomvalue = 0;
     if (CheckAPFlag(AP_ALPHA_AURA) == TRUE)
     {
         if (randomvalue < 11)

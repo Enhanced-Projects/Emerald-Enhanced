@@ -127,13 +127,13 @@ static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
 
 static const u16 sStarterMon[STARTER_MON_COUNT] =
 {
-    SPECIES_SPINARAK,
-    SPECIES_ROCKRUFF,
-    SPECIES_CARVANHA,
-    SPECIES_GOTHITA,
-    SPECIES_JANGMO_O,
-    SPECIES_BLITZLE,
-    SPECIES_HOUNDOUR
+    SPECIES_EEVEE,
+    SPECIES_PIKACHU,
+    SPECIES_RALTS,
+    SPECIES_PHANTUMP,
+    SPECIES_MUDBRAY,
+    SPECIES_BASCULIN,
+    SPECIES_GRIMER
 };
 
 static const struct BgTemplate sBgTemplates[3] =
@@ -586,6 +586,8 @@ static void Task_AskConfirmStarter(u8 taskId)
     gTasks[taskId].func = Task_HandleConfirmStarterInput;
 }
 
+extern void RyuLegendaryDoBossRoll(void);
+
 static void Task_HandleConfirmStarterInput(u8 taskId)
 {
     u8 spriteId;
@@ -596,7 +598,19 @@ static void Task_HandleConfirmStarterInput(u8 taskId)
         // Give starter, finish UI. 
         FlagSet(FLAG_SYS_POKEMON_GET);
         gSpecialVar_Result = gTasks[taskId].tStarterSelection;
+        RyuLegendaryDoBossRoll();
         CreateMon(&gPlayerParty[0], sStarterMon[gSpecialVar_Result], 10, 32, 0, 0, OT_ID_PLAYER_ID, FALSE);
+        if(FlagGet(FLAG_RYU_BOSS_WILD) == TRUE)
+        {
+            bool8 tru = TRUE;
+            u8 hidden = 2;
+            u8 maxiv = 31;
+            u32 k = 0;
+            SetMonData(&gPlayerParty[0], MON_DATA_BOSS_STATUS, &tru);
+            SetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM, &hidden);
+            for (k = 0;k<6;k++)
+                SetMonData(&gPlayerParty[0], MON_DATA_HP_IV + k, &maxiv);
+        }
         ResetAllPicSprites();
         FlagSet(FLAG_RYU_STARTER_CHOICE_QUEUED);
         VarSet(VAR_LITTLEROOT_INTRO_STATE, 5);

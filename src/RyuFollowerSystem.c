@@ -572,7 +572,7 @@ const struct gRyuCompanionMon FollowerCourtneyMons[10] =
 {
     {
         .speciesId = SPECIES_MIGHTYENA,
-        .moves = {MOVE_CRUNCH, MOVE_SUCKER_PUNCH, MOVE_PLAY_ROUGH, MOVE_DOUBLE_EDGE},
+        .moves = {MOVE_CRUNCH, MOVE_SUCKER_PUNCH, MOVE_PLAY_ROUGH, MOVE_FISSURE},
         .heldItem = ITEM_BLACK_GLASSES,
         .abilityNum = 2
     },
