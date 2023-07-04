@@ -559,6 +559,6 @@
 #endif
 //end hack
 
-#define EE_GAME_VERSION 9540
+#define EE_GAME_VERSION 9541
 
 #endif 

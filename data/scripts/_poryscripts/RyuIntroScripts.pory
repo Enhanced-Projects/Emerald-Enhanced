@@ -13,10 +13,7 @@ RI_ChooseStartLocation:
 	.string "Choose a starting location.$"
 
 NatureMsg:
-	.string "{STR_VAR_1}'s nature is {STR_VAR_2}.\n{STR_VAR_1}'s gender is {STR_VAR_3}.$"
-
-abilitymsg:
-	.string "{STR_VAR_1}'s ability is {COLOR LIGHT_GREEN}{SHADOW GREEN}{RYU_STR_3}{COLOR DARK_GREY}{SHADOW LIGHT_GREY}.$"
+	.string "{STR_VAR_1}'s nature is {STR_VAR_2}.\n{STR_VAR_1}'s gender is {STR_VAR_3}.\p{STR_VAR_1}'s ability is {COLOR LIGHT_GREEN}{SHADOW GREEN}{RYU_STR_3}{COLOR DARK_GREY}{SHADOW LIGHT_GREY}.$$"
 
 ConfrimChoiceMsg:
 	.string "Are you happy with\nyour selection?$"
@@ -638,7 +635,5 @@ script RyuScript_StarterBossMsg {
 	clearflag(FLAG_RYU_BOSS_WILD)
 	closemessage
 	msgbox(NatureMsg)
-	closemessage
-	msgbox(abilitymsg)
 	goto(RyuScript_FinishCheckBossStarter)
 }

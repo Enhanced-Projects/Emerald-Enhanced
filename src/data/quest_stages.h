@@ -1127,6 +1127,10 @@ const static struct QuestStageDesc gLucyQuestStages[] = { //only visible when st
   .questStage = 100
   },
   {
+  .description = sLucyQuestStage555,
+  .questStage = 555
+  },
+  {
   .description = sLucyQuestStage666,
   .questStage = 666
   },
