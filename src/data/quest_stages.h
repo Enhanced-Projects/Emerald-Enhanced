@@ -223,6 +223,7 @@ const u8 sLucyQuestStage78[] = _("Lucy awaits you at her house to begin\nthe att
 const u8 sLucyQuestStage80[] = _("You are tasked with finding and defeating\nthe Aether Admins in New Mauville.\nSeek and Destroy to continue.");
 const u8 sLucyQuestStage90[] = _("You finished dealing with the Aether\nFoundation in New Mauville.\nSee Lucy at her house.");
 const u8 sLucyQuestStage100[] = _("You worked with Lucy to exterminate\nAether Foundation from Hoenn. (GOOD END)");
+const u8 sLucyQuestStage555[] = _("You obtained too many badges while on\nLucy's quest, and she had to leave for\nthe Battle Frontier.(BAD END)");
 const u8 sLucyQuestStage666[] = _("You insulted Lucy at her home.\n(BAD END)");
 const u8 sLucyQuestStage888[] = _("You were unable to protect Lucy\nin Petalburg Woods.\n(WORST END)");
 const u8 sLucyQuestStage999[] = _("Lucy left to work at the Battle Frontier.\n(BAD END)");
