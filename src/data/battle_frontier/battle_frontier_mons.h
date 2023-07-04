@@ -1073,12 +1073,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_RATICATE_1] = { // Raticate-SD (ID: 119)
         .species = SPECIES_RATICATE,
-        .moves = {MOVE_FACADE, MOVE_CRUNCH, MOVE_STOMPING_TANTRUM, MOVE_SWORDS_DANCE},
-        .heldItem = ITEM_TOXIC_ORB,
+        .moves = {MOVE_FRENZY_FANG, MOVE_CRUNCH, MOVE_LEECH_LIFE, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_SHELL_BELL,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_MASQUERAIN_1] = { // Masquerain-Web (ID: 120)
         .species = SPECIES_MASQUERAIN,
@@ -1953,14 +1953,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_RATICATE_2] = { // Raticate-Band (ID: 217)
+    [FRONTIER_MON_RATICATE_2] = { // Raticate-Scarf (ID: 217)
         .species = SPECIES_RATICATE,
-        .moves = {MOVE_DOUBLE_EDGE, MOVE_CRUNCH, MOVE_STOMPING_TANTRUM, MOVE_U_TURN},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_FRENZY_FANG, MOVE_CRUNCH, MOVE_U_TURN, MOVE_FINAL_GAMBIT},
+        .heldItem = ITEM_CHOICE_SCARF,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_MASQUERAIN_2] = { // Masquerain-QD (ID: 218)
         .species = SPECIES_MASQUERAIN,
@@ -2925,10 +2925,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_SHIFTRY_1] = { // Shiftry-ExBelt (ID: 325)
+    [FRONTIER_MON_SHIFTRY_1] = { // Shiftry-Physical (ID: 325)
         .species = SPECIES_SHIFTRY,
-        .moves = {MOVE_LEAF_BLADE, MOVE_KNOCK_OFF, MOVE_ROCK_SLIDE, MOVE_LOW_KICK},
-        .heldItem = ITEM_EXPERT_BELT,
+        .moves = {MOVE_POWER_WHIP, MOVE_ACROBATICS, MOVE_CROSS_CHOP, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -3067,7 +3067,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_NIDOKING_1] = { // Nidoking-LifeOrb (ID: 341)
         .species = SPECIES_NIDOKING,
@@ -3076,7 +3076,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_MAGMORTAR_1] = { // Magmortar-Shuca (ID: 444)
         .species = SPECIES_MAGMORTAR,
@@ -4761,12 +4761,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_SHIFTRY_2] = { // Shiftry-Sun (ID: 529)
+    [FRONTIER_MON_SHIFTRY_2] = { // Shiftry-Special (ID: 529)
         .species = SPECIES_SHIFTRY,
-        .moves = {MOVE_SOLAR_BLADE, MOVE_KNOCK_OFF, MOVE_SUNNY_DAY, MOVE_SWORDS_DANCE},
+        .moves = {MOVE_DARK_PULSE, MOVE_FOCUS_BLAST, MOVE_HURRICANE, MOVE_NASTY_PLOT},
         .heldItem = ITEM_FOCUS_SASH,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
         .ivs = 31,
         .ability = 0
     },
@@ -4903,7 +4903,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_NIDOKING_2] = { // Nidoking-Scarf (ID: 545)
         .species = SPECIES_NIDOKING,
@@ -4912,7 +4912,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_MAGMORTAR_2] = { // Magmortar-ExBelt (ID: 648)
         .species = SPECIES_MAGMORTAR,
@@ -9063,7 +9063,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_RATICATE_PLAGUE_RAT] = { // Plague Raticate  (id 1019)
+    [FRONTIER_MON_RATICATE_PLAGUE_RAT] = { // (id 1019)
         .species = SPECIES_RATICATE,
         .moves = {MOVE_FRENZY_FANG, MOVE_HYPER_FANG, MOVE_TAKE_DOWN, MOVE_THUNDER_FANG},
         .heldItem = ITEM_LIFE_ORB,
