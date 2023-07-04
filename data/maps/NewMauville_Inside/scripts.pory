@@ -418,6 +418,11 @@ script NM_AetherGrunt4 {
 }
 
 script NM_WickeNotice {
+	setvar(VAR_TEMP_0, 100)
+	if (var(VAR_RYU_QUEST_LUCY) != 80){
+		release
+		end
+	}
 	applymovement(PLAYER, Common_Movement_StepRight)
 	waitmovement(PLAYER)
 	applymovement(FOLLOWER, Common_Movement_StepRight)
