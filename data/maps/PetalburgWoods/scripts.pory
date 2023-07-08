@@ -569,6 +569,7 @@ script PBW_PoacherLookout{
 	turnobject(16, DIR_SOUTH)
 	playse(SE_PIN)
 	waitse
+	setflag(FLAG_RYU_SPECIAL_STORY_WHITEOUT)
 	msgbox(format("Well now that you know our secret, we can't very well let you run amok, can we?"))
 	closemessage
 	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
@@ -580,10 +581,15 @@ script PBW_PoacherLookout{
 			call(RyuScript_ChooseValidMons)
 		}
 	multi_2_vs_2(TRAINER_MILLY, PBW_MillyLose, TRAINER_JASE, PBW_JaseLose, VAR_0x8008, VAR_0x8009)
+	goto(PBW_PostBattle)
+}
+
+script PBW_PostBattle {
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
 		goto(PBW_playerLost)
 	}
+	clearflag(FLAG_RYU_SPECIAL_STORY_WHITEOUT)
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}All right. Enough. Now talk!\pWho do you work for?\nWhere's your base?")
 	closemessage
 	msgbox(format("Faba will have our heads if we say anything..."))
