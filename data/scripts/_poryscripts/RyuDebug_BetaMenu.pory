@@ -208,6 +208,7 @@ script RDBM_ResetTemporaryBattleFlags{
     clearflag(FLAG_RYU_MAX_SCALE)
 	clearflag(FLAG_RYU_BOSS_WILD)
 	clearflag(FLAG_RYU_RANDOMBATTLE)
+    clearflag(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD)
 	msgbox(RDBM_ResetTempFlagsMsg)
 	release
 	end

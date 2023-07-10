@@ -475,12 +475,14 @@ script NM_ContinueMainScene{
 	multi_2_vs_1(TRAINER_AETHER_FABA1, NM_FabaLose, VAR_0x8008, VAR_0x8009)
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
+		clearflag(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD)
 		goto(Ryu_PlayerLostTheGame)
 	}
 	goto(NM_LusamineScene)
 }
 
 script NM_LusamineScene{
+	clearflag(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD)
 	msgbox(format("I spent so much time researching that! It should have garunteed success in battle!!"))
 	closemessage
 	playse(SE_WARP_IN)
