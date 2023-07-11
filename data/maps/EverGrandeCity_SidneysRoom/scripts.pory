@@ -152,7 +152,7 @@ EverGrandeCity_SidneysRoom_Text_PostBattleSpeech: @ 82280EC
 
 `
 script EGC_AltSidney{
-	goto_if_set(FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidneyRematch)
+	goto_if_set(FLAG_RYU_COMPANION_PARTICIPATION, EGC_FollowerSidneyRematch)
 	if (var(VAR_RYU_E41) == 0) {
 		msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleSpeech)
 		trainerbattle_no_intro(TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat)

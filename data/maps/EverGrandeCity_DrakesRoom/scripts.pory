@@ -127,7 +127,7 @@ EverGrandeCity_DrakesRoom_Text_PostBattleSpeech: @ 82288B0
 ` 
 
 script EGC_AltDrake{
-	goto_if_set(FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrakeRematch)
+	goto_if_set(FLAG_RYU_COMPANION_PARTICIPATION, EGC_FollowerDrakeRematch)
 	if (var(VAR_RYU_E44) == 0) {
 		msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleSpeech)
 		trainerbattle_no_intro(TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat)
