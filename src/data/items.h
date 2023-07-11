@@ -5332,7 +5332,7 @@ const struct Item gItems[] =
     {
         .name = _("Old Coin"),
         .itemId = ITEM_ANCIENT_COIN,
-        .price = 20000,
+        .price = 1000,
         .description = sAncientCoinDesc,
         .importance = 0,
         .pocket = POCKET_COLLECTIBLES,

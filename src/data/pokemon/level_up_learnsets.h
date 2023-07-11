@@ -26569,9 +26569,9 @@ static const struct LevelUpMove sKlefkiLevelUpLearnset[] = {//NOT IN EE
 };
 
 static const struct LevelUpMove sPhantumpLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_TACKLE),
+    LEVEL_UP_MOVE( 1, MOVE_RAZOR_LEAF),
     LEVEL_UP_MOVE( 1, MOVE_CONFUSE_RAY),
-    LEVEL_UP_MOVE( 5, MOVE_ASTONISH),
+    LEVEL_UP_MOVE( 5, MOVE_SHADOW_SNEAK),
     LEVEL_UP_MOVE( 8, MOVE_GROWTH),
     LEVEL_UP_MOVE(13, MOVE_INGRAIN),
     LEVEL_UP_MOVE(19, MOVE_FAINT_ATTACK),

@@ -1739,7 +1739,11 @@ void CB2_WhiteOut(void)
 {
     u8 state;
 
-    if (++gMain.state >= 120)
+    if (FlagGet(FLAG_RYU_SPECIAL_STORY_WHITEOUT) == TRUE)
+    {
+        SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    }
+    else if (++gMain.state >= 120)
     {
         FieldClearVBlankHBlankCallbacks();
         StopMapMusic();

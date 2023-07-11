@@ -3065,6 +3065,7 @@ extern const  u8 gText_RyuMaxIvMenuOption[];
 extern const  u8 gText_RyuAccessMoveRelearner[];
 extern const  u8 gText_RyuAccessBossStatus[];
 extern const  u8 gText_RyuNatureChangerDevMenu[];
+extern const  u8 gText_RyuAbilityChangeDevMenu[];
 extern const  u8 gText_RyuSetFriendshipMenuOption[];
 extern const  u8 gText_RyuExitPokeEditMenuOption[];
 

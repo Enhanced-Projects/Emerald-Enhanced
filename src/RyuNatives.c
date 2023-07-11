@@ -195,6 +195,11 @@ void SetMonAbility(void)
     u8 slot = (VarGet(VAR_TEMP_8));
     u8 ability = (VarGet(VAR_TEMP_7));
     u16 species = GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2);
+    ConvertIntToDecimalStringN(gStringVar1, VarGet(VAR_TEMP_7), 0, 1);
+    ConvertIntToDecimalStringN(gStringVar2, VarGet(VAR_TEMP_8), 0, 1);
+    StringAppend(gStringVar1, ((const u8[])_(", ")));
+    StringAppend(gStringVar1, gStringVar2);
+    DebugPrint(gStringVar1, 0);
     if ((gBaseStats[species].abilities[ability]) == 0)
         ability = 0;
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
@@ -446,8 +451,11 @@ int CountBadges(void)
     for (badge = FLAG_BADGE01_GET; badge <= FLAG_BADGE08_GET; badge++)
         count += FlagGet(badge);
     if (count > 4)//if player has more than 4 badges, hide Lucy at her home in lavaridge and prevent quest start.
+    {
         FlagSet(FLAG_RYU_LAVARIDGE_LUCY);
-
+        if ((VarGet(VAR_RYU_QUEST_LUCY) != 100) || (VarGet(VAR_RYU_QUEST_LUCY) != 0))
+            VarSet(VAR_RYU_QUEST_LUCY, 555);//@Player got too many badges during lucy quest
+    }
     return count;
 }
 
@@ -1520,6 +1528,7 @@ void RyuBufferMonZeroNature(void)
             StringCopy(gStringVar3, ((const u8[])_("Unknown")));
         break;
     }
+    StringCopy(gRyuStringVar3, gAbilityNames[GetMonAbility(&gPlayerParty[0])]);
 
 }
 //FULL_COLOR
