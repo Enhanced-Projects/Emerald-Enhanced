@@ -817,8 +817,29 @@ RyuPokeEditMenu::
 	case 4, RyuAccessDevMoveRelearner
 	case 5, RyuChangeBossStatus
 	case 6, RyuNatureSwapDevMode
-	case 7, RyuExitPokeEditMenu
+	case 7, RyuAbilityChange
+	case 8, RyuExitPokeEditMenu
 	goto RyuExitPokeEditMenu
+
+RyuAbilityChange::
+	msgbox RyuIvEv_ChooseSlot
+	call RyuBufferPartyMonNames
+	multichoice 0, 0, MULTI_DYNAMIC_6, 1
+	copyvar VAR_TEMP_8, VAR_RESULT
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RyuPokeEditMenu
+	closemessage
+	msgbox GCMS_DMPG_Ability
+	multichoicedefault 0, 6, MULTI_DEV_GIVE_MON_ABILITY, 0, 1
+	copyvar VAR_TEMP_7, VAR_RESULT
+	special SetMonAbility
+	msgbox PKE_Done
+	closemessage
+	goto RyuPokeEditMenu
+
+PKE_Done:
+	.string "Ability Changed.$"
 
 RyuChangeBossStatus::
 	call RyuBufferPartyMonNames

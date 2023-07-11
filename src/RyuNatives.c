@@ -195,6 +195,11 @@ void SetMonAbility(void)
     u8 slot = (VarGet(VAR_TEMP_8));
     u8 ability = (VarGet(VAR_TEMP_7));
     u16 species = GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2);
+    ConvertIntToDecimalStringN(gStringVar1, VarGet(VAR_TEMP_7), 0, 1);
+    ConvertIntToDecimalStringN(gStringVar2, VarGet(VAR_TEMP_8), 0, 1);
+    StringAppend(gStringVar1, ((const u8[])_(", ")));
+    StringAppend(gStringVar1, gStringVar2);
+    DebugPrint(gStringVar1, 0);
     if ((gBaseStats[species].abilities[ability]) == 0)
         ability = 0;
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);

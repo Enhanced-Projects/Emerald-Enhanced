@@ -870,6 +870,7 @@ static const struct MenuAction MultichoiceList_122[]=
     {gText_RyuAccessMoveRelearner},  
     {gText_RyuAccessBossStatus},  
     {gText_RyuNatureChangerDevMenu},  
+    {gText_RyuAbilityChangeDevMenu},  
     {gText_RyuExitPokeEditMenuOption},
 };
 
