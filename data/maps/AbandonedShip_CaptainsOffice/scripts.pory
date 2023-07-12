@@ -67,7 +67,7 @@ AS_PlayerMsg1:
 	
 AS_PlayerMsg2:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Oh! Another note.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(This town was built atop a\n colony of Corsola, and functioned\l as a floating storehouse.)\p{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\p"
-	.string "This can't be real...why's this\nhappening? First, the Power Plant,\lnow, the S.S. Anne...it's all\lcoming back to haunt me...!\p... ... ... ...\p{COLOR LIGHT_BLUE}{SHADOW BLUE}What in the world...?\pLana...what happened to you?$"
+	.string "This can't be real...why's this\nhappening? First, the Power Plant,\lnow, the S.S. Anne...it's all\lcoming back to haunt me...!\p... ... ... ...\p{COLOR LIGHT_BLUE}{SHADOW BLUE}What in the world...?\pLeaf...what happened to you?$"
 	
 AS_PushedDown:
 	walk_fastest_down
