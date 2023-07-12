@@ -38,16 +38,8 @@ script(global) RyuStudentsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
-                    msgbox(format("I see, competition is pretty fierce out there, huh?"))
-                    goto(CommonStudentRewardScript)
-                }
-                else {
-                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
-                    msgbox(format("Go scout the competition at {STR_VAR_1}, already."))
-                    release
-                    end
-                }
+                release
+                end
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
                 if (var(VAR_TEMP_F) < 6) {
@@ -71,7 +63,7 @@ script(global) RyuStudentsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS)
-    random(5)//increase this by the number of quests you add.
+    random(4)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -87,12 +79,6 @@ script(global) RyuStudentsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_DATA, 10)
             msgbox("Heya {PLAYER}!\pThe Council wants you to get some\npoke balls for our members.\pWe need a total of ten.")
         case 2:
-            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_ROUTE_114)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
-            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
-            msgbox(format("{PLAYER}! I need you to go to Route 114 and check out our competition there."))
-        case 3:
             random(4)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
@@ -101,7 +87,7 @@ script(global) RyuStudentsDailyQuest  {
             msgbox(format("One of our younger members found this egg. You can have it, but you have to show us what it hatched into!"))
             closemessage
             msgbox(FactionsReceivedEggMsg)
-        case 4:
+        case 3:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_PRETTY_WING)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 4)

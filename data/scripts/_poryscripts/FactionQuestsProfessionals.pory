@@ -41,16 +41,8 @@ script(global) RyuProfessionalsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
-                    msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}. . .\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see. Thanks for the effort!"))
-                    goto(CommonProfessionalsRewardScript)
-                }
-                else {
-                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
-                    msgbox(format("Haven't you been to {STR_VAR_1} yet? I need to know what's going on there."))
-                    release
-                    end
-                }
+                release
+                end
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
                 if (var(VAR_TEMP_F) < 6) {
@@ -75,7 +67,7 @@ script(global) RyuProfessionalsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
-    random(6)//increase this by the number of quests you add.
+    random(4)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -91,12 +83,6 @@ script(global) RyuProfessionalsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
             msgbox("I'm too busy to travel to a\nPokemon Center.\pDo you happen to have a couple\nHyper Potions?\pI'll be able to continue my work.")
         case 2:
-            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_ROUTE_110)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
-            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
-            msgbox(format("Can you go see what the population of Cycling Road looks like? I want to travel through there soon, so I want to know how busy it is. Thanks!"))
-        case 3:
             random(4)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
@@ -105,18 +91,11 @@ script(global) RyuProfessionalsDailyQuest  {
             msgbox(format("I found this egg while working in the field. Can you hatch it so we can see what it is?"))
             closemessage
             msgbox(FactionsReceivedEggMsg)
-        case 4:
+        case 3:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SMOOTH_ROCK)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 12)
             msgbox(format("I need some smooth sand to polish and sharpen my tools with, could you bring me one? Thanks."))
-        case 5:
-            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_CRAGGY_COAST)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
-            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
-            msgbox(format("Hey there! We got word of some water-type Pokémon at Craggy Coast that would be useful transporting items north. Could you check out Craggy Coast and find which Pokémon can be found there?!"))
-
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     closemessage
