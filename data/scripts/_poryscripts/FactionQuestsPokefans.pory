@@ -51,16 +51,8 @@ script(global) RyuPokefansDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
-                        msgbox(format("So there weren't any pokémon playing there. That's so unfortunate. Thank you for your time, anyways!"))
-                        goto(CommonPokefansRewardScript)
-                }
-                else {
-                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
-                    msgbox(format("Aren't you going to {STR_VAR_1} to look for playing pokémon?."))
-                    release
-                    end
-                }
+                release
+                end
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
                 if (var(VAR_TEMP_F) < 6) {
@@ -106,7 +98,6 @@ script(global) RyuPokefansDailyQuest  {
             callnative(RyuSetupEggHatchQuest)
             giveegg(VAR_RYU_DAILY_QUEST_TARGET)
             msgbox(PokefansQuest3Desc)
-        
     }
     closemessage
     call_if_unset(FLAG_RYU_FACTION_TUTORIAL_UNLOCKED, RyuScript_FactionsTutorialQuery)

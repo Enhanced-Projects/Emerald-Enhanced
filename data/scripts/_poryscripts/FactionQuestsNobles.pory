@@ -49,16 +49,8 @@ script(global) RyuNoblesDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if(var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
-                    msgbox(format("So that's what they're up to. All right, you are dismissed."))
-                    goto(CommonNobleRewardScript)
-                }
-                else {
-                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
-                    msgbox(format("Why haven't you been to {STR_VAR_1} yet? We already ordered you to go there. Hop to it!"))
-                    release
-                    end
-                }
+                release
+                end
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
                 if (var(VAR_TEMP_F) < 6) {
@@ -84,7 +76,7 @@ script(global) RyuNoblesDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES)
-    random(4)//increase this by the number of quests you add.
+    random(3)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -100,12 +92,6 @@ script(global) RyuNoblesDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_DATA, 8)
             msgbox("The board is trying to expand it's\nportfolio of riches.\pPlease acquire some Big Pearls\nfor us to hold.\pWe need at least eight.")
         case 2:
-            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_RUSTBORO_CITY)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
-            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
-            msgbox(format("The board needs you to go see what Devon Corp is up to. Head there to the second floor and see what their latest project is. Stocks are on the line here!"))
-        case 3:
             random(4)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)

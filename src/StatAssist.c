@@ -27,6 +27,7 @@
 #include "battle_anim.h"
 #include "battle_main.h"
 #include "event_data.h"
+#include "contest_effect.h"
 
 /*
  * 
@@ -815,9 +816,33 @@ void RyuBufferBattleMovesData(void)
     StringAppend(gStringVar4, sText_Newline);
 }
 
-void RyuBufferContestMovesData(void)
+void RyuBufferContestStats(void)
 {
-
+    u16 move1 = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_MOVE1));
+    u16 move2 = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_MOVE2));
+    u16 move3 = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_MOVE3));
+    u16 move4 = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_MOVE4));
+    u16 temp = (GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_SPECIES));
+    ConvertIntToDecimalStringN(gStringVar3, GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_BEAUTY), 0, 3);
+    StringCopy(gStringVar4, ((const u8[])_("Beauty: ")));
+    StringAppend(gStringVar4, gStringVar3);
+    StringAppend(gStringVar4, sText_Newline);
+    ConvertIntToDecimalStringN(gStringVar3, GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_CUTE), 0, 3);
+    StringAppend(gStringVar4, ((const u8[])_("Cuteness: ")));
+    StringAppend(gStringVar4, gStringVar3);
+    StringAppend(gStringVar4, sText_Newline);
+    ConvertIntToDecimalStringN(gStringVar3, GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_SMART), 0, 3);
+    StringAppend(gStringVar4, ((const u8[])_("Smartness: ")));
+    StringAppend(gStringVar4, gStringVar3);
+    StringAppend(gStringVar4, sText_Newline);
+    ConvertIntToDecimalStringN(gStringVar3, GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_TOUGH), 0, 3);
+    StringAppend(gStringVar4, ((const u8[])_("Toughness: ")));
+    StringAppend(gStringVar4, gStringVar3);
+    StringAppend(gStringVar4, sText_Newline);
+    ConvertIntToDecimalStringN(gStringVar3, GetMonData(&gPlayerParty[gSpecialVar_0x8001], MON_DATA_SHEEN), 0, 3);
+    StringAppend(gStringVar4, ((const u8[])_("Overall Sheen: ")));
+    StringAppend(gStringVar4, gStringVar3);
+    StringAppend(gStringVar4, sText_Newline);
 }
 
 static void PrintToWindow(u8 windowId, u8 colorIdx)
@@ -872,7 +897,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         CopyWindowToVram(BATTLE_MOVES_WINDOW, 3);
         break;
     case CONTEST_MOVES_WINDOW:
-        RyuBufferContestMovesData();
+        RyuBufferContestStats();
         AddTextPrinterParameterized4(CONTEST_MOVES_WINDOW, 0, 1, 4, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
         ClearWindowTilemap(CONTEST_MOVES_WINDOW);
         PutWindowTilemap(CONTEST_MOVES_WINDOW);

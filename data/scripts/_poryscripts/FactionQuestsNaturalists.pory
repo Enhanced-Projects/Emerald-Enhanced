@@ -36,17 +36,8 @@ script(global) RyuNaturalistsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
-                    msgbox(format("That sounds like a great place to camp, thanks for scouting it out for me!"))
-                    goto(CommonNaturalistRewardScript)
-                }
-                else
-                {
-                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
-                    msgbox(format("Does {STR_VAR_1} have a good place to camp?"))
-                    release
-                    end
-                }
+                release
+                end
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
                 if (var(VAR_TEMP_F) < 6) {
@@ -72,7 +63,7 @@ script(global) RyuNaturalistsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
-    random(5)//increase this by the number of quests you add.
+    random(4)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -97,12 +88,6 @@ script(global) RyuNaturalistsDailyQuest  {
             closemessage
             msgbox(FactionsReceivedEggMsg)
         case 3:
-            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE103)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
-            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
-            msgbox(format("{PLAYER}, can you go check out Route 103? I want to know specifically if there's a good place to camp there or not."))
-        case 4:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_ESCAPE_ROPE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 2)

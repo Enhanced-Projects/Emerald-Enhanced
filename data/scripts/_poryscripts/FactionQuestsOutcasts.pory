@@ -39,16 +39,8 @@ script(global) RyuOutcastsDailyQuest  {
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                if (var(VAR_RYU_DAILY_QUEST_DATA) == 6) {
-                    msgbox(format("I see... The leylines are not yet aligned. Thank you for checking."))
-                    goto(CommonOutcastRewardScript)
-                }
-                else {
-                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
-                    msgbox(format("We can't see the leylines from here, We need you to check {STR_VAR_1} and report back."))
-                    release
-                    end
-                }
+                release
+                end
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
                 if (var(VAR_TEMP_F) < 6) {
@@ -73,7 +65,7 @@ script(global) RyuOutcastsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
-    random(4)//increase this by the number of quests you add.
+    random(3)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -89,12 +81,6 @@ script(global) RyuOutcastsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
             msgbox("Heya {PLAYER}.\pWe recently got word that some\nrare pokemon can be attracted\lby anointing stones with stardust.\pPlease bring us five pouches of it.")
         case 2:
-            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
-            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAPSEC_MT_PYRE)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 15)
-            clearflag(FLAG_RYU_STARTED_TRAVEL_TIMER)
-            msgbox(format("Please travel to Mt. Pyre's summit and check the leylines. We're waiting for the right ones to perform a ritual."))
-        case 3:
             random(4)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
