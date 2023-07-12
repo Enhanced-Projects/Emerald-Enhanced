@@ -1559,12 +1559,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_POLIWHIRL] =
     {
-        .baseHP        = 65,
-        .baseAttack    = 65,
+        .baseHP        = 55,
+        .baseAttack    = 75,
         .baseDefense   = 65,
         .baseSpeed     = 90,
         .baseSpAttack  = 50,
-        .baseSpDefense = 50,
+        .baseSpDefense = 65,
         .type1 = TYPE_WATER,
         .type2 = TYPE_WATER,
         .catchRate = 120,
@@ -1586,12 +1586,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_POLIWRATH] =
     {
-        .baseHP        = 90,
-        .baseAttack    = 95,
-        .baseDefense   = 95,
+        .baseHP        = 75,
+        .baseAttack    = 110,
+        .baseDefense   = 115,
         .baseSpeed     = 70,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 90,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 115,
         .type1 = TYPE_WATER,
         .type2 = TYPE_FIGHTING,
         .catchRate = 45,
@@ -1605,7 +1605,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_WATER_1,
         .eggGroup2 = EGG_GROUP_WATER_1,
-        .abilities = {ABILITY_WATER_ABSORB, ABILITY_DAMP},
+        .abilities = {ABILITY_STAMINA, ABILITY_DAMP},
         .abilityHidden = ABILITY_SWIFT_SWIM,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BLUE,

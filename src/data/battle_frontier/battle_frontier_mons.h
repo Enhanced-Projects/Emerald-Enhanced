@@ -1568,10 +1568,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_POLIWRATH_1] = { // Poliwrath-AV (ID: 174)
         .species = SPECIES_POLIWRATH,
-        .moves = {MOVE_FOCUS_BLAST, MOVE_SCALD, MOVE_ICE_BEAM, MOVE_VACUUM_WAVE},
+        .moves = {MOVE_DRAIN_PUNCH, MOVE_DIVE, MOVE_POISON_JAB, MOVE_ICE_PUNCH},
         .heldItem = ITEM_ASSAULT_VEST,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_MODEST,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
@@ -2448,12 +2448,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_POLIWRATH_2] = { // Poliwrath-RestTalk (ID: 272)
+    [FRONTIER_MON_POLIWRATH_2] = { // Poliwrath-BU (ID: 272)
         .species = SPECIES_POLIWRATH,
-        .moves = {MOVE_CIRCLE_THROW, MOVE_SCALD, MOVE_REST, MOVE_SLEEP_TALK},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_RELAXED,
+        .moves = {MOVE_DRAIN_PUNCH, MOVE_DIVE, MOVE_BULK_UP, MOVE_AQUA_RING},
+        .heldItem = ITEM_BIG_ROOT,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
