@@ -20,7 +20,7 @@ LH_Intro::
 	waitmovement 0
 	msgbox LH_Bro_intro MSGBOX_NPC
 	waitmessage
-	setvar VAR_RYU_QUEST_LEAF, 2 @player met with Lana's brother, go to the right side of the house and speak to her.
+	setvar VAR_RYU_QUEST_LEAF, 2 @player met with Leaf's brother, go to the right side of the house and speak to her.
 	release
 	end
 	
@@ -393,7 +393,7 @@ LH_End:
 	
 LH_chat1:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Umm... hi. I'm {PLAYER}.\n"
-	.string "Is your name... Lana?\p"
+	.string "Is your name... Leaf?\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She nods.)\n"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... \p"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Well... I saw you exiting the\p"

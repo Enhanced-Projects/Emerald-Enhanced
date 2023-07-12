@@ -218,7 +218,7 @@ SCH_AltStory22:
 SCH_AltStory23:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Well if I wasn't worried enough\n"
 	.string "then, now I really am...\p"
-	.string "Lana...what's happening to you?$"
+	.string "Leaf...what's happening to you?$"
 
 
 SCH_Fall:
