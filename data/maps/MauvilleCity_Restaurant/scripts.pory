@@ -5,7 +5,7 @@ MauvilleCity_Restaurant_MapScripts::
 MauvilleCity_Restaurant_EventScript_Clerk::
 	lock
 	faceplayer
-	message MauvilleCity_Restaurant_Text_WelcomeToHerbShop
+	message MauvilleCity_Restaurant_Text_WelcomeToLittleCozy
 	waitmessage
 	pokemart MauvilleCity_Restaurant_Pokemart
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
@@ -25,7 +25,7 @@ MauvilleCity_Restaurant_Pokemart:
 	release
 	end
 
-MauvilleCity_Restaurant_Text_WelcomeToHerbShop: @ 81FE53E
+MauvilleCity_Restaurant_Text_WelcomeToLittleCozy:
 	.string "Welcome to the Little Cozy, what\n"
 	.string "can I serve you?$"
 
