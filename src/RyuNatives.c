@@ -454,7 +454,8 @@ int CountBadges(void)
     {
         FlagSet(FLAG_RYU_LAVARIDGE_LUCY);
         if ((VarGet(VAR_RYU_QUEST_LUCY) != 100) || (VarGet(VAR_RYU_QUEST_LUCY) != 0))
-            VarSet(VAR_RYU_QUEST_LUCY, 555);//@Player got too many badges during lucy quest
+            if (VarGet(VAR_RYU_QUEST_LUCY) < 100)
+                VarSet(VAR_RYU_QUEST_LUCY, 555);//@Player got too many badges during lucy quest
     }
     return count;
 }
