@@ -95,8 +95,9 @@ bool8 (*gMenuCallback)(void);
 // EWRAM
 EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
+EWRAM_DATA static s8 sStartMenuCursorVisualOffset = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
-EWRAM_DATA static u8 sCurrentStartMenuActions[9] = {0};
+EWRAM_DATA static u8 sCurrentStartMenuActions[16] = {0};
 EWRAM_DATA static u8 sInitStartMenuData[2] = {0};
 EWRAM_DATA static u8 sStartMenuActionSpriteIds[16] = {0};
 
@@ -714,7 +715,7 @@ const struct SpritePalette sStartMenuButtonPalette =
 static const struct OamData sStartMenuButtonOam =
 {
     .y = 0,
-    .affineMode = ST_OAM_AFFINE_NORMAL,
+    .affineMode = ST_OAM_AFFINE_OFF,
     .shape = SPRITE_SHAPE(32x32),
     .size = SPRITE_SIZE(32x32),
     .priority = 0,
@@ -783,6 +784,92 @@ static const union AffineAnimCmd *const sButtonAffineAnims[] =
     sSelectLeftAffineAnim,
 };
 
+void StartMenuButtonSpriteCallback(struct Sprite * sprite) {
+    s32 pos = sprite->data[0];
+    s32 visualPos = pos - sStartMenuCursorVisualOffset;
+    if(sprite->data[2])
+        return;
+
+    if(visualPos >= 0 || visualPos <= 6) {
+        sprite->invisible = FALSE;
+        {
+            int spacingX = 30;
+            int width = min(7, sNumStartMenuActions) * spacingX;
+            int offsetY = 16 + 6;
+            int offsetX = 14 + (DISPLAY_WIDTH - width) / 2;
+            sprite->pos1.x = offsetX + spacingX * visualPos;
+            sprite->pos1.y = offsetY;
+        }
+    } else {
+        sprite->invisible = TRUE; 
+    }
+}
+
+/*
+void StartMenuButtonSpriteCallback(struct Sprite * sprite) {
+    s32 delta = sprite->data[0] - sStartMenuCursorPos;
+    s32 limit = sprite->data[3];
+    if(sprite->data[2])
+        return;
+    if(sNumStartMenuActions - abs(delta) <= limit) {
+        if(delta < 0)
+            delta += sNumStartMenuActions;
+        else
+            delta -= sNumStartMenuActions;
+    }
+    if(abs(delta) <= limit) {
+        sprite->invisible = FALSE;
+        if(delta != sprite->data[1]) {
+            int spacingX = 30;
+            int count = min(7, sNumStartMenuActions - !(sNumStartMenuActions&1));
+            int width = count * spacingX;
+            int offsetY = 16 + 6;
+            int offsetX = 14 + (DISPLAY_WIDTH - width) / 2;
+            sprite->pos1.x = offsetX + spacingX * (delta + count/2);
+            sprite->pos1.y = offsetY;
+        }
+    } else {
+        sprite->invisible = TRUE; 
+    }
+    sprite->data[1] = delta;
+}
+*/
+
+/*
+void StartMenuButtonSpriteCallback(struct Sprite * sprite) {
+    s32 relativePos;
+    s32 offset;
+    s32 what;
+    if(sStartMenuCursorVisualOffset >= 0)
+        offset = sStartMenuCursorVisualOffset;
+    else
+        offset = sNumStartMenuActions + sStartMenuCursorVisualOffset;
+    
+    if(sNumStartMenuActions - sprite->data[0] == 1 && sStartMenuCursorVisualOffset == 0) {
+        relativePos = -1;
+    } else {
+        what = offset + 7 - sNumStartMenuActions;
+        relativePos = sprite->data[0] - offset;
+        if(what >= 0 && what >= sprite->data[0])
+            relativePos = sprite->data[0] + 7 - what;
+    }
+    if(relativePos > 7 || relativePos < -1){
+        sprite->invisible = TRUE;
+    } else {
+        sprite->invisible = FALSE;
+        if(relativePos != sprite->data[1]) {
+            int spacingX = 30;
+            int width = 7 * spacingX;
+            int offsetY = 16 + 6;
+            int offsetX = 16 + (DISPLAY_WIDTH - width) / 2;
+            sprite->pos1.x = offsetX + spacingX * relativePos;
+            sprite->pos1.y = offsetY;
+        }
+    }
+    sprite->data[1] = relativePos;
+    
+}
+*/
 const struct SpriteTemplate sStartMenuButtonTemplate =
 {
     .tileTag = 0xFFFF,
@@ -791,7 +878,7 @@ const struct SpriteTemplate sStartMenuButtonTemplate =
     .anims = sButtonAnims,
     .images = NULL,
     .affineAnims = sButtonAffineAnims,
-    .callback = SpriteCallbackDummy
+    .callback = StartMenuButtonSpriteCallback
 };
 
 // ! Don't call this before window id variables are initialized or whatever
@@ -873,25 +960,52 @@ static bool32 InitStartMenuStep(void)
         }
     case 5:
         {
+            //int limit = min(4, (sNumStartMenuActions * 100) / 225); // this is pretty fucked 3,4 = 1. 5,6 = 2. 7,8 = 3. 
             int spacingX = 30;
-            int width = sNumStartMenuActions * spacingX;
+            //int count = min(7, sNumStartMenuActions - !(sNumStartMenuActions&1)); // this is even more fucked
+            int width = min(7, sNumStartMenuActions) * spacingX; 
             int offsetY = 16 + 6;
-            int offsetX = 16 + (DISPLAY_WIDTH - width) / 2;
+            int offsetX = 14 + (DISPLAY_WIDTH - width) / 2;
+            if(sNumStartMenuActions <= 7
+            || sNumStartMenuActions < sStartMenuCursorVisualOffset + 7) {
+                sStartMenuCursorVisualOffset = 0;
+            }
+            if(sNumStartMenuActions <= sStartMenuCursorPos
+            || sStartMenuCursorPos >= sStartMenuCursorVisualOffset + 7) {
+                sStartMenuCursorVisualOffset = 0;
+                sStartMenuCursorPos = 0;
+            }
             for(i = 0; i < sNumStartMenuActions; i++) 
             {
+                s32 delta = i - sStartMenuCursorPos;
                 u32 spriteId;
+                s32 visualPos;
                 const struct StartMenuAction * item = &sStartMenuItems[sCurrentStartMenuActions[i]];
                 struct SpriteTemplate spriteTemplate = sStartMenuButtonTemplate;
                 spriteTemplate.images = item->image;
                 LoadSpritePalette(&sStartMenuButtonPalette);
-                spriteId = CreateSprite(&spriteTemplate, offsetX + spacingX * i, offsetY, 0);
+                visualPos = i - sStartMenuCursorVisualOffset;
+                spriteId = CreateSprite(&spriteTemplate, offsetX + spacingX * visualPos, offsetY, 0);
+                if(visualPos >= 0 && visualPos <= 6) {
+                    gSprites[spriteId].invisible = FALSE;
+                } else {
+                    gSprites[spriteId].invisible = TRUE; 
+                }
+                //gSprites[spriteId].data[2] = FALSE;
+
+                // FIXME: i set the matrix number by hand 
+                // until someone decides to use an affine sprite with that exam matrix at some point
                 if(sStartMenuCursorPos == i) {
+                    gSprites[spriteId].oam.affineMode = ST_OAM_AFFINE_NORMAL;
+                    gSprites[spriteId].oam.matrixNum = 10;
                     StartSpriteAnim(&gSprites[spriteId], 1);
                     StartSpriteAffineAnim(&gSprites[spriteId], 3);
                 }
                 sStartMenuActionSpriteIds[i] = spriteId;
+                gSprites[spriteId].data[0] = i;
+                //gSprites[spriteId].data[3] = limit;
             }
-            BuildOamBuffer(); // Force resort sprites to mitigate the object priority bug
+            //BuildOamBuffer(); // Force resort sprites to mitigate the object priority bug
             PrintActionName(sStartMenuCursorPos);
             sInitStartMenuData[0]++;
             return TRUE;
@@ -1152,7 +1266,7 @@ static void PrintActionName(u32 pos)
     AddTextPrinterParameterized(sActionNameWindowId, 1, sStartMenuItems[action].text, x, y, 0xFF, NULL);
     CopyWindowToVram(sActionNameWindowId, 2);
 }
-
+/*
 static s32 MainMenu_MoveSelectedAction(s32 delta)
 {
     s32 newPos;
@@ -1166,8 +1280,104 @@ static s32 MainMenu_MoveSelectedAction(s32 delta)
     }
     oldSprite = gSprites + sStartMenuActionSpriteIds[sStartMenuCursorPos];
     newSprite = gSprites + sStartMenuActionSpriteIds[newPos];
+    oldSprite->oam.affineMode = ST_OAM_AFFINE_OFF;
+    oldSprite->oam.matrixNum = 0; // matrix num is shared with sprite flip on non affine sprites so we reset
     StartSpriteAnim(oldSprite, 0);
     StartSpriteAffineAnim(oldSprite, 1);
+    newSprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
+    newSprite->oam.matrixNum = 10;
+    StartSpriteAnim(newSprite, 1);
+    StartSpriteAffineAnim(newSprite, delta > 0 ? 2 : 4); // If going to the right play right shake otherwise left shake
+    PrintActionName(newPos);
+    return newPos;
+}
+*/
+/*
+static s32 MainMenu_MoveSelectedAction(s32 delta)
+{
+    s32 newPos;
+    s32 relativePos;
+    s32 offset = 0;
+    struct Sprite * oldSprite;
+    struct Sprite * newSprite;
+    s32 what;
+    newPos = sStartMenuCursorPos + delta;
+    if(sStartMenuCursorVisualOffset >= 0)
+        offset = sStartMenuCursorVisualOffset;
+    else
+        offset = sNumStartMenuActions + sStartMenuCursorVisualOffset;
+        
+    what = offset + 7 - sNumStartMenuActions;
+    relativePos = newPos - offset;
+    if(what >= 0 && what >= newPos)
+        relativePos = newPos + 7 - what;
+
+    if(relativePos >= 7)
+        sStartMenuCursorVisualOffset++;
+    else if (relativePos < 0)
+        sStartMenuCursorVisualOffset--;
+    if(abs(sStartMenuCursorVisualOffset) >= sNumStartMenuActions)
+        sStartMenuCursorVisualOffset = 0;
+    if(newPos >= sNumStartMenuActions) {
+        newPos %= sNumStartMenuActions;
+        //sStartMenuCursorVisualOffset = newPos;
+    } else if (newPos < 0){
+        newPos = sNumStartMenuActions - abs(newPos) % sNumStartMenuActions;
+        //sStartMenuCursorVisualOffset = newPos - 6;
+    }
+    oldSprite = gSprites + sStartMenuActionSpriteIds[sStartMenuCursorPos];
+    newSprite = gSprites + sStartMenuActionSpriteIds[newPos];
+    oldSprite->oam.affineMode = ST_OAM_AFFINE_OFF;
+    oldSprite->oam.matrixNum = 0; // matrix num is shared with sprite flip on non affine sprites so we reset
+    StartSpriteAnim(oldSprite, 0);
+    StartSpriteAffineAnim(oldSprite, 1);
+    newSprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
+    newSprite->oam.matrixNum = 10;
+    StartSpriteAnim(newSprite, 1);
+    StartSpriteAffineAnim(newSprite, delta > 0 ? 2 : 4); // If going to the right play right shake otherwise left shake
+    PrintActionName(newPos);
+    return newPos;
+}
+*/
+
+static s32 MainMenu_MoveSelectedAction(s32 delta)
+{
+    s32 newPos;
+    struct Sprite * oldSprite;
+    struct Sprite * newSprite;
+    u32 newRelativePos;
+    newPos = sStartMenuCursorPos + delta;
+
+    if(newPos >= sNumStartMenuActions) {
+        newPos %= sNumStartMenuActions;
+    } else if (newPos < 0){
+        newPos = sNumStartMenuActions - abs(newPos) % sNumStartMenuActions;
+    }
+    if(sNumStartMenuActions > 7) {
+        newRelativePos = newPos - sStartMenuCursorVisualOffset;
+        if(newRelativePos > 4
+        && sStartMenuCursorVisualOffset + 7 < sNumStartMenuActions
+        && delta > 0) {
+            sStartMenuCursorVisualOffset++;
+        } else if(newRelativePos < 2
+        && sStartMenuCursorVisualOffset > 0
+        && delta < 0) {
+            sStartMenuCursorVisualOffset--;
+        }
+        if(sNumStartMenuActions - 3 <= newPos) {
+            sStartMenuCursorVisualOffset = sNumStartMenuActions - 7;
+        } else if(newPos < 3) {
+            sStartMenuCursorVisualOffset = 0;
+        }
+    }
+    oldSprite = gSprites + sStartMenuActionSpriteIds[sStartMenuCursorPos];
+    newSprite = gSprites + sStartMenuActionSpriteIds[newPos];
+    oldSprite->oam.affineMode = ST_OAM_AFFINE_OFF;
+    oldSprite->oam.matrixNum = 0; // matrix num is shared with sprite flip on non affine sprites so we reset
+    StartSpriteAnim(oldSprite, 0);
+    StartSpriteAffineAnim(oldSprite, 1);
+    newSprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
+    newSprite->oam.matrixNum = 10;
     StartSpriteAnim(newSprite, 1);
     StartSpriteAffineAnim(newSprite, delta > 0 ? 2 : 4); // If going to the right play right shake otherwise left shake
     PrintActionName(newPos);
