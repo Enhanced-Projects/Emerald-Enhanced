@@ -3717,7 +3717,7 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery1[] = {
 	.heldItem = ITEM_WIKI_BERRY,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_OVERHEAT, MOVE_SUNNY_DAY, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP},
+	.moves = {MOVE_FIRE_BLAST, MOVE_SUNNY_DAY, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP},
 	}
 };
 
@@ -12437,7 +12437,7 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery2[] = {
 	.heldItem = ITEM_WIKI_BERRY,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_OVERHEAT, MOVE_SUNNY_DAY, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP},
+	.moves = {MOVE_FIRE_BLAST, MOVE_SUNNY_DAY, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP},
 	}
 };
 
@@ -12494,7 +12494,7 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery3[] = {
 	.heldItem = ITEM_WIKI_BERRY,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_OVERHEAT, MOVE_SUNNY_DAY, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP},
+	.moves = {MOVE_FIRE_BLAST, MOVE_SUNNY_DAY, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP},
 	}
 };
 
@@ -12551,7 +12551,7 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery4[] = {
 	.heldItem = ITEM_WIKI_BERRY,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_OVERHEAT, MOVE_SUNNY_DAY, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP},
+	.moves = {MOVE_FIRE_BLAST, MOVE_SUNNY_DAY, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP},
 	}
 
 };

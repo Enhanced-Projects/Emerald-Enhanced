@@ -4439,7 +4439,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ROTOM_HEAT_1] = { // Rotom_Heat-Bulky (ID: 493)
         .species = SPECIES_ROTOM_HEAT,
-        .moves = {MOVE_OVERHEAT, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP, MOVE_PAIN_SPLIT},
+        .moves = {MOVE_FIRE_BLAST, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP, MOVE_PAIN_SPLIT},
         .heldItem = ITEM_WIKI_BERRY,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
         .nature = NATURE_TIMID,
@@ -6275,7 +6275,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ROTOM_HEAT_2] = { // Rotom_Heat-Specs (ID: 697)
         .species = SPECIES_ROTOM_HEAT,
-        .moves = {MOVE_OVERHEAT, MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
+        .moves = {MOVE_FIRE_BLAST, MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
         .heldItem = ITEM_CHOICE_SPECS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
