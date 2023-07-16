@@ -1006,7 +1006,7 @@ static const u16 sMoveEffectsForbiddenToInstruct[] =
     EFFECT_ASSIST,
     EFFECT_BIDE,
     EFFECT_FOCUS_PUNCH,
-    //EFFECT_GEOMANCY,
+    EFFECT_GEOMANCY,
     EFFECT_INSTRUCT,
     EFFECT_ME_FIRST,
     EFFECT_METRONOME,
@@ -11281,6 +11281,15 @@ static void Cmd_recoverbasedonsunlight(void)
                 gBattleMoveDamage = 20 * gBattleMons[gBattlerAttacker].maxHP / 30;
             else
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
+        }
+        else if (gCurrentMove == MOVE_MOONLIGHT)
+        {
+            if (!(gBattleWeather & WEATHER_ANY) || !WEATHER_HAS_EFFECT)
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
+            else if (gBattleWeather & WEATHER_ECLIPSE_ANY)
+                gBattleMoveDamage = 20 * gBattleMons[gBattlerAttacker].maxHP / 30;
+            else // not eclipse weather
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
         }
         else
         {

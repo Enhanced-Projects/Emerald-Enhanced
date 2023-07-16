@@ -7142,7 +7142,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         // todo
         break;
     case EFFECT_SOLARBEAM:
-        if (IsBattlerWeatherAffected(battlerAtk, (WEATHER_HAIL_ANY | WEATHER_SANDSTORM_ANY | WEATHER_RAIN_ANY)))
+        if (IsBattlerWeatherAffected(battlerAtk, (WEATHER_HAIL_ANY | WEATHER_SANDSTORM_ANY | WEATHER_RAIN_ANY | WEATHER_ECLIPSE_ANY)))
             MulModifier(&modifier, UQ_4_12(0.5));
         break;
     case EFFECT_STOMPING_TANTRUM:
@@ -7548,15 +7548,11 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     if (IsBattlerWeatherAffected(battlerAtk, WEATHER_ECLIPSE_ANY))
     {
         if (moveType == TYPE_DARK)
-            dmg = ApplyModifier(UQ_4_12(1.50), dmg);
+            dmg = ApplyModifier(UQ_4_12(1.33), dmg);
         else if (moveType == TYPE_GHOST)
-            dmg = ApplyModifier(UQ_4_12(1.25), dmg);
-        else if (moveType == TYPE_PSYCHIC)
-            dmg = ApplyModifier(UQ_4_12(1.10), dmg);
+            dmg = ApplyModifier(UQ_4_12(1.33), dmg);
         else if (moveType == TYPE_FAIRY)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
-        else if (moveType == TYPE_NORMAL)
-            dmg = ApplyModifier(UQ_4_12(0.9), dmg);
     }   
 
     // check stab
