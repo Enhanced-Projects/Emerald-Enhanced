@@ -33,6 +33,7 @@
 #include "constants/items.h"
 #include "constants/rgb.h"
 #include "event_data.h"
+#include "pokedex.h"
 
 #define MAX_MODIFY_DIGITS 4
 
@@ -644,7 +645,7 @@ static const struct WindowTemplate sBattleInfoWindow[] =
     {
         .bg = 0,            // windowId bg to print text on
         .tilemapLeft = 0,   // position from left (per 8 pixels)
-        .tilemapTop = 8,    // position from top (per 8 pixels)
+        .tilemapTop = 7,    // position from top (per 8 pixels)
         .width = 30,        // width (per 8 pixels)
         .height = 8,        // height (per 8 pixels)
         .paletteNum = 15,   // palette index to use for text
@@ -654,7 +655,7 @@ static const struct WindowTemplate sBattleInfoWindow[] =
     {
         .bg = 0,            // windowId bg to print text on
         .tilemapLeft = 0,   // position from left (per 8 pixels)
-        .tilemapTop = 16,    // position from top (per 8 pixels)
+        .tilemapTop = 14,    // position from top (per 8 pixels)
         .width = 30,        // width (per 8 pixels)
         .height = 6,        // height (per 8 pixels)
         .paletteNum = 15,   // palette index to use for text
@@ -682,7 +683,7 @@ void BufferPlayerRightBattleData(void)
     StringCopy(gStringVar4, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
     StringExpandPlaceholders(gStringVar1, gStringVar4);
     StringAppend(gStringVar4, gBattleMons[0].nickname);
-    StringCopy(gStringVar1, ((const u8[])_("     (Player Right)           {SELECT_BUTTON}:Exit{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
+    StringCopy(gStringVar1, ((const u8[])_("     (Player Right){COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
     StringExpandPlaceholders(gStringVar2, gStringVar1);
     StringAppend(gStringVar4, gStringVar2);
     StringAppend(gStringVar4, sText_Newline);
@@ -691,7 +692,7 @@ void BufferPlayerRightBattleData(void)
         StringAppend(gStringVar4, sBattleStatStrings[i]);
         ConvertIntToDecimalStringN(gStringVar1, (gBattleMons[0].statStages[STAT_ATK + i]) - 6, 0, 3);
         StringAppend(gStringVar4, gStringVar1);
-        if (i < 7)
+        if (i < 6)
             StringAppend(gStringVar4, sText_Comma);
         StringAppend(gStringVar4, sText_SingleSpace);
         if (i == 4)
@@ -704,10 +705,45 @@ void BufferPlayerRightBattleData(void)
         ConvertIntToDecimalStringN(gStringVar1, gDisableStructs[0].stockpileCounter, 0, 2);
         StringAppend(gStringVar4, gStringVar1);
     }
+}
+
+void BufferEnemyRightBattleData(void)
+{
+    int i;
+    StringCopy(gStringVar4, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
+    StringExpandPlaceholders(gStringVar1, gStringVar4);
+    StringAppend(gStringVar4, gBattleMons[1].nickname);
+    StringCopy(gStringVar1, ((const u8[])_(" (Enemy Right)")));
+    StringExpandPlaceholders(gStringVar2, gStringVar1);
+    StringAppend(gStringVar4, gStringVar2);
+    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[1].species), FLAG_GET_SEEN))
+    {
+        StringCopy(gStringVar1, ((const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE} Types: ")));
+        StringAppend(gStringVar1, gTypeNames[gBattleMons[1].type1]);
+        StringAppend(gStringVar1, ((const u8[])_(" / ")));
+        StringAppend(gStringVar1, gTypeNames[gBattleMons[1].type2]);
+        StringAppend(gStringVar4, gStringVar1);
+    }
+    StringAppend(gStringVar4, ((const u8[])_("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
     StringAppend(gStringVar4, sText_Newline);
-    StringAppend(gStringVar4, ((const u8[])_("No data")));
-    StringAppend(gStringVar4, sText_Newline);
-    StringAppend(gStringVar4, ((const u8[])_("No data")));
+    for (i = 0;i < 7;i++)
+    {   
+        StringAppend(gStringVar4, sBattleStatStrings[i]);
+        ConvertIntToDecimalStringN(gStringVar1, (gBattleMons[1].statStages[STAT_ATK + i]) - 6, 0, 3);
+        StringAppend(gStringVar4, gStringVar1);
+        if (i < 6)
+            StringAppend(gStringVar4, sText_Comma);
+        StringAppend(gStringVar4, sText_SingleSpace);
+        if (i == 4)
+            StringAppend(gStringVar4, sText_Newline);
+    }
+    StringAppend(gStringVar4, sText_SingleSpace);
+    if (gDisableStructs[1].stockpileCounter != 0) //player's first mon stockpile count
+    {
+        StringAppend(gStringVar4 , ((const u8[])_("Stock: ")));
+        ConvertIntToDecimalStringN(gStringVar1, gDisableStructs[1].stockpileCounter, 0, 2);
+        StringAppend(gStringVar4, gStringVar1);
+    }
 }
 
 void BufferPlayerLeftBattleData(void)
@@ -727,7 +763,7 @@ void BufferPlayerLeftBattleData(void)
             StringAppend(gStringVar4, sBattleStatStrings[i]);
             ConvertIntToDecimalStringN(gStringVar1, (gBattleMons[1].statStages[STAT_ATK + i]) - 6, 0, 3);
             StringAppend(gStringVar4, gStringVar1);
-            if (i < 7)
+            if (i < 6)
                 StringAppend(gStringVar4, sText_Comma);
             StringAppend(gStringVar4, sText_SingleSpace);
             if (i == 4)
@@ -744,13 +780,51 @@ void BufferPlayerLeftBattleData(void)
     {
         StringCopy(gStringVar4, ((const u8[])_("N/A (Player Left)")));
     }
-    StringAppend(gStringVar4, sText_Newline);
-    StringAppend(gStringVar4, ((const u8[])_("No data")));
-    StringAppend(gStringVar4, sText_Newline);
-    StringAppend(gStringVar4, ((const u8[])_("No data")));
-    StringAppend(gStringVar4, sText_Newline);
-    StringAppend(gStringVar4, ((const u8[])_("No data")));
+}
 
+void BufferEnemyLeftBattleData(void)
+{
+    int i;
+    if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) == TRUE)
+    {
+    StringCopy(gStringVar1, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
+    StringExpandPlaceholders(gStringVar4, gStringVar1);
+    StringAppend(gStringVar4, gBattleMons[3].nickname);
+    StringCopy(gStringVar1, ((const u8[])_(" (Enemy Left) {COLOR LIGHT_BLUE}{SHADOW BLUE}")));
+    StringExpandPlaceholders(gStringVar2, gStringVar1);
+    StringAppend(gStringVar4, gStringVar2);
+    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[3].species), FLAG_GET_SEEN))
+    {
+        StringCopy(gStringVar1, ((const u8[])_("Type: ")));
+        StringAppend(gStringVar1, gTypeNames[gBattleMons[3].type1]);
+        StringAppend(gStringVar1, ((const u8[])_(" / ")));
+        StringAppend(gStringVar1, gTypeNames[gBattleMons[3].type2]);
+        StringAppend(gStringVar1, ((const u8[])_("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
+        StringAppend(gStringVar4, gStringVar1);
+    }
+    StringAppend(gStringVar4, sText_Newline);
+        for (i = 0;i < 7;i++)
+        {   
+            StringAppend(gStringVar4, sBattleStatStrings[i]);
+            ConvertIntToDecimalStringN(gStringVar1, (gBattleMons[3].statStages[STAT_ATK + i]) - 6, 0, 3);
+            StringAppend(gStringVar4, gStringVar1);
+            if (i < 6)
+                StringAppend(gStringVar4, sText_Comma);
+            StringAppend(gStringVar4, sText_SingleSpace);
+            if (i == 4)
+                StringAppend(gStringVar4, sText_Newline);
+        }
+        if (gDisableStructs[3].stockpileCounter != 0) //player's second mon stockpile count
+        {
+            StringAppend(gStringVar4 , ((const u8[])_("Stock: ")));
+            ConvertIntToDecimalStringN(gStringVar1, gDisableStructs[3].stockpileCounter, 0, 2);
+            StringAppend(gStringVar4, gStringVar1);
+        }
+    }
+    else
+    {
+        StringCopy(gStringVar4, ((const u8[])_("N/A (Player Left)")));
+    }
 }
 
 void BufferGeneralBattleData(void)
@@ -791,23 +865,43 @@ void BufferGeneralBattleData(void)
     {
         StringAppend(gStringVar4, ((const u8[])_(" - ")));
     }
+    StringAppend(gStringVar4, sText_Newline);
+    StringAppend(gStringVar4, ((const u8[])_("                     {SELECT_BUTTON}:Exit / {R_BUTTON}:Side{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
 }
 
 
 void PrintDataWindows(void)
 {
-    //player right
-    FillWindowPixelBuffer(0, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    BufferPlayerRightBattleData();
-    AddTextPrinterParameterized4(0, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
-    PutWindowTilemap(0);
-    CopyWindowToVram(0, 3);
-    //player left
-    FillWindowPixelBuffer(1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    BufferPlayerLeftBattleData();
-    AddTextPrinterParameterized4(1, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
-    PutWindowTilemap(1);
-    CopyWindowToVram(1, 3);
+    if (gSpecialVar_0x8009 == 0)
+    {
+        //player right
+        FillWindowPixelBuffer(0, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        BufferPlayerRightBattleData();
+        AddTextPrinterParameterized4(0, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+        PutWindowTilemap(0);
+        CopyWindowToVram(0, 3);
+        //player left
+        FillWindowPixelBuffer(1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        BufferPlayerLeftBattleData();
+        AddTextPrinterParameterized4(1, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+        PutWindowTilemap(1);
+        CopyWindowToVram(1, 3);
+    }
+    else
+    {
+        //enemy right
+        FillWindowPixelBuffer(0, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        BufferEnemyRightBattleData();
+        AddTextPrinterParameterized4(0, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+        PutWindowTilemap(0);
+        CopyWindowToVram(0, 3);
+        //enemy left
+        FillWindowPixelBuffer(1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        BufferEnemyLeftBattleData();
+        AddTextPrinterParameterized4(1, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+        PutWindowTilemap(1);
+        CopyWindowToVram(1, 3);
+    }
     //general info
     FillWindowPixelBuffer(2, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     BufferGeneralBattleData();
@@ -863,6 +957,7 @@ void CB2_BattleDebugMenu(void)
             LoadPalette(sBgColorWhite, 0, 2);
         }
         LoadPalette(GetOverworldTextboxPalettePtr(), 0xf0, 16);
+        gSpecialVar_0x8009 = 0;
         gMain.state++;
         break;
     case 4:
@@ -1045,6 +1140,15 @@ static void Task_DebugMenuProcessInput(u8 taskId)
         BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
         gTasks[taskId].func = Task_DebugMenuFadeOut;
         return;
+    }
+
+    if ((gMain.newKeys & R_BUTTON) && (FlagGet(FLAG_RYU_DEV_MODE) == FALSE))
+    {
+        if (gSpecialVar_0x8009 == 0)
+            gSpecialVar_0x8009 = 1;
+        else
+            gSpecialVar_0x8009 = 0;
+        PrintDataWindows();
     }
 
     // Try changing active battler.
