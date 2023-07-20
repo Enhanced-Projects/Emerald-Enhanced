@@ -180,7 +180,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
             return TRUE;
 
         RyuDoSpecialEncounterChecks();
-        RyuCheckTravelTypeDaily();
     }
 
     if (input->checkStandardWildEncounter && CheckStandardWildEncounter(metatileBehavior) == TRUE)
