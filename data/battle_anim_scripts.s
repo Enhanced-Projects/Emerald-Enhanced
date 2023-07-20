@@ -23604,7 +23604,7 @@ WeatherBallIce:
 	waitforvisualfinish
 	end
 WeatherBallEclipse:
-	goto Move_SHADOW_BALL
+	goto Move_DARK_PULSE
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT
