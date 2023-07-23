@@ -7519,8 +7519,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
         else if (moveType == TYPE_FIRE)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
-        else if (moveType == TYPE_GRASS)
-            dmg = ApplyModifier(UQ_4_12(1.1), dmg);
     }
     else if (IsBattlerWeatherAffected(battlerAtk, WEATHER_SUN_ANY))
     {
@@ -7528,23 +7526,17 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
         else if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
-        else if (moveType == TYPE_GRASS)
-            dmg = ApplyModifier(UQ_4_12(1.1), dmg);
     }
 
     else if (IsBattlerWeatherAffected(battlerAtk, WEATHER_HAIL_ANY))
     {
         if (moveType == TYPE_ICE)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
-        else if (moveType == TYPE_WATER)
-            dmg = ApplyModifier(UQ_4_12(1.2), dmg);
-        else if (moveType == TYPE_GRASS)
-            dmg = ApplyModifier(UQ_4_12(0.9), dmg);
         else if (moveType == TYPE_DRAGON)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
     }   
 
-    // Eclipse boosts Dark type moves by 50%, Ghost type moves by 25% and Psychic type moves by 10%
+    // Eclipse boosts Dark type moves by 33%, Ghost type moves by 33%, and weakens Fairy by 50%.
     if (IsBattlerWeatherAffected(battlerAtk, WEATHER_ECLIPSE_ANY))
     {
         if (moveType == TYPE_DARK)

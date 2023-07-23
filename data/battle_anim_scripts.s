@@ -704,6 +704,8 @@ gBattleAnims_Moves::
 	.4byte Move_OMEN
 	.4byte Move_SNAP
 	.4byte Move_FRENZY_FANG
+	.4byte Move_VOID_BURST
+	.4byte Move_SHADOW_SLAM
 @@@@@@@@@@@@ GEN 8 @@@@@@@@@@@@
 	.4byte Move_DYNAMAX_CANNON
 	.4byte Move_SNIPE_SHOT
@@ -13198,6 +13200,127 @@ Move_SNUGGLE:
 Move_CLING:
 	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 6, 4, 2, 4
 	goto BindWrap
+
+Move_VOID_BURST:
+	loadspritegfx ANIM_TAG_ORBS
+	choosetwoturnanim VoidBurstSetUp, VoidBurstUnleash
+VoidBurstEnd:
+	waitforvisualfinish
+	end
+VoidBurstSetUp:
+	monbg ANIM_ATK_PARTNER
+	setalpha 12, 8
+	createvisualtask AnimTask_BlendColorCycle, 2, 2, 1, 4, 0, 11, RGB(31, 31, 11)
+	playsewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER
+	call VoidBurstAbsorbEffect
+	waitforvisualfinish
+	clearmonbg ANIM_ATK_PARTNER
+	blendoff
+	goto VoidBurstEnd
+VoidBurstAbsorbEffect:
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, 40, 40, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, -40, -40, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, 0, 40, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, 0, -40, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, 40, -20, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, 40, 20, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, -40, -20, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, -40, 20, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, -20, 30, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, 20, -30, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, -20, -30, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, 20, 30, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, -40, 0, 16
+	delay 2
+	createsprite gDarkPowerAbsorptionOrbSpriteTemplate, ANIM_ATTACKER, 2, 40, 0, 16
+	delay 2
+	return
+VoidBurstUnleash:
+	loadspritegfx ANIM_TAG_WHITE_SHADOW @Destiny Bond
+	loadspritegfx ANIM_TAG_QUICK_GUARD_HAND @Black Colour
+	loadspritegfx ANIM_TAG_POISON_BUBBLE @Poison
+	loadspritegfx ANIM_TAG_EXPLOSION
+	fadetobg BG_DARK_VOID
+	waitbgfadeout
+	createvisualtask AnimTask_StartSlidingBg, 5, 0, 0xFFA0, 1, 0xffff
+	waitbgfadein
+	createvisualtask AnimTask_DestinyBondWhiteShadow, 5, 0, 48
+	loopsewithpan SE_M_CONFUSE_RAY, SOUND_PAN_ATTACKER, 5, 2
+	delay 0x30
+	launchtask AnimTask_SquishTarget 0x2 0x0
+	waitforvisualfinish
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 1, 1
+	delay 6
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, 24, -24, 1, 1
+	delay 6
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, -16, 16, 1, 1
+	delay 6
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, -24, -12, 1, 1
+	delay 6
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, 16, 16, 1, 1
+	waitforvisualfinish
+	delay 0x10
+	call UnsetPsychicBg
+	visible ANIM_TARGET
+	goto VoidBurstEnd
+
+Move_SHADOW_SLAM::
+	loadspritegfx ANIM_TAG_ROUND_SHADOW @fly/bounce
+	loadspritegfx ANIM_TAG_GRAY_SMOKE @smoke
+	loadspritegfx ANIM_TAG_SWEAT_BEAD @astonish
+	setblends 0xF
+	playsewithpan SE_M_FLY, SOUND_PAN_ATTACKER
+	launchtemplate gFlyBallUpSpriteTemplate 0x2 0x4 0x0 0x0 0xd 0x150
+	waitforvisualfinish
+	delay 0xF
+	launchtemplate gSprayWaterDropletSpriteTemplate 0x85 0x2 0x0 0x1
+	playsewithpan SE_M_SKETCH, SOUND_PAN_TARGET
+	launchtemplate gSprayWaterDropletSpriteTemplate 0x85 0x2 0x1 0x1
+	launchtask AnimTask_ShakeMon2 0x2 0x5 0x1 0x4 0x0 0x5 0x1
+	launchtask AnimTask_StretchTargetUp 0x3 0x0
+	waitforvisualfinish
+	delay 0x19
+	playsewithpan SE_M_SWAGGER, SOUND_PAN_TARGET
+	launchtemplate gBounceBallLandSpriteTemplate 0x83 0x0
+	delay 0x2
+	launchtask AnimTask_SquishTarget 0x2 0x0
+	delay 0x5
+	playsewithpan SE_M_MEGA_KICK2, SOUND_PAN_TARGET
+	launchtemplate gOctazookaSmokeSpriteTemplate 0x80 0x4 0x8 0x8 0x1 0x0
+	delay 0x2
+	launchtemplate gOctazookaSmokeSpriteTemplate 0x80 0x4 0xfff8 0xfff8 0x1 0x0
+	delay 0x2
+	launchtemplate gOctazookaSmokeSpriteTemplate 0x80 0x4 0x8 0xfff8 0x1 0x0
+	delay 0x2
+	launchtemplate gOctazookaSmokeSpriteTemplate 0x80 0x4 0xfff8 0x8 0x1 0x0
+	delay 0x2
+	launchtemplate gOctazookaSmokeSpriteTemplate 0x80 0x4 0x8 0x8 0x1 0x0
+	delay 0x2
+	launchtemplate gOctazookaSmokeSpriteTemplate 0x80 0x4 0xfff8 0xfff8 0x1 0x0
+	delay 0x2
+	launchtemplate gOctazookaSmokeSpriteTemplate 0x80 0x4 0x8 0xfff8 0x1 0x0
+	delay 0x2
+	launchtemplate gOctazookaSmokeSpriteTemplate 0x80 0x4 0xfff8 0x8 0x1 0x0
+	waitforvisualfinish
+	blendoff
+	end
 
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 8 @@@@@@@@@@@@@@@@@@@@@@@
 Move_DYNAMAX_CANNON::

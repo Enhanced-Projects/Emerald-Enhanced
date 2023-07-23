@@ -1022,6 +1022,7 @@ static const u16 sMoveEffectsForbiddenToInstruct[] =
     EFFECT_SOLARBEAM,
     EFFECT_TRANSFORM,
     EFFECT_TWO_TURNS_ATTACK,
+    EFFECT_VOID_BURST,
     FORBIDDEN_INSTRUCT_END
 };
 
@@ -1569,7 +1570,13 @@ static bool32 AccuracyCalcHelper(u16 move)
     {
         if ((IsBattlerWeatherAffected(gBattlerTarget, WEATHER_RAIN_ANY) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE)))
         {
-            // thunder/hurricane ignore acc checks in rain unless target is holding utility umbrella
+            // thunder/hurricane ignore acc checks in rain unless target is ignoring weather
+            JumpIfMoveFailed(7, move);
+            return TRUE;
+        }
+        if ((IsBattlerWeatherAffected(gBattlerTarget, WEATHER_ECLIPSE_ANY) && (gBattleMoves[move].effect == EFFECT_SHADOW_SLAM)))
+        {
+            // shadow slam ignores acc checks in eclipse unless target is ignoring weather
             JumpIfMoveFailed(7, move);
             return TRUE;
         }
@@ -10627,6 +10634,7 @@ static bool8 IsTwoTurnsMove(u16 move)
     if (gBattleMoves[move].effect == EFFECT_SKULL_BASH
         || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
         || gBattleMoves[move].effect == EFFECT_SOLARBEAM
+        || gBattleMoves[move].effect == EFFECT_VOID_BURST
         || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
         || gBattleMoves[move].effect == EFFECT_BIDE)
         return TRUE;
@@ -10641,9 +10649,14 @@ static u8 AttacksThisTurn(u8 battlerId, u16 move) // Note: returns 1 if it's a c
         && (gBattleWeather & WEATHER_SUN_ANY))
         return 2;
 
+    if (gBattleMoves[move].effect == EFFECT_VOID_BURST
+        && (gBattleWeather & WEATHER_ECLIPSE_ANY))
+        return 2;
+
     if (gBattleMoves[move].effect == EFFECT_SKULL_BASH
         || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
         || gBattleMoves[move].effect == EFFECT_SOLARBEAM
+        || gBattleMoves[move].effect == EFFECT_VOID_BURST
         || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
         || gBattleMoves[move].effect == EFFECT_BIDE)
     {

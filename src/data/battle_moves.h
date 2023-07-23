@@ -9594,7 +9594,35 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_STRONG_JAW_BOOST | FLAG_IS_BITE_MOVE,
         .split = SPLIT_PHYSICAL,
     },
-    
+
+    [MOVE_VOID_BURST] =
+    {
+        .effect = EFFECT_VOID_BURST,
+        .power = 120,
+        .type = TYPE_DARK,
+        .accuracy = 0,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .split = SPLIT_SPECIAL,
+    },
+
+    [MOVE_SHADOW_SLAM] =
+    {
+        .effect = EFFECT_SHADOW_SLAM,
+        .power = 110,
+        .type = TYPE_GHOST,
+        .accuracy = 70,
+        .pp = 10,
+        .secondaryEffectChance = 30,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_DMG_MINIMIZE,
+        .split = SPLIT_PHYSICAL,
+    },
+
     [MOVE_DYNAMAX_CANNON] =
     {
         .effect = EFFECT_HIT,

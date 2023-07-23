@@ -661,7 +661,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_SHELL_TRAP] = _("Shell Trap"),
     [MOVE_FLEUR_CANNON] = _("Fleur Cannon"),
     [MOVE_PSYCHIC_FANGS] = _("PsychicFangs"),
-    [MOVE_STOMPING_TANTRUM] = _("Trample"),
+    [MOVE_STOMPING_TANTRUM] = _("Mad Trample"),
     [MOVE_SHADOW_BONE] = _("Shadow Bone"),
     [MOVE_ACCELEROCK] = _("Accelerock"),
     [MOVE_LIQUIDATION] = _("Liquidation"),
@@ -685,6 +685,8 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_OMEN] = _("Omen"),
     [MOVE_SNAP] = _("Snap"),
     [MOVE_FRENZY_FANG] = _("Frenzy Fang"),
+    [MOVE_VOID_BURST] = _("Void Burst"),
+    [MOVE_SHADOW_SLAM] = _("Shadow Slam"),
     //GEN 8
     [MOVE_DYNAMAX_CANNON] = _("Dyna Cannon"),
     [MOVE_SNIPE_SHOT] = _("Snipe Shot"),

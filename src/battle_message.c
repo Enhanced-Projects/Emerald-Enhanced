@@ -768,6 +768,7 @@ static const u8 sText_MagicianMadeItemDisappear[]      = _("{B_ATK_NAME_WITH_PRE
 static const u8 sText_PlaguebearerInfested[]      = _("{B_ATK_NAME_WITH_PREFIX}'s Plaguebearer caused an\ninfestation on {B_DEF_NAME_WITH_PREFIX}!");
 const u8 sText_FabaMagnetosphere[] = _("Faba's Magnetosphere is\npreventing switching!                         ");
 static const u8 sText_MagnetosphereActive[] = _("Faba's Magnetoshpere discharges!");
+static const u8 sText_PkmnChannelsDarkness[] = _("{B_ATK_NAME_WITH_PREFIX} is\nchanneling the darkness!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1395,6 +1396,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PLAGUEBEARERINFEST - 12]            = sText_PlaguebearerInfested,
     [STRINGID_FABAMAGNETOSPHERE - 12] = sText_FabaMagnetosphere,
     [STRINGID_MAGNETOSPHEREACTIVE - 12] = sText_MagnetosphereActive,
+    [STRINGID_PKMNCHANNELSDARKNESS - 12] = sText_PkmnChannelsDarkness,
 };
 
 const u16 gTerrainStringIds[] =
@@ -1541,6 +1543,7 @@ const u16 gFirstTurnOfTwoStringIds[] =
     STRINGID_VANISHEDINSTANTLY,         // MOVE_PHANTOM_FORCE
     STRINGID_PKNMABSORBINGPOWER,        // MOVE_GEOMANCY
     STRINGID_CLOAKEDINAFREEZINGLIGHT,   // MOVE_FREEZE_SHOCK
+    STRINGID_PKMNCHANNELSDARKNESS,      // MOVE_VOID_BURST
 };
 
 // Index copied from move's index in gTrappingMoves

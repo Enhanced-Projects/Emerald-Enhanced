@@ -640,8 +640,9 @@
 #define STRINGID_PLAGUEBEARERINFEST                   636
 #define STRINGID_FABAMAGNETOSPHERE                    637
 #define STRINGID_MAGNETOSPHEREACTIVE                  638
+#define STRINGID_PKMNCHANNELSDARKNESS                 639
 
-#define BATTLESTRINGS_COUNT                           639
+#define BATTLESTRINGS_COUNT                           640
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H
