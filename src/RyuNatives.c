@@ -540,7 +540,7 @@ void CheckSuperTrainingTotalEV (void)
     for (i = 0; i < 6;i++)
         total += (GetMonData(&gPlayerParty[slot], MON_DATA_HP_EV + i));
 
-    if (total >= 510)
+    if (total + value >= 510)
         gSpecialVar_Result = 3;//mon is maxed
     else if ((GetMonData(&gPlayerParty[slot], RyuValToEv[stat])) + value > 252)
         gSpecialVar_Result = 2;//slot is maxed
