@@ -1354,6 +1354,19 @@ u8 TrySetCantSelectMoveBattleScript(void)
     u32 move = gBattleMons[gActiveBattler].moves[moveId];
     u32 holdEffect = GetBattlerHoldEffect(gActiveBattler, TRUE);
     u16 *choicedMove = &gBattleStruct->choicedMove[gActiveBattler];
+    mgba_open();
+    mgba_printf(LOGINFO, "checking disabled");
+
+        
+    if ((gBattleWeather == WEATHER_ECLIPSE_ANY) &&
+        (GetBattlerAbility(gActiveBattler) == ABILITY_MAGIC_BOUNCE) &&
+        (gBattleMoves[move].split == SPLIT_STATUS))
+    {
+        mgba_open();
+        mgba_printf(LOGINFO, "Disabled");
+        gSelectionBattleScripts[gActiveBattler] = BattleScript_RyuLunaticDisableStatusMessage;
+        limitations++;
+    }
 
     if (gDisableStructs[gActiveBattler].disabledMove == move && move != MOVE_NONE)
     {
@@ -1552,6 +1565,8 @@ u8 CheckMoveLimitations(u8 battlerId, u8 unusableMoves, u8 check)
         else if (HOLD_EFFECT_CHOICE(holdEffect) && *choicedMove != 0 && *choicedMove != 0xFFFF && *choicedMove != gBattleMons[battlerId].moves[i])
             unusableMoves |= gBitTable[i];
         else if (holdEffect == HOLD_EFFECT_ASSAULT_VEST && gBattleMoves[gBattleMons[battlerId].moves[i]].power == 0)
+            unusableMoves |= gBitTable[i];
+        else if ((gBattleMoves[gBattleMons[battlerId].moves[i]].power == 0) && (gBattleMons[battlerId].ability == ABILITY_MAGIC_BOUNCE) && (gBattleWeather == WEATHER_ECLIPSE_ANY))
             unusableMoves |= gBitTable[i];
         else if (IsGravityPreventingMove(gBattleMons[battlerId].moves[i]))
             unusableMoves |= gBitTable[i];
