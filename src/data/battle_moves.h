@@ -9567,9 +9567,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .split = SPLIT_PHYSICAL,
     },
 
-    [MOVE_OMEN] =
+    [MOVE_ECLIPSE] =
     {
-        .effect = EFFECT_OMEN,
+        .effect = EFFECT_ECLIPSE,
         .power = 0,
         .type = TYPE_DARK,
         .accuracy = 0,

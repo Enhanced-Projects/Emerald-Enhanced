@@ -367,7 +367,7 @@ gBattleScriptsForMoveEffects:: @ 82D86A8
 	.4byte BattleScript_EffectFairyLock
 	.4byte BattleScript_EffectAllySwitch
 	.4byte BattleScript_EffectSleepHit
-	.4byte BattleScript_EffectOmen
+	.4byte BattleScript_EffectEclipse
 	.4byte BattleScript_EffectSnap
 	.4byte BattleScript_EffectVoidBurst
 	.4byte BattleScript_EffectShadowSlam
@@ -394,7 +394,7 @@ BattleScript_VoidBurstOnFirstTurn::
 	ppreduce
 	goto BattleScript_TwoTurnMovesSecondTurn
 
-BattleScript_EffectOmen:
+BattleScript_EffectEclipse:
 	attackcanceler
 	attackstring
 	ppreduce

@@ -5243,10 +5243,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_TM63_OMEN] =
+    [ITEM_TM63_ECLIPSE] =
     {
         .name = _("TM63"),
-        .itemId = ITEM_TM63_OMEN,
+        .itemId = ITEM_TM63_ECLIPSE,
         .price = 3000,
         .description = sTM63Desc,
                 .importance = 1,

@@ -3402,7 +3402,7 @@ static const struct TrainerMonItemCustomMoves sParty_Phoebe[] = {
 	.heldItem = ITEM_LEFTOVERS,
 	.evspread = 0,
     .ability = 1,
-	.moves = {MOVE_WILL_O_WISP, MOVE_NIGHT_SHADE, MOVE_OMEN, MOVE_PAIN_SPLIT},
+	.moves = {MOVE_WILL_O_WISP, MOVE_CURSE, MOVE_STRENGTH_SAP, MOVE_PARTING_SHOT},
 	},
 	{
 	.iv = 250,

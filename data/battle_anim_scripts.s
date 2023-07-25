@@ -701,7 +701,7 @@ gBattleAnims_Moves::
     .4byte Move_DOUBLE_IRON_BASH
 	.4byte Move_SNUGGLE
 	.4byte Move_CLING
-	.4byte Move_OMEN
+	.4byte Move_ECLIPSE
 	.4byte Move_SNAP
 	.4byte Move_FRENZY_FANG
 	.4byte Move_VOID_BURST
@@ -20479,7 +20479,7 @@ SubmissionHit:
 	delay 8
 	return
 
-Move_OMEN:
+Move_ECLIPSE:
 	goto General_Eclipse
 
 Move_SUNNY_DAY:
@@ -20500,7 +20500,7 @@ Move_SUNNY_DAY:
 	blendoff
 	end
 
-OmenDarkRay:
+EclipseDarkRay:
 SunnyDayLightRay:
 	createsprite gSunlightRaySpriteTemplate, ANIM_ATTACKER, 40
 	delay 6

@@ -201,7 +201,7 @@ AI_CheckBadMove_CheckEffect: @ 82DC045
 	if_effect EFFECT_SPIT_UP, AI_CBM_SpitUpAndSwallow
 	if_effect EFFECT_SWALLOW, AI_CBM_SpitUpAndSwallow
 	if_effect EFFECT_HAIL, AI_CBM_Hail
-	if_effect EFFECT_OMEN, AI_CBM_Eclipse
+	if_effect EFFECT_ECLIPSE, AI_CBM_Eclipse
 	if_effect EFFECT_TORMENT, AI_CBM_Torment
 	if_effect EFFECT_FLATTER, AI_CBM_Confuse
 	if_effect EFFECT_WILL_O_WISP, AI_CBM_WillOWisp
