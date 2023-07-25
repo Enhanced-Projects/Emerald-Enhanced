@@ -7238,6 +7238,10 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
         if (IS_MOVE_SPECIAL(move) && IsBattlerWeatherAffected(battlerAtk, WEATHER_SUN_ANY))
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
+    case ABILITY_LUNATIC:
+        if (IS_MOVE_PHYSICAL(move) && IsBattlerWeatherAffected(battlerAtk, WEATHER_ECLIPSE_ANY))
+            MulModifier(&modifier, UQ_4_12(1.5));
+        break;
     case ABILITY_DEFEATIST:
         if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerDef].maxHP / 2))
             MulModifier(&modifier, UQ_4_12(0.5));

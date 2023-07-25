@@ -145,7 +145,7 @@ static const u8 sBigPecksDescription[] = _("Prevents Defense loss.");
 static const u8 sSandRushDescription[] = _("Doubles Speed in a sandstorm.");
 static const u8 sWonderSkinDescription[] = _("May avoid status problems.");
 static const u8 sAnalyticDescription[] = _("Moving last boosts power.");
-static const u8 sIllusionDescription[] = _("2x dmg STAB spatk moves.");
+static const u8 sIllusionDescription[] = _("2x dmg STAB SpA moves.");
 static const u8 sImposterDescription[] = _("Transforms into the foe.");
 static const u8 sInfiltratorDescription[] = _("Passes through barriers.");
 static const u8 sMummyDescription[] = _("Spreads with contact.");
@@ -233,6 +233,8 @@ static const u8 sGreatwoodDescription[] = _("Super Effective is Neutral.");
 static const u8 sVoodooDescription[] = _("Curses when at half HP.");
 static const u8 sIceworkerDescription[] = _("Powers up Ice moves.");
 static const u8 sPlaguebearerDescription[] = _("Bite moves dmg + infest boost");
+static const u8 sLunaticDescription[] = _("Gets strong during Eclipse.");
+static const u8 sTwilightRushDescription[] = _("Doubles Speed in Eclipse.");
 
 const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
 {
@@ -483,6 +485,8 @@ const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_VOODOO] = _("Voodoo"),
     [ABILITY_ICEWORKER] = _("Iceworker"),
     [ABILITY_PLAGUEBEARER] = _("Plaguebearer"),
+    [ABILITY_LUNATIC] = _("Lunatic"),
+    [ABILITY_TWILIGHT_RUSH] = _("TwilightRush"),
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
@@ -733,5 +737,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
     [ABILITY_GREATWOOD] = sGreatwoodDescription,
     [ABILITY_VOODOO] = sVoodooDescription,
     [ABILITY_ICEWORKER] = sIceworkerDescription,
-    [ABILITY_PLAGUEBEARER] = sPlaguebearerDescription
+    [ABILITY_PLAGUEBEARER] = sPlaguebearerDescription,
+    [ABILITY_LUNATIC] = sLunaticDescription,
+    [ABILITY_TWILIGHT_RUSH] = sTwilightRushDescription
 };
