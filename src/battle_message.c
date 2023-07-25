@@ -769,6 +769,7 @@ static const u8 sText_PlaguebearerInfested[]      = _("{B_ATK_NAME_WITH_PREFIX}'
 const u8 sText_FabaMagnetosphere[] = _("Faba's Magnetosphere is\npreventing switching!                         ");
 static const u8 sText_MagnetosphereActive[] = _("Faba's Magnetoshpere discharges!");
 static const u8 sText_PkmnChannelsDarkness[] = _("{B_ATK_NAME_WITH_PREFIX} is\nchanneling the darkness!");
+static const u8 sText_RyuLunaticDisabledStatusMove[] = _("{B_ATK_NAME_WITH_PREFIX}'s Lunatic disabled non\nattacking moves!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1397,6 +1398,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_FABAMAGNETOSPHERE - 12] = sText_FabaMagnetosphere,
     [STRINGID_MAGNETOSPHEREACTIVE - 12] = sText_MagnetosphereActive,
     [STRINGID_PKMNCHANNELSDARKNESS - 12] = sText_PkmnChannelsDarkness,
+    [STRINGID_RYULUNATICDISABLEDSTATUSMOVE - 12] = sText_RyuLunaticDisabledStatusMove,
 };
 
 const u16 gTerrainStringIds[] =

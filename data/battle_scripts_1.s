@@ -6606,6 +6606,12 @@ BattleScript_MagnetoDamage::
 	waitmessage 0x40
 	goto BattleScript_DoStatusTurnDmg
 
+BattleScript_RyuLunaticDisableStatusMessage::
+	showabilitypopup BS_ABILITY_BATTLER
+	printstring STRINGID_RYULUNATICDISABLEDSTATUSMOVE
+	waitmessage 0x40
+	endselectionscript
+
 BattleScript_PoisonTurnDmg::
 	printstring STRINGID_PKMNHURTBYPOISON
 	waitmessage 0x40
