@@ -768,8 +768,8 @@ static const u8 sText_MagicianMadeItemDisappear[]      = _("{B_ATK_NAME_WITH_PRE
 static const u8 sText_PlaguebearerInfested[]      = _("{B_ATK_NAME_WITH_PREFIX}'s Plaguebearer caused an\ninfestation on {B_DEF_NAME_WITH_PREFIX}!");
 const u8 sText_FabaMagnetosphere[] = _("Faba's Magnetosphere is\npreventing switching!                         ");
 static const u8 sText_MagnetosphereActive[] = _("Faba's Magnetoshpere discharges!");
-static const u8 sText_PkmnChannelsDarkness[] = _("{B_ATK_NAME_WITH_PREFIX} is\nchanneling the darkness!");
-static const u8 sText_RyuLunaticDisabledStatusMove[] = _("{B_ATK_NAME_WITH_PREFIX}'s Lunatic disabled non\nattacking moves!");
+static const u8 sText_PkmnChannelsDarkness[] = _("{B_ATK_NAME_WITH_PREFIX} is\nabsorbing the darkness!");
+static const u8 sText_RyuLunaticDisabledStatusMove[] = _("{B_ATK_NAME_WITH_PREFIX} is too enraged\nto use status moves!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
