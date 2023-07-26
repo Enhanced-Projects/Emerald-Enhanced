@@ -986,7 +986,7 @@
 #define FRONTIER_MON_LAPRAS_RAIN                           960
 #define FRONTIER_MON_SEISMITOAD_RAIN                       961
 #define FRONTIER_MON_ROTOM_FAN_RAIN                        962
-#define FRONTIER_MON_MAGCARGO_SUN                          963
+#define FRONTIER_MON_TORKOAL_SUN                           963
 #define FRONTIER_MON_VICTREEBEL_SUN                        964
 #define FRONTIER_MON_MEGA_HOUNDOOM_SUN                     965
 #define FRONTIER_MON_GIGALITH_SANDSTORM                    966

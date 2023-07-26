@@ -1062,12 +1062,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_MAGCARGO_1] = { // Magcargo-WhiteHerb (ID: 118)
+    [FRONTIER_MON_MAGCARGO_1] = { // Magcargo-Defensive (ID: 118)
         .species = SPECIES_MAGCARGO,
-        .moves = {MOVE_FIRE_BLAST, MOVE_GRAVEL_STORM, MOVE_SOLAR_BEAM, MOVE_SHELL_SMASH},
-        .heldItem = ITEM_WHITE_HERB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_MAGMA_STORM, MOVE_TOXIC, MOVE_EARTH_POWER, MOVE_RECOVER},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_CALM,
         .ivs = 31,
         .ability = 0
     },
@@ -1944,12 +1944,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_MAGCARGO_2] = { // Magcargo-Sash (ID: 216)
+    [FRONTIER_MON_MAGCARGO_2] = { // Magcargo-Offensive (ID: 216)
         .species = SPECIES_MAGCARGO,
-        .moves = {MOVE_FIRE_BLAST, MOVE_GRAVEL_STORM, MOVE_SOLAR_BEAM, MOVE_SHELL_SMASH},
-        .heldItem = ITEM_FOCUS_SASH,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_MAGMA_STORM, MOVE_BLAST_OFF, GRAVEL_STORM, MOVE_RECOVER},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 0
     },
@@ -8613,14 +8613,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 29,
         .ability = 0
     },
-    [FRONTIER_MON_MAGCARGO_SUN] = { // (ID: 963)
-        .species = SPECIES_MAGCARGO,
-        .moves = {MOVE_FIRE_BLAST, MOVE_GRAVEL_STORM, MOVE_SOLAR_BEAM, MOVE_SHELL_SMASH},
+    [FRONTIER_MON_TORKOAL_SUN] = { // (ID: 963)
+        .species = SPECIES_TORKOAL,
+        .moves = {MOVE_BLAST_OFF, MOVE_STEALTH_ROCK, MOVE_WILL_O_WISP, MOVE_OVERHEAT},
         .heldItem = ITEM_HEAT_ROCK,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_SASSY,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_VICTREEBEL_SUN] = { // (ID: 964)
         .species = SPECIES_VICTREEBEL,

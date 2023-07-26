@@ -6966,6 +6966,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         if (moveType == TYPE_WATER)
            MulModifier(&modifier, UQ_4_12(2.0));
         break;
+    case ABILITY_MAGMA_ARMOR:
+        if (moveType == TYPE_FIRE)
+           MulModifier(&modifier, UQ_4_12(1.5));
+        break;
     case ABILITY_STEELWORKER:
         if (moveType == TYPE_STEEL)
            MulModifier(&modifier, UQ_4_12(1.5));
@@ -7992,6 +7996,19 @@ static u16 CalcTypeEffectivenessMultiplierInternal(u16 move, u8 moveType, u8 bat
             gLastLandedMoves[battlerDef] = 0;
             gBattleCommunication[6] = 4;
             RecordAbilityBattle(battlerDef, ABILITY_HEATPROOF);
+        }
+    }
+    if (moveType == TYPE_WATER)
+    {
+        if (recordAbilities && GetBattlerAbility(battlerDef) == ABILITY_MAGMA_ARMOR)
+        {
+            modifier = UQ_4_12(0.0);
+            StringCopy(gStringVar2, gTypeNames[TYPE_WATER]);
+            gLastUsedAbility = ABILITY_MAGMA_ARMOR;
+            gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
+            gLastLandedMoves[battlerDef] = 0;
+            gBattleCommunication[6] = 4;
+            RecordAbilityBattle(battlerDef, ABILITY_MAGMA_ARMOR);
         }
     }
     if (GetBattlerAbility(battlerDef) == ABILITY_WONDER_GUARD && modifier <= UQ_4_12(1.0) && gBattleMoves[move].power)

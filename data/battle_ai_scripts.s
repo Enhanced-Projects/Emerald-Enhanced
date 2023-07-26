@@ -74,6 +74,7 @@ AI_CBM_CheckIfNegatesType:
 	if_equal ABILITY_LEVITATE, CheckIfLevitateCancelsGroundMove
 	if_equal ABILITY_SOUNDPROOF, CheckIfSoundproofCancelsMove
 	if_equal ABILITY_HEATPROOF, CheckIfHeatproofCancelsFireMove
+	if_equal ABILITY_MAGMA_ARMOR, CheckIfMagmaArmorCancelsWaterMove
 	if_equal ABILITY_SAP_SIPPER, CheckIfSapSipperCancelsGrassMove
 	goto AI_CheckBadMove_CheckEffect
 	
@@ -108,6 +109,10 @@ CheckIfLevitateCancelsGroundMove: @ 82DBFEF
 CheckIfHeatproofCancelsFireMove:
 	get_curr_move_type
 	if_equal TYPE_FIRE, Score_Minus10
+
+CheckIfMagmaArmorCancelsWaterMove:
+	get_curr_move_type
+	if_equal TYPE_WATER, Score_Minus10
 
 CheckIfSapSipperCancelsGrassMove:
 	get_curr_move_type

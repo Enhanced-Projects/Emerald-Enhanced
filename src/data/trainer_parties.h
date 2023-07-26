@@ -13949,10 +13949,10 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerRobert[] = {
 	.iv = 255,
 	.lvl = 110,
 	.species = SPECIES_MAGCARGO,
-	.heldItem = ITEM_FOCUS_SASH,
+	.heldItem = ITEM_SITRUS_BERRY,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_FIRE_BLAST, MOVE_GRAVEL_STORM, MOVE_SOLAR_BEAM, MOVE_SHELL_SMASH},
+	.moves = {MOVE_MAGMA_STORM, MOVE_GRAVEL_STORM, MOVE_SOLAR_BEAM, MOVE_SUNNY_DAY},
 	},
 	{
 	.iv = 255,
