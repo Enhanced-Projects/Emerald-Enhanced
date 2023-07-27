@@ -9623,6 +9623,20 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .split = SPLIT_PHYSICAL,
     },
 
+    [MOVE_OVERLOAD] =
+    {
+        .effect = EFFECT_EXPLOSION,
+        .power = 250,
+        .type = TYPE_ELECTRIC,
+        .accuracy = 100,
+        .pp = 5,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .priority = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .split = SPLIT_PHYSICAL,
+    },
+
     [MOVE_DYNAMAX_CANNON] =
     {
         .effect = EFFECT_HIT,

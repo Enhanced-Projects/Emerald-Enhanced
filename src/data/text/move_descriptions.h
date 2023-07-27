@@ -2832,6 +2832,10 @@ static const u8 sSHADOWSLAMDescription[] = _(
     "Surprises the opponent from\n"
     "the shadows. May paralyze.");
 
+static const u8 sOVERLOADDescription[] = _(
+    "Inflicts severe damage but\n"
+    "makes the user faint.");
+
 static const u8 sNotDoneYetDescription[] = _(
     "Not done yet.");
 
@@ -3525,6 +3529,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_FRENZY_FANG - 1] = sFRENZYFANGDescription,
     [MOVE_VOID_BURST - 1] = sVOIDBURSTDescription,
     [MOVE_SHADOW_SLAM - 1] = sSHADOWSLAMDescription,
+    [MOVE_OVERLOAD - 1] = sOVERLOADDescription,
     //GEN 8
     [MOVE_DYNAMAX_CANNON - 1] = sDYNAMAX_CANNONDescription,
     [MOVE_SNIPE_SHOT - 1] = sSNIPE_SHOTDescription,

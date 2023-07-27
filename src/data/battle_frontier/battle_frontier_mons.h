@@ -1946,7 +1946,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MAGCARGO_2] = { // Magcargo-Offensive (ID: 216)
         .species = SPECIES_MAGCARGO,
-        .moves = {MOVE_MAGMA_STORM, MOVE_BLAST_OFF, GRAVEL_STORM, MOVE_RECOVER},
+        .moves = {MOVE_MAGMA_STORM, MOVE_BLAST_OFF, MOVE_GRAVEL_STORM, MOVE_RECOVER},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
@@ -2907,14 +2907,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_ELECTRODE_1] = { // Electrode-ScreensExplosion (ID: 323)
+    [FRONTIER_MON_ELECTRODE_1] = { // Electrode-Offensive (ID: 323)
         .species = SPECIES_ELECTRODE,
-        .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_EXPLOSION, MOVE_TAUNT},
-        .heldItem = ITEM_LIGHT_CLAY,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
-        .nature = NATURE_JOLLY,
+        .moves = {MOVE_WILD_CHARGE, MOVE_OVERLOAD, MOVE_OVERHEAT, MOVE_SECRET_POWER},
+        .heldItem = ITEM_TERRAIN_EXTENDER,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_NAIVE,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_EXPLOUD_1] = { // Exploud-Scarf (ID: 426)
         .species = SPECIES_EXPLOUD,
@@ -4743,14 +4743,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ELECTRODE_2] = { // Electrode-ScreensVolt (ID: 527)
+    [FRONTIER_MON_ELECTRODE_2] = { // Electrode-Lead (ID: 527)
         .species = SPECIES_ELECTRODE,
-        .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_VOLT_SWITCH, MOVE_TAUNT},
-        .heldItem = ITEM_LIGHT_CLAY,
+        .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_TAUNT, MOVE_OVERLOAD},
+        .heldItem = ITEM_TERRAIN_EXTENDER,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
-        .nature = NATURE_TIMID,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_EXPLOUD_2] = { // Exploud-Specs (ID: 630)
         .species = SPECIES_EXPLOUD,

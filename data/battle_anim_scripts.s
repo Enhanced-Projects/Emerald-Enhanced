@@ -706,6 +706,7 @@ gBattleAnims_Moves::
 	.4byte Move_FRENZY_FANG
 	.4byte Move_VOID_BURST
 	.4byte Move_SHADOW_SLAM
+	.4byte Move_OVERLOAD
 @@@@@@@@@@@@ GEN 8 @@@@@@@@@@@@
 	.4byte Move_DYNAMAX_CANNON
 	.4byte Move_SNIPE_SHOT
@@ -13320,6 +13321,87 @@ Move_SHADOW_SLAM::
 	launchtemplate gOctazookaSmokeSpriteTemplate 0x80 0x4 0xfff8 0x8 0x1 0x0
 	waitforvisualfinish
 	blendoff
+	end
+
+Move_OVERLOAD:
+	loadspritegfx ANIM_TAG_EXPLOSION
+	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 8, 9, RGB(26, 8, 8), 8, 0, 8
+	createvisualtask AnimTask_ShakeMon2, 5, 4, 8, 0, 40, 1
+	createvisualtask AnimTask_ShakeMon2, 5, 5, 8, 0, 40, 1
+	createvisualtask AnimTask_ShakeMon2, 5, 6, 8, 0, 40, 1
+	createvisualtask AnimTask_ShakeMon2, 5, 7, 8, 0, 40, 1
+	createvisualtask AnimTask_ShakeMon2, 5, 8, 8, 0, 40, 1
+	call Explosion1
+	call Explosion1
+	waitforvisualfinish
+	loadspritegfx ANIM_TAG_IMPACT 
+	loadspritegfx ANIM_TAG_SPARK_2 
+	delay 0 
+	createvisualtask AnimTask_BlendColorCycle, 2, 3, -31, 1, 5, 5, RGB(31, 31, 20)   
+	playsewithpan SE_M_THUNDERBOLT2, SOUND_PAN_ATTACKER 
+	createsprite gSparkElectricitySpriteTemplate, ANIM_ATTACKER, 0, 32, 24, 190, 12, 0, 1, 0
+	delay 0
+	createsprite gSparkElectricitySpriteTemplate, ANIM_ATTACKER, 0, 80, 24, 22, 12, 0, 1, 0
+	createsprite gSparkElectricitySpriteTemplate, ANIM_ATTACKER, 0, 156, 24, 121, 13, 0, 1, 1
+	delay 0
+	createvisualtask AnimTask_BlendColorCycle, 2, 3, -31, 1, 0, 0, RGB(31, 31, 20)  
+	delay 10 
+	createvisualtask AnimTask_BlendColorCycle 2, 3, -31, 1, 5, 5, RGB(31, 31, 20)  
+	playsewithpan SE_M_THUNDERBOLT2, SOUND_PAN_ATTACKER 
+	createsprite gSparkElectricitySpriteTemplate, ANIM_ATTACKER, 0, 100, 24, 60, 10, 0, 1, 0
+	createsprite gSparkElectricitySpriteTemplate, ANIM_ATTACKER, 0, 170, 24, 42, 11, 0, 1, 1
+	loadspritegfx ANIM_TAG_WHITE_CIRCLE_OF_LIGHT 
+	loadspritegfx ANIM_TAG_IMPACT 
+	waitbgfadein 
+	monbg ANIM_ATTACKER 
+	setalpha 12, 8 
+	playsewithpan SE_M_SOLAR_BEAM, SOUND_PAN_ATTACKER 
+	createsprite gLusterPurgeCircleSpriteTemplate, ANIM_ATTACKER, 41, 0, 0, 0, 0 
+	delay 20 
+	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 0, 16, RGB_WHITEALPHA
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_WHITE_CIRCLE_OF_LIGHT, 2, 0, 16, RGB_WHITEALPHA
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_IMPACT, 0, 12, 12, RGB(0, 0, 23)
+	waitforvisualfinish
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_TARGET, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_TARGET, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_TARGET, 2
+	createvisualtask SoundTask_PlaySE1WithPanning, 5, 215, SOUND_PAN_TARGET
+	delay 3
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_TARGET, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_DEF_PARTNER, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_ATK_PARTNER, 2
+	createvisualtask SoundTask_PlaySE1WithPanning, 5, 215, SOUND_PAN_TARGET
+	delay 3
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_TARGET, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_DEF_PARTNER, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_ATK_PARTNER, 2
+	createvisualtask SoundTask_PlaySE1WithPanning, 5, 215, SOUND_PAN_TARGET
+	delay 3
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_TARGET, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_DEF_PARTNER, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_ATK_PARTNER, 2
+	createvisualtask SoundTask_PlaySE1WithPanning, 5, 215, SOUND_PAN_TARGET
+	delay 3
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_TARGET, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_DEF_PARTNER, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_ATK_PARTNER, 2
+	createvisualtask SoundTask_PlaySE1WithPanning, 5, 215, SOUND_PAN_TARGET
+	delay 3
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_TARGET, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_DEF_PARTNER, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, ANIM_ATK_PARTNER, 2
+	createvisualtask SoundTask_PlaySE1WithPanning, 5, 215, SOUND_PAN_TARGET
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 16, 0, RGB_WHITEALPHA
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_TARGET, 5, 14
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_DEF_PARTNER, 5, 14
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_ATK_PARTNER, 5, 14
+	waitforvisualfinish  
+	clearmonbg ANIM_ATTACKER 
+	blendoff 
+	call DischargeElectrify 
+	waitforvisualfinish 
 	end
 
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 8 @@@@@@@@@@@@@@@@@@@@@@@

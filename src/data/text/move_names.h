@@ -687,6 +687,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_FRENZY_FANG] = _("Frenzy Fang"),
     [MOVE_VOID_BURST] = _("Void Burst"),
     [MOVE_SHADOW_SLAM] = _("Shadow Slam"),
+    [MOVE_OVERLOAD] = _("Overload"),
     //GEN 8
     [MOVE_DYNAMAX_CANNON] = _("Dyna Cannon"),
     [MOVE_SNIPE_SHOT] = _("Snipe Shot"),

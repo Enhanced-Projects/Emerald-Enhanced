@@ -245,7 +245,7 @@ RF_Sun::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu2
-	setvar VAR_TEMP_A, FRONTIER_MON_MAGCARGO_SUN
+	setvar VAR_TEMP_A, FRONTIER_MON_TORKOAL_SUN
 	special RyuGiveFrontierMon
 	delay 20
 	setvar VAR_TEMP_A, FRONTIER_MON_VICTREEBEL_SUN

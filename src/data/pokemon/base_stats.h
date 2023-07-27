@@ -2576,8 +2576,8 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_VOLTORB] =
     {
-        .baseHP        = 40,
-        .baseAttack    = 30,
+        .baseHP        = 60,
+        .baseAttack    = 60,
         .baseDefense   = 50,
         .baseSpeed     = 100,
         .baseSpAttack  = 55,
@@ -2593,7 +2593,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_MINERAL,
         .eggGroup2 = EGG_GROUP_MINERAL,
-        .abilities = {ABILITY_SOUNDPROOF, ABILITY_STATIC},
+        .abilities = {ABILITY_ELECTRIC_SURGE, ABILITY_STATIC},
         .abilityHidden = ABILITY_AFTERMATH,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_RED,
@@ -2601,8 +2601,8 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_ELECTRODE] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 50,
+        .baseHP        = 80,
+        .baseAttack    = 100,
         .baseDefense   = 70,
         .baseSpeed     = 150,
         .baseSpAttack  = 80,
@@ -2618,7 +2618,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_MINERAL,
         .eggGroup2 = EGG_GROUP_MINERAL,
-        .abilities = {ABILITY_SOUNDPROOF, ABILITY_STATIC},
+        .abilities = {ABILITY_ELECTRIC_SURGE, ABILITY_STATIC},
         .abilityHidden = ABILITY_AFTERMATH,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_RED,

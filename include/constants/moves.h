@@ -710,8 +710,9 @@
 #define MOVE_FRENZY_FANG 685
 #define MOVE_VOID_BURST 686
 #define MOVE_SHADOW_SLAM 687
+#define MOVE_OVERLOAD 688
 
-#define MOVES_COUNT_GEN7 688
+#define MOVES_COUNT_GEN7 689
 
 
 // Gen 8 moves.
