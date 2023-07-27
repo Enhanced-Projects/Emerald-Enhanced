@@ -14,7 +14,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .moves = {MOVE_VOLT_TACKLE, MOVE_EXTREME_SPEED, MOVE_FLY, MOVE_SECRET_POWER},
         .heldItem = ITEM_LIGHT_BALL,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
