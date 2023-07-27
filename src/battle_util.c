@@ -7930,6 +7930,9 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
     if (move == MOVE_BONEMERANG && (defType == TYPE_FLYING))
         mod = UQ_4_12(1.0);
 
+    if (moveType == TYPE_GROUND && defType && GetBattlerHoldEffect(battlerDef, TRUE) == HOLD_EFFECT_AIR_BALLOON)
+        mod = UQ_4_12(0.0);
+
     // WEATHER_STRONG_WINDS weakens Super Effective moves against Flying-type Pokémon
     if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_STRONG_WINDS)
     {
