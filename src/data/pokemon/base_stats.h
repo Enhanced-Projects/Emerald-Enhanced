@@ -8705,14 +8705,14 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_LUNATONE] =
     {
-        .baseHP        = 90,
-        .baseAttack    = 55,
-        .baseDefense   = 65,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 95,
-        .baseSpDefense = 85,
+        .baseHP        = 95,
+        .baseAttack    = 75,
+        .baseDefense   = 85,
+        .baseSpeed     = 42,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 160,
         .type1 = TYPE_ROCK,
-        .type2 = TYPE_PSYCHIC,
+        .type2 = TYPE_GHOST,
         .catchRate = 45,
         .expYield = 161,
         .evYield_SpAttack  = 2,
@@ -8731,12 +8731,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SOLROCK] =
     {
-        .baseHP        = 90,
-        .baseAttack    = 95,
-        .baseDefense   = 85,
-        .baseSpeed     = 70,
+        .baseHP        = 95,
+        .baseAttack    = 115,
+        .baseDefense   = 120,
+        .baseSpeed     = 82,
         .baseSpAttack  = 55,
-        .baseSpDefense = 65,
+        .baseSpDefense = 75,
         .type1 = TYPE_ROCK,
         .type2 = TYPE_PSYCHIC,
         .catchRate = 45,

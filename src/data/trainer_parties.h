@@ -7781,14 +7781,14 @@ static const struct TrainerMonNoItemCustomMoves sParty_Mitchell[] = {
     .lvl = 43,
     .species = SPECIES_LUNATONE,
     .ability = 0,
-    .moves = {MOVE_EXPLOSION, MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_PSYCHIC},
+    .moves = {MOVE_EXPLOSION, MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_SHADOW_BALL},
     },
     {
     .iv = 0,
     .lvl = 43,
     .species = SPECIES_SOLROCK,
     .ability = 0,
-    .moves = {MOVE_EXPLOSION, MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_SHADOW_BALL},
+    .moves = {MOVE_EXPLOSION, MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_ROCK_SLIDE},
     }
 };
 
