@@ -769,6 +769,8 @@ static const u8 sText_PlaguebearerInfested[]      = _("{B_ATK_NAME_WITH_PREFIX}'
 const u8 sText_FabaMagnetosphere[] = _("Faba's Magnetosphere is\npreventing switching!                         ");
 static const u8 sText_MagnetosphereActive[] = _("Faba's Magnetoshpere discharges!");
 static const u8 sText_RyuLunaticDisabledStatusMove[] = _("{B_ATK_NAME_WITH_PREFIX}'s Lunatic disabled non\nattacking moves!");
+static const u8 sText_IllusionistNoDamage[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s attack hit the\nshimmering barrier!");
+static const u8 sText_IllusionistActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} generates a shimmering\nbarrier!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1397,6 +1399,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_FABAMAGNETOSPHERE - 12] = sText_FabaMagnetosphere,
     [STRINGID_MAGNETOSPHEREACTIVE - 12] = sText_MagnetosphereActive,
     [STRINGID_RYULUNATICDISABLEDSTATUSMOVE - 12] = sText_RyuLunaticDisabledStatusMove,
+    [STRINGID_ILLUSIONISTNODAMAGE - 12] = sText_IllusionistNoDamage,
+    [STRINGID_ILLUSIONISTACTIVATES- 12] = sText_IllusionistActivates,
 };
 
 const u16 gTerrainStringIds[] =
@@ -1428,7 +1432,7 @@ const u16 gSwitchInAbilityStringIds[] =
 {
     STRINGID_MOLDBREAKERENTERS, STRINGID_TERAVOLTENTERS, STRINGID_TURBOBLAZEENTERS,
     STRINGID_SLOWSTARTENTERS, STRINGID_UNNERVEENTERS, STRINGID_ANTICIPATIONACTIVATES,
-    STRINGID_FOREWARNACTIVATES
+    STRINGID_FOREWARNACTIVATES, STRINGID_ILLUSIONISTACTIVATES
 };
 
 const u16 gMissStringIds[] =

@@ -641,6 +641,8 @@
 #define STRINGID_FABAMAGNETOSPHERE                    637
 #define STRINGID_MAGNETOSPHEREACTIVE                  638
 #define STRINGID_RYULUNATICDISABLEDSTATUSMOVE         639
+#define STRINGID_ILLUSIONISTNODAMAGE                  640
+#define STRINGID_ILLUSIONISTACTIVATES                 641
 
 #define BATTLESTRINGS_COUNT                           640
 
