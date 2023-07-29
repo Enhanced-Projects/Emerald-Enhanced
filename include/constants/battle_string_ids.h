@@ -642,8 +642,10 @@
 #define STRINGID_MAGNETOSPHEREACTIVE                  638
 #define STRINGID_PKMNCHANNELSDARKNESS                 639
 #define STRINGID_RYULUNATICDISABLEDSTATUSMOVE         640
+#define STRINGID_ILLUSIONISTNODAMAGE                  641
+#define STRINGID_ILLUSIONISTACTIVATES                 642
 
-#define BATTLESTRINGS_COUNT                           641
+#define BATTLESTRINGS_COUNT                           643
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

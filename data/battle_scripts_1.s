@@ -6612,6 +6612,15 @@ BattleScript_RyuLunaticDisableStatusMessage::
 	waitmessage 0x40
 	endselectionscript
 
+BattleScript_IllusionistNoDamage::
+	attackstring
+	ppreduce
+	pause 0x20
+	showabilitypopup BS_TARGET
+	printstring STRINGID_ILLUSIONISTNODAMAGE
+	waitmessage 0x40
+	goto BattleScript_MoveEnd
+
 BattleScript_PoisonTurnDmg::
 	printstring STRINGID_PKMNHURTBYPOISON
 	waitmessage 0x40

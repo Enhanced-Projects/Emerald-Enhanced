@@ -396,5 +396,6 @@ extern const u8 BattleScript_BlockedByPrimalWeatherRet[];
 extern const u8 BattleScript_BothCanNoLongerEscape[];
 extern const u8 BattleScript_MagnetoDamage[];
 extern const u8 BattleScript_RyuLunaticDisableStatusMessage[];
+extern const u8 BattleScript_IllusionistNoDamage[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

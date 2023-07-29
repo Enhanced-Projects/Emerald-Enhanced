@@ -8153,7 +8153,6 @@ static void Cmd_various(void)
         case ABILITY_FORECAST:
         case ABILITY_FLOWER_GIFT:
         case ABILITY_ZEN_MODE:
-        case ABILITY_ILLUSIONIST:
         case ABILITY_IMPOSTER:
         case ABILITY_POWER_OF_ALCHEMY:
         case ABILITY_RECEIVER:
