@@ -54,17 +54,6 @@ gTileset_General:: @ 83DF704
 @@	  .4byte InitTilesetAnim_General
 
 	.align 2
-gTileset_General:: @ 83DF704
-	.byte TRUE @ is compressed
-	.byte FALSE @ is secondary tileset
-	.2byte 0 @ padding
-	.4byte gTilesetTiles_General
-	.4byte gTilesetPalettes_General
-	.4byte gMetatiles_General
-	.4byte gMetatileAttributes_General
-	.4byte InitTilesetAnim_General
-
-	.align 2
 gTileset_Petalburg:: @ 83DF71C
 	.byte TRUE @ is compressed
 	.byte TRUE @ is secondary tileset
