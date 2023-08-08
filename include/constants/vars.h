@@ -305,8 +305,8 @@
 
 
 //for EE seasonal changes
-//#define VAR_RYU_WEEK_COUNTER                 0x417D // modulo 4 of VAR_RYU_DAY_COUNTER
-//#define VAR_RYU_DAY_COUNTER                  0x417E // increments daily1
+#define VAR_RYU_WEEK_COUNTER                 0x417D // modulo 4 of VAR_RYU_DAY_COUNTER
+#define VAR_RYU_DAY_COUNTER                  0x417E // increments daily1
 //vars 4100 thru 417f are new; total of 128.
 
 

@@ -155,6 +155,8 @@ static void UpdatePerDay(struct Time *localTime)
     if (*days != localTime->days && *days <= localTime->days)
     {
         daysSince = localTime->days - *days;
+        VarSet(VAR_RYU_DAY_COUNTER, ((VarGet(VAR_RYU_DAY_COUNTER)) +1));
+        VarSet(VAR_RYU_WEEK_COUNTER, (((VarGet(VAR_RYU_DAY_COUNTER)) / 7 ) % 4)); //modulo 4 of day counter should work
         ClearDailyQuestData();
         ClearDailyFlags();
         DoDailyRealEstateTasks();

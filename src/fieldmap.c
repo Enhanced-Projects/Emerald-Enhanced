@@ -15,6 +15,8 @@
 #include "trainer_hill.h"
 #include "tv.h"
 #include "constants/rgb.h"
+#include "constants/layouts.h"
+#include "event_data.h"
 
 struct ConnectionFlags
 {
@@ -1048,33 +1050,33 @@ void LoadSecondaryTilesetPalette(struct MapLayout const *mapLayout)
     LoadTilesetPalette(mapLayout->secondaryTileset, NUM_PALS_IN_PRIMARY * 16, (NUM_PALS_TOTAL - NUM_PALS_IN_PRIMARY) * 16 * 2);
 }
 
-/*
-extern struct Tileset const * gTileset_General;
-extern struct Tileset const * gTileset_GeneralSpring;
-extern struct Tileset const * gTileset_GeneralSummer;
-extern struct Tileset const * gTileset_GeneralFall;
-extern struct Tileset const * gTileset_GeneralWinter;
+
+extern struct Tileset const gTileset_General;
+//extern struct Tileset const * gTileset_GeneralSpring;
+//extern struct Tileset const * gTileset_GeneralSummer;
+extern struct Tileset const gTileset_GeneralFall;
+extern struct Tileset const gTileset_GeneralWinter;
 void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
 {
     u8 week = VarGet(VAR_RYU_WEEK_COUNTER);
     //put seasonal tileset swapping code here
     if (mapLayout)
     {
-        if (mapLayout->primaryTileset == gTileset_General)
+        if (mapLayout->primaryTileset == &gTileset_General)
         {
             switch(week)
             {
                 case 0: //spring
-                    CopyTilesetToVramUsingHeap(gTileset_GeneralSpring, NUM_TILES_IN_PRIMARY, 0);
+                    CopyTilesetToVramUsingHeap(&gTileset_General, NUM_TILES_IN_PRIMARY, 0);
                     break;
                 case 1: //summer
-                    CopyTilesetToVramUsingHeap(gTileset_GeneralSummer, NUM_TILES_IN_PRIMARY, 0);
+                    CopyTilesetToVramUsingHeap(&gTileset_General, NUM_TILES_IN_PRIMARY, 0);
                     break;
                 case 2: //fall
-                    CopyTilesetToVramUsingHeap(gTileset_GeneralFall, NUM_TILES_IN_PRIMARY, 0);
+                    CopyTilesetToVramUsingHeap(&gTileset_GeneralFall, NUM_TILES_IN_PRIMARY, 0);
                     break;
                 case 3: //winter
-                    CopyTilesetToVramUsingHeap(gTileset_GeneralWinter, NUM_TILES_IN_PRIMARY, 0);
+                    CopyTilesetToVramUsingHeap(&gTileset_GeneralWinter, NUM_TILES_IN_PRIMARY, 0);
                     break;
             }
             CopyTilesetToVramUsingHeap(mapLayout->secondaryTileset, NUM_TILES_TOTAL - NUM_TILES_IN_PRIMARY, NUM_TILES_IN_PRIMARY);
@@ -1087,8 +1089,8 @@ void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
         }
     }
 }
-*/
 
+/*
 void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
 {
     if (mapLayout)
@@ -1097,12 +1099,43 @@ void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
         CopyTilesetToVramUsingHeap(mapLayout->secondaryTileset, NUM_TILES_TOTAL - NUM_TILES_IN_PRIMARY, NUM_TILES_IN_PRIMARY);
     }
 }
+*/
+
+extern const struct MapLayout *const gMapLayouts[];
 
 void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
 {
+    u8 week = VarGet(VAR_RYU_WEEK_COUNTER);
+    mgba_open();
+    mgba_printf(LOGINFO, "Checking seasonal palette for week %d", week);
+    mgba_printf(LOGINFO, "Primary tileset is: %d", &gTileset_General);
+    mgba_printf(LOGINFO, "map layout primary tileset is: %d", mapLayout->primaryTileset);
     if (mapLayout)
     {
-        LoadPrimaryTilesetPalette(mapLayout);
+        if (mapLayout->primaryTileset == &gTileset_General)
+        {
+            //mgba_printf(LOGINFO, "Tileset is General. Attempting to MITM palette.");
+            //switch(week)
+            //{
+            //    case 0: //spring
+            //        LoadPrimaryTilesetPalette(mapLayout);
+            //        break;
+            //    case 1: //summer
+            //        LoadPrimaryTilesetPalette(mapLayout);
+            //        break;
+            //    case 2: //fall
+            //        LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_FALL_LAYOUT]);
+            //        break;
+            //    case 3: //winter
+                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_WINTER_LAYOUT]);
+            //        break;
+            //}
+        }
+        else
+        {
+            LoadPrimaryTilesetPalette(mapLayout);
+        }
+
         LoadSecondaryTilesetPalette(mapLayout);
     }
 }
