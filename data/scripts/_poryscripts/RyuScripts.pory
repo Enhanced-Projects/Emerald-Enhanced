@@ -1246,9 +1246,30 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	setvar(VAR_RYU_WEEK_COUNTER, 3)
+	bufferdynamicmulti(devopt1, devopt2, devopt3)
+	multichoice(0, 7, MULTI_DYNAMIC_3, 1)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			setvar(VAR_RYU_WEEK_COUNTER, 0)
+		case 1:
+			setvar(VAR_RYU_WEEK_COUNTER, 2)
+		case 2:
+			setvar(VAR_RYU_WEEK_COUNTER, 3)
+	}
 	release
 	end
+}
+
+text devopt1 {
+	"Spring/Summer"
+}
+
+text devopt2 {
+	"Fall"
+}
+
+text devopt3 {
+	"Winter"
 }
 
 text utilityText {
@@ -1456,8 +1477,8 @@ text PlayersHouse_1F_Text_TheresAMovieOnTV {
 
 script(global) RyuDebug_InitTimeSlide {//ngl, this may be the lewdest script i have ever made.
 	setvar(VAR_TEMP_3, 1440) //number of steps to loop in minutes.
-	setvar(VAR_TEMP_1, 12) //hour to start at
-	setvar(VAR_TEMP_2, 0) //minute to start at
+	setvar(VAR_TEMP_1, 4) //hour to start at
+	setvar(VAR_TEMP_2, 45) //minute to start at
 	goto(RyuDoTImeSlide)
 }
 

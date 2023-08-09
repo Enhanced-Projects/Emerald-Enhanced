@@ -1114,22 +1114,22 @@ void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
     {
         if (mapLayout->primaryTileset == &gTileset_General)
         {
-            //mgba_printf(LOGINFO, "Tileset is General. Attempting to MITM palette.");
-            //switch(week)
-            //{
-            //    case 0: //spring
-            //        LoadPrimaryTilesetPalette(mapLayout);
-            //        break;
-            //    case 1: //summer
-            //        LoadPrimaryTilesetPalette(mapLayout);
-            //        break;
-            //    case 2: //fall
-            //        LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_FALL_LAYOUT]);
-            //        break;
-            //    case 3: //winter
-                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_WINTER_LAYOUT]);
-            //        break;
-            //}
+            mgba_printf(LOGINFO, "Tileset is General. Attempting to MITM palette.");
+            switch(week)
+            {
+                case 0: //spring
+                    LoadPrimaryTilesetPalette(mapLayout);
+                    break;
+                case 1: //summer
+                    LoadPrimaryTilesetPalette(mapLayout);
+                    break;
+                case 2: //fall
+                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_FALL_LAYOUT - 1]);
+                    break;
+                case 3: //winter
+                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_WINTER_LAYOUT - 1]);
+                    break;
+            }
         }
         else
         {
