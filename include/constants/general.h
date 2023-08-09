@@ -548,17 +548,6 @@
 //uncomment to punish save states. Otherwise detections are just logged.
 //#define RYU_PUNISH_SAVE_STATE 1
 
-//uncomment for winter mode.
-//#define EE_WINTER_MODE 1
-
-//HACK to make weather changes work for winter mode
-#ifdef EE_WINTER_MODE
-#define WINTER_WEATHER_CHANGE TRUE
-#else
-#define WINTER_WEATHER_CHANGE FALSE
-#endif
-//end hack
-
 #define EE_GAME_VERSION 10000
 
 #endif 
