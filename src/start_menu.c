@@ -172,7 +172,7 @@ static const u8 *const sPyramindFloorNames[] =
 static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 15, 0xA, 4, 0xF, 8};
 static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 15, 0xC, 4, 0xF, 8};
 
-const u8 sText_PlayTime[] = _("Play Time: ");
+const u8 sText_PlayTime[] = _("Played: ");
 const u8 gText_BetaMenu[] = _("Beta Menu");
 const u8 gText_DevMenu[] = _("Dev Menu");
 
@@ -527,14 +527,34 @@ static void RemoveExtraStartMenuWindows(void)
     RemoveTeamLogo();
 }
 
-EWRAM_DATA static u8 sPrintNumberWindowId = 1;
-EWRAM_DATA static u8 sPrintNumberWindow2Id = 2;
+EWRAM_DATA static u8 sStartMenuInfoWindowId = 1;
+EWRAM_DATA static u8 sStartMenuInfoWindowId2 = 2;
 EWRAM_DATA static u8 sActionNameWindowId = 0;
-const u8 gText_RyuLifeSkills[] = _("Skills    ");
-const u8 gText_RyuMiningSkillPrefix[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE} M:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
-const u8 gText_RyuBotanySkillPrefix[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN} B:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
-const u8 gText_RyuAlchemySkillPrefix[] = _("{COLOR LIGHT_RED}{SHADOW RED} A:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
 const u8 gText_SomeSpaces[] = _("  ");
+
+const u8 sWeekdayNames[7][10] = {
+    _("Monday"),
+    _("Tuesday"),
+    _("Wednesday"),
+    _("Thursday"),
+    _("Friday"),
+    _("Saturday"),
+    _("Sunday")
+};
+
+const u8 sSeasonNames[4][7] = {
+    _("Spring"),
+    _("Summer"),
+    _("Autumn"),
+    _("Winter")
+};
+
+const u8 sTimeOfDayLabels[4][18] = {
+    _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}Day{COLOR DARK_GREY}{SHADOW LIGHT_GREY}"),
+    _("{COLOR LIGHT_RED}{SHADOW BLUE}Dusk{COLOR DARK_GREY}{SHADOW LIGHT_GREY}"),
+    _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Night{COLOR DARK_GREY}{SHADOW LIGHT_GREY}"),
+    _("{COLOR DARK_GREY}{SHADOW RED}Dawn{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")
+};
 
 void AddInfoBoxWindow(void)
 {
@@ -543,142 +563,121 @@ void AddInfoBoxWindow(void)
 
     // prepare window
     SetWindowTemplateFields(&template, 0, -1, 15, 32, 3, 15, 106);
-    sPrintNumberWindowId = AddWindow(&template);
-    FillWindowPixelBuffer(sPrintNumberWindowId, 0);
-    PutWindowTilemap(sPrintNumberWindowId);
-    DrawStdFrameWithCustomTileAndPalette(sPrintNumberWindowId, FALSE, 0x214, 14);
-    sPrintNumberWindow2Id = 0xFF;
+    sStartMenuInfoWindowId = AddWindow(&template);
+    FillWindowPixelBuffer(sStartMenuInfoWindowId, 0);
+    PutWindowTilemap(sStartMenuInfoWindowId);
+    DrawStdFrameWithCustomTileAndPalette(sStartMenuInfoWindowId, FALSE, 0x214, 14);
+    sStartMenuInfoWindowId2 = 0xFF;
 }
 extern const u8 sText_Colon[];
 
-void PrintNumberToScreen(s32 num)
+void PrintStartMenuInfoData(void)
 {
     int Time = (RyuGetTimeOfDay());
+    int localHours = gLocalTime.hours;
+    int localMinutes = gLocalTime.minutes;
+    int postMeridian = FALSE;
     DrawTeamLogo();
-    // song readout
-    StringCopy(gStringVar1, gText_HighlightTransparent);
-    StringAppend(gStringVar1, gText_ryuJukeboxLabel);
-    if (gSaveBlock2Ptr->disableBGM == TRUE)
-    {
-        StringAppend(gStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW RED}BGM Off"));
-    }
-    else
-    {
-        ConvertIntToDecimalStringN(gStringVar2, num, 0, 3);
-        StringAppend(gStringVar1, gStringVar2);
-    }
-    if ((FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == TRUE) && (gSaveBlock2Ptr->disableBGM == FALSE))
-        StringAppend(gStringVar1, (const u8[])_("{COLOR LIGHT_RED}{SHADOW BLUE}(R)"));
-    if ((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == TRUE) && (gSaveBlock2Ptr->disableBGM == FALSE))
-        StringAppend(gStringVar1, (const u8[])_("{COLOR LIGHT_GREEN}{SHADOW BLUE}(J)"));
-
     // playtime readout
-    StringCopy(gRyuStringVar1, sText_PlayTime);
-    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
-    StringAppend(gRyuStringVar1, gRyuStringVar2);
-    StringAppend(gRyuStringVar1, sText_Colon);
-    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringAppend(gRyuStringVar1, gRyuStringVar2);
-    StringAppend(gRyuStringVar1, sText_Colon);
-    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock2Ptr->playTimeSeconds, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringAppend(gRyuStringVar1, gRyuStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 106, 12, 0xFF, NULL);//play time
-
-    // time readout
-    RtcCalcLocalTime();
-    StringCopy(gStringVar3, gText_HighlightTransparent);
-    StringAppend(gStringVar3, gText_SpaceTime);
-    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
-    StringAppend(gStringVar3, gStringVar2);
-    StringAppend(gStringVar3, gText_colon);
-    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringAppend(gStringVar3, gStringVar2);
-    StringAppend(gStringVar3, gText_ThisIsAPokemon);
-    StringAppend(gStringVar3, gText_SomeSpaces);
-    // print 'day', 'dusk', 'night' or 'dawn' in reference to evolution
-
-    if (Time == RTC_TIME_NIGHT)
-    {
-
-        StringAppend(gStringVar3, gText_ColorLightBlueShadowBlue);
-        StringAppend(gStringVar3, gText_Night);
-    }
-    else if (Time == RTC_TIME_EVENING)
-    {
-        StringAppend(gStringVar3, gText_ColorLightBlueShadowDarkGrey);
-        StringAppend(gStringVar3, gText_Dusk);
-    }
-    else if (Time == RTC_TIME_MORNING)
-    {
-        StringAppend(gStringVar3, gText_ColorLightRedShadowDarkGrey);
-        StringAppend(gStringVar3, gText_RyuDawn);
-    }
-    else
-    {
-        StringAppend(gStringVar3, gText_ColorLightRedShadowRed);
-        StringAppend(gStringVar3, gText_RyuDay);
-    }
-
+    StringCopy(gStringVar1, sText_PlayTime);
+    StringAppend(gStringVar1, ((const u8[])_(" ")));
+    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gStringVar1, gRyuStringVar1);
+    StringAppend(gStringVar1, sText_Colon);
+    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar1, gRyuStringVar1);
+    StringAppend(gStringVar1, sText_Colon);
+    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock2Ptr->playTimeSeconds, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar1, gRyuStringVar1);
+    StringAppend(gStringVar1, ((const u8[])_(" ")));
     switch(VarGet(VAR_RYU_GAME_MODE))
     {
         case 0:
-            StringCopy(gRyuStringVar1, (const u8[])_("/ Easy"));
+            StringCopy(gRyuStringVar1, (const u8[])_(" / Easy"));
             break;
         case 1:
         {
             if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
             {
-                StringCopy(gRyuStringVar1, (const u8[])_("/ Normal{COLOR LIGHT_RED}{SHADOW RED}(RC)"));
+                StringCopy(gRyuStringVar1, (const u8[])_(" / Normal{COLOR LIGHT_RED}{SHADOW RED}(RC)"));
                 break;
             }
             else
             {
-                StringCopy(gRyuStringVar1, (const u8[])_("/ Normal"));
+                StringCopy(gRyuStringVar1, (const u8[])_(" / Normal"));
                 break;
             }
         }
         case 2:
-            StringCopy(gRyuStringVar1, (const u8[])_("/ {COLOR LIGHT_RED}{SHADOW RED}Challenge"));
+            StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR LIGHT_RED}{SHADOW RED}Challenge"));
             break;
         case 3:
-            StringCopy(gRyuStringVar1, (const u8[])_("/ {COLOR LIGHT_RED}{SHADOW LIGHT_GREY}HARDCORE"));
+            StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR LIGHT_RED}{SHADOW LIGHT_GREY}HARDCORE"));
             break;
         case 4:
-            StringCopy(gRyuStringVar1, (const u8[])_("/ {COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier"));
+            StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier"));
             break;
     }
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gRyuStringVar1, 152, 0, 0xFF, NULL);
+    StringAppend(gStringVar1, gRyuStringVar1);
 
     // print version number
-    StringCopy(gStringVar2, gText_RyuVersion);
-    ConvertIntToDecimalStringN(gStringVar4, VarGet(VAR_LAST_KNOWN_GAME_VERSION), STR_CONV_MODE_LEFT_ALIGN, 4);
-    StringAppend(gStringVar2, gStringVar4);
+    StringCopy(gRyuStringVar1, ((const u8[])_("     ")));
+    StringAppend(gRyuStringVar1, gText_RyuVersion);
+    ConvertIntToDecimalStringN(gStringVar4, VarGet(VAR_LAST_KNOWN_GAME_VERSION), STR_CONV_MODE_LEFT_ALIGN, 5);
+    StringAppend(gRyuStringVar1, gStringVar4);
+    StringAppend(gStringVar1, gRyuStringVar1);
+
+
+    //print local time
+    RtcCalcLocalTime();
+    StringCopy(gStringVar2, gText_HighlightTransparent);
+    if (localHours > 12)
+    {
+        localHours -= 12;
+        postMeridian = TRUE;
+    }
+    ConvertIntToDecimalStringN(gRyuStringVar2, localHours, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar2, gRyuStringVar2);
+    StringAppend(gStringVar2, gText_colon);
+    ConvertIntToDecimalStringN(gRyuStringVar2, localMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar2, gRyuStringVar2);
+    if (postMeridian == TRUE)
+    {
+        StringAppend(gStringVar2, ((const u8[])_("pm ")));
+    }
+    StringAppend(gStringVar2, gText_ThisIsAPokemon);
+    StringAppend(gStringVar2, gText_SomeSpaces);
+
+    // print 'day', 'dusk', 'night' or 'dawn' in reference to evolution
+    StringAppend(gStringVar2, sTimeOfDayLabels[Time]);
+
+    //print day of week
+    StringAppend(gStringVar2, ((const u8[])_("  ")));
+    StringAppend(gStringVar2, sWeekdayNames[VarGet(VAR_RYU_DAY_COUNTER)]);
+
+    //print season
+    StringAppend(gStringVar2, ((const u8[])_("  "))),
+    StringAppend(gStringVar2, sSeasonNames[(VarGet(VAR_RYU_WEEK_COUNTER))]);
 
     // print all text
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 10, 0, 0xFF, NULL); // song data
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 106, 0, 0xFF, NULL); //version number
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 10, 12, 0xFF, NULL); //rtc time
+    AddTextPrinterParameterized(sStartMenuInfoWindowId, 0, gStringVar1, 10, 0, 0xFF, NULL);//play time, difficulty, and version
+    AddTextPrinterParameterized(sStartMenuInfoWindowId, 0, gStringVar2, 10, 12, 0xFF, NULL); //time, day, season
 
 }
 
 void RemoveInfoBoxWindow(void)
 {
-    if(sPrintNumberWindowId != 0xFF) {
-        ClearStdWindowAndFrameToTransparent(sPrintNumberWindowId, FALSE);
-        RemoveWindow(sPrintNumberWindowId);
-        sPrintNumberWindowId = 0xFF;
+    if(sStartMenuInfoWindowId != 0xFF) {
+        ClearStdWindowAndFrameToTransparent(sStartMenuInfoWindowId, FALSE);
+        RemoveWindow(sStartMenuInfoWindowId);
+        sStartMenuInfoWindowId = 0xFF;
     }
-    if (sPrintNumberWindow2Id != 0xFF)
+    if (sStartMenuInfoWindowId2 != 0xFF)
     {
-        ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
-        RemoveWindow(sPrintNumberWindow2Id);
-        sPrintNumberWindow2Id = 0xFF;
+        ClearStdWindowAndFrameToTransparent(sStartMenuInfoWindowId2, FALSE);
+        RemoveWindow(sStartMenuInfoWindowId2);
+        sStartMenuInfoWindowId2 = 0xFF;
     }
-}
-
-void PrintSongNumber(u16 song)
-{
-    PrintNumberToScreen(song);
 }
 
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
@@ -925,18 +924,15 @@ static bool32 InitStartMenuStep(void)
         sInitStartMenuData[0]++;
         break;
     case 3:
-        sPrintNumberWindowId = 0xFF;
-        sPrintNumberWindow2Id = 0xFF;
+        sStartMenuInfoWindowId = 0xFF;
+        sStartMenuInfoWindowId2 = 0xFF;
         if (InBattlePyramid()) {
             ShowPyramidFloorWindow();
         }
         else {
             AddInfoBoxWindow();
-            if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
-                PrintSongNumber(VarGet(VAR_RYU_JUKEBOX));
-            else
-                PrintSongNumber(GetCurrentMapMusic());
-            CopyWindowToVram(sPrintNumberWindowId, 3);
+            PrintStartMenuInfoData();
+            CopyWindowToVram(sStartMenuInfoWindowId, 3);
         }
         sInitStartMenuData[0]++;
         break;
@@ -1228,16 +1224,6 @@ void ShowStartMenu(void)
     ScriptContext2_Enable();
 }
 
-void PlayNextTrack(void)
-{
-    u16 song = (VarGet(VAR_RYU_JUKEBOX));
-    PlaySE(SE_PIN);
-    PlayBGM(song);
-    FillWindowPixelBuffer(sPrintNumberWindowId, PIXEL_FILL(1));
-    PrintNumberToScreen(song);
-    CopyWindowToVram(sPrintNumberWindowId, 2);
-}
-
 extern u8 RyuFollowerSelectNPCScript[];
 
 #define WIN_ACTION_TEXT_MARGIN 2
@@ -1410,40 +1396,6 @@ bool8 RyuMapIsValidForDexnav(void)
 
 static bool8 HandleStartMenuInput(void)
 {
-    u16 song = VarGet(VAR_RYU_JUKEBOX);
-    song = song + 1;
-    switch (song)
-    {
-    case 1:
-    case 999:
-    case 557:
-        song = 350;
-        break;
-    default:
-        break;
-    }
-    if (song > 1000)
-    {
-        song = 350;
-    }
-    if (((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1) && gMain.newKeys & R_BUTTON) && (!(gSaveBlock2Ptr->disableBGM == 1)))
-    {
-        PlaySE(SE_PIN);
-        while (gSongTable[song].me != 0 && song != 0)
-            song++;
-        VarSet(VAR_RYU_JUKEBOX, song);
-        PlayNextTrack();
-    }
-
-    /*
-    // place holder keycombo
-    if(gMain.heldKeys & DPAD_RIGHT && gMain.newKeys & SELECT_BUTTON)
-    {
-        gMenuCallback = StartMenuAtlasCallback;
-        FadeScreen(FADE_TO_BLACK, 0);
-        return FALSE;
-    }*/
-
     if (gMain.newKeys & SELECT_BUTTON)
     {
         if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
@@ -1508,39 +1460,6 @@ static bool8 HandleStartMenuInput(void)
         HideStartMenu();
         return TRUE;
     }
-
-        if (gMain.heldKeys & L_BUTTON && gMain.newKeys & R_BUTTON)
-        {   
-            u16 curmusic = 0;
-            u16 song = 350;
-            switch (FlagGet(FLAG_RYU_JUKEBOX_ENABLED))//0 for unset, 1 for set
-            {
-                case 0:
-                    FlagSet(FLAG_RYU_JUKEBOX_ENABLED);
-                    PlaySE(SE_PC_ON);
-                    
-                    if (VarGet(VAR_RYU_SAVED_BGM) > 350 && (VarGet(VAR_RYU_SAVED_BGM) < 558))
-                    {
-                        song = VarGet(VAR_RYU_SAVED_BGM);
-                        song --;
-                    }
-
-                    VarSet(VAR_RYU_JUKEBOX, song);
-                    PlayBGM(song);
-                    PlayNextTrack();
-                    break;
-                case 1:
-                    FlagClear(FLAG_RYU_JUKEBOX_ENABLED);
-                    VarSet(VAR_RYU_SAVED_BGM, VarGet(VAR_RYU_JUKEBOX));
-                    ResetMapMusic();
-                    Overworld_ChangeMusicToDefault();
-                    VarSet(VAR_RYU_JUKEBOX, 998);
-                    PlaySE(SE_PC_OFF);
-                    break;
-                default:
-                    break;
-            }
-        }
 
     return FALSE;
 }

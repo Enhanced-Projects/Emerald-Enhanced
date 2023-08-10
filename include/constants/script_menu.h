@@ -17,7 +17,7 @@
 #define MULTI_BASE_PC_WITH_REGISTRY        6
 #define MULTI_REGISTER_MENU                7
 #define MULTI_SSTIDAL_LILYCOVE             8 // Exit only, populated by CreateLilycoveSSTidalMultichoice
-#define MULTI_UNUSED_9                     9
+#define MULTI_SELECT_DAY                   9
 #define MULTI_UNUSED_10                    10
 #define MULTI_FRONTIER_PASS_INFO           11
 #define MULTI_BIKE                         12
@@ -129,7 +129,7 @@
 #define MULTI_DYNAMIC_6            118
 #define MULTI_SELECT_MOVE_SLOT             119
 #define MULTI_LTC_MOVE_TUTOR_MOVES         120
-#define MULTI_UNUSED_JUKEBOX               121
+#define MULTI_UNUSED_121                   121
 #define MULTI_DEV_MODE_POKEEDIT_MENU       122
 #define MULTI_UNUSED_LEVEL_SELECT          123
 #define MULTI_DEV_MODE_EXP_MULT            124

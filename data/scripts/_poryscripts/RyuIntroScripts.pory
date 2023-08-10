@@ -380,6 +380,16 @@ RyuSetRTC::
 	delay 30
 	setvar VAR_LITTLEROOT_INTRO_STATE, 6
 	setflag FLAG_SET_WALL_CLOCK
+	msgbox RyuSetDayTxt
+	multichoice 0, 0, MULTI_SELECT_DAY, 1
+	copyvar VAR_RYU_DAY_COUNTER, VAR_RESULT
+	closemessage
+	msgbox RyuSetSeasonTxt
+	bufferdynamicmulti Season1, Season2, Season3, Season4
+	multichoice 0, 0, MULTI_DYNAMIC_4, 1
+	copyvar VAR_RYU_WEEK_COUNTER, VAR_RESULT
+	closemessage
+	callnative RyuChooseSeasonalWeather
 	goto GameIntroSequencePart2
 	releaseall
 	end
@@ -407,8 +417,26 @@ GameIntroSequenceFrontier::
 	release
 	end
 
+Season1:
+	.string "Spring$"
+
+Season2:
+	.string "Summer$"
+
+Season3:
+	.string "Autumn$"
+
+Season4:
+	.string "Winter$"
+
+RyuSetDayTxt:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Huh, have to reset the day\ntoo...$"
+
 FrontierModeBegin:
 	.string "Your frontier challenge begins now!$"
+
+RyuSetSeasonTxt:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}The weather says it's like (   )\noutside...$"
 
 FrontierClockStopped::
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Please set the time.)$"

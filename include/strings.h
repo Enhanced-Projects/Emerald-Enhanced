@@ -3187,7 +3187,6 @@ extern const u8 gText_PokemonStringBuffer[];
 extern const u8 gText_PowerfulWildAppears[];
 
 extern const u8 gText_ColorShadowRedLightRed[];
-extern const u8 gText_ryuJukeboxLabel[];
 extern const u8 gText_BattleHighlightTransparent[];
 
 extern const u8 gText_RyuLanetteChatMenu[];
@@ -3309,6 +3308,14 @@ extern const u8 gText_RyuRESellProperty[];
 
 extern const u8 gText_RyuBallChangerLabel[];
 extern const u8 gText_RyuBallMarketLabel[];
+
+extern const u8 sText_SelectDayMon[];
+extern const u8 sText_SelectDayTue[];
+extern const u8 sText_SelectDayWed[];
+extern const u8 sText_SelectDayThu[];
+extern const u8 sText_SelectDayFri[];
+extern const u8 sText_SelectDaySat[];
+extern const u8 sText_SelectDaySun[];
 
 extern const u8 gText_RyuAttendantNameLanette[];
 extern const u8 gText_RyuAttendantNameMinnie[];

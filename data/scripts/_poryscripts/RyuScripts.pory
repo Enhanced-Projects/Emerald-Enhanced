@@ -776,28 +776,6 @@ Ryu_PlayerFailedChallengeHardcore::
 Ryu_failedNZHC:
 	.string "You have failed Challenge or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
 
-@==================================================================================================Start Menu Config Info
-
-RyuStartMenuConfigInfoScript::
-	buffernumberstring 0, VAR_LAST_KNOWN_GAME_VERSION
-	msgbox RyuTemp_StartMenuConfig, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq StartBetaMenu
-	closemessage
-	release
-	end
-
-RyuTemp_StartMenuConfig:
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced ({COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR LIGHT_GREEN}{SHADOW GREEN})\n"
-    .string "Configuration Info\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}In Start menu inputs:\n"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}L+R {COLOR DARK_GREY}{SHADOW LIGHT_GREY}: Enable/Disable Jukebox\l"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}R(With Jukebox On){COLOR DARK_GREY}{SHADOW LIGHT_GREY}:Skip to Next Song\l"
-	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\p"
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Open Beta Menu?$"
-
-
-
 @==================================================================================================Meloetta Switcher
 
 CLM_MeloettaSwitcher::
@@ -1245,17 +1223,7 @@ RyuCheckForWellTravelledAch::
 
 `
 
-script RyuDebug_Utility1 {
-	bufferdynamicmulti(devopt1, devopt2, devopt3)
-	multichoice(0, 7, MULTI_DYNAMIC_3, 1)
-	switch (var(VAR_RESULT)) {
-		case 0:
-			setvar(VAR_RYU_WEEK_COUNTER, 0)
-		case 1:
-			setvar(VAR_RYU_WEEK_COUNTER, 2)
-		case 2:
-			setvar(VAR_RYU_WEEK_COUNTER, 3)
-	}
+script RyuDebug_Utility1 { 
 	release
 	end
 }

@@ -96,7 +96,7 @@
 #define FLAG_PBG_DADEVENT                    0x52
 #define FLAG_TOBY_TRAINER_SIGHT              0x53
 
-#define FLAG_RYU_JUKEBOX_ENABLED             0x54
+#define FLAG_UNUSED_0x54                     0x54
 #define FLAG_RYU_BOSS_SCALE                  0x55 // Autoscale enemies to higher levels.
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56 // Always set after new game, object it hides is added directly

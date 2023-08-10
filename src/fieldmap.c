@@ -1106,15 +1106,10 @@ extern const struct MapLayout *const gMapLayouts[];
 void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
 {
     u8 week = VarGet(VAR_RYU_WEEK_COUNTER);
-    mgba_open();
-    mgba_printf(LOGINFO, "Checking seasonal palette for week %d", week);
-    mgba_printf(LOGINFO, "Primary tileset is: %d", &gTileset_General);
-    mgba_printf(LOGINFO, "map layout primary tileset is: %d", mapLayout->primaryTileset);
     if (mapLayout)
     {
         if (mapLayout->primaryTileset == &gTileset_General)
         {
-            mgba_printf(LOGINFO, "Tileset is General. Attempting to MITM palette.");
             switch(week)
             {
                 case 0: //spring

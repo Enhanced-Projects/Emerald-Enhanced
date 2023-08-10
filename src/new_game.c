@@ -357,7 +357,6 @@ void NewGameInitData(void)
     //FULL_COLOR
     VarSet(VAR_HAT_THEME_UI_NUMBER, 0);
     VarSet(VAR_RYU_EXP_MULTIPLIER, 1);
-    VarSet(VAR_RYU_JUKEBOX, 999);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
     VarSet(VAR_RYU_NGPLUS_COUNT, ngPlusCount);
     VarSet(VAR_OPTIONS_HP_BAR_SPEED, 6);
