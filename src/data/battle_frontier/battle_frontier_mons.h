@@ -2266,7 +2266,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_SHARPEDO_2] = { // Sharpedo-ExBelt (ID: 252)
         .species = SPECIES_SHARPEDO,
