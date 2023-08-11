@@ -1167,7 +1167,6 @@ static void Task_OptionMenuSave(u8 taskId)
         gDisableMusic = TRUE;
         StopMapMusic();
         FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
-        VarSet(VAR_RYU_JUKEBOX, 0);
     }
     else
     {

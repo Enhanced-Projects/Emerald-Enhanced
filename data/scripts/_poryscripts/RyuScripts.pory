@@ -776,28 +776,6 @@ Ryu_PlayerFailedChallengeHardcore::
 Ryu_failedNZHC:
 	.string "You have failed Challenge or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
 
-@==================================================================================================Start Menu Config Info
-
-RyuStartMenuConfigInfoScript::
-	buffernumberstring 0, VAR_LAST_KNOWN_GAME_VERSION
-	msgbox RyuTemp_StartMenuConfig, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq StartBetaMenu
-	closemessage
-	release
-	end
-
-RyuTemp_StartMenuConfig:
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced ({COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR LIGHT_GREEN}{SHADOW GREEN})\n"
-    .string "Configuration Info\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}In Start menu inputs:\n"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}L+R {COLOR DARK_GREY}{SHADOW LIGHT_GREY}: Enable/Disable Jukebox\l"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}R(With Jukebox On){COLOR DARK_GREY}{SHADOW LIGHT_GREY}:Skip to Next Song\l"
-	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\p"
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Open Beta Menu?$"
-
-
-
 @==================================================================================================Meloetta Switcher
 
 CLM_MeloettaSwitcher::
@@ -1245,9 +1223,21 @@ RyuCheckForWellTravelledAch::
 
 `
 
-script RyuDebug_Utility1 {
+script RyuDebug_Utility1 { 
 	release
 	end
+}
+
+text devopt1 {
+	"Spring/Summer"
+}
+
+text devopt2 {
+	"Fall"
+}
+
+text devopt3 {
+	"Winter"
 }
 
 text utilityText {
@@ -1455,8 +1445,8 @@ text PlayersHouse_1F_Text_TheresAMovieOnTV {
 
 script(global) RyuDebug_InitTimeSlide {//ngl, this may be the lewdest script i have ever made.
 	setvar(VAR_TEMP_3, 1440) //number of steps to loop in minutes.
-	setvar(VAR_TEMP_1, 12) //hour to start at
-	setvar(VAR_TEMP_2, 0) //minute to start at
+	setvar(VAR_TEMP_1, 4) //hour to start at
+	setvar(VAR_TEMP_2, 45) //minute to start at
 	goto(RyuDoTImeSlide)
 }
 

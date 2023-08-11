@@ -1595,6 +1595,21 @@ u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength)
         }
         *str = EOS;
     }
+    switch (VarGet(VAR_RYU_WEEK_COUNTER))
+    {
+        case 0:
+            StringAppend(str, ((const u8[])_("  (Spring)")));
+            break;
+        case 1:
+            StringAppend(str, ((const u8[])_("  (Summer)")));
+            break;
+        case 2:
+            StringAppend(str, ((const u8[])_("  (Fall)")));
+            break;
+        case 3:
+            StringAppend(str, ((const u8[])_("  (Winter)")));
+            break;
+    }
     return str;
 }
 

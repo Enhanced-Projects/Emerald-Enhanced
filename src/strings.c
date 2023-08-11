@@ -2125,7 +2125,6 @@ const u8 gText_OverlordRyuBossNameBuffer[] = _("Ryu");
 const u8 gText_PokemonStringBuffer[] = _("Pokémon");
 
 const u8 gText_PowerfulWildAppears[] = _("A powerful wild Pokémon appears...");
-const u8 gText_ryuJukeboxLabel[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Song: ");
 
 const u8 gText_RyuLanetteChatMenu[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Recruit...");
 const u8 gText_RyuLanetteStayMenu[] = _("{COLOR LIGHT_RED}{SHADOW RED} Stay Over");
@@ -2240,6 +2239,14 @@ const u8 gText_RyuFrontierBank500k[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥500
 const u8 gText_RyuFrontierBank1M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥1,000,000");
 const u8 gText_RyuFrontierBank10M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥10,000,000");
 const u8 gText_RyuFrontierBank100M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥100,000,000");
+
+const u8 sText_SelectDayMon[] = _("Monday");
+const u8 sText_SelectDayTue[] = _("Tuesday");
+const u8 sText_SelectDayWed[] = _("Wednesday");
+const u8 sText_SelectDayThu[] = _("Thursday");
+const u8 sText_SelectDayFri[] = _("Friday");
+const u8 sText_SelectDaySat[] = _("Saturday");
+const u8 sText_SelectDaySun[] = _("Sunday");
 
 const u8 gText_RyuREMoveIn[] = _("Move In");
 const u8 gText_RyuRELeaseProperty[] = _("Lease Out");

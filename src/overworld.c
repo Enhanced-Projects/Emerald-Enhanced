@@ -1197,20 +1197,11 @@ void LoadMapMusic(void)
         step = 3;
         newMusic = GetCurrLocationDefaultMusic();
     }
-    if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
-    {
-        step = 4;
-        newMusic = (VarGet(VAR_RYU_JUKEBOX));
-    }
     if (newMusic == 0)
     {
         step = 5;
         newMusic = GetCurrLocationDefaultMusic();
     }
-    //if (gSaveBlock2Ptr->disableBGM == TRUE)
-    //{
-    //    step = 6;
-    //}
     if (newMusic != currentMusic)
     {
         switch (step)
@@ -1229,7 +1220,6 @@ void LoadMapMusic(void)
             }
             case 4:
             {
-                FadeOutAndPlayNewMapMusic((VarGet(VAR_RYU_JUKEBOX)), 4);
                 break;
             }
             case 6:

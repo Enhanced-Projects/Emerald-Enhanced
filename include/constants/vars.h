@@ -177,7 +177,7 @@
 #define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE    0x409E
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE      0x409F
 #define VAR_SLATEPORT_HARBOR_STATE           0x40A0
-#define VAR_RYU_JUKEBOX                      0x40A1
+#define VAR_UNUSED_0x40A1                    0x40A1
 #define VAR_SEAFLOOR_CAVERN_STATE            0x40A2
 #define VAR_CABLE_CAR_STATION_STATE          0x40A3
 #define VAR_SAFARI_ZONE_STATE                0x40A4  // 0: In or out of SZ, 1: Player exiting SZ, 2: Player entering SZ
@@ -302,7 +302,15 @@
 #define VAR_RYU_PLAYER_STAMINA               0x4122 // Player's stamina for use with super training
 
 
+
+
+//for EE seasonal changes
+#define VAR_RYU_SEASONAL_WEATHER             0x417C //what's the current seasonal weather
+#define VAR_RYU_WEEK_COUNTER                 0x417D // modulo 4 of VAR_RYU_DAY_COUNTER
+#define VAR_RYU_DAY_COUNTER                  0x417E // increments daily1
 //vars 4100 thru 417f are new; total of 128.
+
+
 #define VARS_END                             0x417F
 #define VARS_COUNT                           (VARS_END - VARS_START + 1)
 

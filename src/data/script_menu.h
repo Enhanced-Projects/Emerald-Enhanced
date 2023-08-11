@@ -1334,6 +1334,17 @@ static const struct MenuAction MultiChoiceList_RealEstatePropertyOptions[]=
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_SelectDay[] =
+{
+    {sText_SelectDayMon},
+    {sText_SelectDayTue},
+    {sText_SelectDayWed},
+    {sText_SelectDayThu},
+    {sText_SelectDayFri},
+    {sText_SelectDaySat},
+    {sText_SelectDaySun}
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1356,7 +1367,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BASE_PC_WITH_REGISTRY]      = MULTICHOICE(MultichoiceList_BasePCWithRegistry),
     [MULTI_REGISTER_MENU]              = MULTICHOICE(MultichoiceList_RegisterMenu),
     [MULTI_SSTIDAL_LILYCOVE]           = MULTICHOICE(MultichoiceList_Exit),
-    [MULTI_UNUSED_9]                   = MULTICHOICE(MultichoiceList_Exit),
+    [MULTI_SELECT_DAY]                 = MULTICHOICE(MultichoiceList_SelectDay),
     [MULTI_UNUSED_10]                  = MULTICHOICE(MultichoiceList_Exit),
     [MULTI_FRONTIER_PASS_INFO]         = MULTICHOICE(MultichoiceList_FrontierPassInfo),
     [MULTI_BIKE]                       = MULTICHOICE(MultichoiceList_Bike),
@@ -1468,7 +1479,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_DYNAMIC_6]                  = MULTICHOICE(MultichoiceList_6BufferedOptions),
     [MULTI_SELECT_MOVE_SLOT]           = MULTICHOICE(MultichoiceList_119),
     [MULTI_LTC_MOVE_TUTOR_MOVES]       = MULTICHOICE(MultichoiceList_120),
-    [MULTI_UNUSED_JUKEBOX]             = MULTICHOICE(MultichoiceList_121),
+    [MULTI_UNUSED_121    ]             = MULTICHOICE(MultichoiceList_121),
     [MULTI_DEV_MODE_POKEEDIT_MENU]     = MULTICHOICE(MultichoiceList_122),
     [MULTI_UNUSED_LEVEL_SELECT]        = MULTICHOICE(MultichoiceList_123),
     [MULTI_DEV_MODE_EXP_MULT]          = MULTICHOICE(MultichoiceList_124),

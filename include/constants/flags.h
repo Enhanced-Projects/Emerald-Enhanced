@@ -96,7 +96,7 @@
 #define FLAG_PBG_DADEVENT                    0x52
 #define FLAG_TOBY_TRAINER_SIGHT              0x53
 
-#define FLAG_RYU_JUKEBOX_ENABLED             0x54
+#define FLAG_UNUSED_0x54                     0x54
 #define FLAG_RYU_BOSS_SCALE                  0x55 // Autoscale enemies to higher levels.
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56 // Always set after new game, object it hides is added directly
@@ -941,7 +941,7 @@
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1     0x374
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2     0x375
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE           0x376
-#define FLAG_RYU_WINTER_WEATHER                                     0x377
+#define FLAG_UNUSED_0x377                                           0x377
 #define FLAG_HIDE_BATTLE_TOWER_OPPONENT                             0x378
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL                  0x379
 #define FLAG_HIDE_ROUTE_119_TEAM_AQUA                               0x37A

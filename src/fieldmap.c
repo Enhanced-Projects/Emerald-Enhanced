@@ -15,6 +15,8 @@
 #include "trainer_hill.h"
 #include "tv.h"
 #include "constants/rgb.h"
+#include "constants/layouts.h"
+#include "event_data.h"
 
 struct ConnectionFlags
 {
@@ -1048,6 +1050,47 @@ void LoadSecondaryTilesetPalette(struct MapLayout const *mapLayout)
     LoadTilesetPalette(mapLayout->secondaryTileset, NUM_PALS_IN_PRIMARY * 16, (NUM_PALS_TOTAL - NUM_PALS_IN_PRIMARY) * 16 * 2);
 }
 
+
+extern struct Tileset const gTileset_General;
+//extern struct Tileset const * gTileset_GeneralSpring;
+//extern struct Tileset const * gTileset_GeneralSummer;
+extern struct Tileset const gTileset_GeneralFall;
+extern struct Tileset const gTileset_GeneralWinter;
+void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
+{
+    u8 week = VarGet(VAR_RYU_WEEK_COUNTER);
+    //put seasonal tileset swapping code here
+    if (mapLayout)
+    {
+        if (mapLayout->primaryTileset == &gTileset_General)
+        {
+            switch(week)
+            {
+                case 0: //spring
+                    CopyTilesetToVramUsingHeap(&gTileset_General, NUM_TILES_IN_PRIMARY, 0);
+                    break;
+                case 1: //summer
+                    CopyTilesetToVramUsingHeap(&gTileset_General, NUM_TILES_IN_PRIMARY, 0);
+                    break;
+                case 2: //fall
+                    CopyTilesetToVramUsingHeap(&gTileset_GeneralFall, NUM_TILES_IN_PRIMARY, 0);
+                    break;
+                case 3: //winter
+                    CopyTilesetToVramUsingHeap(&gTileset_GeneralWinter, NUM_TILES_IN_PRIMARY, 0);
+                    break;
+            }
+            CopyTilesetToVramUsingHeap(mapLayout->secondaryTileset, NUM_TILES_TOTAL - NUM_TILES_IN_PRIMARY, NUM_TILES_IN_PRIMARY);
+
+        }
+        else
+        {
+            CopyTilesetToVramUsingHeap(mapLayout->primaryTileset, NUM_TILES_IN_PRIMARY, 0);
+            CopyTilesetToVramUsingHeap(mapLayout->secondaryTileset, NUM_TILES_TOTAL - NUM_TILES_IN_PRIMARY, NUM_TILES_IN_PRIMARY);
+        }
+    }
+}
+
+/*
 void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
 {
     if (mapLayout)
@@ -1056,12 +1099,38 @@ void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
         CopyTilesetToVramUsingHeap(mapLayout->secondaryTileset, NUM_TILES_TOTAL - NUM_TILES_IN_PRIMARY, NUM_TILES_IN_PRIMARY);
     }
 }
+*/
+
+extern const struct MapLayout *const gMapLayouts[];
 
 void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
 {
+    u8 week = VarGet(VAR_RYU_WEEK_COUNTER);
     if (mapLayout)
     {
-        LoadPrimaryTilesetPalette(mapLayout);
+        if (mapLayout->primaryTileset == &gTileset_General)
+        {
+            switch(week)
+            {
+                case 0: //spring
+                    LoadPrimaryTilesetPalette(mapLayout);
+                    break;
+                case 1: //summer
+                    LoadPrimaryTilesetPalette(mapLayout);
+                    break;
+                case 2: //fall
+                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_FALL_LAYOUT - 1]);
+                    break;
+                case 3: //winter
+                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_WINTER_LAYOUT - 1]);
+                    break;
+            }
+        }
+        else
+        {
+            LoadPrimaryTilesetPalette(mapLayout);
+        }
+
         LoadSecondaryTilesetPalette(mapLayout);
     }
 }
