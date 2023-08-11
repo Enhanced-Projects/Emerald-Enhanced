@@ -440,7 +440,7 @@ const struct ContestPokemon gContestOpponents[] =
     },
     [CONTEST_OPPONENT_ALEC] = {
         .species = SPECIES_SLAKOTH,
-        .nickname = _("Slothy"),
+        .nickname = _("Sid"),
         .trainerName = _("Toby"),
         .trainerGfxId = OBJ_EVENT_GFX_CAMPER,
         .aiFlags = CONTEST_AI_SET_9,
@@ -2318,7 +2318,7 @@ const struct ContestPokemon gContestOpponents[] =
         .species = SPECIES_SLAKING,
         .nickname = _("Slacker"),
         .trainerName = _("Toby"),
-        .trainerGfxId = OBJ_EVENT_GFX_LITTLE_BOY,
+        .trainerGfxId = OBJ_EVENT_GFX_CAMPER,
         .aiFlags = CONTEST_AI_SET_12,
         .whichRank = CONTEST_RANK_MASTER,
         .aiPool_Cool = FALSE,
@@ -2344,7 +2344,7 @@ const struct ContestPokemon gContestOpponents[] =
     },
     [CONTEST_OPPONENT_MAYRA] = {
         .species = SPECIES_ALTARIA,
-        .nickname = _("Taria"),
+        .nickname = _("Arialta"),
         .trainerName = _("Mayra"),
         .trainerGfxId = OBJ_EVENT_GFX_POKEFAN_F,
         .aiFlags = CONTEST_AI_SET_5,
