@@ -5081,7 +5081,7 @@ static void ReturnFromBattleToOverworld(void)
         {
             u16 newItem = (gRyuHighPickupTable[Random() % NUM_PICKUP_TABLE_ENTRIES]);
             FlagClear(FLAG_RYU_SPAWN_KINGPIN);
-            if (gBattleOutcome == B_OUTCOME_WON)
+            if (gBattleOutcome == B_OUTCOME_WON && (!(gBattleOutcome == B_OUTCOME_CAUGHT))) //if the kingpin was caught with a masterball, don't drop item
             {
                 if (CheckBagHasSpace(newItem, 1))
                 {

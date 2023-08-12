@@ -4134,7 +4134,7 @@ static void Cmd_getexp(void)
 
             calculatedExp = (RyuCalculateAlchemyExpModifier(calculatedExp));
 
-            if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE)
+            if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE && (!(gLastUsedItem == ITEM_MASTER_BALL)))
                 calculatedExp *= 4;
 
             RyuExpBatteryTemp = ((calculatedExp * 5) / 100);
@@ -12395,7 +12395,7 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_TrainerBallBlock;
     }
-    else if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE)
+    else if (FlagGet(FLAG_RYU_SPAWN_KINGPIN) == TRUE && (!(gLastUsedItem == ITEM_MASTER_BALL)))//don't prevent master ball from being used.
     {
         BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
         MarkBattlerForControllerExec(gActiveBattler);
