@@ -34,6 +34,7 @@
 #include "constants/rgb.h"
 #include "event_data.h"
 #include "pokedex.h"
+#include "strings.h"
 
 #define MAX_MODIFY_DIGITS 4
 
@@ -677,12 +678,18 @@ const u8 sBattleStatStrings[7][12] = {
 const u8 sText_StatsMsg[] = _("' ");
 const u8 sText_Comma[] = _(",");
 
+
+
 void BufferPlayerRightBattleData(void)
 {
     int i;
     StringCopy(gStringVar4, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
-    StringExpandPlaceholders(gStringVar1, gStringVar4);
     StringAppend(gStringVar4, gBattleMons[0].nickname);
+    StringAppend(gStringVar4, ((const u8[])_(" ( ")));
+    StringAppend(gStringVar4, sPokemonTypesSymbolTable[gBattleMons[0].type1]);
+    StringAppend(gStringVar4, ((const u8[])_(" / ")));
+    StringAppend(gStringVar4, sPokemonTypesSymbolTable[gBattleMons[0].type2]);
+    StringAppend(gStringVar4, ((const u8[])_(" ) ")));
     StringCopy(gStringVar1, ((const u8[])_("     (Player Right){COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
     StringExpandPlaceholders(gStringVar2, gStringVar1);
     StringAppend(gStringVar4, gStringVar2);
@@ -712,18 +719,15 @@ void BufferEnemyRightBattleData(void)
     int i;
     StringCopy(gStringVar4, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
     StringExpandPlaceholders(gStringVar1, gStringVar4);
+    StringAppend(gStringVar4, ((const u8[])_(" ( ")));
+    StringAppend(gStringVar4, sPokemonTypesSymbolTable[gBattleMons[1].type1]);
+    StringAppend(gStringVar4, ((const u8[])_(" / ")));
+    StringAppend(gStringVar4, sPokemonTypesSymbolTable[gBattleMons[1].type2]);
+    StringAppend(gStringVar4, ((const u8[])_(" ) ")));
     StringAppend(gStringVar4, gBattleMons[1].nickname);
     StringCopy(gStringVar1, ((const u8[])_(" (Enemy Right)")));
     StringExpandPlaceholders(gStringVar2, gStringVar1);
     StringAppend(gStringVar4, gStringVar2);
-    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[1].species), FLAG_GET_SEEN))
-    {
-        StringCopy(gStringVar1, ((const u8[])_("{COLOR LIGHT_BLUE}{SHADOW BLUE} Types: ")));
-        StringAppend(gStringVar1, gTypeNames[gBattleMons[1].type1]);
-        StringAppend(gStringVar1, ((const u8[])_(" / ")));
-        StringAppend(gStringVar1, gTypeNames[gBattleMons[1].type2]);
-        StringAppend(gStringVar4, gStringVar1);
-    }
     StringAppend(gStringVar4, ((const u8[])_("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
     StringAppend(gStringVar4, sText_Newline);
     for (i = 0;i < 7;i++)
@@ -754,6 +758,11 @@ void BufferPlayerLeftBattleData(void)
     StringCopy(gStringVar1, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
     StringExpandPlaceholders(gStringVar4, gStringVar1);
     StringAppend(gStringVar4, gBattleMons[2].nickname);
+    StringAppend(gStringVar4, ((const u8[])_(" ( ")));
+    StringAppend(gStringVar4, sPokemonTypesSymbolTable[gBattleMons[2].type1]);
+    StringAppend(gStringVar4, ((const u8[])_(" / ")));
+    StringAppend(gStringVar4, sPokemonTypesSymbolTable[gBattleMons[2].type2]);
+    StringAppend(gStringVar4, ((const u8[])_(" ) ")));
     StringCopy(gStringVar1, ((const u8[])_("     (Player Left){COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
     StringExpandPlaceholders(gStringVar2, gStringVar1);
     StringAppend(gStringVar4, gStringVar2);
@@ -790,18 +799,14 @@ void BufferEnemyLeftBattleData(void)
     StringCopy(gStringVar1, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
     StringExpandPlaceholders(gStringVar4, gStringVar1);
     StringAppend(gStringVar4, gBattleMons[3].nickname);
+    StringAppend(gStringVar4, ((const u8[])_(" ( ")));
+    StringAppend(gStringVar4, sPokemonTypesSymbolTable[gBattleMons[3].type1]);
+    StringAppend(gStringVar4, ((const u8[])_(" / ")));
+    StringAppend(gStringVar4, sPokemonTypesSymbolTable[gBattleMons[3].type2]);
+    StringAppend(gStringVar4, ((const u8[])_(" ) ")));
     StringCopy(gStringVar1, ((const u8[])_(" (Enemy Left) {COLOR LIGHT_BLUE}{SHADOW BLUE}")));
     StringExpandPlaceholders(gStringVar2, gStringVar1);
     StringAppend(gStringVar4, gStringVar2);
-    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[3].species), FLAG_GET_SEEN))
-    {
-        StringCopy(gStringVar1, ((const u8[])_("Type: ")));
-        StringAppend(gStringVar1, gTypeNames[gBattleMons[3].type1]);
-        StringAppend(gStringVar1, ((const u8[])_(" / ")));
-        StringAppend(gStringVar1, gTypeNames[gBattleMons[3].type2]);
-        StringAppend(gStringVar1, ((const u8[])_("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}")));
-        StringAppend(gStringVar4, gStringVar1);
-    }
     StringAppend(gStringVar4, sText_Newline);
         for (i = 0;i < 7;i++)
         {   
@@ -877,13 +882,13 @@ void PrintDataWindows(void)
         //player right
         FillWindowPixelBuffer(0, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         BufferPlayerRightBattleData();
-        AddTextPrinterParameterized4(0, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+        AddTextPrinterParameterized4(0, 1, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);
         //player left
         FillWindowPixelBuffer(1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         BufferPlayerLeftBattleData();
-        AddTextPrinterParameterized4(1, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+        AddTextPrinterParameterized4(1, 1, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
         PutWindowTilemap(1);
         CopyWindowToVram(1, 3);
     }
@@ -892,13 +897,13 @@ void PrintDataWindows(void)
         //enemy right
         FillWindowPixelBuffer(0, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         BufferEnemyRightBattleData();
-        AddTextPrinterParameterized4(0, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+        AddTextPrinterParameterized4(0, 1, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);
         //enemy left
         FillWindowPixelBuffer(1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         BufferEnemyLeftBattleData();
-        AddTextPrinterParameterized4(1, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+        AddTextPrinterParameterized4(1, 1, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
         PutWindowTilemap(1);
         CopyWindowToVram(1, 3);
     }

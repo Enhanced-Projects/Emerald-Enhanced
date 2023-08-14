@@ -2264,6 +2264,28 @@ const u8* const gText_PresetThemeNames[] = {
     (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None"),
 };
 
+const u8* const sPokemonTypesSymbolTable[] = {
+    (u8[])_("{TYPE_ICON_NORM}"),
+    (u8[])_("{TYPE_ICON_FIGH}"),
+    (u8[])_("{TYPE_ICON_FLYI}"),
+    (u8[])_("{TYPE_ICON_POIS}"),
+    (u8[])_("{TYPE_ICON_GROU}"),
+    (u8[])_("{TYPE_ICON_ROCK}"),
+    (u8[])_("{TYPE_ICON_BUG}"),
+    (u8[])_("{TYPE_ICON_GHOS}"),
+    (u8[])_("{TYPE_ICON_STEE}"),
+    (u8[])_("{BOSS_INDI}"),
+    (u8[])_("{TYPE_ICON_FIRE}"),
+    (u8[])_("{TYPE_ICON_WATE}"),
+    (u8[])_("{TYPE_ICON_GRAS}"),
+    (u8[])_("{TYPE_ICON_ELEC}"),
+    (u8[])_("{TYPE_ICON_PSYC}"),
+    (u8[])_("{TYPE_ICON_ICE}"),
+    (u8[])_("{TYPE_ICON_DRAG}"),
+    (u8[])_("{TYPE_ICON_DARK}"),
+    (u8[])_("{TYPE_ICON_FAIR}")
+};
+
 const u8* const gText_ThemePokeballNames[] = {    (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}None           "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Poke Ball      "),
                                             (u8[])_("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mega Ball      "),

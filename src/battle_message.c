@@ -31,6 +31,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 #include "ach_atlas.h"
+#include "strings.h"
 
 struct BattleWindowText
 {
@@ -2828,6 +2829,7 @@ void BufferStringBattle(u16 stringID)
         else
             StringCopy(gBattleTextBuff3, gMoveNames[gBattleMsgDataPtr->currentMove]);
 
+        StringAppend(gBattleTextBuff3, sPokemonTypesSymbolTable[*(&gBattleStruct->stringMoveType)]);
         stringPtr = sText_AttackerUsedX;
         break;
     case STRINGID_REAPERUSEDMOVE: // pokemon used a move msg
