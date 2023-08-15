@@ -1909,3 +1909,83 @@ gTilesetPalettes_DarkWorld::
 	.align 2
 gTilesetTiles_DarkWorld::
 	.incbin "data/tilesets/primary/darkworld/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_GeneralSpring::
+	.incbin "data/tilesets/primary/generalspring/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/generalspring/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_GeneralSpring::
+	.incbin "data/tilesets/primary/generalspring/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_GeneralSummer::
+	.incbin "data/tilesets/primary/generalsummer/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/generalsummer/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_GeneralSummer::
+	.incbin "data/tilesets/primary/generalsummer/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_GeneralAutumn::
+	.incbin "data/tilesets/primary/generalautumn/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/generalautumn/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_GeneralAutumn::
+	.incbin "data/tilesets/primary/generalautumn/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_GeneralWinter::
+	.incbin "data/tilesets/primary/generalwinter/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/generalwinter/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_GeneralWinter::
+	.incbin "data/tilesets/primary/generalwinter/tiles.4bpp.lz"

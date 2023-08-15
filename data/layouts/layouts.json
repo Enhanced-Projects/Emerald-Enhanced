@@ -5682,11 +5682,31 @@
       "blockdata_filepath": "data/layouts/LavaridgeTown_LucyHome/map.bin"
     },
     {
-      "id": "LAYOUT_DUMMY_FALL_LAYOUT",
-      "name": "DummyFallLayout",
+      "id": "LAYOUT_DUMMY_SPRING_LAYOUT",
+      "name": "DummySpringLayout",
       "width": 10,
       "height": 10,
-      "primary_tileset": "gTileset_GeneralFall",
+      "primary_tileset": "gTileset_GeneralSpring",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/LavaridgeTown_LucyHome/border.bin",
+      "blockdata_filepath": "data/layouts/LavaridgeTown_LucyHome/map.bin"
+    },
+    {
+      "id": "LAYOUT_DUMMY_SUMMER_LAYOUT",
+      "name": "DummySummerLayout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_GeneralSummer",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/LavaridgeTown_LucyHome/border.bin",
+      "blockdata_filepath": "data/layouts/LavaridgeTown_LucyHome/map.bin"
+    },
+    {
+      "id": "LAYOUT_DUMMY_AUTUMN_LAYOUT",
+      "name": "DummyAUTUMNLayout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_GeneralAutumn",
       "secondary_tileset": "gTileset_Unused1",
       "border_filepath": "data/layouts/LavaridgeTown_LucyHome/border.bin",
       "blockdata_filepath": "data/layouts/LavaridgeTown_LucyHome/map.bin"
