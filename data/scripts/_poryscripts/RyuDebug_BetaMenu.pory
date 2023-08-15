@@ -81,8 +81,8 @@ script RDBM_ResetRTC {
 
 script RDBM_ViewTutorials {
     msgbox("Select a tutorial to view.")
-    bufferdynamicmulti(RDBM_Tut1Lbl, RDBM_Tut2Lbl, RDBM_Tut3Lbl, RDBM_Tut4Lbl, RDBM_Tut5Lbl)
-    multichoice(0, 0, MULTI_DYNAMIC_5, 1)
+    bufferdynamicmulti(RDBM_Tut1Lbl, RDBM_Tut2Lbl, RDBM_Tut3Lbl, RDBM_Tut4Lbl, RDBM_Tut5Lbl, RDBM_Tut6Lbl)
+    multichoice(0, 0, MULTI_DYNAMIC_6, 1)
     switch (var(VAR_RESULT)) {
         case 0:
             call(RyuTutorial_Followers)
@@ -93,9 +93,10 @@ script RDBM_ViewTutorials {
         case 3:
             call(RyuTutorial_Factions)
         case 4:
-            release
-            end
+            call(RyuTutorial_Autoscale)
     }
+        release
+        end
 }
 
 text RDBM_Tut1Lbl {
@@ -115,6 +116,10 @@ text RDBM_Tut4Lbl {
 }
 
 text RDBM_Tut5Lbl {
+    "Autoscale"
+}
+
+text RDBM_Tut6Lbl {
     "Exit"
 }
 
