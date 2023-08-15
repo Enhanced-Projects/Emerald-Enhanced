@@ -98,6 +98,7 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_DROUGHT]            = {Drought_InitVars,       Drought_Main,       Drought_InitAll,       Drought_Finish},
     [WEATHER_DOWNPOUR]           = {Downpour_InitVars,      Thunderstorm_Main,  Downpour_InitAll,      Thunderstorm_Finish},
     [WEATHER_UNDERWATER_BUBBLES] = {Bubbles_InitVars,       Bubbles_Main,       Bubbles_InitAll,       Bubbles_Finish},
+    [WEATHER_WINDY]              = {Windstorm_InitVars,     Windstorm_Main,     Windstorm_InitAll,     Windstorm_Finish},
 };
 
 void (*const gWeatherPalStateFuncs[])(void) =
@@ -988,7 +989,7 @@ bool8 Weather_UpdateBlend(void)
     return FALSE;
 }
 
-void sub_80AC274(u8 a)
+void sub_80AC274(u8 a)// ??? unused???
 {
     switch (a)
     {

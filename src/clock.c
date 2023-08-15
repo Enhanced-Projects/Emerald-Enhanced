@@ -187,7 +187,7 @@ void RyuChooseSeasonalWeather(void)
                 if (rngval < 2) //0 to 1, 2%
                     temp = WEATHER_SHADE;
                 else if (rngval > 2 && rngval < 44) //3 to 43, 40%
-                    temp = WEATHER_FOG_DIAGONAL; //replace with windy
+                    temp = WEATHER_WINDY;
                 else if (rngval > 43 && rngval < 84) // 44 to 83, 40%
                     temp = WEATHER_SUNNY_CLOUDS;
                 else //84 to 99, 18%
@@ -199,7 +199,7 @@ void RyuChooseSeasonalWeather(void)
                 if (rngval < 4) //0 to 3, 4%
                     temp = WEATHER_SHADE;
                 else if (rngval > 3 && rngval < 14) //4 to 13, 10%
-                    temp = WEATHER_FOG_DIAGONAL;//replace with windy
+                    temp = WEATHER_WINDY;
                 else if (rngval > 13 && rngval < 29)// 14 to 29, 15%
                     temp = WEATHER_SUNNY_CLOUDS;
                 else if (rngval > 28 && rngval < 55)// 28 to 54, 25%
