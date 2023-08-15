@@ -157,89 +157,55 @@ void RyuChooseSeasonalWeather(void)
 
     switch (currentSeason)
     {
-        case 0:
+        case 0: //spring
             {
                 if (rngval == 0) //0, 1%
-                {
                     temp = WEATHER_SHADE;
-                }
                 else if (rngval > 0 && rngval < 11) //1 to 10, 10%
-                {
                     temp = WEATHER_RAIN_THUNDERSTORM;
-                }
                 else if (rngval > 11 && rngval < 41)//12 to 40, 38%
-                {
                     temp = WEATHER_SUNNY_CLOUDS;
-                }
                 else // 41 to 99, 51%
-                {
                     temp = WEATHER_RAIN;
-                }
                 break;
 
             }
-        case 1:
+        case 1: //summer
             {
                 if (rngval == 0) //0, 1%
-                {
                     temp == WEATHER_SHADE;
-                }
                 else if (rngval > 0 && rngval < 6) //1 to 5, 5%
-                {
                     temp = WEATHER_RAIN_THUNDERSTORM;
-                }
                 else if (rngval > 4 && rngval < 17 ) //5 to 16, 12% 
-                {
                     temp = WEATHER_RAIN;
-                }
                 else //17 to 99, 82%
-                {
                     temp = WEATHER_SUNNY_CLOUDS;
-                }
                 break;
             }
-        case 2:
+        case 2: //fall
             {
                 if (rngval < 2) //0 to 1, 2%
-                {
                     temp = WEATHER_SHADE;
-                }
                 else if (rngval > 2 && rngval < 44) //3 to 43, 40%
-                {
                     temp = WEATHER_FOG_DIAGONAL; //replace with windy
-                }
                 else if (rngval > 43 && rngval < 84) // 44 to 83, 40%
-                {
                     temp = WEATHER_SUNNY_CLOUDS;
-                }
                 else //84 to 99, 18%
-                {
                     temp = WEATHER_RAIN;
-                }
                 break;
             }
-        case 3:
+        case 3: //winter
             {
                 if (rngval < 4) //0 to 3, 4%
-                {
                     temp = WEATHER_SHADE;
-                }
                 else if (rngval > 3 && rngval < 14) //4 to 13, 10%
-                {
                     temp = WEATHER_FOG_DIAGONAL;//replace with windy
-                }
                 else if (rngval > 13 && rngval < 29)// 14 to 29, 15%
-                {
                     temp = WEATHER_SUNNY_CLOUDS;
-                }
                 else if (rngval > 28 && rngval < 55)// 28 to 54, 25%
-                {
                     temp = WEATHER_RAIN;
-                }
                 else //55 to 99, 46%
-                {
                     temp = WEATHER_SNOW;
-                }
                 break;
             }
     }
