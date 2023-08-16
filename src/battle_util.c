@@ -1648,6 +1648,23 @@ enum
     ENDTURN_FIELD_COUNT,
 };
 
+int TryDecrementWeatherDuration(void)
+{
+    int i;
+    for (i = 0;i<gBattlersCount;i++)
+    {
+        if (gBattleMons[i].ability == ABILITY_FORECAST)
+        {
+            return gWishFutureKnock.weatherDuration;
+        }
+    }
+    if (gWishFutureKnock.weatherDuration != 0)
+        gWishFutureKnock.weatherDuration -= 1;
+    
+    return gWishFutureKnock.weatherDuration;
+}   
+
+
 u8 DoFieldEndTurnEffects(void)
 {
     u8 effect = 0;
@@ -1884,7 +1901,7 @@ u8 DoFieldEndTurnEffects(void)
                 if (!(gBattleWeather & WEATHER_RAIN_PERMANENT)
                  && !(gBattleWeather & WEATHER_RAIN_PRIMAL))
                 {
-                    if (--gWishFutureKnock.weatherDuration == 0)
+                    if ((TryDecrementWeatherDuration() == 0))
                     {
                         gBattleWeather &= ~WEATHER_RAIN_TEMPORARY;
                         gBattleWeather &= ~WEATHER_RAIN_DOWNPOUR;
@@ -1915,7 +1932,7 @@ u8 DoFieldEndTurnEffects(void)
         case ENDTURN_SANDSTORM:
             if (gBattleWeather & WEATHER_SANDSTORM_ANY)
             {
-                if (!(gBattleWeather & WEATHER_SANDSTORM_PERMANENT) && --gWishFutureKnock.weatherDuration == 0)
+                if (!(gBattleWeather & WEATHER_SANDSTORM_PERMANENT) && (TryDecrementWeatherDuration() == 0))
                 {
                     gBattleWeather &= ~WEATHER_SANDSTORM_TEMPORARY;
                     gBattlescriptCurrInstr = BattleScript_SandStormHailEnds;
@@ -1939,7 +1956,7 @@ u8 DoFieldEndTurnEffects(void)
             {
                 if (!(gBattleWeather & WEATHER_SUN_PERMANENT)
                  && !(gBattleWeather & WEATHER_SUN_PRIMAL)
-                 && --gWishFutureKnock.weatherDuration == 0)
+                 && (TryDecrementWeatherDuration() == 0))
                 {
                     gBattleWeather &= ~WEATHER_SUN_TEMPORARY;
                     gBattlescriptCurrInstr = BattleScript_SunlightFaded;
@@ -1960,7 +1977,7 @@ u8 DoFieldEndTurnEffects(void)
         case ENDTURN_HAIL:
             if (gBattleWeather & WEATHER_HAIL_ANY)
             {
-                if (!(gBattleWeather & WEATHER_HAIL_PERMANENT) && --gWishFutureKnock.weatherDuration == 0)
+                if (!(gBattleWeather & WEATHER_HAIL_PERMANENT) && (TryDecrementWeatherDuration() == 0))
                 {
                     gBattleWeather &= ~WEATHER_HAIL_TEMPORARY;
                     gBattlescriptCurrInstr = BattleScript_SandStormHailEnds;
@@ -2085,7 +2102,7 @@ u8 DoFieldEndTurnEffects(void)
         case ENDTURN_ECLIPSE:
             if (gBattleWeather & WEATHER_ECLIPSE_ANY)
             {
-                if (!(gBattleWeather & WEATHER_ECLIPSE_PERMANENT) && --gWishFutureKnock.weatherDuration == 0)
+                if (!(gBattleWeather & WEATHER_ECLIPSE_PERMANENT) && (TryDecrementWeatherDuration() == 0))// if weather isn't permanent AND trydecrement returns TRUE
                 {
                     gBattleWeather &= ~WEATHER_ECLIPSE_TEMPORARY;
                     gBattlescriptCurrInstr = BattleScript_EclipseEnds;
