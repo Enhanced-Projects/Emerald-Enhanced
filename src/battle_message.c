@@ -2829,8 +2829,8 @@ void BufferStringBattle(u16 stringID)
             StringCopy(gBattleTextBuff3, sATypeMove_Table[*(&gBattleStruct->stringMoveType)]);
         else
             StringCopy(gBattleTextBuff3, gMoveNames[gBattleMsgDataPtr->currentMove]);
-
-        StringAppend(gBattleTextBuff3, sPokemonTypesSymbolTable[*(&gBattleStruct->stringMoveType)]);
+        if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
+            StringAppend(gBattleTextBuff3, sPokemonTypesSymbolTable[*(&gBattleStruct->stringMoveType)]);
         stringPtr = sText_AttackerUsedX;
         break;
     case STRINGID_REAPERUSEDMOVE: // pokemon used a move msg
