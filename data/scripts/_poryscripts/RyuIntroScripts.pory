@@ -70,6 +70,9 @@ RyuScript_ContinueIntroAfterStarter::
 	end
 
 NGNormalMode::
+	msgbox RI_AskViewOWTut, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuTutorial_OpenWorld
 	msgbox RI_ConfirmDifficulty
 	goto IT_NormalMode
 
@@ -81,6 +84,9 @@ GMS_WhichColor:
 
 Ryu_PleaseSelectDifficulty::
 	.string "Please choose a mode to play.$"
+
+RI_AskViewOWTut:
+	.string "View the Open World tutorial?\n(Highly recommended for new players!)$"
 
 Ryu_NewGamePlus::
 	clearflag FLAG_RYU_RANDOMBATTLE

@@ -193,3 +193,45 @@ script RyuTutorial_Autoscale {
     release
     end
 }
+
+script RyuTutorial_OpenWorld {
+    fadescreen(FADE_TO_BLACK)
+    msgbox("Open World Tutorial")
+    closemessage
+    drawfullscreenimage(SCENEBGOPENWORLDTUTORIAL2)
+    msgbox(
+        "Note that in Emerald Enhanced,\n"
+        "you can swim  without having Surf\l"
+        "or any specific badge.")
+    closemessage
+    clearfullscreenimage
+    delay(20)
+    drawfullscreenimage(SCENEBGOPENWORLDTUTORIAL3)
+    msgbox(
+        "The same goes for Cut. You can\n"
+        "simply walk up and pull out a\l"
+        "tree like this one.")
+    closemessage
+    clearfullscreenimage
+    delay(20)
+    drawfullscreenimage(SCENEBGOPENWORLDTUTORIAL1)
+    msgbox(
+        "You can also Dive the same\n"
+        "way you Surf. Just activate\l"
+        "dark water."
+    )
+    closemessage
+    clearfullscreenimage
+    fadescreen(FADE_TO_BLACK)
+    msgbox(
+        "This is true for all of the\n"
+        "HM roadblocks that existed in\l"
+        "vanilla.\p"
+        "You perform the tasks without any\n"
+        "specific badge or pokemon move."
+        )
+    closemessage
+    msgbox("Returning to the intro.")
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
