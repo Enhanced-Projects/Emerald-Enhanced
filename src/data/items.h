@@ -5288,7 +5288,7 @@ const struct Item gItems[] =
     {
         .name = _("Imprinter"),
         .itemId = ITEM_IMPRINTER,
-        .price = 60000,
+        .price = 22500,
         .holdEffect = HOLD_EFFECT_NONE,
         .holdEffectParam = 0,
         .description = sPokeFluteDesc,
