@@ -21,6 +21,7 @@ EWRAM_DATA static u16 gUnusedWeatherRelated = 0;
 // CONST
 const u16 gCloudsWeatherPalette[] = INCBIN_U16("graphics/weather/cloud.gbapal");
 const u16 gSandstormWeatherPalette[] = INCBIN_U16("graphics/weather/sandstorm.gbapal");
+const u16 gWindstormWeatherPalette[] = INCBIN_U16("graphics/weather/windy.gbapal");
 const u16 gBlizzardWeatherPalette[] = INCBIN_U16("graphics/weather/blizzard.gbapal");
 const u8 gWeatherFogDiagonalTiles[] = INCBIN_U8("graphics/weather/fog_diagonal.4bpp");
 const u8 gWeatherFogHorizontalTiles[] = INCBIN_U8("graphics/weather/fog_horizontal.4bpp");
@@ -31,11 +32,13 @@ const u8 gWeatherBubbleTiles[] = INCBIN_U8("graphics/weather/bubble.4bpp");
 const u8 gWeatherAshTiles[] = INCBIN_U8("graphics/weather/ash.4bpp");
 const u8 gWeatherRainTiles[] = INCBIN_U8("graphics/weather/rain.4bpp");
 const u8 gWeatherSandstormTiles[] = INCBIN_U8("graphics/weather/sandstorm.4bpp");
+const u8 gWeatherWindstormTiles[] = INCBIN_U8("graphics/weather/windy.4bpp");
 const u8 gWeatherBlizzardTiles[] = INCBIN_U8("graphics/weather/blizzard.4bpp");
 
 const struct SpritePalette sFogSpritePalette = {gUnknown_083970E8, 0x1201};
 const struct SpritePalette sCloudsSpritePalette = {gCloudsWeatherPalette, 0x1207};
 const struct SpritePalette sSandstormSpritePalette = {gSandstormWeatherPalette, 0x1204};
+const struct SpritePalette sWindstormSpritePalette = {gWindstormWeatherPalette, 0x1204};
 const struct SpritePalette sBlizzardSpritePalette = {gBlizzardWeatherPalette, 0x1204};
 
 //------------------------------------------------------------------------------
@@ -2606,6 +2609,7 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_ABNORMAL:           return WEATHER_ABNORMAL;
     case WEATHER_ROUTE119_CYCLE:     return sWeatherCycleRoute119[gSaveBlock1Ptr->weatherCycleStage];
     case WEATHER_ROUTE123_CYCLE:     return sWeatherCycleRoute123[gSaveBlock1Ptr->weatherCycleStage];
+    case WEATHER_WINDY:              return WEATHER_WINDY;
     default:                         return WEATHER_NONE;
     }
 }
@@ -2625,3 +2629,309 @@ static void UpdateRainCounter(u8 newWeather, u8 oldWeather)
 }
 
 
+//------------------------------------------------------------------------------
+// WEATHER_WINDSTORM
+//------------------------------------------------------------------------------
+
+static void UpdateWindstormWaveIndex(void);
+static void UpdateWindstormMovement(void);
+static void CreateWindstormSprites(void);
+static void CreateSwirlWindstormSprites(void);
+static void DestroyWindstormSprites(void);
+static void UpdateWindstormSprite(struct Sprite *);
+static void WaitWindSwirlSpriteEntrance(struct Sprite *);
+static void UpdateWindstormSwirlSprite(struct Sprite *);
+
+#define MIN_SANDSTORM_WAVE_INDEX 0x20
+
+void Windstorm_InitVars(void)
+{
+    gWeatherPtr->initStep = 0;
+    gWeatherPtr->weatherGfxLoaded = 0;
+    gWeatherPtr->gammaTargetIndex = 0;
+    gWeatherPtr->gammaStepDelay = 20;
+    if (!gWeatherPtr->sandstormSpritesCreated)
+    {
+        gWeatherPtr->sandstormXOffset = gWeatherPtr->sandstormYOffset = 0;
+        gWeatherPtr->sandstormWaveIndex = 8;
+        gWeatherPtr->sandstormWaveCounter = 0;
+        // Dead code. How does the compiler not optimize this out?
+        if (gWeatherPtr->sandstormWaveIndex >= 0x80 - MIN_SANDSTORM_WAVE_INDEX)
+            gWeatherPtr->sandstormWaveIndex = 0x80 - gWeatherPtr->sandstormWaveIndex;
+
+        Weather_SetBlendCoeffs(0, 16);
+    }
+}
+
+void Windstorm_InitAll(void)
+{
+    Windstorm_InitVars();
+    while (!gWeatherPtr->weatherGfxLoaded)
+        Windstorm_Main();
+}
+
+void Windstorm_Main(void)
+{
+    UpdateWindstormMovement();
+    UpdateWindstormWaveIndex();
+    if (gWeatherPtr->sandstormWaveIndex >= 0x80 - MIN_SANDSTORM_WAVE_INDEX)
+        gWeatherPtr->sandstormWaveIndex = MIN_SANDSTORM_WAVE_INDEX;
+
+    switch (gWeatherPtr->initStep)
+    {
+    case 0:
+        CreateWindstormSprites();
+        CreateSwirlWindstormSprites();
+        gWeatherPtr->initStep++;
+        break;
+    case 1:
+        Weather_SetTargetBlendCoeffs(16, 0, 0);
+        gWeatherPtr->initStep++;
+        break;
+    case 2:
+        if (Weather_UpdateBlend())
+        {
+            gWeatherPtr->weatherGfxLoaded = TRUE;
+            gWeatherPtr->initStep++;
+        }
+        break;
+    }
+}
+
+bool8 Windstorm_Finish(void)
+{
+    UpdateWindstormMovement();
+    UpdateWindstormWaveIndex();
+    switch (gWeatherPtr->finishStep)
+    {
+    case 0:
+        Weather_SetTargetBlendCoeffs(0, 16, 0);
+        gWeatherPtr->finishStep++;
+        break;
+    case 1:
+        if (Weather_UpdateBlend())
+            gWeatherPtr->finishStep++;
+        break;
+    case 2:
+        DestroyWindstormSprites();
+        gWeatherPtr->finishStep++;
+        break;
+    default:
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+static void UpdateWindstormWaveIndex(void)
+{
+    if (gWeatherPtr->sandstormWaveCounter++ > 4)
+    {
+        gWeatherPtr->sandstormWaveIndex++;
+        gWeatherPtr->sandstormWaveCounter = 0;
+    }
+}
+
+static void UpdateWindstormMovement(void)
+{
+    gWeatherPtr->sandstormXOffset -= gSineTable[gWeatherPtr->sandstormWaveIndex] * 4;
+    gWeatherPtr->sandstormYOffset -= gSineTable[gWeatherPtr->sandstormWaveIndex];
+    gWeatherPtr->sandstormBaseSpritesX = (gSpriteCoordOffsetX + (gWeatherPtr->sandstormXOffset >> 8)) & 0xFF;
+    gWeatherPtr->sandstormPosY = gSpriteCoordOffsetY + (gWeatherPtr->sandstormYOffset >> 8);
+}
+
+static void DestroyWindstormSprites(void)
+{
+    u16 i;
+
+    if (gWeatherPtr->sandstormSpritesCreated)
+    {
+        for (i = 0; i < NUM_SANDSTORM_SPRITES; i++)
+        {
+            if (gWeatherPtr->sprites.s2.sandstormSprites1[i])
+                DestroySprite(gWeatherPtr->sprites.s2.sandstormSprites1[i]);
+        }
+
+        gWeatherPtr->sandstormSpritesCreated = FALSE;
+        FreeSpriteTilesByTag(0x1204);
+    }
+
+    if (gWeatherPtr->sandstormSwirlSpritesCreated)
+    {
+        for (i = 0; i < NUM_SWIRL_SANDSTORM_SPRITES; i++)
+        {
+            if (gWeatherPtr->sprites.s2.sandstormSprites2[i] != NULL)
+                DestroySprite(gWeatherPtr->sprites.s2.sandstormSprites2[i]);
+        }
+
+        gWeatherPtr->sandstormSwirlSpritesCreated = FALSE;
+    }
+}
+
+static const struct OamData sWindstormSpriteOamData =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_BLEND,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .size = SPRITE_SIZE(64x64),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+};
+
+static const union AnimCmd sWindstormSpriteAnimCmd0[] =
+{
+    ANIMCMD_FRAME(0, 3),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sWindstormSpriteAnimCmd1[] =
+{
+    ANIMCMD_FRAME(64, 3),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sWindstormSpriteAnimCmds[] =
+{
+    sWindstormSpriteAnimCmd0,
+    sWindstormSpriteAnimCmd1,
+};
+
+static const struct SpriteTemplate sWindstormSpriteTemplate =
+{
+    .tileTag = 0x1204,
+    .paletteTag = 0x1204,
+    .oam = &sWindstormSpriteOamData,
+    .anims = sWindstormSpriteAnimCmds,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateWindstormSprite,
+};
+
+static const struct SpriteSheet sWindstormSpriteSheet =
+{
+    .data = gWeatherWindstormTiles,
+    .size = sizeof(gWeatherWindstormTiles),
+    .tag = 0x1204,
+};
+
+// Regular sandstorm sprites
+#define tSpriteColumn  data[0]
+#define tSpriteRow     data[1]
+
+// Swirly sandstorm sprites
+#define tRadius        data[0]
+#define tWaveIndex     data[1]
+#define tRadiusCounter data[2]
+#define tEntranceDelay data[3]
+
+static void CreateWindstormSprites(void)
+{
+    u16 i = (Random() % 4);
+    u8 spriteId;
+
+    if (!gWeatherPtr->sandstormSpritesCreated)
+    {
+        LoadSpriteSheet(&sWindstormSpriteSheet);
+        LoadCustomWeatherSpritePalette(&sWindstormSpritePalette);
+        
+        spriteId = CreateSpriteAtEnd(&sWindstormSpriteTemplate, 0, (i / 5) * 64, 1);
+        if (spriteId != MAX_SPRITES)
+        {
+            gWeatherPtr->sprites.s2.sandstormSprites1[i] = &gSprites[spriteId];
+            gWeatherPtr->sprites.s2.sandstormSprites1[i]->tSpriteColumn = 0;
+            gWeatherPtr->sprites.s2.sandstormSprites1[i]->tSpriteRow = 0;
+        }
+        else
+        {
+            gWeatherPtr->sprites.s2.sandstormSprites1[i] = NULL;
+        }
+
+        gWeatherPtr->sandstormSpritesCreated = TRUE;
+    }
+}
+
+static const u16 sWindSwirlEntranceDelays[] = {0, 120, 80, 160, 40, 0};
+
+static void CreateSwirlWindstormSprites(void)
+{
+    u16 i;
+    u8 spriteId;
+
+    if (!gWeatherPtr->sandstormSwirlSpritesCreated)
+    {
+        for (i = 0; i < NUM_SWIRL_SANDSTORM_SPRITES; i++)
+        {
+            spriteId = CreateSpriteAtEnd(&sWindstormSpriteTemplate, i * 48 + 24, 208, 1);
+            if (spriteId != MAX_SPRITES)
+            {
+                gWeatherPtr->sprites.s2.sandstormSprites2[i] = &gSprites[spriteId];
+                gWeatherPtr->sprites.s2.sandstormSprites2[i]->oam.size = ST_OAM_SIZE_2;
+                gWeatherPtr->sprites.s2.sandstormSprites2[i]->tSpriteRow = i * 51;
+                gWeatherPtr->sprites.s2.sandstormSprites2[i]->tRadius = 8;
+                gWeatherPtr->sprites.s2.sandstormSprites2[i]->tRadiusCounter = 0;
+                gWeatherPtr->sprites.s2.sandstormSprites2[i]->data[4] = 0x6730; // unused value
+                gWeatherPtr->sprites.s2.sandstormSprites2[i]->tEntranceDelay = sWindSwirlEntranceDelays[i];
+                StartSpriteAnim(gWeatherPtr->sprites.s2.sandstormSprites2[i], 1);
+                CalcCenterToCornerVec(gWeatherPtr->sprites.s2.sandstormSprites2[i], SPRITE_SHAPE(32x32), SPRITE_SIZE(32x32), ST_OAM_AFFINE_OFF);
+                gWeatherPtr->sprites.s2.sandstormSprites2[i]->callback = WaitWindSwirlSpriteEntrance;
+            }
+            else
+            {
+                gWeatherPtr->sprites.s2.sandstormSprites2[i] = NULL;
+            }
+
+            gWeatherPtr->sandstormSwirlSpritesCreated = TRUE;
+        }
+    }
+}
+
+static void UpdateWindstormSprite(struct Sprite *sprite)
+{
+    sprite->pos2.y = gWeatherPtr->sandstormPosY;
+    sprite->pos1.x = gWeatherPtr->sandstormBaseSpritesX + 32 + sprite->tSpriteColumn * 64;
+    if (sprite->pos1.x > 271)
+    {
+        sprite->pos1.x = gWeatherPtr->sandstormBaseSpritesX + 480 - (4 - sprite->tSpriteColumn) * 64;
+        sprite->pos1.x &= 0x1FF;
+    }
+}
+
+static void WaitWindSwirlSpriteEntrance(struct Sprite *sprite)
+{
+    if (--sprite->tEntranceDelay == -1)
+        sprite->callback = UpdateWindstormSwirlSprite;
+}
+
+static void UpdateWindstormSwirlSprite(struct Sprite *sprite)
+{
+    u32 x, y;
+
+    if (--sprite->pos1.y < -48)
+    {
+        sprite->pos1.y = 208;
+        sprite->tRadius = 4;
+    }
+
+    x = sprite->tRadius * gSineTable[sprite->tWaveIndex];
+    y = sprite->tRadius * gSineTable[sprite->tWaveIndex + 0x40];
+    sprite->pos2.x = x >> 8;
+    sprite->pos2.y = y >> 8;
+    sprite->tWaveIndex = (sprite->tWaveIndex + 10) & 0xFF;
+    if (++sprite->tRadiusCounter > 8)
+    {
+        sprite->tRadiusCounter = 0;
+        sprite->tRadius++;
+    }
+}
+
+#undef tSpriteColumn
+#undef tSpriteRow
+
+#undef tRadius
+#undef tWaveIndex
+#undef tRadiusCounter
+#undef tEntranceDelay

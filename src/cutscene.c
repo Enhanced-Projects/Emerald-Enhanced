@@ -140,6 +140,18 @@ static const u8 sMomBgPalette[] = INCBIN_U8("graphics/cutscene/mom/mom_tiles.gba
 static const u8 sLucySceneSprite[] =    INCBIN_U8("graphics/cutscene/mugshotsprites/lucy_sprite.4bpp");
 static const u8 sLucySceneSpritePal[] = INCBIN_U8("graphics/cutscene/mugshotsprites/lucy_sprite.gbapal");
 
+static const u8 sOpenWorldTutorial1BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial1.4bpp");
+static const u8 sOpenWorldTutorial1BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial1.bin");
+static const u8 sOpenWorldTutorial1BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial1.gbapal");
+
+static const u8 sOpenWorldTutorial2BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial2.4bpp");
+static const u8 sOpenWorldTutorial2BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial2.bin");
+static const u8 sOpenWorldTutorial2BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial2.gbapal");
+
+static const u8 sOpenWorldTutorial3BgTiles[] =   INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial3.4bpp");
+static const u8 sOpenWorldTutorial3BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial3.bin");
+static const u8 sOpenWorldTutorial3BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial3.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -494,6 +506,39 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sMomBgMap),
         .palette = sMomBgPalette,
 		.palIdxCnt = 224
+	},
+	[SCENEBGOPENWORLDTUTORIAL1] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sOpenWorldTutorial1BgTiles,
+		.tileSize = sizeof(sOpenWorldTutorial1BgTiles),
+        .map = sOpenWorldTutorial1BgMap,
+		.mapSize = sizeof(sOpenWorldTutorial1BgMap),
+        .palette = sOpenWorldTutorial1BgPalette,
+		.palIdxCnt = 16
+	},
+	[SCENEBGOPENWORLDTUTORIAL2] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sOpenWorldTutorial2BgTiles,
+		.tileSize = sizeof(sOpenWorldTutorial2BgTiles),
+        .map = sOpenWorldTutorial2BgMap,
+		.mapSize = sizeof(sOpenWorldTutorial2BgMap),
+        .palette = sOpenWorldTutorial2BgPalette,
+		.palIdxCnt = 16
+	},
+	[SCENEBGOPENWORLDTUTORIAL3] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sOpenWorldTutorial3BgTiles,
+		.tileSize = sizeof(sOpenWorldTutorial3BgTiles),
+        .map = sOpenWorldTutorial3BgMap,
+		.mapSize = sizeof(sOpenWorldTutorial3BgMap),
+        .palette = sOpenWorldTutorial3BgPalette,
+		.palIdxCnt = 16
 	},
 };
 

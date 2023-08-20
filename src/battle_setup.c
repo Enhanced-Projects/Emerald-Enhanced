@@ -639,6 +639,21 @@ static void CB2_EndWildBattle(void)
     CpuFill16(0, (void*)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 
+    if ((gBattleOutcome == B_OUTCOME_CAUGHT))//special case for finishing a battle with kingpins
+    {
+        int i;
+        int temp = 0;
+        int temp2 = 0;
+        for (i = 0;i < 5;i++)
+        {
+            temp = (GetMonData(&gPlayerParty[i], MON_DATA_HP));
+            temp2 = (GetMonData(&gPlayerParty[i], MON_DATA_STATUS));
+            CalculateMonStats(&gPlayerParty[i]);
+            if (GetMonData(&gPlayerParty[i], MON_DATA_HP) > temp)
+                SetMonData(&gPlayerParty[i], MON_DATA_HP, &temp);
+            SetMonData(&gPlayerParty[i], MON_DATA_STATUS, &temp2);
+        }
+    }
     if (IsPlayerDefeated(gBattleOutcome) == TRUE && !InBattlePyramid() && !InBattlePike())
     {
         SetMainCallback2(CB2_WhiteOut);

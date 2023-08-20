@@ -1052,9 +1052,9 @@ void LoadSecondaryTilesetPalette(struct MapLayout const *mapLayout)
 
 
 extern struct Tileset const gTileset_General;
-//extern struct Tileset const * gTileset_GeneralSpring;
-//extern struct Tileset const * gTileset_GeneralSummer;
-extern struct Tileset const gTileset_GeneralFall;
+extern struct Tileset const gTileset_GeneralSpring;
+extern struct Tileset const gTileset_GeneralSummer;
+extern struct Tileset const gTileset_GeneralAutumn;
 extern struct Tileset const gTileset_GeneralWinter;
 void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
 {
@@ -1067,13 +1067,13 @@ void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
             switch(week)
             {
                 case 0: //spring
-                    CopyTilesetToVramUsingHeap(&gTileset_General, NUM_TILES_IN_PRIMARY, 0);
+                    CopyTilesetToVramUsingHeap(&gTileset_GeneralSpring, NUM_TILES_IN_PRIMARY, 0);
                     break;
                 case 1: //summer
-                    CopyTilesetToVramUsingHeap(&gTileset_General, NUM_TILES_IN_PRIMARY, 0);
+                    CopyTilesetToVramUsingHeap(&gTileset_GeneralSummer, NUM_TILES_IN_PRIMARY, 0);
                     break;
                 case 2: //fall
-                    CopyTilesetToVramUsingHeap(&gTileset_GeneralFall, NUM_TILES_IN_PRIMARY, 0);
+                    CopyTilesetToVramUsingHeap(&gTileset_GeneralAutumn, NUM_TILES_IN_PRIMARY, 0);
                     break;
                 case 3: //winter
                     CopyTilesetToVramUsingHeap(&gTileset_GeneralWinter, NUM_TILES_IN_PRIMARY, 0);
@@ -1113,13 +1113,13 @@ void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
             switch(week)
             {
                 case 0: //spring
-                    LoadPrimaryTilesetPalette(mapLayout);
+                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_SPRING_LAYOUT - 1]);
                     break;
                 case 1: //summer
-                    LoadPrimaryTilesetPalette(mapLayout);
+                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_SUMMER_LAYOUT - 1]);
                     break;
                 case 2: //fall
-                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_FALL_LAYOUT - 1]);
+                    LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_AUTUMN_LAYOUT - 1]);
                     break;
                 case 3: //winter
                     LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_WINTER_LAYOUT - 1]);

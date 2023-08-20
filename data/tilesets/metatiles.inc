@@ -629,3 +629,32 @@ gMetatiles_DarkWorld::
 	.align 1
 gMetatileAttributes_DarkWorld::
 	.incbin "data/tilesets/primary/darkworld/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_GeneralSpring::
+	.incbin "data/tilesets/primary/generalspring/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_GeneralSpring::
+	.incbin "data/tilesets/primary/generalspring/metatile_attributes.bin"
+	.align 1
+gMetatiles_GeneralSummer::
+	.incbin "data/tilesets/primary/generalsummer/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_GeneralSummer::
+	.incbin "data/tilesets/primary/generalsummer/metatile_attributes.bin"
+	.align 1
+gMetatiles_GeneralAutumn::
+	.incbin "data/tilesets/primary/generalautumn/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_GeneralAutumn::
+	.incbin "data/tilesets/primary/generalautumn/metatile_attributes.bin"
+	.align 1
+gMetatiles_GeneralWinter::
+	.incbin "data/tilesets/primary/generalwinter/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_GeneralWinter::
+	.incbin "data/tilesets/primary/generalwinter/metatile_attributes.bin"

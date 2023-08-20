@@ -3309,6 +3309,8 @@ extern const u8 gText_RyuRESellProperty[];
 extern const u8 gText_RyuBallChangerLabel[];
 extern const u8 gText_RyuBallMarketLabel[];
 
+extern const u8* const sPokemonTypesSymbolTable[];
+
 extern const u8 sText_SelectDayMon[];
 extern const u8 sText_SelectDayTue[];
 extern const u8 sText_SelectDayWed[];

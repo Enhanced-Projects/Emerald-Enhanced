@@ -1224,6 +1224,9 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 { 
+	setweather(WEATHER_WINDY)
+	msgbox("Switching to windy...")
+	doweather
 	release
 	end
 }

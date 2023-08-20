@@ -31,6 +31,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 #include "ach_atlas.h"
+#include "strings.h"
 
 struct BattleWindowText
 {
@@ -1684,7 +1685,8 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_DROUGHT]            = STRINGID_SUNLIGHTSTRONG,
     [WEATHER_DOWNPOUR]           = STRINGID_ITISRAINING,
     [WEATHER_UNDERWATER_BUBBLES] = STRINGID_ITISRAINING,
-    [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING
+    [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING,
+    [WEATHER_WINDY]              = STRINGID_ITISRAINING
 };
 
 const u16 gInobedientStringIds[] =
@@ -2830,7 +2832,8 @@ void BufferStringBattle(u16 stringID)
             StringCopy(gBattleTextBuff3, sATypeMove_Table[*(&gBattleStruct->stringMoveType)]);
         else
             StringCopy(gBattleTextBuff3, gMoveNames[gBattleMsgDataPtr->currentMove]);
-
+        if (FlagGet(FLAG_RYU_TGL_BATTLE_INFO) == TRUE)
+            StringAppend(gBattleTextBuff3, sPokemonTypesSymbolTable[*(&gBattleStruct->stringMoveType)]);
         stringPtr = sText_AttackerUsedX;
         break;
     case STRINGID_REAPERUSEDMOVE: // pokemon used a move msg

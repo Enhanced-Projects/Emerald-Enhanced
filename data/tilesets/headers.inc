@@ -9,50 +9,6 @@ gTileset_General:: @ 83DF704
 	.4byte gMetatileAttributes_General
 	.4byte InitTilesetAnim_General
 
-@@	.align 2
-@@gTileset_GeneralSpring:: @replace these with the Spring versions of these files!
-@@	  .byte TRUE @ is compressed
-@@	  .byte FALSE @ is secondary tileset
-@@	  .2byte 0 @ padding
-@@	  .4byte gTilesetTiles_General
-@@	  .4byte gTilesetPalettes_General
-@@	  .4byte gMetatiles_General
-@@	  .4byte gMetatileAttributes_General
-@@	  .4byte InitTilesetAnim_General
-@@
-@@	.align 2
-@@gTileset_GeneralSummer:: @replace these with the Summer versions of these files!
-@@	  .byte TRUE @ is compressed
-@@	  .byte FALSE @ is secondary tileset
-@@	  .2byte 0 @ padding
-@@	  .4byte gTilesetTiles_General
-@@	  .4byte gTilesetPalettes_General
-@@	  .4byte gMetatiles_General
-@@	  .4byte gMetatileAttributes_General
-@@	  .4byte InitTilesetAnim_General
-@@
-	.align 2
-gTileset_GeneralFall:: @replace these with the Fall versions of these files!
-	.byte TRUE @ is compressed
-	.byte FALSE @ is secondary tileset
-	.2byte 0 @ padding
-	.4byte gTilesetTiles_General
-	.4byte gTilesetPalettes_GeneralFall
-	.4byte gMetatiles_General
-	.4byte gMetatileAttributes_General
-	.4byte InitTilesetAnim_General
-
-	.align 2
-gTileset_GeneralWinter:: @replace these with the Winter versions of these files!
-	.byte TRUE @ is compressed
-	.byte FALSE @ is secondary tileset
-	.2byte 0 @ padding
-	.4byte gTilesetTiles_General
-	.4byte gTilesetPalettes_GeneralWinter
-	.4byte gMetatiles_General
-	.4byte gMetatileAttributes_General
-	.4byte InitTilesetAnim_General
-
 	.align 2
 gTileset_Petalburg:: @ 83DF71C
 	.byte TRUE @ is compressed
@@ -973,3 +929,47 @@ gTileset_DarkWorld::
 	.4byte gMetatiles_DarkWorld
 	.4byte gMetatileAttributes_DarkWorld
 	.4byte InitTilesetAnim_DarkWorld
+
+	.align 2
+gTileset_GeneralSpring::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_GeneralSpring
+	.4byte gTilesetPalettes_GeneralSpring
+	.4byte gMetatiles_General
+	.4byte gMetatileAttributes_General
+	.4byte NULL
+
+	.align 2
+gTileset_GeneralSummer::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_GeneralSummer
+	.4byte gTilesetPalettes_GeneralSummer
+	.4byte gMetatiles_General
+	.4byte gMetatileAttributes_General
+	.4byte NULL
+
+	.align 2
+gTileset_GeneralAutumn::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_GeneralAutumn
+	.4byte gTilesetPalettes_GeneralAutumn
+	.4byte gMetatiles_General
+	.4byte gMetatileAttributes_General
+	.4byte NULL
+
+	.align 2
+gTileset_GeneralWinter::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_GeneralWinter
+	.4byte gTilesetPalettes_GeneralWinter
+	.4byte gMetatiles_General
+	.4byte gMetatileAttributes_General
+	.4byte NULL

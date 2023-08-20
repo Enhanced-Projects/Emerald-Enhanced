@@ -8,25 +8,18 @@ script RyuTutorial_Followers {
     msgbox("Beginning Followers tutorial...")
     closemessage
     clearfullscreenimage
-    drawfullscreenimage(TUTORIALFOLLOWER1)
-    msgbox(format("To recruit a follower to your side, you only need to talk to them. In most cases, they will first ask if you want to stay the night."))
-    clearfullscreenimage
-    fadescreen(FADE_FROM_BLACK)
-    drawfullscreenimage(TUTORIALFOLLOWER3)
-    msgbox(format("Answer no to staying the night, and they will ask if they can follow you."), MSGBOX_DEFAULT)
-    closemessage
-    clearfullscreenimage
+    msgbox(format("To recruit a follower to your side, you have to have unlocked them. You can usually just talk to them after that."))
     fadescreen(FADE_FROM_BLACK)
     drawfullscreenimage(TUTORIALFOLLOWER2)
     msgbox(format("The follower menu has several options. Here's what they do:"))
     closemessage
     msgbox(format("Chat: Your follower will say something."))
     closemessage
-    msgbox(format("Team Up: You choose wether or not followers will join you in battle. Followers can only participate in Gym Leader battles when you have 7 or more badges, as well as the elite four, championship, and title defense."))
+    msgbox(format("Team Up: You choose wether or not followers will join you in battle. Followers will only participate in tier7+ gym, E4, and champion/title defense fights."))
+    closemessage
+    msgbox(format("Party: View your follower's current party."))
     closemessage
     msgbox(format("Dismiss: Your follower will return to where they came from, if they can be dismissed. Sometimes followers cannot be dismissed due to quest or story events."))
-    closemessage
-    msgbox(format("Nothing: Close the menu and do nothing."))
     closemessage
     msgbox(format("Set Attendant: This option is only available when in an owned house. You can choose to have the current follower stay at the current house if you wish."))
     clearfullscreenimage
@@ -37,7 +30,7 @@ script RyuTutorial_Followers {
     closemessage
     clearfullscreenimage
     fadescreen(FADE_FROM_BLACK)
-    msgbox(format("Most followers will require you complete a quest to unlock them. A list of each follower's passive effects can be found on the discord."))
+    msgbox(format("A list of each follower's passive effects can be found on the discord."))
     closemessage
     msgbox(format("This concludes the followers tutorial."))
     closemessage
@@ -108,13 +101,7 @@ script RyuTutorial_Quest {
     closemessage
     msgbox(format("The Quest log will help you understand what you need to do for the next steps of all possible quests in the game. Note that some minor sidequests, such as the one for Lanette, does not have an entry in the quest log due to the relatively short length of them."))
     closemessage
-    msgbox(format("Because Emerald Enhanced is an open world game, it also uses various forms of autoscaling. By default, on your first playthrough, Normal mode is selected and recommended. This mode gives you bonus exp based on the number of badges you have. It does not matter what order you complete the gyms in."))
-    closemessage
-    msgbox(format("The base autoscaling mode makes wild pokemon, trainers, and all other forms of battle stick to specific level ranges based on the number of badges you have."))
-    closemessage
-    msgbox(format("On subsequent playthroughs with New Game plus, the autoscaling method is switched to power-level based. In this mode, all battles will scale to the general power level of your party. If you are on any higher difficulty settings, this means that NPC's will typically match or outlevel you."))
-    closemessage
-    msgbox(format("This concludes the quest and autoscale tutorial."))
+    msgbox(format("This concludes the quest tutorial."))
     closemessage
     fadescreen(FADE_FROM_BLACK)
     return
@@ -151,5 +138,100 @@ script RyuTutorial_Factions {
     msgbox(format("You can find a spreadsheet in the Useful Info channel linked in the discord that lists the trainer types associated with each faction."))
     closemessage
     msgbox(format("This concludes the Factions tutorial."))
+    return
+}
+
+script RyuTutorial_Autoscale {
+    fadescreen(FADE_TO_BLACK)
+    msgbox(
+        "This tutorial will tell you how enemy\n"
+        "levels are determined in EE."
+    )
+    closemessage
+    msgbox(
+        "Emerald Enhanced uses autoscale based\n"
+        "on your badge count for your first run."
+    )
+    closemessage
+    msgbox(
+        "Autoscale returns a range of levels\n"
+        "based on your badge count.\p"
+        "This value is returned as a range, \n"
+        "so the same trainer may have slightly\l"
+        "different levels each fight."
+    )
+    closemessage
+    msgbox(
+        "When you are on New Game Plus, enemy\n"
+        "levels are scaled to your party power\l"
+        "level instead."
+    )
+    closemessage
+    msgbox(
+        "AUTOFILL\p"
+        "Emerald Enhanced's autofill system\n"
+        "makes all standard trainer parties\l"
+        "dynamic.\p"
+        "Each time you fight a trainer, their\n"
+        "party will be different.\p"
+        "Each trainer class has a pool of\n"
+        "pokémon from which their party is\l"
+        "built.\p"
+        "Additionally, Follower parties are\n"
+        "also autofilled from preset pools\l"
+        "like normal trainers."
+    )
+    closemessage
+    msgbox(
+        "AUTOLEVEL + AUTOEVOLVE\p"
+        "In addition to autoscale and autofill\n"
+        "Emerald Enhanced's enemy trainers\l"
+        "will be evolved based on level.\p"
+    )
+    closemessage
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
+}
+
+script RyuTutorial_OpenWorld {
+    fadescreen(FADE_TO_BLACK)
+    msgbox("Open World Tutorial")
+    closemessage
+    drawfullscreenimage(SCENEBGOPENWORLDTUTORIAL2)
+    msgbox(
+        "Note that in Emerald Enhanced,\n"
+        "you can swim  without having Surf\l"
+        "or any specific badge.")
+    closemessage
+    clearfullscreenimage
+    delay(20)
+    drawfullscreenimage(SCENEBGOPENWORLDTUTORIAL3)
+    msgbox(
+        "The same goes for Cut. You can\n"
+        "simply walk up and pull out a\l"
+        "tree like this one.")
+    closemessage
+    clearfullscreenimage
+    delay(20)
+    drawfullscreenimage(SCENEBGOPENWORLDTUTORIAL1)
+    msgbox(
+        "You can also Dive the same\n"
+        "way you Surf. Just activate\l"
+        "dark water."
+    )
+    closemessage
+    clearfullscreenimage
+    fadescreen(FADE_TO_BLACK)
+    msgbox(
+        "This is true for all of the\n"
+        "HM roadblocks that existed in\l"
+        "vanilla.\p"
+        "You perform the tasks without any\n"
+        "specific badge or pokemon move."
+        )
+    closemessage
+    msgbox("Returning to the intro.")
+    fadescreen(FADE_FROM_BLACK)
     return
 }
