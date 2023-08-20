@@ -3437,8 +3437,8 @@ static const struct TrainerMonItemCustomMoves sParty_Phoebe[] = {
 	.species = SPECIES_GOLURK,
 	.heldItem = ITEM_LIFE_ORB,
 	.evspread = 0,
-    .ability = 0,
-	.moves = {MOVE_EARTHQUAKE, MOVE_REAPING_BLOW, MOVE_STONE_EDGE, MOVE_CLOSE_COMBAT},
+    .ability = 2,
+	.moves = {MOVE_EARTHQUAKE, MOVE_SHADOW_SLAM, MOVE_STONE_EDGE, MOVE_CLOSE_COMBAT},
 	},
 	{
 	.iv = 223,
@@ -8074,7 +8074,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerDanny[] = {
     .species = SPECIES_MACHAMP,
     .heldItem = ITEM_TOXIC_ORB,
     .ability = 0,
-    .moves = {MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF, MOVE_FACADE, MOVE_BULLET_PUNCH},
+    .moves = {MOVE_CLOSE_COMBAT, MOVE_SHADOW_SLAM, MOVE_FACADE, MOVE_BULLET_PUNCH},
     },
     {
     .iv = 255,

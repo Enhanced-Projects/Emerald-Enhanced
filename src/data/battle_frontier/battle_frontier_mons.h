@@ -2745,14 +2745,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_DUSKNOIR_1] = { // Dusknoir-WispTR (ID: 305)
+    [FRONTIER_MON_DUSKNOIR_1] = { // Dusknoir-4attacks (ID: 305)
         .species = SPECIES_DUSKNOIR,
-        .moves = {MOVE_REAPING_BLOW, MOVE_DRAIN_PUNCH, MOVE_WILL_O_WISP, MOVE_TRICK_ROOM},
-        .heldItem = ITEM_BIG_ROOT,
+        .moves = {MOVE_SHADOW_SLAM, MOVE_REAPING_BLOW, MOVE_SHADOW_SNEAK, MOVE_DRAIN_PUNCH},
+        .heldItem = ITEM_SHELL_BELL,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_BRAVE,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_DODRIO_1] = { // Dodrio-SD (ID: 408)
         .species = SPECIES_DODRIO,
@@ -3224,7 +3224,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MACHAMP_1] = { // Machamp-Guts (ID: 460)
         .species = SPECIES_MACHAMP,
-        .moves = {MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF, MOVE_FACADE, MOVE_BULLET_PUNCH},
+        .moves = {MOVE_CLOSE_COMBAT, MOVE_SHADOW_SLAM, MOVE_FACADE, MOVE_BULLET_PUNCH},
         .heldItem = ITEM_TOXIC_ORB,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
@@ -3996,10 +3996,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_GOLURK_1] = { // Golurk-Band (ID: 342)
+    [FRONTIER_MON_GOLURK_1] = { // Golurk-BoxingGlove (ID: 342)
         .species = SPECIES_GOLURK,
         .moves = {MOVE_REAPING_BLOW, MOVE_DRAIN_PUNCH, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH},
-        .heldItem = ITEM_CHOICE_BAND,
+        .heldItem = ITEM_BOXING_GLOVE,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
@@ -4581,14 +4581,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_DUSKNOIR_2] = { // Dusknoir-SneakTR (ID: 509)
+    [FRONTIER_MON_DUSKNOIR_2] = { // Dusknoir-TR (ID: 509)
         .species = SPECIES_DUSKNOIR,
-        .moves = {MOVE_REAPING_BLOW, MOVE_DRAIN_PUNCH, MOVE_SHADOW_SNEAK, MOVE_TRICK_ROOM},
-        .heldItem = ITEM_BIG_ROOT,
+        .moves = {MOVE_SHADOW_SLAM, MOVE_SHADOW_SNEAK, MOVE_DRAIN_PUNCH, MOVE_TRICK_ROOM},
+        .heldItem = ITEM_SHELL_BELL,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_BRAVE,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_DODRIO_2] = { // Dodrio-Band (ID: 612)
         .species = SPECIES_DODRIO,
@@ -5060,7 +5060,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MACHAMP_2] = { // Machamp-BU (ID: 664)
         .species = SPECIES_MACHAMP,
-        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_BULK_UP, MOVE_KNOCK_OFF},
+        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_SHADOW_SLAM, MOVE_STONE_EDGE, MOVE_BULK_UP},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
@@ -5832,14 +5832,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_GOLURK_2] = { // Golurk-BoxingGlove (ID: 546)
+    [FRONTIER_MON_GOLURK_2] = { // Golurk-Band (ID: 546)
         .species = SPECIES_GOLURK,
-        .moves = {MOVE_REAPING_BLOW, MOVE_DRAIN_PUNCH, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH},
-        .heldItem = ITEM_BOXING_GLOVE,
+        .moves = {MOVE_SHADOW_SLAM, MOVE_CLOSE_COMBAT, MOVE_REAPING_BLOW, MOVE_EARTHQUAKE},
+        .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 0
+        .ability = 2
     },
     [FRONTIER_MON_FERROTHORN_2] = { // Ferrothorn-Spikes (ID: 649)
         .species = SPECIES_FERROTHORN,
@@ -6815,7 +6815,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MACHAMP_3] = { // Machamp-Band (ID: 757)
         .species = SPECIES_MACHAMP,
-        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_HEAVY_SLAM},
+        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_SHADOW_SLAM, MOVE_HEAVY_SLAM},
         .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
@@ -6833,7 +6833,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MACHAMP_4] = { // Machamp-AV (ID: 759)
         .species = SPECIES_MACHAMP,
-        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_BULLET_PUNCH},
+        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_SHADOW_SLAM, MOVE_BULLET_PUNCH},
         .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,

@@ -424,6 +424,48 @@ MoveTutor_EventScript_ExplosionTaught:: @ 82C831C
 	release
 	end
 
+FrostyForest_House_EventScript_ShadowSlamTutor::
+	lock
+	faceplayer
+	checkitem ITEM_REAPER_CLOTH, 1
+	compare VAR_RESULT, 1
+	goto_if_ne FFH_MT_NoReaperCloth
+	setvar VAR_TEMP_5, ITEM_REAPER_CLOTH
+	msgbox MoveTutor_Text_ShadowSlamTeach, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq MoveTutor_EventScript_ShadowSlamDeclined
+	call MoveTutor_EventScript_CanOnlyBeLearnedOnce
+	compare VAR_RESULT, NO
+	goto_if_eq MoveTutor_EventScript_ShadowSlamDeclined
+	msgbox MoveTutor_Text_ShadowSlamWhichMon, MSGBOX_DEFAULT
+	setvar VAR_0x8005, TUTOR_MOVE_SHADOW_SLAM
+	call MoveTutor_EventScript_OpenPartyMenu
+	compare VAR_RESULT, 0
+	goto_if_eq MoveTutor_EventScript_ShadowSlamDeclined
+	removeitem ITEM_LIFE_ORB, 1
+	goto MoveTutor_EventScript_ShadowSlamTaught
+	end
+
+FFH_MT_NoReaperCloth::
+	msgbox FFHnoreapercloth
+	release 
+	end
+
+FFHnoreapercloth:
+	.string "To cloak your Pokémon in\n"
+	.string "shadows, I will need a\l"
+	.string "Reaper Cloth…$"
+
+MoveTutor_EventScript_ShadowSlamDeclined::
+	msgbox MoveTutor_Text_ShadowSlamDeclined, MSGBOX_DEFAULT
+	release
+	end
+
+MoveTutor_EventScript_ShadowSlamTaught::
+	msgbox MoveTutor_Text_ShadowSlamTaught, MSGBOX_DEFAULT
+	release
+	end
+
 MoveTutor_EventScript_OpenPartyMenu:: @ 82C8326
 	special ChooseMonForMoveTutor
 	waitstate
