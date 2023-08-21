@@ -532,6 +532,18 @@ const union AffineAnimCmd *const gPowerAbsorptionOrbAffineAnimTable[] = {
     gPowerAbsorptionOrbAffineAnimCmds,
 };
 
+//Dark Vortex charge-up
+const struct SpriteTemplate gDarkPowerAbsorptionOrbSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_ORBS,
+    .paletteTag = ANIM_TAG_PURPLE_GAS_CLOUD,
+    .oam = &gOamData_AffineNormal_ObjBlend_16x16,
+    .anims = gPowerAbsorptionOrbAnimTable,
+    .images = NULL,
+    .affineAnims = gPowerAbsorptionOrbAffineAnimTable,
+    .callback = AnimPowerAbsorptionOrb,
+};
+
 const struct SpriteTemplate gPowerAbsorptionOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ORBS,

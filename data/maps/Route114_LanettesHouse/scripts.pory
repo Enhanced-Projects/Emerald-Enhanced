@@ -150,7 +150,7 @@ LNH_WhatRotom:
     .string "swap it to?$"
 
 LNH_RotomFire::
-	setvar VAR_TEMP_4, MOVE_OVERHEAT
+	setvar VAR_TEMP_4, MOVE_FIRE_BLAST
 	setvar VAR_TEMP_5, 862
 	goto LNH_DoRotomSwap
 

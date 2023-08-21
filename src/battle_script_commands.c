@@ -1006,7 +1006,7 @@ static const u16 sMoveEffectsForbiddenToInstruct[] =
     EFFECT_ASSIST,
     EFFECT_BIDE,
     EFFECT_FOCUS_PUNCH,
-    //EFFECT_GEOMANCY,
+    EFFECT_GEOMANCY,
     EFFECT_INSTRUCT,
     EFFECT_ME_FIRST,
     EFFECT_METRONOME,
@@ -1022,6 +1022,7 @@ static const u16 sMoveEffectsForbiddenToInstruct[] =
     EFFECT_SOLARBEAM,
     EFFECT_TRANSFORM,
     EFFECT_TWO_TURNS_ATTACK,
+    EFFECT_VOID_BURST,
     FORBIDDEN_INSTRUCT_END
 };
 
@@ -1393,7 +1394,7 @@ static void Cmd_attackcanceler(void)
         gBattlescriptCurrInstr = BattleScript_MagicCoatBounce;
         return;
     }
-    else if (((GetBattlerAbility(gBattlerTarget) == ABILITY_MAGIC_BOUNCE) || (((IsPlayerInUnderworld() == TRUE) && ((GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT)))))
+    else if (((GetBattlerAbility(gBattlerTarget) == ABILITY_MAGIC_BOUNCE) || (((IsPlayerInUnderworld() == TRUE) && ((GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT)))) || (((GetBattlerAbility(gBattlerTarget) == ABILITY_ILLUSIONIST)) && ((gBattleWeather & WEATHER_ECLIPSE_ANY))))
              && gBattleMoves[gCurrentMove].flags & FLAG_MAGICCOAT_AFFECTED
              && !gProtectStructs[gBattlerAttacker].usesBouncedMove)
     {
@@ -1569,7 +1570,13 @@ static bool32 AccuracyCalcHelper(u16 move)
     {
         if ((IsBattlerWeatherAffected(gBattlerTarget, WEATHER_RAIN_ANY) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE)))
         {
-            // thunder/hurricane ignore acc checks in rain unless target is holding utility umbrella
+            // thunder/hurricane ignore acc checks in rain unless target is ignoring weather
+            JumpIfMoveFailed(7, move);
+            return TRUE;
+        }
+        if ((IsBattlerWeatherAffected(gBattlerTarget, WEATHER_ECLIPSE_ANY) && (gBattleMoves[move].effect == EFFECT_SHADOW_SLAM)))
+        {
+            // shadow slam ignores acc checks in eclipse unless target is ignoring weather
             JumpIfMoveFailed(7, move);
             return TRUE;
         }
@@ -10626,6 +10633,7 @@ static bool8 IsTwoTurnsMove(u16 move)
     if (gBattleMoves[move].effect == EFFECT_SKULL_BASH
         || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
         || gBattleMoves[move].effect == EFFECT_SOLARBEAM
+        || gBattleMoves[move].effect == EFFECT_VOID_BURST
         || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
         || gBattleMoves[move].effect == EFFECT_BIDE)
         return TRUE;
@@ -10640,9 +10648,14 @@ static u8 AttacksThisTurn(u8 battlerId, u16 move) // Note: returns 1 if it's a c
         && (gBattleWeather & WEATHER_SUN_ANY))
         return 2;
 
+    if (gBattleMoves[move].effect == EFFECT_VOID_BURST
+        && (gBattleWeather & WEATHER_ECLIPSE_ANY))
+        return 2;
+
     if (gBattleMoves[move].effect == EFFECT_SKULL_BASH
         || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
         || gBattleMoves[move].effect == EFFECT_SOLARBEAM
+        || gBattleMoves[move].effect == EFFECT_VOID_BURST
         || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
         || gBattleMoves[move].effect == EFFECT_BIDE)
     {
@@ -11280,6 +11293,15 @@ static void Cmd_recoverbasedonsunlight(void)
                 gBattleMoveDamage = 20 * gBattleMons[gBattlerAttacker].maxHP / 30;
             else
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
+        }
+        else if (gCurrentMove == MOVE_MOONLIGHT)
+        {
+            if (!(gBattleWeather & WEATHER_ANY) || !WEATHER_HAS_EFFECT)
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
+            else if (gBattleWeather & WEATHER_ECLIPSE_ANY)
+                gBattleMoveDamage = 20 * gBattleMons[gBattlerAttacker].maxHP / 30;
+            else // not eclipse weather
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
         }
         else
         {

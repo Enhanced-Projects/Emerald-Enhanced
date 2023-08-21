@@ -367,11 +367,34 @@ gBattleScriptsForMoveEffects:: @ 82D86A8
 	.4byte BattleScript_EffectFairyLock
 	.4byte BattleScript_EffectAllySwitch
 	.4byte BattleScript_EffectSleepHit
-	.4byte BattleScript_EffectOmen
+	.4byte BattleScript_EffectEclipse
 	.4byte BattleScript_EffectSnap
+	.4byte BattleScript_EffectVoidBurst
+	.4byte BattleScript_EffectShadowSlam
 	.4byte BattleScript_BothCanNoLongerEscape
 
-BattleScript_EffectOmen:
+BattleScript_EffectShadowSlam:
+	setmoveeffect MOVE_EFFECT_PARALYSIS
+	goto BattleScript_EffectHit
+
+BattleScript_EffectVoidBurst::
+	jumpifweatheraffected BS_ATTACKER, WEATHER_ECLIPSE_ANY, BattleScript_VoidBurstOnFirstTurn
+BattleScript_VoidBurstDecideTurn::
+	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_TwoTurnMovesSecondTurn
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_TwoTurnMovesSecondTurn
+	setbyte sTWOTURN_STRINGID, 0xb
+	call BattleScriptFirstChargingTurn
+	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
+	call BattleScript_PowerHerbActivation
+	goto BattleScript_TwoTurnMovesSecondTurn
+BattleScript_VoidBurstOnFirstTurn::
+	orword gHitMarker, HITMARKER_CHARGING
+	setmoveeffect MOVE_EFFECT_CHARGING | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
+	ppreduce
+	goto BattleScript_TwoTurnMovesSecondTurn
+
+BattleScript_EffectEclipse:
 	attackcanceler
 	attackstring
 	ppreduce

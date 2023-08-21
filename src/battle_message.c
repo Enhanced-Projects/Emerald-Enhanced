@@ -769,7 +769,8 @@ static const u8 sText_MagicianMadeItemDisappear[]      = _("{B_ATK_NAME_WITH_PRE
 static const u8 sText_PlaguebearerInfested[]      = _("{B_ATK_NAME_WITH_PREFIX}'s Plaguebearer caused an\ninfestation on {B_DEF_NAME_WITH_PREFIX}!");
 const u8 sText_FabaMagnetosphere[] = _("Faba's Magnetosphere is\npreventing switching!                         ");
 static const u8 sText_MagnetosphereActive[] = _("Faba's Magnetoshpere discharges!");
-static const u8 sText_RyuLunaticDisabledStatusMove[] = _("{B_ATK_NAME_WITH_PREFIX}'s Lunatic disabled non\nattacking moves!");
+static const u8 sText_PkmnChannelsDarkness[] = _("{B_ATK_NAME_WITH_PREFIX} is\nabsorbing the darkness!");
+static const u8 sText_RyuLunaticDisabledStatusMove[] = _("{B_ATK_NAME_WITH_PREFIX} is too enraged\nto use status moves!");
 static const u8 sText_IllusionistNoDamage[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s attack hit the\nshimmering barrier!");
 static const u8 sText_IllusionistActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} generates a shimmering\nbarrier!");
 
@@ -1399,6 +1400,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PLAGUEBEARERINFEST - 12]            = sText_PlaguebearerInfested,
     [STRINGID_FABAMAGNETOSPHERE - 12] = sText_FabaMagnetosphere,
     [STRINGID_MAGNETOSPHEREACTIVE - 12] = sText_MagnetosphereActive,
+    [STRINGID_PKMNCHANNELSDARKNESS - 12] = sText_PkmnChannelsDarkness,
     [STRINGID_RYULUNATICDISABLEDSTATUSMOVE - 12] = sText_RyuLunaticDisabledStatusMove,
     [STRINGID_ILLUSIONISTNODAMAGE - 12] = sText_IllusionistNoDamage,
     [STRINGID_ILLUSIONISTACTIVATES- 12] = sText_IllusionistActivates,
@@ -1548,6 +1550,7 @@ const u16 gFirstTurnOfTwoStringIds[] =
     STRINGID_VANISHEDINSTANTLY,         // MOVE_PHANTOM_FORCE
     STRINGID_PKNMABSORBINGPOWER,        // MOVE_GEOMANCY
     STRINGID_CLOAKEDINAFREEZINGLIGHT,   // MOVE_FREEZE_SHOCK
+    STRINGID_PKMNCHANNELSDARKNESS,      // MOVE_VOID_BURST
 };
 
 // Index copied from move's index in gTrappingMoves

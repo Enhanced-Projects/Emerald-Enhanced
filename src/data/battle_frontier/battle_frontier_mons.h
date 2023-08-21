@@ -14,7 +14,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .moves = {MOVE_VOLT_TACKLE, MOVE_EXTREME_SPEED, MOVE_FLY, MOVE_SECRET_POWER},
         .heldItem = ITEM_LIGHT_BALL,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
@@ -1062,12 +1062,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_MAGCARGO_1] = { // Magcargo-WhiteHerb (ID: 118)
+    [FRONTIER_MON_MAGCARGO_1] = { // Magcargo-Defensive (ID: 118)
         .species = SPECIES_MAGCARGO,
-        .moves = {MOVE_FIRE_BLAST, MOVE_GRAVEL_STORM, MOVE_SOLAR_BEAM, MOVE_SHELL_SMASH},
-        .heldItem = ITEM_WHITE_HERB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_MAGMA_STORM, MOVE_TOXIC, MOVE_EARTH_POWER, MOVE_RECOVER},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_CALM,
         .ivs = 31,
         .ability = 0
     },
@@ -1215,23 +1215,23 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_LUNATONE_1] = { // Lunatone-WP (ID: 135)
+    [FRONTIER_MON_LUNATONE_1] = { // Lunatone-CM (ID: 135)
         .species = SPECIES_LUNATONE,
-        .moves = {MOVE_POWER_GEM, MOVE_PSYSHOCK, MOVE_EARTH_POWER, MOVE_ROCK_POLISH},
-        .heldItem = ITEM_WEAKNESS_POLICY,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_MODEST,
+        .moves = {MOVE_SHADOW_BALL, MOVE_POWER_GEM, MOVE_CALM_MIND, MOVE_MOONLIGHT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_CALM,
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_SOLROCK_1] = { // Solrock-Defensive (ID: 136)
+    [FRONTIER_MON_SOLROCK_1] = { // Solrock-Offensive (ID: 136)
         .species = SPECIES_SOLROCK,
-        .moves = {MOVE_ROCK_SLIDE, MOVE_WILL_O_WISP, MOVE_MORNING_SUN, MOVE_STEALTH_ROCK},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_IMPISH,
+        .moves = {MOVE_FLARE_BLITZ, MOVE_SOLAR_BLADE, MOVE_ROCK_SLIDE, MOVE_ROCK_POLISH},
+        .heldItem = ITEM_WEAKNESS_POLICY,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_NOCTOWL_1] = { // Noctowl-StoredPower (ID: 137)
         .species = SPECIES_NOCTOWL,
@@ -1944,12 +1944,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_MAGCARGO_2] = { // Magcargo-Sash (ID: 216)
+    [FRONTIER_MON_MAGCARGO_2] = { // Magcargo-Offensive (ID: 216)
         .species = SPECIES_MAGCARGO,
-        .moves = {MOVE_FIRE_BLAST, MOVE_GRAVEL_STORM, MOVE_SOLAR_BEAM, MOVE_SHELL_SMASH},
-        .heldItem = ITEM_FOCUS_SASH,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_MAGMA_STORM, MOVE_BLAST_OFF, MOVE_GRAVEL_STORM, MOVE_RECOVER},
+        .heldItem = ITEM_AIR_BALLOON,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 0
     },
@@ -2097,25 +2097,25 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_LUNATONE_2] = { // Lunatone-ScreensLead (ID: 233)
+    [FRONTIER_MON_LUNATONE_2] = { // Lunatone-TrickRoomSetter (ID: 233)
         .species = SPECIES_LUNATONE,
-        .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_STEALTH_ROCK, MOVE_MEMENTO},
-        .heldItem = ITEM_LIGHT_CLAY,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_SHADOW_SLAM, MOVE_POWER_GEM, MOVE_TRICK_ROOM, MOVE_MOONLIGHT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_SASSY,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
-    [FRONTIER_MON_SOLROCK_2] = { // Solrock-ScreensLead (ID: 234)
+    [FRONTIER_MON_SOLROCK_2] = { // Solrock-Bulky (ID: 234)
         .species = SPECIES_SOLROCK,
-        .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_STEALTH_ROCK, MOVE_EXPLOSION},
-        .heldItem = ITEM_LIGHT_CLAY,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
-        .nature = NATURE_JOLLY,
+        .moves = {MOVE_FLARE_BLITZ, MOVE_SOLAR_BLADE, MOVE_STONE_EDGE, MOVE_MORNING_SUN},
+        .heldItem = ITEM_HEAT_ROCK,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
-    [FRONTIER_MON_NOCTOWL_2] = { // Noctowl-OffensiveKeenEye (ID: 235)
+    [FRONTIER_MON_NOCTOWL_2] = { // Noctowl-Offensive (ID: 235)
         .species = SPECIES_NOCTOWL,
         .moves = {MOVE_HYPNOSIS, MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_CALM_MIND},
         .heldItem = ITEM_LIFE_ORB,
@@ -2266,7 +2266,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_SHARPEDO_2] = { // Sharpedo-ExBelt (ID: 252)
         .species = SPECIES_SHARPEDO,
@@ -2745,14 +2745,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_DUSKNOIR_1] = { // Dusknoir-WispTR (ID: 305)
+    [FRONTIER_MON_DUSKNOIR_1] = { // Dusknoir-4attacks (ID: 305)
         .species = SPECIES_DUSKNOIR,
-        .moves = {MOVE_REAPING_BLOW, MOVE_DRAIN_PUNCH, MOVE_WILL_O_WISP, MOVE_TRICK_ROOM},
-        .heldItem = ITEM_BIG_ROOT,
+        .moves = {MOVE_SHADOW_SLAM, MOVE_REAPING_BLOW, MOVE_SHADOW_SNEAK, MOVE_DRAIN_PUNCH},
+        .heldItem = ITEM_SHELL_BELL,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_BRAVE,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_DODRIO_1] = { // Dodrio-SD (ID: 408)
         .species = SPECIES_DODRIO,
@@ -2907,14 +2907,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_ELECTRODE_1] = { // Electrode-ScreensExplosion (ID: 323)
+    [FRONTIER_MON_ELECTRODE_1] = { // Electrode-Offensive (ID: 323)
         .species = SPECIES_ELECTRODE,
-        .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_EXPLOSION, MOVE_TAUNT},
-        .heldItem = ITEM_LIGHT_CLAY,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
-        .nature = NATURE_JOLLY,
+        .moves = {MOVE_WILD_CHARGE, MOVE_OVERLOAD, MOVE_OVERHEAT, MOVE_SECRET_POWER},
+        .heldItem = ITEM_TERRAIN_EXTENDER,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_NAIVE,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_EXPLOUD_1] = { // Exploud-Scarf (ID: 426)
         .species = SPECIES_EXPLOUD,
@@ -3224,7 +3224,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MACHAMP_1] = { // Machamp-Guts (ID: 460)
         .species = SPECIES_MACHAMP,
-        .moves = {MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF, MOVE_FACADE, MOVE_BULLET_PUNCH},
+        .moves = {MOVE_CLOSE_COMBAT, MOVE_SHADOW_SLAM, MOVE_FACADE, MOVE_BULLET_PUNCH},
         .heldItem = ITEM_TOXIC_ORB,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
@@ -3996,10 +3996,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_GOLURK_1] = { // Golurk-Band (ID: 342)
+    [FRONTIER_MON_GOLURK_1] = { // Golurk-BoxingGlove (ID: 342)
         .species = SPECIES_GOLURK,
         .moves = {MOVE_REAPING_BLOW, MOVE_DRAIN_PUNCH, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH},
-        .heldItem = ITEM_CHOICE_BAND,
+        .heldItem = ITEM_BOXING_GLOVE,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
@@ -4439,7 +4439,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ROTOM_HEAT_1] = { // Rotom_Heat-Bulky (ID: 493)
         .species = SPECIES_ROTOM_HEAT,
-        .moves = {MOVE_OVERHEAT, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP, MOVE_PAIN_SPLIT},
+        .moves = {MOVE_FIRE_BLAST, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP, MOVE_PAIN_SPLIT},
         .heldItem = ITEM_WIKI_BERRY,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
         .nature = NATURE_TIMID,
@@ -4581,14 +4581,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_DUSKNOIR_2] = { // Dusknoir-SneakTR (ID: 509)
+    [FRONTIER_MON_DUSKNOIR_2] = { // Dusknoir-TR (ID: 509)
         .species = SPECIES_DUSKNOIR,
-        .moves = {MOVE_REAPING_BLOW, MOVE_DRAIN_PUNCH, MOVE_SHADOW_SNEAK, MOVE_TRICK_ROOM},
-        .heldItem = ITEM_BIG_ROOT,
+        .moves = {MOVE_SHADOW_SLAM, MOVE_SHADOW_SNEAK, MOVE_DRAIN_PUNCH, MOVE_TRICK_ROOM},
+        .heldItem = ITEM_SHELL_BELL,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_BRAVE,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_DODRIO_2] = { // Dodrio-Band (ID: 612)
         .species = SPECIES_DODRIO,
@@ -4743,14 +4743,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ELECTRODE_2] = { // Electrode-ScreensVolt (ID: 527)
+    [FRONTIER_MON_ELECTRODE_2] = { // Electrode-Lead (ID: 527)
         .species = SPECIES_ELECTRODE,
-        .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_VOLT_SWITCH, MOVE_TAUNT},
-        .heldItem = ITEM_LIGHT_CLAY,
+        .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_TAUNT, MOVE_OVERLOAD},
+        .heldItem = ITEM_TERRAIN_EXTENDER,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
-        .nature = NATURE_TIMID,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_EXPLOUD_2] = { // Exploud-Specs (ID: 630)
         .species = SPECIES_EXPLOUD,
@@ -5060,7 +5060,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MACHAMP_2] = { // Machamp-BU (ID: 664)
         .species = SPECIES_MACHAMP,
-        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_BULK_UP, MOVE_KNOCK_OFF},
+        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_SHADOW_SLAM, MOVE_STONE_EDGE, MOVE_BULK_UP},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
@@ -5832,14 +5832,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_GOLURK_2] = { // Golurk-BoxingGlove (ID: 546)
+    [FRONTIER_MON_GOLURK_2] = { // Golurk-Band (ID: 546)
         .species = SPECIES_GOLURK,
-        .moves = {MOVE_REAPING_BLOW, MOVE_DRAIN_PUNCH, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH},
-        .heldItem = ITEM_BOXING_GLOVE,
+        .moves = {MOVE_SHADOW_SLAM, MOVE_CLOSE_COMBAT, MOVE_REAPING_BLOW, MOVE_EARTHQUAKE},
+        .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 0
+        .ability = 2
     },
     [FRONTIER_MON_FERROTHORN_2] = { // Ferrothorn-Spikes (ID: 649)
         .species = SPECIES_FERROTHORN,
@@ -6275,7 +6275,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ROTOM_HEAT_2] = { // Rotom_Heat-Specs (ID: 697)
         .species = SPECIES_ROTOM_HEAT,
-        .moves = {MOVE_OVERHEAT, MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
+        .moves = {MOVE_FIRE_BLAST, MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
         .heldItem = ITEM_CHOICE_SPECS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
@@ -6815,7 +6815,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MACHAMP_3] = { // Machamp-Band (ID: 757)
         .species = SPECIES_MACHAMP,
-        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_HEAVY_SLAM},
+        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_SHADOW_SLAM, MOVE_HEAVY_SLAM},
         .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
@@ -6833,7 +6833,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MACHAMP_4] = { // Machamp-AV (ID: 759)
         .species = SPECIES_MACHAMP,
-        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_BULLET_PUNCH},
+        .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_SHADOW_SLAM, MOVE_BULLET_PUNCH},
         .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
@@ -8613,14 +8613,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 29,
         .ability = 0
     },
-    [FRONTIER_MON_MAGCARGO_SUN] = { // (ID: 963)
-        .species = SPECIES_MAGCARGO,
-        .moves = {MOVE_FIRE_BLAST, MOVE_GRAVEL_STORM, MOVE_SOLAR_BEAM, MOVE_SHELL_SMASH},
+    [FRONTIER_MON_TORKOAL_SUN] = { // (ID: 963)
+        .species = SPECIES_TORKOAL,
+        .moves = {MOVE_BLAST_OFF, MOVE_STEALTH_ROCK, MOVE_WILL_O_WISP, MOVE_OVERHEAT},
         .heldItem = ITEM_HEAT_ROCK,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_SASSY,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_VICTREEBEL_SUN] = { // (ID: 964)
         .species = SPECIES_VICTREEBEL,

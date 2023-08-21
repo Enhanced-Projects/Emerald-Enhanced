@@ -1710,6 +1710,7 @@ static const u8 sTRICK_ROOMDescription[] = _(
     "participants.");
 
 static const u8 sPOWER_WHIPDescription[] = _(
+    "Violently strikes the foe\n"
     "with vines or tentacles.");
 
 static const u8 sCROSS_POISONDescription[] = _(
@@ -2811,7 +2812,7 @@ static const u8 sCLINGDescription[] = _(
     "User clings on to the foe.\n"
     "Prevents Escape.");
 
-static const u8 sOMENDescription[] = _(
+static const u8 sECLIPSEDescription[] = _(
     "Summons darkness of an\n"
     "eclipse for 5 turns.");
 
@@ -2819,9 +2820,21 @@ static const u8 sSNAPDescription[] = _(
     "Clamps down on the opponent.\n"
     "SE on Bug or Flying.");
 
-static const u8 sFRENCYFANGDescription[] = _(
+static const u8 sFRENZYFANGDescription[] = _(
     "Attacks with plague bearing\n"
     "fangs 3 to 5 times.");
+
+static const u8 sVOIDBURSTDescription[] = _(
+    "Charges first turn, then\n"
+    "attacks with a black hole.");
+
+static const u8 sSHADOWSLAMDescription[] = _(
+    "Surprises the opponent from\n"
+    "the shadows. May paralyze.");
+
+static const u8 sOVERLOADDescription[] = _(
+    "Inflicts severe damage but\n"
+    "makes the user faint.");
 
 static const u8 sNotDoneYetDescription[] = _(
     "Not done yet.");
@@ -3511,9 +3524,12 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_DOUBLE_IRON_BASH - 1] = sDOUBLE_IRON_BASHDescription,
     [MOVE_SNUGGLE - 1] = sSNUGGLEDescription,
     [MOVE_CLING - 1] = sCLINGDescription,
-    [MOVE_OMEN - 1] = sOMENDescription,
+    [MOVE_ECLIPSE - 1] = sECLIPSEDescription,
     [MOVE_SNAP - 1] = sSNAPDescription,
-    [MOVE_FRENZY_FANG - 1] = sFRENCYFANGDescription,
+    [MOVE_FRENZY_FANG - 1] = sFRENZYFANGDescription,
+    [MOVE_VOID_BURST - 1] = sVOIDBURSTDescription,
+    [MOVE_SHADOW_SLAM - 1] = sSHADOWSLAMDescription,
+    [MOVE_OVERLOAD - 1] = sOVERLOADDescription,
     //GEN 8
     [MOVE_DYNAMAX_CANNON - 1] = sDYNAMAX_CANNONDescription,
     [MOVE_SNIPE_SHOT - 1] = sSNIPE_SHOTDescription,

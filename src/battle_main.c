@@ -4331,6 +4331,8 @@ u32 GetBattlerTotalSpeedStat(u8 battlerId)
             speed *= 2;
         else if (ability == ABILITY_SLUSH_RUSH  && gBattleWeather & WEATHER_HAIL_ANY)
             speed *= 2;
+        else if (ability == ABILITY_TWILIGHT_RUSH  && gBattleWeather & WEATHER_ECLIPSE_ANY)
+            speed *= 2;
     }
 
     // other abilities

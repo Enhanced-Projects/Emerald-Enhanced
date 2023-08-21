@@ -754,8 +754,8 @@ static const u8 sLumBerryDesc[] = _(
 
 static const u8 sSitrusBerryDesc[] = _(
     "A hold item that\n"
-    "restores 30 HP in\n"
-    "battle.");
+    "restores a fourth\n"
+    "of max HP in battle.");
 
 static const u8 sFigyBerryDesc[] = _(
     "A hold item that\n"
@@ -3059,7 +3059,7 @@ static const u8 sBoxingGloveDesc[] = _(
 static const u8 sTonicWaterDesc[] = _(
     "Carbonated water\n"
     "used for certain\n"
-    "Alcehmy recipes.");
+    "Alchemy recipes.");
 
 static const u8 sMineralWaterDesc[] = _(
     "Dense water that is\n"

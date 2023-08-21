@@ -291,7 +291,7 @@
       "x": 39,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_TEMP_A",
       "var_value": "0",
       "script": "NM_Warp1"
     },

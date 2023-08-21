@@ -73,6 +73,7 @@ gFieldEffectScriptPointers:: @ 82DB9D4
 	.4byte gFieldEffectScript_DestroyDeoxysRock         @ FLDEFF_DESTROY_DEOXYS_ROCK
 	.4byte gFieldEffectScript_MoveDeoxysRock            @ FLDEFF_MOVE_DEOXYS_ROCK
     .4byte gFieldEffectScript_CaveDust                  @ FLDEFF_CAVE_DUST
+	.4byte gFieldEffectScript_TallGrassAutumn           @ FLDEFF_TALL_GRASS_AUTUMN
     
 gFieldEffectScript_ExclamationMarkIcon1:: @ 82DBAE0
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -93,6 +94,10 @@ gFieldEffectScript_Shadow:: @ 82DBAF2
 
 gFieldEffectScript_TallGrass:: @ 82DBAF8
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_TallGrass
+	field_eff_end
+
+gFieldEffectScript_TallGrassAutumn::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1Autumn, FldEff_TallGrassAutumn
 	field_eff_end
 
 gFieldEffectScript_Ripple:: @ 82DBB02

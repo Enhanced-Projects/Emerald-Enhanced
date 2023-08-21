@@ -226,3 +226,27 @@ MoveTutor_Text_ExplosionTaught: @ 82C7E7A
 	.string "to ignite my own Explosion...\p"
 	.string "Maybe it's because deep down,\n"
 	.string "I would rather stay here…$"
+
+MoveTutor_Text_ShadowSlamTeach:
+	.string "Ah, there you are…\p"
+	.string "Have you ever felt a shiver down\n"
+	.string "your spine, as if unseen eyes\l"
+	.string "are watching you?\p"
+	.string "In the silence of an eclipse,\n"
+	.string "whispers of a move echo…\p"
+	.string "Shadow Slam, they call it.\p"
+	.string "Would you… consider granting\n"
+	.string "this forbidden knowledge to\l"
+	.string "your Pokémon?$"
+
+MoveTutor_Text_ShadowSlamDeclined:
+	.string "Oh…\n"
+	.string "Watch out for the shadows…$"
+
+MoveTutor_Text_ShadowSlamWhichMon:
+	.string "Very well… which Pokémon\n"
+	.string "wants to learn Shadow Slam?$"
+
+MoveTutor_Text_ShadowSlamTaught:
+	.string "It is done… I won't\n"
+	.string "forget you…$"

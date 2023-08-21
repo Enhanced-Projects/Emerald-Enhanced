@@ -74,6 +74,7 @@ AI_CBM_CheckIfNegatesType:
 	if_equal ABILITY_LEVITATE, CheckIfLevitateCancelsGroundMove
 	if_equal ABILITY_SOUNDPROOF, CheckIfSoundproofCancelsMove
 	if_equal ABILITY_HEATPROOF, CheckIfHeatproofCancelsFireMove
+	if_equal ABILITY_MAGMA_ARMOR, CheckIfMagmaArmorCancelsWaterMove
 	if_equal ABILITY_SAP_SIPPER, CheckIfSapSipperCancelsGrassMove
 	goto AI_CheckBadMove_CheckEffect
 	
@@ -108,6 +109,10 @@ CheckIfLevitateCancelsGroundMove: @ 82DBFEF
 CheckIfHeatproofCancelsFireMove:
 	get_curr_move_type
 	if_equal TYPE_FIRE, Score_Minus10
+
+CheckIfMagmaArmorCancelsWaterMove:
+	get_curr_move_type
+	if_equal TYPE_WATER, Score_Minus10
 
 CheckIfSapSipperCancelsGrassMove:
 	get_curr_move_type
@@ -201,7 +206,7 @@ AI_CheckBadMove_CheckEffect: @ 82DC045
 	if_effect EFFECT_SPIT_UP, AI_CBM_SpitUpAndSwallow
 	if_effect EFFECT_SWALLOW, AI_CBM_SpitUpAndSwallow
 	if_effect EFFECT_HAIL, AI_CBM_Hail
-	if_effect EFFECT_OMEN, AI_CBM_Eclipse
+	if_effect EFFECT_ECLIPSE, AI_CBM_Eclipse
 	if_effect EFFECT_TORMENT, AI_CBM_Torment
 	if_effect EFFECT_FLATTER, AI_CBM_Confuse
 	if_effect EFFECT_WILL_O_WISP, AI_CBM_WillOWisp

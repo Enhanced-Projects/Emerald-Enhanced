@@ -1356,7 +1356,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
     u16 *choicedMove = &gBattleStruct->choicedMove[gActiveBattler];
  
     if ((gBattleWeather == WEATHER_ECLIPSE_ANY) &&
-        (GetBattlerAbility(gActiveBattler) == ABILITY_MAGIC_BOUNCE) &&
+        (GetBattlerAbility(gActiveBattler) == ABILITY_LUNATIC) &&
         (gBattleMoves[move].split == SPLIT_STATUS))
     {
         gSelectionBattleScripts[gActiveBattler] = BattleScript_RyuLunaticDisableStatusMessage;
@@ -1561,7 +1561,7 @@ u8 CheckMoveLimitations(u8 battlerId, u8 unusableMoves, u8 check)
             unusableMoves |= gBitTable[i];
         else if (holdEffect == HOLD_EFFECT_ASSAULT_VEST && gBattleMoves[gBattleMons[battlerId].moves[i]].power == 0)
             unusableMoves |= gBitTable[i];
-        else if ((gBattleMoves[gBattleMons[battlerId].moves[i]].power == 0) && (gBattleMons[battlerId].ability == ABILITY_MAGIC_BOUNCE) && (gBattleWeather == WEATHER_ECLIPSE_ANY))
+        else if ((gBattleMoves[gBattleMons[battlerId].moves[i]].power == 0) && (gBattleMons[battlerId].ability == ABILITY_LUNATIC) && (gBattleWeather == WEATHER_ECLIPSE_ANY))
             unusableMoves |= gBitTable[i];
         else if (IsGravityPreventingMove(gBattleMons[battlerId].moves[i]))
             unusableMoves |= gBitTable[i];
@@ -7041,6 +7041,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         if (moveType == TYPE_WATER)
            MulModifier(&modifier, UQ_4_12(2.0));
         break;
+    case ABILITY_MAGMA_ARMOR:
+        if (moveType == TYPE_FIRE)
+           MulModifier(&modifier, UQ_4_12(1.5));
+        break;
     case ABILITY_STEELWORKER:
         if (moveType == TYPE_STEEL)
            MulModifier(&modifier, UQ_4_12(1.5));
@@ -7228,7 +7232,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         // todo
         break;
     case EFFECT_SOLARBEAM:
-        if (IsBattlerWeatherAffected(battlerAtk, (WEATHER_HAIL_ANY | WEATHER_SANDSTORM_ANY | WEATHER_RAIN_ANY)))
+        if (IsBattlerWeatherAffected(battlerAtk, (WEATHER_HAIL_ANY | WEATHER_SANDSTORM_ANY | WEATHER_RAIN_ANY | WEATHER_ECLIPSE_ANY)))
             MulModifier(&modifier, UQ_4_12(0.5));
         break;
     case EFFECT_STOMPING_TANTRUM:
@@ -7322,6 +7326,10 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
         break;
     case ABILITY_SOLAR_POWER:
         if (IS_MOVE_SPECIAL(move) && IsBattlerWeatherAffected(battlerAtk, WEATHER_SUN_ANY))
+            MulModifier(&modifier, UQ_4_12(1.5));
+        break;
+    case ABILITY_LUNATIC:
+        if (IS_MOVE_PHYSICAL(move) && IsBattlerWeatherAffected(battlerAtk, WEATHER_ECLIPSE_ANY))
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_DEFEATIST:
@@ -7605,8 +7613,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
         else if (moveType == TYPE_FIRE)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
-        else if (moveType == TYPE_GRASS)
-            dmg = ApplyModifier(UQ_4_12(1.1), dmg);
     }
     else if (IsBattlerWeatherAffected(battlerAtk, WEATHER_SUN_ANY))
     {
@@ -7614,35 +7620,25 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
         else if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
-        else if (moveType == TYPE_GRASS)
-            dmg = ApplyModifier(UQ_4_12(1.1), dmg);
     }
 
     else if (IsBattlerWeatherAffected(battlerAtk, WEATHER_HAIL_ANY))
     {
         if (moveType == TYPE_ICE)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
-        else if (moveType == TYPE_WATER)
-            dmg = ApplyModifier(UQ_4_12(1.2), dmg);
-        else if (moveType == TYPE_GRASS)
-            dmg = ApplyModifier(UQ_4_12(0.9), dmg);
         else if (moveType == TYPE_DRAGON)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
     }   
 
-    // Eclipse boosts Dark type moves by 50%, Ghost type moves by 25% and Psychic type moves by 10%
+    // Eclipse boosts Dark type moves by 33%, Ghost type moves by 33%, and weakens Fairy by 50%.
     if (IsBattlerWeatherAffected(battlerAtk, WEATHER_ECLIPSE_ANY))
     {
         if (moveType == TYPE_DARK)
-            dmg = ApplyModifier(UQ_4_12(1.50), dmg);
+            dmg = ApplyModifier(UQ_4_12(1.33), dmg);
         else if (moveType == TYPE_GHOST)
-            dmg = ApplyModifier(UQ_4_12(1.25), dmg);
-        else if (moveType == TYPE_PSYCHIC)
-            dmg = ApplyModifier(UQ_4_12(1.10), dmg);
+            dmg = ApplyModifier(UQ_4_12(1.33), dmg);
         else if (moveType == TYPE_FAIRY)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
-        else if (moveType == TYPE_NORMAL)
-            dmg = ApplyModifier(UQ_4_12(0.9), dmg);
     }   
 
     // check stab
@@ -8002,6 +7998,9 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
     if (move == MOVE_BONEMERANG && (defType == TYPE_FLYING))
         mod = UQ_4_12(1.0);
 
+    if (moveType == TYPE_GROUND && defType && GetBattlerHoldEffect(battlerDef, TRUE) == HOLD_EFFECT_AIR_BALLOON)
+        mod = UQ_4_12(0.0);
+
     // WEATHER_STRONG_WINDS weakens Super Effective moves against Flying-type Pokémon
     if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_STRONG_WINDS)
     {
@@ -8068,6 +8067,19 @@ static u16 CalcTypeEffectivenessMultiplierInternal(u16 move, u8 moveType, u8 bat
             gLastLandedMoves[battlerDef] = 0;
             gBattleCommunication[6] = 4;
             RecordAbilityBattle(battlerDef, ABILITY_HEATPROOF);
+        }
+    }
+    if (moveType == TYPE_WATER)
+    {
+        if (recordAbilities && GetBattlerAbility(battlerDef) == ABILITY_MAGMA_ARMOR)
+        {
+            modifier = UQ_4_12(0.0);
+            StringCopy(gStringVar2, gTypeNames[TYPE_WATER]);
+            gLastUsedAbility = ABILITY_MAGMA_ARMOR;
+            gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
+            gLastLandedMoves[battlerDef] = 0;
+            gBattleCommunication[6] = 4;
+            RecordAbilityBattle(battlerDef, ABILITY_MAGMA_ARMOR);
         }
     }
     if (GetBattlerAbility(battlerDef) == ABILITY_WONDER_GUARD && modifier <= UQ_4_12(1.0) && gBattleMoves[move].power)

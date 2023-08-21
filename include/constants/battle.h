@@ -356,7 +356,9 @@
 #define MOVE_EFFECT_BUG_BITE            0x45
 #define MOVE_EFFECT_TRAP_BOTH           0x46
 #define MOVE_EFFECT_FRENZY_FANG         0x47
-#define NUM_MOVE_EFFECTS                0x48
+#define MOVE_EFFECT_VOID_BURST          0x48
+#define MOVE_EFFECT_SHADOW_SLAM         0x49
+#define NUM_MOVE_EFFECTS                0x4A
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

@@ -937,8 +937,8 @@ gTileset_GeneralSpring::
 	.2byte 0
 	.4byte gTilesetTiles_GeneralSpring
 	.4byte gTilesetPalettes_GeneralSpring
-	.4byte gMetatiles_General
-	.4byte gMetatileAttributes_General
+	.4byte gMetatiles_GeneralSpring
+	.4byte gMetatileAttributes_GeneralSpring
 	.4byte NULL
 
 	.align 2
@@ -948,8 +948,8 @@ gTileset_GeneralSummer::
 	.2byte 0
 	.4byte gTilesetTiles_GeneralSummer
 	.4byte gTilesetPalettes_GeneralSummer
-	.4byte gMetatiles_General
-	.4byte gMetatileAttributes_General
+	.4byte gMetatiles_GeneralSummer
+	.4byte gMetatileAttributes_GeneralSummer
 	.4byte NULL
 
 	.align 2
@@ -959,8 +959,8 @@ gTileset_GeneralAutumn::
 	.2byte 0
 	.4byte gTilesetTiles_GeneralAutumn
 	.4byte gTilesetPalettes_GeneralAutumn
-	.4byte gMetatiles_General
-	.4byte gMetatileAttributes_General
+	.4byte gMetatiles_GeneralAutumn
+	.4byte gMetatileAttributes_GeneralAutumn
 	.4byte NULL
 
 	.align 2
@@ -970,6 +970,6 @@ gTileset_GeneralWinter::
 	.2byte 0
 	.4byte gTilesetTiles_GeneralWinter
 	.4byte gTilesetPalettes_GeneralWinter
-	.4byte gMetatiles_General
-	.4byte gMetatileAttributes_General
+	.4byte gMetatiles_GeneralWinter
+	.4byte gMetatileAttributes_GeneralWinter
 	.4byte NULL
