@@ -1224,9 +1224,15 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 { 
-	setweather(WEATHER_WINDY)
-	msgbox("Switching to windy...")
-	doweather
+	addvar(VAR_RYU_WEEK_COUNTER, 1)
+	compare (VAR_RYU_WEEK_COUNTER, 4)
+	goto_if_eq(RyuDebug_Utility1ResetSeason)
+	release
+	end
+}
+
+script RyuDebug_Utility1ResetSeason {
+	setvar(VAR_RYU_WEEK_COUNTER, 0)
 	release
 	end
 }
