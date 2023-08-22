@@ -157,7 +157,7 @@ void RyuChooseSeasonalWeather(void)
 
     switch (currentSeason)
     {
-        case 0: //spring
+        case SEASON_SPRING:
             {
                 if (rngval == 0) //0, 1%
                     temp = WEATHER_SHADE;
@@ -170,7 +170,7 @@ void RyuChooseSeasonalWeather(void)
                 break;
 
             }
-        case 1: //summer
+        case SEASON_SUMMER:
             {
                 if (rngval == 0) //0, 1%
                     temp == WEATHER_SHADE;
@@ -182,7 +182,7 @@ void RyuChooseSeasonalWeather(void)
                     temp = WEATHER_SUNNY_CLOUDS;
                 break;
             }
-        case 2: //fall
+        case SEASON_AUTUMN:
             {
                 if (rngval < 2) //0 to 1, 2%
                     temp = WEATHER_SHADE;
@@ -194,7 +194,7 @@ void RyuChooseSeasonalWeather(void)
                     temp = WEATHER_RAIN;
                 break;
             }
-        case 3: //winter
+        case SEASON_WINTER:
             {
                 if (rngval < 4) //0 to 3, 4%
                     temp = WEATHER_SHADE;
@@ -216,6 +216,7 @@ static void UpdatePerDay(struct Time *localTime)
 {
     u16 *days = GetVarPointer(VAR_DAYS);
     u16 daysSince;
+    u16 randval = (Random() % 99);
 
     if (*days != localTime->days && *days <= localTime->days)
     {
@@ -228,7 +229,10 @@ static void UpdatePerDay(struct Time *localTime)
         }
         if (VarGet(VAR_RYU_WEEK_COUNTER) > SEASON_WINTER)
             VarSet(VAR_RYU_WEEK_COUNTER, SEASON_SPRING);
-        RyuChooseSeasonalWeather();
+        if (randval > 25)
+            VarSet(VAR_RYU_SEASONAL_WEATHER, WEATHER_NONE);
+        else
+            RyuChooseSeasonalWeather();
         ClearDailyQuestData();
         ClearDailyFlags();
         DoDailyRealEstateTasks();
