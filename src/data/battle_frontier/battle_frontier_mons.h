@@ -5202,12 +5202,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_UMBREON_2] = { // Umbreon-SwagCat (ID: 680)
+    [FRONTIER_MON_UMBREON_2] = { // Umbreon-EclipseSetter (ID: 680)
         .species = SPECIES_UMBREON,
         .moves = {MOVE_FOUL_PLAY, MOVE_WISH, MOVE_SWAGGER, MOVE_TOXIC},
         .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_BOLD,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_CALM,
         .ivs = 31,
         .ability = 0
     },
