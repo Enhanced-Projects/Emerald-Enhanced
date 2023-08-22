@@ -226,9 +226,8 @@ static void UpdatePerDay(struct Time *localTime)
             VarSet(VAR_RYU_WEEK_COUNTER, (VarGet(VAR_RYU_WEEK_COUNTER) + 1));
             VarSet(VAR_RYU_DAY_COUNTER, 0);
         }
-        if (VarGet(VAR_RYU_WEEK_COUNTER) > 3)
-            VarSet(VAR_RYU_WEEK_COUNTER, 0);
-        //VarSet(VAR_RYU_WEEK_COUNTER, (((VarGet(VAR_RYU_DAY_COUNTER)) / 7 ) % 4)); //this doesn't work, always returns 0
+        if (VarGet(VAR_RYU_WEEK_COUNTER) > SEASON_WINTER)
+            VarSet(VAR_RYU_WEEK_COUNTER, SEASON_SPRING);
         RyuChooseSeasonalWeather();
         ClearDailyQuestData();
         ClearDailyFlags();
@@ -236,7 +235,6 @@ static void UpdatePerDay(struct Time *localTime)
         RotateDailyUBGroup();
         UpdateDewfordTrendPerDay(daysSince);
         UpdateTVShowsPerDay(daysSince);
-        //UpdateWeatherPerDay(daysSince);
         UpdatePartyPokerusTime(daysSince);
         UpdateMirageRnd(daysSince);
         UpdateBirchState(daysSince);

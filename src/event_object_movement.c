@@ -8053,7 +8053,7 @@ void GroundEffect_SpawnOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = 1;
-    if (VarGet(VAR_RYU_WEEK_COUNTER) == 2)
+    if (VarGet(VAR_RYU_WEEK_COUNTER) == SEASON_AUTUMN)
         FieldEffectStart(FLDEFF_TALL_GRASS_AUTUMN);
     else
         FieldEffectStart(FLDEFF_TALL_GRASS);
@@ -8069,7 +8069,7 @@ void GroundEffect_StepOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *s
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = 0;
-    if (VarGet(VAR_RYU_WEEK_COUNTER) == 2)
+    if (VarGet(VAR_RYU_WEEK_COUNTER) == SEASON_AUTUMN)
         FieldEffectStart(FLDEFF_TALL_GRASS_AUTUMN);
     else
         FieldEffectStart(FLDEFF_TALL_GRASS);
