@@ -19278,6 +19278,7 @@ static const struct LevelUpMove sDarkraiLevelUpLearnset[] = {
     LEVEL_UP_MOVE(75, MOVE_NASTY_PLOT),
     LEVEL_UP_MOVE(84, MOVE_DREAM_EATER),
     LEVEL_UP_MOVE(93, MOVE_DARK_PULSE),
+    LEVEL_UP_MOVE(100, MOVE_VOID_BURST),
     LEVEL_UP_END
 };
 
