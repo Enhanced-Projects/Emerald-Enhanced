@@ -174,11 +174,13 @@ void RyuChooseSeasonalWeather(void)
             {
                 if (rngval == 0) //0, 1%
                     temp == WEATHER_SHADE;
-                else if (rngval > 0 && rngval < 6) //1 to 5, 5%
+                else if (rngval > 0 && rngval < 4) //1 to 3, 3%
                     temp = WEATHER_RAIN_THUNDERSTORM;
-                else if (rngval > 4 && rngval < 17 ) //5 to 16, 12% 
+                else if (rngval > 3 && rngval < 10 ) //4 to 9, 6% 
                     temp = WEATHER_RAIN;
-                else //17 to 99, 82%
+                else if (rngval > 9 && rngval < 25) //10 to 24, 15%
+                    temp = WEATHER_DROUGHT;
+                else //25 to 99, 75%
                     temp = WEATHER_SUNNY_CLOUDS;
                 break;
             }
