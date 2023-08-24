@@ -3806,22 +3806,6 @@ bool32 RyuDoesAttackerHaveBypassingAbility(void)
     return FALSE;
 }
 
-bool32 RyuDoesAttackerHaveBypassingMove(void)
-{
-    if (gLastUsedMove == MOVE_SUNSTEEL_STRIKE)
-        return TRUE;
-
-    if (gLastUsedMove == MOVE_MOONGEIST_BEAM)
-        return TRUE;
-
-    if (gLastUsedMove == MOVE_PHOTON_GEYSER)
-        return TRUE;
-
-    return FALSE;
-}
-
-
-
 extern bool8 RyuCheckPlayerisInColdArea();
 
 extern bool8 TobyCheckPlayerisInHailStorm();
@@ -3958,10 +3942,17 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
         case ABILITY_ILLUSIONIST:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
-                gBattleCommunication[MULTISTRING_CHOOSER] = 7;
-                gSpecialStatuses[battler].switchInAbilityDone = 1;
-                BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
-                effect++;
+                if (gBattleWeather == WEATHER_ECLIPSE_ANY)
+                {
+                    gBattleCommunication[MULTISTRING_CHOOSER] = 7;
+                    gSpecialStatuses[battler].switchInAbilityDone = 1;
+                    BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
+                    effect++;
+                }
+                else
+                {
+                    effect++;
+                }
             }
             break;
         case ABILITY_IMPOSTER:
@@ -4453,25 +4444,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             gBattlescriptCurrInstr = BattleScript_DazzlingProtected;
             effect = 1;
         }
-        else if ((gLastUsedAbility == ABILITY_ILLUSIONIST) && //target has illusionist
-                 (gBattlerAttacker != gBattlerTarget) && //target is not self (substitute, buffs)
-                 (gBattleMoveDamage < (gBattleMons[gBattlerTarget].maxHP / 4)) && //damage is less than 25% target's max health
-                 (RyuDoesAttackerHaveBypassingAbility() == FALSE) && //abilities like teravolt
-                 (gBattleMoves[gCurrentMove].split != SPLIT_STATUS) &&
-                 (RyuDoesAttackerHaveBypassingMove() == FALSE)) //moves like moongeist beam
-        {
-            if (!(gBattleMons[gBattlerTarget].status2 & STATUS2_SUBSTITUTE)) //doesnt have sub, already passed damage check, block move
-            {
-                gBattlescriptCurrInstr = BattleScript_IllusionistNoDamage;
-                effect = 1;
-            }
-            else if (gBattleMoves[gLastUsedMove].flags & FLAG_SOUND) //has sub, but move is a sound one, so still hits normally, already passed damage check, block move
-            {
-                gBattlescriptCurrInstr = BattleScript_IllusionistNoDamage;
-                effect = 1;
-            }
-        }
-    
         break;
     case ABILITYEFFECT_ABSORBING: // 3
         if (move != MOVE_NONE)
@@ -5277,7 +5249,6 @@ u32 GetBattlerAbility(u8 battlerId)
         return ABILITY_NONE;
     else if ((((gBattleMons[gBattlerAttacker].ability == ABILITY_MOLD_BREAKER
             || gBattleMons[gBattlerAttacker].ability == ABILITY_TERAVOLT
-            || gBattleMons[gBattlerAttacker].ability == ABILITY_ILLUSIONIST
             || gBattleMons[gBattlerAttacker].ability == ABILITY_TURBOBLAZE)
             && !(gStatuses3[gBattlerAttacker] & STATUS3_GASTRO_ACID))
             || gBattleMoves[gCurrentMove].flags & FLAG_TARGET_ABILITY_IGNORED)

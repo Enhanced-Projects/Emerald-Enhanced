@@ -2113,16 +2113,17 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
         (*state)++;
         break;
     case 6:
-        CopyPrimaryTilesetToVram(gMapHeader.mapLayout);
+        //CopyPrimaryTilesetToVram(gMapHeader.mapLayout); //re-enable if problems pop up!
         (*state)++;
         break;
     case 7:
-        CopySecondaryTilesetToVram(gMapHeader.mapLayout);
+        //CopySecondaryTilesetToVram(gMapHeader.mapLayout);
         (*state)++;
         break;
     case 8:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
+            CopyMapTilesetsToVram(gMapHeader.mapLayout);
             LoadMapTilesetPalettes(gMapHeader.mapLayout);
             (*state)++;
         }

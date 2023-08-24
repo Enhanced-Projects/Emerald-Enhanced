@@ -157,7 +157,7 @@ void RyuChooseSeasonalWeather(void)
 
     switch (currentSeason)
     {
-        case 0: //spring
+        case SEASON_SPRING:
             {
                 if (rngval == 0) //0, 1%
                     temp = WEATHER_SHADE;
@@ -170,19 +170,21 @@ void RyuChooseSeasonalWeather(void)
                 break;
 
             }
-        case 1: //summer
+        case SEASON_SUMMER:
             {
                 if (rngval == 0) //0, 1%
                     temp == WEATHER_SHADE;
-                else if (rngval > 0 && rngval < 6) //1 to 5, 5%
+                else if (rngval > 0 && rngval < 4) //1 to 3, 3%
                     temp = WEATHER_RAIN_THUNDERSTORM;
-                else if (rngval > 4 && rngval < 17 ) //5 to 16, 12% 
+                else if (rngval > 3 && rngval < 10 ) //4 to 9, 6% 
                     temp = WEATHER_RAIN;
-                else //17 to 99, 82%
+                else if (rngval > 9 && rngval < 25) //10 to 24, 15%
+                    temp = WEATHER_DROUGHT;
+                else //25 to 99, 75%
                     temp = WEATHER_SUNNY_CLOUDS;
                 break;
             }
-        case 2: //fall
+        case SEASON_AUTUMN:
             {
                 if (rngval < 2) //0 to 1, 2%
                     temp = WEATHER_SHADE;
@@ -194,7 +196,7 @@ void RyuChooseSeasonalWeather(void)
                     temp = WEATHER_RAIN;
                 break;
             }
-        case 3: //winter
+        case SEASON_WINTER:
             {
                 if (rngval < 4) //0 to 3, 4%
                     temp = WEATHER_SHADE;
@@ -216,6 +218,7 @@ static void UpdatePerDay(struct Time *localTime)
 {
     u16 *days = GetVarPointer(VAR_DAYS);
     u16 daysSince;
+    u16 randval = (Random() % 99);
 
     if (*days != localTime->days && *days <= localTime->days)
     {
@@ -226,17 +229,18 @@ static void UpdatePerDay(struct Time *localTime)
             VarSet(VAR_RYU_WEEK_COUNTER, (VarGet(VAR_RYU_WEEK_COUNTER) + 1));
             VarSet(VAR_RYU_DAY_COUNTER, 0);
         }
-        if (VarGet(VAR_RYU_WEEK_COUNTER) > 3)
-            VarSet(VAR_RYU_WEEK_COUNTER, 0);
-        //VarSet(VAR_RYU_WEEK_COUNTER, (((VarGet(VAR_RYU_DAY_COUNTER)) / 7 ) % 4)); //this doesn't work, always returns 0
-        RyuChooseSeasonalWeather();
+        if (VarGet(VAR_RYU_WEEK_COUNTER) > SEASON_WINTER)
+            VarSet(VAR_RYU_WEEK_COUNTER, SEASON_SPRING);
+        if (randval > 25)
+            VarSet(VAR_RYU_SEASONAL_WEATHER, WEATHER_NONE);
+        else
+            RyuChooseSeasonalWeather();
         ClearDailyQuestData();
         ClearDailyFlags();
         DoDailyRealEstateTasks();
         RotateDailyUBGroup();
         UpdateDewfordTrendPerDay(daysSince);
         UpdateTVShowsPerDay(daysSince);
-        //UpdateWeatherPerDay(daysSince);
         UpdatePartyPokerusTime(daysSince);
         UpdateMirageRnd(daysSince);
         UpdateBirchState(daysSince);

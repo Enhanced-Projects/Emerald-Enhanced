@@ -1394,7 +1394,7 @@ static void Cmd_attackcanceler(void)
         gBattlescriptCurrInstr = BattleScript_MagicCoatBounce;
         return;
     }
-    else if (((GetBattlerAbility(gBattlerTarget) == ABILITY_MAGIC_BOUNCE) || (((IsPlayerInUnderworld() == TRUE) && ((GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT)))) || (((GetBattlerAbility(gBattlerTarget) == ABILITY_ILLUSIONIST)) && ((gBattleWeather & WEATHER_ECLIPSE_ANY))))
+    else if (((GetBattlerAbility(gBattlerTarget) == ABILITY_MAGIC_BOUNCE) || (((IsPlayerInUnderworld() == TRUE) && ((GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT))))) && ((gBattleWeather & WEATHER_ECLIPSE_ANY))))
              && gBattleMoves[gCurrentMove].flags & FLAG_MAGICCOAT_AFFECTED
              && !gProtectStructs[gBattlerAttacker].usesBouncedMove)
     {

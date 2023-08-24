@@ -1058,7 +1058,7 @@ extern struct Tileset const gTileset_GeneralAutumn;
 extern struct Tileset const gTileset_GeneralWinter;
 void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
 {
-    u8 week = VarGet(VAR_RYU_WEEK_COUNTER);
+    u16 week = VarGet(VAR_RYU_WEEK_COUNTER);
     //put seasonal tileset swapping code here
     if (mapLayout)
     {
@@ -1066,16 +1066,16 @@ void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
         {
             switch(week)
             {
-                case 0: //spring
+                case SEASON_SPRING:
                     CopyTilesetToVramUsingHeap(&gTileset_GeneralSpring, NUM_TILES_IN_PRIMARY, 0);
                     break;
-                case 1: //summer
+                case SEASON_SUMMER:
                     CopyTilesetToVramUsingHeap(&gTileset_GeneralSummer, NUM_TILES_IN_PRIMARY, 0);
                     break;
-                case 2: //fall
+                case SEASON_AUTUMN:
                     CopyTilesetToVramUsingHeap(&gTileset_GeneralAutumn, NUM_TILES_IN_PRIMARY, 0);
                     break;
-                case 3: //winter
+                case SEASON_WINTER:
                     CopyTilesetToVramUsingHeap(&gTileset_GeneralWinter, NUM_TILES_IN_PRIMARY, 0);
                     break;
             }
@@ -1090,17 +1090,6 @@ void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
     }
 }
 
-/*
-void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
-{
-    if (mapLayout)
-    {
-        CopyTilesetToVramUsingHeap(mapLayout->primaryTileset, NUM_TILES_IN_PRIMARY, 0);
-        CopyTilesetToVramUsingHeap(mapLayout->secondaryTileset, NUM_TILES_TOTAL - NUM_TILES_IN_PRIMARY, NUM_TILES_IN_PRIMARY);
-    }
-}
-*/
-
 extern const struct MapLayout *const gMapLayouts[];
 
 void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
@@ -1112,16 +1101,16 @@ void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
         {
             switch(week)
             {
-                case 0: //spring
+                case SEASON_SPRING:
                     LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_SPRING_LAYOUT - 1]);
                     break;
-                case 1: //summer
+                case SEASON_SUMMER:
                     LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_SUMMER_LAYOUT - 1]);
                     break;
-                case 2: //fall
+                case SEASON_AUTUMN:
                     LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_AUTUMN_LAYOUT - 1]);
                     break;
-                case 3: //winter
+                case SEASON_WINTER:
                     LoadPrimaryTilesetPalette(gMapLayouts[LAYOUT_DUMMY_WINTER_LAYOUT - 1]);
                     break;
             }

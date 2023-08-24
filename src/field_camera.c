@@ -11,6 +11,7 @@
 #include "rotating_gate.h"
 #include "sprite.h"
 #include "text.h"
+#include "event_data.h"
 
 EWRAM_DATA bool8 gUnusedBikeCameraAheadPanback = FALSE;
 
@@ -226,7 +227,11 @@ void DrawDoorMetatileAt(int x, int y, u16 *arr)
         sFieldCameraOffset.copyBGToVRAM = TRUE;
     }
 }
-
+extern struct Tileset const gTileset_General;
+extern struct Tileset const gTileset_GeneralSpring;
+extern struct Tileset const gTileset_GeneralSummer;
+extern struct Tileset const gTileset_GeneralAutumn;
+extern struct Tileset const gTileset_GeneralWinter;
 static void DrawMetatileAt(const struct MapLayout *mapLayout, u16 offset, int x, int y)
 {
     u16 metatileId = MapGridGetMetatileIdAt(x, y);
@@ -235,7 +240,31 @@ static void DrawMetatileAt(const struct MapLayout *mapLayout, u16 offset, int x,
     if (metatileId > NUM_METATILES_TOTAL)
         metatileId = 0;
     if (metatileId < NUM_METATILES_IN_PRIMARY)
-        metatiles = mapLayout->primaryTileset->metatiles;
+    {
+        if (mapLayout->primaryTileset == &gTileset_General)
+        {
+            u16 season = (VarGet(VAR_RYU_WEEK_COUNTER));
+            switch (season)
+            {
+                case SEASON_SPRING:
+                    metatiles = gTileset_GeneralSpring.metatiles;
+                    break;
+                case SEASON_SUMMER:
+                    metatiles = gTileset_GeneralSummer.metatiles;
+                    break;
+                case SEASON_AUTUMN:
+                    metatiles = gTileset_GeneralAutumn.metatiles;
+                    break;
+                case SEASON_WINTER:
+                    metatiles = gTileset_GeneralWinter.metatiles;
+                    break;
+            }
+        }
+        else
+        {
+            metatiles = mapLayout->primaryTileset->metatiles;
+        }
+    }
     else
     {
         metatiles = mapLayout->secondaryTileset->metatiles;
