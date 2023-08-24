@@ -14112,7 +14112,6 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM10_HIDDEN_POWER)
 											| TMHM(TM15_HYPER_BEAM)
 											| TMHM(TM57_KNOCK_OFF)
-											| TMHM(TM24_THUNDERBOLT)
 											| TMHM(TM63_ECLIPSE)
 											| TMHM(TM17_PROTECT)
 											| TMHM(TM18_RAIN_DANCE)

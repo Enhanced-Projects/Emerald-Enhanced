@@ -3834,14 +3834,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_ZOROARK_1] = { // Zoroark-Mixed (ID: 324)
+    [FRONTIER_MON_ZOROARK_1] = { // Zoroark-NP (ID: 324)
         .species = SPECIES_ZOROARK,
-        .moves = {MOVE_KNOCK_OFF, MOVE_SUCKER_PUNCH, MOVE_LOW_KICK, MOVE_SLUDGE_BOMB},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_NAIVE,
+        .moves = {MOVE_DARK_PULSE, MOVE_PSYSHOCK, MOVE_FOCUS_BLAST, MOVE_NASTY_PLOT},
+        .heldItem = ITEM_SHELL_BELL,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_TREVENANT_1] = { // Trevenant-TR (ID: 427)
         .species = SPECIES_TREVENANT,
@@ -5670,14 +5670,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_ZOROARK_2] = { // Zoroark-NP (ID: 528)
+    [FRONTIER_MON_ZOROARK_2] = { // Zoroark-CM (ID: 528)
         .species = SPECIES_ZOROARK,
-        .moves = {MOVE_DARK_PULSE, MOVE_FOCUS_BLAST, MOVE_SLUDGE_BOMB, MOVE_NASTY_PLOT},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .moves = {MOVE_DARK_PULSE, MOVE_STORED_POWER, MOVE_CALM_MIND, MOVE_MOONLIGHT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
         .nature = NATURE_TIMID,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_TREVENANT_2] = { // Trevenant-Band (ID: 631)
         .species = SPECIES_TREVENANT,
