@@ -6612,12 +6612,12 @@ BattleScript_RyuLunaticDisableStatusMessage::
 	waitmessage 0x40
 	endselectionscript
 
-BattleScript_IllusionistNoDamage::
+BattleScript_IllusionistActivates::
 	attackstring
 	ppreduce
 	pause 0x20
 	showabilitypopup BS_TARGET
-	printstring STRINGID_ILLUSIONISTNODAMAGE
+	printstring STRINGID_ILLUSIONISTBLOCKSMOVE
 	waitmessage 0x40
 	goto BattleScript_MoveEnd
 
