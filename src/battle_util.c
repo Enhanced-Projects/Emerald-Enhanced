@@ -4444,6 +4444,14 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             gBattlescriptCurrInstr = BattleScript_DazzlingProtected;
             effect = 1;
         }
+        else if (GetBattlerAbility(gBattlerTarget) == ABILITY_ILLUSIONIST
+                  && IS_MOVE_STATUS(gCurrentMove)
+                  && GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gBattlerTarget)
+                  && !(WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_ECLIPSE_ANY))
+        {
+            gBattlescriptCurrInstr = BattleScript_IllusionistActivates;
+            effect = 1;
+        }
         break;
     case ABILITYEFFECT_ABSORBING: // 3
         if (move != MOVE_NONE)
