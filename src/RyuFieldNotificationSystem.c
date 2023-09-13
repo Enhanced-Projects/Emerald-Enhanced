@@ -20,6 +20,7 @@
 #include "sound.h"
 #include "cutscene.h"
 #include "DynamicObjects.h"
+#include "RyuPokenavScheduler.h"
 
 extern const u8 RyuGlobal_CancelDailyQuest[];
 extern void GetPlayerPosition(struct MapPosition *);
@@ -173,7 +174,7 @@ void RyuCheckMagmaQuestNotifications(void)
                 {
                     break;
                 }
-                ShowPokenavFieldMessage((const u8[]) _("Report to the Mountain Ridge\nnorth of the desert for further\linstructions."));
+                SchedulePokenavCallInternal(NAVCALL_MAGMASTAGE130, 30);
                 FlagClear(FLAG_RYU_HIDE_103_MAGMA_MEETING);
                 FlagClear(FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1);
                 FlagClear(FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE);
@@ -188,7 +189,7 @@ void RyuCheckMagmaQuestNotifications(void)
                     break;
                 }
                 FlagSet(FLAG_RYU_MAGMA_6_NOTIFY);
-                ShowPokenavFieldMessage((const u8[]) _("Scheduled Heist at Oldale Town's\nPokéMart. Group meet north of town\pfor further briefing."));\
+                SchedulePokenavCallInternal(NAVCALL_MAGMASTAGE210, 30);
                 FlagSet(FLAG_RYU_HIDE_111_MAGMA_MEETING);
                 FlagSet(FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1);
                 FlagSet(FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE);
@@ -226,7 +227,7 @@ void RyuCheckAquaQuestNotifications(void)
                 {
                     break;
                 }
-                ShowPokenavFieldMessage((const u8[]) _("This is Admin Shelly speaking.\nYou're to rendezvous with the rest of\lthe crew at Slateport Museum.\pYour objective is to detain and\ninterrogate Captain Stern."));
+                SchedulePokenavCallInternal(NAVCALL_AQUASTAGE10, 30);
                 FlagSet(FLAG_RYU_AQUA_1_NOTIFY);
                 FlagSet(FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION);
                 VarSet(VAR_RYU_QUEST_AQUA, 25);
@@ -239,7 +240,7 @@ void RyuCheckAquaQuestNotifications(void)
                 {
                     break;
                 }
-                ShowPokenavFieldMessage((const u8[]) _("Admin Shelly speaking.\pI'm sending you to Meteor Falls to\nprovide some assistance to those\lalready in the area.\pDon't be a hero!"));
+                SchedulePokenavCallInternal(NAVCALL_AQUASTAGE55, 30);
                 VarSet(VAR_RYU_QUEST_AQUA, 60);
                 FlagSet(FLAG_RYU_AQUA_2_NOTIFY);
                 break;
@@ -252,7 +253,7 @@ void RyuCheckAquaQuestNotifications(void)
                     break;
                 }
                 FlagSet(FLAG_RYU_AQUA_3_NOTIFY);
-                ShowPokenavFieldMessage((const u8[]) _("This is an urgent message from Admin\nMatt!\pCalling all members to mobilize at\nthe peak of Mt. Pyre!\pI repeat: the peak of Mt. Pyre!This is an urgent message from Admin\nMatt!\pCalling all members to mobilize at\nthe peak of Mt. Pyre!\pI repeat: the peak of Mt. Pyre!"));
+                SchedulePokenavCallInternal(NAVCALL_AQUASTAGE80, 30);
                 FlagClear(FLAG_RYU_HIDE_AQUA_MTPYRE_EXT);
                 VarSet(VAR_RYU_QUEST_AQUA, 82);
                 break;
@@ -265,7 +266,7 @@ void RyuCheckAquaQuestNotifications(void)
                     break;
                 }
                 FlagSet(FLAG_RYU_AQUA_3_NOTIFY);
-                ShowPokenavFieldMessage((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, this is Shelly.\pWe've discovered what Magma is\nscheming, and it's far from good.\pWe were able to weaken their forces\nat Mt. Chimney, so now they're\ldesperate.\pIt's time to hit them while they're\nstill down!\pMeet me at their hideout located in\nJagged Pass."));
+                SchedulePokenavCallInternal(NAVCALL_AQUASTAGE91, 30);
                 FlagSet(FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY);
                 VarSet(VAR_RYU_QUEST_AQUA, 93);
                 break;
@@ -278,7 +279,7 @@ void RyuCheckAquaQuestNotifications(void)
                     break;
                 }
                 FlagSet(FLAG_RYU_AQUA_4_NOTIFY);
-                ShowPokenavFieldMessage((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, it's time...meet us in the\nmain Team Aqua Headquarters.\pWe'll be waiting by the dock."));
+                SchedulePokenavCallInternal(NAVCALL_AQUASTAGE123, 30);
                 FlagSet(FLAG_RYU_DEVON_HIDE_MATT_SUB);
                 FlagSet(FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE);
                 FlagSet(FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE);
@@ -306,8 +307,11 @@ extern void RyuSavePlayTimeChallenge(void);
 extern bool32 IsPlayerInUnderworld(void);
 extern bool32 checkEscortMission(void);
 
+
+
 void RyuDoNotifyTasks(void)
 {
+
     if (FlagGet(FLAG_RYU_ENTERING_OWNED_HOME) == FALSE)
         FlagSet(FLAG_RYU_HIDE_HOME_ATTENDANT);
 
@@ -317,7 +321,7 @@ void RyuDoNotifyTasks(void)
         {
             if ((FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
                 {
-                    ShowPokenavFieldMessage((const u8[]) _("Hello. This is the Duskull afterlife\nservice calling.\pThis call is to notify you that\nyou will be escorted to the\lafterlife shortly."));
+                    SchedulePokenavCallInternal(NAVCALL_DUSKULLAFTERLIFE, 0);
                     SetWarpDestination(MAP_GROUP(LIMBO), MAP_NUM(LIMBO), 255, 3, 3);
                     CreateTask(RyuDelayTimerTask, 255);
                 }
@@ -364,21 +368,12 @@ void RyuDoNotifyTasks(void)
         {
             FlagSet(FLAG_RYU_NOTIFIED_CHALLENGE_FAILURE);
             FlagClear(FLAG_RYU_DOING_RYU_CHALLENGE);
-            ShowPokenavFieldMessage((const u8[]) _("You have failed Ryu's Challenge.\nYou can try again in another\lNew Game Plus.\pWe look forward to you trying\nagain!"));
+            SchedulePokenavCallInternal(NAVCALL_FAILEDRYUCHALLENGE, 0);
         }
-#ifdef RYU_PUNISH_SAVE_STATE
-    if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (FlagGet(FLAG_RYU_NOTIFIED_SAVE_STATE) == FALSE))
-        {
-            FlagSet(FLAG_RYU_NOTIFIED_SAVE_STATE);
-            gSaveBlock2Ptr->notifiedSaveState = TRUE;
-            ShowFieldMessage((const u8[]) _("A save state has been detected.\nYou should be aware that these\lcan cause issues.\pContinue at own risk."));
-            CreateTask(RyuMessageTimerTask, 0xFF);
-        }
-#endif
 
     if ((VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 69) && (FlagGet(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS) == FALSE))
     {
-        ShowPokenavFieldMessage((const u8[]) _("You have completed\nRyu's Challenge."));
+        SchedulePokenavCallInternal(NAVCALL_COMPLETEDRYUCHALLENGE, 0);
         FlagClear(FLAG_RYU_DOING_RYU_CHALLENGE);
         FlagSet(FLAG_RYU_NOTIFIED_CHALLENGE_SUCCESS);
         RyuSavePlayTimeChallenge();
@@ -401,8 +396,8 @@ void RyuDoNotifyTasks(void)
     if (!(FlagGet(FLAG_SYS_DEXNAV_GET)) && (!(FlagGet(FLAG_TEMP_F)))) //notify and give Dexnav
         if (CountBadges() >= 6)
             {
-                FlagSet(FLAG_SYS_DEXNAV_GET);//THE BELOW MESSAGE BOX WILL GET CORRUPTED IF THE USER GETS AN ACHIEVEMENT AT THE SAME TIME! @PIDGEY PLS FIX
-                ShowPokenavFieldMessage((const u8[]) _("Hello Trainer!\pThe DexNav has been added to your\nStart Menu.\pPlease enjoy it!"));
+                FlagSet(FLAG_SYS_DEXNAV_GET);
+                SchedulePokenavCallInternal(NAVCALL_DEXNAV, 10);
             }
 
     if (FlagGet(FLAG_RYU_OPTIONAL_QT_ACTION) == TRUE)
@@ -416,19 +411,14 @@ void RyuDoNotifyTasks(void)
         FlagSet(FLAG_RYU_POKEFANS_ESCORT_DONE);
         ShowFieldMessage((const u8[])_("Ah! Here we are.\nThank you so much for escorting me!"));
         CreateTask(RyuMessageTimerTask, 0xFF);
-        /*tempobjectid = (AddDynamicObject(gSaveBlock1Ptr->location.mapGroup,
-                         gSaveBlock1Ptr->location.mapNum,
-                         (VarGet(VAR_RYU_POKEFANS_OBJID)),
-                         0, 
-                         gObjectEvents[FOLLOWER].currentCoords.x, 
-                         gObjectEvents[FOLLOWER].currentCoords.y,
-                         3,
-                         NULL));//create a dynamic object where the player's follower is*/
         DestroyFollowerObjectEvent();//delete the follower
         VarSet(VAR_RYU_POKEFANS_OBJID, 0);
         FlagClear(FLAG_RYU_HAS_FOLLOWER);
         VarSet(VAR_RYU_FOLLOWER_ID, 0);
     }
+
+    DoScheduledNavCallCheck();
+
 }
 
 bool8 RyuCheckHasFighterDogs(void)

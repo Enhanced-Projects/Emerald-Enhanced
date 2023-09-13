@@ -165,6 +165,8 @@ static void Task_RunTimeBasedEvents(u8 taskId)
 #undef tAmbientCryState
 #undef tAmbientCryDelay
 
+extern void Task_HidePokenavMessageWhenDone(u8 taskId);
+
 void SetUpFieldTasks(void)
 {
     if (!FuncIsActiveTask(Task_RunPerStepCallback))
@@ -179,7 +181,7 @@ void SetUpFieldTasks(void)
     if (!FuncIsActiveTask(Task_RunTimeBasedEvents))
         CreateTask(Task_RunTimeBasedEvents, 0x50);
 
-    if (!FuncIsActiveTask(Task_NotificationWindow))
+    if ((!FuncIsActiveTask(Task_NotificationWindow)) && (!FuncIsActiveTask(Task_HidePokenavMessageWhenDone)))
         CreateTask(Task_NotificationWindow, 0x50);
 }
 
