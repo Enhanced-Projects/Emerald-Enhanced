@@ -1,12 +1,35 @@
 raw `
 DewfordTown_MapScripts:: @ 81E9507
 	map_script ON_TRANSITION, DewfordTown_OnTransition
+	map_script ON_LOAD, DT_CheckCloseCave
+	map_script ON_FRAME, DT_OnFrameScripts
 	.byte 0
 
 DewfordTown_OnTransition: @ 81E950D
 	setflag FLAG_VISITED_DEWFORD_TOWN
 	call RyuCheckForWellTravelledAch
 	end
+
+DT_OnFrameScripts::
+	map_script_2 VAR_RYU_QUEST_GENESECT, 50, DT_DFT_ReturnFromPast
+	.2byte 0
+
+DT_CheckCloseCave::
+	compare VAR_RYU_QUEST_GENESECT, 50
+	call_if_lt DT_CloseCave
+	compare VAR_RYU_QUEST_GENESECT, 15
+	call_if_eq DT_ShowSumac
+	end
+
+DT_CloseCave::
+	setmetatile 11, 10, METATILE_General_RockWall_SandBase, 1
+	setmetatile 11, 11, METATILE_General_RockWall_SandBase, 1
+	return
+
+DT_ShowSumac::
+	clearflag FLAG_RYU_DFT_BARD_GENESECT
+	addobject 5
+	return
 
 DewfordTown_EventScript_Briney:: @ 81E9511
 	goto_if_set FLAG_RYU_DT_BRINEY_BATTLE, ryu_end @@This prevents briney from approaching player if he's been defeated, i.e. not hostile.
@@ -351,4 +374,112 @@ script DewfordTown_RealEstatePropertyDoor {
 script DewfordTown_RealEstatePropertySign {
 	setvar(VAR_0x8009, PROPERTY_DEWFORD)
 	goto(RyuRealEstateHouseSign)
+}
+
+script DT_Sumac {
+	if (var(VAR_RYU_QUEST_GENESECT) == 30){//player most likely lost to genesect. Allow them to retry.
+		msgbox("I'm not sure how you got\nback here, but shall I reconfigure\lthe device and send you back?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES){warpteleport(MAP_DEWFORD_TOWN_PAST, 255, 10, 14) waitstate}
+		else{goto(ryu_end)}
+	}
+	elif (var(VAR_RYU_QUEST_GENESECT) == 50){//player probably defeated genesect. Continue story.
+		goto(DT_ContinueGenesectStoryAfterDefeat)
+	}
+	lockall
+	faceplayer
+	msgbox("You found me!\pNot that I was hiding or anything.")
+	closemessage
+	if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE){
+		if (var(VAR_RYU_FOLLOWER_ID) == FOLLOWER_LANETTE){
+			msgbox("{COLOR LIGHT_RED}{SHADOW RED} Hi, uncle Sumac.\pHow have you been?\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I've been very well indeed.\pI'm happy to finally be able\nto carry out my work!\pI knew you were my favorite\nniece for a reason...\p{COLOR LIGHT_RED}{SHADOW RED}Oh... uh... kay...\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lanette looks a little embarassed\n but you also sense some\l pride)")
+			closemessage
+		}
+	}
+	msgbox("Ahem! So!\pMy research indicates that the\nGenesis Pokémon lived around\lhere.\pThis hill seems to be covering\nsomething, but I don't know how\pwe could possibly excavate\nit without angering the locals.")
+	closemessage
+	msgbox("Hmm, quite the conundrum indeed...\p... ... ...")
+	closemessage
+	turnobject(5, DIR_NORTH)
+	delay(30)
+	playse(SE_PIN)
+	applymovement(5, Common_Movement_ExclamationMark)
+	waitmovement(5)
+	turnobject(5, DIR_SOUTH)
+	msgbox("AHA! I got it!\pWe can simply go back in\ntime and change how this\lhill formed!")
+	closemessage
+	goto(DT_SumacIntroP2)
+}
+script DT_SumacIntroP2{
+	applymovement(PLAYER, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Are... you implying that time\ntravel is possible?\lNo... simple?!\pPerhaps you really are crazy...\nold man...")
+	closemessage
+	msgbox("Yes indeed, young one.\pI developed a device that can\nteleport you through {COLOR LIGHT_BLUE}{SHADOW RED}time {COLOR DARK_GREY}{SHADOW LIGHT_GREY}\nas well as space.")
+	closemessage
+	msgbox("There's a small caveat though,\nyou need to have some sort\lof anchor.\pIt's the only way the device\nknows where... and when to send you.\pHowever... you have just what\nI need!")
+	closemessage
+	msgbox("That drive you have!\nIt's linked to this area\land Genesis's time!")
+	closemessage
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} pulls out the drive...)")
+	closemessage
+	msgbox("Right! just attach this device\nhere... connect that...\pand... presto!\pIt's good to go.")
+	closemessage
+	msgbox("Now all you have to do is press this-")
+	closemessage
+	setvar(VAR_RYU_QUEST_GENESECT, 20) //Player got teleported back in time to a past version of dewford. Figure out what to do
+	drawfullscreenimage(SCENEBGWARP)
+	delay(12)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}That crazy old man pressed the\nbutton without even giving me\ltime to prepare!\pThis better not screw me!")
+	closemessage
+	clearfullscreenimage
+	warpteleport(MAP_DEWFORD_TOWN_PAST, 255, 10, 14)
+	waitstate
+	end
+}
+
+script DT_ContinueGenesectStoryAfterDefeat {
+	end
+}
+
+script DT_DFT_ReturnFromPast {
+	setvar(VAR_RYU_QUEST_GENESECT, 60)//player returned successfully from the past
+	turnobject(PLAYER, DIR_NORTH)
+	turnobject(FOLLOWER, DIR_NORTH)
+	msgbox("Ah! you finally arrived!\pAre you ready to go in the cave?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO){
+		msgbox("Come see me when you're ready!\pI'll wait here for you.")
+		release
+		end
+	}
+	closemessage
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You notice that there's a cave door\n where there wasn't one previously.\p Sumac is acting as if it'd always\n been there.\p You must have been successful in your\n past endeavor.")
+	closemessage
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}When did that cave appear?")
+	closemessage
+	msgbox("This cave?\nIt's always been here, what\lare you talking about?\pWho's the crazy one now?\pIt's just been a highly protected\nexcavation site.")
+	closemessage
+	fadescreen(FADE_TO_BLACK)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You tell Sumac what happened\n when you were initially sent\l to the past, and how the cave\p was definitely not there before.)")
+	closemessage
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You then describe to him\n the events that transpired\l in the past.)")
+	closemessage
+	delay(10)
+	fadescreen(FADE_FROM_BLACK)
+	msgbox("How truly fascinating!\nYou've proven that you can\lrewrite history!")
+	closemessage
+	msgbox("It really is something!\nThis cave is firmly inscribed\pinto my memory as a long\nknown excavation site!")
+	closemessage
+	msgbox("My dear boy, you have proven\na whole new branch of science needs\lto exist!")
+	closemessage
+	msgbox("You must now return the device.\pI need to check logs and status.\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (You hand over the device.)")
+	closemessage
+	msgbox("Right! On with you!\pLet me know when it's safe to enter!")
+	closemessage
+	applymovement(5, Common_Movement_StepRight)
+	waitmovement(5)
+	turnobject(5, DIR_WEST)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (The way is clear for you\n to proceed.)")
+	closemessage
+	release
+	end
 }

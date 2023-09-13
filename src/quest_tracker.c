@@ -87,14 +87,14 @@ static const struct WindowTemplate sQuestWindowTemplate[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u8 sTextDevon1[] = _("Devon Corporate");
-static const u8 sTextDevon2[] = _("Devon Scientist");
-static const u8 sTextMagma[] = _("Magma");
-static const u8 sTextLana[] = _("Leaf");
-static const u8 sTextLanette[] = _("Lanette");
-static const u8 sTextAqua[] = _("Aqua");
-static const u8 sTextNurse[] = _("Nurse");
-static const u8 sTextMay[] = _("May");
+static const u8 sTextDevon1[] = _("Corporate Life");
+static const u8 sTextDevon2[] = _("Weather Theorem");
+static const u8 sTextMagma[] = _("Fiery Enterprise");
+static const u8 sTextLana[] = _("The Foreigner");
+static const u8 sTextLanette[] = _("Technically Appealing");
+static const u8 sTextAqua[] = _("Sail the High Seas");
+static const u8 sTextNurse[] = _("Travelling Nurse");
+static const u8 sTextMay[] = _("A Familiar Face");
 static const u8 sText_DeliverySystem[] = _("Delivery System");
 static const u8 sText_Daily[] = _("Faction Daily Quest");
 static const u8 sText_DailyNaturalistss[] = _("Naturalists Daily");
@@ -103,7 +103,8 @@ static const u8 sText_DailyNobles[] = _("Nobles Daily");
 static const u8 sText_DailyPokefans[] = _("Pokéfans Daily");
 static const u8 sText_DailyOutcasts[] = _("Outcasts Daily");
 static const u8 sText_DailyProfessionals[] = _("Professionals Daily");
-static const u8 sText_LucyQuest[] = _("Lucy");
+static const u8 sText_LucyQuest[] = _("Queen of the Serpents");
+static const u8 sText_GenesectQuest[] = _("Buried Dreams");
 
 struct QuestData {
     const struct QuestStageDesc * stageDescs;
@@ -197,9 +198,10 @@ static const struct QuestData sQuests[] = {
     {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LEAF},
     {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE},
     {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY},
+    {gLucyQuestStages, sText_LucyQuest, VAR_RYU_QUEST_LUCY},
+    {gGenesectQuestStages, sText_GenesectQuest, VAR_RYU_QUEST_GENESECT},
     {gDeliverySystemQuestStages, sText_DeliverySystem, VAR_RYU_DELIVERY_SYSTEM_DATA},
     {gDailyQuestStages, sText_Daily, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION},
-    {gLucyQuestStages, sText_LucyQuest, VAR_RYU_QUEST_LUCY}
 };
 
 static const u8 sColors[][3] = {

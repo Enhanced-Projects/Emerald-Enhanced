@@ -1,0 +1,68 @@
+mapscripts DewfordTown_GenesectCave_MapScripts {}
+
+
+script RyuScript_GenesectFossil {
+    if (flag(FLAG_RYU_GENESECT_FOSSIL) == TRUE){release end} //player already has the fossil, this shouldn't be accessible
+    if (var(VAR_RYU_QUEST_GENESECT) == 0){release end} //player doesn't have the quest, this shouldn't be accessible
+    msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(You signal to Sumac that\nit's safe to enter.)")
+    turnobject(PLAYER, DIR_SOUTH)
+    applymovement(FOLLOWER, Common_Movement_StepRight)
+    waitmovement(FOLLOWER)
+    applymovement(PLAYER, Common_Movement_StepDown)
+    waitmovement(PLAYER)
+    applymovement(PLAYER, Common_Movement_StepLeft)
+    waitmovement(PLAYER)
+    closemessage
+    turnobject(FOLLOWER, DIR_SOUTH)
+    turnobject(PLAYER, DIR_SOUTH)
+    playse(SE_KAIDAN)
+    addobject(2)
+    applymovement(2, GSCT_SumacEnters)
+    waitmovement(2)
+    msgbox("Huh?! It's just a fossil?\nThis is disappointing.\pWell, I think I can work\nwith this.")
+    closemessage
+    applymovement(2, Common_Movement_WalkInPlaceFastestUp)
+    removeobject(1)
+    playse(SE_RG_BAG_POCKET)
+    waitse
+    setflag(FLAG_RYU_GENESECT_FOSSIL)
+    turnobject(2, DIR_SOUTH)
+    msgbox("Come! Meet me back in my lab!")
+    closemessage
+    setvar(VAR_RYU_QUEST_GENESECT, 75)//Player and sumac collect fossil in genesect's cave.
+    applymovement(2, GSCT_SumacExits)
+    delay(20)
+    applymovement(PLAYER, GSCT_PlayerLeaves)
+    delay(4)
+    applymovement(FOLLOWER, GSCT_FollowerLeaves)
+    waitmovement(PLAYER)
+    clearflag(FLAG_RYU_HIDE_SL_SUMAC_2)
+    setflag(FLAG_RYU_HIDE_SL_SUMAC)
+    warpteleport(MAP_NEW_MAUVILLE_SUMAC_LAB, 255, 9, 5)
+    release
+    end
+}
+
+movement GSCT_SumacEnters{
+    walk_in_place_fastest_up
+    walk_up * 5
+    step_end
+}
+
+movement GSCT_SumacExits{
+    walk_down * 5
+    set_invisible
+    step_end
+}
+
+movement GSCT_PlayerLeaves{
+    walk_right
+    walk_down * 4
+    step_end
+}
+
+movement GSCT_FollowerLeaves{
+    walk_left
+    walk_down * 4
+    step_end
+}

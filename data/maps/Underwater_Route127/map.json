@@ -83,6 +83,14 @@
       "elevation": 3,
       "item": "ITEM_RED_SHARD",
       "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_127_RED_SHARD"
+    },
+    {
+      "type": "sign",
+      "x": 69,
+      "y": 56,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "R127U_DouseDriveEvent"
     }
   ]
 }

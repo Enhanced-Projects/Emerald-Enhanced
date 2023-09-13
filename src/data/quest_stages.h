@@ -228,6 +228,24 @@ const u8 sLucyQuestStage666[] = _("You insulted Lucy at her home.\n(BAD END)");
 const u8 sLucyQuestStage888[] = _("You were unable to protect Lucy\nin Petalburg Woods.\n(WORST END)");
 const u8 sLucyQuestStage999[] = _("Lucy left to work at the Battle Frontier.\n(BAD END)");
 
+const u8 sGenesectQuestStage0[] = _("Not yet known.");
+const u8 sGenesectQuestStage1[] = _("You found a mysterious drive and then got\na mysterious phone call from Lanette.\nGo meet Lanette at the Fallarbor pokecenter.");
+const u8 sGenesectQuestStage2[] = _("You found a mysterious drive and then got\na mysterious phone call from Lanette.\nGo meet Lanette at her house on route 114.");
+const u8 sGenesectQuestStage5[] = _("You met up with the woman who called you.\nShe referred you to Sumac. He can\napparently be found at the Mauville Pokécenter.\nGo to the Mauville Pokémon center.");
+const u8 sGenesectQuestStage6[] = _("You found a Drive while you had Lanette\nwith you. Her uncle wishes to meet both of you\nat the Mauville pokecenter. Go there.");
+const u8 sGenesectQuestStage10[] = _("You met up with Professor Sumac.\nHe asked you to meet him in his lab,\nwhich can be found in the New Mauville\nentrance cave.");
+const u8 sGenesectQuestStage15[] = _("You met up with Sumac in his Lab.\nHe headed to dewford to investigate\nan area there.\pYou should go meet up with him");
+const u8 sGenesectQuestStage20[] = _("You've been transported somewhere.\nThe area looks like Dewford, but\nis completely devoid of life or society.\nHave a look around.");
+const u8 sGenesectQuestStage25[] = _("You're in what appears to be a past\nform of Dewford. Explore the area for\ntraces of Genesis.");
+const u8 sGenesectQuestStage30[] = _("You found a very familiar stone.\nIt's likely going to start a fight\nwith something strong.\nPrepare for battle.");
+const u8 sGenesectQuestStage50[] = _("You fought and defeated the very\nstrong Genesis.\nYou should be getting transported\nback to the present.");
+const u8 sGenesectQuestStage60[] = _("After your successful return, Sumac\nsays he's ready to revive Genesect.");
+const u8 sGenesectQuestStage75[] = _("You and Sumac return to his lab.");
+const u8 sGenesectQuestStage80[] = _("Sumac's made all the preperations\nto revive Genesect. You should be ready\nto fight it.\nPerhaps capture it in its weakened state.");
+const u8 sGenesectQuestStage100[] = _("You finished the quest for Genesect\nand now control it.\nYou should work with the Professor\nto find it's drives again.");
+const u8 sGenesectQuestStage125[] = _("You found all of Genesect's drives and\nobtained the Temporal Displacer from the\nprofessor.\nQuest Complete.");
+
+
 struct QuestStageDesc
 {
   const u8 * description;
@@ -236,6 +254,74 @@ struct QuestStageDesc
 
 #define QUEST_STAGE_0 {sQuestStage0, 0}
 #define QUEST_STAGE_END {NULL, 0xFFFF}
+
+const static struct QuestStageDesc gGenesectQuestStages[] = { //Only visible at values > 0
+  {
+    .description = sGenesectQuestStage0,
+    .questStage = 0
+  },
+  {
+    .description = sGenesectQuestStage1,
+    .questStage = 1
+  },
+  {
+    .description = sGenesectQuestStage2,
+    .questStage = 2
+  },
+  {
+    .description = sGenesectQuestStage5,
+    .questStage = 5
+  },
+  {
+    .description = sGenesectQuestStage6,
+    .questStage = 6
+  },
+  {
+    .description = sGenesectQuestStage10,
+    .questStage = 10
+  },
+  {
+    .description = sGenesectQuestStage15,
+    .questStage = 15
+  },
+  {
+    .description = sGenesectQuestStage20,
+    .questStage = 20
+  },
+  {
+    .description = sGenesectQuestStage25,
+    .questStage = 25
+  },
+  {
+    .description = sGenesectQuestStage30,
+    .questStage = 30
+  },
+  {
+    .description = sGenesectQuestStage50,
+    .questStage = 50
+  },
+  {
+    .description = sGenesectQuestStage60,
+    .questStage = 60
+  },
+  {
+    .description = sGenesectQuestStage75,
+    .questStage = 75
+  },
+  {
+    .description = sGenesectQuestStage80,
+    .questStage = 80
+  },
+  {
+    .description = sGenesectQuestStage100,
+    .questStage = 100
+  },
+  {
+    .description = sGenesectQuestStage125,
+    .questStage = 125
+  },
+};
+
 const static struct QuestStageDesc gAquaQuestStages[] = { //Always visible in quest tracker.
   {
     .description = sMainQuestNotStartedStg,

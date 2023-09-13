@@ -228,6 +228,31 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
                 SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &maxiv);
                 SetMonData(&gEnemyParty[0], MON_DATA_BOSS_STATUS, &yes);
             }
+            else if (FlagGet(FLAG_RYU_FACING_GENESECT) == TRUE)
+            {
+                u16 maxhp = 1000;
+                u16 m1 = MOVE_TECHNO_BLAST;
+                u16 m2 = MOVE_ZAP_CANNON;
+                u16 m3 = MOVE_SIMPLE_BEAM;
+                u16 m4 = MOVE_BUG_BUZZ;
+                u8 maxiv = 31;
+                bool8 yes = TRUE;
+                const u8 nick[] = (const u8[])_("Genesis");
+                SetMonData(&gEnemyParty[0], MON_DATA_MAX_HP, &maxhp);
+                SetMonData(&gEnemyParty[0], MON_DATA_HP, &maxhp);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &m1);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE2, &m2);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE3, &m3);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE4, &m4);
+                SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, &nick);
+                SetMonData(&gEnemyParty[0], MON_DATA_ATK_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_DEF_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_SPATK_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_SPEED_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &maxiv);
+                SetMonData(&gEnemyParty[0], MON_DATA_BOSS_STATUS, &yes);
+            }
         }
 }
 

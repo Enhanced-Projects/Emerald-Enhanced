@@ -2169,6 +2169,7 @@ enum
     ENDTURN_MOM_ACTIVE_HEAL,
     ENDTURN_FACTIONBOSSMODIFIER,
     ENDTURN_MAGNETOSPHERE,
+    ENDTURN_SWITCHED_DRIVE,
 	ENDTURN_BATTLER_COUNT
 };
 
@@ -2764,6 +2765,16 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         }
+        case ENDTURN_SWITCHED_DRIVE:
+            if (FlagGet(FLAG_RYU_FACING_GENESECT) == TRUE
+                && GetBattlerSide(gActiveBattler) == B_SIDE_OPPONENT)
+            {
+                BattleScriptExecute(BattleScript_SwitchedDrive);
+                gBattleMons[gActiveBattler].item = ((Random() % 4) + ITEM_DOUSE_DRIVE);
+                effect++;
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
         case ENDTURN_BATTLER_COUNT:  // done
             gBattleStruct->turnEffectsTracker = 0;
             gBattleStruct->turnEffectsBattlerId++;
@@ -7914,7 +7925,15 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         if (dmg >= 3000)
             dmg = 3000;
 
+    if ((FlagGet(FLAG_RYU_FACING_GENESECT) == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)) 
+        dmg = ((dmg *50)/100); //boss genesect takes half damage from player.
 
+    if ((FlagGet(FLAG_RYU_FACING_GENESECT) == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)) 
+        if (dmg > 125) //boss genesect can't take more than 125 damage at a time.
+            dmg = 125;
+
+    if ((FlagGet(FLAG_RYU_FACING_GENESECT) == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT)) 
+        dmg = ((dmg * 125) / 100); //boss genesect deals 125% damage at all times.
 
     if (dmg == 0)
         dmg = 1;

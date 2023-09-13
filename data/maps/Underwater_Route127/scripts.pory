@@ -8,3 +8,20 @@ Underwater_Route127_OnResume: @ 81F772A
 	end
 
 `
+
+script R127U_DouseDriveEvent {
+	if (flag(FLAG_RYU_DOUSE_DRIVE_EVENT) == TRUE) {release end}//if this event already triggered, don't trigger agian
+	if (var(VAR_RYU_QUEST_GENESECT) >= 5){ //if quest already started, just give item
+		SYM_GiveDouseDrive:
+		giveitem(ITEM_DOUSE_DRIVE)
+		setflag(FLAG_RYU_DOUSE_DRIVE_EVENT)
+		release
+		end
+	} 
+	else {
+		call(RyuScript_StartGenesectQuest)
+		goto(SYM_GiveDouseDrive)
+		release
+		end
+	}
+}

@@ -1224,9 +1224,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 { 
-	addvar(VAR_RYU_WEEK_COUNTER, 1)
-	compare (VAR_RYU_WEEK_COUNTER, 4)
-	goto_if_eq(RyuDebug_Utility1ResetSeason)
 	release
 	end
 }
@@ -1957,5 +1954,47 @@ text DailyVerboseMsg {
 script RyuDoDailyQuestVerbosePrint {
 	buffernumberstring(0, VAR_RESULT)
     //debugprint(DailyVerboseMsg, 60)
+	return
+}
+
+//genesect related
+
+script RyuScript_StartGenesectQuest { //determine where lanette is for the proper context for the pokenav call.
+		if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE){
+			if (var(VAR_RYU_FOLLOWER_ID) == FOLLOWER_LANETTE){//since lanette's a character in this quest, there's a special case for her
+				applymovement(FOLLOWER, Common_Movement_ExclamationMark)
+				playse(SE_PIN)
+				switch(var(VAR_FACING)){//make the player face lanette
+				case DIR_NORTH:
+					turnobject(PLAYER, DIR_SOUTH)
+				case DIR_SOUTH:
+					turnobject(PLAYER, DIR_NORTH)
+				case DIR_EAST:
+					turnobject(PLAYER, DIR_WEST)
+				case DIR_WEST:
+					turnobject(PLAYER, DIR_EAST)
+				}
+				msgbox("{COLOR LIGHT_RED}{SHADOW RED}Wait! That's a Drive!\pMy uncle's been looking for those!\pGive me a minute!")
+				fadescreen(FADE_TO_BLACK)
+				delay(20)
+				msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lanette is making a phone call)\n... ... ... ...")
+				closemessage
+				delay(20)
+				fadescreen(FADE_FROM_BLACK)
+				msgbox("{COLOR LIGHT_RED}{SHADOW RED}Okay!\nI called my Uncle Sumac.\pHis life's work has been to\nuncover the mysteries of\la Pokémon known as Genesis.\pHe's asked us to meet him at\nMauville City's Poké Center.\pLet's go there!")
+				closemessage
+				clearflag(FLAG_RYU_MAUVILLE_PC_BARD)
+				setvar(VAR_RYU_QUEST_GENESECT, 6)// player had lanette with them when they found the first drive. Skip fallarbor scenes.
+				return
+		}
+	}
+	if (flag(FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE) == FALSE) { //lanette is at pokecenter
+		schedulepokenavcall(NAVCALL_GENESECTLANETTEFALLARBOR)
+		setvar(VAR_RYU_QUEST_GENESECT, 1) //player started the genesect quest, see lanette at the fallarbor pokecenter
+	}
+	else{
+		schedulepokenavcall(NAVCALL_GENESECTLANETTE114) //lanette is at her house
+		setvar(VAR_RYU_QUEST_GENESECT, 2) //player started the genesect quest, see lanette at her house
+	}
 	return
 }

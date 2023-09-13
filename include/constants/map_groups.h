@@ -139,6 +139,8 @@
 #define MAP_DEWFORD_TOWN_POKEMON_CENTER_1F (5 | (5 << 8))
 #define MAP_DEWFORD_TOWN_POKEMON_CENTER_2F (6 | (5 << 8))
 #define MAP_DEWFORD_TOWN_HOME              (7 | (5 << 8))
+#define MAP_DEWFORD_TOWN_GENESECT_CAVE     (8 | (5 << 8))
+#define MAP_DEWFORD_TOWN_PAST              (9 | (5 << 8))
 
 // Map Group 6
 #define MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F      (0 | (6 << 8))
@@ -479,6 +481,7 @@
 #define MAP_MAGMA_HIDEOUT_ADMIN_QUARTERS             (116 | (24 << 8))
 #define MAP_LRT_BIRCH_LAB_MAGMA_EVENT                (117 | (24 << 8))
 #define MAP_AQUA_SUBMARINE                           (118 | (24 << 8))
+#define MAP_NEW_MAUVILLE_SUMAC_LAB                   (119 | (24 << 8))
 
 // Map Group 25
 #define MAP_SECRET_BASE_RED_CAVE1           (0 | (25 << 8))

@@ -27,6 +27,8 @@ FallarborTown_PokemonCenter_1F_EventScript_ExpertM:: @ 8200BF8
 	end
 
 FallarborTown_PokemonCenter_1F_EventScript_Lanette:: @ 8200C01
+	compare VAR_RYU_QUEST_GENESECT, 1
+	goto_if_eq FTPC_GenesectIntro
 	msgbox StartLanetteQuery, MSGBOX_YESNO
 	compare VAR_RESULT, 0
 	goto_if_eq FT_CancelledLanette
@@ -176,3 +178,14 @@ FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees: @ 8200E8B
 	.string "even in volcanic ash.$"
 
 `
+
+script FTPC_GenesectIntro {
+	lock
+	setvar(VAR_RYU_QUEST_GENESECT, 5) //Player met with Lanette after getting her call
+	faceplayer
+	msgbox("Hey there!\pI'm Lanette, in case you didn't know.\pI created Hoenn's version of the\nPokémon Storage System.\pNow, regarding that drive you found,\nMy uncle has been looking for\lthose.\pYou should go meet him!\pHe likes to hang out at the Mauville\nPokémon Center.")
+	closemessage
+	clearflag(FLAG_RYU_MAUVILLE_PC_BARD)
+	release
+	end
+}

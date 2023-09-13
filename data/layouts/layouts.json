@@ -1834,7 +1834,7 @@
     {
       "id": "LAYOUT_NEW_MAUVILLE_ENTRANCE",
       "name": "NewMauville_Entrance_Layout",
-      "width": 9,
+      "width": 24,
       "height": 9,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Facility",
@@ -5720,6 +5720,36 @@
       "secondary_tileset": "gTileset_Unused1",
       "border_filepath": "data/layouts/LavaridgeTown_LucyHome/border.bin",
       "blockdata_filepath": "data/layouts/LavaridgeTown_LucyHome/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_TOWN_GENESECT_CAVE",
+      "name": "DewfordTown_GenesectCave_Layout",
+      "width": 9,
+      "height": 9,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/DewfordTown_GenesectCave/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordTown_GenesectCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAUVILLE_SUMAC_LAB",
+      "name": "NewMauville_SumacLab_Layout",
+      "width": 13,
+      "height": 9,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BikeShop",
+      "border_filepath": "data/layouts/NewMauville_SumacLab/border.bin",
+      "blockdata_filepath": "data/layouts/NewMauville_SumacLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_TOWN_PAST",
+      "name": "DewfordTown_Past_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/DewfordTown_Past/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordTown_Past/map.bin"
     }
   ]
 }

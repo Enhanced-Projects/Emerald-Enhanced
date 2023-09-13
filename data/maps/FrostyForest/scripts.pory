@@ -119,3 +119,21 @@ FrostyForest_EventScript_Melanie::
 	msgbox FrostyForest_Text_MelaniePostBattle, MSGBOX_AUTOCLOSE
 	end
 `
+
+
+script FF_ChillDrive {
+	if (var(VAR_RYU_QUEST_GENESECT) >= 5){ //if quest already started, just give item
+		SYM_GiveChillDrive:
+		giveitem(ITEM_CHILL_DRIVE)
+		setflag(FLAG_RYU_CHILL_DRIVE_EVENT)
+		removeobject(VAR_LAST_TALKED)
+		release
+		end
+	} 
+	else {
+		call(RyuScript_StartGenesectQuest)
+		goto(SYM_GiveChillDrive)
+		release
+		end
+	}
+}

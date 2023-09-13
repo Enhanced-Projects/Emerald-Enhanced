@@ -164,6 +164,12 @@ BattleScript_BallBlockedReaper::
 	waitmessage 0x40
 	finishaction
 
+BattleScript_BallBlockedGenesect::
+	waitmessage 0x40
+	printstring STRINGID_BALLBLOCKEDGENESECT
+	waitmessage 0x40
+	finishaction
+
 BattleScript_MonDoesntLikeCheaters::
 	waitmessage 0x40
 	printstring STRINGID_ITDOESNTLIKECHEATERS

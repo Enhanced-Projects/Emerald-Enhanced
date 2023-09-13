@@ -169,7 +169,9 @@
     "DewfordTown_Gym",
     "DewfordTown_PokemonCenter_1F",
     "DewfordTown_PokemonCenter_2F",
-    "DewfordTown_Home"
+    "DewfordTown_Home",
+    "DewfordTown_GenesectCave",
+    "DewfordTown_Past"
   ],
   "gMapGroup6": [
     "SlateportCity_SternsShipyard_1F",
@@ -509,7 +511,8 @@
     "MeteorFalls_3F",
     "MagmaHideout_AdminQuarters",
     "LRT_BirchLab_MagmaEvent",
-    "AquaSubmarine"
+    "AquaSubmarine",
+    "NewMauville_SumacLab"
   ],
   "gMapGroup25": [
     "SecretBase_RedCave1",

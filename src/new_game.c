@@ -321,6 +321,9 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_LAVARIDGE_RIVAL);
     FlagSet(FLAG_RYU_HIDE_SZ_LUCY);
     FlagSet(FLAG_RYU_HIDE_SZ_AETHER);
+    FlagSet(FLAG_RYU_MAUVILLE_PC_BARD);
+    FlagSet(FLAG_RYU_DFT_BARD_GENESECT);
+    FlagSet(FLAG_RYU_HIDE_SL_SUMAC_2);
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);
