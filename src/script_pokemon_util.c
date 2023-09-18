@@ -228,13 +228,14 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
                 SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &maxiv);
                 SetMonData(&gEnemyParty[0], MON_DATA_BOSS_STATUS, &yes);
             }
-            else if (FlagGet(FLAG_RYU_FACING_GENESECT) == TRUE)
+        }
+        if (FlagGet(FLAG_RYU_FACING_GENESECT) == TRUE)
             {
                 u16 maxhp = 1000;
                 u16 m1 = MOVE_TECHNO_BLAST;
-                u16 m2 = MOVE_ZAP_CANNON;
-                u16 m3 = MOVE_SIMPLE_BEAM;
-                u16 m4 = MOVE_BUG_BUZZ;
+                u16 m2 = MOVE_TECHNO_BLAST;
+                u16 m3 = MOVE_TECHNO_BLAST;
+                u16 m4 = MOVE_TECHNO_BLAST;
                 u8 maxiv = 31;
                 bool8 yes = TRUE;
                 const u8 nick[] = (const u8[])_("Genesis");
@@ -253,7 +254,6 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
                 SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &maxiv);
                 SetMonData(&gEnemyParty[0], MON_DATA_BOSS_STATUS, &yes);
             }
-        }
 }
 
 void ScriptSetMonMoveSlot(u8 monIndex, u16 move, u8 slot)

@@ -59,7 +59,15 @@ script DFT_Past_PrepareGenesect {
     if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE){
         msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}I know what that stone is.\pStones like it usually summon\nreally powerful Pokémon.")
         closemessage
-        msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh!... Well in that case...\nAllow me to heal you.")
+        msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh!... here!\nI'll heal you!")
+        closemessage
+        callnative(RyuBufferFollowerName)
+        msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_1} heals your team...)")
+        closemessage
+        fadescreen(FADE_TO_BLACK)
+        special(HealPlayerParty)
+        playfanfare(MUS_HEAL)
+        fadescreen(FADE_FROM_BLACK)
     }
     setvar(VAR_RYU_QUEST_GENESECT, 30)//Player noticed the Genesect stone and prepared for battle
     closemessage
@@ -92,10 +100,15 @@ script DFT_Past_Genesect {
 }
 
 script DFT_Past_AfterFight {
+    clearflag(FLAG_RYU_FACING_GENESECT)
     setmetatile(13, 6, 0xE2, 1)
     special(DrawWholeMapView)
     msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}The hulking Pokémon crumpled to\nthe ground in a pile of dust\land organic matter.\pFour colorful lights shoot off\nin different directions from\lthe remains of Genesis.\pYou note that your bag feels a little\nlighter.")
     closemessage
+    clearflag(FLAG_RYU_CHILL_DRIVE_EVENT)
+	clearflag(FLAG_RYU_SHOCK_DRIVE_EVENT)
+	clearflag(FLAG_RYU_DOUSE_DRIVE_EVENT)
+	clearflag(FLAG_RYU_BURN_DRIVE_EVENT)
     setvar(VAR_RYU_QUEST_GENESECT, 50)//player defeated genesect.
     playse(SE_PC_LOGIN)
     waitse

@@ -1,11 +1,14 @@
 mapscripts NewMauville_SumacLab_MapScripts {
-    ON_FRAME
-    [
-        VAR_RYU_QUEST_GENESECT, 75: NMSL_ReturnedFromDewford
-    ]
     ON_TRANSITION
     {
         if(var(VAR_RYU_QUEST_GENESECT) == 80) {
+            removeobject(1)
+            clearflag(FLAG_RYU_HIDE_SL_SUMAC_2)
+            addobject(2)
+            setflag(FLAG_RYU_HIDE_SL_SUMAC)
+            end
+        }
+        elif(var(VAR_RYU_QUEST_GENESECT) == 75) {
             removeobject(1)
             clearflag(FLAG_RYU_HIDE_SL_SUMAC_2)
             addobject(2)
@@ -20,6 +23,10 @@ mapscripts NewMauville_SumacLab_MapScripts {
             end
         }
     }
+    ON_FRAME
+    [
+        VAR_RYU_QUEST_GENESECT, 75: NMSL_ReturnedFromDewford
+    ]
 }
 
 script NM_SumacLab_Sumac {
@@ -59,7 +66,7 @@ script NMSL_ReturnedFromDewford {
     turnobject(PLAYER, DIR_NORTH)
     applymovement(FOLLOWER, NMSL_FixFollower)
     waitmovement(FOLLOWER)
-    msgbox("This machine can reconstruct DNA\nfrom a fossi.\pIt's more precise than the one\nat the mining town, but also\pcarries more risks, and requires more\npower.")
+    msgbox("This machine can reconstruct DNA\nfrom a fossil.\pIt's more precise than the one\nat the mining town, but also\pcarries more risks, and requires more\npower.")
     closemessage
     msgbox("This machine will restore the\nreconstructed Pokémon's memories\las well as it's physical body.")
     closemessage
@@ -107,11 +114,11 @@ script NMSL_GenesectAttacks {
     call(RyuCheckSetupBoss)
     setwildbattle(SPECIES_GENESECT, 50, ITEM_METAL_COAT)
     dowildbattle
-    waitstate
+    //waitstate
     specialvar(VAR_RESULT, GetBattleOutcome)
-    if (var(VAR_RESULT) != B_OUTCOME_CAUGHT){//player knocked it out, Sumac gives the player a copy of it.
-        getpartysize
-        if (var(VAR_RESULT) < 6){
+    if (var(VAR_RESULT) != B_OUTCOME_CAUGHT){//player knocked it out, Sumac gives the player a weaker copy of it.
+        //getpartysize
+        //if (var(VAR_RESULT) < 6){
             givemon(SPECIES_GENESECT, 20, ITEM_NONE)
             msgbox("Here, you knocked it out\pLet me put it in a pokeball for you.")
             closemessage
@@ -119,14 +126,20 @@ script NMSL_GenesectAttacks {
             playfanfare(MUS_FANFA4)
             waitfanfare
             closemessage
-        }
+        //}
     }
-    setvar(VAR_RYU_QUEST_GENESECT, 100)//player is done with the quest for the most part. All th at's left is to find the drives
-    msgbox("I have other matters to attend.\nYou can see me over at my desk\lfor anything else you need.")
+    setvar(VAR_RYU_QUEST_GENESECT, 100)//player is done with the quest for the most part. All that's left is to find the drives
+    msgbox("Oh! Excellent! I'm sure\nyou won't do anything terrible\plike try to take over the world\nwith it, right?")
+    closemessage
+    msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}That's an option?!")
+    closemessage
+    msgbox("No, seriously, please don't.")
+    closemessage
+    msgbox("Anyways, I have other matters to\nattend.\pYou can see me over at my desk\lfor anything else you need.")
     applymovement(2, NMSL_SumacToNormalLocation)
     waitmovement(2)
     removeobject(2)
-    addobject(2)
+    addobject(1)
     setflag(FLAG_RYU_HIDE_SL_SUMAC_2)
     clearflag(FLAG_RYU_HIDE_SL_SUMAC)
     release
@@ -178,6 +191,7 @@ script NMSL_SumacCheckDrives{
     msgbox("It requires an anchor, as you\nknow. Feel free to use it\las much as you like.\pPlease just don't go fiddling\naround with things in the past.\pWouldn't want you to be your own\nancestor or anything!")
     closemessage
     setvar(VAR_RYU_QUEST_GENESECT, 125) //player completed the quest and found all of the drives.
+    //GIVE TEMPORAL DISPLACER HERE!
     release
     end
 }

@@ -7933,7 +7933,7 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
             dmg = 125;
 
     if ((FlagGet(FLAG_RYU_FACING_GENESECT) == TRUE) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT)) 
-        dmg = ((dmg * 125) / 100); //boss genesect deals 125% damage at all times.
+        dmg = ((dmg * 150) / 100); //boss genesect deals 50% extra damage at all times.
 
     if (dmg == 0)
         dmg = 1;

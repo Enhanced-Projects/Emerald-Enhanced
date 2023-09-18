@@ -377,6 +377,15 @@ script DewfordTown_RealEstatePropertySign {
 }
 
 script DT_Sumac {
+	if (var(VAR_RYU_QUEST_GENESECT) == 60){
+		msgbox("Please, let me know when its\nsafe to enter!")
+		closemessage
+		applymovement(5, Common_Movement_StepRight)
+		waitmovement(5)
+		turnobject(5, DIR_WEST)
+		release
+		end
+	}
 	if (var(VAR_RYU_QUEST_GENESECT) == 30){//player most likely lost to genesect. Allow them to retry.
 		msgbox("I'm not sure how you got\nback here, but shall I reconfigure\lthe device and send you back?", MSGBOX_YESNO)
 		if (var(VAR_RESULT) == YES){warpteleport(MAP_DEWFORD_TOWN_PAST, 255, 10, 14) waitstate}
