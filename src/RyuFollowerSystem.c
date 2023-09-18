@@ -61,39 +61,93 @@ void RyuDebug_ShowActiveFollower (void)
         switch (VarGet(VAR_RYU_FOLLOWER_ID))
         {
             case FOLLOWER_MINNIE:
-                DebugPrint(((const u8[]) _("Minnie: 5% dmg reduction.")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("Minnie/ all resist {UP_ARROW} 5%.")));
+                return;
             case FOLLOWER_LANETTE:
-                DebugPrint(((const u8[]) _("Lanette: 5% capture boost.")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("Lanette/ 5% capture boost.")));
+                return;
             case FOLLOWER_SHELLY:
-                DebugPrint(((const u8[]) _("Shelly: 10% DRK/WTR dmg boost.")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("Shelly/ {TYPE_ICON_DARK}/{TYPE_ICON_WATE} dmg {UP_ARROW} 10%.")));
+                return;
             case FOLLOWER_DAWN:
-                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("{RIVAL}/ 15% money bonus.")));
+                return;
             case FOLLOWER_BRENDAN:
-                DebugPrint(((const u8[]) _("{RIVAL}: 15% money bonus.")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("{RIVAL}/ 15% money bonus.")));
+                return;
             case FOLLOWER_LEAF:
-                DebugPrint(((const u8[]) _("Leaf: -10% damage from FIR/WTR/GRS")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("Leaf/ {TYPE_ICON_FIRE}/{TYPE_ICON_WATE}/{TYPE_ICON_GRAS} resist {UP_ARROW} 10%.")));
+                return;
             case FOLLOWER_COURTNEY:
-                DebugPrint(((const u8[]) _("Courtney: 10% DRK/FIR dmg boost.")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("Courtney/ {TYPE_ICON_DARK}/{TYPE_ICON_FIRE} dmg {UP_ARROW} 10%.")));
+                return;
             case FOLLOWER_JOY:
-                break;
+                StringCopy(gStringVar1, ((const u8[])_("No in-battle bonus.")));
+                return;
             case FOLLOWER_MAY:
-                DebugPrint(((const u8[]) _("May: 10% FRY/FIT dmg boost.")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("May/ {TYPE_ICON_FAIR}/{TYPE_ICON_FIGH} dmg {UP_ARROW} 10%.")));
+                return;
             case FOLLOWER_LUCY:
-                DebugPrint(((const u8[]) _("Lucy: 10% PSN/DRG dmg boost.")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("Lucy/ {TYPE_ICON_POIS}/{TYPE_ICON_DRAG} dmg {UP_ARROW} 10%.")));
+                return;
             case FOLLOWER_MOM:
-                DebugPrint(((const u8[]) _("Mom: Active heal in battle.")), 0);
-                break;
+                StringCopy(gStringVar1, ((const u8[]) _("Mom/ Active heal in battle.")));
+                return;
         }
+        StringCopy(gStringVar1, ((const u8[])_("No companion bonus.")));
+        return;
     }
+    else 
+    {
+        StringCopy(gStringVar1, ((const u8[]) _("No companion.")));
+        return;
+    }
+}
+
+void RyuBufferFollowerName (void) //This function buffer's the current follower's name in STR_VAR_1
+{
+    u16 companion = VarGet(VAR_RYU_FOLLOWER_ID);
+
+    switch(companion)
+    {
+            case FOLLOWER_LANETTE:
+                StringCopy(gStringVar1, (const u8[])_("Lanette"));
+                break;
+	        case FOLLOWER_MINNIE:
+                StringCopy(gStringVar1, (const u8[])_("Minnie"));
+                break;
+	        case FOLLOWER_DAWN:
+                StringCopy(gStringVar1, (const u8[])_("Dawn"));
+                break;
+	        case FOLLOWER_BRENDAN:
+                StringCopy(gStringVar1, (const u8[])_("Brendan"));
+                break;
+	        case FOLLOWER_LEAF:
+                StringCopy(gStringVar1, (const u8[])_("Leaf"));
+                break;
+	        case FOLLOWER_COURTNEY:
+                StringCopy(gStringVar1, (const u8[])_("Courtney"));
+                break;
+	        case FOLLOWER_SHELLY:
+                StringCopy(gStringVar1, (const u8[])_("Shelly"));
+                break;
+	        case FOLLOWER_JOY:
+                StringCopy(gStringVar1, (const u8[])_("Joy"));
+                break;
+	        case FOLLOWER_MAY:
+                StringCopy(gStringVar1, (const u8[])_("May"));
+                break;
+	        case FOLLOWER_LUCY:
+                StringCopy(gStringVar1, (const u8[])_("Lucy"));
+                break;
+	        case FOLLOWER_MOM:
+                StringCopy(gStringVar1, (const u8[])_("Mom"));
+                break;
+	        case 0xFFFF:
+                StringCopy(gStringVar1, (const u8[])_("None"));
+                break;
+    }
+
 }
 
 // This function fills in the necessary temporary variables for setting up partner multibattles
