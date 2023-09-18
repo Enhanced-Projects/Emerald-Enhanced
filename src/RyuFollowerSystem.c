@@ -61,40 +61,40 @@ void RyuDebug_ShowActiveFollower (void)
         switch (VarGet(VAR_RYU_FOLLOWER_ID))
         {
             case FOLLOWER_MINNIE:
-                StringCopy(gStringVar1, ((const u8[]) _("Minnie/ all resist {UP_ARROW} 5%.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}Minnie{COLOR LIGHT_BLUE}{SHADOW RED}               all resist {UP_ARROW} 5%.")));
                 return;
             case FOLLOWER_LANETTE:
-                StringCopy(gStringVar1, ((const u8[]) _("Lanette/ 5% capture boost.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}Lanette{COLOR LIGHT_BLUE}{SHADOW RED}                5% capture boost.")));
                 return;
             case FOLLOWER_SHELLY:
-                StringCopy(gStringVar1, ((const u8[]) _("Shelly/ {TYPE_ICON_DARK}/{TYPE_ICON_WATE} dmg {UP_ARROW} 10%.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}Shelly{COLOR LIGHT_BLUE}{SHADOW RED}                {TYPE_ICON_DARK}/{TYPE_ICON_WATE} dmg {UP_ARROW} 10%.")));
                 return;
             case FOLLOWER_DAWN:
-                StringCopy(gStringVar1, ((const u8[]) _("{RIVAL}/ 15% money bonus.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}{RIVAL}{COLOR LIGHT_BLUE}{SHADOW RED}                15% money bonus.")));
                 return;
             case FOLLOWER_BRENDAN:
-                StringCopy(gStringVar1, ((const u8[]) _("{RIVAL}/ 15% money bonus.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}{RIVAL}{COLOR LIGHT_BLUE}{SHADOW RED}                15% money bonus.")));
                 return;
             case FOLLOWER_LEAF:
-                StringCopy(gStringVar1, ((const u8[]) _("Leaf/ {TYPE_ICON_FIRE}/{TYPE_ICON_WATE}/{TYPE_ICON_GRAS} resist {UP_ARROW} 10%.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}Leaf{COLOR LIGHT_BLUE}{SHADOW RED}                {TYPE_ICON_FIRE}/{TYPE_ICON_WATE}/{TYPE_ICON_GRAS} resist {UP_ARROW} 10%.")));
                 return;
             case FOLLOWER_COURTNEY:
-                StringCopy(gStringVar1, ((const u8[]) _("Courtney/ {TYPE_ICON_DARK}/{TYPE_ICON_FIRE} dmg {UP_ARROW} 10%.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}Courtney{COLOR LIGHT_BLUE}{SHADOW RED}                {TYPE_ICON_DARK}/{TYPE_ICON_FIRE} dmg {UP_ARROW} 10%.")));
                 return;
             case FOLLOWER_JOY:
-                StringCopy(gStringVar1, ((const u8[])_("No in-battle bonus.")));
+                StringCopy(gStringVar1, ((const u8[])_("          No in-battle bonus.")));
                 return;
             case FOLLOWER_MAY:
-                StringCopy(gStringVar1, ((const u8[]) _("May/ {TYPE_ICON_FAIR}/{TYPE_ICON_FIGH} dmg {UP_ARROW} 10%.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}May{COLOR LIGHT_BLUE}{SHADOW RED}                {TYPE_ICON_FAIR}/{TYPE_ICON_FIGH} dmg {UP_ARROW} 10%.")));
                 return;
             case FOLLOWER_LUCY:
-                StringCopy(gStringVar1, ((const u8[]) _("Lucy/ {TYPE_ICON_POIS}/{TYPE_ICON_DRAG} dmg {UP_ARROW} 10%.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}Lucy{COLOR LIGHT_BLUE}{SHADOW RED}                {TYPE_ICON_POIS}/{TYPE_ICON_DRAG} dmg {UP_ARROW} 10%.")));
                 return;
             case FOLLOWER_MOM:
-                StringCopy(gStringVar1, ((const u8[]) _("Mom/ Active heal in battle.")));
+                StringCopy(gStringVar1, ((const u8[]) _("{COLOR LIGHT_RED}{SHADOW RED}Mom{COLOR LIGHT_BLUE}{SHADOW RED}                Active heal in battle.")));
                 return;
         }
-        StringCopy(gStringVar1, ((const u8[])_("No companion bonus.")));
+        StringCopy(gStringVar1, ((const u8[])_("                 No companion bonus.")));
         return;
     }
     else 
@@ -104,7 +104,7 @@ void RyuDebug_ShowActiveFollower (void)
     }
 }
 
-void RyuBufferFollowerName (void) //This function buffer's the current follower's name in STR_VAR_1
+void RyuBufferFollowerName (void) //This function buffers the current follower's name in STR_VAR_1
 {
     u16 companion = VarGet(VAR_RYU_FOLLOWER_ID);
 

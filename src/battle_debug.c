@@ -917,11 +917,11 @@ void PrintDataWindows(void)
     {
         StringCopy(gRyuStringVar1, ((const u8[])_("{COLOR LIGHT_BLUE}{SHADOW RED}Follower: ")));
         StringExpandPlaceholders(gRyuStringVar3, gRyuStringVar1);
-        StringAppend(gRyuStringVar1, gRyuStringVar3);
+        StringCopy(gRyuStringVar1, gRyuStringVar3);
         RyuDebug_ShowActiveFollower();
         StringExpandPlaceholders(gRyuStringVar2, gStringVar1);
         StringAppend(gRyuStringVar1, gRyuStringVar2);
-        AddTextPrinterParameterized4(2, 1, 1, 35, 0, 0, sBattleInfoFontColor[0], 0xFF, gRyuStringVar1);
+        AddTextPrinterParameterized4(2, 1, 0, 35, 0, 0, sBattleInfoFontColor[0], 0xFF, gRyuStringVar1);
     }
     PutWindowTilemap(2);
     CopyWindowToVram(2, 3);
