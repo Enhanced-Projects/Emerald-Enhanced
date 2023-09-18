@@ -40,7 +40,7 @@ const u8 * const RyuPokenavCallMessages[] =
 int RyuTryGetScheduledPokenavCall(void)
 {
     s32 i;
-    for (i = 3; i  >= 0; i--)
+    for (i = 0; i < 4; i++)
     {
         if ((gSaveBlock2Ptr->RyuPokenavCallSystem[i].active == TRUE))
             return i;

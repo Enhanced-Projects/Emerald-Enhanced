@@ -234,7 +234,7 @@ const u8 sGenesectQuestStage2[] = _("You found a mysterious drive and then got\n
 const u8 sGenesectQuestStage5[] = _("You met up with the woman who called you.\nShe referred you to Sumac. He can\napparently be found at the Mauville Pokécenter.\nGo to the Mauville Pokémon center.");
 const u8 sGenesectQuestStage6[] = _("You found a Drive while you had Lanette\nwith you. Her uncle wishes to meet both of you\nat the Mauville pokecenter. Go there.");
 const u8 sGenesectQuestStage10[] = _("You met up with Professor Sumac.\nHe asked you to meet him in his lab,\nwhich can be found in the New Mauville\nentrance cave.");
-const u8 sGenesectQuestStage15[] = _("You met up with Sumac in his Lab.\nHe headed to dewford to investigate\nan area there.\pYou should go meet up with him");
+const u8 sGenesectQuestStage15[] = _("You met up with Sumac in his Lab.\nHe headed to dewford to investigate\nan area there.\nYou should go meet up with him");
 const u8 sGenesectQuestStage20[] = _("You've been transported somewhere.\nThe area looks like Dewford, but\nis completely devoid of life or society.\nHave a look around.");
 const u8 sGenesectQuestStage25[] = _("You're in what appears to be a past\nform of Dewford. Explore the area for\ntraces of Genesis.");
 const u8 sGenesectQuestStage30[] = _("You found a very familiar stone.\nIt's likely going to start a fight\nwith something strong.\nPrepare for battle.");
@@ -1230,6 +1230,7 @@ const static struct QuestStageDesc gLucyQuestStages[] = { //only visible when st
   },
   QUEST_STAGE_END
 };
+
 /*
 HOW TO READ:
   when the magma, aqua, and devon questlines are zero,
