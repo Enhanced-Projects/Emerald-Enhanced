@@ -129,9 +129,9 @@ RT_AquaIntro::
 	closemessage
 	waitmovement PLAYER
 	setvar VAR_RYU_QUEST_AQUA, 5 @player started aqua
-	setvar VAR_RYU_QUEST_MAGMA, 60000
-	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 60000
-	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 60000
+	setvar VAR_RYU_QUEST_MAGMA, 0xFFFF
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 0xFFFF
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 0xFFFF
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	setflag FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON
 	changefactionstanding FACTION_STUDENTS, 10, TRUE
@@ -157,8 +157,8 @@ RT_ADIntro:
 	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 1 @Tell quest tracker to display scientist specific message.
 	setvar VAR_RYU_QUESTLINE_ID, 0
 	setflag FLAG_RYU_PLAYER_HELPING_DEVON
-	setvar VAR_RYU_QUEST_MAGMA, 60000
-	setvar VAR_RYU_QUEST_AQUA, 60000
+	setvar VAR_RYU_QUEST_MAGMA, 0xFFFF
+	setvar VAR_RYU_QUEST_AQUA, 0xFFFF
 	changefactionstanding FACTION_STUDENTS, 10, FALSE
 	changefactionstanding FACTION_PROFESSIONALS, 20, FALSE
 	changefactionstanding FACTION_POKEFANS, 20, FALSE
@@ -193,9 +193,9 @@ RT_ADIntro:
 RT_MagmaIntro::
 	setflag FLAG_RYU_PLAYER_HELPING_MAGMA
 	setflag FLAG_RYU_PLAYER_IS_CRIMINAL
-	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 60000
-	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 60000
-	setvar VAR_RYU_QUEST_AQUA, 60000
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 0xFFFF
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 0xFFFF
+	setvar VAR_RYU_QUEST_AQUA, 0xFFFF
 	clearflag FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON @@required to prevent a skip, should be unblocked for aqua and magma.
 	changefactionstanding FACTION_STUDENTS, 10, TRUE
 	changefactionstanding FACTION_NOBLES, 20, FALSE

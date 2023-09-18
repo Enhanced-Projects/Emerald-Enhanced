@@ -164,7 +164,7 @@ void RyuChooseSeasonalWeather(void)
                 else if (rngval > 0 && rngval < 11) //1 to 10, 10%
                     temp = WEATHER_RAIN_THUNDERSTORM;
                 else if (rngval > 11 && rngval < 41)//12 to 40, 38%
-                    temp = WEATHER_SUNNY_CLOUDS;
+                    temp = WEATHER_NONE;
                 else // 41 to 99, 51%
                     temp = WEATHER_RAIN;
                 break;
@@ -181,7 +181,7 @@ void RyuChooseSeasonalWeather(void)
                 else if (rngval > 9 && rngval < 25) //10 to 24, 15%
                     temp = WEATHER_DROUGHT;
                 else //25 to 99, 75%
-                    temp = WEATHER_SUNNY_CLOUDS;
+                    temp = WEATHER_NONE;
                 break;
             }
         case SEASON_AUTUMN:
@@ -191,7 +191,7 @@ void RyuChooseSeasonalWeather(void)
                 else if (rngval > 2 && rngval < 44) //3 to 43, 40%
                     temp = WEATHER_WINDY;
                 else if (rngval > 43 && rngval < 84) // 44 to 83, 40%
-                    temp = WEATHER_SUNNY_CLOUDS;
+                    temp = WEATHER_NONE;
                 else //84 to 99, 18%
                     temp = WEATHER_RAIN;
                 break;
@@ -203,7 +203,7 @@ void RyuChooseSeasonalWeather(void)
                 else if (rngval > 3 && rngval < 14) //4 to 13, 10%
                     temp = WEATHER_WINDY;
                 else if (rngval > 13 && rngval < 29)// 14 to 29, 15%
-                    temp = WEATHER_SUNNY_CLOUDS;
+                    temp = WEATHER_NONE;
                 else if (rngval > 28 && rngval < 55)// 28 to 54, 25%
                     temp = WEATHER_RAIN;
                 else //55 to 99, 46%
