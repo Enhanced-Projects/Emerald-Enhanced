@@ -342,6 +342,9 @@ modern: ; @$(MAKE) MODERN=1
 
 debug: ; @$(MAKE) DEBUG=1
 
+release: $(ROM)
+	xdelta3 -S none -f -s baserom.gba $< "Emerald Enhanced.xdelta" 
+
 #berry_fix/berry_fix.gba: berry_fix
 
 #berry_fix:
