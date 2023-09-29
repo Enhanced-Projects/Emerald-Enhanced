@@ -1116,12 +1116,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_CASTFORM_1] = { // Castform-ExBelt (ID: 124)
+    [FRONTIER_MON_CASTFORM_1] = { // Castform-Sun (ID: 124)
         .species = SPECIES_CASTFORM,
-        .moves = {MOVE_FIRE_BLAST, MOVE_HYDRO_PUMP, MOVE_THUNDERBOLT, MOVE_ICE_BEAM},
-        .heldItem = ITEM_EXPERT_BELT,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_MODEST,
+        .moves = {MOVE_FLAMETHROWER, MOVE_SOLAR_BEAM, MOVE_ICE_BEAM, MOVE_SUNNY_DAY},
+        .heldItem = ITEM_LIFE_ORB,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
         .ivs = 31,
         .ability = 0
     },
@@ -2000,9 +2000,9 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_CASTFORM_2] = { // Castform-Rain (ID: 222)
         .species = SPECIES_CASTFORM,
-        .moves = {MOVE_HYDRO_PUMP, MOVE_HURRICANE, MOVE_THUNDER, MOVE_RAIN_DANCE},
-        .heldItem = ITEM_WIKI_BERRY,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .moves = {MOVE_SCALD, MOVE_HURRICANE, MOVE_RAIN_DANCE, MOVE_RECOVER},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 0
