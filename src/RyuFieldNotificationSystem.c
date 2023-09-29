@@ -23,6 +23,9 @@
 #include "RyuPokenavScheduler.h"
 
 extern const u8 RyuGlobal_CancelDailyQuest[];
+//REMOVE FOR FULL RELEASE OF 10.0
+extern const u8 RyuScript_EndPrereleaseWarning[];
+//END REMOVE
 extern void GetPlayerPosition(struct MapPosition *);
 extern u16 GetPlayerCurMetatileBehavior(int);
 
@@ -134,6 +137,27 @@ void RyuMessageTimerTask(u8 taskId)
         DestroyTask(taskId);
     }
 }
+
+//REMOVE FOR FULL RELEASE OF 10.0
+#define tRyuPrereleaseFrames data[0]
+
+void RyuPrereleaseTimerTask(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    if (tRyuPrereleaseFrames < 600)
+        tRyuPrereleaseFrames++;
+    else
+    {
+        DestroyTask(taskId);
+        ScriptContext2_RunNewScript(RyuScript_EndPrereleaseWarning);
+    }
+}
+
+void startprereleasetimer(void)
+{
+    CreateTask(RyuPrereleaseTimerTask, 0xFE);
+}
+// END REMOVE
 
 void RyuDelayTimerTask(u8 taskId)
 {
