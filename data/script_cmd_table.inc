@@ -253,6 +253,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_givepokedexflag           @ 0xfa
 	.4byte ScrCmd_bufferfactionname         @ 0xfb
 	.4byte ScrCmd_buffermapname             @ 0xfc
+	.4byte ScrCmd_schedulepokenavcall       @ 0xfd
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

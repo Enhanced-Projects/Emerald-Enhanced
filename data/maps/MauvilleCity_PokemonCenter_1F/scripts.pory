@@ -2,7 +2,13 @@ raw `
 MauvilleCity_PokemonCenter_1F_MapScripts:: @ 8210E5B
 	map_script ON_TRANSITION, MauvilleCity_PokemonCenter_1F_OnTransition
 	map_script ON_RESUME, CableClub_OnResume
+	map_script ON_FRAME, MCPC_GenesectEvent
 	.byte 0
+
+MCPC_GenesectEvent::
+	map_script_2 VAR_RYU_QUEST_GENESECT, 5, MCPC_DoGenesectIntro
+	map_script_2 VAR_RYU_QUEST_GENESECT, 6, MCPC_DoGenesectIntro
+	.2byte 0
 
 MauvilleCity_PokemonCenter_1F_OnTransition: @ 8210E66
 	setrespawn HEAL_LOCATION_MAUVILLE_CITY
@@ -55,3 +61,90 @@ MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun: @ 8210F8A
 	.string "sounds fun. I'll go check it out!$"
 
 `
+
+script MCPC_DoGenesectIntro {
+	lock
+	turnobject(2, DIR_SOUTH)
+	playse(SE_PIN)
+	applymovement(2, Common_Movement_ExclamationMark)
+	waitmovement(2)
+	applymovement(2, MCPC_BardToPlayer)
+	waitmovement(2)
+	delay(10)
+	applymovement(2, MCPC_ShakeHand)
+	msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (The strange man shakes your hand\n vigorously.)")
+	closemessage
+	msgbox("Oh! Sorry!\nI seem to have forgotten my\lmanners.\pI was so excited that a drive\nhas finally been uncovered!")
+	closemessage
+	msgbox("Come over here to the table\nwith me, and we can discuss!")
+	closemessage
+	applymovement(2, MCPC_BackToTable)
+	delay(20)
+	applymovement(PLAYER, MCPC_ToTablePlayer)
+	delay(20)
+	applymovement(FOLLOWER, MCPC_ToTableFollower)
+	waitmovement(FOLLOWER)
+	msgbox("So! Where did you find\nthe drive?")
+	closemessage
+	fadescreen(FADE_TO_BLACK)
+	msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}(You tell the strange man how\n you came across the drive.)")
+	closemessage
+	fadescreen(FADE_FROM_BLACK)
+	msgbox("I see!\pThat's quite the tale indeed!\pLet me tell you a little bit\nabout it!")
+	closemessage
+	msgbox("There's been a long standing legend\nabout a Pokémon that visited us\lfrom outer space!\pThis happend many centuries\nago, it's not like Deoxys.\pAn ancient civilisation used it\nto win a huge war.\pIt escaped their control eventually\nand was lost to history.\pIt used the drives to change\nhow it attacked its enemies.\pThere are 4 variants that\nwe found reading ancient\ltexts.")
+	closemessage
+	msgbox("Legend says that someone stole\nthe drives and buried them\lall over Hoenn.\pApparently to prevent it being\nused ever again.")
+	closemessage
+	msgbox("I knew rough areas of where these\ndrives might be, but I was never\lable to uncover them.")
+	closemessage
+	msgbox("Now that we have one,\pI know that it exists!\pNone of my colleagues believed me!\nThis'll show them!")
+	closemessage
+	msgbox("Come meet me in my underground\nlab! You'll need this key\lfor the terminal to appear.\pYou can find the entrance to my\nlab in the same cave as\lNew Mauville's entrance.")
+	closemessage
+	msgbox("Don't look at me like that.\nIt has an excess of power!\pIt's a perfect place for my experiments!")
+	closemessage
+	msgbox("See you there!")
+	applymovement(2, MCPC_BardToPlayer)
+	waitmovement(2)
+	applymovement(2, Common_Movement_StepDown)
+	waitmovement(2)
+	applymovement(2, Common_Movement_StepDown)
+	waitmovement(2)
+	removeobject(2)
+	playse(SE_TU_SAA)
+	setflag(FLAG_RYU_MAUVILLE_PC_BARD)
+	setvar(VAR_RYU_QUEST_GENESECT, 10) //Player met with Sumac. Find him in his lab near the entrance to New Mauville.
+	release
+	end
+}
+
+movement MCPC_BackToTable{
+	walk_up
+	walk_right * 3
+	step_end
+}
+
+movement MCPC_ToTablePlayer {
+	walk_right * 5
+	face_up
+	step_end
+}
+
+movement MCPC_ToTableFollower {
+	walk_up
+	walk_right * 4
+	face_up
+	step_end
+}
+
+movement MCPC_BardToPlayer {
+	walk_fast_left * 3
+	walk_down
+	step_end
+}
+
+movement MCPC_ShakeHand{
+	walk_in_place_fastest_down * 3
+	step_end
+}

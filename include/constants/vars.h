@@ -300,6 +300,7 @@
 #define VAR_RYU_MINING_HARVEST_LV            0x4120
 #define VAR_RYU_AUTOFILL_ERROR_COUNT         0x4121 // how many times a placeholder was used with the autofill system
 #define VAR_RYU_PLAYER_STAMINA               0x4122 // Player's stamina for use with super training
+#define VAR_RYU_QUEST_GENESECT               0x4123 //tracker variable for quest
 
 
 

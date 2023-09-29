@@ -2,11 +2,18 @@ raw `
 NewMauville_Entrance_MapScripts:: @ 82372AD
 	map_script ON_LOAD , NewMauville_Entrance_OnLoad
 	map_script ON_TRANSITION, NewMauville_Entrance_OnTransition
+	map_script ON_FRAME, NME_SumacScript
 	.byte 0
+
+NME_SumacScript::
+	map_script_2 VAR_TEMP_A, 0, NME_TryTriggerSumacEntrance
+	.2byte 0
 
 NewMauville_Entrance_OnLoad: @ 82372B8
 	compare VAR_NEW_MAUVILLE_STATE, 0
 	call_if_eq NewMauville_Entrance_EventScript_CloseDoor
+	compare VAR_RYU_QUEST_GENESECT, 15
+	call_if_ge NME_ShowSumacLabEntrance
 	end
 
 NewMauville_Entrance_EventScript_CloseDoor:: @ 82372C4
@@ -69,4 +76,64 @@ script NM_Entrance_BypassDoor {
 	closemessage
 	warpsilent(MAP_NEW_MAUVILLE_INSIDE, 255, 32, 35)
 	waitstate
+}
+
+
+script NME_TryTriggerSumacEntrance{
+	setvar(VAR_TEMP_A, 100)
+	if (var(VAR_RYU_QUEST_GENESECT) == 10){
+		lock
+		playse(SE_PIN)
+		applymovement(PLAYER, Common_Movement_ExclamationMark)
+		waitmovement(PLAYER)
+		msgbox("The keyfob in your bag\nrevealed a new passage!")
+		closemessage
+		fadescreen(FADE_TO_BLACK)
+		call(NME_ShowSumacLabEntrance)
+		fadescreen(FADE_FROM_BLACK)
+		release
+		end
+	}
+}
+
+
+script NME_ShowSumacLabEntrance {
+	setmetatile(8, 3, 0x7C, 1)
+	setmetatile(9, 3, 0x7C, 1)
+	setmetatile(10, 3, 0x7C, 1)
+	setmetatile(11, 3, 0x7C, 1)
+	setmetatile(12, 3, 0x7C, 1)
+	setmetatile(13, 3, 0x7C, 1)
+	setmetatile(9, 4, 0x3D0, 0)
+	setmetatile(10, 4, 0x3D0, 0)
+	setmetatile(11, 4, 0x3D0, 0)
+	setmetatile(12, 4, 0x3D0, 0)
+	setmetatile(13, 4, 0x3D0, 0)
+	setmetatile(8, 5, 0x6C, 1)
+	setmetatile(9, 5, 0x6C, 1)
+	setmetatile(10, 5, 0x6C, 1)
+	setmetatile(11, 5, 0x6C, 1)
+	setmetatile(12, 5, 0x6C, 1)
+	setmetatile(13, 5, 0x6C, 1)
+	setmetatile(8, 2, 0x71, 1)
+	setmetatile(7, 4, 0x3D0, 1)
+	setmetatile(7, 5, 0x6B, 1)
+	setmetatile(8, 4, 0x3D0, 1)
+	setmetatile(7, 3, 0x7B, 1)
+	setmetatile(8, 1, 0x7B, 1)
+	setmetatile(9, 1, 0x7C, 1)
+	setmetatile(10, 1, 0x7C, 1)
+	setmetatile(11, 1, 0x7C, 1)
+	setmetatile(12, 1, 0x7C, 1)
+	setmetatile(13, 1, 0x7C, 1)
+	setmetatile(14, 1, 0x7D, 1)
+	setmetatile(14, 2, 0x71, 1)
+	setmetatile(8, 6, 0x6B, 1)
+	setmetatile(9, 6, 0xBF, 1)
+	setmetatile(10, 6, 0xBF, 1)
+	setmetatile(11, 6, 0xBF, 1)
+	setmetatile(12, 6, 0xBF, 1)
+	setmetatile(13, 6, 0xBF, 1)
+	special(DrawWholeMapView)
+	return
 }

@@ -30,6 +30,13 @@
       "elevation": 3,
       "dest_map": "MAP_NEW_MAUVILLE_INSIDE",
       "dest_warp_id": 0
+    },
+    {
+      "x": 18,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_NEW_MAUVILLE_SUMAC_LAB",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

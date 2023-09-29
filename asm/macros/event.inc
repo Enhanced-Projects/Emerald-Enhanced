@@ -1796,6 +1796,16 @@
 	.2byte \data
 	.endm
 
+	@Schedules a pokenav call to happen at a later time. Supply the index of the call and a delay in seconds.
+	@delay is inexact for values that aren't divisible by 4, due to how the notification update happens.
+	@delay is also consecutive. If there are 4 schedule calls with a delay of 20 seconds
+	@then the final call will arrive after 60 seconds.
+	.macro schedulepokenavcall index:req, delay=0
+	.byte 0xfd
+	.byte \index
+	.2byte \delay
+	.endm
+
 
 @ Supplementary
 

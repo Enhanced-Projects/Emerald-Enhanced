@@ -475,14 +475,23 @@ const PBW_LUCY2 = 15
 
 raw`
 PBW_trySetUpLucy::
-	map_script_2 VAR_RYU_QUEST_LUCY, 30,  PBW_SetUpLucy
+	map_script_2 VAR_TEMP_D, 0,  PBW_SetUpLucy
 	.2byte 0
 `
 script PBW_SetUpLucy{
-		setvar(VAR_RYU_QUEST_LUCY, 35) //@Player found lucy in pbw. Begin investigation.
+		setvar(VAR_TEMP_D, 100)//prevent deadlock loop
+		if (var(VAR_RYU_QUEST_LUCY) == 30){ //@Player found lucy in pbw. Begin investigation.
+		setvar(VAR_RYU_QUEST_LUCY, 35)
 		addobject(PBW_LUCY1)
 		addobject(PBW_LUCY2)
 		end
+		}
+		if (var(VAR_RYU_QUEST_LUCY) == 35){ //@Player found lucy in pbw. Begin investigation.
+		addobject(PBW_LUCY1)
+		addobject(PBW_LUCY2)
+		end
+		}
+
 	}
 
 script PBW_LucyInvestigate {

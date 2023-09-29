@@ -5617,6 +5617,9 @@ static bool8 GetBattleEntryEligibility(struct Pokemon *mon)
     u16 i = 0;
     u16 species;
 
+    if (FlagGet(FLAG_RYU_COMPANION_PARTICIPATION) == TRUE)
+        return TRUE;
+
     if (GetMonData(mon, MON_DATA_IS_EGG)
         || GetMonData(mon, MON_DATA_LEVEL) > GetBattleEntryLevelCap()
         || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BATTLE_FRONTIER_BATTLE_PYRAMID_LOBBY)

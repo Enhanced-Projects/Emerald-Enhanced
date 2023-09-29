@@ -750,6 +750,8 @@ void BufferEnemyRightBattleData(void)
     }
 }
 
+extern void RyuDebug_ShowActiveFollower(void);
+
 void BufferPlayerLeftBattleData(void)
 {
     int i;
@@ -911,6 +913,16 @@ void PrintDataWindows(void)
     FillWindowPixelBuffer(2, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     BufferGeneralBattleData();
     AddTextPrinterParameterized4(2, 0, 1, 0, 0, 0, sBattleInfoFontColor[0], 0xFF, gStringVar4);
+    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == TRUE)
+    {
+        StringCopy(gRyuStringVar1, ((const u8[])_("{COLOR LIGHT_BLUE}{SHADOW RED}Follower: ")));
+        StringExpandPlaceholders(gRyuStringVar3, gRyuStringVar1);
+        StringCopy(gRyuStringVar1, gRyuStringVar3);
+        RyuDebug_ShowActiveFollower();
+        StringExpandPlaceholders(gRyuStringVar2, gStringVar1);
+        StringAppend(gRyuStringVar1, gRyuStringVar2);
+        AddTextPrinterParameterized4(2, 1, 0, 35, 0, 0, sBattleInfoFontColor[0], 0xFF, gRyuStringVar1);
+    }
     PutWindowTilemap(2);
     CopyWindowToVram(2, 3);
 }

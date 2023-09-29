@@ -31,3 +31,20 @@ OverworldLegendary_IntroHeatran: @put your intro here
 	.string "There is something on the ceiling…\n"
     .string "It is moving towards you!$"
 `
+
+script MFB1F_BurnDriveEvent {
+		if (var(VAR_RYU_QUEST_GENESECT) >= 5){ //if quest already started, just give item
+		SYM_GiveBurnDrive:
+		giveitem(ITEM_BURN_DRIVE)
+		setflag(FLAG_RYU_BURN_DRIVE_EVENT)
+		removeobject(VAR_LAST_TALKED)
+		release
+		end
+	} 
+	else {
+		call(RyuScript_StartGenesectQuest)
+		goto(SYM_GiveBurnDrive)
+		release
+		end
+	}
+}

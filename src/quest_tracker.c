@@ -42,6 +42,8 @@ const u8 sText_NA[] = _("N/A");
 
 static void Task_InitQuestTracker(u8 taskId);
 static void Task_QuestMain(u8 taskId);
+static void BuildSelectionsForwards(u32 offset);
+static void BuildSelectionsBackwards(u32 offset);
 extern void RyuBuildDailyQuestInfoString(void);
 
 enum
@@ -87,14 +89,14 @@ static const struct WindowTemplate sQuestWindowTemplate[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u8 sTextDevon1[] = _("Devon Corporate");
-static const u8 sTextDevon2[] = _("Devon Scientist");
-static const u8 sTextMagma[] = _("Magma");
-static const u8 sTextLana[] = _("Leaf");
-static const u8 sTextLanette[] = _("Lanette");
-static const u8 sTextAqua[] = _("Aqua");
-static const u8 sTextNurse[] = _("Nurse");
-static const u8 sTextMay[] = _("May");
+static const u8 sTextDevon1[] = _("Corporate Life");
+static const u8 sTextDevon2[] = _("Weather Theorem");
+static const u8 sTextMagma[] = _("Fiery Enterprise");
+static const u8 sTextLana[] = _("The Foreigner");
+static const u8 sTextLanette[] = _("Technically Appealing");
+static const u8 sTextAqua[] = _("Sail the High Seas");
+static const u8 sTextNurse[] = _("Travelling Nurse");
+static const u8 sTextMay[] = _("A Familiar Face");
 static const u8 sText_DeliverySystem[] = _("Delivery System");
 static const u8 sText_Daily[] = _("Faction Daily Quest");
 static const u8 sText_DailyNaturalistss[] = _("Naturalists Daily");
@@ -103,12 +105,14 @@ static const u8 sText_DailyNobles[] = _("Nobles Daily");
 static const u8 sText_DailyPokefans[] = _("Pokéfans Daily");
 static const u8 sText_DailyOutcasts[] = _("Outcasts Daily");
 static const u8 sText_DailyProfessionals[] = _("Professionals Daily");
-static const u8 sText_LucyQuest[] = _("Lucy");
+static const u8 sText_LucyQuest[] = _("Queen of the Serpents");
+static const u8 sText_GenesectQuest[] = _("Buried Dreams");
 
 struct QuestData {
     const struct QuestStageDesc * stageDescs;
     const u8 * name;
     u16 var;
+    bool8 mainQuest;
 };
 
 extern const u16 sEasyChatTriangleCursorPalette[];
@@ -190,16 +194,17 @@ static const struct BgTemplate sQuestTrackerBGTemplates[] =
 };
 
 static const struct QuestData sQuests[] = {
-    {gDevonCorporateQuestStages, sTextDevon1, VAR_RYU_QUEST_DEVON_CORPORATE},
-    {gDevonScientistQuestStages, sTextDevon2, VAR_RYU_QUEST_DEVON_SCIENTIST},
-    {gMagmaQuestStages, sTextMagma, VAR_RYU_QUEST_MAGMA},
-    {gAquaQuestStages, sTextAqua, VAR_RYU_QUEST_AQUA},
-    {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LEAF},
-    {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE},
-    {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY},
-    {gDeliverySystemQuestStages, sText_DeliverySystem, VAR_RYU_DELIVERY_SYSTEM_DATA},
-    {gDailyQuestStages, sText_Daily, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION},
-    {gLucyQuestStages, sText_LucyQuest, VAR_RYU_QUEST_LUCY}
+    {gDevonCorporateQuestStages, sTextDevon1, VAR_RYU_QUEST_DEVON_CORPORATE, TRUE},
+    {gDevonScientistQuestStages, sTextDevon2, VAR_RYU_QUEST_DEVON_SCIENTIST, TRUE},
+    {gMagmaQuestStages, sTextMagma, VAR_RYU_QUEST_MAGMA, TRUE},
+    {gAquaQuestStages, sTextAqua, VAR_RYU_QUEST_AQUA, TRUE},
+    {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LEAF, FALSE},
+    {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE, FALSE},
+    {gMayQuestStages, sTextMay, VAR_RYU_QUEST_MAY, FALSE},
+    {gLucyQuestStages, sText_LucyQuest, VAR_RYU_QUEST_LUCY, FALSE},
+    {gGenesectQuestStages, sText_GenesectQuest, VAR_RYU_QUEST_GENESECT, FALSE},
+    {gDeliverySystemQuestStages, sText_DeliverySystem, VAR_RYU_DELIVERY_SYSTEM_DATA, FALSE},
+    {gDailyQuestStages, sText_Daily, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FALSE},
 };
 
 static const u8 sColors[][3] = {
@@ -418,6 +423,7 @@ static bool8 IntializeQuest(u8 taskId)
         gMain.state++;
         break;
     case 6: // Print Quests + Stages
+        BuildSelectionsForwards(0);
         UpdateQuestSelections(0);
         gMain.state++;
         break;
@@ -477,68 +483,126 @@ static u32 InputToQuestAction(void)
     return finalAction;
 }
 
+static u32 sQuestList[6]; 
+static u32 sQuestListSize;
 
 static void UpdateQuestSelections(u32 offset)
 {
+    u32 slot = 0;
     u32 i;
     offset = offset + 6 > NELEMS(sQuests) ? NELEMS(sQuests) - 6 : offset;
     FillWindowPixelBuffer(WIN_QUEST_QUESTS, 0);
     FillWindowPixelBuffer(WIN_QUEST_QUEST_DATA, 0);
-    for(i = 0; i < 6; i++)
+    for(i = 0; slot < 6; i++)
     {
         u8 * numStr = gStringVar1;
+        if(offset + i >= NELEMS(sQuests)) break; // bail out we don't got no more quests
+
+        if((!sQuests[offset + i].mainQuest && VarGet(sQuests[offset + i].var) == 0)
+        || VarGet(sQuests[offset + i].var) == 0xFFFF)
+            continue;
+        
         if (VarGet(sQuests[offset + i].var) > 9999)
             StringCopy(numStr, sText_NA);
         else
             ConvertIntToDecimalStringN(numStr, VarGet(sQuests[offset + i].var), STR_CONV_MODE_LEFT_ALIGN, 4);
-        AddTextPrinterParameterized3(WIN_QUEST_QUESTS, 0, 10, i * 12, sColors[0], 0xFF, sQuests[offset + i].name);
-        AddTextPrinterParameterized3(WIN_QUEST_QUEST_DATA, 0, 20 - GetStringWidth(0, numStr, 0)/2, i * 12, sColors[0], 0xFF, numStr);
+        AddTextPrinterParameterized3(WIN_QUEST_QUESTS, 0, 10, slot * 12, sColors[0], 0xFF, sQuests[offset + i].name);
+        AddTextPrinterParameterized3(WIN_QUEST_QUEST_DATA, 0, 20 - GetStringWidth(0, numStr, 0)/2, slot * 12, sColors[0], 0xFF, numStr);
+        sQuestList[slot] = offset + i;
+        slot++;
     }
+    //sQuestListSize = slot;
     CopyWindowToVram(WIN_QUEST_QUESTS, 3);
     CopyWindowToVram(WIN_QUEST_QUEST_DATA, 3);
+}
+
+static void BuildSelectionsBackwards(u32 offset) {
+    sQuestListSize = 0;
+    offset = offset >= NELEMS(sQuests) ? NELEMS(sQuests)-1 : offset;
+    do {
+        if((!sQuests[offset].mainQuest && VarGet(sQuests[offset].var) == 0)
+        || VarGet(sQuests[offset].var) == 0xFFFF)
+            continue;
+        sQuestList[5 - (sQuestListSize++)] = offset;
+    } while (offset-- > 0 && sQuestListSize < 6);
+    if(sQuestListSize < 6) {
+        u32 i;
+        for(i = sQuestListSize; i < 6; i++){
+            u32 j;
+            for(j = 0; j < 6; j++) {
+                sQuestList[j] = j+1 < 6 ? sQuestList[j+1] : 0;
+            }
+        }
+    }
+}
+
+static void BuildSelectionsForwards(u32 offset) {
+    sQuestListSize = 0;
+    offset = offset >= NELEMS(sQuests) ? NELEMS(sQuests)-1 : offset;
+    do {
+        if((!sQuests[offset].mainQuest && VarGet(sQuests[offset].var) == 0)
+        || VarGet(sQuests[offset].var) == 0xFFFF)
+            continue;
+        sQuestList[sQuestListSize++] = offset;
+    } while (++offset < NELEMS(sQuests) && sQuestListSize < 6);
+    if(sQuestListSize < 6) {
+        u32 i;
+        for(i = sQuestListSize; i < 6; i++){
+            sQuestList[i] = 0; 
+        }
+    }
 }
 
 #define tOptionOffset data[0]
 #define tSelectPos data[1]
 #define tDbgQuestStgOffset data[2]
 
-#define SELECTED_QUEST(taskId) (gTasks[taskId].tOptionOffset + gTasks[taskId].tSelectPos)
+#define SELECTED_QUEST(taskId) (sQuestList[gTasks[taskId].tSelectPos])
 
 static void Task_QuestMain(u8 taskId)
 {
     u32 action = InputToQuestAction();
+    u32 sq;
     switch(action)
     {
         default:
         case QUEST_ACTION_NONE:
             return;
         case QUEST_ACTION_DOWN:
-            if(++gTasks[taskId].tSelectPos > 5)
+            gTasks[taskId].tSelectPos++;
+            if(gTasks[taskId].tSelectPos >= sQuestListSize)
             {
-                gTasks[taskId].tSelectPos = 5;
-                if((++gTasks[taskId].tOptionOffset + 6) > NELEMS(sQuests))
+                gTasks[taskId].tSelectPos = sQuestListSize-1;
+                BuildSelectionsForwards(sQuestList[1]);
+                //gTasks[taskId].tOptionOffset++;
+                if(sQuestListSize < 6)
                 {
+                    BuildSelectionsForwards(0);
                     gTasks[taskId].tSelectPos = 0;
-                    gTasks[taskId].tOptionOffset = 0;
+                    //gTasks[taskId].tOptionOffset = 0;
                 }
             }
-            UpdateQuestSelections(gTasks[taskId].tOptionOffset);
+            UpdateQuestSelections(sQuestList[0]);
             gTasks[taskId].tDbgQuestStgOffset = 0;
             FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
             CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
             PlaySE(SE_SELECT);
             break;
         case QUEST_ACTION_UP:
-            if(--gTasks[taskId].tSelectPos < 0)
+            gTasks[taskId].tSelectPos--;
+            if(gTasks[taskId].tSelectPos < 0)
             {
                 gTasks[taskId].tSelectPos = 0;
-                if(--gTasks[taskId].tOptionOffset < 0)
+                BuildSelectionsBackwards(sQuestList[4]);
+                //gTasks[taskId].tOptionOffset++;
+                if(sQuestListSize < 6)
                 {
-                    gTasks[taskId].tSelectPos = 5;
-                    gTasks[taskId].tOptionOffset = NELEMS(sQuests) - 6;
+                    BuildSelectionsBackwards(NELEMS(sQuests)-1);
+                    gTasks[taskId].tSelectPos = sQuestListSize-1;
+                    //gTasks[taskId].tOptionOffset = 0;
                 }
             }
-            UpdateQuestSelections(gTasks[taskId].tOptionOffset);
+            UpdateQuestSelections(sQuestList[0]);
             gTasks[taskId].tDbgQuestStgOffset = 0;
             FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
             CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
@@ -564,7 +628,7 @@ static void Task_QuestMain(u8 taskId)
             gTasks[taskId].tDbgQuestStgOffset--;
             VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) + gTasks[taskId].tDbgQuestStgOffset); // hacky
             questDesc = FindQuestDescFromStage(stage);
-            UpdateQuestSelections(gTasks[taskId].tOptionOffset); // also very hacky
+            UpdateQuestSelections(sQuestList[0]); // also very hacky
             VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) - gTasks[taskId].tDbgQuestStgOffset); // hacky
             FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
             AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
@@ -578,7 +642,7 @@ static void Task_QuestMain(u8 taskId)
             gTasks[taskId].tDbgQuestStgOffset++;
             VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) + gTasks[taskId].tDbgQuestStgOffset); // hacky
             questDesc = FindQuestDescFromStage(stage);
-            UpdateQuestSelections(gTasks[taskId].tOptionOffset); // also very hacky
+            UpdateQuestSelections(sQuestList[0]); // also very hacky
             VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) - gTasks[taskId].tDbgQuestStgOffset); // hacky
             FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
             AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);

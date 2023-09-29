@@ -415,6 +415,13 @@ struct CompanionMon // size  8 * 3 = 24 bytes
     u32 abilityNum:2;
 };
 
+struct PokenavCallData //size 4 * 4 = 16
+{
+    u8 messageindex; //1
+    bool8 active; //1
+    u16 delay; //2
+};
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -469,6 +476,7 @@ struct SaveBlock2
              u32 RtcTimeSecond;
              u32 SaveStateLastDetection;
              struct CompanionMon CompanionParty[3];
+             struct PokenavCallData RyuPokenavCallSystem[4];//stores and queues up to 4 pokenav call events
 
 };
 

@@ -1,0 +1,143 @@
+mapscripts DewfordTown_Past_MapScripts {
+    ON_FRAME[
+        VAR_TEMP_B, 0: DFT_Past_Arrived
+    ]
+}
+
+script DFT_Past_Arrived {
+    setvar(VAR_TEMP_B, 100)
+    if (var(VAR_RYU_QUEST_GENESECT) >= 25){
+        goto(ryu_end)
+    }
+    setvar(VAR_RYU_QUEST_GENESECT, 25)//Player arrived in past dewford and collected their bearings. Look around for something to do.
+    lock
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}This is so dumb!\pHow could he just send me\llike that!")
+    closemessage
+    if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE){
+        if (var(VAR_RYU_FOLLOWER_ID) == FOLLOWER_LANETTE){
+            turnobject(FOLLOWER, DIR_NORTH)
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}I'm so sorry he did that\nto you...\pLet me take a look at the\ndevice, I'll see if I can get us\lback.")
+            closemessage
+            msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Well... we're already here.\nWe might as well explore\la bit.\pBesides, if nothing else, at\nleast I'm stuck with you.")
+            closemessage
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh! uh...")
+            closemessage
+            msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (She cutely fumbles with the device\n while her face turns bright\l red.)")
+            closemessage
+            msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (After a few minutes of messing with\n the device, she finally looks\l up.)")
+            closemessage
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED} Okay! So!\nGood news and bad news.\pThe good news is that we can\nreturn... I think.\pThe bad news is... the device\nneeds to charge somehow, but\lI don't know how it charges.")
+            closemessage
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}It seems to just be... generating\na charge, but I can't tell what\lrate it charges at.")
+            closemessage
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}For now... we just wait.")
+            closemessage
+        }
+        else
+        {
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Well, I don't know how\nbut it seems to have also\lbrought me.\pAt least you won't be alone!")
+            closemessage
+        }
+    }
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You study the device.\n There's no obvious way\l to activate it)")
+    closemessage
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}Well, I guess I can take a look\naround.")
+    closemessage
+    release
+    end
+}
+
+
+script DFT_Past_PrepareGenesect {
+    lock
+    setvar(VAR_TEMP_2, 100)
+    if (var(VAR_RYU_QUEST_GENESECT) >= 30){
+        goto(ryu_end)
+    }
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You see a familiar looking\n triangular stone ahead.\lYou should prepare to fight.)")
+    closemessage
+    if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE){
+        msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}I know what that stone is.\pStones like it usually summon\nreally powerful Pokémon.")
+        closemessage
+        msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh!... here!\nI'll heal you!")
+        closemessage
+        callnative(RyuBufferFollowerName)
+        msgbox(" {COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_1} heals your team...)")
+        closemessage
+        fadescreen(FADE_TO_BLACK)
+        special(HealPlayerParty)
+        playfanfare(MUS_HEAL)
+        fadescreen(FADE_FROM_BLACK)
+    }
+    setvar(VAR_RYU_QUEST_GENESECT, 30)//Player noticed the Genesect stone and prepared for battle
+    closemessage
+    release
+    end
+}
+
+script DFT_Past_Genesect {
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You feel a tug in your bag\n as you approach the stone.)")
+    closemessage
+    playmoncry(SPECIES_GENESECT, 2)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} As the beast roars, the drives\nyou had in your bag fly to it.")
+    removeitem(ITEM_DOUSE_DRIVE, 2)
+    removeitem(ITEM_BURN_DRIVE, 2)
+    removeitem(ITEM_SHOCK_DRIVE, 2)
+    removeitem(ITEM_CHILL_DRIVE, 2)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}The giant Pokémon roars again.")
+    closemessage
+    setflag(FLAG_RYU_DFT_PAST_GENESECT)
+    removeobject(5)
+    specialvar(VAR_TEMP_9, CountBadges)
+    multvar(VAR_TEMP_9, 10)
+    addvar(VAR_TEMP_9, 25)
+    setflag(FLAG_RYU_FACING_GENESECT)
+    setwildbattle(SPECIES_GENESECT, VAR_TEMP_9, ITEM_NONE)
+	call(RyuCheckSetupBoss)
+	special(BattleSetup_StartLegendaryBattle)
+    waitstate
+    goto(DFT_Past_AfterFight)
+}
+
+script DFT_Past_AfterFight {
+    clearflag(FLAG_RYU_FACING_GENESECT)
+    setmetatile(13, 6, 0xE2, 1)
+    special(DrawWholeMapView)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}The hulking Pokémon crumpled to\nthe ground in a pile of dust\land organic matter.\pFour colorful lights shoot off\nin different directions from\lthe remains of Genesis.\pYou note that your bag feels a little\nlighter.")
+    closemessage
+    clearflag(FLAG_RYU_CHILL_DRIVE_EVENT)
+	clearflag(FLAG_RYU_SHOCK_DRIVE_EVENT)
+	clearflag(FLAG_RYU_DOUSE_DRIVE_EVENT)
+	clearflag(FLAG_RYU_BURN_DRIVE_EVENT)
+    setvar(VAR_RYU_QUEST_GENESECT, 50)//player defeated genesect.
+    playse(SE_PC_LOGIN)
+    waitse
+    if (flag(FLAG_RYU_HAS_FOLLOWER) == TRUE){
+        if (var(VAR_RYU_FOLLOWER_ID) == FOLLOWER_LANETTE){
+            playse(SE_PIN)
+            applymovement(FOLLOWER, Common_Movement_ExclamationMark)
+            waitmovement(FOLLOWER)
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh! Hey!\pThe device appears to be ready\nfor use!")
+            closemessage
+            msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Right! Let's get out of\nhere.")
+            closemessage
+            playse(SE_PC_ON)
+            msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lanette activates the device.)")
+            closemessage
+            drawfullscreenimage(SCENEBGWARP)
+            delay(20)
+            clearfullscreenimage
+            warpteleport(MAP_DEWFORD_TOWN, 255, 11, 14)
+            waitstate
+        }
+    }
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (The device comes back to life.\n It appears to be ready for use.)")
+    closemessage
+    drawfullscreenimage(SCENEBGWARP)
+    delay(20)
+    clearfullscreenimage
+    warpteleport(MAP_DEWFORD_TOWN, 255, 11, 14)
+    waitstate
+    release
+    end
+}

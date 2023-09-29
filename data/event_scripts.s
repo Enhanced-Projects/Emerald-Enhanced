@@ -1245,3 +1245,9 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/NewMap1/scripts.inc"
 
 	.include "data/maps/LavaridgeTown_LucyHome/scripts.inc"
+
+	.include "data/maps/DewfordTown_GenesectCave/scripts.inc"
+
+	.include "data/maps/NewMauville_SumacLab/scripts.inc"
+
+	.include "data/maps/DewfordTown_Past/scripts.inc"

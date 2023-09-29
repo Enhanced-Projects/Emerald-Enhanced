@@ -6606,6 +6606,11 @@ BattleScript_MagnetoDamage::
 	waitmessage 0x40
 	goto BattleScript_DoStatusTurnDmg
 
+BattleScript_SwitchedDrive::
+	printstring STRINGID_GENESECTSWITCHEDDRIVE
+	waitmessage 0x40
+	end2
+
 BattleScript_RyuLunaticDisableStatusMessage::
 	showabilitypopup BS_ABILITY_BATTLER
 	printstring STRINGID_RYULUNATICDISABLEDSTATUSMOVE

@@ -131,7 +131,7 @@ infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst 
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools
-ifeq (,$(filter-out all rom compare modern berry_fix libagbsyscall,$(MAKECMDGOALS)))
+ifeq (,$(filter-out all release rom compare modern berry_fix libagbsyscall,$(MAKECMDGOALS)))
 $(call infoshell, $(MAKE) tools)
 else
 NODEP := 1
@@ -341,6 +341,9 @@ $(ROM): $(ELF)
 modern: ; @$(MAKE) MODERN=1
 
 debug: ; @$(MAKE) DEBUG=1
+
+release: rom
+	xdelta3 -S none -f -s baserom.gba $(ROM) "Emerald Enhanced.xdelta" 
 
 #berry_fix/berry_fix.gba: berry_fix
 

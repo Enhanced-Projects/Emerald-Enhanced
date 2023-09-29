@@ -447,3 +447,20 @@ RyuLegendary_CaughtRaikou::
 RyuLegendary_IntroRaikou: @put your intro here
 	.string "$"
 `
+
+script R115_ShockDriveEvent {
+	if (var(VAR_RYU_QUEST_GENESECT) >= 5){ //if quest already started, just give item
+		SYM_GiveShockDrive:
+		giveitem(ITEM_SHOCK_DRIVE)
+		setflag(FLAG_RYU_SHOCK_DRIVE_EVENT)
+		removeobject(VAR_LAST_TALKED)
+		release
+		end
+	} 
+	else {
+		call(RyuScript_StartGenesectQuest)
+		goto(SYM_GiveShockDrive)
+		release
+		end
+	}
+}

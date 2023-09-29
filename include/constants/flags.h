@@ -96,7 +96,7 @@
 #define FLAG_PBG_DADEVENT                    0x52
 #define FLAG_TOBY_TRAINER_SIGHT              0x53
 
-#define FLAG_UNUSED_0x54                     0x54
+#define FLAG_RYU_QUEST_GENESECT              0x54
 #define FLAG_RYU_BOSS_SCALE                  0x55 // Autoscale enemies to higher levels.
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56 // Always set after new game, object it hides is added directly
@@ -941,7 +941,7 @@
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1     0x374
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2     0x375
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE           0x376
-#define FLAG_UNUSED_0x377                                           0x377
+#define FLAG_RYU_GENESECT_FOSSIL                                    0x377
 #define FLAG_HIDE_BATTLE_TOWER_OPPONENT                             0x378
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL                  0x379
 #define FLAG_HIDE_ROUTE_119_TEAM_AQUA                               0x37A
@@ -1388,6 +1388,16 @@
 #define FLAG_RYU_DS_LUCY_PARTNERS                                 0x520
 #define FLAG_RYU_FORCE_EVENT_OTID                                 0x521
 #define FLAG_RYU_SPECIAL_STORY_WHITEOUT                           0x522
+#define FLAG_RYU_CHILL_DRIVE_EVENT                                0x523
+#define FLAG_RYU_BURN_DRIVE_EVENT                                 0x524
+#define FLAG_RYU_SHOCK_DRIVE_EVENT                                0x525
+#define FLAG_RYU_DOUSE_DRIVE_EVENT                                0x526
+#define FLAG_RYU_MAUVILLE_PC_BARD                                 0x527
+#define FLAG_RYU_DFT_BARD_GENESECT                                0x528
+#define FLAG_RYU_HIDE_SL_SUMAC                                    0x529
+#define FLAG_RYU_FACING_GENESECT                                  0x52A
+#define FLAG_RYU_DFT_PAST_GENESECT                                0x52B
+#define FLAG_RYU_HIDE_SL_SUMAC_2                                  0x52C
 
 
 //tutorial system flags

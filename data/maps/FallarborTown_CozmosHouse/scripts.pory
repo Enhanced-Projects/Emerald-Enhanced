@@ -83,7 +83,7 @@ FT_CozmoNextMission::
 	msgbox FT_wait MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_SCIENTIST
 	fadescreen 0
-	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 1000 @Player finished the main devon stuff and chose to be a scientist.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 0xFFFF @Player finished the main devon stuff and chose to be a scientist.
 	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 101 @Player started the scientist quest
 	setvar VAR_WEATHER_INSTITUTE_STATE, 0
 	warp MAP_ROUTE119_WEATHER_INSTITUTE_1F, 255, 10, 12
@@ -99,7 +99,7 @@ FT_ReturnToDevon::
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 25 @Player finished all of Cozmo's missions and should return to the President.
 	msgbox FT_DevonMsg MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_CORPORATE
-	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 2000 @Player chose the Corporate life.
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 0xFFFF @Player chose the Corporate life.
 	closemessage
 	release
 	end

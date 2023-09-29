@@ -1,0 +1,244 @@
+mapscripts NewMauville_SumacLab_MapScripts {
+    ON_TRANSITION
+    {
+        if(var(VAR_RYU_QUEST_GENESECT) == 80) {
+            removeobject(1)
+            clearflag(FLAG_RYU_HIDE_SL_SUMAC_2)
+            addobject(2)
+            setflag(FLAG_RYU_HIDE_SL_SUMAC)
+            end
+        }
+        elif(var(VAR_RYU_QUEST_GENESECT) == 75) {
+            removeobject(1)
+            clearflag(FLAG_RYU_HIDE_SL_SUMAC_2)
+            addobject(2)
+            setflag(FLAG_RYU_HIDE_SL_SUMAC)
+            end
+        }
+        else{
+            removeobject(2)
+            setflag(FLAG_RYU_HIDE_SL_SUMAC_2)
+            addobject(1)
+            clearflag(FLAG_RYU_HIDE_SL_SUMAC)
+            end
+        }
+    }
+    ON_FRAME
+    [
+        VAR_RYU_QUEST_GENESECT, 75: NMSL_ReturnedFromDewford
+    ]
+}
+
+script NM_SumacLab_Sumac {
+    lock
+    faceplayer
+    switch(var(VAR_RYU_QUEST_GENESECT)){
+        case 10:
+            goto(NMSL_Stage10)
+        case 80:
+            goto(NMSL_CheckReadyGenesect)
+        case 100:
+            goto(NMSL_Afterstory)
+        case 125:
+            goto(NMSL_AfterAfterstory)
+    }
+    release
+    end
+}
+
+
+script NMSL_Stage10 {
+    setvar(VAR_RYU_QUEST_GENESECT, 15) //player met up with Sumac after the pokecenter, sumac leaves for dewford
+    msgbox("Ah! You made it!")
+    closemessage
+    msgbox("Now that I know Genesis was real,\nwe have to track it down! The last\pplace there are any records of it\nwas somewhere in Dewford.\pYou should meet me there.")
+    closemessage
+    applymovement(1, NMSL_SumacLeavesForDewford)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (The eccentric man runs off\n in a hurry...)")
+    waitmovement(1)
+    removeobject(1)
+    setflag(FLAG_RYU_HIDE_SL_SUMAC)
+    release
+    end
+}
+
+script NMSL_ReturnedFromDewford {
+    turnobject(PLAYER, DIR_NORTH)
+    applymovement(FOLLOWER, NMSL_FixFollower)
+    waitmovement(FOLLOWER)
+    msgbox("This machine can reconstruct DNA\nfrom a fossil.\pIt's more precise than the one\nat the mining town, but also\pcarries more risks, and requires more\npower.")
+    closemessage
+    msgbox("This machine will restore the\nreconstructed Pokémon's memories\las well as it's physical body.")
+    closemessage
+    msgbox("It may provide us with\ninsight as to what the past was\llike.")
+    closemessage
+    msgbox("It may also cause an existential\ncrisis in the reconstructed.\pThat's why this technology\nwas never made mainstream.")
+    closemessage
+    msgbox("When I revive this Pokémon,\nit may attack, so be prepared.")
+    closemessage
+    setvar(VAR_RYU_QUEST_GENESECT, 80)//player must face genesect for the next part of the quest.
+    msgbox("Are you ready for me to\nrevive Genesis?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){
+        goto(NMSL_GenesectAttacks)
+    }
+    msgbox("Okay, return to me when you're\nready. I need your protection\ljust in case.")
+    release
+    end
+}
+
+script NMSL_CheckReadyGenesect{
+    lock
+    msgbox("Are you ready for me to\nrevive Genesis?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){
+        goto(NMSL_GenesectAttacks)
+    }
+    release
+    end
+}
+
+script NMSL_GenesectAttacks {
+    lockall
+    msgbox("All right! I'm activating it!")
+    closemessage
+    setweather(WEATHER_SHADE)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (The massive machine kicks on,\n making all the lights around\l dim in response.)")
+    doweather
+    closemessage
+    delay(20)
+    msgbox("It's working!")
+    setweather(WEATHER_NONE)
+    doweather
+    playmoncry(SPECIES_GENESECT, 1)
+    msgbox("The genesect locks eyes with\nyou.\pYou see a tinge of recognition\ncoming from it.\pPerhaps it remembers you?")
+    closemessage
+    call(RyuCheckSetupBoss)
+    setwildbattle(SPECIES_GENESECT, 50, ITEM_METAL_COAT)
+    dowildbattle
+    //waitstate
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) != B_OUTCOME_CAUGHT){//player knocked it out, Sumac gives the player a weaker copy of it.
+        //getpartysize
+        //if (var(VAR_RESULT) < 6){
+            givemon(SPECIES_GENESECT, 20, ITEM_NONE)
+            msgbox("Here, you knocked it out\pLet me put it in a pokeball for you.")
+            closemessage
+            msgbox("You obtained Genesect from Sumac.")
+            playfanfare(MUS_FANFA4)
+            waitfanfare
+            closemessage
+        //}
+    }
+    setvar(VAR_RYU_QUEST_GENESECT, 100)//player is done with the quest for the most part. All that's left is to find the drives
+    msgbox("Oh! Excellent! I'm sure\nyou won't do anything terrible\plike try to take over the world\nwith it, right?")
+    closemessage
+    msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}That's an option?!")
+    closemessage
+    msgbox("No, seriously, please don't.")
+    closemessage
+    msgbox("Anyways, I have other matters to\nattend.\pYou can see me over at my desk\lfor anything else you need.")
+    applymovement(2, NMSL_SumacToNormalLocation)
+    waitmovement(2)
+    removeobject(2)
+    addobject(1)
+    setflag(FLAG_RYU_HIDE_SL_SUMAC_2)
+    clearflag(FLAG_RYU_HIDE_SL_SUMAC)
+    release
+    end
+}
+
+script NMSL_Afterstory {
+    call(NMSL_SumacCheckDrives)
+    msgbox("Ah! my favorite understudy!\pHow's Genesis doing?")
+    closemessage
+    msgbox("I take it you came to get\nlocation info on the drives?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        msgbox("Okay! Have a fruitful day!")
+        closemessage
+        release
+        end
+    }
+    closemessage
+    SYM_AskAboutDriveLocations:
+    bufferdynamicmulti(NMSL_ChillDrive, NMSL_ShockDrive, NMSL_BurnDrive, NMSL_DouseDrive)
+    multichoice(0, 4, MULTI_DYNAMIC_4, 0)
+    switch(var(VAR_RESULT)){
+        case 0:
+            msgbox("My scanners indicate that the\nChill drive is up north.\pIt's a somewhat weak signal, so it\nmay be obscured by trees or such.")
+            goto(SYM_AskAboutDriveLocations)
+        case 1:
+            msgbox("My scanners indicate that the\nShock drive is far west.\pIt's got a relatively strong\nsignal, so it's probably out in\lthe open.\pLooks like it's closest in proximity\nto Route 117.")
+            goto(SYM_AskAboutDriveLocations)
+        case 2:
+            msgbox("My scanners indicate that the\nBurn drive is up north.\pIt's a very weak signal, so it's \nprobably deep underground.\pYou should probably check around\nMt. Freeze.")
+            goto(SYM_AskAboutDriveLocations)
+        case 3:
+            msgbox("My scanners indicate that the\nDouse drive is far east.\pIt's an extremely weak signal, so\nit may be under water or in\lan aquatic cave.\pI'd try searching route 127.")
+            goto(SYM_AskAboutDriveLocations)
+    }
+    release
+    end
+}
+
+script NMSL_SumacCheckDrives{
+    goto_if_unset(FLAG_RYU_CHILL_DRIVE_EVENT, ryu_return)
+    goto_if_unset(FLAG_RYU_SHOCK_DRIVE_EVENT, ryu_return)
+    goto_if_unset(FLAG_RYU_DOUSE_DRIVE_EVENT, ryu_return)
+    goto_if_unset(FLAG_RYU_BURN_DRIVE_EVENT, ryu_return)
+    msgbox("Oh! Wow!\nYou've collected all of\lthe drives!")
+    closemessage
+    msgbox("That's quite impressive!\pHere, take this device.\pIt's my Temporal Displacer!\nAlso known as the device\pthat allowed you to go back in\ltime.")
+    closemessage
+    msgbox("It requires an anchor, as you\nknow. Feel free to use it\las much as you like.\pPlease just don't go fiddling\naround with things in the past.\pWouldn't want you to be your own\nancestor or anything!")
+    closemessage
+    setvar(VAR_RYU_QUEST_GENESECT, 125) //player completed the quest and found all of the drives.
+    //GIVE TEMPORAL DISPLACER HERE!
+    release
+    end
+}
+
+script NMSL_AfterAfterstory{
+    lock
+    faceplayer
+    msgbox("How have your travels around the\nworld and through the ages been\lgoing?")
+    closemessage
+    msgbox("Met anyone from the past?\pAny now-extinct Pokémon?\pUncover any vast fortunes?")
+    closemessage
+    release
+    end
+}
+
+text NMSL_ChillDrive{
+    "Chill Drive"
+}
+
+text NMSL_BurnDrive{
+    "Burn Drive"
+}
+
+text NMSL_DouseDrive{
+    "Douse Drive"
+}
+
+text NMSL_ShockDrive{
+    "Shock Drive"
+}
+
+movement NMSL_SumacLeavesForDewford {
+    walk_fast_right * 4
+    walk_fast_down * 3
+    step_end
+}
+
+movement NMSL_FixFollower{
+    walk_right
+    walk_up
+    step_end
+}
+
+movement NMSL_SumacToNormalLocation {
+    walk_down
+    walk_left * 11
+    walk_up
+    face_down
+    step_end
+}
