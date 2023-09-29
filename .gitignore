@@ -49,4 +49,3 @@ tools/poryscript
 data/maps/*/scripts.inc
 data/scripts/_poryscripts/*.inc
 *.xdelta
-
