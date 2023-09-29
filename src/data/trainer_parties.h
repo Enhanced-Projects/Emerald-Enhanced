@@ -11710,7 +11710,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Dawn2[] = {//Dawn14
 	.iv = 50,
 	.lvl = 22,
 	.species = SPECIES_TOGEPI,
-    .moves = {MOVE_METRONOME, MOVE_CHARM, MOVE_PROTECT, MOVE_NONE}
+    .moves = {MOVE_METRONOME, MOVE_CHARM, MOVE_ROLLOUT, MOVE_NONE}
 	},
 	{
 	.iv = 100,
