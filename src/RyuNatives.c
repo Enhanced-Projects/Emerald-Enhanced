@@ -2764,11 +2764,14 @@ void RyuBetaMenuDynamicInfoBox(void)
     u8 buffer1[20];
     u8 savestateDetected = (FlagGet(FLAG_RYU_SAVE_STATE_DETECTED));
     u8 devModeon = (FlagGet(FLAG_RYU_DEV_MODE));
-    ConvertIntToDecimalStringN(buffer1, (VarGet(VAR_LAST_KNOWN_GAME_VERSION)), STR_CONV_MODE_LEFT_ALIGN, 4);
-    StringCopy(gStringVar1, (const u8[])_("The last known game version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
+    ConvertIntToDecimalStringN(buffer1, (VarGet(VAR_LAST_KNOWN_GAME_VERSION)), STR_CONV_MODE_LEFT_ALIGN, 5);
+    StringCopy(gStringVar1, (const u8[])_("The last known version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
     StringAppend(gStringVar1, buffer1);
-    ConvertIntToDecimalStringN(buffer1, (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION)), STR_CONV_MODE_LEFT_ALIGN, 4);
-    StringCopy(gStringVar2, (const u8[])_("Save file created on version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
+    //REMOVE ON FULL RELEASE
+    StringAppend(gStringVar1, ((const u8[])_("Pre")));
+    //END REMOVE
+    ConvertIntToDecimalStringN(buffer1, (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION)), STR_CONV_MODE_LEFT_ALIGN, 5);
+    StringCopy(gStringVar2, (const u8[])_("Save created on version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
     StringAppend(gStringVar2, buffer1);
     ConvertIntToDecimalStringN(buffer1, savestateDetected, STR_CONV_MODE_LEFT_ALIGN, 4);
     StringCopy(gStringVar3, (const u8[])_("Save state detection: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
