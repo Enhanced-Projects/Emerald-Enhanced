@@ -2889,12 +2889,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_VILEPLUME_1] = { // Vileplume-Offensive (ID: 321)
+    [FRONTIER_MON_VILEPLUME_1] = { // Vileplume-Defensive (ID: 321)
         .species = SPECIES_VILEPLUME,
-        .moves = {MOVE_GIGA_DRAIN, MOVE_ACID, MOVE_STRENGTH_SAP, MOVE_MOONBLAST},
+        .moves = {MOVE_GIGA_DRAIN, MOVE_ACID, MOVE_STRENGTH_SAP, MOVE_SLEEP_POWDER},
         .heldItem = ITEM_BLACK_SLUDGE,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_MODEST,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
         .ivs = 31,
         .ability = 2
     },
@@ -4725,14 +4725,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_VILEPLUME_2] = { // Vileplume-Defensive (ID: 525)
+    [FRONTIER_MON_VILEPLUME_2] = { // Vileplume-Eclipse (ID: 525)
         .species = SPECIES_VILEPLUME,
-        .moves = {MOVE_GIGA_DRAIN, MOVE_ACID, MOVE_STRENGTH_SAP, MOVE_SLEEP_POWDER},
-        .heldItem = ITEM_BLACK_SLUDGE,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_BOLD,
+        .moves = {MOVE_VOID_BURST, MOVE_SLUDGE_BOMB, MOVE_STRENGTH_SAP, MOVE_ECLIPSE},
+        .heldItem = ITEM_LIFE_ORB,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_VICTREEBEL_2] = { // Victreebel-Sun (ID: 628)
         .species = SPECIES_VICTREEBEL,
