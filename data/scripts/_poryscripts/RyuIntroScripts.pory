@@ -475,16 +475,32 @@ GameIntroSequencePart2::
 	msgbox GI_GoSeeRivalMaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
-	releaseall
+	@@ REMOVE FOR FULL RELEASE OF 10.0
+	callnative startprereleasetimer
+	goto showprereleasewarning
+	@@ END REMOVE
+	release
 	end
 	
 GameIntroFemalePart2::
-	checkplayergender
 	msgbox GI_GoSeeRivalFemaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
-	releaseall
+	@@ REMOVE FOR FULL RELEASE OF 10.0
+	callnative startprereleasetimer
+	goto showprereleasewarning
+	@@ END REMOVE
+	release
 	end
+
+@@ REMOVE FOR FULL RELEASE OF 10.0
+showprereleasewarning::
+	bufferdynamicmulti prerelease1, prerelease2, prerelease3, prerelease4, prerelease5, prerelease6, 
+	drawinfobox INFOBOX_DYNAMIC
+	msgbox prerelease0
+	waitstate
+
+@@ END REMOVE
 	
 GI_Male_GetOutOfBed:
 	walk_right
@@ -671,3 +687,43 @@ script RyuScript_StarterBossMsg {
 	msgbox(NatureMsg)
 	goto(RyuScript_FinishCheckBossStarter)
 }
+
+//REMOVE FOR FULL RELEASE OF 10.0
+
+text prerelease0{
+	"{COLOR LIGHT_RED}{SHADOW DARK_GREY}IMPORTANT NOTICE.\pPLEASE READ."
+}
+
+text prerelease1 {
+	"EE v10.0 is in a PRERELEASE state."
+}
+
+text prerelease2 {
+	"This means that the full 10.0 update"
+}
+
+text prerelease3 {
+	"is not fully done, but needed to come"
+}
+
+text prerelease4 {
+	"out to address certain things."
+}
+
+text prerelease5 {
+	"Improvements to seasons and other things"
+}
+
+text prerelease6 {
+	"will come. Enjoy the game!"
+}
+
+
+script RyuScript_EndPrereleaseWarning{
+	closemessage
+	removeinfobox
+	goto(RyuScript_DoIntroWarp)
+	releaseall
+	end
+}
+//END REMOVE
