@@ -1706,6 +1706,9 @@ void CB2_NewGame(void)
         if (hasRealEstate == TRUE)
             gSaveBlock2Ptr->playerIsRealtor = 1;
 
+        if (hasSuperTraining == TRUE)
+            FlagSet(FLAG_RYU_HAS_SUPER_TRAINING);
+
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);
         FlagSet(FLAG_RYU_ISNGPLUS);
