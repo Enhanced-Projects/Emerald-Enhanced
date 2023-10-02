@@ -463,6 +463,7 @@ MoveTutor_EventScript_ShadowSlamDeclined::
 
 MoveTutor_EventScript_ShadowSlamTaught::
 	msgbox MoveTutor_Text_ShadowSlamTaught, MSGBOX_DEFAULT
+	removeitem ITEM_REAPER_CLOTH, 1
 	release
 	end
 
