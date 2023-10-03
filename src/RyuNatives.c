@@ -2768,7 +2768,7 @@ void RyuBetaMenuDynamicInfoBox(void)
     StringCopy(gStringVar1, (const u8[])_("The last known version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
     StringAppend(gStringVar1, buffer1);
     //REMOVE ON FULL RELEASE
-    StringAppend(gStringVar1, ((const u8[])_("Pre")));
+    StringAppend(gStringVar1, ((const u8[])_("Pre2")));
     //END REMOVE
     ConvertIntToDecimalStringN(buffer1, (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION)), STR_CONV_MODE_LEFT_ALIGN, 5);
     StringCopy(gStringVar2, (const u8[])_("Save created on version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));

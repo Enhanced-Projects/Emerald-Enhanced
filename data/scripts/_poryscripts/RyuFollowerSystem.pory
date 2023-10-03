@@ -576,6 +576,7 @@ RF_FinishNurseQuest4:: @Will take player to lilycove city as that is Hoenn's cap
 
 RF_PlayerDeclinedNurseQuest1::
 	setvar VAR_RYU_QUEST_NURSE, 11 @@ends the nurse quest. No partner.
+	clearflag FLAG_RYU_HIDE_JOY
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox RF_NurseQuestCancelledText
 	closemessage

@@ -627,7 +627,7 @@ void PrintStartMenuInfoData(void)
     StringAppend(gRyuStringVar1, gStringVar4);
     StringAppend(gStringVar1, gRyuStringVar1);
     //REMOVE FOR FULL RELEASE OF 10.0
-    StringAppend(gStringVar1, ((const u8[])_("{COLOR LIGHT_RED}{SHADOW RED}Pre")));
+    StringAppend(gStringVar1, ((const u8[])_("{COLOR LIGHT_RED}{SHADOW RED}Pre2")));
     //END REMOVE
     //print local time
     RtcCalcLocalTime();
