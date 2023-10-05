@@ -1857,14 +1857,6 @@ bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
-
-    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
-    {
-        PlaySE(SE_HAZURE);
-        ShowFieldMessage(gText_MartDisabledChallenge);
-        return TRUE;
-    }
-
     CreatePokemartMenu(ptr);
     ScriptContext1_Stop();
     return TRUE;

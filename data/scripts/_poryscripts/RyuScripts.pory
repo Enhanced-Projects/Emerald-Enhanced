@@ -290,26 +290,6 @@ Ryu_SorryCantHeal:
 
 Ryu_SorryHardcore:
 	.string "This service is restricted by\ngame rules. Sorry!$"
-
-RyuMartsDisabledChallenge::
-	msgbox RyuMartsDisabledChallengeMsg MSGBOX_DEFAULT
-	release
-	end
-
-RyuTCDisabledChallenge::
-	msgbox RyuTCDisabledChallengeMsg MSGBOX_DEFAULT
-	release
-	end
-
-RyuMartsDisabledChallengeMsg:
-	.string "{COLOR DARK_GREY}{SHADOW RED}Sorry, but you can't use this while\n"
-	.string "playing in challenge mode. Fight more\p"
-	.string "Gyms!$"
-
-RyuTCDisabledChallengeMsg:
-	.string "{COLOR DARK_GREY}{SHADOW RED}Sorry, but the Training Center is\n"
-	.string "disabled while playing in challenge\p"
-	.string "mode. Grind in grass!$"
 	
 RyuHealed:
 	.string "Your team has been restored to full\n"
@@ -318,12 +298,6 @@ RyuHealed:
 RyuUsesGone:
 	.string "{COLOR DARK_GREY}{SHADOW RED}You cannot use this Pokemon Center\n"
 	.string "anymore.$"
-
-RyuHealedGym::
-	special HealPlayerParty
-	msgbox RyuHealedGymMsg MSGBOX_DEFAULT
-	closemessage
-	return
 	
 RyuScripts_HardcoreGymReward::
 	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 1
@@ -334,12 +308,6 @@ RyuGymItemReward1::
 	giveitem ITEM_TM39
 	closemessage
 	setflag FLAG_RYU_GYM1HANDOUT
-	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
-	additem ITEM_SUPER_POTION, 1
-	additem ITEM_GREAT_BALL, 1
-	closemessage
-	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 Ryu_ResetPcUses::
@@ -349,76 +317,37 @@ Ryu_ResetPcUses::
 RyuGymItemReward2::
 	giveitem ITEM_TM60
 	setflag FLAG_RYU_GYM2HANDOUT
-	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
-	additem ITEM_SUPER_POTION, 2
-	additem ITEM_GREAT_BALL, 2
-	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward3::
 	giveitem ITEM_TM34
 	setflag FLAG_RYU_GYM3HANDOUT
-	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
-	additem ITEM_SUPER_POTION, 3
-	additem ITEM_GREAT_BALL, 3
-	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward4::
 	giveitem ITEM_TM50
 	setflag FLAG_RYU_GYM4HANDOUT
-	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
-	additem ITEM_SUPER_POTION, 4
-	additem ITEM_GREAT_BALL, 4
-	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward5::
 	giveitem ITEM_TM42
 	setflag FLAG_RYU_GYM5HANDOUT
-	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
-	additem ITEM_SUPER_POTION, 5
-	additem ITEM_GREAT_BALL, 5
-	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward6::
 	giveitem ITEM_TM40
 	setflag FLAG_RYU_GYM6HANDOUT
-	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
-	additem ITEM_SUPER_POTION, 6
-	additem ITEM_GREAT_BALL, 6
-	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward7::
 	giveitem ITEM_TM04
 	setflag FLAG_RYU_GYM7HANDOUT
-	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
-	additem ITEM_SUPER_POTION, 7
-	additem ITEM_GREAT_BALL, 7
-	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward8::
 	giveitem ITEM_TM03
 	setflag FLAG_RYU_GYM8HANDOUT
-	goto_if_unset FLAG_RYU_CHALLENGEMODE, ryu_return
-	additem ITEM_SUPER_POTION, 8
-	additem ITEM_GREAT_BALL, 8
-	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
-	goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_ResetPcUses
 	return
-
-RyuHealedGymMsg:
-	.string "I've restored your Pokémon to\n"
-	.string "full health.$"
 
 RyuGameClearedMsg:
 	.string "{COLOR GREEN} {SHADOW LIGHT_GREY}Congratulations on clearing the game\n"
@@ -432,15 +361,6 @@ RyuGameClearedMsg:
 	
 RyuEmptySpace:
 	.string "$"
-	
-RyuFailedChallenge::
-	msgbox ChallengeFail MSGBOX_DEFAULT
-	closemessage
-	clearflag FLAG_RYU_CHALLENGEMODE
-	setvar VAR_RYU_EXP_MULTIPLIER, 1000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
-	release
-	end
 	
 ChallengeFail:
 	.string "You have failed this challenge\n"
@@ -1276,7 +1196,7 @@ script RyuScript_EndChallengeMode{
     setflag(FLAG_RYU_LIMBO)
     lockall
     setflag(FLAG_RYU_WAYSTONE_DISABLED)
-    msgbox(format("Welcome to Limbo. You have failed your Challenge or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game Plus if your prestige is higher than zero."))
+    msgbox(format("Welcome to Limbo. You have failed your Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game Plus if your prestige is higher than zero."))
     closemessage
     msgbox(format("Please wait while we check some things, this might take a few seconds."))
 	if (var(VAR_RYU_NGPLUS_COUNT) > 0) {	
@@ -1585,17 +1505,7 @@ script RyuSetUpMoneyMode {
 			setvar(VAR_RYU_MONEY_BASE_COEFFICIENT, 275)
 			msgbox("You will gain a more consistent\namount of prize money, but\pthe average will be lower than\nthe standard reward.")
 	}
-	goto(RyuConfirmMoneyMode)
-}
-
-script RyuConfirmMoneyMode {
-	msgbox("Are you happy with this selection?", MSGBOX_YESNO)
-	switch(var(VAR_RESULT)) {
-		case YES:
-			goto(ryu_return)
-		case NO:
-			goto(RyuSetUpMoneyMode)
-	}
+	goto(ryu_return)
 }
 
 text NGMO1 {

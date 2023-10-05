@@ -590,12 +590,12 @@ void PrintStartMenuInfoData(void)
     ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock2Ptr->playTimeSeconds, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringAppend(gStringVar1, gRyuStringVar1);
     StringAppend(gStringVar1, ((const u8[])_(" ")));
-    switch(VarGet(VAR_RYU_GAME_MODE))
+    switch(VarGet(VAR_RYU_DIFFICULTY))
     {
-        case 0:
+        case DIFF_EASY:
             StringCopy(gRyuStringVar1, (const u8[])_(" / Easy"));
             break;
-        case 1:
+        case DIFF_NORMAL:
         {
             if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)
             {
@@ -608,13 +608,13 @@ void PrintStartMenuInfoData(void)
                 break;
             }
         }
-        case 2:
-            StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR LIGHT_RED}{SHADOW RED}Challenge"));
+        case DIFF_HARD:
+            StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR LIGHT_RED}{SHADOW RED}Hard"));
             break;
-        case 3:
+        case DIFF_HARDCORE:
             StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR LIGHT_RED}{SHADOW LIGHT_GREY}HARDCORE"));
             break;
-        case 4:
+        case DIFF_FRONTIER:
             StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier"));
             break;
     }

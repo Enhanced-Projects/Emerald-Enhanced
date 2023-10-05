@@ -682,12 +682,18 @@ void RyuSetMonMove(void)
     }
 }
 
-int RyuCalculateCurrentExpCoefficient(void)//uses the same formula as my exp multiplier. see `calculatedExp` in battle_script_commands.c
+const u8 gRyuDifficultyLevelStrings[5][9] = {
+    _("Easy"),
+    _("Normal"),
+    _("Hard"),
+    _("Hardcore"),
+    _("Frontier"),
+};
+
+int RyuBufferDifficultyValue(void)//for showing current difficulty
 {
-    u16 calc = 0;
-    u16 badges = (CountBadges());
-    calc = (1000 + (badges * 250));
-    return calc;
+    u16 diff = (VarGet(VAR_RYU_DIFFICULTY));
+    StringCopy(gStringVar1, gRyuDifficultyLevelStrings[diff]);
 }
 
 void RyuGenerateReward(void)//combines the return values from the passcode menu into one integer, 

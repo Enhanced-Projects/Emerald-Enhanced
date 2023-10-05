@@ -2562,22 +2562,23 @@ static void FillPartnerParty(u16 trainerId)
                 SetMonData(&gPlayerParty[i + 3], MON_DATA_MOVE4, &temp3);
                 SetMonData(&gPlayerParty[i + 3], MON_DATA_HELD_ITEM, &temp4);
                 SetMonData(&gPlayerParty[i + 3], MON_DATA_ABILITY_NUM, &temp5);
-                switch (VarGet(VAR_RYU_EXP_MULTIPLIER))
+                switch (VarGet(VAR_RYU_DIFFICULTY))
                 {
-                    case 1: //normal, first play
-                        setEv = 64;
+                    case DIFF_NORMAL:
+                        {
+                        if (FlagGet(FLAG_RYU_ISNGPLUS) == TRUE)
+                            setEv = 192;
+                        else
+                            setEv = 64;
                         break;
-                    case 10: //normal, ngp
-                        setEv = 192;
-                        break;
-                    case 4000:// easy
+                        }
+                    case DIFF_EASY:
                         setEv = 0;
                         break;
-                    case 2000: //challenge
+                    case DIFF_HARD:
                         setEv = 126;
                         break;
-                    case 8000: //godmode
-                    case 1000: //hardcore
+                    case DIFF_HARDCORE:
                         setEv = 255;
                         break;
                 }

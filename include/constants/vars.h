@@ -166,14 +166,14 @@
 #define VAR_MAUVILLE_GYM_STATE               0x4093
 #define VAR_LILYCOVE_MUSEUM_2F_STATE         0x4094
 #define VAR_LILYCOVE_FAN_CLUB_STATE          0x4095
-#define VAR_RYU_GAME_MODE                    0x4096
+#define VAR_RYU_DEV_EXP_MULT                 0x4096
 #define VAR_INIT_SECRET_BASE                 0x4097
 #define VAR_PETALBURG_WOODS_STATE            0x4098
 #define VAR_LILYCOVE_CONTEST_LOBBY_STATE     0x4099
 #define VAR_RUSTURF_TUNNEL_STATE             0x409A
 #define VAR_RYU_PC_USES                      0x409B
 #define VAR_ELITE_4_STATE                    0x409C
-#define VAR_RYU_EXP_MULTIPLIER               0x409D
+#define VAR_RYU_DIFFICULTY                   0x409D
 #define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE    0x409E
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE      0x409F
 #define VAR_SLATEPORT_HARBOR_STATE           0x40A0

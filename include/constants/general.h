@@ -567,6 +567,13 @@
 #define NAVCALL_AQUASTAGE91 11
 #define NAVCALL_AQUASTAGE123 12
 
+//difficulty setting
+#define DIFF_EASY 0
+#define DIFF_NORMAL 1
+#define DIFF_HARD 2
+#define DIFF_HARDCORE 3
+#define DIFF_FRONTIER 10
+
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
 

@@ -109,7 +109,6 @@ AltHallofFame::
 
 EverGrandeCity_HallOfFame_EventScript_GameClearMale:: @ 82298E9
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
-	call_if_set FLAG_RYU_CHALLENGEMODE, EGC_NLGameClear
 	call_if_set FLAG_RYU_HARDCORE_MODE, EGC_HCGameClear
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
@@ -122,7 +121,6 @@ EverGrandeCity_HallOfFame_EventScript_GameClearMale:: @ 82298E9
 
 EverGrandeCity_HallOfFame_EventScript_GameClearFemale:: @ 82298F5
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
-	call_if_set FLAG_RYU_CHALLENGEMODE, EGC_NLGameClear
 	call_if_set FLAG_RYU_HARDCORE_MODE, EGC_HCGameClear
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
@@ -132,18 +130,9 @@ EverGrandeCity_HallOfFame_EventScript_GameClearFemale:: @ 82298F5
 	releaseall
 	end
 
-EGC_NLGameClear::
-	clearflag FLAG_RYU_CHALLENGEMODE
-	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
-	setvar VAR_RYU_EXP_MULTIPLIER, 2000
-	msgbox RyuGameClearedMsg MSGBOX_DEFAULT
-	closemessage
-	return
-
 EGC_HCGameClear::
 	clearflag FLAG_RYU_HARDCORE_MODE
-	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
-	setvar VAR_RYU_EXP_MULTIPLIER, 2000
+	setvar VAR_RYU_DIFFICULTY, DIFF_NORMAL
 	goto_if_set FLAG_RYU_DEV_MODE, EGC_HCGameClearDev
 	msgbox RyuGameClearedHCMessage
 	return

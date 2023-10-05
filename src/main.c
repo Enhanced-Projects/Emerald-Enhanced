@@ -497,7 +497,7 @@ void RtcCheckCallback(void)
         gSaveBlock2Ptr->SaveStateLastDetection = rtcSec;
     }
     //remove punishment after an hour if the user is in hardcore/challenge mode.
-    if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000))
+    if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (gSaveBlock2Ptr->SaveStateLastDetection + 3600 < rtcSec) && (VarGet(VAR_RYU_DIFFICULTY) == 2000))
     {
         FlagClear(FLAG_RYU_SAVE_STATE_DETECTED);
         gSaveBlock2Ptr->notifiedSaveState = TRUE;

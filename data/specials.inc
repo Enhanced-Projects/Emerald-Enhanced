@@ -510,7 +510,7 @@ gSpecials:: @ 81DBA64
 	def_special RyuSetMonMove
 	def_special RyuIvSetter
 	def_special RyuSetFriendship
-	def_special RyuCalculateCurrentExpCoefficient
+	def_special RyuBufferDifficultyValue
 	def_special RyuGenerateReward
 	def_special RyuGiveKoutaMawile
 	def_special RyuWarp

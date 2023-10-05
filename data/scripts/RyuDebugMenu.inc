@@ -1039,99 +1039,55 @@ RyuSetFriendshipMsg:
 	.string "Lead mon loves you now.$"
 	
 RyuSetExpMultMenu::
-	compare VAR_RYU_EXP_MULTIPLIER, 1
-	goto_if_eq RyuSetExpMultMenu2
-	buffernumberstring 0, VAR_RYU_EXP_MULTIPLIER
+	special RyuBufferDifficultyValue
 	msgbox RyuCurrentExpMult MSGBOX_DEFAULT
-	multichoicedefault 5, 0, 124, 0, 0
-	switch VAR_RESULT
-	case 0, RyuSetExpMult1
-	case 1, RyuSetExpMultAuto
-	case 2, RyuSetExpMult2
-	case 3, RyuSetExpMult4
-	case 4, RyuSetExpMult8
-	case 5, RyuExitExpMult
-	goto RyuExitExpMult
+	bufferdynamicmulti RDIFF1, RDIFF2, RDIFF3, RDIFF4, RDIFF5
+	multichoicedefault 5, 0, MULTI_DYNAMIC_5, 0, 0
+	compare VAR_RESULT, 4
+	goto_if_eq RyuChangeExpMult
+	copyvar VAR_RYU_DIFFICULTY, VAR_RESULT
+	goto RyuDebug_UtilitiesMenu
 
-RyuSetExpMultMenu2::
-	waitse
-	specialvar VAR_RESULT, RyuCalculateCurrentExpCoefficient
-	buffernumberstring 0, VAR_RESULT
-	buffernumberstring 1, VAR_RYU_EXP_MULTIPLIER
-	msgbox RyuCurrentExpMult MSGBOX_DEFAULT
-	multichoicedefault 5, 0, 124, 0, 0
-	switch VAR_RESULT
-	case 0, RyuSetExpMult1
-	case 1, RyuSetExpMultAuto
-	case 2, RyuSetExpMult2
-	case 3, RyuSetExpMult4
-	case 4, RyuSetExpMult8
-	case 5, RyuExitExpMult
-	goto RyuExitExpMult
+RDIFF1:
+	.string "Easy$"
+
+RDIFF2:
+	.string "Normal$"
+
+RDIFF3:
+	.string "Hard$"
+
+RDIFF4:
+	.string "HARDCORE$"
+
+RDIFF5:
+	.string "Only Change Exp Multiplier$"
+
+RyuChangeExpMult::
+	msgbox RDIFF_ChangeExpInfo
+	numberentry 0, 10, 1
+	copyvar VAR_RYU_DEV_EXP_MULT, VAR_RESULT
+	buffernumberstring 0, VAR_RYU_DEV_EXP_MULT
+	msgbox RDB_ExpSetTo
+	closemessage
+	goto RyuDebug_UtilitiesMenu
+
+RDB_ExpSetTo:
+	.string "Your exp multiplier was set to {STR_VAR_1}.$"
+
+RDIFF_ChangeExpInfo:
+	.string "Choose a new value for your\nEXP multiplier.$"
 
 RyuExitExpMult::
 	msgbox ExpMultNoChange
 	goto RyuDebug_UtilitiesMenu
 
 ExpMultNoChange:
-	.string "Exp mult not changed.$"
+	.string "Difficulty not changed.$"
 
 RyuCurrentExpMult:
-	.string "The coefficient is currently {STR_VAR_1}.\n"
-	.string "The base multiplier is {STR_VAR_2}.$"
-	
-RyuSetExpMult1::@@exp is vanilla
-	setvar VAR_RYU_EXP_MULTIPLIER, 1000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
-	msgbox ExpMult1 MSGBOX_DEFAULT
-	closemessage
-	goto RyuDebugMenuScript
-	
-ExpMult1:
-	.string "Exp Multiplier is now default.\n"
-	.string "You gain exp at vanilla rate.$"
-	
-RyuSetExpMultAuto::@@exp is increased by 12.5% per gym badge
-	msgbox ExpMultAuto MSGBOX_DEFAULT
-	setvar VAR_RYU_EXP_MULTIPLIER, 1
-	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
-	closemessage
-	goto RyuDebug_UtilitiesMenu
-	
-ExpMultAuto:
-	.string "Exp Multiplier is now Auto.\n"
-	.string "You will gain additional exp per badge.$"
-	
-RyuSetExpMult2::@@exp is multiplied by 2
-	setvar VAR_RYU_EXP_MULTIPLIER, 2000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 750
-	msgbox ExpMult2 MSGBOX_DEFAULT
-	closemessage
-	goto RyuDebug_UtilitiesMenu
-	
-ExpMult2:
-	.string "Exp Multiplier is now 2.0x.$"
-	
-RyuSetExpMult4::@@exp is multiplied by 4
-	setvar VAR_RYU_EXP_MULTIPLIER, 4000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 500
-	msgbox ExpMult4 MSGBOX_DEFAULT
-	closemessage
-	goto RyuDebug_UtilitiesMenu
-	
-ExpMult4:
-	.string "Exp Multiplier is now 4.0x.$"
-	
-RyuSetExpMult8::@@exp is multiplied by 8
-	setvar VAR_RYU_EXP_MULTIPLIER, 8000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 250
-	msgbox ExpMult8 MSGBOX_DEFAULT
-	closemessage
-	goto RyuDebug_UtilitiesMenu
-	
-ExpMult8:
-	.string "Exp Multiplier is now 8.0x.$"
-	
+	.string "The current difficulty is {COLOR LIGHT_RED}{SHADOW RED}{STR_VAR_1}$"
+
 RyuDebug_SpawningMenu::
 	bufferdynamicmulti RDBSP_1, RDBSP_2, RDBSP_3, RDBSP_4, RDBSP_5, RDBSP_6
 	multichoice 0, 0, MULTI_DYNAMIC_6, 1
