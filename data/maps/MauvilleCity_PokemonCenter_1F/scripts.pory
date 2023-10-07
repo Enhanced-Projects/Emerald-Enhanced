@@ -11,7 +11,6 @@ MCPC_GenesectEvent::
 	.2byte 0
 
 MauvilleCity_PokemonCenter_1F_OnTransition: @ 8210E66
-	setrespawn HEAL_LOCATION_MAUVILLE_CITY
 	call ryu_return
 	goto MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx
 	end

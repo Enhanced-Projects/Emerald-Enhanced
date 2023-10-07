@@ -27,7 +27,6 @@ EGC_Delay::
 	return
 
 EverGrandeCity_PokemonLeague_1F_OnTransition: @ 82295DD
-	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY
 	setflag FLAG_LANDMARK_POKEMON_LEAGUE
 	call_if_unset FLAG_ENTERED_ELITE_FOUR, EverGrandeCity_PokemonLeague_1F_EventScript_GuardsBlockDoor
 	end

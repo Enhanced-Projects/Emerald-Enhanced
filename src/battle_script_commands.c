@@ -4173,7 +4173,9 @@ static void Cmd_getexp(void)
                 if ((GetNature(&gPlayerParty[gBattleStruct->expGetterMonId])) == gRyuNeutralNatures[i])
                     calculatedExp = ((calculatedExp * 110) / 100);
 
-            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE) || (VarGet(VAR_RYU_DEV_EXP_MULT) == 0))
+            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || //player disabled exp via the exp drive
+                (RyuCheckIfPlayerDisabledTCExp() == TRUE) || //player disabled exp gain in training center
+                ((VarGet(VAR_RYU_DEV_EXP_MULT) == 0) && (FlagGet(FLAG_RYU_DEV_MODE) == TRUE)))//if dev mode exp mult is enabled and set to 0
             {
                 *exp = 1;
                 calculatedExp = 1;

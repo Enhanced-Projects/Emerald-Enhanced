@@ -4,7 +4,6 @@ SnowyShore_Mart_MapScripts::
 	.byte 0
 
 SnowyShore_Mart_OnTransition:
-	setrespawn HEAL_LOCATION_SNOWY_SHORE
 	end
 
 SnowyShore_Mart_EventScript_Nurse::

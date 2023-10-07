@@ -398,10 +398,7 @@ void SetWarpDestinationToHome(void)
     }
     else
     {
-        if (gSaveBlock2Ptr->playerGender == 0)
-            SetWarpDestination(1, 1, 255, 4, 4);
-        else
-            SetWarpDestination(1, 3, 255, 4, 4);
+        SetWarpDestinationToLastHealLocation();
     }
     
 }
