@@ -77,7 +77,6 @@ FT_NoInteract:
 	end
 	
 FT_CozmoNextMission::
-	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	closemessage
 	msgbox FT_wait MSGBOX_DEFAULT

@@ -239,6 +239,8 @@ LilycoveCity_DepartmentStoreRooftop_Text_DecidedAgainstBuyingDrink: @ 8220603
 LCC_LeafSetup::
 	goto_if_set FLAG_RYU_LEAF_LCC_EVENT_DONE, ryu_end
 	goto_if_unset FLAG_RYU_LEAF_MTPYRE, ryu_end
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_COURTNEY
+	goto_if_eq ryu_end
 	lock
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
@@ -249,6 +251,8 @@ LCC_LeafSetup::
 LCC_LeafEvent::
 	goto_if_set FLAG_RYU_LEAF_LCC_EVENT_DONE, ryu_end
 	goto_if_unset FLAG_RYU_LEAF_MTPYRE, ryu_end
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_COURTNEY
+	goto_if_eq ryu_end
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	lock
 	special SpawnCameraObject

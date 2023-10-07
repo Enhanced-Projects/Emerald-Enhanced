@@ -261,6 +261,9 @@ script LRT_MayEvent {
 		goto(ryu_end)
 	}
 	lock
+	if (var(VAR_RYU_FOLLOWER_ID) == FOLLOWER_COURTNEY){
+		goto(ryu_end)
+	}
 	call_if_set(FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest)
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Hi!, I'm May.\nThe professor here signed\lpapers to adopt me, but, uh,\pI forgot where his house is.\nCan you show me?")
 	bufferdynamicmulti(LRT_DNM1, LRT_DNM2)
