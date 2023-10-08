@@ -6231,6 +6231,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_DRACO_METEOR)
 											| TUTOR(MOVE_OUTRAGE)
+											| TUTOR(MOVE_SHADOW_SLAM)
 											| TUTOR(MOVE_CUT)),
 
     [SPECIES_NECROZMA]      = TUTOR_LEARNSET(TUTOR(MOVE_RECYCLE)
