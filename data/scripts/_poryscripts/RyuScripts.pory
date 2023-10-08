@@ -1144,10 +1144,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	setflag(FLAG_RYU_CHILL_DRIVE_EVENT)
-	setflag(FLAG_RYU_SHOCK_DRIVE_EVENT)
-	setflag(FLAG_RYU_DOUSE_DRIVE_EVENT)
-	setflag(FLAG_RYU_BURN_DRIVE_EVENT)
     release
     end
 }
