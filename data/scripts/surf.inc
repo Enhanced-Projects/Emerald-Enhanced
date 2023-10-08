@@ -1,6 +1,6 @@
 EventScript_UseSurf:: @ 8271EA0
 	lockall
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, ES_SurfHasFollower
+	@goto_if_set FLAG_RYU_HAS_FOLLOWER, ES_SurfHasFollower
 	msgbox gText_WantToUseSurf, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq EventScript_ReleaseUseSurf

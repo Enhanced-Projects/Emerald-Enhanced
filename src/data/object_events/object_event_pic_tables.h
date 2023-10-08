@@ -1537,6 +1537,15 @@ const struct SpriteFrameImage gObjectEventPicTable_Shelly[] = {
     overworld_frame(gObjectEventPic_Shelly, 2, 4, 6),
     overworld_frame(gObjectEventPic_Shelly, 2, 4, 7),
     overworld_frame(gObjectEventPic_Shelly, 2, 4, 8),
+    overworld_frame(gObjectEventPic_Shelly, 2, 4, 9),
+    overworld_frame(gObjectEventPic_Shelly, 2, 4, 10),
+    overworld_frame(gObjectEventPic_Shelly, 2, 4, 11),
+    overworld_frame(gObjectEventPic_Shelly, 2, 4, 12),
+    overworld_frame(gObjectEventPic_Shelly, 2, 4, 13),
+    overworld_frame(gObjectEventPic_Shelly, 2, 4, 14),
+    overworld_frame(gObjectEventPic_Shelly, 2, 4, 15),
+    overworld_frame(gObjectEventPic_Shelly, 2, 4, 16),
+    overworld_frame(gObjectEventPic_Shelly, 2, 4, 17),
 };
 
 const struct SpriteFrameImage gObjectEventPicTable_Minnie[] = {

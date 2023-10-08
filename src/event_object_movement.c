@@ -4457,9 +4457,39 @@ bool8 MovementType_FollowPlayer_Step0(struct ObjectEvent *objectEvent, struct Sp
     ClearObjectEventMovement(objectEvent, sprite);
     if (objectEvent->directionSequenceIndex == 0)
         objectEvent->directionSequenceIndex = GetPlayerFacingDirection();
-
     sprite->data[1] = 1;
     return TRUE;
+}
+
+static void ObjectEventSetGraphicsIDFollowSurf(struct ObjectEvent *objectEvent, u16 graphicsId)
+{
+    const struct ObjectEventGraphicsInfo *graphicsInfo;
+    struct Sprite *sprite;
+
+    graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
+    sprite = &gSprites[objectEvent->spriteId];
+    if (graphicsInfo->paletteTag1 != 0xFFFF)
+    {
+        LoadObjectEventPalette(graphicsInfo->paletteTag1);
+        UpdatePaletteGammaType(IndexOfSpritePaletteTag(graphicsInfo->paletteTag1), GAMMA_ALT);
+    }
+    sprite->oam.shape = graphicsInfo->oam->shape;
+    sprite->oam.size = graphicsInfo->oam->size;
+    sprite->images = graphicsInfo->images+9;
+    sprite->anims = graphicsInfo->anims;
+    sprite->subspriteTables = graphicsInfo->subspriteTables;
+    sprite->oam.paletteNum = IndexOfSpritePaletteTag(graphicsInfo->paletteTag1);
+    objectEvent->inanimate = graphicsInfo->inanimate;
+    objectEvent->graphicsId = graphicsId;
+    SetSpritePosToMapCoords(objectEvent->currentCoords.x, objectEvent->currentCoords.y, &sprite->pos1.x, &sprite->pos1.y);
+    sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
+    sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+    sprite->pos1.x += 8;
+    sprite->pos1.y += 16 + sprite->centerToCornerVecY;
+    if (objectEvent->trackedByCamera)
+    {
+        CameraObjectReset1();
+    }
 }
 
 bool8 MovementType_FollowPlayer_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
@@ -4469,6 +4499,14 @@ bool8 MovementType_FollowPlayer_Step1(struct ObjectEvent *objectEvent, struct Sp
 
     if (gObjectEvents[gPlayerAvatar.objectEventId].movementActionId == 0xFF)
         return FALSE;
+
+    if(objectEvent->frozen)
+        return FALSE;
+    
+    if(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+        ObjectEventSetGraphicsIDFollowSurf(objectEvent, objectEvent->graphicsId);
+    else
+        ObjectEventSetGraphicsId(objectEvent, objectEvent->graphicsId);
 
     repeats = GET_FOLLOWUP_REPEATS(sprite);
     if (repeats > 0)
