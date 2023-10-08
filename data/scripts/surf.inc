@@ -1,5 +1,6 @@
 EventScript_UseSurf:: @ 8271EA0
 	lockall
+	call RyuCheckEligibleSwimFollower
 	msgbox gText_WantToUseSurf, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq EventScript_ReleaseUseSurf

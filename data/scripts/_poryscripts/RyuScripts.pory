@@ -1912,3 +1912,32 @@ script RyuScript_StartGenesectQuest { //determine where lanette is for the prope
 	}
 	return
 }
+
+script RyuCheckEligibleSwimFollower {
+	if (var(VAR_RYU_POKEFANS_OBJID) != 0){
+		msgbox("You cannot swim with this follower.\pEscort them to the correct location\nfirst.")
+		goto(ryu_end)
+	}
+	if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_HEX_MANIAC){
+		playse(SE_PIN)
+		applymovement(FOLLOWER, Common_Movement_ExclamationMark)
+		waitse
+		msgbox("Hisss!\nWater is too open\pWe can't go!")
+		goto(ryu_end)
+	}
+	if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LASS){
+		playse(SE_PIN)
+		applymovement(FOLLOWER, Common_Movement_ExclamationMark)
+		waitse
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}Uh... I don't know how to swim.\nWe haven't learned how to do that\lyet.")
+		goto(ryu_end)
+	}
+	if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAGMA_MEMBER_M){
+		playse(SE_PIN)
+		applymovement(FOLLOWER, Common_Movement_ExclamationMark)
+		waitse
+		msgbox("Are you crazy?\pTeam Magma does NOT like water.")
+		goto(ryu_end)
+	}
+	return
+}
