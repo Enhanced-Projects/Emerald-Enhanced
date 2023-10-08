@@ -626,9 +626,6 @@ void PrintStartMenuInfoData(void)
     ConvertIntToDecimalStringN(gStringVar4, VarGet(VAR_LAST_KNOWN_GAME_VERSION), STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gRyuStringVar1, gStringVar4);
     StringAppend(gStringVar1, gRyuStringVar1);
-    //REMOVE FOR FULL RELEASE OF 10.0
-    StringAppend(gStringVar1, ((const u8[])_("{COLOR LIGHT_RED}{SHADOW RED}Pre2")));
-    //END REMOVE
     //print local time
     RtcCalcLocalTime();
     StringCopy(gStringVar2, gText_HighlightTransparent);
