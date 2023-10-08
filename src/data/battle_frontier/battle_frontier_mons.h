@@ -1305,14 +1305,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_PRIMEAPE_1] = { // Primeape-Band (ID: 145)
+    [FRONTIER_MON_PRIMEAPE_1] = { // Primeape-ScarfEclipse (ID: 145)
         .species = SPECIES_PRIMEAPE,
-        .moves = {MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_ROCK_SLIDE, MOVE_GUNK_SHOT},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_CLOSE_COMBAT, MOVE_SHADOW_SLAM, MOVE_ROCK_SLIDE, MOVE_U_TURN},
+        .heldItem = ITEM_CHOICE_SCARF,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_HITMONLEE_1] = { // Hitmonlee-WhiteHerb (ID: 146)
         .species = SPECIES_HITMONLEE,
@@ -2187,14 +2187,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PRIMEAPE_2] = { // Primeape-Scarf (ID: 243)
+    [FRONTIER_MON_PRIMEAPE_2] = { // Primeape-BandEclipse (ID: 243)
         .species = SPECIES_PRIMEAPE,
-        .moves = {MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_ROCK_SLIDE, MOVE_GUNK_SHOT},
-        .heldItem = ITEM_CHOICE_SCARF,
+        .moves = {MOVE_CLOSE_COMBAT, MOVE_SHADOW_SLAM, MOVE_ROCK_SLIDE, MOVE_U_TURN},
+        .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_HITMONLEE_2] = { // Hitmonlee-LifeOrb (ID: 244)
         .species = SPECIES_HITMONLEE,

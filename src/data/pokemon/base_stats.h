@@ -1434,10 +1434,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_MANKEY] =
     {
-        .baseHP        = 40,
-        .baseAttack    = 80,
+        .baseHP        = 50,
+        .baseAttack    = 95,
         .baseDefense   = 35,
-        .baseSpeed     = 70,
+        .baseSpeed     = 76,
         .baseSpAttack  = 35,
         .baseSpDefense = 45,
         .type1 = TYPE_FIGHTING,
@@ -1451,7 +1451,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_VITAL_SPIRIT, ABILITY_ANGER_POINT},
+        .abilities = {ABILITY_LUNATIC, ABILITY_ANGER_POINT},
         .abilityHidden = ABILITY_DEFIANT,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BROWN,
@@ -1459,10 +1459,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_PRIMEAPE] =
     {
-        .baseHP        = 65,
-        .baseAttack    = 105,
+        .baseHP        = 85,
+        .baseAttack    = 120,
         .baseDefense   = 60,
-        .baseSpeed     = 95,
+        .baseSpeed     = 106,
         .baseSpAttack  = 60,
         .baseSpDefense = 70,
         .type1 = TYPE_FIGHTING,
@@ -1476,7 +1476,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_VITAL_SPIRIT, ABILITY_ANGER_POINT},
+        .abilities = {ABILITY_LUNATIC, ABILITY_ANGER_POINT},
         .abilityHidden = ABILITY_DEFIANT,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BROWN,
