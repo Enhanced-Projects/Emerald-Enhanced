@@ -4338,14 +4338,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_DECIDUEYE_1] = { // Decidueye-NP (ID: 380)
+    [FRONTIER_MON_DECIDUEYE_1] = { // Decidueye-Bulky (ID: 380)
         .species = SPECIES_DECIDUEYE,
-        .moves = {MOVE_SHADOW_BALL, MOVE_GIGA_DRAIN, MOVE_NASTY_PLOT, MOVE_ROOST},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_REAPING_BLOW, MOVE_LEAF_BLADE, MOVE_SHADOW_SNEAK, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 0
+        .ability = 2
     },
     [FRONTIER_MON_INFERNAPE_1] = { // Infernape-NP (ID: 483)
         .species = SPECIES_INFERNAPE,
@@ -6174,12 +6174,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 30,
         .ability = 1
     },
-    [FRONTIER_MON_DECIDUEYE_2] = { // Decidueye-Sniper (ID: 584)
+    [FRONTIER_MON_DECIDUEYE_2] = { // Decidueye-Eclipse (ID: 584)
         .species = SPECIES_DECIDUEYE,
-        .moves = {MOVE_LEAF_BLADE, MOVE_SPIRIT_SHACKLE, MOVE_SHADOW_SNEAK, MOVE_FOCUS_ENERGY},
-        .heldItem = ITEM_SCOPE_LENS,
+        .moves = {MOVE_SHADOW_SLAM, MOVE_LEAF_BLADE, MOVE_SWORDS_DANCE, MOVE_ECLIPSE},
+        .heldItem = ITEM_SPELL_TAG,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
