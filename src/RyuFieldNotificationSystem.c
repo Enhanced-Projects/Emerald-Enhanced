@@ -343,7 +343,7 @@ void RyuDoNotifyTasks(void)
     {
         if (FlagGet(FLAG_RYU_LIMBO) == FALSE)
         {
-            if ((FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
+            if (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE)
                 {
                     SchedulePokenavCallInternal(NAVCALL_DUSKULLAFTERLIFE, 0);
                     SetWarpDestination(MAP_GROUP(LIMBO), MAP_NUM(LIMBO), 255, 3, 3);

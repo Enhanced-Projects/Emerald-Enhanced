@@ -5,7 +5,6 @@ LavaridgeTown_PokemonCenter_1F_MapScripts:: @ 81FFAFA
 	.byte 0
 
 LavaridgeTown_PokemonCenter_1F_OnTransition: @ 81FFB05
-	setrespawn HEAL_LOCATION_LAVARIDGE_TOWN
 	call ryu_return
 	end
 

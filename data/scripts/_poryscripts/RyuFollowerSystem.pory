@@ -3,9 +3,19 @@ raw `
 RyuCancelFollowerForQuest::  @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	msgbox RyuCantHaveFollower MSGBOX_YESNO
 	compare VAR_RESULT, 1
-	call_if_eq RF_FollowerLeaveCall
+	call_if_eq checkNonDismissible
 	release
 	end
+
+checkNonDismissible::
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_COURTNEY
+	goto_if_ne RF_FollowerLeaveCall
+	msgbox ThisFollowerCantBeDismissed
+	release
+	end
+
+ThisFollowerCantBeDismissed::
+	.string "You cannot dismiss this follower\nin this way.\pReturn Courtney to her bedroom\nto dismiss her.$"
 
 RyuResetFollowerPosition::
 	end
@@ -576,6 +586,7 @@ RF_FinishNurseQuest4:: @Will take player to lilycove city as that is Hoenn's cap
 
 RF_PlayerDeclinedNurseQuest1::
 	setvar VAR_RYU_QUEST_NURSE, 11 @@ends the nurse quest. No partner.
+	clearflag FLAG_RYU_HIDE_JOY
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox RF_NurseQuestCancelledText
 	closemessage

@@ -5,7 +5,6 @@ EverGrandeCity_PokemonCenter_1F_MapScripts:: @ 8229A34
 	.byte 0
 
 EverGrandeCity_PokemonCenter_1F_OnTransition: @ 8229A3F
-	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY
 	end
 
 @ VAR_0x800B is the Nurse's object event id

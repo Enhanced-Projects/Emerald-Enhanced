@@ -115,6 +115,8 @@ AT_LanaEvent2::
 	addobject 4
 	addobject 2
 	lock
+	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_COURTNEY
+	goto_if_eq ryu_end
 	setvar VAR_RYU_QUEST_LEAF, 83
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	applymovement PLAYER, AT_SV_PlayerEntry
@@ -191,7 +193,6 @@ AT_LanaEvent3::
 AT_SV_Battle::
 	setflag FLAG_HIDE_AT1_LEAF
 	removeobject 2
-	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	createfollower FOLLOWER_LEAF, RyuFollowerSelectNPCScript, DIR_WEST
 	setvar VAR_RYU_QUEST_LEAF, 86
 	savebgm MUS_RG_NANADUNGEON

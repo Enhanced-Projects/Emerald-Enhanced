@@ -1861,7 +1861,7 @@ static void Cmd_critcalc(void)
         gIsCriticalHit = TRUE;
 #ifdef RYU_PUNISH_SAVE_STATE
     else if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && 
-            ((FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) || (FlagGet(FLAG_RYU_CHALLENGEMODE) == TRUE)) && 
+            (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE) && 
              (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))
         gIsCriticalHit = TRUE;//opponents always crit if save state detected.
 #endif
@@ -4081,17 +4081,36 @@ static void Cmd_getexp(void)
     u16 item;
     s32 i; // also used as stringId
     u8 holdEffect;
-    u32 multiplier = (VarGet(VAR_RYU_EXP_MULTIPLIER));
+    u32 multiplier = (VarGet(VAR_RYU_DIFFICULTY));
     s32 sentIn;
     s32 viaExpShare = 0;
     u32 *exp = &gBattleStruct->expValue;
     u32 RyuExpBatteryTemp = 0;
 
-    if (VarGet(VAR_RYU_EXP_MULTIPLIER) == 1) //If no multiplier is present, You get 25% exp per badge you own
-        multiplier = 1000 + (CountBadges() * 250);
+    switch (VarGet(VAR_RYU_DIFFICULTY))
+    {
+        case DIFF_NORMAL: //If no multiplier is present, You get 25%/12.5% exp per badge you own
+        {
+            if (FlagGet(FLAG_RYU_ISNGPLUS) == TRUE)
+                multiplier = 1000 + (CountBadges() * 125);
+            else
+                multiplier = 1000 + (CountBadges() * 250);
+            break;
+        }
+        case DIFF_EASY://flat 4x
+            multiplier = 4000;
+            break;
+        case DIFF_HARD: //flat 90%
+            multiplier = 900;
+            break;
+        case DIFF_HARDCORE: //flat 2x
+            multiplier = 2000;
+            break;
+    }
 
-    if (VarGet(VAR_RYU_EXP_MULTIPLIER) == 10) //If new game plus, the autoscaled exp is slightly less.
-        multiplier = 1000 + (CountBadges() * 125);
+    if (FlagGet(FLAG_RYU_DEV_MODE) == TRUE)
+        multiplier = (VarGet(VAR_RYU_DEV_EXP_MULT) * 1000);
+
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
     sentIn = gSentPokesToOpponent[(gBattlerFainted & 2) >> 1];
@@ -4154,7 +4173,9 @@ static void Cmd_getexp(void)
                 if ((GetNature(&gPlayerParty[gBattleStruct->expGetterMonId])) == gRyuNeutralNatures[i])
                     calculatedExp = ((calculatedExp * 110) / 100);
 
-            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
+            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || //player disabled exp via the exp drive
+                (RyuCheckIfPlayerDisabledTCExp() == TRUE) || //player disabled exp gain in training center
+                ((VarGet(VAR_RYU_DEV_EXP_MULT) == 0) && (FlagGet(FLAG_RYU_DEV_MODE) == TRUE)))//if dev mode exp mult is enabled and set to 0
             {
                 *exp = 1;
                 calculatedExp = 1;
@@ -6678,7 +6699,7 @@ static void Cmd_hitanimation(void)
 static void Cmd_getmoneyreward(void)
 {
     u32 moneyReward = (VarGet(VAR_RYU_MONEY_BASE_VALUE));
-    u32 MultMoney = VarGet(VAR_RYU_EXP_MULTIPLIER);
+    u32 MultMoney = VarGet(VAR_RYU_DIFFICULTY);
     u32 badges = (CountBadges());
     u32 coefficient = (VarGet(VAR_RYU_MONEY_BASE_COEFFICIENT));
     u32 randomBase = (VarGet(VAR_RYU_MONEY_BASE_RANDOM_COMPONENT));
@@ -12596,7 +12617,7 @@ static void Cmd_handleballthrow(void)
         if (CheckAPFlag(AP_CAPTURE_BOOST) == TRUE)
             odds = ((odds * 105) /100);
 #ifdef RYU_PUNISH_SAVE_STATE
-        if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (VarGet(VAR_RYU_EXP_MULTIPLIER) == 2000))
+        if ((FlagGet(FLAG_RYU_SAVE_STATE_DETECTED) == TRUE) && (VarGet(VAR_RYU_DIFFICULTY) == 2000))
             odds = ((odds * 50) / 100); //reduces capture rate by half if save states are detected.
 #endif
 

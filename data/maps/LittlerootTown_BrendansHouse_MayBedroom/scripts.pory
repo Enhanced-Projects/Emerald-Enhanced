@@ -222,6 +222,18 @@ script LRT_May_nightTime {
         }
         else {
             clearfullscreenimage
+            if (flag(FLAG_RYU_MAY_DAILY_REWARD) == FALSE) {
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh, I see. Well, let me check\nif I have a berry for you...\p . . .")
+                callnative(RyuGetMayDailyReward)
+                additem(VAR_0x8004, VAR_0x8005)
+                bufferitemnameplural(0, VAR_0x8004, VAR_0x8005)
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}Aha! here we go!\pSome {STR_VAR_1} for you!")
+                closemessage
+                msgbox("{COLOR LIGHT_RED}{SHADOW RED}You can come over to hang\nout for a night, you know.")
+                clearfullscreenimage
+                release
+                end
+            }
             msgbox("{COLOR LIGHT_RED}{SHADOW RED}Oh... okay, then...\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (She looks disappointed...)")
             closemessage
             release

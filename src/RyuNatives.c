@@ -682,12 +682,18 @@ void RyuSetMonMove(void)
     }
 }
 
-int RyuCalculateCurrentExpCoefficient(void)//uses the same formula as my exp multiplier. see `calculatedExp` in battle_script_commands.c
+const u8 gRyuDifficultyLevelStrings[5][9] = {
+    _("Easy"),
+    _("Normal"),
+    _("Hard"),
+    _("Hardcore"),
+    _("Frontier"),
+};
+
+int RyuBufferDifficultyValue(void)//for showing current difficulty
 {
-    u16 calc = 0;
-    u16 badges = (CountBadges());
-    calc = (1000 + (badges * 250));
-    return calc;
+    u16 diff = (VarGet(VAR_RYU_DIFFICULTY));
+    StringCopy(gStringVar1, gRyuDifficultyLevelStrings[diff]);
 }
 
 void RyuGenerateReward(void)//combines the return values from the passcode menu into one integer, 
@@ -2768,7 +2774,7 @@ void RyuBetaMenuDynamicInfoBox(void)
     StringCopy(gStringVar1, (const u8[])_("The last known version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));
     StringAppend(gStringVar1, buffer1);
     //REMOVE ON FULL RELEASE
-    StringAppend(gStringVar1, ((const u8[])_("Pre")));
+    StringAppend(gStringVar1, ((const u8[])_("Pre2")));
     //END REMOVE
     ConvertIntToDecimalStringN(buffer1, (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION)), STR_CONV_MODE_LEFT_ALIGN, 5);
     StringCopy(gStringVar2, (const u8[])_("Save created on version: {COLOR LIGHT_GREEN}{SHADOW GREEN}"));

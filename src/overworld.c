@@ -93,7 +93,6 @@
 #define FACING_FORCED_LEFT 9
 #define FACING_FORCED_RIGHT 10
 
-extern const u8 RyuFailedChallenge[];
 extern const u8 gRyuWarpMaleHomeScript[];
 extern const u8 gRyuWarpFemaleHomeScript[];
 
@@ -399,10 +398,7 @@ void SetWarpDestinationToHome(void)
     }
     else
     {
-        if (gSaveBlock2Ptr->playerGender == 0)
-            SetWarpDestination(1, 1, 255, 4, 4);
-        else
-            SetWarpDestination(1, 3, 255, 4, 4);
+        SetWarpDestinationToLastHealLocation();
     }
     
 }
@@ -433,9 +429,6 @@ void DoWhiteOut(void)
         FlagClear(FLAG_RYU_RANDOMBATTLE);
         DoSoftReset();
     }
-
-    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
-        RyuWipeParty();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuWipeParty();
@@ -483,9 +476,6 @@ void DoPartnerWhiteOut(void)
         FlagClear(FLAG_RYU_RANDOMBATTLE);
         DoSoftReset();
     }
-
-    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
-        RyuWipeParty();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuWipeParty();
@@ -1706,6 +1696,9 @@ void CB2_NewGame(void)
         if (hasRealEstate == TRUE)
             gSaveBlock2Ptr->playerIsRealtor = 1;
 
+        if (hasSuperTraining == TRUE)
+            FlagSet(FLAG_RYU_HAS_SUPER_TRAINING);
+
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);
         FlagSet(FLAG_RYU_ISNGPLUS);
@@ -1812,9 +1805,6 @@ void CB2_ReturnToFieldLocal(void)
         SetFieldVBlankCallback();
         SetMainCallback2(CB2_Overworld);
     }
-
-    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
-        RyuKillMon();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
@@ -2154,9 +2144,6 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
 
 static bool32 ReturnToFieldLocal(u8 *state)
 {
-    if (FlagGet(FLAG_RYU_CHALLENGEMODE) == 1)
-        RyuKillMon();
-
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
 

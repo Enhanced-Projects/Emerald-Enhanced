@@ -543,7 +543,7 @@
 #define FOLLOWER_COURTNEY 240 //
 #define FOLLOWER_JOY 58//
 #define FOLLOWER_DAWN 105 //
-#define FOLLOWER_BRENDAN 100 //
+#define FOLLOWER_BRENDAN 235 //
 #define FOLLOWER_LANETTE 243 //
 #define FOLLOWER_LEAF 231 //
 #define FOLLOWER_MAY 236 //
@@ -566,6 +566,13 @@
 #define NAVCALL_AQUASTAGE80 10
 #define NAVCALL_AQUASTAGE91 11
 #define NAVCALL_AQUASTAGE123 12
+
+//difficulty setting
+#define DIFF_EASY 0
+#define DIFF_NORMAL 1
+#define DIFF_HARD 2
+#define DIFF_HARDCORE 3
+#define DIFF_FRONTIER 10
 
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()

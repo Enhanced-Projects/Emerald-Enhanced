@@ -147,7 +147,6 @@ PCN_AudiniteExplain:
 
 Ryu_CheckHealPermissions::
     goto_if_set FLAG_RYU_HARDCORE_MODE, Ryu_NoPcUsesHardcore
-    goto_if_set FLAG_RYU_CHALLENGEMODE, Ryu_CheckSetNuzlockPCUseVar
     return
 
 PCN_CanIComeWith:

@@ -64,7 +64,7 @@ RyuScript_ContinueIntroAfterStarter::
 	switch VAR_RESULT
 	case 0, IT_EasyMode
 	case 1, IT_NormalMode
-	case 2, IT_ChallengeMode
+	case 2, IT_HardMode
 	case 3, IT_FrontierMode
 	goto IT_NormalMode
 	end
@@ -111,7 +111,7 @@ Ryu_NewGamePlus::
 	multichoicedefault 1, 2, MULTI_SELECT_NEW_GAME_PLUS_MODE, 3, 0
 	switch VAR_RESULT
 	case 0, IT_NormalMode	
-	case 1, IT_ChallengeMode
+	case 1, IT_HardMode
     case 2, IT_HardcoreMode
 	goto IT_NormalMode
 
@@ -180,9 +180,7 @@ RyuSetTime:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} put a new battery in the watch.)$"
 
 IT_EasyMode::
-	setvar VAR_RYU_EXP_MULTIPLIER, 4000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 500
-	setvar VAR_RYU_GAME_MODE, 0
+	setvar VAR_RYU_DIFFICULTY, DIFF_EASY
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -193,8 +191,7 @@ IT_EasyMode::
 	
 IT_NormalMode::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
-	setvar VAR_RYU_GAME_MODE, 1
+	setvar VAR_RYU_DIFFICULTY, 1
 	call_if_set FLAG_RYU_ISNGPLUS, Normalmode_NGP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -205,24 +202,13 @@ IT_NormalMode::
 
 Normalmode_NGP::
 	setvar VAR_RYU_AUTOLEVEL_MODIFIER, -2
-	setvar VAR_RYU_EXP_MULTIPLIER, 10 @arbitrary value to tell getExp to use the ngp scaling
+	setvar VAR_RYU_DIFFICULTY, DIFF_NORMAL
 	return
 	
-IT_ChallengeMode::
-	msgbox IT_ChallengeIntro MSGBOX_SIGN
-	call_if_set FLAG_RYU_ISNGPLUS, Challengemode_NGP
-	setvar VAR_RYU_GAME_MODE, 2
-	setvar VAR_RYU_EXP_MULTIPLIER, 2000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 1500
-	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 3
-	setvar VAR_RYU_PC_USES, 3
-	additem ITEM_POKE_BALL, 10
-	additem ITEM_POTION, 5
-	additem ITEM_SUPER_POTION, 2
-	additem ITEM_ELIXIR, 2
+IT_HardMode::
+	call_if_set FLAG_RYU_ISNGPLUS, hardmode_NGP
+	setvar VAR_RYU_DIFFICULTY, DIFF_HARD
 	removemoney 3000
-	msgbox IT_ChallengeOutro MSGBOX_SIGN
-	setflag FLAG_RYU_CHALLENGEMODE
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -231,15 +217,13 @@ IT_ChallengeMode::
 	goto_if_eq SetFemaleStartingVariables
 	end
 
-Challengemode_NGP::
-	setvar VAR_RYU_AUTOLEVEL_MODIFIER, -2
+hardmode_NGP::
+	setvar VAR_RYU_AUTOLEVEL_MODIFIER, -1
 	return
 
 IT_FrontierMode::
 	msgbox IT_FrontierIntro
-	setvar VAR_RYU_EXP_MULTIPLIER, 1
-	setvar VAR_RYU_PRICE_MULTIPLIER 1000
-	setvar VAR_RYU_GAME_MODE, 4
+	setvar VAR_RYU_DIFFICULTY, DIFF_FRONTIER
 	removemoney 3000
 	giveitem ITEM_MEGA_BRACELET
 	msgbox IT_FrontierOutro
@@ -258,9 +242,7 @@ IT_FrontierMode::
 IT_HardcoreMode::
 	msgbox IT_HardcoreIntro
 	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 5
-	setvar VAR_RYU_EXP_MULTIPLIER, 2000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 2000
-	setvar VAR_RYU_GAME_MODE, 3
+	setvar VAR_RYU_DIFFICULTY, DIFF_HARDCORE
 	setflag FLAG_RYU_HARDCORE_MODE
 	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 1
 	removemoney 2750
@@ -303,32 +285,11 @@ IT_HardcoreIntro:
 IT_HardcoreOutro:
 	.string "Welcome to the nightmare.$"
 
-IT_ChallengeIntro:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have opted to do Challenge mode.\n"
-	.string "Emerald Enhanced uses a special set\p"
-	.string "of rules, and enforces them. They are:\p"
-	.string "1: No marts.\p"
-	.string "2: Can use PC 3 times between\n"
-	.string "  badges. Clear a gym to restore.\p"
-	.string "3: You start with balls and potions.\p"
-	.string "4: Black-Out ends the game.\p"
-	.string "5: Gym Leaders heal and give items\p"
-	.string "6: Exp is doubled, to make up for the\n"
-	.string "difficulty of the game.\p"
-	.string "7: You can't deposit mons in the PC.\p"
-	.string "Finally: Any mon that faints is\n"
-	.string "deleted from your party.\p"
-	.string "Enjoy your challenge!\n"
-	.string "--Ryu, Creator of Emerald Enhanced$"
-	
-IT_ChallengeOutro:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Challenge rules are now active!\n"
-	.string "Starter Kit has been given!$"
-	
-
 SetMaleStartingVariables:: @ 823BF20
 	call RyuSetUpMoneyMode
-	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F
+	call RyuSetStartLocationRespawn
+	compare VAR_RYU_DIFFICULTY, DIFF_FRONTIER @force update respawn location to frontier.
+	call_if_eq IT_SetFrontierRespawn
 	setvar VAR_LITTLEROOT_INTRO_STATE, 1
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM
@@ -351,9 +312,15 @@ SetMaleStartingVariables:: @ 823BF20
 	releaseall
 	end
 
+IT_SetFrontierRespawn::
+	setrespawn HEAL_LOCATION_BATTLE_FRONTIER_OUTSIDE_EAST
+	return
+
 SetFemaleStartingVariables:: @ 823BF46
 	call RyuSetUpMoneyMode
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F
+	compare VAR_RYU_DIFFICULTY, DIFF_FRONTIER @force update respawn location to frontier.
+	call_if_eq IT_SetFrontierRespawn
 	setvar VAR_LITTLEROOT_INTRO_STATE, 2
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_MOM
@@ -571,7 +538,6 @@ LRT_Mom_8badges::
 	goto LRT_Mom_base
 
 LRT_Mom_base::
-	goto_if_set FLAG_RYU_CHALLENGEMODE, LRT_MOM_Restricted
 	goto_if_set FLAG_RYU_HARDCORE_MODE, LRT_MOM_Restricted
 	call_if_set FLAG_RYU_DS_MOM_AVAILABLE, LRT_FollowerMom
 	msgbox Momwouldyouliketoheal, MSGBOX_YESNO
@@ -686,6 +652,24 @@ script RyuScript_StarterBossMsg {
 	closemessage
 	msgbox(NatureMsg)
 	goto(RyuScript_FinishCheckBossStarter)
+}
+
+script RyuSetStartLocationRespawn {//sets the respawn location to the chosen starting location
+	switch (var(VAR_0x8002)){
+			case 0:
+				setrespawn(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F)
+			case 1:
+				setrespawn(HEAL_LOCATION_MAUVILLE_CITY)
+			case 2:
+				setrespawn(HEAL_LOCATION_LILYCOVE_CITY)
+			case 3:
+				setrespawn(HEAL_LOCATION_DEWFORD_TOWN)
+			case 4:
+				setrespawn(HEAL_LOCATION_RUSTBORO_CITY)
+			case 5:
+				setrespawn(HEAL_LOCATION_FALLARBOR_TOWN)
+		}
+	return
 }
 
 //REMOVE FOR FULL RELEASE OF 10.0

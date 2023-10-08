@@ -172,7 +172,7 @@ u16 RyuChooseEnemyProceduralMons(u16 trainerClass)
 
 u16 RyuChooseAutoscaleIV(void)
 {
-    u16 diff = VarGet(VAR_RYU_EXP_MULTIPLIER);
+    u16 diff = VarGet(VAR_RYU_DIFFICULTY);
     u16 prestige = VarGet(VAR_RYU_NGPLUS_COUNT);
     u16 iv = 0;
     if (prestige == 0)
@@ -180,24 +180,22 @@ u16 RyuChooseAutoscaleIV(void)
 
     switch (diff)
     {
-    case 1://autoscale
-    case 10://autoscale NGP
+    case DIFF_NORMAL:
         iv = (5 * prestige);
         if (iv > 31)
             iv = 31;
         return iv;
-    case 2000://challenge mode
+    case DIFF_HARD:
         iv = (7 * prestige);
         if (iv > 31)
             iv = 31;
         return iv;
-    case 4000://easy mode
-    case 8000://god mode
+    case DIFF_EASY:
         iv = (3 * prestige);
         if (iv > 31)
             iv = 31;
         return iv;
-    case 1000://hard/hardcore
+    case DIFF_HARDCORE:
         iv = (10 * prestige);
         if (iv > 31)
             iv = 31;
@@ -208,7 +206,7 @@ u16 RyuChooseAutoscaleIV(void)
 
 u8 RyuChooseAutoscaleEv(void)
 {
-    u16 diff = (VarGet(VAR_RYU_EXP_MULTIPLIER));
+    u16 diff = (VarGet(VAR_RYU_DIFFICULTY));
     u16 prestige = (VarGet(VAR_RYU_NGPLUS_COUNT));
     u8 badges = (CountBadges());
     u8 ev = 16;
@@ -252,10 +250,18 @@ u8 RyuChoosePartyCount(u16 trainer)
     if (VarGet(VAR_RYU_QUEST_MAGMA) == 315)
         count += 2;
 
-    if (FlagGet(FLAG_RYU_CHALLENGEMODE))
-        count += 2;
-    if (FlagGet(FLAG_RYU_HARDCORE_MODE))
-        count += 2;
+    switch (VarGet(VAR_RYU_DIFFICULTY))
+    {
+        case DIFF_NORMAL:
+            count += 1;
+            break;
+        case DIFF_HARD:
+            count += 2;
+            break;
+        case DIFF_HARDCORE:
+            count = 6;
+            break;
+    }
     if (count > 6)
         count = 6;
     if (count < 1)
