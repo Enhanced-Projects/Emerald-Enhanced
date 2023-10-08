@@ -5823,10 +5823,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_KROOKODILE_2] = { // Krookodile-Band (ID: 647)
+    [FRONTIER_MON_KROOKODILE_2] = { // Krookodile-Lunatic[UseEclipse] (ID: 647)
         .species = SPECIES_KROOKODILE,
-        .moves = {MOVE_EARTHQUAKE, MOVE_KNOCK_OFF, MOVE_ROCK_SLIDE, MOVE_SUPERPOWER},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_KNOCK_OFF, MOVE_SUCKER_PUNCH, MOVE_EARTHQUAKE, MOVE_STONE_EDGE},
+        .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
