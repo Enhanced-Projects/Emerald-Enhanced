@@ -1305,7 +1305,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_PRIMEAPE_1] = { // Primeape-ScarfEclipse (ID: 145)
+    [FRONTIER_MON_PRIMEAPE_1] = { // Primeape-Scarf[UseEclipse] (ID: 145)
         .species = SPECIES_PRIMEAPE,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_SHADOW_SLAM, MOVE_ROCK_SLIDE, MOVE_U_TURN},
         .heldItem = ITEM_CHOICE_SCARF,
@@ -2088,12 +2088,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_SCRAFTY_2] = { // Scrafty-BU (ID: 232)
+    [FRONTIER_MON_SCRAFTY_2] = { // Scrafty-Lunatic[UseEclipse] (ID: 232)
         .species = SPECIES_SCRAFTY,
-        .moves = {MOVE_KNOCK_OFF, MOVE_DRAIN_PUNCH, MOVE_BULK_UP, MOVE_REST},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_CAREFUL,
+        .moves = {MOVE_KNOCK_OFF, MOVE_HI_JUMP_KICK, MOVE_POISON_JAB, MOVE_POWER_UP_PUNCH},
+        .heldItem = ITEM_SHELL_BELL,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
@@ -2187,7 +2187,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PRIMEAPE_2] = { // Primeape-BandEclipse (ID: 243)
+    [FRONTIER_MON_PRIMEAPE_2] = { // Primeape-Band[UseEclipse] (ID: 243)
         .species = SPECIES_PRIMEAPE,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_SHADOW_SLAM, MOVE_ROCK_SLIDE, MOVE_U_TURN},
         .heldItem = ITEM_CHOICE_BAND,
