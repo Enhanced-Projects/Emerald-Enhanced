@@ -1305,14 +1305,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_PRIMEAPE_1] = { // Primeape-Band (ID: 145)
+    [FRONTIER_MON_PRIMEAPE_1] = { // Primeape-Scarf[UseEclipse] (ID: 145)
         .species = SPECIES_PRIMEAPE,
-        .moves = {MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_ROCK_SLIDE, MOVE_GUNK_SHOT},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_CLOSE_COMBAT, MOVE_SHADOW_SLAM, MOVE_ROCK_SLIDE, MOVE_U_TURN},
+        .heldItem = ITEM_CHOICE_SCARF,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_HITMONLEE_1] = { // Hitmonlee-WhiteHerb (ID: 146)
         .species = SPECIES_HITMONLEE,
@@ -2088,12 +2088,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_SCRAFTY_2] = { // Scrafty-BU (ID: 232)
+    [FRONTIER_MON_SCRAFTY_2] = { // Scrafty-Lunatic[UseEclipse] (ID: 232)
         .species = SPECIES_SCRAFTY,
-        .moves = {MOVE_KNOCK_OFF, MOVE_DRAIN_PUNCH, MOVE_BULK_UP, MOVE_REST},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_CAREFUL,
+        .moves = {MOVE_KNOCK_OFF, MOVE_HI_JUMP_KICK, MOVE_POISON_JAB, MOVE_POWER_UP_PUNCH},
+        .heldItem = ITEM_SHELL_BELL,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
@@ -2187,14 +2187,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PRIMEAPE_2] = { // Primeape-Scarf (ID: 243)
+    [FRONTIER_MON_PRIMEAPE_2] = { // Primeape-Band[UseEclipse] (ID: 243)
         .species = SPECIES_PRIMEAPE,
-        .moves = {MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_ROCK_SLIDE, MOVE_GUNK_SHOT},
-        .heldItem = ITEM_CHOICE_SCARF,
+        .moves = {MOVE_CLOSE_COMBAT, MOVE_SHADOW_SLAM, MOVE_ROCK_SLIDE, MOVE_U_TURN},
+        .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_HITMONLEE_2] = { // Hitmonlee-LifeOrb (ID: 244)
         .species = SPECIES_HITMONLEE,
@@ -2889,12 +2889,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_VILEPLUME_1] = { // Vileplume-Offensive (ID: 321)
+    [FRONTIER_MON_VILEPLUME_1] = { // Vileplume-Defensive (ID: 321)
         .species = SPECIES_VILEPLUME,
-        .moves = {MOVE_GIGA_DRAIN, MOVE_ACID, MOVE_STRENGTH_SAP, MOVE_MOONBLAST},
+        .moves = {MOVE_GIGA_DRAIN, MOVE_ACID, MOVE_STRENGTH_SAP, MOVE_SLEEP_POWDER},
         .heldItem = ITEM_BLACK_SLUDGE,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_MODEST,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
         .ivs = 31,
         .ability = 2
     },
@@ -4338,14 +4338,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_DECIDUEYE_1] = { // Decidueye-NP (ID: 380)
+    [FRONTIER_MON_DECIDUEYE_1] = { // Decidueye-Bulky (ID: 380)
         .species = SPECIES_DECIDUEYE,
-        .moves = {MOVE_SHADOW_BALL, MOVE_GIGA_DRAIN, MOVE_NASTY_PLOT, MOVE_ROOST},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_REAPING_BLOW, MOVE_LEAF_BLADE, MOVE_SHADOW_SNEAK, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 0
+        .ability = 2
     },
     [FRONTIER_MON_INFERNAPE_1] = { // Infernape-NP (ID: 483)
         .species = SPECIES_INFERNAPE,
@@ -4725,14 +4725,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_VILEPLUME_2] = { // Vileplume-Defensive (ID: 525)
+    [FRONTIER_MON_VILEPLUME_2] = { // Vileplume-Eclipse (ID: 525)
         .species = SPECIES_VILEPLUME,
-        .moves = {MOVE_GIGA_DRAIN, MOVE_ACID, MOVE_STRENGTH_SAP, MOVE_SLEEP_POWDER},
-        .heldItem = ITEM_BLACK_SLUDGE,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_BOLD,
+        .moves = {MOVE_VOID_BURST, MOVE_SLUDGE_BOMB, MOVE_STRENGTH_SAP, MOVE_ECLIPSE},
+        .heldItem = ITEM_LIFE_ORB,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_VICTREEBEL_2] = { // Victreebel-Sun (ID: 628)
         .species = SPECIES_VICTREEBEL,
@@ -5823,10 +5823,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_KROOKODILE_2] = { // Krookodile-Band (ID: 647)
+    [FRONTIER_MON_KROOKODILE_2] = { // Krookodile-Lunatic[UseEclipse] (ID: 647)
         .species = SPECIES_KROOKODILE,
-        .moves = {MOVE_EARTHQUAKE, MOVE_KNOCK_OFF, MOVE_ROCK_SLIDE, MOVE_SUPERPOWER},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_KNOCK_OFF, MOVE_SUCKER_PUNCH, MOVE_EARTHQUAKE, MOVE_STONE_EDGE},
+        .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -6174,12 +6174,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 30,
         .ability = 1
     },
-    [FRONTIER_MON_DECIDUEYE_2] = { // Decidueye-Sniper (ID: 584)
+    [FRONTIER_MON_DECIDUEYE_2] = { // Decidueye-Eclipse (ID: 584)
         .species = SPECIES_DECIDUEYE,
-        .moves = {MOVE_LEAF_BLADE, MOVE_SPIRIT_SHACKLE, MOVE_SHADOW_SNEAK, MOVE_FOCUS_ENERGY},
-        .heldItem = ITEM_SCOPE_LENS,
+        .moves = {MOVE_SHADOW_SLAM, MOVE_LEAF_BLADE, MOVE_SWORDS_DANCE, MOVE_ECLIPSE},
+        .heldItem = ITEM_SPELL_TAG,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
