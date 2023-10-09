@@ -924,6 +924,16 @@ u32 ItemId_GetPrice(u32 itemId)
 {
     u32 priceModifier = (VarGet(VAR_RYU_PRICE_MULTIPLIER));
     u32 oldprice = gItems[SanitizeItemId(itemId)].price;
+
+    if (!(FlagGet(FLAG_RYU_SELLING_TO_FENCE)))//price multiplier no longer does anything except during magma.
+    {
+        if (priceModifier != 1000)
+        {
+            VarSet(VAR_RYU_PRICE_MULTIPLIER, 1000);
+            priceModifier = 1000;
+        }
+    }
+
     oldprice = (oldprice * priceModifier / 1000);
     return oldprice;
 }

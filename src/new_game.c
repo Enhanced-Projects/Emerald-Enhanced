@@ -375,6 +375,7 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_AUTOFILL_ERROR_COUNT, 0);
     VarSet(VAR_RYU_POKEFANS_OBJID, OBJ_EVENT_GFX_BRENDAN_NORMAL);
     VarSet(VAR_RYU_PLAYER_STAMINA, 100);
+    VarSet(VAR_RYU_DEV_EXP_MULT, 1);
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;

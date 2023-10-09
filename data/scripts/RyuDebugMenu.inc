@@ -1041,10 +1041,12 @@ RyuSetFriendshipMsg:
 RyuSetExpMultMenu::
 	special RyuBufferDifficultyValue
 	msgbox RyuCurrentExpMult MSGBOX_DEFAULT
-	bufferdynamicmulti RDIFF1, RDIFF2, RDIFF3, RDIFF4, RDIFF5
-	multichoicedefault 5, 0, MULTI_DYNAMIC_5, 0, 0
+	bufferdynamicmulti RDIFF1, RDIFF2, RDIFF3, RDIFF4, RDIFF5, RDIFF6
+	multichoicedefault 5, 0, MULTI_DYNAMIC_6, 0, 0
 	compare VAR_RESULT, 4
 	goto_if_eq RyuChangeExpMult
+	compare VAR_RESULT, 5
+	goto_if_eq RyuResetExpMult
 	copyvar VAR_RYU_DIFFICULTY, VAR_RESULT
 	goto RyuDebug_UtilitiesMenu
 
@@ -1063,12 +1065,23 @@ RDIFF4:
 RDIFF5:
 	.string "Only Change Exp Multiplier$"
 
+RDIFF6:
+	.string "Revert to default$"
+
 RyuChangeExpMult::
 	msgbox RDIFF_ChangeExpInfo
 	numberentry 0, 10, 1
 	copyvar VAR_RYU_DEV_EXP_MULT, VAR_RESULT
 	buffernumberstring 0, VAR_RYU_DEV_EXP_MULT
 	msgbox RDB_ExpSetTo
+	closemessage
+	setflag FLAG_RYU_DEV_EXP_MULT_ENABLED
+	goto RyuDebug_UtilitiesMenu
+
+RyuResetExpMult::
+	msgbox RDIFF_DefaultEXPInfo
+	closemessage
+	clearflag FLAG_RYU_DEV_EXP_MULT_ENABLED
 	closemessage
 	goto RyuDebug_UtilitiesMenu
 
@@ -1084,6 +1097,9 @@ RyuExitExpMult::
 
 ExpMultNoChange:
 	.string "Difficulty not changed.$"
+
+RDIFF_DefaultEXPInfo:
+	.string "EXP multiplier will now be set\nto your difficulty's multiplier.$"
 
 RyuCurrentExpMult:
 	.string "The current difficulty is {COLOR LIGHT_RED}{SHADOW RED}{STR_VAR_1}$"

@@ -181,6 +181,7 @@ RyuSetTime:
 
 IT_EasyMode::
 	setvar VAR_RYU_DIFFICULTY, DIFF_EASY
+	setvar VAR_RYU_DEV_EXP_MULT, 4
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -192,6 +193,7 @@ IT_EasyMode::
 IT_NormalMode::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_RYU_DIFFICULTY, 1
+	setvar VAR_RYU_DEV_EXP_MULT, 1
 	call_if_set FLAG_RYU_ISNGPLUS, Normalmode_NGP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -203,11 +205,13 @@ IT_NormalMode::
 Normalmode_NGP::
 	setvar VAR_RYU_AUTOLEVEL_MODIFIER, -2
 	setvar VAR_RYU_DIFFICULTY, DIFF_NORMAL
+	setvar VAR_RYU_DEV_EXP_MULT, 1
 	return
 	
 IT_HardMode::
 	call_if_set FLAG_RYU_ISNGPLUS, hardmode_NGP
 	setvar VAR_RYU_DIFFICULTY, DIFF_HARD
+	setvar VAR_RYU_DEV_EXP_MULT, 2
 	removemoney 3000
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
@@ -224,6 +228,7 @@ hardmode_NGP::
 IT_FrontierMode::
 	msgbox IT_FrontierIntro
 	setvar VAR_RYU_DIFFICULTY, DIFF_FRONTIER
+	setvar VAR_RYU_DEV_EXP_MULT, 0
 	removemoney 3000
 	giveitem ITEM_MEGA_BRACELET
 	msgbox IT_FrontierOutro
@@ -243,6 +248,7 @@ IT_HardcoreMode::
 	msgbox IT_HardcoreIntro
 	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 5
 	setvar VAR_RYU_DIFFICULTY, DIFF_HARDCORE
+	setvar VAR_RYU_DEV_EXP_MULT, 2
 	setflag FLAG_RYU_HARDCORE_MODE
 	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 1
 	removemoney 2750

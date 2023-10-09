@@ -4108,7 +4108,7 @@ static void Cmd_getexp(void)
             break;
     }
 
-    if (FlagGet(FLAG_RYU_DEV_MODE) == TRUE)
+    if ((FlagGet(FLAG_RYU_DEV_MODE) == TRUE) && (FlagGet(FLAG_RYU_DEV_EXP_MULT_ENABLED) == TRUE))//dev multiplier enabled, overrides the above.
         multiplier = (VarGet(VAR_RYU_DEV_EXP_MULT) * 1000);
 
 
@@ -4175,7 +4175,9 @@ static void Cmd_getexp(void)
 
             if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || //player disabled exp via the exp drive
                 (RyuCheckIfPlayerDisabledTCExp() == TRUE) || //player disabled exp gain in training center
-                ((VarGet(VAR_RYU_DEV_EXP_MULT) == 0) && (FlagGet(FLAG_RYU_DEV_MODE) == TRUE)))//if dev mode exp mult is enabled and set to 0
+                ((VarGet(VAR_RYU_DEV_EXP_MULT) == 0) &&
+                  (FlagGet(FLAG_RYU_DEV_EXP_MULT_ENABLED) == TRUE) &&
+                  (FlagGet(FLAG_RYU_DEV_MODE) == TRUE)))//if dev mode exp mult is enabled and set to 0
             {
                 *exp = 1;
                 calculatedExp = 1;
