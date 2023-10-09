@@ -53,6 +53,7 @@ const u16 gObjectEventPaletteCourtney[] = INCBIN_U16("graphics/object_events/pal
 const u16 gObjectEventPaletteShelly[] = INCBIN_U16("graphics/object_events/palettes/shelly.gbapal");
 const u16 gObjectEventPaletteMinnie[] = INCBIN_U16("graphics/object_events/palettes/minnie.gbapal");
 const u16 gObjectEventPaletteLanette[] = INCBIN_U16("graphics/object_events/pics/people/followers/lanette.gbapal");
+const u16 gObjectEventPaletteFollowerDawn[] = INCBIN_U16("graphics/object_events/pics/people/followers/dawn.gbapal");
 const u16 gObjectEventPaletteNull16[16] = {};
 const u16 gObjectEventPaletteNull17[16] = {};
 const u16 gObjectEventPaletteNull18[16] = {};
@@ -183,6 +184,7 @@ const u32 gObjectEventPic_Minnie[] = INCBIN_U32("graphics/object_events/pics/peo
 const u32 gObjectEventPic_Lanette[] = INCBIN_U32("graphics/object_events/pics/people/followers/lanette.4bpp");
 const u32 gObjectEventPic_Lillie[] = INCBIN_U32("graphics/object_events/pics/people/followers/lillie.4bpp");
 const u32 gObjectEventPic_Gladion[] = INCBIN_U32("graphics/object_events/pics/people/followers/gladion.4bpp");
+const u32 gObjectEventPic_FollowerDawn[] = INCBIN_U32("graphics/object_events/pics/people/followers/dawn.4bpp");
 
 const u32 gObjectEventPic_RubySapphireLittleBoy[] = INCBIN_U32("graphics/object_events/pics/people/rs_little_boy.4bpp");
 const u32 gObjectEventPic_HotSpringsOldWoman[] = INCBIN_U32("graphics/object_events/pics/people/hot_springs_old_woman.4bpp");

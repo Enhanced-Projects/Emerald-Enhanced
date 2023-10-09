@@ -2411,3 +2411,24 @@ const struct SpriteFrameImage gObjectEventPicTable_RubySapphireMay[] = {
     overworld_frame(gObjectEventPic_RubySapphireMayNormal, 2, 4, 16),
     overworld_frame(gObjectEventPic_RubySapphireMayNormal, 2, 4, 17),
 };
+
+const struct SpriteFrameImage gObjectEventPicTable_FollowerDawn[] = {
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 0),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 1),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 2),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 3),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 4),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 5),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 6),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 7),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 8),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 9),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 10),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 11),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 12),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 13),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 14),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 15),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 16),
+    overworld_frame(gObjectEventPic_FollowerDawn, 2, 4, 17),
+};

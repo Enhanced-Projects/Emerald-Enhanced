@@ -405,6 +405,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SHELLY] =                   &gObjectEventGraphicsInfo_Shelly,
     [OBJ_EVENT_GFX_MINNIE] =                   &gObjectEventGraphicsInfo_Minnie,
     [OBJ_EVENT_GFX_LANETTE] =                  &gObjectEventGraphicsInfo_Lanette,
+    [OBJ_EVENT_GFX_FOLLOWER_DAWN] =            &gObjectEventGraphicsInfo_FollowerDawn,
     [OBJ_EVENT_GFX_LITTLE_BOY_3] =             &gObjectEventGraphicsInfo_RubySapphireLittleBoy,
     [OBJ_EVENT_GFX_BRENDAN_FISHING] =          &gObjectEventGraphicsInfo_BrendanFishing,
     [OBJ_EVENT_GFX_DAWN_FISHING] =             &gObjectEventGraphicsInfo_DawnFishing,

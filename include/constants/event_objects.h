@@ -251,9 +251,10 @@
 #define OBJ_EVENT_GFX_AETHER_ADMIN_M             247
 #define OBJ_EVENT_GFX_AETHER_MEMBER_M            248
 #define OBJ_EVENT_GFX_AETHER_MEMBER_F            249
+#define OBJ_EVENT_GFX_FOLLOWER_DAWN              250
 
 
-#define NUM_EVENT_OBJ_GFX                        250
+#define NUM_EVENT_OBJ_GFX                        251
 
 
 // These are dynamic object gfx ids.
