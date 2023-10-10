@@ -4652,7 +4652,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2
              && (gMultiHitCounter == 0 || gMultiHitCounter == 1)
              && !(GetBattlerAbility(gBattlerAttacker) == ABILITY_SHEER_FORCE && gBattleMoves[gCurrentMove].flags & FLAG_SHEER_FORCE_BOOST)
-             && (CanBattlerSwitch(battler) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER)))
+             && ((CanBattlerSwitch(battler) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) == TRUE))
             {
                 gBattleResources->flags->flags[battler] |= RESOURCE_FLAG_EMERGENCY_EXIT;
                 effect++;
