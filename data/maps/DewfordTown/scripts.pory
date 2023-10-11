@@ -388,7 +388,7 @@ script DT_Sumac {
 	}
 	if (var(VAR_RYU_QUEST_GENESECT) == 30){//player most likely lost to genesect. Allow them to retry.
 		msgbox("I'm not sure how you got\nback here, but shall I reconfigure\lthe device and send you back?", MSGBOX_YESNO)
-		if (var(VAR_RESULT) == YES){warpteleport(MAP_DEWFORD_TOWN_PAST, 255, 10, 14) waitstate}
+		if (var(VAR_RESULT) == YES){clearflag(FLAG_RYU_DFT_PAST_GENESECT) warpteleport(MAP_DEWFORD_TOWN_PAST, 255, 10, 14) waitstate}
 		else{goto(ryu_end)}
 	}
 	elif (var(VAR_RYU_QUEST_GENESECT) == 50){//player probably defeated genesect. Continue story.
