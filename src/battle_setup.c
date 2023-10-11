@@ -689,6 +689,7 @@ static void CB2_EndWildBattle(void)
             FlagSet(FLAG_RYU_CAPTURED_MELOETTA);
         }
         FlagSet(FLAG_TEMP_C);
+        FlagClear(FLAG_RYU_FACING_GENESECT);
         SetMainCallback2(CB2_ReturnToField);
         gFieldCallback = sub_80AF6F0;
     }

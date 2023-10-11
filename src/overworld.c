@@ -437,6 +437,7 @@ void DoWhiteOut(void)
         FlagSet(FLAG_RYU_PREMATURE_DEATH);
 
     FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
+    FlagClear(FLAG_RYU_FACING_GENESECT);
 
     if ((CalculatePlayerPartyCount() == 0) && (FlagGet(FLAG_RYU_CHALLENGEFAILED) == 1))
     {
