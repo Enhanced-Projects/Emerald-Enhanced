@@ -160,58 +160,59 @@ int RyuFollowerToTrainerID(void)
         case FOLLOWER_MINNIE:
             gSpecialVar_0x8008 = TRAINER_REL_MINNIE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_MINNIE;
-            return TRUE;
+            return 1;//loaded this follower into the necessary variables to start a follower battle
         case FOLLOWER_LANETTE:
             gSpecialVar_0x8008 = TRAINER_REL_LANETTE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_LANETTE; 
-            return TRUE;
+            return 1;
         case FOLLOWER_SHELLY:
             gSpecialVar_0x8008 = TRAINER_REL_SHELLY;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_SHELLY;
-            return TRUE;
+            return 1;
         case FOLLOWER_DAWN:
             gSpecialVar_0x8008 = TRAINER_REL_DAWN;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_DAWN;
-            return TRUE;
+            return 1;
         case FOLLOWER_BRENDAN:
             gSpecialVar_0x8008 = TRAINER_REL_BRENDAN;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_BRENDAN;
-            return TRUE;
+            return 1;
         case FOLLOWER_LEAF:
             gSpecialVar_0x8008 = TRAINER_REL_LEAF;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_LEAF;
-            return TRUE;
+            return 1;
         case FOLLOWER_COURTNEY:
             gSpecialVar_0x8008 = TRAINER_REL_COURTNEY_2;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_COURTNEY;
-            return TRUE;
+            return 1;
         case FOLLOWER_JOY:
             gSpecialVar_0x8008 = TRAINER_REL_NURSE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
-            return TRUE;
+            return 1;
         case FOLLOWER_MAY:
             gSpecialVar_0x8008 = TRAINER_REL_MAY;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY;
-            return TRUE;
+            return 1;
         case FOLLOWER_LUCY:
             gSpecialVar_0x8008 = TRAINER_REL_LUCY;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_LUCY;
-            return TRUE;
+            return 1;
         case FOLLOWER_MOM:
             gSpecialVar_0x8008 = TRAINER_REL_MOM;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_MOM;
-            return TRUE;
+            return 1;
         case FOLLOWER_GLADION:
             gSpecialVar_0x8008 = TRAINER_REL_GLADION;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_GLADION;
-            return TRUE;
+            return 1;
         case FOLLOWER_LILLIE:
             gSpecialVar_0x8008 = TRAINER_REL_LILLIE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_LILLIE;
-            return TRUE;
+            return 1;
         }
-        return FALSE;
+        return 2; //follower wasn't in the above list, probably non combat
     }
+    return 4; //follower flag was not set, but a multibattle was attempted anyway
 }
 
 void RyuBufferCompanionParty(void)

@@ -349,14 +349,20 @@ int CheckValidMonsForSpecialChallenge (void)
 int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be used by gcms.
 {
     u8 slot = gSpecialVar_0x8000;
-    u16 species = (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL));
+    u16 species = (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES, NULL));
     u8 i;
 
     for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
         {
-            if (gFrontierBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
-                return 2;
+            if (gFrontierBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES)))
+                return 2;// player tried to consign a legendary
         }
+
+    if ((GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES) == SPECIES_NONE)
+       || (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES) == SPECIES_EGG))
+    {
+        return 4; //player tried to consign an egg.
+    }
 
     if (FlagGet(FLAG_TEMP_5) == 1)//is initial species
     {

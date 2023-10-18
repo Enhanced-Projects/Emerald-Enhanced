@@ -354,6 +354,7 @@ GCMS_Slot1Selected::
 	case 0, GCMS_SpeciesNotCorrect
 	case 1, GCMS_Confirm
 	case 2, GCMS_Legendary
+	case 4, GCMS_EGG
 	
 GCMS_Slot2Selected::
 	setvar VAR_TEMP_9, 1
@@ -362,6 +363,7 @@ GCMS_Slot2Selected::
 	case 0, GCMS_SpeciesNotCorrect
 	case 1, GCMS_Confirm
 	case 2, GCMS_Legendary
+	case 4, GCMS_EGG
 	
 GCMS_Slot3Selected::
 	setvar VAR_TEMP_9, 2
@@ -370,6 +372,7 @@ GCMS_Slot3Selected::
 	case 0, GCMS_SpeciesNotCorrect
 	case 1, GCMS_Confirm
 	case 2, GCMS_Legendary
+	case 4, GCMS_EGG
 	
 GCMS_Slot4Selected::
 	setvar VAR_TEMP_9, 3
@@ -378,6 +381,7 @@ GCMS_Slot4Selected::
 	case 0, GCMS_SpeciesNotCorrect
 	case 1, GCMS_Confirm
 	case 2, GCMS_Legendary
+	case 4, GCMS_EGG
 	
 GCMS_Slot5Selected::
 	setvar VAR_TEMP_9, 4
@@ -386,6 +390,7 @@ GCMS_Slot5Selected::
 	case 0, GCMS_SpeciesNotCorrect
 	case 1, GCMS_Confirm
 	case 2, GCMS_Legendary
+	case 4, GCMS_EGG
 	
 GCMS_Slot6Selected::
 	setvar VAR_TEMP_9, 5
@@ -394,6 +399,7 @@ GCMS_Slot6Selected::
 	case 0, GCMS_SpeciesNotCorrect
 	case 1, GCMS_Confirm
 	case 2, GCMS_Legendary
+	case 4, GCMS_EGG
 
 GCMS_Confirm::
 	compare VAR_RYU_GCMS_VALUE, 31
@@ -408,6 +414,11 @@ GCMS_Confirm::
 
 GCMS_Legendary::
 	msgbox GCMS_CantConsignLegendaries
+	closemessage
+	goto GCMS_Consignment
+
+GCMS_EGG::
+	msgbox GCMS_CantConsignEggs
 	closemessage
 	goto GCMS_Consignment
 
@@ -434,6 +445,9 @@ GCMS_NotEnoughPartyMons::
 	msgbox GCMS_PartyCantBeEmpty
 	release
 	end
+
+GCMS_CantConsignEggs::
+	.string "You cannot put an egg into the\nGCMS.\pYou must insert a non-legendary\nPokemon to start the process.$"
 
 GCMS_NoMonInGCMS::
 	.string "You are not currently mapping\ngenes for any species.\pPlease return to main menu and\nconsign a mon to start the process.$"

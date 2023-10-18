@@ -770,6 +770,12 @@ script RyuFollowerJoinBattleQuery {
 		release
 		end
 	}
+	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
+	if (var(VAR_RESULT) == 2){
+		msgbox("{COLOR LIGHT_RED}{SHADOW RED}I can't join you in battle,\nsorry!")
+		release
+		end
+	}
 	msgbox("{COLOR LIGHT_RED}{SHADOW RED}Should I join you in battles?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES){
 		setflag(FLAG_RYU_COMPANION_PARTICIPATION)
@@ -882,50 +888,24 @@ text followermenu6{
 //Return 2 if the follower is non-combat.
 script RyuFollowerAllySelector{
 	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
-	if (var(VAR_RESULT) == FALSE){
-		goto(RyuFollower_InvalidFollowerData)
-	}
-	elif (var(VAR_RESULT) == 2){
-		goto(RyuFollower_NonCombat)
-	}
-	else{
+	switch(var(VAR_RESULT)) {
+	case 1:
 		return
-	} 
-	return
+	case 2:
+		msgbox("You seem to have attempted a\nmulti battle with a follower\pthat does not have party data\n or was invalid.\pthis battle cannot continue.")
+		clearflag(FLAG_RYU_COMPANION_PARTICIPATION)
+		msgbox("The companion participation flag has\nbeen disabled.\pTry your battle again.")
+		closemessage
+		goto(ryu_end)
+	case 4:
+		msgbox("Attempted to load a follower when\nyou have none. Exiting.")
+		clearflag(FLAG_RYU_HAS_FOLLOWER)
+		setvar(VAR_RYU_FOLLOWER_ID, 0xFFFF)
+		clearflag(FLAG_RYU_COMPANION_PARTICIPATION)
+		msgbox("The follower system has reset.\nRecruit any other follower\land try again.")
+		goto(ryu_end)
+	}
 }
-
-script RyuFollower_NonCombat{
-	msgbox(RF_NCFMsg)
-	closemessage
-	clearflag(FLAG_RYU_COMPANION_PARTICIPATION)
-	release
-	end
-}
-
-script RyuFollower_InvalidFollowerData{
-	msgbox(RyuFollower_InvalidMsg)
-	closemessage
-	clearflag(FLAG_RYU_HAS_FOLLOWER)
-	setvar(VAR_RYU_FOLLOWER_ID, 0xFFFF)
-	release
-	end
-}
-
-text RF_NCFMsg{
-	"You have Companions joining fights\n"
-	"but your companion does not have\l"
-	"a combat team.\p"
-	"Try this battle again, the\n"
-	"follower join flag has been reset."
-}
-
-text RyuFollower_InvalidMsg {
-	"There's been an error with the\n"
-	"follower system, and it has been\l"
-	"reset.\p"
-	"Try your battle again."
-}
-
 
 script RyuScript_ChooseValidMons {
 	msgbox(EGC_NeedToChoose)
