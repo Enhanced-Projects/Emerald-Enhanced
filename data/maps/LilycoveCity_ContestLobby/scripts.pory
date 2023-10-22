@@ -438,15 +438,19 @@ LilycoveCity_ContestLobby_EventScript_LeadToContestHall:: @ 821A670
 	applymovement PLAYER, LilycoveCity_ContestLobby_Movement_PlayerWalkToContestHall
 	applymovement FOLLOWER, LilycoveCity_ContestLobby_Movement_PlayerWalkToContestHall
 	waitmovement 0
+	call_if_set FLAG_RYU_HAS_FOLLOWER, LCC_ContestFollower
+	applymovement PLAYER, Common_Movement_FaceUp
+	waitmovement PLAYER
+	releaseall
+	return
+
+LCC_ContestFollower::
 	applymovement FOLLOWER, Common_Movement_FaceUp
 	waitmovement FOLLOWER
 	msgbox LCC_IllWaitHere
 	applymovement FOLLOWER LCC_FollowerWait
 	waitmovement FOLLOWER
 	delay 10
-	applymovement PLAYER, Common_Movement_FaceUp
-	waitmovement PLAYER
-	releaseall
 	return
 
 LCC_IllWaitHere:
