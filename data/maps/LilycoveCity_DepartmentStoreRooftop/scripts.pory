@@ -254,6 +254,8 @@ LCC_LeafEvent::
 	compare VAR_RYU_FOLLOWER_ID, FOLLOWER_COURTNEY
 	goto_if_eq ryu_end
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	compare VAR_RYU_QUEST_LEAF, 505
+	goto_if_ne ryu_end
 	lock
 	special SpawnCameraObject
 	applymovement CAMERA, LCC_Cam1
