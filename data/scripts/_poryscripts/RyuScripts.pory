@@ -1144,6 +1144,12 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	delay(20)
+	addvar(VAR_RYU_WEEK_COUNTER, 1)
+	callnative(RyuChooseSeasonalWeather)
+	closemessage
+	callnative(RyuBufferCurrentSeason)
+	msgbox("season is now {STR_VAR_1}.")
     release
     end
 }
@@ -1514,16 +1520,6 @@ text NGMO2 {
 
 text NGMO3 {
 	"Safe: More consistent, less potential."
-}
-
-script gRyuWarpFemaleHomeScript {
-	warpsilent(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F, 255, 1, 4)
-	waitstate
-}
-
-script gRyuWarpMaleHomeScript {
-	warpsilent(MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_2F, 255, 1, 4)
-	waitstate
 }
 
 raw `

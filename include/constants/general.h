@@ -580,6 +580,6 @@
 //uncomment to punish save states. Otherwise detections are just logged.
 //#define RYU_PUNISH_SAVE_STATE 1
 
-#define EE_GAME_VERSION 10005
+#define EE_GAME_VERSION 10006
 
 #endif 

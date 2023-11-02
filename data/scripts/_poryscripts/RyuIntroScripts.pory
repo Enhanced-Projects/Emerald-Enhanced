@@ -324,7 +324,7 @@ IT_SetFrontierRespawn::
 
 SetFemaleStartingVariables:: @ 823BF46
 	call RyuSetUpMoneyMode
-	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F
+	call RyuSetStartLocationRespawn
 	compare VAR_RYU_DIFFICULTY, DIFF_FRONTIER @force update respawn location to frontier.
 	call_if_eq IT_SetFrontierRespawn
 	setvar VAR_LITTLEROOT_INTRO_STATE, 2
@@ -646,7 +646,13 @@ script RyuScript_StarterBossMsg {
 script RyuSetStartLocationRespawn {//sets the respawn location to the chosen starting location
 	switch (var(VAR_0x8002)){
 			case 0:
-				setrespawn(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F)
+				checkplayergender
+				if (var(VAR_RESULT) == MALE){
+					setrespawn(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F)
+				}
+				else{
+					setrespawn(HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F)
+				}
 			case 1:
 				setrespawn(HEAL_LOCATION_MAUVILLE_CITY)
 			case 2:
