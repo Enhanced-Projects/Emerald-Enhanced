@@ -93,9 +93,6 @@
 #define FACING_FORCED_LEFT 9
 #define FACING_FORCED_RIGHT 10
 
-extern const u8 gRyuWarpMaleHomeScript[];
-extern const u8 gRyuWarpFemaleHomeScript[];
-
 extern const struct MapLayout *const gMapLayouts[];
 extern const struct MapHeader *const *const gMapGroups[];
 

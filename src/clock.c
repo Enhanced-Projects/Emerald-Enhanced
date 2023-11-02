@@ -223,6 +223,7 @@ static void UpdatePerDay(struct Time *localTime)
     if (*days != localTime->days && *days <= localTime->days)
     {
         daysSince = localTime->days - *days;
+        *days = localTime->days;
         VarSet(VAR_RYU_DAY_COUNTER, (VarGet(VAR_RYU_DAY_COUNTER) + 1));
         if (VarGet(VAR_RYU_DAY_COUNTER) > 6)
         {
@@ -248,7 +249,6 @@ static void UpdatePerDay(struct Time *localTime)
         UpdateFrontierGambler(daysSince);
         SetShoalItemFlag(daysSince);
         SetRandomLotteryNumber(daysSince);
-        *days = localTime->days;
         FlagClear(FLAG_RYU_DELIVERY_IN_PROGRESS);
         RyuClearDeliveryQueue();
         if ((VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) > 0) && (VarGet(VAR_RYU_DELIVERY_SYSTEM_DATA) <= 10))//only reset delivery data if in quota range.

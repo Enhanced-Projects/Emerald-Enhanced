@@ -3055,3 +3055,9 @@ void ryuBufferSTChosenStat()
             break;
     }
 }
+
+extern const u8 sSeasonNames[4][7];
+void RyuBufferCurrentSeason(void)
+{
+    StringCopy(gStringVar1, sSeasonNames[VarGet(VAR_RYU_WEEK_COUNTER)]);
+}
