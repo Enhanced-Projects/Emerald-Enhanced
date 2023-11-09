@@ -1144,12 +1144,10 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	delay(20)
-	addvar(VAR_RYU_WEEK_COUNTER, 1)
-	callnative(RyuChooseSeasonalWeather)
-	closemessage
-	callnative(RyuBufferCurrentSeason)
-	msgbox("season is now {STR_VAR_1}.")
+	clearflag(FLAG_RYU_HIDE_REL_OBJECTS)
+	clearflag(FLAG_HIDE_CHAMPIONS_ROOM_BIRCH)
+	clearflag(FLAG_HIDE_CHAMPIONS_ROOM_RIVAL)
+	clearflag(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN)
     release
     end
 }

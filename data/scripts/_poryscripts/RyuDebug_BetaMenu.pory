@@ -11,6 +11,7 @@ script RDB_StartMenuBetaOptionBootstrap{
 }
 
 script RDB_BetaMenuStandalone{
+    setflag(FLAG_RYU_BETA_MENU_OPEN)
     buffernumberstring(0, VAR_LAST_KNOWN_GAME_VERSION)
     buffernumberstring(1, VAR_SAVE_FILE_CREATED_ON_VERSION)
     msgbox("      EE: v{STR_VAR_1} / Save: v{STR_VAR_2}\nChoose an option or Exit.")
@@ -24,20 +25,22 @@ script RDB_BetaMenuStandalone{
         case 2:
             goto(RDBM_ResetTemporaryBattleFlags)
         case 3:
-            goto(RDBM_ResetBadges)
+            goto(RDBM_ResetTemporaryCutsceneFlags)
         case 4:
-            goto(RDBM_ResetGCMS)
+            goto(RDBM_ResetBadges)
         case 5:
-            goto(RDBM_TeleportHome)
+            goto(RDBM_ResetGCMS)
         case 6:
-            goto(RDBM_ResetRTC)
+            goto(RDBM_TeleportHome)
         case 7:
-            goto(RDBM_RetroFillDex)
+            goto(RDBM_ResetRTC)
         case 8:
-            goto(RDBM_FixFollowers)
+            goto(RDBM_RetroFillDex)
         case 9:
-            goto(RDBM_ViewTutorials)
+            goto(RDBM_FixFollowers)
         case 10:
+            goto(RDBM_ViewTutorials)
+        case 11:
             goto(RDBM_ExitResetMenu)
     }
     goto(RDBM_ExitResetMenu)
@@ -301,6 +304,23 @@ script RDBM_FixFollowers{
     closemessage
     release
     end
+}
+
+script RDBM_ResetTemporaryCutsceneFlags{
+    msgbox("Now resetting flags related to\ncutscenes.\pThis should fix situations like\nbeing stuck in your room with mom\land leaf.")
+    setflag(FLAG_RYU_HIDE_REL_OBJECTS)
+    setflag(FLAG_HIDE_CHAMPIONS_ROOM_BIRCH)
+    setflag(FLAG_HIDE_CHAMPIONS_ROOM_RIVAL)
+    setflag(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN)
+    fadescreen(FADE_TO_BLACK)
+    setvar(VAR_TEMP_D, 20)
+    while(var(VAR_TEMP_D) > 0){
+        removeobject(VAR_TEMP_D)
+        subvar(VAR_TEMP_D, 1)
+    }
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("The cutscene objects should\nnow be cleared.")
+    goto(RDB_BetaMenuStandalone)
 }
 
 text RDBM_RepelCount {

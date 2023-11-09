@@ -981,6 +981,7 @@ static const u8 sReturnPrevious[] = _("Return");
 static const u8 sBetaMenuBugReport[] = _("Bug Report");
 static const u8 sBetaMenuWaystone[] = _ ("Check Waystone");
 static const u8 sBetaMenuBattleFlags[] = _ ("Reset Battle Flags");
+static const u8 sBetaMenuResetCutscenes[] = _ ("Clear Cutscene Vars");
 static const u8 sBetaMenuBadges[] = _ ("Reset Badges");
 static const u8 sBetaMenuGCMS[] = _ ("Clear GCMS");
 static const u8 sBetaMenuHome[] = _ ("Teleport Home");
@@ -1108,14 +1109,15 @@ static const struct ListMenuItem sRyuBetaMenuSet[] =
     {sBetaMenuBugReport, 0},
     {sBetaMenuWaystone, 1},
     {sBetaMenuBattleFlags, 2},
-    {sBetaMenuBadges, 3},
-    {sBetaMenuGCMS, 4},
-    {sBetaMenuHome, 5},
-    {sBetaMenuRTC, 6},
-    {sBetaMenuRetroDex, 7},
-    {sBetaMenuFixFollowers, 8},
-    {sBetaMenuShowTutorials, 9},
-    {sBetaMenuExit, 10}
+    {sBetaMenuResetCutscenes, 3},
+    {sBetaMenuBadges, 4},
+    {sBetaMenuGCMS, 5},
+    {sBetaMenuHome, 6},
+    {sBetaMenuRTC, 7},
+    {sBetaMenuRetroDex, 8},
+    {sBetaMenuFixFollowers, 9},
+    {sBetaMenuShowTutorials, 10},
+    {sBetaMenuExit, 11}
 };
 
 

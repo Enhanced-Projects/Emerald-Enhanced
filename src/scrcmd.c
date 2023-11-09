@@ -1260,7 +1260,7 @@ bool8 ScrCmd_releaseall(struct ScriptContext *ctx)
 bool8 ScrCmd_release(struct ScriptContext *ctx)
 {
     u8 playerObjectId;
-
+    FlagClear(FLAG_RYU_BETA_MENU_OPEN);//hide help text for beta menu
     HideFieldMessageBox();
     if (gObjectEvents[gSelectedObjectEvent].active)
         ObjectEventClearHeldMovementIfFinished(&gObjectEvents[gSelectedObjectEvent]);

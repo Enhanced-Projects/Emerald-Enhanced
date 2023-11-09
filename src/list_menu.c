@@ -314,6 +314,7 @@ static const u32 sRedArrowGfx[] = INCBIN_U32("graphics/interface/red_arrow.4bpp.
 
 EWRAM_DATA static u8 sPrintRecipeWindowId = 0;
 EWRAM_DATA static u8 sPrintAlchemyMetalWindowId = 0;
+EWRAM_DATA static u8 sBetaMenuInfoWindow = 0;
 static void RyuShowRecipeInfoWindow(u16);
 
 // code
@@ -1001,6 +1002,38 @@ void RyuShowAlchemyInfo(u16 selection)
     CopyWindowToVram(sPrintRecipeWindowId, 3);
 }
 
+const u8 RyuBetaMenuHelpStrings[12][75] = 
+{
+    _("Show bug report info"),
+    _("Try fixing the waystone by\nchecking quest data."),
+    _("Reset temporary battle effects like\nrandom battle, inverse, magnetoshpere."),
+    _("Reset temporary cutscene data\nto fix potential sequence breaks."),
+    _("Remove all badges so that they\ncan be obtained again"),
+    _("Reset the data in GCMS to try\nagain."),
+    _("Go to littleroot."),
+    _("Reset the clock / time based events.\nWill take 24hours to finish."),
+    _("Attempt to fill in missing dex\npages from the pokemon storage."),
+    _("Try to reset the followers\nto their home location."),
+    _("View unlocked tutorials."),
+    _("Exit the menu.")
+};
+
+void RyuDrawBetaMenuHelpText(u16 selection)
+{
+    struct WindowTemplate template;
+    void (*callback)(struct TextPrinterTemplate *, u16) = NULL;
+    StringCopy(gStringVar1, RyuBetaMenuHelpStrings[selection]);
+    if(sBetaMenuInfoWindow == 0xFF)
+    {
+        SetWindowTemplateFields(&template, 0, 0, 16, 12, 8, 15, 1);
+        sBetaMenuInfoWindow = AddWindow(&template);
+        DrawStdFrameWithCustomTileAndPalette(sBetaMenuInfoWindow, TRUE, 0x50C, 14);
+    }
+    FillWindowPixelBuffer(sBetaMenuInfoWindow, 0x11);
+    AddTextPrinterParameterized(sBetaMenuInfoWindow, 1, gStringVar1, 0, 0, 0xFF, callback);
+    CopyWindowToVram(sBetaMenuInfoWindow, 3);
+}
+
 static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
 {
     u16 oldSelectedRow;
@@ -1031,6 +1064,10 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
     else if (FlagGet(FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS) == 1)
         {
             RyuShowAlchemyInfo(currentSelection);
+        }
+    else if (FlagGet(FLAG_RYU_BETA_MENU_OPEN) == 1)
+        {
+            RyuDrawBetaMenuHelpText(currentSelection);
         }
     
     if (updateCursorAndCallCallback)
