@@ -5,7 +5,7 @@ script RyuChampionThrone { //the main script
 	applymovement(PLAYER, RCR_EnterThrone)
 	waitmovement(PLAYER)
 	specialvar(VAR_RESULT, RyuFollowerToTrainerID)
-	if (var(VAR_RESULT) == 0) {
+	if ((var(VAR_RESULT) == 0) || (var(VAR_RESULT) == 4) || (var(VAR_RESULT) == 2)) {
 		goto(RyuChampionThroneStart)
 	}
 	call(RCR_FollowerIntroSetup)

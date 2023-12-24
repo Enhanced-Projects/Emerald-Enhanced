@@ -269,7 +269,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_9",
       "var_value": "0",
-      "script": "RyuDevSwitch"
+      "script": "NULL"
     },
     {
       "type": "trigger",
