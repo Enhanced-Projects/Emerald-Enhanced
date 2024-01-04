@@ -13,7 +13,7 @@
 
 //autoscale data
 const u16 sRange[9][2] = {//Trainer level ranges
-    {11,16},
+    {9,13},
     {17,22},
     {23,28},
     {29,34},
@@ -25,7 +25,7 @@ const u16 sRange[9][2] = {//Trainer level ranges
 };
 
 const u16 sGymRange[9][2] = {//Gym Leader level ranges
-    {14,19},
+    {11,18},
     {20,24},
     {25,33},
     {34,39},
@@ -37,7 +37,7 @@ const u16 sGymRange[9][2] = {//Gym Leader level ranges
 };
 
 const u16 sWildRange[9][2] = {//Wild level ranges
-    {5,10},
+    {6,11},
     {10,20},
     {19,29},
     {28,35},
