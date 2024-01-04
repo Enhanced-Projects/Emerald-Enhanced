@@ -7,19 +7,16 @@
 
 ###### Emerald Enhanced is **NOT** free to clone and redistribute. 
 
+If you intend to use Art from this project, you must obtain permission from an executive of Enhanced Projects. 
+If the art is not property of Nintendo, but the property of someone who contributed to this project, you may be subject to sanctions. 
+
+When in doubt, obtain permission before using anything! We rarely decline such requests, we just need to know who is using what.
+
 Emerald Enhanced (further referred to as EE) is made public to provide reference material for other enthusiast ROM hackers.
 
 EE is **not** to be redistributed under any other name, and you may not claim credit for things you get from this repository.
 
 If you use some of my functions or systems in your own projects, you are free to do so, however, proper credit must be given.
-
-If you would like to contribute to the project and help us out, we are always looking for telented and like-minded individuals to assist development.
-
-###### We are currently looking for individuals to volunteer in the following capacities:
-* General Graphics desinger for tilesets and tile art
-* Sprite designer for sprite works throughout the project
-* Someone who can create new music and/or modify the existing MIDI tracks in the game.
-* Someone highly skilled in scripting to assist me with larger scale scripted events. Currently all of the scripting is done by me.
 
 You can find us on discord here:
 https://discord.gg/NXgTPKgsNP
