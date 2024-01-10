@@ -4,6 +4,7 @@
 .set HIDDEN_ABILITY, 2
 
 RyuDevSwitch::
+	setvar VAR_TEMP_9, 100
 	special RyuDevCheck
 	switch VAR_RESULT
 	case 69, Ryu_enableDevMode
@@ -16,17 +17,7 @@ Ryu_enableDevMode::
 	setflag FLAG_RYU_DEV_MODE
 	setflag FLAG_RYU_CHEATS_USED
 	msgbox RyuNowDeveloper MSGBOX_SIGN
-	setvar VAR_TEMP_9, 100
 	end
-
-Hat_enableTestMode::
-	setflag FLAG_HAT_TEST_MODE
-	msgbox HatNowTestmode MSGBOX_SIGN
-	end
-
-HatNowTestmode:
-	.string "{PLAYER} has activated test mode.$"
-	
 
 Ryu_SpecialChallengeActive::
 	msgbox RyuCantEnableDevBecauseChallenge
