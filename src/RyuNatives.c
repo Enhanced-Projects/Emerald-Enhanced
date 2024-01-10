@@ -444,7 +444,7 @@ void RyuDevCheck(void)
         gSpecialVar_Result = 777;
         return;
     }
-    if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)))
+    if (JOY_HELD(B_BUTTON))
     {
         gSpecialVar_Result = 69;
         return;
