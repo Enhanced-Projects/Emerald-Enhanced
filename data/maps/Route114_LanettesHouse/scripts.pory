@@ -16,6 +16,8 @@ LNH_HideLeaf:
 Route114_LanettesHouse_EventScript_Lanette:: @ 822B2D2
 	lock
 	faceplayer
+	compare VAR_RYU_QUEST_GENESECT, 2 @@ Player started genesect quest, prioritize that.
+	goto_if_eq Ryu_LNH_GenesectIntro
 	setflag FLAG_SYS_PC_LANETTE
 	goto_if_set FLAG_RYU_LANETTE_EVENT1, LNH_Outro
 	goto_if_set FLAG_RYU_LANETTE_INTRO, LNH_StillLooking
@@ -561,3 +563,12 @@ LNH_LanetteWalkDown:
 
 
 `
+
+script Ryu_LNH_GenesectIntro {
+	msgbox("It's nice to meet you in person.\nSo, regarding that drive you found...\pMy uncle has been looking for\lthose.\pYou should go meet him!\pHe likes to hang out at the Mauville\nPokémon Center.")
+	setvar(VAR_RYU_QUEST_GENESECT, 5)
+	closemessage
+	clearflag(FLAG_RYU_MAUVILLE_PC_BARD)
+	release
+	end
+}
