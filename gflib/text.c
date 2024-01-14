@@ -792,7 +792,7 @@ bool8 TextPrinterWaitAutoMode(struct TextPrinter *textPrinter)
 {
     struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
 
-    if (subStruct->autoScrollDelay == 49)
+    if (subStruct->autoScrollDelay == 49 || gSaveBlock2Ptr->autobattle)
     {
         return TRUE;
     }
@@ -806,6 +806,7 @@ bool8 TextPrinterWaitAutoMode(struct TextPrinter *textPrinter)
 bool16 TextPrinterWaitWithDownArrow(struct TextPrinter *textPrinter)
 {
     bool8 result = FALSE;
+    if (gSaveBlock2Ptr->autobattle == TRUE) result = TRUE;
     if (gTextFlags.autoScroll != 0)
     {
         result = TextPrinterWaitAutoMode(textPrinter);
@@ -825,6 +826,7 @@ bool16 TextPrinterWaitWithDownArrow(struct TextPrinter *textPrinter)
 bool16 TextPrinterWait(struct TextPrinter *textPrinter)
 {
     bool16 result = FALSE;
+    if (gSaveBlock2Ptr->autobattle == TRUE) result = TRUE;
     if (gTextFlags.autoScroll != 0)
     {
         result = TextPrinterWaitAutoMode(textPrinter);
@@ -894,6 +896,9 @@ u16 RenderText(struct TextPrinter *textPrinter)
     case 0:
         if ((JOY_HELD(A_BUTTON | B_BUTTON)) && subStruct->hasPrintBeenSpedUp)
             textPrinter->delayCounter = 0;
+        if (gSaveBlock2Ptr->autobattle == TRUE){
+            textPrinter->delayCounter = 0;
+        }
 
         if (textPrinter->delayCounter && textPrinter->textSpeed)
         {

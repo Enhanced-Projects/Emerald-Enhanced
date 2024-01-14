@@ -236,15 +236,26 @@ static void CompleteOnBankSpritePosX_0(void)
     if (gSprites[gBattlerSpriteIds[gActiveBattler]].pos2.x == 0)
         PlayerBufferExecCompleted();
 }
-
+extern void UpdateNickInHealthbox();
 static void HandleInputChooseAction(void)
 {
+    bool8 lockout = FALSE;
     u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
 
     DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
     DoBounceEffect(gActiveBattler, BOUNCE_MON, 7, 1);
 
     gPlayerDpadHoldFrames = 0;
+    if (gSaveBlock2Ptr->autobattle == TRUE){
+        BtlController_EmitTwoReturnValues(1, B_ACTION_USE_MOVE, 0);
+        PlayerBufferExecCompleted();
+    }
+
+    if (JOY_HELD(R_BUTTON) && JOY_HELD(L_BUTTON) && FlagGet(FLAG_RYU_TEMP_AB_LOCKOUT) == FALSE){
+        gSaveBlock2Ptr->autobattle = !gSaveBlock2Ptr->autobattle;
+        UpdateNickInHealthbox(0, &gPlayerParty[0]);
+        FlagSet(FLAG_RYU_TEMP_AB_LOCKOUT);
+    }
 
     if (JOY_NEW(A_BUTTON))
     {
@@ -537,6 +548,15 @@ static void HandleInputChooseMove(void)
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
 
     gPlayerDpadHoldFrames = 0;
+
+    if (gSaveBlock2Ptr->autobattle == TRUE){
+        if (gBattleStruct->mega.playerSelect)
+            BtlController_EmitTwoReturnValues(1, 10, (Random() % 4) | RET_MEGA_EVOLUTION | (gMultiUsePlayerCursor << 8));
+        else
+            BtlController_EmitTwoReturnValues(1, 10, (Random() % 4) | (gMultiUsePlayerCursor << 8));
+        HideMegaTriggerSprite();
+        PlayerBufferExecCompleted();
+    }
 
     if (gMain.newKeys & A_BUTTON)
     {

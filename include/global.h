@@ -455,7 +455,7 @@ struct SaveBlock2
               u8 alchemyEffect; //Which alchemy effect is currently active.
               u8 alchemyCharges; //how many charges, if any, are left for the currently active alchemy effect.
               u8 hasAlchemyEffectActive:1; //is alchemy effect active
-              u8 unused:1; //does the GCMS have a boss in it
+              u8 autobattle:1; //does the GCMS have a boss in it
               u8 playerIsRealtor:1; //has the player unlocked property management
               u8 userPresetThemeSelectionChoice:5; //theme preset options
              u8 propertyFlags[NUM_PROPERTY_BYTES];

@@ -3534,7 +3534,7 @@ static void DoBattleIntro(void)
         break;
     }
 }
-
+extern void UpdateNickInHealthbox();
 static void TryDoEventsBeforeFirstTurn(void)
 {
     s32 i, j;
@@ -3665,11 +3665,15 @@ static void HandleEndTurn_ContinueBattle(void)
             }
     }
 }
-
+extern void UpdateNickInHealthbox();
 void BattleTurnPassed(void)
 {
     s32 i;
-
+    if (gSaveBlock2Ptr->autobattle == TRUE && JOY_HELD(B_BUTTON)){
+        FlagClear(FLAG_RYU_TEMP_AB_LOCKOUT);
+        gSaveBlock2Ptr->autobattle = FALSE;
+        UpdateNickInHealthbox(0, &gPlayerParty[0]);
+    }
     TurnValuesCleanUp(TRUE);
     if (gBattleOutcome == 0)
     {

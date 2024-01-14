@@ -1400,7 +1400,7 @@
 #define FLAG_RYU_HIDE_SL_SUMAC_2                                  0x52C
 #define FLAG_HIDE_JOY_QUARTERS_GUARD                              0x52D
 #define FLAG_RYU_BETA_MENU_OPEN                                   0x52E
-
+#define FLAG_RYU_TEMP_AB_LOCKOUT                                  0x52F
 
 //tutorial system flags
 #define FLAG_RYU_FACTION_TUTORIAL_UNLOCKED                        0x5FB

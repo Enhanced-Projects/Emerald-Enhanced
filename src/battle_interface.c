@@ -2309,7 +2309,7 @@ static void SpriteCB_StatusSummaryBallsOnSwitchout(struct Sprite *sprite)
 }
 
 //FULL_COLOR
-static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
+void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 {
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     void *ptr;
@@ -2349,7 +2349,13 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
         }
         else
         {*/
-        StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
+        if (gSaveBlock2Ptr->autobattle == TRUE){
+            StringCopy(gDisplayedStringBattle, (((const u8[])_("{COLOR 13}auto {COLOR 1}"))));
+            StringAppend(gDisplayedStringBattle, gText_HighlightTransparent);
+        }
+        else{
+            StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
+        }
         //}
         GetMonData(mon, MON_DATA_NICKNAME, nickname);
         StringGetEnd10(nickname);

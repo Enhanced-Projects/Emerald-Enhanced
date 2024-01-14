@@ -2661,6 +2661,12 @@ static void Cmd_waitmessage(void)
         }
         else
         {
+            if (gSaveBlock2Ptr->autobattle == TRUE)
+            {
+                gPauseCounterBattle = 0;
+                gBattlescriptCurrInstr += 3;
+                gBattleCommunication[MSG_DISPLAY] = 0;
+            }
             if ((gMain.newKeys & (A_BUTTON | B_BUTTON)) || ++gPauseCounterBattle >= T2_READ_16(gBattlescriptCurrInstr + 1))
             {
                 gPauseCounterBattle = 0;
