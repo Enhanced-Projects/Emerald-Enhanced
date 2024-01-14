@@ -546,14 +546,37 @@ static void HandleInputChooseMove(void)
     u8 moveTarget;
     u32 canSelectTarget = 0;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
+    if (gSaveBlock2Ptr->autobattle == TRUE && (gBattleTypeFlags & BATTLE_TYPE_TRAINER)){
+        gSaveBlock2Ptr->autobattle = FALSE;
+        FlagClear(FLAG_RYU_TEMP_AB_LOCKOUT);
+    }
 
     gPlayerDpadHoldFrames = 0;
 
     if (gSaveBlock2Ptr->autobattle == TRUE){
+        int i;
+        u16 rand = (Random() % 4);
+        u8 attempts = 0;
+        u8 validMoves[4] = {FALSE, FALSE, FALSE, FALSE};
+        for (i = 0;i < 4;i++){
+            if (gBattleMoves[gBattleMons[0].moves[i]].power > 0){
+                validMoves[i] = TRUE;
+                mgba_open();
+                mgba_printf(LOGINFO, "move %d enabled for AB", i);
+                mgba_close();
+            }
+        }
+        do {
+            rand = (Random() % 4);
+            attempts++;
+        }
+        while(validMoves[rand] == FALSE && attempts < 5);
+        attempts = 0;
+
         if (gBattleStruct->mega.playerSelect)
-            BtlController_EmitTwoReturnValues(1, 10, (Random() % 4) | RET_MEGA_EVOLUTION | (gMultiUsePlayerCursor << 8));
+            BtlController_EmitTwoReturnValues(1, 10, rand | RET_MEGA_EVOLUTION | (gMultiUsePlayerCursor << 8));
         else
-            BtlController_EmitTwoReturnValues(1, 10, (Random() % 4) | (gMultiUsePlayerCursor << 8));
+            BtlController_EmitTwoReturnValues(1, 10, rand | (gMultiUsePlayerCursor << 8));
         HideMegaTriggerSprite();
         PlayerBufferExecCompleted();
     }
