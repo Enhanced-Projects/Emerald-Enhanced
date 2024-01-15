@@ -561,9 +561,6 @@ static void HandleInputChooseMove(void)
         for (i = 0;i < 4;i++){
             if (gBattleMoves[gBattleMons[0].moves[i]].power > 0){
                 validMoves[i] = TRUE;
-                mgba_open();
-                mgba_printf(LOGINFO, "move %d enabled for AB", i);
-                mgba_close();
             }
         }
         do {
