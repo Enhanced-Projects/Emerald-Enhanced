@@ -776,6 +776,7 @@ static void Task_WaitForSaveFileErrorWindow(u8 taskId)
 }
 
 const u8 gText_UpdateDetected[] = _("A significant version change\nhas been detected.\pYou will not be allowed to\ncontinue wihout starting a new game.");
+const u8 gText_FaileNoMercy[] = _("You were on a No Mercy challenge\nand lost.\pYou must start a new game\nto keep playing!");
 
 static void Task_MainMenuCheckBattery(u8 taskId)
 {
@@ -798,6 +799,11 @@ static void Task_MainMenuCheckBattery(u8 taskId)
         {
             IsUpdateMessageShown = 1;
             CreateMainMenuErrorWindow(gText_UpdateDetected);
+            gTasks[taskId].func = Task_WaitForUpdateNotification;
+        }
+        else if (FlagGet(FLAG_RYU_FAILED_NO_MERCY) == TRUE){
+            IsUpdateMessageShown = 1;
+            CreateMainMenuErrorWindow(gText_FaileNoMercy);
             gTasks[taskId].func = Task_WaitForUpdateNotification;
         }
         else

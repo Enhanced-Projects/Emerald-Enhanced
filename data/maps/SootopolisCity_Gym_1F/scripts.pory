@@ -123,6 +123,7 @@ SG_FollowerReset::
 	call SootopolisCity_Gym_1F_EventScript_GiveWaterPulse
 	clearflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
+	goto_if_set FLAG_RYU_NO_MERCY_MODE, RyuScripts_HardcoreGymReward
 	call_if_unset FLAG_RYU_GYM8HANDOUT, RyuGymItemReward8
 	call Ryu_CheckForPartnerReward
 	release

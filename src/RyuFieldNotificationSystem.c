@@ -325,6 +325,12 @@ void RyuDoNotifyTasks(void)
                     SetWarpDestination(MAP_GROUP(LIMBO), MAP_NUM(LIMBO), 255, 3, 3);
                     CreateTask(RyuDelayTimerTask, 255);
                 }
+            else if (FlagGet(FLAG_RYU_NO_MERCY_MODE) == TRUE)
+                {
+                    SchedulePokenavCallInternal(NAVCALL_NOMERCYOVER, 0);
+                    SetWarpDestination(MAP_GROUP(LIMBO), MAP_NUM(LIMBO), 255, 3, 3);
+                    CreateTask(RyuDelayTimerTask, 255);
+                }
         }
     }
 

@@ -3081,7 +3081,7 @@ inline u8 GetCurrentMaxLevel()
 
 inline u8 RyuGetAffectionChance()
 {
-    if ((FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) || FlagGet(FLAG_RYU_HARDCORE_MODE))
+    if ((FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE) || FlagGet(FLAG_RYU_HARDCORE_MODE) || FlagGet(FLAG_RYU_NO_MERCY_MODE))
         return 7;
     else
         return 10;

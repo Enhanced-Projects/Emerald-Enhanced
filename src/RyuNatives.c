@@ -96,6 +96,7 @@
 extern u8 GetObjectEventIdByLocalId(u8 id);
 
 extern u8 RyuScript_CheckCompleteDailyQuest[];
+extern u8 Ryu_enableDevMode[];
 
 
 void ApplyDaycareExperience(struct Pokemon *mon)
@@ -443,11 +444,20 @@ void RyuDevCheck(void)
     {
         gSpecialVar_Result = 777;
     }
-    if (JOY_HELD(B_BUTTON))
+    if (JOY_HELD(L_BUTTON))
     {
         gSpecialVar_Result = 69;
     }
 }
+#ifdef DEV_BUILD
+void TryDevMode(void)
+{
+    ScriptContext1_SetupScript(Ryu_enableDevMode);
+}
+#else
+void TryDevMode(void){}
+#endif
+
 
 int CountBadges(void)
 {

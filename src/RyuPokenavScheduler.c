@@ -8,6 +8,7 @@
 const u8 sText_PokenavCallLanetteGenesectPokecenter[] = _("Hello? {PLAYER}?\pI heard that you found a\nmysterious drive.\pHow did I get your number?\pDon't worry about that.\pMore importantly, come find me at\nFallarbor Pokecenter!\pWe have something to discuss!");
 const u8 sText_PokenavCallLanetteGenesectLanetteHome[] = _("Hello? {PLAYER}?\pI heard that you found a\nmysterious drive.\pHow did I get your number?\pDon't worry about that.\pMore importantly, come find me at\nmy house on Route 114!\pWe have something to discuss!");
 const u8 sText_DuskullAfterlife[] = _("Hello. This is the Duskull afterlife\nservice calling.\pThis call is to notify you that\nyou will be escorted to the\lafterlife shortly.");
+const u8 sText_DuskullAfterlifeNoMercy[] = _("Hello. This is the Duskull afterlife\nservice calling.\pOur sources say that you have failed\nthe NO MERCY challenge.\pYour game is over. See you soon!");
 const u8 sText_FailedRyuChallenge[] =  _("You have failed Ryu's Challenge.\nYou can try again in another\lNew Game Plus.\pWe look forward to you trying\nagain!");
 const u8 sText_CompletedRyuChallenge[] = _("You have completed\nRyu's Challenge.");
 const u8 sText_NavCallDexNav[] = _("Hello Trainer!\pThe DexNav has been added to your\nStart Menu.\pPlease enjoy it!");
@@ -35,6 +36,7 @@ const u8 * const RyuPokenavCallMessages[] =
     [NAVCALL_AQUASTAGE80] = sText_AquaStage80,
     [NAVCALL_AQUASTAGE91] = sText_AquaStage91,
     [NAVCALL_AQUASTAGE123] = sText_AquaStage123,
+    [NAVCALL_NOMERCYOVER] = sText_DuskullAfterlifeNoMercy,
 };
 
 int RyuTryGetScheduledPokenavCall(void)

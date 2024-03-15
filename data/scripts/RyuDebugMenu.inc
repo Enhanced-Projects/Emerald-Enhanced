@@ -12,7 +12,13 @@ RyuDevSwitch::
 	release
 	end
 
+queryenabledev::
+	.string "Enable Dev Mode?$"
+
 Ryu_enableDevMode::
+	msgbox queryenabledev, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq ryu_end
 	setflag FLAG_RYU_DEV_MODE
 	setflag FLAG_RYU_CHEATS_USED
 	msgbox RyuNowDeveloper MSGBOX_SIGN

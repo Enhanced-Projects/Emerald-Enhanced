@@ -11,6 +11,7 @@ TC_EvIvCheckerScript::
 	msgbox Ryu_Stats
 	removeinfobox
 	goto_if_set FLAG_RYU_HARDCORE_MODE, TC_IVEV_NOHEAL
+	goto_if_set FLAG_RYU_NO_MERCY_MODE, TC_IVEV_NOHEAL
 	delay 10
 	special HealPlayerParty
 	msgbox Ryu_PkmnHealed
@@ -71,6 +72,7 @@ TC_HCNZ_CANTHEAL:
 TC_Entry::
 	lockall
 	goto_if_set FLAG_RYU_HARDCORE_MODE, TC_ENTRY_CHALLENGE
+	goto_if_set FLAG_RYU_NO_MERCY_MODE, TC_ENTRY_CHALLENGE
 	goto_if_set FLAG_RYU_TC_ENTERED, TC_Exiting
 	applymovement 2, TC_FacePlayer
 	goto_if_set FLAG_RYU_DEV_MODE, TC_DevEntry
@@ -439,6 +441,7 @@ TC_Tutor::
 	lockall
 	faceplayer
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuTCDisabledHardcore
+	goto_if_set FLAG_RYU_NO_MERCY_MODE, RyuTCDisabledHardcore
 	msgbox TC_TutorWelcome MSGBOX_DEFAULT
 	msgbox TC_TutorQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1

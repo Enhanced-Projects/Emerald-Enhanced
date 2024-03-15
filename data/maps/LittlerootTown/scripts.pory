@@ -218,9 +218,8 @@ LRT_FM2:
     .string "Did you hear them? It's distracting\n"
     .string "right? Well anyways, bye!$"
 
-
-
 LittlerootTown_EventScript_TownSign::
+	callnative TryDevMode
 	msgbox LittlerootTown_Text_TownSign, MSGBOX_SIGN
 	end
 

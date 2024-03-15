@@ -7,6 +7,7 @@ RyuTeleport::
 	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, RyuTeleportDisabled
 	call_if_set FLAG_RYU_UNDERWORLD, RyuCheckUnderworldWaystone
 	call_if_set FLAG_RYU_HARDCORE_MODE, RyuTeleportUseCheck
+	call_if_set FLAG_RYU_NO_MERCY_MODE, RyuTeleportUseCheck
 	msgbox MSG_Teleport MSGBOX_SIGN
 	multichoicegrid 0, 0, 126, 3, 0
 	switch VAR_RESULT

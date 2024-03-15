@@ -59,15 +59,33 @@ RyuScript_ContinueIntroAfterStarter::
 	compare VAR_RESULT, NO
 	goto_if_eq NGNormalMode
 	closemessage
+RETRYSELECTION::
 	msgbox Ryu_PleaseSelectDifficulty
-	multichoicedefault 1, 2, MULTI_SELECT_FRESH_NEW_GAME_MODE, 0, 0
+	bufferdynamicmulti NGEASY, NGNORMAL, NGHARD, NGFRONTIER, NGNOMERCY
+	multichoicedefault 1, 2, MULTI_DYNAMIC_5, 0, 0
 	switch VAR_RESULT
 	case 0, IT_EasyMode
 	case 1, IT_NormalMode
 	case 2, IT_HardMode
 	case 3, IT_FrontierMode
+	case 4, IT_NoMercyMode
 	goto IT_NormalMode
 	end
+
+NGEASY:
+	.string "{COLOR LIGHT_GREEN}{SHADOW BLUE}Easy Mode$"
+
+NGNORMAL:
+	.string "{COLOR LIGHT_GREEN}{SHADOW LIGHT_GREY}Normal Mode$"
+
+NGHARD:
+	.string "{COLOR RED}{SHADOW LIGHT_BLUE}Hard Mode$"
+
+NGFRONTIER:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier Mode$"
+
+NGNOMERCY:
+	.string "{COLOR RED}{SHADOW LIGHT_RED}NO MERCY Mode$"
 
 NGNormalMode::
 	msgbox RI_AskViewOWTut, MSGBOX_YESNO
@@ -261,6 +279,37 @@ IT_HardcoreMode::
 	goto_if_eq SetFemaleStartingVariables
 	end
 
+IT_NoMercyMode::
+	msgbox nomercywarning, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RETRYSELECTION
+	msgbox IT_NoMercyIntro
+	setflag FLAG_RYU_ISNGPLUS
+	setvar VAR_RYU_NGPLUS_COUNT, 10
+	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 5
+	setvar VAR_RYU_DIFFICULTY, DIFF_NOMERCY
+	setvar VAR_RYU_DEV_EXP_MULT, 1
+	removemoney 3000
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	checkplayergender
+	compare VAR_RESULT, MALE
+	call_if_eq SetMaleStartingVariablesNMM
+	compare VAR_RESULT, FEMALE
+	call_if_eq SetFemaleStartingVariablesNMM
+	setflag FLAG_RYU_NO_MERCY_MODE
+	call RyuSetRTCNMM
+	setvar VAR_RYU_CHALLENGE_WAYSTONE_USES, 0
+	msgbox IT_NoMercyOutro
+	end
+
+nomercywarning:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}WARNING!!!\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You are attempting to start {COLOR LIGHT_RED}{SHADOW RED}NO MERCY\n"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}mode. This mode is {COLOR LIGHT_RED}{SHADOW RED}EXTREMELY HARD!!!\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Are you sure you want to try NO MERCY\n"
+	.string "mode?$"
+
+
 IT_FrontierOutro:
     .string "All game flags and variables have\n"
     .string "been intialized.\p"
@@ -287,12 +336,37 @@ IT_HardcoreIntro:
     .string "You can't use pokecenters, and you\n"
     .string "will not get healed or recieve\l"
     .string "handouts from gym leaders.$"
-	
+
+IT_NoMercyIntro:
+	.string "Welcome to NO MERCY mode.\p"
+    .string "This mode is only for the truly\n"
+    .string "hardcore Pokémon players. \p"
+    .string "You will not be allowed to heal or\n"
+    .string "buy any items. You won't be able to\l"
+    .string "teleport until you get a badge.\p"
+    .string "Your Pokémon will die if they are\n"
+    .string "knocked out.\p"
+    .string "You will not earn any money, and you\n"
+    .string "will only have the items you can\l"
+    .string "scavenge from the world around you.$"
+
+IT_NoMercyOutro:
+    .string "Note that you will have the full\n"
+    .string "auto-scale as well as the full level\l"
+    .string "cap.\p"
+    .string "If you fail this challenge, your save\n"
+    .string "will be deleted, and you will no\l"
+    .string "longer be able to try.\p"
+    .string "A new file will be required.\p"
+    .string "Welcome to the ultra-nightmare!$"
+
+
 IT_HardcoreOutro:
 	.string "Welcome to the nightmare.$"
 
 SetMaleStartingVariables:: @ 823BF20
 	call RyuSetUpMoneyMode
+SetMaleStartingVariablesNMM::
 	call RyuSetStartLocationRespawn
 	compare VAR_RYU_DIFFICULTY, DIFF_FRONTIER @force update respawn location to frontier.
 	call_if_eq IT_SetFrontierRespawn
@@ -314,6 +388,8 @@ SetMaleStartingVariables:: @ 823BF20
 	goto_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeBegin
 	msgbox LRT_IntroMsg1 MSGBOX_SIGN
 	msgbox RyuSetTime MSGBOX_SIGN
+	compare VAR_RYU_DIFFICULTY, DIFF_NOMERCY
+	goto_if_eq ryu_return
 	goto RyuSetRTC
 	releaseall
 	end
@@ -324,6 +400,7 @@ IT_SetFrontierRespawn::
 
 SetFemaleStartingVariables:: @ 823BF46
 	call RyuSetUpMoneyMode
+SetFemaleStartingVariablesNMM::
 	call RyuSetStartLocationRespawn
 	compare VAR_RYU_DIFFICULTY, DIFF_FRONTIER @force update respawn location to frontier.
 	call_if_eq IT_SetFrontierRespawn
@@ -345,6 +422,8 @@ SetFemaleStartingVariables:: @ 823BF46
 	goto_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeBegin
 	msgbox LRT_IntroMsg1 MSGBOX_SIGN
 	msgbox RyuSetTime MSGBOX_SIGN
+	compare VAR_RYU_DIFFICULTY, DIFF_NOMERCY
+	goto_if_eq ryu_return
 	goto RyuSetRTC
 	releaseall
 	end
@@ -354,6 +433,7 @@ Ryu_FrontierModeBegin::
 	end
 
 RyuSetRTC::
+RyuSetRTCNMM::
 	goto_if_set FLAG_SET_WALL_CLOCK, ViewClock
 	call SetClockStage1
 	delay 30
@@ -448,6 +528,8 @@ GameIntroSequencePart2::
 	msgbox GI_GoSeeRivalMaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
+	compare VAR_RYU_DIFFICULTY, DIFF_NOMERCY
+	goto_if_eq ryu_return
 	release
 	end
 	
@@ -455,6 +537,8 @@ GameIntroFemalePart2::
 	msgbox GI_GoSeeRivalFemaleMsg MSGBOX_SIGN
 	closemessage
 	clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
+	compare VAR_RYU_DIFFICULTY, DIFF_NOMERCY
+	goto_if_eq ryu_return
 	release
 	end
 	

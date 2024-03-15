@@ -614,6 +614,9 @@ void PrintStartMenuInfoData(void)
         case DIFF_HARDCORE:
             StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR LIGHT_RED}{SHADOW LIGHT_GREY}HARDCORE"));
             break;
+        case DIFF_NOMERCY:
+            StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR RED}{SHADOW LIGHT_GREY}NO MERCY"));
+            break;
         case DIFF_FRONTIER:
             StringCopy(gRyuStringVar1, (const u8[])_(" / {COLOR LIGHT_GREEN}{SHADOW GREEN}Frontier"));
             break;
@@ -625,6 +628,11 @@ void PrintStartMenuInfoData(void)
     StringAppend(gRyuStringVar1, gText_RyuVersion);
     ConvertIntToDecimalStringN(gStringVar4, VarGet(VAR_LAST_KNOWN_GAME_VERSION), STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gRyuStringVar1, gStringVar4);
+    #ifdef DEV_BUILD
+    StringAppend(gRyuStringVar1, ((const u8[])_("-dev")));
+    mgba_open();
+    mgba_printf(LOGINFO, "Version string: %s", ConvertToAscii(gRyuStringVar1));
+    #endif
     StringAppend(gStringVar1, gRyuStringVar1);
     //print local time
     RtcCalcLocalTime();

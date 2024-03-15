@@ -147,6 +147,7 @@ PCN_AudiniteExplain:
 
 Ryu_CheckHealPermissions::
     goto_if_set FLAG_RYU_HARDCORE_MODE, Ryu_NoPcUsesHardcore
+    goto_if_set FLAG_RYU_NO_MERCY_MODE, Ryu_NoPcUsesHardcore
     return
 
 PCN_CanIComeWith:

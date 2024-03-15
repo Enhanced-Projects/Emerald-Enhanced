@@ -546,6 +546,7 @@ Route111_Text_TrainerHillSign: @ 81F1D61
 @==================================================================================================challenge/hardcore
 r111_TrainerHillBlockEntry::
 	goto_if_set FLAG_RYU_HARDCORE_MODE, r111_blockEntry
+	goto_if_set FLAG_RYU_NO_MERCY_MODE, r111_blockEntry
 	release
 	end
 	

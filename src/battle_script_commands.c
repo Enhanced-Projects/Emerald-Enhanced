@@ -4130,6 +4130,9 @@ static void Cmd_getexp(void)
         case DIFF_HARDCORE: //flat 2x
             multiplier = 2000;
             break;
+        case DIFF_NOMERCY: //flat 1.5x
+            multiplier = 1500;
+            break;
     }
 
     if ((FlagGet(FLAG_RYU_DEV_MODE) == TRUE) && (FlagGet(FLAG_RYU_DEV_EXP_MULT_ENABLED) == TRUE))//dev multiplier enabled, overrides the above.
@@ -6764,6 +6767,11 @@ static void Cmd_getmoneyreward(void)
     {
         moneyReward /= 20;
         moneyReward *= 3;
+    }
+
+    if (FlagGet(FLAG_RYU_NO_MERCY_MODE) == TRUE)
+    {
+        moneyReward = 0;
     }
 
     if (FlagGet(FLAG_RYU_DOING_RYU_CHALLENGE) == TRUE)

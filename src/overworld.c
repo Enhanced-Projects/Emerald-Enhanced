@@ -429,6 +429,8 @@ void DoWhiteOut(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuWipeParty();
+    if (FlagGet(FLAG_RYU_NO_MERCY_MODE) == 1)
+        RyuWipeParty();
 
     if (FlagGet(FLAG_RYU_UNDERWORLD) == FALSE)
         FlagSet(FLAG_RYU_PREMATURE_DEATH);
@@ -476,6 +478,9 @@ void DoPartnerWhiteOut(void)
     }
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
+        RyuWipeParty();
+
+    if (FlagGet(FLAG_RYU_NO_MERCY_MODE) == 1)
         RyuWipeParty();
 
     if (CheckAchievement(ACH_YOU_DIED) == FALSE)
@@ -1806,6 +1811,8 @@ void CB2_ReturnToFieldLocal(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
+    if (FlagGet(FLAG_RYU_NO_MERCY_MODE) == 1)
+        RyuKillMon();
 } 
 
 void CB2_ReturnToField(void)
@@ -2143,6 +2150,8 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
 static bool32 ReturnToFieldLocal(u8 *state)
 {
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
+        RyuKillMon();
+    if (FlagGet(FLAG_RYU_NO_MERCY_MODE) == 1)
         RyuKillMon();
 
     switch (*state)

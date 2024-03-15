@@ -1401,6 +1401,8 @@
 #define FLAG_HIDE_JOY_QUARTERS_GUARD                              0x52D
 #define FLAG_RYU_BETA_MENU_OPEN                                   0x52E
 #define FLAG_RYU_TEMP_AB_LOCKOUT                                  0x52F
+#define FLAG_RYU_NO_MERCY_MODE                                    0x530
+#define FLAG_RYU_FAILED_NO_MERCY                                  0x531
 
 //tutorial system flags
 #define FLAG_RYU_FACTION_TUTORIAL_UNLOCKED                        0x5FB
