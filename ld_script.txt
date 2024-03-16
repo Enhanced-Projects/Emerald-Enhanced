@@ -312,6 +312,7 @@ SECTIONS {
         src/custom_interface.o(.text);
         src/rhh_copyright.o(.text);
         src/RyuPokenavScheduler.o(.text);
+        src/ryu_challenge_modifiers.o(.text);
     } =0
 
     script_data :
@@ -657,6 +658,7 @@ SECTIONS {
         src/custom_interface.o(.rodata);
         src/rhh_copyright.o(.rodata);
         src/RyuPokenavScheduler.o(.rodata);
+        src/ryu_challenge_modifiers.o(.rodata);
     } =0
 
     song_data :

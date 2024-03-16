@@ -1144,7 +1144,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	clearflag(FLAG_RYU_TEMP_AB_LOCKOUT)
+	setflag(FLAG_RYU_NUZLOCKE_MOD)
     release
     end
 }

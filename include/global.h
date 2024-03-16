@@ -145,6 +145,8 @@
 #define NUM_ACH_PWR_BYTES (ROUND_BITS_TO_BYTES(AP_FLAGS_COUNT))
 #define NUM_NPC_FACTIONS 8
 
+#define NUM_NUZLOCKE_MAPSEC_BYTES 32 //(thus number * 8 is how many flags for nuzlocke locations there are.)
+
 #define MAX_DYNAMIC_OBJECTS 4
 
 struct Coords8
@@ -880,6 +882,7 @@ struct SaveBlock1
                struct Pokemon GCMS;
                struct DynamicMapObjects DynamicObjects[MAX_DYNAMIC_OBJECTS];
                u8 dynamicDeliveryIds[4];
+               u8 nuzlockeMapsecs[NUM_NUZLOCKE_MAPSEC_BYTES];
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

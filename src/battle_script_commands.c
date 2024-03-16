@@ -57,6 +57,7 @@
 #include "constants/event_objects.h"
 #include "ach_atlas.h"
 #include "overworld_notif.h"
+#include "ryu_challenge_modifiers.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 extern bool8 gHasAmuletEffectActive;
@@ -12496,7 +12497,7 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_BallBlockedGenesect;
     }
-    else if (FlagGet(FLAG_RYU_NUZLOCKE_MOD) == TRUE)
+    else if (FlagGet(FLAG_RYU_NUZLOCKE_MOD) == TRUE && GetNuzlockeFlag(gMapHeader.regionMapSectionId) == TRUE)
     {
         BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
         MarkBattlerForControllerExec(gActiveBattler);
@@ -12710,6 +12711,9 @@ static void Cmd_handleballthrow(void)
         {
             if (IsCriticalCapture())
                 GiveAchievement(ACH_CRITCAP);
+            if (FlagGet(FLAG_RYU_NUZLOCKE_MOD) == TRUE){
+                SetNuzlockeFlag(gMapHeader.regionMapSectionId);
+            }
             BtlController_EmitBallThrowAnim(0, BALL_3_SHAKES_SUCCESS);
             MarkBattlerForControllerExec(gActiveBattler);
             gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
