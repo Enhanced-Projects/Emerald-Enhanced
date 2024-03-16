@@ -404,12 +404,13 @@ static void BuildNormalStartMenu(void)
     }
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
-    AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
     if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
         AddStartMenuAction(MENU_ACTION_DEV_MENU);
     else
         AddStartMenuAction(MENU_ACTION_BETA_MENU);
+    if (VarGet(VAR_RYU_DIFFICULTY) != DIFF_NOMERCY)
+        AddStartMenuAction(MENU_ACTION_SAVE);
 }
 
 static void BuildDexnavStartMenu(void)
@@ -436,7 +437,6 @@ static void BuildDexnavStartMenu(void)
     }
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
-    AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
     if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
         {
@@ -446,6 +446,8 @@ static void BuildDexnavStartMenu(void)
     {
         AddStartMenuAction(MENU_ACTION_BETA_MENU);
     }
+    if (VarGet(VAR_RYU_DIFFICULTY) != DIFF_NOMERCY)
+        AddStartMenuAction(MENU_ACTION_SAVE);
 }
 
 static void BuildLinkModeStartMenu(void)
@@ -630,8 +632,6 @@ void PrintStartMenuInfoData(void)
     StringAppend(gRyuStringVar1, gStringVar4);
     #ifdef DEV_BUILD
     StringAppend(gRyuStringVar1, ((const u8[])_("-dev")));
-    mgba_open();
-    mgba_printf(LOGINFO, "Version string: %s", ConvertToAscii(gRyuStringVar1));
     #endif
     StringAppend(gStringVar1, gRyuStringVar1);
     //print local time

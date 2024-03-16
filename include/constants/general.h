@@ -582,7 +582,7 @@
 //uncomment to punish save states. Otherwise detections are just logged.
 //#define RYU_PUNISH_SAVE_STATE 1
 
-#define EE_GAME_VERSION 10020
+#define EE_GAME_VERSION 10021
 //uncomment to allow dev switch to be accessed.
 //#define DEV_BUILD 69
 

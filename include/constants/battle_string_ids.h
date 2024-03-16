@@ -647,8 +647,9 @@
 #define STRINGID_GENESECTSWITCHEDDRIVE                643
 #define STRINGID_BALLBLOCKEDGENESECT                  644
 #define STRINGID_ILLUSIONISTBASE                      645
+#define STRINGID_BALLBLOCKEDNUZLOCKE                  646
 
-#define BATTLESTRINGS_COUNT                           646
+#define BATTLESTRINGS_COUNT                           647
 
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

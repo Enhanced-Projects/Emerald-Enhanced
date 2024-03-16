@@ -2,10 +2,32 @@ EventScript_PC:: @ 8271D92
 	lockall
 	setvar VAR_0x8004, 0
 	special DoPCTurnOnEffect
+	compare VAR_RYU_DIFFICULTY, DIFF_NOMERCY
+	call_if_eq PC_NoMercyMode
 	playse SE_PC_ON
 	msgbox Text_BootUpPC, MSGBOX_DEFAULT
 	goto EventScript_PCMainMenu
 	end
+
+PC_NoMercyMode::
+	msgbox nomercysave, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne ryu_return
+	msgbox nomercysavingwait
+	callnative(RyuForceSaveTheGame)
+	closemessage
+	msgbox nomercysavingcomplete
+	closemessage
+	return
+
+nomercysave:
+	.string "Would you like to save the game?$"
+
+nomercysavingwait:
+	.string "Now saving the game.\nPlease wait!$"
+
+nomercysavingcomplete:
+	.string "Game successfully saved.$"
 
 EventScript_PCMainMenu:: @ 8271DAC
 	goto_if_set FLAG_RYU_DOING_RYU_CHALLENGE, PC_ChallengeMode

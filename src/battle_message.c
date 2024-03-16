@@ -776,6 +776,7 @@ static const u8 sText_IllusionistEnhanced[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}
 static const u8 sText_IllusionistBase[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} erects a psychic barrier!");
 static const u8 sText_GenesectSwitchedDrive[] = _("Genesect switched it's equipped drive!");
 static const u8 sText_GenesectBlockedBall[] = _("Genesect shoots the pokéball down!");
+static const u8 sText_NuzlockeModeAlreadyCaught[] = _("You already captured a Pokémon\nfrom this location!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1410,6 +1411,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_GENESECTSWITCHEDDRIVE- 12] = sText_GenesectSwitchedDrive,
     [STRINGID_BALLBLOCKEDGENESECT- 12] = sText_GenesectBlockedBall,
     [STRINGID_ILLUSIONISTBASE- 12] = sText_IllusionistBase,
+    [STRINGID_BALLBLOCKEDNUZLOCKE- 12] = sText_NuzlockeModeAlreadyCaught,
 };
 
 const u16 gTerrainStringIds[] =

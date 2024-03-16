@@ -170,6 +170,12 @@ BattleScript_BallBlockedGenesect::
 	waitmessage 0x40
 	finishaction
 
+BattleScript_BallBlockedNuzlocke::
+	waitmessage 0x40
+	printstring STRINGID_BALLBLOCKEDNUZLOCKE
+	waitmessage 0x40
+	finishaction
+
 BattleScript_MonDoesntLikeCheaters::
 	waitmessage 0x40
 	printstring STRINGID_ITDOESNTLIKECHEATERS

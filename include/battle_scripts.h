@@ -240,6 +240,7 @@ extern const u8 BattleScript_ShakeBallThrow[];
 extern const u8 BattleScript_TrainerBallBlock[];
 extern const u8 BattleScript_MonTooPowerfulForBall[];
 extern const u8 BattleScript_BallBlockedHorseman[];
+extern const u8 BattleScript_BallBlockedNuzlocke[];
 extern const u8 BattleScript_BallBlockedReaper[];
 extern const u8 BattleScript_BallBlockedGenesect[];
 extern const u8 BattleScript_MonDoesntLikeCheaters[];

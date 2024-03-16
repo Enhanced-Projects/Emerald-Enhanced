@@ -456,7 +456,7 @@ static u8 CreateShopMenu(u8 martType)
         struct WindowTemplate winTemplate;
         winTemplate = sShopMenuWindowTemplates[0];
 
-        if ((FlagGet(FLAG_RYU_BANNED_FROM_MARTS) == 1) && (FlagGet(FLAG_RYU_SELLING_TO_FENCE) == 0))
+        if (((FlagGet(FLAG_RYU_BANNED_FROM_MARTS) == 1) && (FlagGet(FLAG_RYU_SELLING_TO_FENCE) == 0)) || (VarGet(VAR_RYU_DIFFICULTY) == DIFF_NOMERCY))
         {
             winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuyQuit, ARRAY_COUNT(sShopMenuActions_BuyQuit));
             gMartInfo.windowId = AddWindow(&winTemplate);

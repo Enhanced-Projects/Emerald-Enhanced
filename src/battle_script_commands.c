@@ -12496,6 +12496,12 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_BallBlockedGenesect;
     }
+    else if (FlagGet(FLAG_RYU_NUZLOCKE_MOD) == TRUE)
+    {
+        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_BallBlockedNuzlocke;
+    }
     else
     {
         u32 odds, i;
