@@ -470,6 +470,11 @@
 #define take 1
 #define query 2
 
+//hack to make the modflag script command multi-use
+#define CLEAR 0
+#define SET 1
+#define GET 2
+
 //factions related
 #define FACTION_NATURALISTS 0 //Trainers who like to be in nature, surrounded by nature, simple existence. Campers, picknickers, rangers.          Opposed: Richkids(x1) "Pokemon are fine as they are!"
 #define FACTION_STUDENTS 1 //Trainers still in school and learning, aka the gossip girls. Lass, Youngster, Twins, Jr+Sr.                         Opposed: Nerds(x1) "The best pokemon are the easiest to train!"
@@ -576,13 +581,29 @@
 #define DIFF_NOMERCY 5
 #define DIFF_FRONTIER 10
 
+//challenge modifiers
+#define NUZLOCKE_MOD 0
+#define MONOTYPE_MOD 1
+#define ADV_MONOTYPE_MOD 2
+#define PLAGUE_MOD 3
+#define FAMINE_MOD 4
+#define DEATH_MOD 5
+#define WAR_MOD 6
+#define REVELATION_MOD 7
+#define GEN1_MOD 8
+#define LATE_BLOOMER_MOD 9
+#define MAGNETOSPHERE_MOD 10
+#define UNMOTIVATED_MOD 11
+#define SICKLY_MOD 12
+#define TOTAL_MODS 13
+
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
 
 //uncomment to punish save states. Otherwise detections are just logged.
 //#define RYU_PUNISH_SAVE_STATE 1
 
-#define EE_GAME_VERSION 11000
+#define EE_GAME_VERSION 10100
 //uncomment to allow dev switch to be accessed.
 #define DEV_BUILD 69
 

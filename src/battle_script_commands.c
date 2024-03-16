@@ -12497,7 +12497,7 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_BallBlockedGenesect;
     }
-    else if (FlagGet(FLAG_RYU_NUZLOCKE_MOD) == TRUE && GetNuzlockeFlag(gMapHeader.regionMapSectionId) == TRUE)
+    else if (GetModFlag(NUZLOCKE_MOD) == TRUE && GetNuzlockeFlag(gMapHeader.regionMapSectionId) == TRUE)
     {
         BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
         MarkBattlerForControllerExec(gActiveBattler);
@@ -12711,7 +12711,7 @@ static void Cmd_handleballthrow(void)
         {
             if (IsCriticalCapture())
                 GiveAchievement(ACH_CRITCAP);
-            if (FlagGet(FLAG_RYU_NUZLOCKE_MOD) == TRUE){
+            if (GetModFlag(NUZLOCKE_MOD) == TRUE){
                 SetNuzlockeFlag(gMapHeader.regionMapSectionId);
             }
             BtlController_EmitBallThrowAnim(0, BALL_3_SHAKES_SUCCESS);

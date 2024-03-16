@@ -146,6 +146,7 @@
 #define NUM_NPC_FACTIONS 8
 
 #define NUM_NUZLOCKE_MAPSEC_BYTES 32 //(thus number * 8 is how many flags for nuzlocke locations there are.)
+#define NUM_CHALLENGE_FLAG_BYTES 8 //(thus number * 8 is how many flags for challenges there are.)
 
 #define MAX_DYNAMIC_OBJECTS 4
 
@@ -882,7 +883,17 @@ struct SaveBlock1
                struct Pokemon GCMS;
                struct DynamicMapObjects DynamicObjects[MAX_DYNAMIC_OBJECTS];
                u8 dynamicDeliveryIds[4];
+               //challenge modifier flags (8 bytes)
+               u8 challengeFlags[NUM_CHALLENGE_FLAG_BYTES];
+               //nuzlocke records (32 bytes)
                u8 nuzlockeMapsecs[NUM_NUZLOCKE_MAPSEC_BYTES];
+               //challenge data (16 bytes)
+               u32 monotypeChallengeChoice:5;//chosen monotype (max value 31)
+               u32 unusedChallengeBitsBlock1:27;
+               u32 unusedChallengeBitsBlock2:32;
+               u32 unusedChallengeBitsBlock3:32;
+               u32 unusedChallengeBitsBlock4:32;
+               //total 56
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

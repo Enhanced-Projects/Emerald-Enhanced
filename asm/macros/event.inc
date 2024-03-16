@@ -1718,11 +1718,11 @@
 	.byte 0xef
 	.endm
 
-	@gives an item silently
-	.macro giveitem_silent item:req, quantity=1
+	@GET, SET, or CLEAR the modflag with id
+	.macro modflag func:req id:req
 	.byte 0xf0
-	.2byte \item
-	.2byte \quantity
+	.byte \func
+	.byte \id
 	.endm
 
 	@gets gamestat and puts it in VAR_RESULT

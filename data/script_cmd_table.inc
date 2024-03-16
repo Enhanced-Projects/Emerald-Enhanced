@@ -240,7 +240,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_divvar                    @ 0xed
 	.4byte ScrCmd_drawfullscreenimage       @ 0xee
 	.4byte ScrCmd_clearfullscreenimage      @ 0xef
-	.4byte ScrCmd_giveitem_silent           @ 0xf0
+	.4byte ScrCmd_modflag                   @ 0xf0
 	.4byte ScrCmd_readgamestat              @ 0xf1
 	.4byte ScrCmd_messageoneline            @ 0xf2
 	.4byte ScrCmd_dominingcheck             @ 0xf3

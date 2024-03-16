@@ -57,6 +57,7 @@
 #include "pokedex.h"
 #include "factions.h"
 #include "overworld_notif.h"
+#include "ryu_challenge_modifiers.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -2384,15 +2385,20 @@ bool8 ScrCmd_divvar(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_giveitem_silent(struct ScriptContext *ctx)
+bool8 ScrCmd_modflag(struct ScriptContext *ctx)
 {
-    u16 item = (VarGet(ScriptReadHalfword(ctx)));
-    u16 quantity = (VarGet(ScriptReadHalfword(ctx)));
-
-    if (quantity == 0)
-        quantity = 1;
-
-    AddBagItem(item, quantity);
+    u8 func = ScriptReadByte(ctx);
+    u8 id = ScriptReadByte(ctx);
+    
+    if (func == SET){
+        SetModFlag(id);
+    }
+    else if (func == CLEAR){
+        ClearModFlag(id);
+    }
+    else{
+        gSpecialVar_Result = GetModFlag(id);
+    }
     return FALSE;
 }
 

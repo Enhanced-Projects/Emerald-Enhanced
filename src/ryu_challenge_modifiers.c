@@ -1,7 +1,34 @@
 #include "ryu_challenge_modifiers.h"
 
 
+/////////////////////////////////////////////////////////////////General challenge mod functions
 
+void SetModFlag(u32 id)
+{
+    if(id > 63)
+        return;
+    gSaveBlock1Ptr->challengeFlags[id / 8] |= 1 << (id % 8);
+}
+
+bool32 GetModFlag(u32 id)
+{
+    u32 ret = 69;
+    if(id > 63)
+        return FALSE;
+    return !!((gSaveBlock1Ptr->challengeFlags[id / 8] >> (id % 8)) & 1);
+}
+
+void ClearModFlag(u32 id)
+{
+    if(id > 63)
+        return;
+    gSaveBlock1Ptr->challengeFlags[id / 8] &= ~(1 << (id % 8));
+}
+
+void ResetModFlags(void)
+{
+    memset(gSaveBlock1Ptr->challengeFlags, 0, NUM_CHALLENGE_FLAG_BYTES);
+}
 
 
 //////////////////////////////////////////////////////////////////Nuzlocke
@@ -34,7 +61,5 @@ void ResetNuzlockeFlags(void)
 {
     memset(gSaveBlock1Ptr->nuzlockeMapsecs, 0, NUM_NUZLOCKE_MAPSEC_BYTES);
 }
-
-
 
 //////////////////////////////////////////////////////////////////End Nuzlocke

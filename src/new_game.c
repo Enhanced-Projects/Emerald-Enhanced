@@ -46,6 +46,7 @@
 #include "RyuRealEstate.h"
 #include "RyuDynDeliveries.h"
 #include "DynamicObjects.h"
+#include "ryu_challenge_modifiers.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -226,6 +227,9 @@ void NewGameInitData(void)
     gSaveBlock2Ptr->CompanionParty[0].speciesId = SPECIES_BIDOOF;
     gSaveBlock2Ptr->CompanionParty[1].speciesId = SPECIES_BIDOOF;
     gSaveBlock2Ptr->CompanionParty[2].speciesId = SPECIES_BIDOOF;
+    ResetNuzlockeFlags();
+    ResetModFlags();
+    
 
     //flags
     FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN);
