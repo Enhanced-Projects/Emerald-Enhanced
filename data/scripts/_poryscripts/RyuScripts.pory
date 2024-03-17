@@ -1144,7 +1144,9 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	modflag(SET, NUZLOCKE_MOD)
+	setvar(VAR_RESULT, TYPE_WATER)
+	modflag(SET, MONOTYPE_MOD)
+	modflag(SET, ADV_MONOTYPE_MOD)
     release
     end
 }

@@ -12503,6 +12503,14 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_BallBlockedNuzlocke;
     }
+    else if (GetModFlag(MONOTYPE_MOD) == TRUE && ( (gBattleMons[gBattlerTarget].type1 != gSaveBlock1Ptr->monotypeChallengeChoice) ||
+         (gBattleMons[gBattlerTarget].type2 != gSaveBlock1Ptr->monotypeChallengeChoice)))
+    {
+        StringCopy(gStringVar3, gTypeNames[gSaveBlock1Ptr->monotypeChallengeChoice]);
+        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK); 
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_BallBlockedMonotype;
+    }
     else
     {
         u32 odds, i;

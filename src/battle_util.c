@@ -46,6 +46,7 @@
 #include "constants/trainers.h"
 #include "constants/weather.h"
 #include "constants/event_objects.h"
+#include "ryu_challenge_modifiers.h"
 
 /*
 NOTE: The data and functions in this file up until (but not including) sSoundMovesTable
@@ -6433,6 +6434,32 @@ static bool32 HasObedientBitSet(u8 battlerId)
 
 u8 IsMonDisobedient(void)
 {
+    //Mon will fail to attack if it is not the monotype, or advanced monotype is active and the mon's move is not the monotype or normal type.
+    if (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT)
+    {
+        return 0;
+    }
+    if (GetModFlag(MONOTYPE_MOD) == TRUE)
+    {
+        StringCopy(gStringVar3, gTypeNames[gSaveBlock1Ptr->monotypeChallengeChoice]);
+        if (gBattleMons[gBattlerAttacker].type1 != gSaveBlock1Ptr->monotypeChallengeChoice)
+        {
+            if (gBattleMons[gBattlerAttacker].type2 != gSaveBlock1Ptr->monotypeChallengeChoice)
+            gBattlescriptCurrInstr = BattleScript_MonIsntMonotype;
+            return 1;
+        }
+        if (GetModFlag(ADV_MONOTYPE_MOD) == TRUE)
+        {
+            if (gBattleMoves[gCurrentMove].type != gSaveBlock1Ptr->monotypeChallengeChoice)
+            {
+                if (gBattleMoves[gCurrentMove].type != TYPE_NORMAL)
+                {
+                    gBattlescriptCurrInstr = BattleScript_CantUseNonMonotypeMove;
+                    return 1;
+                }
+            }
+        }
+    }
     return 0;
 }
 

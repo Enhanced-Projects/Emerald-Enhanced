@@ -777,6 +777,9 @@ static const u8 sText_IllusionistBase[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} ere
 static const u8 sText_GenesectSwitchedDrive[] = _("Genesect switched it's equipped drive!");
 static const u8 sText_GenesectBlockedBall[] = _("Genesect shoots the pokéball down!");
 static const u8 sText_NuzlockeModeAlreadyCaught[] = _("You already captured a Pokémon\nfrom this location!");
+static const u8 sText_MonotypeDoesntMatch[] = _("You can only capture {STR_VAR_3}\ntypes!");
+static const u8 sText_MonotypeDoesntMatchMon[] = _("You can only use {STR_VAR_3}\ntype Pokémon!");
+static const u8 sText_MonotypeDoesntMatchMove[] = _("You can only use {STR_VAR_3}\nor normal type moves!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1412,6 +1415,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BALLBLOCKEDGENESECT- 12] = sText_GenesectBlockedBall,
     [STRINGID_ILLUSIONISTBASE- 12] = sText_IllusionistBase,
     [STRINGID_BALLBLOCKEDNUZLOCKE- 12] = sText_NuzlockeModeAlreadyCaught,
+    [STRINGID_BALLBLOCKEDMONOTYPE- 12] = sText_MonotypeDoesntMatch,
+    [STRINGID_NONMONOTYPEMOVE- 12] = sText_MonotypeDoesntMatchMove,
+    [STRINGID_NONMONOTYPEMON- 12] = sText_MonotypeDoesntMatchMon,
 };
 
 const u16 gTerrainStringIds[] =

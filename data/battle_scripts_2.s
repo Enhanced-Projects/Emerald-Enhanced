@@ -176,6 +176,12 @@ BattleScript_BallBlockedNuzlocke::
 	waitmessage 0x40
 	finishaction
 
+BattleScript_BallBlockedMonotype::
+	waitmessage 0x40
+	printstring STRINGID_BALLBLOCKEDMONOTYPE
+	waitmessage 0x40
+	finishaction
+
 BattleScript_MonDoesntLikeCheaters::
 	waitmessage 0x40
 	printstring STRINGID_ITDOESNTLIKECHEATERS

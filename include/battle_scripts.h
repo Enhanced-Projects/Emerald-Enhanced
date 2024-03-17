@@ -241,6 +241,7 @@ extern const u8 BattleScript_TrainerBallBlock[];
 extern const u8 BattleScript_MonTooPowerfulForBall[];
 extern const u8 BattleScript_BallBlockedHorseman[];
 extern const u8 BattleScript_BallBlockedNuzlocke[];
+extern const u8 BattleScript_BallBlockedMonotype[];
 extern const u8 BattleScript_BallBlockedReaper[];
 extern const u8 BattleScript_BallBlockedGenesect[];
 extern const u8 BattleScript_MonDoesntLikeCheaters[];
@@ -400,5 +401,7 @@ extern const u8 BattleScript_MagnetoDamage[];
 extern const u8 BattleScript_RyuLunaticDisableStatusMessage[];
 extern const u8 BattleScript_IllusionistActivates[];
 extern const u8 BattleScript_SwitchedDrive[];
+extern const u8 BattleScript_MonIsntMonotype[];
+extern const u8 BattleScript_CantUseNonMonotypeMove[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

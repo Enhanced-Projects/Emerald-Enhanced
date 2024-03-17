@@ -1,4 +1,5 @@
 #include "ryu_challenge_modifiers.h"
+#include "event_data.h"
 
 
 /////////////////////////////////////////////////////////////////General challenge mod functions
@@ -8,6 +9,9 @@ void SetModFlag(u32 id)
     if(id > 63)
         return;
     gSaveBlock1Ptr->challengeFlags[id / 8] |= 1 << (id % 8);
+    if ((id == ADV_MONOTYPE_MOD) || (id == MONOTYPE_MOD)){
+        gSaveBlock1Ptr->monotypeChallengeChoice = VarGet(VAR_RESULT);
+    }
 }
 
 bool32 GetModFlag(u32 id)

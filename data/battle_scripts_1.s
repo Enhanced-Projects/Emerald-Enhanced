@@ -7791,6 +7791,18 @@ BattleScript_IgnoresWhileAsleep::
 	moveendto MOVEEND_NEXT_TARGET
 	end
 
+BattleScript_MonIsntMonotype::
+	printstring STRINGID_NONMONOTYPEMON
+	waitmessage 0x40
+	moveendto MOVEEND_NEXT_TARGET
+	end
+
+BattleScript_CantUseNonMonotypeMove::
+	printstring STRINGID_NONMONOTYPEMOVE
+	waitmessage 0x40
+	moveendto MOVEEND_NEXT_TARGET
+	end	
+
 BattleScript_IgnoresAndUsesRandomMove::
 	printstring STRINGID_PKMNIGNOREDORDERS
 	waitmessage 0x40
