@@ -1144,11 +1144,20 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	setvar(VAR_RESULT, TYPE_WATER)
-	modflag(SET, MONOTYPE_MOD)
-	modflag(SET, ADV_MONOTYPE_MOD)
+	modflag(SET, REVELATION_MOD)
+	setvar(VAR_RESULT, 10)
+	call(RevelationPenalty)
     release
     end
+}
+
+script RevelationPenalty {
+	callnative(TryRevelationModPenalties)
+	subvar(VAR_RESULT, 1)
+	if (var(VAR_RESULT) > 0){
+		goto(RevelationPenalty)
+	}
+	return
 }
 
 script RyuDebug_Utility1ResetSeason {

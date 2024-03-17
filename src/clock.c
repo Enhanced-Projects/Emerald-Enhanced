@@ -19,6 +19,7 @@
 #include "task.h"
 #include "constants/weather.h"
 #include "random.h"
+#include "ryu_challenge_modifiers.h"
 
 static void UpdatePerDay(struct Time *localTime);
 void UpdatePerHour(struct Time *localTime);
@@ -289,6 +290,7 @@ static void UpdatePerMinute(struct Time *localTime)
             gSaveBlock2Ptr->lastBerryTreeUpdate = *localTime;
             TryMoveRivalIdleLocation();
             TryMoveBirchLocationPostMay();
+            TryRevelationModPenalties();
             if (gSaveBlock2Ptr->DeliveryTimer.active == TRUE)
             {
                 gSaveBlock2Ptr->DeliveryTimer.Timer -= 1;

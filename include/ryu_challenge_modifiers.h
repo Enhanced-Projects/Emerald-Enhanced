@@ -9,3 +9,4 @@ extern void   SetModFlag(u32 id);
 extern bool32 GetModFlag(u32 id);
 extern void   ClearModFlag(u32 id);
 extern void   ResetModFlags(void);
+extern void TryRevelationModPenalties(void);
