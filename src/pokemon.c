@@ -5467,8 +5467,16 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem, u
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL:
-                if (gEvolutionTable[species][i].param <= level)
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                if (GetModFlag(LATE_BLOOMER_MOD) == TRUE)
+                {
+                    if (gEvolutionTable[species][i].param + 10 <= level)
+                        targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                }
+                else
+                {
+                    if (gEvolutionTable[species][i].param <= level)
+                        targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                }
                 break;
             case EVO_LEVEL_FEMALE:
                 if (gEvolutionTable[species][i].param <= level && GetMonGender(mon) == MON_FEMALE)

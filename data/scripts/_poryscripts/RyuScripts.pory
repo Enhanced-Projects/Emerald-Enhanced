@@ -1144,10 +1144,10 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	modflag(SET, GEN1_MOD)
-	modflag(GET, GEN1_MOD)
+	modflag(SET, LATE_BLOOMER_MOD)
+	modflag(GET, LATE_BLOOMER_MOD)
 	if (var(VAR_RESULT) == TRUE){
-		msgbox("Gen1 Enabled")
+		msgbox("Late Bloomer Enabled")
 	}
     release
     end
