@@ -70,6 +70,7 @@
 #include "factions.h"
 #include "lifeskill.h"
 #include "overworld_notif.h"
+#include "ryu_challenge_modifiers.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_SE1;
 extern struct MusicPlayerInfo gMPlayInfo_SE2;
@@ -3773,7 +3774,7 @@ u8 IsRunningFromBattleImpossible(void)
         return 2;
     }
 
-    if (FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE)
+    if ((FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE) || (GetModFlag(MAGNETOSPHERE_MOD) == TRUE))
     {
         gBattleScripting.battler = i - 1;
         gLastUsedAbility = gBattleMons[i - 1].ability;

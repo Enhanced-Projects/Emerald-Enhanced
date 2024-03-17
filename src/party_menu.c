@@ -5879,7 +5879,7 @@ static bool8 TrySwitchInPokemon(void)
     {
         u8 currBattler = gBattlerInMenuId;
         GetMonNickname(&gPlayerParty[GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[currBattler])], gStringVar1);
-        if (FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE)
+        if ((FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE) || (GetModFlag(MAGNETOSPHERE_MOD) == TRUE))
             StringExpandPlaceholders(gStringVar4, sText_FabaMagnetosphere);
         else
             StringExpandPlaceholders(gStringVar4, gText_PkmnCantSwitchOut);

@@ -2752,9 +2752,9 @@ u8 DoBattlerEndTurnEffects(void)
         }
         case ENDTURN_MAGNETOSPHERE:
         {
-            if (FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE
+            if ((FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE
                 && gBattleMons[gActiveBattler].hp != 0
-                && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
+                && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER) || (GetModFlag(MAGNETOSPHERE_MOD) == TRUE))
             {
                 gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 3;
                 if (gBattleMoveDamage == 0)
@@ -5344,7 +5344,7 @@ u32 IsAbilityPreventingEscape(u32 battlerId)
 
 bool32 CanBattlerEscape(u32 battlerId) // no ability check
 {
-    if (FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE)
+    if ((FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE) || (GetModFlag(MAGNETOSPHERE_MOD) == TRUE))
         return FALSE;
     return (GetBattlerHoldEffect(battlerId, TRUE) == HOLD_EFFECT_SHED_SHELL
             || !((gBattleMons[battlerId].status2 & (STATUS2_ESCAPE_PREVENTION | STATUS2_WRAPPED))
