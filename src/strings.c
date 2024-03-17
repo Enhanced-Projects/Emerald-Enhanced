@@ -223,6 +223,7 @@ const u8 gText_CantWriteMail[] = _("You can't write\nmail here.");
 const u8 gText_NoPokemon[] = _("There is no\nPokémon.");
 const u8 gText_MoveVar1Where[] = _("Move the\n{STR_VAR_1}\nwhere?");
 const u8 gText_Var1CantBeHeld[] = _("The {STR_VAR_1} can't be held.");
+const u8 gText_Var1CantBeHeld2[] = _("Gen1 Mode prevents item holding.");
 const u8 gText_Var1CantBeHeldHere[] = _("The {STR_VAR_1} can't be held\nhere.");
 const u8 gText_DepositHowManyVar1[] = _("Deposit how many\n{STR_VAR_1}(s)?");
 const u8 gText_DepositedVar2Var1s[] = _("Deposited {STR_VAR_2}\n{STR_VAR_1}(s).");

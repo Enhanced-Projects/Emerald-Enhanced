@@ -74,6 +74,7 @@
 #include "constants/songs.h"
 #include "random.h"
 #include "blit.h"
+#include "ryu_challenge_modifiers.h"
 
 #define PARTY_PAL_SELECTED     (1 << 0)
 #define PARTY_PAL_FAINTED      (1 << 1)
@@ -1445,7 +1446,7 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
             }
             break;
         case PARTY_ACTION_GIVE_ITEM - 3:
-        case PARTY_ACTION_GIVE_PC_ITEM - 3:
+        case PARTY_ACTION_GIVE_PC_ITEM - 3://
             if (IsSelectedMonNotEgg((u8*)slotPtr))
             {
                 PlaySE(SE_SELECT);
@@ -5543,11 +5544,11 @@ static void Task_HandleSwitchItemsFromBagYesNoInput(u8 taskId)
     case 0: // Yes, switch items
         item = gPartyMenu.bagItem;
         RemoveItemToGiveFromBag(item);
-        if (AddBagItem(sPartyMenuItemId, 1) == FALSE)
+        if (AddBagItem(sPartyMenuItemId, 1) == FALSE || GetModFlag(GEN1_MOD) == TRUE)
         {
             ReturnGiveItemToBagOrPC(item);
             BufferBagFullCantremoveitemMessage(sPartyMenuItemId);
-            DisplayPartyMenuMessage(gStringVar4, FALSE);
+            DisplayPartyMenuMessage(gStringVar4, FALSE);    
             gTasks[taskId].func = Task_UpdateHeldItemSpriteAndClosePartyMenu;
         }
         else

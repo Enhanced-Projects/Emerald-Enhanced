@@ -1144,38 +1144,13 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	modflag(SET, REVELATION_MOD)
-	setvar(VAR_RESULT, 10)
-	call(RevelationPenalty)
+	modflag(SET, GEN1_MOD)
+	modflag(GET, GEN1_MOD)
+	if (var(VAR_RESULT) == TRUE){
+		msgbox("Gen1 Enabled")
+	}
     release
     end
-}
-
-script RevelationPenalty {
-	callnative(TryRevelationModPenalties)
-	subvar(VAR_RESULT, 1)
-	if (var(VAR_RESULT) > 0){
-		goto(RevelationPenalty)
-	}
-	return
-}
-
-script RyuDebug_Utility1ResetSeason {
-	setvar(VAR_RYU_WEEK_COUNTER, 0)
-	release
-	end
-}
-
-text devopt1 {
-	"Spring/Summer"
-}
-
-text devopt2 {
-	"Fall"
-}
-
-text devopt3 {
-	"Winter"
 }
 
 text utilityText {

@@ -50,6 +50,7 @@
 #include "constants/weather.h"
 #include "constants/item_config.h"
 #include "ach_atlas.h"
+#include "ryu_challenge_modifiers.h"
 
 struct SpeciesItem
 {
@@ -5375,6 +5376,9 @@ u8 *UseStatIncreaseItem(u16 itemId)
 
 u8 GetNature(struct Pokemon *mon)
 {
+    if (GetModFlag(GEN1_MOD) == TRUE){
+        return NATURE_SERIOUS;
+    }
     if (GetMonData(mon, MON_DATA_HAS_CUSTOM_NATURE, NULL) == FALSE)
     {
         return GetMonData(mon, MON_DATA_PERSONALITY, 0) % NUM_NATURES;
