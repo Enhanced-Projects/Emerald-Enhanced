@@ -593,7 +593,7 @@
 #define GEN1_MOD 8
 #define LATE_BLOOMER_MOD 9
 #define MAGNETOSPHERE_MOD 10
-#define UNMOTIVATED_MOD 11
+#define LAZY_MOD 11
 #define SICKLY_MOD 12
 #define TOTAL_MODS 13
 

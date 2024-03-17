@@ -1144,10 +1144,10 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	modflag(SET, MAGNETOSPHERE_MOD)
-	modflag(GET, MAGNETOSPHERE_MOD)
+	modflag(SET, LAZY_MOD)
+	modflag(GET, LAZY_MOD)
 	if (var(VAR_RESULT) == TRUE){
-		msgbox("Magnetosphere Enabled")
+		msgbox("Unmotivated Enabled")
 	}
     release
     end

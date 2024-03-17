@@ -4513,6 +4513,16 @@ u8 GetWhoStrikesFirst(u8 battler1, u8 battler2, bool8 ignoreChosenMoves)
         strikesFirst = 0; // battler1's move has greater priority
     }
 
+    if (GetModFlag(LAZY_MOD) == TRUE){
+        if (GetBattlerSide(speedBattler1) == B_SIDE_OPPONENT && GetBattlerSide(speedBattler2) == B_SIDE_PLAYER){
+            strikesFirst = 0;
+        }
+        else {
+            strikesFirst = 1;
+        }
+    }
+
+
     return strikesFirst;
 }
 
