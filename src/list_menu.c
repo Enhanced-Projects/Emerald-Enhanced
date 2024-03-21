@@ -17,6 +17,7 @@
 #include "item.h"
 #include "lifeskill.h"
 #include "constants/items.h"
+#include "ryu_challenge_modifiers.h"
 
 struct UnkIndicatorsStruct
 {
@@ -1018,11 +1019,53 @@ const u8 RyuBetaMenuHelpStrings[12][75] =
     _("Exit the menu.")
 };
 
+const u8 RyuDifficultyModDescs[14][75] = 
+{
+    _("Capture one mon per route,\nDefeated mons die."),
+    _("Select and use only Pokémon of the\nselected type."),
+    _("Monotype challenge, but you can also\nonly use moves of selected type."),
+    _("Random Status effects plague the\nteam while exploring."),
+    _("Random Party member's moves PP\nreduced to 4 occasionally."),
+    _("Random party members drop to 1 HP\noccasionally while exploring."),
+    _("Random party members lose half\ntheir current hp occasionally."),
+    _("Revelation Mode\nAll four horsemen effects above."),
+    _("Pokemon don't have abilities,\nnatures, or held items."),
+    _("Pokemon evolve 10 levels late."),
+    _("Team Aether's Magnetosphere always\nactive."),
+    _("Player's pokemon always move last."),
+    _("Wild Pokemon caught with 0 IV.\nIncoming status chance is 100%"),
+    _("Player's Pokemon don't evolve.")
+};
+
 void RyuDrawBetaMenuHelpText(u16 selection)
 {
     struct WindowTemplate template;
     void (*callback)(struct TextPrinterTemplate *, u16) = NULL;
     StringCopy(gStringVar1, RyuBetaMenuHelpStrings[selection]);
+    if(sBetaMenuInfoWindow == 0xFF)
+    {
+        SetWindowTemplateFields(&template, 0, 0, 16, 12, 8, 15, 1);
+        sBetaMenuInfoWindow = AddWindow(&template);
+        DrawStdFrameWithCustomTileAndPalette(sBetaMenuInfoWindow, TRUE, 0x50C, 14);
+    }
+    FillWindowPixelBuffer(sBetaMenuInfoWindow, 0x11);
+    AddTextPrinterParameterized(sBetaMenuInfoWindow, 1, gStringVar1, 0, 0, 0xFF, callback);
+    CopyWindowToVram(sBetaMenuInfoWindow, 3);
+}
+
+void RyuDrawDifficultyModStrings(u16 selection)
+{
+    struct WindowTemplate template;
+    void (*callback)(struct TextPrinterTemplate *, u16) = NULL;
+    if (GetModFlag((u32)selection) == TRUE){
+        StringCopy(gRyuStringVar1, ((const u8[])_("{COLOR LIGHT_GREEN}{SHADOW GREEN}")));
+        StringExpandPlaceholders(gStringVar1, gRyuStringVar1);
+    }
+    else{
+        StringCopy(gRyuStringVar1, ((const u8[])_("{COLOR LIGHT_RED}{SHADOW RED}")));
+        StringExpandPlaceholders(gStringVar1, gRyuStringVar1);
+    }
+    StringAppend(gStringVar1, RyuDifficultyModDescs[selection]);
     if(sBetaMenuInfoWindow == 0xFF)
     {
         SetWindowTemplateFields(&template, 0, 0, 16, 12, 8, 15, 1);
@@ -1056,19 +1099,15 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
     }
 
     currentSelection = (list->selectedRow + list->scrollOffset);
-
+    //starting to get YanDev levels of complexity
     if (FlagGet(FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS) == 1)
-        {
-            RyuShowRecipeInfoWindow(currentSelection);
-        }
+        RyuShowRecipeInfoWindow(currentSelection);
     else if (FlagGet(FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS) == 1)
-        {
-            RyuShowAlchemyInfo(currentSelection);
-        }
+        RyuShowAlchemyInfo(currentSelection);
     else if (FlagGet(FLAG_RYU_BETA_MENU_OPEN) == 1)
-        {
-            RyuDrawBetaMenuHelpText(currentSelection);
-        }
+        RyuDrawBetaMenuHelpText(currentSelection);
+    else if (FlagGet(FLAG_RYU_SHOW_DIFFICULTY_MOD_MENU) == 1)
+        RyuDrawDifficultyModStrings(currentSelection);
     
     if (updateCursorAndCallCallback)
     {

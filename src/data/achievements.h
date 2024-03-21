@@ -267,8 +267,64 @@ static const u8 sTrulyBadEndingHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.
 static const u8 sTrulyBadEndingDesc[] = _("You got the truly worst ending.\nYou must be a soul that only a mother can love.\n(Failed all companion quests in 1 play)");
 
 static const u8 sSerpentineLabel[] = _("Serpentine!");
-static const u8 sSerpentineHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Help the snake shed.");
-static const u8 sSerpentineDesc[] = _("You really stepped up and helped her out!\n(Recruited Lucy)");
+static const u8 sSerpentineHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Help the snake shed.");
+static const u8 sSerpentineDesc [] = _("You really stepped up and helped her out!\n(Recruited Lucy)");
+
+static const u8 sNuzlockeMasterLabel[] = _("Nuzlocke Master");
+static const u8 sNuzlockeMasterHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Complete Nuzlocke Mode");
+static const u8 sNuzlockeMasterDesc [] = _("You proved yourself worthy of the title\nof Nuzlocke Master!");
+
+static const u8 sMonochromeLabel[] = _("Monochromatic!");
+static const u8 sMonochromeHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Complete a Monotype challenge");
+static const u8 sMonochromeDesc [] = _("You find that you prefer sticking to a single\ncolor. Hard-fought battle, but victorious anyway!");
+
+static const u8 sBrandLoyaltyLabel[] = _("Brand Loyalty");
+static const u8 sBrandLoyaltyHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Complete the Advanced Monotype challenge.");
+static const u8 sBrandLoyaltyDesc [] = _("You chose your guns and you stuck to them.\nFor a really long time.");
+
+static const u8 sPatientZeroLabel[] = _("Patient Zero");
+static const u8 sPatientZeroHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Triumph over Plague.");
+static const u8 sPatientZeroDesc [] = _("You finally developped immunity to the Plague.\nAnd the ability to spread it...");
+
+static const u8 sDieticianLabel[] = _("Dietician");
+static const u8 sDieticianHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Triumph over Famine.");
+static const u8 sDieticianDesc [] = _("You survived a great famine. Now you\ncan almost subsist on sunlight!");
+
+static const u8 sImmortalLabel[] = _("Immortal");
+static const u8 sImmortalHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Triumph over Death.");
+static const u8 sImmortalDesc [] = _("They tried to kill you. They tried so hard.\nYou still won anyway.");
+
+static const u8 sWarlordLabel[] = _("Warlord");
+static const u8 sWarlordHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY} Triumph over War.");
+static const u8 sWarlordDesc [] = _("Guan Yu himself would praise your ambition!");
+
+static const u8 sOmenLabel[] = _("Omens");
+static const u8 sOmenHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Triumph over the Apocalypse.");
+static const u8 sOmenDesc [] = _("You lived through the Apocolypse.\nYou thrived in it.(Completed all four horsemen challenges at once.)");
+
+static const u8 sGenWunnerLabel[] = _("Gen-Wunner");
+static const u8 sGenWunnerHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Run with classic conventions.");
+static const u8 sGenWunnerDesc [] = _("You think that older is better.\nAnd you proved it.");
+
+static const u8 sPatientLabel[] = _("Patience");
+static const u8 sPatientHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Complete the game with Late Bloomer.");
+static const u8 sPatientDesc [] = _("Patience is a virtue and you have it.");
+
+static const u8 sFerroMagneticLabel[] = _("Ferro Magnetic");
+static const u8 sFerroMagneticHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Become Magnetised.");
+static const u8 sFerroMagneticDesc [] = _("The magnetosphere's omnipresence has permanently magnetised\nyou. Better avoid airports and computers!");
+
+static const u8 sUnmotivatedLabel[] = _("Unmotivated");
+static const u8 sUnmotivatedHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Complete the game with Lazy mod.");
+static const u8 sUnmotivatedDesc [] = _("Work smarter, not harder!   ... Wait...\nThat doesn't seem right.\nAh! Slow and steady wins the race?");
+
+static const u8 sNaturalSelectionLabel[] = _("Natural Selection");
+static const u8 sNaturalSelectionHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Complete the game while Sickly.");
+static const u8 sNaturalSelectionDesc [] = _("You're just differently abled.\nThat didn't stop you from winning\nthe game!");
+
+static const u8 sCreationistLabel[] = _("Creatonism");
+static const u8 sCreationistHint [] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Complete the game with anti-darwinism.");
+static const u8 sCreationistDesc [] = _("Hmm... maybe Darwin was on to something?");
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
@@ -340,4 +396,18 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_ULTIMATE_END] = {57, 29, CATEGORY_COMPANIONS | CATEGORY_FLAG_GOLD, ACH_ULTIMATE_END, sUltimateEndLabel, sUltimateEndDesc, sUltimateEndHint}, //Complete advanced harem end
     [ACH_TRULY_BAD_ENDING] = {55, 29, CATEGORY_COMPANIONS, ACH_TRULY_BAD_ENDING, sTrulyBadEndingLabel, sTrulyBadEndingDesc, sTrulyBadEndingHint}, //Unlock Mom as follower
     [ACH_SERPENTINE] = {55, 33, CATEGORY_COMPANIONS, ACH_SERPENTINE, sSerpentineLabel, sSerpentineDesc, sSerpentineHint}, //Unlock Lucy as follower
+    [ACH_NUZLOCKE_MASTER] = {39, 43, CATEGORY_EXPLORATION, ACH_NUZLOCKE_MASTER, sNuzlockeMasterLabel, sNuzlockeMasterDesc, sNuzlockeMasterHint}, //Complete the game with nuzlocke mod active
+    [ACH_MONOCHROME] = {41, 43, CATEGORY_EXPLORATION, ACH_MONOCHROME, sMonochromeLabel, sMonochromeDesc, sMonochromeHint}, //Complete the game with Monotype mod
+    [ACH_BRAND_LOYALTY] = {43, 43, CATEGORY_EXPLORATION, ACH_BRAND_LOYALTY, sBrandLoyaltyLabel, sBrandLoyaltyDesc, sBrandLoyaltyHint}, //complete the game with advanced monotype
+    [ACH_PATIENT_ZERO] = {45, 43, CATEGORY_EXPLORATION, ACH_PATIENT_ZERO, sPatientZeroLabel, sPatientZeroDesc, sPatientZeroHint}, //Complete the game with the Plague mod active
+    [ACH_DIETICIAN] = {47, 45, CATEGORY_EXPLORATION, ACH_DIETICIAN, sDieticianLabel, sDieticianDesc, sDieticianHint}, //Complete the game with the Famine mod active
+    [ACH_IMMORTAL] = {37, 45, CATEGORY_EXPLORATION, ACH_IMMORTAL, sImmortalLabel, sImmortalDesc, sImmortalHint}, //Complete the game with the Death mod active
+    [ACH_WARLORD] = {39, 45, CATEGORY_EXPLORATION, ACH_WARLORD, sWarlordLabel, sWarlordDesc, sWarlordHint}, //Complete the game with the War mod active
+    [ACH_OMEN] = {41, 45, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_OMEN, sOmenLabel, sOmenDesc, sOmenHint}, //Complete the game with all four horsemen effects
+    [ACH_GENWUNNER] = {43, 45, CATEGORY_EXPLORATION, ACH_GENWUNNER, sGenWunnerLabel, sGenWunnerDesc, sGenWunnerHint}, //Complete the game with the Gen 1 mod active
+    [ACH_PATIENT] = {45, 45, CATEGORY_EXPLORATION, ACH_PATIENT, sPatientLabel, sPatientDesc, sPatientHint}, //Complete the game with the late bloomer mod active
+    [ACH_FERROMAGNETIC] = {45, 47, CATEGORY_EXPLORATION, ACH_FERROMAGNETIC, sFerroMagneticLabel, sFerroMagneticDesc, sFerroMagneticHint}, //Complete the game with the Magnetosphere mod active
+    [ACH_UNMOTIVATED] = {43, 47, CATEGORY_EXPLORATION, ACH_UNMOTIVATED, sUnmotivatedLabel, sUnmotivatedDesc, sUnmotivatedHint}, //Complete the game with the Lazy mod active
+    [ACH_NATURAL_SELECTION] = {41, 47, CATEGORY_EXPLORATION, ACH_NATURAL_SELECTION, sNaturalSelectionLabel, sNaturalSelectionDesc, sNaturalSelectionHint}, //Complete the game with the Sickly mod active
+    [ACH_CREATIONIST] = {39, 47, CATEGORY_EXPLORATION, ACH_CREATIONIST, sCreationistLabel, sCreationistDesc, sCreationistHint}, //Complete the game with the anti-darwinism mod active
 };

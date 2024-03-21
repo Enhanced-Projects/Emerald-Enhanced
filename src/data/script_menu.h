@@ -1345,6 +1345,27 @@ static const struct MenuAction MultichoiceList_SelectDay[] =
     {sText_SelectDaySun}
 };
 
+static const struct MenuAction MultichoiceList_MonoTypesList[] =
+{
+    {sText_SelectFighting},
+    {sText_SelectFlying},
+    {sText_SelectPoison},
+    {sText_SelectGround},
+    {sText_SelectRock},
+    {sText_SelectBug},
+    {sText_SelectGhost},
+    {sText_SelectSteel},
+    {sText_SelectFire},
+    {sText_SelectWater},
+    {sText_SelectGrass},
+    {sText_SelectElectric},
+    {sText_SelectPsychic},
+    {sText_SelectIce},
+    {sText_SelectDragon},
+    {sText_SelectDark},
+    {sText_SelectFairy},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1530,6 +1551,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_DYNAMIC_2]                  = MULTICHOICE(MultichoiceList_2BufferedOptions),
     [MULTI_DEV_GIVE_MON_GENDER]        = MULTICHOICE(MultichoiceList_DevMonGiveGenderMenu),
     [MULTI_DEV_GIVE_MON_SHINY]         = MULTICHOICE(MultichoiceList_DevMonGiveShinyMenu),
+    [MULTI_MONOTYPE_MENU]              = MULTICHOICE(MultichoiceList_MonoTypesList),
 };
 
 const u8 *const gStdStrings[] =

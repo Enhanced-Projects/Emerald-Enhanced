@@ -2752,9 +2752,10 @@ u8 DoBattlerEndTurnEffects(void)
         }
         case ENDTURN_MAGNETOSPHERE:
         {
-            if ((FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE
+            if (((FlagGet(FLAG_RYU_ENABLE_FABA_MAGNETO_FIELD) == TRUE 
+                || (GetModFlag(MAGNETOSPHERE_MOD) == TRUE))
                 && gBattleMons[gActiveBattler].hp != 0
-                && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER) || (GetModFlag(MAGNETOSPHERE_MOD) == TRUE))
+                && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER))
             {
                 gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 3;
                 if (gBattleMoveDamage == 0)
@@ -7462,7 +7463,9 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
 static bool32 CanEvolve(u32 species)
 {
     u32 i;
-
+    if (GetModFlag(ANTI_DARWINISM_MOD) == TRUE){
+        return FALSE;
+    }
     for (i = 0; i < EVOS_PER_MON; i++)
     {
         if (gEvolutionTable[species][i].method && gEvolutionTable[species][i].method != EVO_MEGA_EVOLUTION)
@@ -8245,7 +8248,9 @@ static bool32 IsPartnerMonFromSameTrainer(u8 battlerId)
 u16 GetMegaEvolutionSpecies(u16 preEvoSpecies, u16 heldItemId)
 {
     u32 i;
-
+    if (GetModFlag(ANTI_DARWINISM_MOD) == TRUE){
+        return SPECIES_NONE;
+    }
     for (i = 0; i < EVOS_PER_MON; i++)
     {
         if (gEvolutionTable[preEvoSpecies][i].method == EVO_MEGA_EVOLUTION
@@ -8258,7 +8263,9 @@ u16 GetMegaEvolutionSpecies(u16 preEvoSpecies, u16 heldItemId)
 u16 GetWishMegaEvolutionSpecies(u16 preEvoSpecies, u16 moveId1, u16 moveId2, u16 moveId3, u16 moveId4)
 {
     u32 i, par;
-
+    if (GetModFlag(ANTI_DARWINISM_MOD) == TRUE){
+        return SPECIES_NONE;
+    }
     for (i = 0; i < EVOS_PER_MON; i++)
     {
         if (gEvolutionTable[preEvoSpecies][i].method == EVO_MOVE_MEGA_EVOLUTION)

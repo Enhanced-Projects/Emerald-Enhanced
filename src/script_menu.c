@@ -991,6 +991,22 @@ static const u8 sBetaMenuExit[] = _ ("Exit Menu");
 static const u8 sBetaMenuFixFollowers[] = _("Restore Followers");
 static const u8 sBetaMenuShowTutorials[] = _("View Tutorials");
 
+static const u8 sDifficultyModNuzlocke[] = _("Nuzlocke");
+static const u8 sDifficultyModMonotype[] = _("Monotype");
+static const u8 sDifficultyModAdvMonotype[] = _("Advanced Monotype");
+static const u8 sDifficultyModPlague[] = _("Plague");
+static const u8 sDifficultyModFamine[] = _("Famine");
+static const u8 sDifficultyModDeath[] = _("Death");
+static const u8 sDifficultyModWar[] = _("War");
+static const u8 sDifficultyModRevelation[] = _("Revelation Mode");
+static const u8 sDifficultyModGen1[] = _("Gen1 Mode");
+static const u8 sDifficultyModLateBloomer[] = _("Late Bloomer");
+static const u8 sDifficultyModMagnetosphere[] = _("Magnetosphere");
+static const u8 sDifficultyModLazy[] = _("Lazy");
+static const u8 sDifficultyModSickly[] = _("Sickly");
+static const u8 sDifficultyModAntiDarwinism[] = _("Anti-Darwinism");
+static const u8 sDifficultyModNone[] = _("End Selection");
+
 static const struct ListMenuItem sBotanyConsumablesSet[] =
     {
         {sText_BotanyConsumableItem1, 0},
@@ -1120,6 +1136,25 @@ static const struct ListMenuItem sRyuBetaMenuSet[] =
     {sBetaMenuExit, 11}
 };
 
+static const struct ListMenuItem sDifficultyModifierSet[] =
+    {
+    {sDifficultyModNuzlocke, 0},
+    {sDifficultyModMonotype, 1},
+    {sDifficultyModAdvMonotype, 2},
+    {sDifficultyModPlague, 3},
+    {sDifficultyModFamine, 4},
+    {sDifficultyModDeath, 5},
+    {sDifficultyModWar, 6},
+    {sDifficultyModRevelation, 7},
+    {sDifficultyModGen1, 8},
+    {sDifficultyModLateBloomer, 9},
+    {sDifficultyModMagnetosphere, 10},
+    {sDifficultyModLazy, 11},
+    {sDifficultyModSickly, 12},
+    {sDifficultyModAntiDarwinism, 13},
+    {sDifficultyModNone, 14},
+};
+
 
 struct
 {
@@ -1134,6 +1169,7 @@ struct
         {sAlchemyMenu, ARRAY_COUNT(sAlchemyMenu)},
         {sRyuFollowerDebugSet, ARRAY_COUNT(sRyuFollowerDebugSet)},
         {sRyuBetaMenuSet, ARRAY_COUNT(sRyuBetaMenuSet)},
+        {sDifficultyModifierSet, ARRAY_COUNT(sDifficultyModifierSet)}
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);

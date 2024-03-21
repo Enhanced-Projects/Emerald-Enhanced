@@ -2388,7 +2388,7 @@ bool8 ScrCmd_divvar(struct ScriptContext *ctx)
 bool8 ScrCmd_modflag(struct ScriptContext *ctx)
 {
     u8 func = ScriptReadByte(ctx);
-    u8 id = ScriptReadByte(ctx);
+    u16 id = VarGet(ScriptReadHalfword(ctx));
     
     if (func == SET){
         SetModFlag(id);

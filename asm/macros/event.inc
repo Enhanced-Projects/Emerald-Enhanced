@@ -1722,7 +1722,7 @@
 	.macro modflag func:req id:req
 	.byte 0xf0
 	.byte \func
-	.byte \id
+	.2byte \id
 	.endm
 
 	@gets gamestat and puts it in VAR_RESULT

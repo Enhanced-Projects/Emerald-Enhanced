@@ -115,20 +115,20 @@
 #define ACH_ULTIMATE_END  65 //Get the Advanced Harem end
 #define ACH_TRULY_BAD_ENDING  66 //Get the Antiharem end
 #define ACH_SERPENTINE  67
-#define ACH_UNUSED_69  68
-#define ACH_UNUSED_70  69
-#define ACH_UNUSED_71  70
-#define ACH_UNUSED_72  71
-#define ACH_UNUSED_73  72
-#define ACH_UNUSED_74  73
-#define ACH_UNUSED_75  74
-#define ACH_UNUSED_76  75
-#define ACH_UNUSED_77  76
-#define ACH_UNUSED_78  77
-#define ACH_UNUSED_79  78
-#define ACH_UNUSED_80  79
-#define ACH_UNUSED_81  80
-#define ACH_UNUSED_82  81
+#define ACH_NUZLOCKE_MASTER 68
+#define ACH_MONOCHROME  69
+#define ACH_BRAND_LOYALTY  70
+#define ACH_PATIENT_ZERO  71
+#define ACH_DIETICIAN  72
+#define ACH_IMMORTAL  73
+#define ACH_WARLORD  74
+#define ACH_OMEN  75
+#define ACH_GENWUNNER  76
+#define ACH_PATIENT  77
+#define ACH_FERROMAGNETIC  78
+#define ACH_UNMOTIVATED  79
+#define ACH_NATURAL_SELECTION  80
+#define ACH_CREATIONIST  81
 #define ACH_UNUSED_83  82
 #define ACH_UNUSED_84  83
 #define ACH_UNUSED_85  84
@@ -595,7 +595,8 @@
 #define MAGNETOSPHERE_MOD 10
 #define LAZY_MOD 11
 #define SICKLY_MOD 12
-#define TOTAL_MODS 13
+#define ANTI_DARWINISM_MOD 13
+#define TOTAL_MODS 14
 
 //Affection configuration
 #define AFFECTION_BASE_CHANCE RyuGetAffectionChance()
@@ -605,6 +606,6 @@
 
 #define EE_GAME_VERSION 10100
 //uncomment to allow dev switch to be accessed.
-#define DEV_BUILD 69
+//#define DEV_BUILD 69
 
 #endif 

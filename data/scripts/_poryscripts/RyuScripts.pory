@@ -1144,11 +1144,6 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
-	modflag(SET, LAZY_MOD)
-	modflag(GET, LAZY_MOD)
-	if (var(VAR_RESULT) == TRUE){
-		msgbox("Unmotivated Enabled")
-	}
     release
     end
 }

@@ -367,6 +367,7 @@ IT_HardcoreOutro:
 SetMaleStartingVariables:: @ 823BF20
 	call RyuSetUpMoneyMode
 SetMaleStartingVariablesNMM::
+    call RyuDifficultyModScript
 	call RyuSetStartLocationRespawn
 	compare VAR_RYU_DIFFICULTY, DIFF_FRONTIER @force update respawn location to frontier.
 	call_if_eq IT_SetFrontierRespawn
@@ -401,6 +402,7 @@ IT_SetFrontierRespawn::
 SetFemaleStartingVariables:: @ 823BF46
 	call RyuSetUpMoneyMode
 SetFemaleStartingVariablesNMM::
+	call RyuDifficultyModScript
 	call RyuSetStartLocationRespawn
 	compare VAR_RYU_DIFFICULTY, DIFF_FRONTIER @force update respawn location to frontier.
 	call_if_eq IT_SetFrontierRespawn
@@ -749,4 +751,137 @@ script RyuSetStartLocationRespawn {//sets the respawn location to the chosen sta
 				setrespawn(HEAL_LOCATION_FALLARBOR_TOWN)
 		}
 	return
+}
+
+text DMSMENUQUERY{
+	"Would you like to toggle this\nmodifier?"
+}
+
+script RyuDifficultyModScript{
+	if ((var(VAR_RYU_DIFFICULTY) == DIFF_FRONTIER) || (var(VAR_RYU_DIFFICULTY) == DIFF_EASY)){
+		return
+	}
+	msgbox("Would you like to set difficulty\nmods?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO){
+		return
+	}
+	DiffModReUp:
+	msgbox("Enabled Mods are colored Green.\nScroll to see description.")
+	setflag(FLAG_RYU_SHOW_DIFFICULTY_MOD_MENU)
+	scrollingmultichoice(SMC_RYUDIFFICULTYMODS, 0, 0, 6, 0)
+	switch(var(VAR_RESULT)){
+		case NUZLOCKE_MOD:
+			msgbox(format("In this mode, you can only capture one pokemon per route. If party members are defeated at the end of battle, they die."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case MONOTYPE_MOD:
+			msgbox(format("You will select a type in the follow-up menu.\pYou will only be allowed to catch and use Pokemon of this type."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case ADV_MONOTYPE_MOD:
+			msgbox(format("You will select a type in the follow-up menu.\pYou will only be allowed to catch and use Pokemon and moves of the selected type.\pYou can also use Normal type moves."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case PLAGUE_MOD:
+			msgbox(format("You will have a chance to have a random party member suffer a random status every minute."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case FAMINE_MOD:
+			msgbox(format("You will have a chance to have a random party member lose all but 4 pp of a random move every minute."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case DEATH_MOD:
+			msgbox(format("You will have a chance to have a random party member drop to 1 HP every minute."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case WAR_MOD:
+			msgbox(format("You will have a chance to have a random party member lose half of their current HP every minute."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case REVELATION_MOD:
+			msgbox(format("Every minute, you will have a chance for the War, Famine, Plague, or Death effect afflict your party."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case GEN1_MOD:
+			msgbox(format("Pokemon won't have abilities, Natures, or Held Items."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case LATE_BLOOMER_MOD:
+			msgbox(format("Pokemon will evolve 10 levels late."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case MAGNETOSPHERE_MOD:
+			msgbox(format("Team Aether's Magnetosphere will be permanently active, preventing switching and dealing damage every turn in battle."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case LAZY_MOD:
+			msgbox(format("Player's moves will always land last in combat."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case SICKLY_MOD:
+			msgbox(format("Pokemon you capture will have minimal IV and will be extremely susceptible to the opponents' status effects."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case ANTI_DARWINISM_MOD:
+			msgbox(format("Pokemon you own will never evolve."))
+			call(DMSMENU_SELECTIONCONFIRM)
+		case TOTAL_MODS:
+		case 127:
+			msgbox("End difficulty mod selection?", MSGBOX_YESNO)
+			if (var(VAR_RESULT) == YES){
+				return
+			}
+			else{
+				goto(DiffModReUp)
+			}
+	}
+}
+
+script Ryu_MonotypeSelector{
+	msgbox("Select your monotype.")
+	closemessage
+	multichoicegrid(0, 0, MULTI_MONOTYPE_MENU, 3, 0)
+	
+	if (var(VAR_RESULT) <= 8){
+		addvar(VAR_RESULT, 1)//account for normal type removal
+	}
+	else{
+		addvar(VAR_RESULT, 2)//account for mystery AND normal type removal
+	}
+	if (var(VAR_RESULT) == TYPE_MYSTERY){
+		setvar(VAR_RESULT, TYPE_FIRE)
+	}
+	if (var(VAR_RESULT) > 19){
+		msgbox("Cancel monotype selection?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES){
+			modflag(CLEAR, MONOTYPE_MOD)
+			modflag(CLEAR, ADV_MONOTYPE_MOD)
+			goto(DiffModReUp)
+		}
+	}
+	copyvar(VAR_0x8005, VAR_RESULT)
+	callnative(ryuBufferTypeName)
+	copyvar(VAR_RYU_MONOTYPE_SELECTION, VAR_0x8005)
+	msgbox("You selected the {RYU_STR_1} type.\nIs this what you want?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO){
+		goto(Ryu_MonotypeSelector)
+	}
+	return
+}
+
+script DMSMENU_SELECTIONCONFIRM{
+	closemessage
+	copyvar(VAR_0x8001, VAR_RESULT)
+	msgbox(DMSMENUQUERY, MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		modflag(SET, VAR_0x8001)
+		modflag(GET, ADV_MONOTYPE_MOD)
+		if (var(VAR_RESULT) == TRUE){
+			modflag(SET, MONOTYPE_MOD) //if advanced monotype, regular monotype must also be set.
+		}
+		if ((var(VAR_0x8001) == MONOTYPE_MOD) || (var(VAR_0x8001) == ADV_MONOTYPE_MOD)){
+			modflag(GET, MONOTYPE_MOD)
+			if (var(VAR_RESULT) == TRUE){
+				call(Ryu_MonotypeSelector)
+				//check starter monotype compatibility.
+				callnative(RyuCheckStarterForMonotype)
+				delay(5)
+				if (var(VAR_0x8009) == FALSE) {//starter doesn't match types
+					msgbox("Starter doesn't match monotype.\nContinue anyway?", MSGBOX_YESNO)
+					if (var(VAR_RESULT) == NO){
+						call(Ryu_MonotypeSelector)
+					}
+				}
+			}
+		}
+		goto(DiffModReUp)
+	}
+	goto(DiffModReUp)
 }

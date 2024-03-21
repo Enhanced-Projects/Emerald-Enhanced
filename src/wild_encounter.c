@@ -30,6 +30,7 @@
 #include "RyuEnemyEnhancementSystem.h"
 #include "constants/metatile_behaviors.h"
 #include "ach_atlas.h"
+#include "ryu_challenge_modifiers.h"
 
 extern const u8 EventScript_RepelWoreOff[];
 extern int CountBadges();
@@ -525,7 +526,7 @@ bool8 GenerateWildMonWithBossProbability(u16 species, u8 level, u16 rarity) {
         RyuGenerateBossMon(species, level);
         return TRUE;
     }
-    if (CheckModFlag(SICKLY_MOD) == TRUE){
+    if (GetModFlag(SICKLY_MOD) == TRUE){
         RyuGenerateWeakMon(species, level);
     }
     CreateWildMon(species, level);

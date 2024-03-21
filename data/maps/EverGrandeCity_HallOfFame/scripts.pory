@@ -21,6 +21,7 @@ EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame:: @ 8229850
 	call_if_set FLAG_RYU_USED_COMPANION_E4, EGC_IncrementFollowerE4Challenges
 	lockall
 	callnative TryGiveLeetAch
+	callnative GiveChallengeAchievements
 	goto_if_set FLAG_SYS_GAME_CLEAR, AltHallofFame
 	applymovement 1, EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame1
 	applymovement PLAYER, EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame1
@@ -100,6 +101,7 @@ AltHallofFame::
 	call RyuLegendary_GameClearResetLegends
 	ach give ACH_HOENN_CHAMPION
 	callnative TryGiveLeetAch
+	callnative GiveChallengeAchievements
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq EverGrandeCity_HallOfFame_EventScript_GameClearMale

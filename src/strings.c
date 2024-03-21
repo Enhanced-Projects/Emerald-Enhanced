@@ -2249,6 +2249,24 @@ const u8 sText_SelectDayFri[] = _("Friday");
 const u8 sText_SelectDaySat[] = _("Saturday");
 const u8 sText_SelectDaySun[] = _("Sunday");
 
+const u8 sText_SelectFighting[] = _("Fighting {TYPE_ICON_FIGH}");
+const u8 sText_SelectFlying[] = _("Flying{TYPE_ICON_FLYI}");
+const u8 sText_SelectPoison[] = _("Poison{TYPE_ICON_POIS}");
+const u8 sText_SelectGround[] = _("Ground {TYPE_ICON_GROU}");
+const u8 sText_SelectRock[] = _("Rock {TYPE_ICON_ROCK}");
+const u8 sText_SelectBug[] = _("Bug {TYPE_ICON_BUG}");
+const u8 sText_SelectGhost[] = _("Ghost {TYPE_ICON_GHOS}");
+const u8 sText_SelectSteel[] = _("Steel {TYPE_ICON_STEE}");
+const u8 sText_SelectFire[] = _("Fire {TYPE_ICON_FIRE}");
+const u8 sText_SelectWater[] = _("Water {TYPE_ICON_WATE}");
+const u8 sText_SelectGrass[] = _("Grass {TYPE_ICON_GRAS}");
+const u8 sText_SelectElectric[] = _("Electric {TYPE_ICON_ELEC}");
+const u8 sText_SelectPsychic[] = _("Psychic {TYPE_ICON_PSYC}");
+const u8 sText_SelectIce[] = _("Ice {TYPE_ICON_ICE}");
+const u8 sText_SelectDragon[] = _("Dragon {TYPE_ICON_DRAG}");
+const u8 sText_SelectDark[] = _("Dark {TYPE_ICON_DARK}");
+const u8 sText_SelectFairy[] = _("Fairy {TYPE_ICON_FAIR}");
+
 const u8 gText_RyuREMoveIn[] = _("Move In");
 const u8 gText_RyuRELeaseProperty[] = _("Lease Out");
 const u8 gText_RyuRECheckDetails[] = _("Check Details");

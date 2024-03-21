@@ -3320,6 +3320,24 @@ extern const u8 sText_SelectDayFri[];
 extern const u8 sText_SelectDaySat[];
 extern const u8 sText_SelectDaySun[];
 
+extern const u8 sText_SelectFighting[];
+extern const u8 sText_SelectFlying[];
+extern const u8 sText_SelectPoison[];
+extern const u8 sText_SelectGround[];
+extern const u8 sText_SelectRock[];
+extern const u8 sText_SelectBug[];
+extern const u8 sText_SelectGhost[];
+extern const u8 sText_SelectSteel[];
+extern const u8 sText_SelectFire[];
+extern const u8 sText_SelectWater[];
+extern const u8 sText_SelectGrass[];
+extern const u8 sText_SelectElectric[];
+extern const u8 sText_SelectPsychic[];
+extern const u8 sText_SelectIce[];
+extern const u8 sText_SelectDragon[];
+extern const u8 sText_SelectDark[];
+extern const u8 sText_SelectFairy[];
+
 extern const u8 gText_RyuAttendantNameLanette[];
 extern const u8 gText_RyuAttendantNameMinnie[];
 extern const u8 gText_RyuAttendantNameDawn[];

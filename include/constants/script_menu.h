@@ -180,6 +180,7 @@
 #define MULTI_DYNAMIC_5                    169
 #define MULTI_DEV_GIVE_MON_GENDER          170
 #define MULTI_DEV_GIVE_MON_SHINY           171
+#define MULTI_MONOTYPE_MENU                172
 
 
 // Lilycove SS Tidal Multichoice Selections
@@ -236,5 +237,6 @@
 #define SCROLLINGMULTICHOICE_RYUALCHEMYMENU 4
 #define SMC_RYUFOLLOWERDEBUGSUBMENU 5
 #define SMC_RYUBETAMENU 6
+#define SMC_RYUDIFFICULTYMODS 7
 
 #endif //GUARD_SCRIPT_MENU_CONSTANTS_H
