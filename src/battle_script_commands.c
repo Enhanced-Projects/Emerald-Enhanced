@@ -3677,6 +3677,9 @@ static void Cmd_seteffectwithchance(void)
 
     if (GetBattlerAbility(gBattlerAttacker) == ABILITY_SERENE_GRACE)
         percentChance = gBattleMoves[gCurrentMove].secondaryEffectChance * 2;
+    else if (GetModFlag(SICKLY_MOD) == TRUE){
+        percentChance = 100;
+    }
     else
         percentChance = gBattleMoves[gCurrentMove].secondaryEffectChance;
 

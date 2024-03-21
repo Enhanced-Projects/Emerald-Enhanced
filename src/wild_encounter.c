@@ -504,6 +504,18 @@ static void RyuGenerateBossMon(u16 species, u8 level)
         CalculateMonStats(&gEnemyParty[0]);
     }
 
+void RyuGenerateWeakMon(u16 species, u8 level)
+{
+    u8 iv = 0;
+    SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &iv);
+    SetMonData(&gEnemyParty[0], MON_DATA_ATK_IV, &iv);
+    SetMonData(&gEnemyParty[0], MON_DATA_DEF_IV, &iv);
+    SetMonData(&gEnemyParty[0], MON_DATA_SPATK_IV, &iv);
+    SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_IV, &iv);
+    SetMonData(&gEnemyParty[0], MON_DATA_SPEED_IV, &iv);
+    CalculateMonStats(&gEnemyParty[0]);
+}
+
 bool8 GenerateWildMonWithBossProbability(u16 species, u8 level, u16 rarity) {
     if (CheckAPFlag(AP_ALPHA_AURA) == TRUE)
         rarity -= (rarity / 10);
@@ -513,7 +525,9 @@ bool8 GenerateWildMonWithBossProbability(u16 species, u8 level, u16 rarity) {
         RyuGenerateBossMon(species, level);
         return TRUE;
     }
-        
+    if (CheckModFlag(SICKLY_MOD) == TRUE){
+        RyuGenerateWeakMon(species, level);
+    }
     CreateWildMon(species, level);
     return FALSE;
 }
