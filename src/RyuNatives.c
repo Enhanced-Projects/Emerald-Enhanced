@@ -3093,45 +3093,45 @@
     void GiveChallengeAchievements(void)
     {
         if (GetModFlag(NUZLOCKE_MOD) == TRUE){
-        
+            GiveAchievement(ACH_NUZLOCKE_MASTER);
         }
         if (GetModFlag(MONOTYPE_MOD) == TRUE){
-
+            GiveAchievement(ACH_MONOCHROME);
         }
         if (GetModFlag(ADV_MONOTYPE_MOD) == TRUE){
-
+            GiveAchievement(ACH_BRAND_LOYALTY);
         }
         if (GetModFlag(PLAGUE_MOD) == TRUE){
-
+            GiveAchievement(ACH_PATIENT_ZERO);
         }
         if (GetModFlag(FAMINE_MOD) == TRUE){
-
+            GiveAchievement(ACH_DIETICIAN);
         }
         if (GetModFlag(DEATH_MOD) == TRUE){
-
+            GiveAchievement(ACH_IMMORTAL);
         }
         if (GetModFlag(WAR_MOD) == TRUE){
-
+            GiveAchievement(ACH_WARLORD);
         }
         if (GetModFlag(REVELATION_MOD) == TRUE){
-
+            GiveAchievement(ACH_OMEN);
         }
         if (GetModFlag(GEN1_MOD) == TRUE){
-
+            GiveAchievement(ACH_GENWUNNER);
         }
         if (GetModFlag(LATE_BLOOMER_MOD) == TRUE){
-
+            GiveAchievement(ACH_PATIENT);
         }
         if (GetModFlag(MAGNETOSPHERE_MOD) == TRUE){
-
+            GiveAchievement(ACH_FERROMAGNETIC);
         }
         if (GetModFlag(LAZY_MOD) == TRUE){
-
+            GiveAchievement(ACH_UNMOTIVATED);
         }
         if (GetModFlag(SICKLY_MOD) == TRUE){
-
+            GiveAchievement(ACH_NATURAL_SELECTION);
         }
         if (GetModFlag(ANTI_DARWINISM_MOD) == TRUE){
-
+            GiveAchievement(ACH_CREATIONIST);
         }
     }
