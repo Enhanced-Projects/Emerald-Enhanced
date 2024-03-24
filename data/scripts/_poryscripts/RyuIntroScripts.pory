@@ -841,7 +841,8 @@ script Ryu_MonotypeSelector{
 	if (var(VAR_RESULT) == TYPE_MYSTERY){
 		setvar(VAR_RESULT, TYPE_FIRE)
 	}
-	if (var(VAR_RESULT) > 19){
+	copyvar(VAR_0x8005, VAR_RESULT)
+	if (var(VAR_0x8005) > 19){
 		msgbox("Cancel monotype selection?", MSGBOX_YESNO)
 		if (var(VAR_RESULT) == YES){
 			modflag(CLEAR, MONOTYPE_MOD)
@@ -849,16 +850,20 @@ script Ryu_MonotypeSelector{
 			clearflag(FLAG_RYU_SHOW_DIFFICULTY_MOD_MENU)
 			goto(DiffModReUp)
 		}
+		else{
+			goto(Ryu_MonotypeSelector)
+		}
 	}
 	clearflag(FLAG_RYU_SHOW_DIFFICULTY_MOD_MENU)
-	copyvar(VAR_0x8005, VAR_RESULT)
 	callnative(ryuBufferTypeName)
-	copyvar(VAR_RYU_MONOTYPE_SELECTION, VAR_0x8005)
 	msgbox("You selected the {RYU_STR_1} type.\nIs this what you want?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == NO){
 		goto(Ryu_MonotypeSelector)
 	}
-	return
+	else{
+		callnative(RyuSetMonotype)
+		return
+	}
 }
 
 script DMSMENU_SELECTIONCONFIRM{
@@ -878,7 +883,7 @@ script DMSMENU_SELECTIONCONFIRM{
 				//check starter monotype compatibility.
 				callnative(RyuCheckStarterForMonotype)
 				delay(5)
-				if (var(VAR_0x8009) == FALSE) {//starter doesn't match types
+				if (var(VAR_RESULT) == FALSE) {//starter doesn't match types
 					msgbox("Starter doesn't match monotype.\nContinue anyway?", MSGBOX_YESNO)
 					if (var(VAR_RESULT) == NO){
 						call(Ryu_MonotypeSelector)

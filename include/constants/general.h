@@ -394,6 +394,7 @@
 #define SCENEBGOPENWORLDTUTORIAL1 32
 #define SCENEBGOPENWORLDTUTORIAL2 33
 #define SCENEBGOPENWORLDTUTORIAL3 34
+#define SCENEBGBLANK 35
 
 
 //seasons
@@ -604,8 +605,8 @@
 //uncomment to punish save states. Otherwise detections are just logged.
 //#define RYU_PUNISH_SAVE_STATE 1
 
-#define EE_GAME_VERSION 10102
+#define EE_GAME_VERSION 10103
 //uncomment to allow dev switch to be accessed.
-#define DEV_BUILD 69
+//#define DEV_BUILD 69
 
 #endif 

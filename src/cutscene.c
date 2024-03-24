@@ -152,6 +152,10 @@ static const u8 sOpenWorldTutorial3BgTiles[] =   INCBIN_U8("graphics/cutscene/tu
 static const u8 sOpenWorldTutorial3BgMap[] =     INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial3.bin");
 static const u8 sOpenWorldTutorial3BgPalette[] = INCBIN_U8("graphics/cutscene/tutorials/openworldtutorial3.gbapal");
 
+static const u8 sBlankBgTiles[] =   INCBIN_U8("graphics/cutscene/blank.4bpp");
+static const u8 sBlankBgMap[] =     INCBIN_U8("graphics/cutscene/blank.bin");
+static const u8 sBlankBgPalette[] = INCBIN_U8("graphics/cutscene/blank.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -538,6 +542,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .map = sOpenWorldTutorial3BgMap,
 		.mapSize = sizeof(sOpenWorldTutorial3BgMap),
         .palette = sOpenWorldTutorial3BgPalette,
+		.palIdxCnt = 16
+	},
+	[SCENEBGBLANK] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sBlankBgTiles,
+		.tileSize = sizeof(sBlankBgTiles),
+        .map = sBlankBgMap,
+		.mapSize = sizeof(sBlankBgMap),
+        .palette = sBlankBgPalette,
 		.palIdxCnt = 16
 	},
 };

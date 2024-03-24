@@ -990,6 +990,7 @@ static const u8 sBetaMenuRetroDex[] = _ ("Fill Dex from Boxes");
 static const u8 sBetaMenuExit[] = _ ("Exit Menu");
 static const u8 sBetaMenuFixFollowers[] = _("Restore Followers");
 static const u8 sBetaMenuShowTutorials[] = _("View Tutorials");
+static const u8 sBetaMenuViewEffects[] = _("View Active Effects");
 
 static const u8 sDifficultyModNuzlocke[] = _("Nuzlocke");
 static const u8 sDifficultyModMonotype[] = _("Monotype");
@@ -1133,6 +1134,7 @@ static const struct ListMenuItem sRyuBetaMenuSet[] =
     {sBetaMenuRetroDex, 8},
     {sBetaMenuFixFollowers, 9},
     {sBetaMenuShowTutorials, 10},
+    {sBetaMenuViewEffects, 11},
     {sBetaMenuExit, 11}
 };
 

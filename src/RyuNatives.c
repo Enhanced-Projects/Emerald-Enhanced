@@ -98,7 +98,7 @@
 
     extern u8 RyuScript_CheckCompleteDailyQuest[];
     extern u8 Ryu_enableDevMode[];
-
+    EWRAM_DATA static u8 UiBoxWindow = 0;
 
     void ApplyDaycareExperience(struct Pokemon *mon)
     {
@@ -3077,15 +3077,20 @@
         StringCopy(gRyuStringVar1, gTypeNames[type]);
     }
 
+    void RyuSetMonotype(void)
+    {
+        gSaveBlock1Ptr->monotypeChallengeChoice = gSpecialVar_0x8005;
+    }
+
     void RyuCheckStarterForMonotype(void)
     {
-        u8 type = (VarGet(VAR_RYU_MONOTYPE_SELECTION));
+        u8 type = gSpecialVar_0x8005;
         u8 type1 = (gBaseStats[GetMonData(&gPlayerParty[0], MON_DATA_SPECIES)].type1);
         u8 type2 = (gBaseStats[GetMonData(&gPlayerParty[0], MON_DATA_SPECIES)].type2);
 
         if (type1 != type){
             if (type2 != type){
-                gSpecialVar_0x8009 = FALSE;
+                gSpecialVar_Result = FALSE;
             }
         }
     }
@@ -3134,4 +3139,67 @@
         if (GetModFlag(ANTI_DARWINISM_MOD) == TRUE){
             GiveAchievement(ACH_CREATIONIST);
         }
+    }
+
+    extern void RyuDebug_ShowActiveFollower();
+    void RyuBufferActiveEffectsInfo(void)
+    {
+        int i;
+        int count;
+        StringCopy(gRyuStringVar1, ((const u8[])_("Follower Effect:\n")));
+        RyuDebug_ShowActiveFollower();
+        StringExpandPlaceholders(gStringVar4, gStringVar1);
+        StringAppend(gRyuStringVar1, gStringVar4);
+        StringAppend(gRyuStringVar1, ((const u8[])_("\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Active Challenge Mods:\n")));
+        for (i = 0;i < TOTAL_MODS;i++){
+            if (GetModFlag(i) == TRUE){
+                count++;
+                if (count >= 3){
+                    StringAppend(gRyuStringVar1, ((const u8[])_("\n")));
+                    count = 0;
+                }
+                if (i == 0){
+                    StringAppend(gRyuStringVar1, ((const u8[])_(" ")));
+                }
+                StringAppend(gRyuStringVar1, gRyuChallengeModifierNames[i]);
+                if (i == MONOTYPE_MOD){
+                        StringAppend(gRyuStringVar1, ((const u8[])_("(")));
+                        StringAppend(gRyuStringVar1, gTypeNames[gSaveBlock1Ptr->monotypeChallengeChoice]);
+                        StringAppend(gRyuStringVar1, ((const u8[])_(")")));
+                    }
+                if (i != TOTAL_MODS){
+                    StringAppend(gRyuStringVar1, ((const u8[])_(", ")));
+                }
+            }
+        }
+    }
+
+
+    static const struct WindowTemplate UIBoxTemplate = 
+    {
+        .bg = 0,            // windowId bg to print text on
+        .tilemapLeft = 0,   // position from left (per 8 pixels)
+        .tilemapTop = 0,    // position from top (per 8 pixels)
+        .width = 30,        // width (per 8 pixels)
+        .height = 20,        // height (per 8 pixels)
+        .paletteNum = 15,   // palette index to use for text
+        .baseBlock = 1,     // tile start in VRAM
+    };
+
+    static const u8  WindowFontBlack[3]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_DARK_GREY,  TEXT_COLOR_LIGHT_GREY};
+    void RyuDrawUiBox(void)
+    {
+        RyuBufferActiveEffectsInfo();
+        UiBoxWindow = CreateWindowFromRect(0, 0, 28, 12);
+        //SetStandardWindowBorderStyle(UiBoxWindow, 0);
+        FillWindowPixelBuffer(UiBoxWindow, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        AddTextPrinterParameterized4(UiBoxWindow, 0, 0, 0, 0, 0, WindowFontBlack, 0xff, gRyuStringVar1);
+        CopyWindowToVram(UiBoxWindow, 2);
+        ScheduleBgCopyTilemapToVram(0);
+    }
+
+    void RyuDestroyUIBox(void)
+    {
+        ClearStdWindowAndFrame(UiBoxWindow, TRUE);
+        RemoveWindow(UiBoxWindow);
     }

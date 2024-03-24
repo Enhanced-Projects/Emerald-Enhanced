@@ -10,3 +10,5 @@ extern bool32 GetModFlag(u32 id);
 extern void   ClearModFlag(u32 id);
 extern void   ResetModFlags(void);
 extern void TryRevelationModPenalties(void);
+
+extern const u8 gRyuChallengeModifierNames[14][16];

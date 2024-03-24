@@ -12500,19 +12500,23 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_BallBlockedGenesect;
     }
-    else if (GetModFlag(NUZLOCKE_MOD) == TRUE && GetNuzlockeFlag(gMapHeader.regionMapSectionId) == TRUE)
+    else if ((GetModFlag(NUZLOCKE_MOD) == TRUE) && (GetNuzlockeFlag(gMapHeader.regionMapSectionId) == TRUE))
     {
         BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK);
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_BallBlockedNuzlocke;
     }
-    else if (GetModFlag(MONOTYPE_MOD) == TRUE && ( (gBattleMons[gBattlerTarget].type1 != gSaveBlock1Ptr->monotypeChallengeChoice) ||
-         (gBattleMons[gBattlerTarget].type2 != gSaveBlock1Ptr->monotypeChallengeChoice)))
+    else if (GetModFlag(MONOTYPE_MOD) == TRUE)
     {
-        StringCopy(gStringVar3, gTypeNames[gSaveBlock1Ptr->monotypeChallengeChoice]);
-        BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK); 
-        MarkBattlerForControllerExec(gActiveBattler);
-        gBattlescriptCurrInstr = BattleScript_BallBlockedMonotype;
+        if (gBattleMons[gBattlerTarget].type1 != gSaveBlock1Ptr->monotypeChallengeChoice)
+        {
+            if (gBattleMons[gBattlerTarget].type2 != gSaveBlock1Ptr->monotypeChallengeChoice){
+                StringCopy(gStringVar3, gTypeNames[gSaveBlock1Ptr->monotypeChallengeChoice]);
+                BtlController_EmitBallThrowAnim(0, BALL_TRAINER_BLOCK); 
+                MarkBattlerForControllerExec(gActiveBattler);
+                gBattlescriptCurrInstr = BattleScript_BallBlockedMonotype;
+            }
+        }
     }
     else
     {

@@ -11,9 +11,6 @@ void SetModFlag(u32 id)
     if(id > 63)
         return;
     gSaveBlock1Ptr->challengeFlags[id / 8] |= 1 << (id % 8);
-    if ((id == ADV_MONOTYPE_MOD) || (id == MONOTYPE_MOD)){
-        gSaveBlock1Ptr->monotypeChallengeChoice = VarGet(VAR_RESULT);
-    }
 }
 
 bool32 GetModFlag(u32 id)
@@ -86,7 +83,6 @@ void TryRevelationModPenalties(void)
     u16 deathcount = 1;
     u8 ppcount = 4;
     u8 plaguestatus = randomStatuses[Random() % sizeof(randomStatuses)];
-    mgba_open();
 
     if ((GetModFlag(PLAGUE_MOD)) || (GetModFlag(REVELATION_MOD)))
     {
@@ -126,3 +122,24 @@ void TryRevelationModPenalties(void)
     }
 
 }
+
+/////////////////////////////////////////////////////////////////////////////////End revelation
+
+////////////////////////General list for mod names/////////////////////////////////////////////
+
+const u8 gRyuChallengeModifierNames[14][16] = {
+    _("Nuzlocke"),
+    _("Monotype"),
+    _("Adv.Mono"),
+    _("Plague"),
+    _("Famine"),
+    _("Death"),
+    _("War"),
+    _("Revelation"),
+    _("Gen 1 Mode"),
+    _("Late Evolve"),
+    _("Magneto"),
+    _("Lazy"),
+    _("Sickly"),
+    _("No Evolve")
+};

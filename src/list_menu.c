@@ -1003,7 +1003,7 @@ void RyuShowAlchemyInfo(u16 selection)
     CopyWindowToVram(sPrintRecipeWindowId, 3);
 }
 
-const u8 RyuBetaMenuHelpStrings[12][75] = 
+const u8 RyuBetaMenuHelpStrings[13][75] = 
 {
     _("Show bug report info"),
     _("Try fixing the waystone by\nchecking quest data."),
@@ -1016,6 +1016,7 @@ const u8 RyuBetaMenuHelpStrings[12][75] =
     _("Attempt to fill in missing dex\npages from the pokemon storage."),
     _("Try to reset the followers\nto their home location."),
     _("View unlocked tutorials."),
+    _("View currently active effects\nand mods."),
     _("Exit the menu.")
 };
 

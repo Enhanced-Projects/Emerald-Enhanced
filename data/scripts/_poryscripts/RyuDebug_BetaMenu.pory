@@ -41,6 +41,8 @@ script RDB_BetaMenuStandalone{
         case 10:
             goto(RDBM_ViewTutorials)
         case 11:
+            goto(RDBM_DisplayModsEnabled)
+        case 12:
             goto(RDBM_ExitResetMenu)
     }
     goto(RDBM_ExitResetMenu)
@@ -124,6 +126,16 @@ text RDBM_Tut5Lbl {
 
 text RDBM_Tut6Lbl {
     "Exit"
+}
+
+script RDBM_DisplayModsEnabled{
+    drawfullscreenimage(SCENEBGBLANK)
+    callnative(RyuDrawUiBox)
+    waitbuttonpress
+    callnative(RyuDestroyUIBox)
+    clearfullscreenimage
+    release
+    end
 }
 
 script RDBM_ViewSaveVersion{
