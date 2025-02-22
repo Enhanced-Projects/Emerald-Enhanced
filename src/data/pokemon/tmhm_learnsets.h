@@ -18995,7 +18995,8 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM49_SNATCH)
 											| TMHM(TM12_TAUNT)
 											| TMHM(TM41_TORMENT)
-											| TMHM(TM06_TOXIC)),
+											| TMHM(TM06_TOXIC)
+											| TMHM(TM45_ATTRACT)),
 
     [SPECIES_XURKITREE]   = TMHM_LEARNSET(TMHM(TM04_CALM_MIND)
 											| TMHM(TM32_DOUBLE_TEAM)
