@@ -3127,6 +3127,15 @@
         if (GetModFlag(ANTI_DARWINISM_MOD) == TRUE){
             GiveAchievement(ACH_CREATIONIST);
         }
+        if (GetModFlag(TECHNICIAN_MOD) == TRUE){
+            GiveAchievement(ACH_CREATIONIST);
+        }
+        if (GetModFlag(ECONOMY_MODE) == TRUE){
+            GiveAchievement(ACH_CREATIONIST);
+        }
+        if (GetModFlag(GREEDY_TRAINERS_MOD) == TRUE){
+            GiveAchievement(ACH_CREATIONIST);
+        }
     }
 
     extern void RyuDebug_ShowActiveFollower();

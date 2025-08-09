@@ -247,20 +247,20 @@ extern void ApplyGammaShift(u8 startPalIndex, u8 numPalettes, s8 gammaIndex);
 
 void SetDroughtGamma()
 {
-    switch (RyuGetTimeOfDay()){
-        case RTC_TIME_NIGHT:
-            ApplyGammaShift(6, 32, 5);
-        break;
-        case RTC_TIME_MORNING:
-            ApplyGammaShift(-2, 32, 4);
-        break;
-        case RTC_TIME_DAY:
-            ApplyGammaShift(-6, 32, 1);
-        break;
-        case RTC_TIME_EVENING:
-            ApplyGammaShift(-1, 32, -2);
-        break;
-    }
+    //switch (RyuGetTimeOfDay()){
+    //    case RTC_TIME_NIGHT:
+    //        ApplyGammaShift(6, 32, 5);
+    //    break;
+    //    case RTC_TIME_MORNING:
+    //        ApplyGammaShift(-2, 32, 4);
+    //    break;
+    //    case RTC_TIME_DAY:
+    //        ApplyGammaShift(-6, 32, 1);
+    //    break;
+    //    case RTC_TIME_EVENING:
+    //        ApplyGammaShift(-1, 32, -2);
+    //    break;
+    //}
 }
 
 void Drought_InitVars(void)

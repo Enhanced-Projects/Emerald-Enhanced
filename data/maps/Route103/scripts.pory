@@ -356,7 +356,6 @@ r103_MagmaMeeting3_Bottom::
 	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_QUEST_MAGMA, 210
 	goto_if_lt ryu_end
-	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_QUEST_MAGMA, 225
 	goto_if_ge ryu_end
 	lock

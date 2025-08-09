@@ -176,6 +176,7 @@ script LCS_IntelligenceTrainer {
         msgbox("You don't have any tokens!")
         goto(ryu_end)
     }
+    removeitem(ITEM_TRAINING_TOKEN)
     closemessage
     fadescreen(FADE_TO_BLACK)
     delay(30)
@@ -218,6 +219,7 @@ script LCS_Stylist {
         msgbox("If you didn't have the Token,\nwhy didn't you say so, instead of\lwasting my time?")
         goto(ryu_end)
     }
+    removeitem(ITEM_GROOMING_TOKEN)
     fadescreen(FADE_TO_BLACK)
     playse(SE_M_SCRATCH)
     waitse
@@ -230,7 +232,7 @@ script LCS_Stylist {
     msgbox("All done!\nYour Pokémon is looking\lquite dapper!")
     closemessage
     trainstat(VAR_0x8005, MON_DATA_SHEEN, 50, TRUE)
-    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({STR_VAR_1} looks qutie happy!)")
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} ({STR_VAR_1} looks quite happy!)")
     closemessage
     goto(ryu_end)
 }
