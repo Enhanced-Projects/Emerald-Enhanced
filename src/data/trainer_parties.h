@@ -10629,7 +10629,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch2[] = {
 	.heldItem = ITEM_SCEPTILITE,
 	.evspread = 0,
     .ability = 0,
-	.moves = {MOVE_LEAF_BLADE, MOVE_AERIAL_ACE, MOVE_DUAL_cHOP, MOVE_DRAGON_DANCE},
+	.moves = {MOVE_LEAF_BLADE, MOVE_AERIAL_ACE, MOVE_DUAL_CHOP, MOVE_DRAGON_DANCE},
 	},
 	{
 	.iv = 250,
