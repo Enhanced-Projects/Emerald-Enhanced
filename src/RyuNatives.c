@@ -3128,13 +3128,13 @@
             GiveAchievement(ACH_CREATIONIST);
         }
         if (GetModFlag(TECHNICIAN_MOD) == TRUE){
-            GiveAchievement(ACH_CREATIONIST);
+            GiveAchievement(ACH_TECHNICAL);
         }
         if (GetModFlag(ECONOMY_MODE) == TRUE){
-            GiveAchievement(ACH_CREATIONIST);
+            GiveAchievement(ACH_DYSTOPIA);
         }
         if (GetModFlag(GREEDY_TRAINERS_MOD) == TRUE){
-            GiveAchievement(ACH_CREATIONIST);
+            GiveAchievement(ACH_ROUGH_AND_TOUGH);
         }
     }
 
