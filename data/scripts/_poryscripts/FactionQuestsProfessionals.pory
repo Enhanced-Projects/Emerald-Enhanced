@@ -94,7 +94,7 @@ script(global) RyuProfessionalsDailyQuest  {
         case 3:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SMOOTH_ROCK)
-            setvar(VAR_RYU_DAILY_QUEST_DATA, 12)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 1)
             msgbox(format("I need some smooth sand to polish and sharpen my tools with, could you bring me one? Thanks."))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
