@@ -63,7 +63,7 @@ script(global) RyuNaturalistsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
-    random(4)//increase this by the number of quests you add.
+    random(5)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -92,6 +92,11 @@ script(global) RyuNaturalistsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_ESCAPE_ROPE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
             msgbox(format("A friend is about to go spelunking. He's kinda new to this so I want him to have a couple of Escape Ropes if something goes wrong."))
+        case 4:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SOFT_SAND)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 4)
+            msgbox(format("We're trying to set up a small terrarium for a frend's new son, we need some soft sand, can you get it for us?"))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     closemessage
