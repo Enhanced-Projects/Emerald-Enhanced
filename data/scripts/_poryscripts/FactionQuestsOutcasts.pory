@@ -65,7 +65,7 @@ script(global) RyuOutcastsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
-    random(3)//increase this by the number of quests you add.
+    random(6)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -89,6 +89,21 @@ script(global) RyuOutcastsDailyQuest  {
             msgbox(format("This egg has an impressive aura. Could you hatch it to see what it turns out to be?"))
             closemessage
             msgbox(FactionsReceivedEggMsg)
+        case 3:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_OLD_GATEAU)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
+            msgbox("Y'know, I always thought Old Gateau tasted kind of funny. How about bringing me some?")
+        case 4:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_ICE_STONE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 1)
+            msgbox("Alolan Vulpix is quite the odd ball, I don't think anyone's ever seen one up close. Maybe an Ice Stone would help...")
+        case 5:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_BRIGHT_POWDER)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 4)
+            msgbox("Do you think Petaburg Woods would go completely dark without any Bright Powder? Hey, why don't you bring me some, and we can test that theory!")
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     call_if_unset(FLAG_RYU_FACTION_TUTORIAL_UNLOCKED, RyuScript_FactionsTutorialQuery)

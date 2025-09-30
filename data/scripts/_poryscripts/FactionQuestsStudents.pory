@@ -63,7 +63,7 @@ script(global) RyuStudentsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS)
-    random(4)//increase this by the number of quests you add.
+    random(7)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -92,6 +92,21 @@ script(global) RyuStudentsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_PRETTY_WING)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 4)
             msgbox(format("Hey {PLAYER}! Great to see you here. We learned about Wingulls today and we want to examine them further. Apparently sometimes they have loose wings but we can't find any! Can you help us?"))
+        case 4:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_JUNGLE_BEANS)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
+            msgbox(format("My mom said I could have more cookies if I made them myself, but... I need Jungle Beans for that to happen. I've heard Route 66 is a jungle, but it's so far away! Mind giving me a hand?"))
+        case 5:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_GEM_POWDER)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 20)
+            msgbox(format("Gems from Unova are said to a special kind of item that can help boost attacking power. I forgot to bring some for my project, and it's due tomorrow! Some Gem Powder could work, though..."))
+        case 6:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_FOSSIL_ORE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 1)
+            msgbox(format("Apparently you can get some exotic Pokemon like Lunala or Marshadow through fossils, similar to how you get Shedinja with an empty team slot. I want to test that theory for myself, but I still need a Fossil Ore."))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     closemessage

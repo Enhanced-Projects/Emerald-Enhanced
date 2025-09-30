@@ -76,7 +76,7 @@ script(global) RyuPokefansDailyQuest  {
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS)
-    random(3)//increase this by the number of quests you add.
+    random(6)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -98,6 +98,21 @@ script(global) RyuPokefansDailyQuest  {
             callnative(RyuSetupEggHatchQuest)
             giveegg(VAR_RYU_DAILY_QUEST_TARGET)
             msgbox(PokefansQuest3Desc)
+        case 3:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_ORAN_BERRY)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
+            msgbox("A friend from Sinnoh brought me some Poffins, and I'd like to return the favor with a nice dish. Be a doll and fetch me some Oran Berries, would you?")
+        case 4:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_LEEK)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 3)
+            msgbox("My birds simply love it when I bring them a snack! How about getting me some Leeks?")
+        case 5:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_AIR_BALLOON)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 1)
+            msgbox("I promised my nephew I would get him a balloon while I was in Slateport City, but I completely forgot... um, do you mind?")
     }
     closemessage
     call_if_unset(FLAG_RYU_FACTION_TUTORIAL_UNLOCKED, RyuScript_FactionsTutorialQuery)

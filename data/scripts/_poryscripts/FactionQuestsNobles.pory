@@ -76,7 +76,7 @@ script(global) RyuNoblesDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES)
-    random(3)//increase this by the number of quests you add.
+    random(6)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -100,6 +100,21 @@ script(global) RyuNoblesDailyQuest  {
             msgbox(format("One of our shareholders left us this Egg. Can you hatch it to see if it has any potential?"))
             closemessage
             msgbox(FactionsReceivedEggMsg)
+        case 3:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_RARE_BONE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 3)
+            msgbox("My brother got the latest iPhione recently, and I won't just let him one-up me! Fetch me some Rare Bones!")
+        case 4:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_LAVA_COOKIE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 6)
+            msgbox("Some old coot set up shop recently in Mauville City. I want to know what all the fuss is about with her Lava Cookies.")
+         case 5:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_LUXURY_BALL)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 1)
+            msgbox("I heard Luxury Balls are the new Master Balls for the poor... uh, mind getting me one?")
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     closemessage
