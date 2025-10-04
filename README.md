@@ -7,6 +7,8 @@
 
 ###### Emerald Enhanced is **NOT** free to clone and redistribute. 
 
+You may submit changes you wish to see via Pull Request. Such changes may be approved or denied, but must be added to the game by an Executive of Enhanced Projects. We are now open to community changes, and the game will get updated every Sunday (eastern time) with any changes approved by staff being included in it. We will not provide help or assistance in this matter, to contribute, you must be competent enough to do so.
+
 If you intend to use Art from this project, you must obtain permission from an executive of Enhanced Projects. 
 If the art is not property of Nintendo, but the property of someone who contributed to this project, you may be subject to sanctions. 
 
