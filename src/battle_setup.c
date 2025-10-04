@@ -913,14 +913,32 @@ u8 GetTrainerBattleTransition(void)
 
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_ELITE_FOUR)
     {
-        if (gTrainerBattleOpponent_A == TRAINER_SIDNEY || gTrainerBattleOpponent_A == TRAINER_SIDNEY_REMATCH || gTrainerBattleOpponent_A == TRAINER_SIDNEY_REMATCH_2)
-            return B_TRANSITION_SIDNEY;
-        if (gTrainerBattleOpponent_A == TRAINER_PHOEBE || gTrainerBattleOpponent_A == TRAINER_PHOEBE_REMATCH || gTrainerBattleOpponent_A == TRAINER_PHOEBE_REMATCH_2)
-            return B_TRANSITION_PHOEBE;
-        if (gTrainerBattleOpponent_A == TRAINER_GLACIA || gTrainerBattleOpponent_A == TRAINER_GLACIA_REMATCH || gTrainerBattleOpponent_A == TRAINER_GLACIA_REMATCH_2)
-            return B_TRANSITION_GLACIA;
-        if (gTrainerBattleOpponent_A == TRAINER_DRAKE || gTrainerBattleOpponent_A == TRAINER_DRAKE_REMATCH || gTrainerBattleOpponent_A == TRAINER_DRAKE_REMATCH_2)
-            return B_TRANSITION_DRAKE;
+        switch(gTrainerBattleOpponent_A){
+            case TRAINER_SIDNEY:
+            case TRAINER_SIDNEY_REMATCH_2:
+            case TRAINER_SIDNEY_REMATCH_3:
+            case TRAINER_SIDNEY_REMATCH_4:
+                return B_TRANSITION_SIDNEY;
+            break;
+            case TRAINER_PHOEBE:
+            case TRAINER_PHOEBE_REMATCH_2:
+            case TRAINER_PHOEBE_REMATCH_3:
+            case TRAINER_PHOEBE_REMATCH_4:
+                return B_TRANSITION_PHOEBE;
+            break;
+            case TRAINER_GLACIA:
+            case TRAINER_GLACIA_REMATCH_2:
+            case TRAINER_GLACIA_REMATCH_3:
+            case TRAINER_GLACIA_REMATCH_4:
+                return B_TRANSITION_GLACIA;
+            break;
+            case TRAINER_DRAKE:
+            case TRAINER_DRAKE_REMATCH_2:
+            case TRAINER_DRAKE_REMATCH_3:
+            case TRAINER_DRAKE_REMATCH_4:
+                return B_TRANSITION_DRAKE;
+            break;
+        }
         return B_TRANSITION_CHAMPION;
     }
 

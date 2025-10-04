@@ -151,16 +151,31 @@ EverGrandeCity_SidneysRoom_Text_PostBattleSpeech: @ 82280EC
 	.string "your next battle!$"
 
 `
+
+text EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech3 {
+	format("Some say being a user of Dark types makes me a bad person, but that's kind of rude. If anything, I prefer the term 'toxic'...")
+}
+
+text EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech4 {
+	format("Back for more, huh? Don't expect my usual team, you'll be quite shocked!")
+}
+
 script EGC_AltSidney{
 	goto_if_set(FLAG_RYU_COMPANION_PARTICIPATION, EGC_FollowerSidneyRematch)
-	if (var(VAR_RYU_E41) == 0) {
-		msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleSpeech)
-		trainerbattle_no_intro(TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat)
+	switch(var(VAR_RYU_E41)){
+		case 0:
+			msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleSpeech)
+			trainerbattle_no_intro(TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat)
+		case 1:
+			msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech)
+			trainerbattle_no_intro(TRAINER_SIDNEY_REMATCH_2, EverGrandeCity_SidneysRoom_Text_Defeat)
+		case 2:
+			msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech3)
+			trainerbattle_no_intro(TRAINER_SIDNEY_REMATCH_3, EverGrandeCity_SidneysRoom_Text_Defeat)
+		case 3:
+			msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech4)
+			trainerbattle_no_intro(TRAINER_SIDNEY_REMATCH_4, EverGrandeCity_SidneysRoom_Text_Defeat)
 	}
-	else {
-		msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech)
-		trainerbattle_no_intro(TRAINER_SIDNEY_REMATCH_2, EverGrandeCity_SidneysRoom_Text_Defeat)
-	} 
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) == B_OUTCOME_LOST) {
 		goto(Ryu_PlayerLostTheGame)
@@ -175,12 +190,19 @@ script EGC_FollowerSidneyRematch {
 	if (var(VAR_RESULT) == FALSE) {
 		call(RyuScript_ChooseValidMons)
 	}
-	if (var(VAR_RYU_E41) == 0) {
-		multi_2_vs_1(TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
-	}
-	else {
-		msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech)
-		multi_2_vs_1(TRAINER_SIDNEY_REMATCH_2, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+	switch(var(VAR_RYU_E41)){
+		case 0:
+			msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleSpeech)
+			multi_2_vs_1(TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+		case 1:
+			msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech)
+			multi_2_vs_1(TRAINER_SIDNEY_REMATCH_2, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+		case 2:
+			msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech3)
+			multi_2_vs_1(TRAINER_SIDNEY_REMATCH_3, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
+		case 3:
+			msgbox(EverGrandeCity_SidneysRoom_Text_PreBattleRematchSpeech4)
+			multi_2_vs_1(TRAINER_SIDNEY_REMATCH_4, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
 	}
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) == B_OUTCOME_LOST) {

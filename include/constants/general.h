@@ -603,7 +603,7 @@
 #define GREEDY_TRAINERS_MOD 14
 #define TECHNICIAN_MOD 15
 #define ECONOMY_MODE 16
-#define TOTAL_MODS 15
+#define TOTAL_MODS 17
 
 #define LC_TYPE_POKEMON 0
 #define LC_TYPE_ITEM 1
@@ -615,9 +615,9 @@
 //uncomment to punish save states. Otherwise detections are just logged.
 //#define RYU_PUNISH_SAVE_STATE 1
 
-#define EE_GAME_VERSION 11001
+#define EE_GAME_VERSION 11005
 
 //uncomment to allow dev switch to be accessed.//
-#define DEV_BUILD 69
+//#define DEV_BUILD 69
 
 #endif 

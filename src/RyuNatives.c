@@ -2403,10 +2403,10 @@
     void RyuSetupRandomForE4(void)
     {
         u8 r1, r2, r3, r4;
-        r1 = (Random() % 2);
-        r2 = (Random() % 2);
-        r3 = (Random() % 2);
-        r4 = (Random() % 2);
+        r1 = (Random() % 4);
+        r2 = (Random() % 4);
+        r3 = (Random() % 4);
+        r4 = (Random() % 4);
         VarSet(VAR_RYU_E41, r1);
         VarSet(VAR_RYU_E42, r2);
         VarSet(VAR_RYU_E43, r3);
@@ -2426,14 +2426,6 @@
                 StringAppend(gRyuStringVar3, gRyuStringVar2);
                 DebugPrint((const u8[]) _("Rolled for elite four.({RYU_STR_3})"), 0);
         }
-
-        if (VarGet(VAR_RYU_SPECIAL_CHALLENGE_STATE) == 100) //special challenge active, always give rematch 2 parties on rematch.
-            {
-                VarSet(VAR_RYU_E41, 1);
-                VarSet(VAR_RYU_E42, 1);
-                VarSet(VAR_RYU_E43, 1);
-                VarSet(VAR_RYU_E44, 1);
-            }
     }
 
     void RyuCheckIfInWallysHouse (void)

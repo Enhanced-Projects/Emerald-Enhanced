@@ -1551,10 +1551,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_JACE
 	cleartrainerflag TRAINER_KEEGAN
 	cleartrainerflag TRAINER_BERNIE_1
-	cleartrainerflag TRAINER_EMPTY_70
-	cleartrainerflag TRAINER_EMPTY_71
-	cleartrainerflag TRAINER_EMPTY_72
-	cleartrainerflag TRAINER_EMPTY_73
+	cleartrainerflag TRAINER_SIDNEY_REMATCH_3
+	cleartrainerflag TRAINER_SIDNEY_REMATCH_4
+	cleartrainerflag TRAINER_PHOEBE_REMATCH_3
+	cleartrainerflag TRAINER_PHOEBE_REMATCH_4
 	cleartrainerflag TRAINER_DREW
 	cleartrainerflag TRAINER_BEAU
 	cleartrainerflag TRAINER_LARRY
@@ -1563,10 +1563,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_ETHAN_1
 	cleartrainerflag TRAINER_AUTUMN
 	cleartrainerflag TRAINER_TRAVIS
-	cleartrainerflag TRAINER_EMPTY_74
-	cleartrainerflag TRAINER_EMPTY_75
-	cleartrainerflag TRAINER_EMPTY_76
-	cleartrainerflag TRAINER_EMPTY_77
+	cleartrainerflag TRAINER_GLACIA_REMATCH_3
+	cleartrainerflag TRAINER_GLACIA_REMATCH_4
+	cleartrainerflag TRAINER_DRAKE_REMATCH_3
+	cleartrainerflag TRAINER_DRAKE_REMATCH_4
 	cleartrainerflag TRAINER_BRENT
 	cleartrainerflag TRAINER_DONALD
 	cleartrainerflag TRAINER_TAYLOR
