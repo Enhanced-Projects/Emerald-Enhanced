@@ -63,6 +63,7 @@ script(global) RyuNaturalistsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
+    random(7)//increase this by the number of quests you add.
     random(5)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
@@ -94,6 +95,20 @@ script(global) RyuNaturalistsDailyQuest  {
             msgbox(format("A friend is about to go spelunking. He's kinda new to this so I want him to have a couple of Escape Ropes if something goes wrong."))
         case 4:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SMALL_SALAD)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 3)
+            msgbox(format("Our leader is forcing us to eat healthier. Can you bring some Small Salads for us? 3 should do."))
+        case 5:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_TOUGH_POWDER)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 3)
+            msgbox(format("We're going on a hike for the weekend, and we'll need all the energy we can get. I heard Tough Powder really gives that extra punch!"))
+        case 6:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HONEY)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 3)
+            msgbox(format("The Sinnoh region is known for attracting some exotic species through the use of Honey, and we want in on the action, too! I heard wild Surskit have a chance of holding them."))
+=======
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SOFT_SAND)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 4)
             msgbox(format("We're trying to set up a small terrarium for a frend's new son, we need some soft sand, can you get it for us?"))

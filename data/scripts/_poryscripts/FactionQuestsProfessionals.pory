@@ -67,7 +67,7 @@ script(global) RyuProfessionalsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
-    random(4)//increase this by the number of quests you add.
+    random(6)//increase this by the number of quests you add.
     if (flag(FLAG_RYU_VERBOSE_MODE) == TRUE) {
         call(RyuDoDailyQuestVerbosePrint)
     }
@@ -96,6 +96,16 @@ script(global) RyuProfessionalsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SMOOTH_ROCK)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 1)
             msgbox(format("I need some smooth sand to polish and sharpen my tools with, could you bring me one? Thanks."))
+        case 4:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_CELL_BATTERY)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 3)
+            msgbox(format("Those darn mice! I heard wild Minun and Plusle have been sneaking into New Mauville and stealing our batteries! Give us a hand and go steal some back from them, will you?"))
+        case 5:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_BANANA)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
+            msgbox(format("I'm... too tired... ugh, need... protein... no, not that kind of protein. I need some freshly cut Bananas from the Banana Garden!"))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     closemessage
