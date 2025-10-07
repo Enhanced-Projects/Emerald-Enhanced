@@ -108,7 +108,6 @@ script(global) RyuNaturalistsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HONEY)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 3)
             msgbox(format("The Sinnoh region is known for attracting some exotic species through the use of Honey, and we want in on the action, too! I heard wild Surskit have a chance of holding them."))
-=======
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SOFT_SAND)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 4)
             msgbox(format("We're trying to set up a small terrarium for a frend's new son, we need some soft sand, can you get it for us?"))

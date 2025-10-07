@@ -126,9 +126,6 @@ EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech: @ 8228343
 text EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech3{
 	format("You may have beaten me and my Ghosts, but this time I've decided to take an approach on the living!")
 }
-text EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech4{
-	format("Sidney sure has a big mouth for someone who has an easy match up against my ghosts... he doesn't even know how to use them properly!")
-}
 
 script EGC_AltPhoebe{
 	goto_if_set(FLAG_RYU_COMPANION_PARTICIPATION, EGC_FollowerPhoebeRematch)
@@ -143,7 +140,11 @@ script EGC_AltPhoebe{
 			msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech3)
 			trainerbattle_no_intro(TRAINER_PHOEBE_REMATCH_3, EverGrandeCity_PhoebesRoom_Text_Defeat)
 		case 3:
-			msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech4)
+			msgbox(format("Sidney sure has a big mouth for someone who has an easy match up against my ghosts..."))
+			setweather(WEATHER_SHADE)
+			doweather
+			delay(60) //<--- dramatic pause for effect!
+			msgbox("He doesn't even know how to use them\nproperly!")
 			trainerbattle_no_intro(TRAINER_PHOEBE_REMATCH_4, EverGrandeCity_PhoebesRoom_Text_Defeat)
 	}
 	specialvar(VAR_RESULT, GetBattleOutcome)
@@ -171,7 +172,11 @@ script EGC_FollowerPhoebeRematch {
 			msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech3)
 			multi_2_vs_1(TRAINER_PHOEBE_REMATCH_3, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
 		case 3:
-			msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech4)
+			msgbox(format("Sidney sure has a big mouth for someone who has an easy match up against my ghosts..."))
+			setweather(WEATHER_SHADE)
+			doweather
+			delay(60) //<--- dramatic pause for effect!
+			msgbox("He doesn't even know how to use them\nproperly!")
 			multi_2_vs_1(TRAINER_PHOEBE_REMATCH_4, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
 	}
 	specialvar(VAR_RESULT, GetBattleOutcome)

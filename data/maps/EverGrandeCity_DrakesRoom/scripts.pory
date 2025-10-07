@@ -127,10 +127,10 @@ EverGrandeCity_DrakesRoom_Text_PostBattleSpeech: @ 82288B0
 ` 
 
 text EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech3 {
-	format("For what it's worth, that old Maxie pup was quite the genius, though his battling skills were laughably weak. Allow me to show you the true power of the sun!")
+	format("For what it's worth, that old Maxie pup was quite the genius, though his battling skills were laughably weak.")
 }
 text EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech4 {
-	format("Impressive, so you've made it here once more... back into the dirt with you!")
+	format("Impressive, so you've made it here once more...")
 }
 
 script EGC_AltDrake{
@@ -144,9 +144,17 @@ script EGC_AltDrake{
 			trainerbattle_no_intro(TRAINER_DRAKE_REMATCH_2, EverGrandeCity_DrakesRoom_Text_Defeat)
 		case 2:
 			msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech3)
+			setweather(WEATHER_DROUGHT)
+			doweather
+			delay(30)
+			msgbox("Allow me to show you the true power of\nthe sun!")
 			trainerbattle_no_intro(TRAINER_DRAKE_REMATCH_3, EverGrandeCity_DrakesRoom_Text_Defeat)
 		case 3:
 			msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech4)
+			setweather(WEATHER_SANDSTORM)
+			doweather
+			delay(60)
+			msgbox("Back into the dirt with you!")
 			trainerbattle_no_intro(TRAINER_DRAKE_REMATCH_4, EverGrandeCity_DrakesRoom_Text_Defeat)
 	}
 	specialvar(VAR_RESULT, GetBattleOutcome)
