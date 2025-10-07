@@ -143,6 +143,7 @@ script EGC_AltGlacia{
 			msgbox(EverGrandeCity_GlaciasRoom_Text_PreBattleRematchSpeech3)
 			trainerbattle_no_intro(TRAINER_GLACIA_REMATCH_3, EverGrandeCity_GlaciasRoom_Text_Defeat)
 		case 3:
+			(changeweather RAIN)
 			msgbox(EverGrandeCity_GlaciasRoom_Text_PreBattleRematchSpeech4)
 			trainerbattle_no_intro(TRAINER_GLACIA_REMATCH_4, EverGrandeCity_GlaciasRoom_Text_Defeat)
 	}

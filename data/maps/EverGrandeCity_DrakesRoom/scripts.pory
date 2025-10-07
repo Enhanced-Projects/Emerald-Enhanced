@@ -143,9 +143,11 @@ script EGC_AltDrake{
 			msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech)
 			trainerbattle_no_intro(TRAINER_DRAKE_REMATCH_2, EverGrandeCity_DrakesRoom_Text_Defeat)
 		case 2:
+			(changeweather SUN)
 			msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech3)
 			trainerbattle_no_intro(TRAINER_DRAKE_REMATCH_3, EverGrandeCity_DrakesRoom_Text_Defeat)
 		case 3:
+			(changeweather SAND)
 			msgbox(EverGrandeCity_DrakesRoom_Text_PreBattleRematchSpeech4)
 			trainerbattle_no_intro(TRAINER_DRAKE_REMATCH_4, EverGrandeCity_DrakesRoom_Text_Defeat)
 	}

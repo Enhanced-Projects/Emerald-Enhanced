@@ -143,6 +143,7 @@ script EGC_AltPhoebe{
 			msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech3)
 			trainerbattle_no_intro(TRAINER_PHOEBE_REMATCH_3, EverGrandeCity_PhoebesRoom_Text_Defeat)
 		case 3:
+			(changeweather ECLIPSE)
 			msgbox(EverGrandeCity_PhoebesRoom_Text_PreBattleRematchSpeech4)
 			trainerbattle_no_intro(TRAINER_PHOEBE_REMATCH_4, EverGrandeCity_PhoebesRoom_Text_Defeat)
 	}
