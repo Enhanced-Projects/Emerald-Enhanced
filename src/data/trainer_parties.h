@@ -14927,7 +14927,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_DawnLinkPlaceholder[] = 
 
 static const struct TrainerMonItemCustomMoves sParty_SidneyRematch3[] = {
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_ARIADOS,
     .heldItem = ITEM_FOCUS_SASH,
@@ -14935,7 +14935,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch3[] = {
     .moves = {MOVE_TOXIC_THREAD, MOVE_KNOCK_OFF, MOVE_POISON_JAB, MOVE_U_TURN},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_NIDOKING,
     .heldItem = ITEM_LIFE_ORB,
@@ -14943,7 +14943,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch3[] = {
     .moves = {MOVE_EARTH_POWER, MOVE_SLUDGE_WAVE, MOVE_ICE_BEAM, MOVE_THUNDERBOLT},
     },
     {
-    .iv = 28,
+    .iv = 231,
     .lvl = 100,
     .species = SPECIES_SALAZZLE,
     .heldItem = ITEM_CHOICE_SPECS,
@@ -14951,7 +14951,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch3[] = {
     .moves = {MOVE_SLUDGE_WAVE, MOVE_FIRE_BLAST, MOVE_HIDDEN_POWER, MOVE_DRAGON_PULSE},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_DRAPION,
     .heldItem = ITEM_SCOPE_LENS,
@@ -14959,7 +14959,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch3[] = {
     .moves = {MOVE_CROSS_POISON, MOVE_NIGHT_SLASH, MOVE_SWORDS_DANCE, MOVE_FELL_STINGER},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_BEEDRILL,
     .heldItem = ITEM_LIFE_ORB,
@@ -14967,7 +14967,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch3[] = {
     .moves = {MOVE_POISON_JAB, MOVE_U_TURN, MOVE_KNOCK_OFF, MOVE_X_SCISSOR},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_NIHILEGO,
     .heldItem = ITEM_AIR_BALLOON,
@@ -14978,7 +14978,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch3[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_SidneyRematch4[] = {
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_ELECTRODE,
     .heldItem = ITEM_TERRAIN_EXTENDER,
@@ -14986,7 +14986,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch4[] = {
     .moves = {MOVE_VOLT_SWITCH, MOVE_HIDDEN_POWER, MOVE_OVERHEAT, MOVE_OVERLOAD},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_PIKACHU,
     .heldItem = ITEM_LIGHT_BALL,
@@ -14994,15 +14994,15 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch4[] = {
     .moves = {MOVE_VOLT_TACKLE, MOVE_SURF, MOVE_EXTREME_SPEED, MOVE_VOLT_SWITCH},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_ROTOM_FAN,
     .heldItem = ITEM_FOCUS_SASH,
-    .ability = 1,
+    .ability = 2,
     .moves = {MOVE_THUNDERBOLT, MOVE_HYPER_VOICE, MOVE_NASTY_PLOT, MOVE_VOLT_SWITCH},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_ROTOM_WASH,
     .heldItem = ITEM_SITRUS_BERRY,
@@ -15010,7 +15010,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch4[] = {
     .moves = {MOVE_HYDRO_PUMP, MOVE_WILL_O_WISP, MOVE_HEX, MOVE_VOLT_SWITCH},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_EELEKTROSS,
     .heldItem = ITEM_LEFTOVERS,
@@ -15018,7 +15018,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch4[] = {
     .moves = {MOVE_THUNDER_PUNCH, MOVE_AQUA_TAIL, MOVE_DRAIN_PUNCH, MOVE_COIL},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_ZERAORA,
     .heldItem = ITEM_FOCUS_SASH,
@@ -15029,7 +15029,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch4[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch3[] = {
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_STARAPTOR,
     .heldItem = ITEM_LEFTOVERS,
@@ -15037,7 +15037,7 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch3[] = {
     .moves = {MOVE_BRAVE_BIRD, MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_ROOST},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_CHANSEY,
     .heldItem = ITEM_EVIOLITE,
@@ -15045,7 +15045,7 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch3[] = {
     .moves = {MOVE_STEALTH_ROCK, MOVE_THUNDER_WAVE, MOVE_SEISMIC_TOSS, MOVE_SOFT_BOILED},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_PORYGON2,
     .heldItem = ITEM_EVIOLITE,
@@ -15053,7 +15053,7 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch3[] = {
     .moves = {MOVE_DISCHARGE, MOVE_TRI_ATTACK, MOVE_ICE_BEAM, MOVE_RECOVER},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_SLAKING,
     .heldItem = ITEM_LEFTOVERS,
@@ -15061,7 +15061,7 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch3[] = {
     .moves = {MOVE_BODY_SLAM, MOVE_DRAIN_PUNCH, MOVE_BULK_UP, MOVE_SLACK_OFF},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_DIGGERSBY,
     .heldItem = ITEM_CHOICE_BAND,
@@ -15069,7 +15069,7 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch3[] = {
     .moves = {MOVE_RETURN, MOVE_EARTHQUAKE, MOVE_FIRE_PUNCH, MOVE_QUICK_ATTACK},
     },
     {
-    .iv = 27,
+    .iv = 223,
     .lvl = 100,
     .species = SPECIES_BANETTE,
     .heldItem = ITEM_SHELL_BELL,
@@ -15080,15 +15080,15 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch3[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch4[] = {
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_UMBREON,
     .heldItem = ITEM_LEFTOVERS,
     .ability = 0,
-    .moves = {MOVE_MOONLIGHT, MOVE_TOXIC, MOVE_PROTECT, MOVE_PAYBACK},
+    .moves = {MOVE_MOONLIGHT, MOVE_TOXIC, MOVE_CURSE, MOVE_PAYBACK},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_HOUNDOOM,
     .heldItem = ITEM_FOCUS_SASH,
@@ -15096,7 +15096,7 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch4[] = {
     .moves = {MOVE_FIRE_BLAST, MOVE_DARK_PULSE, MOVE_NASTY_PLOT, MOVE_SLUDGE_BOMB},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_KROOKODILE,
     .heldItem = ITEM_ASSAULT_VEST,
@@ -15104,7 +15104,7 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch4[] = {
     .moves = {MOVE_KNOCK_OFF, MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SUCKER_PUNCH},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_HONCHKROW,
     .heldItem = ITEM_SHELL_BELL,
@@ -15112,15 +15112,15 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch4[] = {
     .moves = {MOVE_OBLIVION_WING, MOVE_DARK_PULSE, MOVE_HEAT_WAVE, MOVE_ROOST},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_ZOROARK,
     .heldItem = ITEM_LIFE_ORB,
     .ability = 0,
-    .moves = {MOVE_VOID_BURST, MOVE_PSYSHOCK, MOVE_FOCUS_BLAST, MOVE_SUCKER_PUNCH},
+    .moves = {MOVE_VOID_BURST, MOVE_PSYSHOCK, MOVE_ECLIPSE, MOVE_SUCKER_PUNCH},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_SABLEYE,
     .heldItem = ITEM_SABLENITE,
@@ -15131,7 +15131,7 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch4[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch3[] = {
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_SKARMORY,
     .heldItem = ITEM_ROCKY_HELMET,
@@ -15139,7 +15139,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch3[] = {
     .moves = {MOVE_BRAVE_BIRD, MOVE_SPIKES, MOVE_ROOST, MOVE_TOXIC},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_STARAPTOR,
     .heldItem = ITEM_LEFTOVERS,
@@ -15147,15 +15147,15 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch3[] = {
     .moves = {MOVE_BRAVE_BIRD, MOVE_CLOSE_COMBAT, MOVE_ROOST, MOVE_U_TURN},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_TOGEKISS,
     .heldItem = ITEM_CHOICE_SCARF,
     .ability = 1,
-    .moves = {MOVE_AIR_SLASH, MOVE_DAZZLING_GLEAM, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST},
+    .moves = {MOVE_AIR_SLASH, MOVE_DAZZLING_GLEAM, MOVE_FLAMETHROWER, MOVE_AURA_SPHERE},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_SCYTHER,
     .heldItem = ITEM_LIFE_ORB,
@@ -15163,7 +15163,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch3[] = {
     .moves = {MOVE_AERIAL_ACE, MOVE_BUG_BITE, MOVE_QUICK_ATTACK, MOVE_U_TURN},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_PIDGEOT,
     .heldItem = ITEM_PIDGEOTITE,
@@ -15171,7 +15171,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch3[] = {
     .moves = {MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_U_TURN, MOVE_ROOST},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_SALAMENCE,
     .heldItem = ITEM_LUM_BERRY,
@@ -15182,7 +15182,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch3[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch4[] = {
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_PELIPPER,
     .heldItem = ITEM_DAMP_ROCK,
@@ -15190,7 +15190,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch4[] = {
     .moves = {MOVE_SCALD, MOVE_HURRICANE, MOVE_U_TURN, MOVE_ROOST},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_KINGDRA,
     .heldItem = ITEM_LIFE_ORB,
@@ -15198,7 +15198,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch4[] = {
     .moves = {MOVE_HYDRO_PUMP, MOVE_HURRICANE, MOVE_DRACO_METEOR, MOVE_ICE_BEAM},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_POLIWRATH,
     .heldItem = ITEM_LEFTOVERS,
@@ -15206,7 +15206,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch4[] = {
     .moves = {MOVE_DRAIN_PUNCH, MOVE_DIVE, MOVE_BULK_UP, MOVE_AQUA_RING},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_SEISMITOAD,
     .heldItem = ITEM_LIFE_ORB,
@@ -15214,7 +15214,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch4[] = {
     .moves = {MOVE_STEALTH_ROCK, MOVE_EARTHQUAKE, MOVE_WATERFALL, MOVE_RAIN_DANCE},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_BASCULIN,
     .heldItem = ITEM_LIFE_ORB,
@@ -15222,7 +15222,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch4[] = {
     .moves = {MOVE_WATERFALL, MOVE_AQUA_JET, MOVE_ICE_FANG, MOVE_SUPERPOWER},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_LANTURN,
     .heldItem = ITEM_LEFTOVERS,
@@ -15233,7 +15233,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch4[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_DrakeRematch3[] = {
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_TORKOAL,
     .heldItem = ITEM_HEAT_ROCK,
@@ -15241,7 +15241,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch3[] = {
     .moves = {MOVE_STEALTH_ROCK, MOVE_YAWN, MOVE_OVERHEAT, MOVE_BLAST_OFF},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_DARMANITAN,
     .heldItem = ITEM_CHOICE_SCARF,
@@ -15249,7 +15249,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch3[] = {
     .moves = {MOVE_FLARE_BLITZ, MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_U_TURN},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_TYPHLOSION,
     .heldItem = ITEM_CHOICE_SCARF,
@@ -15257,7 +15257,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch3[] = {
     .moves = {MOVE_ERUPTION, MOVE_SOLAR_BEAM, MOVE_EARTH_POWER, MOVE_BLAST_OFF},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_VOLCARONA,
     .heldItem = ITEM_SITRUS_BERRY,
@@ -15265,7 +15265,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch3[] = {
     .moves = {MOVE_FIERY_DANCE, MOVE_QUIVER_DANCE, MOVE_BUG_BUZZ, MOVE_PSYCHIC},
     },
     {
-    .iv = 28,
+    .iv = 231,
     .lvl = 100,
     .species = SPECIES_DELPHOX,
     .heldItem = ITEM_SHELL_BELL,
@@ -15273,7 +15273,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch3[] = {
     .moves = {MOVE_PSYCHIC, MOVE_FIRE_BLAST, MOVE_CALM_MIND, MOVE_HIDDEN_POWER},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_CHARIZARD,
     .heldItem = ITEM_FLYING_GEM,
@@ -15284,7 +15284,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch3[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_DrakeRematch4[] = {
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_HIPPOWDON,
     .heldItem = ITEM_SMOOTH_ROCK,
@@ -15292,7 +15292,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch4[] = {
     .moves = {MOVE_STEALTH_ROCK, MOVE_SLACK_OFF, MOVE_EARTHQUAKE, MOVE_ROAR},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_EXCADRILL,
     .heldItem = ITEM_LIFE_ORB,
@@ -15300,7 +15300,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch4[] = {
     .moves = {MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_DODRIO,
     .heldItem = ITEM_SHELL_BELL,
@@ -15308,7 +15308,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch4[] = {
     .moves = {MOVE_EARTHQUAKE, MOVE_BRAVE_BIRD, MOVE_SWORDS_DANCE, MOVE_ROCK_SLIDE},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_GASTRODON,
     .heldItem = ITEM_LEFTOVERS,
@@ -15316,7 +15316,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch4[] = {
     .moves = {MOVE_SCALD, MOVE_EARTH_POWER, MOVE_POWER_GEM, MOVE_RECOVER},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_MAMOSWINE,
     .heldItem = ITEM_LIFE_ORB,
@@ -15324,7 +15324,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch4[] = {
     .moves = {MOVE_ICICLE_CRASH, MOVE_EARTHQUAKE, MOVE_KNOCK_OFF, MOVE_ICE_SHARD},
     },
     {
-    .iv = 31,
+    .iv = 255,
     .lvl = 100,
     .species = SPECIES_GARCHOMP,
     .heldItem = ITEM_GARCHOMPITE,
