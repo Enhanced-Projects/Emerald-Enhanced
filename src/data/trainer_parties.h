@@ -1551,7 +1551,7 @@ static const struct TrainerMonItemCustomMoves sParty_Daphne[] = {
     .species = SPECIES_LUVDISC,
     .heldItem = ITEM_BIG_PEARL,
     .ability = 0,
-    .moves = {MOVE_ATTRACT, MOVE_SWEET_KISS, MOVE_FLAIL, MOVE_WATER_PULSE},
+    .moves = {MOVE_ATTRACT, MOVE_SWEET_KISS, MOVE_DRAINING_KISS, MOVE_WATER_PULSE},
     },
     {
     .iv = 100,

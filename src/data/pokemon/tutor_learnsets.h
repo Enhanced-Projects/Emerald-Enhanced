@@ -3498,6 +3498,8 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_DOUBLE_EDGE)
 											| TUTOR(MOVE_METRONOME)
 											| TUTOR(MOVE_LIQUIDATION)
+											| TUTOR(MOVE_HEAL_BELL)
+											| TUTOR(MOVE_HELPING_HAND)
 											| TUTOR(MOVE_ENDURE)),
 
     [SPECIES_BAGON]         = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)

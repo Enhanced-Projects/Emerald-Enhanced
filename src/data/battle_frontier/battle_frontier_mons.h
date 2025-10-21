@@ -684,13 +684,13 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 27,
         .ability = 2
     },
-    [FRONTIER_MON_LUVDISC] = { // Luvdisc-Rain (ID: 76)
+    [FRONTIER_MON_LUVDISC] = { // Luvdisc-LifeOrb (ID: 76)
         .species = SPECIES_LUVDISC,
-        .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_RAIN_DANCE},
+        .moves = {MOVE_MOONBLAST, MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_DRAINING_KISS},
         .heldItem = ITEM_LIFE_ORB,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_MODEST,
-        .ivs = 28,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
         .ability = 0
     },
     [FRONTIER_MON_FARFETCHD] = { // Farfetchd-SD (ID: 77)

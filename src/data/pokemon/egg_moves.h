@@ -1876,6 +1876,7 @@ const u16 gEggMoves[] = {
         MOVE_CAPTIVATE,
         MOVE_ENTRAINMENT,
         MOVE_HEAL_PULSE,
+        MOVE_HEALING_WISH,
         MOVE_MUD_SPORT,
         MOVE_SPLASH,
         MOVE_SUPERSONIC,
