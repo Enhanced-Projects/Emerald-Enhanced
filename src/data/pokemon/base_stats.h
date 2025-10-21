@@ -8935,12 +8935,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_CRADILY] =
     {
-        .baseHP        = 130,
+        .baseHP        = 116,
         .baseAttack    = 69,
-        .baseDefense   = 100,
-        .baseSpeed     = 31,
-        .baseSpAttack  = 95,
-        .baseSpDefense = 120,
+        .baseDefense   = 97,
+        .baseSpeed     = 43,
+        .baseSpAttack  = 91,
+        .baseSpDefense = 107,
         .type1 = TYPE_ROCK,
         .type2 = TYPE_GRASS,
         .catchRate = 45,
