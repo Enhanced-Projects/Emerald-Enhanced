@@ -5185,6 +5185,7 @@ const struct BaseStats gBaseStats[] =
         .expYield = 118,
         .evYield_Attack    = 1,
         .evYield_SpAttack  = 1,
+        .item2 = ITEM_METRONOME,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 40,
         .friendship = 70,
