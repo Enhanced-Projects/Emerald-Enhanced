@@ -1436,10 +1436,37 @@ AI_CV_AttackUp_End: @ 82DCBF6
 	end
 
 AI_CV_DefenseUp: @ 82DCBF7
+	if_has_move_with_effect AI_USER, EFFECT_ROLLOUT, AI_CV_DefenseUp_RolloutBonus
 	if_stat_level_less_than AI_USER, STAT_DEF, 9, AI_CV_DefenseUp2
 	if_random_less_than 100, AI_CV_DefenseUp3
 	score -1
 	goto AI_CV_DefenseUp3
+
+AI_CV_DefenseUp_RolloutBonus: @ 82DCCXX
+    @ Only apply this bonus when the considered move is Defense Curl
+    get_considered_move_effect
+    if_not_equal EFFECT_DEFENSE_CURL, AI_CV_DefenseUp_RolloutBonus_EndAlt
+    @ Require the user actually has a rollout-style move to benefit from Curl
+    if_has_move_with_effect AI_USER, EFFECT_ROLLOUT, AI_CV_DefenseUp_RolloutBonus_Continue
+    goto AI_CV_DefenseUp_RolloutBonus_End
+
+AI_CV_DefenseUp_RolloutBonus_EndAlt:
+    @ Also accept EFFECT_DEFENSE_UP as some places use that effect id
+    if_not_equal EFFECT_DEFENSE_UP, AI_CV_DefenseUp_RolloutBonus_End
+    goto AI_CV_DefenseUp_RolloutBonus_Continue
+
+AI_CV_DefenseUp_RolloutBonus_Continue:
+    @ Ensure user actually has Defense Curl available (defensive move)
+    if_doesnt_have_move_with_effect AI_USER, EFFECT_DEFENSE_CURL, AI_CV_DefenseUp_RolloutBonus_End
+    @ If we've already used Defense Curl, don't re-encourage (fallback)
+    get_last_used_bank_move AI_USER
+    if_equal_u32 MOVE_DEFENSE_CURL, AI_CV_DefenseUp_RolloutBonus_End
+    @ Strongly encourage using Defense Curl once so rollout gets the boost
+    score +8
+
+AI_CV_DefenseUp_RolloutBonus_End:
+    @ Fall through to the normal DefenseUp flow
+    goto AI_CV_DefenseUp2
 
 AI_CV_DefenseUp2: @ 82DCC0C
 	if_hp_not_equal AI_USER, 100, AI_CV_DefenseUp3
