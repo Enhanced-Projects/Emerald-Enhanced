@@ -915,24 +915,28 @@ u8 GetTrainerBattleTransition(void)
     {
         switch(gTrainerBattleOpponent_A){
             case TRAINER_SIDNEY:
+            case TRAINER_SIDNEY_REMATCH:
             case TRAINER_SIDNEY_REMATCH_2:
             case TRAINER_SIDNEY_REMATCH_3:
             case TRAINER_SIDNEY_REMATCH_4:
                 return B_TRANSITION_SIDNEY;
             break;
             case TRAINER_PHOEBE:
+            case TRAINER_PHOEBE_REMATCH:
             case TRAINER_PHOEBE_REMATCH_2:
             case TRAINER_PHOEBE_REMATCH_3:
             case TRAINER_PHOEBE_REMATCH_4:
                 return B_TRANSITION_PHOEBE;
             break;
             case TRAINER_GLACIA:
+            case TRAINER_GLACIA_REMATCH:
             case TRAINER_GLACIA_REMATCH_2:
             case TRAINER_GLACIA_REMATCH_3:
             case TRAINER_GLACIA_REMATCH_4:
                 return B_TRANSITION_GLACIA;
             break;
             case TRAINER_DRAKE:
+            case TRAINER_DRAKE_REMATCH:
             case TRAINER_DRAKE_REMATCH_2:
             case TRAINER_DRAKE_REMATCH_3:
             case TRAINER_DRAKE_REMATCH_4:

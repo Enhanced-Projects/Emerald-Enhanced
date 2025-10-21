@@ -139,12 +139,12 @@ script EGC_AltGlacia{
 			msgbox(EverGrandeCity_GlaciasRoom_Text_PreBattleRematchSpeech3)
 			trainerbattle_no_intro(TRAINER_GLACIA_REMATCH_3, EverGrandeCity_GlaciasRoom_Text_Defeat)
 		case 3:
-			msgbox("The Hoenn region never fails to amaze me with its exotic wildlife!")
+			msgbox(format("The Hoenn region never fails to amaze me with its exotic wildlife!"))
 			setweather(WEATHER_RAIN_THUNDERSTORM)
-			msgbox("I always wondered what would happen...")
+			msgbox(format("I always wondered what would happen..."))
 			doweather
 			delay(60)
-			msgbox("If I abandoned my old ways and became one with the sea!")
+			msgbox(format("If I abandoned my old ways and became one with the sea!"))
 			trainerbattle_no_intro(TRAINER_GLACIA_REMATCH_4, EverGrandeCity_GlaciasRoom_Text_Defeat)
 	}
 	specialvar(VAR_RESULT, GetBattleOutcome)
@@ -172,12 +172,12 @@ script EGC_FollowerGlaciaRematch {
 			msgbox(EverGrandeCity_GlaciasRoom_Text_PreBattleRematchSpeech3)
 			multi_2_vs_1(TRAINER_GLACIA_REMATCH_3, EverGrandeCity_GlaciasRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
 		case 3:
-			msgbox("The Hoenn region never fails to amaze me with its exotic wildlife!")
+			msgbox(format("The Hoenn region never fails to amaze me with its exotic wildlife!"))
 			setweather(WEATHER_RAIN_THUNDERSTORM)
-			msgbox("I always wondered what would happen...")
+			msgbox(format("I always wondered what would happen..."))
 			doweather
 			delay(60)
-			msgbox("If I abandoned my old ways and became one with the sea!")
+			msgbox(format("If I abandoned my old ways and became one with the sea!"))
 			multi_2_vs_1(TRAINER_GLACIA_REMATCH_4, EverGrandeCity_GlaciasRoom_Text_Defeat, VAR_0x8008, VAR_0x8009)
 	}
 	specialvar(VAR_RESULT, GetBattleOutcome)
