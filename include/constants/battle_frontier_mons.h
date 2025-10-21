@@ -1013,7 +1013,7 @@
 #define FRONTIER_MON_UMBREON_EGGTACTICAL                   986
 #define FRONTIER_MON_DELIBIRD_MASOCHIST                    987
 #define FRONTIER_MON_DUNSPARCE_MASOCHIST                   988
-#define FRONTIER_MON_LUVDISC_MASOCHIST                     989
+#define FRONTIER_MON_MINUN_MASOCHIST                       989
 #define FRONTIER_MON_HIPPOWDON_FEAR                        990
 #define FRONTIER_MON_TOGEDEMARU_FEAR                       991
 #define FRONTIER_MON_MAGNEMITE_FEAR                        992

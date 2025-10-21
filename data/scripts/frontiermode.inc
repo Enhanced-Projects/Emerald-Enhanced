@@ -444,7 +444,7 @@ RF_Masochist::
 	setvar VAR_TEMP_A, FRONTIER_MON_DUNSPARCE_MASOCHIST
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, FRONTIER_MON_LUVDISC_MASOCHIST
+	setvar VAR_TEMP_A, FRONTIER_MON_MINUN_MASOCHIST
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER

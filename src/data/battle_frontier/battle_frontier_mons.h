@@ -8847,14 +8847,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_LUVDISC_MASOCHIST] = { // (ID: 989)
-        .species = SPECIES_LUVDISC,
-        .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_RAIN_DANCE},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_MODEST,
-        .ivs = 28,
-        .ability = 0
+    [FRONTIER_MON_MINUN_MASOCHIST] = { // (ID: 989)
+        .species = SPECIES_MINUN,
+        .moves = {MOVE_THUNDERBOLT, MOVE_ENCORE, MOVE_TOXIC, MOVE_SUBSTITUTE},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 2
     },
     [FRONTIER_MON_HIPPOWDON_FEAR] = { // (ID: 990)
         .species = SPECIES_HIPPOWDON,
