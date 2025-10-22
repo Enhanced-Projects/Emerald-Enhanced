@@ -533,8 +533,6 @@ const u16 gEggMoves[] = {
         MOVE_FIRE_PUNCH,
         MOVE_FLATTER,
         MOVE_GUARD_SWAP,
-        MOVE_ICE_PUNCH,
-        MOVE_NASTY_PLOT,
         MOVE_POWER_SPLIT,
         MOVE_PSYCHIC_TERRAIN,
         MOVE_PSYCHO_CUT,
