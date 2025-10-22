@@ -2374,7 +2374,6 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM17_PROTECT)
 											| TMHM(TM29_PSYCHIC)
 											| TMHM(TM18_RAIN_DANCE)
-											| TMHM(TM33_REFLECT)
 											| TMHM(TM44_REST)
 											| TMHM(TM27_RETURN)
 											| TMHM(TM20_SAFEGUARD)
@@ -2393,6 +2392,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM62_CURSE)
 											| TMHM(TM32_DOUBLE_TEAM)
+											| TMHM(TM26_EARTHQUAKE)
 											| TMHM(TM42_FACADE)
 											| TMHM(TM01_FOCUS_PUNCH)
 											| TMHM(TM21_FRUSTRATION)
@@ -2402,7 +2402,6 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM17_PROTECT)
 											| TMHM(TM29_PSYCHIC)
 											| TMHM(TM18_RAIN_DANCE)
-											| TMHM(TM33_REFLECT)
 											| TMHM(TM44_REST)
 											| TMHM(TM27_RETURN)
 											| TMHM(TM20_SAFEGUARD)
@@ -2957,6 +2956,7 @@ const u32 gTMHMLearnsets[][2] =
 
     [SPECIES_GOLDEEN]     = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
 											| TMHM(TM14_BLIZZARD)
+											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM62_CURSE)
 											| TMHM(TM58_DIVE)
 											| TMHM(TM32_DOUBLE_TEAM)
@@ -2966,16 +2966,21 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM10_HIDDEN_POWER)
 											| TMHM(TM13_ICE_BEAM)
 											| TMHM(TM57_KNOCK_OFF)
+											| TMHM(TM16_LIGHT_SCREEN)
 											| TMHM(TM17_PROTECT)
 											| TMHM(TM18_RAIN_DANCE)
+											| TMHM(TM33_REFLECT
 											| TMHM(TM44_REST)
 											| TMHM(TM27_RETURN)
+											| TMHM(TM20_SAFEGUARD)
 											| TMHM(TM43_SECRET_POWER)
 											| TMHM(TM06_TOXIC)
 											| TMHM(TM03_WATER_PULSE)),
 
     [SPECIES_SEAKING]     = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
 											| TMHM(TM14_BLIZZARD)
+											| TMHM(TM08_BULK_UP
+											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM62_CURSE)
 											| TMHM(TM58_DIVE)
 											| TMHM(TM32_DOUBLE_TEAM)
@@ -2986,10 +2991,13 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM15_HYPER_BEAM)
 											| TMHM(TM13_ICE_BEAM)
 											| TMHM(TM57_KNOCK_OFF)
+											| TMHM(TM16_LIGHT_SCREEN
 											| TMHM(TM17_PROTECT)
 											| TMHM(TM18_RAIN_DANCE)
 											| TMHM(TM44_REST)
+											| TMHM(TM33_REFLECT
 											| TMHM(TM27_RETURN)
+											| TMHM(TM20_SAFEGUARD)
 											| TMHM(TM43_SECRET_POWER)
 											| TMHM(TM06_TOXIC)
 											| TMHM(TM03_WATER_PULSE)),
@@ -5607,6 +5615,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM26_EARTHQUAKE)
 											| TMHM(TM42_FACADE)
 											| TMHM(TM21_FRUSTRATION)
+											| TMHM(TM19_GIGA_DRAIN)
 											| TMHM(TM61_GRAVEL_STORM)
 											| TMHM(TM07_HAIL)
 											| TMHM(TM10_HIDDEN_POWER)
@@ -5622,6 +5631,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM20_SAFEGUARD)
 											| TMHM(TM37_SANDSTORM)
 											| TMHM(TM43_SECRET_POWER)
+											| TMHM(TM53_SEED_BOMB)
 											| TMHM(TM30_SHADOW_BALL)
 											| TMHM(TM51_STEALTH_ROCK)
 											| TMHM(TM54_SUCKER_PUNCH)
@@ -13773,6 +13783,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM37_SANDSTORM)
 											| TMHM(TM43_SECRET_POWER)
 											| TMHM(TM22_SOLARBEAM)
+											| TMHM(TM60_SUPERPOWER)
 											| TMHM(TM51_STEALTH_ROCK)
 											| TMHM(TM06_TOXIC)),
 
@@ -13795,7 +13806,9 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM37_SANDSTORM)
 											| TMHM(TM43_SECRET_POWER)
 											| TMHM(TM22_SOLARBEAM)
+											| TMHM(TM60_SUPERPOWER)
 											| TMHM(TM51_STEALTH_ROCK)
+											| TMHM(TM12_TAUNT)
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_SCRAGGY]     = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
