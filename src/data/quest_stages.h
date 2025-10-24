@@ -41,6 +41,7 @@ const u8 sAquaQuestStage150Desc[] = _("Player captured Kyogre.\nWarping to Mossd
 const u8 sAquaQuestStage157Desc[] = _("Player captured Kyogre.\nReturn to the Aqua Office and meet with Shelly.");
 const u8 sAquaQuestStage160Desc[] = _("Player finished Aqua Neutral line.\nArchie and Shelly gone, Matt arrested. Bad End.");
 const u8 sAquaQuestStage161Desc[] = _("Player completed the Aqua Shelly line.\nReturn and stay with Shelly again to gain her\nas a partner permanently.");
+const u8 sAquaQuestStage162Desc[] = _("You now have Shelly as a \nrecruitable companion. Quest Done.\nGOOD END");
 
 //magma
 const u8 sMagmaQuestStage100Desc[] = _("Player chose Magma in Rusturf tunnel.");
@@ -479,6 +480,10 @@ const static struct QuestStageDesc gAquaQuestStages[] = { //Always visible in qu
   {
     .description = sAquaQuestStage161Desc,
     .questStage = 161,
+  },
+  {
+    .description = sAquaQuestStage162Desc,
+    .questStage = 162,
   },
   {
     .description = sQuestStageDeferredDesc,
@@ -1272,7 +1277,7 @@ VAR_RYU_QUEST_AQUA:
   first visible: 0
   started: 5
   deferred: 60000
-  finished: 160, 161
+  finished: 160, 161, 162
 
 VAR_RYU_QUEST_LEAF:
   inactive: 0

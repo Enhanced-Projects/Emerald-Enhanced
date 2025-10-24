@@ -64,6 +64,7 @@ ACO_Shelly::
 	case 107, ACO_ShellyAfterJaggedPassRomanceEvent
 	case 111, ACO_PlayerShouldGoToShipyard
 	case 161, ACO_ShellyAfterStory
+	case 162, ACO_ShellyAfterStory
 	goto ACO_ShellyNeutral
 
 ACO_ShellyNeutral::
@@ -451,6 +452,7 @@ ACO_Night2Scene::
 	fadescreenspeed 0, 10
 	playbgm MUS_HIGHTOWN, 0
 	clearflag FLAG_RYU_PREVENT_ACH_POPUP
+	setvar VAR_RYU_QUEST_AQUA, 162 @added an additional end string to clear confusion.
 	releaseall
 	end
 
