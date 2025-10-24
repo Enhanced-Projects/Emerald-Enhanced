@@ -4411,7 +4411,12 @@ u8 GetAbilityBySpecies(u16 species, u8 abilityNum)
     else
         gLastUsedAbility = gBaseStats[species].abilities[0];
 
-    return gLastUsedAbility;
+    if (GetModFlag(GEN1_MOD)){
+        return ABILITY_NONE;
+    }
+    else{
+        return gLastUsedAbility;
+    }
 }
 
 u8 GetMonAbility(struct Pokemon *mon)
@@ -5673,8 +5678,12 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem, u
         }
         break;
     }
-
-    return targetSpecies;
+    if (GetModFlag(ANTI_DARWINISM_MOD)){
+        return SPECIES_NONE;
+    }
+    else{
+        return targetSpecies;
+    }
 }
 
 u16 HoennPokedexNumToSpecies(u16 hoennNum)
