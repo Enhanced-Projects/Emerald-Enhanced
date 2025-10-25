@@ -956,7 +956,6 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_DRAIN_PUNCH)
 											| TUTOR(MOVE_FOUL_PLAY)
 											| TUTOR(MOVE_ENDURE)
-											| TUTOR(MOVE_ICE_PUNCH)
 											| TUTOR(MOVE_THUNDER_PUNCH)
 											| TUTOR(MOVE_FIRE_PUNCH)
 											| TUTOR(MOVE_SIGNAL_BEAM)),
@@ -4413,7 +4412,14 @@ static const u32 sTutorLearnsets[] =
 
     [SPECIES_SHAYMIN]       = TUTOR_LEARNSET(0),
 
-    [SPECIES_ARCEUS]        = TUTOR_LEARNSET(0),
+    [SPECIES_ARCEUS]        = TUTOR_LEARNSET(TUTOR(MOVE_DRACO_METEOR)
+											| TUTOR(MOVE_MAGIC_COAT)
+											| TUTOR(MOVE_TRICK)
+											| TUTOR(MOVE_METRONOME)
+											| TUTOR(MOVE_ZEN_HEADBUTT)
+											| TUTOR(MOVE_HEAT_WAVE)
+											| TUTOR(MOVE_LIQUIDATION)
+											| TUTOR(MOVE_SIGNAL_BEAM),
 
     [SPECIES_VICTINI]       = TUTOR_LEARNSET(TUTOR(MOVE_BOUNCE)
 											| TUTOR(MOVE_DOUBLE_EDGE)
