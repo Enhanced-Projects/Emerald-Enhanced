@@ -4324,6 +4324,7 @@ u32 GetBattlerTotalSpeedStat(u8 battlerId)
     u32 speed = gBattleMons[battlerId].speed;
     u32 ability = GetBattlerAbility(battlerId);
     u32 holdEffect = GetBattlerHoldEffect(battlerId, TRUE);
+    bool32 isPlayer = GetBattlerSide(battlerId) == B_SIDE_PLAYER;
 
     // weather abilities
     if (WEATHER_HAS_EFFECT)
@@ -4355,7 +4356,7 @@ u32 GetBattlerTotalSpeedStat(u8 battlerId)
     // player's badge boost
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000 | BATTLE_TYPE_FRONTIER))
         && ShouldGetStatBadgeBoost(FLAG_BADGE03_GET, battlerId)
-        && GetBattlerSide(battlerId) == B_SIDE_PLAYER)
+        && isPlayer)
     {
         speed = (speed * 110) / 100;
     }
@@ -4379,6 +4380,10 @@ u32 GetBattlerTotalSpeedStat(u8 battlerId)
     // paralysis drop
     if (gBattleMons[battlerId].status1 & STATUS1_PARALYSIS && ability != ABILITY_QUICK_FEET)
         speed /= (B_PARALYSIS_SPEED >= GEN_7 ? 2 : 4);
+
+    if ((isPlayer && GetModFlag(LAZY_MOD)) && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM)){
+        speed = 10;
+    }
 
     return speed;
 }
@@ -4512,17 +4517,6 @@ u8 GetWhoStrikesFirst(u8 battler1, u8 battler2, bool8 ignoreChosenMoves)
     {
         strikesFirst = 0; // battler1's move has greater priority
     }
-
-    if (GetModFlag(LAZY_MOD) == TRUE){
-        if (GetBattlerSide(speedBattler1) == B_SIDE_OPPONENT && GetBattlerSide(speedBattler2) == B_SIDE_PLAYER){
-            strikesFirst = 0;
-        }
-        else {
-            strikesFirst = 1;
-        }
-    }
-
-
     return strikesFirst;
 }
 
