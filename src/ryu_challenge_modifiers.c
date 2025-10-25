@@ -86,8 +86,8 @@ const u16 randomStatuses[] = {
     STATUS1_FREEZE,
     STATUS1_PARALYSIS,
     STATUS1_POISON,
+    STATUS1_SLEEP,
     STATUS1_TOXIC_POISON,
-    STATUS1_SLEEP
 };
 
 void TryRevelationModPenalties(void)
@@ -95,7 +95,7 @@ void TryRevelationModPenalties(void)
     u8 partySlot = (Random() % CalculatePlayerPartyCount());
     u16 deathcount = 1;
     u8 ppcount = 4;
-    u8 plaguestatus = randomStatuses[Random() % ARRAY_COUNT(randomStatuses)];
+    u8 plaguestatus = randomStatuses[Random() % 5];//this may have been returning nonvalid status before
 
     if ((GetModFlag(PLAGUE_MOD)) || (GetModFlag(REVELATION_MOD)))
     {
