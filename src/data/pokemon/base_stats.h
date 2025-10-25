@@ -2502,7 +2502,7 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_HYPNO] =
     {
         .baseHP        = 110,
-        .baseAttack    = 99,
+        .baseAttack    = 100,
         .baseDefense   = 70,
         .baseSpeed     = 35,
         .baseSpAttack  = 60,
@@ -23180,7 +23180,7 @@ const struct BaseStats gBaseStats[] =
         .catchRate = 45,
         .expYield = 167,
         .evYield_SpDefense = 2,
-        .item2 = ITEM_NONE, // ITEM_CHESTO_BERRY,
+        .item2 = ITEM_NONE, // ITEM_CHESTO_BERRY
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = 70,
