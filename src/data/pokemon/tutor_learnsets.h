@@ -4432,7 +4432,6 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_HELPING_HAND)
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_THUNDER_PUNCH)
-											| TUTOR(MOVE_LIQUIDATION)
 											| TUTOR(MOVE_FIRE_PUNCH)
 											| TUTOR(MOVE_SIGNAL_BEAM)),
 
