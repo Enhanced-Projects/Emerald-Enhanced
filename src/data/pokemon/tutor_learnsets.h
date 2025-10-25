@@ -4419,7 +4419,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_ZEN_HEADBUTT)
 											| TUTOR(MOVE_HEAT_WAVE)
 											| TUTOR(MOVE_LIQUIDATION)
-											| TUTOR(MOVE_SIGNAL_BEAM),
+											| TUTOR(MOVE_SIGNAL_BEAM)),
 
     [SPECIES_VICTINI]       = TUTOR_LEARNSET(TUTOR(MOVE_BOUNCE)
 											| TUTOR(MOVE_DOUBLE_EDGE)
