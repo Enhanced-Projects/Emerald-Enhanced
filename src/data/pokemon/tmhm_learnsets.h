@@ -2966,10 +2966,8 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM10_HIDDEN_POWER)
 											| TMHM(TM13_ICE_BEAM)
 											| TMHM(TM57_KNOCK_OFF)
-											| TMHM(TM16_LIGHT_SCREEN)
 											| TMHM(TM17_PROTECT)
 											| TMHM(TM18_RAIN_DANCE)
-											| TMHM(TM33_REFLECT
 											| TMHM(TM44_REST)
 											| TMHM(TM27_RETURN)
 											| TMHM(TM20_SAFEGUARD)
@@ -2979,7 +2977,7 @@ const u32 gTMHMLearnsets[][2] =
 
     [SPECIES_SEAKING]     = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
 											| TMHM(TM14_BLIZZARD)
-											| TMHM(TM08_BULK_UP
+											| TMHM(TM08_BULK_UP)
 											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM62_CURSE)
 											| TMHM(TM58_DIVE)
@@ -2991,11 +2989,9 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM15_HYPER_BEAM)
 											| TMHM(TM13_ICE_BEAM)
 											| TMHM(TM57_KNOCK_OFF)
-											| TMHM(TM16_LIGHT_SCREEN
 											| TMHM(TM17_PROTECT)
 											| TMHM(TM18_RAIN_DANCE)
 											| TMHM(TM44_REST)
-											| TMHM(TM33_REFLECT
 											| TMHM(TM27_RETURN)
 											| TMHM(TM20_SAFEGUARD)
 											| TMHM(TM43_SECRET_POWER)

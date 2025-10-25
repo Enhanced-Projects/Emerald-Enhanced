@@ -3042,10 +3042,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_GOLDEEN] =
     {
-        .baseHP        = 45,
-        .baseAttack    = 67,
+        .baseHP        = 65,
+        .baseAttack    = 75,
         .baseDefense   = 60,
-        .baseSpeed     = 63,
+        .baseSpeed     = 50,
         .baseSpAttack  = 35,
         .baseSpDefense = 50,
         .type1 = TYPE_WATER,
