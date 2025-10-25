@@ -2476,11 +2476,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_DROWZEE] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 48,
+        .baseHP        = 75,
+        .baseAttack    = 63,
         .baseDefense   = 45,
-        .baseSpeed     = 42,
-        .baseSpAttack  = 43,
+        .baseSpeed     = 22,
+        .baseSpAttack  = 33,
         .baseSpDefense = 90,
         .type1 = TYPE_PSYCHIC,
         .type2 = TYPE_PSYCHIC,
