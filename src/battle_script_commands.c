@@ -1183,8 +1183,9 @@ bool32 RyuCheckAffectionEvasion(void)
 {
     if (gBattleMons[gBattlerTarget].friendship > 245 &&
         (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)) &&
-        GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER &&
-        (Random() % 99) < AFFECTION_BASE_CHANCE)
+        GetBattlerSide(gBattleMons[gBattlerTarget]) == B_SIDE_PLAYER &&
+        GetBattlerSide(gBattleMons[gBattlerAttacker]) == B_SIDE_OPPONENT &&//should make it so that it only triggers affection if an enemy is attacking
+        (Random() % 99) < AFFECTION_BASE_CHANCE)//to avoid dodging self-beneficial effects like rest
         {
             gActiveBattler = gBattlerTarget;
             gBattleMons[gBattlerTarget].friendship -= 5;
