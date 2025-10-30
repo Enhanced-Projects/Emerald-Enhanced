@@ -4255,6 +4255,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM43_SECRET_POWER)
 											| TMHM(TM22_SOLARBEAM)
 											| TMHM(TM11_SUNNY_DAY)
+											| TMHM(TM60_SUPERPOWER)
 											| TMHM(TM46_THIEF)
 											| TMHM(TM06_TOXIC)),
 
