@@ -767,7 +767,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_LEDIAN_1] = { // Ledian-Band (ID: 85)
         .species = SPECIES_LEDIAN,
-        .moves = {MOVE_DRAIN_PUNCH, MOVE_U_TURN, MOVE_MACH_PUNCH, MOVE_ICE_PUNCH},
+        .moves = {MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_MACH_PUNCH, MOVE_ICE_PUNCH},
         .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
@@ -776,10 +776,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_LEDIAN_2] = { // Ledian-SD (ID: 86)
         .species = SPECIES_LEDIAN,
-        .moves = {MOVE_DRAIN_PUNCH, MOVE_ICE_PUNCH, MOVE_THUNDER_PUNCH, MOVE_SWORDS_DANCE},
+        .moves = {MOVE_CLOSE_COMBAT, MOVE_ICE_PUNCH, MOVE_THUNDER_PUNCH, MOVE_SWORDS_DANCE},
         .heldItem = ITEM_FOCUS_SASH,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 2
     },
