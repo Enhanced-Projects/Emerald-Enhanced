@@ -1604,7 +1604,8 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_DRAIN_PUNCH)
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_ICE_PUNCH)
-											| TUTOR(MOVE_THUNDER_PUNCH)),
+											| TUTOR(MOVE_THUNDER_PUNCH)
+											| TUTOR(MOVE_FIRE_PUNCH)),
 
     [SPECIES_SPINARAK]      = TUTOR_LEARNSET(TUTOR(MOVE_BOUNCE)
 											| TUTOR(MOVE_BODY_SLAM)
