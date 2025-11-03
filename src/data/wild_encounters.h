@@ -1424,7 +1424,7 @@ const struct WildPokemon gGraniteCave_B2F_RockSmashMons[] =
 	{10, 20, SPECIES_NOSEPASS},
 	{15, 20, SPECIES_GEODUDE},
 	{15, 20, SPECIES_GEODUDE},
-	{15, 20, SPECIES_GEODUDE},
+	{15, 20, SPECIES_DWEBBLE},
 };
 
 const struct WildPokemonInfo gGraniteCave_B2F_RockSmashMonsInfo = {20, gGraniteCave_B2F_RockSmashMons};
@@ -2750,7 +2750,7 @@ const struct WildPokemon gSafariZone_North_RockSmashMons[] =
 	{15, 20, SPECIES_GEODUDE},
 	{15, 20, SPECIES_GEODUDE},
 	{20, 25, SPECIES_ROGGENROLA},
-	{25, 30, SPECIES_ROGGENROLA},
+	{25, 30, SPECIES_DWEBBLE},
 };
 
 const struct WildPokemonInfo gSafariZone_North_RockSmashMonsInfo = {25, gSafariZone_North_RockSmashMons};
