@@ -786,6 +786,14 @@ CLM_NotInPartyMsg:
 
 @==================================================================================================Relationship based mega stones
 
+rivalMegaChoice:
+	.string "I can give you one of these mega stones\nWhich one do you want?$"
+
+rivalMegaLucario:
+	.string "Lucario"
+
+rivalMegaAltaria:
+	.string "Altaria"
 
 Ryu_CheckForPartnerReward::
 	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
@@ -794,8 +802,8 @@ Ryu_CheckForPartnerReward::
 	goto_if_lt ryu_return
 	switch VAR_RYU_FOLLOWER_ID
 	case FOLLOWER_SHELLY, Ryu_GiveShellyMegaAndReturn
-	case FOLLOWER_DAWN, Ryu_GiveDawnMegaAndReturn
-	case FOLLOWER_BRENDAN, Ryu_GiveBrendanMegaAndReturn
+	case FOLLOWER_DAWN, Ryu_GiveLucarioAltariaMSAndReturn
+	case FOLLOWER_BRENDAN, Ryu_GiveLucarioAltariaMSAndReturn
 	case FOLLOWER_LEAF, Ryu_GiveLeafMegaAndReturn
 	case FOLLOWER_COURTNEY, Ryu_GiveCourtneyMegaAndReturn
 	goto ryu_return
@@ -809,19 +817,24 @@ Ryu_GiveShellyMegaAndReturn::
 	closemessage
 	goto ryu_return
 
-Ryu_GiveDawnMegaAndReturn::
+Ryu_GiveLucarioAltariaMSAndReturn::
+	msgbox rivalMegaChoice
+	bufferdynamicmulti rivalMegaLucario, rivalMegaAltaria 
+	multichoice 0,0, MULTI_DYNAMIC_2, 0
+	compare VAR_RESULT, 0 @@chose lucario
+	goto_if_eq rivalMegaLucarioChosen
 	goto_if_set FLAG_RYU_GIFTED_ALTARIANITE, ryu_return
 	setflag FLAG_RYU_GIFTED_ALTARIANITE
-	msgbox DawnMegaReward
+	msgbox AltariaGiven
 	closemessage
 	giveitem ITEM_ALTARIANITE
 	closemessage
 	goto ryu_return
 
-Ryu_GiveBrendanMegaAndReturn::
+rivalMegaLucarioChosen::
 	goto_if_set FLAG_RYU_GIFTED_LUCARIONITE, ryu_return
 	setflag FLAG_RYU_GIFTED_LUCARIONITE
-	msgbox BrendanMegaReward
+	msgbox LucarioGiven
 	closemessage
 	giveitem ITEM_LUCARIONITE
 	closemessage
@@ -848,11 +861,11 @@ Ryu_GiveCourtneyMegaAndReturn::
 ShellyMegaReward:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey babe, I wanted you to have\nthis as a thanks for helping me\lsee the light.$"
 
-DawnMegaReward:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Here! I grabbed this for you.\nIt's for a really fluffy birb!$"
+LucarioGiven:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay! Here's the Lucarionite.\pLucario's a really cool pokemon!$"
 
-BrendanMegaReward:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey, girl. I know how you like\nmy athletic physique.\pHere's a gift that will benefit you\nif you have a certain athletic\lpokemon!$"
+AltariaGiven:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}All right! Here's the Altarianite.\pAltaria's a really fluffy birb!$"
 
 LeafMegaReward:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey... Um... Take this...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(She's beet red in the face.)$"
