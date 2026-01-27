@@ -4383,9 +4383,23 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_THUNDER_PUNCH)
 											| TUTOR(MOVE_FIRE_PUNCH)),
 
-    [SPECIES_GIRATINA]      = TUTOR_LEARNSET(0),
+    [SPECIES_GIRATINA]      = TUTOR_LEARNSET(TUTOR(MOVE_CUT)
+											| TUTOR(MOVE_DRACO_METEOR)
+											| TUTOR(ENDURE)
+											| TUTOR(HYPER_VOICE)
+											| TUTOR(MAGIC_COAT)
+											| TUTOR(METRONOME)
+											| TUTOR(OUTRAGE)
+											| TUTOR(PAIN_SPLIT)
+											| TUTOR(TAILWIND)),
 
-    [SPECIES_CRESSELIA]     = TUTOR_LEARNSET(0),
+    [SPECIES_CRESSELIA]     = TUTOR_LEARNSET(TUTOR(MOVE_ENDURE)
+											| TUTOR(HELPING_HAND)
+											| TUTOR(METRONOME)
+											| TUTOR(RECYCLE)
+											| TUTOR(SIGNAL_BEAM)
+											| TUTOR(TRICK)
+											| TUTOR(ZEN_HEADBUTT)),
 
     [SPECIES_PHIONE]        = TUTOR_LEARNSET(TUTOR(MOVE_BOUNCE)
 											| TUTOR(MOVE_METRONOME)
@@ -4411,7 +4425,10 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_SHADOW_SLAM)
 											| TUTOR(MOVE_CUT)),
 
-    [SPECIES_SHAYMIN]       = TUTOR_LEARNSET(0),
+    [SPECIES_SHAYMIN]       = TUTOR_LEARNSET(TUTOR(MOVE_ENDURE)
+											| TUTOR(MOVE_METRONOME)
+											| TUTOR(MOVE_SYNTHESIS)
+											| TUTOR(MOVE_ZEN_HEADBUTT)),
 
     [SPECIES_ARCEUS]        = TUTOR_LEARNSET(TUTOR(MOVE_DRACO_METEOR)
 											| TUTOR(MOVE_MAGIC_COAT)
