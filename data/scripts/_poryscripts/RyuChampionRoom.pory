@@ -449,6 +449,48 @@ script RCR_FinishChallenge { //clean up and go to hall of fame
 	end
 }
 
+
+text rivalMegaLucario{
+	"{COLOR LIGHT_BLUE}{SHADOW BLUE}Lucario$"
+}
+
+text rivalMegaAltaria{
+	"{COLOR LIGHT_RED}{SHADOW RED}Altaria$"
+}
+
+text LucarioGiven{
+	"{COLOR LIGHT_RED}{SHADOW RED}Okay! Here's the Lucarionite.\pLucario's a really cool pokemon!$"
+}
+
+text AltariaGiven{
+	"{COLOR LIGHT_RED}{SHADOW RED}All right! Here's the Altarianite.\pAltaria's a really fluffy birb!$"
+}
+
+script Ryu_GiveLucarioAltariaMSAndReturn{
+	msgbox("{COLOR LIGHT_RED}{SHADOW RED}I can give you one of these mega stones.\nWhich one do you want?$")
+	bufferdynamicmulti(rivalMegaLucario, rivalMegaAltaria) 
+	multichoice(0,0, MULTI_DYNAMIC_2, 0)
+	if ((var(VAR_RESULT) == 0)) {
+		if (flag(FLAG_RYU_GIFTED_LUCARIONITE)){
+			return
+		}
+		setflag(FLAG_RYU_GIFTED_LUCARIONITE)
+		msgbox(LucarioGiven)
+		giveitem(ITEM_LUCARIONITE)
+		return
+	}
+	else{
+		if (flag(FLAG_RYU_GIFTED_ALTARIANITE)){
+			return
+		}
+		setflag(FLAG_RYU_GIFTED_ALTARIANITE)
+		msgbox(AltariaGiven)
+		giveitem(ITEM_ALTARIANITE)
+		return
+	}
+	return
+}
+
 script RCR_CheckMinnieEvent { //sets the flag which is used in the harem end to show minnie's mini-scene
 	if (var(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_TWIN) {
 		call(EGC_FollowerMinnieFlagSet)

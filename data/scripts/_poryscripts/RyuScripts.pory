@@ -786,16 +786,10 @@ CLM_NotInPartyMsg:
 
 @==================================================================================================Relationship based mega stones
 
-rivalMegaChoice:
-	.string "I can give you one of these mega stones\nWhich one do you want?$"
 
-rivalMegaLucario:
-	.string "Lucario"
-
-rivalMegaAltaria:
-	.string "Altaria"
 
 Ryu_CheckForPartnerReward::
+	delay 30
 	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 7
@@ -814,29 +808,6 @@ Ryu_GiveShellyMegaAndReturn::
 	msgbox ShellyMegaReward
 	closemessage
 	giveitem ITEM_SHARPEDONITE
-	closemessage
-	goto ryu_return
-
-Ryu_GiveLucarioAltariaMSAndReturn::
-	msgbox rivalMegaChoice
-	bufferdynamicmulti rivalMegaLucario, rivalMegaAltaria 
-	multichoice 0,0, MULTI_DYNAMIC_2, 0
-	compare VAR_RESULT, 0 @@chose lucario
-	goto_if_eq rivalMegaLucarioChosen
-	goto_if_set FLAG_RYU_GIFTED_ALTARIANITE, ryu_return
-	setflag FLAG_RYU_GIFTED_ALTARIANITE
-	msgbox AltariaGiven
-	closemessage
-	giveitem ITEM_ALTARIANITE
-	closemessage
-	goto ryu_return
-
-rivalMegaLucarioChosen::
-	goto_if_set FLAG_RYU_GIFTED_LUCARIONITE, ryu_return
-	setflag FLAG_RYU_GIFTED_LUCARIONITE
-	msgbox LucarioGiven
-	closemessage
-	giveitem ITEM_LUCARIONITE
 	closemessage
 	goto ryu_return
 
@@ -860,12 +831,6 @@ Ryu_GiveCourtneyMegaAndReturn::
 
 ShellyMegaReward:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey babe, I wanted you to have\nthis as a thanks for helping me\lsee the light.$"
-
-LucarioGiven:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay! Here's the Lucarionite.\pLucario's a really cool pokemon!$"
-
-AltariaGiven:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}All right! Here's the Altarianite.\pAltaria's a really fluffy birb!$"
 
 LeafMegaReward:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey... Um... Take this...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(She's beet red in the face.)$"

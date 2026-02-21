@@ -169,7 +169,7 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF:: @ 8228B30
 
 
 EGC_PlayerAndChampionExit::
-	call Ryu_CheckForPartnerReward
+	call_if_set FLAG_RYU_COMPANION_PARTICIPATION Ryu_CheckForPartnerReward
 	applymovement 1, EverGrandeCity_ChampionsRoom_Movement_WallaceExit
 	applymovement PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit
 	applymovement FOLLOWER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit
