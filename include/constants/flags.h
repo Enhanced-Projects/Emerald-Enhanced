@@ -1410,6 +1410,7 @@
 #define FLAG_RYU_SKIPPED_AUTOSAVE                                 0x536
 #define FLAG_RYU_HIDE_ECON_BOUNCERS                               0x537
 #define FLAG_RYU_ROLLING_LOOT_CAPSULE                             0x538
+#define FLAG_RYU_HAS_REAL_ESTATE                                  0x539
 
 //tutorial system flags
 #define FLAG_RYU_FACTION_TUTORIAL_UNLOCKED                        0x5FB

@@ -410,6 +410,14 @@ void SetPlayerRealtorStatus(void)
     VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
 }
 
+void ryuReEnableRealEstate(void){
+    if (FlagGet(FLAG_RYU_HAS_REAL_ESTATE) == TRUE){
+        SetPlayerRealtorStatus();
+    }
+    return;
+}
+
+
 const u8 gRyuPropertyRepairedString[] = _("{STR_VAR_1} repairs finished.");
 const u8 gRyuPropertyStillRepairingString[] = _("{STR_VAR_1} repairs: {STR_VAR_2} days left.");
 void DecrementPropertyRepairTime(void)

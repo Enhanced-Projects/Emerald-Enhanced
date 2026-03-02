@@ -110,6 +110,7 @@ Ryu_NewGamePlus::
 	clearflag FLAG_RYU_RANDOMBATTLE
 	msgbox RyuNGPInfo
 	closemessage
+	callnative ryuReEnableRealEstate
 	call_if_set FLAG_RYU_HAS_WAYSTONE, Ryu_NGP_Waystone
 	call_if_set FLAG_RYU_HAS_IMPRINTER, Ryu_NGP_Imprinter
 	call_if_set FLAG_RYU_HAS_FORECASTER, Ryu_NGP_Forecaster

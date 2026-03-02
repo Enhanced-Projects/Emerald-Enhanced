@@ -1931,6 +1931,13 @@ script Ryu_LootCapsuleGone{
 script Ryu_LootCapsule {
 	getpartysize
 	if (var(VAR_RESULT) < 6){
+		checkitem(ITEM_LOOT_CAPSULE, 1)
+		if (var(VAR_RESULT) == FALSE){
+			msgbox("You don't have anymore capsules.")
+			closemessage
+			release
+			end
+		}
 		callnative(RollLootCapsule)
 		msgbox("{RYU_STR_1} came out of the capsule!")
 		removeitem(ITEM_LOOT_CAPSULE)

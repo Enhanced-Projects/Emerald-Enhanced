@@ -1714,8 +1714,10 @@ void CB2_NewGame(void)
         if (hasMomFollower == TRUE)
             FlagSet(FLAG_RYU_DS_MOM_AVAILABLE);
 
-        if (hasRealEstate == TRUE)
-            gSaveBlock2Ptr->playerIsRealtor = 1;
+        if (hasRealEstate == TRUE){
+            gSaveBlock2Ptr->playerIsRealtor = TRUE;
+            FlagSet(FLAG_RYU_HAS_REAL_ESTATE);
+        }
 
         if (hasSuperTraining == TRUE)
             FlagSet(FLAG_RYU_HAS_SUPER_TRAINING);
