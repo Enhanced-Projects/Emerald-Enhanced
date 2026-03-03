@@ -12991,7 +12991,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_SLOW,
         .eggGroup1 = EGG_GROUP_UNDISCOVERED,
         .eggGroup2 = EGG_GROUP_UNDISCOVERED,
-        .abilities = {ABILITY_INFILTRATOR, ABILITY_NONE},
+        .abilities = {ABILITY_PROTEAN, ABILITY_NONE},
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_WHITE,
     },
