@@ -438,7 +438,8 @@ const u16 gEggMoves[] = {
         MOVE_ROOST,
         MOVE_SIMPLE_BEAM,
         MOVE_STEEL_WING,
-        MOVE_TRUMP_CARD),
+        MOVE_TRUMP_CARD,
+        MOVE_YAWN),
 
     egg_moves(DODUO,
         MOVE_ASSURANCE,

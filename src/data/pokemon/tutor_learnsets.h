@@ -6245,7 +6245,7 @@ static const u32 sTutorLearnsets[] =
     [SPECIES_TAPU_FINI]     = TUTOR_LEARNSET(TUTOR(MOVE_ICE_PUNCH)
 											| TUTOR(MOVE_MAGIC_COAT)
 											| TUTOR(MOVE_METRONOME)
-											| TUTOR(TRICK)
+											| TUTOR(MOVE_TRICK)
 ),
 
     [SPECIES_COSMOG]        = TUTOR_LEARNSET(0),
