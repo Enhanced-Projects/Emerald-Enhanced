@@ -428,21 +428,20 @@ static bool8 FadeInScreen_RainShowShade(void)
     return TRUE;
 }
 
-s8 RyuGetDroughtGamma()
+s8 RyuGetDroughtGamma(void)
 {
-    switch (RyuGetTimeOfDay()){
-        case RTC_TIME_NIGHT:
-            return -2;
-        break;
-        case RTC_TIME_MORNING:
-            return -1;
-        break;
-        case RTC_TIME_DAY:
-            return 4;
-        break;
-        case RTC_TIME_EVENING:
-            return 2;
-        break;
+    switch (RyuGetTimeOfDay())
+    {
+    case RTC_TIME_NIGHT:
+        return -2;
+    case RTC_TIME_MORNING:
+        return -1;
+    case RTC_TIME_DAY:
+        return -5;
+    case RTC_TIME_EVENING:
+        return -3;
+    default:
+        return -1;
     }
 }
 
@@ -913,22 +912,17 @@ void SetDroughtColorMap(s8 gammaIndex)
 }
 
 void DroughtStateInit(void)
-{//just go to the color changed phase.
-    gWeatherPtr->droughtState = 0;
-    //SetDroughtGamma();
+{
+    gWeatherPtr->droughtState = 1;
+    gWeatherPtr->droughtBrightnessStage = 6;
+    gWeatherPtr->droughtLastBrightnessStage = 6;
+    gWeatherPtr->droughtTimer = 0;
 }
 
 void DroughtStateRun(void)
 {
-    switch (gWeatherPtr->droughtState)
-    {
-    case 0://set initial drought color.
-        //SetDroughtGamma();
-        //gWeatherPtr->droughtState = 1;
-        break;
-    case 1://do nothing.
-    break;
-    }
+    // Drought is a static palette/weather effect in field weather mode.
+    // The init path only needs to set the brightness stage high enough to complete.
 }
 
 void Weather_SetBlendCoeffs(u8 eva, u8 evb)

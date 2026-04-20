@@ -618,6 +618,6 @@
 #define EE_GAME_VERSION 11013
 
 //uncomment to allow dev switch to be accessed.//
-//#define DEV_BUILD 69
+#define DEV_BUILD 69
 
 #endif 

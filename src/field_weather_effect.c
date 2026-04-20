@@ -18,6 +18,9 @@
 EWRAM_DATA static u8 gCurrentAbnormalWeather = 0;
 EWRAM_DATA static u16 gUnusedWeatherRelated = 0;
 
+// Extern
+extern s8 RyuGetDroughtGamma(void);
+
 // CONST
 const u16 gCloudsWeatherPalette[] = INCBIN_U16("graphics/weather/cloud.gbapal");
 const u16 gSandstormWeatherPalette[] = INCBIN_U16("graphics/weather/sandstorm.gbapal");
@@ -242,36 +245,21 @@ static void UpdateCloudSprite(struct Sprite *sprite)
 //------------------------------------------------------------------------------
 
 static void UpdateDroughtBlend(u8);
-extern int RyuGetTimeOfDay();
-extern void ApplyGammaShift(u8 startPalIndex, u8 numPalettes, s8 gammaIndex);
-
-void SetDroughtGamma()
-{
-    //switch (RyuGetTimeOfDay()){
-    //    case RTC_TIME_NIGHT:
-    //        ApplyGammaShift(6, 32, 5);
-    //    break;
-    //    case RTC_TIME_MORNING:
-    //        ApplyGammaShift(-2, 32, 4);
-    //    break;
-    //    case RTC_TIME_DAY:
-    //        ApplyGammaShift(-6, 32, 1);
-    //    break;
-    //    case RTC_TIME_EVENING:
-    //        ApplyGammaShift(-1, 32, -2);
-    //    break;
-    //}
-}
 
 void Drought_InitVars(void)
 {
-    gWeatherPtr->initStep = 3;
-    gWeatherPtr->gammaTargetIndex = 0;
+    gWeatherPtr->initStep = 0;
+    gWeatherPtr->weatherGfxLoaded = FALSE;
+    gWeatherPtr->gammaIndex = RyuGetDroughtGamma();
+    gWeatherPtr->gammaTargetIndex = RyuGetDroughtGamma();
+    gWeatherPtr->gammaStepDelay = 0;
 }
 
 void Drought_InitAll(void)
 {
     Drought_InitVars();
+    while (gWeatherPtr->weatherGfxLoaded == FALSE)
+        Drought_Main();
 }
 
 void Drought_Main(void)
@@ -279,21 +267,31 @@ void Drought_Main(void)
     switch (gWeatherPtr->initStep)
     {
     case 0:
-        gWeatherPtr->initStep++;
+        if (gWeatherPtr->palProcessingState != WEATHER_PAL_STATE_CHANGING_WEATHER)
+            gWeatherPtr->initStep++;
         break;
     case 1:
+        ResetDroughtWeatherPaletteLoading();
         gWeatherPtr->initStep++;
         break;
     case 2:
-        gWeatherPtr->initStep++;
+        if (LoadDroughtWeatherPalettes() == FALSE)
+            gWeatherPtr->initStep++;
         break;
     case 3:
+        DroughtStateInit();
         gWeatherPtr->initStep++;
         break;
     case 4:
-        gWeatherPtr->initStep++;
+        DroughtStateRun();
+        if (gWeatherPtr->droughtBrightnessStage == 6)
+        {
+            gWeatherPtr->weatherGfxLoaded = TRUE;
+            gWeatherPtr->initStep++;
+        }
         break;
     default:
+        DroughtStateRun();
         break;
     }
 }
@@ -305,7 +303,7 @@ bool8 Drought_Finish(void)
 
 void StartDroughtWeatherBlend(void)
 {
-    return;
+    CreateTask(UpdateDroughtBlend, 80);
 }
 
 #define tState      data[0]
@@ -320,15 +318,40 @@ static void UpdateDroughtBlend(u8 taskId)
     switch (task->tState)
     {
     case 0:
+        task->tBlendY = 0;
+        task->tBlendDelay = 0;
+        task->tWinRange = REG_WININ;
+        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_ALL | WININ_WIN1_ALL);
+        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_TGT1_BG2 | BLDCNT_TGT1_BG3 | BLDCNT_TGT1_OBJ | BLDCNT_EFFECT_LIGHTEN);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
         task->tState++;
         // fall through
     case 1:
-        task->tState++;
+        task->tBlendY += 3;
+        if (task->tBlendY > 16)
+            task->tBlendY = 16;
+        SetGpuReg(REG_OFFSET_BLDY, task->tBlendY);
+        if (task->tBlendY >= 16)
+            task->tState++;
         break;
     case 2:
-        task->tState++;
+        task->tBlendDelay++;
+        if (task->tBlendDelay > 9)
+        {
+            task->tBlendDelay = 0;
+            task->tBlendY--;
+            if (task->tBlendY <= 0)
+            {
+                task->tBlendY = 0;
+                task->tState++;
+            }
+            SetGpuReg(REG_OFFSET_BLDY, task->tBlendY);
+        }
         break;
     case 3:
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+        SetGpuReg(REG_OFFSET_WININ, task->tWinRange);
         task->tState++;
         break;
     case 4:
@@ -337,6 +360,11 @@ static void UpdateDroughtBlend(u8 taskId)
         break;
     }
 }
+
+#undef tState
+#undef tBlendY
+#undef tBlendDelay
+#undef tWinRange
 
 #undef tState
 #undef tBlendY
