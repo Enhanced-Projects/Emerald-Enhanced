@@ -403,3 +403,84 @@ void DebugPrint(const u8 *buffer, int count, ...)
     taskId = CreateTask(RyuCodeDebugPrintTask, 0xFF);
     gTasks[taskId].tDBWindowData = tDebuggingWindow;
 }
+
+// Coordinate Display Task
+#define tCoordinateWindow data[0]
+#define tCoordinatePrevX data[1]
+#define tCoordinatePrevY data[2]
+
+void Task_DisplayCoordinates(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    u16 currentX, currentY;
+    
+    // Check if the flag is still set
+    if (!FlagGet(FLAG_RYU_SHOW_COORDINATES))
+    {
+        // Flag was cleared, clean up and destroy task
+        if (tCoordinateWindow != 0xFF)
+        {
+            ClearStdWindowAndFrameToTransparent(tCoordinateWindow, TRUE);
+            RemoveWindow(tCoordinateWindow);
+        }
+        DestroyTask(taskId);
+        return;
+    }
+    
+    // Get current player coordinates
+    currentX = gSaveBlock1Ptr->pos.x;
+    currentY = gSaveBlock1Ptr->pos.y;
+    
+    // Check if coordinates have changed
+    if (currentX != tCoordinatePrevX || currentY != tCoordinatePrevY)
+    {
+        // Update previous coordinates
+        tCoordinatePrevX = currentX;
+        tCoordinatePrevY = currentY;
+        
+        // Update display
+        if (tCoordinateWindow == 0xFF)
+        {
+            // Create window at top-right
+            struct WindowTemplate template;
+            SetWindowTemplateFields(&template, 0, 15, 1, 12, 2, 15, 100);
+            tCoordinateWindow = AddWindow(&template);
+            FillWindowPixelBuffer(tCoordinateWindow, 0);
+            PutWindowTilemap(tCoordinateWindow);
+        }
+        else
+        {
+            // Clear previous text
+            FillWindowPixelBuffer(tCoordinateWindow, 0);
+        }
+        
+        // Format coordinates string
+        StringCopy(gStringVar4, (const u8*)"Coords: ");
+        ConvertIntToDecimalStringN(gRyuStringVar3, currentX, STR_CONV_MODE_LEFT_ALIGN, 3);
+        StringAppend(gStringVar4, gRyuStringVar3);
+        StringAppend(gStringVar4, (const u8*)", ");
+        ConvertIntToDecimalStringN(gRyuStringVar3, currentY, STR_CONV_MODE_LEFT_ALIGN, 3);
+        StringAppend(gStringVar4, gRyuStringVar3);
+        
+        // Display coordinates
+        AddTextPrinterParameterized(tCoordinateWindow, 1, gStringVar4, 0, 0, 0, NULL);
+        CopyWindowToVram(tCoordinateWindow, 1);
+    }
+}
+
+void InitCoordinateDisplay(void)
+{
+    u8 taskId;
+    
+    if (FlagGet(FLAG_RYU_SHOW_COORDINATES))
+    {
+        // Check if task already exists
+        if (FindTaskIdByFunc(Task_DisplayCoordinates) == 0xFF)
+        {
+            taskId = CreateTask(Task_DisplayCoordinates, 0xFF);
+            gTasks[taskId].tCoordinateWindow = 0xFF;
+            gTasks[taskId].tCoordinatePrevX = 0xFFFF;
+            gTasks[taskId].tCoordinatePrevY = 0xFFFF;
+        }
+    }
+}

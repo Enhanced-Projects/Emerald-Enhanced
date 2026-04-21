@@ -901,7 +901,8 @@ static const u8 sText_DebugUtilityItem19[] = _("Check exact play time");
 static const u8 sText_DebugUtilityItem20[] = _("Enable Verbose Mode");
 static const u8 sText_DebugUtilityItem21[] = _("Check DOE status");
 static const u8 sText_DebugUtilityItem22[] = _("Tgl Battle Info Screen");
-static const u8 sText_DebugUtilityItem23[] = _("Exit");
+static const u8 sText_DebugUtilityItem23[] = _("Show Coordinates");
+static const u8 sText_DebugUtilityItem24[] = _("Exit");
 
 // strings to display as items.
 static const u8 sText_BotanyConsumableItem1[] = _("Muscle Powder");
@@ -1011,6 +1012,26 @@ static const u8 sDifficultyModTechnician[] = _("Technician");
 static const u8 sDifficultyModEconomyMode[] = _("Economy Mode");
 static const u8 sDifficultyModNone[] = _("End Selection");
 
+// Start Location Scrolling Menu
+static const u8 sStartLocationLittleroot[] = _("Littleroot");
+static const u8 sStartLocationMauville[] = _("Mauville");
+static const u8 sStartLocationLilycove[] = _("Lilycove");
+static const u8 sStartLocationDewford[] = _("Dewford");
+static const u8 sStartLocationRustboro[] = _("Rustboro");
+static const u8 sStartLocationFallarbor[] = _("Fallarbor");
+static const u8 sStartLocationSnowShore[] = _("Snowy Shore");
+
+static const struct ListMenuItem sStartLocationSet[] =
+    {
+        {sStartLocationLittleroot, 0},
+        {sStartLocationMauville, 1},
+        {sStartLocationLilycove, 2},
+        {sStartLocationDewford, 3},
+        {sStartLocationRustboro, 4},
+        {sStartLocationFallarbor, 5},
+        {sStartLocationSnowShore, 6},
+};
+
 static const struct ListMenuItem sBotanyConsumablesSet[] =
     {
         {sText_BotanyConsumableItem1, 0},
@@ -1079,6 +1100,7 @@ static const struct ListMenuItem sDebugUtilitySet[] =
         {sText_DebugUtilityItem21, 21},
         {sText_DebugUtilityItem22, 22},
         {sText_DebugUtilityItem23, 23},
+        {sText_DebugUtilityItem24, 24},
 };
 
 static const struct ListMenuItem sAlchemyMenu[] =
@@ -1177,7 +1199,8 @@ struct
         {sAlchemyMenu, ARRAY_COUNT(sAlchemyMenu)},
         {sRyuFollowerDebugSet, ARRAY_COUNT(sRyuFollowerDebugSet)},
         {sRyuBetaMenuSet, ARRAY_COUNT(sRyuBetaMenuSet)},
-        {sDifficultyModifierSet, ARRAY_COUNT(sDifficultyModifierSet)}
+        {sDifficultyModifierSet, ARRAY_COUNT(sDifficultyModifierSet)},
+        {sStartLocationSet, ARRAY_COUNT(sStartLocationSet)}
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);

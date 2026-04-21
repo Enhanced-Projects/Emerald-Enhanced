@@ -106,7 +106,8 @@ RyuDebug_UtilitiesMenu:
 	case 20, RyuDebug_EnableVerboseUtility
 	case 21, RyuDebug_TestDynamicObjects
 	case 22, RyuDebug_ToggleBattleInfo
-	case 23, RyuDebug_menu_nodevcheck
+	case 23, RyuDebug_ToggleCoordinateDisplay
+	case 24, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RyuDebug_ToggleBattleInfo::
@@ -123,6 +124,25 @@ RDB_TurnOffBattleInfo::
 
 RDB_BIT:
 	.string "Battle Info screen toggled.$"
+
+RyuDebug_ToggleCoordinateDisplay::
+	goto_if_set FLAG_RYU_SHOW_COORDINATES, RDB_TurnOffCoordinates
+	setflag FLAG_RYU_SHOW_COORDINATES
+	msgbox RDB_CoordinatesOn
+	closemessage
+	goto RyuDebug_UtilitiesMenu
+
+RDB_TurnOffCoordinates::
+	clearflag FLAG_RYU_SHOW_COORDINATES
+	msgbox RDB_CoordinatesOff
+	closemessage
+	goto RyuDebug_UtilitiesMenu
+
+RDB_CoordinatesOn:
+	.string "Coordinate display ON.$"
+
+RDB_CoordinatesOff:
+	.string "Coordinate display OFF.$"
 
 RyuDebug_TestDynamicObjects::
 	callnative RyuTestDynamicObjectContents

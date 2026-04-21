@@ -21,8 +21,8 @@ ConfrimChoiceMsg:
 GameModeSelect:: @ 823BF04
 	lockall
 	msgbox RI_ChooseStartLocation
-	bufferdynamicmulti SL_1, SL_2, SL_3, SL_4, SL_5, SL_6
-	multichoicedefault 0, 0, MULTI_DYNAMIC_6, 1, 1
+
+	scrollingmultichoice SMC_RYUSTARTLOCSET, 0, 0, 6, 1
 	copyvar VAR_0x8002, VAR_RESULT
 	closemessage
 	setflag FLAG_RYU_STARTER_LOCATION_CHOSEN
@@ -699,30 +699,6 @@ script LRT_mom_economy{
 	}
 }
 
-text SL_1 {
-	"Littleroot"
-}
-
-text SL_2 {
-	"Mauville"
-}
-
-text SL_3 {
-	"Lilycove"
-}
-
-text SL_4 {
-	"Dewford"
-}
-
-text SL_5 {
-	"Rustburo"
-}
-
-text SL_6 {
-	"Fallarbor"
-}
-
 script RyuScript_DoIntroWarp {
 	if (flag(FLAG_RYU_FRONTIER_MODE) == TRUE){
 		warpsilent(MAP_BATTLE_FRONTIER_RECEPTION_GATE, 255, 4, 4)
@@ -742,6 +718,8 @@ script RyuScript_DoIntroWarp {
 				warpsilent(MAP_RUSTBORO_CITY, 255, 27, 35)
 			case 5:
 				warpsilent(MAP_FALLARBOR_TOWN, 255, 8, 6)
+			case 6:
+				warpsilent(MAP_SNOWY_SHORE, 255, 24, 12)
 		}
 	}
 	waitstate
@@ -775,6 +753,8 @@ script RyuSetStartLocationRespawn {//sets the respawn location to the chosen sta
 				setrespawn(HEAL_LOCATION_RUSTBORO_CITY)
 			case 5:
 				setrespawn(HEAL_LOCATION_FALLARBOR_TOWN)
+			case 6:
+				setrespawn(HEAL_LOCATION_SNOWY_SHORE)
 		}
 	return
 }
