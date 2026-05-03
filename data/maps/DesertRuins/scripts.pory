@@ -73,17 +73,27 @@ DesertRuins_EventScript_CaveEntranceSide:: @ 822D9F8
 	releaseall
 	end
 
-DesertRuins_EventScript_Regirock:: @ 822DA02
-	lock
-	faceplayer
-	waitse
-	playmoncry SPECIES_REGIROCK, 2
+DesertRuins_EventScript_DefeatedRegirock:: @ 822DA49
+	setflag FLAG_DEFEATED_REGIROCK
+	setflag FLAG_RYU_REGIROCK_RAN
+	setflag FLAG_RYU_REGIROCK
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+DesertRuins_EventScript_RanFromRegirock:: @ 822DA52
+	setvar VAR_0x8004, SPECIES_REGIROCK
+	setflag FLAG_RYU_REGIROCK_RAN
+	goto Common_EventScript_LegendaryFlewAway
+	end
+
+RyuLegendary_Regirock::
+	goto_if_set FLAG_RYU_REGIROCK, ryu_end
+	goto_if_set FLAG_RYU_REGIROCK_RAN, ryu_end
 	delay 40
-	waitmoncry
-	setwildbattle SPECIES_REGIROCK, 40, ITEM_HARD_STONE
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-	special StartRegiBattle
-	waitstate
+	setvar VAR_TEMP_5, SPECIES_REGIROCK
+	setvar VAR_TEMP_9, ITEM_HARD_STONE
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
@@ -93,18 +103,12 @@ DesertRuins_EventScript_Regirock:: @ 822DA02
 	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
 	goto_if_eq DesertRuins_EventScript_RanFromRegirock
 	setflag FLAG_DEFEATED_REGIROCK
+	removeobject 0 @Put the porymap object ID here
 	release
 	end
 
-DesertRuins_EventScript_DefeatedRegirock:: @ 822DA49
-	setflag FLAG_DEFEATED_REGIROCK
-	goto Common_EventScript_RemoveStaticPokemon
-	end
-
-DesertRuins_EventScript_RanFromRegirock:: @ 822DA52
-	setvar VAR_0x8004, SPECIES_REGIROCK
-	goto Common_EventScript_LegendaryFlewAway
-	end
+OverworldLegendary_IntroRegirock: @put your intro here
+	.string "$"
 
 
 @==================================================================================================Leaf Events

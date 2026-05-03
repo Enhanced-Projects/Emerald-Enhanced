@@ -298,17 +298,14 @@ IslandCave_EventScript_ClearSteps:: @ 8238F45//unused anyway
 	clearflag FLAG_TEMP_3
 	return
 
-IslandCave_EventScript_Regice:: @ 8238F58
-	lock
-	faceplayer
-	waitse
-	playmoncry SPECIES_REGICE, 2
+RyuLegendary_Regice::
+	goto_if_set FLAG_RYU_REGICE, ryu_end
+	goto_if_set FLAG_RYU_REGICE_RAN, ryu_end
 	delay 40
-	waitmoncry
-	setwildbattle SPECIES_REGICE, 40, ITEM_NEVER_MELT_ICE
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-	special StartRegiBattle
-	waitstate
+	setvar VAR_TEMP_5, SPECIES_REGICE
+	setvar VAR_TEMP_9, ITEM_NEVER_MELT_ICE
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
@@ -318,11 +315,14 @@ IslandCave_EventScript_Regice:: @ 8238F58
 	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
 	goto_if_eq IslandCave_EventScript_RanFromRegice
 	setflag FLAG_DEFEATED_REGICE
+	removeobject 0 @Put the porymap object ID here
 	release
 	end
 
 IslandCave_EventScript_DefeatedRegice:: @ 8238F9F
 	setflag FLAG_DEFEATED_REGICE
+	setflag FLAG_RYU_REGICE
+	setflag FLAG_RYU_REGICE_RAN
 	goto Common_EventScript_RemoveStaticPokemon
 	end
 

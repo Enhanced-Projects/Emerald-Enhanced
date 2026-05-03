@@ -488,6 +488,16 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_HOOPA:
     case SPECIES_POIPOLE:
     case SPECIES_VICTINI:
+    case SPECIES_STAKATAKA:
+    case SPECIES_NIHILEGO:
+    case SPECIES_BUZZWOLE:
+    case SPECIES_PHEROMOSA:
+    case SPECIES_XURKITREE:
+    case SPECIES_CELESTEELA:
+    case SPECIES_KARTANA:
+    case SPECIES_GUZZLORD:
+    case SPECIES_NAGANADEL:
+    case SPECIES_BLACEPHALON:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
         break;
     case SPECIES_ZAPDOS:
@@ -520,6 +530,22 @@ void BattleSetup_StartLegendaryBattle(void)
         break;
     case SPECIES_LATIOS:
         CreateBattleStartTask(B_TRANSITION_RECTANGULAR_SPIRAL, MUS_VS_RAYQUAZA);
+        break;
+    case SPECIES_REGIROCK:
+        gBattleTypeFlags = BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_REGI;
+        CreateBattleStartTask(B_TRANSITION_REGIROCK, MUS_VS_REGI);
+        break;
+    case SPECIES_REGICE:
+        gBattleTypeFlags = BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_REGI;
+        CreateBattleStartTask(B_TRANSITION_REGICE, MUS_VS_REGI);
+        break;
+    case SPECIES_REGISTEEL:
+        gBattleTypeFlags = BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_REGI;
+        CreateBattleStartTask(B_TRANSITION_REGISTEEL, MUS_VS_REGI);
+        break;
+    case SPECIES_REGIGIGAS:
+        gBattleTypeFlags = BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_REGI;
+        CreateBattleStartTask(B_TRANSITION_REGISTEEL, MUS_VS_REGI);
         break;
     }
 

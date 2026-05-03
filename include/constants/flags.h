@@ -1412,6 +1412,12 @@
 #define FLAG_RYU_HIDE_ECON_BOUNCERS                               0x537
 #define FLAG_RYU_ROLLING_LOOT_CAPSULE                             0x538
 #define FLAG_RYU_HAS_REAL_ESTATE                                  0x539
+#define FLAG_RYU_REGIROCK                                         0x53A
+#define FLAG_RYU_REGICE                                           0x53B
+#define FLAG_RYU_REGISTEEL                                        0x53C
+#define FLAG_RYU_REGICE_RAN                                       0x53E
+#define FLAG_RYU_REGIROCK_RAN                                     0x53F
+#define FLAG_RYU_REGISTEEL_RAN                                    0x540
 
 //tutorial system flags
 #define FLAG_RYU_FACTION_TUTORIAL_UNLOCKED                        0x5FB
