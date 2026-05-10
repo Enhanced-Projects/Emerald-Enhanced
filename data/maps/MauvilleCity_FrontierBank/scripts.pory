@@ -4,6 +4,12 @@ mapscripts MauvilleCity_FrontierBank_MapScripts {}
 
 script SCFB_Teller{
     msgbox("Hi! Welcome to Frontier Bank.\nHow can I help you today?")
+    if (flag(FLAG_RYU_NGPLUS_BANKACCOUNT)){
+        clearflag(FLAG_RYU_NGPLUS_BANKACCOUNT)
+        callnative(RyuGetNGPLUSBankAmount)
+        msgbox("Oh, you must be {PLAYER}!\nWe've been waiting for you.\pA benevolent time traveller has left you\na bond.\pAfter we take our cut,\nyou will have a balance of {STR_VAR_1}.")
+        closemessage
+    }
     if (!flag(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT)) {
         goto(SCFB_MakeAccount)
     }

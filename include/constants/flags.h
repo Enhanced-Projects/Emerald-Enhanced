@@ -1418,6 +1418,7 @@
 #define FLAG_RYU_REGICE_RAN                                       0x53E
 #define FLAG_RYU_REGIROCK_RAN                                     0x53F
 #define FLAG_RYU_REGISTEEL_RAN                                    0x540
+#define FLAG_RYU_NGPLUS_BANKACCOUNT                               0x541
 
 //tutorial system flags
 #define FLAG_RYU_FACTION_TUTORIAL_UNLOCKED                        0x5FB

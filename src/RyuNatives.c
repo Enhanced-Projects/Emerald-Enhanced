@@ -3561,3 +3561,10 @@ void RyuClearRewardSprite(void){
     RemoveBagItemIconSprite(0);
 }
 
+void RyuGetNGPLUSBankAmount(void){
+    u64 amount = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
+    amount *= (1000 / 900); //10% cost to forward balance from newgameplus
+    ConvertIntToDecimalStringN(gStringVar1, amount, 0, 9);
+    SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, amount);
+    FlagSet(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT);
+}

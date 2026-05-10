@@ -1607,6 +1607,8 @@ void CB2_NewGame(void)
     u16 playerLifeSkills[3][2] = {0};
     bool8 hasRealEstate = gSaveBlock2Ptr->playerIsRealtor;
     bool8 hasSuperTraining = FALSE;
+    u64 playerMoney = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
+    bool8 hasBankAccount = FALSE;
 
     playerLifeSkills[0][0] = VarGet(VAR_RYU_PLAYER_MINING_SKILL);
     playerLifeSkills[0][1] = VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP);
@@ -1614,6 +1616,10 @@ void CB2_NewGame(void)
     playerLifeSkills[1][1] = VarGet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP);
     playerLifeSkills[2][0] = VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL);
     playerLifeSkills[2][1] = VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL_EXP);
+
+    if (playerMoney > 0){
+        hasBankAccount = TRUE;
+    }
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
@@ -1678,7 +1684,11 @@ void CB2_NewGame(void)
     SetMainCallback2(CB2_Overworld);
     if (isNGPlus == TRUE)
     {
-
+        if (hasBankAccount == TRUE){
+            SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, playerMoney);
+            FlagSet(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT);
+            FlagSet(FLAG_RYU_NGPLUS_BANKACCOUNT);
+        }
         if (hasExpDrive == TRUE)
             FlagSet(FLAG_RYU_HAS_EXP_DRIVE);
 
