@@ -5,7 +5,7 @@ LilycoveCity_AquaCorporateOffice_MapScripts::
 	
 ACO_OnFrameScript::
 	map_script_2 VAR_RYU_QUEST_AQUA, 45, ACO_ReturnedFromMuseumWhiteout
-	map_script_2 VAR_RYU_QUEST_AQUA, 162, ACO_Night2Scene
+	map_script_2 VAR_RYU_QUEST_AQUA, 161, ACO_Night2Scene
 	map_script_2 VAR_TEMP_C, 0, ACO_PreventInstantNotification
 	.2byte 0
 

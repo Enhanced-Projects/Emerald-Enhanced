@@ -14,6 +14,7 @@
 #include "theme_color_factory.h"
 
 #define UBFIX
+#define __VSCODE__
 
 //remove special case defines for when NOT using Item Expansion
 #define ITEM_EXPANSION 1
