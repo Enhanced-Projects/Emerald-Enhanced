@@ -1122,6 +1122,7 @@ RyuCheckForWellTravelledAch::
 `
 
 script RyuDebug_Utility1 {
+	clearflag(FLAG_RYU_LIMBO)
     end
 }
 
@@ -1150,10 +1151,17 @@ script RyuScript_EndChallengeMode{
     setvar(VAR_TEMP_B, 100)
     setflag(FLAG_RYU_LIMBO)
     lockall
+	modflag(GET, ECONOMY_MODE)
+	if (var(VAR_RESULT) == TRUE){
+		setflag(FLAG_RYU_WAYSTONE_DISABLED)
+		msgbox(format("You're bankrupt. Without any money to survive, you are chased down by some HCCA agents and left broken and bloodied on the ground. Better luck in your next life!"))
+		goto(continuegameend)
+	}
     setflag(FLAG_RYU_WAYSTONE_DISABLED)
     msgbox(format("Welcome to Limbo. You have failed your Hardcore or no mercy challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game Plus if your prestige is higher than zero. If you failed a No Mercy challenge, you will be required to start a new game."))
     closemessage
-    msgbox(format("Please wait while we check some things, this might take a few seconds."))
+	continuegameend:
+    msgbox(format("Saving Progress for new game plus."))
 	if (var(VAR_RYU_NGPLUS_COUNT) > 0) {	
 		setflag(FLAG_SYS_GAME_CLEAR)
 	} else {

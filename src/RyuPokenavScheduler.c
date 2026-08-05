@@ -21,6 +21,7 @@ const u8 sText_AquaStage91[] = _("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, this is
 const u8 sText_AquaStage123[] = _("{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, it's time...meet us in the\nmain Team Aqua Headquarters.\pWe'll be waiting by the dock.");
 const u8 sText_NuzlockeOver[] = _("Hello!\nDuskull Afterlife service calling!\pIt appears that you have lost your\nNuzlocke Challenge!\pHow unfortunate for you!\nYou will be escorted to the afterlife\lshortly!");
 const u8 sText_Autosaving[] = _("One moment, Autosaving...");
+const u8 sText_BillCollectors[] = _("Hello?\nThis is the Hoenn Conglomerate\lCollection Agency.\pWe've been dispatched to remove\nyou from the world, due to\poutstanding debts.\pWe will be with you shortly.");
 
 
 const u8 * const RyuPokenavCallMessages[] = 
@@ -41,6 +42,7 @@ const u8 * const RyuPokenavCallMessages[] =
     [NAVCALL_NOMERCYOVER] = sText_DuskullAfterlifeNoMercy,
     [NAVCALL_NUZLOCKEOVER] = sText_NuzlockeOver,
     [NAVCALL_AUTOSAVING] = sText_Autosaving,
+    [NAVCALL_BILLCOLLECTORS] = sText_BillCollectors
 };
 
 int RyuTryGetScheduledPokenavCall(void)

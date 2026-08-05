@@ -307,6 +307,7 @@ void RyuCheckAquaQuestNotifications(void)
 extern void RyuSavePlayTimeChallenge(void);
 extern bool32 IsPlayerInUnderworld(void);
 extern bool32 checkEscortMission(void);
+extern int GetTotalMoneyOwned(void);
 
 
 
@@ -314,7 +315,17 @@ void RyuDoNotifyTasks(void)
 {
     if (FlagGet(FLAG_RYU_ENTERING_OWNED_HOME) == FALSE)
         FlagSet(FLAG_RYU_HIDE_HOME_ATTENDANT);
-
+    if (GetModFlag(ECONOMY_MODE) == TRUE){
+        if (GetTotalMoneyOwned() <= 0){
+            if (FlagGet(FLAG_RYU_BILLCOLLECTOR_CALL) == FALSE){
+                SchedulePokenavCallInternal(NAVCALL_BILLCOLLECTORS, 0);
+                SetWarpDestination(MAP_GROUP(LIMBO), MAP_NUM(LIMBO), 255, 3, 3);
+                CreateTask(RyuDelayTimerTask, 255);
+                FlagSet(FLAG_RYU_BILLCOLLECTOR_CALL);
+            }
+        }
+    }
+    
     if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for challenge/hardcore
     {
         if (FlagGet(FLAG_RYU_LIMBO) == FALSE)

@@ -1188,7 +1188,6 @@
 #define FLAG_RYU_FRONTIER_MODE                                      0x466
 #define FLAG_RYU_DEV_EXP_MULT_ENABLED                               0x467 //required for the dev mode mult to work
 #define FLAG_RYU_HARDCORE_MODE                                      0x468
-#define FLAG_RYU_SHOW_COORDINATES                                   0x469
 
 #define FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL                             0x469
 #define FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE                            0x46A
@@ -1419,6 +1418,8 @@
 #define FLAG_RYU_REGIROCK_RAN                                     0x53F
 #define FLAG_RYU_REGISTEEL_RAN                                    0x540
 #define FLAG_RYU_NGPLUS_BANKACCOUNT                               0x541
+#define FLAG_RYU_BILLCOLLECTOR_CALL                               0x542
+#define FLAG_RYU_SHOW_COORDINATES                                 0x543
 
 //tutorial system flags
 #define FLAG_RYU_FACTION_TUTORIAL_UNLOCKED                        0x5FB

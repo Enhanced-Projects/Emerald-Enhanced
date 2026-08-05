@@ -18,6 +18,7 @@
 #include "money.h"
 #include "ryu_challenge_modifiers.h"
 #include "overworld.h"
+#include "overworld_notif.h"
 
 extern u16 gUnknown_0203CF30[];
 
@@ -927,7 +928,6 @@ int GetTotalMoneyOwned(void){
     int pkt = GetMoney(&gSaveBlock1Ptr->money);
     int bnk = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
     int ttmn = pkt + bnk;
-    mgba_open();
     return ttmn;
 }
 

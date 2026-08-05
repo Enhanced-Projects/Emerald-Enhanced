@@ -576,6 +576,7 @@
 #define NAVCALL_NOMERCYOVER 13
 #define NAVCALL_NUZLOCKEOVER 14
 #define NAVCALL_AUTOSAVING 15
+#define NAVCALL_BILLCOLLECTORS 17
 
 //difficulty setting
 #define DIFF_EASY 0
@@ -618,6 +619,6 @@
 #define EE_GAME_VERSION 11022
 
 //uncomment to allow dev switch to be accessed.//
-//#define DEV_BUILD 69
+#define DEV_BUILD 69
 
 #endif 
