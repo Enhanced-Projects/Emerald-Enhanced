@@ -69,6 +69,7 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "constants/item.h"
 #include "dns.h"
 #include "constants/items.h"
 #include "pokemon_storage_system.h"
@@ -1609,6 +1610,8 @@ void CB2_NewGame(void)
     bool8 hasSuperTraining = FALSE;
     u64 playerMoney = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
     bool8 hasBankAccount = FALSE;
+    struct ItemSlot savedTMHMs[BAG_TMHM_COUNT] = {0};
+    s32 i;
 
     playerLifeSkills[0][0] = VarGet(VAR_RYU_PLAYER_MINING_SKILL);
     playerLifeSkills[0][1] = VarGet(VAR_RYU_PLAYER_MINING_SKILL_EXP);
@@ -1623,6 +1626,18 @@ void CB2_NewGame(void)
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
+
+    // TM/HM quantities are XORed with the save's encryption key, which NewGameInitData()
+    // resets to 0, so they must be read (decrypted) here before the bag is cleared and
+    // re-added afterward rather than copied directly.
+    if (isNGPlus == TRUE)
+    {
+        for (i = 0; i < BAG_TMHM_COUNT; i++)
+        {
+            savedTMHMs[i].itemId = BagGetItemIdByPocketPosition(POCKET_TM_HM, i);
+            savedTMHMs[i].quantity = BagGetQuantityByPocketPosition(POCKET_TM_HM, i);
+        }
+    }
 
     if (CheckBagHasItem(ITEM_WAYSTONE, 1))
         hasWaystone = TRUE;
@@ -1732,6 +1747,12 @@ void CB2_NewGame(void)
 
         if (hasSuperTraining == TRUE)
             FlagSet(FLAG_RYU_HAS_SUPER_TRAINING);
+
+        for (i = 0; i < BAG_TMHM_COUNT; i++)
+        {
+            if (savedTMHMs[i].itemId != ITEM_NONE && savedTMHMs[i].quantity != 0)
+                AddBagItem(savedTMHMs[i].itemId, savedTMHMs[i].quantity);
+        }
 
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);

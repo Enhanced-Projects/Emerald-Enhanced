@@ -767,6 +767,18 @@ static u16 DetermineEggSpeciesAndParentSlots(struct DayCare *daycare, u8 *parent
     {
         eggSpecies = SPECIES_VOLBEAT;
     }
+    // Both Vulpix and Alolan Vulpix can reach Alolan Ninetales via Ice Stone, so
+    // GetEggSpecies' reverse lookup always resolves to the lower species ID (Vulpix)
+    // unless the parent's actual form is checked here.
+    if (eggSpecies == SPECIES_VULPIX && species[parentSlots[0]] == SPECIES_ALOLAN_NINETALES)
+    {
+        eggSpecies = SPECIES_ALOLAN_VULPIX;
+    }
+    // Same ambiguity as above, but for Sandshrew/Alolan Sandshrew -> Alolan Sandslash.
+    if (eggSpecies == SPECIES_SANDSHREW && species[parentSlots[0]] == SPECIES_ALOLAN_SANDSLASH)
+    {
+        eggSpecies = SPECIES_ALOLAN_SANDSHREW;
+    }
 
     // Make Ditto the "mother" slot if the other daycare mon is male.
     if (species[parentSlots[1]] == SPECIES_DITTO && GetBoxMonGender(&daycare->mons[parentSlots[0]].mon) != MON_FEMALE)
