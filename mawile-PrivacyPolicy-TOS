@@ -1,0 +1,43 @@
+# Mawile Discord Server Bot — Privacy Policy & Terms of Service
+
+_Last updated: 2026-09-01_
+
+This document explains what data the Mawile Discord bot ("Mawile", "the bot") accesses, how it is used, and the terms under which you may use it.
+
+## 1. Data We Access
+
+To operate, Mawile reads certain data made available through Discord's API while it is running:
+
+- **Message content** — read in real time to detect banned/unsafe words, keyword-based auto-responses, and specific trigger phrases.
+- **Member information** — such as display name, roles, and server join date, used for moderation checks (e.g. account-age checks) and commands like `.membersince`.
+- **Server configuration data** — such as user/role IDs defined in the bot's own configuration (e.g. staff role lists, do-not-ping lists), which are set by the bot operator, not collected from users.
+
+## 2. Data Retention
+
+Mawile does **not** store message content or member data. All of the data described above is read in-memory to perform its function (e.g. deleting a message, replying, checking a role) and is discarded immediately afterward. No message logs, content archives, or member databases are kept off-platform.
+
+Some non-personal configuration files (such as lists of banned words) are stored to disk, but these do not contain user data.
+
+## 3. Data Sharing
+
+Mawile does not sell, share, or transmit any user data to third parties. No data collected is used to train machine learning or AI models.
+
+## 4. User Rights
+
+Because no message content or member data is retained, there is nothing to request deletion of. If you have questions about what the bot does with your data while processing a message, contact us using the method below.
+
+## 5. Age Requirement
+
+Mawile is intended for use in accordance with Discord's Terms of Service, which requires users to be at least 13 years old (or the minimum age required in your jurisdiction).
+
+## 6. Disclaimer of Liability
+
+Mawile is provided as-is, for the purpose of moderating and enhancing the Discord server it is installed on. The developer and staff of Mawile do not store or use any user data for any purpose other than moderating that server. The developer and staff are not responsible for any data loss, leak, or breach — real, alleged, or implied — arising from the use of this bot.
+
+## 7. Changes to This Policy
+
+This policy may be updated periodically. Continued use of the bot after changes are posted constitutes acceptance of the updated policy.
+
+## 8. Contact
+
+For questions about this policy or the bot's data practices, contact **@ryuhouji** on Discord.
