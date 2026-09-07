@@ -57,6 +57,11 @@
 #define SEARCHLEVEL25_THREESTAR         7
 #define SEARCHLEVEL50_THREESTAR         6
 #define SEARCHLEVEL100_THREESTAR        12
+//Chance of encountering a Boss Pokemon (31 IVs, hidden ability, boss ribbon) at search levels
+#define SEARCHLEVEL0_BOSSCHANCE          5   // search level 0-14
+#define SEARCHLEVEL15_BOSSCHANCE        25   // search level 15-24
+#define SEARCHLEVEL25_BOSSCHANCE        60   // search level 25-49
+#define SEARCHLEVEL50_BOSSCHANCE        75   // search level 50+
 
 // GUI Info
 #define ROW_WATER       0

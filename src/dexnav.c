@@ -102,7 +102,8 @@ struct DexNavSearch
     u8 exclamationSpriteId;
     u8 hiddenSearch:1;
     u8 isHiddenMon:1;
-    u8 unk:6;
+    u8 isBoss:1;
+    u8 unk:5;
     u16 palBuffer[16];
 };
 
@@ -140,9 +141,10 @@ static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel
 static u16 DexNavGenerateHeldItem(u16 species, u8 searchLevel);
 static u8 DexNavGetAbilityNum(u16 species, u8 searchLevel);
 static u8 DexNavGeneratePotential(u8 searchLevel);
+static bool8 DexNavTryGenerateBossMon(u8 searchLevel);
 static u8 DexNavTryGenerateMonLevel(u16 species, u8 environment);
 static u8 GetEncounterLevelFromMapData(u16 species, u8 environment);
-static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16 item, u16* moves);
+static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16 item, u16* moves, bool8 isBoss);
 static u8 GetPlayerDistance(s16 x, s16 y);
 static u8 DexNavPickTile(u8 environment, u8 xSize, u8 ySize, bool8 smallScan);
 static void DexNavProximityUpdate(void);
@@ -186,6 +188,7 @@ static const u8 sText_DexNav_NotFoundHere[] = _("This Pokémon cannot be found h
 static const u8 sText_ThreeQmarks[] = _("???");
 static const u8 sText_SearchLevel[] = _("Search {LV}. {STR_VAR_1}");
 static const u8 sText_MonLevel[] = _("{LV}. {STR_VAR_1}");
+static const u8 sText_MonLevelBoss[] = _("{LV}. {STR_VAR_1}{BOSS_INDI}");
 static const u8 sText_EggMove[] = _("Move: {STR_VAR_1}");
 static const u8 sText_HeldItem[] = _("{STR_VAR_1}");
 static const u8 sText_StartExit[] = _("{START_BUTTON} Exit");
@@ -526,7 +529,7 @@ static void AddSearchWindowText(u16 species, u8 proximity, u8 searchLevel, bool8
     
     //level - always present
     ConvertIntToDecimalStringN(gStringVar1, sDexNavSearchDataPtr->monLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
-    StringExpandPlaceholders(gStringVar4, sText_MonLevel);
+    StringExpandPlaceholders(gStringVar4, sDexNavSearchDataPtr->isBoss ? sText_MonLevelBoss : sText_MonLevel);
     AddTextPrinterParameterized3(sDexNavSearchDataPtr->windowId, 0, WINDOW_COL_1, 0, sSearchFontColor, TEXT_SPEED_FF, gStringVar4);
     
     if (proximity <= SNEAKING_PROXIMITY)
@@ -847,6 +850,7 @@ static void Task_SetUpDexNavSearch(u8 taskId)
     sDexNavSearchDataPtr->heldItem = DexNavGenerateHeldItem(species, searchLevel);
     sDexNavSearchDataPtr->abilityNum = DexNavGetAbilityNum(species, searchLevel);
     sDexNavSearchDataPtr->potential = DexNavGeneratePotential(searchLevel);
+    sDexNavSearchDataPtr->isBoss = DexNavTryGenerateBossMon(searchLevel);
     DexNavProximityUpdate();
     
     LoadSearchIconData();
@@ -1132,7 +1136,7 @@ static void Task_DexNavSearch(u8 taskId)
     if (sDexNavSearchDataPtr->proximity < 1)
     {
         CreateDexNavWildMon(sDexNavSearchDataPtr->species, sDexNavSearchDataPtr->potential, sDexNavSearchDataPtr->monLevel, 
-          sDexNavSearchDataPtr->abilityNum, sDexNavSearchDataPtr->heldItem, sDexNavSearchDataPtr->moves);
+          sDexNavSearchDataPtr->abilityNum, sDexNavSearchDataPtr->heldItem, sDexNavSearchDataPtr->moves, sDexNavSearchDataPtr->isBoss);
         
         FlagClear(FLAG_SYS_DEXNAV_SEARCH);
         gDexnavBattle = TRUE;        
@@ -1241,7 +1245,7 @@ static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel)
 //////////////////////////////
 //// DEXNAV MON GENERATOR ////
 //////////////////////////////
-static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16 item, u16* moves)
+static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16 item, u16* moves, bool8 isBoss)
 {
     struct Pokemon* mon = &gEnemyParty[0];
     u8 iv[3] = {NUM_STATS};
@@ -1253,23 +1257,49 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     
     CreateWildMon(species, level);  // shiny rate bonus handled in CreateBoxMon
     
-    // Pick random, unique IVs to set to 31. The number of perfect IVs that are assigned is equal to the potential
-    iv[0] = Random() % NUM_STATS;               // choose 1st perfect stat
-    do {
-        iv[1] = Random() % NUM_STATS;
-        iv[2] = Random() % NUM_STATS;
-    } while ((iv[1] == iv[0])                   // unique 2nd perfect stat
-      || (iv[2] == iv[0] || iv[2] == iv[1]));   // unique 3rd perfect stat
-    
-    if (potential > 2 && iv[2] != NUM_STATS)
-        SetMonData(mon, MON_DATA_HP_IV + iv[2], &perfectIv);
-    if (potential > 1 && iv[1] != NUM_STATS)
-        SetMonData(mon, MON_DATA_HP_IV + iv[1], &perfectIv);
-    if (potential > 0 && iv[0] != NUM_STATS)
-        SetMonData(mon, MON_DATA_HP_IV + iv[0], &perfectIv);
-    
-    //Set ability
-    SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+    if (isBoss)
+    {
+        bool8 tru = TRUE;
+        u8 newAbility = Random() & 1;
+
+        SetMonData(mon, MON_DATA_HP_IV, &perfectIv);
+        SetMonData(mon, MON_DATA_ATK_IV, &perfectIv);
+        SetMonData(mon, MON_DATA_DEF_IV, &perfectIv);
+        SetMonData(mon, MON_DATA_SPATK_IV, &perfectIv);
+        SetMonData(mon, MON_DATA_SPDEF_IV, &perfectIv);
+        SetMonData(mon, MON_DATA_SPEED_IV, &perfectIv);
+        SetMonData(mon, MON_DATA_BOSS_STATUS, &tru);
+        abilityNum = 2;
+        SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+        // if the species has no hidden ability, fall back to a normal ability
+        if (GetMonAbility(mon) == ABILITY_NONE)
+            SetMonData(mon, MON_DATA_ABILITY_NUM, &newAbility);
+        if (GetMonAbility(mon) == ABILITY_NONE)
+        {
+            u8 defaultAbility = 0;
+            SetMonData(mon, MON_DATA_ABILITY_NUM, &defaultAbility);
+        }
+    }
+    else
+    {
+        // Pick random, unique IVs to set to 31. The number of perfect IVs that are assigned is equal to the potential
+        iv[0] = Random() % NUM_STATS;               // choose 1st perfect stat
+        do {
+            iv[1] = Random() % NUM_STATS;
+            iv[2] = Random() % NUM_STATS;
+        } while ((iv[1] == iv[0])                   // unique 2nd perfect stat
+          || (iv[2] == iv[0] || iv[2] == iv[1]));   // unique 3rd perfect stat
+        
+        if (potential > 2 && iv[2] != NUM_STATS)
+            SetMonData(mon, MON_DATA_HP_IV + iv[2], &perfectIv);
+        if (potential > 1 && iv[1] != NUM_STATS)
+            SetMonData(mon, MON_DATA_HP_IV + iv[1], &perfectIv);
+        if (potential > 0 && iv[0] != NUM_STATS)
+            SetMonData(mon, MON_DATA_HP_IV + iv[0], &perfectIv);
+        
+        //Set ability
+        SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+    }
     
     // Set Held Item
     if (item)
@@ -1281,6 +1311,21 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
 
     CalculateMonStats(mon);
     FlagClear(FLAG_SHINY_CREATION);
+}
+
+// Rolls whether the DexNav encounter should be a Boss Pokemon, based on the per-species search level
+static bool8 DexNavTryGenerateBossMon(u8 searchLevel)
+{
+    u16 randVal = Random() % 100;
+
+    if (searchLevel < 15)
+        return randVal < SEARCHLEVEL0_BOSSCHANCE;
+    else if (searchLevel < 25)
+        return randVal < SEARCHLEVEL15_BOSSCHANCE;
+    else if (searchLevel < 50)
+        return randVal < SEARCHLEVEL25_BOSSCHANCE;
+    else
+        return randVal < SEARCHLEVEL50_BOSSCHANCE;
 }
 
 // gets a random level of the species based on map data.
