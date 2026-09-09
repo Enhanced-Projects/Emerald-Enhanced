@@ -1856,7 +1856,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         {
             u16 level = RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength);
 
-            if (!(GetFactionId(trainerNum) == FACTION_OTHERS))
+            //This makes it so that at a certain point everything outlevels you at all times, and there's no reason for this to be active in easy or normal.
+            if ((!(GetFactionId(trainerNum) == FACTION_OTHERS)) && (VarGet(VAR_RYU_DIFFICULTY) != DIFF_EASY) && (VarGet(VAR_RYU_DIFFICULTY) != DIFF_NORMAL))
             {
                 if ((GetFactionStanding(trainerNum)) <= 20 && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))//If faction standing is low enough, this trainer is stronger. EXCEPT IN FRONTIER.
                     level += 12;

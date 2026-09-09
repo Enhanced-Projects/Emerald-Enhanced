@@ -302,6 +302,7 @@
 #define VAR_RYU_PLAYER_STAMINA               0x4122 // Player's stamina for use with super training
 #define VAR_RYU_QUEST_GENESECT               0x4123 //tracker variable for quest
 #define VAR_RYU_AUTOSAVE_MINUTES             0x4124 //tracks minutes since last autosave
+#define VAR_RYU_EXP_SHARE_MODE               0x4125 //stores the mode of the exp share
 
 
 //for EE seasonal changes

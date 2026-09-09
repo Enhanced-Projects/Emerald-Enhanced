@@ -346,6 +346,12 @@
 #define EXP_DRIVE_MODE_USE_ON_MON 4
 #define EXP_DRIVE_MODE_SET_DEV_AMOUNT 5
 
+// Modes for VAR_RYU_EXP_SHARE_MODE, read in Cmd_getexp (battle_script_commands.c)
+#define EXP_SHARE_MODE_DISABLED    0 // no exp share bonus; half of the calculated exp instead goes to the EXP Drive
+#define EXP_SHARE_MODE_PARTY       1 // half of the exp earned is also given to the entire conscious party
+#define EXP_SHARE_MODE_RAISE       2 // all exp (x1.5) goes to the lowest level party mon
+#define EXP_SHARE_MODE_POWERLEVEL  3 // all exp goes to the highest level party mon
+
 //Contest type defines for code usage
 #define COOL 0
 #define BEAUTY 1

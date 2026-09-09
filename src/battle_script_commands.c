@@ -4106,6 +4106,35 @@ static const u8 gRyuNeutralNatures[5] = {
     NATURE_BASHFUL
 };
 
+// Picks the party slot that exclusively gains exp under EXP_SHARE_MODE_RAISE/POWERLEVEL.
+static u8 RyuGetExpShareTargetMonId(u8 expShareMode)
+{
+    s32 i;
+    u8 targetId = PARTY_SIZE;
+    u16 targetLevel = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 level;
+
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE
+            || GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG)
+            || GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
+            continue;
+
+        level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+        if (targetId == PARTY_SIZE
+            || (expShareMode == EXP_SHARE_MODE_RAISE && level < targetLevel)
+            || (expShareMode == EXP_SHARE_MODE_POWERLEVEL && level > targetLevel))
+        {
+            targetId = i;
+            targetLevel = level;
+        }
+    }
+
+    return targetId;
+}
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -4113,7 +4142,7 @@ static void Cmd_getexp(void)
     u8 holdEffect;
     u32 multiplier = (VarGet(VAR_RYU_DIFFICULTY));
     s32 sentIn;
-    s32 viaExpShare = 0;
+    u8 expShareMode;
     u32 *exp = &gBattleStruct->expValue;
     u32 RyuExpBatteryTemp = 0;
 
@@ -4147,6 +4176,7 @@ static void Cmd_getexp(void)
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
     sentIn = gSentPokesToOpponent[(gBattlerFainted & 2) >> 1];
+    expShareMode = VarGet(VAR_RYU_EXP_SHARE_MODE); // re-read every call since case 2-5 loop back into this function
 
     switch (gBattleScripting.getexpState)
     {
@@ -4217,23 +4247,40 @@ static void Cmd_getexp(void)
                 gBattleMoveDamage = 1;
             }
 
-            if (gSaveBlock2Ptr->expShare) // exp share is turned on
+            gBattleStruct->expShareOverrideMonId = PARTY_SIZE;
+            switch (expShareMode)
             {
-                *exp = calculatedExp / 2 / viaSentIn;
-                if (*exp == 0)
-                    *exp = 1;
-
-                viaExpShare = gSaveBlock1Ptr->playerPartyCount;
-                gExpShareExp = calculatedExp / 2;
+            case EXP_SHARE_MODE_RAISE:
+                gBattleStruct->expShareOverrideMonId = RyuGetExpShareTargetMonId(EXP_SHARE_MODE_RAISE);
+                *exp = 0;
+                gExpShareExp = (calculatedExp * 3) / 2; // x1.5, given entirely to the lowest level mon
                 if (gExpShareExp == 0)
                     gExpShareExp = 1;
-            }
-            else
-            {
+                break;
+            case EXP_SHARE_MODE_POWERLEVEL:
+                gBattleStruct->expShareOverrideMonId = RyuGetExpShareTargetMonId(EXP_SHARE_MODE_POWERLEVEL);
+                *exp = 0;
+                gExpShareExp = calculatedExp; // given entirely to the highest level mon
+                if (gExpShareExp == 0)
+                    gExpShareExp = 1;
+                break;
+            case EXP_SHARE_MODE_DISABLED:
                 *exp = calculatedExp / viaSentIn;
                 if (*exp == 0)
                     *exp = 1;
                 gExpShareExp = 0;
+                // half of the exp is diverted to the EXP Drive, without touching the fainting mon's own exp
+                RyuExpDriveInternalOperation(EXP_DRIVE_MODE_ADD, calculatedExp / 2);
+                break;
+            case EXP_SHARE_MODE_PARTY:
+            default:
+                *exp = calculatedExp / 2 / viaSentIn;
+                if (*exp == 0)
+                    *exp = 1;
+                gExpShareExp = calculatedExp / 2;
+                if (gExpShareExp == 0)
+                    gExpShareExp = 1;
+                break;
             }
 
             gBattleScripting.getexpState++;
@@ -4244,6 +4291,11 @@ static void Cmd_getexp(void)
     case 2: // set exp value to the poke in expgetter_id and print message
         if (gBattleControllerExecFlags == 0)
         {
+            bool8 isSentIn = (gBattleStruct->sentInPokes & 1) != 0;
+            bool8 isOverrideTarget = (expShareMode == EXP_SHARE_MODE_RAISE || expShareMode == EXP_SHARE_MODE_POWERLEVEL)
+                                     && gBattleStruct->expGetterMonId == gBattleStruct->expShareOverrideMonId;
+            bool8 skipExpForThisMon;
+
             item = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HELD_ITEM);
 
             if (item == ITEM_ENIGMA_BERRY)
@@ -4251,7 +4303,14 @@ static void Cmd_getexp(void)
             else
                 holdEffect = ItemId_GetHoldEffect(item);
 
-            if ((!gSaveBlock2Ptr->expShare && !(gBattleStruct->sentInPokes & 1))
+            if (expShareMode == EXP_SHARE_MODE_RAISE || expShareMode == EXP_SHARE_MODE_POWERLEVEL)
+                skipExpForThisMon = !isOverrideTarget;
+            else if (expShareMode == EXP_SHARE_MODE_PARTY)
+                skipExpForThisMon = FALSE;
+            else // EXP_SHARE_MODE_DISABLED
+                skipExpForThisMon = !isSentIn;
+
+            if (skipExpForThisMon
                 || (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) == MAX_LEVEL))
             {
                 MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
@@ -4275,12 +4334,14 @@ static void Cmd_getexp(void)
 
                 if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP) && !GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_IS_EGG))
                 {
-                    if (gBattleStruct->sentInPokes & 1)
+                    if (isOverrideTarget)
+                        gBattleMoveDamage = gExpShareExp;
+                    else if (isSentIn)
                         gBattleMoveDamage = *exp;
                     else
                         gBattleMoveDamage = 0;
 
-                    if (gSaveBlock2Ptr->expShare)
+                    if (expShareMode == EXP_SHARE_MODE_PARTY)
                         gBattleMoveDamage += gExpShareExp;
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG) {
                         gBattleMoveDamage = gBattleMoveDamage * 150 / 100;

@@ -455,6 +455,8 @@ Ryu_FCExit::
 
 
 
+@============================================================================================================================= Exp. Share
+
 Ryu_CantUsePcCharging::
 	msgbox RyuCantUsePCCHARGING 
 	closemessage
@@ -1120,6 +1122,34 @@ RyuCheckForWellTravelledAch::
 	return
 
 `
+
+//========================================EXPSHAREMENU========================
+
+text ES_Disabled{
+	"Disabled"
+}
+text ES_Party{
+	"Party Share"
+}
+text ES_Raise{
+	"Focus Lowest"
+}
+text ES_Powerlevel{
+	"Focus Highest"
+}
+
+script Ryu_ExpShareMenu{
+	lock
+	buffernumberstring(0, VAR_RYU_EXP_SHARE_MODE)
+	msgbox("The EXP Share is currently set to mode {STR_VAR_1}.")
+	closemessage
+	msgbox("Choose the EXP Share mode.....")
+	bufferdynamicmulti(ES_Disabled, ES_Party, ES_Raise, ES_Powerlevel)
+	multichoice(0, 0, MULTI_DYNAMIC_4, 1)
+	copyvar(VAR_RYU_EXP_SHARE_MODE, VAR_RESULT)
+	release
+	end
+}
 
 script RyuDebug_Utility1 {
 	clearflag(FLAG_RYU_LIMBO)

@@ -58,6 +58,7 @@ extern u8 RyuAP_StatAssist[];
 extern u8 Ryu_ReagentPouchScript[];
 extern u8 Ryu_RefineMetalDust[];
 extern u8 Ryu_LootCapsule[];
+extern u8 Ryu_ExpShareMenu[];
 
 static void SetUpItemUseCallback(u8 taskId);
 static void FieldCB_UseItemOnField(void);
@@ -200,31 +201,9 @@ u8 CheckIfItemIsTMHMOrEvolutionStone(u16 itemId)
 
 void ItemUseOutOfBattle_ExpShare(u8 taskId)
 {
-	if (!gSaveBlock2Ptr->expShare)
-	{
-		PlaySE(SE_EXPMAX);
-		if (!gTasks[taskId].data[2]) // to account for pressing select in the overworld
-		{
-			DisplayItemMessageOnField(taskId, gOtherText_ExpShareOn, Task_CloseCantUseKeyItemMessage);
-		}
-		else
-		{
-			DisplayItemMessage(taskId, 1, gOtherText_ExpShareOn, BagMenu_InitListsMenu);
-		}
-	}
-	else
-	{
-		PlaySE(SE_PC_OFF);
-		if (!gTasks[taskId].data[2]) // to account for pressing select in the overworld
-		{
-			DisplayItemMessageOnField(taskId, gOtherText_ExpShareOff, Task_CloseCantUseKeyItemMessage);
-		}
-		else
-		{
-			DisplayItemMessage(taskId, 1, gOtherText_ExpShareOff, BagMenu_InitListsMenu);
-		}
-	}
-	gSaveBlock2Ptr->expShare = !gSaveBlock2Ptr->expShare;
+	SetMainCallback2(CB2_ReturnToField);
+	ScriptContext2_Enable();
+	ScriptContext1_SetupScript(Ryu_ExpShareMenu);
 }
 
 void ItemUseOutOfBattle_Bike(u8 taskId)

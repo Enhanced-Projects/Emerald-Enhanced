@@ -531,6 +531,7 @@ struct BattleStruct
     u8 sameMoveTurns[MAX_BATTLERS_COUNT]; // For Metronome, number of times the same moves has been SUCCESFULLY used.
     u16 moveEffect2; // For Knock Off
     u16 changedSpecies[PARTY_SIZE]; // For Zygarde or future forms when multiple mons can change into the same pokemon.
+    u8 expShareOverrideMonId; // party slot exclusively receiving exp under EXP_SHARE_MODE_RAISE/POWERLEVEL, PARTY_SIZE if none
 };
 
 #define GET_MOVE_TYPE(move, typeArg)                        \

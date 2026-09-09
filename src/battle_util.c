@@ -7206,7 +7206,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
             MulModifier(&modifier, holdEffectModifier);
         break;
     case HOLD_EFFECT_BOXING_GLOVE:
-        if (gBattleMoves[move].flags & FLAG_IRON_FIST_BOOST)
+        if ((gBattleMoves[move].flags & FLAG_IRON_FIST_BOOST) || (gBattleMoves[move].flags & FLAG_MAKES_CONTACT))
            MulModifier(&modifier, holdEffectModifier);
         break;
     case HOLD_EFFECT_LUSTROUS_ORB:

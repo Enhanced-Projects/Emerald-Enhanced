@@ -12062,7 +12062,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         .abilities = {ABILITY_PRESSURE, ABILITY_PRESSURE},
-        .abilityHidden = ABILITY_PICKPOCKET,
+        .abilityHidden = ABILITY_MOXIE,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BLACK,
     },
