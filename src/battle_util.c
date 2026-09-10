@@ -2364,12 +2364,6 @@ u8 DoBattlerEndTurnEffects(void)
                 MAGIC_GAURD_CHECK;
 
                 gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / (B_BURN_DAMAGE >= GEN_7 ? 16 : 8);
-                if (ability == ABILITY_HEATPROOF)
-                {
-                    if (gBattleMoveDamage > (gBattleMoveDamage / 2) + 1) // Record ability if the burn takes less damage than it normally would.
-                        RecordAbilityBattle(gActiveBattler, ABILITY_HEATPROOF);
-                    gBattleMoveDamage /= 2;
-                }
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 BattleScriptExecute(BattleScript_BurnTurnDmg);
@@ -4896,6 +4890,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && TARGET_TURN_DAMAGED
              && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FIRE)
              && GetBattlerAbility(gBattlerAttacker) != ABILITY_WATER_VEIL
+             && GetBattlerAbility(gBattlerAttacker) != ABILITY_HEATPROOF
              && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_ANY)
              && !IsAbilityStatusProtected(gBattlerAttacker)
              && (Random() % 3) == 0)
@@ -5085,6 +5080,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 }
                 break;
             case ABILITY_WATER_VEIL:
+            case ABILITY_HEATPROOF:
                 if (gBattleMons[battler].status1 & STATUS1_BURN)
                 {
                     StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
@@ -6296,6 +6292,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
         case HOLD_EFFECT_FLAME_ORB:
             if (!gBattleMons[battlerId].status1
                 && !IS_BATTLER_OF_TYPE(battlerId, TYPE_FIRE)
+                && GetBattlerAbility(battlerId) != ABILITY_HEATPROOF
                 && GetBattlerAbility(battlerId) != ABILITY_WATER_VEIL)
             {
                 effect = ITEM_STATUS_CHANGE;
