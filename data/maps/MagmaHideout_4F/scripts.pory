@@ -517,6 +517,7 @@ MH4_MagmaMaxieEvent::
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
 	turnobject 1, DIR_SOUTH
 	msgbox MH4_SoItSeems
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	closemessage
 	applymovement 11, MH4_MaxieToCourtney@down 3, right 2, down1, right 3, down 2, right 2
 	waitmovement 11
